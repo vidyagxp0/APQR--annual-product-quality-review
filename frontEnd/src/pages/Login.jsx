@@ -3,7 +3,7 @@ import React from "react";
 export default function Login() {
   return (
     <div className="min-h-screen flex items-center justify-center" style={{ backgroundImage: 'linear-gradient(to top, #c1dfc4 0%, #deecdd 100%)' }}>
-          <div className="flex w-full max-w-6xl bg-white rounded-lg shadow-lg overflow-hidden">
+          <div className="flex w-full max-w-4xl bg-white rounded-lg shadow-lg overflow-hidden">
     
     
             <div className="w-1/2 bg-green-100 p-8 flex items-center justify-center">
@@ -15,8 +15,8 @@ export default function Login() {
     
     
             <div className="w-1/2 p-8">
-            <img src="./gxplogo.png" alt="gxp logo" className=' mx-28 w-1/2 '/>
-              <h2 className="text-3xl font-bold text-gray-700 mb-8 mt-12">Login to APQR</h2>
+            <img src="./gxplogo.png" alt="gxp logo" className=' mx-32 w-1/2 '/>
+              <h2 className="text-3xl font-bold text-gray-700 mb-8 text-center mt-12 ">Login to APQR</h2>
               <form>
                 <div className="mb-8 mt-12">
                   <label className="block text-gray-900 text-left font-bold">Username or email</label>
