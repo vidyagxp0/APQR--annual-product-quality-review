@@ -12,72 +12,42 @@ export default function APQR() {
     mfgLicNo: "",
   });
   return (
-    <div>
+    <div className="pqrform">
       <div className="form-tabs">
-        <div
-          className={`${tab === "GI" ? "active" : ""}`}
-          onClick={() => setTab("GI")}
-        >
+        <div className={`${tab === "GI" ? "active" : ""}`} onClick={() => setTab("GI")}>
           General Information
         </div>
-        <div
-          className={`${tab === "MR" ? "active" : ""}`}
-          onClick={() => setTab("MR")}
-        >
+        <div className={`${tab === "MR" ? "active" : ""}`} onClick={() => setTab("MR")}>
           Manufacturing Review
         </div>
-        <div
-          className={`${tab === "LR" ? "active" : ""}`}
-          onClick={() => setTab("LR")}
-        >
+        <div className={`${tab === "LR" ? "active" : ""}`} onClick={() => setTab("LR")}>
           Laboratory Review
         </div>
-        <div
-          className={`${tab === "EAMR" ? "active" : ""}`}
-          onClick={() => setTab("EAMR")}
-        >
+        <div className={`${tab === "EAMR" ? "active" : ""}`} onClick={() => setTab("EAMR")}>
           Engineering And Maintenance Review
         </div>
-        <div
-          className={`${tab === "QSR" ? "active" : ""}`}
-          onClick={() => setTab("QSR")}
-        >
+        <div className={`${tab === "QSR" ? "active" : ""}`} onClick={() => setTab("QSR")}>
           Quality System Review
         </div>
-        <div
-          className={`${tab === "RR" ? "active" : ""}`}
-          onClick={() => setTab("RR")}
-        >
+        <div className={`${tab === "RR" ? "active" : ""}`} onClick={() => setTab("RR")}>
           Regulatory Review
         </div>
-        <div
-          className={`${tab === "R" ? "active" : ""}`}
-          onClick={() => setTab("R")}
-        >
+        <div className={`${tab === "R" ? "active" : ""}`} onClick={() => setTab("R")}>
           Recommendations{" "}
         </div>
-        <div
-          className={`${tab === "CAPA" ? "active" : ""}`}
-          onClick={() => setTab("CAPA")}
-        >
+        <div className={`${tab === "CAPA" ? "active" : ""}`} onClick={() => setTab("CAPA")}>
           CAPA
         </div>
-        <div
-          className={`${tab === "DEAC" ? "active" : ""}`}
-          onClick={() => setTab("DEAC")}
-        >
+        <div className={`${tab === "DEAC" ? "active" : ""}`} onClick={() => setTab("DEAC")}>
           Discussion, Evaluation And Conclusion
         </div>
-        <div
-          className={`${tab === "LOA" ? "active" : ""}`}
-          onClick={() => setTab("LOA")}
-        >
+        <div className={`${tab === "LOA" ? "active" : ""}`} onClick={() => setTab("LOA")}>
           List Of Annexures/Attachments
         </div>
       </div>
 
       {tab === "GI" ? (
-        <div className="p-4">
+        <div className="  p-4">
           <div className="dual-group-input ">
             <div className="group-input">
               <label>PQR No</label>

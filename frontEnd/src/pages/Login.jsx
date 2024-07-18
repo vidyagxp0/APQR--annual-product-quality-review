@@ -28,7 +28,7 @@ export default function Login() {
                   <label className="block text-gray-900 text-left font-bold">Password</label>
                   <input placeholder="Password" type="password" className="w-full px-4 py-2 mt-2 border-2 border-gray-400 rounded-lg focus:outline-none focus:ring-1 focus:ring-green-600" />
                 </div>
-                <button className="w-full bg-green-600 text-white font-bold py-2 px-4 rounded-lg mt-16 hover:bg-green-700">Login</button>
+                <button onClick={() => navigate("/dashboard")} className="w-full bg-green-600 text-white font-bold py-2 px-4 rounded-lg mt-16 hover:bg-green-700">Login</button>
               </form>
             </div>
           </div>
