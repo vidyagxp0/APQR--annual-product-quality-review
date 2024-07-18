@@ -20,6 +20,17 @@
   font-family: "Noto Sans", sans-serif;
   --themeColor: #efa035;
 } */
+
+.pqrform {
+  margin: 5%;
+  padding: 2%;
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 15px 25px, rgba(0, 0, 0, 0.05) 0px 5px 10px;
+}
+:root {
+  --first-color: #0060df;
+  --second-color: #5e93d8;
+  --third-color: var(--second-color);
+}
 .pqrform {
   --themeColor: #efa035;
 }
@@ -100,10 +111,12 @@
 .pqrform .group-input input:not([type="radio"]):not([type="checkbox"]),
 .pqrform .group-input select,
 .pqrform .group-input textarea {
-  border-bottom: 1px solid grey;
+  border: 1px solid grey;
+  /* border-top: 1px solid grey; */
+  border-radius: 5px;
   padding: 5px 15px;
   display: block;
-  width: 100%;
+  width: 80%;
   background: white;
 }
 
@@ -111,7 +124,7 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   align-items: end;
-  gap: 20px;
+  gap: 50px;
   margin-bottom: 20px;
 }
 
@@ -172,17 +185,33 @@
   flex-wrap: wrap;
   margin: 20px;
 }
+.pqrform .form-tabs {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
 .pqrform .form-tabs div {
-  padding: 7px 15px;
-  border-radius: 35px;
-  font-weight: bold;
-  background: rgb(152, 207, 219);
+  padding: 10px 20px;
+  border-radius: 24px;
+  color: #111;
+  /* background: #f0f0f0; */
+  background: #efeded;
   cursor: pointer;
+  border: 1.5px solid var(--first-color);
+  color: var(--first-color);
+}
+
+.pqrform .form-tabs div:hover {
+  border: none;
+  background: var(--second-color);
+  color: white;
+  font-weight: 600;
 }
 .pqrform .form-tabs div.active {
-  background: rgb(4, 154, 247);
+  background: var(--first-color);
   color: white;
-  font-weight: 400;
+  font-weight: 600;
 }
 .pqrform .sub-head {
   color: #0178f8;
@@ -234,4 +263,3 @@
 .pqrform table tbody tr:nth-child(2n) {
   background: #fcd6a1;
 }
-
