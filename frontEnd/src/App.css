@@ -1,0 +1,13 @@
+/* src/App.css */
+@font-face {
+    font-family: 'Playwrite AR';
+    src: url('/fonts/PlaywriteAR.ttf') format('truetype'); /* Adjust the path and format as needed */
+    font-weight: normal;
+    font-style: normal;
+  }
+  
+  .font-cursive {
+    font-family: 'Playwrite AR', cursive;
+    font-optical-sizing: auto;
+  }
+  
