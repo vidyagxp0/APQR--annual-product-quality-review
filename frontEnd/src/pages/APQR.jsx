@@ -21,6 +21,12 @@ export default function APQR() {
           General Information
         </div>
         <div
+          className={`${tab === "WR" ? "active" : ""}`}
+          onClick={() => setTab("WR")}
+        >
+          Warehouse Review
+        </div>
+        <div
           className={`${tab === "MR" ? "active" : ""}`}
           onClick={() => setTab("MR")}
         >
@@ -164,15 +170,407 @@ export default function APQR() {
               </tr>
             </tbody>
           </table>
+
+          <div className="py-4">
+            <table>
+              <thead>
+                <tr>
+                  <th>Product Name</th>
+                  <th>Batch Code</th>
+                  <th>SFG Code</th>
+                  <th></th>
+                  <th>Remarks</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
         </div>
       ) : null}
 
-      {tab === "MR" ? (
+      {tab === "WR" ? (
         <>
-          <div className="p-4"></div>
+          <div className="p-4">
+            <div className="sub-head">
+              Review of Rejected Raw Materials and Packaging Materials
+            </div>
+            <div className="py-4">
+              <table>
+                <thead>
+                  <tr>
+                    <th colSpan={6} className="text-center">
+                      Raw Materials Rejection Summary
+                    </th>
+                  </tr>
+                  <tr>
+                    <th>SI. No.</th>
+                    <th>Material Code</th>
+                    <th>Material Name</th>
+                    <th>Lot No./ A.R. No.</th>
+                    <th>Reason for Rejection</th>
+                    <th>Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>1</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div className="py-4">
+              <table>
+                <thead>
+                  <tr>
+                    <th colSpan={6} className="text-center">
+                      Packing Materials Rejection Summary
+                    </th>
+                  </tr>
+                  <tr>
+                    <th>SI. No.</th>
+                    <th>Material Code</th>
+                    <th>Material Name</th>
+                    <th>Lot No./ A.R. No.</th>
+                    <th>Reason for Rejection</th>
+                    <th>Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>1</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div className="sub-head">
+              {" "}
+              Review of Expired Raw Materials and Packaging Materials
+            </div>
+            <div className="py-4">
+              <table>
+                <thead>
+                  <tr>
+                    <th colSpan={6} className="text-center">
+                      Expired Raw Materials Details
+                    </th>
+                  </tr>
+                  <tr>
+                    <th>SI. No.</th>
+                    <th>Material Code</th>
+                    <th>Material Name</th>
+                    <th>Lot No./ A.R. No.</th>
+                    <th>Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>1</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div className="py-4">
+              <table>
+                <thead>
+                  <tr>
+                    <th colSpan={6} className="text-center">
+                      Expired Packaging Materials Details
+                    </th>
+                  </tr>
+                  <tr>
+                    <th>SI. No.</th>
+                    <th>Material Code</th>
+                    <th>Material Name</th>
+                    <th>Lot No./ A.R. No.</th>
+                    <th>Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>1</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div className="sub-head">Review of Approved Supplier List</div>
+            <div>
+              <table>
+                <thead>
+                  <tr>
+                    <th>Sl. No.</th>
+                    <th>Material Code</th>
+                    <th>Material Name</th>
+                    <th>Manufacturer / Supplier / Vendor</th>
+                    <th>Facility</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>1</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div className="sub-head">
+              Vendor Qualification Details of Raw Material Excipients
+            </div>
+            <div>
+              <table>
+                <thead>
+                  <th>Material Name</th>
+                  <th>Material Code</th>
+                  <th>Manufacturer Name</th>
+                  <th>Qualification Status</th>
+                  <th>Remarks</th>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Acetic acid glacial</td>
+                    <td>600001460</td>
+                    <td>
+                      Merck KgaA Frankfurt, Strabe 250, Dramstadt 64293 GERMANY.
+                    </td>
+                    <td>Approved</td>
+                    <td>NA</td>
+                  </tr>
+                  <tr>
+                    <td>Sorbitol</td>
+                    <td>600000405</td>
+                    <td>Roquette Freres 62136, Lestrem France</td>
+                    <td>Approved</td>
+                    <td>Temporarily Blocked as a part of CN/21/062</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div className="sub-head">
+              Vendor Qualification Details of Primary Packing Materials
+            </div>
+            <div>
+              <table>
+                <thead>
+                  <tr>
+                    <th>Material Name</th>
+                    <th>Material Code</th>
+                    <th>Manufacturer Name</th>
+                    <th>Qualification Status</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>
+                      HYPAK SCF1 MLL 29 GA1 /21 N-5B TW RNSTPE WR-France
+                      (Syringe)
+                    </td>
+                    <td>650000374</td>
+                    <td>
+                      BD Medical Pharmaceutical Systems 11 Rue Aristide Bergès -
+                      ZI des Iles 38800 LE PONT DE CLAIX FRANCE
+                    </td>
+                    <td>Approved</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      HYPAK BSCF 1 MLL 4023 FLURDAIKYO SI 1000PPL (Plunger
+                      Stoppers)
+                    </td>
+                    <td>650001052/ 650000771</td>
+                    <td>
+                      BD Medical Pharmaceutical Systems 920 East 19th Street
+                      COLUMBUS NE 68601 USA
+                    </td>
+                    <td>Approved</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div className="sub-head">
+              Vendor Qualification Details of Process Gases
+            </div>
+            <div>
+              <table>
+                <thead>
+                  <tr>
+                    <th>Gas Name</th>
+                    <th>Gas Code</th>
+                    <th>Manufacturer Name</th>
+                    <th> Qualification Status</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Argon Gas</td>
+                    <td>300001985</td>
+                    <td>Peenya Industrial Gases Pvt Ltd, Hosur</td>
+                    <td>Approved</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
         </>
       ) : null}
-      {tab === "LR" ? <></> : null}
+      {tab === "MR" ? (
+        <div className="p-4">
+          <div className="dual-group-input">
+            <div className="group-input">
+              <label>Product Description</label>
+              <input />
+            </div>
+            <div className="group-input">
+              <label>Process Flow</label>
+              <input />
+            </div>
+          </div>
+
+          <div className="sub-head">Review of all Batches Manufactured</div>
+
+          <div className="dual-group-input">
+            <div className="group-input">
+              <label>
+                Total No. of batches manufactured during the current review
+                period
+              </label>
+              <input type="number" />
+            </div>
+            <div className="group-input">
+              <label>Total No. of batches Approved & Released</label>
+              <input />
+            </div>
+            <div className="group-input">
+              <label>Total No. of Process Validation Batches</label>
+              <input />
+            </div>{" "}
+            <div className="group-input">
+              <label>Process Validation Batches Details</label>
+              <input placeholder="please insert flex" />
+            </div>
+            <div className="group-input">
+              <label>Total No. of Reprocessed Batches</label>
+              <input />
+            </div>
+            <div className="group-input">
+              <label>Reprocessing Details</label>
+              <input placeholder="please insert flex" />
+            </div>
+            <div className="group-input">
+              <label>Microbial Excursion Details</label>
+              <input placeholder="please insert flex" />
+            </div>
+          </div>
+          <div className="py-4">
+            <table>
+              <thead>
+                <tr>
+                  <th>SL. No.</th>
+                  <th>Batch Number</th>
+                  <th>Existing code</th>
+                  <th>Existing market</th>
+                  <th>Proposed code</th>
+                  <th>Proposed Market</th>
+                  <th>Transfer quantity</th>
+                  <th>Ref. No.</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>1.</td>
+                  <td>BS20008749</td>
+                  <td>700001494</td>
+                  <td>US market</td>
+                  <td>700002573</td>
+                  <td>ROW (Brazil)</td>
+                  <td>Full batch</td>
+                  <td>CTC-0014</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div className="sub-head">
+            {" "}
+            Review of Manufacturing Process, Packing Process and relevant
+            Validation Status
+          </div>
+          <input placeholder="please insert flex" />
+          <div className="sub-head">
+            Review of Reprocessing/Repacking/Reworking along with CAPA and
+            Effectiveness Check Verification (if any)
+          </div>
+          <div className="group-input">
+            <label>Batch reprocessing/reworking process Details</label>
+            <input placeholder="please insert flex" />
+          </div>
+          <div className="group-input">
+            <label>Batch reprocessing/reworking process Details</label>
+            <input placeholder="please insert flex" />
+          </div>
+
+          <div className="py-4">
+            <table>
+              <thead>
+                <tr>
+                  <th>SL. No.</th>
+                  <th>Packing batch number</th>
+                  <th>Manufacturing batch number</th>
+                  <th>Repacking issued number</th>
+                  <th>Repacking for</th>
+                  <th>QMS</th>
+                  <th>Reason for repacking</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>1</td>
+                  <td>BF21003651</td>
+                  <td>BS21005838</td>
+                  <td>BF/QA/     RP/21-028</td>
+                  <td>Tertiary packing</td>
+                  <td>52873</td>
+                  <td>Manufacturing Batch Number mentioned as BS21005833 instead of BS21005838</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <h1>Deviation Details - Grid
+CAPA Details – Grid
+</h1>
+        </div>
+      ) : null}
+
+      {tab === "LR" ? <div className="p-4"></div> : null}
       {tab === "EAMR" ? <></> : null}
       {tab === "QSR" ? <></> : null}
       {tab === "RR" ? <></> : null}
