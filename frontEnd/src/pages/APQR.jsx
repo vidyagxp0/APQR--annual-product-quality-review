@@ -16,41 +16,76 @@ export default function APQR() {
     <>
       <Header />
       <div className="inner-container pqrform">
-        <h1 className="text-2xl font-bold text-gray-700 mb-4">Annual Product Quality Review</h1>
+        <h1 className="text-2xl font-bold text-gray-700 mb-4">
+          Annual Product Quality Review
+        </h1>
       </div>
       <div className="pqrform">
         <div className="form-tabs">
-          <div className={`${tab === "GI" ? "active" : ""}`} onClick={() => setTab("GI")}>
+          <div
+            className={`${tab === "GI" ? "active" : ""}`}
+            onClick={() => setTab("GI")}
+          >
             General Information
           </div>
-          <div className={`${tab === "WR" ? "active" : ""}`} onClick={() => setTab("WR")}>
+          <div
+            className={`${tab === "WR" ? "active" : ""}`}
+            onClick={() => setTab("WR")}
+          >
             Warehouse Review
           </div>
-          <div className={`${tab === "MR" ? "active" : ""}`} onClick={() => setTab("MR")}>
+          <div
+            className={`${tab === "MR" ? "active" : ""}`}
+            onClick={() => setTab("MR")}
+          >
             Manufacturing Review
           </div>
-          <div className={`${tab === "LR" ? "active" : ""}`} onClick={() => setTab("LR")}>
+          <div
+            className={`${tab === "LR" ? "active" : ""}`}
+            onClick={() => setTab("LR")}
+          >
             Laboratory Review
           </div>
-          <div className={`${tab === "EAMR" ? "active" : ""}`} onClick={() => setTab("EAMR")}>
+          <div
+            className={`${tab === "EAMR" ? "active" : ""}`}
+            onClick={() => setTab("EAMR")}
+          >
             Engineering And Maintenance Review
           </div>
-          <div className={`${tab === "QSR" ? "active" : ""}`} onClick={() => setTab("QSR")}>
+          <div
+            className={`${tab === "QSR" ? "active" : ""}`}
+            onClick={() => setTab("QSR")}
+          >
             Quality System Review
           </div>
-          <div className={`${tab === "RR" ? "active" : ""}`} onClick={() => setTab("RR")}>
+          <div
+            className={`${tab === "RR" ? "active" : ""}`}
+            onClick={() => setTab("RR")}
+          >
             Regulatory Review
           </div>
-          <div className={`${tab === "R" ? "active" : ""}`} onClick={() => setTab("R")}>
+          <div
+            className={`${tab === "R" ? "active" : ""}`}
+            onClick={() => setTab("R")}
+          >
             Recommendations{" "}
           </div>
-          <div className={`${tab === "CAPA" ? "active" : ""}`} onClick={() => setTab("CAPA")}>
+          <div
+            className={`${tab === "CAPA" ? "active" : ""}`}
+            onClick={() => setTab("CAPA")}
+          >
             CAPA
           </div>
-          <div className={`${tab === "DEAC" ? "active" : ""}`} onClick={() => setTab("DEAC")}>
+          <div
+            className={`${tab === "DEAC" ? "active" : ""}`}
+            onClick={() => setTab("DEAC")}
+          >
             Discussion, Evaluation And Conclusion
           </div>
-          <div className={`${tab === "LOA" ? "active" : ""}`} onClick={() => setTab("LOA")}>
+          <div
+            className={`${tab === "LOA" ? "active" : ""}`}
+            onClick={() => setTab("LOA")}
+          >
             List Of Annexures/Attachments
           </div>
         </div>
@@ -333,7 +368,10 @@ export default function APQR() {
                     <tr>
                       <td>Acetic acid glacial</td>
                       <td>600001460</td>
-                      <td>Merck KgaA Frankfurt, Strabe 250, Dramstadt 64293 GERMANY.</td>
+                      <td>
+                        Merck KgaA Frankfurt, Strabe 250, Dramstadt 64293
+                        GERMANY.
+                      </td>
                       <td>Approved</td>
                       <td>NA</td>
                     </tr>
@@ -362,26 +400,35 @@ export default function APQR() {
                   </thead>
                   <tbody>
                     <tr>
-                      <td>HYPAK SCF1 MLL 29 GA1 /21 N-5B TW RNSTPE WR-France (Syringe)</td>
+                      <td>
+                        HYPAK SCF1 MLL 29 GA1 /21 N-5B TW RNSTPE WR-France
+                        (Syringe)
+                      </td>
                       <td>650000374</td>
                       <td>
-                        BD Medical Pharmaceutical Systems 11 Rue Aristide Bergès - ZI des Iles 38800
-                        LE PONT DE CLAIX FRANCE
+                        BD Medical Pharmaceutical Systems 11 Rue Aristide Bergès
+                        - ZI des Iles 38800 LE PONT DE CLAIX FRANCE
                       </td>
                       <td>Approved</td>
                     </tr>
                     <tr>
-                      <td>HYPAK BSCF 1 MLL 4023 FLURDAIKYO SI 1000PPL (Plunger Stoppers)</td>
+                      <td>
+                        HYPAK BSCF 1 MLL 4023 FLURDAIKYO SI 1000PPL (Plunger
+                        Stoppers)
+                      </td>
                       <td>650001052/ 650000771</td>
                       <td>
-                        BD Medical Pharmaceutical Systems 920 East 19th Street COLUMBUS NE 68601 USA
+                        BD Medical Pharmaceutical Systems 920 East 19th Street
+                        COLUMBUS NE 68601 USA
                       </td>
                       <td>Approved</td>
                     </tr>
                   </tbody>
                 </table>
               </div>
-              <div className="sub-head">Vendor Qualification Details of Process Gases</div>
+              <div className="sub-head">
+                Vendor Qualification Details of Process Gases
+              </div>
               <div>
                 <table>
                   <thead>
@@ -422,7 +469,10 @@ export default function APQR() {
 
             <div className="dual-group-input">
               <div className="group-input">
-                <label>Total No. of batches manufactured during the current review period</label>
+                <label>
+                  Total No. of batches manufactured during the current review
+                  period
+                </label>
                 <input type="number" />
               </div>
               <div className="group-input">
@@ -480,12 +530,13 @@ export default function APQR() {
             </div>
             <div className="sub-head">
               {" "}
-              Review of Manufacturing Process, Packing Process and relevant Validation Status
+              Review of Manufacturing Process, Packing Process and relevant
+              Validation Status
             </div>
             <input placeholder="please insert flex" />
             <div className="sub-head">
-              Review of Reprocessing/Repacking/Reworking along with CAPA and Effectiveness Check
-              Verification (if any)
+              Review of Reprocessing/Repacking/Reworking along with CAPA and
+              Effectiveness Check Verification (if any)
             </div>
             <div className="group-input">
               <label>Batch reprocessing/reworking process Details</label>
@@ -518,13 +569,85 @@ export default function APQR() {
                     <td>Tertiary packing</td>
                     <td>52873</td>
                     <td>
-                      Manufacturing Batch Number mentioned as BS21005833 instead of BS21005838
+                      Manufacturing Batch Number mentioned as BS21005833 instead
+                      of BS21005838
                     </td>
                   </tr>
                 </tbody>
               </table>
             </div>
             <h1>Deviation Details - Grid CAPA Details – Grid</h1>
+
+            <div className="sub-head">
+              {" "}
+              Review of Product Quality (Critical Process Parameters)
+            </div>
+            <h3 className="gridName">Unit Operation 1</h3>
+<h4 className="gridName">Buffer formulation summary details provided below</h4>
+            <div>
+              <table>
+                <thead>
+                  <tr>
+                    <th rowSpan={2}>Critical Process Parameters</th>
+                    <th rowSpan={2}>Codes</th>
+                    <th rowSpan={2}>Acceptance criteria</th>
+                    <th colSpan={2}>Results</th>
+                    <th rowSpan={2}>Complies / Does not complies</th>
+                  </tr>
+                  <tr>
+                    <th>Minimum</th>
+                    <th>Maximum</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td rowSpan={9}>Batch size in (mL)</td>
+                    <td>700002002</td>
+                    <td rowSpan={4}>5076.5 mL</td>
+                    <td rowSpan={4}>5076 mL</td>
+                    <td rowSpan={4}>5080 mL</td>
+                    <td>Complies</td>
+                  </tr>
+                  <tr>
+                    <td>700002194</td>
+                    <td>Complies</td>
+                  </tr>
+                  <tr>
+                    <td>700000546</td>
+                    <td>Complies</td>
+                  </tr>
+                  <tr>
+                    <td>700002589</td>
+                    <td>Complies</td>
+                  </tr>
+                  <tr>
+                    <td>700002627</td>
+                    <td rowSpan={3}>2030.6 mL</td>
+                    <td rowSpan={3}>2030.6 mL</td>
+                    <td rowSpan={3}>2031.7 mL</td>
+
+                    <td>Complies</td>
+                  </tr>
+                  <tr>
+                    <td>700002573</td>
+                    <td>Complies</td>
+                  </tr>
+                  <tr>
+                    <td>700001494</td>
+                    <td>Complies</td>
+                    
+                  </tr>
+                  <tr>
+                    <td>700002887</td>
+                    <td>5076.5 mL</td>
+                    <td>5076 mL</td>
+                    <td>5078 mL</td>
+                    <td>Complies</td>
+
+                  </tr>
+                </tbody>
+              </table>
+            </div>
           </div>
         ) : null}
 

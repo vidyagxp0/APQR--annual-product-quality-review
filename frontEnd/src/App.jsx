@@ -5,6 +5,8 @@ import Dashboard from "./pages/Dashboard";
 import APQR from "./pages/APQR";
 import Analytics from "./pages/Analytics";
 import Notification from "./pages/Notification";
+import AdminLogin from "./pages/Admin/AdminLogin";
+import AdminDashboard from "./pages/Admin/AdminDashboard";
 
 function App() {
   return (
@@ -15,6 +17,9 @@ function App() {
         <Route path="/analytics" element={<Analytics />} />
         <Route path="/notification" element={<Notification />} />
         <Route path="/new-pqr" element={<APQR />} />
+        <Route path="/admin-login" element={<AdminLogin/>}/>
+        <Route path="/admin-dashboard" element={<AdminDashboard/>}/>
+
       </Routes>
     </BrowserRouter>
   );
