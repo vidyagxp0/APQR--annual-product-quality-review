@@ -497,18 +497,7 @@ export default function APQR() {
                     <th>Ref. No.</th>
                   </tr>
                 </thead>
-                <tbody>
-                  <tr>
-                    <td>1.</td>
-                    <td>BS20008749</td>
-                    <td>700001494</td>
-                    <td>US market</td>
-                    <td>700002573</td>
-                    <td>ROW (Brazil)</td>
-                    <td>Full batch</td>
-                    <td>CTC-0014</td>
-                  </tr>
-                </tbody>
+               
               </table>
             </div>
             <div className="sub-head">
@@ -543,20 +532,7 @@ export default function APQR() {
                     <th>Reason for repacking</th>
                   </tr>
                 </thead>
-                <tbody>
-                  <tr>
-                    <td>1</td>
-                    <td>BF21003651</td>
-                    <td>BS21005838</td>
-                    <td>BF/QA/ RP/21-028</td>
-                    <td>Tertiary packing</td>
-                    <td>52873</td>
-                    <td>
-                      Manufacturing Batch Number mentioned as BS21005833 instead
-                      of BS21005838
-                    </td>
-                  </tr>
-                </tbody>
+               
               </table>
             </div>
             <h1>Deviation Details - Grid CAPA Details – Grid</h1>
@@ -566,7 +542,9 @@ export default function APQR() {
               Review of Product Quality (Critical Process Parameters)
             </div>
             <h3 className="gridName">Unit Operation 1</h3>
-<h4 className="gridName">Buffer formulation summary details provided below</h4>
+            <h4 className="gridName">
+              Buffer formulation summary details provided below
+            </h4>
             <div>
               <table>
                 <thead>
@@ -582,59 +560,155 @@ export default function APQR() {
                     <th>Maximum</th>
                   </tr>
                 </thead>
-                <tbody>
-                  <tr>
-                    <td rowSpan={9}>Batch size in (mL)</td>
-                    <td>700002002</td>
-                    <td rowSpan={4}>5076.5 mL</td>
-                    <td rowSpan={4}>5076 mL</td>
-                    <td rowSpan={4}>5080 mL</td>
-                    <td>Complies</td>
-                  </tr>
-                  <tr>
-                    <td>700002194</td>
-                    <td>Complies</td>
-                  </tr>
-                  <tr>
-                    <td>700000546</td>
-                    <td>Complies</td>
-                  </tr>
-                  <tr>
-                    <td>700002589</td>
-                    <td>Complies</td>
-                  </tr>
-                  <tr>
-                    <td>700002627</td>
-                    <td rowSpan={3}>2030.6 mL</td>
-                    <td rowSpan={3}>2030.6 mL</td>
-                    <td rowSpan={3}>2031.7 mL</td>
-
-                    <td>Complies</td>
-                  </tr>
-                  <tr>
-                    <td>700002573</td>
-                    <td>Complies</td>
-                  </tr>
-                  <tr>
-                    <td>700001494</td>
-                    <td>Complies</td>
-                    
-                  </tr>
-                  <tr>
-                    <td>700002887</td>
-                    <td>5076.5 mL</td>
-                    <td>5076 mL</td>
-                    <td>5078 mL</td>
-                    <td>Complies</td>
-
-                  </tr>
-                </tbody>
+             
               </table>
+            </div>
+            <h3 className="gridName">Unit Operation 2</h3>
+            <h4 className="gridName">Manufacturing summary details</h4>
+
+            <table>
+              <thead>
+                <tr>
+                  <th rowSpan={2}>Critical Process Parameters</th>
+                  <th rowSpan={2}>Codes</th>
+                  <th rowSpan={2}>Acceptance criteria</th>
+                  <th colSpan={2}>Results</th>
+                  <th rowSpan={2}>Complies / Does not complies</th>
+                </tr>
+                <tr>
+                  <th>Minimum</th>
+                  <th>Maximum</th>
+                </tr>
+              </thead>
+           
+            </table>
+
+            <div className="sub-head">
+              Critical Process Parameters Review Summary
+            </div>
+            <div className="group-input">
+              <input placeholder="please insert flex" />
             </div>
           </div>
         ) : null}
 
-        {tab === "LR" ? <div className="p-4"></div> : null}
+        {tab === "LR" ? (
+          <div className="p-4">
+            <div className="sub-head">
+              {" "}
+              Review of Drug Substance Test Results
+            </div>
+            <h1 className="gridName">Drug Substance 1 Test Result</h1>
+
+            <div>
+              <table>
+                <thead>
+                  <tr>
+                    <th rowSpan={2}>Sl. No</th>
+                    <th rowSpan={2}>Tests parameter</th>
+                    <th rowSpan={2}>Specification limit</th>
+                    <th colSpan={2}>Obtained value</th>
+                    <th rowSpan={2}>Complies/Does Not complies</th>
+                  </tr>
+                  <tr>
+                    <th>Minimum</th>
+                    <th>Maximum</th>
+                  </tr>
+                </thead>
+             
+              </table>
+            </div>
+
+            <div className="sub-head">
+              Review of Raw Material Excipient Test Results
+            </div>
+
+            <div>
+              <table>
+                <thead>
+                  <tr>
+                    <th rowSpan={2}>Sl. No</th>
+                    <th rowSpan={2}>Material</th>
+                    <th rowSpan={2}>Test parameter</th>
+                    <th rowSpan={2}>Specification limit</th>
+                    <th colSpan={2}>Obtained value</th>
+                    <th rowSpan={2}>Complies/ Does Not complies</th>
+                  </tr>
+                  <tr>
+                    <th>Minimum</th>
+                    <th>Maximum</th>
+                  </tr>
+                </thead>
+             
+              </table>
+            </div>
+
+            <div className="sub-head">
+              Review of Packing Material Test Results
+            </div>
+            <div>
+              <table>
+                <thead>
+                  <tr>
+                    <th rowSpan={2}>Sl. No</th>
+                    <th rowSpan={2}>Material</th>
+                    <th rowSpan={2}>Test parameter</th>
+                    <th rowSpan={2}>Specification limit</th>
+                    <th colSpan={2}>Obtained value</th>
+                    <th rowSpan={2}>Complies/ Does Not complies</th>
+                  </tr>
+                  <tr>
+                    <th>Minimum</th>
+                    <th>Maximum</th>
+                  </tr>
+                </thead>
+              
+              </table>
+            </div>
+            <div className="sub-head">
+              Review of Drug Product – In process Test Results
+            </div>
+            <h4 className="gridName">Dilution Buffer</h4>
+            <div>
+              <table>
+                <thead>
+                  <tr>
+                    <th rowSpan={2}>Sl. No</th>
+                    <th rowSpan={2}>Tests parameter</th>
+                    <th rowSpan={2}>Stage</th>
+                    <th rowSpan={2}>Specification limit</th>
+                    <th colSpan={2}>Obtained value</th>
+                    <th rowSpan={2}>Complies/ Does Not complies</th>
+                  </tr>
+                  <tr>
+                    <td>Minimum</td>
+                    <td>Maximum</td>
+                  </tr>
+                </thead>
+              
+              </table>
+            </div>
+            <div className="sub-head">Review of Drug Product –Finished Product Test Results</div>
+            <div>
+              <table>
+              <thead>
+                  <tr>
+                    <th rowSpan={2}>Sl. No</th>
+                    <th rowSpan={2}>Tests parameter</th>
+                    <th rowSpan={2}>Specification limit</th>
+                    <th colSpan={2}>Obtained value</th>
+                    <th rowSpan={2}>Complies/ Does Not complies</th>
+                  </tr>
+                  <tr>
+                    <td>Minimum</td>
+                    <td>Maximum</td>
+                  </tr>
+                </thead>
+               
+              </table>
+            </div>
+          </div>
+        ) : null}
         {tab === "EAMR" ? <></> : null}
         {tab === "QSR" ? <></> : null}
         {tab === "RR" ? <></> : null}
