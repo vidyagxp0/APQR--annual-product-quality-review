@@ -1,8 +1,12 @@
 import React, { useState } from "react";
 import Header from "../Component/Header";
+import { MdNoteAdd } from "react-icons/md";
 
 export default function APQR() {
   const [tab, setTab] = useState("GI");
+  const [manufacturingStage,setManufacturingStage]=useState([])
+  const [manufacturingSAPS,setManufacturingSAPS]=useState([])
+  const [rawMRS,setRawMRS]=useState([])
   const [pQRData, setPQRData] = useState({
     pqrNO: "",
     productName: "",
@@ -12,6 +16,36 @@ export default function APQR() {
     reviewEndDate: "",
     mfgLicNo: "",
   });
+
+  const addManufacturingStageRow=()=>{
+    const newRow={
+      productName:"",
+      sFGCode:"",
+      fGCode:""
+    }
+    setManufacturingStage([...manufacturingStage,newRow])
+  }
+
+  const addManufacturingSAPSRow=()=>{
+    const newRow={
+      productName:"",
+      batchCode:"",
+      sFGCode:"",
+      remarks:"",
+    }
+    setManufacturingSAPS([...manufacturingSAPS,newRow])
+  }
+
+  const addRawMRSRow=()=>{
+    const newRow={
+      materialCode:"",
+      materialName:"",
+      ARNo:"",
+      reasonOfRejection:"",
+      description:"",
+    }
+    setRawMRS([...rawMRS,newRow])
+  }
   return (
     <>
       <Header />
@@ -161,7 +195,10 @@ export default function APQR() {
               </div>
             </div>
             <div className="sub-head">Manufacturing Site Address</div>
-
+            <div className="AddRows d-flex">
+              <MdNoteAdd onClick={addManufacturingStageRow} />
+              <div className="addrowinstruction"></div>
+            </div>
             <table>
               <thead>
                 <tr>
@@ -171,15 +208,22 @@ export default function APQR() {
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <td>Product 1for injection 6 mg/0.6 mL</td>
-                  <td>BS YY XXXXXX</td>
-                  <td>BF YY XXXXXX</td>
-                </tr>
+               {manufacturingStage.map((item,index)=>{
+                return  <tr key={index}>
+                <td><input/></td>
+                <td><input/></td>
+                <td><input/></td>
+               </tr>
+
+               })}
               </tbody>
             </table>
 
             <div className="py-4">
+            <div className="AddRows d-flex">
+              <MdNoteAdd onClick={addManufacturingSAPSRow} />
+              <div className="addrowinstruction"></div>
+            </div>
               <table>
                 <thead>
                   <tr>
@@ -191,13 +235,16 @@ export default function APQR() {
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                  {manufacturingSAPS.map((item,index)=>{
+                    return  <tr key={index}>
+                    <td><input/></td>
+                    <td><input/></td>
+                    <td><input/></td>
+                    <td><input/></td>
+                    <td><input/></td>
                   </tr>
+                  })}
+                  
                 </tbody>
               </table>
             </div>
@@ -212,6 +259,11 @@ export default function APQR() {
               </div>
               <div className="pb-4">
                 <h4 className="gridName">Raw Materials Rejection Summary</h4>
+                <div className="AddRows d-flex">
+              <MdNoteAdd onClick={addRawMRSRow} />
+              <div className="addrowinstruction"></div>
+            </div>
+
                 <table>
                   <thead>
                     <tr>
@@ -224,14 +276,16 @@ export default function APQR() {
                     </tr>
                   </thead>
                   <tbody>
-                    <tr>
-                      <td>1</td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                    </tr>
+                  {rawMRS.map((item,index)=>{
+                    return   <tr key={index}>
+                    <td><input/></td>
+                    <td><input/></td>
+                    <td><input/></td>
+                    <td><input/></td>
+                    <td><input/></td>
+                    <td><input/></td>
+                  </tr>
+                  })}
                   </tbody>
                 </table>
               </div>

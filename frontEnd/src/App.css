@@ -222,6 +222,21 @@
   color: white;
   font-weight: 600;
 }
+
+.AddRows {
+    border: 1px dashed black;
+    margin: 8px 0px;
+    padding: 4px;
+    display: flex;
+    gap: 10px;
+  }
+  
+  .addrowinstruction {
+    color: rgb(76, 76, 214);
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+  }
 .pqrform .sub-head {
   color: var(--first-color);
   border-bottom: 1.4px solid var(--first-color);
