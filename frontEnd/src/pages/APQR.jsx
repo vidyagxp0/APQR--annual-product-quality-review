@@ -4,9 +4,18 @@ import { MdNoteAdd } from "react-icons/md";
 
 export default function APQR() {
   const [tab, setTab] = useState("GI");
-  const [manufacturingStage,setManufacturingStage]=useState([])
-  const [manufacturingSAPS,setManufacturingSAPS]=useState([])
-  const [rawMRS,setRawMRS]=useState([])
+  const [manufacturingStage, setManufacturingStage] = useState([]);
+  const [manufacturingSAPS, setManufacturingSAPS] = useState([]);
+  const [rawMRS, setRawMRS] = useState([]);
+  const [packingMRS, setPackingMRS] = useState([]);
+  const [reviewOfASL, setReviewOfASL] = useState([]);
+  const [expiredRMD, setExpiredRMD] = useState([]);
+  const [expiredPMD, setExpiredPMD] = useState([]);
+  const [vendorQDORME, setVendorQDORME] = useState([]);
+  const [vendorQDOPPM, setVendorQDOPPM] = useState([]);
+  const [vendorQDPOG, setVendorQDPOG] = useState([]);
+  const [codeTCTD, setCodeTCTD] = useState([]);
+const [reviewORCEC,setReviewORCEC]=useState([])
   const [pQRData, setPQRData] = useState({
     pqrNO: "",
     productName: "",
@@ -17,34 +26,129 @@ export default function APQR() {
     mfgLicNo: "",
   });
 
-  const addManufacturingStageRow=()=>{
-    const newRow={
-      productName:"",
-      sFGCode:"",
-      fGCode:""
-    }
-    setManufacturingStage([...manufacturingStage,newRow])
-  }
+  const addManufacturingStageRow = () => {
+    const newRow = {
+      productName: "",
+      sFGCode: "",
+      fGCode: "",
+    };
+    setManufacturingStage([...manufacturingStage, newRow]);
+  };
 
-  const addManufacturingSAPSRow=()=>{
-    const newRow={
-      productName:"",
-      batchCode:"",
-      sFGCode:"",
-      remarks:"",
-    }
-    setManufacturingSAPS([...manufacturingSAPS,newRow])
-  }
+  const addManufacturingSAPSRow = () => {
+    const newRow = {
+      productName: "",
+      batchCode: "",
+      sFGCode: "",
+      remarks: "",
+    };
+    setManufacturingSAPS([...manufacturingSAPS, newRow]);
+  };
 
-  const addRawMRSRow=()=>{
+  const addRawMRSRow = () => {
+    const newRow = {
+      materialCode: "",
+      materialName: "",
+      ARNo: "",
+      reasonOfRejection: "",
+      description: "",
+    };
+    setRawMRS([...rawMRS, newRow]);
+  };
+
+  const addPackingMRSRow = () => {
+    const newRow = {
+      materialCode: "",
+      materialName: "",
+      ARNo: "",
+      reasonOfRejection: "",
+      description: "",
+    };
+    setPackingMRS([...packingMRS, newRow]);
+  };
+
+  const addExpiredRMDRow = () => {
+    const newRow = {
+      materialCode: "",
+      materialName: "",
+      ARNo: "",
+      description: "",
+    };
+    setExpiredRMD([...expiredRMD, newRow]);
+  };
+  const addExpiredPMDRow = () => {
+    const newRow = {
+      materialCode: "",
+      materialName: "",
+      ARNo: "",
+      description: "",
+    };
+    setExpiredPMD([...expiredPMD, newRow]);
+  };
+  const addreviewOfASLRow = () => {
+    const newRow = {
+      materialCode: "",
+      materialName: "",
+      manufacturer: "",
+      facility: "",
+    };
+    setReviewOfASL([...reviewOfASL, newRow]);
+  };
+
+  const addvendorQDORMERow = () => {
+    const newRow = {
+      materialName: "",
+      materialCode: "",
+      manufacturerName: "",
+      qualificationStatus: "",
+      remarks: "",
+    };
+    setVendorQDORME([...vendorQDORME, newRow]);
+  };
+
+  const addvendorQDOPPMRow = () => {
+    const newRow = {
+      materialName: "",
+      materialCode: "",
+      manufacturerName: "",
+      qualificationStatus: "",
+    };
+    setVendorQDOPPM([...vendorQDOPPM, newRow]);
+  };
+
+  const addvendorQDPOGRow = () => {
+    const newRow = {
+      gasName: "",
+      gasCode: "",
+      manufacturerName: "",
+      qualificationStatus: "",
+    };
+    setVendorQDPOG([...vendorQDPOG, newRow]);
+  };
+
+  const addcodeTCTDRow = () => {
+    const newRow = {
+      batchNo: "",
+      existingCode: "",
+      existingMarket: "",
+      proposedCode: "",
+      proposedMarket: "",
+      transferQuality: "",
+      refNo: "",
+    };
+    setCodeTCTD([...codeTCTD, newRow]);
+  };
+
+  const addreviewORCECRow=()=>{
     const newRow={
-      materialCode:"",
-      materialName:"",
-      ARNo:"",
-      reasonOfRejection:"",
-      description:"",
+packingBatchNumber:"",
+manufacturingBatchNumber:"",
+repackingIssuedNumber:"",
+repackingFor:"",
+qMS:"",
+reasonForRepacking:""
     }
-    setRawMRS([...rawMRS,newRow])
+    setReviewORCEC([...reviewORCEC,newRow])
   }
   return (
     <>
@@ -56,37 +160,70 @@ export default function APQR() {
       </div>
       <div className="pqrform">
         <div className="form-tabs">
-          <div className={`${tab === "GI" ? "active" : ""}`} onClick={() => setTab("GI")}>
+          <div
+            className={`${tab === "GI" ? "active" : ""}`}
+            onClick={() => setTab("GI")}
+          >
             General Information
           </div>
-          <div className={`${tab === "WR" ? "active" : ""}`} onClick={() => setTab("WR")}>
+          <div
+            className={`${tab === "WR" ? "active" : ""}`}
+            onClick={() => setTab("WR")}
+          >
             Warehouse Review
           </div>
-          <div className={`${tab === "MR" ? "active" : ""}`} onClick={() => setTab("MR")}>
+          <div
+            className={`${tab === "MR" ? "active" : ""}`}
+            onClick={() => setTab("MR")}
+          >
             Manufacturing Review
           </div>
-          <div className={`${tab === "LR" ? "active" : ""}`} onClick={() => setTab("LR")}>
+          <div
+            className={`${tab === "LR" ? "active" : ""}`}
+            onClick={() => setTab("LR")}
+          >
             Laboratory Review
           </div>
-          <div className={`${tab === "EAMR" ? "active" : ""}`} onClick={() => setTab("EAMR")}>
+          <div
+            className={`${tab === "EAMR" ? "active" : ""}`}
+            onClick={() => setTab("EAMR")}
+          >
             Engineering And Maintenance Review
           </div>
-          <div className={`${tab === "QSR" ? "active" : ""}`} onClick={() => setTab("QSR")}>
+          <div
+            className={`${tab === "QSR" ? "active" : ""}`}
+            onClick={() => setTab("QSR")}
+          >
             Quality System Review
           </div>
-          <div className={`${tab === "RR" ? "active" : ""}`} onClick={() => setTab("RR")}>
+          <div
+            className={`${tab === "RR" ? "active" : ""}`}
+            onClick={() => setTab("RR")}
+          >
             Regulatory Review
           </div>
-          <div className={`${tab === "R" ? "active" : ""}`} onClick={() => setTab("R")}>
+          <div
+            className={`${tab === "R" ? "active" : ""}`}
+            onClick={() => setTab("R")}
+          >
             Recommendations{" "}
           </div>
-          <div className={`${tab === "CAPA" ? "active" : ""}`} onClick={() => setTab("CAPA")}>
+          <div
+            className={`${tab === "CAPA" ? "active" : ""}`}
+            onClick={() => setTab("CAPA")}
+          >
             CAPA
           </div>
-          <div className={`${tab === "DEAC" ? "active" : ""}`} onClick={() => setTab("DEAC")}>
+          <div
+            className={`${tab === "DEAC" ? "active" : ""}`}
+            onClick={() => setTab("DEAC")}
+          >
             Discussion, Evaluation And Conclusion
           </div>
-          <div className={`${tab === "LOA" ? "active" : ""}`} onClick={() => setTab("LOA")}>
+          <div
+            className={`${tab === "LOA" ? "active" : ""}`}
+            onClick={() => setTab("LOA")}
+          >
             List Of Annexures/Attachments
           </div>
         </div>
@@ -175,22 +312,29 @@ export default function APQR() {
                 </tr>
               </thead>
               <tbody>
-               {manufacturingStage.map((item,index)=>{
-                return  <tr key={index}>
-                <td><input/></td>
-                <td><input/></td>
-                <td><input/></td>
-               </tr>
-
-               })}
+                {manufacturingStage.map((item, index) => {
+                  return (
+                    <tr key={index}>
+                      <td>
+                        <input />
+                      </td>
+                      <td>
+                        <input />
+                      </td>
+                      <td>
+                        <input />
+                      </td>
+                    </tr>
+                  );
+                })}
               </tbody>
             </table>
 
             <div className="py-4">
-            <div className="AddRows d-flex">
-              <MdNoteAdd onClick={addManufacturingSAPSRow} />
-              <div className="addrowinstruction"></div>
-            </div>
+              <div className="AddRows d-flex">
+                <MdNoteAdd onClick={addManufacturingSAPSRow} />
+                <div className="addrowinstruction"></div>
+              </div>
               <table>
                 <thead>
                   <tr>
@@ -202,16 +346,27 @@ export default function APQR() {
                   </tr>
                 </thead>
                 <tbody>
-                  {manufacturingSAPS.map((item,index)=>{
-                    return  <tr key={index}>
-                    <td><input/></td>
-                    <td><input/></td>
-                    <td><input/></td>
-                    <td><input/></td>
-                    <td><input/></td>
-                  </tr>
+                  {manufacturingSAPS.map((item, index) => {
+                    return (
+                      <tr key={index}>
+                        <td>
+                          <input />
+                        </td>
+                        <td>
+                          <input />
+                        </td>
+                        <td>
+                          <input />
+                        </td>
+                        <td>
+                          <input />
+                        </td>
+                        <td>
+                          <input />
+                        </td>
+                      </tr>
+                    );
                   })}
-                  
                 </tbody>
               </table>
             </div>
@@ -227,9 +382,9 @@ export default function APQR() {
               <div className="pb-4">
                 <h4 className="gridName">Raw Materials Rejection Summary</h4>
                 <div className="AddRows d-flex">
-              <MdNoteAdd onClick={addRawMRSRow} />
-              <div className="addrowinstruction"></div>
-            </div>
+                  <MdNoteAdd onClick={addRawMRSRow} />
+                  <div className="addrowinstruction"></div>
+                </div>
 
                 <table>
                   <thead>
@@ -243,22 +398,41 @@ export default function APQR() {
                     </tr>
                   </thead>
                   <tbody>
-                  {rawMRS.map((item,index)=>{
-                    return   <tr key={index}>
-                    <td><input/></td>
-                    <td><input/></td>
-                    <td><input/></td>
-                    <td><input/></td>
-                    <td><input/></td>
-                    <td><input/></td>
-                  </tr>
-                  })}
+                    {rawMRS.map((item, index) => {
+                      return (
+                        <tr key={index}>
+                          <td>{index + 1}</td>
+                          <td>
+                            <input />
+                          </td>
+                          <td>
+                            <input />
+                          </td>
+                          <td>
+                            <input />
+                          </td>
+                          <td>
+                            <input />
+                          </td>
+                          <td>
+                            <input />
+                          </td>
+                        </tr>
+                      );
+                    })}
                   </tbody>
                 </table>
               </div>
 
               <div className="pb-4">
-                <h4 className="gridName"> Packing Materials Rejection Summary</h4>
+                <h4 className="gridName">
+                  {" "}
+                  Packing Materials Rejection Summary
+                </h4>
+                <div className="AddRows d-flex">
+                  <MdNoteAdd onClick={addPackingMRSRow} />
+                  <div className="addrowinstruction"></div>
+                </div>
                 <table>
                   <thead>
                     <tr>
@@ -271,14 +445,28 @@ export default function APQR() {
                     </tr>
                   </thead>
                   <tbody>
-                    <tr>
-                      <td>1</td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                    </tr>
+                    {packingMRS.map((item, index) => {
+                      return (
+                        <tr key={index}>
+                          <td>{index + 1}</td>
+                          <td>
+                            <input />
+                          </td>
+                          <td>
+                            <input />
+                          </td>
+                          <td>
+                            <input />
+                          </td>
+                          <td>
+                            <input />
+                          </td>
+                          <td>
+                            <input />
+                          </td>
+                        </tr>
+                      );
+                    })}
                   </tbody>
                 </table>
               </div>
@@ -287,6 +475,10 @@ export default function APQR() {
               </div>
               <div className="pb-4">
                 <h4 className="gridName">Expired Raw Materials Details</h4>
+                <div className="AddRows d-flex">
+                  <MdNoteAdd onClick={addExpiredRMDRow} />
+                  <div className="addrowinstruction"></div>
+                </div>
                 <table>
                   <thead>
                     <tr>
@@ -298,19 +490,37 @@ export default function APQR() {
                     </tr>
                   </thead>
                   <tbody>
-                    <tr>
-                      <td>1</td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                    </tr>
+                    {expiredRMD.map((item, index) => {
+                      return (
+                        <tr key={index}>
+                          <td>{index + 1}</td>
+                          <td>
+                            <input />
+                          </td>
+                          <td>
+                            <input />
+                          </td>
+                          <td>
+                            <input />
+                          </td>
+                          <td>
+                            <input />
+                          </td>
+                        </tr>
+                      );
+                    })}
                   </tbody>
                 </table>
               </div>
 
               <div className="">
-                <h4 className="gridName">Expired Packaging Materials Details</h4>
+                <h4 className="gridName">
+                  Expired Packaging Materials Details
+                </h4>
+                <div className="AddRows d-flex">
+                  <MdNoteAdd onClick={addExpiredPMDRow} />
+                  <div className="addrowinstruction"></div>
+                </div>
                 <table>
                   <thead>
                     <tr>
@@ -322,18 +532,34 @@ export default function APQR() {
                     </tr>
                   </thead>
                   <tbody>
-                    <tr>
-                      <td>1</td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                    </tr>
+                    {expiredPMD.map((item, index) => {
+                      return (
+                        <tr key={index}>
+                          <td>{index + 1}</td>
+                          <td>
+                            <input />
+                          </td>
+                          <td>
+                            <input />
+                          </td>
+                          <td>
+                            <input />
+                          </td>
+                          <td>
+                            <input />
+                          </td>
+                        </tr>
+                      );
+                    })}
                   </tbody>
                 </table>
               </div>
 
               <div className="sub-head">Review of Approved Supplier List</div>
+              <div className="AddRows d-flex">
+                <MdNoteAdd onClick={addreviewOfASLRow} />
+                <div className="addrowinstruction"></div>
+              </div>
               <div>
                 <table>
                   <thead>
@@ -346,13 +572,27 @@ export default function APQR() {
                     </tr>
                   </thead>
                   <tbody>
-                    <tr>
-                      <td>1</td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                    </tr>
+                    {reviewOfASL.map((item, index) => {
+                      return (
+                        <tr key={index}>
+                          <td>
+                            <input />
+                          </td>
+                          <td>
+                            <input />
+                          </td>
+                          <td>
+                            <input />
+                          </td>
+                          <td>
+                            <input />
+                          </td>
+                          <td>
+                            <input />
+                          </td>
+                        </tr>
+                      );
+                    })}
                   </tbody>
                 </table>
               </div>
@@ -360,6 +600,10 @@ export default function APQR() {
                 Vendor Qualification Details of Raw Material Excipients
               </div>
               <div>
+                <div className="AddRows d-flex">
+                  <MdNoteAdd onClick={addvendorQDORMERow} />
+                  <div className="addrowinstruction"></div>
+                </div>
                 <table>
                   <thead>
                     <th>Material Name</th>
@@ -370,19 +614,33 @@ export default function APQR() {
                   </thead>
                   <tbody>
                     <tr>
-                      <td>Acetic acid glacial</td>
-                      <td>600001460</td>
-                      <td>Merck KgaA Frankfurt, Strabe 250, Dramstadt 64293 GERMANY.</td>
-                      <td>Approved</td>
-                      <td>NA</td>
-                    </tr>
-                    <tr>
                       <td>Sorbitol</td>
                       <td>600000405</td>
                       <td>Roquette Freres 62136, Lestrem France</td>
                       <td>Approved</td>
                       <td>Temporarily Blocked as a part of CN/21/062</td>
                     </tr>
+                    {vendorQDORME.map((item, index) => {
+                      return (
+                        <tr key={index}>
+                          <td>
+                            <input />
+                          </td>
+                          <td>
+                            <input />
+                          </td>
+                          <td>
+                            <input />
+                          </td>
+                          <td>
+                            <input />
+                          </td>
+                          <td>
+                            <input />
+                          </td>
+                        </tr>
+                      );
+                    })}
                   </tbody>
                 </table>
               </div>
@@ -390,6 +648,10 @@ export default function APQR() {
                 Vendor Qualification Details of Primary Packing Materials
               </div>
               <div>
+                <div className="AddRows d-flex">
+                  <MdNoteAdd onClick={addvendorQDOPPMRow} />
+                  <div className="addrowinstruction"></div>
+                </div>
                 <table>
                   <thead>
                     <tr>
@@ -400,28 +662,35 @@ export default function APQR() {
                     </tr>
                   </thead>
                   <tbody>
-                    <tr>
-                      <td>HYPAK SCF1 MLL 29 GA1 /21 N-5B TW RNSTPE WR-France (Syringe)</td>
-                      <td>650000374</td>
-                      <td>
-                        BD Medical Pharmaceutical Systems 11 Rue Aristide Bergès - ZI des Iles 38800
-                        LE PONT DE CLAIX FRANCE
-                      </td>
-                      <td>Approved</td>
-                    </tr>
-                    <tr>
-                      <td>HYPAK BSCF 1 MLL 4023 FLURDAIKYO SI 1000PPL (Plunger Stoppers)</td>
-                      <td>650001052/ 650000771</td>
-                      <td>
-                        BD Medical Pharmaceutical Systems 920 East 19th Street COLUMBUS NE 68601 USA
-                      </td>
-                      <td>Approved</td>
-                    </tr>
+                    {vendorQDOPPM.map((item, index) => {
+                      return (
+                        <tr key={index}>
+                          <td>
+                            <input />
+                          </td>
+                          <td>
+                            <input />
+                          </td>
+                          <td>
+                            <input />
+                          </td>
+                          <td>
+                            <input />
+                          </td>
+                        </tr>
+                      );
+                    })}
                   </tbody>
                 </table>
               </div>
-              <div className="sub-head">Vendor Qualification Details of Process Gases</div>
+              <div className="sub-head">
+                Vendor Qualification Details of Process Gases
+              </div>
               <div>
+                <div className="AddRows d-flex">
+                  <MdNoteAdd onClick={addvendorQDPOGRow} />
+                  <div className="addrowinstruction"></div>
+                </div>
                 <table>
                   <thead>
                     <tr>
@@ -438,6 +707,24 @@ export default function APQR() {
                       <td>Peenya Industrial Gases Pvt Ltd, Hosur</td>
                       <td>Approved</td>
                     </tr>
+                    {vendorQDPOG.map((item, index) => {
+                      return (
+                        <tr key={index}>
+                          <td>
+                            <input />
+                          </td>
+                          <td>
+                            <input />
+                          </td>
+                          <td>
+                            <input />
+                          </td>
+                          <td>
+                            <input />
+                          </td>
+                        </tr>
+                      );
+                    })}
                   </tbody>
                 </table>
               </div>
@@ -461,7 +748,10 @@ export default function APQR() {
 
             <div className="dual-group-input">
               <div className="group-input">
-                <label>Total No. of batches manufactured during the current review period</label>
+                <label>
+                  Total No. of batches manufactured during the current review
+                  period
+                </label>
                 <input type="number" />
               </div>
               <div className="group-input">
@@ -489,7 +779,12 @@ export default function APQR() {
                 <input placeholder="please insert flex" />
               </div>
             </div>
+            <div className="gridName">Code to code transfer details</div>
             <div className="py-4">
+              <div className="AddRows d-flex">
+                <MdNoteAdd onClick={addcodeTCTDRow} />
+                <div className="addrowinstruction"></div>
+              </div>
               <table>
                 <thead>
                   <tr>
@@ -503,16 +798,47 @@ export default function APQR() {
                     <th>Ref. No.</th>
                   </tr>
                 </thead>
+                <tbody>
+                  {codeTCTD.map((item, index) => {
+                    return (
+                      <tr key={index}>
+                        <td>{index + 1}</td>
+                        <td>
+                          <input />
+                        </td>
+                        <td>
+                          <input />
+                        </td>
+                        <td>
+                          <input />
+                        </td>
+                        <td>
+                          <input />
+                        </td>
+                        <td>
+                          <input />
+                        </td>
+                        <td>
+                          <input />
+                        </td>
+                        <td>
+                          <input />
+                        </td>
+                      </tr>
+                    );
+                  })}
+                </tbody>
               </table>
             </div>
             <div className="sub-head">
               {" "}
-              Review of Manufacturing Process, Packing Process and relevant Validation Status
+              Review of Manufacturing Process, Packing Process and relevant
+              Validation Status
             </div>
             <input placeholder="please insert flex" />
             <div className="sub-head">
-              Review of Reprocessing/Repacking/Reworking along with CAPA and Effectiveness Check
-              Verification (if any)
+              Review of Reprocessing/Repacking/Reworking along with CAPA and
+              Effectiveness Check Verification (if any)
             </div>
             <div className="group-input">
               <label>Batch reprocessing/reworking process Details</label>
@@ -524,6 +850,10 @@ export default function APQR() {
             </div>
 
             <div className="py-4">
+            <div className="AddRows d-flex">
+              <MdNoteAdd onClick={addreviewORCECRow} />
+              <div className="addrowinstruction"></div>
+              </div>
               <table>
                 <thead>
                   <tr>
@@ -536,14 +866,37 @@ export default function APQR() {
                     <th>Reason for repacking</th>
                   </tr>
                 </thead>
+                <tbody>
+                  {reviewORCEC.map((item,index)=>{
+                    return <tr key={index}>
+                      <td>{index+1}</td>
+                      <td><input/></td>
+                      <td><input/></td>
+                      <td><input/></td>
+                      <td><input/></td>
+                      <td><input/></td>
+                      <td><input/></td>
+
+                    </tr>
+                  })}
+                </tbody>
               </table>
             </div>
             <h1>Deviation Details - Grid CAPA Details – Grid</h1>
 
-            <div className="sub-head"> Review of Product Quality (Critical Process Parameters)</div>
+            <div className="sub-head">
+              {" "}
+              Review of Product Quality (Critical Process Parameters)
+            </div>
             <h3 className="gridName">Unit Operation 1</h3>
-            <h4 className="gridName">Buffer formulation summary details provided below</h4>
+            <h4 className="gridName">
+              Buffer formulation summary details provided below
+            </h4>
             <div>
+            <div className="AddRows d-flex">
+              <MdNoteAdd onClick={addvendorQDORMERow} />
+              <div className="addrowinstruction"></div>
+              </div>
               <table>
                 <thead>
                   <tr>
@@ -562,7 +915,10 @@ export default function APQR() {
             </div>
             <h3 className="gridName">Unit Operation 2</h3>
             <h4 className="gridName">Manufacturing summary details</h4>
-
+            <div className="AddRows d-flex">
+              <MdNoteAdd onClick={addvendorQDORMERow} />
+              <div className="addrowinstruction"></div>
+              </div>
             <table>
               <thead>
                 <tr>
@@ -579,7 +935,9 @@ export default function APQR() {
               </thead>
             </table>
 
-            <div className="sub-head">Critical Process Parameters Review Summary</div>
+            <div className="sub-head">
+              Critical Process Parameters Review Summary
+            </div>
             <div className="group-input">
               <input placeholder="please insert flex" />
             </div>
@@ -588,7 +946,10 @@ export default function APQR() {
 
         {tab === "LR" ? (
           <div className="p-4">
-            <div className="sub-head"> Review of Drug Substance Test Results</div>
+            <div className="sub-head">
+              {" "}
+              Review of Drug Substance Test Results
+            </div>
             <h1 className="gridName">Drug Substance 1 Test Result</h1>
 
             <div>
@@ -609,7 +970,9 @@ export default function APQR() {
               </table>
             </div>
 
-            <div className="sub-head">Review of Raw Material Excipient Test Results</div>
+            <div className="sub-head">
+              Review of Raw Material Excipient Test Results
+            </div>
 
             <div>
               <table>
@@ -630,7 +993,9 @@ export default function APQR() {
               </table>
             </div>
 
-            <div className="sub-head">Review of Packing Material Test Results</div>
+            <div className="sub-head">
+              Review of Packing Material Test Results
+            </div>
             <div>
               <table>
                 <thead>
@@ -649,7 +1014,9 @@ export default function APQR() {
                 </thead>
               </table>
             </div>
-            <div className="sub-head">Review of Drug Product – In process Test Results</div>
+            <div className="sub-head">
+              Review of Drug Product – In process Test Results
+            </div>
             <h4 className="gridName">Dilution Buffer</h4>
             <div>
               <table>
@@ -669,7 +1036,9 @@ export default function APQR() {
                 </thead>
               </table>
             </div>
-            <div className="sub-head">Review of Drug Product –Finished Product Test Results</div>
+            <div className="sub-head">
+              Review of Drug Product –Finished Product Test Results
+            </div>
             <div>
               <table>
                 <thead>
