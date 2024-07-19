@@ -9,7 +9,7 @@ export default function Header() {
   };
 
   return (
-    <header className="bg-gray-200 shadow-md py-4">
+    <header className="bg-gray-200 shadow-lg py-4">
       <div className="container mx-auto px-6 flex items-center justify-between">
         {/* Logo */}
         <div className="flex items-center">
