@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Header from "../Component/Header";
 import { MdNoteAdd } from "react-icons/md";
+import TinyEditor from "../Component/TinyEditor";
 
 export default function APQR() {
   const [tab, setTab] = useState("GI");
@@ -15,7 +16,7 @@ export default function APQR() {
   const [vendorQDOPPM, setVendorQDOPPM] = useState([]);
   const [vendorQDPOG, setVendorQDPOG] = useState([]);
   const [codeTCTD, setCodeTCTD] = useState([]);
-const [reviewORCEC,setReviewORCEC]=useState([])
+  const [reviewORCEC, setReviewORCEC] = useState([]);
   const [pQRData, setPQRData] = useState({
     pqrNO: "",
     productName: "",
@@ -139,17 +140,17 @@ const [reviewORCEC,setReviewORCEC]=useState([])
     setCodeTCTD([...codeTCTD, newRow]);
   };
 
-  const addreviewORCECRow=()=>{
-    const newRow={
-packingBatchNumber:"",
-manufacturingBatchNumber:"",
-repackingIssuedNumber:"",
-repackingFor:"",
-qMS:"",
-reasonForRepacking:""
-    }
-    setReviewORCEC([...reviewORCEC,newRow])
-  }
+  const addreviewORCECRow = () => {
+    const newRow = {
+      packingBatchNumber: "",
+      manufacturingBatchNumber: "",
+      repackingIssuedNumber: "",
+      repackingFor: "",
+      qMS: "",
+      reasonForRepacking: "",
+    };
+    setReviewORCEC([...reviewORCEC, newRow]);
+  };
   return (
     <>
       <Header />
@@ -160,70 +161,37 @@ reasonForRepacking:""
       </div>
       <div className="pqrform">
         <div className="form-tabs">
-          <div
-            className={`${tab === "GI" ? "active" : ""}`}
-            onClick={() => setTab("GI")}
-          >
+          <div className={`${tab === "GI" ? "active" : ""}`} onClick={() => setTab("GI")}>
             General Information
           </div>
-          <div
-            className={`${tab === "WR" ? "active" : ""}`}
-            onClick={() => setTab("WR")}
-          >
+          <div className={`${tab === "WR" ? "active" : ""}`} onClick={() => setTab("WR")}>
             Warehouse Review
           </div>
-          <div
-            className={`${tab === "MR" ? "active" : ""}`}
-            onClick={() => setTab("MR")}
-          >
+          <div className={`${tab === "MR" ? "active" : ""}`} onClick={() => setTab("MR")}>
             Manufacturing Review
           </div>
-          <div
-            className={`${tab === "LR" ? "active" : ""}`}
-            onClick={() => setTab("LR")}
-          >
+          <div className={`${tab === "LR" ? "active" : ""}`} onClick={() => setTab("LR")}>
             Laboratory Review
           </div>
-          <div
-            className={`${tab === "EAMR" ? "active" : ""}`}
-            onClick={() => setTab("EAMR")}
-          >
+          <div className={`${tab === "EAMR" ? "active" : ""}`} onClick={() => setTab("EAMR")}>
             Engineering And Maintenance Review
           </div>
-          <div
-            className={`${tab === "QSR" ? "active" : ""}`}
-            onClick={() => setTab("QSR")}
-          >
+          <div className={`${tab === "QSR" ? "active" : ""}`} onClick={() => setTab("QSR")}>
             Quality System Review
           </div>
-          <div
-            className={`${tab === "RR" ? "active" : ""}`}
-            onClick={() => setTab("RR")}
-          >
+          <div className={`${tab === "RR" ? "active" : ""}`} onClick={() => setTab("RR")}>
             Regulatory Review
           </div>
-          <div
-            className={`${tab === "R" ? "active" : ""}`}
-            onClick={() => setTab("R")}
-          >
+          <div className={`${tab === "R" ? "active" : ""}`} onClick={() => setTab("R")}>
             Recommendations{" "}
           </div>
-          <div
-            className={`${tab === "CAPA" ? "active" : ""}`}
-            onClick={() => setTab("CAPA")}
-          >
+          <div className={`${tab === "CAPA" ? "active" : ""}`} onClick={() => setTab("CAPA")}>
             CAPA
           </div>
-          <div
-            className={`${tab === "DEAC" ? "active" : ""}`}
-            onClick={() => setTab("DEAC")}
-          >
+          <div className={`${tab === "DEAC" ? "active" : ""}`} onClick={() => setTab("DEAC")}>
             Discussion, Evaluation And Conclusion
           </div>
-          <div
-            className={`${tab === "LOA" ? "active" : ""}`}
-            onClick={() => setTab("LOA")}
-          >
+          <div className={`${tab === "LOA" ? "active" : ""}`} onClick={() => setTab("LOA")}>
             List Of Annexures/Attachments
           </div>
         </div>
@@ -417,6 +385,9 @@ reasonForRepacking:""
                           <td>
                             <input />
                           </td>
+                          <td>
+                            <input />
+                          </td>
                         </tr>
                       );
                     })}
@@ -425,10 +396,7 @@ reasonForRepacking:""
               </div>
 
               <div className="pb-4">
-                <h4 className="gridName">
-                  {" "}
-                  Packing Materials Rejection Summary
-                </h4>
+                <h4 className="gridName"> Packing Materials Rejection Summary</h4>
                 <div className="AddRows d-flex">
                   <MdNoteAdd onClick={addPackingMRSRow} />
                   <div className="addrowinstruction"></div>
@@ -514,9 +482,7 @@ reasonForRepacking:""
               </div>
 
               <div className="">
-                <h4 className="gridName">
-                  Expired Packaging Materials Details
-                </h4>
+                <h4 className="gridName">Expired Packaging Materials Details</h4>
                 <div className="AddRows d-flex">
                   <MdNoteAdd onClick={addExpiredPMDRow} />
                   <div className="addrowinstruction"></div>
@@ -683,9 +649,7 @@ reasonForRepacking:""
                   </tbody>
                 </table>
               </div>
-              <div className="sub-head">
-                Vendor Qualification Details of Process Gases
-              </div>
+              <div className="sub-head">Vendor Qualification Details of Process Gases</div>
               <div>
                 <div className="AddRows d-flex">
                   <MdNoteAdd onClick={addvendorQDPOGRow} />
@@ -748,10 +712,7 @@ reasonForRepacking:""
 
             <div className="dual-group-input">
               <div className="group-input">
-                <label>
-                  Total No. of batches manufactured during the current review
-                  period
-                </label>
+                <label>Total No. of batches manufactured during the current review period</label>
                 <input type="number" />
               </div>
               <div className="group-input">
@@ -832,13 +793,12 @@ reasonForRepacking:""
             </div>
             <div className="sub-head">
               {" "}
-              Review of Manufacturing Process, Packing Process and relevant
-              Validation Status
+              Review of Manufacturing Process, Packing Process and relevant Validation Status
             </div>
             <input placeholder="please insert flex" />
             <div className="sub-head">
-              Review of Reprocessing/Repacking/Reworking along with CAPA and
-              Effectiveness Check Verification (if any)
+              Review of Reprocessing/Repacking/Reworking along with CAPA and Effectiveness Check
+              Verification (if any)
             </div>
             <div className="group-input">
               <label>Batch reprocessing/reworking process Details</label>
@@ -850,9 +810,9 @@ reasonForRepacking:""
             </div>
 
             <div className="py-4">
-            <div className="AddRows d-flex">
-              <MdNoteAdd onClick={addreviewORCECRow} />
-              <div className="addrowinstruction"></div>
+              <div className="AddRows d-flex">
+                <MdNoteAdd onClick={addreviewORCECRow} />
+                <div className="addrowinstruction"></div>
               </div>
               <table>
                 <thead>
@@ -867,35 +827,43 @@ reasonForRepacking:""
                   </tr>
                 </thead>
                 <tbody>
-                  {reviewORCEC.map((item,index)=>{
-                    return <tr key={index}>
-                      <td>{index+1}</td>
-                      <td><input/></td>
-                      <td><input/></td>
-                      <td><input/></td>
-                      <td><input/></td>
-                      <td><input/></td>
-                      <td><input/></td>
-
-                    </tr>
+                  {reviewORCEC.map((item, index) => {
+                    return (
+                      <tr key={index}>
+                        <td>{index + 1}</td>
+                        <td>
+                          <input />
+                        </td>
+                        <td>
+                          <input />
+                        </td>
+                        <td>
+                          <input />
+                        </td>
+                        <td>
+                          <input />
+                        </td>
+                        <td>
+                          <input />
+                        </td>
+                        <td>
+                          <input />
+                        </td>
+                      </tr>
+                    );
                   })}
                 </tbody>
               </table>
             </div>
             <h1>Deviation Details - Grid CAPA Details – Grid</h1>
 
-            <div className="sub-head">
-              {" "}
-              Review of Product Quality (Critical Process Parameters)
-            </div>
+            <div className="sub-head"> Review of Product Quality (Critical Process Parameters)</div>
             <h3 className="gridName">Unit Operation 1</h3>
-            <h4 className="gridName">
-              Buffer formulation summary details provided below
-            </h4>
+            <h4 className="gridName">Buffer formulation summary details provided below</h4>
             <div>
-            <div className="AddRows d-flex">
-              <MdNoteAdd onClick={addvendorQDORMERow} />
-              <div className="addrowinstruction"></div>
+              <div className="AddRows d-flex">
+                <MdNoteAdd onClick={addvendorQDORMERow} />
+                <div className="addrowinstruction"></div>
               </div>
               <table>
                 <thead>
@@ -918,7 +886,7 @@ reasonForRepacking:""
             <div className="AddRows d-flex">
               <MdNoteAdd onClick={addvendorQDORMERow} />
               <div className="addrowinstruction"></div>
-              </div>
+            </div>
             <table>
               <thead>
                 <tr>
@@ -935,9 +903,7 @@ reasonForRepacking:""
               </thead>
             </table>
 
-            <div className="sub-head">
-              Critical Process Parameters Review Summary
-            </div>
+            <div className="sub-head">Critical Process Parameters Review Summary</div>
             <div className="group-input">
               <input placeholder="please insert flex" />
             </div>
@@ -946,10 +912,7 @@ reasonForRepacking:""
 
         {tab === "LR" ? (
           <div className="p-4">
-            <div className="sub-head">
-              {" "}
-              Review of Drug Substance Test Results
-            </div>
+            <div className="sub-head"> Review of Drug Substance Test Results</div>
             <h1 className="gridName">Drug Substance 1 Test Result</h1>
 
             <div>
@@ -970,9 +933,7 @@ reasonForRepacking:""
               </table>
             </div>
 
-            <div className="sub-head">
-              Review of Raw Material Excipient Test Results
-            </div>
+            <div className="sub-head">Review of Raw Material Excipient Test Results</div>
 
             <div>
               <table>
@@ -993,9 +954,7 @@ reasonForRepacking:""
               </table>
             </div>
 
-            <div className="sub-head">
-              Review of Packing Material Test Results
-            </div>
+            <div className="sub-head">Review of Packing Material Test Results</div>
             <div>
               <table>
                 <thead>
@@ -1014,9 +973,7 @@ reasonForRepacking:""
                 </thead>
               </table>
             </div>
-            <div className="sub-head">
-              Review of Drug Product – In process Test Results
-            </div>
+            <div className="sub-head">Review of Drug Product – In process Test Results</div>
             <h4 className="gridName">Dilution Buffer</h4>
             <div>
               <table>
@@ -1036,9 +993,7 @@ reasonForRepacking:""
                 </thead>
               </table>
             </div>
-            <div className="sub-head">
-              Review of Drug Product –Finished Product Test Results
-            </div>
+            <div className="sub-head">Review of Drug Product –Finished Product Test Results</div>
             <div>
               <table>
                 <thead>
@@ -1071,9 +1026,17 @@ reasonForRepacking:""
         ) : null}
         {tab === "CAPA" ? (
           <>
-            <div className="flex items-center justify-center text-[28px] text-green-500 font-semibold animate-bounce">
-              {" "}
-              Work In Progress. .........
+            <div className="flex items-center justify-center">
+              <div className="relative w-16 h-16">
+                <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+                  <div className="w-16 h-16 border-t-4 border-b-4 border-blue-500 rounded-full animate-spin">
+                    😃😃😃😃😃😃😃😃😃😃😃😃😃😃😃
+                  </div>
+                </div>
+              </div>
+              <span className="text-[28px] text-blue-500 font-semibold">
+                Work In Progress. .........
+              </span>
             </div>
           </>
         ) : null}
@@ -1086,17 +1049,87 @@ reasonForRepacking:""
         ) : null}
         {tab === "LOA" ? (
           <>
-            <div className="flex items-center justify-center">
-              <div className="relative w-16 h-16">
-                <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
-                  <div className="w-16 h-16 border-t-4 border-b-4 border-blue-500 rounded-full animate-spin">
-                    😃 😃 😃 😃😃😃 😃 😃 😃 😃😃😃😃😃😃
-                  </div>
-                </div>
+            <div className="container">
+              <div>
+                <h4 className="gridName">Annexure 1</h4>
+                <TinyEditor />
               </div>
-              <span className="text-[28px] text-blue-500 font-semibold">
-                Work In Progress. .........
-              </span>
+              <div>
+                <h4 className="gridName">Annexure 2</h4>
+                <TinyEditor />
+              </div>
+              <div>
+                <h4 className="gridName">Annexure 3</h4>
+                <TinyEditor />
+              </div>
+              <div>
+                <h4 className="gridName">Annexure 4</h4>
+                <TinyEditor />
+              </div>
+              <div>
+                <h4 className="gridName">Annexure 5</h4>
+                <TinyEditor />
+              </div>
+              <div>
+                <h4 className="gridName">Annexure 6</h4>
+                <TinyEditor />
+              </div>
+              <div>
+                <h4 className="gridName">Annexure 7</h4>
+                <TinyEditor />
+              </div>
+              <div>
+                <h4 className="gridName">Annexure 8</h4>
+                <TinyEditor />
+              </div>
+              <div>
+                <h4 className="gridName">Annexure 9</h4>
+                <TinyEditor />
+              </div>
+              <div>
+                <h4 className="gridName">Annexure 10</h4>
+                <TinyEditor />
+              </div>
+              <div>
+                <h4 className="gridName">Annexure 11</h4>
+                <TinyEditor />
+              </div>
+              <div>
+                <h4 className="gridName">Annexure 12</h4>
+                <TinyEditor />
+              </div>
+              <div>
+                <h4 className="gridName">Annexure 13</h4>
+                <TinyEditor />
+              </div>
+              <div>
+                <h4 className="gridName">Annexure 14</h4>
+                <TinyEditor />
+              </div>
+              <div>
+                <h4 className="gridName">Annexure 15</h4>
+                <TinyEditor />
+              </div>
+              <div>
+                <h4 className="gridName">Annexure 16</h4>
+                <TinyEditor />
+              </div>
+              <div>
+                <h4 className="gridName">Annexure 17</h4>
+                <TinyEditor />
+              </div>
+              <div>
+                <h4 className="gridName">Annexure 18</h4>
+                <TinyEditor />
+              </div>
+              <div>
+                <h4 className="gridName">Annexure 19</h4>
+                <TinyEditor />
+              </div>
+              <div>
+                <h4 className="gridName">Annexure 20</h4>
+                <TinyEditor />
+              </div>
             </div>
           </>
         ) : null}
