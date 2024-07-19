@@ -7,7 +7,7 @@ export default function Dashboard() {
     <>
       <Header />
       <BottomHeader />
-      <div className="container mt-5 w-full" style={{width: "100vw" }}>
+      <div className="container mt-5 w-full mx-12" style={{ width: "100%", maxWidth: "95%" }}>
         <table className="w-full">
           <thead className="bg-slate-500 text-white">
             <tr>
