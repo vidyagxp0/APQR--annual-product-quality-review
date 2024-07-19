@@ -15,8 +15,8 @@ export default function APQR() {
   return (
     <>
       <Header />
-      <div className="inner-container pqrform">
-        <h1 className="text-2xl font-bold text-gray-700 mb-4">
+      <div className="inner-container pqrform-topdiv">
+        <h1 className="text-2xl font-bold mb-4 border-l-8 border-lime-400  pl-10">
           Annual Product Quality Review
         </h1>
       </div>
@@ -208,16 +208,12 @@ export default function APQR() {
           <>
             <div className="p-4">
               <div className="sub-head">
-                Review of Rejected Raw Materials and Packaging Materials
+                <p>Review of Rejected Raw Materials and Packaging Materials</p>
               </div>
-              <div className="py-4">
+              <div className="pb-4">
+                <h4 className="gridName">Raw Materials Rejection Summary</h4>
                 <table>
                   <thead>
-                    <tr>
-                      <th colSpan={6} className="text-center">
-                        Raw Materials Rejection Summary
-                      </th>
-                    </tr>
                     <tr>
                       <th>SI. No.</th>
                       <th>Material Code</th>
@@ -240,14 +236,10 @@ export default function APQR() {
                 </table>
               </div>
 
-              <div className="py-4">
+              <div className="pb-4">
+                <h4 className="gridName"> Packing Materials Rejection Summary</h4>
                 <table>
                   <thead>
-                    <tr>
-                      <th colSpan={6} className="text-center">
-                        Packing Materials Rejection Summary
-                      </th>
-                    </tr>
                     <tr>
                       <th>SI. No.</th>
                       <th>Material Code</th>
@@ -270,17 +262,12 @@ export default function APQR() {
                 </table>
               </div>
               <div className="sub-head">
-                {" "}
                 Review of Expired Raw Materials and Packaging Materials
               </div>
-              <div className="py-4">
+              <div className="pb-4">
+                <h4 className="gridName">Expired Raw Materials Details</h4>
                 <table>
                   <thead>
-                    <tr>
-                      <th colSpan={6} className="text-center">
-                        Expired Raw Materials Details
-                      </th>
-                    </tr>
                     <tr>
                       <th>SI. No.</th>
                       <th>Material Code</th>
@@ -301,14 +288,10 @@ export default function APQR() {
                 </table>
               </div>
 
-              <div className="py-4">
+              <div className="">
+                <h4 className="gridName">Expired Packaging Materials Details</h4>
                 <table>
                   <thead>
-                    <tr>
-                      <th colSpan={6} className="text-center">
-                        Expired Packaging Materials Details
-                      </th>
-                    </tr>
                     <tr>
                       <th>SI. No.</th>
                       <th>Material Code</th>

@@ -24,7 +24,7 @@
 :root {
   --first-color: #0060df;
   --second-color: #5e93d8;
-  --third-color: var(--second-color);
+  --third-color: #c8d9f0;
 }
 .pqrform {
   --themeColor: #efa035;
@@ -78,7 +78,7 @@
 /*! FORM FIELDS CSS */
 /*! ===================================================================== */
 .pqrform .group-input {
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 }
 
 .pqrform .group-input label {
@@ -106,21 +106,31 @@
 .pqrform .group-input input:not([type="radio"]):not([type="checkbox"]),
 .pqrform .group-input select,
 .pqrform .group-input textarea {
-  border: 1px solid grey;
-  /* border-top: 1px solid grey; */
-  border-radius: 5px;
-  padding: 5px 15px;
+  border: 1px solid gray;
+  border-radius: 10px;
+  padding: 8px 16px;
   display: block;
-  width: 80%;
+  width: 100%;
   background: white;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 2px 4px;
+  transition: box-shadow 0.3s ease-in-out;
+}
+
+.pqrform .group-input input:not([type="radio"]):not([type="checkbox"]):focus,
+.pqrform .group-input select:focus,
+.pqrform .group-input textarea:focus {
+  border-color: var(--first-color);
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 0px 0px 2px, rgba(0, 0, 0, 0.25) 0px 10px 20px -5px;
 }
 
 .pqrform .dual-group-input {
   display: grid;
   grid-template-columns: 1fr 1fr;
   align-items: end;
-  gap: 50px;
+  row-gap: 30px;
+  column-gap: 150px;
   margin-bottom: 20px;
+  justify-content: space-evenly;
 }
 
 .pqrform .triple-group-input {
@@ -188,20 +198,24 @@
 
 .pqrform .form-tabs div {
   padding: 10px 20px;
+  border: 1.5px solid var(--first-color);
   border-radius: 24px;
   color: #111;
   /* background: #f0f0f0; */
   background: #efeded;
   cursor: pointer;
-  border: 1.5px solid var(--first-color);
   color: var(--first-color);
 }
 
 .pqrform .form-tabs div:hover {
+  padding: 10px 20px;
+
   border: none;
   background: var(--second-color);
   color: white;
-  font-weight: 600;
+  /* font-weight: 600; */
+  border: 1.5px solid var(--first-color);
+  border-radius: 24px;
 }
 .pqrform .form-tabs div.active {
   background: var(--first-color);
@@ -209,13 +223,20 @@
   font-weight: 600;
 }
 .pqrform .sub-head {
-  color: #0178f8;
-  border-bottom: 2px solid rgb(17, 118, 243);
+  color: var(--first-color);
+  border-bottom: 1.4px solid var(--first-color);
+  /* border-left: 2px solid rgb(17, 118, 243); */
   padding-bottom: 5px;
   margin: 20px 0px;
   font-weight: bold;
   font-size: 1.2rem;
   padding: 10px 20px 10px 5px;
+  /* margin-bottom: 0.%; */
+  margin-top: 3%;
+}
+.pqrform .sub-head p {
+  /* border-left: 4px solid var(--first-color); */
+  /* padding-left: 2%; */
 }
 .pqrform table {
   width: 100%;
@@ -237,7 +258,7 @@
 }
 
 .pqrform th {
-  background-color: rgb(59, 106, 194);
+  background-color: var(--second-color);
   color: white;
 }
 
@@ -256,7 +277,7 @@
 }
 
 .pqrform table tbody tr:nth-child(2n) {
-  background: #fcd6a1;
+  background: var(--third-color);
 }
 
 .inner-container {
@@ -264,7 +285,7 @@
   padding: 1% 5%;
   border-radius: 5px;
   background-color: white;
-  margin:  10px 55px;
+  margin: 10px 55px;
 }
 
 .inner-container h1 {
@@ -274,7 +295,25 @@
 
 .pqrform {
   margin: 5%;
-  margin-top: 2%;
+  margin-top: 0%;
   padding: 2%;
   box-shadow: rgba(0, 0, 0, 0.15) 0px 15px 25px, rgba(0, 0, 0, 0.05) 0px 5px 10px;
+}
+
+.pqrform-topdiv {
+  margin: 5%;
+  margin-top: 2%;
+  margin-bottom: 1%;
+  background-color: #8bc6ec;
+  /* background-color: #293c48; */
+  background-image: linear-gradient(135deg, #8bc6ec 0%, #9599e2 100%);
+  color: white;
+}
+
+.gridName {
+  color: var(--first-color);
+  font-weight: bold;
+  margin: 0;
+  margin-bottom: 0.5%;
+  font-size: 1.1rem;
 }
