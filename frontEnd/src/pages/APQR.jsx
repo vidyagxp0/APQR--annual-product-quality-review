@@ -142,9 +142,27 @@ export default function APQR() {
   const [manufacturingSD, setManufacturingSD] = useState([]);
   const [bufferFSDPV, setBufferFSDPV] = useState([]);
   const [reviewODSTR, setReviewOSTR] = useState([]);
+  const [reviewODSTR2, setReviewOSTR2] = useState([]);
+  const [reviewODSTR3, setReviewOSTR3] = useState([]);
+  const [reviewODSTR4, setReviewOSTR4] = useState([]);
+  const [reviewODSTR5, setReviewOSTR5] = useState([]);
+  const [reviewODSTR6, setReviewOSTR6] = useState([]);
+  const [reviewODSTR7, setReviewOSTR7] = useState([]);
+  const [reviewODSTR8, setReviewOSTR8] = useState([]);
+  const [reviewODSTR9, setReviewOSTR9] = useState([]);
+  const [reviewODSTR10, setReviewOSTR10] = useState([]);
   const [reviewORMETR, setReviewORMETR] = useState([]);
   const [reviewOPMTR, setReviewOPMTR] = useState([]);
   const [reviewODP, setReviewODP] = useState([]);
+  const [reviewODP2, setReviewODP2] = useState([]);
+  const [reviewODP3, setReviewODP3] = useState([]);
+  const [reviewODP4, setReviewODP4] = useState([]);
+  const [reviewODP5, setReviewODP5] = useState([]);
+  const [reviewODP6, setReviewODP6] = useState([]);
+  const [reviewODP7, setReviewODP7] = useState([]);
+  const [reviewODP8, setReviewODP8] = useState([]);
+  const [reviewODP9, setReviewODP9] = useState([]);
+  const [reviewODP10, setReviewODP10] = useState([]);
   const [reviewODPFPTR, setReviewODPFPTR] = useState([]);
   const [summaryOOSS, setSummaryOOSS] = useState([]);
   const [stabilitySR, setStabilitySR] = useState([]);
@@ -344,6 +362,87 @@ export default function APQR() {
     };
     setReviewOSTR([...reviewODSTR, newRow]);
   };
+  const addReviewODSTRRow2 = () => {
+    const newRow2 = {
+      testsParameter: "",
+      specificationLimit: "",
+      obtainedValue: { minimum: "", maximum: "" },
+      compliesNotComplies: "",
+    };
+    setReviewOSTR2([...reviewODSTR2, newRow2]);
+  };
+  const addReviewODSTRRow3 = () => {
+    const newRow3 = {
+      testsParameter: "",
+      specificationLimit: "",
+      obtainedValue: { minimum: "", maximum: "" },
+      compliesNotComplies: "",
+    };
+    setReviewOSTR3([...reviewODSTR3, newRow3]);
+  };
+  const addReviewODSTRRow4 = () => {
+    const newRow4 = {
+      testsParameter: "",
+      specificationLimit: "",
+      obtainedValue: { minimum: "", maximum: "" },
+      compliesNotComplies: "",
+    };
+    setReviewOSTR4([...reviewODSTR4, newRow4]);
+  };
+  const addReviewODSTRRow5 = () => {
+    const newRow5 = {
+      testsParameter: "",
+      specificationLimit: "",
+      obtainedValue: { minimum: "", maximum: "" },
+      compliesNotComplies: "",
+    };
+    setReviewOSTR5([...reviewODSTR5, newRow5]);
+  };
+  const addReviewODSTRRow6 = () => {
+    const newRow6 = {
+      testsParameter: "",
+      specificationLimit: "",
+      obtainedValue: { minimum: "", maximum: "" },
+      compliesNotComplies: "",
+    };
+    setReviewOSTR6([...reviewODSTR6, newRow6]);
+  };
+  const addReviewODSTRRow7 = () => {
+    const newRow7 = {
+      testsParameter: "",
+      specificationLimit: "",
+      obtainedValue: { minimum: "", maximum: "" },
+      compliesNotComplies: "",
+    };
+    setReviewOSTR7([...reviewODSTR7, newRow7]);
+  };
+  const addReviewODSTRRow8 = () => {
+    const newRow8 = {
+      testsParameter: "",
+      specificationLimit: "",
+      obtainedValue: { minimum: "", maximum: "" },
+      compliesNotComplies: "",
+    };
+    setReviewOSTR8([...reviewODSTR8, newRow8]);
+  };
+  const addReviewODSTRRow9 = () => {
+    const newRow9 = {
+      testsParameter: "",
+      specificationLimit: "",
+      obtainedValue: { minimum: "", maximum: "" },
+      compliesNotComplies: "",
+    };
+    setReviewOSTR9([...reviewODSTR9, newRow9]);
+  };
+  const addReviewODSTRRow10 = () => {
+    const newRow10 = {
+      testsParameter: "",
+      specificationLimit: "",
+      obtainedValue: { minimum: "", maximum: "" },
+      compliesNotComplies: "",
+    };
+    setReviewOSTR10([...reviewODSTR10, newRow10]);
+  };
 
   const addReviewORMETRRow = () => {
     const newRow = {
@@ -376,6 +475,97 @@ export default function APQR() {
       compliesNotComplies: "",
     };
     setReviewODP([...reviewODP, newRow]);
+  };
+
+  const addReviewODPRow2 = () => {
+    const newRow2 = {
+      testsParameter: "",
+      specificationLimit: "",
+      stage: "",
+      obtainedValue: { minimum: "", maximum: "" },
+      compliesNotComplies: "",
+    };
+    setReviewODP2([...reviewODP2, newRow2]);
+  };
+  const addReviewODPRow3 = () => {
+    const newRow3 = {
+      testsParameter: "",
+      specificationLimit: "",
+      stage: "",
+      obtainedValue: { minimum: "", maximum: "" },
+      compliesNotComplies: "",
+    };
+    setReviewODP3([...reviewODP3, newRow3]);
+  };
+  const addReviewODPRow4 = () => {
+    const newRow4 = {
+      testsParameter: "",
+      specificationLimit: "",
+      stage: "",
+      obtainedValue: { minimum: "", maximum: "" },
+      compliesNotComplies: "",
+    };
+    setReviewODP4([...reviewODP4, newRow4]);
+  };
+  const addReviewODPRow5 = () => {
+    const newRow5 = {
+      testsParameter: "",
+      specificationLimit: "",
+      stage: "",
+      obtainedValue: { minimum: "", maximum: "" },
+      compliesNotComplies: "",
+    };
+    setReviewODP5([...reviewODP5, newRow5]);
+  };
+  const addReviewODPRow6 = () => {
+    const newRow6 = {
+      testsParameter: "",
+      specificationLimit: "",
+      stage: "",
+      obtainedValue: { minimum: "", maximum: "" },
+      compliesNotComplies: "",
+    };
+    setReviewODP6([...reviewODP6, newRow6]);
+  };
+  const addReviewODPRow7 = () => {
+    const newRow7 = {
+      testsParameter: "",
+      specificationLimit: "",
+      stage: "",
+      obtainedValue: { minimum: "", maximum: "" },
+      compliesNotComplies: "",
+    };
+    setReviewODP7([...reviewODP7, newRow7]);
+  };
+  const addReviewODPRow8 = () => {
+    const newRow8 = {
+      testsParameter: "",
+      specificationLimit: "",
+      stage: "",
+      obtainedValue: { minimum: "", maximum: "" },
+      compliesNotComplies: "",
+    };
+    setReviewODP8([...reviewODP8, newRow8]);
+  };
+  const addReviewODPRow9 = () => {
+    const newRow9 = {
+      testsParameter: "",
+      specificationLimit: "",
+      stage: "",
+      obtainedValue: { minimum: "", maximum: "" },
+      compliesNotComplies: "",
+    };
+    setReviewODP9([...reviewODP9, newRow9]);
+  };
+  const addReviewODPRow10 = () => {
+    const newRow10 = {
+      testsParameter: "",
+      specificationLimit: "",
+      stage: "",
+      obtainedValue: { minimum: "", maximum: "" },
+      compliesNotComplies: "",
+    };
+    setReviewODP10([...reviewODP10, newRow10]);
   };
 
   const addReviewODPFPTRRow = () => {
@@ -1836,7 +2026,6 @@ export default function APQR() {
               Review of Drug Substance Test Results
             </div>
             <h1 className="gridName">Drug Substance 1 Test Result</h1>
-
             <div>
               {/* <div className="AddRows d-flex">
                 <MdNoteAdd onClick={addReviewODSTRRow} />
@@ -1915,11 +2104,720 @@ export default function APQR() {
                 </tbody>
               </table>
             </div>
-
+            <h1 className="gridName">Drug Substance 2 Test Result</h1>
+            <div>
+              {/* <div className="AddRows d-flex">
+    <MdNoteAdd onClick={addReviewODSTRRow} />
+    <div className="addrowinstruction"></div>
+  </div> */}
+              <div className="AddRows d-flex w-full justify-between items-center text-3xl">
+                <div className="flex items-center">
+                  <MdNoteAdd onClick={addReviewODSTRRow2} />
+                  <div className="addrowinstruction pl-2">
+                    Add Rows by clicking on (+) icon
+                  </div>
+                </div>
+                <div className="flex gap-4 ">
+                  <button
+                    className="
+              px-4
+              
+              bg-green-500
+              text-white
+              font-semibold
+              rounded-lg
+              shadow-md
+              hover:bg-green-700
+              focus:outline-none
+              focus:ring-2
+              focus:ring-offset-2
+              focus:ring-green-500
+              text-xl
+            "
+                  >
+                    Import
+                  </button>
+                  <ExcelExport
+                    data={balanceSheet}
+                    fileName="balance-sheet-summary.xlsx"
+                  />
+                </div>
+              </div>
+              <table>
+                <thead>
+                  <tr>
+                    <th rowSpan={2}>Sl. No</th>
+                    <th rowSpan={2}>Tests parameter</th>
+                    <th rowSpan={2}>Specification limit</th>
+                    <th colSpan={2}>Obtained value</th>
+                    <th rowSpan={2}>Complies/Does Not complies</th>
+                  </tr>
+                  <tr>
+                    <th>Minimum</th>
+                    <th>Maximum</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {reviewODSTR2.map((item, index) => {
+                    return (
+                      <tr key={index}>
+                        <td>{index + 1}</td>
+                        <td>
+                          <input />
+                        </td>
+                        <td>
+                          <input />
+                        </td>
+                        <td>
+                          <input />
+                        </td>
+                        <td>
+                          <input />
+                        </td>
+                        <td>
+                          <input />
+                        </td>
+                      </tr>
+                    );
+                  })}
+                </tbody>
+              </table>
+            </div>{" "}
+            <h1 className="gridName">Drug Substance 3 Test Result</h1>
+            <div>
+              {/* <div className="AddRows d-flex">
+    <MdNoteAdd onClick={addReviewODSTRRow} />
+    <div className="addrowinstruction"></div>
+  </div> */}
+              <div className="AddRows d-flex w-full justify-between items-center text-3xl">
+                <div className="flex items-center">
+                  <MdNoteAdd onClick={addReviewODSTRRow3} />
+                  <div className="addrowinstruction  pl-2">
+                    Add Rows by clicking on (+) icon
+                  </div>
+                </div>
+                <div className="flex gap-4 ">
+                  <button
+                    className="
+              px-4
+              
+              bg-green-500
+              text-white
+              font-semibold
+              rounded-lg
+              shadow-md
+              hover:bg-green-700
+              focus:outline-none
+              focus:ring-2
+              focus:ring-offset-2
+              focus:ring-green-500
+              text-xl
+            "
+                  >
+                    Import
+                  </button>
+                  <ExcelExport
+                    data={balanceSheet}
+                    fileName="balance-sheet-summary.xlsx"
+                  />
+                </div>
+              </div>
+              <table>
+                <thead>
+                  <tr>
+                    <th rowSpan={2}>Sl. No</th>
+                    <th rowSpan={2}>Tests parameter</th>
+                    <th rowSpan={2}>Specification limit</th>
+                    <th colSpan={2}>Obtained value</th>
+                    <th rowSpan={2}>Complies/Does Not complies</th>
+                  </tr>
+                  <tr>
+                    <th>Minimum</th>
+                    <th>Maximum</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {reviewODSTR3.map((item, index) => {
+                    return (
+                      <tr key={index}>
+                        <td>{index + 1}</td>
+                        <td>
+                          <input />
+                        </td>
+                        <td>
+                          <input />
+                        </td>
+                        <td>
+                          <input />
+                        </td>
+                        <td>
+                          <input />
+                        </td>
+                        <td>
+                          <input />
+                        </td>
+                      </tr>
+                    );
+                  })}
+                </tbody>
+              </table>
+            </div>{" "}
+            <h1 className="gridName">Drug Substance 4 Test Result</h1>
+            <div>
+              {/* <div className="AddRows d-flex">
+    <MdNoteAdd onClick={addReviewODSTRRow} />
+    <div className="addrowinstruction"></div>
+  </div> */}
+              <div className="AddRows d-flex w-full justify-between items-center text-3xl">
+                <div className="flex items-center">
+                  <MdNoteAdd onClick={addReviewODSTRRow4} />
+                  <div className="addrowinstruction  pl-2">
+                    Add Rows by clicking on (+) icon
+                  </div>
+                </div>
+                <div className="flex gap-4 ">
+                  <button
+                    className="
+              px-4
+              
+              bg-green-500
+              text-white
+              font-semibold
+              rounded-lg
+              shadow-md
+              hover:bg-green-700
+              focus:outline-none
+              focus:ring-2
+              focus:ring-offset-2
+              focus:ring-green-500
+              text-xl
+            "
+                  >
+                    Import
+                  </button>
+                  <ExcelExport
+                    data={balanceSheet}
+                    fileName="balance-sheet-summary.xlsx"
+                  />
+                </div>
+              </div>
+              <table>
+                <thead>
+                  <tr>
+                    <th rowSpan={2}>Sl. No</th>
+                    <th rowSpan={2}>Tests parameter</th>
+                    <th rowSpan={2}>Specification limit</th>
+                    <th colSpan={2}>Obtained value</th>
+                    <th rowSpan={2}>Complies/Does Not complies</th>
+                  </tr>
+                  <tr>
+                    <th>Minimum</th>
+                    <th>Maximum</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {reviewODSTR4.map((item, index) => {
+                    return (
+                      <tr key={index}>
+                        <td>{index + 1}</td>
+                        <td>
+                          <input />
+                        </td>
+                        <td>
+                          <input />
+                        </td>
+                        <td>
+                          <input />
+                        </td>
+                        <td>
+                          <input />
+                        </td>
+                        <td>
+                          <input />
+                        </td>
+                      </tr>
+                    );
+                  })}
+                </tbody>
+              </table>
+            </div>{" "}
+            <h1 className="gridName">Drug Substance 5 Test Result</h1>
+            <div>
+              {/* <div className="AddRows d-flex">
+    <MdNoteAdd onClick={addReviewODSTRRow} />
+    <div className="addrowinstruction"></div>
+  </div> */}
+              <div className="AddRows d-flex w-full justify-between items-center text-3xl">
+                <div className="flex items-center">
+                  <MdNoteAdd onClick={addReviewODSTRRow5} />
+                  <div className="addrowinstruction  pl-2">
+                    Add Rows by clicking on (+) icon
+                  </div>
+                </div>
+                <div className="flex gap-4 ">
+                  <button
+                    className="
+              px-4
+              
+              bg-green-500
+              text-white
+              font-semibold
+              rounded-lg
+              shadow-md
+              hover:bg-green-700
+              focus:outline-none
+              focus:ring-2
+              focus:ring-offset-2
+              focus:ring-green-500
+              text-xl
+            "
+                  >
+                    Import
+                  </button>
+                  <ExcelExport
+                    data={balanceSheet}
+                    fileName="balance-sheet-summary.xlsx"
+                  />
+                </div>
+              </div>
+              <table>
+                <thead>
+                  <tr>
+                    <th rowSpan={2}>Sl. No</th>
+                    <th rowSpan={2}>Tests parameter</th>
+                    <th rowSpan={2}>Specification limit</th>
+                    <th colSpan={2}>Obtained value</th>
+                    <th rowSpan={2}>Complies/Does Not complies</th>
+                  </tr>
+                  <tr>
+                    <th>Minimum</th>
+                    <th>Maximum</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {reviewODSTR5.map((item, index) => {
+                    return (
+                      <tr key={index}>
+                        <td>{index + 1}</td>
+                        <td>
+                          <input />
+                        </td>
+                        <td>
+                          <input />
+                        </td>
+                        <td>
+                          <input />
+                        </td>
+                        <td>
+                          <input />
+                        </td>
+                        <td>
+                          <input />
+                        </td>
+                      </tr>
+                    );
+                  })}
+                </tbody>
+              </table>
+            </div>{" "}
+            <h1 className="gridName">Drug Substance 6 Test Result</h1>
+            <div>
+              {/* <div className="AddRows d-flex">
+    <MdNoteAdd onClick={addReviewODSTRRow} />
+    <div className="addrowinstruction"></div>
+  </div> */}
+              <div className="AddRows d-flex w-full justify-between items-center text-3xl">
+                <div className="flex items-center">
+                  <MdNoteAdd onClick={addReviewODSTRRow6} />
+                  <div className="addrowinstruction  pl-2">
+                    Add Rows by clicking on (+) icon
+                  </div>
+                </div>
+                <div className="flex gap-4 ">
+                  <button
+                    className="
+              px-4
+              
+              bg-green-500
+              text-white
+              font-semibold
+              rounded-lg
+              shadow-md
+              hover:bg-green-700
+              focus:outline-none
+              focus:ring-2
+              focus:ring-offset-2
+              focus:ring-green-500
+              text-xl
+            "
+                  >
+                    Import
+                  </button>
+                  <ExcelExport
+                    data={balanceSheet}
+                    fileName="balance-sheet-summary.xlsx"
+                  />
+                </div>
+              </div>
+              <table>
+                <thead>
+                  <tr>
+                    <th rowSpan={2}>Sl. No</th>
+                    <th rowSpan={2}>Tests parameter</th>
+                    <th rowSpan={2}>Specification limit</th>
+                    <th colSpan={2}>Obtained value</th>
+                    <th rowSpan={2}>Complies/Does Not complies</th>
+                  </tr>
+                  <tr>
+                    <th>Minimum</th>
+                    <th>Maximum</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {reviewODSTR6.map((item, index) => {
+                    return (
+                      <tr key={index}>
+                        <td>{index + 1}</td>
+                        <td>
+                          <input />
+                        </td>
+                        <td>
+                          <input />
+                        </td>
+                        <td>
+                          <input />
+                        </td>
+                        <td>
+                          <input />
+                        </td>
+                        <td>
+                          <input />
+                        </td>
+                      </tr>
+                    );
+                  })}
+                </tbody>
+              </table>
+            </div>{" "}
+            <h1 className="gridName">Drug Substance 7 Test Result</h1>
+            <div>
+              {/* <div className="AddRows d-flex">
+    <MdNoteAdd onClick={addReviewODSTRRow} />
+    <div className="addrowinstruction"></div>
+  </div> */}
+              <div className="AddRows d-flex w-full justify-between items-center text-3xl">
+                <div className="flex items-center">
+                  <MdNoteAdd onClick={addReviewODSTRRow7} />
+                  <div className="addrowinstruction  pl-2">
+                    Add Rows by clicking on (+) icon
+                  </div>
+                </div>
+                <div className="flex gap-4 ">
+                  <button
+                    className="
+              px-4
+              
+              bg-green-500
+              text-white
+              font-semibold
+              rounded-lg
+              shadow-md
+              hover:bg-green-700
+              focus:outline-none
+              focus:ring-2
+              focus:ring-offset-2
+              focus:ring-green-500
+              text-xl
+            "
+                  >
+                    Import
+                  </button>
+                  <ExcelExport
+                    data={balanceSheet}
+                    fileName="balance-sheet-summary.xlsx"
+                  />
+                </div>
+              </div>
+              <table>
+                <thead>
+                  <tr>
+                    <th rowSpan={2}>Sl. No</th>
+                    <th rowSpan={2}>Tests parameter</th>
+                    <th rowSpan={2}>Specification limit</th>
+                    <th colSpan={2}>Obtained value</th>
+                    <th rowSpan={2}>Complies/Does Not complies</th>
+                  </tr>
+                  <tr>
+                    <th>Minimum</th>
+                    <th>Maximum</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {reviewODSTR7.map((item, index) => {
+                    return (
+                      <tr key={index}>
+                        <td>{index + 1}</td>
+                        <td>
+                          <input />
+                        </td>
+                        <td>
+                          <input />
+                        </td>
+                        <td>
+                          <input />
+                        </td>
+                        <td>
+                          <input />
+                        </td>
+                        <td>
+                          <input />
+                        </td>
+                      </tr>
+                    );
+                  })}
+                </tbody>
+              </table>
+            </div>{" "}
+            <h1 className="gridName">Drug Substance 8 Test Result</h1>
+            <div>
+              {/* <div className="AddRows d-flex">
+    <MdNoteAdd onClick={addReviewODSTRRow} />
+    <div className="addrowinstruction"></div>
+  </div> */}
+              <div className="AddRows d-flex w-full justify-between items-center text-3xl">
+                <div className="flex items-center">
+                  <MdNoteAdd onClick={addReviewODSTRRow8} />
+                  <div className="addrowinstruction  pl-2">
+                    Add Rows by clicking on (+) icon
+                  </div>
+                </div>
+                <div className="flex gap-4 ">
+                  <button
+                    className="
+              px-4
+              
+              bg-green-500
+              text-white
+              font-semibold
+              rounded-lg
+              shadow-md
+              hover:bg-green-700
+              focus:outline-none
+              focus:ring-2
+              focus:ring-offset-2
+              focus:ring-green-500
+              text-xl
+            "
+                  >
+                    Import
+                  </button>
+                  <ExcelExport
+                    data={balanceSheet}
+                    fileName="balance-sheet-summary.xlsx"
+                  />
+                </div>
+              </div>
+              <table>
+                <thead>
+                  <tr>
+                    <th rowSpan={2}>Sl. No</th>
+                    <th rowSpan={2}>Tests parameter</th>
+                    <th rowSpan={2}>Specification limit</th>
+                    <th colSpan={2}>Obtained value</th>
+                    <th rowSpan={2}>Complies/Does Not complies</th>
+                  </tr>
+                  <tr>
+                    <th>Minimum</th>
+                    <th>Maximum</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {reviewODSTR8.map((item, index) => {
+                    return (
+                      <tr key={index}>
+                        <td>{index + 1}</td>
+                        <td>
+                          <input />
+                        </td>
+                        <td>
+                          <input />
+                        </td>
+                        <td>
+                          <input />
+                        </td>
+                        <td>
+                          <input />
+                        </td>
+                        <td>
+                          <input />
+                        </td>
+                      </tr>
+                    );
+                  })}
+                </tbody>
+              </table>
+            </div>{" "}
+            <h1 className="gridName">Drug Substance 9 Test Result</h1>
+            <div>
+              {/* <div className="AddRows d-flex">
+    <MdNoteAdd onClick={addReviewODSTRRow} />
+    <div className="addrowinstruction"></div>
+  </div> */}
+              <div className="AddRows d-flex w-full justify-between items-center text-3xl">
+                <div className="flex items-center">
+                  <MdNoteAdd onClick={addReviewODSTRRow9} />
+                  <div className="addrowinstruction  pl-2">
+                    Add Rows by clicking on (+) icon
+                  </div>
+                </div>
+                <div className="flex gap-4 ">
+                  <button
+                    className="
+              px-4
+              
+              bg-green-500
+              text-white
+              font-semibold
+              rounded-lg
+              shadow-md
+              hover:bg-green-700
+              focus:outline-none
+              focus:ring-2
+              focus:ring-offset-2
+              focus:ring-green-500
+              text-xl
+            "
+                  >
+                    Import
+                  </button>
+                  <ExcelExport
+                    data={balanceSheet}
+                    fileName="balance-sheet-summary.xlsx"
+                  />
+                </div>
+              </div>
+              <table>
+                <thead>
+                  <tr>
+                    <th rowSpan={2}>Sl. No</th>
+                    <th rowSpan={2}>Tests parameter</th>
+                    <th rowSpan={2}>Specification limit</th>
+                    <th colSpan={2}>Obtained value</th>
+                    <th rowSpan={2}>Complies/Does Not complies</th>
+                  </tr>
+                  <tr>
+                    <th>Minimum</th>
+                    <th>Maximum</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {reviewODSTR9.map((item, index) => {
+                    return (
+                      <tr key={index}>
+                        <td>{index + 1}</td>
+                        <td>
+                          <input />
+                        </td>
+                        <td>
+                          <input />
+                        </td>
+                        <td>
+                          <input />
+                        </td>
+                        <td>
+                          <input />
+                        </td>
+                        <td>
+                          <input />
+                        </td>
+                      </tr>
+                    );
+                  })}
+                </tbody>
+              </table>
+            </div>{" "}
+            <h1 className="gridName">Drug Substance 10 Test Result</h1>
+            <div>
+              {/* <div className="AddRows d-flex">
+    <MdNoteAdd onClick={addReviewODSTRRow} />
+    <div className="addrowinstruction"></div>
+  </div> */}
+              <div className="AddRows d-flex w-full justify-between items-center text-3xl">
+                <div className="flex items-center">
+                  <MdNoteAdd onClick={addReviewODSTRRow10} />
+                  <div className="addrowinstruction  pl-2">
+                    Add Rows by clicking on (+) icon
+                  </div>
+                </div>
+                <div className="flex gap-4 ">
+                  <button
+                    className="
+              px-4
+              
+              bg-green-500
+              text-white
+              font-semibold
+              rounded-lg
+              shadow-md
+              hover:bg-green-700
+              focus:outline-none
+              focus:ring-2
+              focus:ring-offset-2
+              focus:ring-green-500
+              text-xl
+            "
+                  >
+                    Import
+                  </button>
+                  <ExcelExport
+                    data={balanceSheet}
+                    fileName="balance-sheet-summary.xlsx"
+                  />
+                </div>
+              </div>
+              <table>
+                <thead>
+                  <tr>
+                    <th rowSpan={2}>Sl. No</th>
+                    <th rowSpan={2}>Tests parameter</th>
+                    <th rowSpan={2}>Specification limit</th>
+                    <th colSpan={2}>Obtained value</th>
+                    <th rowSpan={2}>Complies/Does Not complies</th>
+                  </tr>
+                  <tr>
+                    <th>Minimum</th>
+                    <th>Maximum</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {reviewODSTR10.map((item, index) => {
+                    return (
+                      <tr key={index}>
+                        <td>{index + 1}</td>
+                        <td>
+                          <input />
+                        </td>
+                        <td>
+                          <input />
+                        </td>
+                        <td>
+                          <input />
+                        </td>
+                        <td>
+                          <input />
+                        </td>
+                        <td>
+                          <input />
+                        </td>
+                      </tr>
+                    );
+                  })}
+                </tbody>
+              </table>
+            </div>
             <div className="sub-head">
               Review of Raw Material Excipient Test Results
             </div>
-
             <div>
               {/* <div className="AddRows d-flex">
                 <MdNoteAdd onClick={addReviewORMETRRow} />
@@ -2002,7 +2900,6 @@ export default function APQR() {
                 </tbody>
               </table>
             </div>
-
             <div className="sub-head">
               Review of Packing Material Test Results
             </div>
@@ -2091,7 +2988,7 @@ export default function APQR() {
             <div className="sub-head">
               Review of Drug Product – In process Test Results
             </div>
-            <h4 className="gridName">Dilution Buffer</h4>
+            <h4 className="gridName">Dilution Buffer 1 - Test Results</h4>
             <div>
               {/* <div className="AddRows d-flex">
                 <MdNoteAdd onClick={addReviewODPRow} />
@@ -2147,6 +3044,753 @@ export default function APQR() {
                 </thead>
                 <tbody>
                   {reviewODP.map((item, index) => {
+                    return (
+                      <tr key={index}>
+                        <td>{index + 1}</td>
+                        <td>
+                          <input />
+                        </td>
+                        <td>
+                          <input />
+                        </td>
+                        <td>
+                          <input />
+                        </td>
+                        <td>
+                          <input />
+                        </td>
+                        <td>
+                          <input />
+                        </td>
+                        <td>
+                          <input />
+                        </td>
+                      </tr>
+                    );
+                  })}
+                </tbody>
+              </table>
+            </div>
+            <h4 className="gridName">Dilution Buffer 2 - Test Results</h4>
+            <div>
+              {/* <div className="AddRows d-flex">
+                <MdNoteAdd onClick={addReviewODPRow} />
+                <div className="addrowinstruction"></div>
+              </div> */}
+              <div className="AddRows d-flex w-full justify-between items-center text-3xl">
+                <div className="flex items-center">
+                  <MdNoteAdd onClick={addReviewODPRow2} />
+                  <div className="addrowinstruction  pl-2">
+                    Add Rows by clicking on (+) icon
+                  </div>
+                </div>
+                <div className="flex gap-4 ">
+                  <button
+                    className="
+                          px-4
+                          
+                          bg-green-500
+                          text-white
+                          font-semibold
+                          rounded-lg
+                          shadow-md
+                          hover:bg-green-700
+                          focus:outline-none
+                          focus:ring-2
+                          focus:ring-offset-2
+                          focus:ring-green-500
+                          text-xl
+                        "
+                  >
+                    Import
+                  </button>
+                  <ExcelExport
+                    data={balanceSheet}
+                    fileName="balance-sheet-summary.xlsx"
+                  />
+                </div>
+              </div>
+              <table>
+                <thead>
+                  <tr>
+                    <th rowSpan={2}>Sl. No</th>
+                    <th rowSpan={2}>Tests parameter</th>
+                    <th rowSpan={2}>Stage</th>
+                    <th rowSpan={2}>Specification limit</th>
+                    <th colSpan={2}>Obtained value</th>
+                    <th rowSpan={2}>Complies/ Does Not complies</th>
+                  </tr>
+                  <tr>
+                    <th>Minimum</th>
+                    <th>Maximum</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {reviewODP2.map((item, index) => {
+                    return (
+                      <tr key={index}>
+                        <td>{index + 1}</td>
+                        <td>
+                          <input />
+                        </td>
+                        <td>
+                          <input />
+                        </td>
+                        <td>
+                          <input />
+                        </td>
+                        <td>
+                          <input />
+                        </td>
+                        <td>
+                          <input />
+                        </td>
+                        <td>
+                          <input />
+                        </td>
+                      </tr>
+                    );
+                  })}
+                </tbody>
+              </table>
+            </div>{" "}
+            <h4 className="gridName">Dilution Buffer 3 - Test Results</h4>
+            <div>
+              {/* <div className="AddRows d-flex">
+                <MdNoteAdd onClick={addReviewODPRow} />
+                <div className="addrowinstruction"></div>
+              </div> */}
+              <div className="AddRows d-flex w-full justify-between items-center text-3xl">
+                <div className="flex items-center">
+                  <MdNoteAdd onClick={addReviewODPRow3} />
+                  <div className="addrowinstruction  pl-2">
+                    Add Rows by clicking on (+) icon
+                  </div>
+                </div>
+                <div className="flex gap-4 ">
+                  <button
+                    className="
+                          px-4
+                          
+                          bg-green-500
+                          text-white
+                          font-semibold
+                          rounded-lg
+                          shadow-md
+                          hover:bg-green-700
+                          focus:outline-none
+                          focus:ring-2
+                          focus:ring-offset-2
+                          focus:ring-green-500
+                          text-xl
+                        "
+                  >
+                    Import
+                  </button>
+                  <ExcelExport
+                    data={balanceSheet}
+                    fileName="balance-sheet-summary.xlsx"
+                  />
+                </div>
+              </div>
+              <table>
+                <thead>
+                  <tr>
+                    <th rowSpan={2}>Sl. No</th>
+                    <th rowSpan={2}>Tests parameter</th>
+                    <th rowSpan={2}>Stage</th>
+                    <th rowSpan={2}>Specification limit</th>
+                    <th colSpan={2}>Obtained value</th>
+                    <th rowSpan={2}>Complies/ Does Not complies</th>
+                  </tr>
+                  <tr>
+                    <th>Minimum</th>
+                    <th>Maximum</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {reviewODP3.map((item, index) => {
+                    return (
+                      <tr key={index}>
+                        <td>{index + 1}</td>
+                        <td>
+                          <input />
+                        </td>
+                        <td>
+                          <input />
+                        </td>
+                        <td>
+                          <input />
+                        </td>
+                        <td>
+                          <input />
+                        </td>
+                        <td>
+                          <input />
+                        </td>
+                        <td>
+                          <input />
+                        </td>
+                      </tr>
+                    );
+                  })}
+                </tbody>
+              </table>
+            </div>{" "}
+            <h4 className="gridName">Dilution Buffer 4 - Test Results</h4>
+            <div>
+              {/* <div className="AddRows d-flex">
+                <MdNoteAdd onClick={addReviewODPRow} />
+                <div className="addrowinstruction"></div>
+              </div> */}
+              <div className="AddRows d-flex w-full justify-between items-center text-3xl">
+                <div className="flex items-center">
+                  <MdNoteAdd onClick={addReviewODPRow4} />
+                  <div className="addrowinstruction  pl-2">
+                    Add Rows by clicking on (+) icon
+                  </div>
+                </div>
+                <div className="flex gap-4 ">
+                  <button
+                    className="
+                          px-4
+                          
+                          bg-green-500
+                          text-white
+                          font-semibold
+                          rounded-lg
+                          shadow-md
+                          hover:bg-green-700
+                          focus:outline-none
+                          focus:ring-2
+                          focus:ring-offset-2
+                          focus:ring-green-500
+                          text-xl
+                        "
+                  >
+                    Import
+                  </button>
+                  <ExcelExport
+                    data={balanceSheet}
+                    fileName="balance-sheet-summary.xlsx"
+                  />
+                </div>
+              </div>
+              <table>
+                <thead>
+                  <tr>
+                    <th rowSpan={2}>Sl. No</th>
+                    <th rowSpan={2}>Tests parameter</th>
+                    <th rowSpan={2}>Stage</th>
+                    <th rowSpan={2}>Specification limit</th>
+                    <th colSpan={2}>Obtained value</th>
+                    <th rowSpan={2}>Complies/ Does Not complies</th>
+                  </tr>
+                  <tr>
+                    <th>Minimum</th>
+                    <th>Maximum</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {reviewODP4.map((item, index) => {
+                    return (
+                      <tr key={index}>
+                        <td>{index + 1}</td>
+                        <td>
+                          <input />
+                        </td>
+                        <td>
+                          <input />
+                        </td>
+                        <td>
+                          <input />
+                        </td>
+                        <td>
+                          <input />
+                        </td>
+                        <td>
+                          <input />
+                        </td>
+                        <td>
+                          <input />
+                        </td>
+                      </tr>
+                    );
+                  })}
+                </tbody>
+              </table>
+            </div>{" "}
+            <h4 className="gridName">Dilution Buffer 5 - Test Results</h4>
+            <div>
+              {/* <div className="AddRows d-flex">
+                <MdNoteAdd onClick={addReviewODPRow} />
+                <div className="addrowinstruction"></div>
+              </div> */}
+              <div className="AddRows d-flex w-full justify-between items-center text-3xl">
+                <div className="flex items-center">
+                  <MdNoteAdd onClick={addReviewODPRow5} />
+                  <div className="addrowinstruction  pl-2">
+                    Add Rows by clicking on (+) icon
+                  </div>
+                </div>
+                <div className="flex gap-4 ">
+                  <button
+                    className="
+                          px-4
+                          
+                          bg-green-500
+                          text-white
+                          font-semibold
+                          rounded-lg
+                          shadow-md
+                          hover:bg-green-700
+                          focus:outline-none
+                          focus:ring-2
+                          focus:ring-offset-2
+                          focus:ring-green-500
+                          text-xl
+                        "
+                  >
+                    Import
+                  </button>
+                  <ExcelExport
+                    data={balanceSheet}
+                    fileName="balance-sheet-summary.xlsx"
+                  />
+                </div>
+              </div>
+              <table>
+                <thead>
+                  <tr>
+                    <th rowSpan={2}>Sl. No</th>
+                    <th rowSpan={2}>Tests parameter</th>
+                    <th rowSpan={2}>Stage</th>
+                    <th rowSpan={2}>Specification limit</th>
+                    <th colSpan={2}>Obtained value</th>
+                    <th rowSpan={2}>Complies/ Does Not complies</th>
+                  </tr>
+                  <tr>
+                    <th>Minimum</th>
+                    <th>Maximum</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {reviewODP5.map((item, index) => {
+                    return (
+                      <tr key={index}>
+                        <td>{index + 1}</td>
+                        <td>
+                          <input />
+                        </td>
+                        <td>
+                          <input />
+                        </td>
+                        <td>
+                          <input />
+                        </td>
+                        <td>
+                          <input />
+                        </td>
+                        <td>
+                          <input />
+                        </td>
+                        <td>
+                          <input />
+                        </td>
+                      </tr>
+                    );
+                  })}
+                </tbody>
+              </table>
+            </div>{" "}
+            <h4 className="gridName">Dilution Buffer 6 - Test Results</h4>
+            <div>
+              {/* <div className="AddRows d-flex">
+                <MdNoteAdd onClick={addReviewODPRow} />
+                <div className="addrowinstruction"></div>
+              </div> */}
+              <div className="AddRows d-flex w-full justify-between items-center text-3xl">
+                <div className="flex items-center">
+                  <MdNoteAdd onClick={addReviewODPRow6} />
+                  <div className="addrowinstruction  pl-2">
+                    Add Rows by clicking on (+) icon
+                  </div>
+                </div>
+                <div className="flex gap-4 ">
+                  <button
+                    className="
+                          px-4
+                          
+                          bg-green-500
+                          text-white
+                          font-semibold
+                          rounded-lg
+                          shadow-md
+                          hover:bg-green-700
+                          focus:outline-none
+                          focus:ring-2
+                          focus:ring-offset-2
+                          focus:ring-green-500
+                          text-xl
+                        "
+                  >
+                    Import
+                  </button>
+                  <ExcelExport
+                    data={balanceSheet}
+                    fileName="balance-sheet-summary.xlsx"
+                  />
+                </div>
+              </div>
+              <table>
+                <thead>
+                  <tr>
+                    <th rowSpan={2}>Sl. No</th>
+                    <th rowSpan={2}>Tests parameter</th>
+                    <th rowSpan={2}>Stage</th>
+                    <th rowSpan={2}>Specification limit</th>
+                    <th colSpan={2}>Obtained value</th>
+                    <th rowSpan={2}>Complies/ Does Not complies</th>
+                  </tr>
+                  <tr>
+                    <th>Minimum</th>
+                    <th>Maximum</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {reviewODP6.map((item, index) => {
+                    return (
+                      <tr key={index}>
+                        <td>{index + 1}</td>
+                        <td>
+                          <input />
+                        </td>
+                        <td>
+                          <input />
+                        </td>
+                        <td>
+                          <input />
+                        </td>
+                        <td>
+                          <input />
+                        </td>
+                        <td>
+                          <input />
+                        </td>
+                        <td>
+                          <input />
+                        </td>
+                      </tr>
+                    );
+                  })}
+                </tbody>
+              </table>
+            </div>{" "}
+            <h4 className="gridName">Dilution Buffer 7 - Test Results</h4>
+            <div>
+              {/* <div className="AddRows d-flex">
+                <MdNoteAdd onClick={addReviewODPRow} />
+                <div className="addrowinstruction"></div>
+              </div> */}
+              <div className="AddRows d-flex w-full justify-between items-center text-3xl">
+                <div className="flex items-center">
+                  <MdNoteAdd onClick={addReviewODPRow7} />
+                  <div className="addrowinstruction  pl-2">
+                    Add Rows by clicking on (+) icon
+                  </div>
+                </div>
+                <div className="flex gap-4 ">
+                  <button
+                    className="
+                          px-4
+                          
+                          bg-green-500
+                          text-white
+                          font-semibold
+                          rounded-lg
+                          shadow-md
+                          hover:bg-green-700
+                          focus:outline-none
+                          focus:ring-2
+                          focus:ring-offset-2
+                          focus:ring-green-500
+                          text-xl
+                        "
+                  >
+                    Import
+                  </button>
+                  <ExcelExport
+                    data={balanceSheet}
+                    fileName="balance-sheet-summary.xlsx"
+                  />
+                </div>
+              </div>
+              <table>
+                <thead>
+                  <tr>
+                    <th rowSpan={2}>Sl. No</th>
+                    <th rowSpan={2}>Tests parameter</th>
+                    <th rowSpan={2}>Stage</th>
+                    <th rowSpan={2}>Specification limit</th>
+                    <th colSpan={2}>Obtained value</th>
+                    <th rowSpan={2}>Complies/ Does Not complies</th>
+                  </tr>
+                  <tr>
+                    <th>Minimum</th>
+                    <th>Maximum</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {reviewODP7.map((item, index) => {
+                    return (
+                      <tr key={index}>
+                        <td>{index + 1}</td>
+                        <td>
+                          <input />
+                        </td>
+                        <td>
+                          <input />
+                        </td>
+                        <td>
+                          <input />
+                        </td>
+                        <td>
+                          <input />
+                        </td>
+                        <td>
+                          <input />
+                        </td>
+                        <td>
+                          <input />
+                        </td>
+                      </tr>
+                    );
+                  })}
+                </tbody>
+              </table>
+            </div>{" "}
+            <h4 className="gridName">Dilution Buffer 8 - Test Results</h4>
+            <div>
+              {/* <div className="AddRows d-flex">
+                <MdNoteAdd onClick={addReviewODPRow} />
+                <div className="addrowinstruction"></div>
+              </div> */}
+              <div className="AddRows d-flex w-full justify-between items-center text-3xl">
+                <div className="flex items-center">
+                  <MdNoteAdd onClick={addReviewODPRow8} />
+                  <div className="addrowinstruction  pl-2">
+                    Add Rows by clicking on (+) icon
+                  </div>
+                </div>
+                <div className="flex gap-4 ">
+                  <button
+                    className="
+                          px-4
+                          
+                          bg-green-500
+                          text-white
+                          font-semibold
+                          rounded-lg
+                          shadow-md
+                          hover:bg-green-700
+                          focus:outline-none
+                          focus:ring-2
+                          focus:ring-offset-2
+                          focus:ring-green-500
+                          text-xl
+                        "
+                  >
+                    Import
+                  </button>
+                  <ExcelExport
+                    data={balanceSheet}
+                    fileName="balance-sheet-summary.xlsx"
+                  />
+                </div>
+              </div>
+              <table>
+                <thead>
+                  <tr>
+                    <th rowSpan={2}>Sl. No</th>
+                    <th rowSpan={2}>Tests parameter</th>
+                    <th rowSpan={2}>Stage</th>
+                    <th rowSpan={2}>Specification limit</th>
+                    <th colSpan={2}>Obtained value</th>
+                    <th rowSpan={2}>Complies/ Does Not complies</th>
+                  </tr>
+                  <tr>
+                    <th>Minimum</th>
+                    <th>Maximum</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {reviewODP8.map((item, index) => {
+                    return (
+                      <tr key={index}>
+                        <td>{index + 1}</td>
+                        <td>
+                          <input />
+                        </td>
+                        <td>
+                          <input />
+                        </td>
+                        <td>
+                          <input />
+                        </td>
+                        <td>
+                          <input />
+                        </td>
+                        <td>
+                          <input />
+                        </td>
+                        <td>
+                          <input />
+                        </td>
+                      </tr>
+                    );
+                  })}
+                </tbody>
+              </table>
+            </div>{" "}
+            <h4 className="gridName">Dilution Buffer 9 - Test Results</h4>
+            <div>
+              {/* <div className="AddRows d-flex">
+                <MdNoteAdd onClick={addReviewODPRow} />
+                <div className="addrowinstruction"></div>
+              </div> */}
+              <div className="AddRows d-flex w-full justify-between items-center text-3xl">
+                <div className="flex items-center">
+                  <MdNoteAdd onClick={addReviewODPRow9} />
+                  <div className="addrowinstruction  pl-2">
+                    Add Rows by clicking on (+) icon
+                  </div>
+                </div>
+                <div className="flex gap-4 ">
+                  <button
+                    className="
+                          px-4
+                          
+                          bg-green-500
+                          text-white
+                          font-semibold
+                          rounded-lg
+                          shadow-md
+                          hover:bg-green-700
+                          focus:outline-none
+                          focus:ring-2
+                          focus:ring-offset-2
+                          focus:ring-green-500
+                          text-xl
+                        "
+                  >
+                    Import
+                  </button>
+                  <ExcelExport
+                    data={balanceSheet}
+                    fileName="balance-sheet-summary.xlsx"
+                  />
+                </div>
+              </div>
+              <table>
+                <thead>
+                  <tr>
+                    <th rowSpan={2}>Sl. No</th>
+                    <th rowSpan={2}>Tests parameter</th>
+                    <th rowSpan={2}>Stage</th>
+                    <th rowSpan={2}>Specification limit</th>
+                    <th colSpan={2}>Obtained value</th>
+                    <th rowSpan={2}>Complies/ Does Not complies</th>
+                  </tr>
+                  <tr>
+                    <th>Minimum</th>
+                    <th>Maximum</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {reviewODP9.map((item, index) => {
+                    return (
+                      <tr key={index}>
+                        <td>{index + 1}</td>
+                        <td>
+                          <input />
+                        </td>
+                        <td>
+                          <input />
+                        </td>
+                        <td>
+                          <input />
+                        </td>
+                        <td>
+                          <input />
+                        </td>
+                        <td>
+                          <input />
+                        </td>
+                        <td>
+                          <input />
+                        </td>
+                      </tr>
+                    );
+                  })}
+                </tbody>
+              </table>
+            </div>
+            <h4 className="gridName">Dilution Buffer 10 - Test Results</h4>
+            <div>
+              {/* <div className="AddRows d-flex">
+                <MdNoteAdd onClick={addReviewODPRow} />
+                <div className="addrowinstruction"></div>
+              </div> */}
+              <div className="AddRows d-flex w-full justify-between items-center text-3xl">
+                <div className="flex items-center">
+                  <MdNoteAdd onClick={addReviewODPRow10} />
+                  <div className="addrowinstruction  pl-2">
+                    Add Rows by clicking on (+) icon
+                  </div>
+                </div>
+                <div className="flex gap-4 ">
+                  <button
+                    className="
+                          px-4
+                          
+                          bg-green-500
+                          text-white
+                          font-semibold
+                          rounded-lg
+                          shadow-md
+                          hover:bg-green-700
+                          focus:outline-none
+                          focus:ring-2
+                          focus:ring-offset-2
+                          focus:ring-green-500
+                          text-xl
+                        "
+                  >
+                    Import
+                  </button>
+                  <ExcelExport
+                    data={balanceSheet}
+                    fileName="balance-sheet-summary.xlsx"
+                  />
+                </div>
+              </div>
+              <table>
+                <thead>
+                  <tr>
+                    <th rowSpan={2}>Sl. No</th>
+                    <th rowSpan={2}>Tests parameter</th>
+                    <th rowSpan={2}>Stage</th>
+                    <th rowSpan={2}>Specification limit</th>
+                    <th colSpan={2}>Obtained value</th>
+                    <th rowSpan={2}>Complies/ Does Not complies</th>
+                  </tr>
+                  <tr>
+                    <th>Minimum</th>
+                    <th>Maximum</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {reviewODP10.map((item, index) => {
                     return (
                       <tr key={index}>
                         <td>{index + 1}</td>
@@ -2871,7 +4515,10 @@ export default function APQR() {
             <div className="py-4">
               {/* <MdNoteAdd onClick={addDossierRow} />
                 <div className="addrowinstruction"></div> */}
-              <div className="AddRows d-flex w-full justify-between items-center text-3xl">
+              <div
+                className="AddRows d-flex w-full justify-between items-center text-3xl "
+                style={{ boxShadow: " 0 5px 8px gray" }}
+              >
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addDossierRow} />
                   <div className="addrowinstruction  pl-2">
@@ -3033,7 +4680,8 @@ export default function APQR() {
               <div className="relative w-16 h-16">
                 <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
                   <div className="w-16 h-16 border-t-4 border-b-4 border-blue-500 rounded-full animate-spin">
-                    😃😃😃😃😃😃😃😃😃😃😃😃😃😃😃
+                    <span>😃😃😃😃😃😃😃😃😃😃😃😃😃😃😃</span>
+                    <br />
                   </div>
                 </div>
               </div>

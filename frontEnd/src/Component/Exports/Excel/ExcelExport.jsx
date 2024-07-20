@@ -10,7 +10,10 @@ const ExcelExport = ({ data, fileName }) => {
         Sheets: { data: worksheet },
         SheetNames: ["data"],
       };
-      const excelBuffer = xlsx.write(workbook, { bookType: "xlsx", type: "array" });
+      const excelBuffer = xlsx.write(workbook, {
+        bookType: "xlsx",
+        type: "array",
+      });
       saveAsExcel(excelBuffer, fileName);
     } catch (error) {
       console.error("Error exporting to Excel: ", error);
