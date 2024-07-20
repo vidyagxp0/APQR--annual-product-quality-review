@@ -153,6 +153,15 @@ export default function APQR() {
   const [sanitizationASDOU, setSanitizationASDOU] = useState([]);
   const [compressedGas, setCompressedGas] = useState([]);
   const [currentRPQRN, setCurrentRPQRN] = useState([]);
+  const [unitOperation3,setUnitOperation3]=useState([])
+  const [unitOperation4,setUnitOperation4]=useState([])
+  const [unitOperation5,setUnitOperation5]=useState([])
+  const [unitOperation6,setUnitOperation6]=useState([])
+  const [unitOperation7,setUnitOperation7]=useState([])
+  const [unitOperation8,setUnitOperation8]=useState([])
+  const [unitOperation9,setUnitOperation9]=useState([])
+  const [unitOperation10,setUnitOperation10]=useState([])
+
   const [pQRData, setPQRData] = useState({
     pqrNO: "",
     productName: "",
@@ -439,6 +448,95 @@ export default function APQR() {
     };
     setCurrentRPQRN([...currentRPQRN, newRow]);
   };
+
+  const addUnitOperation3Row=()=>{
+    const newRow={
+      criticalProcessParameter: "",
+      codes: "",
+      acceptanceCriteria: "",
+      results: { minimum: "", maximum: "" },
+      compliesNotComplies: "",
+    }
+    setUnitOperation3([...unitOperation3,newRow])
+  }
+
+  
+  const addUnitOperation4Row=()=>{
+    const newRow={
+      criticalProcessParameter: "",
+      codes: "",
+      acceptanceCriteria: "",
+      results: { minimum: "", maximum: "" },
+      compliesNotComplies: "",
+    }
+    setUnitOperation4([...unitOperation4,newRow])
+  }
+  
+  const addUnitOperation5Row=()=>{
+    const newRow={
+      criticalProcessParameter: "",
+      codes: "",
+      acceptanceCriteria: "",
+      results: { minimum: "", maximum: "" },
+      compliesNotComplies: "",
+    }
+    setUnitOperation5([...unitOperation5,newRow])
+  }
+  
+  const addUnitOperation6Row=()=>{
+    const newRow={
+      criticalProcessParameter: "",
+      codes: "",
+      acceptanceCriteria: "",
+      results: { minimum: "", maximum: "" },
+      compliesNotComplies: "",
+    }
+    setUnitOperation6([...unitOperation6,newRow])
+  }
+  
+  const addUnitOperation7Row=()=>{
+    const newRow={
+      criticalProcessParameter: "",
+      codes: "",
+      acceptanceCriteria: "",
+      results: { minimum: "", maximum: "" },
+      compliesNotComplies: "",
+    }
+    setUnitOperation7([...unitOperation7,newRow])
+  }
+
+  const addUnitOperation8Row=()=>{
+    const newRow={
+      criticalProcessParameter: "",
+      codes: "",
+      acceptanceCriteria: "",
+      results: { minimum: "", maximum: "" },
+      compliesNotComplies: "",
+    }
+    setUnitOperation8([...unitOperation8,newRow])
+  }
+  
+  const addUnitOperation9Row=()=>{
+    const newRow={
+      criticalProcessParameter: "",
+      codes: "",
+      acceptanceCriteria: "",
+      results: { minimum: "", maximum: "" },
+      compliesNotComplies: "",
+    }
+    setUnitOperation9([...unitOperation9,newRow])
+  }
+  
+  const addUnitOperation10Row=()=>{
+    const newRow={
+      criticalProcessParameter: "",
+      codes: "",
+      acceptanceCriteria: "",
+      results: { minimum: "", maximum: "" },
+      compliesNotComplies: "",
+    }
+    setUnitOperation10([...unitOperation10,newRow])
+  }
   return (
     <>
       <Header />
@@ -449,37 +547,70 @@ export default function APQR() {
       </div>
       <div className="pqrform">
         <div className="form-tabs">
-          <div className={`${tab === "GI" ? "active" : ""}`} onClick={() => setTab("GI")}>
+          <div
+            className={`${tab === "GI" ? "active" : ""}`}
+            onClick={() => setTab("GI")}
+          >
             General Information
           </div>
-          <div className={`${tab === "WR" ? "active" : ""}`} onClick={() => setTab("WR")}>
+          <div
+            className={`${tab === "WR" ? "active" : ""}`}
+            onClick={() => setTab("WR")}
+          >
             Warehouse Review
           </div>
-          <div className={`${tab === "MR" ? "active" : ""}`} onClick={() => setTab("MR")}>
+          <div
+            className={`${tab === "MR" ? "active" : ""}`}
+            onClick={() => setTab("MR")}
+          >
             Manufacturing Review
           </div>
-          <div className={`${tab === "LR" ? "active" : ""}`} onClick={() => setTab("LR")}>
+          <div
+            className={`${tab === "LR" ? "active" : ""}`}
+            onClick={() => setTab("LR")}
+          >
             Laboratory Review
           </div>
-          <div className={`${tab === "EAMR" ? "active" : ""}`} onClick={() => setTab("EAMR")}>
+          <div
+            className={`${tab === "EAMR" ? "active" : ""}`}
+            onClick={() => setTab("EAMR")}
+          >
             Engineering And Maintenance Review
           </div>
-          <div className={`${tab === "QSR" ? "active" : ""}`} onClick={() => setTab("QSR")}>
+          <div
+            className={`${tab === "QSR" ? "active" : ""}`}
+            onClick={() => setTab("QSR")}
+          >
             Quality System Review
           </div>
-          <div className={`${tab === "RR" ? "active" : ""}`} onClick={() => setTab("RR")}>
+          <div
+            className={`${tab === "RR" ? "active" : ""}`}
+            onClick={() => setTab("RR")}
+          >
             Regulatory Review
           </div>
-          <div className={`${tab === "R" ? "active" : ""}`} onClick={() => setTab("R")}>
+          <div
+            className={`${tab === "R" ? "active" : ""}`}
+            onClick={() => setTab("R")}
+          >
             Recommendations{" "}
           </div>
-          <div className={`${tab === "CAPA" ? "active" : ""}`} onClick={() => setTab("CAPA")}>
+          <div
+            className={`${tab === "CAPA" ? "active" : ""}`}
+            onClick={() => setTab("CAPA")}
+          >
             CAPA
           </div>
-          <div className={`${tab === "DEAC" ? "active" : ""}`} onClick={() => setTab("DEAC")}>
+          <div
+            className={`${tab === "DEAC" ? "active" : ""}`}
+            onClick={() => setTab("DEAC")}
+          >
             Discussion, Evaluation And Conclusion
           </div>
-          <div className={`${tab === "LOA" ? "active" : ""}`} onClick={() => setTab("LOA")}>
+          <div
+            className={`${tab === "LOA" ? "active" : ""}`}
+            onClick={() => setTab("LOA")}
+          >
             List Of Annexures/Attachments
           </div>
         </div>
@@ -559,7 +690,9 @@ export default function APQR() {
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addManufacturingStageRow} />
-                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
+                  <div className="addrowinstruction  pl-2">
+                    Add Rows by clicking on (+) icon
+                  </div>
                 </div>
                 <div className="flex gap-4 ">
                   <button
@@ -581,7 +714,10 @@ export default function APQR() {
                   >
                     Import
                   </button>
-                  <ExcelExport data={balanceSheet} fileName="balance-sheet-summary.xlsx" />
+                  <ExcelExport
+                    data={balanceSheet}
+                    fileName="balance-sheet-summary.xlsx"
+                  />
                 </div>
               </div>
               {/* <div className="w-1/2 flex justify-end px-8 py-4">
@@ -704,9 +840,6 @@ export default function APQR() {
                           <td>
                             <input />
                           </td>
-                          <td>
-                            <input />
-                          </td>
                         </tr>
                       );
                     })}
@@ -715,7 +848,10 @@ export default function APQR() {
               </div>
 
               <div className="pb-4">
-                <h4 className="gridName"> Packing Materials Rejection Summary</h4>
+                <h4 className="gridName">
+                  {" "}
+                  Packing Materials Rejection Summary
+                </h4>
                 <div className="AddRows d-flex">
                   <MdNoteAdd onClick={addPackingMRSRow} />
                   <div className="addrowinstruction"></div>
@@ -758,7 +894,8 @@ export default function APQR() {
                 </table>
 
                 <h5 className="gridName pt-4">
-                  Summary of Review of Rejected Raw Materials and Packaging Materials
+                  Summary of Review of Rejected Raw Materials and Packaging
+                  Materials
                 </h5>
                 <TinyEditor />
               </div>
@@ -806,7 +943,9 @@ export default function APQR() {
               </div>
 
               <div className="">
-                <h4 className="gridName">Expired Packaging Materials Details</h4>
+                <h4 className="gridName">
+                  Expired Packaging Materials Details
+                </h4>
                 <div className="AddRows d-flex">
                   <MdNoteAdd onClick={addExpiredPMDRow} />
                   <div className="addrowinstruction"></div>
@@ -844,7 +983,8 @@ export default function APQR() {
                   </tbody>
                 </table>
                 <h4 className="gridName pt-4">
-                  Summary of Review of Expired Raw Materials and Packaging Materials
+                  Summary of Review of Expired Raw Materials and Packaging
+                  Materials
                 </h4>
                 <TinyEditor />
               </div>
@@ -889,7 +1029,9 @@ export default function APQR() {
                     })}
                   </tbody>
                 </table>
-                <h4 className="gridName pt-4">Summary of Review of Approved Supplier List</h4>
+                <h4 className="gridName pt-4">
+                  Summary of Review of Approved Supplier List
+                </h4>
                 <TinyEditor />
               </div>
               <div className="sub-head">
@@ -940,7 +1082,8 @@ export default function APQR() {
                   </tbody>
                 </table>
                 <h4 className="gridName pt-4">
-                  Summary of Vendor Qualification Details of Raw Material Excipients
+                  Summary of Vendor Qualification Details of Raw Material
+                  Excipients
                 </h4>
                 <TinyEditor />
               </div>
@@ -983,12 +1126,17 @@ export default function APQR() {
                   </tbody>
                 </table>
                 <h4 className="gridName pt-4">
-                  Summary of Vendor Qualification Details of Primary Packing Materials
+                  Summary of Vendor Qualification Details of Primary Packing
+                  Materials
                 </h4>
                 <TinyEditor />
               </div>
-              <div className="sub-head">Vendor Qualification Details of Process Gases</div>
-              <div className="sub-head">Vendor Qualification Details of Process Gases</div>
+              <div className="sub-head">
+                Vendor Qualification Details of Process Gases
+              </div>
+              <div className="sub-head">
+                Vendor Qualification Details of Process Gases
+              </div>
               <div>
                 <div className="AddRows d-flex">
                   <MdNoteAdd onClick={addvendorQDPOGRow} />
@@ -1055,7 +1203,10 @@ export default function APQR() {
 
             <div className="dual-group-input">
               <div className="group-input">
-                <label>Total No. of batches manufactured during the current review period</label>
+                <label>
+                  Total No. of batches manufactured during the current review
+                  period
+                </label>
                 <input type="number" />
               </div>
               <div className="group-input">
@@ -1135,17 +1286,20 @@ export default function APQR() {
                   })}
                 </tbody>
               </table>
-              <h4 className="gridName pt-4">Summary of Code to Code Transfer Details</h4>
+              <h4 className="gridName pt-4">
+                Summary of Code to Code Transfer Details
+              </h4>
               <TinyEditor />
             </div>
             <div className="sub-head">
               {" "}
-              Review of Manufacturing Process, Packing Process and relevant Validation Status
+              Review of Manufacturing Process, Packing Process and relevant
+              Validation Status
             </div>
             <TinyEditor />
             <div className="sub-head">
-              Review of Reprocessing/Repacking/Reworking along with CAPA and Effectiveness Check
-              Verification (if any)
+              Review of Reprocessing/Repacking/Reworking along with CAPA and
+              Effectiveness Check Verification (if any)
             </div>
             <div className="dual-group-input">
               <div className="group-input">
@@ -1206,9 +1360,14 @@ export default function APQR() {
             </div>
             <h1>Deviation Details - Grid CAPA Details – Grid</h1>
 
-            <div className="sub-head"> Review of Product Quality (Critical Process Parameters)</div>
+            <div className="sub-head">
+              {" "}
+              Review of Product Quality (Critical Process Parameters)
+            </div>
             <h3 className="gridName">Unit Operation 1</h3>
-            <h4 className="gridName">Buffer formulation summary details provided below</h4>
+            <h4 className="gridName">
+              Buffer formulation summary details provided below
+            </h4>
             <div>
               <div className="AddRows d-flex">
                 <MdNoteAdd onClick={addBufferFSDPVRow} />
@@ -1256,7 +1415,7 @@ export default function APQR() {
                 </tbody>
               </table>
             </div>
-            <h3 className="gridName">Unit Operation 2</h3>
+            <h3 className="gridName pt-4">Unit Operation 2</h3>
             <h4 className="gridName">Manufacturing summary details</h4>
             <div className="AddRows d-flex">
               <MdNoteAdd onClick={addmanufacturingSDRow} />
@@ -1304,7 +1463,387 @@ export default function APQR() {
               </tbody>
             </table>
 
-            <div className="sub-head">Critical Process Parameters Review Summary</div>
+
+            <h3 className="gridName pt-4">Unit Operation 3</h3>
+            <div className="AddRows d-flex">
+              <MdNoteAdd onClick={addUnitOperation3Row} />
+              <div className="addrowinstruction"></div>
+            </div>
+            <table>
+              <thead>
+                <tr>
+                  <th rowSpan={2}>Critical Process Parameters</th>
+                  <th rowSpan={2}>Codes</th>
+                  <th rowSpan={2}>Acceptance criteria</th>
+                  <th colSpan={2}>Results</th>
+                  <th rowSpan={2}>Complies / Does not complies</th>
+                </tr>
+                <tr>
+                  <th>Minimum</th>
+                  <th>Maximum</th>
+                </tr>
+              </thead>
+              <tbody>
+                {unitOperation3.map((item, index) => {
+                  return (
+                    <tr key={index}>
+                      <td>
+                        <input />
+                      </td>
+                      <td>
+                        <input />
+                      </td>
+                      <td>
+                        <input />
+                      </td>
+                      <td>
+                        <input />
+                      </td>
+                      <td>
+                        <input />
+                      </td>
+                      <td>
+                        <input />
+                      </td>
+                    </tr>
+                  );
+                })}
+              </tbody>
+            </table>
+
+
+            <h3 className="gridName pt-4">Unit Operation 4</h3>
+            <div className="AddRows d-flex">
+              <MdNoteAdd onClick={addUnitOperation4Row} />
+              <div className="addrowinstruction"></div>
+            </div>
+            <table>
+              <thead>
+                <tr>
+                  <th rowSpan={2}>Critical Process Parameters</th>
+                  <th rowSpan={2}>Codes</th>
+                  <th rowSpan={2}>Acceptance criteria</th>
+                  <th colSpan={2}>Results</th>
+                  <th rowSpan={2}>Complies / Does not complies</th>
+                </tr>
+                <tr>
+                  <th>Minimum</th>
+                  <th>Maximum</th>
+                </tr>
+              </thead>
+              <tbody>
+                {unitOperation4.map((item, index) => {
+                  return (
+                    <tr key={index}>
+                      <td>
+                        <input />
+                      </td>
+                      <td>
+                        <input />
+                      </td>
+                      <td>
+                        <input />
+                      </td>
+                      <td>
+                        <input />
+                      </td>
+                      <td>
+                        <input />
+                      </td>
+                      <td>
+                        <input />
+                      </td>
+                    </tr>
+                  );
+                })}
+              </tbody>
+            </table>
+
+            <h3 className="gridName pt-4">Unit Operation 5</h3>
+            <div className="AddRows d-flex">
+              <MdNoteAdd onClick={addUnitOperation5Row} />
+              <div className="addrowinstruction"></div>
+            </div>
+            <table>
+              <thead>
+                <tr>
+                  <th rowSpan={2}>Critical Process Parameters</th>
+                  <th rowSpan={2}>Codes</th>
+                  <th rowSpan={2}>Acceptance criteria</th>
+                  <th colSpan={2}>Results</th>
+                  <th rowSpan={2}>Complies / Does not complies</th>
+                </tr>
+                <tr>
+                  <th>Minimum</th>
+                  <th>Maximum</th>
+                </tr>
+              </thead>
+              <tbody>
+                {unitOperation5.map((item, index) => {
+                  return (
+                    <tr key={index}>
+                      <td>
+                        <input />
+                      </td>
+                      <td>
+                        <input />
+                      </td>
+                      <td>
+                        <input />
+                      </td>
+                      <td>
+                        <input />
+                      </td>
+                      <td>
+                        <input />
+                      </td>
+                      <td>
+                        <input />
+                      </td>
+                    </tr>
+                  );
+                })}
+              </tbody>
+            </table>
+
+            <h3 className="gridName pt-4">Unit Operation 6</h3>
+            <div className="AddRows d-flex">
+              <MdNoteAdd onClick={addUnitOperation6Row} />
+              <div className="addrowinstruction"></div>
+            </div>
+            <table>
+              <thead>
+                <tr>
+                  <th rowSpan={2}>Critical Process Parameters</th>
+                  <th rowSpan={2}>Codes</th>
+                  <th rowSpan={2}>Acceptance criteria</th>
+                  <th colSpan={2}>Results</th>
+                  <th rowSpan={2}>Complies / Does not complies</th>
+                </tr>
+                <tr>
+                  <th>Minimum</th>
+                  <th>Maximum</th>
+                </tr>
+              </thead>
+              <tbody>
+                {unitOperation6.map((item, index) => {
+                  return (
+                    <tr key={index}>
+                      <td>
+                        <input />
+                      </td>
+                      <td>
+                        <input />
+                      </td>
+                      <td>
+                        <input />
+                      </td>
+                      <td>
+                        <input />
+                      </td>
+                      <td>
+                        <input />
+                      </td>
+                      <td>
+                        <input />
+                      </td>
+                    </tr>
+                  );
+                })}
+              </tbody>
+            </table>
+
+            <h3 className="gridName pt-4">Unit Operation 7</h3>
+            <div className="AddRows d-flex">
+              <MdNoteAdd onClick={addUnitOperation7Row} />
+              <div className="addrowinstruction"></div>
+            </div>
+            <table>
+              <thead>
+                <tr>
+                  <th rowSpan={2}>Critical Process Parameters</th>
+                  <th rowSpan={2}>Codes</th>
+                  <th rowSpan={2}>Acceptance criteria</th>
+                  <th colSpan={2}>Results</th>
+                  <th rowSpan={2}>Complies / Does not complies</th>
+                </tr>
+                <tr>
+                  <th>Minimum</th>
+                  <th>Maximum</th>
+                </tr>
+              </thead>
+              <tbody>
+                {unitOperation7.map((item, index) => {
+                  return (
+                    <tr key={index}>
+                      <td>
+                        <input />
+                      </td>
+                      <td>
+                        <input />
+                      </td>
+                      <td>
+                        <input />
+                      </td>
+                      <td>
+                        <input />
+                      </td>
+                      <td>
+                        <input />
+                      </td>
+                      <td>
+                        <input />
+                      </td>
+                    </tr>
+                  );
+                })}
+              </tbody>
+            </table>
+
+            <h3 className="gridName pt-4">Unit Operation 8</h3>
+            <div className="AddRows d-flex">
+              <MdNoteAdd onClick={addUnitOperation8Row} />
+              <div className="addrowinstruction"></div>
+            </div>
+            <table>
+              <thead>
+                <tr>
+                  <th rowSpan={2}>Critical Process Parameters</th>
+                  <th rowSpan={2}>Codes</th>
+                  <th rowSpan={2}>Acceptance criteria</th>
+                  <th colSpan={2}>Results</th>
+                  <th rowSpan={2}>Complies / Does not complies</th>
+                </tr>
+                <tr>
+                  <th>Minimum</th>
+                  <th>Maximum</th>
+                </tr>
+              </thead>
+              <tbody>
+                {unitOperation8.map((item, index) => {
+                  return (
+                    <tr key={index}>
+                      <td>
+                        <input />
+                      </td>
+                      <td>
+                        <input />
+                      </td>
+                      <td>
+                        <input />
+                      </td>
+                      <td>
+                        <input />
+                      </td>
+                      <td>
+                        <input />
+                      </td>
+                      <td>
+                        <input />
+                      </td>
+                    </tr>
+                  );
+                })}
+              </tbody>
+            </table>
+
+            <h3 className="gridName pt-4">Unit Operation 9</h3>
+            <div className="AddRows d-flex">
+              <MdNoteAdd onClick={addUnitOperation9Row} />
+              <div className="addrowinstruction"></div>
+            </div>
+            <table>
+              <thead>
+                <tr>
+                  <th rowSpan={2}>Critical Process Parameters</th>
+                  <th rowSpan={2}>Codes</th>
+                  <th rowSpan={2}>Acceptance criteria</th>
+                  <th colSpan={2}>Results</th>
+                  <th rowSpan={2}>Complies / Does not complies</th>
+                </tr>
+                <tr>
+                  <th>Minimum</th>
+                  <th>Maximum</th>
+                </tr>
+              </thead>
+              <tbody>
+                {unitOperation9.map((item, index) => {
+                  return (
+                    <tr key={index}>
+                      <td>
+                        <input />
+                      </td>
+                      <td>
+                        <input />
+                      </td>
+                      <td>
+                        <input />
+                      </td>
+                      <td>
+                        <input />
+                      </td>
+                      <td>
+                        <input />
+                      </td>
+                      <td>
+                        <input />
+                      </td>
+                    </tr>
+                  );
+                })}
+              </tbody>
+            </table>
+
+            <h3 className="gridName pt-4">Unit Operation 10</h3>
+            <div className="AddRows d-flex">
+              <MdNoteAdd onClick={addUnitOperation10Row} />
+              <div className="addrowinstruction"></div>
+            </div>
+            <table>
+              <thead>
+                <tr>
+                  <th rowSpan={2}>Critical Process Parameters</th>
+                  <th rowSpan={2}>Codes</th>
+                  <th rowSpan={2}>Acceptance criteria</th>
+                  <th colSpan={2}>Results</th>
+                  <th rowSpan={2}>Complies / Does not complies</th>
+                </tr>
+                <tr>
+                  <th>Minimum</th>
+                  <th>Maximum</th>
+                </tr>
+              </thead>
+              <tbody>
+                {unitOperation10.map((item, index) => {
+                  return (
+                    <tr key={index}>
+                      <td>
+                        <input />
+                      </td>
+                      <td>
+                        <input />
+                      </td>
+                      <td>
+                        <input />
+                      </td>
+                      <td>
+                        <input />
+                      </td>
+                      <td>
+                        <input />
+                      </td>
+                      <td>
+                        <input />
+                      </td>
+                    </tr>
+                  );
+                })}
+              </tbody>
+            </table>
+
+            <div className="sub-head">
+              Critical Process Parameters Review Summary
+            </div>
             <div className="group-input">
               <input placeholder="please insert flex" />
             </div>
@@ -1313,7 +1852,10 @@ export default function APQR() {
 
         {tab === "LR" ? (
           <div className="p-4">
-            <div className="sub-head"> Review of Drug Substance Test Results</div>
+            <div className="sub-head">
+              {" "}
+              Review of Drug Substance Test Results
+            </div>
             <h1 className="gridName">Drug Substance 1 Test Result</h1>
 
             <div>
@@ -1362,7 +1904,9 @@ export default function APQR() {
               </table>
             </div>
 
-            <div className="sub-head">Review of Raw Material Excipient Test Results</div>
+            <div className="sub-head">
+              Review of Raw Material Excipient Test Results
+            </div>
 
             <div>
               <div className="AddRows d-flex">
@@ -1414,7 +1958,9 @@ export default function APQR() {
               </table>
             </div>
 
-            <div className="sub-head">Review of Packing Material Test Results</div>
+            <div className="sub-head">
+              Review of Packing Material Test Results
+            </div>
             <div>
               <div className="AddRows d-flex">
                 <MdNoteAdd onClick={addreviewOPMTRRow} />
@@ -1464,7 +2010,9 @@ export default function APQR() {
                 </tbody>
               </table>
             </div>
-            <div className="sub-head">Review of Drug Product – In process Test Results</div>
+            <div className="sub-head">
+              Review of Drug Product – In process Test Results
+            </div>
             <h4 className="gridName">Dilution Buffer</h4>
             <div>
               <div className="AddRows d-flex">
@@ -1515,7 +2063,9 @@ export default function APQR() {
                 </tbody>
               </table>
             </div>
-            <div className="sub-head">Review of Drug Product –Finished Product Test Results</div>
+            <div className="sub-head">
+              Review of Drug Product –Finished Product Test Results
+            </div>
             <div>
               <div className="AddRows d-flex">
                 <MdNoteAdd onClick={addReviewODPFPTRRow} />
@@ -1641,7 +2191,10 @@ export default function APQR() {
               <h4 className="gridName">Summary</h4>
               <TinyEditor />
 
-              <div className="sub-head"> Review of Visual Inspection – Reserve Samples</div>
+              <div className="sub-head">
+                {" "}
+                Review of Visual Inspection – Reserve Samples
+              </div>
               <div>
                 <div className="AddRows d-flex">
                   <MdNoteAdd onClick={addreviewOVIRSRow} />
@@ -1692,12 +2245,17 @@ export default function APQR() {
               </div>
               <h4 className="gridName mt-4">Summary</h4>
               <TinyEditor />
-              <h4 className="gridName pt-4">Review of Analytical Method Validations</h4>
-              <TinyEditor />
-              <h4 className="gridName pt-4">Review of Contract Testing Laboratories</h4>
+              <h4 className="gridName pt-4">
+                Review of Analytical Method Validations
+              </h4>
               <TinyEditor />
               <h4 className="gridName pt-4">
-                Review of Environmental Monitoring Trend and water trends Reports
+                Review of Contract Testing Laboratories
+              </h4>
+              <TinyEditor />
+              <h4 className="gridName pt-4">
+                Review of Environmental Monitoring Trend and water trends
+                Reports
               </h4>
               <TinyEditor />
               <h4 className="gridName pt-4">Laboratory Review Summary</h4>
