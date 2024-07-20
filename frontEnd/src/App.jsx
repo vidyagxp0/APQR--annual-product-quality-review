@@ -8,6 +8,7 @@ import Notification from "./pages/Notification";
 import AdminLogin from "./pages/Admin/AdminLogin";
 import AdminDashboard from "./pages/Admin/AdminDashboard";
 import TinyEditor from "./Component/TinyEditor";
+import ExcelExportImport from "./pages/temp/ImportExportExcel";
 
 function App() {
   return (
@@ -18,10 +19,10 @@ function App() {
         <Route path="/analytics" element={<Analytics />} />
         <Route path="/notification" element={<Notification />} />
         <Route path="/new-pqr" element={<APQR />} />
-        <Route path="/admin-login" element={<AdminLogin/>}/>
-        <Route path="/admin-dashboard" element={<AdminDashboard/>}/>
-        <Route path="/test" element={<TinyEditor/>}/>
-
+        <Route path="/admin-login" element={<AdminLogin />} />
+        <Route path="/admin-dashboard" element={<AdminDashboard />} />
+        <Route path="/test" element={<TinyEditor />} />
+        <Route path="/test2" element={<ExcelExportImport />} />
       </Routes>
     </BrowserRouter>
   );

@@ -1734,7 +1734,6 @@ export default function APQR() {
               </div>
               <div className="group-input">
                 <label>Process Validation Batches Details</label>
-                {/* <input placeholder="please insert flex" /> */}
                 <TinyEditor />
               </div>
 
@@ -2488,7 +2487,8 @@ export default function APQR() {
               Critical Process Parameters Review Summary
             </div>
             <div className="group-input">
-              <input placeholder="please insert flex" />
+              {/* <input placeholder="please insert flex" /> */}
+              <TinyEditor />
             </div>
           </div>
         ) : null}

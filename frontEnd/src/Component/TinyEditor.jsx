@@ -12,8 +12,8 @@ export default function TinyEditor() {
   const [editorContent, setEditorContent] = useState("");
   return (
     <>
-      <div className="flex justify-evenly gap-5 items-center"></div>
-      <div className="my-4">
+      <div className="flex justify-evenly gap-5 items-center shadow-xl"></div>
+      <div className="my-4 shadow-sm shadow-slate-900">
         <Editor
           apiKey="5vbh0y1nq5y6uokc071mjvy9n4fnss5ctasrjft7x7ajm9fl"
           onInit={(_evt, editor) => (editorRef.current = editor)}
