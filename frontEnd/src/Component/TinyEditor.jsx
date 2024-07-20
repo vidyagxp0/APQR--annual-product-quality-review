@@ -20,7 +20,7 @@ export default function TinyEditor() {
           value={editorContent}
           onEditorChange={(newValue) => setEditorContent(newValue)}
           init={{
-            height: 500,
+            height: 300,
             menubar: false,
             plugins: [
               "advlist",

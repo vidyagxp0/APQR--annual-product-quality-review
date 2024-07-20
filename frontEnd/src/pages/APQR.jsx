@@ -174,6 +174,15 @@ export default function APQR() {
   const [sanitizationASDOU, setSanitizationASDOU] = useState([]);
   const [compressedGas, setCompressedGas] = useState([]);
   const [currentRPQRN, setCurrentRPQRN] = useState([]);
+  const [unitOperation3,setUnitOperation3]=useState([])
+  const [unitOperation4,setUnitOperation4]=useState([])
+  const [unitOperation5,setUnitOperation5]=useState([])
+  const [unitOperation6,setUnitOperation6]=useState([])
+  const [unitOperation7,setUnitOperation7]=useState([])
+  const [unitOperation8,setUnitOperation8]=useState([])
+  const [unitOperation9,setUnitOperation9]=useState([])
+  const [unitOperation10,setUnitOperation10]=useState([])
+
   const [pQRData, setPQRData] = useState({
     pqrNO: "",
     productName: "",
@@ -654,6 +663,95 @@ export default function APQR() {
     };
     setCurrentRPQRN([...currentRPQRN, newRow]);
   };
+
+  const addUnitOperation3Row=()=>{
+    const newRow={
+      criticalProcessParameter: "",
+      codes: "",
+      acceptanceCriteria: "",
+      results: { minimum: "", maximum: "" },
+      compliesNotComplies: "",
+    }
+    setUnitOperation3([...unitOperation3,newRow])
+  }
+
+  
+  const addUnitOperation4Row=()=>{
+    const newRow={
+      criticalProcessParameter: "",
+      codes: "",
+      acceptanceCriteria: "",
+      results: { minimum: "", maximum: "" },
+      compliesNotComplies: "",
+    }
+    setUnitOperation4([...unitOperation4,newRow])
+  }
+  
+  const addUnitOperation5Row=()=>{
+    const newRow={
+      criticalProcessParameter: "",
+      codes: "",
+      acceptanceCriteria: "",
+      results: { minimum: "", maximum: "" },
+      compliesNotComplies: "",
+    }
+    setUnitOperation5([...unitOperation5,newRow])
+  }
+  
+  const addUnitOperation6Row=()=>{
+    const newRow={
+      criticalProcessParameter: "",
+      codes: "",
+      acceptanceCriteria: "",
+      results: { minimum: "", maximum: "" },
+      compliesNotComplies: "",
+    }
+    setUnitOperation6([...unitOperation6,newRow])
+  }
+  
+  const addUnitOperation7Row=()=>{
+    const newRow={
+      criticalProcessParameter: "",
+      codes: "",
+      acceptanceCriteria: "",
+      results: { minimum: "", maximum: "" },
+      compliesNotComplies: "",
+    }
+    setUnitOperation7([...unitOperation7,newRow])
+  }
+
+  const addUnitOperation8Row=()=>{
+    const newRow={
+      criticalProcessParameter: "",
+      codes: "",
+      acceptanceCriteria: "",
+      results: { minimum: "", maximum: "" },
+      compliesNotComplies: "",
+    }
+    setUnitOperation8([...unitOperation8,newRow])
+  }
+  
+  const addUnitOperation9Row=()=>{
+    const newRow={
+      criticalProcessParameter: "",
+      codes: "",
+      acceptanceCriteria: "",
+      results: { minimum: "", maximum: "" },
+      compliesNotComplies: "",
+    }
+    setUnitOperation9([...unitOperation9,newRow])
+  }
+  
+  const addUnitOperation10Row=()=>{
+    const newRow={
+      criticalProcessParameter: "",
+      codes: "",
+      acceptanceCriteria: "",
+      results: { minimum: "", maximum: "" },
+      compliesNotComplies: "",
+    }
+    setUnitOperation10([...unitOperation10,newRow])
+  }
   return (
     <>
       <Header />
@@ -1007,9 +1105,6 @@ export default function APQR() {
                       return (
                         <tr key={index}>
                           <td>{index + 1}</td>
-                          <td>
-                            <input />
-                          </td>
                           <td>
                             <input />
                           </td>
@@ -1930,7 +2025,7 @@ export default function APQR() {
                 </tbody>
               </table>
             </div>
-            <h3 className="gridName">Unit Operation 2</h3>
+            <h3 className="gridName pt-4">Unit Operation 2</h3>
             <h4 className="gridName">Manufacturing summary details</h4>
             {/* <div className="AddRows d-flex">
               <MdNoteAdd onClick={addmanufacturingSDRow} />
@@ -1985,6 +2080,384 @@ export default function APQR() {
               </thead>
               <tbody>
                 {manufacturingSD.map((item, index) => {
+                  return (
+                    <tr key={index}>
+                      <td>
+                        <input />
+                      </td>
+                      <td>
+                        <input />
+                      </td>
+                      <td>
+                        <input />
+                      </td>
+                      <td>
+                        <input />
+                      </td>
+                      <td>
+                        <input />
+                      </td>
+                      <td>
+                        <input />
+                      </td>
+                    </tr>
+                  );
+                })}
+              </tbody>
+            </table>
+
+
+            <h3 className="gridName pt-4">Unit Operation 3</h3>
+            <div className="AddRows d-flex">
+              <MdNoteAdd onClick={addUnitOperation3Row} />
+              <div className="addrowinstruction"></div>
+            </div>
+            <table>
+              <thead>
+                <tr>
+                  <th rowSpan={2}>Critical Process Parameters</th>
+                  <th rowSpan={2}>Codes</th>
+                  <th rowSpan={2}>Acceptance criteria</th>
+                  <th colSpan={2}>Results</th>
+                  <th rowSpan={2}>Complies / Does not complies</th>
+                </tr>
+                <tr>
+                  <th>Minimum</th>
+                  <th>Maximum</th>
+                </tr>
+              </thead>
+              <tbody>
+                {unitOperation3.map((item, index) => {
+                  return (
+                    <tr key={index}>
+                      <td>
+                        <input />
+                      </td>
+                      <td>
+                        <input />
+                      </td>
+                      <td>
+                        <input />
+                      </td>
+                      <td>
+                        <input />
+                      </td>
+                      <td>
+                        <input />
+                      </td>
+                      <td>
+                        <input />
+                      </td>
+                    </tr>
+                  );
+                })}
+              </tbody>
+            </table>
+
+
+            <h3 className="gridName pt-4">Unit Operation 4</h3>
+            <div className="AddRows d-flex">
+              <MdNoteAdd onClick={addUnitOperation4Row} />
+              <div className="addrowinstruction"></div>
+            </div>
+            <table>
+              <thead>
+                <tr>
+                  <th rowSpan={2}>Critical Process Parameters</th>
+                  <th rowSpan={2}>Codes</th>
+                  <th rowSpan={2}>Acceptance criteria</th>
+                  <th colSpan={2}>Results</th>
+                  <th rowSpan={2}>Complies / Does not complies</th>
+                </tr>
+                <tr>
+                  <th>Minimum</th>
+                  <th>Maximum</th>
+                </tr>
+              </thead>
+              <tbody>
+                {unitOperation4.map((item, index) => {
+                  return (
+                    <tr key={index}>
+                      <td>
+                        <input />
+                      </td>
+                      <td>
+                        <input />
+                      </td>
+                      <td>
+                        <input />
+                      </td>
+                      <td>
+                        <input />
+                      </td>
+                      <td>
+                        <input />
+                      </td>
+                      <td>
+                        <input />
+                      </td>
+                    </tr>
+                  );
+                })}
+              </tbody>
+            </table>
+
+            <h3 className="gridName pt-4">Unit Operation 5</h3>
+            <div className="AddRows d-flex">
+              <MdNoteAdd onClick={addUnitOperation5Row} />
+              <div className="addrowinstruction"></div>
+            </div>
+            <table>
+              <thead>
+                <tr>
+                  <th rowSpan={2}>Critical Process Parameters</th>
+                  <th rowSpan={2}>Codes</th>
+                  <th rowSpan={2}>Acceptance criteria</th>
+                  <th colSpan={2}>Results</th>
+                  <th rowSpan={2}>Complies / Does not complies</th>
+                </tr>
+                <tr>
+                  <th>Minimum</th>
+                  <th>Maximum</th>
+                </tr>
+              </thead>
+              <tbody>
+                {unitOperation5.map((item, index) => {
+                  return (
+                    <tr key={index}>
+                      <td>
+                        <input />
+                      </td>
+                      <td>
+                        <input />
+                      </td>
+                      <td>
+                        <input />
+                      </td>
+                      <td>
+                        <input />
+                      </td>
+                      <td>
+                        <input />
+                      </td>
+                      <td>
+                        <input />
+                      </td>
+                    </tr>
+                  );
+                })}
+              </tbody>
+            </table>
+
+            <h3 className="gridName pt-4">Unit Operation 6</h3>
+            <div className="AddRows d-flex">
+              <MdNoteAdd onClick={addUnitOperation6Row} />
+              <div className="addrowinstruction"></div>
+            </div>
+            <table>
+              <thead>
+                <tr>
+                  <th rowSpan={2}>Critical Process Parameters</th>
+                  <th rowSpan={2}>Codes</th>
+                  <th rowSpan={2}>Acceptance criteria</th>
+                  <th colSpan={2}>Results</th>
+                  <th rowSpan={2}>Complies / Does not complies</th>
+                </tr>
+                <tr>
+                  <th>Minimum</th>
+                  <th>Maximum</th>
+                </tr>
+              </thead>
+              <tbody>
+                {unitOperation6.map((item, index) => {
+                  return (
+                    <tr key={index}>
+                      <td>
+                        <input />
+                      </td>
+                      <td>
+                        <input />
+                      </td>
+                      <td>
+                        <input />
+                      </td>
+                      <td>
+                        <input />
+                      </td>
+                      <td>
+                        <input />
+                      </td>
+                      <td>
+                        <input />
+                      </td>
+                    </tr>
+                  );
+                })}
+              </tbody>
+            </table>
+
+            <h3 className="gridName pt-4">Unit Operation 7</h3>
+            <div className="AddRows d-flex">
+              <MdNoteAdd onClick={addUnitOperation7Row} />
+              <div className="addrowinstruction"></div>
+            </div>
+            <table>
+              <thead>
+                <tr>
+                  <th rowSpan={2}>Critical Process Parameters</th>
+                  <th rowSpan={2}>Codes</th>
+                  <th rowSpan={2}>Acceptance criteria</th>
+                  <th colSpan={2}>Results</th>
+                  <th rowSpan={2}>Complies / Does not complies</th>
+                </tr>
+                <tr>
+                  <th>Minimum</th>
+                  <th>Maximum</th>
+                </tr>
+              </thead>
+              <tbody>
+                {unitOperation7.map((item, index) => {
+                  return (
+                    <tr key={index}>
+                      <td>
+                        <input />
+                      </td>
+                      <td>
+                        <input />
+                      </td>
+                      <td>
+                        <input />
+                      </td>
+                      <td>
+                        <input />
+                      </td>
+                      <td>
+                        <input />
+                      </td>
+                      <td>
+                        <input />
+                      </td>
+                    </tr>
+                  );
+                })}
+              </tbody>
+            </table>
+
+            <h3 className="gridName pt-4">Unit Operation 8</h3>
+            <div className="AddRows d-flex">
+              <MdNoteAdd onClick={addUnitOperation8Row} />
+              <div className="addrowinstruction"></div>
+            </div>
+            <table>
+              <thead>
+                <tr>
+                  <th rowSpan={2}>Critical Process Parameters</th>
+                  <th rowSpan={2}>Codes</th>
+                  <th rowSpan={2}>Acceptance criteria</th>
+                  <th colSpan={2}>Results</th>
+                  <th rowSpan={2}>Complies / Does not complies</th>
+                </tr>
+                <tr>
+                  <th>Minimum</th>
+                  <th>Maximum</th>
+                </tr>
+              </thead>
+              <tbody>
+                {unitOperation8.map((item, index) => {
+                  return (
+                    <tr key={index}>
+                      <td>
+                        <input />
+                      </td>
+                      <td>
+                        <input />
+                      </td>
+                      <td>
+                        <input />
+                      </td>
+                      <td>
+                        <input />
+                      </td>
+                      <td>
+                        <input />
+                      </td>
+                      <td>
+                        <input />
+                      </td>
+                    </tr>
+                  );
+                })}
+              </tbody>
+            </table>
+
+            <h3 className="gridName pt-4">Unit Operation 9</h3>
+            <div className="AddRows d-flex">
+              <MdNoteAdd onClick={addUnitOperation9Row} />
+              <div className="addrowinstruction"></div>
+            </div>
+            <table>
+              <thead>
+                <tr>
+                  <th rowSpan={2}>Critical Process Parameters</th>
+                  <th rowSpan={2}>Codes</th>
+                  <th rowSpan={2}>Acceptance criteria</th>
+                  <th colSpan={2}>Results</th>
+                  <th rowSpan={2}>Complies / Does not complies</th>
+                </tr>
+                <tr>
+                  <th>Minimum</th>
+                  <th>Maximum</th>
+                </tr>
+              </thead>
+              <tbody>
+                {unitOperation9.map((item, index) => {
+                  return (
+                    <tr key={index}>
+                      <td>
+                        <input />
+                      </td>
+                      <td>
+                        <input />
+                      </td>
+                      <td>
+                        <input />
+                      </td>
+                      <td>
+                        <input />
+                      </td>
+                      <td>
+                        <input />
+                      </td>
+                      <td>
+                        <input />
+                      </td>
+                    </tr>
+                  );
+                })}
+              </tbody>
+            </table>
+
+            <h3 className="gridName pt-4">Unit Operation 10</h3>
+            <div className="AddRows d-flex">
+              <MdNoteAdd onClick={addUnitOperation10Row} />
+              <div className="addrowinstruction"></div>
+            </div>
+            <table>
+              <thead>
+                <tr>
+                  <th rowSpan={2}>Critical Process Parameters</th>
+                  <th rowSpan={2}>Codes</th>
+                  <th rowSpan={2}>Acceptance criteria</th>
+                  <th colSpan={2}>Results</th>
+                  <th rowSpan={2}>Complies / Does not complies</th>
+                </tr>
+                <tr>
+                  <th>Minimum</th>
+                  <th>Maximum</th>
+                </tr>
+              </thead>
+              <tbody>
+                {unitOperation10.map((item, index) => {
                   return (
                     <tr key={index}>
                       <td>
