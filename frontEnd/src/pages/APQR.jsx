@@ -27,7 +27,7 @@ export default function APQR() {
   const [summaryOOSS, setSummaryOOSS] = useState([]);
   const [stabilitySR, setStabilitySR] = useState([]);
   const [reviewOVIRS, setReviewOVIRS] = useState([]);
-  const [hVACQStatus,setHVACQStatus]=useState([])
+  const [hVACQStatus, setHVACQStatus] = useState([]);
   const [pQRData, setPQRData] = useState({
     pqrNO: "",
     productName: "",
@@ -273,14 +273,14 @@ export default function APQR() {
     setReviewOVIRS([...reviewOVIRS, newRow]);
   };
 
-  const addHVACQStatusRow=()=>{
-    const newRow={
-      testDescription:"",
-      frequency:"",
-      status:""
-    }
-    setHVACQStatus([...hVACQStatus,newRow])
-  }
+  const addHVACQStatusRow = () => {
+    const newRow = {
+      testDescription: "",
+      frequency: "",
+      status: "",
+    };
+    setHVACQStatus([...hVACQStatus, newRow]);
+  };
   return (
     <>
       <Header />
@@ -501,6 +501,9 @@ export default function APQR() {
                 </tbody>
               </table>
             </div>
+
+            <h4 className="gridName">Summary of Manufacturing Site Address</h4>
+            <TinyEditor />
           </div>
         ) : null}
 
@@ -603,6 +606,12 @@ export default function APQR() {
                     })}
                   </tbody>
                 </table>
+
+                <h5 className="gridName pt-4">
+                  Summary of Review of Rejected Raw Materials and Packaging
+                  Materials
+                </h5>
+                <TinyEditor />
               </div>
               <div className="sub-head">
                 Review of Expired Raw Materials and Packaging Materials
@@ -687,6 +696,11 @@ export default function APQR() {
                     })}
                   </tbody>
                 </table>
+                <h4 className="gridName pt-4">
+                  Summary of Review of Expired Raw Materials and Packaging
+                  Materials
+                </h4>
+                <TinyEditor />
               </div>
 
               <div className="sub-head">Review of Approved Supplier List</div>
@@ -729,6 +743,10 @@ export default function APQR() {
                     })}
                   </tbody>
                 </table>
+                <h4 className="gridName pt-4">
+                  Summary of Review of Approved Supplier List
+                </h4>
+                <TinyEditor />
               </div>
               <div className="sub-head">
                 Vendor Qualification Details of Raw Material Excipients
@@ -777,6 +795,11 @@ export default function APQR() {
                     })}
                   </tbody>
                 </table>
+                <h4 className="gridName pt-4">
+                  Summary of Vendor Qualification Details of Raw Material
+                  Excipients
+                </h4>
+                <TinyEditor />
               </div>
               <div className="sub-head">
                 Vendor Qualification Details of Primary Packing Materials
@@ -816,6 +839,14 @@ export default function APQR() {
                     })}
                   </tbody>
                 </table>
+                <h4 className="gridName pt-4">
+                  Summary of Vendor Qualification Details of Primary Packing
+                  Materials
+                </h4>
+                <TinyEditor />
+              </div>
+              <div className="sub-head">
+                Vendor Qualification Details of Process Gases
               </div>
               <div className="sub-head">
                 Vendor Qualification Details of Process Gases
@@ -861,6 +892,10 @@ export default function APQR() {
                     })}
                   </tbody>
                 </table>
+                <h4 className="gridName pt-4">
+                  Summary of Vendor Qualification Details of Process Gases
+                </h4>
+                <TinyEditor />
               </div>
             </div>
           </>
@@ -895,22 +930,24 @@ export default function APQR() {
               <div className="group-input">
                 <label>Total No. of Process Validation Batches</label>
                 <input />
-              </div>{" "}
-              <div className="group-input">
-                <label>Process Validation Batches Details</label>
-                <input placeholder="please insert flex" />
               </div>
               <div className="group-input">
                 <label>Total No. of Reprocessed Batches</label>
                 <input />
               </div>
               <div className="group-input">
+                <label>Process Validation Batches Details</label>
+                {/* <input placeholder="please insert flex" /> */}
+                <TinyEditor />
+              </div>
+
+              <div className="group-input">
                 <label>Reprocessing Details</label>
-                <input placeholder="please insert flex" />
+                <TinyEditor />
               </div>
               <div className="group-input">
                 <label>Microbial Excursion Details</label>
-                <input placeholder="please insert flex" />
+                <TinyEditor />
               </div>
             </div>
             <div className="gridName">Code to code transfer details</div>
@@ -963,24 +1000,30 @@ export default function APQR() {
                   })}
                 </tbody>
               </table>
+              <h4 className="gridName pt-4">
+                Summary of Code to Code Transfer Details
+              </h4>
+              <TinyEditor />
             </div>
             <div className="sub-head">
               {" "}
               Review of Manufacturing Process, Packing Process and relevant
               Validation Status
             </div>
-            <input placeholder="please insert flex" />
+            <TinyEditor />
             <div className="sub-head">
               Review of Reprocessing/Repacking/Reworking along with CAPA and
               Effectiveness Check Verification (if any)
             </div>
-            <div className="group-input">
-              <label>Batch reprocessing/reworking process Details</label>
-              <input placeholder="please insert flex" />
-            </div>
-            <div className="group-input">
-              <label>Batch reprocessing/reworking process Details</label>
-              <input placeholder="please insert flex" />
+            <div className="dual-group-input">
+              <div className="group-input">
+                <label>Batch reprocessing/reworking process Details</label>
+                <TinyEditor />
+              </div>
+              <div className="group-input">
+                <label>Batch Repacking Details </label>
+                <TinyEditor />
+              </div>
             </div>
 
             <div className="py-4">
@@ -1556,45 +1599,54 @@ export default function APQR() {
             </div>
           </div>
         ) : null}
-        {tab === "EAMR" ? <div>
-        <h4 className="gridName">Preventive Maintenance Details</h4>
-        <TinyEditor/>
-        <h4 className="gridName pt-4"> Qualification details</h4>
-        <TinyEditor/>
-        <h4 className="gridName pt-4"> Calibration Details</h4>
-        <TinyEditor/>
+        {tab === "EAMR" ? (
+          <div>
+            <h4 className="gridName">Preventive Maintenance Details</h4>
+            <TinyEditor />
+            <h4 className="gridName pt-4"> Qualification details</h4>
+            <TinyEditor />
+            <h4 className="gridName pt-4"> Calibration Details</h4>
+            <TinyEditor />
 
-        <div className="sub-head">HVAC Qualification Status</div>
-        <div>
-          <div className="AddRows">
-          <MdNoteAdd onClick={addHVACQStatusRow} />
-          <div className="addrowinstruction"></div>
+            <div className="sub-head">HVAC Qualification Status</div>
+            <div>
+              <div className="AddRows">
+                <MdNoteAdd onClick={addHVACQStatusRow} />
+                <div className="addrowinstruction"></div>
+              </div>
+              <table>
+                <thead>
+                  <tr>
+                    <th>Sl. No.</th>
+                    <th>Test Description</th>
+                    <th>Frequency</th>
+                    <th>Status</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {hVACQStatus.map((item, index) => {
+                    return (
+                      <tr key={index}>
+                        <td>
+                          <input />
+                        </td>
+                        <td>
+                          <input />
+                        </td>
+                        <td>
+                          <input />
+                        </td>
+                      </tr>
+                    );
+                  })}
+                  <tr>
+                    <td></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
           </div>
-          <table>
-            <thead>
-              <tr>
-                <th>Sl. No.</th>
-                <th>Test Description</th>
-                <th>Frequency</th>
-                <th>Status</th>
-              </tr>
-            </thead>
-            <tbody>
-              {hVACQStatus.map((item,index)=>{
-                return <tr key={index}>
-<td><input/></td>
-<td><input/></td>
-<td><input/></td>
-
-                </tr>
-              })}
-              <tr>
-                <td></td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-        </div> : null}
+        ) : null}
         {tab === "QSR" ? <></> : null}
         {tab === "RR" ? <></> : null}
         {tab === "R" ? (
