@@ -28,6 +28,9 @@ export default function APQR() {
   const [stabilitySR, setStabilitySR] = useState([]);
   const [reviewOVIRS, setReviewOVIRS] = useState([]);
   const [hVACQStatus, setHVACQStatus] = useState([]);
+  const [dossierRR, setDossierRR] = useState([]);
+  const [dossierRRNma, setDossierRRNma] = useState([]);
+
   const [pQRData, setPQRData] = useState({
     pqrNO: "",
     productName: "",
@@ -281,6 +284,29 @@ export default function APQR() {
     };
     setHVACQStatus([...hVACQStatus, newRow]);
   };
+
+  const addDossierRow = () => {
+    const newRow = {
+      agency: "",
+      notificationNo: "",
+      notificationtype: "",
+      description: "",
+    };
+    setDossierRR([...dossierRR, newRow]);
+  };
+
+  const addDossierRowNma = () => {
+    const newRow = {
+      countryName: "",
+      descriptionOfPacking: "",
+      dateOfApplication: "",
+      ststusOfApplication: "",
+      dateOfAuthorization: "",
+      remarks: "",
+    };
+    setDossierRRNma([...dossierRRNma, newRow]);
+  };
+
   return (
     <>
       <Header />
@@ -506,7 +532,6 @@ export default function APQR() {
             <TinyEditor />
           </div>
         ) : null}
-
         {tab === "WR" ? (
           <>
             <div className="p-4">
@@ -1185,7 +1210,6 @@ export default function APQR() {
             </div>
           </div>
         ) : null}
-
         {tab === "LR" ? (
           <div className="p-4">
             <div className="sub-head">
@@ -1648,12 +1672,105 @@ export default function APQR() {
           </div>
         ) : null}
         {tab === "QSR" ? <></> : null}
-        {tab === "RR" ? <></> : null}
+        {tab === "RR" ? (
+          <>
+            <div className="gridName">Dossier variation details</div>
+            <div className="py-4">
+              <div className="AddRows d-flex">
+                <MdNoteAdd onClick={addDossierRow} />
+                <div className="addrowinstruction"></div>
+              </div>
+              <table>
+                <thead>
+                  <tr>
+                    <th>SL. No.</th>
+                    <th>Agency</th>
+                    <th>Notification No</th>
+                    <th>Notification Type</th>
+                    <th>Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {dossierRR.map((item, index) => {
+                    return (
+                      <tr key={index}>
+                        <td>{index + 1}</td>
+                        <td>
+                          <input />
+                        </td>
+                        <td>
+                          <input />
+                        </td>
+                        <td>
+                          <input />
+                        </td>
+                        <td>
+                          <input />
+                        </td>
+                      </tr>
+                    );
+                  })}
+                </tbody>
+              </table>
+              <div className="gridName mt-2">New marketing authorisation</div>
+              <div className="py-4">
+                <div className="AddRows d-flex">
+                  <MdNoteAdd onClick={addDossierRowNma} />
+                  <div className="addrowinstruction"></div>
+                </div>
+                <table>
+                  <thead>
+                    <tr>
+                      <th>SL. No.</th>
+                      <th>Country Name</th>
+                      <th>Description Of Packing</th>
+                      <th>Date of Application</th>
+                      <th>Status of Application</th>
+                      <th>Date of Authorization</th>
+                      <th>Remarks</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {dossierRRNma.map((item, index) => {
+                      return (
+                        <tr key={index}>
+                          <td>{index + 1}</td>
+                          <td>
+                            <input />
+                          </td>
+                          <td>
+                            <input />
+                          </td>
+                          <td>
+                            <input />
+                          </td>
+                          <td>
+                            <input />
+                          </td>
+                          <td>
+                            <input />
+                          </td>{" "}
+                          <td>
+                            <input />
+                          </td>
+                        </tr>
+                      );
+                    })}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </>
+        ) : null}
         {tab === "R" ? (
           <>
-            <div className="flex items-center justify-center text-[28px] text-yellow-500 font-semibold animate-ping">
+            {/* <div className="flex items-center justify-center text-[28px] text-yellow-500 font-semibold animate-ping">
               {" "}
               Work In Progress. .........
+            </div> */}
+            <div>
+              <h4 className="gridName">Recommendations Sunmmary</h4>
+              <TinyEditor />
             </div>
           </>
         ) : null}
@@ -1675,8 +1792,12 @@ export default function APQR() {
         ) : null}
         {tab === "DEAC" ? (
           <>
-            <div className="flex items-center justify-center text-[28px] text-red-500 font-semibold animate-spin">
-              Work In Progress. .........
+            {/* <div className="flex items-center justify-center text-[28px] text-red-500 font-semibold animate-spin">
+                Work In Progress. .........
+              </div> */}
+            <div>
+              <h4 className="gridName">Discussion Evaluation and Conclusion</h4>
+              <TinyEditor />
             </div>
           </>
         ) : null}
