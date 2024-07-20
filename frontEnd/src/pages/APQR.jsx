@@ -15,7 +15,15 @@ export default function APQR() {
   const [vendorQDOPPM, setVendorQDOPPM] = useState([]);
   const [vendorQDPOG, setVendorQDPOG] = useState([]);
   const [codeTCTD, setCodeTCTD] = useState([]);
-const [reviewORCEC,setReviewORCEC]=useState([])
+  const [reviewORCEC, setReviewORCEC] = useState([]);
+  const [manufacturingSD, setManufacturingSD] = useState([]);
+  const [bufferFSDPV, setBufferFSDPV] = useState([]);
+  const [reviewODSTR, setReviewOSTR] = useState([]);
+  const [reviewORMETR, setReviewORMETR] = useState([]);
+  const [reviewOPMTR, setReviewOPMTR] = useState([]);
+  const [reviewODP, setReviewODP] = useState([]);
+  const [reviewODPFPTR, setReviewODPFPTR] = useState([]);
+
   const [pQRData, setPQRData] = useState({
     pqrNO: "",
     productName: "",
@@ -139,16 +147,81 @@ const [reviewORCEC,setReviewORCEC]=useState([])
     setCodeTCTD([...codeTCTD, newRow]);
   };
 
-  const addreviewORCECRow=()=>{
+  const addreviewORCECRow = () => {
+    const newRow = {
+      packingBatchNumber: "",
+      manufacturingBatchNumber: "",
+      repackingIssuedNumber: "",
+      repackingFor: "",
+      qMS: "",
+      reasonForRepacking: "",
+    };
+    setReviewORCEC([...reviewORCEC, newRow]);
+  };
+
+  const addmanufacturingSDRow = () => {
+    const newRow = {
+      criticalProcessParameter: "",
+      codes: "",
+      acceptanceCriteria: "",
+      results: { minimum: "", maximum: "" },
+      compliesNotComplies: "",
+    };
+    setManufacturingSD([...manufacturingSD, newRow]);
+  };
+
+  const addBufferFSDPVRow = () => {
+    const newRow = {
+      criticalProcessParameter: "",
+      codes: "",
+      acceptanceCriteria: "",
+      results: { minimum: "", maximum: "" },
+      compliesNotComplies: "",
+    };
+    setBufferFSDPV([...bufferFSDPV, newRow]);
+  };
+
+  const addReviewODSTRRow=()=>{
     const newRow={
-packingBatchNumber:"",
-manufacturingBatchNumber:"",
-repackingIssuedNumber:"",
-repackingFor:"",
-qMS:"",
-reasonForRepacking:""
+
     }
-    setReviewORCEC([...reviewORCEC,newRow])
+    setReviewOSTR([...reviewODSTR,newRow])
+  }
+
+  const addReviewORMETRRow=()=>{
+    const newRow={
+
+    }
+    setReviewORMETR([...reviewORMETR,newRow]) 
+  }
+
+  const addreviewOPMTRRow=()=>{
+    const newRow={
+
+    }
+    setReviewOPMTR([...reviewOPMTR,newRow])
+  }
+
+  const addReviewODPRow=()=>{
+    const newRow={
+      testsParameter:"",
+      specificationLimit:"",
+      stage:"",
+      obtainedValue:{minimum:"",maximum:""},
+      compliesNotComplies:""
+
+    }
+    setReviewODP([...reviewODP,newRow]) 
+  }
+
+  const addReviewODPFPTRRow=()=>{
+    const newRow={
+      testsParameter:"",
+      specificationLimit:"",
+      obtainedValue:{minimum:"",maximum:""},
+      compliesNotComplies:""
+    }
+    setReviewODPFPTR([...reviewODPFPTR,newRow])
   }
   return (
     <>
@@ -850,9 +923,9 @@ reasonForRepacking:""
             </div>
 
             <div className="py-4">
-            <div className="AddRows d-flex">
-              <MdNoteAdd onClick={addreviewORCECRow} />
-              <div className="addrowinstruction"></div>
+              <div className="AddRows d-flex">
+                <MdNoteAdd onClick={addreviewORCECRow} />
+                <div className="addrowinstruction"></div>
               </div>
               <table>
                 <thead>
@@ -867,17 +940,30 @@ reasonForRepacking:""
                   </tr>
                 </thead>
                 <tbody>
-                  {reviewORCEC.map((item,index)=>{
-                    return <tr key={index}>
-                      <td>{index+1}</td>
-                      <td><input/></td>
-                      <td><input/></td>
-                      <td><input/></td>
-                      <td><input/></td>
-                      <td><input/></td>
-                      <td><input/></td>
-
-                    </tr>
+                  {reviewORCEC.map((item, index) => {
+                    return (
+                      <tr key={index}>
+                        <td>{index + 1}</td>
+                        <td>
+                          <input />
+                        </td>
+                        <td>
+                          <input />
+                        </td>
+                        <td>
+                          <input />
+                        </td>
+                        <td>
+                          <input />
+                        </td>
+                        <td>
+                          <input />
+                        </td>
+                        <td>
+                          <input />
+                        </td>
+                      </tr>
+                    );
                   })}
                 </tbody>
               </table>
@@ -893,9 +979,9 @@ reasonForRepacking:""
               Buffer formulation summary details provided below
             </h4>
             <div>
-            <div className="AddRows d-flex">
-              <MdNoteAdd onClick={addvendorQDORMERow} />
-              <div className="addrowinstruction"></div>
+              <div className="AddRows d-flex">
+                <MdNoteAdd onClick={addBufferFSDPVRow} />
+                <div className="addrowinstruction"></div>
               </div>
               <table>
                 <thead>
@@ -911,14 +997,40 @@ reasonForRepacking:""
                     <th>Maximum</th>
                   </tr>
                 </thead>
+                <tbody>
+                  {bufferFSDPV.map((item, index) => {
+                    return (
+                      <tr key={index}>
+                        <td>
+                          <input />
+                        </td>
+                        <td>
+                          <input />
+                        </td>
+                        <td>
+                          <input />
+                        </td>
+                        <td>
+                          <input />
+                        </td>
+                        <td>
+                          <input />
+                        </td>
+                        <td>
+                          <input />
+                        </td>
+                      </tr>
+                    );
+                  })}
+                </tbody>
               </table>
             </div>
             <h3 className="gridName">Unit Operation 2</h3>
             <h4 className="gridName">Manufacturing summary details</h4>
             <div className="AddRows d-flex">
-              <MdNoteAdd onClick={addvendorQDORMERow} />
+              <MdNoteAdd onClick={addmanufacturingSDRow} />
               <div className="addrowinstruction"></div>
-              </div>
+            </div>
             <table>
               <thead>
                 <tr>
@@ -933,6 +1045,32 @@ reasonForRepacking:""
                   <th>Maximum</th>
                 </tr>
               </thead>
+              <tbody>
+                {manufacturingSD.map((item, index) => {
+                  return (
+                    <tr key={index}>
+                      <td>
+                        <input />
+                      </td>
+                      <td>
+                        <input />
+                      </td>
+                      <td>
+                        <input />
+                      </td>
+                      <td>
+                        <input />
+                      </td>
+                      <td>
+                        <input />
+                      </td>
+                      <td>
+                        <input />
+                      </td>
+                    </tr>
+                  );
+                })}
+              </tbody>
             </table>
 
             <div className="sub-head">
