@@ -153,6 +153,9 @@ export default function APQR() {
   const [dossierRR, setDossierRR] = useState([]);
   const [dossierRRNma, setDossierRRNma] = useState([]);
 
+  const [sanitizationASDOU, setSanitizationASDOU] = useState([]);
+  const [compressedGas, setCompressedGas] = useState([]);
+  const [currentRPQRN, setCurrentRPQRN] = useState([]);
   const [pQRData, setPQRData] = useState({
     pqrNO: "",
     productName: "",
@@ -429,6 +432,38 @@ export default function APQR() {
     setDossierRRNma([...dossierRRNma, newRow]);
   };
 
+  const addSanitizationASDOURow = () => {
+    const newRow = {
+      equipmentName: "",
+      frequency: "",
+      status: "",
+    };
+    setSanitizationASDOU([...sanitizationASDOU, newRow]);
+  };
+
+  const addCompressedGasesRow = () => {
+    const newRow = {
+      compressedGas: "",
+      test: "",
+      frequency: "",
+      status: "",
+    };
+    setCompressedGas([...compressedGas, newRow]);
+  };
+
+  const addCurrentRPQRNRow = () => {
+    const newRow = {
+      batchNo: "",
+      qualityRelatedNotification: {
+        no: "",
+        description: "",
+        impact: "",
+        status: "",
+      },
+      cAPA: { descriptionNo: "", status: "", eC: "" },
+    };
+    setCurrentRPQRN([...currentRPQRN, newRow]);
+  };
   return (
     <>
       <Header />
@@ -1739,6 +1774,182 @@ export default function APQR() {
                 </tbody>
               </table>
             </div>
+
+            <h4 className="gridName pt-4">
+              Sanitization and Sterilization Details of Utilities
+            </h4>
+            <div>
+              <div className="AddRows">
+                <MdNoteAdd onClick={addSanitizationASDOURow} />
+                <div className="addrowinstruction"></div>
+              </div>
+              <table>
+                <thead>
+                  <tr>
+                    <th>Sl. No.</th>
+                    <th>Equipment Name</th>
+                    <th>Frequency</th>
+                    <th>Status</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {sanitizationASDOU.map((item, index) => {
+                    return (
+                      <tr key={index}>
+                        <td>{index + 1}</td>
+                        <td>
+                          <input />
+                        </td>
+                        <td>
+                          <input />
+                        </td>
+                        <td>
+                          <input />
+                        </td>
+                      </tr>
+                    );
+                  })}
+                </tbody>
+              </table>
+            </div>
+            <h4 className="gridName pt-4">Summary</h4>
+            <TinyEditor />
+
+            <h4 className="gridName pt-4">Compressed Gases</h4>
+            <div>
+              <div className="AddRows">
+                <MdNoteAdd onClick={addCompressedGasesRow} />
+                <div className="addrowinstruction">
+                  Compressed gases testing performed as per the scheduled
+                  frequency and results were found to be satisfactory, system is
+                  in qualified state
+                </div>
+              </div>
+              <table>
+                <thead>
+                  <tr>
+                    <th>Sl. No.</th>
+                    <th>Compressed Gas</th>
+                    <th>Test </th>
+                    <th>Frequency</th>
+                    <th>Status</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {compressedGas.map((item, index) => {
+                    return (
+                      <tr key={index}>
+                        <td>{index + 1}</td>
+                        <td>
+                          <input />
+                        </td>
+                        <td>
+                          <input />
+                        </td>
+                        <td>
+                          <input />
+                        </td>
+                        <td>
+                          <input />
+                        </td>
+                      </tr>
+                    );
+                  })}
+                </tbody>
+              </table>
+            </div>
+            <h4 className="gridName pt-4">Engineering Summary</h4>
+            <TinyEditor />
+          </div>
+        ) : null}
+        {tab === "QSR" ? (
+          <div>
+            <div className="sub-head">Review of Deviations</div>
+            <div className="sub-head">
+              Current Review Period Quality Related Notification
+            </div>
+            <div>
+              <div className="AddRows">
+                <MdNoteAdd onClick={addCurrentRPQRNRow} />
+                <div className="addrowinstruction"></div>
+              </div>
+              <table>
+                <thead>
+                  <tr>
+                    <th rowSpan={2}>SI. No.</th>
+                    <th rowSpan={2}>Batch No.</th>
+                    <th colSpan={4}>Quality Related Notification</th>
+                    <th colSpan={3}>CAPA</th>
+                  </tr>
+                  <tr>
+                    <th>No.</th>
+                    <th>Description</th>
+                    <th>Impact</th>
+                    <th>Status</th>
+                    <th>Description No.</th>
+                    <th>Status</th>
+                    <th>EC</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {currentRPQRN.map((item, index) => {
+                    return (
+                      <tr key={index}>
+                        <td>
+                          <input />
+                        </td>
+                        <td>
+                          <input />
+                        </td>
+                        <td>
+                          <input />
+                        </td>
+                        <td>
+                          <input />
+                        </td>
+                        <td>
+                          <input />
+                        </td>
+                        <td>
+                          <input />
+                        </td>
+                        <td>
+                          <input />
+                        </td>
+                        <td>
+                          <input />
+                        </td>
+                        <td>
+                          <input />
+                        </td>
+                      </tr>
+                    );
+                  })}
+                </tbody>
+              </table>
+            </div>
+            <h4 className="gridName pt-4">
+              previous Review Period Quality Related Notification
+            </h4>
+            <TinyEditor />
+            <h4 className="gridName pt-4">Review of Product Recalls</h4>
+            <TinyEditor />{" "}
+            <h4 className="gridName pt-4">Review of Returned Products</h4>
+            <TinyEditor />{" "}
+            <h4 className="gridName pt-4">Review of Salvaged Drugs</h4>
+            <TinyEditor />{" "}
+            <h4 className="gridName pt-4">
+              Review of previous PQR recommendations
+            </h4>
+            <TinyEditor />{" "}
+            <h4 className="gridName pt-4">Review of Quality Agreements</h4>
+            <TinyEditor />{" "}
+            <h4 className="gridName pt-4">
+              Review of Manufacturing Authorizations
+            </h4>
+            <TinyEditor />{" "}
+            <h4 className="gridName pt-4">Review of Open Validations</h4>
+            <TinyEditor />
           </div>
         ) : null}
         {tab === "QSR" ? <></> : null}
