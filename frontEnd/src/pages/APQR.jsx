@@ -2,9 +2,131 @@ import React, { useState } from "react";
 import Header from "../Component/Header";
 import { MdNoteAdd } from "react-icons/md";
 import TinyEditor from "../Component/TinyEditor";
+import ExcelExport from "../Component/Exports/Excel/ExcelExport";
 
 export default function APQR() {
   const [tab, setTab] = useState("GI");
+  const balanceSheet = [
+    {
+      category: "Assets",
+      account: "Checking Account",
+      code: "1060",
+      debit: "$280.00",
+      credit: "$0.00",
+    },
+    {
+      category: "Assets",
+      account: "Transaction Account",
+      code: "1044",
+      debit: "$650.00",
+      credit: "$0.00",
+    },
+    {
+      category: "Assets",
+      account: "Petty Cash",
+      code: "1065",
+      debit: "$0.00",
+      credit: "$91,444.00",
+    },
+    {
+      category: "Assets",
+      account: "Account Receivables",
+      code: "1200",
+      debit: "$0.00",
+      credit: "$8,125.00",
+    },
+    {
+      category: "Assets",
+      account: "Allowance for doubtful accounts",
+      code: "1205",
+      debit: "$0.00",
+      credit: "$1,905.00",
+    },
+    {
+      category: "Assets",
+      account: "Inventory",
+      code: "1510",
+      debit: "$0.00",
+      credit: "$1,550.00",
+    },
+    {
+      category: "Assets",
+      account: "Stock of Raw Materials",
+      code: "1520",
+      debit: "$0.00",
+      credit: "$100.00",
+    },
+    {
+      category: "Assets",
+      account: "Stock of Work In Progress",
+      code: "1530",
+      debit: "$0.00",
+      credit: "$100.00",
+    },
+    {
+      category: "Assets",
+      account: "Land and Buildings",
+      code: "1810",
+      debit: "$0.00",
+      credit: "$150.00",
+    },
+    {
+      category: "Liabilities",
+      account: "Account Payable",
+      code: "2100",
+      debit: "$0.00",
+      credit: "$60.00",
+    },
+    {
+      category: "Liabilities",
+      account: "Deferred Income",
+      code: "2105",
+      debit: "$0.00",
+      credit: "$190.00",
+    },
+    {
+      category: "Liabilities",
+      account: "Accrued Franchise Tax",
+      code: "2130",
+      debit: "$0.00",
+      credit: "$650.00",
+    },
+    {
+      category: "Liabilities",
+      account: "Vat Provision",
+      code: "2140",
+      debit: "$1,500.00",
+      credit: "$0.00",
+    },
+    {
+      category: "Liabilities",
+      account: "Purchase Tax",
+      code: "2145",
+      debit: "$0.00",
+      credit: "$140.00",
+    },
+    {
+      category: "Liabilities",
+      account: "Accrued Holiday Pay",
+      code: "2230",
+      debit: "$0.00",
+      credit: "$140.00",
+    },
+    {
+      category: "Equity",
+      account: "Common Shares",
+      code: "3350",
+      debit: "$0.00",
+      credit: "$0.00",
+    },
+    {
+      category: "Equity",
+      account: "Preferred Shares",
+      code: "1089",
+      debit: "$0.00",
+      credit: "$100.00",
+    },
+  ];
   const [manufacturingStage, setManufacturingStage] = useState([]);
   const [manufacturingSAPS, setManufacturingSAPS] = useState([]);
   const [rawMRS, setRawMRS] = useState([]);
@@ -291,70 +413,37 @@ export default function APQR() {
       </div>
       <div className="pqrform">
         <div className="form-tabs">
-          <div
-            className={`${tab === "GI" ? "active" : ""}`}
-            onClick={() => setTab("GI")}
-          >
+          <div className={`${tab === "GI" ? "active" : ""}`} onClick={() => setTab("GI")}>
             General Information
           </div>
-          <div
-            className={`${tab === "WR" ? "active" : ""}`}
-            onClick={() => setTab("WR")}
-          >
+          <div className={`${tab === "WR" ? "active" : ""}`} onClick={() => setTab("WR")}>
             Warehouse Review
           </div>
-          <div
-            className={`${tab === "MR" ? "active" : ""}`}
-            onClick={() => setTab("MR")}
-          >
+          <div className={`${tab === "MR" ? "active" : ""}`} onClick={() => setTab("MR")}>
             Manufacturing Review
           </div>
-          <div
-            className={`${tab === "LR" ? "active" : ""}`}
-            onClick={() => setTab("LR")}
-          >
+          <div className={`${tab === "LR" ? "active" : ""}`} onClick={() => setTab("LR")}>
             Laboratory Review
           </div>
-          <div
-            className={`${tab === "EAMR" ? "active" : ""}`}
-            onClick={() => setTab("EAMR")}
-          >
+          <div className={`${tab === "EAMR" ? "active" : ""}`} onClick={() => setTab("EAMR")}>
             Engineering And Maintenance Review
           </div>
-          <div
-            className={`${tab === "QSR" ? "active" : ""}`}
-            onClick={() => setTab("QSR")}
-          >
+          <div className={`${tab === "QSR" ? "active" : ""}`} onClick={() => setTab("QSR")}>
             Quality System Review
           </div>
-          <div
-            className={`${tab === "RR" ? "active" : ""}`}
-            onClick={() => setTab("RR")}
-          >
+          <div className={`${tab === "RR" ? "active" : ""}`} onClick={() => setTab("RR")}>
             Regulatory Review
           </div>
-          <div
-            className={`${tab === "R" ? "active" : ""}`}
-            onClick={() => setTab("R")}
-          >
+          <div className={`${tab === "R" ? "active" : ""}`} onClick={() => setTab("R")}>
             Recommendations{" "}
           </div>
-          <div
-            className={`${tab === "CAPA" ? "active" : ""}`}
-            onClick={() => setTab("CAPA")}
-          >
+          <div className={`${tab === "CAPA" ? "active" : ""}`} onClick={() => setTab("CAPA")}>
             CAPA
           </div>
-          <div
-            className={`${tab === "DEAC" ? "active" : ""}`}
-            onClick={() => setTab("DEAC")}
-          >
+          <div className={`${tab === "DEAC" ? "active" : ""}`} onClick={() => setTab("DEAC")}>
             Discussion, Evaluation And Conclusion
           </div>
-          <div
-            className={`${tab === "LOA" ? "active" : ""}`}
-            onClick={() => setTab("LOA")}
-          >
+          <div className={`${tab === "LOA" ? "active" : ""}`} onClick={() => setTab("LOA")}>
             List Of Annexures/Attachments
           </div>
         </div>
@@ -430,9 +519,37 @@ export default function APQR() {
               </div>
             </div>
             <div className="sub-head">Manufacturing Site Address</div>
-            <div className="AddRows d-flex">
-              <MdNoteAdd onClick={addManufacturingStageRow} />
-              <div className="addrowinstruction"></div>
+            <div className="flex">
+              <div className="AddRows d-flex w-full justify-between items-center text-3xl">
+                <div className="flex items-center">
+                  <MdNoteAdd onClick={addManufacturingStageRow} />
+                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
+                </div>
+                <div className="flex gap-4 ">
+                  <button
+                    className="
+                          px-4
+                          
+                          bg-green-500
+                          text-white
+                          font-semibold
+                          rounded-lg
+                          shadow-md
+                          hover:bg-green-700
+                          focus:outline-none
+                          focus:ring-2
+                          focus:ring-offset-2
+                          focus:ring-green-500
+                          text-xl
+                        "
+                  >
+                    Import
+                  </button>
+                  <ExcelExport data={balanceSheet} fileName="balance-sheet-summary.xlsx" />
+                </div>
+              </div>
+              {/* <div className="w-1/2 flex justify-end px-8 py-4">
+              </div> */}
             </div>
             <table>
               <thead>
@@ -562,10 +679,7 @@ export default function APQR() {
               </div>
 
               <div className="pb-4">
-                <h4 className="gridName">
-                  {" "}
-                  Packing Materials Rejection Summary
-                </h4>
+                <h4 className="gridName"> Packing Materials Rejection Summary</h4>
                 <div className="AddRows d-flex">
                   <MdNoteAdd onClick={addPackingMRSRow} />
                   <div className="addrowinstruction"></div>
@@ -608,8 +722,7 @@ export default function APQR() {
                 </table>
 
                 <h5 className="gridName pt-4">
-                  Summary of Review of Rejected Raw Materials and Packaging
-                  Materials
+                  Summary of Review of Rejected Raw Materials and Packaging Materials
                 </h5>
                 <TinyEditor />
               </div>
@@ -657,9 +770,7 @@ export default function APQR() {
               </div>
 
               <div className="">
-                <h4 className="gridName">
-                  Expired Packaging Materials Details
-                </h4>
+                <h4 className="gridName">Expired Packaging Materials Details</h4>
                 <div className="AddRows d-flex">
                   <MdNoteAdd onClick={addExpiredPMDRow} />
                   <div className="addrowinstruction"></div>
@@ -697,8 +808,7 @@ export default function APQR() {
                   </tbody>
                 </table>
                 <h4 className="gridName pt-4">
-                  Summary of Review of Expired Raw Materials and Packaging
-                  Materials
+                  Summary of Review of Expired Raw Materials and Packaging Materials
                 </h4>
                 <TinyEditor />
               </div>
@@ -743,9 +853,7 @@ export default function APQR() {
                     })}
                   </tbody>
                 </table>
-                <h4 className="gridName pt-4">
-                  Summary of Review of Approved Supplier List
-                </h4>
+                <h4 className="gridName pt-4">Summary of Review of Approved Supplier List</h4>
                 <TinyEditor />
               </div>
               <div className="sub-head">
@@ -796,8 +904,7 @@ export default function APQR() {
                   </tbody>
                 </table>
                 <h4 className="gridName pt-4">
-                  Summary of Vendor Qualification Details of Raw Material
-                  Excipients
+                  Summary of Vendor Qualification Details of Raw Material Excipients
                 </h4>
                 <TinyEditor />
               </div>
@@ -840,17 +947,12 @@ export default function APQR() {
                   </tbody>
                 </table>
                 <h4 className="gridName pt-4">
-                  Summary of Vendor Qualification Details of Primary Packing
-                  Materials
+                  Summary of Vendor Qualification Details of Primary Packing Materials
                 </h4>
                 <TinyEditor />
               </div>
-              <div className="sub-head">
-                Vendor Qualification Details of Process Gases
-              </div>
-              <div className="sub-head">
-                Vendor Qualification Details of Process Gases
-              </div>
+              <div className="sub-head">Vendor Qualification Details of Process Gases</div>
+              <div className="sub-head">Vendor Qualification Details of Process Gases</div>
               <div>
                 <div className="AddRows d-flex">
                   <MdNoteAdd onClick={addvendorQDPOGRow} />
@@ -917,10 +1019,7 @@ export default function APQR() {
 
             <div className="dual-group-input">
               <div className="group-input">
-                <label>
-                  Total No. of batches manufactured during the current review
-                  period
-                </label>
+                <label>Total No. of batches manufactured during the current review period</label>
                 <input type="number" />
               </div>
               <div className="group-input">
@@ -1000,20 +1099,17 @@ export default function APQR() {
                   })}
                 </tbody>
               </table>
-              <h4 className="gridName pt-4">
-                Summary of Code to Code Transfer Details
-              </h4>
+              <h4 className="gridName pt-4">Summary of Code to Code Transfer Details</h4>
               <TinyEditor />
             </div>
             <div className="sub-head">
               {" "}
-              Review of Manufacturing Process, Packing Process and relevant
-              Validation Status
+              Review of Manufacturing Process, Packing Process and relevant Validation Status
             </div>
             <TinyEditor />
             <div className="sub-head">
-              Review of Reprocessing/Repacking/Reworking along with CAPA and
-              Effectiveness Check Verification (if any)
+              Review of Reprocessing/Repacking/Reworking along with CAPA and Effectiveness Check
+              Verification (if any)
             </div>
             <div className="dual-group-input">
               <div className="group-input">
@@ -1074,14 +1170,9 @@ export default function APQR() {
             </div>
             <h1>Deviation Details - Grid CAPA Details – Grid</h1>
 
-            <div className="sub-head">
-              {" "}
-              Review of Product Quality (Critical Process Parameters)
-            </div>
+            <div className="sub-head"> Review of Product Quality (Critical Process Parameters)</div>
             <h3 className="gridName">Unit Operation 1</h3>
-            <h4 className="gridName">
-              Buffer formulation summary details provided below
-            </h4>
+            <h4 className="gridName">Buffer formulation summary details provided below</h4>
             <div>
               <div className="AddRows d-flex">
                 <MdNoteAdd onClick={addBufferFSDPVRow} />
@@ -1177,9 +1268,7 @@ export default function APQR() {
               </tbody>
             </table>
 
-            <div className="sub-head">
-              Critical Process Parameters Review Summary
-            </div>
+            <div className="sub-head">Critical Process Parameters Review Summary</div>
             <div className="group-input">
               <input placeholder="please insert flex" />
             </div>
@@ -1188,10 +1277,7 @@ export default function APQR() {
 
         {tab === "LR" ? (
           <div className="p-4">
-            <div className="sub-head">
-              {" "}
-              Review of Drug Substance Test Results
-            </div>
+            <div className="sub-head"> Review of Drug Substance Test Results</div>
             <h1 className="gridName">Drug Substance 1 Test Result</h1>
 
             <div>
@@ -1240,9 +1326,7 @@ export default function APQR() {
               </table>
             </div>
 
-            <div className="sub-head">
-              Review of Raw Material Excipient Test Results
-            </div>
+            <div className="sub-head">Review of Raw Material Excipient Test Results</div>
 
             <div>
               <div className="AddRows d-flex">
@@ -1294,9 +1378,7 @@ export default function APQR() {
               </table>
             </div>
 
-            <div className="sub-head">
-              Review of Packing Material Test Results
-            </div>
+            <div className="sub-head">Review of Packing Material Test Results</div>
             <div>
               <div className="AddRows d-flex">
                 <MdNoteAdd onClick={addreviewOPMTRRow} />
@@ -1346,9 +1428,7 @@ export default function APQR() {
                 </tbody>
               </table>
             </div>
-            <div className="sub-head">
-              Review of Drug Product – In process Test Results
-            </div>
+            <div className="sub-head">Review of Drug Product – In process Test Results</div>
             <h4 className="gridName">Dilution Buffer</h4>
             <div>
               <div className="AddRows d-flex">
@@ -1399,9 +1479,7 @@ export default function APQR() {
                 </tbody>
               </table>
             </div>
-            <div className="sub-head">
-              Review of Drug Product –Finished Product Test Results
-            </div>
+            <div className="sub-head">Review of Drug Product –Finished Product Test Results</div>
             <div>
               <div className="AddRows d-flex">
                 <MdNoteAdd onClick={addReviewODPFPTRRow} />
@@ -1527,10 +1605,7 @@ export default function APQR() {
               <h4 className="gridName">Summary</h4>
               <TinyEditor />
 
-              <div className="sub-head">
-                {" "}
-                Review of Visual Inspection – Reserve Samples
-              </div>
+              <div className="sub-head"> Review of Visual Inspection – Reserve Samples</div>
               <div>
                 <div className="AddRows d-flex">
                   <MdNoteAdd onClick={addreviewOVIRSRow} />
@@ -1581,17 +1656,12 @@ export default function APQR() {
               </div>
               <h4 className="gridName mt-4">Summary</h4>
               <TinyEditor />
-              <h4 className="gridName pt-4">
-                Review of Analytical Method Validations
-              </h4>
+              <h4 className="gridName pt-4">Review of Analytical Method Validations</h4>
+              <TinyEditor />
+              <h4 className="gridName pt-4">Review of Contract Testing Laboratories</h4>
               <TinyEditor />
               <h4 className="gridName pt-4">
-                Review of Contract Testing Laboratories
-              </h4>
-              <TinyEditor />
-              <h4 className="gridName pt-4">
-                Review of Environmental Monitoring Trend and water trends
-                Reports
+                Review of Environmental Monitoring Trend and water trends Reports
               </h4>
               <TinyEditor />
               <h4 className="gridName pt-4">Laboratory Review Summary</h4>
