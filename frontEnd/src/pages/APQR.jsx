@@ -175,6 +175,28 @@ export default function APQR() {
     setManufacturingStage([...manufacturingStage, newRow]);
   };
 
+  const addDossierRow = () => {
+    const newRow = {
+      agency: "",
+      notificationNo: "",
+      notificationtype: "",
+      description: "",
+    };
+    setDossierRR([...dossierRR, newRow]);
+  };
+
+  const addDossierRowNma = () => {
+    const newRow = {
+      countryName: "",
+      descriptionOfPacking: "",
+      dateOfApplication: "",
+      ststusOfApplication: "",
+      dateOfAuthorization: "",
+      remarks: "",
+    };
+    setDossierRRNma([...dossierRRNma, newRow]);
+  };
+
   const addManufacturingSAPSRow = () => {
     const newRow = {
       productName: "",
@@ -410,28 +432,6 @@ export default function APQR() {
     setHVACQStatus([...hVACQStatus, newRow]);
   };
 
-  const addDossierRow = () => {
-    const newRow = {
-      agency: "",
-      notificationNo: "",
-      notificationtype: "",
-      description: "",
-    };
-    setDossierRR([...dossierRR, newRow]);
-  };
-
-  const addDossierRowNma = () => {
-    const newRow = {
-      countryName: "",
-      descriptionOfPacking: "",
-      dateOfApplication: "",
-      ststusOfApplication: "",
-      dateOfAuthorization: "",
-      remarks: "",
-    };
-    setDossierRRNma([...dossierRRNma, newRow]);
-  };
-
   const addSanitizationASDOURow = () => {
     const newRow = {
       equipmentName: "",
@@ -474,37 +474,70 @@ export default function APQR() {
       </div>
       <div className="pqrform">
         <div className="form-tabs">
-          <div className={`${tab === "GI" ? "active" : ""}`} onClick={() => setTab("GI")}>
+          <div
+            className={`${tab === "GI" ? "active" : ""}`}
+            onClick={() => setTab("GI")}
+          >
             General Information
           </div>
-          <div className={`${tab === "WR" ? "active" : ""}`} onClick={() => setTab("WR")}>
+          <div
+            className={`${tab === "WR" ? "active" : ""}`}
+            onClick={() => setTab("WR")}
+          >
             Warehouse Review
           </div>
-          <div className={`${tab === "MR" ? "active" : ""}`} onClick={() => setTab("MR")}>
+          <div
+            className={`${tab === "MR" ? "active" : ""}`}
+            onClick={() => setTab("MR")}
+          >
             Manufacturing Review
           </div>
-          <div className={`${tab === "LR" ? "active" : ""}`} onClick={() => setTab("LR")}>
+          <div
+            className={`${tab === "LR" ? "active" : ""}`}
+            onClick={() => setTab("LR")}
+          >
             Laboratory Review
           </div>
-          <div className={`${tab === "EAMR" ? "active" : ""}`} onClick={() => setTab("EAMR")}>
+          <div
+            className={`${tab === "EAMR" ? "active" : ""}`}
+            onClick={() => setTab("EAMR")}
+          >
             Engineering And Maintenance Review
           </div>
-          <div className={`${tab === "QSR" ? "active" : ""}`} onClick={() => setTab("QSR")}>
+          <div
+            className={`${tab === "QSR" ? "active" : ""}`}
+            onClick={() => setTab("QSR")}
+          >
             Quality System Review
           </div>
-          <div className={`${tab === "RR" ? "active" : ""}`} onClick={() => setTab("RR")}>
+          <div
+            className={`${tab === "RR" ? "active" : ""}`}
+            onClick={() => setTab("RR")}
+          >
             Regulatory Review
           </div>
-          <div className={`${tab === "R" ? "active" : ""}`} onClick={() => setTab("R")}>
+          <div
+            className={`${tab === "R" ? "active" : ""}`}
+            onClick={() => setTab("R")}
+          >
             Recommendations{" "}
           </div>
-          <div className={`${tab === "CAPA" ? "active" : ""}`} onClick={() => setTab("CAPA")}>
+          <div
+            className={`${tab === "CAPA" ? "active" : ""}`}
+            onClick={() => setTab("CAPA")}
+          >
             CAPA
           </div>
-          <div className={`${tab === "DEAC" ? "active" : ""}`} onClick={() => setTab("DEAC")}>
+          <div
+            className={`${tab === "DEAC" ? "active" : ""}`}
+            onClick={() => setTab("DEAC")}
+          >
             Discussion, Evaluation And Conclusion
           </div>
-          <div className={`${tab === "LOA" ? "active" : ""}`} onClick={() => setTab("LOA")}>
+          <div
+            className={`${tab === "LOA" ? "active" : ""}`}
+            onClick={() => setTab("LOA")}
+          >
             List Of Annexures/Attachments
           </div>
         </div>
@@ -584,7 +617,9 @@ export default function APQR() {
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addManufacturingStageRow} />
-                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
+                  <div className="addrowinstruction  pl-2">
+                    Add Rows by clicking on (+) icon
+                  </div>
                 </div>
                 <div className="flex gap-4 ">
                   <button
@@ -606,7 +641,10 @@ export default function APQR() {
                   >
                     Import
                   </button>
-                  <ExcelExport data={balanceSheet} fileName="balance-sheet-summary.xlsx" />
+                  <ExcelExport
+                    data={balanceSheet}
+                    fileName="balance-sheet-summary.xlsx"
+                  />
                 </div>
               </div>
               {/* <div className="w-1/2 flex justify-end px-8 py-4">
@@ -640,9 +678,42 @@ export default function APQR() {
             </table>
 
             <div className="py-4">
-              <div className="AddRows d-flex">
+              {/* <div className="AddRows d-flex">
                 <MdNoteAdd onClick={addManufacturingSAPSRow} />
                 <div className="addrowinstruction"></div>
+              </div> */}
+              <div className="AddRows d-flex w-full justify-between items-center text-3xl">
+                <div className="flex items-center">
+                  <MdNoteAdd onClick={addManufacturingSAPSRow} />
+                  <div className="addrowinstruction  pl-2">
+                    Add Rows by clicking on (+) icon
+                  </div>
+                </div>
+                <div className="flex gap-4 ">
+                  <button
+                    className="
+                          px-4
+                          
+                          bg-green-500
+                          text-white
+                          font-semibold
+                          rounded-lg
+                          shadow-md
+                          hover:bg-green-700
+                          focus:outline-none
+                          focus:ring-2
+                          focus:ring-offset-2
+                          focus:ring-green-500
+                          text-xl
+                        "
+                  >
+                    Import
+                  </button>
+                  <ExcelExport
+                    data={balanceSheet}
+                    fileName="balance-sheet-summary.xlsx"
+                  />
+                </div>
               </div>
               <table>
                 <thead>
@@ -692,9 +763,42 @@ export default function APQR() {
               </div>
               <div className="pb-4">
                 <h4 className="gridName">Raw Materials Rejection Summary</h4>
-                <div className="AddRows d-flex">
+                {/* <div className="AddRows d-flex">
                   <MdNoteAdd onClick={addRawMRSRow} />
                   <div className="addrowinstruction"></div>
+                </div> */}
+                <div className="AddRows d-flex w-full justify-between items-center text-3xl">
+                  <div className="flex items-center">
+                    <MdNoteAdd onClick={addRawMRSRow} />
+                    <div className="addrowinstruction  pl-2">
+                      Add Rows by clicking on (+) icon
+                    </div>
+                  </div>
+                  <div className="flex gap-4 ">
+                    <button
+                      className="
+                          px-4
+                          
+                          bg-green-500
+                          text-white
+                          font-semibold
+                          rounded-lg
+                          shadow-md
+                          hover:bg-green-700
+                          focus:outline-none
+                          focus:ring-2
+                          focus:ring-offset-2
+                          focus:ring-green-500
+                          text-xl
+                        "
+                    >
+                      Import
+                    </button>
+                    <ExcelExport
+                      data={balanceSheet}
+                      fileName="balance-sheet-summary.xlsx"
+                    />
+                  </div>
                 </div>
 
                 <table>
@@ -739,10 +843,46 @@ export default function APQR() {
               </div>
 
               <div className="pb-4">
-                <h4 className="gridName"> Packing Materials Rejection Summary</h4>
-                <div className="AddRows d-flex">
+                <h4 className="gridName">
+                  {" "}
+                  Packing Materials Rejection Summary
+                </h4>
+                {/* <div className="AddRows d-flex">
                   <MdNoteAdd onClick={addPackingMRSRow} />
                   <div className="addrowinstruction"></div>
+                </div> */}
+                <div className="AddRows d-flex w-full justify-between items-center text-3xl">
+                  <div className="flex items-center">
+                    <MdNoteAdd onClick={addPackingMRSRow} />
+                    <div className="addrowinstruction  pl-2">
+                      Add Rows by clicking on (+) icon
+                    </div>
+                  </div>
+                  <div className="flex gap-4 ">
+                    <button
+                      className="
+                          px-4
+                          
+                          bg-green-500
+                          text-white
+                          font-semibold
+                          rounded-lg
+                          shadow-md
+                          hover:bg-green-700
+                          focus:outline-none
+                          focus:ring-2
+                          focus:ring-offset-2
+                          focus:ring-green-500
+                          text-xl
+                        "
+                    >
+                      Import
+                    </button>
+                    <ExcelExport
+                      data={balanceSheet}
+                      fileName="balance-sheet-summary.xlsx"
+                    />
+                  </div>
                 </div>
                 <table>
                   <thead>
@@ -782,7 +922,8 @@ export default function APQR() {
                 </table>
 
                 <h5 className="gridName pt-4">
-                  Summary of Review of Rejected Raw Materials and Packaging Materials
+                  Summary of Review of Rejected Raw Materials and Packaging
+                  Materials
                 </h5>
                 <TinyEditor />
               </div>
@@ -791,9 +932,42 @@ export default function APQR() {
               </div>
               <div className="pb-4">
                 <h4 className="gridName">Expired Raw Materials Details</h4>
-                <div className="AddRows d-flex">
+                {/* <div className="AddRows d-flex">
                   <MdNoteAdd onClick={addExpiredRMDRow} />
                   <div className="addrowinstruction"></div>
+                </div> */}
+                <div className="AddRows d-flex w-full justify-between items-center text-3xl">
+                  <div className="flex items-center">
+                    <MdNoteAdd onClick={addExpiredRMDRow} />
+                    <div className="addrowinstruction  pl-2">
+                      Add Rows by clicking on (+) icon
+                    </div>
+                  </div>
+                  <div className="flex gap-4 ">
+                    <button
+                      className="
+                          px-4
+                          
+                          bg-green-500
+                          text-white
+                          font-semibold
+                          rounded-lg
+                          shadow-md
+                          hover:bg-green-700
+                          focus:outline-none
+                          focus:ring-2
+                          focus:ring-offset-2
+                          focus:ring-green-500
+                          text-xl
+                        "
+                    >
+                      Import
+                    </button>
+                    <ExcelExport
+                      data={balanceSheet}
+                      fileName="balance-sheet-summary.xlsx"
+                    />
+                  </div>
                 </div>
                 <table>
                   <thead>
@@ -830,10 +1004,45 @@ export default function APQR() {
               </div>
 
               <div className="">
-                <h4 className="gridName">Expired Packaging Materials Details</h4>
-                <div className="AddRows d-flex">
+                <h4 className="gridName">
+                  Expired Packaging Materials Details
+                </h4>
+                {/* <div className="AddRows d-flex">
                   <MdNoteAdd onClick={addExpiredPMDRow} />
                   <div className="addrowinstruction"></div>
+                </div> */}
+                <div className="AddRows d-flex w-full justify-between items-center text-3xl">
+                  <div className="flex items-center">
+                    <MdNoteAdd onClick={addExpiredPMDRow} />
+                    <div className="addrowinstruction  pl-2">
+                      Add Rows by clicking on (+) icon
+                    </div>
+                  </div>
+                  <div className="flex gap-4 ">
+                    <button
+                      className="
+                          px-4
+                          
+                          bg-green-500
+                          text-white
+                          font-semibold
+                          rounded-lg
+                          shadow-md
+                          hover:bg-green-700
+                          focus:outline-none
+                          focus:ring-2
+                          focus:ring-offset-2
+                          focus:ring-green-500
+                          text-xl
+                        "
+                    >
+                      Import
+                    </button>
+                    <ExcelExport
+                      data={balanceSheet}
+                      fileName="balance-sheet-summary.xlsx"
+                    />
+                  </div>
                 </div>
                 <table>
                   <thead>
@@ -868,15 +1077,49 @@ export default function APQR() {
                   </tbody>
                 </table>
                 <h4 className="gridName pt-4">
-                  Summary of Review of Expired Raw Materials and Packaging Materials
+                  Summary of Review of Expired Raw Materials and Packaging
+                  Materials
                 </h4>
                 <TinyEditor />
               </div>
 
               <div className="sub-head">Review of Approved Supplier List</div>
-              <div className="AddRows d-flex">
+              {/* <div className="AddRows d-flex">
                 <MdNoteAdd onClick={addreviewOfASLRow} />
                 <div className="addrowinstruction"></div>
+              </div> */}
+              <div className="AddRows d-flex w-full justify-between items-center text-3xl">
+                <div className="flex items-center">
+                  <MdNoteAdd onClick={addreviewOfASLRow} />
+                  <div className="addrowinstruction  pl-2">
+                    Add Rows by clicking on (+) icon
+                  </div>
+                </div>
+                <div className="flex gap-4 ">
+                  <button
+                    className="
+                          px-4
+                          
+                          bg-green-500
+                          text-white
+                          font-semibold
+                          rounded-lg
+                          shadow-md
+                          hover:bg-green-700
+                          focus:outline-none
+                          focus:ring-2
+                          focus:ring-offset-2
+                          focus:ring-green-500
+                          text-xl
+                        "
+                  >
+                    Import
+                  </button>
+                  <ExcelExport
+                    data={balanceSheet}
+                    fileName="balance-sheet-summary.xlsx"
+                  />
+                </div>
               </div>
               <div>
                 <table>
@@ -913,16 +1156,51 @@ export default function APQR() {
                     })}
                   </tbody>
                 </table>
-                <h4 className="gridName pt-4">Summary of Review of Approved Supplier List</h4>
+                <h4 className="gridName pt-4">
+                  Summary of Review of Approved Supplier List
+                </h4>
                 <TinyEditor />
               </div>
               <div className="sub-head">
                 Vendor Qualification Details of Raw Material Excipients
               </div>
               <div>
-                <div className="AddRows d-flex">
+                {/* <div className="AddRows d-flex">
                   <MdNoteAdd onClick={addvendorQDORMERow} />
                   <div className="addrowinstruction"></div>
+                </div> */}
+                <div className="AddRows d-flex w-full justify-between items-center text-3xl">
+                  <div className="flex items-center">
+                    <MdNoteAdd onClick={addvendorQDORMERow} />
+                    <div className="addrowinstruction  pl-2">
+                      Add Rows by clicking on (+) icon
+                    </div>
+                  </div>
+                  <div className="flex gap-4 ">
+                    <button
+                      className="
+                          px-4
+                          
+                          bg-green-500
+                          text-white
+                          font-semibold
+                          rounded-lg
+                          shadow-md
+                          hover:bg-green-700
+                          focus:outline-none
+                          focus:ring-2
+                          focus:ring-offset-2
+                          focus:ring-green-500
+                          text-xl
+                        "
+                    >
+                      Import
+                    </button>
+                    <ExcelExport
+                      data={balanceSheet}
+                      fileName="balance-sheet-summary.xlsx"
+                    />
+                  </div>
                 </div>
                 <table>
                   <thead>
@@ -964,7 +1242,8 @@ export default function APQR() {
                   </tbody>
                 </table>
                 <h4 className="gridName pt-4">
-                  Summary of Vendor Qualification Details of Raw Material Excipients
+                  Summary of Vendor Qualification Details of Raw Material
+                  Excipients
                 </h4>
                 <TinyEditor />
               </div>
@@ -972,9 +1251,42 @@ export default function APQR() {
                 Vendor Qualification Details of Primary Packing Materials
               </div>
               <div>
-                <div className="AddRows d-flex">
+                {/* <div className="AddRows d-flex">
                   <MdNoteAdd onClick={addvendorQDOPPMRow} />
                   <div className="addrowinstruction"></div>
+                </div> */}
+                <div className="AddRows d-flex w-full justify-between items-center text-3xl">
+                  <div className="flex items-center">
+                    <MdNoteAdd onClick={addvendorQDOPPMRow} />
+                    <div className="addrowinstruction  pl-2">
+                      Add Rows by clicking on (+) icon
+                    </div>
+                  </div>
+                  <div className="flex gap-4 ">
+                    <button
+                      className="
+                          px-4
+                          
+                          bg-green-500
+                          text-white
+                          font-semibold
+                          rounded-lg
+                          shadow-md
+                          hover:bg-green-700
+                          focus:outline-none
+                          focus:ring-2
+                          focus:ring-offset-2
+                          focus:ring-green-500
+                          text-xl
+                        "
+                    >
+                      Import
+                    </button>
+                    <ExcelExport
+                      data={balanceSheet}
+                      fileName="balance-sheet-summary.xlsx"
+                    />
+                  </div>
                 </div>
                 <table>
                   <thead>
@@ -1007,16 +1319,54 @@ export default function APQR() {
                   </tbody>
                 </table>
                 <h4 className="gridName pt-4">
-                  Summary of Vendor Qualification Details of Primary Packing Materials
+                  Summary of Vendor Qualification Details of Primary Packing
+                  Materials
                 </h4>
                 <TinyEditor />
               </div>
-              <div className="sub-head">Vendor Qualification Details of Process Gases</div>
-              <div className="sub-head">Vendor Qualification Details of Process Gases</div>
+              <div className="sub-head">
+                Vendor Qualification Details of Process Gases
+              </div>
+              <div className="sub-head">
+                Vendor Qualification Details of Process Gases
+              </div>
               <div>
-                <div className="AddRows d-flex">
+                {/* <div className="AddRows d-flex">
                   <MdNoteAdd onClick={addvendorQDPOGRow} />
                   <div className="addrowinstruction"></div>
+                </div> */}
+                <div className="AddRows d-flex w-full justify-between items-center text-3xl">
+                  <div className="flex items-center">
+                    <MdNoteAdd onClick={addvendorQDPOGRow} />
+                    <div className="addrowinstruction  pl-2">
+                      Add Rows by clicking on (+) icon
+                    </div>
+                  </div>
+                  <div className="flex gap-4 ">
+                    <button
+                      className="
+                          px-4
+                          
+                          bg-green-500
+                          text-white
+                          font-semibold
+                          rounded-lg
+                          shadow-md
+                          hover:bg-green-700
+                          focus:outline-none
+                          focus:ring-2
+                          focus:ring-offset-2
+                          focus:ring-green-500
+                          text-xl
+                        "
+                    >
+                      Import
+                    </button>
+                    <ExcelExport
+                      data={balanceSheet}
+                      fileName="balance-sheet-summary.xlsx"
+                    />
+                  </div>
                 </div>
                 <table>
                   <thead>
@@ -1079,7 +1429,10 @@ export default function APQR() {
 
             <div className="dual-group-input">
               <div className="group-input">
-                <label>Total No. of batches manufactured during the current review period</label>
+                <label>
+                  Total No. of batches manufactured during the current review
+                  period
+                </label>
                 <input type="number" />
               </div>
               <div className="group-input">
@@ -1111,9 +1464,42 @@ export default function APQR() {
             </div>
             <div className="gridName">Code to code transfer details</div>
             <div className="py-4">
-              <div className="AddRows d-flex">
+              {/* <div className="AddRows d-flex">
                 <MdNoteAdd onClick={addcodeTCTDRow} />
                 <div className="addrowinstruction"></div>
+              </div> */}
+              <div className="AddRows d-flex w-full justify-between items-center text-3xl">
+                <div className="flex items-center">
+                  <MdNoteAdd onClick={addcodeTCTDRow} />
+                  <div className="addrowinstruction  pl-2">
+                    Add Rows by clicking on (+) icon
+                  </div>
+                </div>
+                <div className="flex gap-4 ">
+                  <button
+                    className="
+                          px-4
+                          
+                          bg-green-500
+                          text-white
+                          font-semibold
+                          rounded-lg
+                          shadow-md
+                          hover:bg-green-700
+                          focus:outline-none
+                          focus:ring-2
+                          focus:ring-offset-2
+                          focus:ring-green-500
+                          text-xl
+                        "
+                  >
+                    Import
+                  </button>
+                  <ExcelExport
+                    data={balanceSheet}
+                    fileName="balance-sheet-summary.xlsx"
+                  />
+                </div>
               </div>
               <table>
                 <thead>
@@ -1159,17 +1545,20 @@ export default function APQR() {
                   })}
                 </tbody>
               </table>
-              <h4 className="gridName pt-4">Summary of Code to Code Transfer Details</h4>
+              <h4 className="gridName pt-4">
+                Summary of Code to Code Transfer Details
+              </h4>
               <TinyEditor />
             </div>
             <div className="sub-head">
               {" "}
-              Review of Manufacturing Process, Packing Process and relevant Validation Status
+              Review of Manufacturing Process, Packing Process and relevant
+              Validation Status
             </div>
             <TinyEditor />
             <div className="sub-head">
-              Review of Reprocessing/Repacking/Reworking along with CAPA and Effectiveness Check
-              Verification (if any)
+              Review of Reprocessing/Repacking/Reworking along with CAPA and
+              Effectiveness Check Verification (if any)
             </div>
             <div className="dual-group-input">
               <div className="group-input">
@@ -1183,9 +1572,42 @@ export default function APQR() {
             </div>
 
             <div className="py-4">
-              <div className="AddRows d-flex">
+              {/* <div className="AddRows d-flex">
                 <MdNoteAdd onClick={addreviewORCECRow} />
                 <div className="addrowinstruction"></div>
+              </div> */}
+              <div className="AddRows d-flex w-full justify-between items-center text-3xl">
+                <div className="flex items-center">
+                  <MdNoteAdd onClick={addmanufacturingSDRow} />
+                  <div className="addrowinstruction  pl-2">
+                    Add Rows by clicking on (+) icon
+                  </div>
+                </div>
+                <div className="flex gap-4 ">
+                  <button
+                    className="
+                          px-4
+                          
+                          bg-green-500
+                          text-white
+                          font-semibold
+                          rounded-lg
+                          shadow-md
+                          hover:bg-green-700
+                          focus:outline-none
+                          focus:ring-2
+                          focus:ring-offset-2
+                          focus:ring-green-500
+                          text-xl
+                        "
+                  >
+                    Import
+                  </button>
+                  <ExcelExport
+                    data={balanceSheet}
+                    fileName="balance-sheet-summary.xlsx"
+                  />
+                </div>
               </div>
               <table>
                 <thead>
@@ -1230,13 +1652,51 @@ export default function APQR() {
             </div>
             <h1>Deviation Details - Grid CAPA Details – Grid</h1>
 
-            <div className="sub-head"> Review of Product Quality (Critical Process Parameters)</div>
+            <div className="sub-head">
+              {" "}
+              Review of Product Quality (Critical Process Parameters)
+            </div>
             <h3 className="gridName">Unit Operation 1</h3>
-            <h4 className="gridName">Buffer formulation summary details provided below</h4>
+            <h4 className="gridName">
+              Buffer formulation summary details provided below
+            </h4>
             <div>
-              <div className="AddRows d-flex">
+              {/* <div className="AddRows d-flex">
                 <MdNoteAdd onClick={addBufferFSDPVRow} />
                 <div className="addrowinstruction"></div>
+              </div> */}
+              <div className="AddRows d-flex w-full justify-between items-center text-3xl">
+                <div className="flex items-center">
+                  <MdNoteAdd onClick={addBufferFSDPVRow} />
+                  <div className="addrowinstruction  pl-2">
+                    Add Rows by clicking on (+) icon
+                  </div>
+                </div>
+                <div className="flex gap-4 ">
+                  <button
+                    className="
+                          px-4
+                          
+                          bg-green-500
+                          text-white
+                          font-semibold
+                          rounded-lg
+                          shadow-md
+                          hover:bg-green-700
+                          focus:outline-none
+                          focus:ring-2
+                          focus:ring-offset-2
+                          focus:ring-green-500
+                          text-xl
+                        "
+                  >
+                    Import
+                  </button>
+                  <ExcelExport
+                    data={balanceSheet}
+                    fileName="balance-sheet-summary.xlsx"
+                  />
+                </div>
               </div>
               <table>
                 <thead>
@@ -1282,9 +1742,42 @@ export default function APQR() {
             </div>
             <h3 className="gridName">Unit Operation 2</h3>
             <h4 className="gridName">Manufacturing summary details</h4>
-            <div className="AddRows d-flex">
+            {/* <div className="AddRows d-flex">
               <MdNoteAdd onClick={addmanufacturingSDRow} />
               <div className="addrowinstruction"></div>
+            </div> */}
+            <div className="AddRows d-flex w-full justify-between items-center text-3xl">
+              <div className="flex items-center">
+                <MdNoteAdd onClick={addmanufacturingSDRow} />
+                <div className="addrowinstruction  pl-2">
+                  Add Rows by clicking on (+) icon
+                </div>
+              </div>
+              <div className="flex gap-4 ">
+                <button
+                  className="
+                          px-4
+                          
+                          bg-green-500
+                          text-white
+                          font-semibold
+                          rounded-lg
+                          shadow-md
+                          hover:bg-green-700
+                          focus:outline-none
+                          focus:ring-2
+                          focus:ring-offset-2
+                          focus:ring-green-500
+                          text-xl
+                        "
+                >
+                  Import
+                </button>
+                <ExcelExport
+                  data={balanceSheet}
+                  fileName="balance-sheet-summary.xlsx"
+                />
+              </div>
             </div>
             <table>
               <thead>
@@ -1328,7 +1821,9 @@ export default function APQR() {
               </tbody>
             </table>
 
-            <div className="sub-head">Critical Process Parameters Review Summary</div>
+            <div className="sub-head">
+              Critical Process Parameters Review Summary
+            </div>
             <div className="group-input">
               <input placeholder="please insert flex" />
             </div>
@@ -1336,13 +1831,49 @@ export default function APQR() {
         ) : null}
         {tab === "LR" ? (
           <div className="p-4">
-            <div className="sub-head"> Review of Drug Substance Test Results</div>
+            <div className="sub-head">
+              {" "}
+              Review of Drug Substance Test Results
+            </div>
             <h1 className="gridName">Drug Substance 1 Test Result</h1>
 
             <div>
-              <div className="AddRows d-flex">
+              {/* <div className="AddRows d-flex">
                 <MdNoteAdd onClick={addReviewODSTRRow} />
                 <div className="addrowinstruction"></div>
+              </div> */}
+              <div className="AddRows d-flex w-full justify-between items-center text-3xl">
+                <div className="flex items-center">
+                  <MdNoteAdd onClick={addReviewODSTRRow} />
+                  <div className="addrowinstruction  pl-2">
+                    Add Rows by clicking on (+) icon
+                  </div>
+                </div>
+                <div className="flex gap-4 ">
+                  <button
+                    className="
+                          px-4
+                          
+                          bg-green-500
+                          text-white
+                          font-semibold
+                          rounded-lg
+                          shadow-md
+                          hover:bg-green-700
+                          focus:outline-none
+                          focus:ring-2
+                          focus:ring-offset-2
+                          focus:ring-green-500
+                          text-xl
+                        "
+                  >
+                    Import
+                  </button>
+                  <ExcelExport
+                    data={balanceSheet}
+                    fileName="balance-sheet-summary.xlsx"
+                  />
+                </div>
               </div>
               <table>
                 <thead>
@@ -1385,12 +1916,47 @@ export default function APQR() {
               </table>
             </div>
 
-            <div className="sub-head">Review of Raw Material Excipient Test Results</div>
+            <div className="sub-head">
+              Review of Raw Material Excipient Test Results
+            </div>
 
             <div>
-              <div className="AddRows d-flex">
+              {/* <div className="AddRows d-flex">
                 <MdNoteAdd onClick={addReviewORMETRRow} />
                 <div className="addrowinstruction"></div>
+              </div> */}
+              <div className="AddRows d-flex w-full justify-between items-center text-3xl">
+                <div className="flex items-center">
+                  <MdNoteAdd onClick={addReviewORMETRRow} />
+                  <div className="addrowinstruction  pl-2">
+                    Add Rows by clicking on (+) icon
+                  </div>
+                </div>
+                <div className="flex gap-4 ">
+                  <button
+                    className="
+                          px-4
+                          
+                          bg-green-500
+                          text-white
+                          font-semibold
+                          rounded-lg
+                          shadow-md
+                          hover:bg-green-700
+                          focus:outline-none
+                          focus:ring-2
+                          focus:ring-offset-2
+                          focus:ring-green-500
+                          text-xl
+                        "
+                  >
+                    Import
+                  </button>
+                  <ExcelExport
+                    data={balanceSheet}
+                    fileName="balance-sheet-summary.xlsx"
+                  />
+                </div>
               </div>
               <table>
                 <thead>
@@ -1437,11 +2003,46 @@ export default function APQR() {
               </table>
             </div>
 
-            <div className="sub-head">Review of Packing Material Test Results</div>
+            <div className="sub-head">
+              Review of Packing Material Test Results
+            </div>
             <div>
-              <div className="AddRows d-flex">
+              {/* <div className="AddRows d-flex">
                 <MdNoteAdd onClick={addreviewOPMTRRow} />
                 <div className="addrowinstruction"></div>
+              </div> */}
+              <div className="AddRows d-flex w-full justify-between items-center text-3xl">
+                <div className="flex items-center">
+                  <MdNoteAdd onClick={addreviewOPMTRRow} />
+                  <div className="addrowinstruction  pl-2">
+                    Add Rows by clicking on (+) icon
+                  </div>
+                </div>
+                <div className="flex gap-4 ">
+                  <button
+                    className="
+                          px-4
+                          
+                          bg-green-500
+                          text-white
+                          font-semibold
+                          rounded-lg
+                          shadow-md
+                          hover:bg-green-700
+                          focus:outline-none
+                          focus:ring-2
+                          focus:ring-offset-2
+                          focus:ring-green-500
+                          text-xl
+                        "
+                  >
+                    Import
+                  </button>
+                  <ExcelExport
+                    data={balanceSheet}
+                    fileName="balance-sheet-summary.xlsx"
+                  />
+                </div>
               </div>
               <table>
                 <thead>
@@ -1487,12 +2088,47 @@ export default function APQR() {
                 </tbody>
               </table>
             </div>
-            <div className="sub-head">Review of Drug Product – In process Test Results</div>
+            <div className="sub-head">
+              Review of Drug Product – In process Test Results
+            </div>
             <h4 className="gridName">Dilution Buffer</h4>
             <div>
-              <div className="AddRows d-flex">
+              {/* <div className="AddRows d-flex">
                 <MdNoteAdd onClick={addReviewODPRow} />
                 <div className="addrowinstruction"></div>
+              </div> */}
+              <div className="AddRows d-flex w-full justify-between items-center text-3xl">
+                <div className="flex items-center">
+                  <MdNoteAdd onClick={addReviewODPRow} />
+                  <div className="addrowinstruction  pl-2">
+                    Add Rows by clicking on (+) icon
+                  </div>
+                </div>
+                <div className="flex gap-4 ">
+                  <button
+                    className="
+                          px-4
+                          
+                          bg-green-500
+                          text-white
+                          font-semibold
+                          rounded-lg
+                          shadow-md
+                          hover:bg-green-700
+                          focus:outline-none
+                          focus:ring-2
+                          focus:ring-offset-2
+                          focus:ring-green-500
+                          text-xl
+                        "
+                  >
+                    Import
+                  </button>
+                  <ExcelExport
+                    data={balanceSheet}
+                    fileName="balance-sheet-summary.xlsx"
+                  />
+                </div>
               </div>
               <table>
                 <thead>
@@ -1538,11 +2174,46 @@ export default function APQR() {
                 </tbody>
               </table>
             </div>
-            <div className="sub-head">Review of Drug Product –Finished Product Test Results</div>
+            <div className="sub-head">
+              Review of Drug Product –Finished Product Test Results
+            </div>
             <div>
-              <div className="AddRows d-flex">
+              {/* <div className="AddRows d-flex">
                 <MdNoteAdd onClick={addReviewODPFPTRRow} />
                 <div className="addrowinstruction"></div>
+              </div> */}
+              <div className="AddRows d-flex w-full justify-between items-center text-3xl">
+                <div className="flex items-center">
+                  <MdNoteAdd onClick={addReviewODPFPTRRow} />
+                  <div className="addrowinstruction  pl-2">
+                    Add Rows by clicking on (+) icon
+                  </div>
+                </div>
+                <div className="flex gap-4 ">
+                  <button
+                    className="
+                          px-4
+                          
+                          bg-green-500
+                          text-white
+                          font-semibold
+                          rounded-lg
+                          shadow-md
+                          hover:bg-green-700
+                          focus:outline-none
+                          focus:ring-2
+                          focus:ring-offset-2
+                          focus:ring-green-500
+                          text-xl
+                        "
+                  >
+                    Import
+                  </button>
+                  <ExcelExport
+                    data={balanceSheet}
+                    fileName="balance-sheet-summary.xlsx"
+                  />
+                </div>
               </div>
               <table>
                 <thead>
@@ -1586,9 +2257,42 @@ export default function APQR() {
             </div>
             <div className="sub-head">Summary of Ongoing Stability Studies</div>
             <div>
-              <div className="AddRows d-flex">
+              {/* <div className="AddRows d-flex">
                 <MdNoteAdd onClick={addSummaryOOSSRow} />
                 <div className="addrowinstruction"></div>
+              </div> */}
+              <div className="AddRows d-flex w-full justify-between items-center text-3xl">
+                <div className="flex items-center">
+                  <MdNoteAdd onClick={addSummaryOOSSRow} />
+                  <div className="addrowinstruction  pl-2">
+                    Add Rows by clicking on (+) icon
+                  </div>
+                </div>
+                <div className="flex gap-4 ">
+                  <button
+                    className="
+                          px-4
+                          
+                          bg-green-500
+                          text-white
+                          font-semibold
+                          rounded-lg
+                          shadow-md
+                          hover:bg-green-700
+                          focus:outline-none
+                          focus:ring-2
+                          focus:ring-offset-2
+                          focus:ring-green-500
+                          text-xl
+                        "
+                  >
+                    Import
+                  </button>
+                  <ExcelExport
+                    data={balanceSheet}
+                    fileName="balance-sheet-summary.xlsx"
+                  />
+                </div>
               </div>
               <table>
                 <thead>
@@ -1628,9 +2332,42 @@ export default function APQR() {
               </table>
 
               <h4 className="gridName pt-4">Stability Study Related OOS/OOT</h4>
-              <div className="AddRows d-flex">
+              {/* <div className="AddRows d-flex">
                 <MdNoteAdd onClick={addStabilitySRRow} />
                 <div className="addrowinstruction"></div>
+              </div> */}
+              <div className="AddRows d-flex w-full justify-between items-center text-3xl">
+                <div className="flex items-center">
+                  <MdNoteAdd onClick={addStabilitySRRow} />
+                  <div className="addrowinstruction  pl-2">
+                    Add Rows by clicking on (+) icon
+                  </div>
+                </div>
+                <div className="flex gap-4 ">
+                  <button
+                    className="
+                          px-4
+                          
+                          bg-green-500
+                          text-white
+                          font-semibold
+                          rounded-lg
+                          shadow-md
+                          hover:bg-green-700
+                          focus:outline-none
+                          focus:ring-2
+                          focus:ring-offset-2
+                          focus:ring-green-500
+                          text-xl
+                        "
+                  >
+                    Import
+                  </button>
+                  <ExcelExport
+                    data={balanceSheet}
+                    fileName="balance-sheet-summary.xlsx"
+                  />
+                </div>
               </div>
               <table>
                 <thead>
@@ -1664,11 +2401,47 @@ export default function APQR() {
               <h4 className="gridName">Summary</h4>
               <TinyEditor />
 
-              <div className="sub-head"> Review of Visual Inspection – Reserve Samples</div>
+              <div className="sub-head">
+                {" "}
+                Review of Visual Inspection – Reserve Samples
+              </div>
               <div>
-                <div className="AddRows d-flex">
+                {/* <div className="AddRows d-flex">
                   <MdNoteAdd onClick={addreviewOVIRSRow} />
                   <div className="addrowinstruction"></div>
+                </div> */}
+                <div className="AddRows d-flex w-full justify-between items-center text-3xl">
+                  <div className="flex items-center">
+                    <MdNoteAdd onClick={addreviewOVIRSRow} />
+                    <div className="addrowinstruction  pl-2">
+                      Add Rows by clicking on (+) icon
+                    </div>
+                  </div>
+                  <div className="flex gap-4 ">
+                    <button
+                      className="
+                          px-4
+                          
+                          bg-green-500
+                          text-white
+                          font-semibold
+                          rounded-lg
+                          shadow-md
+                          hover:bg-green-700
+                          focus:outline-none
+                          focus:ring-2
+                          focus:ring-offset-2
+                          focus:ring-green-500
+                          text-xl
+                        "
+                    >
+                      Import
+                    </button>
+                    <ExcelExport
+                      data={balanceSheet}
+                      fileName="balance-sheet-summary.xlsx"
+                    />
+                  </div>
                 </div>
                 <table>
                   <thead>
@@ -1715,12 +2488,17 @@ export default function APQR() {
               </div>
               <h4 className="gridName mt-4">Summary</h4>
               <TinyEditor />
-              <h4 className="gridName pt-4">Review of Analytical Method Validations</h4>
-              <TinyEditor />
-              <h4 className="gridName pt-4">Review of Contract Testing Laboratories</h4>
+              <h4 className="gridName pt-4">
+                Review of Analytical Method Validations
+              </h4>
               <TinyEditor />
               <h4 className="gridName pt-4">
-                Review of Environmental Monitoring Trend and water trends Reports
+                Review of Contract Testing Laboratories
+              </h4>
+              <TinyEditor />
+              <h4 className="gridName pt-4">
+                Review of Environmental Monitoring Trend and water trends
+                Reports
               </h4>
               <TinyEditor />
               <h4 className="gridName pt-4">Laboratory Review Summary</h4>
@@ -1739,9 +2517,42 @@ export default function APQR() {
 
             <div className="sub-head">HVAC Qualification Status</div>
             <div>
-              <div className="AddRows">
+              {/* <div className="AddRows">
                 <MdNoteAdd onClick={addHVACQStatusRow} />
                 <div className="addrowinstruction"></div>
+              </div> */}
+              <div className="AddRows d-flex w-full justify-between items-center text-3xl">
+                <div className="flex items-center">
+                  <MdNoteAdd onClick={addHVACQStatusRow} />
+                  <div className="addrowinstruction  pl-2">
+                    Add Rows by clicking on (+) icon
+                  </div>
+                </div>
+                <div className="flex gap-4 ">
+                  <button
+                    className="
+                          px-4
+                          
+                          bg-green-500
+                          text-white
+                          font-semibold
+                          rounded-lg
+                          shadow-md
+                          hover:bg-green-700
+                          focus:outline-none
+                          focus:ring-2
+                          focus:ring-offset-2
+                          focus:ring-green-500
+                          text-xl
+                        "
+                  >
+                    Import
+                  </button>
+                  <ExcelExport
+                    data={balanceSheet}
+                    fileName="balance-sheet-summary.xlsx"
+                  />
+                </div>
               </div>
               <table>
                 <thead>
@@ -1779,9 +2590,42 @@ export default function APQR() {
               Sanitization and Sterilization Details of Utilities
             </h4>
             <div>
-              <div className="AddRows">
+              {/* <div className="AddRows">
                 <MdNoteAdd onClick={addSanitizationASDOURow} />
                 <div className="addrowinstruction"></div>
+              </div> */}
+              <div className="AddRows d-flex w-full justify-between items-center text-3xl">
+                <div className="flex items-center">
+                  <MdNoteAdd onClick={addSanitizationASDOURow} />
+                  <div className="addrowinstruction  pl-2">
+                    Add Rows by clicking on (+) icon
+                  </div>
+                </div>
+                <div className="flex gap-4 ">
+                  <button
+                    className="
+                          px-4
+                          
+                          bg-green-500
+                          text-white
+                          font-semibold
+                          rounded-lg
+                          shadow-md
+                          hover:bg-green-700
+                          focus:outline-none
+                          focus:ring-2
+                          focus:ring-offset-2
+                          focus:ring-green-500
+                          text-xl
+                        "
+                  >
+                    Import
+                  </button>
+                  <ExcelExport
+                    data={balanceSheet}
+                    fileName="balance-sheet-summary.xlsx"
+                  />
+                </div>
               </div>
               <table>
                 <thead>
@@ -1817,12 +2661,47 @@ export default function APQR() {
 
             <h4 className="gridName pt-4">Compressed Gases</h4>
             <div>
-              <div className="AddRows">
+              {/* <div className="AddRows">
                 <MdNoteAdd onClick={addCompressedGasesRow} />
                 <div className="addrowinstruction">
                   Compressed gases testing performed as per the scheduled
                   frequency and results were found to be satisfactory, system is
                   in qualified state
+                </div>
+              </div> */}
+              <div className="AddRows d-flex w-full justify-between items-center text-3xl">
+                <div className="flex items-center">
+                  <MdNoteAdd onClick={addCompressedGasesRow} />
+                  <div className="addrowinstruction  pl-2">
+                    Compressed gases testing performed as per the scheduled
+                    frequency and results were found to be satisfactory, system
+                    is in qualified state
+                  </div>
+                </div>
+                <div className="flex gap-4 ">
+                  <button
+                    className="
+                          px-4
+                          
+                          bg-green-500
+                          text-white
+                          font-semibold
+                          rounded-lg
+                          shadow-md
+                          hover:bg-green-700
+                          focus:outline-none
+                          focus:ring-2
+                          focus:ring-offset-2
+                          focus:ring-green-500
+                          text-xl
+                        "
+                  >
+                    Import
+                  </button>
+                  <ExcelExport
+                    data={balanceSheet}
+                    fileName="balance-sheet-summary.xlsx"
+                  />
                 </div>
               </div>
               <table>
@@ -1869,9 +2748,42 @@ export default function APQR() {
               Current Review Period Quality Related Notification
             </div>
             <div>
-              <div className="AddRows">
+              {/* <div className="AddRows">
                 <MdNoteAdd onClick={addCurrentRPQRNRow} />
                 <div className="addrowinstruction"></div>
+              </div> */}
+              <div className="AddRows d-flex w-full justify-between items-center text-3xl">
+                <div className="flex items-center">
+                  <MdNoteAdd onClick={addCurrentRPQRNRow} />
+                  <div className="addrowinstruction  pl-2">
+                    Add Rows by clicking on (+) icon
+                  </div>
+                </div>
+                <div className="flex gap-4 ">
+                  <button
+                    className="
+                          px-4
+                          
+                          bg-green-500
+                          text-white
+                          font-semibold
+                          rounded-lg
+                          shadow-md
+                          hover:bg-green-700
+                          focus:outline-none
+                          focus:ring-2
+                          focus:ring-offset-2
+                          focus:ring-green-500
+                          text-xl
+                        "
+                  >
+                    Import
+                  </button>
+                  <ExcelExport
+                    data={balanceSheet}
+                    fileName="balance-sheet-summary.xlsx"
+                  />
+                </div>
               </div>
               <table>
                 <thead>
@@ -1957,9 +2869,39 @@ export default function APQR() {
           <>
             <div className="gridName">Dossier variation details</div>
             <div className="py-4">
-              <div className="AddRows d-flex">
-                <MdNoteAdd onClick={addDossierRow} />
-                <div className="addrowinstruction"></div>
+              {/* <MdNoteAdd onClick={addDossierRow} />
+                <div className="addrowinstruction"></div> */}
+              <div className="AddRows d-flex w-full justify-between items-center text-3xl">
+                <div className="flex items-center">
+                  <MdNoteAdd onClick={addDossierRow} />
+                  <div className="addrowinstruction  pl-2">
+                    Add Rows by clicking on (+) icon
+                  </div>
+                </div>
+                <div className="flex gap-4 ">
+                  <button
+                    className="
+                          px-4
+                          bg-green-500
+                          text-white
+                          font-semibold
+                          rounded-lg
+                          shadow-md
+                          hover:bg-green-700
+                          focus:outline-none
+                          focus:ring-2
+                          focus:ring-offset-2
+                          focus:ring-green-500
+                          text-xl
+                        "
+                  >
+                    Import
+                  </button>
+                  <ExcelExport
+                    data={balanceSheet}
+                    fileName="balance-sheet-summary.xlsx"
+                  />
+                </div>
               </div>
               <table>
                 <thead>
@@ -1995,9 +2937,39 @@ export default function APQR() {
               </table>
               <div className="gridName mt-2">New marketing authorisation</div>
               <div className="py-4">
-                <div className="AddRows d-flex">
-                  <MdNoteAdd onClick={addDossierRowNma} />
-                  <div className="addrowinstruction"></div>
+                {/* <MdNoteAdd onClick={addDossierRowNma} />
+                  <div className="addrowinstruction"></div> */}
+                <div className="AddRows d-flex w-full justify-between items-center text-3xl">
+                  <div className="flex items-center">
+                    <MdNoteAdd onClick={addDossierRowNma} />
+                    <div className="addrowinstruction  pl-2">
+                      Add Rows by clicking on (+) icon
+                    </div>
+                  </div>
+                  <div className="flex gap-4 ">
+                    <button
+                      className="
+                          px-4
+                          bg-green-500
+                          text-white
+                          font-semibold
+                          rounded-lg
+                          shadow-md
+                          hover:bg-green-700
+                          focus:outline-none
+                          focus:ring-2
+                          focus:ring-offset-2
+                          focus:ring-green-500
+                          text-xl
+                        "
+                    >
+                      Import
+                    </button>
+                    <ExcelExport
+                      data={balanceSheet}
+                      fileName="balance-sheet-summary.xlsx"
+                    />
+                  </div>
                 </div>
                 <table>
                   <thead>
