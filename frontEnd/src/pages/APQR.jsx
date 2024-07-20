@@ -141,7 +141,14 @@ export default function APQR() {
   const [codeTCTD, setCodeTCTD] = useState([]);
   const [reviewORCEC, setReviewORCEC] = useState([]);
   const [manufacturingSD, setManufacturingSD] = useState([]);
+  const [manufacturingSD2, setManufacturingSD2] = useState([]);
   const [bufferFSDPV, setBufferFSDPV] = useState([]);
+  const [oosDetails, setOosDetails] = useState([]);
+  const [capaDetails, setCapaDetails] = useState([]);
+  const [deviationDetails, setDeviationDetails] = useState([]);
+  const [ootResults, setOotResults] = useState([]);
+  const [oolResults, setOolResults] = useState([]);
+  const [ooaResults, setOoaResults] = useState([]);
   const [reviewODSTR, setReviewOSTR] = useState([]);
   const [reviewODSTR2, setReviewOSTR2] = useState([]);
   const [reviewODSTR3, setReviewOSTR3] = useState([]);
@@ -351,6 +358,16 @@ export default function APQR() {
     };
     setManufacturingSD([...manufacturingSD, newRow]);
   };
+  const addmanufacturingSDRow2 = () => {
+    const newRow = {
+      criticalProcessParameter: "",
+      codes: "",
+      acceptanceCriteria: "",
+      results: { minimum: "", maximum: "" },
+      compliesNotComplies: "",
+    };
+    setManufacturingSD2([...manufacturingSD2, newRow]);
+  };
 
   const addBufferFSDPVRow = () => {
     const newRow = {
@@ -362,6 +379,75 @@ export default function APQR() {
     };
     setBufferFSDPV([...bufferFSDPV, newRow]);
   };
+  const oosDetailsRow = () => {
+    const newRow = {
+      testNameOfOos: "",
+      resultsObtained: "",
+      specificationLimit: "",
+      detailsOfObviousError: "",
+      chooseFile: "",
+    };
+    setOosDetails([...oosDetails, newRow]);
+  };
+
+  const capaDetailsRow = () => {
+    const newRow = {
+      capaType: "",
+      descriptionOfIssue: "",
+      rootCause: "",
+      capaVerification: "",
+      chooseFile: "",
+      remarks: "",
+      submitBy: "",
+      submitOn: "",
+    };
+    setCapaDetails([...capaDetails, newRow]);
+  };
+  const deviationDetailsRow = () => {
+    const newRow = {
+      capaType: "",
+      descriptionOfIssue: "",
+      rootCause: "",
+      capaVerification: "",
+      chooseFile: "",
+      remarks: "",
+      submitBy: "",
+      submitOn: "",
+    };
+    setDeviationDetails([...deviationDetails, newRow]);
+  };
+
+  const ootResultsRow = () => {
+    const newRow = {
+      testNameOfOot: "",
+      resultsObtained: "",
+      initialIntervalDetails: "",
+      previousIntervalDetails: "",
+      diffrenceOfResult: "",
+    };
+    setOotResults([...ootResults, newRow]);
+  };
+  const oolResultsRow = () => {
+    const newRow = {
+      testNameOfOot: "",
+      resultsObtained: "",
+      initialIntervalDetails: "",
+      previousIntervalDetails: "",
+      diffrenceOfResult: "",
+    };
+    setOolResults([...oolResults, newRow]);
+  };
+  const ooaResultsRow = () => {
+    const newRow = {
+      testNameOfLimit: "",
+      resultsObtained: "",
+      specificationLimit: "",
+      detailsOfObviousError: "",
+      chooseFile: "",
+    };
+    setOoaResults([...ooaResults, newRow]);
+  };
+
 
   const addReviewODSTRRow = () => {
     const newRow = {
@@ -1545,8 +1631,10 @@ export default function APQR() {
               </div> */}
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
-                  <MdNoteAdd onClick={addmanufacturingSDRow} />
-                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
+                  <MdNoteAdd onClick={addmanufacturingSDRow2} />
+                  <div className="addrowinstruction  pl-2">
+                    Add Rows by clicking on (+) icon
+                  </div>
                 </div>
                 <div className="flex gap-4 ">
                   .
@@ -1596,9 +1684,7 @@ export default function APQR() {
             </div>
             <h1>Deviation Details - Grid CAPA Details – Grid</h1>
 
-            <div className="sub-head"> Review of Product Quality (Critical Process Parameters)</div>
-            <h3 className="gridName">Unit Operation 1</h3>
-            <h4 className="gridName">Buffer formulation summary details provided below</h4>
+            <h4 className="gridName">CAPA Details</h4>
             <div>
               {/* <div className="AddRows d-flex">
                 <MdNoteAdd onClick={addBufferFSDPVRow} />
@@ -1606,29 +1692,262 @@ export default function APQR() {
               </div> */}
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
-                  <MdNoteAdd onClick={addBufferFSDPVRow} />
-                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
+                  <MdNoteAdd onClick={capaDetailsRow} />
+                  <div className="addrowinstruction  pl-2">
+                    Add Rows by clicking on (+) icon
+                  </div>
                 </div>
                 <div className="flex gap-4 ">
-                  <ExcelExport data={balanceSheet} fileName="balance-sheet-summary.xlsx" />
+                  <button
+                    className="
+                          px-4
+                          
+                          bg-green-500
+                          text-white
+                          font-semibold
+                          rounded-lg
+                          shadow-md
+                          hover:bg-green-700
+                          focus:outline-none
+                          focus:ring-2
+                          focus:ring-offset-2
+                          focus:ring-green-500
+                          text-xl
+                        "
+                  >
+                    Import
+                  </button>
+                  <ExcelExport
+                    data={balanceSheet}
+                    fileName="balance-sheet-summary.xlsx"
+                  />
                 </div>
               </div>
-              <table>
+              <table className="mb-4">
                 <thead>
                   <tr>
-                    <th rowSpan={2}>Critical Process Parameters</th>
-                    <th rowSpan={2}>Codes</th>
-                    <th rowSpan={2}>Acceptance criteria</th>
-                    <th colSpan={2}>Results</th>
-                    <th rowSpan={2}>Complies / Does not complies</th>
-                  </tr>
-                  <tr>
-                    <th>Minimum</th>
-                    <th>Maximum</th>
+                    <th >AR No.</th>
+                    <th >CAPA Type</th>
+                    <th >Description of Issue</th>
+                    <th >Root Cause</th>
+                    <th >CAPA Verification</th>
+                    <th >File Attachment</th>
+                    <th >Remarks</th>
+                    <th >Submit by</th>
+                    <th >Submit On</th>
+                    <th >
+                      <input type="file" />
+                    </th>
                   </tr>
                 </thead>
                 <tbody>
-                  {bufferFSDPV.map((item, index) => {
+                  {capaDetails.map((item, index) => {
+                    return (
+                      <tr key={index}>
+                        <td>
+                          <input />
+                        </td>
+                        <td>
+                          <input />
+                        </td>
+                        <td>
+                          <input />
+                        </td>
+                        <td>
+                          <input />
+                        </td>
+                        <td>
+                          <input />
+                        </td>
+                        <td>
+                          <input />
+                        </td>
+                        <td>
+                          <input />
+                        </td> <td>
+                          <input />
+                        </td> <td>
+                          <input />
+                        </td>
+                      </tr>
+                    );
+                  })}
+                </tbody>
+              </table>
+            </div>   
+
+            <h4 className="gridName">Deviation Details</h4>
+            <div>
+              {/* <div className="AddRows d-flex">
+                <MdNoteAdd onClick={addBufferFSDPVRow} />
+                <div className="addrowinstruction"></div>
+              </div> */}
+              <div className="AddRows d-flex w-full justify-between items-center text-3xl">
+                <div className="flex items-center">
+                  <MdNoteAdd onClick={deviationDetailsRow} />
+                  <div className="addrowinstruction  pl-2">
+                    Add Rows by clicking on (+) icon
+                  </div>
+                </div>
+                <div className="flex gap-4 ">
+                  <button
+                    className="
+                          px-4
+                          
+                          bg-green-500
+                          text-white
+                          font-semibold
+                          rounded-lg
+                          shadow-md
+                          hover:bg-green-700
+                          focus:outline-none
+                          focus:ring-2
+                          focus:ring-offset-2
+                          focus:ring-green-500
+                          text-xl
+                        "
+                  >
+                    Import
+                  </button>
+                  <ExcelExport
+                    data={balanceSheet}
+                    fileName="balance-sheet-summary.xlsx"
+                  />
+                </div>
+              </div>
+              <table className="mb-4">
+                <thead>
+                  <tr>
+                    <th >AR No.</th>
+                    <th >Deviation Related To</th>
+                    <th >Description</th>
+                    <th >Root Cause</th>
+                    <th >Deviation Ovserved On</th>
+                    <th >Deviation Ovserved By</th>
+                    <th >Classification of Deviation</th>
+                    <th >file Attachment</th>
+                    <th >Remarks</th>
+                    <th >Status</th>
+                    <th >
+                      <input type="file" />
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {deviationDetails.map((item, index) => {
+                    return (
+                      <tr key={index}>
+                        <td>
+                          <input />
+                        </td>
+                        <td>
+                          <input />
+                        </td>
+                        <td>
+                          <input />
+                        </td>
+                        <td>
+                          <input />
+                        </td>
+                        <td>
+                          <input />
+                        </td>
+                        <td>
+                          <input />
+                        </td>
+                        <td>
+                          <input />
+                        </td>
+                        <td>
+                          <input />
+                        </td> <td>
+                          <input />
+                        </td> <td>
+                          <input />
+                        </td>
+                      </tr>
+                    );
+                  })}
+                </tbody>
+              </table>
+            </div>   
+
+
+
+
+
+
+
+
+
+
+
+
+
+            
+
+            <div className="sub-head">
+              Review of all Batch Failures/Rejections along with CAPA and
+              Effectiveness Check Verification (if any):
+            </div>
+
+            <h4 className="gridName">Batch Failures/Rejections Details </h4>
+            <TinyEditor />
+
+            <h4 className="gridName">OOS Details</h4>
+            <div>
+              {/* <div className="AddRows d-flex">
+                <MdNoteAdd onClick={addBufferFSDPVRow} />
+                <div className="addrowinstruction"></div>
+              </div> */}
+              <div className="AddRows d-flex w-full justify-between items-center text-3xl">
+                <div className="flex items-center">
+                  <MdNoteAdd onClick={oosDetailsRow} />
+                  <div className="addrowinstruction  pl-2">
+                    Add Rows by clicking on (+) icon
+                  </div>
+                </div>
+                <div className="flex gap-4 ">
+                  <button
+                    className="
+                          px-4
+                          
+                          bg-green-500
+                          text-white
+                          font-semibold
+                          rounded-lg
+                          shadow-md
+                          hover:bg-green-700
+                          focus:outline-none
+                          focus:ring-2
+                          focus:ring-offset-2
+                          focus:ring-green-500
+                          text-xl
+                        "
+                  >
+                    Import
+                  </button>
+                  <ExcelExport
+                    data={balanceSheet}
+                    fileName="balance-sheet-summary.xlsx"
+                  />
+                </div>
+              </div>
+              <table className="mb-4">
+                <thead>
+                  <tr>
+                    <th rowSpan={2}>AR No.</th>
+                    <th rowSpan={2}>Test Name Of OOS</th>
+                    <th rowSpan={2}>Results Obtained</th>
+                    <th colSpan={2}>Specification Limit</th>
+                    <th rowSpan={2}>Details of Obvious error</th>
+                    <th rowSpan={2}>
+                      <input type="file" />
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {oosDetails.map((item, index) => {
                     return (
                       <tr key={index}>
                         <td>
@@ -1655,19 +1974,390 @@ export default function APQR() {
                 </tbody>
               </table>
             </div>
+
+            <h4 className="gridName">OOT Results</h4>
+            <div>
+              {/* <div className="AddRows d-flex">
+                <MdNoteAdd onClick={addBufferFSDPVRow} />
+                <div className="addrowinstruction"></div>
+              </div> */}
+              <div className="AddRows d-flex w-full justify-between items-center text-3xl mb-5">
+                <div className="flex items-center">
+                  <MdNoteAdd onClick={ootResultsRow} />
+                  <div className="addrowinstruction  pl-2">
+                    Add Rows by clicking on (+) icon
+                  </div>
+                </div>
+                <div className="flex gap-4 ">
+                  <button
+                    className="
+                          px-4
+                          
+                          bg-green-500
+                          text-white
+                          font-semibold
+                          rounded-lg
+                          shadow-md
+                          hover:bg-green-700
+                          focus:outline-none
+                          focus:ring-2
+                          focus:ring-offset-2
+                          focus:ring-green-500
+                          text-xl
+                        "
+                  >
+                    Import
+                  </button>
+                  <ExcelExport
+                    data={balanceSheet}
+                    fileName="balance-sheet-summary.xlsx"
+                  />
+                </div>
+              </div>
+              <table className="mb-4">
+                <thead>
+                  <tr>
+                    <th >AR NO.</th>
+                    <th >Test name of OOT</th>
+                    <th >Result Obtained</th>
+                    <th >Initial Interval Details</th>
+                    <th >Previous Interval Details</th>
+                    <th >% Diffrence of Results</th>
+                    <th >Trend Limit</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {ootResults.map((item, index) => {
+                    return (
+                      <tr key={index}>
+                        <td>
+                          <input />
+                        </td>
+                        <td>
+                          <input />
+                        </td>
+                        <td>
+                          <input />
+                        </td>
+                        <td>
+                          <input />
+                        </td>
+                        <td>
+                          <input />
+                        </td>
+                        <td>
+                          <input />
+                        </td>
+                        <td>
+                          <input />
+                        </td>
+                      </tr>
+                    );
+                  })}
+                </tbody>
+              </table>
+            </div>
+            <h4 className="gridName">OOA Results</h4>
+            <div>
+              {/* <div className="AddRows d-flex">
+                <MdNoteAdd onClick={addBufferFSDPVRow} />
+                <div className="addrowinstruction"></div>
+              </div> */}
+              <div className="AddRows d-flex w-full justify-between items-center text-3xl mb-5">
+                <div className="flex items-center">
+                  <MdNoteAdd onClick={ooaResultsRow} />
+                  <div className="addrowinstruction  pl-2">
+                    Add Rows by clicking on (+) icon
+                  </div>
+                </div>
+                <div className="flex gap-4 ">
+                  <button
+                    className="
+                          px-4
+                          
+                          bg-green-500
+                          text-white
+                          font-semibold
+                          rounded-lg
+                          shadow-md
+                          hover:bg-green-700
+                          focus:outline-none
+                          focus:ring-2
+                          focus:ring-offset-2
+                          focus:ring-green-500
+                          text-xl
+                        "
+                  >
+                    Import
+                  </button>
+                  <ExcelExport
+                    data={balanceSheet}
+                    fileName="balance-sheet-summary.xlsx"
+                  />
+                </div>
+              </div>
+              <table className="mb-4">
+                <thead>
+                  <tr>
+                    <th >AR NO.</th>
+                    <th >Test name of Alert</th>
+                    <th >Result Obtained</th>
+                    <th >Initial Interval Details</th>
+                    <th >Previous Interval Details</th>
+                    <th >% Diffrence of Results</th>
+                    <th >Trend Limit</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {ooaResults.map((item, index) => {
+                    return (
+                      <tr key={index}>
+                        <td>
+                          <input />
+                        </td>
+                        <td>
+                          <input />
+                        </td>
+                       
+                        <td>
+                          <input />
+                        </td>
+                        <td>
+                          <input />
+                        </td>
+                        <td>
+                          <input />
+                        </td>
+                        <td>
+                          <input />
+                        </td> 
+                        <td>
+                          <input />
+                        </td>
+                      </tr>
+                    );
+                  })}
+                </tbody>
+              </table>
+            </div>
+            <h4 className="gridName">OOL Results</h4>
+            <div>
+              {/* <div className="AddRows d-flex">
+                <MdNoteAdd onClick={addBufferFSDPVRow} />
+                <div className="addrowinstruction"></div>
+              </div> */}
+              <div className="AddRows d-flex w-full justify-between items-center text-3xl mb-5">
+                <div className="flex items-center">
+                  <MdNoteAdd onClick={oolResultsRow} />
+                  <div className="addrowinstruction  pl-2">
+                    Add Rows by clicking on (+) icon
+                  </div>
+                </div>
+                <div className="flex gap-4 ">
+                  <button
+                    className="
+                          px-4
+                          
+                          bg-green-500
+                          text-white
+                          font-semibold
+                          rounded-lg
+                          shadow-md
+                          hover:bg-green-700
+                          focus:outline-none
+                          focus:ring-2
+                          focus:ring-offset-2
+                          focus:ring-green-500
+                          text-xl
+                        "
+                  >
+                    Import
+                  </button>
+                  <ExcelExport
+                    data={balanceSheet}
+                    fileName="balance-sheet-summary.xlsx"
+                  />
+                </div>
+              </div>
+              <table className="mb-4">
+                <thead>
+                  <tr>
+                    <th >AR NO.</th>
+                    <th >Test name of OOT</th>
+                    <th >Result Obtained</th>
+                    <th >Initial Interval Details</th>
+                    <th >Previous Interval Details</th>
+                    <th >% Diffrence of Results</th>
+                    <th >Trend Limit</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {oolResults.map((item, index) => {
+                    return (
+                      <tr key={index}>
+                        <td>
+                          <input />
+                        </td>
+                      
+                        <td>
+                          <input />
+                        </td>
+                        <td>
+                          <input />
+                        </td>
+                        <td>
+                          <input />
+                        </td>
+                        <td>
+                          <input />
+                        </td>
+                        <td>
+                          <input />
+                        </td> <td>
+                          <input />
+                        </td>
+                      </tr>
+                    );
+                  })}
+                </tbody>
+              </table>
+            </div>
+
+            <div className="sub-head">
+              Review of Product Quality (Critical Process Parameters)
+            </div>
+
+            <h3 className="gridName">Unit Operation 1</h3>
+            <h4 className="gridName">
+              Buffer formulation summary details provided below
+            </h4>
+            <div>
+              {/* <div className="AddRows d-flex">
+                <MdNoteAdd onClick={addBufferFSDPVRow} />
+                <div className="addrowinstruction"></div>
+              </div> */}
+              <div className="AddRows d-flex w-full justify-between items-center text-3xl mb-5">
+                <div className="flex items-center">
+                  <MdNoteAdd onClick={addBufferFSDPVRow} />
+                  <div className="addrowinstruction  pl-2">
+                    Add Rows by clicking on (+) icon
+                  </div>
+                </div>
+                <div className="flex gap-4 ">
+                  <button
+                    className="
+                          px-4
+                          
+                          bg-green-500
+                          text-white
+                          font-semibold
+                          rounded-lg
+                          shadow-md
+                          hover:bg-green-700
+                          focus:outline-none
+                          focus:ring-2
+                          focus:ring-offset-2
+                          focus:ring-green-500
+                          text-xl
+                        "
+                  >
+                    Import
+                  </button>
+                  <ExcelExport
+                    data={balanceSheet}
+                    fileName="balance-sheet-summary.xlsx"
+                  />
+                </div>
+              </div>
+              <table className="mb-4">
+                <thead>
+                  <tr>
+                    <th >AR No.</th>
+                    <th >CAPA Type</th>
+                    <th >Description of Issue</th>
+                    <th >Root Cause</th>
+                    <th >CAPA Verification</th>
+                    <th >File Attachment</th>
+                    <th >Remarks</th>
+                    <th >Submit by</th>
+                    <th >Submit On</th>
+                    <th >
+                      <input type="file" />
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {capaDetails.map((item, index) => {
+                    return (
+                      <tr key={index}>
+                        <td>
+                          <input />
+                        </td>
+                        <td>
+                          <input />
+                        </td>
+                        <td>
+                          <input />
+                        </td>
+                        <td>
+                          <input />
+                        </td>
+                        <td>
+                          <input />
+                        </td>
+                        <td>
+                          <input />
+                        </td>
+                        <td>
+                          <input />
+                        </td> <td>
+                          <input />
+                        </td> <td>
+                          <input />
+                        </td>
+                      </tr>
+                    );
+                  })}
+                </tbody>
+              </table>
+            </div>
             <h3 className="gridName pt-4">Unit Operation 2</h3>
             <h4 className="gridName">Manufacturing summary details</h4>
             {/* <div className="AddRows d-flex">
               <MdNoteAdd onClick={addmanufacturingSDRow} />
               <div className="addrowinstruction"></div>
             </div> */}
-            <div className="AddRows d-flex w-full justify-between items-center text-3xl">
+            <div className="AddRows d-flex w-full justify-between items-center text-3xl mb-5">
               <div className="flex items-center">
                 <MdNoteAdd onClick={addmanufacturingSDRow} />
-                <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
+                <div className="addrowinstruction  pl-2">
+                  Add Rows by clicking on (+) icon
+                </div>
               </div>
               <div className="flex gap-4 ">
-                <ExcelExport data={balanceSheet} fileName="balance-sheet-summary.xlsx" />
+                <button
+                  className="
+                          px-4
+                          
+                          bg-green-500
+                          text-white
+                          font-semibold
+                          rounded-lg
+                          shadow-md
+                          hover:bg-green-700
+                          focus:outline-none
+                          focus:ring-2
+                          focus:ring-offset-2
+                          focus:ring-green-500
+                          text-xl
+                        "
+                >
+                  Import
+                </button>
+                <ExcelExport
+                  data={balanceSheet}
+                  fileName="balance-sheet-summary.xlsx"
+                />
               </div>
             </div>
             <table>
@@ -2104,7 +2794,7 @@ export default function APQR() {
                 <MdNoteAdd onClick={addReviewODSTRRow} />
                 <div className="addrowinstruction"></div>
               </div> */}
-              <div className="AddRows d-flex w-full justify-between items-center text-3xl">
+              <div className="AddRows d-flex w-full justify-between items-center text-3xl mb-5">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addReviewODSTRRow} />
                   <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
@@ -2159,7 +2849,7 @@ export default function APQR() {
     <MdNoteAdd onClick={addReviewODSTRRow} />
     <div className="addrowinstruction"></div>
   </div> */}
-              <div className="AddRows d-flex w-full justify-between items-center text-3xl">
+              <div className="AddRows d-flex w-full justify-between items-center text-3xl mb-5">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addReviewODSTRRow2} />
                   <div className="addrowinstruction pl-2">Add Rows by clicking on (+) icon</div>
@@ -2214,7 +2904,7 @@ export default function APQR() {
     <MdNoteAdd onClick={addReviewODSTRRow} />
     <div className="addrowinstruction"></div>
   </div> */}
-              <div className="AddRows d-flex w-full justify-between items-center text-3xl">
+              <div className="AddRows d-flex w-full justify-between items-center text-3xl mb-5">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addReviewODSTRRow3} />
                   <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
@@ -2269,7 +2959,7 @@ export default function APQR() {
     <MdNoteAdd onClick={addReviewODSTRRow} />
     <div className="addrowinstruction"></div>
   </div> */}
-              <div className="AddRows d-flex w-full justify-between items-center text-3xl">
+              <div className="AddRows d-flex w-full justify-between items-center text-3xl mb-5">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addReviewODSTRRow4} />
                   <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
@@ -2324,7 +3014,7 @@ export default function APQR() {
     <MdNoteAdd onClick={addReviewODSTRRow} />
     <div className="addrowinstruction"></div>
   </div> */}
-              <div className="AddRows d-flex w-full justify-between items-center text-3xl">
+              <div className="AddRows d-flex w-full justify-between items-center text-3xl mb-5">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addReviewODSTRRow5} />
                   <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
@@ -2379,7 +3069,7 @@ export default function APQR() {
     <MdNoteAdd onClick={addReviewODSTRRow} />
     <div className="addrowinstruction"></div>
   </div> */}
-              <div className="AddRows d-flex w-full justify-between items-center text-3xl">
+              <div className="AddRows d-flex w-full justify-between items-center text-3xl mb-5">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addReviewODSTRRow6} />
                   <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
@@ -3851,11 +4541,21 @@ export default function APQR() {
               <table>
                 <thead>
                   <tr>
-                    <th>SL. No.</th>
-                    <th>Agency</th>
-                    <th>Notification No</th>
-                    <th>Notification Type</th>
-                    <th>Description</th>
+                    <th style={{ backgroundColor: "#DD571c", padding: "20px" }}>
+                      SL. No.
+                    </th>
+                    <th style={{ backgroundColor: "#DD571c", padding: "20px" }}>
+                      Agency
+                    </th>
+                    <th style={{ backgroundColor: "#DD571c", padding: "20px" }}>
+                      Notification No
+                    </th>
+                    <th style={{ backgroundColor: "#DD571c", padding: "20px" }}>
+                      Notification Type
+                    </th>
+                    <th style={{ backgroundColor: "#DD571c", padding: "20px" }}>
+                      Description
+                    </th>
                   </tr>
                 </thead>
                 <tbody>
@@ -3896,13 +4596,27 @@ export default function APQR() {
                 <table>
                   <thead>
                     <tr>
-                      <th>SL. No.</th>
-                      <th>Country Name</th>
-                      <th>Description Of Packing</th>
-                      <th>Date of Application</th>
-                      <th>Status of Application</th>
-                      <th>Date of Authorization</th>
-                      <th>Remarks</th>
+                      <th
+                        style={{ backgroundColor: "#DD571C", padding: "20px" }}
+                      >
+                        SL. No.
+                      </th>
+                      <th style={{ backgroundColor: "#DD571c" }}>
+                        Country Name
+                      </th>
+                      <th style={{ backgroundColor: "#DD571c" }}>
+                        Description Of Packing
+                      </th>
+                      <th style={{ backgroundColor: "#DD571c" }}>
+                        Date of Application
+                      </th>
+                      <th style={{ backgroundColor: "#DD571c" }}>
+                        Status of Application
+                      </th>
+                      <th style={{ backgroundColor: "#DD571c" }}>
+                        Date of Authorization
+                      </th>
+                      <th style={{ backgroundColor: "#DD571c" }}>Remarks</th>
                     </tr>
                   </thead>
                   <tbody>
