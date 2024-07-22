@@ -359,16 +359,6 @@ export default function APQR() {
     };
     setManufacturingSD([...manufacturingSD, newRow]);
   };
-  const addmanufacturingSDRow2 = () => {
-    const newRow = {
-      criticalProcessParameter: "",
-      codes: "",
-      acceptanceCriteria: "",
-      results: { minimum: "", maximum: "" },
-      compliesNotComplies: "",
-    };
-    setManufacturingSD2([...manufacturingSD2, newRow]);
-  };
 
   const addBufferFSDPVRow = () => {
     const newRow = {
@@ -1067,6 +1057,10 @@ export default function APQR() {
                 })}
               </tbody>
             </table>
+            <div>
+              <h4 className="gridName mt-4">Summary</h4>
+              <TinyEditor />
+            </div>
 
             <div className="py-4">
               {/* <div className="AddRows d-flex">
@@ -1190,6 +1184,10 @@ export default function APQR() {
                     })}
                   </tbody>
                 </table>
+                <div>
+                  <h4 className="gridName mt-5">Summary</h4>
+                  <TinyEditor />
+                </div>
               </div>
 
               <div className="pb-4">
@@ -1313,6 +1311,10 @@ export default function APQR() {
                     })}
                   </tbody>
                 </table>
+                <div>
+                  <h4 className="gridName">Summary</h4>
+                  <TinyEditor />
+                </div>
               </div>
 
               <div className="">
@@ -1369,6 +1371,7 @@ export default function APQR() {
                     })}
                   </tbody>
                 </table>
+
                 <h4 className="gridName pt-4">
                   Summary of Review of Expired Raw Materials and Packaging
                   Materials
@@ -1776,8 +1779,10 @@ export default function APQR() {
               </div> */}
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
-                  <MdNoteAdd onClick={addmanufacturingSDRow2} />
-                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
+                  <MdNoteAdd onClick={addreviewORCECRow} />
+                  <div className="addrowinstruction  pl-2">
+                    Add Rows by clicking on (+) icon
+                  </div>
                 </div>
                 <div className="flex gap-4 ">
                   .
@@ -1828,6 +1833,11 @@ export default function APQR() {
                 </tbody>
               </table>
             </div>
+            <div>
+              <h4 className="gridName mt-5">Summary</h4>
+              <TinyEditor />
+            </div>
+
             <h1>Deviation Details - Grid CAPA Details – Grid</h1>
 
             <h4 className="gridName">CAPA Details</h4>
@@ -1917,6 +1927,10 @@ export default function APQR() {
                   })}
                 </tbody>
               </table>
+            </div>
+            <div>
+              <h4 className="gridName mt-5">Summary</h4>
+              <TinyEditor />
             </div>
 
             <h4 className="gridName">Deviation Details</h4>
@@ -2011,6 +2025,10 @@ export default function APQR() {
                 </tbody>
               </table>
             </div>
+            <div>
+              <h4 className="gridName mt-5">Summary</h4>
+              <TinyEditor />
+            </div>
 
             <div className="sub-head">
               Review of all Batch Failures/Rejections along with CAPA and Effectiveness Check
@@ -2095,6 +2113,10 @@ export default function APQR() {
                 </tbody>
               </table>
             </div>
+            <div>
+              <h4 className="gridName mt-5">Summary</h4>
+              <TinyEditor />
+            </div>
 
             <h4 className="gridName">OOT Results</h4>
             <div>
@@ -2172,6 +2194,10 @@ export default function APQR() {
                   })}
                 </tbody>
               </table>
+            </div>
+            <div>
+              <h4 className="gridName mt-5">Summary</h4>
+              <TinyEditor />
             </div>
             <h4 className="gridName">OOA Results</h4>
             <div>
@@ -2251,6 +2277,10 @@ export default function APQR() {
                 </tbody>
               </table>
             </div>
+            <div>
+              <h4 className="gridName mt-5">Summary</h4>
+              <TinyEditor />
+            </div>
             <h4 className="gridName">OOL Results</h4>
             <div>
               {/* <div className="AddRows d-flex">
@@ -2327,6 +2357,10 @@ export default function APQR() {
                   })}
                 </tbody>
               </table>
+            </div>
+            <div>
+              <h4 className="gridName mt-5">Summary</h4>
+              <TinyEditor />
             </div>
 
             <div className="sub-head">Review of Product Quality (Critical Process Parameters)</div>
@@ -3487,6 +3521,10 @@ export default function APQR() {
                 </tbody>
               </table>
             </div>
+            <div>
+              <h4 className="gridName mt-5">Summary</h4>
+              <TinyEditor />
+            </div>
             <div className="sub-head">
               Review of Raw Material Excipient Test Results
             </div>
@@ -3553,6 +3591,10 @@ export default function APQR() {
                 </tbody>
               </table>
             </div>
+            <div>
+              <h4 className="gridName mt-5">Summary</h4>
+              <TinyEditor />
+            </div>
             <div className="sub-head">
               Review of Packing Material Test Results
             </div>
@@ -3618,6 +3660,10 @@ export default function APQR() {
                   })}
                 </tbody>
               </table>
+            </div>
+            <div>
+              <h4 className="gridName mt-5">Summary</h4>
+              <TinyEditor />
             </div>
             <div className="sub-head">
               Review of Drug Product – In process Test Results
@@ -4262,6 +4308,10 @@ export default function APQR() {
                 </tbody>
               </table>
             </div>
+            <div>
+              <h4 className="gridName mt-5">Summary</h4>
+              <TinyEditor />
+            </div>
             <div className="sub-head">
               Review of Drug Product –Finished Product Test Results
             </div>
@@ -4324,6 +4374,10 @@ export default function APQR() {
                 </tbody>
               </table>
             </div>
+            <div>
+              <h4 className="gridName mt-5">Summary</h4>
+              <TinyEditor />
+            </div>
             <div className="sub-head">Summary of Ongoing Stability Studies</div>
             <div>
               {/* <div className="AddRows d-flex">
@@ -4380,6 +4434,10 @@ export default function APQR() {
                   })}
                 </tbody>
               </table>
+              <div>
+                <h4 className="gridName mt-5">Summary</h4>
+                <TinyEditor />
+              </div>
 
               <h4 className="gridName pt-4">Stability Study Related OOS/OOT</h4>
               {/* <div className="AddRows d-flex">
@@ -4577,6 +4635,10 @@ export default function APQR() {
                   </tr>
                 </tbody>
               </table>
+            </div>
+            <div>
+              <h4 className="gridName mt-5">Summary</h4>
+              <TinyEditor />
             </div>
 
             <h4 className="gridName pt-4">
@@ -4853,7 +4915,13 @@ export default function APQR() {
                   })}
                 </tbody>
               </table>
-              <div className="gridName mt-2">New marketing authorisation</div>
+
+              <div>
+                <h4 className="gridName mt-5">Summary</h4>
+                <TinyEditor />
+              </div>
+
+              <div className="gridName">New marketing authorisation</div>
               <div className="py-4">
                 {/* <MdNoteAdd onClick={addDossierRowNma} />
                   <div className="addrowinstruction"></div> */}
@@ -4911,6 +4979,10 @@ export default function APQR() {
                     })}
                   </tbody>
                 </table>
+                <div>
+                  <h4 className="gridName mt-5">Summary</h4>
+                  <TinyEditor />
+                </div>
               </div>
             </div>
           </>
@@ -4918,7 +4990,7 @@ export default function APQR() {
         {tab === "R" ? (
           <>
             <div>
-              <h4 className="gridName">Recommendations Sunmmary</h4>
+              <h4 className="gridName">Recommendations Summary</h4>
               <TinyEditor />
             </div>
           </>
