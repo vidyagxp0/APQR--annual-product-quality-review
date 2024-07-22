@@ -393,7 +393,7 @@ body {
 .gridName {
   color: #3764f9;
   font-weight: bold;
-  font-size: 1rem;
+  font-size: 0.9rem;
   /* text-transform: uppercase; */
   letter-spacing: 0.1em;
 }
