@@ -833,15 +833,14 @@ export default function APQR() {
 
   const addreviewOVIRSRow = () => {
     const newRow = {
-      code: "",
-      code1: "",
-      code2: "",
-      code3: "",
-      code4: "",
-      code5: "",
-      code6: "",
-      code7: "",
-      code8: "",
+      column1: "",
+      column2: "",
+      column3: "",
+      column4: "",
+      column5: "",
+      column6: "",
+      column7: "",
+      column8: "",
     };
     setReviewOVIRS([...reviewOVIRS, newRow]);
   };
@@ -4915,22 +4914,64 @@ export default function APQR() {
                       <tr key={index}>
                         <td>{index + 1}</td>
                         <td>
-                          <input />
+                          <input
+                            value={item.testsParameter}
+                            onChange={(e) => {
+                              const newData = [...reviewODPFPTR];
+                              newData[index].testsParameter = e.target.value;
+                              setReviewODPFPTR(newData);
+                            }}
+                          />
                         </td>
                         <td>
-                          <input />
+                          <input
+                            value={item.testsParameter}
+                            onChange={(e) => {
+                              const newData = [...reviewODPFPTR];
+                              newData[index].testsParameter = e.target.value;
+                              setReviewODPFPTR(newData);
+                            }}
+                          />
                         </td>
                         <td>
-                          <input />
+                          <input
+                            value={item.testsParameter}
+                            onChange={(e) => {
+                              const newData = [...reviewODPFPTR];
+                              newData[index].testsParameter = e.target.value;
+                              setReviewODPFPTR(newData);
+                            }}
+                          />
                         </td>
                         <td>
-                          <input />
+                          <input
+                            value={item.testsParameter}
+                            onChange={(e) => {
+                              const newData = [...reviewODPFPTR];
+                              newData[index].testsParameter = e.target.value;
+                              setReviewODPFPTR(newData);
+                            }}
+                          />
                         </td>
                         <td>
-                          <input />
+                          <input
+                            value={item.testsParameter}
+                            onChange={(e) => {
+                              const newData = [...reviewODPFPTR];
+                              newData[index].testsParameter = e.target.value;
+                              setReviewODPFPTR(newData);
+                            }}
+                          />
                         </td>
                         <td>
-                          <input />
+                          <input
+                            value={item.testsParameter}
+                            onChange={(e) => {
+                              const newData = [...reviewODPFPTR];
+                              newData[index].testsParameter = e.target.value;
+                              setReviewODPFPTR(newData);
+                            }}
+                          />
                         </td>
                       </tr>
                     );
@@ -4977,19 +5018,58 @@ export default function APQR() {
                       <tr key={index}>
                         <td>{index + 1}</td>
                         <td>
-                          <input />
+                          <input
+                            value={item.testsParameter}
+                            onChange={(e) => {
+                              const newData = [...reviewODPFPTR];
+                              newData[index].testsParameter = e.target.value;
+                              setReviewODPFPTR(newData);
+                            }}
+                          />
                         </td>
                         <td>
-                          <input />
+                          <input
+                            value={item.specificationLimit}
+                            onChange={(e) => {
+                              const newData = [...reviewODPFPTR];
+                              newData[index].specificationLimit =
+                                e.target.value;
+                              setReviewODPFPTR(newData);
+                            }}
+                          />
                         </td>
                         <td>
-                          <input />
+                          <input
+                            value={item.obtainedValue.minimum}
+                            onChange={(e) => {
+                              const newData = [...reviewODPFPTR];
+                              newData[index].obtainedValue.minimum =
+                                e.target.value;
+                              setReviewODPFPTR(newData);
+                            }}
+                          />
                         </td>
                         <td>
-                          <input />
+                          <input
+                            value={item.obtainedValue.maximum}
+                            onChange={(e) => {
+                              const newData = [...reviewODPFPTR];
+                              newData[index].obtainedValue.maximum =
+                                e.target.value;
+                              setReviewODPFPTR(newData);
+                            }}
+                          />
                         </td>
                         <td>
-                          <input />
+                          <input
+                            value={item.compliesNotComplies}
+                            onChange={(e) => {
+                              const newData = [...reviewODPFPTR];
+                              newData[index].compliesNotComplies =
+                                e.target.value;
+                              setReviewODPFPTR(newData);
+                            }}
+                          />
                         </td>
                       </tr>
                     );
@@ -5033,19 +5113,55 @@ export default function APQR() {
                       <tr key={index}>
                         <td>{index + 1}</td>
                         <td>
-                          <input />
+                          <input
+                            value={item.batchNo}
+                            onChange={(e) => {
+                              const newData = [...summaryOOSS];
+                              newData[index].batchNo = e.target.value;
+                              setSummaryOOSS(newData);
+                            }}
+                          />
                         </td>
                         <td>
-                          <input />
+                          <input
+                            value={item.type}
+                            onChange={(e) => {
+                              const newData = [...summaryOOSS];
+                              newData[index].type = e.target.value;
+                              setSummaryOOSS(newData);
+                            }}
+                          />
                         </td>
                         <td>
-                          <input />
+                          <input
+                            value={item.storageCondition}
+                            onChange={(e) => {
+                              const newData = [...summaryOOSS];
+                              newData[index].storageCondition = e.target.value;
+                              setSummaryOOSS(newData);
+                            }}
+                          />
                         </td>
                         <td>
-                          <input />
+                          <input
+                            value={item.testingInterval}
+                            onChange={(e) => {
+                              const newData = [...summaryOOSS];
+                              newData[index].testingInterval = e.target.value;
+                              setSummaryOOSS(newData);
+                            }}
+                          />
                         </td>
                         <td>
-                          <input />
+                          <input
+                            value={item.stabilityProtocolNo}
+                            onChange={(e) => {
+                              const newData = [...summaryOOSS];
+                              newData[index].stabilityProtocolNo =
+                                e.target.value;
+                              setSummaryOOSS(newData);
+                            }}
+                          />
                         </td>
                       </tr>
                     );
@@ -5086,13 +5202,35 @@ export default function APQR() {
                       <tr key={index}>
                         <td>{index + 1}</td>
                         <td>
-                          <input />
+                          <input
+                            value={item.batchNo}
+                            onChange={(e) => {
+                              const newData = [...stabilitySR];
+                              newData[index].batchNo = e.target.value;
+                              setStabilitySR(newData);
+                            }}
+                          />
                         </td>
                         <td>
-                          <input />
+                          <input
+                            value={item.testingIntervalMonths}
+                            onChange={(e) => {
+                              const newData = [...stabilitySR];
+                              newData[index].testingIntervalMonths =
+                                e.target.value;
+                              setStabilitySR(newData);
+                            }}
+                          />
                         </td>
                         <td>
-                          <input />
+                          <input
+                            value={item.OOSNumber}
+                            onChange={(e) => {
+                              const newData = [...stabilitySR];
+                              newData[index].OOSNumber = e.target.value;
+                              setStabilitySR(newData);
+                            }}
+                          />
                         </td>
                       </tr>
                     );
@@ -5103,7 +5241,9 @@ export default function APQR() {
               <h4 className="gridName">Summary</h4>
               <TinyEditor />
 
-              <div className="sub-head"> Review of Visual Inspection – Reserve Samples</div>
+              <div className="sub-head">
+                Review of Visual Inspection – Reserve Samples
+              </div>
               <div>
                 {/* <div className="AddRows d-flex">
                   <MdNoteAdd onClick={addreviewOVIRSRow} />
@@ -5128,32 +5268,86 @@ export default function APQR() {
                     {reviewOVIRS.map((item, index) => {
                       return (
                         <tr key={index}>
+                          <td>{index + 1}</td>
                           <td>
-                            <input />
+                            <input
+                              value={item.column1}
+                              onChange={(e) => {
+                                const newData = [...reviewOVIRS];
+                                newData[index].column1 = e.target.value;
+                                setReviewOVIRS(newData);
+                              }}
+                            />
                           </td>
                           <td>
-                            <input />
+                            <input
+                              value={item.column2}
+                              onChange={(e) => {
+                                const newData = [...reviewOVIRS];
+                                newData[index].column2 = e.target.value;
+                                setReviewOVIRS(newData);
+                              }}
+                            />
                           </td>
                           <td>
-                            <input />
+                            <input
+                              value={item.column3}
+                              onChange={(e) => {
+                                const newData = [...reviewOVIRS];
+                                newData[index].column3 = e.target.value;
+                                setReviewOVIRS(newData);
+                              }}
+                            />
                           </td>
                           <td>
-                            <input />
+                            <input
+                              value={item.column4}
+                              onChange={(e) => {
+                                const newData = [...reviewOVIRS];
+                                newData[index].column4 = e.target.value;
+                                setReviewOVIRS(newData);
+                              }}
+                            />
                           </td>
                           <td>
-                            <input />
+                            <input
+                              value={item.column5}
+                              onChange={(e) => {
+                                const newData = [...reviewOVIRS];
+                                newData[index].column5 = e.target.value;
+                                setReviewOVIRS(newData);
+                              }}
+                            />
                           </td>
                           <td>
-                            <input />
+                            <input
+                              value={item.column6}
+                              onChange={(e) => {
+                                const newData = [...reviewOVIRS];
+                                newData[index].column6 = e.target.value;
+                                setReviewOVIRS(newData);
+                              }}
+                            />
                           </td>
                           <td>
-                            <input />
+                            <input
+                              value={item.column7}
+                              onChange={(e) => {
+                                const newData = [...reviewOVIRS];
+                                newData[index].column7 = e.target.value;
+                                setReviewOVIRS(newData);
+                              }}
+                            />
                           </td>
                           <td>
-                            <input />
-                          </td>
-                          <td>
-                            <input />
+                            <input
+                              value={item.column8}
+                              onChange={(e) => {
+                                const newData = [...reviewOVIRS];
+                                newData[index].column8 = e.target.value;
+                                setReviewOVIRS(newData);
+                              }}
+                            />
                           </td>
                         </tr>
                       );
@@ -5213,21 +5407,41 @@ export default function APQR() {
                   {hVACQStatus.map((item, index) => {
                     return (
                       <tr key={index}>
+                        <td>{index + 1}</td>
+
                         <td>
-                          <input />
+                          <input
+                            value={item.testDescription}
+                            onChange={(e) => {
+                              const newData = [...hVACQStatus];
+                              newData[index].testDescription = e.target.value;
+                              setHVACQStatus(newData);
+                            }}
+                          />
                         </td>
                         <td>
-                          <input />
+                          <input
+                            value={item.frequency}
+                            onChange={(e) => {
+                              const newData = [...hVACQStatus];
+                              newData[index].frequency = e.target.value;
+                              setHVACQStatus(newData);
+                            }}
+                          />
                         </td>
                         <td>
-                          <input />
+                          <input
+                            value={item.status}
+                            onChange={(e) => {
+                              const newData = [...hVACQStatus];
+                              newData[index].status = e.target.value;
+                              setHVACQStatus(newData);
+                            }}
+                          />
                         </td>
                       </tr>
                     );
                   })}
-                  <tr>
-                    <td></td>
-                  </tr>
                 </tbody>
               </table>
             </div>
@@ -5266,13 +5480,34 @@ export default function APQR() {
                       <tr key={index}>
                         <td>{index + 1}</td>
                         <td>
-                          <input />
+                          <input
+                            value={item.equipmentName}
+                            onChange={(e) => {
+                              const newData = [...sanitizationASDOU];
+                              newData[index].equipmentName = e.target.value;
+                              setSanitizationASDOU(newData);
+                            }}
+                          />
                         </td>
                         <td>
-                          <input />
+                          <input
+                            value={item.frequency}
+                            onChange={(e) => {
+                              const newData = [...sanitizationASDOU];
+                              newData[index].frequency = e.target.value;
+                              setSanitizationASDOU(newData);
+                            }}
+                          />
                         </td>
                         <td>
-                          <input />
+                          <input
+                            value={item.status}
+                            onChange={(e) => {
+                              const newData = [...sanitizationASDOU];
+                              newData[index].status = e.target.value;
+                              setSanitizationASDOU(newData);
+                            }}
+                          />
                         </td>
                       </tr>
                     );
@@ -5321,16 +5556,43 @@ export default function APQR() {
                       <tr key={index}>
                         <td>{index + 1}</td>
                         <td>
-                          <input />
+                          <input
+                            onChange={(e) => {
+                              const newData = [...compressedGas];
+                              newData[index].compressedGas = e.target.value;
+                              setCompressedGas(newData);
+                            }}
+                          />
                         </td>
                         <td>
-                          <input />
+                          <input
+                            value={item.test}
+                            onChange={(e) => {
+                              const newData = [...compressedGas];
+                              newData[index].test = e.target.value;
+                              setCompressedGas(newData);
+                            }}
+                          />
                         </td>
                         <td>
-                          <input />
+                          <input
+                            value={item.frequency}
+                            onChange={(e) => {
+                              const newData = [...compressedGas];
+                              newData[index].frequency = e.target.value;
+                              setCompressedGas(newData);
+                            }}
+                          />
                         </td>
                         <td>
-                          <input />
+                          <input
+                            value={item.status}
+                            onChange={(e) => {
+                              const newData = [...compressedGas];
+                              newData[index].status = e.target.value;
+                              setCompressedGas(newData);
+                            }}
+                          />
                         </td>
                       </tr>
                     );
@@ -5382,32 +5644,98 @@ export default function APQR() {
                   {currentRPQRN.map((item, index) => {
                     return (
                       <tr key={index}>
+                        <td>{index + 1}</td>
+
                         <td>
-                          <input />
+                          <input
+                            value={item.batchNo}
+                            onChange={(e) => {
+                              const newData = [...currentRPQRN];
+                              newData[index].batchNo = e.target.value;
+                              setCurrentRPQRN(newData);
+                            }}
+                          />
                         </td>
                         <td>
-                          <input />
+                          <input
+                            value={item.qualityRelatedNotification.no}
+                            onChange={(e) => {
+                              const newData = [...currentRPQRN];
+                              newData[index].qualityRelatedNotification.no =
+                                e.target.value;
+                              setCurrentRPQRN(newData);
+                            }}
+                          />
+                        </td>
+
+                        <td>
+                          <input
+                            value={item.qualityRelatedNotification.description}
+                            onChange={(e) => {
+                              const newData = [...currentRPQRN];
+                              newData[
+                                index
+                              ].qualityRelatedNotification.description =
+                                e.target.value;
+                              setCurrentRPQRN(newData);
+                            }}
+                          />
+                        </td>
+
+                        <td>
+                          <input
+                            value={item.qualityRelatedNotification.impact}
+                            onChange={(e) => {
+                              const newData = [...currentRPQRN];
+                              newData[index].qualityRelatedNotification.impact =
+                                e.target.value;
+                              setCurrentRPQRN(newData);
+                            }}
+                          />
+                        </td>
+
+                        <td>
+                          <input
+                            value={item.qualityRelatedNotification.status}
+                            onChange={(e) => {
+                              const newData = [...currentRPQRN];
+                              newData[index].qualityRelatedNotification.status =
+                                e.target.value;
+                              setCurrentRPQRN(newData);
+                            }}
+                          />
                         </td>
                         <td>
-                          <input />
+                          <input
+                            value={item.cAPA.descriptionNo}
+                            onChange={(e) => {
+                              const newData = [...currentRPQRN];
+                              newData[index].cAPA.descriptionNo =
+                                e.target.value;
+                              setCurrentRPQRN(newData);
+                            }}
+                          />
                         </td>
                         <td>
-                          <input />
+                          <input
+                            value={item.cAPA.status}
+                            onChange={(e) => {
+                              const newData = [...currentRPQRN];
+                              newData[index].cAPA.status = e.target.value;
+                              setCurrentRPQRN(newData);
+                            }}
+                          />
                         </td>
+
                         <td>
-                          <input />
-                        </td>
-                        <td>
-                          <input />
-                        </td>
-                        <td>
-                          <input />
-                        </td>
-                        <td>
-                          <input />
-                        </td>
-                        <td>
-                          <input />
+                          <input
+                            value={item.cAPA.eC}
+                            onChange={(e) => {
+                              const newData = [...currentRPQRN];
+                              newData[index].cAPA.eC = e.target.value;
+                              setCurrentRPQRN(newData);
+                            }}
+                          />
                         </td>
                       </tr>
                     );
@@ -5457,17 +5785,46 @@ export default function APQR() {
                     return (
                       <tr key={index}>
                         <td>{index + 1}</td>
+
                         <td>
-                          <input />
+                          <input
+                            value={item.agency}
+                            onChange={(e) => {
+                              const newData = [...dossierRR];
+                              newData[index].agency = e.target.value;
+                              setDossierRR(newData);
+                            }}
+                          />
                         </td>
                         <td>
-                          <input />
+                          <input
+                            value={item.notificationNo}
+                            onChange={(e) => {
+                              const newData = [...dossierRR];
+                              newData[index].notificationNo = e.target.value;
+                              setDossierRR(newData);
+                            }}
+                          />
                         </td>
                         <td>
-                          <input />
+                          <input
+                            value={item.notificationType}
+                            onChange={(e) => {
+                              const newData = [...dossierRR];
+                              newData[index].notificationTpe = e.target.value;
+                              setDossierRR(newData);
+                            }}
+                          />
                         </td>
                         <td>
-                          <input />
+                          <input
+                            value={item.description}
+                            onChange={(e) => {
+                              const newData = [...dossierRR];
+                              newData[index].description = e.target.value;
+                              setDossierRR(newData);
+                            }}
+                          />
                         </td>
                       </tr>
                     );
@@ -5511,22 +5868,68 @@ export default function APQR() {
                         <tr key={index}>
                           <td>{index + 1}</td>
                           <td>
-                            <input />
+                            <input
+                              value={item.countryName}
+                              onChange={(e) => {
+                                const newData = [...dossierRRNma];
+                                newData[index].countryName = e.target.value;
+                                setDossierRRNma(newData);
+                              }}
+                            />
                           </td>
                           <td>
-                            <input />
+                            <input
+                              value={item.descriptionOfPacking}
+                              onChange={(e) => {
+                                const newData = [...dossierRRNma];
+                                newData[index].descriptionOfPacking =
+                                  e.target.value;
+                                setDossierRRNma(newData);
+                              }}
+                            />
                           </td>
                           <td>
-                            <input />
+                            <input
+                              value={item.dateOfApplication}
+                              onChange={(e) => {
+                                const newData = [...dossierRRNma];
+                                newData[index].dateOfApplication =
+                                  e.target.value;
+                                setDossierRRNma(newData);
+                              }}
+                            />
                           </td>
                           <td>
-                            <input />
+                            <input
+                              value={item.statusOfApplication}
+                              onChange={(e) => {
+                                const newData = [...dossierRRNma];
+                                newData[index].statusOfApplication =
+                                  e.target.value;
+                                setDossierRRNma(newData);
+                              }}
+                            />
                           </td>
                           <td>
-                            <input />
+                            <input
+                              value={item.dateOfAuthorization}
+                              onChange={(e) => {
+                                const newData = [...dossierRRNma];
+                                newData[index].dateOfAuthorization =
+                                  e.target.value;
+                                setDossierRRNma(newData);
+                              }}
+                            />
                           </td>{" "}
                           <td>
-                            <input />
+                            <input
+                              value={item.remarks}
+                              onChange={(e) => {
+                                const newData = [...dossierRRNma];
+                                newData[index].remarks = e.target.value;
+                                setDossierRRNma(newData);
+                              }}
+                            />
                           </td>
                         </tr>
                       );
