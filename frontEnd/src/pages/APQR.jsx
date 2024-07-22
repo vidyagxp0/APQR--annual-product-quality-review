@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useReducer, useState } from "react";
 import Header from "../Component/Header";
 import { MdNoteAdd } from "react-icons/md";
 import TinyEditor from "../Component/TinyEditor";
@@ -194,7 +194,7 @@ export default function APQR() {
   const [unitOperation9, setUnitOperation9] = useState([]);
   const [unitOperation10, setUnitOperation10] = useState([]);
 
-  const [pQRData, setPQRData] = useState((prev, next) => ({
+  const [pQRData, setPQRData] = useReducer((prev, next) => ({
     ...prev,
     ...next,
   }),{
@@ -210,10 +210,7 @@ export default function APQR() {
   const dispatch = useDispatch();
   const navigate=useNavigate()
   useEffect(() => {
-    setPQRData( (prev, next) => ({
-      ...prev,
-      ...next,
-    }),{
+    setPQRData({
       productCodes: productCodes,
       manufacturingStage: manufacturingStage,
       manufacturingSAPS: manufacturingSAPS,
@@ -2303,25 +2300,7 @@ export default function APQR() {
                   </div>
                 </div>
                 <div className="flex gap-4 ">
-                  <button
-                    className="
-                          px-4
-                          
-                          bg-green-500
-                          text-white
-                          font-semibold
-                          rounded-lg
-                          shadow-md
-                          hover:bg-green-700
-                          focus:outline-none
-                          focus:ring-2
-                          focus:ring-offset-2
-                          focus:ring-green-500
-                          text-xl
-                        "
-                  >
-                    Import
-                  </button>
+              
                   <ExcelExport
                     data={balanceSheet}
                     fileName="balance-sheet-summary.xlsx"
@@ -2441,25 +2420,7 @@ export default function APQR() {
                   </div>
                 </div>
                 <div className="flex gap-4 ">
-                  <button
-                    className="
-                          px-4
-                          
-                          bg-green-500
-                          text-white
-                          font-semibold
-                          rounded-lg
-                          shadow-md
-                          hover:bg-green-700
-                          focus:outline-none
-                          focus:ring-2
-                          focus:ring-offset-2
-                          focus:ring-green-500
-                          text-xl
-                        "
-                  >
-                    Import
-                  </button>
+               
                   <ExcelExport
                     data={balanceSheet}
                     fileName="balance-sheet-summary.xlsx"
@@ -2623,25 +2584,7 @@ export default function APQR() {
                   </div>
                 </div>
                 <div className="flex gap-4 ">
-                  <button
-                    className="
-                          px-4
-                          
-                          bg-green-500
-                          text-white
-                          font-semibold
-                          rounded-lg
-                          shadow-md
-                          hover:bg-green-700
-                          focus:outline-none
-                          focus:ring-2
-                          focus:ring-offset-2
-                          focus:ring-green-500
-                          text-xl
-                        "
-                  >
-                    Import
-                  </button>
+                
                   <ExcelExport
                     data={balanceSheet}
                     fileName="balance-sheet-summary.xlsx"
@@ -2751,25 +2694,7 @@ export default function APQR() {
                   </div>
                 </div>
                 <div className="flex gap-4 ">
-                  <button
-                    className="
-                          px-4
-                          
-                          bg-green-500
-                          text-white
-                          font-semibold
-                          rounded-lg
-                          shadow-md
-                          hover:bg-green-700
-                          focus:outline-none
-                          focus:ring-2
-                          focus:ring-offset-2
-                          focus:ring-green-500
-                          text-xl
-                        "
-                  >
-                    Import
-                  </button>
+                
                   <ExcelExport
                     data={balanceSheet}
                     fileName="balance-sheet-summary.xlsx"
@@ -2888,25 +2813,7 @@ export default function APQR() {
                   </div>
                 </div>
                 <div className="flex gap-4 ">
-                  <button
-                    className="
-                          px-4
-                          
-                          bg-green-500
-                          text-white
-                          font-semibold
-                          rounded-lg
-                          shadow-md
-                          hover:bg-green-700
-                          focus:outline-none
-                          focus:ring-2
-                          focus:ring-offset-2
-                          focus:ring-green-500
-                          text-xl
-                        "
-                  >
-                    Import
-                  </button>
+             
                   <ExcelExport
                     data={balanceSheet}
                     fileName="balance-sheet-summary.xlsx"
@@ -3026,25 +2933,7 @@ export default function APQR() {
                   </div>
                 </div>
                 <div className="flex gap-4 ">
-                  <button
-                    className="
-                          px-4
-                          
-                          bg-green-500
-                          text-white
-                          font-semibold
-                          rounded-lg
-                          shadow-md
-                          hover:bg-green-700
-                          focus:outline-none
-                          focus:ring-2
-                          focus:ring-offset-2
-                          focus:ring-green-500
-                          text-xl
-                        "
-                  >
-                    Import
-                  </button>
+                  
                   <ExcelExport
                     data={balanceSheet}
                     fileName="balance-sheet-summary.xlsx"
@@ -3120,25 +3009,7 @@ export default function APQR() {
                   </div>
                 </div>
                 <div className="flex gap-4 ">
-                  <button
-                    className="
-                          px-4
-                          
-                          bg-green-500
-                          text-white
-                          font-semibold
-                          rounded-lg
-                          shadow-md
-                          hover:bg-green-700
-                          focus:outline-none
-                          focus:ring-2
-                          focus:ring-offset-2
-                          focus:ring-green-500
-                          text-xl
-                        "
-                  >
-                    Import
-                  </button>
+                  
                   <ExcelExport
                     data={balanceSheet}
                     fileName="balance-sheet-summary.xlsx"
@@ -3213,25 +3084,7 @@ export default function APQR() {
                 </div>
               </div>
               <div className="flex gap-4 ">
-                <button
-                  className="
-                          px-4
-                          
-                          bg-green-500
-                          text-white
-                          font-semibold
-                          rounded-lg
-                          shadow-md
-                          hover:bg-green-700
-                          focus:outline-none
-                          focus:ring-2
-                          focus:ring-offset-2
-                          focus:ring-green-500
-                          text-xl
-                        "
-                >
-                  Import
-                </button>
+             
                 <ExcelExport
                   data={balanceSheet}
                   fileName="balance-sheet-summary.xlsx"
