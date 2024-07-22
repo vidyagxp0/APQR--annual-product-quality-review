@@ -9,6 +9,7 @@ import AdminLogin from "./pages/Admin/AdminLogin";
 import AdminDashboard from "./pages/Admin/AdminDashboard";
 import TinyEditor from "./Component/TinyEditor";
 import ExcelExportImport from "./pages/temp/ImportExportExcel";
+import ApqrPanel from "./pages/ApqrPanel";
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
         <Route path="/new-pqr" element={<APQR />} />
         <Route path="/admin-login" element={<AdminLogin />} />
         <Route path="/admin-dashboard" element={<AdminDashboard />} />
+        <Route path="/apqr-panel" element={<ApqrPanel />} />
         <Route path="/test" element={<TinyEditor />} />
         <Route path="/test2" element={<ExcelExportImport />} />
       </Routes>

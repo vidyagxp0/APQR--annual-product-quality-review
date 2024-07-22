@@ -11,12 +11,12 @@ export default function Dashboard() {
         <table className="w-full">
           <thead className="bg-slate-500 text-white">
             <tr>
-              <th className="px-4 py-2 border-r-2 w-1/12">Column 1</th>
-              <th className="px-4 py-2 border-r-2">Column 2</th>
-              <th className="px-4 py-2 border-r-2">Column 3</th>
-              <th className="px-4 py-2 border-r-2">Column 4</th>
-              <th className="px-4 py-2 border-r-2">Column 5</th>
-              <th className="px-4 py-2 border-r-2 ">Column 6</th>
+              <th className="px-4 py-2 border-r-2 w-1/12">PQR id</th>
+              <th className="px-4 py-2 border-r-2 ">Product Name</th>
+              <th className="px-4 py-2 border-r-2">Short Description</th>
+              <th className="px-4 py-2 border-r-2">Initiated by</th>
+              <th className="px-4 py-2 border-r-2">Initiated on</th>
+              <th className="px-4 py-2 border-r-2">Current Status</th>
             </tr>
           </thead>
           <tbody className="w-full">
