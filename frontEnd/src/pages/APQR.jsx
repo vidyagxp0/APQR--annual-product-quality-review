@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import Header from "../Component/Header";
 import { MdNoteAdd } from "react-icons/md";
@@ -360,16 +359,6 @@ export default function APQR() {
     };
     setManufacturingSD([...manufacturingSD, newRow]);
   };
-  const addmanufacturingSDRow2 = () => {
-    const newRow = {
-      criticalProcessParameter: "",
-      codes: "",
-      acceptanceCriteria: "",
-      results: { minimum: "", maximum: "" },
-      compliesNotComplies: "",
-    };
-    setManufacturingSD2([...manufacturingSD2, newRow]);
-  };
 
   const addBufferFSDPVRow = () => {
     const newRow = {
@@ -449,7 +438,6 @@ export default function APQR() {
     };
     setOoaResults([...ooaResults, newRow]);
   };
-
 
   const addReviewODSTRRow = () => {
     const newRow = {
@@ -866,37 +854,70 @@ export default function APQR() {
       </div>
       <div className="pqrform">
         <div className="form-tabs">
-          <div className={`${tab === "GI" ? "active" : ""}`} onClick={() => setTab("GI")}>
+          <div
+            className={`${tab === "GI" ? "active" : ""}`}
+            onClick={() => setTab("GI")}
+          >
             General Information
           </div>
-          <div className={`${tab === "WR" ? "active" : ""}`} onClick={() => setTab("WR")}>
+          <div
+            className={`${tab === "WR" ? "active" : ""}`}
+            onClick={() => setTab("WR")}
+          >
             Warehouse Review
           </div>
-          <div className={`${tab === "MR" ? "active" : ""}`} onClick={() => setTab("MR")}>
+          <div
+            className={`${tab === "MR" ? "active" : ""}`}
+            onClick={() => setTab("MR")}
+          >
             Manufacturing Review
           </div>
-          <div className={`${tab === "LR" ? "active" : ""}`} onClick={() => setTab("LR")}>
+          <div
+            className={`${tab === "LR" ? "active" : ""}`}
+            onClick={() => setTab("LR")}
+          >
             Laboratory Review
           </div>
-          <div className={`${tab === "EAMR" ? "active" : ""}`} onClick={() => setTab("EAMR")}>
+          <div
+            className={`${tab === "EAMR" ? "active" : ""}`}
+            onClick={() => setTab("EAMR")}
+          >
             Engineering And Maintenance Review
           </div>
-          <div className={`${tab === "QSR" ? "active" : ""}`} onClick={() => setTab("QSR")}>
+          <div
+            className={`${tab === "QSR" ? "active" : ""}`}
+            onClick={() => setTab("QSR")}
+          >
             Quality System Review
           </div>
-          <div className={`${tab === "RR" ? "active" : ""}`} onClick={() => setTab("RR")}>
+          <div
+            className={`${tab === "RR" ? "active" : ""}`}
+            onClick={() => setTab("RR")}
+          >
             Regulatory Review
           </div>
-          <div className={`${tab === "R" ? "active" : ""}`} onClick={() => setTab("R")}>
+          <div
+            className={`${tab === "R" ? "active" : ""}`}
+            onClick={() => setTab("R")}
+          >
             Recommendations{" "}
           </div>
-          <div className={`${tab === "CAPA" ? "active" : ""}`} onClick={() => setTab("CAPA")}>
+          <div
+            className={`${tab === "CAPA" ? "active" : ""}`}
+            onClick={() => setTab("CAPA")}
+          >
             CAPA
           </div>
-          <div className={`${tab === "DEAC" ? "active" : ""}`} onClick={() => setTab("DEAC")}>
+          <div
+            className={`${tab === "DEAC" ? "active" : ""}`}
+            onClick={() => setTab("DEAC")}
+          >
             Discussion, Evaluation And Conclusion
           </div>
-          <div className={`${tab === "LOA" ? "active" : ""}`} onClick={() => setTab("LOA")}>
+          <div
+            className={`${tab === "LOA" ? "active" : ""}`}
+            onClick={() => setTab("LOA")}
+          >
             List Of Annexures/Attachments
           </div>
         </div>
@@ -998,10 +1019,15 @@ export default function APQR() {
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addManufacturingStageRow} />
-                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
+                  <div className="addrowinstruction  pl-2">
+                    Add Rows by clicking on (+) icon
+                  </div>
                 </div>
                 <div className="flex gap-4 ">
-                  <ExcelExport data={balanceSheet} fileName="balance-sheet-summary.xlsx" />
+                  <ExcelExport
+                    data={balanceSheet}
+                    fileName="balance-sheet-summary.xlsx"
+                  />
                 </div>
               </div>
               {/* <div className="w-1/2 flex justify-end px-8 py-4">
@@ -1033,6 +1059,10 @@ export default function APQR() {
                 })}
               </tbody>
             </table>
+            <div>
+              <h4 className="gridName mt-4">Summary</h4>
+              <TinyEditor />
+            </div>
 
             <div className="py-4">
               {/* <div className="AddRows d-flex">
@@ -1042,10 +1072,15 @@ export default function APQR() {
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addManufacturingSAPSRow} />
-                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
+                  <div className="addrowinstruction  pl-2">
+                    Add Rows by clicking on (+) icon
+                  </div>
                 </div>
                 <div className="flex gap-4 ">
-                  <ExcelExport data={balanceSheet} fileName="balance-sheet-summary.xlsx" />
+                  <ExcelExport
+                    data={balanceSheet}
+                    fileName="balance-sheet-summary.xlsx"
+                  />
                 </div>
               </div>
               <table>
@@ -1103,10 +1138,15 @@ export default function APQR() {
                 <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                   <div className="flex items-center">
                     <MdNoteAdd onClick={addRawMRSRow} />
-                    <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
+                    <div className="addrowinstruction  pl-2">
+                      Add Rows by clicking on (+) icon
+                    </div>
                   </div>
                   <div className="flex gap-4 ">
-                    <ExcelExport data={balanceSheet} fileName="balance-sheet-summary.xlsx" />
+                    <ExcelExport
+                      data={balanceSheet}
+                      fileName="balance-sheet-summary.xlsx"
+                    />
                   </div>
                 </div>
 
@@ -1146,10 +1186,17 @@ export default function APQR() {
                     })}
                   </tbody>
                 </table>
+                <div>
+                  <h4 className="gridName mt-5">Summary</h4>
+                  <TinyEditor />
+                </div>
               </div>
 
               <div className="pb-4">
-                <h4 className="gridName"> Packing Materials Rejection Summary</h4>
+                <h4 className="gridName">
+                  {" "}
+                  Packing Materials Rejection Summary
+                </h4>
                 {/* <div className="AddRows d-flex">
                   <MdNoteAdd onClick={addPackingMRSRow} />
                   <div className="addrowinstruction"></div>
@@ -1157,10 +1204,15 @@ export default function APQR() {
                 <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                   <div className="flex items-center">
                     <MdNoteAdd onClick={addPackingMRSRow} />
-                    <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
+                    <div className="addrowinstruction  pl-2">
+                      Add Rows by clicking on (+) icon
+                    </div>
                   </div>
                   <div className="flex gap-4 ">
-                    <ExcelExport data={balanceSheet} fileName="balance-sheet-summary.xlsx" />
+                    <ExcelExport
+                      data={balanceSheet}
+                      fileName="balance-sheet-summary.xlsx"
+                    />
                   </div>
                 </div>
                 <table>
@@ -1201,7 +1253,8 @@ export default function APQR() {
                 </table>
 
                 <h5 className="gridName pt-4">
-                  Summary of Review of Rejected Raw Materials and Packaging Materials
+                  Summary of Review of Rejected Raw Materials and Packaging
+                  Materials
                 </h5>
                 <TinyEditor />
               </div>
@@ -1217,10 +1270,15 @@ export default function APQR() {
                 <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                   <div className="flex items-center">
                     <MdNoteAdd onClick={addExpiredRMDRow} />
-                    <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
+                    <div className="addrowinstruction  pl-2">
+                      Add Rows by clicking on (+) icon
+                    </div>
                   </div>
                   <div className="flex gap-4 ">
-                    <ExcelExport data={balanceSheet} fileName="balance-sheet-summary.xlsx" />
+                    <ExcelExport
+                      data={balanceSheet}
+                      fileName="balance-sheet-summary.xlsx"
+                    />
                   </div>
                 </div>
                 <table>
@@ -1255,10 +1313,16 @@ export default function APQR() {
                     })}
                   </tbody>
                 </table>
+                <div>
+                  <h4 className="gridName">Summary</h4>
+                  <TinyEditor />
+                </div>
               </div>
 
               <div className="">
-                <h4 className="gridName">Expired Packaging Materials Details</h4>
+                <h4 className="gridName">
+                  Expired Packaging Materials Details
+                </h4>
                 {/* <div className="AddRows d-flex">
                   <MdNoteAdd onClick={addExpiredPMDRow} />
                   <div className="addrowinstruction"></div>
@@ -1266,10 +1330,15 @@ export default function APQR() {
                 <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                   <div className="flex items-center">
                     <MdNoteAdd onClick={addExpiredPMDRow} />
-                    <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
+                    <div className="addrowinstruction  pl-2">
+                      Add Rows by clicking on (+) icon
+                    </div>
                   </div>
                   <div className="flex gap-4 ">
-                    <ExcelExport data={balanceSheet} fileName="balance-sheet-summary.xlsx" />
+                    <ExcelExport
+                      data={balanceSheet}
+                      fileName="balance-sheet-summary.xlsx"
+                    />
                   </div>
                 </div>
                 <table>
@@ -1304,8 +1373,10 @@ export default function APQR() {
                     })}
                   </tbody>
                 </table>
+
                 <h4 className="gridName pt-4">
-                  Summary of Review of Expired Raw Materials and Packaging Materials
+                  Summary of Review of Expired Raw Materials and Packaging
+                  Materials
                 </h4>
                 <TinyEditor />
               </div>
@@ -1318,10 +1389,15 @@ export default function APQR() {
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addreviewOfASLRow} />
-                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
+                  <div className="addrowinstruction  pl-2">
+                    Add Rows by clicking on (+) icon
+                  </div>
                 </div>
                 <div className="flex gap-4 ">
-                  <ExcelExport data={balanceSheet} fileName="balance-sheet-summary.xlsx" />
+                  <ExcelExport
+                    data={balanceSheet}
+                    fileName="balance-sheet-summary.xlsx"
+                  />
                 </div>
               </div>
               <div>
@@ -1359,7 +1435,9 @@ export default function APQR() {
                     })}
                   </tbody>
                 </table>
-                <h4 className="gridName pt-4">Summary of Review of Approved Supplier List</h4>
+                <h4 className="gridName pt-4">
+                  Summary of Review of Approved Supplier List
+                </h4>
                 <TinyEditor />
               </div>
               <div className="sub-head">
@@ -1373,10 +1451,15 @@ export default function APQR() {
                 <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                   <div className="flex items-center">
                     <MdNoteAdd onClick={addvendorQDORMERow} />
-                    <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
+                    <div className="addrowinstruction  pl-2">
+                      Add Rows by clicking on (+) icon
+                    </div>
                   </div>
                   <div className="flex gap-4 ">
-                    <ExcelExport data={balanceSheet} fileName="balance-sheet-summary.xlsx" />
+                    <ExcelExport
+                      data={balanceSheet}
+                      fileName="balance-sheet-summary.xlsx"
+                    />
                   </div>
                 </div>
                 <table>
@@ -1419,7 +1502,8 @@ export default function APQR() {
                   </tbody>
                 </table>
                 <h4 className="gridName pt-4">
-                  Summary of Vendor Qualification Details of Raw Material Excipients
+                  Summary of Vendor Qualification Details of Raw Material
+                  Excipients
                 </h4>
                 <TinyEditor />
               </div>
@@ -1434,10 +1518,15 @@ export default function APQR() {
                 <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                   <div className="flex items-center">
                     <MdNoteAdd onClick={addvendorQDOPPMRow} />
-                    <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
+                    <div className="addrowinstruction  pl-2">
+                      Add Rows by clicking on (+) icon
+                    </div>
                   </div>
                   <div className="flex gap-4 ">
-                    <ExcelExport data={balanceSheet} fileName="balance-sheet-summary.xlsx" />
+                    <ExcelExport
+                      data={balanceSheet}
+                      fileName="balance-sheet-summary.xlsx"
+                    />
                   </div>
                 </div>
                 <table>
@@ -1471,12 +1560,17 @@ export default function APQR() {
                   </tbody>
                 </table>
                 <h4 className="gridName pt-4">
-                  Summary of Vendor Qualification Details of Primary Packing Materials
+                  Summary of Vendor Qualification Details of Primary Packing
+                  Materials
                 </h4>
                 <TinyEditor />
               </div>
-              <div className="sub-head">Vendor Qualification Details of Process Gases</div>
-              <div className="sub-head">Vendor Qualification Details of Process Gases</div>
+              <div className="sub-head">
+                Vendor Qualification Details of Process Gases
+              </div>
+              <div className="sub-head">
+                Vendor Qualification Details of Process Gases
+              </div>
               <div>
                 {/* <div className="AddRows d-flex">
                   <MdNoteAdd onClick={addvendorQDPOGRow} />
@@ -1485,10 +1579,15 @@ export default function APQR() {
                 <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                   <div className="flex items-center">
                     <MdNoteAdd onClick={addvendorQDPOGRow} />
-                    <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
+                    <div className="addrowinstruction  pl-2">
+                      Add Rows by clicking on (+) icon
+                    </div>
                   </div>
                   <div className="flex gap-4 ">
-                    <ExcelExport data={balanceSheet} fileName="balance-sheet-summary.xlsx" />
+                    <ExcelExport
+                      data={balanceSheet}
+                      fileName="balance-sheet-summary.xlsx"
+                    />
                   </div>
                 </div>
                 <table>
@@ -1552,7 +1651,10 @@ export default function APQR() {
 
             <div className="dual-group-input">
               <div className="group-input">
-                <label>Total No. of batches manufactured during the current review period</label>
+                <label>
+                  Total No. of batches manufactured during the current review
+                  period
+                </label>
                 <input type="number" />
               </div>
               <div className="group-input">
@@ -1590,11 +1692,16 @@ export default function APQR() {
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addcodeTCTDRow} />
-                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
+                  <div className="addrowinstruction  pl-2">
+                    Add Rows by clicking on (+) icon
+                  </div>
                 </div>
                 <div className="flex gap-4 ">
                   var(--second-color)
-                  <ExcelExport data={balanceSheet} fileName="balance-sheet-summary.xlsx" />
+                  <ExcelExport
+                    data={balanceSheet}
+                    fileName="balance-sheet-summary.xlsx"
+                  />
                 </div>
               </div>
               <table>
@@ -1641,17 +1748,20 @@ export default function APQR() {
                   })}
                 </tbody>
               </table>
-              <h4 className="gridName pt-4">Summary of Code to Code Transfer Details</h4>
+              <h4 className="gridName pt-4">
+                Summary of Code to Code Transfer Details
+              </h4>
               <TinyEditor />
             </div>
             <div className="sub-head">
               {" "}
-              Review of Manufacturing Process, Packing Process and relevant Validation Status
+              Review of Manufacturing Process, Packing Process and relevant
+              Validation Status
             </div>
             <TinyEditor />
             <div className="sub-head">
-              Review of Reprocessing/Repacking/Reworking along with CAPA and Effectiveness Check
-              Verification (if any)
+              Review of Reprocessing/Repacking/Reworking along with CAPA and
+              Effectiveness Check Verification (if any)
             </div>
             <div className="dual-group-input">
               <div className="group-input">
@@ -1671,14 +1781,17 @@ export default function APQR() {
               </div> */}
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
-                  <MdNoteAdd onClick={addmanufacturingSDRow2} />
+                  <MdNoteAdd onClick={addreviewORCECRow} />
                   <div className="addrowinstruction  pl-2">
                     Add Rows by clicking on (+) icon
                   </div>
                 </div>
                 <div className="flex gap-4 ">
                   .
-                  <ExcelExport data={balanceSheet} fileName="balance-sheet-summary.xlsx" />
+                  <ExcelExport
+                    data={balanceSheet}
+                    fileName="balance-sheet-summary.xlsx"
+                  />
                 </div>
               </div>
               <table>
@@ -1722,6 +1835,11 @@ export default function APQR() {
                 </tbody>
               </table>
             </div>
+            <div>
+              <h4 className="gridName mt-5">Summary</h4>
+              <TinyEditor />
+            </div>
+
             <h1>Deviation Details - Grid CAPA Details – Grid</h1>
 
             <h4 className="gridName">CAPA Details</h4>
@@ -1766,16 +1884,16 @@ export default function APQR() {
               <table className="mb-4">
                 <thead>
                   <tr>
-                    <th >AR No.</th>
-                    <th >CAPA Type</th>
-                    <th >Description of Issue</th>
-                    <th >Root Cause</th>
-                    <th >CAPA Verification</th>
-                    <th >File Attachment</th>
-                    <th >Remarks</th>
-                    <th >Submit by</th>
-                    <th >Submit On</th>
-                    <th >
+                    <th>AR No.</th>
+                    <th>CAPA Type</th>
+                    <th>Description of Issue</th>
+                    <th>Root Cause</th>
+                    <th>CAPA Verification</th>
+                    <th>File Attachment</th>
+                    <th>Remarks</th>
+                    <th>Submit by</th>
+                    <th>Submit On</th>
+                    <th>
                       <input type="file" />
                     </th>
                   </tr>
@@ -1804,9 +1922,11 @@ export default function APQR() {
                         </td>
                         <td>
                           <input />
-                        </td> <td>
+                        </td>{" "}
+                        <td>
                           <input />
-                        </td> <td>
+                        </td>{" "}
+                        <td>
                           <input />
                         </td>
                       </tr>
@@ -1814,7 +1934,11 @@ export default function APQR() {
                   })}
                 </tbody>
               </table>
-            </div>   
+            </div>
+            <div>
+              <h4 className="gridName mt-5">Summary</h4>
+              <TinyEditor />
+            </div>
 
             <h4 className="gridName">Deviation Details</h4>
             <div>
@@ -1858,17 +1982,17 @@ export default function APQR() {
               <table className="mb-4">
                 <thead>
                   <tr>
-                    <th >AR No.</th>
-                    <th >Deviation Related To</th>
-                    <th >Description</th>
-                    <th >Root Cause</th>
-                    <th >Deviation Ovserved On</th>
-                    <th >Deviation Ovserved By</th>
-                    <th >Classification of Deviation</th>
-                    <th >file Attachment</th>
-                    <th >Remarks</th>
-                    <th >Status</th>
-                    <th >
+                    <th>AR No.</th>
+                    <th>Deviation Related To</th>
+                    <th>Description</th>
+                    <th>Root Cause</th>
+                    <th>Deviation Ovserved On</th>
+                    <th>Deviation Ovserved By</th>
+                    <th>Classification of Deviation</th>
+                    <th>file Attachment</th>
+                    <th>Remarks</th>
+                    <th>Status</th>
+                    <th>
                       <input type="file" />
                     </th>
                   </tr>
@@ -1900,9 +2024,11 @@ export default function APQR() {
                         </td>
                         <td>
                           <input />
-                        </td> <td>
+                        </td>{" "}
+                        <td>
                           <input />
-                        </td> <td>
+                        </td>{" "}
+                        <td>
                           <input />
                         </td>
                       </tr>
@@ -1910,21 +2036,11 @@ export default function APQR() {
                   })}
                 </tbody>
               </table>
-            </div>   
-
-
-
-
-
-
-
-
-
-
-
-
-
-            
+            </div>
+            <div>
+              <h4 className="gridName mt-5">Summary</h4>
+              <TinyEditor />
+            </div>
 
             <div className="sub-head">
               Review of all Batch Failures/Rejections along with CAPA and
@@ -2014,6 +2130,10 @@ export default function APQR() {
                 </tbody>
               </table>
             </div>
+            <div>
+              <h4 className="gridName mt-5">Summary</h4>
+              <TinyEditor />
+            </div>
 
             <h4 className="gridName">OOT Results</h4>
             <div>
@@ -2057,13 +2177,13 @@ export default function APQR() {
               <table className="mb-4">
                 <thead>
                   <tr>
-                    <th >AR NO.</th>
-                    <th >Test name of OOT</th>
-                    <th >Result Obtained</th>
-                    <th >Initial Interval Details</th>
-                    <th >Previous Interval Details</th>
-                    <th >% Diffrence of Results</th>
-                    <th >Trend Limit</th>
+                    <th>AR NO.</th>
+                    <th>Test name of OOT</th>
+                    <th>Result Obtained</th>
+                    <th>Initial Interval Details</th>
+                    <th>Previous Interval Details</th>
+                    <th>% Diffrence of Results</th>
+                    <th>Trend Limit</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -2096,6 +2216,10 @@ export default function APQR() {
                   })}
                 </tbody>
               </table>
+            </div>
+            <div>
+              <h4 className="gridName mt-5">Summary</h4>
+              <TinyEditor />
             </div>
             <h4 className="gridName">OOA Results</h4>
             <div>
@@ -2139,13 +2263,13 @@ export default function APQR() {
               <table className="mb-4">
                 <thead>
                   <tr>
-                    <th >AR NO.</th>
-                    <th >Test name of Alert</th>
-                    <th >Result Obtained</th>
-                    <th >Initial Interval Details</th>
-                    <th >Previous Interval Details</th>
-                    <th >% Diffrence of Results</th>
-                    <th >Trend Limit</th>
+                    <th>AR NO.</th>
+                    <th>Test name of Alert</th>
+                    <th>Result Obtained</th>
+                    <th>Initial Interval Details</th>
+                    <th>Previous Interval Details</th>
+                    <th>% Diffrence of Results</th>
+                    <th>Trend Limit</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -2158,7 +2282,7 @@ export default function APQR() {
                         <td>
                           <input />
                         </td>
-                       
+
                         <td>
                           <input />
                         </td>
@@ -2170,7 +2294,7 @@ export default function APQR() {
                         </td>
                         <td>
                           <input />
-                        </td> 
+                        </td>
                         <td>
                           <input />
                         </td>
@@ -2179,6 +2303,10 @@ export default function APQR() {
                   })}
                 </tbody>
               </table>
+            </div>
+            <div>
+              <h4 className="gridName mt-5">Summary</h4>
+              <TinyEditor />
             </div>
             <h4 className="gridName">OOL Results</h4>
             <div>
@@ -2222,13 +2350,13 @@ export default function APQR() {
               <table className="mb-4">
                 <thead>
                   <tr>
-                    <th >AR NO.</th>
-                    <th >Test name of OOT</th>
-                    <th >Result Obtained</th>
-                    <th >Initial Interval Details</th>
-                    <th >Previous Interval Details</th>
-                    <th >% Diffrence of Results</th>
-                    <th >Trend Limit</th>
+                    <th>AR NO.</th>
+                    <th>Test name of OOT</th>
+                    <th>Result Obtained</th>
+                    <th>Initial Interval Details</th>
+                    <th>Previous Interval Details</th>
+                    <th>% Diffrence of Results</th>
+                    <th>Trend Limit</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -2238,7 +2366,6 @@ export default function APQR() {
                         <td>
                           <input />
                         </td>
-                      
                         <td>
                           <input />
                         </td>
@@ -2253,7 +2380,8 @@ export default function APQR() {
                         </td>
                         <td>
                           <input />
-                        </td> <td>
+                        </td>{" "}
+                        <td>
                           <input />
                         </td>
                       </tr>
@@ -2261,6 +2389,10 @@ export default function APQR() {
                   })}
                 </tbody>
               </table>
+            </div>
+            <div>
+              <h4 className="gridName mt-5">Summary</h4>
+              <TinyEditor />
             </div>
 
             <div className="sub-head">
@@ -2312,16 +2444,16 @@ export default function APQR() {
               <table className="mb-4">
                 <thead>
                   <tr>
-                    <th >AR No.</th>
-                    <th >CAPA Type</th>
-                    <th >Description of Issue</th>
-                    <th >Root Cause</th>
-                    <th >CAPA Verification</th>
-                    <th >File Attachment</th>
-                    <th >Remarks</th>
-                    <th >Submit by</th>
-                    <th >Submit On</th>
-                    <th >
+                    <th>AR No.</th>
+                    <th>CAPA Type</th>
+                    <th>Description of Issue</th>
+                    <th>Root Cause</th>
+                    <th>CAPA Verification</th>
+                    <th>File Attachment</th>
+                    <th>Remarks</th>
+                    <th>Submit by</th>
+                    <th>Submit On</th>
+                    <th>
                       <input type="file" />
                     </th>
                   </tr>
@@ -2350,9 +2482,11 @@ export default function APQR() {
                         </td>
                         <td>
                           <input />
-                        </td> <td>
+                        </td>{" "}
+                        <td>
                           <input />
-                        </td> <td>
+                        </td>{" "}
+                        <td>
                           <input />
                         </td>
                       </tr>
@@ -2818,7 +2952,9 @@ export default function APQR() {
               </tbody>
             </table>
 
-            <div className="sub-head">Critical Process Parameters Review Summary</div>
+            <div className="sub-head">
+              Critical Process Parameters Review Summary
+            </div>
             <div className="group-input">
               {/* <input placeholder="please insert flex" /> */}
               <TinyEditor />
@@ -2827,7 +2963,10 @@ export default function APQR() {
         ) : null}
         {tab === "LR" ? (
           <div className="p-4">
-            <div className="sub-head"> Review of Drug Substance Test Results</div>
+            <div className="sub-head">
+              {" "}
+              Review of Drug Substance Test Results
+            </div>
             <h1 className="gridName">Drug Substance 1 Test Result</h1>
             <div>
               {/* <div className="AddRows d-flex">
@@ -2837,10 +2976,15 @@ export default function APQR() {
               <div className="AddRows d-flex w-full justify-between items-center text-3xl mb-5">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addReviewODSTRRow} />
-                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
+                  <div className="addrowinstruction  pl-2">
+                    Add Rows by clicking on (+) icon
+                  </div>
                 </div>
                 <div className="flex gap-4 ">
-                  <ExcelExport data={balanceSheet} fileName="balance-sheet-summary.xlsx" />
+                  <ExcelExport
+                    data={balanceSheet}
+                    fileName="balance-sheet-summary.xlsx"
+                  />
                 </div>
               </div>
               <table>
@@ -2892,10 +3036,15 @@ export default function APQR() {
               <div className="AddRows d-flex w-full justify-between items-center text-3xl mb-5">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addReviewODSTRRow2} />
-                  <div className="addrowinstruction pl-2">Add Rows by clicking on (+) icon</div>
+                  <div className="addrowinstruction pl-2">
+                    Add Rows by clicking on (+) icon
+                  </div>
                 </div>
                 <div className="flex gap-4 ">
-                  <ExcelExport data={balanceSheet} fileName="balance-sheet-summary.xlsx" />
+                  <ExcelExport
+                    data={balanceSheet}
+                    fileName="balance-sheet-summary.xlsx"
+                  />
                 </div>
               </div>
               <table>
@@ -2947,10 +3096,15 @@ export default function APQR() {
               <div className="AddRows d-flex w-full justify-between items-center text-3xl mb-5">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addReviewODSTRRow3} />
-                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
+                  <div className="addrowinstruction  pl-2">
+                    Add Rows by clicking on (+) icon
+                  </div>
                 </div>
                 <div className="flex gap-4 ">
-                  <ExcelExport data={balanceSheet} fileName="balance-sheet-summary.xlsx" />
+                  <ExcelExport
+                    data={balanceSheet}
+                    fileName="balance-sheet-summary.xlsx"
+                  />
                 </div>
               </div>
               <table>
@@ -3002,10 +3156,15 @@ export default function APQR() {
               <div className="AddRows d-flex w-full justify-between items-center text-3xl mb-5">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addReviewODSTRRow4} />
-                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
+                  <div className="addrowinstruction  pl-2">
+                    Add Rows by clicking on (+) icon
+                  </div>
                 </div>
                 <div className="flex gap-4 ">
-                  <ExcelExport data={balanceSheet} fileName="balance-sheet-summary.xlsx" />
+                  <ExcelExport
+                    data={balanceSheet}
+                    fileName="balance-sheet-summary.xlsx"
+                  />
                 </div>
               </div>
               <table>
@@ -3057,10 +3216,15 @@ export default function APQR() {
               <div className="AddRows d-flex w-full justify-between items-center text-3xl mb-5">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addReviewODSTRRow5} />
-                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
+                  <div className="addrowinstruction  pl-2">
+                    Add Rows by clicking on (+) icon
+                  </div>
                 </div>
                 <div className="flex gap-4 ">
-                  <ExcelExport data={balanceSheet} fileName="balance-sheet-summary.xlsx" />
+                  <ExcelExport
+                    data={balanceSheet}
+                    fileName="balance-sheet-summary.xlsx"
+                  />
                 </div>
               </div>
               <table>
@@ -3112,10 +3276,15 @@ export default function APQR() {
               <div className="AddRows d-flex w-full justify-between items-center text-3xl mb-5">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addReviewODSTRRow6} />
-                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
+                  <div className="addrowinstruction  pl-2">
+                    Add Rows by clicking on (+) icon
+                  </div>
                 </div>
                 <div className="flex gap-4 ">
-                  <ExcelExport data={balanceSheet} fileName="balance-sheet-summary.xlsx" />
+                  <ExcelExport
+                    data={balanceSheet}
+                    fileName="balance-sheet-summary.xlsx"
+                  />
                 </div>
               </div>
               <table>
@@ -3167,10 +3336,15 @@ export default function APQR() {
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addReviewODSTRRow7} />
-                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
+                  <div className="addrowinstruction  pl-2">
+                    Add Rows by clicking on (+) icon
+                  </div>
                 </div>
                 <div className="flex gap-4 ">
-                  <ExcelExport data={balanceSheet} fileName="balance-sheet-summary.xlsx" />
+                  <ExcelExport
+                    data={balanceSheet}
+                    fileName="balance-sheet-summary.xlsx"
+                  />
                 </div>
               </div>
               <table>
@@ -3222,10 +3396,15 @@ export default function APQR() {
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addReviewODSTRRow8} />
-                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
+                  <div className="addrowinstruction  pl-2">
+                    Add Rows by clicking on (+) icon
+                  </div>
                 </div>
                 <div className="flex gap-4 ">
-                  <ExcelExport data={balanceSheet} fileName="balance-sheet-summary.xlsx" />
+                  <ExcelExport
+                    data={balanceSheet}
+                    fileName="balance-sheet-summary.xlsx"
+                  />
                 </div>
               </div>
               <table>
@@ -3277,10 +3456,15 @@ export default function APQR() {
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addReviewODSTRRow9} />
-                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
+                  <div className="addrowinstruction  pl-2">
+                    Add Rows by clicking on (+) icon
+                  </div>
                 </div>
                 <div className="flex gap-4 ">
-                  <ExcelExport data={balanceSheet} fileName="balance-sheet-summary.xlsx" />
+                  <ExcelExport
+                    data={balanceSheet}
+                    fileName="balance-sheet-summary.xlsx"
+                  />
                 </div>
               </div>
               <table>
@@ -3332,10 +3516,15 @@ export default function APQR() {
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addReviewODSTRRow10} />
-                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
+                  <div className="addrowinstruction  pl-2">
+                    Add Rows by clicking on (+) icon
+                  </div>
                 </div>
                 <div className="flex gap-4 ">
-                  <ExcelExport data={balanceSheet} fileName="balance-sheet-summary.xlsx" />
+                  <ExcelExport
+                    data={balanceSheet}
+                    fileName="balance-sheet-summary.xlsx"
+                  />
                 </div>
               </div>
               <table>
@@ -3378,7 +3567,13 @@ export default function APQR() {
                 </tbody>
               </table>
             </div>
-            <div className="sub-head">Review of Raw Material Excipient Test Results</div>
+            <div>
+              <h4 className="gridName mt-5">Summary</h4>
+              <TinyEditor />
+            </div>
+            <div className="sub-head">
+              Review of Raw Material Excipient Test Results
+            </div>
             <div>
               {/* <div className="AddRows d-flex">
                 <MdNoteAdd onClick={addReviewORMETRRow} />
@@ -3387,10 +3582,15 @@ export default function APQR() {
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addReviewORMETRRow} />
-                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
+                  <div className="addrowinstruction  pl-2">
+                    Add Rows by clicking on (+) icon
+                  </div>
                 </div>
                 <div className="flex gap-4 ">
-                  <ExcelExport data={balanceSheet} fileName="balance-sheet-summary.xlsx" />
+                  <ExcelExport
+                    data={balanceSheet}
+                    fileName="balance-sheet-summary.xlsx"
+                  />
                 </div>
               </div>
               <table>
@@ -3437,7 +3637,13 @@ export default function APQR() {
                 </tbody>
               </table>
             </div>
-            <div className="sub-head">Review of Packing Material Test Results</div>
+            <div>
+              <h4 className="gridName mt-5">Summary</h4>
+              <TinyEditor />
+            </div>
+            <div className="sub-head">
+              Review of Packing Material Test Results
+            </div>
             <div>
               {/* <div className="AddRows d-flex">
                 <MdNoteAdd onClick={addreviewOPMTRRow} />
@@ -3446,10 +3652,15 @@ export default function APQR() {
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addreviewOPMTRRow} />
-                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
+                  <div className="addrowinstruction  pl-2">
+                    Add Rows by clicking on (+) icon
+                  </div>
                 </div>
                 <div className="flex gap-4 ">
-                  <ExcelExport data={balanceSheet} fileName="balance-sheet-summary.xlsx" />
+                  <ExcelExport
+                    data={balanceSheet}
+                    fileName="balance-sheet-summary.xlsx"
+                  />
                 </div>
               </div>
               <table>
@@ -3496,7 +3707,13 @@ export default function APQR() {
                 </tbody>
               </table>
             </div>
-            <div className="sub-head">Review of Drug Product – In process Test Results</div>
+            <div>
+              <h4 className="gridName mt-5">Summary</h4>
+              <TinyEditor />
+            </div>
+            <div className="sub-head">
+              Review of Drug Product – In process Test Results
+            </div>
             <h4 className="gridName pt-2">Dilution Buffer 1 - Test Results</h4>
             <div>
               {/* <div className="AddRows d-flex">
@@ -3506,10 +3723,15 @@ export default function APQR() {
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addReviewODPRow} />
-                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
+                  <div className="addrowinstruction  pl-2">
+                    Add Rows by clicking on (+) icon
+                  </div>
                 </div>
                 <div className="flex gap-4 ">
-                  <ExcelExport data={balanceSheet} fileName="balance-sheet-summary.xlsx" />
+                  <ExcelExport
+                    data={balanceSheet}
+                    fileName="balance-sheet-summary.xlsx"
+                  />
                 </div>
               </div>
               <table>
@@ -3565,10 +3787,15 @@ export default function APQR() {
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addReviewODPRow2} />
-                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
+                  <div className="addrowinstruction  pl-2">
+                    Add Rows by clicking on (+) icon
+                  </div>
                 </div>
                 <div className="flex gap-4 ">
-                  <ExcelExport data={balanceSheet} fileName="balance-sheet-summary.xlsx" />
+                  <ExcelExport
+                    data={balanceSheet}
+                    fileName="balance-sheet-summary.xlsx"
+                  />
                 </div>
               </div>
               <table>
@@ -3624,10 +3851,15 @@ export default function APQR() {
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addReviewODPRow3} />
-                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
+                  <div className="addrowinstruction  pl-2">
+                    Add Rows by clicking on (+) icon
+                  </div>
                 </div>
                 <div className="flex gap-4 ">
-                  <ExcelExport data={balanceSheet} fileName="balance-sheet-summary.xlsx" />
+                  <ExcelExport
+                    data={balanceSheet}
+                    fileName="balance-sheet-summary.xlsx"
+                  />
                 </div>
               </div>
               <table>
@@ -3683,10 +3915,15 @@ export default function APQR() {
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addReviewODPRow4} />
-                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
+                  <div className="addrowinstruction  pl-2">
+                    Add Rows by clicking on (+) icon
+                  </div>
                 </div>
                 <div className="flex gap-4 ">
-                  <ExcelExport data={balanceSheet} fileName="balance-sheet-summary.xlsx" />
+                  <ExcelExport
+                    data={balanceSheet}
+                    fileName="balance-sheet-summary.xlsx"
+                  />
                 </div>
               </div>
               <table>
@@ -3742,10 +3979,15 @@ export default function APQR() {
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addReviewODPRow5} />
-                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
+                  <div className="addrowinstruction  pl-2">
+                    Add Rows by clicking on (+) icon
+                  </div>
                 </div>
                 <div className="flex gap-4 ">
-                  <ExcelExport data={balanceSheet} fileName="balance-sheet-summary.xlsx" />
+                  <ExcelExport
+                    data={balanceSheet}
+                    fileName="balance-sheet-summary.xlsx"
+                  />
                 </div>
               </div>
               <table>
@@ -3801,10 +4043,15 @@ export default function APQR() {
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addReviewODPRow6} />
-                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
+                  <div className="addrowinstruction  pl-2">
+                    Add Rows by clicking on (+) icon
+                  </div>
                 </div>
                 <div className="flex gap-4 ">
-                  <ExcelExport data={balanceSheet} fileName="balance-sheet-summary.xlsx" />
+                  <ExcelExport
+                    data={balanceSheet}
+                    fileName="balance-sheet-summary.xlsx"
+                  />
                 </div>
               </div>
               <table>
@@ -3860,10 +4107,15 @@ export default function APQR() {
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addReviewODPRow7} />
-                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
+                  <div className="addrowinstruction  pl-2">
+                    Add Rows by clicking on (+) icon
+                  </div>
                 </div>
                 <div className="flex gap-4 ">
-                  <ExcelExport data={balanceSheet} fileName="balance-sheet-summary.xlsx" />
+                  <ExcelExport
+                    data={balanceSheet}
+                    fileName="balance-sheet-summary.xlsx"
+                  />
                 </div>
               </div>
               <table>
@@ -3919,10 +4171,15 @@ export default function APQR() {
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addReviewODPRow8} />
-                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
+                  <div className="addrowinstruction  pl-2">
+                    Add Rows by clicking on (+) icon
+                  </div>
                 </div>
                 <div className="flex gap-4 ">
-                  <ExcelExport data={balanceSheet} fileName="balance-sheet-summary.xlsx" />
+                  <ExcelExport
+                    data={balanceSheet}
+                    fileName="balance-sheet-summary.xlsx"
+                  />
                 </div>
               </div>
               <table>
@@ -3978,10 +4235,15 @@ export default function APQR() {
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addReviewODPRow9} />
-                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
+                  <div className="addrowinstruction  pl-2">
+                    Add Rows by clicking on (+) icon
+                  </div>
                 </div>
                 <div className="flex gap-4 ">
-                  <ExcelExport data={balanceSheet} fileName="balance-sheet-summary.xlsx" />
+                  <ExcelExport
+                    data={balanceSheet}
+                    fileName="balance-sheet-summary.xlsx"
+                  />
                 </div>
               </div>
               <table>
@@ -4037,10 +4299,15 @@ export default function APQR() {
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addReviewODPRow10} />
-                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
+                  <div className="addrowinstruction  pl-2">
+                    Add Rows by clicking on (+) icon
+                  </div>
                 </div>
                 <div className="flex gap-4 ">
-                  <ExcelExport data={balanceSheet} fileName="balance-sheet-summary.xlsx" />
+                  <ExcelExport
+                    data={balanceSheet}
+                    fileName="balance-sheet-summary.xlsx"
+                  />
                 </div>
               </div>
               <table>
@@ -4087,7 +4354,13 @@ export default function APQR() {
                 </tbody>
               </table>
             </div>
-            <div className="sub-head">Review of Drug Product –Finished Product Test Results</div>
+            <div>
+              <h4 className="gridName mt-5">Summary</h4>
+              <TinyEditor />
+            </div>
+            <div className="sub-head">
+              Review of Drug Product –Finished Product Test Results
+            </div>
             <div>
               {/* <div className="AddRows d-flex">
                 <MdNoteAdd onClick={addReviewODPFPTRRow} />
@@ -4096,10 +4369,15 @@ export default function APQR() {
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addReviewODPFPTRRow} />
-                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
+                  <div className="addrowinstruction  pl-2">
+                    Add Rows by clicking on (+) icon
+                  </div>
                 </div>
                 <div className="flex gap-4 ">
-                  <ExcelExport data={balanceSheet} fileName="balance-sheet-summary.xlsx" />
+                  <ExcelExport
+                    data={balanceSheet}
+                    fileName="balance-sheet-summary.xlsx"
+                  />
                 </div>
               </div>
               <table>
@@ -4142,6 +4420,10 @@ export default function APQR() {
                 </tbody>
               </table>
             </div>
+            <div>
+              <h4 className="gridName mt-5">Summary</h4>
+              <TinyEditor />
+            </div>
             <div className="sub-head">Summary of Ongoing Stability Studies</div>
             <div>
               {/* <div className="AddRows d-flex">
@@ -4151,10 +4433,15 @@ export default function APQR() {
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addSummaryOOSSRow} />
-                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
+                  <div className="addrowinstruction  pl-2">
+                    Add Rows by clicking on (+) icon
+                  </div>
                 </div>
                 <div className="flex gap-4 ">
-                  <ExcelExport data={balanceSheet} fileName="balance-sheet-summary.xlsx" />
+                  <ExcelExport
+                    data={balanceSheet}
+                    fileName="balance-sheet-summary.xlsx"
+                  />
                 </div>
               </div>
               <table>
@@ -4193,6 +4480,10 @@ export default function APQR() {
                   })}
                 </tbody>
               </table>
+              <div>
+                <h4 className="gridName mt-5">Summary</h4>
+                <TinyEditor />
+              </div>
 
               <h4 className="gridName pt-4">Stability Study Related OOS/OOT</h4>
               {/* <div className="AddRows d-flex">
@@ -4202,10 +4493,15 @@ export default function APQR() {
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addStabilitySRRow} />
-                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
+                  <div className="addrowinstruction  pl-2">
+                    Add Rows by clicking on (+) icon
+                  </div>
                 </div>
                 <div className="flex gap-4 ">
-                  <ExcelExport data={balanceSheet} fileName="balance-sheet-summary.xlsx" />
+                  <ExcelExport
+                    data={balanceSheet}
+                    fileName="balance-sheet-summary.xlsx"
+                  />
                 </div>
               </div>
               <table>
@@ -4240,7 +4536,10 @@ export default function APQR() {
               <h4 className="gridName">Summary</h4>
               <TinyEditor />
 
-              <div className="sub-head"> Review of Visual Inspection – Reserve Samples</div>
+              <div className="sub-head">
+                {" "}
+                Review of Visual Inspection – Reserve Samples
+              </div>
               <div>
                 {/* <div className="AddRows d-flex">
                   <MdNoteAdd onClick={addreviewOVIRSRow} />
@@ -4249,10 +4548,15 @@ export default function APQR() {
                 <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                   <div className="flex items-center">
                     <MdNoteAdd onClick={addreviewOVIRSRow} />
-                    <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
+                    <div className="addrowinstruction  pl-2">
+                      Add Rows by clicking on (+) icon
+                    </div>
                   </div>
                   <div className="flex gap-4 ">
-                    <ExcelExport data={balanceSheet} fileName="balance-sheet-summary.xlsx" />
+                    <ExcelExport
+                      data={balanceSheet}
+                      fileName="balance-sheet-summary.xlsx"
+                    />
                   </div>
                 </div>
                 <table>
@@ -4300,12 +4604,17 @@ export default function APQR() {
               </div>
               <h4 className="gridName mt-4">Summary</h4>
               <TinyEditor />
-              <h4 className="gridName pt-4">Review of Analytical Method Validations</h4>
-              <TinyEditor />
-              <h4 className="gridName pt-4">Review of Contract Testing Laboratories</h4>
+              <h4 className="gridName pt-4">
+                Review of Analytical Method Validations
+              </h4>
               <TinyEditor />
               <h4 className="gridName pt-4">
-                Review of Environmental Monitoring Trend and water trends Reports
+                Review of Contract Testing Laboratories
+              </h4>
+              <TinyEditor />
+              <h4 className="gridName pt-4">
+                Review of Environmental Monitoring Trend and water trends
+                Reports
               </h4>
               <TinyEditor />
               <h4 className="gridName pt-4">Laboratory Review Summary</h4>
@@ -4331,10 +4640,15 @@ export default function APQR() {
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addHVACQStatusRow} />
-                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
+                  <div className="addrowinstruction  pl-2">
+                    Add Rows by clicking on (+) icon
+                  </div>
                 </div>
                 <div className="flex gap-4 ">
-                  <ExcelExport data={balanceSheet} fileName="balance-sheet-summary.xlsx" />
+                  <ExcelExport
+                    data={balanceSheet}
+                    fileName="balance-sheet-summary.xlsx"
+                  />
                 </div>
               </div>
               <table>
@@ -4368,8 +4682,14 @@ export default function APQR() {
                 </tbody>
               </table>
             </div>
+            <div>
+              <h4 className="gridName mt-5">Summary</h4>
+              <TinyEditor />
+            </div>
 
-            <h4 className="gridName pt-4">Sanitization and Sterilization Details of Utilities</h4>
+            <h4 className="gridName pt-4">
+              Sanitization and Sterilization Details of Utilities
+            </h4>
             <div>
               {/* <div className="AddRows">
                 <MdNoteAdd onClick={addSanitizationASDOURow} />
@@ -4378,10 +4698,15 @@ export default function APQR() {
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addSanitizationASDOURow} />
-                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
+                  <div className="addrowinstruction  pl-2">
+                    Add Rows by clicking on (+) icon
+                  </div>
                 </div>
                 <div className="flex gap-4 ">
-                  <ExcelExport data={balanceSheet} fileName="balance-sheet-summary.xlsx" />
+                  <ExcelExport
+                    data={balanceSheet}
+                    fileName="balance-sheet-summary.xlsx"
+                  />
                 </div>
               </div>
               <table>
@@ -4430,12 +4755,16 @@ export default function APQR() {
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addCompressedGasesRow} />
                   <div className="addrowinstruction  pl-2">
-                    Compressed gases testing performed as per the scheduled frequency and results
-                    were found to be satisfactory, system is in qualified state
+                    Compressed gases testing performed as per the scheduled
+                    frequency and results were found to be satisfactory, system
+                    is in qualified state
                   </div>
                 </div>
                 <div className="flex gap-4 ">
-                  <ExcelExport data={balanceSheet} fileName="balance-sheet-summary.xlsx" />
+                  <ExcelExport
+                    data={balanceSheet}
+                    fileName="balance-sheet-summary.xlsx"
+                  />
                 </div>
               </div>
               <table>
@@ -4478,7 +4807,9 @@ export default function APQR() {
         {tab === "QSR" ? (
           <div>
             <div className="sub-head">Review of Deviations</div>
-            <div className="sub-head">Current Review Period Quality Related Notification</div>
+            <div className="sub-head">
+              Current Review Period Quality Related Notification
+            </div>
             <div>
               {/* <div className="AddRows">
                 <MdNoteAdd onClick={addCurrentRPQRNRow} />
@@ -4487,10 +4818,15 @@ export default function APQR() {
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addCurrentRPQRNRow} />
-                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
+                  <div className="addrowinstruction  pl-2">
+                    Add Rows by clicking on (+) icon
+                  </div>
                 </div>
                 <div className="flex gap-4 ">
-                  <ExcelExport data={balanceSheet} fileName="balance-sheet-summary.xlsx" />
+                  <ExcelExport
+                    data={balanceSheet}
+                    fileName="balance-sheet-summary.xlsx"
+                  />
                 </div>
               </div>
               <table>
@@ -4548,15 +4884,27 @@ export default function APQR() {
                 </tbody>
               </table>
             </div>
-            <h4 className="gridName pt-4">previous Review Period Quality Related Notification</h4>
+            <h4 className="gridName pt-4">
+              previous Review Period Quality Related Notification
+            </h4>
             <TinyEditor />
             <h4 className="gridName pt-4">Review of Product Recalls</h4>
-            <TinyEditor /> <h4 className="gridName pt-4">Review of Returned Products</h4>
-            <TinyEditor /> <h4 className="gridName pt-4">Review of Salvaged Drugs</h4>
-            <TinyEditor /> <h4 className="gridName pt-4">Review of previous PQR recommendations</h4>
-            <TinyEditor /> <h4 className="gridName pt-4">Review of Quality Agreements</h4>
-            <TinyEditor /> <h4 className="gridName pt-4">Review of Manufacturing Authorizations</h4>
-            <TinyEditor /> <h4 className="gridName pt-4">Review of Open Validations</h4>
+            <TinyEditor />{" "}
+            <h4 className="gridName pt-4">Review of Returned Products</h4>
+            <TinyEditor />{" "}
+            <h4 className="gridName pt-4">Review of Salvaged Drugs</h4>
+            <TinyEditor />{" "}
+            <h4 className="gridName pt-4">
+              Review of previous PQR recommendations
+            </h4>
+            <TinyEditor />{" "}
+            <h4 className="gridName pt-4">Review of Quality Agreements</h4>
+            <TinyEditor />{" "}
+            <h4 className="gridName pt-4">
+              Review of Manufacturing Authorizations
+            </h4>
+            <TinyEditor />{" "}
+            <h4 className="gridName pt-4">Review of Open Validations</h4>
             <TinyEditor />
           </div>
         ) : null}
@@ -4567,15 +4915,18 @@ export default function APQR() {
             <div className="py-4">
               {/* <MdNoteAdd onClick={addDossierRow} />
                 <div className="addrowinstruction"></div> */}
-              <div  
-                className="AddRows d-flex w-full justify-between items-center text-3xl "
-              >
-                <div className="flex items-center"> 
+              <div className="AddRows d-flex w-full justify-between items-center text-3xl ">
+                <div className="flex items-center">
                   <MdNoteAdd onClick={addDossierRow} />
-                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
+                  <div className="addrowinstruction  pl-2">
+                    Add Rows by clicking on (+) icon
+                  </div>
                 </div>
                 <div className="flex gap-4 ">
-                  <ExcelExport data={balanceSheet} fileName="balance-sheet-summary.xlsx" />
+                  <ExcelExport
+                    data={balanceSheet}
+                    fileName="balance-sheet-summary.xlsx"
+                  />
                 </div>
               </div>
               <table>
@@ -4620,17 +4971,28 @@ export default function APQR() {
                   })}
                 </tbody>
               </table>
-              <div className="gridName mt-2">New marketing authorisation</div>
+
+              <div>
+                <h4 className="gridName mt-5">Summary</h4>
+                <TinyEditor />
+              </div>
+
+              <div className="gridName">New marketing authorisation</div>
               <div className="py-4">
                 {/* <MdNoteAdd onClick={addDossierRowNma} />
                   <div className="addrowinstruction"></div> */}
                 <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                   <div className="flex items-center">
                     <MdNoteAdd onClick={addDossierRowNma} />
-                    <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
+                    <div className="addrowinstruction  pl-2">
+                      Add Rows by clicking on (+) icon
+                    </div>
                   </div>
                   <div className="flex gap-4 ">
-                    <ExcelExport data={balanceSheet} fileName="balance-sheet-summary.xlsx" />
+                    <ExcelExport
+                      data={balanceSheet}
+                      fileName="balance-sheet-summary.xlsx"
+                    />
                   </div>
                 </div>
                 <table>
@@ -4687,6 +5049,10 @@ export default function APQR() {
                     })}
                   </tbody>
                 </table>
+                <div>
+                  <h4 className="gridName mt-5">Summary</h4>
+                  <TinyEditor />
+                </div>
               </div>
             </div>
           </>
@@ -4698,7 +5064,7 @@ export default function APQR() {
               Work In Progress. .........
             </div> */}
             <div>
-              <h4 className="gridName">Recommendations Sunmmary</h4>
+              <h4 className="gridName">Recommendations Summary</h4>
               <TinyEditor />
             </div>
           </>
