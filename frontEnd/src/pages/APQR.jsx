@@ -198,6 +198,7 @@ export default function APQR() {
     ...prev,
     ...next,
   }),{
+    form_id:Date.now(),
     initiator: "Pankaj Jat",
     initiateDate: Date.now(),
     pqrNO: "",
@@ -206,6 +207,12 @@ export default function APQR() {
     reviewStartDate: "",
     reviewEndDate: "",
     mfgLicNo: "",
+    processFlow:"",
+    productDescription:"",
+    totalNOBM:"",
+    totalNOBA:"",
+    totalNOPVB:"",
+    totalNORB:"",
   });
   const dispatch = useDispatch();
   const navigate=useNavigate()
@@ -2002,11 +2009,14 @@ export default function APQR() {
             <div className="dual-group-input">
               <div className="group-input">
                 <label>Product Description</label>
-                <input />
+                <input 
+                value={pQRData.productDescription}
+                onChange={(e)=>{setPQRData({productDescription:e.target.value})}} />
               </div>
               <div className="group-input">
                 <label>Process Flow</label>
-                <input />
+                <input value={pQRData.processFlow}
+                onChange={(e)=>{setPQRData({processFlow:e.target.value})}} />
               </div>
             </div>
 
@@ -2015,19 +2025,19 @@ export default function APQR() {
             <div className="dual-group-input">
               <div className="group-input">
                 <label>Total No. of batches manufactured during the current review period</label>
-                <input type="number" />
+                <input type="number" value={pQRData.totalNOBM} onChange={(e)=>{setPQRData({totalNOBM:e.target.value})}}/>
               </div>
               <div className="group-input">
                 <label>Total No. of batches Approved & Released</label>
-                <input />
+                <input value={pQRData.totalNOBA} onChange={(e)=>{setPQRData({totalNOBA:e.target.value})}} />
               </div>
               <div className="group-input">
                 <label>Total No. of Process Validation Batches</label>
-                <input />
+                <input value={pQRData.totalNOPVB} onChange={(e)=>{setPQRData({totalNOPVB:e.target.value})}} />
               </div>
               <div className="group-input">
                 <label>Total No. of Reprocessed Batches</label>
-                <input />
+                <input value={pQRData.totalNORB} onChange={(e)=>{setPQRData({totalNORB:e.target.value})}} />
               </div>
               <div className="group-input">
                 <label>Process Validation Batches Details</label>
@@ -6671,7 +6681,7 @@ export default function APQR() {
           </>
         ) : null}
       </div>
-      <div className="w-full h-18 bg-slate-200 p-10 py-2   flex justify-between align-middle fixed bottom-0  ">
+      <div className="w-full h-18 z-[999] bg-slate-200 p-10 py-2   flex justify-between align-middle fixed bottom-0  ">
         <div className="flex justify-end gap-10 pr-10"></div>
         <div className="flex justify-end gap-10 pr-10">
           <button
