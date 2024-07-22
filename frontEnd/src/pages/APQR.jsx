@@ -127,6 +127,7 @@ export default function APQR() {
       credit: "$100.00",
     },
   ];
+  const [productCodes, setProductCodes] = useState([""]);
   const [manufacturingStage, setManufacturingStage] = useState([]);
   const [manufacturingSAPS, setManufacturingSAPS] = useState([]);
   const [rawMRS, setRawMRS] = useState([]);
@@ -174,14 +175,14 @@ export default function APQR() {
   const [sanitizationASDOU, setSanitizationASDOU] = useState([]);
   const [compressedGas, setCompressedGas] = useState([]);
   const [currentRPQRN, setCurrentRPQRN] = useState([]);
-  const [unitOperation3,setUnitOperation3]=useState([])
-  const [unitOperation4,setUnitOperation4]=useState([])
-  const [unitOperation5,setUnitOperation5]=useState([])
-  const [unitOperation6,setUnitOperation6]=useState([])
-  const [unitOperation7,setUnitOperation7]=useState([])
-  const [unitOperation8,setUnitOperation8]=useState([])
-  const [unitOperation9,setUnitOperation9]=useState([])
-  const [unitOperation10,setUnitOperation10]=useState([])
+  const [unitOperation3, setUnitOperation3] = useState([]);
+  const [unitOperation4, setUnitOperation4] = useState([]);
+  const [unitOperation5, setUnitOperation5] = useState([]);
+  const [unitOperation6, setUnitOperation6] = useState([]);
+  const [unitOperation7, setUnitOperation7] = useState([]);
+  const [unitOperation8, setUnitOperation8] = useState([]);
+  const [unitOperation9, setUnitOperation9] = useState([]);
+  const [unitOperation10, setUnitOperation10] = useState([]);
 
   const [pQRData, setPQRData] = useState({
     pqrNO: "",
@@ -664,94 +665,109 @@ export default function APQR() {
     setCurrentRPQRN([...currentRPQRN, newRow]);
   };
 
-  const addUnitOperation3Row=()=>{
-    const newRow={
+  const addUnitOperation3Row = () => {
+    const newRow = {
       criticalProcessParameter: "",
       codes: "",
       acceptanceCriteria: "",
       results: { minimum: "", maximum: "" },
       compliesNotComplies: "",
-    }
-    setUnitOperation3([...unitOperation3,newRow])
-  }
+    };
+    setUnitOperation3([...unitOperation3, newRow]);
+  };
 
-  
-  const addUnitOperation4Row=()=>{
-    const newRow={
+  const addUnitOperation4Row = () => {
+    const newRow = {
       criticalProcessParameter: "",
       codes: "",
       acceptanceCriteria: "",
       results: { minimum: "", maximum: "" },
       compliesNotComplies: "",
-    }
-    setUnitOperation4([...unitOperation4,newRow])
-  }
-  
-  const addUnitOperation5Row=()=>{
-    const newRow={
-      criticalProcessParameter: "",
-      codes: "",
-      acceptanceCriteria: "",
-      results: { minimum: "", maximum: "" },
-      compliesNotComplies: "",
-    }
-    setUnitOperation5([...unitOperation5,newRow])
-  }
-  
-  const addUnitOperation6Row=()=>{
-    const newRow={
-      criticalProcessParameter: "",
-      codes: "",
-      acceptanceCriteria: "",
-      results: { minimum: "", maximum: "" },
-      compliesNotComplies: "",
-    }
-    setUnitOperation6([...unitOperation6,newRow])
-  }
-  
-  const addUnitOperation7Row=()=>{
-    const newRow={
-      criticalProcessParameter: "",
-      codes: "",
-      acceptanceCriteria: "",
-      results: { minimum: "", maximum: "" },
-      compliesNotComplies: "",
-    }
-    setUnitOperation7([...unitOperation7,newRow])
-  }
+    };
+    setUnitOperation4([...unitOperation4, newRow]);
+  };
 
-  const addUnitOperation8Row=()=>{
-    const newRow={
+  const addUnitOperation5Row = () => {
+    const newRow = {
       criticalProcessParameter: "",
       codes: "",
       acceptanceCriteria: "",
       results: { minimum: "", maximum: "" },
       compliesNotComplies: "",
-    }
-    setUnitOperation8([...unitOperation8,newRow])
-  }
-  
-  const addUnitOperation9Row=()=>{
-    const newRow={
+    };
+    setUnitOperation5([...unitOperation5, newRow]);
+  };
+
+  const addUnitOperation6Row = () => {
+    const newRow = {
       criticalProcessParameter: "",
       codes: "",
       acceptanceCriteria: "",
       results: { minimum: "", maximum: "" },
       compliesNotComplies: "",
-    }
-    setUnitOperation9([...unitOperation9,newRow])
-  }
-  
-  const addUnitOperation10Row=()=>{
-    const newRow={
+    };
+    setUnitOperation6([...unitOperation6, newRow]);
+  };
+
+  const addUnitOperation7Row = () => {
+    const newRow = {
       criticalProcessParameter: "",
       codes: "",
       acceptanceCriteria: "",
       results: { minimum: "", maximum: "" },
       compliesNotComplies: "",
-    }
-    setUnitOperation10([...unitOperation10,newRow])
-  }
+    };
+    setUnitOperation7([...unitOperation7, newRow]);
+  };
+
+  const addUnitOperation8Row = () => {
+    const newRow = {
+      criticalProcessParameter: "",
+      codes: "",
+      acceptanceCriteria: "",
+      results: { minimum: "", maximum: "" },
+      compliesNotComplies: "",
+    };
+    setUnitOperation8([...unitOperation8, newRow]);
+  };
+
+  const addUnitOperation9Row = () => {
+    const newRow = {
+      criticalProcessParameter: "",
+      codes: "",
+      acceptanceCriteria: "",
+      results: { minimum: "", maximum: "" },
+      compliesNotComplies: "",
+    };
+    setUnitOperation9([...unitOperation9, newRow]);
+  };
+
+  const addUnitOperation10Row = () => {
+    const newRow = {
+      criticalProcessParameter: "",
+      codes: "",
+      acceptanceCriteria: "",
+      results: { minimum: "", maximum: "" },
+      compliesNotComplies: "",
+    };
+    setUnitOperation10([...unitOperation10, newRow]);
+  };
+
+  const handleProductCodeChange = (index, value) => {
+    const newProductCodes = [...productCodes];
+    newProductCodes[index] = value;
+    setProductCodes(newProductCodes);
+  };
+
+  const addProductCodeInput = () => {
+    setProductCodes([...productCodes, ""]); // Add an empty string initially
+  };
+
+  const removeProductCodeInput = (index) => {
+    const newProductCodes = [...productCodes];
+    newProductCodes.splice(index, 1);
+    setProductCodes(newProductCodes);
+  };
   return (
     <>
       <Header />
@@ -851,16 +867,37 @@ export default function APQR() {
                   }}
                 />
               </div>
-              <div className="group-input">
-                <label>Product Code</label>
-                <input
-                  value={pQRData.productCode}
-                  onChange={(e) => {
-                    setPQRData({ productCode: e.target.value });
-                  }}
-                />
+            </div>
+            {productCodes?.map((productCode, index) => (
+              <div key={index} className="group-input">
+                <label>Product Code {index.length > 0 ? index + 1 : ""}</label>
+                <div className="flex gap-4">
+                  <input
+                    value={productCode}
+                    onChange={(e) =>
+                      handleProductCodeChange(index, e.target.value)
+                    }
+                  />
+                  {index === productCodes.length - 1 && (
+                    <button
+                      onClick={addProductCodeInput}
+                      className="px-3 py-1 border bg-black text-white border-black rounded"
+                    >
+                      +
+                    </button>
+                  )}
+                  {productCodes.length > 1 && (
+                    <button
+                      onClick={() => removeProductCodeInput(index)}
+                      className="px-3 py-1 border border-red-500 rounded bg-red-500 text-white"
+                    >
+                      -
+                    </button>
+                  )}
+                </div>
               </div>
-
+            ))}
+            <div className="dual-group-input">
               <div className="group-input">
                 <label>Generic Name</label>
                 <input
@@ -900,6 +937,7 @@ export default function APQR() {
                 />
               </div>
             </div>
+
             <div className="sub-head">Manufacturing Site Address</div>
             <div className="flex">
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
@@ -2106,7 +2144,6 @@ export default function APQR() {
               </tbody>
             </table>
 
-
             <h3 className="gridName pt-4">Unit Operation 3</h3>
             <div className="AddRows d-flex">
               <MdNoteAdd onClick={addUnitOperation3Row} />
@@ -2153,7 +2190,6 @@ export default function APQR() {
                 })}
               </tbody>
             </table>
-
 
             <h3 className="gridName pt-4">Unit Operation 4</h3>
             <div className="AddRows d-flex">
