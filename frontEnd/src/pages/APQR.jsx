@@ -445,65 +445,72 @@ export default function APQR() {
   };
   const oosDetailsRow = () => {
     const newRow = {
+      ARNo:"",
       testNameOfOos: "",
       resultsObtained: "",
       specificationLimit: "",
       detailsOfObviousError: "",
-      chooseFile: "",
+      fileAttachment: "",
     };
     setOosDetails([...oosDetails, newRow]);
   };
 
   const capaDetailsRow = () => {
     const newRow = {
+      ARNo:"",
       capaType: "",
       descriptionOfIssue: "",
       rootCause: "",
       capaVerification: "",
       chooseFile: "",
       remarks: "",
-      submitBy: "",
-      submitOn: "",
+    
     };
     setCapaDetails([...capaDetails, newRow]);
   };
   const deviationDetailsRow = () => {
     const newRow = {
-      capaType: "",
-      descriptionOfIssue: "",
+      ARNo: "",
+      deviationRelatedTo: "",
+      description:"",
       rootCause: "",
-      capaVerification: "",
-      chooseFile: "",
+      deviationObservedOn: "",
+      deviationObservedBy:"",
+      classificationOfDeviation:"",
+      fileAttachment:"",
       remarks: "",
-      submitBy: "",
-      submitOn: "",
+    status:"",
     };
     setDeviationDetails([...deviationDetails, newRow]);
   };
 
   const ootResultsRow = () => {
     const newRow = {
+      ARNo:"",
       testNameOfOot: "",
       resultsObtained: "",
       initialIntervalDetails: "",
       previousIntervalDetails: "",
       diffrenceOfResult: "",
+      trendLimit:"",
     };
     setOotResults([...ootResults, newRow]);
   };
   const oolResultsRow = () => {
     const newRow = {
+      ARNo:"",
       testNameOfOot: "",
       resultsObtained: "",
       initialIntervalDetails: "",
       previousIntervalDetails: "",
       diffrenceOfResult: "",
+      trendLimit:"",
     };
     setOolResults([...oolResults, newRow]);
   };
   const ooaResultsRow = () => {
     const newRow = {
-      testNameOfLimit: "",
+      testNameOfAlert: "",
       resultsObtained: "",
       specificationLimit: "",
       detailsOfObviousError: "",
@@ -1186,19 +1193,50 @@ export default function APQR() {
                     return (
                       <tr key={index}>
                         <td>
-                          <input />
+                          <input 
+                            value={item.productName}
+                            onChange={(e) => {
+                              const newData = [...manufacturingSAPS];
+                              newData[index].productName = e.target.value;
+                              setManufacturingSAPS(newData);
+                            }} />
                         </td>
                         <td>
-                          <input />
+                          <input 
+                            value={item.batchCode}
+                            onChange={(e) => {
+                              const newData = [...manufacturingSAPS];
+                              newData[index].batchCode = e.target.value;
+                              setManufacturingSAPS(newData);
+                            }}/>
                         </td>
                         <td>
-                          <input />
+                          <input 
+                            value={item.sFGCode}
+                            onChange={(e) => {
+                              const newData = [...manufacturingSAPS];
+                              newData[index].sFGCode = e.target.value;
+                              setManufacturingSAPS(newData);
+                            }}/>
                         </td>
                         <td>
-                          <input />
+                          <input 
+                            // value={item.productName}
+                            // onChange={(e) => {
+                            //   const newData = [...manufacturingSAPS];
+                            //   newData[index].productName = e.target.value;
+                            //   setManufacturingSAPS(newData);
+                            // }}
+                            />
                         </td>
                         <td>
-                          <input />
+                          <input 
+                            value={item.remarks}
+                            onChange={(e) => {
+                              const newData = [...manufacturingSAPS];
+                              newData[index].remarks = e.target.value;
+                              setManufacturingSAPS(newData);
+                            }}/>
                         </td>
                       </tr>
                     );
@@ -1255,19 +1293,50 @@ export default function APQR() {
                         <tr key={index}>
                           <td>{index + 1}</td>
                           <td>
-                            <input />
+                            <input 
+                              value={item.materialCode}
+                              onChange={(e) => {
+                                const newData = [...rawMRS];
+                                newData[index].materialCode = e.target.value;
+                                setRawMRS(newData);
+                              }}
+                            />
                           </td>
                           <td>
-                            <input />
+                            <input 
+                              value={item.materialName}
+                              onChange={(e) => {
+                                const newData = [...rawMRS];
+                                newData[index].materialName = e.target.value;
+                                setRawMRS(newData);
+                              }}/>
                           </td>
                           <td>
-                            <input />
+                            <input 
+                              value={item.ARNo}
+                              onChange={(e) => {
+                                const newData = [...rawMRS];
+                                newData[index].ARNo = e.target.value;
+                                setRawMRS(newData);
+                              }}/>
                           </td>
                           <td>
-                            <input />
+                            <input 
+                              value={item.reasonOfRejection}
+                              onChange={(e) => {
+                                const newData = [...rawMRS];
+                                newData[index].reasonOfRejection = e.target.value;
+                                setRawMRS(newData);
+                              }}/>
                           </td>
                           <td>
-                            <input />
+                            <input 
+                              value={item.description}
+                              onChange={(e) => {
+                                const newData = [...rawMRS];
+                                newData[index].description = e.target.value;
+                                setRawMRS(newData);
+                              }}/>
                           </td>
                         </tr>
                       );
@@ -1320,19 +1389,53 @@ export default function APQR() {
                         <tr key={index}>
                           <td>{index + 1}</td>
                           <td>
-                            <input />
+                            <input 
+                            value={item.materialCode}
+                            onChange={(e) => {
+                              const newData = [...packingMRS];
+                              newData[index].materialCode = e.target.value;
+                              setPackingMRS(newData);
+                            }}
+                            />
                           </td>
                           <td>
-                            <input />
+                            <input 
+                            value={item.materialName}
+                            onChange={(e) => {
+                              const newData = [...packingMRS];
+                              newData[index].materialName = e.target.value;
+                              setPackingMRS(newData);
+                            }}
+                            />
                           </td>
                           <td>
-                            <input />
+                            <input
+                            value={item.ARNo}
+                            onChange={(e) => {
+                              const newData = [...packingMRS];
+                              newData[index].ARNo = e.target.value;
+                              setPackingMRS(newData);
+                            }}
+                            />
                           </td>
                           <td>
-                            <input />
+                            <input 
+                            value={item.reasonForRepacking}
+                            onChange={(e) => {
+                              const newData = [...packingMRS];
+                              newData[index].reasonForRepacking = e.target.value;
+                              setPackingMRS(newData);
+                            }}
+                            />
                           </td>
                           <td>
-                            <input />
+                            <input 
+                            value={item.description}
+                            onChange={(e) => {
+                              const newData = [...packingMRS];
+                              newData[index].description = e.target.value;
+                              setPackingMRS(newData);
+                            }}/>
                           </td>
                         </tr>
                       );
@@ -1385,16 +1488,42 @@ export default function APQR() {
                         <tr key={index}>
                           <td>{index + 1}</td>
                           <td>
-                            <input />
+                            <input
+                            value={item.materialCode}
+                            onChange={(e) => {
+                              const newData = [...expiredRMD];
+                              newData[index].materialCode = e.target.value;
+                              setExpiredRMD(newData);
+                            }} />
                           </td>
                           <td>
-                            <input />
+                            <input
+                             value={item.materialName}
+                             onChange={(e) => {
+                               const newData = [...expiredRMD];
+                               newData[index].materialName = e.target.value;
+                               setExpiredRMD(newData);
+                             }}
+                            />
                           </td>
                           <td>
-                            <input />
+                            <input 
+                             value={item.ARNo}
+                             onChange={(e) => {
+                               const newData = [...expiredRMD];
+                               newData[index].ARNo = e.target.value;
+                               setExpiredRMD(newData);
+                             }}
+                            />
                           </td>
                           <td>
-                            <input />
+                            <input
+                             value={item.description}
+                             onChange={(e) => {
+                               const newData = [...expiredRMD];
+                               newData[index].description = e.target.value;
+                               setExpiredRMD(newData);
+                             }} />
                           </td>
                         </tr>
                       );
@@ -1445,16 +1574,39 @@ export default function APQR() {
                         <tr key={index}>
                           <td>{index + 1}</td>
                           <td>
-                            <input />
+                            <input  value={item.materialCode}
+                            onChange={(e) => {
+                              const newData = [...expiredPMD];
+                              newData[index].materialCode = e.target.value;
+                              setExpiredPMD(newData);
+                            }} />
                           </td>
                           <td>
-                            <input />
+                            <input 
+                             value={item.materialName}
+                             onChange={(e) => {
+                               const newData = [...expiredPMD];
+                               newData[index].materialName = e.target.value;
+                               setExpiredPMD(newData);
+                             }}/>
                           </td>
                           <td>
-                            <input />
+                            <input 
+                             value={item.ARNo}
+                             onChange={(e) => {
+                               const newData = [...expiredPMD];
+                               newData[index].ARNo = e.target.value;
+                               setExpiredPMD(newData);
+                             }} />
                           </td>
                           <td>
-                            <input />
+                            <input 
+                             value={item.description}
+                             onChange={(e) => {
+                               const newData = [...expiredPMD];
+                               newData[index].description = e.target.value;
+                               setExpiredPMD(newData);
+                             }}/>
                           </td>
                         </tr>
                       );
@@ -1503,21 +1655,44 @@ export default function APQR() {
                     {reviewOfASL.map((item, index) => {
                       return (
                         <tr key={index}>
+                          <td>{index+1}</td>
                           <td>
-                            <input />
+                            <input 
+                             value={item.materialCode}
+                             onChange={(e) => {
+                               const newData = [...reviewOfASL];
+                               newData[index].materialCode = e.target.value;
+                               setReviewOfASL(newData);
+                             }}/>
                           </td>
                           <td>
-                            <input />
+                            <input 
+                             value={item.materialName}
+                             onChange={(e) => {
+                               const newData = [...reviewOfASL];
+                               newData[index].materialName = e.target.value;
+                               setReviewOfASL(newData);
+                             }}/>
                           </td>
                           <td>
-                            <input />
+                            <input 
+                             value={item.manufacturer}
+                             onChange={(e) => {
+                               const newData = [...reviewOfASL];
+                               newData[index].manufacturer = e.target.value;
+                               setReviewOfASL(newData);
+                             }}/>
                           </td>
                           <td>
-                            <input />
+                            <input 
+                             value={item.facility}
+                             onChange={(e) => {
+                               const newData = [...reviewOfASL];
+                               newData[index].facility = e.target.value;
+                               setReviewOfASL(newData);
+                             }}/>
                           </td>
-                          <td>
-                            <input />
-                          </td>
+                          
                         </tr>
                       );
                     })}
@@ -1559,30 +1734,54 @@ export default function APQR() {
                     <th>Remarks</th>
                   </thead>
                   <tbody>
-                    <tr>
-                      <td>Sorbitol</td>
-                      <td>600000405</td>
-                      <td>Roquette Freres 62136, Lestrem France</td>
-                      <td>Approved</td>
-                      <td>Temporarily Blocked as a part of CN/21/062</td>
-                    </tr>
+                  
                     {vendorQDORME.map((item, index) => {
                       return (
                         <tr key={index}>
                           <td>
-                            <input />
+                            <input
+                             value={item.materialName}
+                             onChange={(e) => {
+                               const newData = [...vendorQDORME];
+                               newData[index].materialName = e.target.value;
+                               setVendorQDORME(newData);
+                             }} />
                           </td>
                           <td>
-                            <input />
+                            <input 
+                             value={item.materialCode}
+                             onChange={(e) => {
+                               const newData = [...vendorQDORME];
+                               newData[index].materialCode = e.target.value;
+                               setVendorQDORME(newData);
+                             }}/>
                           </td>
                           <td>
-                            <input />
+                            <input 
+                             value={item.manufacturerName}
+                             onChange={(e) => {
+                               const newData = [...vendorQDORME];
+                               newData[index].manufacturerName = e.target.value;
+                               setVendorQDORME(newData);
+                             }} />
                           </td>
                           <td>
-                            <input />
+                            <input 
+                             value={item.qualificationStatus}
+                             onChange={(e) => {
+                               const newData = [...vendorQDORME];
+                               newData[index].qualificationStatus = e.target.value;
+                               setVendorQDORME(newData);
+                             }}/>
                           </td>
                           <td>
-                            <input />
+                            <input 
+                             value={item.remarks}
+                             onChange={(e) => {
+                               const newData = [...vendorQDORME];
+                               newData[index].remarks = e.target.value;
+                               setVendorQDORME(newData);
+                             }}/>
                           </td>
                         </tr>
                       );
@@ -1631,16 +1830,38 @@ export default function APQR() {
                       return (
                         <tr key={index}>
                           <td>
-                            <input />
+                            <input   value={item.materialName}
+                             onChange={(e) => {
+                               const newData = [...vendorQDOPPM];
+                               newData[index].materialName = e.target.value;
+                               setVendorQDOPPM(newData);
+                             }}/>
                           </td>
                           <td>
-                            <input />
+                            <input 
+                            value={item.materialCode}
+                            onChange={(e) => {
+                              const newData = [...vendorQDOPPM];
+                              newData[index].materialCode = e.target.value;
+                              setVendorQDOPPM(newData);
+                            }} />
                           </td>
                           <td>
-                            <input />
+                            <input 
+                            value={item.manufacturerName}
+                            onChange={(e) => {
+                              const newData = [...vendorQDOPPM];
+                              newData[index].manufacturerName = e.target.value;
+                              setVendorQDOPPM(newData);
+                            }} />
                           </td>
                           <td>
-                            <input />
+                            <input value={item.qualificationStatus}
+                             onChange={(e) => {
+                               const newData = [...vendorQDOPPM];
+                               newData[index].qualificationStatus = e.target.value;
+                               setVendorQDOPPM(newData);
+                             }} />
                           </td>
                         </tr>
                       );
@@ -1653,9 +1874,7 @@ export default function APQR() {
                 </h4>
                 <TinyEditor />
               </div>
-              <div className="sub-head">
-                Vendor Qualification Details of Process Gases
-              </div>
+             
               <div className="sub-head">
                 Vendor Qualification Details of Process Gases
               </div>
@@ -1688,26 +1907,45 @@ export default function APQR() {
                     </tr>
                   </thead>
                   <tbody>
-                    <tr>
-                      <td>Argon Gas</td>
-                      <td>300001985</td>
-                      <td>Peenya Industrial Gases Pvt Ltd, Hosur</td>
-                      <td>Approved</td>
-                    </tr>
+                   
                     {vendorQDPOG.map((item, index) => {
                       return (
                         <tr key={index}>
                           <td>
-                            <input />
+                            <input  
+                            value={item.gasName}
+                            onChange={(e) => {
+                              const newData = [...vendorQDPOG];
+                              newData[index].gasName = e.target.value;
+                              setVendorQDPOG(newData);
+                            }}/>
                           </td>
                           <td>
-                            <input />
+                            <input 
+                             value={item.gasCode}
+                             onChange={(e) => {
+                               const newData = [...vendorQDPOG];
+                               newData[index].gasCode = e.target.value;
+                               setVendorQDPOG(newData);
+                             }}/>
                           </td>
                           <td>
-                            <input />
+                            <input 
+                             value={item.manufacturerName}
+                             onChange={(e) => {
+                               const newData = [...vendorQDPOG];
+                               newData[index].manufacturerName = e.target.value;
+                               setVendorQDPOG(newData);
+                             }}/>
                           </td>
                           <td>
-                            <input />
+                            <input 
+                             value={item.qualificationStatus}
+                             onChange={(e) => {
+                               const newData = [...vendorQDPOG];
+                               newData[index].qualificationStatus = e.target.value;
+                               setVendorQDPOG(newData);
+                             }}/>
                           </td>
                         </tr>
                       );
@@ -1807,25 +2045,73 @@ export default function APQR() {
                       <tr key={index}>
                         <td>{index + 1}</td>
                         <td>
-                          <input />
+                          <input 
+                           value={item.batchNo}
+                           onChange={(e) => {
+                             const newData = [...codeTCTD];
+                             newData[index].batchNo = e.target.value;
+                             setCodeTCTD(newData);
+                           }}/>
                         </td>
                         <td>
-                          <input />
+                          <input 
+                           value={item.existingCode}
+                           onChange={(e) => {
+                             const newData = [...codeTCTD];
+                             newData[index].existingCode = e.target.value;
+                             setCodeTCTD(newData);
+                           }}
+                          />
                         </td>
                         <td>
-                          <input />
+                          <input 
+                           value={item.existingMarket}
+                           onChange={(e) => {
+                             const newData = [...codeTCTD];
+                             newData[index].existingMarket = e.target.value;
+                             setCodeTCTD(newData);
+                           }}
+                          />
                         </td>
                         <td>
-                          <input />
+                          <input 
+                           value={item.proposedCode}
+                           onChange={(e) => {
+                             const newData = [...codeTCTD];
+                             newData[index].proposedCode = e.target.value;
+                             setCodeTCTD(newData);
+                           }}
+                          />
                         </td>
                         <td>
-                          <input />
+                          <input
+                           value={item.proposedMarket}
+                           onChange={(e) => {
+                             const newData = [...codeTCTD];
+                             newData[index].proposedMarket = e.target.value;
+                             setCodeTCTD(newData);
+                           }}
+                          />
                         </td>
                         <td>
-                          <input />
+                          <input 
+                           value={item.transferQuality}
+                           onChange={(e) => {
+                             const newData = [...codeTCTD];
+                             newData[index].transferQuality = e.target.value;
+                             setCodeTCTD(newData);
+                           }}
+                          />
                         </td>
                         <td>
-                          <input />
+                          <input 
+                           value={item.refNo}
+                           onChange={(e) => {
+                             const newData = [...codeTCTD];
+                             newData[index].refNo = e.target.value;
+                             setCodeTCTD(newData);
+                           }}
+                          />
                         </td>
                       </tr>
                     );
@@ -1896,22 +2182,62 @@ export default function APQR() {
                       <tr key={index}>
                         <td>{index + 1}</td>
                         <td>
-                          <input />
+                          <input  value={item.packingBatchNumber}
+                           onChange={(e) => {
+                             const newData = [...reviewORCEC];
+                             newData[index].packingBatchNumber = e.target.value;
+                             setReviewORCEC(newData);
+                           }}/>
                         </td>
                         <td>
-                          <input />
+                          <input
+                           value={item.manufacturingBatchNumber}
+                           onChange={(e) => {
+                             const newData = [...reviewORCEC];
+                             newData[index].manufacturingBatchNumber = e.target.value;
+                             setReviewORCEC(newData);
+                           }}
+                          />
                         </td>
                         <td>
-                          <input />
+                          <input 
+                           value={item.repackingIssuedNumber}
+                           onChange={(e) => {
+                             const newData = [...reviewORCEC];
+                             newData[index].repackingIssuedNumber = e.target.value;
+                             setReviewORCEC(newData);
+                           }}
+                          />
                         </td>
                         <td>
-                          <input />
+                          <input 
+                           value={item.repackingFor}
+                           onChange={(e) => {
+                             const newData = [...reviewORCEC];
+                             newData[index].repackingFor = e.target.value;
+                             setReviewORCEC(newData);
+                           }}
+                          />
                         </td>
                         <td>
-                          <input />
+                          <input 
+                           value={item.qMS}
+                           onChange={(e) => {
+                             const newData = [...reviewORCEC];
+                             newData[index].qMS = e.target.value;
+                             setReviewORCEC(newData);
+                           }}
+                          />
                         </td>
                         <td>
-                          <input />
+                          <input 
+                           value={item.reasonForRepacking}
+                           onChange={(e) => {
+                             const newData = [...reviewORCEC];
+                             newData[index].reasonForRepacking = e.target.value;
+                             setReviewORCEC(newData);
+                           }}
+                          />
                         </td>
                       </tr>
                     );
@@ -1970,11 +2296,8 @@ export default function APQR() {
                     <th>CAPA Verification</th>
                     <th>File Attachment</th>
                     <th>Remarks</th>
-                    <th>Submit by</th>
-                    <th>Submit On</th>
-                    <th>
-                      <input type="file" />
-                    </th>
+                   
+                  
                   </tr>
                 </thead>
                 <tbody>
@@ -1982,32 +2305,74 @@ export default function APQR() {
                     return (
                       <tr key={index}>
                         <td>
-                          <input />
+                          <input 
+                           value={item.ARNo}
+                           onChange={(e) => {
+                             const newData = [...capaDetails];
+                             newData[index].ARNo = e.target.value;
+                             setCapaDetails(newData);
+                           }}/>
                         </td>
                         <td>
-                          <input />
+                          <input 
+                           value={item.capaType}
+                           onChange={(e) => {
+                             const newData = [...capaDetails];
+                             newData[index].capaType = e.target.value;
+                             setCapaDetails(newData);
+                           }}/>
                         </td>
                         <td>
-                          <input />
+                          <input  
+                           value={item.descriptionOfIssue}
+                           onChange={(e) => {
+                             const newData = [...capaDetails];
+                             newData[index].descriptionOfIssue = e.target.value;
+                             setCapaDetails(newData);
+                           }}
+                          />
                         </td>
                         <td>
-                          <input />
+                          <input 
+                           value={item.rootCause}
+                           onChange={(e) => {
+                             const newData = [...capaDetails];
+                             newData[index].rootCause = e.target.value;
+                             setCapaDetails(newData);
+                           }}
+                          />
                         </td>
                         <td>
-                          <input />
+                          <input 
+                           value={item.capaVerification}
+                           onChange={(e) => {
+                             const newData = [...capaDetails];
+                             newData[index].capaVerification = e.target.value;
+                             setCapaDetails(newData);
+                           }}
+                          />
                         </td>
                         <td>
-                          <input />
+                          <input 
+                         type="file"
+                         
+                         value={item.chooseFile}
+                         onChange={(e) => {
+                           const newData = [...capaDetails];
+                           newData[index].chooseFile = e.target.value;
+                           setCapaDetails(newData);
+                         }}/>
                         </td>
                         <td>
-                          <input />
+                          <input  
+                           value={item.remarks}
+                           onChange={(e) => {
+                             const newData = [...capaDetails];
+                             newData[index].remarks = e.target.value;
+                             setCapaDetails(newData);
+                           }} />
                         </td>{" "}
-                        <td>
-                          <input />
-                        </td>{" "}
-                        <td>
-                          <input />
-                        </td>
+                        
                       </tr>
                     );
                   })}
@@ -2065,10 +2430,7 @@ export default function APQR() {
                     <th>Classification of Deviation</th>
                     <th>file Attachment</th>
                     <th>Remarks</th>
-                    <th>Status</th>
-                    <th>
-                      <input type="file" />
-                    </th>
+                    <th>Status</th>                  
                   </tr>
                 </thead>
                 <tbody>
@@ -2076,34 +2438,94 @@ export default function APQR() {
                     return (
                       <tr key={index}>
                         <td>
-                          <input />
+                          <input  value={item.ARNo}
+                           onChange={(e) => {
+                             const newData = [...deviationDetails];
+                             newData[index].ARNo = e.target.value;
+                             setDeviationDetails(newData);
+                           }} />
                         </td>
                         <td>
-                          <input />
+                          <input 
+                          value={item.deviationRelatedTo}
+                          onChange={(e) => {
+                            const newData = [...deviationDetails];
+                            newData[index].deviationRelatedTo = e.target.value;
+                            setDeviationDetails(newData);
+                          }}/>
                         </td>
                         <td>
-                          <input />
+                          <input 
+                          value={item.description}
+                          onChange={(e) => {
+                            const newData = [...deviationDetails];
+                            newData[index].description = e.target.value;
+                            setDeviationDetails(newData);
+                          }}/>
                         </td>
                         <td>
-                          <input />
+                          <input 
+                          value={item.rootCause}
+                          onChange={(e) => {
+                            const newData = [...deviationDetails];
+                            newData[index].rootCause = e.target.value;
+                            setDeviationDetails(newData);
+                          }}/>
                         </td>
                         <td>
-                          <input />
+                          <input 
+                          value={item.deviationObservedOn}
+                          onChange={(e) => {
+                            const newData = [...deviationDetails];
+                            newData[index].deviationObservedOn = e.target.value;
+                            setDeviationDetails(newData);
+                          }}/>
                         </td>
                         <td>
-                          <input />
+                          <input 
+                          value={item.deviationObservedBy}
+                          onChange={(e) => {
+                            const newData = [...deviationDetails];
+                            newData[index].deviationObservedBy = e.target.value;
+                            setDeviationDetails(newData);
+                          }}/>
                         </td>
                         <td>
-                          <input />
+                          <input 
+                          value={item.classificationOfDeviation}
+                          onChange={(e) => {
+                            const newData = [...deviationDetails];
+                            newData[index].classificationOfDeviation = e.target.value;
+                            setDeviationDetails(newData);
+                          }}/>
                         </td>
                         <td>
-                          <input />
+                          <input 
+                          type="file"
+                          value={item.fileAttachment}
+                          onChange={(e) => {
+                            const newData = [...deviationDetails];
+                            newData[index].fileAttachment = e.target.value;
+                            setDeviationDetails(newData);
+                          }}/>
                         </td>{" "}
                         <td>
-                          <input />
+                          <input 
+                          value={item.remarks}
+                          onChange={(e) => {
+                            const newData = [...deviationDetails];
+                            newData[index].remarks = e.target.value;
+                            setDeviationDetails(newData);
+                          }}/>
                         </td>{" "}
                         <td>
-                          <input />
+                          <input 
+                          value={item.status}
+                          onChange={(e) => {
+                            const newData = [...deviationDetails];
+                            newData[index].status = e.target.value;
+                            setDeviationDetails(newData);
+                          }}/>
                         </td>
                       </tr>
                     );
@@ -2166,9 +2588,7 @@ export default function APQR() {
                     <th rowSpan={2}>Results Obtained</th>
                     <th colSpan={2}>Specification Limit</th>
                     <th rowSpan={2}>Details of Obvious error</th>
-                    <th rowSpan={2}>
-                      <input type="file" />
-                    </th>
+                    <th>File Attachment</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -2176,22 +2596,58 @@ export default function APQR() {
                     return (
                       <tr key={index}>
                         <td>
-                          <input />
+                          <input value={item.ARNo}
+                          onChange={(e) => {
+                            const newData = [...oosDetails];
+                            newData[index].ARNo = e.target.value;
+                            setOosDetails(newData);
+                          }}/>
                         </td>
                         <td>
-                          <input />
+                          <input 
+                          value={item.testNameOfOos}
+                          onChange={(e) => {
+                            const newData = [...oosDetails];
+                            newData[index].testNameOfOos = e.target.value;
+                            setOosDetails(newData);
+                          }} />
                         </td>
                         <td>
-                          <input />
+                          <input 
+                          value={item.resultsObtained}
+                          onChange={(e) => {
+                            const newData = [...oosDetails];
+                            newData[index].resultsObtained = e.target.value;
+                            setOosDetails(newData);
+                          }}/>
                         </td>
                         <td>
-                          <input />
+                          <input 
+                          value={item.specificationLimit}
+                          onChange={(e) => {
+                            const newData = [...oosDetails];
+                            newData[index].specificationLimit = e.target.value;
+                            setOosDetails(newData);
+                          }}/>
                         </td>
                         <td>
-                          <input />
+                          <input 
+                          value={item.detailsOfObviousError}
+                          onChange={(e) => {
+                            const newData = [...oosDetails];
+                            newData[index].detailsOfObviousError = e.target.value;
+                            setOosDetails(newData);
+                          }}/>
                         </td>
                         <td>
-                          <input />
+                          <input 
+                          type="file"
+                          value={item.fileAttachment}
+                          onChange={(e) => {
+                            const newData = [...oosDetails];
+                            newData[index].fileAttachment = e.target.value;
+                            setOosDetails(newData);
+                          }}/>
                         </td>
                       </tr>
                     );
@@ -2255,25 +2711,64 @@ export default function APQR() {
                     return (
                       <tr key={index}>
                         <td>
-                          <input />
+                          <input 
+                          value={item.ARNo}
+                          onChange={(e) => {
+                            const newData = [...ootResults];
+                            newData[index].ARNo = e.target.value;
+                            setOotDetails(newData);
+                          }}/>
                         </td>
                         <td>
-                          <input />
+                          <input 
+                      value={item.testNameOfOot}
+                      onChange={(e) => {
+                        const newData = [...oosDetails];
+                        newData[index].testNameOfOot = e.target.value;
+                        setOosDetails(newData);
+                      }}
+                          />
                         </td>
                         <td>
-                          <input />
+                          <input value={item.resultsObtained}
+                          onChange={(e) => {
+                            const newData = [...oosDetails];
+                            newData[index].resultsObtained = e.target.value;
+                            setOosDetails(newData);
+                          }}/>
                         </td>
                         <td>
-                          <input />
+                          <input value={item.initialIntervalDetails}
+                          onChange={(e) => {
+                            const newData = [...oosDetails];
+                            newData[index].initialIntervalDetails = e.target.value;
+                            setOosDetails(newData);
+                          }} />
                         </td>
                         <td>
-                          <input />
+                          <input value={item.previousIntervalDetails}
+                          onChange={(e) => {
+                            const newData = [...oosDetails];
+                            newData[index].previousIntervalDetails = e.target.value;
+                            setOosDetails(newData);
+                          }} />
                         </td>
                         <td>
-                          <input />
+                          <input  value={item.diffrenceOfResult}
+                          onChange={(e) => {
+                            const newData = [...oosDetails];
+                            newData[index].diffrenceOfResult = e.target.value;
+                            setOosDetails(newData);
+                          }}/>
                         </td>
                         <td>
-                          <input />
+                          <input 
+                          value={item.trendLimit}
+                          onChange={(e) => {
+                            const newData = [...oosDetails];
+                            newData[index].trendLimit = e.target.value;
+                            setOosDetails(newData);
+                          }}/>
                         </td>
                       </tr>
                     );
@@ -2336,26 +2831,67 @@ export default function APQR() {
                     return (
                       <tr key={index}>
                         <td>
-                          <input />
+                          <input 
+                          value={item.ARNo}
+                          onChange={(e) => {
+                            const newData = [...ooaResults];
+                            newData[index].ARNo = e.target.value;
+                            setOoaResults(newData);
+                          }} />
                         </td>
                         <td>
-                          <input />
+                          <input 
+                          value={item.testNameOfAlert}
+                          onChange={(e) => {
+                            const newData = [...ooaResults];
+                            newData[index].testNameOfAlert = e.target.value;
+                            setOoaResults(newData);
+                          }}/>
                         </td>
 
                         <td>
-                          <input />
+                          <input 
+                          value={item.resultsObtained}
+                          onChange={(e) => {
+                            const newData = [...ooaResults];
+                            newData[index].resultsObtained = e.target.value;
+                            setOoaResults(newData);
+                          }}/>
                         </td>
                         <td>
-                          <input />
+                          <input 
+                          value={item.initialIntervalDetails}
+                          onChange={(e) => {
+                            const newData = [...ooaResults];
+                            newData[index].initialIntervalDetails = e.target.value;
+                            setOoaResults(newData);
+                          }}/>
                         </td>
                         <td>
-                          <input />
+                          <input 
+                          value={item.previousIntervalDetails}
+                          onChange={(e) => {
+                            const newData = [...ooaResults];
+                            newData[index].previousIntervalDetails = e.target.value;
+                            setOoaResults(newData);
+                          }}/>
                         </td>
                         <td>
-                          <input />
+                          <input 
+                          value={item.diffrenceOfResult}
+                          onChange={(e) => {
+                            const newData = [...ooaResults];
+                            newData[index].diffrenceOfResult = e.target.value;
+                            setOoaResults(newData);
+                          }} />
                         </td>
                         <td>
-                          <input />
+                          <input  value={item.trendLimit}
+                          onChange={(e) => {
+                            const newData = [...ooaResults];
+                            newData[index].trendLimit = e.target.value;
+                            setOoaResults(newData);
+                          }}/>
                         </td>
                       </tr>
                     );
