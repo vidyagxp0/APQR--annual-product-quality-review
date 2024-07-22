@@ -129,6 +129,7 @@ export default function APQR() {
       credit: "$100.00",
     },
   ];
+  const [productCodes, setProductCodes] = useState([""]);
   const [manufacturingStage, setManufacturingStage] = useState([]);
   const [manufacturingSAPS, setManufacturingSAPS] = useState([]);
   const [rawMRS, setRawMRS] = useState([]);
@@ -839,6 +840,22 @@ export default function APQR() {
     };
     setUnitOperation10([...unitOperation10, newRow]);
   };
+
+  const handleProductCodeChange = (index, value) => {
+    const newProductCodes = [...productCodes];
+    newProductCodes[index] = value;
+    setProductCodes(newProductCodes);
+  };
+
+  const addProductCodeInput = () => {
+    setProductCodes([...productCodes, ""]); // Add an empty string initially
+  };
+
+  const removeProductCodeInput = (index) => {
+    const newProductCodes = [...productCodes];
+    newProductCodes.splice(index, 1);
+    setProductCodes(newProductCodes);
+  };
   return (
     <>
       <Header />
@@ -905,16 +922,37 @@ export default function APQR() {
                   }}
                 />
               </div>
-              <div className="group-input">
-                <label>Product Code</label>
-                <input
-                  value={pQRData.productCode}
-                  onChange={(e) => {
-                    setPQRData({ productCode: e.target.value });
-                  }}
-                />
+            </div>
+            {productCodes?.map((productCode, index) => (
+              <div key={index} className="group-input">
+                <label>Product Code {index.length > 0 ? index + 1 : ""}</label>
+                <div className="flex gap-4">
+                  <input
+                    value={productCode}
+                    onChange={(e) =>
+                      handleProductCodeChange(index, e.target.value)
+                    }
+                  />
+                  {index === productCodes.length - 1 && (
+                    <button
+                      onClick={addProductCodeInput}
+                      className="px-3 py-1 border bg-black text-white border-black rounded"
+                    >
+                      +
+                    </button>
+                  )}
+                  {productCodes.length > 1 && (
+                    <button
+                      onClick={() => removeProductCodeInput(index)}
+                      className="px-3 py-1 border border-red-500 rounded bg-red-500 text-white"
+                    >
+                      -
+                    </button>
+                  )}
+                </div>
               </div>
-
+            ))}
+            <div className="dual-group-input">
               <div className="group-input">
                 <label>Generic Name</label>
                 <input
@@ -954,6 +992,7 @@ export default function APQR() {
                 />
               </div>
             </div>
+
             <div className="sub-head">Manufacturing Site Address</div>
             <div className="flex">
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
