@@ -1,8 +1,11 @@
 import React from "react";
 import Header from "../Component/Header";
 import BottomHeader from "../Component/BottomHeader";
+import { useSelector } from "react-redux";
 
 export default function Dashboard() {
+  const data=useSelector((state) => state.form.forms)
+  console.log(data)
   return (
     <>
       <Header />
