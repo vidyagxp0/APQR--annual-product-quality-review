@@ -4038,10 +4038,7 @@ export default function APQR() {
             </div>{" "}
             <h1 className="gridName pt-8">Drug Substance 7 Test Result</h1>
             <div>
-              {/* <div className="AddRows d-flex">
-    <MdNoteAdd onClick={addReviewODSTRRow} />
-    <div className="addrowinstruction"></div>
-  </div> */}
+         
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addReviewODSTRRow7} />
@@ -4123,10 +4120,7 @@ export default function APQR() {
             </div>{" "}
             <h1 className="gridName pt-8">Drug Substance 8 Test Result</h1>
             <div>
-              {/* <div className="AddRows d-flex">
-    <MdNoteAdd onClick={addReviewODSTRRow} />
-    <div className="addrowinstruction"></div>
-  </div> */}
+            
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addReviewODSTRRow8} />
@@ -4208,10 +4202,7 @@ export default function APQR() {
             </div>{" "}
             <h1 className="gridName pt-8">Drug Substance 9 Test Result</h1>
             <div>
-              {/* <div className="AddRows d-flex">
-    <MdNoteAdd onClick={addReviewODSTRRow} />
-    <div className="addrowinstruction"></div>
-  </div> */}
+             
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addReviewODSTRRow9} />
