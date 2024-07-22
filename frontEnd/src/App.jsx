@@ -10,6 +10,7 @@ import AdminDashboard from "./pages/Admin/AdminDashboard";
 import TinyEditor from "./Component/TinyEditor";
 import ExcelExportImport from "./pages/temp/ImportExportExcel";
 import ApqrPanel from "./pages/ApqrPanel";
+import ESignatureModal from "./Component/ESignatureModal";
 
 function App() {
   return (
@@ -24,7 +25,7 @@ function App() {
         <Route path="/admin-dashboard" element={<AdminDashboard />} />
         <Route path="/apqr-panel" element={<ApqrPanel />} />
         <Route path="/test" element={<TinyEditor />} />
-        <Route path="/test2" element={<ExcelExportImport />} />
+        <Route path="/test2" element={<ESignatureModal />} />
       </Routes>
     </BrowserRouter>
   );

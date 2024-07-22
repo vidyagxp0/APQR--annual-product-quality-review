@@ -4732,6 +4732,58 @@ export default function ApqrPanel() {
           </>
         ) : null}
       </div>
+      <div className="w-full h-18 bg-slate-200 p-10 py-2   flex justify-between align-middle fixed bottom-0  ">
+        <div className="flex justify-end gap-10 pr-10">
+          <button
+            className=" px-4 py-2 bg-teal-600 text-white
+            font-semibold
+            rounded-lg
+            shadow-md
+            hover:bg-teal-700
+            focus:outline-none
+            focus:ring-2
+            focus:ring-offset-2
+            focus:ring-teal-500
+          "
+          >
+            Send For Review
+          </button>
+        </div>
+        <div className="flex justify-end gap-10 pr-10">
+          <button
+            className=" px-4 py-2 bg-teal-600 text-white
+            font-semibold
+            rounded-lg
+            shadow-md
+            hover:bg-teal-700
+            focus:outline-none
+            focus:ring-2
+            focus:ring-offset-2
+            focus:ring-teal-500
+          "
+          >
+            Save
+          </button>
+          <button
+            className="
+            px-4
+            py-2
+            bg-teal-600
+            text-white
+            font-semibold
+            rounded-lg
+            shadow-md
+            hover:bg-teal-700
+            focus:outline-none
+            focus:ring-2
+            focus:ring-offset-2
+            focus:ring-teal-500
+          "
+          >
+            Exit
+          </button>
+        </div>
+      </div>
     </>
   );
 }
