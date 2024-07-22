@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Header from "../Component/Header";
 import { MdNoteAdd } from "react-icons/md";
 import TinyEditor from "../Component/TinyEditor";
@@ -195,13 +195,86 @@ export default function APQR() {
   const [pQRData, setPQRData] = useState({
     pqrNO: "",
     productName: "",
-    productCode: "",
     genericName: "",
     reviewStartDate: "",
     reviewEndDate: "",
     mfgLicNo: "",
   });
 
+  useEffect(()=>{
+    setPQRData({
+      productCodes:productCodes,
+      manufacturingStage:manufacturingStage,
+      manufacturingSAPS:manufacturingSAPS,
+      rawMRS:rawMRS,
+      packingMRS:packingMRS,
+      reviewOfASL:reviewOfASL,
+      expiredRMD:expiredRMD,
+      expiredPMD:expiredPMD,
+      vendorQDORME:vendorQDORME,
+      vendorQDOPPM:vendorQDOPPM,
+      vendorQDPOG:vendorQDPOG,
+      codeTCTD:codeTCTD,
+      reviewORCEC:reviewORCEC,
+      manufacturingSD:manufacturingSD,
+      manufacturingSD2:manufacturingSD2,
+      bufferFSDPV:bufferFSDPV,
+      oosDetails:oosDetails,
+      capaDetails:capaDetails,
+      deviationDetails:deviationDetails,
+      ootResults:ootResults,
+      oolResults:oolResults,
+      ooaResults:ooaResults,
+      reviewODSTR:reviewODSTR,
+      reviewODSTR2:reviewODSTR2,
+      reviewODSTR3:reviewODSTR3,
+      reviewODSTR4:reviewODSTR4,
+      reviewODSTR5:reviewODSTR5,
+      reviewODSTR6:reviewODSTR6,
+      reviewODSTR7:reviewODSTR7,
+      reviewODSTR8:reviewODSTR8,
+      reviewODSTR9:reviewODSTR9,
+      reviewODSTR10:reviewODSTR10,
+      reviewORMETR:reviewORMETR,
+      reviewOPMTR:reviewOPMTR,
+      reviewODP:reviewODP,
+      reviewODP2:reviewODP2,
+      reviewODP3:reviewODP3,
+      reviewODP4:reviewODP4,
+      reviewODP5:reviewODP5,
+      reviewODP6:reviewODP6,
+      reviewODP7:reviewODP7,
+      reviewODP8:reviewODP8,
+      reviewODP9:reviewODP9,
+      reviewODP10:reviewODP10,
+      reviewODPFPTR:reviewODPFPTR,
+      summaryOOSS:summaryOOSS,
+      stabilitySR:stabilitySR,
+      reviewOVIRS:reviewOVIRS,
+      hVACQStatus:hVACQStatus,
+      dossierRR:dossierRR,
+      dossierRRNma:dossierRRNma,
+      sanitizationASDOU:sanitizationASDOU,
+      compressedGas:compressedGas,
+      currentRPQRN:currentRPQRN,
+      unitOperation3:unitOperation3,
+      unitOperation4:unitOperation4,
+      unitOperation5:unitOperation5,
+      unitOperation6:unitOperation6,
+      unitOperation7:unitOperation7,
+      unitOperation8:unitOperation8,
+      unitOperation9:unitOperation9,
+      unitOperation10:unitOperation10,
+    })
+   
+  },[productCodes,manufacturingStage,manufacturingSAPS,rawMRS,packingMRS,reviewOfASL,expiredRMD,expiredPMD,vendorQDORME,vendorQDOPPM,vendorQDPOG,codeTCTD,reviewORCEC,manufacturingSD,
+    manufacturingSD2,bufferFSDPV,oosDetails,capaDetails,deviationDetails,ootResults,oolResults,ooaResults,reviewODSTR,reviewODSTR2,reviewODSTR3,reviewODSTR4,reviewODSTR5,reviewODSTR6,
+    reviewODSTR7,reviewODSTR8,reviewODSTR9,reviewODSTR10,reviewORMETR,reviewOPMTR,reviewODP,reviewODP2,reviewODP3,reviewODP4,reviewODP5,reviewODP6,reviewODP7,reviewODP8,reviewODP9,reviewODP10,
+    reviewODPFPTR,summaryOOSS,stabilitySR,reviewOVIRS,hVACQStatus,dossierRR,dossierRRNma,sanitizationASDOU,compressedGas,currentRPQRN,unitOperation3,unitOperation4,unitOperation5,unitOperation6,
+    unitOperation7,unitOperation8,unitOperation9,unitOperation10
+  ])
+
+  console.log(pQRData)
   const addManufacturingStageRow = () => {
     const newRow = {
       productName: "",
@@ -1054,13 +1127,30 @@ export default function APQR() {
                   return (
                     <tr key={index}>
                       <td>
-                        <input />
+                        <input
+                         value={item.productName}
+                         onChange={(e) => {
+                           const newData = [...manufacturingStage];
+                           newData[index].productName = e.target.value;
+                           setManufacturingStage(newData);
+                         }} />
                       </td>
                       <td>
-                        <input />
+                        <input   value={item.sFGCode}
+                         onChange={(e) => {
+                           const newData = [...manufacturingStage];
+                           newData[index].sFGCode = e.target.value;
+                           setManufacturingStage(newData);
+                         }}  />
                       </td>
                       <td>
-                        <input />
+                        <input 
+                         value={item.fGCode}
+                         onChange={(e) => {
+                           const newData = [...manufacturingStage];
+                           newData[index].fGCode = e.target.value;
+                           setManufacturingStage(newData);
+                         }}  />
                       </td>
                     </tr>
                   );
