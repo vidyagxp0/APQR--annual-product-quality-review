@@ -3616,10 +3616,7 @@ export default function APQR() {
             </div>
             <h1 className="gridName  pt-8">Drug Substance 2 Test Result</h1>
             <div>
-              {/* <div className="AddRows d-flex">
-    <MdNoteAdd onClick={addReviewODSTRRow} />
-    <div className="addrowinstruction"></div>
-  </div> */}
+           
               <div className="AddRows d-flex w-full justify-between items-center text-3xl mb-5">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addReviewODSTRRow2} />

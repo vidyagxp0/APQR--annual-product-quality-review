@@ -16,45 +16,23 @@ export default function Dashboard() {
             <tr>
               <th className="px-4 py-2 border-r-2 w-1/12">PQR id</th>
               <th className="px-4 py-2 border-r-2 ">Product Name</th>
-              <th className="px-4 py-2 border-r-2">Short Description</th>
+              <th className="px-4 py-2 border-r-2">Generic Name</th>
               <th className="px-4 py-2 border-r-2">Initiated by</th>
-              <th className="px-4 py-2 border-r-2">Initiated on</th>
-              <th className="px-4 py-2 border-r-2">Current Status</th>
+
+  
             </tr>
           </thead>
           <tbody className="w-full">
-            <tr className="bg-slate-100">
-              <td className="px-4 py-2 border-r-2">Row 1</td>
-              <td className="px-4 py-2 border-r-2">Row 2</td>
-              <td className="px-4 py-2 border-r-2">Row 3</td>
-              <td className="px-4 py-2 border-r-2">Row 4</td>
-              <td className="px-4 py-2 border-r-2">Row 4</td>
-              <td className="px-4 py-2 border-r-2">Row 6</td>
-            </tr>
-            <tr className="bg-white">
-              <td className="px-4 py-2 border-r-2">Row 1</td>
-              <td className="px-4 py-2 border-r-2">Row 2</td>
-              <td className="px-4 py-2 border-r-2">Row 3</td>
-              <td className="px-4 py-2 border-r-2">Row 4</td>
-              <td className="px-4 py-2 border-r-2">Row 5</td>
-              <td className="px-4 py-2 border-r-2">Row 6</td>
-            </tr>
-            <tr className="bg-slate-100">
-              <td className="px-4 py-2 border-r-2">Row 1</td>
-              <td className="px-4 py-2 border-r-2">Row 2</td>
-              <td className="px-4 py-2 border-r-2">Row 3</td>
-              <td className="px-4 py-2 border-r-2">Row 4</td>
-              <td className="px-4 py-2 border-r-2">Row 5</td>
-              <td className="px-4 py-2 border-r-2">Row 6</td>
-            </tr>
-            <tr className="bg-white">
-              <td className="px-4 py-2 border-r-2">Row 1</td>
-              <td className="px-4 py-2 border-r-2">Row 2</td>
-              <td className="px-4 py-2 border-r-2">Row 3</td>
-              <td className="px-4 py-2 border-r-2">Row 4</td>
-              <td className="px-4 py-2 border-r-2">Row 5</td>
-              <td className="px-4 py-2 border-r-2">Row 6</td>
-            </tr>
+          {data?.map((item)=>{
+            return   <tr className="border border-black " >
+            <td className="px-4 py-2 border-r-2">{item.form_id}</td>
+            <td className="px-4 py-2 border-r-2">{item.productName}</td>
+            <td className="px-4 py-2 border-r-2">{item.genericName}</td>
+            <td className="px-4 py-2 border-r-2">{item.initiator}</td>
+         
+          </tr>
+          })}
+           
           </tbody>
         </table>
       </div>
