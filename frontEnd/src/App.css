@@ -397,3 +397,7 @@ body {
   /* text-transform: uppercase; */
   letter-spacing: 0.1em;
 }
+
+.form-footer{
+  width: 80%;
+}
