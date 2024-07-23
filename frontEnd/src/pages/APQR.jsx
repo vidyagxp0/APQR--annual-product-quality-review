@@ -469,7 +469,6 @@ export default function APQR() {
   );
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  console.log("oolResults",pQRData)
 
   useEffect(() => {
     setPQRData({
@@ -3411,60 +3410,74 @@ export default function APQR() {
                     return (
                       <tr key={index}>
                         <td>
-                           <input value={item.ARNo}
+                          <input
+                            value={item.ARNo}
                             onChange={(e) => {
                               const newData = [...oolResults];
                               newData[index].ARNo = e.target.value;
                               setOolResults(newData);
-                            }}/>
+                            }}
+                          />
                         </td>
                         <td>
-                           <input value={item.testNameOfOot}
+                          <input
+                            value={item.testNameOfOot}
                             onChange={(e) => {
-                            const newData = [...oolResults];
-                            newData[index].testNameOfOot = e.target.value;
-                            setOolResults(newData);
-                            }}/>
+                              const newData = [...oolResults];
+                              newData[index].testNameOfOot = e.target.value;
+                              setOolResults(newData);
+                            }}
+                          />
                         </td>
                         <td>
-                           <input value={item.resultsObtained}
+                          <input
+                            value={item.resultsObtained}
                             onChange={(e) => {
-                            const newData = [...oolResults];
-                            newData[index].resultsObtained = e.target.value;
-                            setOolResults(newData);
-                            }}/>
+                              const newData = [...oolResults];
+                              newData[index].resultsObtained = e.target.value;
+                              setOolResults(newData);
+                            }}
+                          />
                         </td>
                         <td>
-                        <input value={item.initialIntervalDetails}
+                          <input
+                            value={item.initialIntervalDetails}
                             onChange={(e) => {
-                            const newData = [...oolResults];
-                            newData[index].initialIntervalDetails = e.target.value;
-                            setOolResults(newData);
-                            }}/>
+                              const newData = [...oolResults];
+                              newData[index].initialIntervalDetails = e.target.value;
+                              setOolResults(newData);
+                            }}
+                          />
                         </td>
                         <td>
-                        <input value={item.previousIntervalDetails}
+                          <input
+                            value={item.previousIntervalDetails}
                             onChange={(e) => {
-                            const newData = [...oolResults];
-                            newData[index].previousIntervalDetails = e.target.value;
-                            setOolResults(newData);
-                            }}/>
+                              const newData = [...oolResults];
+                              newData[index].previousIntervalDetails = e.target.value;
+                              setOolResults(newData);
+                            }}
+                          />
                         </td>
                         <td>
-                        <input value={item.diffrenceOfResult}
+                          <input
+                            value={item.diffrenceOfResult}
                             onChange={(e) => {
-                            const newData = [...oolResults];
-                            newData[index].diffrenceOfResult = e.target.value;
-                            setOolResults(newData);
-                            }}/>
+                              const newData = [...oolResults];
+                              newData[index].diffrenceOfResult = e.target.value;
+                              setOolResults(newData);
+                            }}
+                          />
                         </td>{" "}
                         <td>
-                        <input value={item.trendLimit}
+                          <input
+                            value={item.trendLimit}
                             onChange={(e) => {
-                            const newData = [...oolResults];
-                            newData[index].trendLimit = e.target.value;
-                            setOolResults(newData);
-                            }}/>
+                              const newData = [...oolResults];
+                              newData[index].trendLimit = e.target.value;
+                              setOolResults(newData);
+                            }}
+                          />
                         </td>
                       </tr>
                     );
@@ -3493,83 +3506,95 @@ export default function APQR() {
                 </div>
                 <div className="flex gap-4 ">
                   <ExcelExportImport
-                    data={capaDetails}
+                    data={bufferFSDPV}
                     setimportedData={setimportedData}
-                    fileName="capaDetails.xlsx"
+                    fileName="bufferFSDPV.xlsx"
                   />
                 </div>
               </div>
               <table>
-              <thead>
-                <tr>
-                  <th rowSpan={2}>Critical Process Parameters</th>
-                  <th rowSpan={2}>Codes</th>
-                  <th rowSpan={2}>Acceptance criteria</th>
-                  <th colSpan={2}>Results</th>
-                  <th rowSpan={2}>Complies / Does not complies</th>
-                </tr>
-                <tr>
-                  <th>Minimum</th>
-                  <th>Maximum</th>
-                </tr>
-              </thead>
-              <tbody>
-                {bufferFSDPV.map((item, index) => {
-                  return (
-                    <tr key={index}>
-                      <td>
-                           <input value={item.criticalProcessParameter}
+                <thead>
+                  <tr>
+                    <th rowSpan={2}>Critical Process Parameters</th>
+                    <th rowSpan={2}>Codes</th>
+                    <th rowSpan={2}>Acceptance criteria</th>
+                    <th colSpan={2}>Results</th>
+                    <th rowSpan={2}>Complies / Does not complies</th>
+                  </tr>
+                  <tr>
+                    <th>Minimum</th>
+                    <th>Maximum</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {bufferFSDPV.map((item, index) => {
+                    return (
+                      <tr key={index}>
+                        <td>
+                          <input
+                            value={item.criticalProcessParameter}
                             onChange={(e) => {
-                            const newData = [...bufferFSDPV];
-                            newData[index].criticalProcessParameter = e.target.value;
-                            setBufferFSDPV(newData);
-                            }}/>
-                      </td>
-                      <td>
-                           <input value={item.codes}
+                              const newData = [...bufferFSDPV];
+                              newData[index].criticalProcessParameter = e.target.value;
+                              setBufferFSDPV(newData);
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.codes}
                             onChange={(e) => {
-                            const newData = [...bufferFSDPV];
-                            newData[index].codes = e.target.value;
-                            setBufferFSDPV(newData);
-                            }}/>
-                      </td>
-                      <td>
-                            <input value={item.acceptanceCriteria}
+                              const newData = [...bufferFSDPV];
+                              newData[index].codes = e.target.value;
+                              setBufferFSDPV(newData);
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.acceptanceCriteria}
                             onChange={(e) => {
-                            const newData = [...bufferFSDPV];
-                            newData[index].acceptanceCriteria = e.target.value;
-                            setBufferFSDPV(newData);
-                            }}/>
-                      </td>
-                      <td>
-                           <input value={item.results.minimum}
+                              const newData = [...bufferFSDPV];
+                              newData[index].acceptanceCriteria = e.target.value;
+                              setBufferFSDPV(newData);
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.results.minimum}
                             onChange={(e) => {
-                            const newData = [...bufferFSDPV];
-                            newData[index].results.minimum = e.target.value;
-                            setBufferFSDPV(newData);
-                            }}/>
-                      </td>
-                      <td>
-                           <input value={item.results.maximum}
+                              const newData = [...bufferFSDPV];
+                              newData[index].results.minimum = e.target.value;
+                              setBufferFSDPV(newData);
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.results.maximum}
                             onChange={(e) => {
-                            const newData = [...bufferFSDPV];
-                            newData[index].results.maximum = e.target.value;
-                            setBufferFSDPV(newData);
-                            }}/>
-                      </td>
-                      <td>
-                           <input value={item.compliesNotComplies}
+                              const newData = [...bufferFSDPV];
+                              newData[index].results.maximum = e.target.value;
+                              setBufferFSDPV(newData);
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.compliesNotComplies}
                             onChange={(e) => {
-                            const newData = [...bufferFSDPV];
-                            newData[index].compliesNotComplies = e.target.value;
-                            setBufferFSDPV(newData);
-                            }}/>
-                      </td>
-                    </tr>
-                  );
-                })}
-              </tbody>
-            </table>
+                              const newData = [...bufferFSDPV];
+                              newData[index].compliesNotComplies = e.target.value;
+                              setBufferFSDPV(newData);
+                            }}
+                          />
+                        </td>
+                      </tr>
+                    );
+                  })}
+                </tbody>
+              </table>
             </div>
             <h3 className="gridName pt-4">Unit Operation 2</h3>
             <h4 className="gridName">Manufacturing summary details</h4>
@@ -3584,9 +3609,9 @@ export default function APQR() {
               </div>
               <div className="flex gap-4 ">
                 <ExcelExportImport
-                  data={manufacturingStage}
+                  data={manufacturingSD}
                   setimportedData={setimportedData}
-                  fileName="manufacturingStage.xlsx"
+                  fileName="manufacturingSD.xlsx"
                 />
               </div>
             </div>
@@ -3608,53 +3633,65 @@ export default function APQR() {
                 {manufacturingSD.map((item, index) => {
                   return (
                     <tr key={index}>
-                    <td>
-                            <input value={item.criticalProcessParameter}
-                            onChange={(e) => {
+                      <td>
+                        <input
+                          value={item.criticalProcessParameter}
+                          onChange={(e) => {
                             const newData = [...manufacturingSD];
                             newData[index].criticalProcessParameter = e.target.value;
                             setManufacturingSD(newData);
-                            }}/>
+                          }}
+                        />
                       </td>
                       <td>
-                           <input value={item.codes}
-                            onChange={(e) => {
+                        <input
+                          value={item.codes}
+                          onChange={(e) => {
                             const newData = [...manufacturingSD];
                             newData[index].codes = e.target.value;
                             setManufacturingSD(newData);
-                            }}/>
+                          }}
+                        />
                       </td>
                       <td>
-                            <input value={item.acceptanceCriteria}
-                            onChange={(e) => {
+                        <input
+                          value={item.acceptanceCriteria}
+                          onChange={(e) => {
                             const newData = [...manufacturingSD];
                             newData[index].acceptanceCriteria = e.target.value;
                             setManufacturingSD(newData);
-                            }}/>
+                          }}
+                        />
                       </td>
                       <td>
-                           <input value={item.results.minimum}
-                            onChange={(e) => {
+                        <input
+                          value={item.results.minimum}
+                          onChange={(e) => {
                             const newData = [...manufacturingSD];
                             newData[index].results.minimum = e.target.value;
                             setManufacturingSD(newData);
-                            }}/>
+                          }}
+                        />
                       </td>
                       <td>
-                           <input value={item.results.maximum}
-                            onChange={(e) => {
+                        <input
+                          value={item.results.maximum}
+                          onChange={(e) => {
                             const newData = [...manufacturingSD];
                             newData[index].results.maximum = e.target.value;
                             setManufacturingSD(newData);
-                            }}/>
+                          }}
+                        />
                       </td>
                       <td>
-                           <input value={item.compliesNotComplies}
-                            onChange={(e) => {
+                        <input
+                          value={item.compliesNotComplies}
+                          onChange={(e) => {
                             const newData = [...manufacturingSD];
                             newData[index].compliesNotComplies = e.target.value;
                             setManufacturingSD(newData);
-                            }}/>
+                          }}
+                        />
                       </td>
                     </tr>
                   );
@@ -3686,52 +3723,64 @@ export default function APQR() {
                   return (
                     <tr key={index}>
                       <td>
-                            <input value={item.criticalProcessParameter}
-                            onChange={(e) => {
+                        <input
+                          value={item.criticalProcessParameter}
+                          onChange={(e) => {
                             const newData = [...unitOperation3];
                             newData[index].criticalProcessParameter = e.target.value;
                             setUnitOperation3(newData);
-                            }}/>
+                          }}
+                        />
                       </td>
                       <td>
-                           <input value={item.codes}
-                            onChange={(e) => {
+                        <input
+                          value={item.codes}
+                          onChange={(e) => {
                             const newData = [...unitOperation3];
                             newData[index].codes = e.target.value;
                             setUnitOperation3(newData);
-                            }}/>
+                          }}
+                        />
                       </td>
                       <td>
-                            <input value={item.acceptanceCriteria}
-                            onChange={(e) => {
+                        <input
+                          value={item.acceptanceCriteria}
+                          onChange={(e) => {
                             const newData = [...unitOperation3];
                             newData[index].acceptanceCriteria = e.target.value;
                             setUnitOperation3(newData);
-                            }}/>
+                          }}
+                        />
                       </td>
                       <td>
-                           <input value={item.results.minimum}
-                            onChange={(e) => {
+                        <input
+                          value={item.results.minimum}
+                          onChange={(e) => {
                             const newData = [...unitOperation3];
                             newData[index].results.minimum = e.target.value;
                             setUnitOperation3(newData);
-                            }}/>
+                          }}
+                        />
                       </td>
                       <td>
-                           <input value={item.results.maximum}
-                            onChange={(e) => {
+                        <input
+                          value={item.results.maximum}
+                          onChange={(e) => {
                             const newData = [...unitOperation3];
                             newData[index].results.maximum = e.target.value;
                             setUnitOperation3(newData);
-                            }}/>
+                          }}
+                        />
                       </td>
                       <td>
-                           <input value={item.compliesNotComplies}
-                            onChange={(e) => {
+                        <input
+                          value={item.compliesNotComplies}
+                          onChange={(e) => {
                             const newData = [...unitOperation3];
                             newData[index].compliesNotComplies = e.target.value;
                             setUnitOperation3(newData);
-                            }}/>
+                          }}
+                        />
                       </td>
                     </tr>
                   );
@@ -3762,53 +3811,65 @@ export default function APQR() {
                 {unitOperation4.map((item, index) => {
                   return (
                     <tr key={index}>
-                    <td>
-                            <input value={item.criticalProcessParameter}
-                            onChange={(e) => {
+                      <td>
+                        <input
+                          value={item.criticalProcessParameter}
+                          onChange={(e) => {
                             const newData = [...unitOperation4];
                             newData[index].criticalProcessParameter = e.target.value;
                             setUnitOperation4(newData);
-                            }}/>
+                          }}
+                        />
                       </td>
                       <td>
-                           <input value={item.codes}
-                            onChange={(e) => {
+                        <input
+                          value={item.codes}
+                          onChange={(e) => {
                             const newData = [...unitOperation4];
                             newData[index].codes = e.target.value;
                             setUnitOperation4(newData);
-                            }}/>
+                          }}
+                        />
                       </td>
                       <td>
-                            <input value={item.acceptanceCriteria}
-                            onChange={(e) => {
+                        <input
+                          value={item.acceptanceCriteria}
+                          onChange={(e) => {
                             const newData = [...unitOperation4];
                             newData[index].acceptanceCriteria = e.target.value;
                             setUnitOperation4(newData);
-                            }}/>
+                          }}
+                        />
                       </td>
                       <td>
-                           <input value={item.results.minimum}
-                            onChange={(e) => {
+                        <input
+                          value={item.results.minimum}
+                          onChange={(e) => {
                             const newData = [...unitOperation4];
                             newData[index].results.minimum = e.target.value;
                             setUnitOperation4(newData);
-                            }}/>
+                          }}
+                        />
                       </td>
                       <td>
-                           <input value={item.results.maximum}
-                            onChange={(e) => {
+                        <input
+                          value={item.results.maximum}
+                          onChange={(e) => {
                             const newData = [...unitOperation4];
                             newData[index].results.maximum = e.target.value;
                             setUnitOperation4(newData);
-                            }}/>
+                          }}
+                        />
                       </td>
                       <td>
-                           <input value={item.compliesNotComplies}
-                            onChange={(e) => {
+                        <input
+                          value={item.compliesNotComplies}
+                          onChange={(e) => {
                             const newData = [...unitOperation4];
                             newData[index].compliesNotComplies = e.target.value;
                             setUnitOperation4(newData);
-                            }}/>
+                          }}
+                        />
                       </td>
                     </tr>
                   );
@@ -3839,53 +3900,65 @@ export default function APQR() {
                 {unitOperation5.map((item, index) => {
                   return (
                     <tr key={index}>
-                     <td>
-                            <input value={item.criticalProcessParameter}
-                            onChange={(e) => {
+                      <td>
+                        <input
+                          value={item.criticalProcessParameter}
+                          onChange={(e) => {
                             const newData = [...unitOperation5];
                             newData[index].criticalProcessParameter = e.target.value;
                             setUnitOperation5(newData);
-                            }}/>
+                          }}
+                        />
                       </td>
                       <td>
-                           <input value={item.codes}
-                            onChange={(e) => {
+                        <input
+                          value={item.codes}
+                          onChange={(e) => {
                             const newData = [...unitOperation5];
                             newData[index].codes = e.target.value;
                             setUnitOperation5(newData);
-                            }}/>
+                          }}
+                        />
                       </td>
                       <td>
-                            <input value={item.acceptanceCriteria}
-                            onChange={(e) => {
+                        <input
+                          value={item.acceptanceCriteria}
+                          onChange={(e) => {
                             const newData = [...unitOperation5];
                             newData[index].acceptanceCriteria = e.target.value;
                             setUnitOperation5(newData);
-                            }}/>
+                          }}
+                        />
                       </td>
                       <td>
-                           <input value={item.results.minimum}
-                            onChange={(e) => {
+                        <input
+                          value={item.results.minimum}
+                          onChange={(e) => {
                             const newData = [...unitOperation5];
                             newData[index].results.minimum = e.target.value;
                             setUnitOperation5(newData);
-                            }}/>
+                          }}
+                        />
                       </td>
                       <td>
-                           <input value={item.results.maximum}
-                            onChange={(e) => {
+                        <input
+                          value={item.results.maximum}
+                          onChange={(e) => {
                             const newData = [...unitOperation5];
                             newData[index].results.maximum = e.target.value;
                             setUnitOperation5(newData);
-                            }}/>
+                          }}
+                        />
                       </td>
                       <td>
-                           <input value={item.compliesNotComplies}
-                            onChange={(e) => {
+                        <input
+                          value={item.compliesNotComplies}
+                          onChange={(e) => {
                             const newData = [...unitOperation5];
                             newData[index].compliesNotComplies = e.target.value;
                             setUnitOperation5(newData);
-                            }}/>
+                          }}
+                        />
                       </td>
                     </tr>
                   );
@@ -3916,53 +3989,65 @@ export default function APQR() {
                 {unitOperation6.map((item, index) => {
                   return (
                     <tr key={index}>
-                    <td>
-                            <input value={item.criticalProcessParameter}
-                            onChange={(e) => {
+                      <td>
+                        <input
+                          value={item.criticalProcessParameter}
+                          onChange={(e) => {
                             const newData = [...unitOperation6];
                             newData[index].criticalProcessParameter = e.target.value;
                             setUnitOperation6(newData);
-                            }}/>
+                          }}
+                        />
                       </td>
                       <td>
-                           <input value={item.codes}
-                            onChange={(e) => {
+                        <input
+                          value={item.codes}
+                          onChange={(e) => {
                             const newData = [...unitOperation6];
                             newData[index].codes = e.target.value;
                             setUnitOperation6(newData);
-                            }}/>
+                          }}
+                        />
                       </td>
                       <td>
-                            <input value={item.acceptanceCriteria}
-                            onChange={(e) => {
+                        <input
+                          value={item.acceptanceCriteria}
+                          onChange={(e) => {
                             const newData = [...unitOperation6];
                             newData[index].acceptanceCriteria = e.target.value;
                             setUnitOperation6(newData);
-                            }}/>
+                          }}
+                        />
                       </td>
                       <td>
-                           <input value={item.results.minimum}
-                            onChange={(e) => {
+                        <input
+                          value={item.results.minimum}
+                          onChange={(e) => {
                             const newData = [...unitOperation6];
                             newData[index].results.minimum = e.target.value;
                             setUnitOperation6(newData);
-                            }}/>
+                          }}
+                        />
                       </td>
                       <td>
-                           <input value={item.results.maximum}
-                            onChange={(e) => {
+                        <input
+                          value={item.results.maximum}
+                          onChange={(e) => {
                             const newData = [...unitOperation6];
                             newData[index].results.maximum = e.target.value;
                             setUnitOperation6(newData);
-                            }}/>
+                          }}
+                        />
                       </td>
                       <td>
-                           <input value={item.compliesNotComplies}
-                            onChange={(e) => {
+                        <input
+                          value={item.compliesNotComplies}
+                          onChange={(e) => {
                             const newData = [...unitOperation6];
                             newData[index].compliesNotComplies = e.target.value;
                             setUnitOperation6(newData);
-                            }}/>
+                          }}
+                        />
                       </td>
                     </tr>
                   );
@@ -3993,53 +4078,65 @@ export default function APQR() {
                 {unitOperation7.map((item, index) => {
                   return (
                     <tr key={index}>
-                    <td>
-                            <input value={item.criticalProcessParameter}
-                            onChange={(e) => {
+                      <td>
+                        <input
+                          value={item.criticalProcessParameter}
+                          onChange={(e) => {
                             const newData = [...unitOperation7];
                             newData[index].criticalProcessParameter = e.target.value;
                             setUnitOperation7(newData);
-                            }}/>
+                          }}
+                        />
                       </td>
                       <td>
-                           <input value={item.codes}
-                            onChange={(e) => {
+                        <input
+                          value={item.codes}
+                          onChange={(e) => {
                             const newData = [...unitOperation7];
                             newData[index].codes = e.target.value;
                             setUnitOperation7(newData);
-                            }}/>
+                          }}
+                        />
                       </td>
                       <td>
-                            <input value={item.acceptanceCriteria}
-                            onChange={(e) => {
+                        <input
+                          value={item.acceptanceCriteria}
+                          onChange={(e) => {
                             const newData = [...unitOperation7];
                             newData[index].acceptanceCriteria = e.target.value;
                             setUnitOperation7(newData);
-                            }}/>
+                          }}
+                        />
                       </td>
                       <td>
-                           <input value={item.results.minimum}
-                            onChange={(e) => {
+                        <input
+                          value={item.results.minimum}
+                          onChange={(e) => {
                             const newData = [...unitOperation7];
                             newData[index].results.minimum = e.target.value;
                             setUnitOperation7(newData);
-                            }}/>
+                          }}
+                        />
                       </td>
                       <td>
-                           <input value={item.results.maximum}
-                            onChange={(e) => {
+                        <input
+                          value={item.results.maximum}
+                          onChange={(e) => {
                             const newData = [...unitOperation7];
                             newData[index].results.maximum = e.target.value;
                             setUnitOperation7(newData);
-                            }}/>
+                          }}
+                        />
                       </td>
                       <td>
-                           <input value={item.compliesNotComplies}
-                            onChange={(e) => {
+                        <input
+                          value={item.compliesNotComplies}
+                          onChange={(e) => {
                             const newData = [...unitOperation7];
                             newData[index].compliesNotComplies = e.target.value;
                             setUnitOperation7(newData);
-                            }}/>
+                          }}
+                        />
                       </td>
                     </tr>
                   );
@@ -4070,53 +4167,65 @@ export default function APQR() {
                 {unitOperation8.map((item, index) => {
                   return (
                     <tr key={index}>
-                    <td>
-                            <input value={item.criticalProcessParameter}
-                            onChange={(e) => {
+                      <td>
+                        <input
+                          value={item.criticalProcessParameter}
+                          onChange={(e) => {
                             const newData = [...unitOperation8];
                             newData[index].criticalProcessParameter = e.target.value;
                             setUnitOperation8(newData);
-                            }}/>
+                          }}
+                        />
                       </td>
                       <td>
-                           <input value={item.codes}
-                            onChange={(e) => {
+                        <input
+                          value={item.codes}
+                          onChange={(e) => {
                             const newData = [...unitOperation8];
                             newData[index].codes = e.target.value;
                             setUnitOperation8(newData);
-                            }}/>
+                          }}
+                        />
                       </td>
                       <td>
-                            <input value={item.acceptanceCriteria}
-                            onChange={(e) => {
+                        <input
+                          value={item.acceptanceCriteria}
+                          onChange={(e) => {
                             const newData = [...unitOperation8];
                             newData[index].acceptanceCriteria = e.target.value;
                             setUnitOperation8(newData);
-                            }}/>
+                          }}
+                        />
                       </td>
                       <td>
-                           <input value={item.results.minimum}
-                            onChange={(e) => {
+                        <input
+                          value={item.results.minimum}
+                          onChange={(e) => {
                             const newData = [...unitOperation8];
                             newData[index].results.minimum = e.target.value;
                             setUnitOperation8(newData);
-                            }}/>
+                          }}
+                        />
                       </td>
                       <td>
-                           <input value={item.results.maximum}
-                            onChange={(e) => {
+                        <input
+                          value={item.results.maximum}
+                          onChange={(e) => {
                             const newData = [...unitOperation8];
                             newData[index].results.maximum = e.target.value;
                             setUnitOperation8(newData);
-                            }}/>
+                          }}
+                        />
                       </td>
                       <td>
-                           <input value={item.compliesNotComplies}
-                            onChange={(e) => {
+                        <input
+                          value={item.compliesNotComplies}
+                          onChange={(e) => {
                             const newData = [...unitOperation8];
                             newData[index].compliesNotComplies = e.target.value;
                             setUnitOperation8(newData);
-                            }}/>
+                          }}
+                        />
                       </td>
                     </tr>
                   );
@@ -4147,53 +4256,65 @@ export default function APQR() {
                 {unitOperation9.map((item, index) => {
                   return (
                     <tr key={index}>
-                    <td>
-                            <input value={item.criticalProcessParameter}
-                            onChange={(e) => {
+                      <td>
+                        <input
+                          value={item.criticalProcessParameter}
+                          onChange={(e) => {
                             const newData = [...unitOperation9];
                             newData[index].criticalProcessParameter = e.target.value;
                             setUnitOperation9(newData);
-                            }}/>
+                          }}
+                        />
                       </td>
                       <td>
-                           <input value={item.codes}
-                            onChange={(e) => {
+                        <input
+                          value={item.codes}
+                          onChange={(e) => {
                             const newData = [...unitOperation9];
                             newData[index].codes = e.target.value;
                             setUnitOperation9(newData);
-                            }}/>
+                          }}
+                        />
                       </td>
                       <td>
-                            <input value={item.acceptanceCriteria}
-                            onChange={(e) => {
+                        <input
+                          value={item.acceptanceCriteria}
+                          onChange={(e) => {
                             const newData = [...unitOperation9];
                             newData[index].acceptanceCriteria = e.target.value;
                             setUnitOperation9(newData);
-                            }}/>
+                          }}
+                        />
                       </td>
                       <td>
-                           <input value={item.results.minimum}
-                            onChange={(e) => {
+                        <input
+                          value={item.results.minimum}
+                          onChange={(e) => {
                             const newData = [...unitOperation9];
                             newData[index].results.minimum = e.target.value;
                             setUnitOperation9(newData);
-                            }}/>
+                          }}
+                        />
                       </td>
                       <td>
-                           <input value={item.results.maximum}
-                            onChange={(e) => {
+                        <input
+                          value={item.results.maximum}
+                          onChange={(e) => {
                             const newData = [...unitOperation9];
                             newData[index].results.maximum = e.target.value;
                             setUnitOperation9(newData);
-                            }}/>
+                          }}
+                        />
                       </td>
                       <td>
-                           <input value={item.compliesNotComplies}
-                            onChange={(e) => {
+                        <input
+                          value={item.compliesNotComplies}
+                          onChange={(e) => {
                             const newData = [...unitOperation9];
                             newData[index].compliesNotComplies = e.target.value;
                             setUnitOperation9(newData);
-                            }}/>
+                          }}
+                        />
                       </td>
                     </tr>
                   );
@@ -4224,53 +4345,65 @@ export default function APQR() {
                 {unitOperation10.map((item, index) => {
                   return (
                     <tr key={index}>
-                    <td>
-                            <input value={item.criticalProcessParameter}
-                            onChange={(e) => {
+                      <td>
+                        <input
+                          value={item.criticalProcessParameter}
+                          onChange={(e) => {
                             const newData = [...unitOperation10];
                             newData[index].criticalProcessParameter = e.target.value;
                             setUnitOperation10(newData);
-                            }}/>
+                          }}
+                        />
                       </td>
                       <td>
-                           <input value={item.codes}
-                            onChange={(e) => {
+                        <input
+                          value={item.codes}
+                          onChange={(e) => {
                             const newData = [...unitOperation10];
                             newData[index].codes = e.target.value;
                             setUnitOperation10(newData);
-                            }}/>
+                          }}
+                        />
                       </td>
                       <td>
-                            <input value={item.acceptanceCriteria}
-                            onChange={(e) => {
+                        <input
+                          value={item.acceptanceCriteria}
+                          onChange={(e) => {
                             const newData = [...unitOperation10];
                             newData[index].acceptanceCriteria = e.target.value;
                             setUnitOperation10(newData);
-                            }}/>
+                          }}
+                        />
                       </td>
                       <td>
-                           <input value={item.results.minimum}
-                            onChange={(e) => {
+                        <input
+                          value={item.results.minimum}
+                          onChange={(e) => {
                             const newData = [...unitOperation10];
                             newData[index].results.minimum = e.target.value;
                             setUnitOperation10(newData);
-                            }}/>
+                          }}
+                        />
                       </td>
                       <td>
-                           <input value={item.results.maximum}
-                            onChange={(e) => {
+                        <input
+                          value={item.results.maximum}
+                          onChange={(e) => {
                             const newData = [...unitOperation10];
                             newData[index].results.maximum = e.target.value;
                             setUnitOperation10(newData);
-                            }}/>
+                          }}
+                        />
                       </td>
                       <td>
-                           <input value={item.compliesNotComplies}
-                            onChange={(e) => {
+                        <input
+                          value={item.compliesNotComplies}
+                          onChange={(e) => {
                             const newData = [...unitOperation10];
                             newData[index].compliesNotComplies = e.target.value;
                             setUnitOperation10(newData);
-                            }}/>
+                          }}
+                        />
                       </td>
                     </tr>
                   );
@@ -4301,9 +4434,9 @@ export default function APQR() {
                 </div>
                 <div className="flex gap-4 ">
                   <ExcelExportImport
-                    data={manufacturingStage}
+                    data={reviewODSTR}
                     setimportedData={setimportedData}
-                    fileName="manufacturingStage.xlsx"
+                    fileName="reviewODSTR.xlsx"
                   />
                 </div>
               </div>
@@ -4391,9 +4524,9 @@ export default function APQR() {
                 </div>
                 <div className="flex gap-4 ">
                   <ExcelExportImport
-                    data={manufacturingStage}
+                    data={reviewODSTR2}
                     setimportedData={setimportedData}
-                    fileName="manufacturingStage.xlsx"
+                    fileName="reviewODSTR2.xlsx"
                   />
                 </div>
               </div>
@@ -4485,9 +4618,9 @@ export default function APQR() {
                 </div>
                 <div className="flex gap-4 ">
                   <ExcelExportImport
-                    data={manufacturingStage}
+                    data={reviewODSTR3}
                     setimportedData={setimportedData}
-                    fileName="manufacturingStage.xlsx"
+                    fileName="reviewODSTR3.xlsx"
                   />
                 </div>
               </div>
@@ -4579,9 +4712,9 @@ export default function APQR() {
                 </div>
                 <div className="flex gap-4 ">
                   <ExcelExportImport
-                    data={manufacturingStage}
+                    data={reviewODSTR4}
                     setimportedData={setimportedData}
-                    fileName="manufacturingStage.xlsx"
+                    fileName="reviewODSTR4.xlsx"
                   />
                 </div>
               </div>
@@ -4673,9 +4806,9 @@ export default function APQR() {
                 </div>
                 <div className="flex gap-4 ">
                   <ExcelExportImport
-                    data={manufacturingStage}
+                    data={reviewODSTR5}
                     setimportedData={setimportedData}
-                    fileName="manufacturingStage.xlsx"
+                    fileName="reviewODSTR5.xlsx"
                   />
                 </div>
               </div>
@@ -4767,9 +4900,9 @@ export default function APQR() {
                 </div>
                 <div className="flex gap-4 ">
                   <ExcelExportImport
-                    data={manufacturingStage}
+                    data={reviewODSTR6}
                     setimportedData={setimportedData}
-                    fileName="manufacturingStage.xlsx"
+                    fileName="reviewODSTR6.xlsx"
                   />
                 </div>
               </div>
@@ -4857,9 +4990,9 @@ export default function APQR() {
                 </div>
                 <div className="flex gap-4 ">
                   <ExcelExportImport
-                    data={manufacturingStage}
+                    data={reviewODSTR7}
                     setimportedData={setimportedData}
-                    fileName="manufacturingStage.xlsx"
+                    fileName="reviewODSTR7.xlsx"
                   />
                 </div>
               </div>
@@ -4947,9 +5080,9 @@ export default function APQR() {
                 </div>
                 <div className="flex gap-4 ">
                   <ExcelExportImport
-                    data={manufacturingStage}
+                    data={reviewODSTR8}
                     setimportedData={setimportedData}
-                    fileName="manufacturingStage.xlsx"
+                    fileName="reviewODSTR8.xlsx"
                   />
                 </div>
               </div>
@@ -5037,9 +5170,9 @@ export default function APQR() {
                 </div>
                 <div className="flex gap-4 ">
                   <ExcelExportImport
-                    data={manufacturingStage}
+                    data={reviewODSTR9}
                     setimportedData={setimportedData}
-                    fileName="manufacturingStage.xlsx"
+                    fileName="reviewODSTR9.xlsx"
                   />
                 </div>
               </div>
@@ -5131,9 +5264,9 @@ export default function APQR() {
                 </div>
                 <div className="flex gap-4 ">
                   <ExcelExportImport
-                    data={manufacturingStage}
+                    data={reviewODSTR10}
                     setimportedData={setimportedData}
-                    fileName="manufacturingStage.xlsx"
+                    fileName="reviewODSTR10.xlsx"
                   />
                 </div>
               </div>
@@ -5229,9 +5362,9 @@ export default function APQR() {
                 </div>
                 <div className="flex gap-4 ">
                   <ExcelExportImport
-                    data={manufacturingStage}
+                    data={reviewORMETR}
                     setimportedData={setimportedData}
-                    fileName="manufacturingStage.xlsx"
+                    fileName="reviewORMETR.xlsx"
                   />
                 </div>
               </div>
@@ -5338,9 +5471,9 @@ export default function APQR() {
                 </div>
                 <div className="flex gap-4 ">
                   <ExcelExportImport
-                    data={manufacturingStage}
+                    data={reviewOPMTR}
                     setimportedData={setimportedData}
-                    fileName="manufacturingStage.xlsx"
+                    fileName="reviewOPMTR.xlsx"
                   />
                 </div>
               </div>
@@ -5448,9 +5581,9 @@ export default function APQR() {
                 </div>
                 <div className="flex gap-4 ">
                   <ExcelExportImport
-                    data={manufacturingStage}
+                    data={reviewODP}
                     setimportedData={setimportedData}
-                    fileName="manufacturingStage.xlsx"
+                    fileName="reviewODP.xlsx"
                   />
                 </div>
               </div>
@@ -5553,9 +5686,9 @@ export default function APQR() {
                 </div>
                 <div className="flex gap-4 ">
                   <ExcelExportImport
-                    data={manufacturingStage}
+                    data={reviewODP2}
                     setimportedData={setimportedData}
-                    fileName="manufacturingStage.xlsx"
+                    fileName="reviewODP2.xlsx"
                   />
                 </div>
               </div>
@@ -5658,9 +5791,9 @@ export default function APQR() {
                 </div>
                 <div className="flex gap-4 ">
                   <ExcelExportImport
-                    data={manufacturingStage}
+                    data={reviewODP3}
                     setimportedData={setimportedData}
-                    fileName="manufacturingStage.xlsx"
+                    fileName="reviewODP3.xlsx"
                   />
                 </div>
               </div>
@@ -5763,9 +5896,9 @@ export default function APQR() {
                 </div>
                 <div className="flex gap-4 ">
                   <ExcelExportImport
-                    data={manufacturingStage}
+                    data={reviewODP4}
                     setimportedData={setimportedData}
-                    fileName="manufacturingStage.xlsx"
+                    fileName="reviewODP4.xlsx"
                   />
                 </div>
               </div>
@@ -5868,9 +6001,9 @@ export default function APQR() {
                 </div>
                 <div className="flex gap-4 ">
                   <ExcelExportImport
-                    data={manufacturingStage}
+                    data={reviewODP5}
                     setimportedData={setimportedData}
-                    fileName="manufacturingStage.xlsx"
+                    fileName="reviewODP5.xlsx"
                   />
                 </div>
               </div>
@@ -5973,9 +6106,9 @@ export default function APQR() {
                 </div>
                 <div className="flex gap-4 ">
                   <ExcelExportImport
-                    data={manufacturingStage}
+                    data={reviewODP6}
                     setimportedData={setimportedData}
-                    fileName="manufacturingStage.xlsx"
+                    fileName="reviewODP6.xlsx"
                   />
                 </div>
               </div>
@@ -6078,9 +6211,9 @@ export default function APQR() {
                 </div>
                 <div className="flex gap-4 ">
                   <ExcelExportImport
-                    data={manufacturingStage}
+                    data={reviewODP7}
                     setimportedData={setimportedData}
-                    fileName="manufacturingStage.xlsx"
+                    fileName="reviewODP7.xlsx"
                   />
                 </div>
               </div>
@@ -6183,9 +6316,9 @@ export default function APQR() {
                 </div>
                 <div className="flex gap-4 ">
                   <ExcelExportImport
-                    data={manufacturingStage}
+                    data={reviewODP8}
                     setimportedData={setimportedData}
-                    fileName="manufacturingStage.xlsx"
+                    fileName="reviewODP8.xlsx"
                   />
                 </div>
               </div>
@@ -6288,9 +6421,9 @@ export default function APQR() {
                 </div>
                 <div className="flex gap-4 ">
                   <ExcelExportImport
-                    data={manufacturingStage}
+                    data={reviewODP9}
                     setimportedData={setimportedData}
-                    fileName="manufacturingStage.xlsx"
+                    fileName="reviewODP9.xlsx"
                   />
                 </div>
               </div>
@@ -6393,9 +6526,9 @@ export default function APQR() {
                 </div>
                 <div className="flex gap-4 ">
                   <ExcelExportImport
-                    data={manufacturingStage}
+                    data={reviewODP10}
                     setimportedData={setimportedData}
-                    fileName="manufacturingStage.xlsx"
+                    fileName="reviewODP10.xlsx"
                   />
                 </div>
               </div>
@@ -6502,9 +6635,9 @@ export default function APQR() {
                 </div>
                 <div className="flex gap-4 ">
                   <ExcelExportImport
-                    data={manufacturingStage}
+                    data={reviewODPFPTR}
                     setimportedData={setimportedData}
-                    fileName="manufacturingStage.xlsx"
+                    fileName="reviewODPFPTR.xlsx"
                   />
                 </div>
               </div>
@@ -6600,9 +6733,9 @@ export default function APQR() {
                 </div>
                 <div className="flex gap-4 ">
                   <ExcelExportImport
-                    data={manufacturingStage}
+                    data={summaryOOSS}
                     setimportedData={setimportedData}
-                    fileName="manufacturingStage.xlsx"
+                    fileName="summaryOOSS.xlsx"
                   />
                 </div>
               </div>
@@ -6694,9 +6827,9 @@ export default function APQR() {
                 </div>
                 <div className="flex gap-4 ">
                   <ExcelExportImport
-                    data={manufacturingStage}
+                    data={stabilitySR}
                     setimportedData={setimportedData}
-                    fileName="manufacturingStage.xlsx"
+                    fileName="stabilitySR.xlsx"
                   />
                 </div>
               </div>
@@ -6766,9 +6899,9 @@ export default function APQR() {
                   </div>
                   <div className="flex gap-4 ">
                     <ExcelExportImport
-                      data={manufacturingStage}
+                      data={reviewOVIRS}
                       setimportedData={setimportedData}
-                      fileName="manufacturingStage.xlsx"
+                      fileName="reviewOVIRS.xlsx"
                     />
                   </div>
                 </div>
@@ -6912,9 +7045,9 @@ export default function APQR() {
                 </div>
                 <div className="flex gap-4 ">
                   <ExcelExportImport
-                    data={manufacturingStage}
+                    data={hVACQStatus}
                     setimportedData={setimportedData}
-                    fileName="manufacturingStage.xlsx"
+                    fileName="hVACQStatus.xlsx"
                   />
                 </div>
               </div>
@@ -6987,9 +7120,9 @@ export default function APQR() {
                 </div>
                 <div className="flex gap-4 ">
                   <ExcelExportImport
-                    data={manufacturingStage}
+                    data={sanitizationASDOU}
                     setimportedData={setimportedData}
-                    fileName="manufacturingStage.xlsx"
+                    fileName="sanitizationASDOU.xlsx"
                   />
                 </div>
               </div>
@@ -7066,9 +7199,9 @@ export default function APQR() {
                 </div>
                 <div className="flex gap-4 ">
                   <ExcelExportImport
-                    data={manufacturingStage}
+                    data={compressedGas}
                     setimportedData={setimportedData}
-                    fileName="manufacturingStage.xlsx"
+                    fileName="compressedGas.xlsx"
                   />
                 </div>
               </div>
@@ -7152,9 +7285,9 @@ export default function APQR() {
                 </div>
                 <div className="flex gap-4 ">
                   <ExcelExportImport
-                    data={manufacturingStage}
+                    data={currentRPQRN}
                     setimportedData={setimportedData}
-                    fileName="manufacturingStage.xlsx"
+                    fileName="currentRPQRN.xlsx"
                   />
                 </div>
               </div>
@@ -7305,9 +7438,9 @@ export default function APQR() {
                 </div>
                 <div className="flex gap-4 ">
                   <ExcelExportImport
-                    data={manufacturingStage}
+                    data={dossierRR}
                     setimportedData={setimportedData}
-                    fileName="manufacturingStage.xlsx"
+                    fileName="dossierRR.xlsx"
                   />
                 </div>
               </div>
@@ -7389,9 +7522,9 @@ export default function APQR() {
                   </div>
                   <div className="flex gap-4 ">
                     <ExcelExportImport
-                      data={manufacturingStage}
+                      data={dossierRRNma}
                       setimportedData={setimportedData}
-                      fileName="manufacturingStage.xlsx"
+                      fileName="dossierRRNma.xlsx"
                     />
                   </div>
                 </div>
