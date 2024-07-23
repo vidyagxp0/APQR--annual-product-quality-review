@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 export default function Dashboard() {
   const navigate = useNavigate();
   const data = useSelector((state) => state.form.forms);
-  console.log(data);
+  // console.log(data);
   return (
     <>
       <Header />
