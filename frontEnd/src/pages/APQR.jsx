@@ -3063,7 +3063,7 @@ export default function APQR() {
                     <th rowSpan={2}>AR No.</th>
                     <th rowSpan={2}>Test Name Of OOS</th>
                     <th rowSpan={2}>Results Obtained</th>
-                    <th colSpan={2}>Specification Limit</th>
+                    <th >Specification Limit</th>
                     <th rowSpan={2}>Details of Obvious error</th>
                     <th>File Attachment</th>
                   </tr>
@@ -3185,7 +3185,7 @@ export default function APQR() {
                             onChange={(e) => {
                               const newData = [...ootResults];
                               newData[index].ARNo = e.target.value;
-                              setOotDetails(newData);
+                              setOotResults(newData);
                             }}
                           />
                         </td>
@@ -3193,9 +3193,9 @@ export default function APQR() {
                           <input
                             value={item.testNameOfOot}
                             onChange={(e) => {
-                              const newData = [...oosDetails];
+                              const newData = [...ootResults];
                               newData[index].testNameOfOot = e.target.value;
-                              setOosDetails(newData);
+                              setOotResults(newData);
                             }}
                           />
                         </td>
@@ -3203,9 +3203,9 @@ export default function APQR() {
                           <input
                             value={item.resultsObtained}
                             onChange={(e) => {
-                              const newData = [...oosDetails];
+                              const newData = [...ootResults];
                               newData[index].resultsObtained = e.target.value;
-                              setOosDetails(newData);
+                              setOotResults(newData);
                             }}
                           />
                         </td>
@@ -3213,9 +3213,9 @@ export default function APQR() {
                           <input
                             value={item.initialIntervalDetails}
                             onChange={(e) => {
-                              const newData = [...oosDetails];
+                              const newData = [...ootResults];
                               newData[index].initialIntervalDetails = e.target.value;
-                              setOosDetails(newData);
+                              setOotResults(newData);
                             }}
                           />
                         </td>
@@ -3223,9 +3223,9 @@ export default function APQR() {
                           <input
                             value={item.previousIntervalDetails}
                             onChange={(e) => {
-                              const newData = [...oosDetails];
+                              const newData = [...ootResults];
                               newData[index].previousIntervalDetails = e.target.value;
-                              setOosDetails(newData);
+                              setOotResults(newData);
                             }}
                           />
                         </td>
@@ -3233,9 +3233,9 @@ export default function APQR() {
                           <input
                             value={item.diffrenceOfResult}
                             onChange={(e) => {
-                              const newData = [...oosDetails];
+                              const newData = [...ootResults];
                               newData[index].diffrenceOfResult = e.target.value;
-                              setOosDetails(newData);
+                              setOotResults(newData);
                             }}
                           />
                         </td>
@@ -3243,9 +3243,9 @@ export default function APQR() {
                           <input
                             value={item.trendLimit}
                             onChange={(e) => {
-                              const newData = [...oosDetails];
+                              const newData = [...ootResults];
                               newData[index].trendLimit = e.target.value;
-                              setOosDetails(newData);
+                              setOotResults(newData);
                             }}
                           />
                         </td>

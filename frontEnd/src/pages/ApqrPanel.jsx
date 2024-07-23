@@ -3248,7 +3248,7 @@ export default function APQR() {
                     <th rowSpan={2}>AR No.</th>
                     <th rowSpan={2}>Test Name Of OOS</th>
                     <th rowSpan={2}>Results Obtained</th>
-                    <th colSpan={2}>Specification Limit</th>
+                    <th >Specification Limit</th>
                     <th rowSpan={2}>Details of Obvious error</th>
                     <th>File Attachment</th>
                   </tr>
