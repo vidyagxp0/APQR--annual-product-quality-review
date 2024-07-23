@@ -1,7 +1,6 @@
-/* src/App.css */
 @font-face {
   font-family: "Playwrite AR";
-  src: url("/fonts/PlaywriteAR.ttf") format("truetype"); /* Adjust the path and format as needed */
+  src: url("/fonts/PlaywriteAR.ttf") format("truetype");
   font-weight: normal;
   font-style: normal;
 }
@@ -10,6 +9,7 @@
   font-family: "Playwrite AR", cursive;
   font-optical-sizing: auto;
 }
+
 * {
   box-sizing: border-box;
 }
@@ -18,22 +18,22 @@ body {
   margin: 0;
   padding: 0;
   font-family: "Noto Sans", sans-serif;
-  --themeColor: #efa035;
+  --themeColor: #1e90ff; /* Primary Color */
 }
 
 :root {
-  /* --first-color: #efa035;
-  --second-color: #efa035;
-  --third-color: #fce8cb; */
+  --first-color: #1e90ff; /* Primary Color */
+  --second-color: #104e8b; /* Secondary Color */
+  --third-color: #c8d9f0; /* Light Blue for contrast */
+  --accent-color: #ffa07a; /* Accent Color */
+
   /* --first-color: #0060df;
-  --second-color: #5e93d8;
-  --third-color: #c8d9f0; */
-  --first-color: #0060df;
   --second-color: #1a355a;
-  --third-color: #c8d9f0;
+  --third-color: #c8d9f0; */
 }
+
 .pqrform {
-  --themeColor: #efa035;
+  --themeColor: var(--first-color);
 }
 
 .pqrform img {
@@ -80,9 +80,6 @@ body {
   color: var(--themeColor);
 }
 
-/*! ===================================================================== */
-/*! FORM FIELDS CSS */
-/*! ===================================================================== */
 .pqrform .group-input {
   margin-bottom: 10px;
 }
@@ -100,13 +97,13 @@ body {
 
 .pqrform .group-input .instruction {
   font-size: 0.8rem;
-  color: #006fc0;
+  color: var(--first-color);
 }
 
 .pqrform .group-input label .required {
   width: 5px;
   height: 5px;
-  background: #ff0000;
+  background: var(--accent-color);
 }
 
 .pqrform .group-input input:not([type="radio"]):not([type="checkbox"]),
@@ -196,6 +193,7 @@ body {
   flex-wrap: wrap;
   margin: 20px;
 }
+
 .pqrform .form-tabs {
   display: flex;
   align-items: center;
@@ -204,29 +202,20 @@ body {
 
 .pqrform .form-tabs div {
   padding: 10px 20px;
-  border: 1.5px solid var(--first-color);
+  /* border: 1.5px solid var(--first-color); */
   border-radius: 24px;
-  color: #111;
-  /* background: #f0f0f0; */
-  background: #efeded;
+  background: var(--third-color);
   cursor: pointer;
-  color: var(--first-color);
+  color: var(--second-color);
 }
 
 .pqrform .form-tabs div:hover {
-  padding: 10px 20px;
-
-  border: none;
-  background: var(--second-color);
-  background: #406aa6;
+  background: var(--themeColor);
   color: white;
-  /* font-weight: 600; */
-  border: 1.5px solid var(--first-color);
-  border-radius: 24px;
 }
+
 .pqrform .form-tabs div.active {
-  background: var(--first-color);
-  background: #1a355a;
+  background: var(--second-color);
   color: white;
   font-weight: 600;
 }
@@ -240,27 +229,27 @@ body {
 }
 
 .addrowinstruction {
-  color: rgb(76, 76, 214);
+  color: var(--first-color);
   font-size: 16px;
   display: flex;
   align-items: center;
 }
+
 .pqrform .sub-head {
   color: var(--first-color);
   border-bottom: 1.4px solid var(--first-color);
-  /* border-left: 2px solid rgb(17, 118, 243); */
   padding-bottom: 5px;
   margin: 20px 0px;
   font-weight: bold;
   font-size: 1.2rem;
   padding: 10px 20px 10px 5px;
-  /* margin-bottom: 0.%; */
   margin-top: 3%;
 }
+
 .pqrform .sub-head p {
-  /* border-left: 4px solid var(--first-color); */
-  /* padding-left: 2%; */
+  padding-left: 2%;
 }
+
 .pqrform table {
   width: 100%;
 }
@@ -274,7 +263,7 @@ body {
 .pqrform table,
 .pqrform td,
 .pqrform th {
-  border: 1px solid rgb(199, 198, 198);
+  border: 1px solid rgb(160, 158, 158);
   border-collapse: collapse;
   text-align: left;
   padding: 5px;
@@ -282,7 +271,6 @@ body {
 
 .pqrform th {
   background-color: var(--second-color);
-  /* background-color: #f46f36; */
   color: white;
 }
 
@@ -302,7 +290,6 @@ body {
 
 .pqrform table tbody tr:nth-child(2n) {
   background: var(--third-color);
-  /* background-color: #f1c9b8; */
 }
 
 .inner-container {
@@ -330,15 +317,87 @@ body {
   margin-top: 2%;
   margin-bottom: 1%;
   background-color: #8bc6ec;
-  /* background-color: #293c48; */
   background-image: linear-gradient(135deg, #8bc6ec 0%, #9599e2 100%);
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 15px 25px, rgba(0, 0, 0, 0.05) 0px 5px 10px;
+  border-radius: 5px;
+}
+
+.pqrform-topdiv h2 {
+  text-align: center;
+  padding: 0px;
+  margin: 0px;
+  color: #333333;
+}
+
+.pqrform-topdiv h2 span {
+  color: var(--first-color);
+}
+
+.pqrform .topbar {
+  background: var(--second-color);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+
+.pqrform .topbar img {
+  height: 50px;
+  padding: 5px 20px;
+}
+
+.pqrform .topbar div {
   color: white;
+  font-weight: bold;
+  padding-right: 20px;
+}
+
+.pqrform .submit-btn-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.pqrform .submit-btn-container button {
+  padding: 10px 20px;
+  background: var(--first-color);
+  border: 0;
+  border-radius: 30px;
+  color: white;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.pqrform .submit-btn-container button:hover {
+  background: var(--second-color);
+}
+
+.pqrform .submit-btn-container button:focus-visible {
+  outline: 2px solid var(--accent-color);
+}
+
+@media screen and (max-width: 850px) {
+  .pqrform .dual-group-input {
+    grid-template-columns: 1fr;
+    row-gap: 20px;
+    column-gap: 0;
+  }
+
+  .pqrform .dual-group-input .group-input {
+    margin-bottom: 0;
+  }
 }
 
 .gridName {
-  color: var(--first-color);
+  color: #3764f9;
   font-weight: bold;
-  margin: 0;
-  margin-bottom: 0.5%;
-  font-size: 1.1rem;
+  font-size: 0.9rem;
+  /* text-transform: uppercase; */
+  letter-spacing: 0.1em;
+}
+
+.form-footer{
+  width: 80%;
 }
