@@ -1230,7 +1230,7 @@ export default function APQR() {
                 </tr>
               </thead>
               <tbody>
-                {pQRData.manufacturingStage.map((item, index) => {
+                {pQRData.manufacturingStage?.map((item, index) => {
                   return (
                     <tr key={index}>
                       <td>
@@ -1255,24 +1255,11 @@ export default function APQR() {
                       </td>
                       <td>
                         <input
-                        
                           value={item.fGCode}
-                          // onChange={(e) => {
-                          //   const newData = [...manufacturingStage];
-                          //   newData[index].fGCode = e.target.value;
-                          //   setManufacturingStage(newData);
-                          // }}
-
                           onChange={(e) => {
-                            const newData = [
-                              ...manufacturingStage.fGCode,
-                            ];
-                            newData[index].fGCode =
-                              e.target.value;
-                            setManufacturingStage({
-                              ...manufacturingStage,
-                              fGCode: newData,
-                            });
+                            const newData = [...manufacturingStage];
+                            newData[index].fGCode = e.target.value;
+                            setManufacturingStage(newData);
                           }}
                         />
                       </td>
@@ -1316,7 +1303,7 @@ export default function APQR() {
                   </tr>
                 </thead>
                 <tbody>
-                  {pQRData?.manufacturingSAPS.map((item, index) => {
+                  {pQRData?.manufacturingSAPS?.map((item, index) => {
                     return (
                       <tr key={index}>
                         <td>
@@ -1419,7 +1406,7 @@ export default function APQR() {
                     </tr>
                   </thead>
                   <tbody>
-                    {pQRData?.rawMRS.map((item, index) => {
+                    {pQRData?.rawMRS?.map((item, index) => {
                       return (
                         <tr key={index}>
                           <td>{index + 1}</td>
@@ -1520,7 +1507,7 @@ export default function APQR() {
                     </tr>
                   </thead>
                   <tbody>
-                    {pQRData?.packingMRS.map((item, index) => {
+                    {pQRData?.packingMRS?.map((item, index) => {
                       return (
                         <tr key={index}>
                           <td>{index + 1}</td>
@@ -1621,7 +1608,7 @@ export default function APQR() {
                     </tr>
                   </thead>
                   <tbody>
-                    {pQRData?.expiredRMD.map((item, index) => {
+                    {pQRData?.expiredRMD?.map((item, index) => {
                       return (
                         <tr key={index}>
                           <td>{index + 1}</td>
@@ -1709,7 +1696,7 @@ export default function APQR() {
                     </tr>
                   </thead>
                   <tbody>
-                    {pQRData?.expiredPMD.map((item, index) => {
+                    {pQRData?.expiredPMD?.map((item, index) => {
                       return (
                         <tr key={index}>
                           <td>{index + 1}</td>
@@ -1797,7 +1784,7 @@ export default function APQR() {
                     </tr>
                   </thead>
                   <tbody>
-                    {pQRData?.reviewOfASL.map((item, index) => {
+                    {pQRData?.reviewOfASL?.map((item, index) => {
                       return (
                         <tr key={index}>
                           <td>{index + 1}</td>
@@ -1882,7 +1869,7 @@ export default function APQR() {
                     <th>Remarks</th>
                   </thead>
                   <tbody>
-                    {pQRData?.vendorQDORME.map((item, index) => {
+                    {pQRData?.vendorQDORME?.map((item, index) => {
                       return (
                         <tr key={index}>
                           <td>
@@ -1980,7 +1967,7 @@ export default function APQR() {
                     </tr>
                   </thead>
                   <tbody>
-                    {pQRData?.vendorQDOPPM.map((item, index) => {
+                    {pQRData?.vendorQDOPPM?.map((item, index) => {
                       return (
                         <tr key={index}>
                           <td>
@@ -2069,7 +2056,7 @@ export default function APQR() {
                     </tr>
                   </thead>
                   <tbody>
-                    {pQRData?.vendorQDPOG.map((item, index) => {
+                    {pQRData?.vendorQDPOG?.map((item, index) => {
                       return (
                         <tr key={index}>
                           <td>
@@ -2241,7 +2228,7 @@ export default function APQR() {
                   </tr>
                 </thead>
                 <tbody>
-                  {pQRData?.codeTCTD.map((item, index) => {
+                  {pQRData?.codeTCTD?.map((item, index) => {
                     return (
                       <tr key={index}>
                         <td>{index + 1}</td>
@@ -2379,7 +2366,7 @@ export default function APQR() {
                   </tr>
                 </thead>
                 <tbody>
-                  {pQRData?.reviewORCEC.map((item, index) => {
+                  {pQRData?.reviewORCEC?.map((item, index) => {
                     return (
                       <tr key={index}>
                         <td>{index + 1}</td>
@@ -2493,7 +2480,7 @@ export default function APQR() {
                   </tr>
                 </thead>
                 <tbody>
-                  {pQRData?.capaDetails.map((item, index) => {
+                  {pQRData?.capaDetails?.map((item, index) => {
                     return (
                       <tr key={index}>
                         <td>
@@ -2615,7 +2602,7 @@ export default function APQR() {
                   </tr>
                 </thead>
                 <tbody>
-                  {pQRData?.deviationDetails.map((item, index) => {
+                  {pQRData?.deviationDetails?.map((item, index) => {
                     return (
                       <tr key={index}>
                         <td>
@@ -2774,7 +2761,7 @@ export default function APQR() {
                   </tr>
                 </thead>
                 <tbody>
-                  {pQRData?.oosDetails.map((item, index) => {
+                  {pQRData?.oosDetails?.map((item, index) => {
                     return (
                       <tr key={index}>
                         <td>
@@ -2884,7 +2871,7 @@ export default function APQR() {
                   </tr>
                 </thead>
                 <tbody>
-                  {pQRData?.ootResults.map((item, index) => {
+                  {pQRData?.ootResults?.map((item, index) => {
                     return (
                       <tr key={index}>
                         <td>
@@ -3002,7 +2989,7 @@ export default function APQR() {
                   </tr>
                 </thead>
                 <tbody>
-                  {pQRData?.ooaResults.map((item, index) => {
+                  {pQRData?.ooaResults?.map((item, index) => {
                     return (
                       <tr key={index}>
                         <td>
@@ -3121,7 +3108,7 @@ export default function APQR() {
                   </tr>
                 </thead>
                 <tbody>
-                  {pQRData?.oolResults.map((item, index) => {
+                  {pQRData?.oolResults?.map((item, index) => {
                     return (
                       <tr key={index}>
                         <td>
@@ -3201,7 +3188,7 @@ export default function APQR() {
                   </tr>
                 </thead>
                 <tbody>
-                  {pQRData?.capaDetails.map((item, index) => {
+                  {pQRData?.capaDetails?.map((item, index) => {
                     return (
                       <tr key={index}>
                         <td>
@@ -3272,7 +3259,7 @@ export default function APQR() {
                 </tr>
               </thead>
               <tbody>
-                {pQRData?.manufacturingSD.map((item, index) => {
+                {pQRData?.manufacturingSD?.map((item, index) => {
                   return (
                     <tr key={index}>
                       <td>
@@ -3319,7 +3306,7 @@ export default function APQR() {
                 </tr>
               </thead>
               <tbody>
-                {pQRData?.unitOperation3.map((item, index) => {
+                {pQRData?.unitOperation3?.map((item, index) => {
                   return (
                     <tr key={index}>
                       <td>
@@ -3366,7 +3353,7 @@ export default function APQR() {
                 </tr>
               </thead>
               <tbody>
-                {pQRData?.unitOperation4.map((item, index) => {
+                {pQRData?.unitOperation4?.map((item, index) => {
                   return (
                     <tr key={index}>
                       <td>
@@ -3413,7 +3400,7 @@ export default function APQR() {
                 </tr>
               </thead>
               <tbody>
-                {pQRData?.unitOperation5.map((item, index) => {
+                {pQRData?.unitOperation5?.map((item, index) => {
                   return (
                     <tr key={index}>
                       <td>
@@ -3460,7 +3447,7 @@ export default function APQR() {
                 </tr>
               </thead>
               <tbody>
-                {pQRData?.unitOperation6.map((item, index) => {
+                {pQRData?.unitOperation6?.map((item, index) => {
                   return (
                     <tr key={index}>
                       <td>
@@ -3507,7 +3494,7 @@ export default function APQR() {
                 </tr>
               </thead>
               <tbody>
-                {pQRData?.unitOperation7.map((item, index) => {
+                {pQRData?.unitOperation7?.map((item, index) => {
                   return (
                     <tr key={index}>
                       <td>
@@ -3554,7 +3541,7 @@ export default function APQR() {
                 </tr>
               </thead>
               <tbody>
-                {pQRData?.unitOperation8.map((item, index) => {
+                {pQRData?.unitOperation8?.map((item, index) => {
                   return (
                     <tr key={index}>
                       <td>
@@ -3601,7 +3588,7 @@ export default function APQR() {
                 </tr>
               </thead>
               <tbody>
-                {pQRData?.unitOperation9.map((item, index) => {
+                {pQRData?.unitOperation9?.map((item, index) => {
                   return (
                     <tr key={index}>
                       <td>
@@ -3648,7 +3635,7 @@ export default function APQR() {
                 </tr>
               </thead>
               <tbody>
-                {pQRData?.unitOperation10.map((item, index) => {
+                {pQRData?.unitOperation10?.map((item, index) => {
                   return (
                     <tr key={index}>
                       <td>
@@ -3725,7 +3712,7 @@ export default function APQR() {
                   </tr>
                 </thead>
                 <tbody>
-                  {pQRData?.reviewODSTR.map((item, index) => {
+                  {pQRData?.reviewODSTR?.map((item, index) => {
                     return (
                       <tr key={index}>
                         <td>{index + 1}</td>
@@ -3785,7 +3772,7 @@ export default function APQR() {
                   </tr>
                 </thead>
                 <tbody>
-                  {pQRData?.reviewODSTR2.map((item, index) => {
+                  {pQRData?.reviewODSTR2?.map((item, index) => {
                     return (
                       <tr key={index}>
                         <td>{index + 1}</td>
@@ -3845,7 +3832,7 @@ export default function APQR() {
                   </tr>
                 </thead>
                 <tbody>
-                  {pQRData?.reviewODSTR3.map((item, index) => {
+                  {pQRData?.reviewODSTR3?.map((item, index) => {
                     return (
                       <tr key={index}>
                         <td>{index + 1}</td>
@@ -3905,7 +3892,7 @@ export default function APQR() {
                   </tr>
                 </thead>
                 <tbody>
-                  {pQRData?.reviewODSTR4.map((item, index) => {
+                  {pQRData?.reviewODSTR4?.map((item, index) => {
                     return (
                       <tr key={index}>
                         <td>{index + 1}</td>
@@ -3965,7 +3952,7 @@ export default function APQR() {
                   </tr>
                 </thead>
                 <tbody>
-                  {pQRData?.reviewODSTR5.map((item, index) => {
+                  {pQRData?.reviewODSTR5?.map((item, index) => {
                     return (
                       <tr key={index}>
                         <td>{index + 1}</td>
@@ -4025,7 +4012,7 @@ export default function APQR() {
                   </tr>
                 </thead>
                 <tbody>
-                  {pQRData?.reviewODSTR6.map((item, index) => {
+                  {pQRData?.reviewODSTR6?.map((item, index) => {
                     return (
                       <tr key={index}>
                         <td>{index + 1}</td>
@@ -4085,7 +4072,7 @@ export default function APQR() {
                   </tr>
                 </thead>
                 <tbody>
-                  {pQRData?.reviewODSTR7.map((item, index) => {
+                  {pQRData?.reviewODSTR7?.map((item, index) => {
                     return (
                       <tr key={index}>
                         <td>{index + 1}</td>
@@ -4145,7 +4132,7 @@ export default function APQR() {
                   </tr>
                 </thead>
                 <tbody>
-                  {pQRData?.reviewODSTR8.map((item, index) => {
+                  {pQRData?.reviewODSTR8?.map((item, index) => {
                     return (
                       <tr key={index}>
                         <td>{index + 1}</td>
@@ -4205,7 +4192,7 @@ export default function APQR() {
                   </tr>
                 </thead>
                 <tbody>
-                  {pQRData?.reviewODSTR9.map((item, index) => {
+                  {pQRData?.reviewODSTR9?.map((item, index) => {
                     return (
                       <tr key={index}>
                         <td>{index + 1}</td>
@@ -4265,7 +4252,7 @@ export default function APQR() {
                   </tr>
                 </thead>
                 <tbody>
-                  {pQRData?.reviewODSTR10.map((item, index) => {
+                  {pQRData?.reviewODSTR10?.map((item, index) => {
                     return (
                       <tr key={index}>
                         <td>{index + 1}</td>
@@ -4332,7 +4319,7 @@ export default function APQR() {
                   </tr>
                 </thead>
                 <tbody>
-                  {pQRData?.reviewORMETR.map((item, index) => {
+                  {pQRData?.reviewORMETR?.map((item, index) => {
                     return (
                       <tr key={index}>
                         <td>{index + 1}</td>
@@ -4402,7 +4389,7 @@ export default function APQR() {
                   </tr>
                 </thead>
                 <tbody>
-                  {pQRData?.reviewOPMTR.map((item, index) => {
+                  {pQRData?.reviewOPMTR?.map((item, index) => {
                     return (
                       <tr key={index}>
                         <td>{index + 1}</td>
@@ -4473,7 +4460,7 @@ export default function APQR() {
                   </tr>
                 </thead>
                 <tbody>
-                  {pQRData?.reviewODP.map((item, index) => {
+                  {pQRData?.reviewODP?.map((item, index) => {
                     return (
                       <tr key={index}>
                         <td>{index + 1}</td>
@@ -4537,7 +4524,7 @@ export default function APQR() {
                   </tr>
                 </thead>
                 <tbody>
-                  {pQRData?.reviewODP2.map((item, index) => {
+                  {pQRData?.reviewODP2?.map((item, index) => {
                     return (
                       <tr key={index}>
                         <td>{index + 1}</td>
@@ -4601,7 +4588,7 @@ export default function APQR() {
                   </tr>
                 </thead>
                 <tbody>
-                  {pQRData?.reviewODP3.map((item, index) => {
+                  {pQRData?.reviewODP3?.map((item, index) => {
                     return (
                       <tr key={index}>
                         <td>{index + 1}</td>
@@ -4665,7 +4652,7 @@ export default function APQR() {
                   </tr>
                 </thead>
                 <tbody>
-                  {pQRData?.reviewODP4.map((item, index) => {
+                  {pQRData?.reviewODP4?.map((item, index) => {
                     return (
                       <tr key={index}>
                         <td>{index + 1}</td>
@@ -4729,7 +4716,7 @@ export default function APQR() {
                   </tr>
                 </thead>
                 <tbody>
-                  {pQRData?.reviewODP5.map((item, index) => {
+                  {pQRData?.reviewODP5?.map((item, index) => {
                     return (
                       <tr key={index}>
                         <td>{index + 1}</td>
@@ -4793,7 +4780,7 @@ export default function APQR() {
                   </tr>
                 </thead>
                 <tbody>
-                  {pQRData?.reviewODP6.map((item, index) => {
+                  {pQRData?.reviewODP6?.map((item, index) => {
                     return (
                       <tr key={index}>
                         <td>{index + 1}</td>
@@ -4857,7 +4844,7 @@ export default function APQR() {
                   </tr>
                 </thead>
                 <tbody>
-                  {pQRData?.reviewODP7.map((item, index) => {
+                  {pQRData?.reviewODP7?.map((item, index) => {
                     return (
                       <tr key={index}>
                         <td>{index + 1}</td>
@@ -4921,7 +4908,7 @@ export default function APQR() {
                   </tr>
                 </thead>
                 <tbody>
-                  {pQRData?.reviewODP8.map((item, index) => {
+                  {pQRData?.reviewODP8?.map((item, index) => {
                     return (
                       <tr key={index}>
                         <td>{index + 1}</td>
@@ -4985,7 +4972,7 @@ export default function APQR() {
                   </tr>
                 </thead>
                 <tbody>
-                  {pQRData?.reviewODP9.map((item, index) => {
+                  {pQRData?.reviewODP9?.map((item, index) => {
                     return (
                       <tr key={index}>
                         <td>{index + 1}</td>
@@ -5049,7 +5036,7 @@ export default function APQR() {
                   </tr>
                 </thead>
                 <tbody>
-                  {pQRData?.reviewODP10.map((item, index) => {
+                  {pQRData?.reviewODP10?.map((item, index) => {
                     return (
                       <tr key={index}>
                         <td>{index + 1}</td>
@@ -5160,7 +5147,7 @@ export default function APQR() {
                   </tr>
                 </thead>
                 <tbody>
-                  {pQRData?.reviewODPFPTR.map((item, index) => {
+                  {pQRData?.reviewODPFPTR?.map((item, index) => {
                     return (
                       <tr key={index}>
                         <td>{index + 1}</td>
@@ -5260,7 +5247,7 @@ export default function APQR() {
                   </tr>
                 </thead>
                 <tbody>
-                  {pQRData?.summaryOOSS.map((item, index) => {
+                  {pQRData?.summaryOOSS?.map((item, index) => {
                     return (
                       <tr key={index}>
                         <td>{index + 1}</td>
@@ -5354,7 +5341,7 @@ export default function APQR() {
                   </tr>
                 </thead>
                 <tbody>
-                  {pQRData?.stabilitySR.map((item, index) => {
+                  {pQRData?.stabilitySR?.map((item, index) => {
                     return (
                       <tr key={index}>
                         <td>{index + 1}</td>
@@ -5427,7 +5414,7 @@ export default function APQR() {
                     </th>
                   </thead>
                   <tbody>
-                    {pQRData?.reviewOVIRS.map((item, index) => {
+                    {pQRData?.reviewOVIRS?.map((item, index) => {
                       return (
                         <tr key={index}>
                           <td>{index + 1}</td>
@@ -5576,7 +5563,7 @@ export default function APQR() {
                   </tr>
                 </thead>
                 <tbody>
-                  {pQRData?.hVACQStatus.map((item, index) => {
+                  {pQRData?.hVACQStatus?.map((item, index) => {
                     return (
                       <tr key={index}>
                         <td>{index + 1}</td>
@@ -5654,7 +5641,7 @@ export default function APQR() {
                   </tr>
                 </thead>
                 <tbody>
-                  {pQRData?.sanitizationASDOU.map((item, index) => {
+                  {pQRData?.sanitizationASDOU?.map((item, index) => {
                     return (
                       <tr key={index}>
                         <td>{index + 1}</td>
@@ -5734,7 +5721,7 @@ export default function APQR() {
                   </tr>
                 </thead>
                 <tbody>
-                  {pQRData?.compressedGas.map((item, index) => {
+                  {pQRData?.compressedGas?.map((item, index) => {
                     return (
                       <tr key={index}>
                         <td>{index + 1}</td>
@@ -5831,7 +5818,7 @@ export default function APQR() {
                   </tr>
                 </thead>
                 <tbody>
-                  {pQRData?.currentRPQRN.map((item, index) => {
+                  {pQRData?.currentRPQRN?.map((item, index) => {
                     return (
                       <tr key={index}>
                         <td>{index + 1}</td>
@@ -5988,7 +5975,7 @@ export default function APQR() {
                   </tr>
                 </thead>
                 <tbody>
-                  {pQRData?.dossierRR.map((item, index) => {
+                  {pQRData?.dossierRR?.map((item, index) => {
                     return (
                       <tr key={index}>
                         <td>{index + 1}</td>
@@ -6075,7 +6062,7 @@ export default function APQR() {
                     </tr>
                   </thead>
                   <tbody>
-                    {pQRData?.dossierRRNma.map((item, index) => {
+                    {pQRData?.dossierRRNma?.map((item, index) => {
                       return (
                         <tr key={index}>
                           <td>{index + 1}</td>
