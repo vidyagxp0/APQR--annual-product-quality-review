@@ -193,29 +193,343 @@ export default function APQR() {
   const [unitOperation8, setUnitOperation8] = useState([]);
   const [unitOperation9, setUnitOperation9] = useState([]);
   const [unitOperation10, setUnitOperation10] = useState([]);
-
-  const [pQRData, setPQRData] = useReducer((prev, next) => ({
-    ...prev,
-    ...next,
-  }),{
-    form_id:Date.now(),
-    initiator: "Pankaj Jat",
-    initiateDate: Date.now(),
-    pqrNO: "",
-    productName: "",
-    genericName: "",
-    reviewStartDate: "",
-    reviewEndDate: "",
-    mfgLicNo: "",
-    processFlow:"",
-    productDescription:"",
-    totalNOBM:"",
-    totalNOBA:"",
-    totalNOPVB:"",
-    totalNORB:"",
-  });
+  const [tiny1, setTiny1] = useState("");
+  const [tiny2, setTiny2] = useState("");
+  const [tiny3, setTiny3] = useState("");
+  const [tiny4, setTiny4] = useState("");
+  const [tiny5, setTiny5] = useState("");
+  const [tiny6, setTiny6] = useState("");
+  const [tiny7, setTiny7] = useState("");
+  const [tiny8, setTiny8] = useState("");
+  const [tiny9, setTiny9] = useState("");
+  const [tiny10, setTiny10] = useState("");
+  const [tiny11, setTiny11] = useState("");
+  const [tiny12, setTiny12] = useState("");
+  const [tiny13, setTiny13] = useState("");
+  const [tiny14, setTiny14] = useState("");
+  const [tiny15, setTiny15] = useState("");
+  const [tiny16, setTiny16] = useState("");
+  const [tiny17, setTiny17] = useState("");
+  const [tiny18, setTiny18] = useState("");
+  const [tiny19, setTiny19] = useState("");
+  const [tiny20, setTiny20] = useState("");
+  const [tiny21, setTiny21] = useState("");
+  const [tiny22, setTiny22] = useState("");
+  const [tiny23, setTiny23] = useState("");
+  const [tiny24, setTiny24] = useState("");
+  const [tiny25, setTiny25] = useState("");
+  const [tiny26, setTiny26] = useState("");
+  const [tiny27, setTiny27] = useState("");
+  const [tiny28, setTiny28] = useState("");
+  const [tiny29, setTiny29] = useState("");
+  const [tiny30, setTiny30] = useState("");
+  const [tiny31, setTiny31] = useState("");
+  const [tiny32, setTiny32] = useState("");
+  const [tiny33, setTiny33] = useState("");
+  const [tiny34, setTiny34] = useState("");
+  const [tiny35, setTiny35] = useState("");
+  const [tiny36, setTiny36] = useState("");
+  const [tiny37, setTiny37] = useState("");
+  const [tiny38, setTiny38] = useState("");
+  const [tiny39, setTiny39] = useState("");
+  const [tiny40, setTiny40] = useState("");
+  const [tiny41, setTiny41] = useState("");
+  const [tiny42, setTiny42] = useState("");
+  const [tiny43, setTiny43] = useState("");
+  const [tiny44, setTiny44] = useState("");
+  const [tiny45, setTiny45] = useState("");
+  const [tiny46, setTiny46] = useState("");
+  const [tiny47, setTiny47] = useState("");
+  const [tiny48, setTiny48] = useState("");
+  const [tiny49, setTiny49] = useState("");
+  const [tiny50, setTiny50] = useState("");
+  const [tiny51, setTiny51] = useState("");
+  const [tiny52, setTiny52] = useState("");
+  const [tiny53, setTiny53] = useState("");
+  const [tiny54, setTiny54] = useState("");
+  const [tiny55, setTiny55] = useState("");
+  const [tiny56, setTiny56] = useState("");
+  const [tiny57, setTiny57] = useState("");
+  const [tiny58, setTiny58] = useState("");
+  const [tiny59, setTiny59] = useState("");
+  const [tiny60, setTiny60] = useState("");
+  const [tiny61, setTiny61] = useState("");
+  const [tiny62, setTiny62] = useState("");
+  const [tiny63, setTiny63] = useState("");
+  const [tiny64, setTiny64] = useState("");
+  const [tiny65, setTiny65] = useState("");
+  const [tiny66, setTiny66] = useState("");
+  const [tiny67, setTiny67] = useState("");
+  const [tiny68, setTiny68] = useState("");
+  const [tiny69, setTiny69] = useState("");
+  const [tiny70, setTiny70] = useState("");
+  const [tiny71, setTiny71] = useState("");
+  const [tiny72, setTiny72] = useState("");
+  const [tiny73, setTiny73] = useState("");
+  const [tiny74, setTiny74] = useState("");
+  const [tiny75, setTiny75] = useState("");
+  const [tiny76, setTiny76] = useState("");
+  const setTinyContent = (data, tinyNO) => {
+    console.log(data, tinyNO);
+    switch (tinyNO) {
+      case 1:
+        setTiny1(data);
+        break;
+      case 2:
+        setTiny2(data);
+        break;
+      case 3:
+        setTiny3(data);
+        break;
+      case 4:
+        setTiny4(data);
+        break;
+      case 5:
+        setTiny5(data);
+        break;
+      case 6:
+        setTiny6(data);
+        break;
+      case 7:
+        setTiny7(data);
+        break;
+      case 8:
+        setTiny8(data);
+        break;
+      case 9:
+        setTiny9(data);
+        break;
+      case 10:
+        setTiny10(data);
+        break;
+      case 11:
+        setTiny11(data);
+        break;
+      case 12:
+        setTiny12(data);
+        break;
+      case 13:
+        setTiny13(data);
+        break;
+      case 14:
+        setTiny14(data);
+        break;
+      case 15:
+        setTiny15(data);
+        break;
+      case 16:
+        setTiny16(data);
+        break;
+      case 17:
+        setTiny17(data);
+        break;
+      case 18:
+        setTiny18(data);
+        break;
+      case 19:
+        setTiny19(data);
+        break;
+      case 20:
+        setTiny20(data);
+        break;
+      case 21:
+        setTiny21(data);
+        break;
+      case 22:
+        setTiny22(data);
+        break;
+      case 23:
+        setTiny23(data);
+        break;
+      case 24:
+        setTiny24(data);
+        break;
+      case 25:
+        setTiny25(data);
+        break;
+      case 26:
+        setTiny26(data);
+        break;
+      case 27:
+        setTiny27(data);
+        break;
+      case 28:
+        setTiny28(data);
+        break;
+      case 29:
+        setTiny29(data);
+        break;
+      case 30:
+        setTiny30(data);
+        break;
+      case 31:
+        setTiny31(data);
+        break;
+      case 32:
+        setTiny32(data);
+        break;
+      case 33:
+        setTiny33(data);
+        break;
+      case 34:
+        setTiny34(data);
+        break;
+      case 35:
+        setTiny35(data);
+        break;
+      case 36:
+        setTiny36(data);
+        break;
+      case 37:
+        setTiny37(data);
+        break;
+      case 38:
+        setTiny38(data);
+        break;
+      case 39:
+        setTiny39(data);
+        break;
+      case 40:
+        setTiny40(data);
+        break;
+      case 41:
+        setTiny41(data);
+        break;
+      case 42:
+        setTiny42(data);
+        break;
+      case 43:
+        setTiny43(data);
+        break;
+      case 44:
+        setTiny44(data);
+        break;
+      case 45:
+        setTiny45(data);
+        break;
+      case 46:
+        setTiny46(data);
+        break;
+      case 47:
+        setTiny47(data);
+        break;
+      case 48:
+        setTiny48(data);
+        break;
+      case 49:
+        setTiny49(data);
+        break;
+      case 50:
+        setTiny50(data);
+        break;
+      case 51:
+        setTiny51(data);
+        break;
+      case 52:
+        setTiny52(data);
+        break;
+      case 53:
+        setTiny53(data);
+        break;
+      case 54:
+        setTiny54(data);
+        break;
+      case 55:
+        setTiny55(data);
+        break;
+      case 56:
+        setTiny56(data);
+        break;
+      case 57:
+        setTiny57(data);
+        break;
+      case 58:
+        setTiny58(data);
+        break;
+      case 59:
+        setTiny59(data);
+        break;
+      case 60:
+        setTiny60(data);
+        break;
+      case 61:
+        setTiny61(data);
+        break;
+      case 62:
+        setTiny62(data);
+        break;
+      case 63:
+        setTiny63(data);
+        break;
+      case 64:
+        setTiny64(data);
+        break;
+      case 65:
+        setTiny65(data);
+        break;
+      case 66:
+        setTiny66(data);
+        break;
+      case 67:
+        setTiny67(data);
+        break;
+      case 68:
+        setTiny68(data);
+        break;
+      case 69:
+        setTiny69(data);
+        break;
+      case 70:
+        setTiny70(data);
+        break;
+      case 71:
+        setTiny71(data);
+        break;
+      case 72:
+        setTiny72(data);
+        break;
+      case 73:
+        setTiny73(data);
+        break;
+      case 74:
+        setTiny74(data);
+        break;
+      case 75:
+        setTiny75(data);
+        break;
+      case 76:
+        setTiny76(data);
+        break;
+    }
+  };
+  // useEffect(() => {
+  //   console.log("tiny1:", tiny1);
+  // }, [tiny1]);
+  const [pQRData, setPQRData] = useReducer(
+    (prev, next) => ({
+      ...prev,
+      ...next,
+    }),
+    {
+      form_id: Date.now(),
+      initiator: "Pankaj Jat",
+      initiateDate: Date.now(),
+      pqrNO: "",
+      productName: "",
+      genericName: "",
+      reviewStartDate: "",
+      reviewEndDate: "",
+      mfgLicNo: "",
+      processFlow: "",
+      productDescription: "",
+      totalNOBM: "",
+      totalNOBA: "",
+      totalNOPVB: "",
+      totalNORB: "",
+    }
+  );
   const dispatch = useDispatch();
-  const navigate=useNavigate()
+  const navigate = useNavigate();
   useEffect(() => {
     setPQRData({
       productCodes: productCodes,
@@ -280,6 +594,82 @@ export default function APQR() {
       unitOperation8: unitOperation8,
       unitOperation9: unitOperation9,
       unitOperation10: unitOperation10,
+      tiny1: tiny1,
+      tiny2: tiny2,
+      tiny3: tiny3,
+      tiny4: tiny4,
+      tiny5: tiny5,
+      tiny6: tiny6,
+      tiny7: tiny7,
+      tiny8: tiny8,
+      tiny9: tiny9,
+      tiny10: tiny10,
+      tiny11: tiny11,
+      tiny12: tiny12,
+      tiny13: tiny13,
+      tiny14: tiny14,
+      tiny15: tiny15,
+      tiny16: tiny16,
+      tiny17: tiny17,
+      tiny18: tiny18,
+      tiny19: tiny19,
+      tiny20: tiny20,
+      tiny21: tiny21,
+      tiny22: tiny22,
+      tiny23: tiny23,
+      tiny24: tiny24,
+      tiny25: tiny25,
+      tiny26: tiny26,
+      tiny27: tiny27,
+      tiny28: tiny28,
+      tiny29: tiny29,
+      tiny30: tiny30,
+      tiny31: tiny31,
+      tiny32: tiny32,
+      tiny33: tiny33,
+      tiny34: tiny34,
+      tiny35: tiny35,
+      tiny36: tiny36,
+      tiny37: tiny37,
+      tiny38: tiny38,
+      tiny39: tiny39,
+      tiny40: tiny40,
+      tiny41: tiny41,
+      tiny42: tiny42,
+      tiny43: tiny43,
+      tiny44: tiny44,
+      tiny45: tiny45,
+      tiny46: tiny46,
+      tiny47: tiny47,
+      tiny48: tiny48,
+      tiny49: tiny49,
+      tiny50: tiny50,
+      tiny51: tiny51,
+      tiny52: tiny52,
+      tiny53: tiny53,
+      tiny54: tiny54,
+      tiny55: tiny55,
+      tiny56: tiny56,
+      tiny57: tiny57,
+      tiny58: tiny58,
+      tiny59: tiny59,
+      tiny60: tiny60,
+      tiny61: tiny61,
+      tiny62: tiny62,
+      tiny63: tiny63,
+      tiny64: tiny64,
+      tiny65: tiny65,
+      tiny66: tiny66,
+      tiny67: tiny67,
+      tiny68: tiny68,
+      tiny69: tiny69,
+      tiny70: tiny70,
+      tiny71: tiny71,
+      tiny72: tiny72,
+      tiny73: tiny73,
+      tiny74: tiny74,
+      tiny75: tiny75,
+      tiny76: tiny76,
     });
   }, [
     productCodes,
@@ -344,9 +734,85 @@ export default function APQR() {
     unitOperation8,
     unitOperation9,
     unitOperation10,
+    tiny1,
+    tiny2,
+    tiny3,
+    tiny4,
+    tiny5,
+    tiny6,
+    tiny7,
+    tiny8,
+    tiny9,
+    tiny10,
+    tiny11,
+    tiny12,
+    tiny13,
+    tiny14,
+    tiny15,
+    tiny16,
+    tiny17,
+    tiny18,
+    tiny19,
+    tiny20,
+    tiny21,
+    tiny22,
+    tiny23,
+    tiny24,
+    tiny25,
+    tiny26,
+    tiny27,
+    tiny28,
+    tiny29,
+    tiny30,
+    tiny31,
+    tiny32,
+    tiny33,
+    tiny34,
+    tiny35,
+    tiny36,
+    tiny37,
+    tiny38,
+    tiny39,
+    tiny40,
+    tiny41,
+    tiny42,
+    tiny43,
+    tiny44,
+    tiny45,
+    tiny46,
+    tiny47,
+    tiny48,
+    tiny49,
+    tiny50,
+    tiny51,
+    tiny52,
+    tiny53,
+    tiny54,
+    tiny55,
+    tiny56,
+    tiny57,
+    tiny58,
+    tiny59,
+    tiny60,
+    tiny61,
+    tiny62,
+    tiny63,
+    tiny64,
+    tiny65,
+    tiny66,
+    tiny67,
+    tiny68,
+    tiny69,
+    tiny70,
+    tiny71,
+    tiny72,
+    tiny73,
+    tiny74,
+    tiny75,
+    tiny76,
   ]);
 
-  console.log(pQRData);
+  // console.log(pQRData);
   const addManufacturingStageRow = () => {
     const newRow = {
       productName: "",
@@ -1089,9 +1555,7 @@ export default function APQR() {
                 <div className="flex gap-4">
                   <input
                     value={productCode}
-                    onChange={(e) =>
-                      handleProductCodeChange(index, e.target.value)
-                    }
+                    onChange={(e) => handleProductCodeChange(index, e.target.value)}
                   />
                   {index === productCodes.length - 1 && (
                     <button
@@ -1216,7 +1680,7 @@ export default function APQR() {
             </table>
             <div>
               <h4 className="gridName mt-4">Summary</h4>
-              <TinyEditor />
+              <TinyEditor editorContent={tiny1} setEditorContent={setTinyContent} tinyNo={1} />
             </div>
 
             <div className="py-4">
@@ -1305,7 +1769,7 @@ export default function APQR() {
             </div>
 
             <h4 className="gridName">Summary of Manufacturing Site Address</h4>
-            <TinyEditor />
+            <TinyEditor editorContent={tiny2} setEditorContent={setTinyContent} tinyNo={2} />
           </div>
         ) : null}
         {tab === "WR" ? (
@@ -1381,8 +1845,7 @@ export default function APQR() {
                               value={item.reasonOfRejection}
                               onChange={(e) => {
                                 const newData = [...rawMRS];
-                                newData[index].reasonOfRejection =
-                                  e.target.value;
+                                newData[index].reasonOfRejection = e.target.value;
                                 setRawMRS(newData);
                               }}
                             />
@@ -1404,7 +1867,7 @@ export default function APQR() {
                 </table>
                 <div>
                   <h4 className="gridName mt-5">Summary</h4>
-                  <TinyEditor />
+                  <TinyEditor editorContent={tiny3} setEditorContent={setTinyContent} tinyNo={3} />
                 </div>
               </div>
 
@@ -1474,8 +1937,7 @@ export default function APQR() {
                               value={item.reasonForRepacking}
                               onChange={(e) => {
                                 const newData = [...packingMRS];
-                                newData[index].reasonForRepacking =
-                                  e.target.value;
+                                newData[index].reasonForRepacking = e.target.value;
                                 setPackingMRS(newData);
                               }}
                             />
@@ -1499,7 +1961,7 @@ export default function APQR() {
                 <h5 className="gridName pt-4">
                   Summary of Review of Rejected Raw Materials and Packaging Materials
                 </h5>
-                <TinyEditor />
+                <TinyEditor editorContent={tiny4} setEditorContent={setTinyContent} tinyNo={4} />
               </div>
               <div className="sub-head">
                 Review of Expired Raw Materials and Packaging Materials
@@ -1581,7 +2043,7 @@ export default function APQR() {
                 </table>
                 <div>
                   <h4 className="gridName">Summary</h4>
-                  <TinyEditor />
+                  <TinyEditor editorContent={tiny5} setEditorContent={setTinyContent} tinyNo={5} />
                 </div>
               </div>
 
@@ -1664,7 +2126,7 @@ export default function APQR() {
                 <h4 className="gridName pt-4">
                   Summary of Review of Expired Raw Materials and Packaging Materials
                 </h4>
-                <TinyEditor />
+                <TinyEditor editorContent={tiny6} setEditorContent={setTinyContent} tinyNo={6} />
               </div>
 
               <div className="sub-head">Review of Approved Supplier List</div>
@@ -1743,7 +2205,7 @@ export default function APQR() {
                   </tbody>
                 </table>
                 <h4 className="gridName pt-4">Summary of Review of Approved Supplier List</h4>
-                <TinyEditor />
+                <TinyEditor editorContent={tiny7} setEditorContent={setTinyContent} tinyNo={7} />
               </div>
               <div className="sub-head">
                 Vendor Qualification Details of Raw Material Excipients
@@ -1799,8 +2261,7 @@ export default function APQR() {
                               value={item.manufacturerName}
                               onChange={(e) => {
                                 const newData = [...vendorQDORME];
-                                newData[index].manufacturerName =
-                                  e.target.value;
+                                newData[index].manufacturerName = e.target.value;
                                 setVendorQDORME(newData);
                               }}
                             />
@@ -1810,8 +2271,7 @@ export default function APQR() {
                               value={item.qualificationStatus}
                               onChange={(e) => {
                                 const newData = [...vendorQDORME];
-                                newData[index].qualificationStatus =
-                                  e.target.value;
+                                newData[index].qualificationStatus = e.target.value;
                                 setVendorQDORME(newData);
                               }}
                             />
@@ -1834,7 +2294,7 @@ export default function APQR() {
                 <h4 className="gridName pt-4">
                   Summary of Vendor Qualification Details of Raw Material Excipients
                 </h4>
-                <TinyEditor />
+                <TinyEditor editorContent={tiny8} setEditorContent={setTinyContent} tinyNo={8} />
               </div>
               <div className="sub-head">
                 Vendor Qualification Details of Primary Packing Materials
@@ -1891,8 +2351,7 @@ export default function APQR() {
                               value={item.manufacturerName}
                               onChange={(e) => {
                                 const newData = [...vendorQDOPPM];
-                                newData[index].manufacturerName =
-                                  e.target.value;
+                                newData[index].manufacturerName = e.target.value;
                                 setVendorQDOPPM(newData);
                               }}
                             />
@@ -1902,8 +2361,7 @@ export default function APQR() {
                               value={item.qualificationStatus}
                               onChange={(e) => {
                                 const newData = [...vendorQDOPPM];
-                                newData[index].qualificationStatus =
-                                  e.target.value;
+                                newData[index].qualificationStatus = e.target.value;
                                 setVendorQDOPPM(newData);
                               }}
                             />
@@ -1916,12 +2374,10 @@ export default function APQR() {
                 <h4 className="gridName pt-4">
                   Summary of Vendor Qualification Details of Primary Packing Materials
                 </h4>
-                <TinyEditor />
+                <TinyEditor editorContent={tiny9} setEditorContent={setTinyContent} tinyNo={9} />
               </div>
 
-              <div className="sub-head">
-                Vendor Qualification Details of Process Gases
-              </div>
+              <div className="sub-head">Vendor Qualification Details of Process Gases</div>
               <div>
                 {/* <div className="AddRows d-flex">
                   <MdNoteAdd onClick={addvendorQDPOGRow} />
@@ -1974,8 +2430,7 @@ export default function APQR() {
                               value={item.manufacturerName}
                               onChange={(e) => {
                                 const newData = [...vendorQDPOG];
-                                newData[index].manufacturerName =
-                                  e.target.value;
+                                newData[index].manufacturerName = e.target.value;
                                 setVendorQDPOG(newData);
                               }}
                             />
@@ -1985,8 +2440,7 @@ export default function APQR() {
                               value={item.qualificationStatus}
                               onChange={(e) => {
                                 const newData = [...vendorQDPOG];
-                                newData[index].qualificationStatus =
-                                  e.target.value;
+                                newData[index].qualificationStatus = e.target.value;
                                 setVendorQDPOG(newData);
                               }}
                             />
@@ -1999,7 +2453,7 @@ export default function APQR() {
                 <h4 className="gridName pt-4">
                   Summary of Vendor Qualification Details of Process Gases
                 </h4>
-                <TinyEditor />
+                <TinyEditor editorContent={tiny10} setEditorContent={setTinyContent} tinyNo={10} />
               </div>
             </div>
           </>
@@ -2009,14 +2463,21 @@ export default function APQR() {
             <div className="dual-group-input">
               <div className="group-input">
                 <label>Product Description</label>
-                <input 
-                value={pQRData.productDescription}
-                onChange={(e)=>{setPQRData({productDescription:e.target.value})}} />
+                <input
+                  value={pQRData.productDescription}
+                  onChange={(e) => {
+                    setPQRData({ productDescription: e.target.value });
+                  }}
+                />
               </div>
               <div className="group-input">
                 <label>Process Flow</label>
-                <input value={pQRData.processFlow}
-                onChange={(e)=>{setPQRData({processFlow:e.target.value})}} />
+                <input
+                  value={pQRData.processFlow}
+                  onChange={(e) => {
+                    setPQRData({ processFlow: e.target.value });
+                  }}
+                />
               </div>
             </div>
 
@@ -2025,32 +2486,53 @@ export default function APQR() {
             <div className="dual-group-input">
               <div className="group-input">
                 <label>Total No. of batches manufactured during the current review period</label>
-                <input type="number" value={pQRData.totalNOBM} onChange={(e)=>{setPQRData({totalNOBM:e.target.value})}}/>
+                <input
+                  type="number"
+                  value={pQRData.totalNOBM}
+                  onChange={(e) => {
+                    setPQRData({ totalNOBM: e.target.value });
+                  }}
+                />
               </div>
               <div className="group-input">
                 <label>Total No. of batches Approved & Released</label>
-                <input value={pQRData.totalNOBA} onChange={(e)=>{setPQRData({totalNOBA:e.target.value})}} />
+                <input
+                  value={pQRData.totalNOBA}
+                  onChange={(e) => {
+                    setPQRData({ totalNOBA: e.target.value });
+                  }}
+                />
               </div>
               <div className="group-input">
                 <label>Total No. of Process Validation Batches</label>
-                <input value={pQRData.totalNOPVB} onChange={(e)=>{setPQRData({totalNOPVB:e.target.value})}} />
+                <input
+                  value={pQRData.totalNOPVB}
+                  onChange={(e) => {
+                    setPQRData({ totalNOPVB: e.target.value });
+                  }}
+                />
               </div>
               <div className="group-input">
                 <label>Total No. of Reprocessed Batches</label>
-                <input value={pQRData.totalNORB} onChange={(e)=>{setPQRData({totalNORB:e.target.value})}} />
+                <input
+                  value={pQRData.totalNORB}
+                  onChange={(e) => {
+                    setPQRData({ totalNORB: e.target.value });
+                  }}
+                />
               </div>
               <div className="group-input">
                 <label>Process Validation Batches Details</label>
-                <TinyEditor />
+                <TinyEditor editorContent={tiny11} setEditorContent={setTinyContent} tinyNo={11} />
               </div>
 
               <div className="group-input">
                 <label>Reprocessing Details</label>
-                <TinyEditor />
+                <TinyEditor editorContent={tiny12} setEditorContent={setTinyContent} tinyNo={12} />
               </div>
               <div className="group-input">
                 <label>Microbial Excursion Details</label>
-                <TinyEditor />
+                <TinyEditor editorContent={tiny13} setEditorContent={setTinyContent} tinyNo={13} />
               </div>
             </div>
             <div className="gridName">Code to code transfer details</div>
@@ -2065,10 +2547,7 @@ export default function APQR() {
                   <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
                 </div>
                 <div className="flex gap-4 ">
-                  <ExcelExport
-                    data={balanceSheet}
-                    fileName="balance-sheet-summary.xlsx"
-                  />
+                  <ExcelExport data={balanceSheet} fileName="balance-sheet-summary.xlsx" />
                 </div>
               </div>
               <table>
@@ -2165,13 +2644,14 @@ export default function APQR() {
                 </tbody>
               </table>
               <h4 className="gridName pt-4">Summary of Code to Code Transfer Details</h4>
-              <TinyEditor />
+              <TinyEditor editorContent={tiny14} setEditorContent={setTinyContent} tinyNo={14} />
             </div>
             <div className="sub-head">
               {" "}
               Review of Manufacturing Process, Packing Process and relevant Validation Status
             </div>
-            <TinyEditor />
+            <TinyEditor editorContent={tiny15} setEditorContent={setTinyContent} tinyNo={15} />
+
             <div className="sub-head">
               Review of Reprocessing/Repacking/Reworking along with CAPA and Effectiveness Check
               Verification (if any)
@@ -2179,11 +2659,11 @@ export default function APQR() {
             <div className="dual-group-input">
               <div className="group-input">
                 <label>Batch reprocessing/reworking process Details</label>
-                <TinyEditor />
+                <TinyEditor editorContent={tiny16} setEditorContent={setTinyContent} tinyNo={16} />
               </div>
               <div className="group-input">
                 <label>Batch Repacking Details </label>
-                <TinyEditor />
+                <TinyEditor editorContent={tiny17} setEditorContent={setTinyContent} tinyNo={17} />
               </div>
             </div>
 
@@ -2224,8 +2704,7 @@ export default function APQR() {
                             value={item.packingBatchNumber}
                             onChange={(e) => {
                               const newData = [...reviewORCEC];
-                              newData[index].packingBatchNumber =
-                                e.target.value;
+                              newData[index].packingBatchNumber = e.target.value;
                               setReviewORCEC(newData);
                             }}
                           />
@@ -2235,8 +2714,7 @@ export default function APQR() {
                             value={item.manufacturingBatchNumber}
                             onChange={(e) => {
                               const newData = [...reviewORCEC];
-                              newData[index].manufacturingBatchNumber =
-                                e.target.value;
+                              newData[index].manufacturingBatchNumber = e.target.value;
                               setReviewORCEC(newData);
                             }}
                           />
@@ -2246,8 +2724,7 @@ export default function APQR() {
                             value={item.repackingIssuedNumber}
                             onChange={(e) => {
                               const newData = [...reviewORCEC];
-                              newData[index].repackingIssuedNumber =
-                                e.target.value;
+                              newData[index].repackingIssuedNumber = e.target.value;
                               setReviewORCEC(newData);
                             }}
                           />
@@ -2277,8 +2754,7 @@ export default function APQR() {
                             value={item.reasonForRepacking}
                             onChange={(e) => {
                               const newData = [...reviewORCEC];
-                              newData[index].reasonForRepacking =
-                                e.target.value;
+                              newData[index].reasonForRepacking = e.target.value;
                               setReviewORCEC(newData);
                             }}
                           />
@@ -2291,7 +2767,7 @@ export default function APQR() {
             </div>
             <div>
               <h4 className="gridName mt-5">Summary</h4>
-              <TinyEditor />
+              <TinyEditor editorContent={tiny18} setEditorContent={setTinyContent} tinyNo={18} />
             </div>
 
             <h1>Deviation Details - Grid CAPA Details – Grid</h1>
@@ -2305,16 +2781,10 @@ export default function APQR() {
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={capaDetailsRow} />
-                  <div className="addrowinstruction  pl-2">
-                    Add Rows by clicking on (+) icon
-                  </div>
+                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
                 </div>
                 <div className="flex gap-4 ">
-              
-                  <ExcelExport
-                    data={balanceSheet}
-                    fileName="balance-sheet-summary.xlsx"
-                  />
+                  <ExcelExport data={balanceSheet} fileName="balance-sheet-summary.xlsx" />
                 </div>
               </div>
               <table className="mb-4">
@@ -2358,8 +2828,7 @@ export default function APQR() {
                             value={item.descriptionOfIssue}
                             onChange={(e) => {
                               const newData = [...capaDetails];
-                              newData[index].descriptionOfIssue =
-                                e.target.value;
+                              newData[index].descriptionOfIssue = e.target.value;
                               setCapaDetails(newData);
                             }}
                           />
@@ -2413,7 +2882,7 @@ export default function APQR() {
             </div>
             <div>
               <h4 className="gridName mt-5">Summary</h4>
-              <TinyEditor />
+              <TinyEditor editorContent={tiny19} setEditorContent={setTinyContent} tinyNo={19} />
             </div>
 
             <h4 className="gridName">Deviation Details</h4>
@@ -2425,16 +2894,10 @@ export default function APQR() {
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={deviationDetailsRow} />
-                  <div className="addrowinstruction  pl-2">
-                    Add Rows by clicking on (+) icon
-                  </div>
+                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
                 </div>
                 <div className="flex gap-4 ">
-               
-                  <ExcelExport
-                    data={balanceSheet}
-                    fileName="balance-sheet-summary.xlsx"
-                  />
+                  <ExcelExport data={balanceSheet} fileName="balance-sheet-summary.xlsx" />
                 </div>
               </div>
               <table className="mb-4">
@@ -2471,8 +2934,7 @@ export default function APQR() {
                             value={item.deviationRelatedTo}
                             onChange={(e) => {
                               const newData = [...deviationDetails];
-                              newData[index].deviationRelatedTo =
-                                e.target.value;
+                              newData[index].deviationRelatedTo = e.target.value;
                               setDeviationDetails(newData);
                             }}
                           />
@@ -2502,8 +2964,7 @@ export default function APQR() {
                             value={item.deviationObservedOn}
                             onChange={(e) => {
                               const newData = [...deviationDetails];
-                              newData[index].deviationObservedOn =
-                                e.target.value;
+                              newData[index].deviationObservedOn = e.target.value;
                               setDeviationDetails(newData);
                             }}
                           />
@@ -2513,8 +2974,7 @@ export default function APQR() {
                             value={item.deviationObservedBy}
                             onChange={(e) => {
                               const newData = [...deviationDetails];
-                              newData[index].deviationObservedBy =
-                                e.target.value;
+                              newData[index].deviationObservedBy = e.target.value;
                               setDeviationDetails(newData);
                             }}
                           />
@@ -2524,8 +2984,7 @@ export default function APQR() {
                             value={item.classificationOfDeviation}
                             onChange={(e) => {
                               const newData = [...deviationDetails];
-                              newData[index].classificationOfDeviation =
-                                e.target.value;
+                              newData[index].classificationOfDeviation = e.target.value;
                               setDeviationDetails(newData);
                             }}
                           />
@@ -2569,16 +3028,16 @@ export default function APQR() {
             </div>
             <div>
               <h4 className="gridName mt-5">Summary</h4>
-              <TinyEditor />
+              <TinyEditor editorContent={tiny20} setEditorContent={setTinyContent} tinyNo={20} />
             </div>
 
             <div className="sub-head">
-              Review of all Batch Failures/Rejections along with CAPA and
-              Effectiveness Check Verification (if any):
+              Review of all Batch Failures/Rejections along with CAPA and Effectiveness Check
+              Verification (if any):
             </div>
 
             <h4 className="gridName">Batch Failures/Rejections Details </h4>
-            <TinyEditor />
+            <TinyEditor editorContent={tiny21} setEditorContent={setTinyContent} tinyNo={21} />
 
             <h4 className="gridName">OOS Details</h4>
             <div>
@@ -2589,16 +3048,10 @@ export default function APQR() {
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={oosDetailsRow} />
-                  <div className="addrowinstruction  pl-2">
-                    Add Rows by clicking on (+) icon
-                  </div>
+                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
                 </div>
                 <div className="flex gap-4 ">
-                
-                  <ExcelExport
-                    data={balanceSheet}
-                    fileName="balance-sheet-summary.xlsx"
-                  />
+                  <ExcelExport data={balanceSheet} fileName="balance-sheet-summary.xlsx" />
                 </div>
               </div>
               <table className="mb-4">
@@ -2651,8 +3104,7 @@ export default function APQR() {
                             value={item.specificationLimit}
                             onChange={(e) => {
                               const newData = [...oosDetails];
-                              newData[index].specificationLimit =
-                                e.target.value;
+                              newData[index].specificationLimit = e.target.value;
                               setOosDetails(newData);
                             }}
                           />
@@ -2662,8 +3114,7 @@ export default function APQR() {
                             value={item.detailsOfObviousError}
                             onChange={(e) => {
                               const newData = [...oosDetails];
-                              newData[index].detailsOfObviousError =
-                                e.target.value;
+                              newData[index].detailsOfObviousError = e.target.value;
                               setOosDetails(newData);
                             }}
                           />
@@ -2687,7 +3138,7 @@ export default function APQR() {
             </div>
             <div>
               <h4 className="gridName mt-5">Summary</h4>
-              <TinyEditor />
+              <TinyEditor editorContent={tiny22} setEditorContent={setTinyContent} tinyNo={22} />
             </div>
 
             <h4 className="gridName">OOT Results</h4>
@@ -2699,16 +3150,10 @@ export default function APQR() {
               <div className="AddRows d-flex w-full justify-between items-center text-3xl mb-5">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={ootResultsRow} />
-                  <div className="addrowinstruction  pl-2">
-                    Add Rows by clicking on (+) icon
-                  </div>
+                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
                 </div>
                 <div className="flex gap-4 ">
-                
-                  <ExcelExport
-                    data={balanceSheet}
-                    fileName="balance-sheet-summary.xlsx"
-                  />
+                  <ExcelExport data={balanceSheet} fileName="balance-sheet-summary.xlsx" />
                 </div>
               </div>
               <table className="mb-4">
@@ -2762,8 +3207,7 @@ export default function APQR() {
                             value={item.initialIntervalDetails}
                             onChange={(e) => {
                               const newData = [...oosDetails];
-                              newData[index].initialIntervalDetails =
-                                e.target.value;
+                              newData[index].initialIntervalDetails = e.target.value;
                               setOosDetails(newData);
                             }}
                           />
@@ -2773,8 +3217,7 @@ export default function APQR() {
                             value={item.previousIntervalDetails}
                             onChange={(e) => {
                               const newData = [...oosDetails];
-                              newData[index].previousIntervalDetails =
-                                e.target.value;
+                              newData[index].previousIntervalDetails = e.target.value;
                               setOosDetails(newData);
                             }}
                           />
@@ -2807,7 +3250,7 @@ export default function APQR() {
             </div>
             <div>
               <h4 className="gridName mt-5">Summary</h4>
-              <TinyEditor />
+              <TinyEditor editorContent={tiny23} setEditorContent={setTinyContent} tinyNo={23} />
             </div>
             <h4 className="gridName">OOA Results</h4>
             <div>
@@ -2818,16 +3261,10 @@ export default function APQR() {
               <div className="AddRows d-flex w-full justify-between items-center text-3xl mb-5">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={ooaResultsRow} />
-                  <div className="addrowinstruction  pl-2">
-                    Add Rows by clicking on (+) icon
-                  </div>
+                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
                 </div>
                 <div className="flex gap-4 ">
-             
-                  <ExcelExport
-                    data={balanceSheet}
-                    fileName="balance-sheet-summary.xlsx"
-                  />
+                  <ExcelExport data={balanceSheet} fileName="balance-sheet-summary.xlsx" />
                 </div>
               </div>
               <table className="mb-4">
@@ -2882,8 +3319,7 @@ export default function APQR() {
                             value={item.initialIntervalDetails}
                             onChange={(e) => {
                               const newData = [...ooaResults];
-                              newData[index].initialIntervalDetails =
-                                e.target.value;
+                              newData[index].initialIntervalDetails = e.target.value;
                               setOoaResults(newData);
                             }}
                           />
@@ -2893,8 +3329,7 @@ export default function APQR() {
                             value={item.previousIntervalDetails}
                             onChange={(e) => {
                               const newData = [...ooaResults];
-                              newData[index].previousIntervalDetails =
-                                e.target.value;
+                              newData[index].previousIntervalDetails = e.target.value;
                               setOoaResults(newData);
                             }}
                           />
@@ -2927,7 +3362,7 @@ export default function APQR() {
             </div>
             <div>
               <h4 className="gridName mt-5">Summary</h4>
-              <TinyEditor />
+              <TinyEditor editorContent={tiny24} setEditorContent={setTinyContent} tinyNo={24} />
             </div>
             <h4 className="gridName">OOL Results</h4>
             <div>
@@ -2938,16 +3373,10 @@ export default function APQR() {
               <div className="AddRows d-flex w-full justify-between items-center text-3xl mb-5">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={oolResultsRow} />
-                  <div className="addrowinstruction  pl-2">
-                    Add Rows by clicking on (+) icon
-                  </div>
+                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
                 </div>
                 <div className="flex gap-4 ">
-                  
-                  <ExcelExport
-                    data={balanceSheet}
-                    fileName="balance-sheet-summary.xlsx"
-                  />
+                  <ExcelExport data={balanceSheet} fileName="balance-sheet-summary.xlsx" />
                 </div>
               </div>
               <table className="mb-4">
@@ -2995,17 +3424,13 @@ export default function APQR() {
             </div>
             <div>
               <h4 className="gridName mt-5">Summary</h4>
-              <TinyEditor />
+              <TinyEditor editorContent={tiny25} setEditorContent={setTinyContent} tinyNo={25} />
             </div>
 
-            <div className="sub-head">
-              Review of Product Quality (Critical Process Parameters)
-            </div>
+            <div className="sub-head">Review of Product Quality (Critical Process Parameters)</div>
 
             <h3 className="gridName">Unit Operation 1</h3>
-            <h4 className="gridName">
-              Buffer formulation summary details provided below
-            </h4>
+            <h4 className="gridName">Buffer formulation summary details provided below</h4>
             <div>
               {/* <div className="AddRows d-flex">
                 <MdNoteAdd onClick={addBufferFSDPVRow} />
@@ -3014,16 +3439,10 @@ export default function APQR() {
               <div className="AddRows d-flex w-full justify-between items-center text-3xl mb-5">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addBufferFSDPVRow} />
-                  <div className="addrowinstruction  pl-2">
-                    Add Rows by clicking on (+) icon
-                  </div>
+                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
                 </div>
                 <div className="flex gap-4 ">
-                  
-                  <ExcelExport
-                    data={balanceSheet}
-                    fileName="balance-sheet-summary.xlsx"
-                  />
+                  <ExcelExport data={balanceSheet} fileName="balance-sheet-summary.xlsx" />
                 </div>
               </div>
               <table className="mb-4">
@@ -3089,16 +3508,10 @@ export default function APQR() {
             <div className="AddRows d-flex w-full justify-between items-center text-3xl mb-5">
               <div className="flex items-center">
                 <MdNoteAdd onClick={addmanufacturingSDRow} />
-                <div className="addrowinstruction  pl-2">
-                  Add Rows by clicking on (+) icon
-                </div>
+                <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
               </div>
               <div className="flex gap-4 ">
-             
-                <ExcelExport
-                  data={balanceSheet}
-                  fileName="balance-sheet-summary.xlsx"
-                />
+                <ExcelExport data={balanceSheet} fileName="balance-sheet-summary.xlsx" />
               </div>
             </div>
             <table>
@@ -3522,7 +3935,7 @@ export default function APQR() {
             <div className="sub-head">Critical Process Parameters Review Summary</div>
             <div className="group-input">
               {/* <input placeholder="please insert flex" /> */}
-              <TinyEditor />
+              <TinyEditor editorContent={tiny26} setEditorContent={setTinyContent} tinyNo={26} />
             </div>
           </div>
         ) : null}
@@ -3562,53 +3975,58 @@ export default function APQR() {
                   {reviewODSTR.map((item, index) => {
                     return (
                       <tr key={index}>
-                      <td>{index + 1}</td>
-                      <td>
-                        <input
-                        value={item.testsParameter}
-                        onChange={(e) => {  
-                          const newData = [...reviewODSTR];
-                          newData[index].testsParameter = e.target.value;
-                          setReviewOSTR(newData);
-                        }}/>
-                      </td>
-                      <td>
-                        <input
-                        value={item.specificationLimit}
-                        onChange={(e) => {  
-                          const newData = [...reviewODSTR];
-                          newData[index].specificationLimit = e.target.value;
-                          setReviewOSTR(newData);
-                        }}/>
-                      </td>
-                      <td>
-                        <input
-                        value={item.obtainedValue.minimum}
-                        onChange={(e) => {  
-                          const newData = [...reviewODSTR];
-                          newData[index].obtainedValue.minimum = e.target.value;
-                          setReviewOSTR(newData);
-                        }}/>
-                      </td>
-                      <td>
-                        <input
-                        value={item.obtainedValue.maximum}
-                        onChange={(e) => {  
-                          const newData = [...reviewODSTR];
-                          newData[index].obtainedValue.maximum = e.target.value;
-                          setReviewOSTR(newData);
-                        }}/>
-                      </td>
-                      <td>
-                        <input
-                        value={item.compliesNotComplies}
-                        onChange={(e) => {  
-                          const newData = [...reviewODSTR];
-                          newData[index].compliesNotComplies = e.target.value;
-                          setReviewOSTR(newData);
-                        }}/>
-                      </td>
-                    </tr>
+                        <td>{index + 1}</td>
+                        <td>
+                          <input
+                            value={item.testsParameter}
+                            onChange={(e) => {
+                              const newData = [...reviewODSTR];
+                              newData[index].testsParameter = e.target.value;
+                              setReviewOSTR(newData);
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.specificationLimit}
+                            onChange={(e) => {
+                              const newData = [...reviewODSTR];
+                              newData[index].specificationLimit = e.target.value;
+                              setReviewOSTR(newData);
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.obtainedValue.minimum}
+                            onChange={(e) => {
+                              const newData = [...reviewODSTR];
+                              newData[index].obtainedValue.minimum = e.target.value;
+                              setReviewOSTR(newData);
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.obtainedValue.maximum}
+                            onChange={(e) => {
+                              const newData = [...reviewODSTR];
+                              newData[index].obtainedValue.maximum = e.target.value;
+                              setReviewOSTR(newData);
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.compliesNotComplies}
+                            onChange={(e) => {
+                              const newData = [...reviewODSTR];
+                              newData[index].compliesNotComplies = e.target.value;
+                              setReviewOSTR(newData);
+                            }}
+                          />
+                        </td>
+                      </tr>
                     );
                   })}
                 </tbody>
@@ -3616,7 +4034,6 @@ export default function APQR() {
             </div>
             <h1 className="gridName  pt-8">Drug Substance 2 Test Result</h1>
             <div>
-           
               <div className="AddRows d-flex w-full justify-between items-center text-3xl mb-5">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addReviewODSTRRow2} />
@@ -3644,53 +4061,58 @@ export default function APQR() {
                   {reviewODSTR2.map((item, index) => {
                     return (
                       <tr key={index}>
-                      <td>{index + 1}</td>
-                      <td>
-                        <input
-                        value={item.testsParameter}
-                        onChange={(e) => {  
-                          const newData = [...reviewODSTR2];
-                          newData[index].testsParameter = e.target.value;
-                          setReviewOSTR2(newData);
-                        }}/>
-                      </td>
-                      <td>
-                        <input
-                        value={item.specificationLimit}
-                        onChange={(e) => {  
-                          const newData = [...reviewODSTR2];
-                          newData[index].specificationLimit = e.target.value;
-                          setReviewOSTR2(newData);
-                        }}/>
-                      </td>
-                      <td>
-                        <input
-                        value={item.obtainedValue.minimum}
-                        onChange={(e) => {  
-                          const newData = [...reviewODSTR2];
-                          newData[index].obtainedValue.minimum = e.target.value;
-                          setReviewOSTR2(newData);
-                        }}/>
-                      </td>
-                      <td>
-                        <input
-                        value={item.obtainedValue.maximum}
-                        onChange={(e) => {  
-                          const newData = [...reviewODSTR2];
-                          newData[index].obtainedValue.maximum = e.target.value;
-                          setReviewOSTR2(newData);
-                        }}/>
-                      </td>
-                      <td>
-                        <input
-                        value={item.compliesNotComplies}
-                        onChange={(e) => {  
-                          const newData = [...reviewODSTR2];
-                          newData[index].compliesNotComplies = e.target.value;
-                          setReviewOSTR2(newData);
-                        }}/>
-                      </td>
-                    </tr>
+                        <td>{index + 1}</td>
+                        <td>
+                          <input
+                            value={item.testsParameter}
+                            onChange={(e) => {
+                              const newData = [...reviewODSTR2];
+                              newData[index].testsParameter = e.target.value;
+                              setReviewOSTR2(newData);
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.specificationLimit}
+                            onChange={(e) => {
+                              const newData = [...reviewODSTR2];
+                              newData[index].specificationLimit = e.target.value;
+                              setReviewOSTR2(newData);
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.obtainedValue.minimum}
+                            onChange={(e) => {
+                              const newData = [...reviewODSTR2];
+                              newData[index].obtainedValue.minimum = e.target.value;
+                              setReviewOSTR2(newData);
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.obtainedValue.maximum}
+                            onChange={(e) => {
+                              const newData = [...reviewODSTR2];
+                              newData[index].obtainedValue.maximum = e.target.value;
+                              setReviewOSTR2(newData);
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.compliesNotComplies}
+                            onChange={(e) => {
+                              const newData = [...reviewODSTR2];
+                              newData[index].compliesNotComplies = e.target.value;
+                              setReviewOSTR2(newData);
+                            }}
+                          />
+                        </td>
+                      </tr>
                     );
                   })}
                 </tbody>
@@ -3729,53 +4151,58 @@ export default function APQR() {
                   {reviewODSTR3.map((item, index) => {
                     return (
                       <tr key={index}>
-                      <td>{index + 1}</td>
-                      <td>
-                        <input
-                        value={item.testsParameter}
-                        onChange={(e) => {  
-                          const newData = [...reviewODSTR3];
-                          newData[index].testsParameter = e.target.value;
-                          setReviewOSTR3(newData);
-                        }}/>
-                      </td>
-                      <td>
-                        <input
-                        value={item.specificationLimit}
-                        onChange={(e) => {  
-                          const newData = [...reviewODSTR3];
-                          newData[index].specificationLimit = e.target.value;
-                          setReviewOSTR3(newData);
-                        }}/>
-                      </td>
-                      <td>
-                        <input
-                        value={item.obtainedValue.minimum}
-                        onChange={(e) => {  
-                          const newData = [...reviewODSTR3];
-                          newData[index].obtainedValue.minimum = e.target.value;
-                          setReviewOSTR3(newData);
-                        }}/>
-                      </td>
-                      <td>
-                        <input
-                        value={item.obtainedValue.maximum}
-                        onChange={(e) => {  
-                          const newData = [...reviewODSTR3];
-                          newData[index].obtainedValue.maximum = e.target.value;
-                          setReviewOSTR3(newData);
-                        }}/>
-                      </td>
-                      <td>
-                        <input
-                        value={item.compliesNotComplies}
-                        onChange={(e) => {  
-                          const newData = [...reviewODSTR3];
-                          newData[index].compliesNotComplies = e.target.value;
-                          setReviewOSTR3(newData);
-                        }}/>
-                      </td>
-                    </tr>
+                        <td>{index + 1}</td>
+                        <td>
+                          <input
+                            value={item.testsParameter}
+                            onChange={(e) => {
+                              const newData = [...reviewODSTR3];
+                              newData[index].testsParameter = e.target.value;
+                              setReviewOSTR3(newData);
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.specificationLimit}
+                            onChange={(e) => {
+                              const newData = [...reviewODSTR3];
+                              newData[index].specificationLimit = e.target.value;
+                              setReviewOSTR3(newData);
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.obtainedValue.minimum}
+                            onChange={(e) => {
+                              const newData = [...reviewODSTR3];
+                              newData[index].obtainedValue.minimum = e.target.value;
+                              setReviewOSTR3(newData);
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.obtainedValue.maximum}
+                            onChange={(e) => {
+                              const newData = [...reviewODSTR3];
+                              newData[index].obtainedValue.maximum = e.target.value;
+                              setReviewOSTR3(newData);
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.compliesNotComplies}
+                            onChange={(e) => {
+                              const newData = [...reviewODSTR3];
+                              newData[index].compliesNotComplies = e.target.value;
+                              setReviewOSTR3(newData);
+                            }}
+                          />
+                        </td>
+                      </tr>
                     );
                   })}
                 </tbody>
@@ -3817,48 +4244,53 @@ export default function APQR() {
                         <td>{index + 1}</td>
                         <td>
                           <input
-                          value={item.testsParameter}
-                          onChange={(e) => {  
-                            const newData = [...reviewODSTR4];
-                            newData[index].testsParameter = e.target.value;
-                            setReviewOSTR4(newData);
-                          }}/>
+                            value={item.testsParameter}
+                            onChange={(e) => {
+                              const newData = [...reviewODSTR4];
+                              newData[index].testsParameter = e.target.value;
+                              setReviewOSTR4(newData);
+                            }}
+                          />
                         </td>
                         <td>
                           <input
-                          value={item.specificationLimit}
-                          onChange={(e) => {  
-                            const newData = [...reviewODSTR4];
-                            newData[index].specificationLimit = e.target.value;
-                            setReviewOSTR4(newData);
-                          }}/>
+                            value={item.specificationLimit}
+                            onChange={(e) => {
+                              const newData = [...reviewODSTR4];
+                              newData[index].specificationLimit = e.target.value;
+                              setReviewOSTR4(newData);
+                            }}
+                          />
                         </td>
                         <td>
                           <input
-                          value={item.obtainedValue.minimum}
-                          onChange={(e) => {  
-                            const newData = [...reviewODSTR4];
-                            newData[index].obtainedValue.minimum = e.target.value;
-                            setReviewOSTR4(newData);
-                          }}/>
+                            value={item.obtainedValue.minimum}
+                            onChange={(e) => {
+                              const newData = [...reviewODSTR4];
+                              newData[index].obtainedValue.minimum = e.target.value;
+                              setReviewOSTR4(newData);
+                            }}
+                          />
                         </td>
                         <td>
                           <input
-                          value={item.obtainedValue.maximum}
-                          onChange={(e) => {  
-                            const newData = [...reviewODSTR4];
-                            newData[index].obtainedValue.maximum = e.target.value;
-                            setReviewOSTR4(newData);
-                          }}/>
+                            value={item.obtainedValue.maximum}
+                            onChange={(e) => {
+                              const newData = [...reviewODSTR4];
+                              newData[index].obtainedValue.maximum = e.target.value;
+                              setReviewOSTR4(newData);
+                            }}
+                          />
                         </td>
                         <td>
                           <input
-                          value={item.compliesNotComplies}
-                          onChange={(e) => {  
-                            const newData = [...reviewODSTR4];
-                            newData[index].compliesNotComplies = e.target.value;
-                            setReviewOSTR4(newData);
-                          }}/>
+                            value={item.compliesNotComplies}
+                            onChange={(e) => {
+                              const newData = [...reviewODSTR4];
+                              newData[index].compliesNotComplies = e.target.value;
+                              setReviewOSTR4(newData);
+                            }}
+                          />
                         </td>
                       </tr>
                     );
@@ -3899,53 +4331,58 @@ export default function APQR() {
                   {reviewODSTR5.map((item, index) => {
                     return (
                       <tr key={index}>
-                      <td>{index + 1}</td>
-                      <td>
-                        <input
-                        value={item.testsParameter}
-                        onChange={(e) => {  
-                          const newData = [...reviewODSTR5];
-                          newData[index].testsParameter = e.target.value;
-                          setReviewOSTR5(newData);
-                        }}/>
-                      </td>
-                      <td>
-                        <input
-                        value={item.specificationLimit}
-                        onChange={(e) => {  
-                          const newData = [...reviewODSTR5];
-                          newData[index].specificationLimit = e.target.value;
-                          setReviewOSTR5(newData);
-                        }}/>
-                      </td>
-                      <td>
-                        <input
-                        value={item.obtainedValue.minimum}
-                        onChange={(e) => {  
-                          const newData = [...reviewODSTR5];
-                          newData[index].obtainedValue.minimum = e.target.value;
-                          setReviewOSTR5(newData);
-                        }}/>
-                      </td>
-                      <td>
-                        <input
-                        value={item.obtainedValue.maximum}
-                        onChange={(e) => {  
-                          const newData = [...reviewODSTR5];
-                          newData[index].obtainedValue.maximum = e.target.value;
-                          setReviewOSTR5(newData);
-                        }}/>
-                      </td>
-                      <td>
-                        <input
-                        value={item.compliesNotComplies}
-                        onChange={(e) => {  
-                          const newData = [...reviewODSTR5];
-                          newData[index].compliesNotComplies = e.target.value;
-                          setReviewOSTR5(newData);
-                        }}/>
-                      </td>
-                    </tr>
+                        <td>{index + 1}</td>
+                        <td>
+                          <input
+                            value={item.testsParameter}
+                            onChange={(e) => {
+                              const newData = [...reviewODSTR5];
+                              newData[index].testsParameter = e.target.value;
+                              setReviewOSTR5(newData);
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.specificationLimit}
+                            onChange={(e) => {
+                              const newData = [...reviewODSTR5];
+                              newData[index].specificationLimit = e.target.value;
+                              setReviewOSTR5(newData);
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.obtainedValue.minimum}
+                            onChange={(e) => {
+                              const newData = [...reviewODSTR5];
+                              newData[index].obtainedValue.minimum = e.target.value;
+                              setReviewOSTR5(newData);
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.obtainedValue.maximum}
+                            onChange={(e) => {
+                              const newData = [...reviewODSTR5];
+                              newData[index].obtainedValue.maximum = e.target.value;
+                              setReviewOSTR5(newData);
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.compliesNotComplies}
+                            onChange={(e) => {
+                              const newData = [...reviewODSTR5];
+                              newData[index].compliesNotComplies = e.target.value;
+                              setReviewOSTR5(newData);
+                            }}
+                          />
+                        </td>
+                      </tr>
                     );
                   })}
                 </tbody>
@@ -3984,53 +4421,58 @@ export default function APQR() {
                   {reviewODSTR6.map((item, index) => {
                     return (
                       <tr key={index}>
-                      <td>{index + 1}</td>
-                      <td>
-                        <input
-                        value={item.testsParameter}
-                        onChange={(e) => {  
-                          const newData = [...reviewODSTR6];
-                          newData[index].testsParameter = e.target.value;
-                          setReviewOSTR6(newData);
-                        }}/>
-                      </td>
-                      <td>
-                        <input
-                        value={item.specificationLimit}
-                        onChange={(e) => {  
-                          const newData = [...reviewODSTR6];
-                          newData[index].specificationLimit = e.target.value;
-                          setReviewOSTR6(newData);
-                        }}/>
-                      </td>
-                      <td>
-                        <input
-                        value={item.obtainedValue.minimum}
-                        onChange={(e) => {  
-                          const newData = [...reviewODSTR6];
-                          newData[index].obtainedValue.minimum = e.target.value;
-                          setReviewOSTR6(newData);
-                        }}/>
-                      </td>
-                      <td>
-                        <input
-                        value={item.obtainedValue.maximum}
-                        onChange={(e) => {  
-                          const newData = [...reviewODSTR6];
-                          newData[index].obtainedValue.maximum = e.target.value;
-                          setReviewOSTR6(newData);
-                        }}/>
-                      </td>
-                      <td>
-                        <input
-                        value={item.compliesNotComplies}
-                        onChange={(e) => {  
-                          const newData = [...reviewODSTR6];
-                          newData[index].compliesNotComplies = e.target.value;
-                          setReviewOSTR6(newData);
-                        }}/>
-                      </td>
-                    </tr>
+                        <td>{index + 1}</td>
+                        <td>
+                          <input
+                            value={item.testsParameter}
+                            onChange={(e) => {
+                              const newData = [...reviewODSTR6];
+                              newData[index].testsParameter = e.target.value;
+                              setReviewOSTR6(newData);
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.specificationLimit}
+                            onChange={(e) => {
+                              const newData = [...reviewODSTR6];
+                              newData[index].specificationLimit = e.target.value;
+                              setReviewOSTR6(newData);
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.obtainedValue.minimum}
+                            onChange={(e) => {
+                              const newData = [...reviewODSTR6];
+                              newData[index].obtainedValue.minimum = e.target.value;
+                              setReviewOSTR6(newData);
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.obtainedValue.maximum}
+                            onChange={(e) => {
+                              const newData = [...reviewODSTR6];
+                              newData[index].obtainedValue.maximum = e.target.value;
+                              setReviewOSTR6(newData);
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.compliesNotComplies}
+                            onChange={(e) => {
+                              const newData = [...reviewODSTR6];
+                              newData[index].compliesNotComplies = e.target.value;
+                              setReviewOSTR6(newData);
+                            }}
+                          />
+                        </td>
+                      </tr>
                     );
                   })}
                 </tbody>
@@ -4038,7 +4480,6 @@ export default function APQR() {
             </div>{" "}
             <h1 className="gridName pt-8">Drug Substance 7 Test Result</h1>
             <div>
-         
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addReviewODSTRRow7} />
@@ -4066,53 +4507,58 @@ export default function APQR() {
                   {reviewODSTR7.map((item, index) => {
                     return (
                       <tr key={index}>
-                      <td>{index + 1}</td>
-                      <td>
-                        <input
-                        value={item.testsParameter}
-                        onChange={(e) => {  
-                          const newData = [...reviewODSTR7];
-                          newData[index].testsParameter = e.target.value;
-                          setReviewOSTR7(newData);
-                        }}/>
-                      </td>
-                      <td>
-                        <input
-                        value={item.specificationLimit}
-                        onChange={(e) => {  
-                          const newData = [...reviewODSTR7];
-                          newData[index].specificationLimit = e.target.value;
-                          setReviewOSTR7(newData);
-                        }}/>
-                      </td>
-                      <td>
-                        <input
-                        value={item.obtainedValue.minimum}
-                        onChange={(e) => {  
-                          const newData = [...reviewODSTR7];
-                          newData[index].obtainedValue.minimum = e.target.value;
-                          setReviewOSTR7(newData);
-                        }}/>
-                      </td>
-                      <td>
-                        <input
-                        value={item.obtainedValue.maximum}
-                        onChange={(e) => {  
-                          const newData = [...reviewODSTR7];
-                          newData[index].obtainedValue.maximum = e.target.value;
-                          setReviewOSTR7(newData);
-                        }}/>
-                      </td>
-                      <td>
-                        <input
-                        value={item.compliesNotComplies}
-                        onChange={(e) => {  
-                          const newData = [...reviewODSTR7];
-                          newData[index].compliesNotComplies = e.target.value;
-                          setReviewOSTR7(newData);
-                        }}/>
-                      </td>
-                    </tr>
+                        <td>{index + 1}</td>
+                        <td>
+                          <input
+                            value={item.testsParameter}
+                            onChange={(e) => {
+                              const newData = [...reviewODSTR7];
+                              newData[index].testsParameter = e.target.value;
+                              setReviewOSTR7(newData);
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.specificationLimit}
+                            onChange={(e) => {
+                              const newData = [...reviewODSTR7];
+                              newData[index].specificationLimit = e.target.value;
+                              setReviewOSTR7(newData);
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.obtainedValue.minimum}
+                            onChange={(e) => {
+                              const newData = [...reviewODSTR7];
+                              newData[index].obtainedValue.minimum = e.target.value;
+                              setReviewOSTR7(newData);
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.obtainedValue.maximum}
+                            onChange={(e) => {
+                              const newData = [...reviewODSTR7];
+                              newData[index].obtainedValue.maximum = e.target.value;
+                              setReviewOSTR7(newData);
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.compliesNotComplies}
+                            onChange={(e) => {
+                              const newData = [...reviewODSTR7];
+                              newData[index].compliesNotComplies = e.target.value;
+                              setReviewOSTR7(newData);
+                            }}
+                          />
+                        </td>
+                      </tr>
                     );
                   })}
                 </tbody>
@@ -4120,7 +4566,6 @@ export default function APQR() {
             </div>{" "}
             <h1 className="gridName pt-8">Drug Substance 8 Test Result</h1>
             <div>
-            
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addReviewODSTRRow8} />
@@ -4148,53 +4593,58 @@ export default function APQR() {
                   {reviewODSTR8.map((item, index) => {
                     return (
                       <tr key={index}>
-                      <td>{index + 1}</td>
-                      <td>
-                        <input
-                        value={item.testsParameter}
-                        onChange={(e) => {  
-                          const newData = [...reviewODSTR8];
-                          newData[index].testsParameter = e.target.value;
-                          setReviewOSTR8(newData);
-                        }}/>
-                      </td>
-                      <td>
-                        <input
-                        value={item.specificationLimit}
-                        onChange={(e) => {  
-                          const newData = [...reviewODSTR8];
-                          newData[index].specificationLimit = e.target.value;
-                          setReviewOSTR8(newData);
-                        }}/>
-                      </td>
-                      <td>
-                        <input
-                        value={item.obtainedValue.minimum}
-                        onChange={(e) => {  
-                          const newData = [...reviewODSTR8];
-                          newData[index].obtainedValue.minimum = e.target.value;
-                          setReviewOSTR8(newData);
-                        }}/>
-                      </td>
-                      <td>
-                        <input
-                        value={item.obtainedValue.maximum}
-                        onChange={(e) => {  
-                          const newData = [...reviewODSTR8];
-                          newData[index].obtainedValue.maximum = e.target.value;
-                          setReviewOSTR8(newData);
-                        }}/>
-                      </td>
-                      <td>
-                        <input
-                        value={item.compliesNotComplies}
-                        onChange={(e) => {  
-                          const newData = [...reviewODSTR8];
-                          newData[index].compliesNotComplies = e.target.value;
-                          setReviewOSTR8(newData);
-                        }}/>
-                      </td>
-                    </tr>
+                        <td>{index + 1}</td>
+                        <td>
+                          <input
+                            value={item.testsParameter}
+                            onChange={(e) => {
+                              const newData = [...reviewODSTR8];
+                              newData[index].testsParameter = e.target.value;
+                              setReviewOSTR8(newData);
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.specificationLimit}
+                            onChange={(e) => {
+                              const newData = [...reviewODSTR8];
+                              newData[index].specificationLimit = e.target.value;
+                              setReviewOSTR8(newData);
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.obtainedValue.minimum}
+                            onChange={(e) => {
+                              const newData = [...reviewODSTR8];
+                              newData[index].obtainedValue.minimum = e.target.value;
+                              setReviewOSTR8(newData);
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.obtainedValue.maximum}
+                            onChange={(e) => {
+                              const newData = [...reviewODSTR8];
+                              newData[index].obtainedValue.maximum = e.target.value;
+                              setReviewOSTR8(newData);
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.compliesNotComplies}
+                            onChange={(e) => {
+                              const newData = [...reviewODSTR8];
+                              newData[index].compliesNotComplies = e.target.value;
+                              setReviewOSTR8(newData);
+                            }}
+                          />
+                        </td>
+                      </tr>
                     );
                   })}
                 </tbody>
@@ -4202,7 +4652,6 @@ export default function APQR() {
             </div>{" "}
             <h1 className="gridName pt-8">Drug Substance 9 Test Result</h1>
             <div>
-             
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addReviewODSTRRow9} />
@@ -4233,48 +4682,53 @@ export default function APQR() {
                         <td>{index + 1}</td>
                         <td>
                           <input
-                          value={item.testsParameter}
-                          onChange={(e) => {  
-                            const newData = [...reviewODSTR9];
-                            newData[index].testsParameter = e.target.value;
-                            setReviewOSTR9(newData);
-                          }}/>
+                            value={item.testsParameter}
+                            onChange={(e) => {
+                              const newData = [...reviewODSTR9];
+                              newData[index].testsParameter = e.target.value;
+                              setReviewOSTR9(newData);
+                            }}
+                          />
                         </td>
                         <td>
                           <input
-                          value={item.specificationLimit}
-                          onChange={(e) => {  
-                            const newData = [...reviewODSTR9];
-                            newData[index].specificationLimit = e.target.value;
-                            setReviewOSTR9(newData);
-                          }}/>
+                            value={item.specificationLimit}
+                            onChange={(e) => {
+                              const newData = [...reviewODSTR9];
+                              newData[index].specificationLimit = e.target.value;
+                              setReviewOSTR9(newData);
+                            }}
+                          />
                         </td>
                         <td>
                           <input
-                          value={item.obtainedValue.minimum}
-                          onChange={(e) => {  
-                            const newData = [...reviewODSTR9];
-                            newData[index].obtainedValue.minimum = e.target.value;
-                            setReviewOSTR9(newData);
-                          }}/>
+                            value={item.obtainedValue.minimum}
+                            onChange={(e) => {
+                              const newData = [...reviewODSTR9];
+                              newData[index].obtainedValue.minimum = e.target.value;
+                              setReviewOSTR9(newData);
+                            }}
+                          />
                         </td>
                         <td>
                           <input
-                          value={item.obtainedValue.maximum}
-                          onChange={(e) => {  
-                            const newData = [...reviewODSTR9];
-                            newData[index].obtainedValue.maximum = e.target.value;
-                            setReviewOSTR9(newData);
-                          }}/>
+                            value={item.obtainedValue.maximum}
+                            onChange={(e) => {
+                              const newData = [...reviewODSTR9];
+                              newData[index].obtainedValue.maximum = e.target.value;
+                              setReviewOSTR9(newData);
+                            }}
+                          />
                         </td>
                         <td>
                           <input
-                          value={item.compliesNotComplies}
-                          onChange={(e) => {  
-                            const newData = [...reviewODSTR9];
-                            newData[index].compliesNotComplies = e.target.value;
-                            setReviewOSTR9(newData);
-                          }}/>
+                            value={item.compliesNotComplies}
+                            onChange={(e) => {
+                              const newData = [...reviewODSTR9];
+                              newData[index].compliesNotComplies = e.target.value;
+                              setReviewOSTR9(newData);
+                            }}
+                          />
                         </td>
                       </tr>
                     );
@@ -4318,48 +4772,53 @@ export default function APQR() {
                         <td>{index + 1}</td>
                         <td>
                           <input
-                          value={item.testsParameter}
-                          onChange={(e) => {  
-                            const newData = [...reviewODSTR10];
-                            newData[index].testsParameter = e.target.value;
-                            setReviewOSTR10(newData);
-                          }}/>
+                            value={item.testsParameter}
+                            onChange={(e) => {
+                              const newData = [...reviewODSTR10];
+                              newData[index].testsParameter = e.target.value;
+                              setReviewOSTR10(newData);
+                            }}
+                          />
                         </td>
                         <td>
                           <input
-                          value={item.specificationLimit}
-                          onChange={(e) => {  
-                            const newData = [...reviewODSTR10];
-                            newData[index].specificationLimit = e.target.value;
-                            setReviewOSTR10(newData);
-                          }}/>
+                            value={item.specificationLimit}
+                            onChange={(e) => {
+                              const newData = [...reviewODSTR10];
+                              newData[index].specificationLimit = e.target.value;
+                              setReviewOSTR10(newData);
+                            }}
+                          />
                         </td>
                         <td>
                           <input
-                          value={item.obtainedValue.minimum}
-                          onChange={(e) => {  
-                            const newData = [...reviewODSTR10];
-                            newData[index].obtainedValue.minimum = e.target.value;
-                            setReviewOSTR10(newData);
-                          }}/>
+                            value={item.obtainedValue.minimum}
+                            onChange={(e) => {
+                              const newData = [...reviewODSTR10];
+                              newData[index].obtainedValue.minimum = e.target.value;
+                              setReviewOSTR10(newData);
+                            }}
+                          />
                         </td>
                         <td>
                           <input
-                          value={item.obtainedValue.maximum}
-                          onChange={(e) => {  
-                            const newData = [...reviewODSTR10];
-                            newData[index].obtainedValue.maximum = e.target.value;
-                            setReviewOSTR10(newData);
-                          }}/>
+                            value={item.obtainedValue.maximum}
+                            onChange={(e) => {
+                              const newData = [...reviewODSTR10];
+                              newData[index].obtainedValue.maximum = e.target.value;
+                              setReviewOSTR10(newData);
+                            }}
+                          />
                         </td>
                         <td>
                           <input
-                          value={item.compliesNotComplies}
-                          onChange={(e) => {  
-                            const newData = [...reviewODSTR10];
-                            newData[index].compliesNotComplies = e.target.value;
-                            setReviewOSTR10(newData);
-                          }}/>
+                            value={item.compliesNotComplies}
+                            onChange={(e) => {
+                              const newData = [...reviewODSTR10];
+                              newData[index].compliesNotComplies = e.target.value;
+                              setReviewOSTR10(newData);
+                            }}
+                          />
                         </td>
                       </tr>
                     );
@@ -4369,7 +4828,7 @@ export default function APQR() {
             </div>
             <div>
               <h4 className="gridName mt-5">Summary</h4>
-              <TinyEditor />
+              <TinyEditor editorContent={tiny27} setEditorContent={setTinyContent} tinyNo={27} />
             </div>
             <div className="sub-head">Review of Raw Material Excipient Test Results</div>
             <div>
@@ -4407,58 +4866,64 @@ export default function APQR() {
                       <tr key={index}>
                         <td>{index + 1}</td>
                         <td>
-                         <input
-                          value={item.material}
-                          onChange={(e) => {  
-                            const newData = [...reviewORMETR];
-                            newData[index].material = e.target.value;
-                            setReviewORMETR(newData);
-                          }}/>
+                          <input
+                            value={item.material}
+                            onChange={(e) => {
+                              const newData = [...reviewORMETR];
+                              newData[index].material = e.target.value;
+                              setReviewORMETR(newData);
+                            }}
+                          />
                         </td>
                         <td>
-                         <input
-                          value={item.testsParameter}
-                          onChange={(e) => {  
-                            const newData = [...reviewORMETR];
-                            newData[index].testsParameter = e.target.value;
-                            setReviewORMETR(newData);
-                          }}/>
+                          <input
+                            value={item.testsParameter}
+                            onChange={(e) => {
+                              const newData = [...reviewORMETR];
+                              newData[index].testsParameter = e.target.value;
+                              setReviewORMETR(newData);
+                            }}
+                          />
                         </td>
                         <td>
-                         <input
-                          value={item.specificationLimit}
-                          onChange={(e) => {  
-                            const newData = [...reviewORMETR];
-                            newData[index].specificationLimit = e.target.value;
-                            setReviewORMETR(newData);
-                          }}/>
+                          <input
+                            value={item.specificationLimit}
+                            onChange={(e) => {
+                              const newData = [...reviewORMETR];
+                              newData[index].specificationLimit = e.target.value;
+                              setReviewORMETR(newData);
+                            }}
+                          />
                         </td>
                         <td>
-                         <input
-                          value={item.obtainedValue.minimum}
-                          onChange={(e) => {  
-                            const newData = [...reviewORMETR];
-                            newData[index].obtainedValue.minimum = e.target.value;
-                            setReviewORMETR(newData);
-                          }}/>
+                          <input
+                            value={item.obtainedValue.minimum}
+                            onChange={(e) => {
+                              const newData = [...reviewORMETR];
+                              newData[index].obtainedValue.minimum = e.target.value;
+                              setReviewORMETR(newData);
+                            }}
+                          />
                         </td>
                         <td>
-                         <input
-                          value={item.obtainedValue.maximum}
-                          onChange={(e) => {  
-                            const newData = [...reviewORMETR];
-                            newData[index].obtainedValue.maximum = e.target.value;
-                            setReviewORMETR(newData);
-                          }}/>
+                          <input
+                            value={item.obtainedValue.maximum}
+                            onChange={(e) => {
+                              const newData = [...reviewORMETR];
+                              newData[index].obtainedValue.maximum = e.target.value;
+                              setReviewORMETR(newData);
+                            }}
+                          />
                         </td>
                         <td>
-                         <input
-                          value={item.compliesNotComplies}
-                          onChange={(e) => {  
-                            const newData = [...reviewORMETR];
-                            newData[index].compliesNotComplies = e.target.value;
-                            setReviewORMETR(newData);
-                          }}/>
+                          <input
+                            value={item.compliesNotComplies}
+                            onChange={(e) => {
+                              const newData = [...reviewORMETR];
+                              newData[index].compliesNotComplies = e.target.value;
+                              setReviewORMETR(newData);
+                            }}
+                          />
                         </td>
                       </tr>
                     );
@@ -4468,7 +4933,7 @@ export default function APQR() {
             </div>
             <div>
               <h4 className="gridName mt-5">Summary</h4>
-              <TinyEditor />
+              <TinyEditor editorContent={tiny28} setEditorContent={setTinyContent} tinyNo={28} />
             </div>
             <div className="sub-head">Review of Packing Material Test Results</div>
             <div>
@@ -4506,59 +4971,64 @@ export default function APQR() {
                       <tr key={index}>
                         <td>{index + 1}</td>
                         <td>
-                        <input
-                          value={item.material}
-                          onChange={(e) => {  
-                            const newData = [...reviewOPMTR];
-                            newData[index].material = e.target.value;
-                            setReviewOPMTR(newData);
-                          }}/>
+                          <input
+                            value={item.material}
+                            onChange={(e) => {
+                              const newData = [...reviewOPMTR];
+                              newData[index].material = e.target.value;
+                              setReviewOPMTR(newData);
+                            }}
+                          />
                         </td>
                         <td>
-                        <input
-                          value={item.testsParameter}
-                          onChange={(e) => {  
-                            const newData = [...reviewOPMTR];
-                            newData[index].testsParameter = e.target.value;
-                            setReviewOPMTR(newData);
-                          }}/>
+                          <input
+                            value={item.testsParameter}
+                            onChange={(e) => {
+                              const newData = [...reviewOPMTR];
+                              newData[index].testsParameter = e.target.value;
+                              setReviewOPMTR(newData);
+                            }}
+                          />
                         </td>
                         <td>
-                           <input
-                          value={item.specificationLimit}
-                          onChange={(e) => {  
-                            const newData = [...reviewOPMTR];
-                            newData[index].specificationLimit = e.target.value;
-                            setReviewOPMTR(newData);
-                          }}/>
+                          <input
+                            value={item.specificationLimit}
+                            onChange={(e) => {
+                              const newData = [...reviewOPMTR];
+                              newData[index].specificationLimit = e.target.value;
+                              setReviewOPMTR(newData);
+                            }}
+                          />
                         </td>
                         <td>
-                           <input
-                          value={item.obtainedValue.minimum}
-                          onChange={(e) => {  
-                            const newData = [...reviewOPMTR];
-                            newData[index].obtainedValue.minimum = e.target.value;
-                            setReviewOPMTR(newData);
-                          }}/>
+                          <input
+                            value={item.obtainedValue.minimum}
+                            onChange={(e) => {
+                              const newData = [...reviewOPMTR];
+                              newData[index].obtainedValue.minimum = e.target.value;
+                              setReviewOPMTR(newData);
+                            }}
+                          />
                         </td>
                         <td>
-                           <input
-                          value={item.obtainedValue.maximum}
-                          onChange={(e) => {  
-                            const newData = [...reviewOPMTR];
-                            newData[index].obtainedValue.maximum = e.target.value;
-                            setReviewOPMTR(newData);
-                          }}/>
+                          <input
+                            value={item.obtainedValue.maximum}
+                            onChange={(e) => {
+                              const newData = [...reviewOPMTR];
+                              newData[index].obtainedValue.maximum = e.target.value;
+                              setReviewOPMTR(newData);
+                            }}
+                          />
                         </td>
                         <td>
-                           <input
-                          value={item.compliesNotComplies}
-                          onChange={(e) => {  
-                            const newData = [...reviewOPMTR];
-                            newData[index].
-                            compliesNotComplies= e.target.value;
-                            setReviewOPMTR(newData);
-                          }}/>
+                          <input
+                            value={item.compliesNotComplies}
+                            onChange={(e) => {
+                              const newData = [...reviewOPMTR];
+                              newData[index].compliesNotComplies = e.target.value;
+                              setReviewOPMTR(newData);
+                            }}
+                          />
                         </td>
                       </tr>
                     );
@@ -4568,7 +5038,7 @@ export default function APQR() {
             </div>
             <div>
               <h4 className="gridName mt-5">Summary</h4>
-              <TinyEditor />
+              <TinyEditor editorContent={tiny29} setEditorContent={setTinyContent} tinyNo={29} />
             </div>
             <div className="sub-head">Review of Drug Product – In process Test Results</div>
             <h4 className="gridName pt-2">Dilution Buffer 1 - Test Results</h4>
@@ -4605,68 +5075,68 @@ export default function APQR() {
                   {reviewODP.map((item, index) => {
                     return (
                       <tr key={index}>
-                      <td>{index + 1}</td>
-                      <td>
-                        <input
-                          value={item.testsParameter}
-                          onChange={(e) => {  
-                            const newData = [...reviewODP];
-                            newData[index].testsParameter = e.target.value;
-                            setReviewODP(newData);
-                          }}
-                        />
-                      </td>
-                      <td>
-                        <input
-                          value={item.stage}
-                          onChange={(e) => {
-                            const newData = [...reviewODP];
-                            newData[index].stage = e.target.value;
-                            setReviewODP(newData);
-                          }}
-                        />
-                      </td>
-                      <td>
-                        <input
-                          value={item.specificationLimit}
-                          onChange={(e) => {
-                            const newData = [...reviewODP];
-                            newData[index].specificationLimit = e.target.value;
-                            setReviewODP(newData);
-                          }}
-                        />
-                      </td>
-                      <td>
-                        <input
-                          value={item.obtainedValue.minimum}
-                          onChange={(e) => {
-                            const newData = [...reviewODP];
-                            newData[index].obtainedValue.minimum = e.target.value;
-                            setReviewODP(newData);
-                          }}
-                        />
-                      </td>
-                      <td>
-                        <input
-                          value={item.obtainedValue.maximum}
-                          onChange={(e) => {
-                            const newData = [...reviewODP];
-                            newData[index].obtainedValue.maximum= e.target.value;
-                            setReviewODP(newData);
-                          }}
-                        />
-                      </td>
-                      <td>
-                        <input
-                          value={item.compliesNotComplies}
-                          onChange={(e) => {
-                            const newData = [...reviewODP];
-                            newData[index].compliesNotComplies = e.target.value;
-                            setReviewODP(newData);
-                          }}
-                        />
-                      </td>
-                    </tr>
+                        <td>{index + 1}</td>
+                        <td>
+                          <input
+                            value={item.testsParameter}
+                            onChange={(e) => {
+                              const newData = [...reviewODP];
+                              newData[index].testsParameter = e.target.value;
+                              setReviewODP(newData);
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.stage}
+                            onChange={(e) => {
+                              const newData = [...reviewODP];
+                              newData[index].stage = e.target.value;
+                              setReviewODP(newData);
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.specificationLimit}
+                            onChange={(e) => {
+                              const newData = [...reviewODP];
+                              newData[index].specificationLimit = e.target.value;
+                              setReviewODP(newData);
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.obtainedValue.minimum}
+                            onChange={(e) => {
+                              const newData = [...reviewODP];
+                              newData[index].obtainedValue.minimum = e.target.value;
+                              setReviewODP(newData);
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.obtainedValue.maximum}
+                            onChange={(e) => {
+                              const newData = [...reviewODP];
+                              newData[index].obtainedValue.maximum = e.target.value;
+                              setReviewODP(newData);
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.compliesNotComplies}
+                            onChange={(e) => {
+                              const newData = [...reviewODP];
+                              newData[index].compliesNotComplies = e.target.value;
+                              setReviewODP(newData);
+                            }}
+                          />
+                        </td>
+                      </tr>
                     );
                   })}
                 </tbody>
@@ -4706,68 +5176,68 @@ export default function APQR() {
                   {reviewODP2.map((item, index) => {
                     return (
                       <tr key={index}>
-                      <td>{index + 1}</td>
-                      <td>
-                        <input
-                          value={item.testsParameter}
-                          onChange={(e) => {  
-                            const newData = [...reviewODP2];
-                            newData[index].testsParameter = e.target.value;
-                            setReviewODP2(newData);
-                          }}
-                        />
-                      </td>
-                      <td>
-                        <input
-                          value={item.stage}
-                          onChange={(e) => {
-                            const newData = [...reviewODP2];
-                            newData[index].stage = e.target.value;
-                            setReviewODP2(newData);
-                          }}
-                        />
-                      </td>
-                      <td>
-                        <input
-                          value={item.specificationLimit}
-                          onChange={(e) => {
-                            const newData = [...reviewODP2];
-                            newData[index].specificationLimit = e.target.value;
-                            setReviewODP2(newData);
-                          }}
-                        />
-                      </td>
-                      <td>
-                        <input
-                          value={item.obtainedValue.minimum}
-                          onChange={(e) => {
-                            const newData = [...reviewODP2];
-                            newData[index].obtainedValue.minimum = e.target.value;
-                            setReviewODP2(newData);
-                          }}
-                        />
-                      </td>
-                      <td>
-                        <input
-                          value={item.obtainedValue.maximum}
-                          onChange={(e) => {
-                            const newData = [...reviewODP2];
-                            newData[index].obtainedValue.maximum= e.target.value;
-                            setReviewODP2(newData);
-                          }}
-                        />
-                      </td>
-                      <td>
-                        <input
-                          value={item.compliesNotComplies}
-                          onChange={(e) => {
-                            const newData = [...reviewODP2];
-                            newData[index].compliesNotComplies = e.target.value;
-                            setReviewODP2(newData);
-                          }}
-                        />
-                      </td>
-                    </tr>
+                        <td>{index + 1}</td>
+                        <td>
+                          <input
+                            value={item.testsParameter}
+                            onChange={(e) => {
+                              const newData = [...reviewODP2];
+                              newData[index].testsParameter = e.target.value;
+                              setReviewODP2(newData);
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.stage}
+                            onChange={(e) => {
+                              const newData = [...reviewODP2];
+                              newData[index].stage = e.target.value;
+                              setReviewODP2(newData);
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.specificationLimit}
+                            onChange={(e) => {
+                              const newData = [...reviewODP2];
+                              newData[index].specificationLimit = e.target.value;
+                              setReviewODP2(newData);
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.obtainedValue.minimum}
+                            onChange={(e) => {
+                              const newData = [...reviewODP2];
+                              newData[index].obtainedValue.minimum = e.target.value;
+                              setReviewODP2(newData);
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.obtainedValue.maximum}
+                            onChange={(e) => {
+                              const newData = [...reviewODP2];
+                              newData[index].obtainedValue.maximum = e.target.value;
+                              setReviewODP2(newData);
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.compliesNotComplies}
+                            onChange={(e) => {
+                              const newData = [...reviewODP2];
+                              newData[index].compliesNotComplies = e.target.value;
+                              setReviewODP2(newData);
+                            }}
+                          />
+                        </td>
+                      </tr>
                     );
                   })}
                 </tbody>
@@ -4807,68 +5277,68 @@ export default function APQR() {
                   {reviewODP3.map((item, index) => {
                     return (
                       <tr key={index}>
-                      <td>{index + 1}</td>
-                      <td>
-                        <input
-                          value={item.testsParameter}
-                          onChange={(e) => {  
-                            const newData = [...reviewODP3];
-                            newData[index].testsParameter = e.target.value;
-                            setReviewODP10(newData);
-                          }}
-                        />
-                      </td>
-                      <td>
-                        <input
-                          value={item.stage}
-                          onChange={(e) => {
-                            const newData = [...reviewODP3];
-                            newData[index].stage = e.target.value;
-                            setReviewODP3(newData);
-                          }}
-                        />
-                      </td>
-                      <td>
-                        <input
-                          value={item.specificationLimit}
-                          onChange={(e) => {
-                            const newData = [...reviewODP3];
-                            newData[index].specificationLimit = e.target.value;
-                            setReviewODP3(newData);
-                          }}
-                        />
-                      </td>
-                      <td>
-                        <input
-                          value={item.obtainedValue.minimum}
-                          onChange={(e) => {
-                            const newData = [...reviewODP3];
-                            newData[index].obtainedValue.minimum = e.target.value;
-                            setReviewODP3(newData);
-                          }}
-                        />
-                      </td>
-                      <td>
-                        <input
-                          value={item.obtainedValue.maximum}
-                          onChange={(e) => {
-                            const newData = [...reviewODP3];
-                            newData[index].obtainedValue.maximum= e.target.value;
-                            setReviewODP3(newData);
-                          }}
-                        />
-                      </td>
-                      <td>
-                        <input
-                          value={item.compliesNotComplies}
-                          onChange={(e) => {
-                            const newData = [...reviewODP3];
-                            newData[index].compliesNotComplies = e.target.value;
-                            setReviewODP3(newData);
-                          }}
-                        />
-                      </td>
-                    </tr>
+                        <td>{index + 1}</td>
+                        <td>
+                          <input
+                            value={item.testsParameter}
+                            onChange={(e) => {
+                              const newData = [...reviewODP3];
+                              newData[index].testsParameter = e.target.value;
+                              setReviewODP10(newData);
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.stage}
+                            onChange={(e) => {
+                              const newData = [...reviewODP3];
+                              newData[index].stage = e.target.value;
+                              setReviewODP3(newData);
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.specificationLimit}
+                            onChange={(e) => {
+                              const newData = [...reviewODP3];
+                              newData[index].specificationLimit = e.target.value;
+                              setReviewODP3(newData);
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.obtainedValue.minimum}
+                            onChange={(e) => {
+                              const newData = [...reviewODP3];
+                              newData[index].obtainedValue.minimum = e.target.value;
+                              setReviewODP3(newData);
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.obtainedValue.maximum}
+                            onChange={(e) => {
+                              const newData = [...reviewODP3];
+                              newData[index].obtainedValue.maximum = e.target.value;
+                              setReviewODP3(newData);
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.compliesNotComplies}
+                            onChange={(e) => {
+                              const newData = [...reviewODP3];
+                              newData[index].compliesNotComplies = e.target.value;
+                              setReviewODP3(newData);
+                            }}
+                          />
+                        </td>
+                      </tr>
                     );
                   })}
                 </tbody>
@@ -4908,68 +5378,68 @@ export default function APQR() {
                   {reviewODP4.map((item, index) => {
                     return (
                       <tr key={index}>
-                      <td>{index + 1}</td>
-                      <td>
-                        <input
-                          value={item.testsParameter}
-                          onChange={(e) => {  
-                            const newData = [...reviewODP4];
-                            newData[index].testsParameter = e.target.value;
-                            setReviewODP4(newData);
-                          }}
-                        />
-                      </td>
-                      <td>
-                        <input
-                          value={item.stage}
-                          onChange={(e) => {
-                            const newData = [...reviewODP4];
-                            newData[index].stage = e.target.value;
-                            setReviewODP4(newData);
-                          }}
-                        />
-                      </td>
-                      <td>
-                        <input
-                          value={item.specificationLimit}
-                          onChange={(e) => {
-                            const newData = [...reviewODP4];
-                            newData[index].specificationLimit = e.target.value;
-                            setReviewODP4(newData);
-                          }}
-                        />
-                      </td>
-                      <td>
-                        <input
-                          value={item.obtainedValue.minimum}
-                          onChange={(e) => {
-                            const newData = [...reviewODP4];
-                            newData[index].obtainedValue.minimum = e.target.value;
-                            setReviewODP4(newData);
-                          }}
-                        />
-                      </td>
-                      <td>
-                        <input
-                          value={item.obtainedValue.maximum}
-                          onChange={(e) => {
-                            const newData = [...reviewODP4];
-                            newData[index].obtainedValue.maximum= e.target.value;
-                            setReviewODP4(newData);
-                          }}
-                        />
-                      </td>
-                      <td>
-                        <input
-                          value={item.compliesNotComplies}
-                          onChange={(e) => {
-                            const newData = [...reviewODP4];
-                            newData[index].compliesNotComplies = e.target.value;
-                            setReviewODP4(newData);
-                          }}
-                        />
-                      </td>
-                    </tr>
+                        <td>{index + 1}</td>
+                        <td>
+                          <input
+                            value={item.testsParameter}
+                            onChange={(e) => {
+                              const newData = [...reviewODP4];
+                              newData[index].testsParameter = e.target.value;
+                              setReviewODP4(newData);
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.stage}
+                            onChange={(e) => {
+                              const newData = [...reviewODP4];
+                              newData[index].stage = e.target.value;
+                              setReviewODP4(newData);
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.specificationLimit}
+                            onChange={(e) => {
+                              const newData = [...reviewODP4];
+                              newData[index].specificationLimit = e.target.value;
+                              setReviewODP4(newData);
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.obtainedValue.minimum}
+                            onChange={(e) => {
+                              const newData = [...reviewODP4];
+                              newData[index].obtainedValue.minimum = e.target.value;
+                              setReviewODP4(newData);
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.obtainedValue.maximum}
+                            onChange={(e) => {
+                              const newData = [...reviewODP4];
+                              newData[index].obtainedValue.maximum = e.target.value;
+                              setReviewODP4(newData);
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.compliesNotComplies}
+                            onChange={(e) => {
+                              const newData = [...reviewODP4];
+                              newData[index].compliesNotComplies = e.target.value;
+                              setReviewODP4(newData);
+                            }}
+                          />
+                        </td>
+                      </tr>
                     );
                   })}
                 </tbody>
@@ -5009,68 +5479,68 @@ export default function APQR() {
                   {reviewODP5.map((item, index) => {
                     return (
                       <tr key={index}>
-                      <td>{index + 1}</td>
-                      <td>
-                        <input
-                          value={item.testsParameter}
-                          onChange={(e) => {  
-                            const newData = [...reviewODP5];
-                            newData[index].testsParameter = e.target.value;
-                            setReviewODP5(newData);
-                          }}
-                        />
-                      </td>
-                      <td>
-                        <input
-                          value={item.stage}
-                          onChange={(e) => {
-                            const newData = [...reviewODP5];
-                            newData[index].stage = e.target.value;
-                            setReviewODP5(newData);
-                          }}
-                        />
-                      </td>
-                      <td>
-                        <input
-                          value={item.specificationLimit}
-                          onChange={(e) => {
-                            const newData = [...reviewODP5];
-                            newData[index].specificationLimit = e.target.value;
-                            setReviewODP5(newData);
-                          }}
-                        />
-                      </td>
-                      <td>
-                        <input
-                          value={item.obtainedValue.minimum}
-                          onChange={(e) => {
-                            const newData = [...reviewODP5];
-                            newData[index].obtainedValue.minimum = e.target.value;
-                            setReviewODP5(newData);
-                          }}
-                        />
-                      </td>
-                      <td>
-                        <input
-                          value={item.obtainedValue.maximum}
-                          onChange={(e) => {
-                            const newData = [...reviewODP5];
-                            newData[index].obtainedValue.maximum= e.target.value;
-                            setReviewODP5(newData);
-                          }}
-                        />
-                      </td>
-                      <td>
-                        <input
-                          value={item.compliesNotComplies}
-                          onChange={(e) => {
-                            const newData = [...reviewODP5];
-                            newData[index].compliesNotComplies = e.target.value;
-                            setReviewODP5(newData);
-                          }}
-                        />
-                      </td>
-                    </tr>
+                        <td>{index + 1}</td>
+                        <td>
+                          <input
+                            value={item.testsParameter}
+                            onChange={(e) => {
+                              const newData = [...reviewODP5];
+                              newData[index].testsParameter = e.target.value;
+                              setReviewODP5(newData);
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.stage}
+                            onChange={(e) => {
+                              const newData = [...reviewODP5];
+                              newData[index].stage = e.target.value;
+                              setReviewODP5(newData);
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.specificationLimit}
+                            onChange={(e) => {
+                              const newData = [...reviewODP5];
+                              newData[index].specificationLimit = e.target.value;
+                              setReviewODP5(newData);
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.obtainedValue.minimum}
+                            onChange={(e) => {
+                              const newData = [...reviewODP5];
+                              newData[index].obtainedValue.minimum = e.target.value;
+                              setReviewODP5(newData);
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.obtainedValue.maximum}
+                            onChange={(e) => {
+                              const newData = [...reviewODP5];
+                              newData[index].obtainedValue.maximum = e.target.value;
+                              setReviewODP5(newData);
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.compliesNotComplies}
+                            onChange={(e) => {
+                              const newData = [...reviewODP5];
+                              newData[index].compliesNotComplies = e.target.value;
+                              setReviewODP5(newData);
+                            }}
+                          />
+                        </td>
+                      </tr>
                     );
                   })}
                 </tbody>
@@ -5110,68 +5580,68 @@ export default function APQR() {
                   {reviewODP6.map((item, index) => {
                     return (
                       <tr key={index}>
-                      <td>{index + 1}</td>
-                      <td>
-                        <input
-                          value={item.testsParameter}
-                          onChange={(e) => {  
-                            const newData = [...reviewODP6];
-                            newData[index].testsParameter = e.target.value;
-                            setReviewODP6(newData);
-                          }}
-                        />
-                      </td>
-                      <td>
-                        <input
-                          value={item.stage}
-                          onChange={(e) => {
-                            const newData = [...reviewODP6];
-                            newData[index].stage = e.target.value;
-                            setReviewODP6(newData);
-                          }}
-                        />
-                      </td>
-                      <td>
-                        <input
-                          value={item.specificationLimit}
-                          onChange={(e) => {
-                            const newData = [...reviewODP6];
-                            newData[index].specificationLimit = e.target.value;
-                            setReviewODP6(newData);
-                          }}
-                        />
-                      </td>
-                      <td>
-                        <input
-                          value={item.obtainedValue.minimum}
-                          onChange={(e) => {
-                            const newData = [...reviewODP6];
-                            newData[index].obtainedValue.minimum = e.target.value;
-                            setReviewODP6(newData);
-                          }}
-                        />
-                      </td>
-                      <td>
-                        <input
-                          value={item.obtainedValue.maximum}
-                          onChange={(e) => {
-                            const newData = [...reviewODP6];
-                            newData[index].obtainedValue.maximum= e.target.value;
-                            setReviewODP6(newData);
-                          }}
-                        />
-                      </td>
-                      <td>
-                        <input
-                          value={item.compliesNotComplies}
-                          onChange={(e) => {
-                            const newData = [...reviewODP6];
-                            newData[index].compliesNotComplies = e.target.value;
-                            setReviewODP6(newData);
-                          }}
-                        />
-                      </td>
-                    </tr>
+                        <td>{index + 1}</td>
+                        <td>
+                          <input
+                            value={item.testsParameter}
+                            onChange={(e) => {
+                              const newData = [...reviewODP6];
+                              newData[index].testsParameter = e.target.value;
+                              setReviewODP6(newData);
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.stage}
+                            onChange={(e) => {
+                              const newData = [...reviewODP6];
+                              newData[index].stage = e.target.value;
+                              setReviewODP6(newData);
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.specificationLimit}
+                            onChange={(e) => {
+                              const newData = [...reviewODP6];
+                              newData[index].specificationLimit = e.target.value;
+                              setReviewODP6(newData);
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.obtainedValue.minimum}
+                            onChange={(e) => {
+                              const newData = [...reviewODP6];
+                              newData[index].obtainedValue.minimum = e.target.value;
+                              setReviewODP6(newData);
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.obtainedValue.maximum}
+                            onChange={(e) => {
+                              const newData = [...reviewODP6];
+                              newData[index].obtainedValue.maximum = e.target.value;
+                              setReviewODP6(newData);
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.compliesNotComplies}
+                            onChange={(e) => {
+                              const newData = [...reviewODP6];
+                              newData[index].compliesNotComplies = e.target.value;
+                              setReviewODP6(newData);
+                            }}
+                          />
+                        </td>
+                      </tr>
                     );
                   })}
                 </tbody>
@@ -5211,68 +5681,68 @@ export default function APQR() {
                   {reviewODP7.map((item, index) => {
                     return (
                       <tr key={index}>
-                      <td>{index + 1}</td>
-                      <td>
-                        <input
-                          value={item.testsParameter}
-                          onChange={(e) => {  
-                            const newData = [...reviewODP7];
-                            newData[index].testsParameter = e.target.value;
-                            setReviewODP7(newData);
-                          }}
-                        />
-                      </td>
-                      <td>
-                        <input
-                          value={item.stage}
-                          onChange={(e) => {
-                            const newData = [...reviewODP7];
-                            newData[index].stage = e.target.value;
-                            setReviewODP7(newData);
-                          }}
-                        />
-                      </td>
-                      <td>
-                        <input
-                          value={item.specificationLimit}
-                          onChange={(e) => {
-                            const newData = [...reviewODP7];
-                            newData[index].specificationLimit = e.target.value;
-                            setReviewODP7(newData);
-                          }}
-                        />
-                      </td>
-                      <td>
-                        <input
-                          value={item.obtainedValue.minimum}
-                          onChange={(e) => {
-                            const newData = [...reviewODP7];
-                            newData[index].obtainedValue.minimum = e.target.value;
-                            setReviewODP7(newData);
-                          }}
-                        />
-                      </td>
-                      <td>
-                        <input
-                          value={item.obtainedValue.maximum}
-                          onChange={(e) => {
-                            const newData = [...reviewODP7];
-                            newData[index].obtainedValue.maximum= e.target.value;
-                            setReviewODP7(newData);
-                          }}
-                        />
-                      </td>
-                      <td>
-                        <input
-                          value={item.compliesNotComplies}
-                          onChange={(e) => {
-                            const newData = [...reviewODP10];
-                            newData[index].compliesNotComplies = e.target.value;
-                            setReviewODP10(newData);
-                          }}
-                        />
-                      </td>
-                    </tr>
+                        <td>{index + 1}</td>
+                        <td>
+                          <input
+                            value={item.testsParameter}
+                            onChange={(e) => {
+                              const newData = [...reviewODP7];
+                              newData[index].testsParameter = e.target.value;
+                              setReviewODP7(newData);
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.stage}
+                            onChange={(e) => {
+                              const newData = [...reviewODP7];
+                              newData[index].stage = e.target.value;
+                              setReviewODP7(newData);
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.specificationLimit}
+                            onChange={(e) => {
+                              const newData = [...reviewODP7];
+                              newData[index].specificationLimit = e.target.value;
+                              setReviewODP7(newData);
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.obtainedValue.minimum}
+                            onChange={(e) => {
+                              const newData = [...reviewODP7];
+                              newData[index].obtainedValue.minimum = e.target.value;
+                              setReviewODP7(newData);
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.obtainedValue.maximum}
+                            onChange={(e) => {
+                              const newData = [...reviewODP7];
+                              newData[index].obtainedValue.maximum = e.target.value;
+                              setReviewODP7(newData);
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.compliesNotComplies}
+                            onChange={(e) => {
+                              const newData = [...reviewODP10];
+                              newData[index].compliesNotComplies = e.target.value;
+                              setReviewODP10(newData);
+                            }}
+                          />
+                        </td>
+                      </tr>
                     );
                   })}
                 </tbody>
@@ -5312,68 +5782,68 @@ export default function APQR() {
                   {reviewODP8.map((item, index) => {
                     return (
                       <tr key={index}>
-                      <td>{index + 1}</td>
-                      <td>
-                        <input
-                          value={item.testsParameter}
-                          onChange={(e) => {  
-                            const newData = [...reviewODP8];
-                            newData[index].testsParameter = e.target.value;
-                            setReviewODP8(newData);
-                          }}
-                        />
-                      </td>
-                      <td>
-                        <input
-                          value={item.stage}
-                          onChange={(e) => {
-                            const newData = [...reviewODP8];
-                            newData[index].stage = e.target.value;
-                            setReviewODP8(newData);
-                          }}
-                        />
-                      </td>
-                      <td>
-                        <input
-                          value={item.specificationLimit}
-                          onChange={(e) => {
-                            const newData = [...reviewODP8];
-                            newData[index].specificationLimit = e.target.value;
-                            setReviewODP8(newData);
-                          }}
-                        />
-                      </td>
-                      <td>
-                        <input
-                          value={item.obtainedValue.minimum}
-                          onChange={(e) => {
-                            const newData = [...reviewODP8];
-                            newData[index].obtainedValue.minimum = e.target.value;
-                            setReviewODP8(newData);
-                          }}
-                        />
-                      </td>
-                      <td>
-                        <input
-                          value={item.obtainedValue.maximum}
-                          onChange={(e) => {
-                            const newData = [...reviewODP8];
-                            newData[index].obtainedValue.maximum= e.target.value;
-                            setReviewODP8(newData);
-                          }}
-                        />
-                      </td>
-                      <td>
-                        <input
-                          value={item.compliesNotComplies}
-                          onChange={(e) => {
-                            const newData = [...reviewODP8];
-                            newData[index].compliesNotComplies = e.target.value;
-                            setReviewODP8(newData);
-                          }}
-                        />
-                      </td>
-                    </tr>
+                        <td>{index + 1}</td>
+                        <td>
+                          <input
+                            value={item.testsParameter}
+                            onChange={(e) => {
+                              const newData = [...reviewODP8];
+                              newData[index].testsParameter = e.target.value;
+                              setReviewODP8(newData);
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.stage}
+                            onChange={(e) => {
+                              const newData = [...reviewODP8];
+                              newData[index].stage = e.target.value;
+                              setReviewODP8(newData);
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.specificationLimit}
+                            onChange={(e) => {
+                              const newData = [...reviewODP8];
+                              newData[index].specificationLimit = e.target.value;
+                              setReviewODP8(newData);
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.obtainedValue.minimum}
+                            onChange={(e) => {
+                              const newData = [...reviewODP8];
+                              newData[index].obtainedValue.minimum = e.target.value;
+                              setReviewODP8(newData);
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.obtainedValue.maximum}
+                            onChange={(e) => {
+                              const newData = [...reviewODP8];
+                              newData[index].obtainedValue.maximum = e.target.value;
+                              setReviewODP8(newData);
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.compliesNotComplies}
+                            onChange={(e) => {
+                              const newData = [...reviewODP8];
+                              newData[index].compliesNotComplies = e.target.value;
+                              setReviewODP8(newData);
+                            }}
+                          />
+                        </td>
+                      </tr>
                     );
                   })}
                 </tbody>
@@ -5413,68 +5883,68 @@ export default function APQR() {
                   {reviewODP9.map((item, index) => {
                     return (
                       <tr key={index}>
-                      <td>{index + 1}</td>
-                      <td>
-                        <input
-                          value={item.testsParameter}
-                          onChange={(e) => {  
-                            const newData = [...reviewODP9];
-                            newData[index].testsParameter = e.target.value;
-                            setReviewODP9(newData);
-                          }}
-                        />
-                      </td>
-                      <td>
-                        <input
-                          value={item.stage}
-                          onChange={(e) => {
-                            const newData = [...reviewODP9];
-                            newData[index].stage = e.target.value;
-                            setReviewODP9(newData);
-                          }}
-                        />
-                      </td>
-                      <td>
-                        <input
-                          value={item.specificationLimit}
-                          onChange={(e) => {
-                            const newData = [...reviewODP9];
-                            newData[index].specificationLimit = e.target.value;
-                            setReviewODP9(newData);
-                          }}
-                        />
-                      </td>
-                      <td>
-                        <input
-                          value={item.obtainedValue.minimum}
-                          onChange={(e) => {
-                            const newData = [...reviewODP9];
-                            newData[index].obtainedValue.minimum = e.target.value;
-                            setReviewODP9(newData);
-                          }}
-                        />
-                      </td>
-                      <td>
-                        <input
-                          value={item.obtainedValue.maximum}
-                          onChange={(e) => {
-                            const newData = [...reviewODP9];
-                            newData[index].obtainedValue.maximum= e.target.value;
-                            setReviewODP9(newData);
-                          }}
-                        />
-                      </td>
-                      <td>
-                        <input
-                          value={item.compliesNotComplies}
-                          onChange={(e) => {
-                            const newData = [...reviewODP9];
-                            newData[index].compliesNotComplies = e.target.value;
-                            setReviewODP9(newData);
-                          }}
-                        />
-                      </td>
-                    </tr>
+                        <td>{index + 1}</td>
+                        <td>
+                          <input
+                            value={item.testsParameter}
+                            onChange={(e) => {
+                              const newData = [...reviewODP9];
+                              newData[index].testsParameter = e.target.value;
+                              setReviewODP9(newData);
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.stage}
+                            onChange={(e) => {
+                              const newData = [...reviewODP9];
+                              newData[index].stage = e.target.value;
+                              setReviewODP9(newData);
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.specificationLimit}
+                            onChange={(e) => {
+                              const newData = [...reviewODP9];
+                              newData[index].specificationLimit = e.target.value;
+                              setReviewODP9(newData);
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.obtainedValue.minimum}
+                            onChange={(e) => {
+                              const newData = [...reviewODP9];
+                              newData[index].obtainedValue.minimum = e.target.value;
+                              setReviewODP9(newData);
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.obtainedValue.maximum}
+                            onChange={(e) => {
+                              const newData = [...reviewODP9];
+                              newData[index].obtainedValue.maximum = e.target.value;
+                              setReviewODP9(newData);
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.compliesNotComplies}
+                            onChange={(e) => {
+                              const newData = [...reviewODP9];
+                              newData[index].compliesNotComplies = e.target.value;
+                              setReviewODP9(newData);
+                            }}
+                          />
+                        </td>
+                      </tr>
                     );
                   })}
                 </tbody>
@@ -5518,7 +5988,7 @@ export default function APQR() {
                         <td>
                           <input
                             value={item.testsParameter}
-                            onChange={(e) => {  
+                            onChange={(e) => {
                               const newData = [...reviewODP10];
                               newData[index].testsParameter = e.target.value;
                               setReviewODP10(newData);
@@ -5560,7 +6030,7 @@ export default function APQR() {
                             value={item.obtainedValue.maximum}
                             onChange={(e) => {
                               const newData = [...reviewODP10];
-                              newData[index].obtainedValue.maximum= e.target.value;
+                              newData[index].obtainedValue.maximum = e.target.value;
                               setReviewODP10(newData);
                             }}
                           />
@@ -5583,7 +6053,7 @@ export default function APQR() {
             </div>
             <div>
               <h4 className="gridName mt-5">Summary</h4>
-              <TinyEditor />
+              <TinyEditor editorContent={tiny30} setEditorContent={setTinyContent} tinyNo={30} />
             </div>
             <div className="sub-head">Review of Drug Product –Finished Product Test Results</div>
             <div>
@@ -5634,8 +6104,7 @@ export default function APQR() {
                             value={item.specificationLimit}
                             onChange={(e) => {
                               const newData = [...reviewODPFPTR];
-                              newData[index].specificationLimit =
-                                e.target.value;
+                              newData[index].specificationLimit = e.target.value;
                               setReviewODPFPTR(newData);
                             }}
                           />
@@ -5645,8 +6114,7 @@ export default function APQR() {
                             value={item.obtainedValue.minimum}
                             onChange={(e) => {
                               const newData = [...reviewODPFPTR];
-                              newData[index].obtainedValue.minimum =
-                                e.target.value;
+                              newData[index].obtainedValue.minimum = e.target.value;
                               setReviewODPFPTR(newData);
                             }}
                           />
@@ -5656,8 +6124,7 @@ export default function APQR() {
                             value={item.obtainedValue.maximum}
                             onChange={(e) => {
                               const newData = [...reviewODPFPTR];
-                              newData[index].obtainedValue.maximum =
-                                e.target.value;
+                              newData[index].obtainedValue.maximum = e.target.value;
                               setReviewODPFPTR(newData);
                             }}
                           />
@@ -5667,8 +6134,7 @@ export default function APQR() {
                             value={item.compliesNotComplies}
                             onChange={(e) => {
                               const newData = [...reviewODPFPTR];
-                              newData[index].compliesNotComplies =
-                                e.target.value;
+                              newData[index].compliesNotComplies = e.target.value;
                               setReviewODPFPTR(newData);
                             }}
                           />
@@ -5681,7 +6147,7 @@ export default function APQR() {
             </div>
             <div>
               <h4 className="gridName mt-5">Summary</h4>
-              <TinyEditor />
+              <TinyEditor editorContent={tiny31} setEditorContent={setTinyContent} tinyNo={31} />
             </div>
             <div className="sub-head">Summary of Ongoing Stability Studies</div>
             <div>
@@ -5759,8 +6225,7 @@ export default function APQR() {
                             value={item.stabilityProtocolNo}
                             onChange={(e) => {
                               const newData = [...summaryOOSS];
-                              newData[index].stabilityProtocolNo =
-                                e.target.value;
+                              newData[index].stabilityProtocolNo = e.target.value;
                               setSummaryOOSS(newData);
                             }}
                           />
@@ -5772,7 +6237,7 @@ export default function APQR() {
               </table>
               <div>
                 <h4 className="gridName mt-5">Summary</h4>
-                <TinyEditor />
+                <TinyEditor editorContent={tiny32} setEditorContent={setTinyContent} tinyNo={32} />
               </div>
 
               <h4 className="gridName pt-4">Stability Study Related OOS/OOT</h4>
@@ -5818,8 +6283,7 @@ export default function APQR() {
                             value={item.testingIntervalMonths}
                             onChange={(e) => {
                               const newData = [...stabilitySR];
-                              newData[index].testingIntervalMonths =
-                                e.target.value;
+                              newData[index].testingIntervalMonths = e.target.value;
                               setStabilitySR(newData);
                             }}
                           />
@@ -5841,11 +6305,9 @@ export default function APQR() {
               </table>
 
               <h4 className="gridName">Summary</h4>
-              <TinyEditor />
+              <TinyEditor editorContent={tiny33} setEditorContent={setTinyContent} tinyNo={33} />
 
-              <div className="sub-head">
-                Review of Visual Inspection – Reserve Samples
-              </div>
+              <div className="sub-head">Review of Visual Inspection – Reserve Samples</div>
               <div>
                 {/* <div className="AddRows d-flex">
                   <MdNoteAdd onClick={addreviewOVIRSRow} />
@@ -5958,28 +6420,34 @@ export default function APQR() {
                 </table>
               </div>
               <h4 className="gridName mt-4">Summary</h4>
-              <TinyEditor />
+              <TinyEditor editorContent={tiny34} setEditorContent={setTinyContent} tinyNo={34} />
+
               <h4 className="gridName pt-4">Review of Analytical Method Validations</h4>
-              <TinyEditor />
+              <TinyEditor editorContent={tiny35} setEditorContent={setTinyContent} tinyNo={35} />
+
               <h4 className="gridName pt-4">Review of Contract Testing Laboratories</h4>
-              <TinyEditor />
+              <TinyEditor editorContent={tiny36} setEditorContent={setTinyContent} tinyNo={36} />
+
               <h4 className="gridName pt-4">
                 Review of Environmental Monitoring Trend and water trends Reports
               </h4>
-              <TinyEditor />
+              <TinyEditor editorContent={tiny37} setEditorContent={setTinyContent} tinyNo={37} />
+
               <h4 className="gridName pt-4">Laboratory Review Summary</h4>
-              <TinyEditor />
+              <TinyEditor editorContent={tiny38} setEditorContent={setTinyContent} tinyNo={38} />
             </div>
           </div>
         ) : null}
         {tab === "EAMR" ? (
           <div>
             <h4 className="gridName">Preventive Maintenance Details</h4>
-            <TinyEditor />
+            <TinyEditor editorContent={tiny39} setEditorContent={setTinyContent} tinyNo={39} />
+
             <h4 className="gridName pt-4"> Qualification details</h4>
-            <TinyEditor />
+            <TinyEditor editorContent={tiny40} setEditorContent={setTinyContent} tinyNo={40} />
+
             <h4 className="gridName pt-4"> Calibration Details</h4>
-            <TinyEditor />
+            <TinyEditor editorContent={tiny41} setEditorContent={setTinyContent} tinyNo={41} />
 
             <div className="sub-head">HVAC Qualification Status</div>
             <div>
@@ -6049,7 +6517,7 @@ export default function APQR() {
             </div>
             <div>
               <h4 className="gridName mt-5">Summary</h4>
-              <TinyEditor />
+              <TinyEditor editorContent={tiny42} setEditorContent={setTinyContent} tinyNo={42} />
             </div>
 
             <h4 className="gridName pt-4">Sanitization and Sterilization Details of Utilities</h4>
@@ -6118,7 +6586,7 @@ export default function APQR() {
               </table>
             </div>
             <h4 className="gridName pt-4">Summary</h4>
-            <TinyEditor />
+            <TinyEditor editorContent={tiny43} setEditorContent={setTinyContent} tinyNo={43} />
 
             <h4 className="gridName pt-4">Compressed Gases</h4>
             <div>
@@ -6203,7 +6671,7 @@ export default function APQR() {
               </table>
             </div>
             <h4 className="gridName pt-4">Engineering Summary</h4>
-            <TinyEditor />
+            <TinyEditor editorContent={tiny44} setEditorContent={setTinyContent} tinyNo={44} />
           </div>
         ) : null}
         {tab === "QSR" ? (
@@ -6263,8 +6731,7 @@ export default function APQR() {
                             value={item.qualityRelatedNotification.no}
                             onChange={(e) => {
                               const newData = [...currentRPQRN];
-                              newData[index].qualityRelatedNotification.no =
-                                e.target.value;
+                              newData[index].qualityRelatedNotification.no = e.target.value;
                               setCurrentRPQRN(newData);
                             }}
                           />
@@ -6275,9 +6742,7 @@ export default function APQR() {
                             value={item.qualityRelatedNotification.description}
                             onChange={(e) => {
                               const newData = [...currentRPQRN];
-                              newData[
-                                index
-                              ].qualityRelatedNotification.description =
+                              newData[index].qualityRelatedNotification.description =
                                 e.target.value;
                               setCurrentRPQRN(newData);
                             }}
@@ -6289,8 +6754,7 @@ export default function APQR() {
                             value={item.qualityRelatedNotification.impact}
                             onChange={(e) => {
                               const newData = [...currentRPQRN];
-                              newData[index].qualityRelatedNotification.impact =
-                                e.target.value;
+                              newData[index].qualityRelatedNotification.impact = e.target.value;
                               setCurrentRPQRN(newData);
                             }}
                           />
@@ -6301,8 +6765,7 @@ export default function APQR() {
                             value={item.qualityRelatedNotification.status}
                             onChange={(e) => {
                               const newData = [...currentRPQRN];
-                              newData[index].qualityRelatedNotification.status =
-                                e.target.value;
+                              newData[index].qualityRelatedNotification.status = e.target.value;
                               setCurrentRPQRN(newData);
                             }}
                           />
@@ -6312,8 +6775,7 @@ export default function APQR() {
                             value={item.cAPA.descriptionNo}
                             onChange={(e) => {
                               const newData = [...currentRPQRN];
-                              newData[index].cAPA.descriptionNo =
-                                e.target.value;
+                              newData[index].cAPA.descriptionNo = e.target.value;
                               setCurrentRPQRN(newData);
                             }}
                           />
@@ -6346,15 +6808,22 @@ export default function APQR() {
               </table>
             </div>
             <h4 className="gridName pt-4">previous Review Period Quality Related Notification</h4>
-            <TinyEditor />
+            <TinyEditor editorContent={tiny45} setEditorContent={setTinyContent} tinyNo={45} />
+
             <h4 className="gridName pt-4">Review of Product Recalls</h4>
-            <TinyEditor /> <h4 className="gridName pt-4">Review of Returned Products</h4>
-            <TinyEditor /> <h4 className="gridName pt-4">Review of Salvaged Drugs</h4>
-            <TinyEditor /> <h4 className="gridName pt-4">Review of previous PQR recommendations</h4>
-            <TinyEditor /> <h4 className="gridName pt-4">Review of Quality Agreements</h4>
-            <TinyEditor /> <h4 className="gridName pt-4">Review of Manufacturing Authorizations</h4>
-            <TinyEditor /> <h4 className="gridName pt-4">Review of Open Validations</h4>
-            <TinyEditor />
+            <TinyEditor editorContent={tiny46} setEditorContent={setTinyContent} tinyNo={46} />
+            <h4 className="gridName pt-4">Review of Returned Products</h4>
+            <TinyEditor editorContent={tiny47} setEditorContent={setTinyContent} tinyNo={47} />
+            <h4 className="gridName pt-4">Review of Salvaged Drugs</h4>
+            <TinyEditor editorContent={tiny48} setEditorContent={setTinyContent} tinyNo={48} />
+            <h4 className="gridName pt-4">Review of previous PQR recommendations</h4>
+            <TinyEditor editorContent={tiny49} setEditorContent={setTinyContent} tinyNo={49} />
+            <h4 className="gridName pt-4">Review of Quality Agreements</h4>
+            <TinyEditor editorContent={tiny50} setEditorContent={setTinyContent} tinyNo={50} />
+            <h4 className="gridName pt-4">Review of Manufacturing Authorizations</h4>
+            <TinyEditor editorContent={tiny51} setEditorContent={setTinyContent} tinyNo={51} />
+            <h4 className="gridName pt-4">Review of Open Validations</h4>
+            <TinyEditor editorContent={tiny52} setEditorContent={setTinyContent} tinyNo={52} />
           </div>
         ) : null}
         {tab === "RR" ? (
@@ -6436,7 +6905,7 @@ export default function APQR() {
 
               <div>
                 <h4 className="gridName mt-5">Summary</h4>
-                <TinyEditor />
+                <TinyEditor editorContent={tiny53} setEditorContent={setTinyContent} tinyNo={53} />
               </div>
 
               <div className="gridName">New marketing authorisation</div>
@@ -6484,8 +6953,7 @@ export default function APQR() {
                               value={item.descriptionOfPacking}
                               onChange={(e) => {
                                 const newData = [...dossierRRNma];
-                                newData[index].descriptionOfPacking =
-                                  e.target.value;
+                                newData[index].descriptionOfPacking = e.target.value;
                                 setDossierRRNma(newData);
                               }}
                             />
@@ -6495,8 +6963,7 @@ export default function APQR() {
                               value={item.dateOfApplication}
                               onChange={(e) => {
                                 const newData = [...dossierRRNma];
-                                newData[index].dateOfApplication =
-                                  e.target.value;
+                                newData[index].dateOfApplication = e.target.value;
                                 setDossierRRNma(newData);
                               }}
                             />
@@ -6506,8 +6973,7 @@ export default function APQR() {
                               value={item.statusOfApplication}
                               onChange={(e) => {
                                 const newData = [...dossierRRNma];
-                                newData[index].statusOfApplication =
-                                  e.target.value;
+                                newData[index].statusOfApplication = e.target.value;
                                 setDossierRRNma(newData);
                               }}
                             />
@@ -6517,8 +6983,7 @@ export default function APQR() {
                               value={item.dateOfAuthorization}
                               onChange={(e) => {
                                 const newData = [...dossierRRNma];
-                                newData[index].dateOfAuthorization =
-                                  e.target.value;
+                                newData[index].dateOfAuthorization = e.target.value;
                                 setDossierRRNma(newData);
                               }}
                             />
@@ -6540,7 +7005,11 @@ export default function APQR() {
                 </table>
                 <div>
                   <h4 className="gridName mt-5">Summary</h4>
-                  <TinyEditor />
+                  <TinyEditor
+                    editorContent={tiny54}
+                    setEditorContent={setTinyContent}
+                    tinyNo={54}
+                  />
                 </div>
               </div>
             </div>
@@ -6550,7 +7019,7 @@ export default function APQR() {
           <>
             <div>
               <h4 className="gridName">Recommendations Summary</h4>
-              <TinyEditor />
+              <TinyEditor editorContent={tiny55} setEditorContent={setTinyContent} tinyNo={55} />
             </div>
           </>
         ) : null}
@@ -6578,7 +7047,7 @@ export default function APQR() {
               </div> */}
             <div>
               <h4 className="gridName">Discussion Evaluation and Conclusion</h4>
-              <TinyEditor />
+              <TinyEditor editorContent={tiny56} setEditorContent={setTinyContent} tinyNo={56} />
             </div>
           </>
         ) : null}
@@ -6587,83 +7056,83 @@ export default function APQR() {
             <div className="container">
               <div>
                 <h4 className="gridName">Annexure 1</h4>
-                <TinyEditor />
+                <TinyEditor editorContent={tiny57} setEditorContent={setTinyContent} tinyNo={57} />
               </div>
               <div>
                 <h4 className="gridName">Annexure 2</h4>
-                <TinyEditor />
+                <TinyEditor editorContent={tiny58} setEditorContent={setTinyContent} tinyNo={58} />
               </div>
               <div>
                 <h4 className="gridName">Annexure 3</h4>
-                <TinyEditor />
+                <TinyEditor editorContent={tiny59} setEditorContent={setTinyContent} tinyNo={59} />
               </div>
               <div>
                 <h4 className="gridName">Annexure 4</h4>
-                <TinyEditor />
+                <TinyEditor editorContent={tiny60} setEditorContent={setTinyContent} tinyNo={60} />
               </div>
               <div>
                 <h4 className="gridName">Annexure 5</h4>
-                <TinyEditor />
+                <TinyEditor editorContent={tiny61} setEditorContent={setTinyContent} tinyNo={61} />
               </div>
               <div>
                 <h4 className="gridName">Annexure 6</h4>
-                <TinyEditor />
+                <TinyEditor editorContent={tiny62} setEditorContent={setTinyContent} tinyNo={62} />
               </div>
               <div>
                 <h4 className="gridName">Annexure 7</h4>
-                <TinyEditor />
+                <TinyEditor editorContent={tiny63} setEditorContent={setTinyContent} tinyNo={63} />
               </div>
               <div>
                 <h4 className="gridName">Annexure 8</h4>
-                <TinyEditor />
+                <TinyEditor editorContent={tiny64} setEditorContent={setTinyContent} tinyNo={64} />
               </div>
               <div>
                 <h4 className="gridName">Annexure 9</h4>
-                <TinyEditor />
+                <TinyEditor editorContent={tiny65} setEditorContent={setTinyContent} tinyNo={65} />
               </div>
               <div>
                 <h4 className="gridName">Annexure 10</h4>
-                <TinyEditor />
+                <TinyEditor editorContent={tiny66} setEditorContent={setTinyContent} tinyNo={66} />
               </div>
               <div>
                 <h4 className="gridName">Annexure 11</h4>
-                <TinyEditor />
+                <TinyEditor editorContent={tiny67} setEditorContent={setTinyContent} tinyNo={67} />
               </div>
               <div>
                 <h4 className="gridName">Annexure 12</h4>
-                <TinyEditor />
+                <TinyEditor editorContent={tiny68} setEditorContent={setTinyContent} tinyNo={68} />
               </div>
               <div>
                 <h4 className="gridName">Annexure 13</h4>
-                <TinyEditor />
+                <TinyEditor editorContent={tiny69} setEditorContent={setTinyContent} tinyNo={69} />
               </div>
               <div>
                 <h4 className="gridName">Annexure 14</h4>
-                <TinyEditor />
+                <TinyEditor editorContent={tiny70} setEditorContent={setTinyContent} tinyNo={70} />
               </div>
               <div>
                 <h4 className="gridName">Annexure 15</h4>
-                <TinyEditor />
+                <TinyEditor editorContent={tiny71} setEditorContent={setTinyContent} tinyNo={71} />
               </div>
               <div>
                 <h4 className="gridName">Annexure 16</h4>
-                <TinyEditor />
+                <TinyEditor editorContent={tiny72} setEditorContent={setTinyContent} tinyNo={72} />
               </div>
               <div>
                 <h4 className="gridName">Annexure 17</h4>
-                <TinyEditor />
+                <TinyEditor editorContent={tiny73} setEditorContent={setTinyContent} tinyNo={73} />
               </div>
               <div>
                 <h4 className="gridName">Annexure 18</h4>
-                <TinyEditor />
+                <TinyEditor editorContent={tiny74} setEditorContent={setTinyContent} tinyNo={74} />
               </div>
               <div>
                 <h4 className="gridName">Annexure 19</h4>
-                <TinyEditor />
+                <TinyEditor editorContent={tiny75} setEditorContent={setTinyContent} tinyNo={75} />
               </div>
               <div>
                 <h4 className="gridName">Annexure 20</h4>
-                <TinyEditor />
+                <TinyEditor editorContent={tiny76} setEditorContent={setTinyContent} tinyNo={76} />
               </div>
             </div>
           </>
@@ -6685,7 +7154,7 @@ export default function APQR() {
           "
             onClick={() => {
               dispatch(addForm(pQRData));
-              navigate('/dashboard')
+              navigate("/dashboard");
             }}
           >
             Save
