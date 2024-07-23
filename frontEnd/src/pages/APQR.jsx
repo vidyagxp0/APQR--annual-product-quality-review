@@ -530,6 +530,8 @@ export default function APQR() {
   );
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  console.log("oolResults",pQRData)
+
   useEffect(() => {
     setPQRData({
       productCodes: productCodes,
@@ -971,6 +973,18 @@ export default function APQR() {
     setManufacturingSD([...manufacturingSD, newRow]);
   };
 
+  const addCapaDetailsRow=()=>{
+    const newRow={
+      ARNo:"",
+      capaType:"",
+      descriptionOfIssue:"",
+      rootCause:"",
+      capaVerification:"",
+      fileAttachment:"",
+      remarks:""
+    }
+    setCapaDetails([...capaDetails,newRow])
+  }
   const addBufferFSDPVRow = () => {
     const newRow = {
       criticalProcessParameter: "",
@@ -993,18 +1007,7 @@ export default function APQR() {
     setOosDetails([...oosDetails, newRow]);
   };
 
-  const capaDetailsRow = () => {
-    const newRow = {
-      ARNo: "",
-      capaType: "",
-      descriptionOfIssue: "",
-      rootCause: "",
-      capaVerification: "",
-      chooseFile: "",
-      remarks: "",
-    };
-    setCapaDetails([...capaDetails, newRow]);
-  };
+  
   const deviationDetailsRow = () => {
     const newRow = {
       ARNo: "",
@@ -2780,7 +2783,7 @@ export default function APQR() {
               </div> */}
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
-                  <MdNoteAdd onClick={capaDetailsRow} />
+                  <MdNoteAdd onClick={addCapaDetailsRow} />
                   <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
                 </div>
                 <div className="flex gap-4 ">
@@ -3396,25 +3399,60 @@ export default function APQR() {
                     return (
                       <tr key={index}>
                         <td>
-                          <input />
+                           <input value={item.ARNo}
+                            onChange={(e) => {
+                              const newData = [...oolResults];
+                              newData[index].ARNo = e.target.value;
+                              setOolResults(newData);
+                            }}/>
                         </td>
                         <td>
-                          <input />
+                           <input value={item.testNameOfOot}
+                            onChange={(e) => {
+                            const newData = [...oolResults];
+                            newData[index].testNameOfOot = e.target.value;
+                            setOolResults(newData);
+                            }}/>
                         </td>
                         <td>
-                          <input />
+                           <input value={item.resultsObtained}
+                            onChange={(e) => {
+                            const newData = [...oolResults];
+                            newData[index].resultsObtained = e.target.value;
+                            setOolResults(newData);
+                            }}/>
                         </td>
                         <td>
-                          <input />
+                        <input value={item.initialIntervalDetails}
+                            onChange={(e) => {
+                            const newData = [...oolResults];
+                            newData[index].initialIntervalDetails = e.target.value;
+                            setOolResults(newData);
+                            }}/>
                         </td>
                         <td>
-                          <input />
+                        <input value={item.previousIntervalDetails}
+                            onChange={(e) => {
+                            const newData = [...oolResults];
+                            newData[index].previousIntervalDetails = e.target.value;
+                            setOolResults(newData);
+                            }}/>
                         </td>
                         <td>
-                          <input />
+                        <input value={item.diffrenceOfResult}
+                            onChange={(e) => {
+                            const newData = [...oolResults];
+                            newData[index].diffrenceOfResult = e.target.value;
+                            setOolResults(newData);
+                            }}/>
                         </td>{" "}
                         <td>
-                          <input />
+                        <input value={item.trendLimit}
+                            onChange={(e) => {
+                            const newData = [...oolResults];
+                            newData[index].trendLimit = e.target.value;
+                            setOolResults(newData);
+                            }}/>
                         </td>
                       </tr>
                     );
@@ -3445,59 +3483,77 @@ export default function APQR() {
                   <ExcelExport data={balanceSheet} fileName="balance-sheet-summary.xlsx" />
                 </div>
               </div>
-              <table className="mb-4">
-                <thead>
-                  <tr>
-                    <th>AR No.</th>
-                    <th>CAPA Type</th>
-                    <th>Description of Issue</th>
-                    <th>Root Cause</th>
-                    <th>CAPA Verification</th>
-                    <th>File Attachment</th>
-                    <th>Remarks</th>
-                    <th>Submit by</th>
-                    <th>Submit On</th>
-                    <th>
-                      <input type="file" />
-                    </th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {capaDetails.map((item, index) => {
-                    return (
-                      <tr key={index}>
-                        <td>
-                          <input />
-                        </td>
-                        <td>
-                          <input />
-                        </td>
-                        <td>
-                          <input />
-                        </td>
-                        <td>
-                          <input />
-                        </td>
-                        <td>
-                          <input />
-                        </td>
-                        <td>
-                          <input />
-                        </td>
-                        <td>
-                          <input />
-                        </td>{" "}
-                        <td>
-                          <input />
-                        </td>{" "}
-                        <td>
-                          <input />
-                        </td>
-                      </tr>
-                    );
-                  })}
-                </tbody>
-              </table>
+              <table>
+              <thead>
+                <tr>
+                  <th rowSpan={2}>Critical Process Parameters</th>
+                  <th rowSpan={2}>Codes</th>
+                  <th rowSpan={2}>Acceptance criteria</th>
+                  <th colSpan={2}>Results</th>
+                  <th rowSpan={2}>Complies / Does not complies</th>
+                </tr>
+                <tr>
+                  <th>Minimum</th>
+                  <th>Maximum</th>
+                </tr>
+              </thead>
+              <tbody>
+                {bufferFSDPV.map((item, index) => {
+                  return (
+                    <tr key={index}>
+                      <td>
+                           <input value={item.criticalProcessParameter}
+                            onChange={(e) => {
+                            const newData = [...bufferFSDPV];
+                            newData[index].criticalProcessParameter = e.target.value;
+                            setBufferFSDPV(newData);
+                            }}/>
+                      </td>
+                      <td>
+                           <input value={item.codes}
+                            onChange={(e) => {
+                            const newData = [...bufferFSDPV];
+                            newData[index].codes = e.target.value;
+                            setBufferFSDPV(newData);
+                            }}/>
+                      </td>
+                      <td>
+                            <input value={item.acceptanceCriteria}
+                            onChange={(e) => {
+                            const newData = [...bufferFSDPV];
+                            newData[index].acceptanceCriteria = e.target.value;
+                            setBufferFSDPV(newData);
+                            }}/>
+                      </td>
+                      <td>
+                           <input value={item.results.minimum}
+                            onChange={(e) => {
+                            const newData = [...bufferFSDPV];
+                            newData[index].results.minimum = e.target.value;
+                            setBufferFSDPV(newData);
+                            }}/>
+                      </td>
+                      <td>
+                           <input value={item.results.maximum}
+                            onChange={(e) => {
+                            const newData = [...bufferFSDPV];
+                            newData[index].results.maximum = e.target.value;
+                            setBufferFSDPV(newData);
+                            }}/>
+                      </td>
+                      <td>
+                           <input value={item.compliesNotComplies}
+                            onChange={(e) => {
+                            const newData = [...bufferFSDPV];
+                            newData[index].compliesNotComplies = e.target.value;
+                            setBufferFSDPV(newData);
+                            }}/>
+                      </td>
+                    </tr>
+                  );
+                })}
+              </tbody>
+            </table>
             </div>
             <h3 className="gridName pt-4">Unit Operation 2</h3>
             <h4 className="gridName">Manufacturing summary details</h4>
@@ -3532,23 +3588,53 @@ export default function APQR() {
                 {manufacturingSD.map((item, index) => {
                   return (
                     <tr key={index}>
-                      <td>
-                        <input />
+                    <td>
+                            <input value={item.criticalProcessParameter}
+                            onChange={(e) => {
+                            const newData = [...manufacturingSD];
+                            newData[index].criticalProcessParameter = e.target.value;
+                            setManufacturingSD(newData);
+                            }}/>
                       </td>
                       <td>
-                        <input />
+                           <input value={item.codes}
+                            onChange={(e) => {
+                            const newData = [...manufacturingSD];
+                            newData[index].codes = e.target.value;
+                            setManufacturingSD(newData);
+                            }}/>
                       </td>
                       <td>
-                        <input />
+                            <input value={item.acceptanceCriteria}
+                            onChange={(e) => {
+                            const newData = [...manufacturingSD];
+                            newData[index].acceptanceCriteria = e.target.value;
+                            setManufacturingSD(newData);
+                            }}/>
                       </td>
                       <td>
-                        <input />
+                           <input value={item.results.minimum}
+                            onChange={(e) => {
+                            const newData = [...manufacturingSD];
+                            newData[index].results.minimum = e.target.value;
+                            setManufacturingSD(newData);
+                            }}/>
                       </td>
                       <td>
-                        <input />
+                           <input value={item.results.maximum}
+                            onChange={(e) => {
+                            const newData = [...manufacturingSD];
+                            newData[index].results.maximum = e.target.value;
+                            setManufacturingSD(newData);
+                            }}/>
                       </td>
                       <td>
-                        <input />
+                           <input value={item.compliesNotComplies}
+                            onChange={(e) => {
+                            const newData = [...manufacturingSD];
+                            newData[index].compliesNotComplies = e.target.value;
+                            setManufacturingSD(newData);
+                            }}/>
                       </td>
                     </tr>
                   );
@@ -3580,22 +3666,52 @@ export default function APQR() {
                   return (
                     <tr key={index}>
                       <td>
-                        <input />
+                            <input value={item.criticalProcessParameter}
+                            onChange={(e) => {
+                            const newData = [...unitOperation3];
+                            newData[index].criticalProcessParameter = e.target.value;
+                            setUnitOperation3(newData);
+                            }}/>
                       </td>
                       <td>
-                        <input />
+                           <input value={item.codes}
+                            onChange={(e) => {
+                            const newData = [...unitOperation3];
+                            newData[index].codes = e.target.value;
+                            setUnitOperation3(newData);
+                            }}/>
                       </td>
                       <td>
-                        <input />
+                            <input value={item.acceptanceCriteria}
+                            onChange={(e) => {
+                            const newData = [...unitOperation3];
+                            newData[index].acceptanceCriteria = e.target.value;
+                            setUnitOperation3(newData);
+                            }}/>
                       </td>
                       <td>
-                        <input />
+                           <input value={item.results.minimum}
+                            onChange={(e) => {
+                            const newData = [...unitOperation3];
+                            newData[index].results.minimum = e.target.value;
+                            setUnitOperation3(newData);
+                            }}/>
                       </td>
                       <td>
-                        <input />
+                           <input value={item.results.maximum}
+                            onChange={(e) => {
+                            const newData = [...unitOperation3];
+                            newData[index].results.maximum = e.target.value;
+                            setUnitOperation3(newData);
+                            }}/>
                       </td>
                       <td>
-                        <input />
+                           <input value={item.compliesNotComplies}
+                            onChange={(e) => {
+                            const newData = [...unitOperation3];
+                            newData[index].compliesNotComplies = e.target.value;
+                            setUnitOperation3(newData);
+                            }}/>
                       </td>
                     </tr>
                   );
@@ -3626,23 +3742,53 @@ export default function APQR() {
                 {unitOperation4.map((item, index) => {
                   return (
                     <tr key={index}>
-                      <td>
-                        <input />
+                    <td>
+                            <input value={item.criticalProcessParameter}
+                            onChange={(e) => {
+                            const newData = [...unitOperation4];
+                            newData[index].criticalProcessParameter = e.target.value;
+                            setUnitOperation4(newData);
+                            }}/>
                       </td>
                       <td>
-                        <input />
+                           <input value={item.codes}
+                            onChange={(e) => {
+                            const newData = [...unitOperation4];
+                            newData[index].codes = e.target.value;
+                            setUnitOperation4(newData);
+                            }}/>
                       </td>
                       <td>
-                        <input />
+                            <input value={item.acceptanceCriteria}
+                            onChange={(e) => {
+                            const newData = [...unitOperation4];
+                            newData[index].acceptanceCriteria = e.target.value;
+                            setUnitOperation4(newData);
+                            }}/>
                       </td>
                       <td>
-                        <input />
+                           <input value={item.results.minimum}
+                            onChange={(e) => {
+                            const newData = [...unitOperation4];
+                            newData[index].results.minimum = e.target.value;
+                            setUnitOperation4(newData);
+                            }}/>
                       </td>
                       <td>
-                        <input />
+                           <input value={item.results.maximum}
+                            onChange={(e) => {
+                            const newData = [...unitOperation4];
+                            newData[index].results.maximum = e.target.value;
+                            setUnitOperation4(newData);
+                            }}/>
                       </td>
                       <td>
-                        <input />
+                           <input value={item.compliesNotComplies}
+                            onChange={(e) => {
+                            const newData = [...unitOperation4];
+                            newData[index].compliesNotComplies = e.target.value;
+                            setUnitOperation4(newData);
+                            }}/>
                       </td>
                     </tr>
                   );
@@ -3673,23 +3819,53 @@ export default function APQR() {
                 {unitOperation5.map((item, index) => {
                   return (
                     <tr key={index}>
-                      <td>
-                        <input />
+                     <td>
+                            <input value={item.criticalProcessParameter}
+                            onChange={(e) => {
+                            const newData = [...unitOperation5];
+                            newData[index].criticalProcessParameter = e.target.value;
+                            setUnitOperation5(newData);
+                            }}/>
                       </td>
                       <td>
-                        <input />
+                           <input value={item.codes}
+                            onChange={(e) => {
+                            const newData = [...unitOperation5];
+                            newData[index].codes = e.target.value;
+                            setUnitOperation5(newData);
+                            }}/>
                       </td>
                       <td>
-                        <input />
+                            <input value={item.acceptanceCriteria}
+                            onChange={(e) => {
+                            const newData = [...unitOperation5];
+                            newData[index].acceptanceCriteria = e.target.value;
+                            setUnitOperation5(newData);
+                            }}/>
                       </td>
                       <td>
-                        <input />
+                           <input value={item.results.minimum}
+                            onChange={(e) => {
+                            const newData = [...unitOperation5];
+                            newData[index].results.minimum = e.target.value;
+                            setUnitOperation5(newData);
+                            }}/>
                       </td>
                       <td>
-                        <input />
+                           <input value={item.results.maximum}
+                            onChange={(e) => {
+                            const newData = [...unitOperation5];
+                            newData[index].results.maximum = e.target.value;
+                            setUnitOperation5(newData);
+                            }}/>
                       </td>
                       <td>
-                        <input />
+                           <input value={item.compliesNotComplies}
+                            onChange={(e) => {
+                            const newData = [...unitOperation5];
+                            newData[index].compliesNotComplies = e.target.value;
+                            setUnitOperation5(newData);
+                            }}/>
                       </td>
                     </tr>
                   );
@@ -3720,23 +3896,53 @@ export default function APQR() {
                 {unitOperation6.map((item, index) => {
                   return (
                     <tr key={index}>
-                      <td>
-                        <input />
+                    <td>
+                            <input value={item.criticalProcessParameter}
+                            onChange={(e) => {
+                            const newData = [...unitOperation6];
+                            newData[index].criticalProcessParameter = e.target.value;
+                            setUnitOperation6(newData);
+                            }}/>
                       </td>
                       <td>
-                        <input />
+                           <input value={item.codes}
+                            onChange={(e) => {
+                            const newData = [...unitOperation6];
+                            newData[index].codes = e.target.value;
+                            setUnitOperation6(newData);
+                            }}/>
                       </td>
                       <td>
-                        <input />
+                            <input value={item.acceptanceCriteria}
+                            onChange={(e) => {
+                            const newData = [...unitOperation6];
+                            newData[index].acceptanceCriteria = e.target.value;
+                            setUnitOperation6(newData);
+                            }}/>
                       </td>
                       <td>
-                        <input />
+                           <input value={item.results.minimum}
+                            onChange={(e) => {
+                            const newData = [...unitOperation6];
+                            newData[index].results.minimum = e.target.value;
+                            setUnitOperation6(newData);
+                            }}/>
                       </td>
                       <td>
-                        <input />
+                           <input value={item.results.maximum}
+                            onChange={(e) => {
+                            const newData = [...unitOperation6];
+                            newData[index].results.maximum = e.target.value;
+                            setUnitOperation6(newData);
+                            }}/>
                       </td>
                       <td>
-                        <input />
+                           <input value={item.compliesNotComplies}
+                            onChange={(e) => {
+                            const newData = [...unitOperation6];
+                            newData[index].compliesNotComplies = e.target.value;
+                            setUnitOperation6(newData);
+                            }}/>
                       </td>
                     </tr>
                   );
@@ -3767,23 +3973,53 @@ export default function APQR() {
                 {unitOperation7.map((item, index) => {
                   return (
                     <tr key={index}>
-                      <td>
-                        <input />
+                    <td>
+                            <input value={item.criticalProcessParameter}
+                            onChange={(e) => {
+                            const newData = [...unitOperation7];
+                            newData[index].criticalProcessParameter = e.target.value;
+                            setUnitOperation7(newData);
+                            }}/>
                       </td>
                       <td>
-                        <input />
+                           <input value={item.codes}
+                            onChange={(e) => {
+                            const newData = [...unitOperation7];
+                            newData[index].codes = e.target.value;
+                            setUnitOperation7(newData);
+                            }}/>
                       </td>
                       <td>
-                        <input />
+                            <input value={item.acceptanceCriteria}
+                            onChange={(e) => {
+                            const newData = [...unitOperation7];
+                            newData[index].acceptanceCriteria = e.target.value;
+                            setUnitOperation7(newData);
+                            }}/>
                       </td>
                       <td>
-                        <input />
+                           <input value={item.results.minimum}
+                            onChange={(e) => {
+                            const newData = [...unitOperation7];
+                            newData[index].results.minimum = e.target.value;
+                            setUnitOperation7(newData);
+                            }}/>
                       </td>
                       <td>
-                        <input />
+                           <input value={item.results.maximum}
+                            onChange={(e) => {
+                            const newData = [...unitOperation7];
+                            newData[index].results.maximum = e.target.value;
+                            setUnitOperation7(newData);
+                            }}/>
                       </td>
                       <td>
-                        <input />
+                           <input value={item.compliesNotComplies}
+                            onChange={(e) => {
+                            const newData = [...unitOperation7];
+                            newData[index].compliesNotComplies = e.target.value;
+                            setUnitOperation7(newData);
+                            }}/>
                       </td>
                     </tr>
                   );
@@ -3814,23 +4050,53 @@ export default function APQR() {
                 {unitOperation8.map((item, index) => {
                   return (
                     <tr key={index}>
-                      <td>
-                        <input />
+                    <td>
+                            <input value={item.criticalProcessParameter}
+                            onChange={(e) => {
+                            const newData = [...unitOperation8];
+                            newData[index].criticalProcessParameter = e.target.value;
+                            setUnitOperation8(newData);
+                            }}/>
                       </td>
                       <td>
-                        <input />
+                           <input value={item.codes}
+                            onChange={(e) => {
+                            const newData = [...unitOperation8];
+                            newData[index].codes = e.target.value;
+                            setUnitOperation8(newData);
+                            }}/>
                       </td>
                       <td>
-                        <input />
+                            <input value={item.acceptanceCriteria}
+                            onChange={(e) => {
+                            const newData = [...unitOperation8];
+                            newData[index].acceptanceCriteria = e.target.value;
+                            setUnitOperation8(newData);
+                            }}/>
                       </td>
                       <td>
-                        <input />
+                           <input value={item.results.minimum}
+                            onChange={(e) => {
+                            const newData = [...unitOperation8];
+                            newData[index].results.minimum = e.target.value;
+                            setUnitOperation8(newData);
+                            }}/>
                       </td>
                       <td>
-                        <input />
+                           <input value={item.results.maximum}
+                            onChange={(e) => {
+                            const newData = [...unitOperation8];
+                            newData[index].results.maximum = e.target.value;
+                            setUnitOperation8(newData);
+                            }}/>
                       </td>
                       <td>
-                        <input />
+                           <input value={item.compliesNotComplies}
+                            onChange={(e) => {
+                            const newData = [...unitOperation8];
+                            newData[index].compliesNotComplies = e.target.value;
+                            setUnitOperation8(newData);
+                            }}/>
                       </td>
                     </tr>
                   );
@@ -3861,23 +4127,53 @@ export default function APQR() {
                 {unitOperation9.map((item, index) => {
                   return (
                     <tr key={index}>
-                      <td>
-                        <input />
+                    <td>
+                            <input value={item.criticalProcessParameter}
+                            onChange={(e) => {
+                            const newData = [...unitOperation9];
+                            newData[index].criticalProcessParameter = e.target.value;
+                            setUnitOperation9(newData);
+                            }}/>
                       </td>
                       <td>
-                        <input />
+                           <input value={item.codes}
+                            onChange={(e) => {
+                            const newData = [...unitOperation9];
+                            newData[index].codes = e.target.value;
+                            setUnitOperation9(newData);
+                            }}/>
                       </td>
                       <td>
-                        <input />
+                            <input value={item.acceptanceCriteria}
+                            onChange={(e) => {
+                            const newData = [...unitOperation9];
+                            newData[index].acceptanceCriteria = e.target.value;
+                            setUnitOperation9(newData);
+                            }}/>
                       </td>
                       <td>
-                        <input />
+                           <input value={item.results.minimum}
+                            onChange={(e) => {
+                            const newData = [...unitOperation9];
+                            newData[index].results.minimum = e.target.value;
+                            setUnitOperation9(newData);
+                            }}/>
                       </td>
                       <td>
-                        <input />
+                           <input value={item.results.maximum}
+                            onChange={(e) => {
+                            const newData = [...unitOperation9];
+                            newData[index].results.maximum = e.target.value;
+                            setUnitOperation9(newData);
+                            }}/>
                       </td>
                       <td>
-                        <input />
+                           <input value={item.compliesNotComplies}
+                            onChange={(e) => {
+                            const newData = [...unitOperation9];
+                            newData[index].compliesNotComplies = e.target.value;
+                            setUnitOperation9(newData);
+                            }}/>
                       </td>
                     </tr>
                   );
@@ -3908,23 +4204,53 @@ export default function APQR() {
                 {unitOperation10.map((item, index) => {
                   return (
                     <tr key={index}>
-                      <td>
-                        <input />
+                    <td>
+                            <input value={item.criticalProcessParameter}
+                            onChange={(e) => {
+                            const newData = [...unitOperation10];
+                            newData[index].criticalProcessParameter = e.target.value;
+                            setUnitOperation10(newData);
+                            }}/>
                       </td>
                       <td>
-                        <input />
+                           <input value={item.codes}
+                            onChange={(e) => {
+                            const newData = [...unitOperation10];
+                            newData[index].codes = e.target.value;
+                            setUnitOperation10(newData);
+                            }}/>
                       </td>
                       <td>
-                        <input />
+                            <input value={item.acceptanceCriteria}
+                            onChange={(e) => {
+                            const newData = [...unitOperation10];
+                            newData[index].acceptanceCriteria = e.target.value;
+                            setUnitOperation10(newData);
+                            }}/>
                       </td>
                       <td>
-                        <input />
+                           <input value={item.results.minimum}
+                            onChange={(e) => {
+                            const newData = [...unitOperation10];
+                            newData[index].results.minimum = e.target.value;
+                            setUnitOperation10(newData);
+                            }}/>
                       </td>
                       <td>
-                        <input />
+                           <input value={item.results.maximum}
+                            onChange={(e) => {
+                            const newData = [...unitOperation10];
+                            newData[index].results.maximum = e.target.value;
+                            setUnitOperation10(newData);
+                            }}/>
                       </td>
                       <td>
-                        <input />
+                           <input value={item.compliesNotComplies}
+                            onChange={(e) => {
+                            const newData = [...unitOperation10];
+                            newData[index].compliesNotComplies = e.target.value;
+                            setUnitOperation10(newData);
+                            }}/>
                       </td>
                     </tr>
                   );
