@@ -3,10 +3,10 @@ import Header from "../Component/Header";
 import { MdNoteAdd } from "react-icons/md";
 import TinyEditor from "../Component/TinyEditor";
 import ExcelExport from "../Component/Exports/Excel/ExcelExport";
-import ExcelExportImport from "./temp/ImportExportExcel";
 import { useDispatch } from "react-redux";
 import { addForm } from "../redux/formSlice";
 import { useNavigate } from "react-router-dom";
+import ExcelExportImport from "./temp/ImportExportExcel";
 export default function APQR() {
   const [tab, setTab] = useState("GI");
   const balanceSheet = [
@@ -23,111 +23,6 @@ export default function APQR() {
       code: "1044",
       debit: "$650.00",
       credit: "$0.00",
-    },
-    {
-      category: "Assets",
-      account: "Petty Cash",
-      code: "1065",
-      debit: "$0.00",
-      credit: "$91,444.00",
-    },
-    {
-      category: "Assets",
-      account: "Account Receivables",
-      code: "1200",
-      debit: "$0.00",
-      credit: "$8,125.00",
-    },
-    {
-      category: "Assets",
-      account: "Allowance for doubtful accounts",
-      code: "1205",
-      debit: "$0.00",
-      credit: "$1,905.00",
-    },
-    {
-      category: "Assets",
-      account: "Inventory",
-      code: "1510",
-      debit: "$0.00",
-      credit: "$1,550.00",
-    },
-    {
-      category: "Assets",
-      account: "Stock of Raw Materials",
-      code: "1520",
-      debit: "$0.00",
-      credit: "$100.00",
-    },
-    {
-      category: "Assets",
-      account: "Stock of Work In Progress",
-      code: "1530",
-      debit: "$0.00",
-      credit: "$100.00",
-    },
-    {
-      category: "Assets",
-      account: "Land and Buildings",
-      code: "1810",
-      debit: "$0.00",
-      credit: "$150.00",
-    },
-    {
-      category: "Liabilities",
-      account: "Account Payable",
-      code: "2100",
-      debit: "$0.00",
-      credit: "$60.00",
-    },
-    {
-      category: "Liabilities",
-      account: "Deferred Income",
-      code: "2105",
-      debit: "$0.00",
-      credit: "$190.00",
-    },
-    {
-      category: "Liabilities",
-      account: "Accrued Franchise Tax",
-      code: "2130",
-      debit: "$0.00",
-      credit: "$650.00",
-    },
-    {
-      category: "Liabilities",
-      account: "Vat Provision",
-      code: "2140",
-      debit: "$1,500.00",
-      credit: "$0.00",
-    },
-    {
-      category: "Liabilities",
-      account: "Purchase Tax",
-      code: "2145",
-      debit: "$0.00",
-      credit: "$140.00",
-    },
-    {
-      category: "Liabilities",
-      account: "Accrued Holiday Pay",
-      code: "2230",
-      debit: "$0.00",
-      credit: "$140.00",
-    },
-    {
-      category: "Equity",
-      account: "Common Shares",
-      code: "3350",
-      debit: "$0.00",
-      credit: "$0.00",
-    },
-    {
-      category: "Equity",
-      account: "Preferred Shares",
-      code: "1089",
-      debit: "$0.00",
-      credit: "$100.00",
     },
   ];
   const [productCodes, setProductCodes] = useState([""]);
@@ -181,7 +76,6 @@ export default function APQR() {
   const [hVACQStatus, setHVACQStatus] = useState([]);
   const [dossierRR, setDossierRR] = useState([]);
   const [dossierRRNma, setDossierRRNma] = useState([]);
-
   const [sanitizationASDOU, setSanitizationASDOU] = useState([]);
   const [compressedGas, setCompressedGas] = useState([]);
   const [currentRPQRN, setCurrentRPQRN] = useState([]);
@@ -269,7 +163,54 @@ export default function APQR() {
   const [tiny74, setTiny74] = useState("");
   const [tiny75, setTiny75] = useState("");
   const [tiny76, setTiny76] = useState("");
-  
+
+  const sanitizeKey = (key) => {
+    return key.replace(/\s+/g, "").replace(/[\n\r]+/g, "");
+  };
+
+  const trimValue = (value) => {
+    return value ? value.trim() : "";
+  };
+
+  const processData = (data, keyMapping) => {
+    return data.map((item) => {
+      let processedItem = {};
+      for (let originalKey in item) {
+        if (item.hasOwnProperty(originalKey)) {
+          let sanitizedKey = sanitizeKey(originalKey);
+          let newKey = keyMapping[sanitizedKey];
+          if (newKey) {
+            processedItem[newKey] = trimValue(item[originalKey]);
+          }
+        }
+      }
+      return processedItem;
+    });
+  };
+
+  // Define the key mapping
+  const keyMapping = {
+    ProductName: "productName",
+    SFGCode: "sFGCode",
+    FGCode: "fGCode",
+  };
+
+  const setimportedData = (data) => {
+    const processedData = processData(data, keyMapping);
+    switch (data.length) {
+      case 1:
+        setManufacturingStage([...manufacturingStage, ...processedData]);
+        break;
+      case 2:
+        setManufacturingStage([...manufacturingStage, ...processedData]);
+        break;
+      case 3:
+        setManufacturingStage([...manufacturingStage, ...processedData]);
+        break;
+    }
+    setManufacturingStage([...manufacturingStage, ...processedData]);
+  };
+
   const setTinyContent = (data, tinyNO) => {
     switch (tinyNO) {
       case 1:
@@ -502,9 +443,7 @@ export default function APQR() {
         break;
     }
   };
-  // useEffect(() => {
-  //   console.log("tiny1:", tiny1);
-  // }, [tiny1]);
+
   const [pQRData, setPQRData] = useReducer(
     (prev, next) => ({
       ...prev,
@@ -815,6 +754,7 @@ export default function APQR() {
   ]);
 
   // console.log(pQRData);
+
   const addManufacturingStageRow = () => {
     const newRow = {
       productName: "",
@@ -1628,7 +1568,11 @@ export default function APQR() {
                   <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
                 </div>
                 <div className="flex gap-4 ">
-                  <ExcelExport data={balanceSheet} fileName="balance-sheet-summary.xlsx" />
+                  <ExcelExportImport
+                    data={manufacturingStage}
+                    setimportedData={setimportedData}
+                    fileName="manufacturingStage.xlsx"
+                  />
                 </div>
               </div>
               {/* <div className="w-1/2 flex justify-end px-8 py-4">
@@ -1697,7 +1641,11 @@ export default function APQR() {
                   <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
                 </div>
                 <div className="flex gap-4 ">
-                  <ExcelExport data={balanceSheet} fileName="balance-sheet-summary.xlsx" />
+                  <ExcelExportImport
+                    data={manufacturingSAPS}
+                    setimportedData={setimportedData}
+                    fileName="manufacturingSAPS.xlsx"
+                  />
                 </div>
               </div>
               <table>
@@ -1793,7 +1741,11 @@ export default function APQR() {
                     <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
                   </div>
                   <div className="flex gap-4 ">
-                    <ExcelExport data={balanceSheet} fileName="balance-sheet-summary.xlsx" />
+                    <ExcelExportImport
+                      data={rawMRS}
+                      setimportedData={setimportedData}
+                      fileName="rawMRS.xlsx"
+                    />
                   </div>
                 </div>
 
@@ -1886,7 +1838,11 @@ export default function APQR() {
                     <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
                   </div>
                   <div className="flex gap-4 ">
-                    <ExcelExport data={balanceSheet} fileName="balance-sheet-summary.xlsx" />
+                    <ExcelExportImport
+                      data={packingMRS}
+                      setimportedData={setimportedData}
+                      fileName="packingMRS.xlsx"
+                    />
                   </div>
                 </div>
                 <table>
@@ -1981,7 +1937,11 @@ export default function APQR() {
                     <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
                   </div>
                   <div className="flex gap-4 ">
-                    <ExcelExport data={balanceSheet} fileName="balance-sheet-summary.xlsx" />
+                    <ExcelExportImport
+                      data={expiredRMD}
+                      setimportedData={setimportedData}
+                      fileName="expiredRMD.xlsx"
+                    />
                   </div>
                 </div>
                 <table>
@@ -2062,7 +2022,11 @@ export default function APQR() {
                     <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
                   </div>
                   <div className="flex gap-4 ">
-                    <ExcelExport data={balanceSheet} fileName="balance-sheet-summary.xlsx" />
+                    <ExcelExportImport
+                      data={expiredPMD}
+                      setimportedData={setimportedData}
+                      fileName="expiredPMD.xlsx"
+                    />
                   </div>
                 </div>
                 <table>
@@ -2143,7 +2107,11 @@ export default function APQR() {
                   <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
                 </div>
                 <div className="flex gap-4 ">
-                  <ExcelExport data={balanceSheet} fileName="balance-sheet-summary.xlsx" />
+                  <ExcelExportImport
+                    data={reviewOfASL}
+                    setimportedData={setimportedData}
+                    fileName="reviewOfASL.xlsx"
+                  />
                 </div>
               </div>
               <div>
@@ -2224,7 +2192,11 @@ export default function APQR() {
                     <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
                   </div>
                   <div className="flex gap-4 ">
-                    <ExcelExport data={balanceSheet} fileName="balance-sheet-summary.xlsx" />
+                    <ExcelExportImport
+                      data={vendorQDORME}
+                      setimportedData={setimportedData}
+                      fileName="vendorQDORME.xlsx"
+                    />
                   </div>
                 </div>
                 <table>
@@ -2313,7 +2285,11 @@ export default function APQR() {
                     <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
                   </div>
                   <div className="flex gap-4 ">
-                    <ExcelExport data={balanceSheet} fileName="balance-sheet-summary.xlsx" />
+                    <ExcelExportImport
+                      data={vendorQDOPPM}
+                      setimportedData={setimportedData}
+                      fileName="vendorQDOPPM.xlsx"
+                    />
                   </div>
                 </div>
                 <table>
@@ -2392,7 +2368,11 @@ export default function APQR() {
                     <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
                   </div>
                   <div className="flex gap-4 ">
-                    <ExcelExport data={balanceSheet} fileName="balance-sheet-summary.xlsx" />
+                    <ExcelExportImport
+                      data={vendorQDPOG}
+                      setimportedData={setimportedData}
+                      fileName="vendorQDPOG.xlsx"
+                    />
                   </div>
                 </div>
                 <table>
@@ -2550,7 +2530,11 @@ export default function APQR() {
                   <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
                 </div>
                 <div className="flex gap-4 ">
-                  <ExcelExport data={balanceSheet} fileName="balance-sheet-summary.xlsx" />
+                  <ExcelExportImport
+                    data={codeTCTD}
+                    setimportedData={setimportedData}
+                    fileName="codeTCTD.xlsx"
+                  />
                 </div>
               </div>
               <table>
@@ -2682,7 +2666,11 @@ export default function APQR() {
                 </div>
                 <div className="flex gap-4 ">
                   .
-                  <ExcelExport data={balanceSheet} fileName="balance-sheet-summary.xlsx" />
+                  <ExcelExportImport
+                    data={reviewORCEC}
+                    setimportedData={setimportedData}
+                    fileName="reviewORCEC.xlsx"
+                  />
                 </div>
               </div>
               <table>
@@ -2787,7 +2775,11 @@ export default function APQR() {
                   <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
                 </div>
                 <div className="flex gap-4 ">
-                  <ExcelExport data={balanceSheet} fileName="balance-sheet-summary.xlsx" />
+                  <ExcelExportImport
+                    data={capaDetails}
+                    setimportedData={setimportedData}
+                    fileName="capaDetails.xlsx"
+                  />
                 </div>
               </div>
               <table className="mb-4">
@@ -2900,7 +2892,11 @@ export default function APQR() {
                   <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
                 </div>
                 <div className="flex gap-4 ">
-                  <ExcelExport data={balanceSheet} fileName="balance-sheet-summary.xlsx" />
+                  <ExcelExportImport
+                    data={deviationDetails}
+                    setimportedData={setimportedData}
+                    fileName="deviationDetails.xlsx"
+                  />
                 </div>
               </div>
               <table className="mb-4">
@@ -3054,7 +3050,11 @@ export default function APQR() {
                   <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
                 </div>
                 <div className="flex gap-4 ">
-                  <ExcelExport data={balanceSheet} fileName="balance-sheet-summary.xlsx" />
+                  <ExcelExportImport
+                    data={oosDetails}
+                    setimportedData={setimportedData}
+                    fileName="oosDetails.xlsx"
+                  />
                 </div>
               </div>
               <table className="mb-4">
@@ -3156,7 +3156,11 @@ export default function APQR() {
                   <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
                 </div>
                 <div className="flex gap-4 ">
-                  <ExcelExport data={balanceSheet} fileName="balance-sheet-summary.xlsx" />
+                  <ExcelExportImport
+                    data={ootResults}
+                    setimportedData={setimportedData}
+                    fileName="ootResults.xlsx"
+                  />
                 </div>
               </div>
               <table className="mb-4">
@@ -3267,7 +3271,11 @@ export default function APQR() {
                   <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
                 </div>
                 <div className="flex gap-4 ">
-                  <ExcelExport data={balanceSheet} fileName="balance-sheet-summary.xlsx" />
+                  <ExcelExportImport
+                    data={ooaResults}
+                    setimportedData={setimportedData}
+                    fileName="ooaResults.xlsx"
+                  />
                 </div>
               </div>
               <table className="mb-4">
@@ -3379,7 +3387,11 @@ export default function APQR() {
                   <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
                 </div>
                 <div className="flex gap-4 ">
-                  <ExcelExport data={balanceSheet} fileName="balance-sheet-summary.xlsx" />
+                  <ExcelExportImport
+                    data={oolResults}
+                    setimportedData={setimportedData}
+                    fileName="oolResults.xlsx"
+                  />
                 </div>
               </div>
               <table className="mb-4">
@@ -3480,7 +3492,11 @@ export default function APQR() {
                   <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
                 </div>
                 <div className="flex gap-4 ">
-                  <ExcelExport data={balanceSheet} fileName="balance-sheet-summary.xlsx" />
+                  <ExcelExportImport
+                    data={capaDetails}
+                    setimportedData={setimportedData}
+                    fileName="capaDetails.xlsx"
+                  />
                 </div>
               </div>
               <table>
@@ -3567,7 +3583,11 @@ export default function APQR() {
                 <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
               </div>
               <div className="flex gap-4 ">
-                <ExcelExport data={balanceSheet} fileName="balance-sheet-summary.xlsx" />
+                <ExcelExportImport
+                  data={manufacturingStage}
+                  setimportedData={setimportedData}
+                  fileName="manufacturingStage.xlsx"
+                />
               </div>
             </div>
             <table>
@@ -4280,7 +4300,11 @@ export default function APQR() {
                   <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
                 </div>
                 <div className="flex gap-4 ">
-                  <ExcelExport data={balanceSheet} fileName="balance-sheet-summary.xlsx" />
+                  <ExcelExportImport
+                    data={manufacturingStage}
+                    setimportedData={setimportedData}
+                    fileName="manufacturingStage.xlsx"
+                  />
                 </div>
               </div>
               <table>
@@ -4366,7 +4390,11 @@ export default function APQR() {
                   <div className="addrowinstruction pl-2">Add Rows by clicking on (+) icon</div>
                 </div>
                 <div className="flex gap-4 ">
-                  <ExcelExport data={balanceSheet} fileName="balance-sheet-summary.xlsx" />
+                  <ExcelExportImport
+                    data={manufacturingStage}
+                    setimportedData={setimportedData}
+                    fileName="manufacturingStage.xlsx"
+                  />
                 </div>
               </div>
               <table>
@@ -4456,7 +4484,11 @@ export default function APQR() {
                   <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
                 </div>
                 <div className="flex gap-4 ">
-                  <ExcelExport data={balanceSheet} fileName="balance-sheet-summary.xlsx" />
+                  <ExcelExportImport
+                    data={manufacturingStage}
+                    setimportedData={setimportedData}
+                    fileName="manufacturingStage.xlsx"
+                  />
                 </div>
               </div>
               <table>
@@ -4546,7 +4578,11 @@ export default function APQR() {
                   <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
                 </div>
                 <div className="flex gap-4 ">
-                  <ExcelExport data={balanceSheet} fileName="balance-sheet-summary.xlsx" />
+                  <ExcelExportImport
+                    data={manufacturingStage}
+                    setimportedData={setimportedData}
+                    fileName="manufacturingStage.xlsx"
+                  />
                 </div>
               </div>
               <table>
@@ -4636,7 +4672,11 @@ export default function APQR() {
                   <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
                 </div>
                 <div className="flex gap-4 ">
-                  <ExcelExport data={balanceSheet} fileName="balance-sheet-summary.xlsx" />
+                  <ExcelExportImport
+                    data={manufacturingStage}
+                    setimportedData={setimportedData}
+                    fileName="manufacturingStage.xlsx"
+                  />
                 </div>
               </div>
               <table>
@@ -4726,7 +4766,11 @@ export default function APQR() {
                   <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
                 </div>
                 <div className="flex gap-4 ">
-                  <ExcelExport data={balanceSheet} fileName="balance-sheet-summary.xlsx" />
+                  <ExcelExportImport
+                    data={manufacturingStage}
+                    setimportedData={setimportedData}
+                    fileName="manufacturingStage.xlsx"
+                  />
                 </div>
               </div>
               <table>
@@ -4812,7 +4856,11 @@ export default function APQR() {
                   <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
                 </div>
                 <div className="flex gap-4 ">
-                  <ExcelExport data={balanceSheet} fileName="balance-sheet-summary.xlsx" />
+                  <ExcelExportImport
+                    data={manufacturingStage}
+                    setimportedData={setimportedData}
+                    fileName="manufacturingStage.xlsx"
+                  />
                 </div>
               </div>
               <table>
@@ -4898,7 +4946,11 @@ export default function APQR() {
                   <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
                 </div>
                 <div className="flex gap-4 ">
-                  <ExcelExport data={balanceSheet} fileName="balance-sheet-summary.xlsx" />
+                  <ExcelExportImport
+                    data={manufacturingStage}
+                    setimportedData={setimportedData}
+                    fileName="manufacturingStage.xlsx"
+                  />
                 </div>
               </div>
               <table>
@@ -4984,7 +5036,11 @@ export default function APQR() {
                   <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
                 </div>
                 <div className="flex gap-4 ">
-                  <ExcelExport data={balanceSheet} fileName="balance-sheet-summary.xlsx" />
+                  <ExcelExportImport
+                    data={manufacturingStage}
+                    setimportedData={setimportedData}
+                    fileName="manufacturingStage.xlsx"
+                  />
                 </div>
               </div>
               <table>
@@ -5074,7 +5130,11 @@ export default function APQR() {
                   <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
                 </div>
                 <div className="flex gap-4 ">
-                  <ExcelExport data={balanceSheet} fileName="balance-sheet-summary.xlsx" />
+                  <ExcelExportImport
+                    data={manufacturingStage}
+                    setimportedData={setimportedData}
+                    fileName="manufacturingStage.xlsx"
+                  />
                 </div>
               </div>
               <table>
@@ -5168,7 +5228,11 @@ export default function APQR() {
                   <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
                 </div>
                 <div className="flex gap-4 ">
-                  <ExcelExport data={balanceSheet} fileName="balance-sheet-summary.xlsx" />
+                  <ExcelExportImport
+                    data={manufacturingStage}
+                    setimportedData={setimportedData}
+                    fileName="manufacturingStage.xlsx"
+                  />
                 </div>
               </div>
               <table>
@@ -5273,7 +5337,11 @@ export default function APQR() {
                   <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
                 </div>
                 <div className="flex gap-4 ">
-                  <ExcelExport data={balanceSheet} fileName="balance-sheet-summary.xlsx" />
+                  <ExcelExportImport
+                    data={manufacturingStage}
+                    setimportedData={setimportedData}
+                    fileName="manufacturingStage.xlsx"
+                  />
                 </div>
               </div>
               <table>
@@ -5379,7 +5447,11 @@ export default function APQR() {
                   <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
                 </div>
                 <div className="flex gap-4 ">
-                  <ExcelExport data={balanceSheet} fileName="balance-sheet-summary.xlsx" />
+                  <ExcelExportImport
+                    data={manufacturingStage}
+                    setimportedData={setimportedData}
+                    fileName="manufacturingStage.xlsx"
+                  />
                 </div>
               </div>
               <table>
@@ -5480,7 +5552,11 @@ export default function APQR() {
                   <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
                 </div>
                 <div className="flex gap-4 ">
-                  <ExcelExport data={balanceSheet} fileName="balance-sheet-summary.xlsx" />
+                  <ExcelExportImport
+                    data={manufacturingStage}
+                    setimportedData={setimportedData}
+                    fileName="manufacturingStage.xlsx"
+                  />
                 </div>
               </div>
               <table>
@@ -5581,7 +5657,11 @@ export default function APQR() {
                   <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
                 </div>
                 <div className="flex gap-4 ">
-                  <ExcelExport data={balanceSheet} fileName="balance-sheet-summary.xlsx" />
+                  <ExcelExportImport
+                    data={manufacturingStage}
+                    setimportedData={setimportedData}
+                    fileName="manufacturingStage.xlsx"
+                  />
                 </div>
               </div>
               <table>
@@ -5682,7 +5762,11 @@ export default function APQR() {
                   <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
                 </div>
                 <div className="flex gap-4 ">
-                  <ExcelExport data={balanceSheet} fileName="balance-sheet-summary.xlsx" />
+                  <ExcelExportImport
+                    data={manufacturingStage}
+                    setimportedData={setimportedData}
+                    fileName="manufacturingStage.xlsx"
+                  />
                 </div>
               </div>
               <table>
@@ -5783,7 +5867,11 @@ export default function APQR() {
                   <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
                 </div>
                 <div className="flex gap-4 ">
-                  <ExcelExport data={balanceSheet} fileName="balance-sheet-summary.xlsx" />
+                  <ExcelExportImport
+                    data={manufacturingStage}
+                    setimportedData={setimportedData}
+                    fileName="manufacturingStage.xlsx"
+                  />
                 </div>
               </div>
               <table>
@@ -5884,7 +5972,11 @@ export default function APQR() {
                   <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
                 </div>
                 <div className="flex gap-4 ">
-                  <ExcelExport data={balanceSheet} fileName="balance-sheet-summary.xlsx" />
+                  <ExcelExportImport
+                    data={manufacturingStage}
+                    setimportedData={setimportedData}
+                    fileName="manufacturingStage.xlsx"
+                  />
                 </div>
               </div>
               <table>
@@ -5985,7 +6077,11 @@ export default function APQR() {
                   <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
                 </div>
                 <div className="flex gap-4 ">
-                  <ExcelExport data={balanceSheet} fileName="balance-sheet-summary.xlsx" />
+                  <ExcelExportImport
+                    data={manufacturingStage}
+                    setimportedData={setimportedData}
+                    fileName="manufacturingStage.xlsx"
+                  />
                 </div>
               </div>
               <table>
@@ -6086,7 +6182,11 @@ export default function APQR() {
                   <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
                 </div>
                 <div className="flex gap-4 ">
-                  <ExcelExport data={balanceSheet} fileName="balance-sheet-summary.xlsx" />
+                  <ExcelExportImport
+                    data={manufacturingStage}
+                    setimportedData={setimportedData}
+                    fileName="manufacturingStage.xlsx"
+                  />
                 </div>
               </div>
               <table>
@@ -6187,7 +6287,11 @@ export default function APQR() {
                   <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
                 </div>
                 <div className="flex gap-4 ">
-                  <ExcelExport data={balanceSheet} fileName="balance-sheet-summary.xlsx" />
+                  <ExcelExportImport
+                    data={manufacturingStage}
+                    setimportedData={setimportedData}
+                    fileName="manufacturingStage.xlsx"
+                  />
                 </div>
               </div>
               <table>
@@ -6288,7 +6392,11 @@ export default function APQR() {
                   <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
                 </div>
                 <div className="flex gap-4 ">
-                  <ExcelExport data={balanceSheet} fileName="balance-sheet-summary.xlsx" />
+                  <ExcelExportImport
+                    data={manufacturingStage}
+                    setimportedData={setimportedData}
+                    fileName="manufacturingStage.xlsx"
+                  />
                 </div>
               </div>
               <table>
@@ -6393,7 +6501,11 @@ export default function APQR() {
                   <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
                 </div>
                 <div className="flex gap-4 ">
-                  <ExcelExport data={balanceSheet} fileName="balance-sheet-summary.xlsx" />
+                  <ExcelExportImport
+                    data={manufacturingStage}
+                    setimportedData={setimportedData}
+                    fileName="manufacturingStage.xlsx"
+                  />
                 </div>
               </div>
               <table>
@@ -6487,7 +6599,11 @@ export default function APQR() {
                   <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
                 </div>
                 <div className="flex gap-4 ">
-                  <ExcelExport data={balanceSheet} fileName="balance-sheet-summary.xlsx" />
+                  <ExcelExportImport
+                    data={manufacturingStage}
+                    setimportedData={setimportedData}
+                    fileName="manufacturingStage.xlsx"
+                  />
                 </div>
               </div>
               <table>
@@ -6577,7 +6693,11 @@ export default function APQR() {
                   <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
                 </div>
                 <div className="flex gap-4 ">
-                  <ExcelExport data={balanceSheet} fileName="balance-sheet-summary.xlsx" />
+                  <ExcelExportImport
+                    data={manufacturingStage}
+                    setimportedData={setimportedData}
+                    fileName="manufacturingStage.xlsx"
+                  />
                 </div>
               </div>
               <table>
@@ -6645,7 +6765,11 @@ export default function APQR() {
                     <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
                   </div>
                   <div className="flex gap-4 ">
-                    <ExcelExport data={balanceSheet} fileName="balance-sheet-summary.xlsx" />
+                    <ExcelExportImport
+                      data={manufacturingStage}
+                      setimportedData={setimportedData}
+                      fileName="manufacturingStage.xlsx"
+                    />
                   </div>
                 </div>
                 <table>
@@ -6787,7 +6911,11 @@ export default function APQR() {
                   <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
                 </div>
                 <div className="flex gap-4 ">
-                  <ExcelExport data={balanceSheet} fileName="balance-sheet-summary.xlsx" />
+                  <ExcelExportImport
+                    data={manufacturingStage}
+                    setimportedData={setimportedData}
+                    fileName="manufacturingStage.xlsx"
+                  />
                 </div>
               </div>
               <table>
@@ -6858,7 +6986,11 @@ export default function APQR() {
                   <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
                 </div>
                 <div className="flex gap-4 ">
-                  <ExcelExport data={balanceSheet} fileName="balance-sheet-summary.xlsx" />
+                  <ExcelExportImport
+                    data={manufacturingStage}
+                    setimportedData={setimportedData}
+                    fileName="manufacturingStage.xlsx"
+                  />
                 </div>
               </div>
               <table>
@@ -6933,7 +7065,11 @@ export default function APQR() {
                   </div>
                 </div>
                 <div className="flex gap-4 ">
-                  <ExcelExport data={balanceSheet} fileName="balance-sheet-summary.xlsx" />
+                  <ExcelExportImport
+                    data={manufacturingStage}
+                    setimportedData={setimportedData}
+                    fileName="manufacturingStage.xlsx"
+                  />
                 </div>
               </div>
               <table>
@@ -7015,7 +7151,11 @@ export default function APQR() {
                   <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
                 </div>
                 <div className="flex gap-4 ">
-                  <ExcelExport data={balanceSheet} fileName="balance-sheet-summary.xlsx" />
+                  <ExcelExportImport
+                    data={manufacturingStage}
+                    setimportedData={setimportedData}
+                    fileName="manufacturingStage.xlsx"
+                  />
                 </div>
               </div>
               <table>
@@ -7164,7 +7304,11 @@ export default function APQR() {
                   <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
                 </div>
                 <div className="flex gap-4 ">
-                  <ExcelExport data={balanceSheet} fileName="balance-sheet-summary.xlsx" />
+                  <ExcelExportImport
+                    data={manufacturingStage}
+                    setimportedData={setimportedData}
+                    fileName="manufacturingStage.xlsx"
+                  />
                 </div>
               </div>
               <table>
@@ -7244,7 +7388,11 @@ export default function APQR() {
                     <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
                   </div>
                   <div className="flex gap-4 ">
-                    <ExcelExport data={balanceSheet} fileName="balance-sheet-summary.xlsx" />
+                    <ExcelExportImport
+                      data={manufacturingStage}
+                      setimportedData={setimportedData}
+                      fileName="manufacturingStage.xlsx"
+                    />
                   </div>
                 </div>
                 <table>
