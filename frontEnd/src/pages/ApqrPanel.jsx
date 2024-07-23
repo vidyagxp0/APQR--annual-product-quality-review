@@ -887,7 +887,7 @@ export default function APQR() {
     };
     setPQRData({
       ...pQRData,
-      vendorQDORME: [...pQRData.vendorQDORME, newRow]
+      vendorQDPOG: [...pQRData.vendorQDPOG, newRow]
     });
   };
 
