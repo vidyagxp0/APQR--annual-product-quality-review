@@ -1553,19 +1553,29 @@ export default function APQR() {
   };
 
   const handleProductCodeChange = (index, value) => {
-    const newProductCodes = [...productCodes];
+    const newProductCodes = [...pQRData.productCodes];
     newProductCodes[index] = value;
-    setProductCodes(newProductCodes);
+    setPQRData({
+      ...pQRData,
+      productCodes: newProductCodes
+    });
   };
+ 
 
   const addProductCodeInput = () => {
-    setProductCodes([...productCodes, ""]); // Add an empty string initially
+    setPQRData({
+      ...pQRData,
+      productCodes: [...pQRData.productCodes, ""]
+    });
   };
 
   const removeProductCodeInput = (index) => {
-    const newProductCodes = [...productCodes];
+    const newProductCodes = [...pQRData.productCodes];
     newProductCodes.splice(index, 1);
-    setProductCodes(newProductCodes);
+    setPQRData({
+      ...pQRData,
+      productCodes: newProductCodes
+    });
   };
   return (
     <>
@@ -1654,7 +1664,7 @@ export default function APQR() {
                 />
               </div>
             </div>
-            {productCodes?.map((productCode, index) => (
+            {pQRData?.productCodes?.map((productCode, index) => (
               <div key={index} className="group-input">
                 <label>Product Code {index.length > 0 ? index + 1 : ""}</label>
                 <div className="flex gap-4">
@@ -1662,7 +1672,7 @@ export default function APQR() {
                     value={productCode}
                     onChange={(e) => handleProductCodeChange(index, e.target.value)}
                   />
-                  {index === productCodes.length - 1 && (
+                  {index === pQRData?.productCodes.length - 1 && (
                     <button
                       onClick={addProductCodeInput}
                       className="px-3 py-1 border bg-black text-white border-black rounded"
@@ -1670,7 +1680,7 @@ export default function APQR() {
                       +
                     </button>
                   )}
-                  {productCodes.length > 1 && (
+                  {pQRData?.productCodes.length > 1 && (
                     <button
                       onClick={() => removeProductCodeInput(index)}
                       className="px-3 py-1 border border-red-500 rounded bg-red-500 text-white"
