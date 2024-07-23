@@ -269,8 +269,8 @@ export default function APQR() {
   const [tiny74, setTiny74] = useState("");
   const [tiny75, setTiny75] = useState("");
   const [tiny76, setTiny76] = useState("");
+  
   const setTinyContent = (data, tinyNO) => {
-    console.log(data, tinyNO);
     switch (tinyNO) {
       case 1:
         setTiny1(data);
