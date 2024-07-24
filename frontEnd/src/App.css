@@ -210,7 +210,7 @@ body {
 }
 
 .pqrform .form-tabs div:hover {
-  background: var(--themeColor);
+  background: #668cc3;
   color: white;
 }
 
@@ -236,7 +236,7 @@ body {
 }
 
 .pqrform .sub-head {
-  color: var(--first-color);
+  color: #3c79ce;
   border-bottom: 1.4px solid var(--first-color);
   padding-bottom: 5px;
   margin: 20px 0px;
@@ -246,9 +246,9 @@ body {
   margin-top: 3%;
 }
 
-.pqrform .sub-head p {
+/* .pqrform .sub-head p {
   padding-left: 2%;
-}
+} */
 
 .pqrform table {
   width: 100%;
@@ -391,7 +391,7 @@ body {
 }
 
 .gridName {
-  color: #3764f9;
+  color: #5391e6;
   font-weight: bold;
   font-size: 0.9rem;
   /* text-transform: uppercase; */
@@ -426,4 +426,8 @@ body {
 
 .scrollbar-custom::-webkit-scrollbar-thumb:hover {
   background-color: #888888;
+}
+
+.centerText{
+  text-align:center !important;
 }

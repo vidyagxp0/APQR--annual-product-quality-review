@@ -1776,7 +1776,7 @@ export default function APQR() {
           <>
             <div className="p-4">
               <div className="sub-head">
-                <p>Review of Rejected Raw Materials and Packaging Materials</p>
+                <p className="">Review of Rejected Raw Materials and Packaging Materials</p>
               </div>
               <div className="pb-4">
                 <h4 className="gridName">Raw Materials Rejection Summary</h4>
@@ -3520,7 +3520,7 @@ export default function APQR() {
                   <th rowSpan={2}>Critical Process Parameters</th>
                   <th rowSpan={2}>Codes</th>
                   <th rowSpan={2}>Acceptance criteria</th>
-                  <th colSpan={2}>Results</th>
+                  <th className="centerText" colSpan={2} >Results</th>
                   <th rowSpan={2}>Complies / Does not complies</th>
                 </tr>
                 <tr>
@@ -3567,7 +3567,7 @@ export default function APQR() {
                   <th rowSpan={2}>Critical Process Parameters</th>
                   <th rowSpan={2}>Codes</th>
                   <th rowSpan={2}>Acceptance criteria</th>
-                  <th colSpan={2}>Results</th>
+                  <th className="centerText" colSpan={2}>Results</th>
                   <th rowSpan={2}>Complies / Does not complies</th>
                 </tr>
                 <tr>
@@ -3614,7 +3614,7 @@ export default function APQR() {
                   <th rowSpan={2}>Critical Process Parameters</th>
                   <th rowSpan={2}>Codes</th>
                   <th rowSpan={2}>Acceptance criteria</th>
-                  <th colSpan={2}>Results</th>
+                  <th className="centerText" colSpan={2}>Results</th>
                   <th rowSpan={2}>Complies / Does not complies</th>
                 </tr>
                 <tr>
@@ -3661,7 +3661,7 @@ export default function APQR() {
                   <th rowSpan={2}>Critical Process Parameters</th>
                   <th rowSpan={2}>Codes</th>
                   <th rowSpan={2}>Acceptance criteria</th>
-                  <th colSpan={2}>Results</th>
+                  <th className="centerText" colSpan={2}>Results</th>
                   <th rowSpan={2}>Complies / Does not complies</th>
                 </tr>
                 <tr>
@@ -3708,7 +3708,7 @@ export default function APQR() {
                   <th rowSpan={2}>Critical Process Parameters</th>
                   <th rowSpan={2}>Codes</th>
                   <th rowSpan={2}>Acceptance criteria</th>
-                  <th colSpan={2}>Results</th>
+                  <th className="centerText" colSpan={2}>Results</th>
                   <th rowSpan={2}>Complies / Does not complies</th>
                 </tr>
                 <tr>
@@ -3755,7 +3755,7 @@ export default function APQR() {
                   <th rowSpan={2}>Critical Process Parameters</th>
                   <th rowSpan={2}>Codes</th>
                   <th rowSpan={2}>Acceptance criteria</th>
-                  <th colSpan={2}>Results</th>
+                  <th className="centerText" colSpan={2}>Results</th>
                   <th rowSpan={2}>Complies / Does not complies</th>
                 </tr>
                 <tr>
@@ -3802,7 +3802,7 @@ export default function APQR() {
                   <th rowSpan={2}>Critical Process Parameters</th>
                   <th rowSpan={2}>Codes</th>
                   <th rowSpan={2}>Acceptance criteria</th>
-                  <th colSpan={2}>Results</th>
+                  <th className="centerText" colSpan={2}>Results</th>
                   <th rowSpan={2}>Complies / Does not complies</th>
                 </tr>
                 <tr>
@@ -3849,7 +3849,7 @@ export default function APQR() {
                   <th rowSpan={2}>Critical Process Parameters</th>
                   <th rowSpan={2}>Codes</th>
                   <th rowSpan={2}>Acceptance criteria</th>
-                  <th colSpan={2}>Results</th>
+                  <th className="centerText" colSpan={2}>Results</th>
                   <th rowSpan={2}>Complies / Does not complies</th>
                 </tr>
                 <tr>
@@ -3896,7 +3896,7 @@ export default function APQR() {
                   <th rowSpan={2}>Critical Process Parameters</th>
                   <th rowSpan={2}>Codes</th>
                   <th rowSpan={2}>Acceptance criteria</th>
-                  <th colSpan={2}>Results</th>
+                  <th className="centerText" colSpan={2}>Results</th>
                   <th rowSpan={2}>Complies / Does not complies</th>
                 </tr>
                 <tr>
@@ -3963,7 +3963,7 @@ export default function APQR() {
                     <th rowSpan={2}>Sl. No</th>
                     <th rowSpan={2}>Tests parameter</th>
                     <th rowSpan={2}>Specification limit</th>
-                    <th colSpan={2}>Obtained value</th>
+                    <th className="centerText" colSpan={2}>Obtained value</th>
                     <th rowSpan={2}>Complies/Does Not complies</th>
                   </tr>
                   <tr>
@@ -4049,7 +4049,7 @@ export default function APQR() {
                     <th rowSpan={2}>Sl. No</th>
                     <th rowSpan={2}>Tests parameter</th>
                     <th rowSpan={2}>Specification limit</th>
-                    <th colSpan={2}>Obtained value</th>
+                    <th className="centerText" colSpan={2}>Obtained value</th>
                     <th rowSpan={2}>Complies/Does Not complies</th>
                   </tr>
                   <tr>
@@ -4139,7 +4139,7 @@ export default function APQR() {
                     <th rowSpan={2}>Sl. No</th>
                     <th rowSpan={2}>Tests parameter</th>
                     <th rowSpan={2}>Specification limit</th>
-                    <th colSpan={2}>Obtained value</th>
+                    <th className="centerText" colSpan={2}>Obtained value</th>
                     <th rowSpan={2}>Complies/Does Not complies</th>
                   </tr>
                   <tr>
@@ -4229,7 +4229,7 @@ export default function APQR() {
                     <th rowSpan={2}>Sl. No</th>
                     <th rowSpan={2}>Tests parameter</th>
                     <th rowSpan={2}>Specification limit</th>
-                    <th colSpan={2}>Obtained value</th>
+                    <th className="centerText" colSpan={2}>Obtained value</th>
                     <th rowSpan={2}>Complies/Does Not complies</th>
                   </tr>
                   <tr>
@@ -4319,7 +4319,7 @@ export default function APQR() {
                     <th rowSpan={2}>Sl. No</th>
                     <th rowSpan={2}>Tests parameter</th>
                     <th rowSpan={2}>Specification limit</th>
-                    <th colSpan={2}>Obtained value</th>
+                    <th className="centerText" colSpan={2}>Obtained value</th>
                     <th rowSpan={2}>Complies/Does Not complies</th>
                   </tr>
                   <tr>
@@ -4409,7 +4409,7 @@ export default function APQR() {
                     <th rowSpan={2}>Sl. No</th>
                     <th rowSpan={2}>Tests parameter</th>
                     <th rowSpan={2}>Specification limit</th>
-                    <th colSpan={2}>Obtained value</th>
+                    <th className="centerText" colSpan={2}>Obtained value</th>
                     <th rowSpan={2}>Complies/Does Not complies</th>
                   </tr>
                   <tr>
@@ -4495,7 +4495,7 @@ export default function APQR() {
                     <th rowSpan={2}>Sl. No</th>
                     <th rowSpan={2}>Tests parameter</th>
                     <th rowSpan={2}>Specification limit</th>
-                    <th colSpan={2}>Obtained value</th>
+                    <th className="centerText" colSpan={2}>Obtained value</th>
                     <th rowSpan={2}>Complies/Does Not complies</th>
                   </tr>
                   <tr>
@@ -4581,7 +4581,7 @@ export default function APQR() {
                     <th rowSpan={2}>Sl. No</th>
                     <th rowSpan={2}>Tests parameter</th>
                     <th rowSpan={2}>Specification limit</th>
-                    <th colSpan={2}>Obtained value</th>
+                    <th className="centerText" colSpan={2}>Obtained value</th>
                     <th rowSpan={2}>Complies/Does Not complies</th>
                   </tr>
                   <tr>
@@ -4667,7 +4667,7 @@ export default function APQR() {
                     <th rowSpan={2}>Sl. No</th>
                     <th rowSpan={2}>Tests parameter</th>
                     <th rowSpan={2}>Specification limit</th>
-                    <th colSpan={2}>Obtained value</th>
+                    <th className="centerText" colSpan={2}>Obtained value</th>
                     <th rowSpan={2}>Complies/Does Not complies</th>
                   </tr>
                   <tr>
@@ -4757,7 +4757,7 @@ export default function APQR() {
                     <th rowSpan={2}>Sl. No</th>
                     <th rowSpan={2}>Tests parameter</th>
                     <th rowSpan={2}>Specification limit</th>
-                    <th colSpan={2}>Obtained value</th>
+                    <th className="centerText" colSpan={2}>Obtained value</th>
                     <th rowSpan={2}>Complies/Does Not complies</th>
                   </tr>
                   <tr>
@@ -4852,7 +4852,7 @@ export default function APQR() {
                     <th rowSpan={2}>Material</th>
                     <th rowSpan={2}>Test parameter</th>
                     <th rowSpan={2}>Specification limit</th>
-                    <th colSpan={2}>Obtained value</th>
+                    <th className="centerText" colSpan={2}>Obtained value</th>
                     <th rowSpan={2}>Complies/ Does Not complies</th>
                   </tr>
                   <tr>
@@ -4957,7 +4957,7 @@ export default function APQR() {
                     <th rowSpan={2}>Material</th>
                     <th rowSpan={2}>Test parameter</th>
                     <th rowSpan={2}>Specification limit</th>
-                    <th colSpan={2}>Obtained value</th>
+                    <th className="centerText" colSpan={2}>Obtained value</th>
                     <th rowSpan={2}>Complies/ Does Not complies</th>
                   </tr>
                   <tr>
@@ -5063,7 +5063,7 @@ export default function APQR() {
                     <th rowSpan={2}>Tests parameter</th>
                     <th rowSpan={2}>Stage</th>
                     <th rowSpan={2}>Specification limit</th>
-                    <th colSpan={2}>Obtained value</th>
+                    <th className="centerText" colSpan={2}>Obtained value</th>
                     <th rowSpan={2}>Complies/ Does Not complies</th>
                   </tr>
                   <tr>
@@ -5164,7 +5164,7 @@ export default function APQR() {
                     <th rowSpan={2}>Tests parameter</th>
                     <th rowSpan={2}>Stage</th>
                     <th rowSpan={2}>Specification limit</th>
-                    <th colSpan={2}>Obtained value</th>
+                    <th className="centerText" colSpan={2}>Obtained value</th>
                     <th rowSpan={2}>Complies/ Does Not complies</th>
                   </tr>
                   <tr>
@@ -5265,7 +5265,7 @@ export default function APQR() {
                     <th rowSpan={2}>Tests parameter</th>
                     <th rowSpan={2}>Stage</th>
                     <th rowSpan={2}>Specification limit</th>
-                    <th colSpan={2}>Obtained value</th>
+                    <th className="centerText" colSpan={2}>Obtained value</th>
                     <th rowSpan={2}>Complies/ Does Not complies</th>
                   </tr>
                   <tr>
@@ -5366,7 +5366,7 @@ export default function APQR() {
                     <th rowSpan={2}>Tests parameter</th>
                     <th rowSpan={2}>Stage</th>
                     <th rowSpan={2}>Specification limit</th>
-                    <th colSpan={2}>Obtained value</th>
+                    <th className="centerText" colSpan={2}>Obtained value</th>
                     <th rowSpan={2}>Complies/ Does Not complies</th>
                   </tr>
                   <tr>
@@ -5467,7 +5467,7 @@ export default function APQR() {
                     <th rowSpan={2}>Tests parameter</th>
                     <th rowSpan={2}>Stage</th>
                     <th rowSpan={2}>Specification limit</th>
-                    <th colSpan={2}>Obtained value</th>
+                    <th className="centerText" colSpan={2}>Obtained value</th>
                     <th rowSpan={2}>Complies/ Does Not complies</th>
                   </tr>
                   <tr>
@@ -5568,7 +5568,7 @@ export default function APQR() {
                     <th rowSpan={2}>Tests parameter</th>
                     <th rowSpan={2}>Stage</th>
                     <th rowSpan={2}>Specification limit</th>
-                    <th colSpan={2}>Obtained value</th>
+                    <th className="centerText" colSpan={2}>Obtained value</th>
                     <th rowSpan={2}>Complies/ Does Not complies</th>
                   </tr>
                   <tr>
@@ -5669,7 +5669,7 @@ export default function APQR() {
                     <th rowSpan={2}>Tests parameter</th>
                     <th rowSpan={2}>Stage</th>
                     <th rowSpan={2}>Specification limit</th>
-                    <th colSpan={2}>Obtained value</th>
+                    <th className="centerText" colSpan={2}>Obtained value</th>
                     <th rowSpan={2}>Complies/ Does Not complies</th>
                   </tr>
                   <tr>
@@ -5770,7 +5770,7 @@ export default function APQR() {
                     <th rowSpan={2}>Tests parameter</th>
                     <th rowSpan={2}>Stage</th>
                     <th rowSpan={2}>Specification limit</th>
-                    <th colSpan={2}>Obtained value</th>
+                    <th className="centerText" colSpan={2}>Obtained value</th>
                     <th rowSpan={2}>Complies/ Does Not complies</th>
                   </tr>
                   <tr>
@@ -5871,7 +5871,7 @@ export default function APQR() {
                     <th rowSpan={2}>Tests parameter</th>
                     <th rowSpan={2}>Stage</th>
                     <th rowSpan={2}>Specification limit</th>
-                    <th colSpan={2}>Obtained value</th>
+                    <th className="centerText" colSpan={2}>Obtained value</th>
                     <th rowSpan={2}>Complies/ Does Not complies</th>
                   </tr>
                   <tr>
@@ -5972,7 +5972,7 @@ export default function APQR() {
                     <th rowSpan={2}>Tests parameter</th>
                     <th rowSpan={2}>Stage</th>
                     <th rowSpan={2}>Specification limit</th>
-                    <th colSpan={2}>Obtained value</th>
+                    <th className="centerText" colSpan={2}>Obtained value</th>
                     <th rowSpan={2}>Complies/ Does Not complies</th>
                   </tr>
                   <tr>
@@ -6076,7 +6076,7 @@ export default function APQR() {
                     <th rowSpan={2}>Sl. No</th>
                     <th rowSpan={2}>Tests parameter</th>
                     <th rowSpan={2}>Specification limit</th>
-                    <th colSpan={2}>Obtained value</th>
+                    <th className="centerText" colSpan={2}>Obtained value</th>
                     <th rowSpan={2}>Complies/ Does Not complies</th>
                   </tr>
                   <tr>
@@ -6697,8 +6697,8 @@ export default function APQR() {
                   <tr>
                     <th rowSpan={2}>SI. No.</th>
                     <th rowSpan={2}>Batch No.</th>
-                    <th colSpan={4}>Quality Related Notification</th>
-                    <th colSpan={3}>CAPA</th>
+                    <th className="centerText" colSpan={4}>Quality Related Notification</th>
+                    <th className="centerText" colSpan={3}>CAPA</th>
                   </tr>
                   <tr>
                     <th>No.</th>
