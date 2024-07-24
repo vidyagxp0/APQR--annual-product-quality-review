@@ -14,7 +14,7 @@ const Modal = ({ show, onClose, children }) => {
   return ReactDOM.createPortal(
     <div className="fixed inset-0 bg-gray-800 bg-opacity-90 flex justify-center items-center">
       <div className="bg-white p-10 rounded-lg shadow-xl relative max-w-lg w-full">
-        <button className="absolute top-4 right-7 text-gray-900 hover:text-gray-900" onClick={onClose}>
+        <button className="absolute top-4 right-4 font-semibold text-gray-900 hover:text-gray-900" onClick={onClose}>
           X
         </button>
         {children}
@@ -123,7 +123,7 @@ console.log(isSelected,"select")
             <table className="min-w-full bg-white">
               <thead>
                 <tr className="w-full bg-sky-400 text-left shadow-lg rounded-s-2xl" style={{ backgroundImage: 'linear-gradient(135deg, #8bc6ec 0%, #9599e2 100%)' }}>
-                  <th className="py-4 px-4 uppercase font-semibold text-sm">Name</th>
+                  <th className="py-4 px-6 uppercase font-semibold text-sm">Name</th>
                   <th className="py-3 px-4 uppercase font-semibold text-sm">Login Email</th>
                   <th className="py-3 px-4 uppercase font-semibold text-sm">Permissions</th>
                   <th className="py-3 px-4 uppercase font-semibold text-sm">Last Login</th>
@@ -167,17 +167,25 @@ console.log(isSelected,"select")
         </div>
       </div>
       <Modal show={viewPermissions !== null} onClose={() => togglePermissions(null)}>
-        {viewPermissions && (
-          <>
-            <h2 className="text-3xl font-semibold mb-9">Permissions for {viewPermissions.name}</h2>
-            <ul className="list-disc flex flex-col gap-4 ml-6 mb-6">
-              {viewPermissions.permissions.map((permission, i) => (
-                <li key={i} className="text-lg text-gray-800">{permission}</li>
-              ))}
-            </ul>
-          </>
-        )}
-      </Modal>
+  {viewPermissions && (
+    <div className="bg-white rounded-lg shadow-lg p-6 max-w-md mx-auto">
+      <h2 className="text-2xl font-semibold text-blue-400 text-sl mb-4 text-center">{`Permissions for ${viewPermissions.name}`}</h2>
+      <div className="text-center flex flex-col gap-4 ml-6 mb-6 max-h-60 overflow-y-auto">
+        {viewPermissions.permissions.map((permission, i) => (
+          <li
+            key={i}
+            className="text-lg text-white bg-slate-800 rounded p-3 hover:bg-gray-200 transition duration-200"
+            style={{ backgroundImage: 'linear-gradient(135deg, #8bc6ec 0%, #9599e2 100%)' }}
+          >
+            {permission}
+          </li>
+        ))}
+      </div>
+    </div>
+  )}
+</Modal>
+
+
       <Modal show={showAddUserModal} onClose={() => setShowAddUserModal(false)}>
         <h2 className="text-3xl text-center text-sky-600 font-semibold mb-8">Add User</h2>
         <form className="flex flex-col gap-6">
