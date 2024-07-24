@@ -7,9 +7,12 @@ import pdfFonts from "pdfmake/build/vfs_fonts";
 
 pdfMake.vfs = pdfFonts.pdfMake.vfs;
 
-export default function TinyEditor() {
+export default function TinyEditor({ editorContent, setEditorContent, tinyNo }) {
   const editorRef = useRef(null);
-  const [editorContent, setEditorContent] = useState("");
+  // const [editorContent, setEditorContent] = useState("");
+  // useEffect(() => {
+  //   console.log(editorContent);
+  // }, [editorContent]);
   return (
     <>
       <div className="flex justify-evenly gap-5 items-center shadow-xl"></div>
@@ -18,7 +21,7 @@ export default function TinyEditor() {
           apiKey="5vbh0y1nq5y6uokc071mjvy9n4fnss5ctasrjft7x7ajm9fl"
           onInit={(_evt, editor) => (editorRef.current = editor)}
           value={editorContent}
-          onEditorChange={(newValue) => setEditorContent(newValue)}
+          onEditorChange={(newValue) => setEditorContent(newValue, tinyNo)}
           init={{
             height: 300,
             menubar: false,
@@ -47,8 +50,7 @@ export default function TinyEditor() {
               "undo redo | blocks | bold italic forecolor | alignleft aligncenter " +
               "alignright alignjustify | bullist numlist outdent indent | " +
               "removeformat | help",
-            content_style:
-              "body { font-family:Helvetica,Arial,sans-serif; font-size:14px }",
+            content_style: "body { font-family:Helvetica,Arial,sans-serif; font-size:14px }",
           }}
         />
       </div>

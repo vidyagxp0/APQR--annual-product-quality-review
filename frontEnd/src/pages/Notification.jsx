@@ -7,8 +7,8 @@ export default function Notification() {
     <>
       <Header />
       <BottomHeader />
-      <div className="">
-        No notification 
+      <div className="text-center text-gray-500 mt-12">
+        <p class="text-2xl">No notification</p>
       </div>
     </>
   );
