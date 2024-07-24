@@ -49,7 +49,7 @@ export default function Header() {
           {dropdownOpen && (
             <div className="absolute right-0 mt-2 w-40 bg-white border rounded-md shadow-lg py-1">
               <div className="flex items-center px-4 py-2">
-                <img src="/avatar.png" alt="User Avatar" className="h-12 w-12 rounded-full mr-2" />
+                <img src="/gg.png" alt="User Avatar" className="h-12 w-12 rounded-full mr-2" />
                 <span className="text-gray-800">Gaurav Meena</span>
               </div>
               <a href="#" className="block px-4 py-2  hover:bg-gray-200 text-sky-700">
