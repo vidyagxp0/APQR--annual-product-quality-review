@@ -4623,20 +4623,53 @@ export default function APQR() {
                     return (
                       <tr key={index}>
                         <td>{index + 1}</td>
+                        <input 
+                          value={item.testsParameter}
+                          onChange={(e) => {
+                          const newData = [...pQRData.reviewODSTR];
+                          newData[index].testsParameter = e.target.value;
+                          setPQRData({...pQRData,reviewODSTR:newData});
+                        }}
+                      />
                         <td>
-                          <input />
+                        <input 
+                          value={item.specificationLimit}
+                          onChange={(e) => {
+                          const newData = [...pQRData.reviewODSTR];
+                          newData[index].specificationLimit = e.target.value;
+                          setPQRData({...pQRData,reviewODSTR:newData});
+                        }}
+                      />
                         </td>
                         <td>
-                          <input />
+                        <input 
+                          value={item.obtainedValue.minimum}
+                          onChange={(e) => {
+                          const newData = [...pQRData.reviewODSTR];
+                          newData[index].obtainedValue.minimum = e.target.value;
+                          setPQRData({...pQRData,reviewODSTR:newData});
+                        }}
+                      />
                         </td>
                         <td>
-                          <input />
+                        <input 
+                          value={item.obtainedValue.maximum}
+                          onChange={(e) => {
+                          const newData = [...pQRData.reviewODSTR];
+                          newData[index].obtainedValue.maximum = e.target.value;
+                          setPQRData({...pQRData,reviewODSTR:newData});
+                        }}
+                      />
                         </td>
                         <td>
-                          <input />
-                        </td>
-                        <td>
-                          <input />
+                        <input 
+                          value={item.compliesNotComplies}
+                          onChange={(e) => {
+                          const newData = [...pQRData.reviewODSTR];
+                          newData[index].compliesNotComplies = e.target.value;
+                          setPQRData({...pQRData,reviewODSTR:newData});
+                        }}
+                      />
                         </td>
                       </tr>
                     );
@@ -4757,9 +4790,9 @@ export default function APQR() {
             <h1 className="gridName pt-8">Drug Substance 4 Test Result</h1>
             <div>
               {/* <div className="AddRows d-flex">
-    <MdNoteAdd onClick={addReviewODSTRRow} />
-    <div className="addrowinstruction"></div>
-  </div> */}
+                <MdNoteAdd onClick={addReviewODSTRRow} />
+               <div className="addrowinstruction"></div>
+               </div> */}
               <div className="AddRows d-flex w-full justify-between items-center text-3xl mb-5">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addReviewODSTRRow4} />
