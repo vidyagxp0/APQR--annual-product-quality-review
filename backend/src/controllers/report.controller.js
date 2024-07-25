@@ -45,6 +45,176 @@ const pqrData = {
       Description: "desc3",
     },
   ],
+  rawMatRejectionSummary: "Raw Materials Rejection Summary will be visible here",
+  packagingMatRejectionGrid: [
+    {
+      SI_No: "1",
+      MaterialCode: "matcode1",
+      MaterialName: "materialname1",
+      LotNo_ArNo: "lotnoar1",
+      ReasonForRejection: "reason1",
+      Description: "desc1",
+    },
+    {
+      SI_No: "2",
+      MaterialCode: "matcode2",
+      MaterialName: "materialname2",
+      LotNo_ArNo: "lotnoar2",
+      ReasonForRejection: "reason2",
+      Description: "desc2",
+    },
+    {
+      SI_No: "3",
+      MaterialCode: "matcode3",
+      MaterialName: "materialname3",
+      LotNo_ArNo: "lotnoar3",
+      ReasonForRejection: "reason3",
+      Description: "desc3",
+    },
+  ],
+  packagingMatRejectionSummary: "Packaging Materials Rejection Summary will be visible here",
+
+  expireRawMatGrid: [
+    {
+      SI_No: "1",
+      MaterialCode: "matcode1",
+      MaterialName: "materialname1",
+      LotNo_ArNo: "lotnoar1",
+      Description: "desc1",
+    },
+    {
+      SI_No: "2",
+      MaterialCode: "matcode2",
+      MaterialName: "materialname2",
+      LotNo_ArNo: "lotnoar2",
+      Description: "desc2",
+    },
+    {
+      SI_No: "3",
+      MaterialCode: "matcode3",
+      MaterialName: "materialname3",
+      LotNo_ArNo: "lotnoar3",
+      Description: "desc3",
+    },
+  ],
+  expireRawMatSummary: "Expired Raw Materials Summary will be visible here",
+  expirePackagingMatGrid: [
+    {
+      SI_No: "1",
+      MaterialCode: "matcode1",
+      MaterialName: "materialname1",
+      LotNo_ArNo: "lotnoar1",
+      Description: "desc1",
+    },
+    {
+      SI_No: "2",
+      MaterialCode: "matcode2",
+      MaterialName: "materialname2",
+      LotNo_ArNo: "lotnoar2",
+      Description: "desc2",
+    },
+    {
+      SI_No: "3",
+      MaterialCode: "matcode3",
+      MaterialName: "materialname3",
+      LotNo_ArNo: "lotnoar3",
+      Description: "desc3",
+    },
+  ],
+  expirePackagingMatSummary: "Expired Packaging Materials Rejection Summary will be visible here",
+  aslGrid: [
+    {
+      SI_No: "1",
+      MaterialCode: "matcode1",
+      MaterialName: "materialname1",
+      Manufacturer_Supplier_Vendor: "vendor1",
+      Facility: "facility1",
+    },
+    {
+      SI_No: "2",
+      MaterialCode: "matcode2",
+      MaterialName: "materialname2",
+      Manufacturer_Supplier_Vendor: "vendor1",
+      Facility: "facility2",
+    },
+    {
+      SI_No: "3",
+      MaterialCode: "matcode3",
+      MaterialName: "materialname3",
+      Manufacturer_Supplier_Vendor: "vendor1",
+      Facility: "facility3",
+    },
+  ],
+  aslSummary: "Summary of Review of Approved Supplier List will be visible here",
+  vqdGrid: [
+    {
+      MaterialName: "materialname1",
+      MaterialCode: "matcode1",
+      Manufacturer_Name: "vendor1",
+      Qualification_Status: "Qualification Status 1",
+      Remarks: "Remarks here",
+    },
+    {
+      MaterialCode: "matcode2",
+      MaterialName: "materialname2",
+      Manufacturer_Name: "vendor1",
+      Qualification_Status: "Qualification Status 1",
+      Remarks: "Remarks here",
+    },
+    {
+      MaterialCode: "matcode3",
+      MaterialName: "materialname3",
+      Manufacturer_Name: "vendor1",
+      Qualification_Status: "Qualification Status 1",
+      Remarks: "Remarks here",
+    },
+  ],
+  vqdSummary:
+    "Summary of Vendor Qualification Details of Raw Material Excipients will be visible here",
+  vqdPPMGrid: [
+    {
+      MaterialName: "materialname1",
+      MaterialCode: "matcode1",
+      Manufacturer_Name: "vendor1",
+      Qualification_Status: "Qualification Status 1",
+    },
+    {
+      MaterialCode: "matcode2",
+      MaterialName: "materialname2",
+      Manufacturer_Name: "vendor1",
+      Qualification_Status: "Qualification Status 1",
+    },
+    {
+      MaterialCode: "matcode3",
+      MaterialName: "materialname3",
+      Manufacturer_Name: "vendor1",
+      Qualification_Status: "Qualification Status 1",
+      Remarks: "Remarks here",
+    },
+  ],
+  vqdPPMSummary:
+    "Summary of Vendor Qualification Details of Primary Packing Materials will be visible here",
+  vqdPGGrid: [
+    {
+      GasName: "materialname1",
+      GasCode: "matcode1",
+      Manufacturer_Name: "vendor1",
+      Qualification_Status: "Qualification Status 1",
+    },
+    {
+      GasName: "matcode2",
+      GasCode: "materialname2",
+      Manufacturer_Name: "vendor1",
+      Qualification_Status: "Qualification Status 1",
+    },
+    {
+      GasName: "matcode3",
+      GasCode: "materialname3",
+      Manufacturer_Name: "vendor1",
+      Qualification_Status: "Qualification Status 1",
+    },
+  ],
+  vqdPGSummary: "Summary of Vendor Qualification Details of Process Gases will be visible here",
 };
 export const generatePdf = async (req, res) => {
   let browser;

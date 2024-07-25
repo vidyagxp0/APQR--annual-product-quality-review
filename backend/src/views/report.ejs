@@ -8,7 +8,6 @@
       body {
         font-family: Arial, sans-serif;
         margin: 0;
-        
       }
       table {
         width: 100%;
@@ -18,7 +17,7 @@
       }
       th,
       td {
-        border: 1px solid black;
+        border: 2px solid black;
         padding: 8px;
         text-align: left;
       }
@@ -34,9 +33,14 @@
       .header {
         font-family: monospace;
       }
+      .summary {
+        display: flex;
+        align-items: center;
+      }
     </style>
   </head>
   <body>
+    <!-- Tab 1 -->
     <h1>General Information</h1>
     <table>
       <tr>
@@ -64,6 +68,7 @@
         <td><%= product.mfgLicNo %></td>
       </tr>
     </table>
+
     <h3>Manufacturing Site Address</h3>
     <table>
       <tr>
@@ -79,7 +84,11 @@
       </tr>
       <% }); %>
     </table>
-    <h1>Warehouse Review</h1>
+
+    <!-- Tab 2 -->
+    <h1>Review of Rejected Raw Materials and Packaging Materials</h1>
+    <h2>Warehouse Review</h2>
+
     <h3>Raw Materials Rejection Grid</h3>
     <table>
       <thead>
@@ -92,6 +101,233 @@
           <th>Description</th>
         </tr>
       </thead>
+      <tbody>
+        <% product.rawMatRejectionGrid.forEach((item) => { %>
+        <tr>
+          <td><%= item.SI_No %></td>
+          <td><%= item.MaterialCode %></td>
+          <td><%= item.MaterialName %></td>
+          <td><%= item.LotNo_ArNo %></td>
+          <td><%= item.ReasonForRejection %></td>
+          <td><%= item.Description %></td>
+        </tr>
+        <% }); %>
+      </tbody>
     </table>
+
+    <div class="summary">
+      <h3>Raw Materials Rejection Summary :-</h3>
+      &nbsp &nbsp
+      <p><%= product.rawMatRejectionSummary %></p>
+    </div>
+
+    <h3>Packing Materials Rejection Grid</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>SI No</th>
+          <th>Material Code</th>
+          <th>Material Name</th>
+          <th>Lot No/AR No</th>
+          <th>Reason For Rejection</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% product.packagingMatRejectionGrid.forEach((item) => { %>
+        <tr>
+          <td><%= item.SI_No %></td>
+          <td><%= item.MaterialCode %></td>
+          <td><%= item.MaterialName %></td>
+          <td><%= item.LotNo_ArNo %></td>
+          <td><%= item.ReasonForRejection %></td>
+          <td><%= item.Description %></td>
+        </tr>
+        <% }); %>
+      </tbody>
+    </table>
+
+    <div class="summary">
+      <h3>Packaging Materials Rejection Summary :-</h3>
+      &nbsp &nbsp
+      <p><%= product.packagingMatRejectionSummary %></p>
+    </div>
+
+    <h2>Review of Expired Raw Materials and Packaging Materials</h2>
+    <h3>Expired Raw Materials Details</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>SI No</th>
+          <th>Material Code</th>
+          <th>Material Name</th>
+          <th>Lot No/AR No</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% product.expireRawMatGrid.forEach((item) => { %>
+        <tr>
+          <td><%= item.SI_No %></td>
+          <td><%= item.MaterialCode %></td>
+          <td><%= item.MaterialName %></td>
+          <td><%= item.LotNo_ArNo %></td>
+          <td><%= item.Description %></td>
+        </tr>
+        <% }); %>
+      </tbody>
+    </table>
+
+    <div class="summary">
+      <h3>Expired Raw Materials Summary :-</h3>
+      &nbsp &nbsp
+      <p><%= product.expireRawMatSummary %></p>
+    </div>
+
+    <h3>Expired Packaging Materials Details</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>SI No</th>
+          <th>Material Code</th>
+          <th>Material Name</th>
+          <th>Lot No/AR No</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% product.expirePackagingMatGrid.forEach((item) => { %>
+        <tr>
+          <td><%= item.SI_No %></td>
+          <td><%= item.MaterialCode %></td>
+          <td><%= item.MaterialName %></td>
+          <td><%= item.LotNo_ArNo %></td>
+          <td><%= item.Description %></td>
+        </tr>
+        <% }); %>
+      </tbody>
+    </table>
+
+    <div class="summary">
+      <h3>Expired Packaging Materials Summary :-</h3>
+      &nbsp &nbsp
+      <p><%= product.expirePackagingMatSummary %></p>
+    </div>
+
+    <h2>Review of Approved Supplier List:</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>SI No</th>
+          <th>Material Code</th>
+          <th>Material Name</th>
+          <th>Manufacturer / Supplier / Vendor</th>
+          <th>Facility</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% product.aslGrid.forEach((item) => { %>
+        <tr>
+          <td><%= item.SI_No %></td>
+          <td><%= item.MaterialCode %></td>
+          <td><%= item.MaterialName %></td>
+          <td><%= item.Manufacturer_Supplier_Vendor %></td>
+          <td><%= item.Facility %></td>
+        </tr>
+        <% }); %>
+      </tbody>
+    </table>
+
+    <div class="summary">
+      <h3>Summary of Review of Approved Supplier List :-</h3>
+      &nbsp &nbsp
+      <p><%= product.aslSummary %></p>
+    </div>
+
+    <h2>Vendor Qualification Details of Raw Material Excipients</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Material Code</th>
+          <th>Material Name</th>
+          <th>Manufacturer Name</th>
+          <th>Qualification Status</th>
+          <th>Remarks</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% product.vqdGrid.forEach((item) => { %>
+        <tr>
+          <td><%= item.MaterialName %></td>
+          <td><%= item.MaterialCode %></td>
+          <td><%= item.Manufacturer_Name %></td>
+          <td><%= item.Qualification_Status %></td>
+          <td><%= item.Remarks %></td>
+        </tr>
+        <% }); %>
+      </tbody>
+    </table>
+
+    <div class="summary">
+      <h3>Summary of Review of Approved Supplier List :-</h3>
+      &nbsp &nbsp
+      <p><%= product.vqdSummary %></p>
+    </div>
+
+    <h2>Vendor Qualification Details of Primary Packing Materials</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Material Name</th>
+          <th>Material Code</th>
+          <th>Manufacturer Name</th>
+          <th>Qualification Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% product.vqdPPMGrid.forEach((item) => { %>
+        <tr>
+          <td><%= item.MaterialName %></td>
+          <td><%= item.MaterialCode %></td>
+          <td><%= item.Manufacturer_Name %></td>
+          <td><%= item.Qualification_Status %></td>
+        </tr>
+        <% }); %>
+      </tbody>
+    </table>
+
+    <div class="summary">
+      <h3>Summary of Vendor Qualification Details of Primary Packing Materials :-</h3>
+      &nbsp &nbsp
+      <p><%= product.vqdPPMSummary %></p>
+    </div>
+
+    <h2>Vendor Qualification Details of Process Gases</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Gas Name</th>
+          <th>Gas Code</th>
+          <th>Manufacturer Name</th>
+          <th>Qualification Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% product.vqdPGGrid.forEach((item) => { %>
+        <tr>
+          <td><%= item.GasName %></td>
+          <td><%= item.GasCode %></td>
+          <td><%= item.Manufacturer_Name %></td>
+          <td><%= item.Qualification_Status %></td>
+        </tr>
+        <% }); %>
+      </tbody>
+    </table>
+
+    <div class="summary">
+      <h3>Summary of Vendor Qualification Details of Process Gases :-</h3>
+      &nbsp &nbsp
+      <p><%= product.vqdPGSummary %></p>
+    </div>
   </body>
 </html>
