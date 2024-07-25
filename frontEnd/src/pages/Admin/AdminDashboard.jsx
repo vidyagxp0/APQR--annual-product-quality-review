@@ -8,10 +8,10 @@ const ConfirmationModal = ({ show, onClose, onConfirm, member }) => {
   if (!show) return null;
 
   return (
-    <div className="fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-50">
+    <div className="fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-60">
       <div className="bg-white p-10 rounded-lg shadow-xl">
-        <h2 className="text-lg font-bold">Confirm Deletion</h2>
-        <p>Are you sure you want to delete {member.name}?</p>
+        <h2 className="text-xl font-bold">Confirm Deletion</h2>
+        <p className='mt-3 mb-5 font-medium'>Are you sure you want to delete {member.name}?</p>
         <div className="mt-4 flex justify-end">
           <button
             className="bg-blue-500 text-white px-4 py-2 rounded mr-2"
@@ -341,19 +341,24 @@ const AdminDashboard = () => {
             />
           </div>
           <div className="mb-4">
-            <label className="block mb-2">Gender:</label>
-            <input
-              className="w-full border border-gray-300 p-2 rounded"
-              type="text"
-              name="gender"
-              value={newUser.gender}
-              onChange={handleInputChange}
-            />
-          </div>
+  <label className="block mb-2">Gender:</label>
+  <select
+    className="w-full border border-gray-300 p-2 rounded"
+    name="gender"
+    value={newUser.gender}
+    onChange={handleInputChange}
+  >
+    <option value="" disabled>Select Gender</option>
+    <option value="Male">Male</option>
+    <option value="Female">Female</option>
+    <option value="Other">Other</option>
+  </select>
+</div>
+
           <div className="mb-4">
             <label className="block mb-2">Password:</label>
             <input
-              className="w-full border border-gray-300 p-2 rounded"
+              className="w-full border border-gray-300 p-2 rounded focus:border-blue-500 "
               type="password"
               name="password"
               value={newUser.password}
