@@ -179,6 +179,8 @@ export default function APQR() {
   const [previewCC, setPreviewCC] = useState([]);
   const [currentMC, setCurrentMC] = useState([]);
   const [previewMC, setPreviewMC] = useState([]);
+  const [currentLabI, setCurrentLabI] = useState([]);
+  const [previewLabI, setPreviewLabI] = useState([]);
   const sanitizeKey = (key) => {
     return key.replace(/\s+/g, "").replace(/[\n\r]+/g, "");
   };
@@ -637,9 +639,13 @@ export default function APQR() {
       previewOOT: previewOOT,
       currentOOT: currentOOT,
       currentCC: currentCC,
+      previewOOSA: previewOOSA,
+      currentOOSA: currentOOSA,
       previewCC: previewCC,
       currentMC: currentMC,
       previewMC: previewMC,
+      previewLabI: previewLabI,
+      currentLabI: currentLabI,
     });
   }, [
     productCodes,
@@ -796,9 +802,11 @@ export default function APQR() {
     previewCC,
     currentMC,
     previewMC,
+    currentOOSA,
+    previewOOSA,
+    currentLabI,
+    previewLabI,
   ]);
-
-  // console.log(pQRData);
 
   const addManufacturingStageRow = () => {
     const newRow = {
@@ -1554,6 +1562,36 @@ export default function APQR() {
       currentStatus: "",
     };
     setPreviewMC([...previewMC, newRow]);
+  };
+
+  const addCurrentLabI = () => {
+    const newRow = {
+      dateOfInitiation: "",
+      recordNo: "",
+      siteDivision: "",
+      department: "",
+      initiator: "",
+      shortDescription: "",
+      batchNo: "",
+      dueDate: "",
+      currentStatus: "",
+    };
+    setCurrentLabI([...currentLabI, newRow]);
+  };
+
+  const addPreviewLabI = () => {
+    const newRow = {
+      dateOfInitiation: "",
+      recordNo: "",
+      siteDivision: "",
+      department: "",
+      initiator: "",
+      shortDescription: "",
+      batchNo: "",
+      dueDate: "",
+      currentStatus: "",
+    };
+    setPreviewLabI([...previewLabI, newRow]);
   };
   const addCompressedGasesRow = () => {
     const newRow = {
@@ -9861,6 +9899,268 @@ export default function APQR() {
             </div>
 
             <h4 className="gridName pt-4">Change Control Summary</h4>
+            <TinyEditor />
+
+            <div className="sub-head">Review of Lab Incident</div>
+
+            <div className="gridName pt-4">Current Review Lab Incident</div>
+            <div>
+              <div className="AddRows d-flex w-full justify-between items-center text-3xl">
+                <div className="flex items-center">
+                  <MdNoteAdd onClick={addCurrentLabI} />
+                  <div className="addrowinstruction  pl-2">
+                    Add Rows by clicking on (+) icon
+                  </div>
+                </div>
+              </div>
+              <table>
+                <thead>
+                  <tr>
+                    <th>S.No</th>
+                    <th>Date Of Initiation</th>
+                    <th>Record No</th>
+                    <th>Site/Division</th>
+                    <th>Department</th>
+                    <th>Initiator</th>
+                    <th>Short Description</th>
+                    <th>Batch No</th>
+                    <th>Due Date</th>
+                    <th>Current Status</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {currentLabI.map((item, index) => {
+                    return (
+                      <tr key={index}>
+                        <td>{index + 1}</td>
+                        <td>
+                          <input
+                            value={item.dateOfInitiation}
+                            onChange={(e) => {
+                              const newData = [...currentLabI];
+                              newData[index].dateOfInitiation = e.target.value;
+                              setCurrentLabI(newData);
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.recordNo}
+                            onChange={(e) => {
+                              const newData = [...currentLabI];
+                              newData[index].recordNo = e.target.value;
+                              setCurrentLabI(newData);
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.siteDivision}
+                            onChange={(e) => {
+                              const newData = [...currentLabI];
+                              newData[index].siteDivision = e.target.value;
+                              setCurrentLabI(newData);
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.department}
+                            onChange={(e) => {
+                              const newData = [...currentLabI];
+                              newData[index].department = e.target.value;
+                              setCurrentLabI(newData);
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.initiator}
+                            onChange={(e) => {
+                              const newData = [...currentLabI];
+                              newData[index].initiator = e.target.value;
+                              setCurrentLabI(newData);
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.shortDescription}
+                            onChange={(e) => {
+                              const newData = [...currentLabI];
+                              newData[index].shortDescription = e.target.value;
+                              setCurrentLabI(newData);
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.batchNo}
+                            onChange={(e) => {
+                              const newData = [...currentLabI];
+                              newData[index].batchNo = e.target.value;
+                              setCurrentLabI(newData);
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.dueDate}
+                            onChange={(e) => {
+                              const newData = [...currentLabI];
+                              newData[index].dueDate = e.target.value;
+                              setCurrentLabI(newData);
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.currentStatus}
+                            onChange={(e) => {
+                              const newData = [...currentLabI];
+                              newData[index].currentStatus = e.target.value;
+                              setCurrentLabI(newData);
+                            }}
+                          />
+                        </td>
+                      </tr>
+                    );
+                  })}
+                </tbody>
+              </table>
+            </div>
+
+            <div className="gridName pt-4">Previous Review Lab Incident</div>
+
+            <div>
+              <div className="AddRows d-flex w-full justify-between items-center text-3xl">
+                <div className="flex items-center">
+                  <MdNoteAdd onClick={addPreviewLabI} />
+                  <div className="addrowinstruction  pl-2">
+                    Add Rows by clicking on (+) icon
+                  </div>
+                </div>
+              </div>
+              <table>
+                <thead>
+                  <tr>
+                    <th>S.No</th>
+                    <th>Date Of Initiation</th>
+                    <th>Record No</th>
+                    <th>Site/Division</th>
+                    <th>Department</th>
+                    <th>Initiator</th>
+                    <th>Short Description</th>
+                    <th>Batch No</th>
+                    <th>Due Date</th>
+                    <th>Current Status</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {previewLabI.map((item, index) => {
+                    return (
+                      <tr key={index}>
+                        <td>{index + 1}</td>
+                        <td>
+                          <input
+                            value={item.dateOfInitiation}
+                            onChange={(e) => {
+                              const newData = [...previewLabI];
+                              newData[index].dateOfInitiation = e.target.value;
+                              setPreviewLabI(newData);
+                            }}
+                          />
+                        </td>
+
+                        <td>
+                          <input
+                            value={item.recordNo}
+                            onChange={(e) => {
+                              const newData = [...previewLabI];
+                              newData[index].recordNo = e.target.value;
+                              setPreviewLabI(newData);
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.siteDivision}
+                            onChange={(e) => {
+                              const newData = [...previewLabI];
+                              newData[index].siteDivision = e.target.value;
+                              setPreviewLabI(newData);
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.department}
+                            onChange={(e) => {
+                              const newData = [...previewLabI];
+                              newData[index].department = e.target.value;
+                              setPreviewLabI(newData);
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.initiator}
+                            onChange={(e) => {
+                              const newData = [...previewLabI];
+                              newData[index].initiator = e.target.value;
+                              setPreviewLabI(newData);
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.shortDescription}
+                            onChange={(e) => {
+                              const newData = [...previewLabI];
+                              newData[index].shortDescription = e.target.value;
+                              setPreviewLabI(newData);
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.batchNo}
+                            onChange={(e) => {
+                              const newData = [...previewLabI];
+                              newData[index].batchNo = e.target.value;
+                              setPreviewLabI(newData);
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.dueDate}
+                            onChange={(e) => {
+                              const newData = [...previewLabI];
+                              newData[index].dueDate = e.target.value;
+                              setPreviewLabI(newData);
+                            }}
+                          />
+                        </td>
+
+                        <td>
+                          <input
+                            value={item.currentStatus}
+                            onChange={(e) => {
+                              const newData = [...previewLabI];
+                              newData[index].currentStatus = e.target.value;
+                              setPreviewLabI(newData);
+                            }}
+                          />
+                        </td>
+                      </tr>
+                    );
+                  })}
+                </tbody>
+              </table>
+            </div>
+
+            <h4 className="gridName pt-4">Lab Incident Summary</h4>
             <TinyEditor />
 
             <div className="sub-head">Review of Market Complaints</div>
