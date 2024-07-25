@@ -11,6 +11,7 @@ import TinyEditor from "./Component/TinyEditor";
 import ExcelExportImport from "./pages/temp/ImportExportExcel";
 import ApqrPanel from "./pages/ApqrPanel";
 import ESignatureModal from "./Component/ESignatureModal";
+import DownloadReportButton from "./pages/temp/DownloadReportButton";
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
         <Route path="/apqr-panel" element={<ApqrPanel />} />
         <Route path="/test" element={<TinyEditor />} />
         <Route path="/test2" element={<ESignatureModal />} />
+        <Route path="/pdftest" element={<DownloadReportButton />} />
       </Routes>
     </BrowserRouter>
   );
