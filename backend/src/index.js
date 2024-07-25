@@ -15,7 +15,7 @@ const __dirname = path.dirname(__filename);
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
 
-app.use("/generate-pdf", reportRouter);
+app.use("/report", reportRouter);
 
 // app.get("/generate-pdf", async (req, res) => {
 
