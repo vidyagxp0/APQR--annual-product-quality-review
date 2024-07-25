@@ -45,13 +45,14 @@ const ExcelExportImport = ({ data, fileName, setimportedData, setData }) => {
     <div>
       <button
         className="
-          px-4
-          py-2
-          bg-green-500
+          px-2
+          py-1
+          mb-1
+         bg-gradient-to-r from-green-400 via-green-500 to-green-600
           text-white
           font-semibold
           rounded-lg
-          shadow-md
+          shadow-lg
           hover:bg-green-700
           focus:outline-none
           focus:ring-2
@@ -73,13 +74,14 @@ const ExcelExportImport = ({ data, fileName, setimportedData, setData }) => {
       <button
         className="
           ml-4
-          px-4
-          py-2
-          bg-blue-500
+          px-2
+          py-1
+          mb-1
+         bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700
           text-white
           font-semibold
           rounded-lg
-          shadow-md
+          shadow-lg
           hover:bg-blue-700
           focus:outline-none
           focus:ring-2
