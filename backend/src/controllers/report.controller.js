@@ -18,6 +18,33 @@ const pqrData = {
     { productName: "product 2", sFGCode: "sgf2", fGCode: "fgcode2" },
     { productName: "product 3", sFGCode: "sfg3", fGCode: "fgcode3" },
   ],
+
+  rawMatRejectionGrid: [
+    {
+      SI_No: "1",
+      MaterialCode: "matcode1",
+      MaterialName: "materialname1",
+      LotNo_ArNo: "lotnoar1",
+      ReasonForRejection: "reason1",
+      Description: "desc1",
+    },
+    {
+      SI_No: "2",
+      MaterialCode: "matcode2",
+      MaterialName: "materialname2",
+      LotNo_ArNo: "lotnoar2",
+      ReasonForRejection: "reason2",
+      Description: "desc2",
+    },
+    {
+      SI_No: "3",
+      MaterialCode: "matcode3",
+      MaterialName: "materialname3",
+      LotNo_ArNo: "lotnoar3",
+      ReasonForRejection: "reason3",
+      Description: "desc3",
+    },
+  ],
 };
 export const generatePdf = async (req, res) => {
   let browser;
