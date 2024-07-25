@@ -9,11 +9,11 @@ const ProgressBar = (props) => {
   useEffect(() => {
     setCurrentStage(stage);
   }, [stage]);
-//   useEffect(() => {
-//     // setCurrentStage(stage);
-//     // console.log(props);
-//     moveToStage(status);
-//   }, [status]);
+    // useEffect(() => {
+    //   // setCurrentStage(stage);
+    //   // console.log(props);
+    //   moveToStage(status);
+    // }, [status]);
   const [currentStage, setCurrentStage] = useState(0);
   const navigate = useNavigate();
 
