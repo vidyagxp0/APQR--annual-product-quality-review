@@ -6614,7 +6614,7 @@ export default function APQR() {
                           onChange={(e) => {
                           const newData = [...pQRData.reviewODP9];
                           newData[index].compliesNotComplies = e.target.value;
-                          setPQRData({...pQRData,reviewODP9    newData});
+                          setPQRData({...pQRData,reviewODP9 :newData});
                         }}
                       />
                         </td> 
