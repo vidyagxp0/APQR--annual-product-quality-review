@@ -6259,7 +6259,7 @@ export default function APQR() {
                 <thead>
                   <tr>
                     <th rowSpan={2}>Sl. No</th>
-                    <th rowSpan={2}>Material</th>
+                    <th rowSpan={2}>Primary Packing Material</th>
                     <th rowSpan={2}>Test parameter</th>
                     <th rowSpan={2}>Specification limit</th>
                     <th colSpan={2}>Obtained value</th>
@@ -6351,10 +6351,21 @@ export default function APQR() {
                       <tr key={index}>
                         <td>{index + 1}</td>
                         <td>
-                          <input />
+                          <input  value={item.testsParameter}
+                          onChange={(e)=>{
+                            const newData=[...pQRData.reviewODP]
+                            newData[index].testsParameter=e.target.value
+                            setPQRData({...pQRData,reviewODP:newData})
+                          }}/>
                         </td>
                         <td>
-                          <input />
+                          <input  
+                          value={item.stage}
+                          onChange={(e)=>{
+                            const newData=[...pQRData.reviewODP]
+                            newData[index].stage=e.target.value
+                            setPQRData({})
+                          }}/>
                         </td>
                         <td>
                           <input />
