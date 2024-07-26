@@ -472,6 +472,7 @@ export default function APQR() {
       initiateDate: Date.now(),
       pqrNO: "",
       productName: "",
+      dosageForm:"",
       genericName: "",
       reviewStartDate: "",
       reviewEndDate: "",
@@ -1841,6 +1842,7 @@ export default function APQR() {
                 />
               </div>
             </div>
+            <div className="dual-group-input">
             {productCodes?.map((productCode, index) => (
               <div key={index} className="group-input">
                 <label>Product Code {index.length > 0 ? index + 1 : ""}</label>
@@ -1870,6 +1872,23 @@ export default function APQR() {
                 </div>
               </div>
             ))}
+            <div className="group-input ">
+        <label>Dosage Form</label>
+           <select
+             value={pQRData.dosageForm}
+             onChange={(e) => {
+               setPQRData({ ...pQRData, dosageForm: e.target.value });
+             }}
+           >
+             <option value="">Select Dosage Form</option>
+             <option value="Oral Solid">Oral Solid</option>
+             <option value="Oral Liquid">Oral Liquid</option>
+             <option value="Injectables">Injectables</option>
+             <option value="Semisolid">Semisolid</option>
+           </select>
+        </div>
+        </div>
+
             <div className="dual-group-input">
               <div className="group-input">
                 <label>Generic Name</label>
@@ -4047,7 +4066,7 @@ export default function APQR() {
                     <th rowSpan={2}>Critical Process Parameters</th>
                     <th rowSpan={2}>Codes</th>
                     <th rowSpan={2}>Acceptance criteria</th>
-                    <th colSpan={2}>Results</th>
+                    <th className="centerText" colSpan={2} >Results</th>
                     <th rowSpan={2}>Complies / Does not complies</th>
                   </tr>
                   <tr>
@@ -4235,9 +4254,20 @@ export default function APQR() {
             </table>
 
             <h3 className="gridName pt-4">Unit Operation 3</h3>
-            <div className="AddRows d-flex">
-              <MdNoteAdd onClick={addUnitOperation3Row} />
-              <div className="addrowinstruction"></div>
+            <div className="AddRows d-flex w-full justify-between items-center text-3xl mb-5">
+              <div className="flex items-center">
+                <MdNoteAdd onClick={addmanufacturingSDRow} />
+                <div className="addrowinstruction  pl-2">
+                  Add Rows by clicking on (+) icon
+                </div>
+              </div>
+              <div className="flex gap-4 ">
+                <ExcelExportImport
+                  data={manufacturingSD}
+                  setimportedData={setimportedData}
+                  fileName="manufacturingSD.xlsx"
+                />
+              </div>
             </div>
             <table>
               <thead>
@@ -4325,9 +4355,20 @@ export default function APQR() {
             </table>
 
             <h3 className="gridName pt-4">Unit Operation 4</h3>
-            <div className="AddRows d-flex">
-              <MdNoteAdd onClick={addUnitOperation4Row} />
-              <div className="addrowinstruction"></div>
+            <div className="AddRows d-flex w-full justify-between items-center text-3xl mb-5">
+              <div className="flex items-center">
+                <MdNoteAdd onClick={addmanufacturingSDRow} />
+                <div className="addrowinstruction  pl-2">
+                  Add Rows by clicking on (+) icon
+                </div>
+              </div>
+              <div className="flex gap-4 ">
+                <ExcelExportImport
+                  data={manufacturingSD}
+                  setimportedData={setimportedData}
+                  fileName="manufacturingSD.xlsx"
+                />
+              </div>
             </div>
             <table>
               <thead>
@@ -4415,9 +4456,20 @@ export default function APQR() {
             </table>
 
             <h3 className="gridName pt-4">Unit Operation 5</h3>
-            <div className="AddRows d-flex">
-              <MdNoteAdd onClick={addUnitOperation5Row} />
-              <div className="addrowinstruction"></div>
+            <div className="AddRows d-flex w-full justify-between items-center text-3xl mb-5">
+              <div className="flex items-center">
+                <MdNoteAdd onClick={addmanufacturingSDRow} />
+                <div className="addrowinstruction  pl-2">
+                  Add Rows by clicking on (+) icon
+                </div>
+              </div>
+              <div className="flex gap-4 ">
+                <ExcelExportImport
+                  data={manufacturingSD}
+                  setimportedData={setimportedData}
+                  fileName="manufacturingSD.xlsx"
+                />
+              </div>
             </div>
             <table>
               <thead>
@@ -4505,9 +4557,20 @@ export default function APQR() {
             </table>
 
             <h3 className="gridName pt-4">Unit Operation 6</h3>
-            <div className="AddRows d-flex">
-              <MdNoteAdd onClick={addUnitOperation6Row} />
-              <div className="addrowinstruction"></div>
+            <div className="AddRows d-flex w-full justify-between items-center text-3xl mb-5">
+              <div className="flex items-center">
+                <MdNoteAdd onClick={addmanufacturingSDRow} />
+                <div className="addrowinstruction  pl-2">
+                  Add Rows by clicking on (+) icon
+                </div>
+              </div>
+              <div className="flex gap-4 ">
+                <ExcelExportImport
+                  data={manufacturingSD}
+                  setimportedData={setimportedData}
+                  fileName="manufacturingSD.xlsx"
+                />
+              </div>
             </div>
             <table>
               <thead>
@@ -4595,9 +4658,20 @@ export default function APQR() {
             </table>
 
             <h3 className="gridName pt-4">Unit Operation 7</h3>
-            <div className="AddRows d-flex">
-              <MdNoteAdd onClick={addUnitOperation7Row} />
-              <div className="addrowinstruction"></div>
+            <div className="AddRows d-flex w-full justify-between items-center text-3xl mb-5">
+              <div className="flex items-center">
+                <MdNoteAdd onClick={addmanufacturingSDRow} />
+                <div className="addrowinstruction  pl-2">
+                  Add Rows by clicking on (+) icon
+                </div>
+              </div>
+              <div className="flex gap-4 ">
+                <ExcelExportImport
+                  data={manufacturingSD}
+                  setimportedData={setimportedData}
+                  fileName="manufacturingSD.xlsx"
+                />
+              </div>
             </div>
             <table>
               <thead>
@@ -4685,9 +4759,20 @@ export default function APQR() {
             </table>
 
             <h3 className="gridName pt-4">Unit Operation 8</h3>
-            <div className="AddRows d-flex">
-              <MdNoteAdd onClick={addUnitOperation8Row} />
-              <div className="addrowinstruction"></div>
+            <div className="AddRows d-flex w-full justify-between items-center text-3xl mb-5">
+              <div className="flex items-center">
+                <MdNoteAdd onClick={addmanufacturingSDRow} />
+                <div className="addrowinstruction  pl-2">
+                  Add Rows by clicking on (+) icon
+                </div>
+              </div>
+              <div className="flex gap-4 ">
+                <ExcelExportImport
+                  data={manufacturingSD}
+                  setimportedData={setimportedData}
+                  fileName="manufacturingSD.xlsx"
+                />
+              </div>
             </div>
             <table>
               <thead>
@@ -4775,9 +4860,20 @@ export default function APQR() {
             </table>
 
             <h3 className="gridName pt-4">Unit Operation 9</h3>
-            <div className="AddRows d-flex">
-              <MdNoteAdd onClick={addUnitOperation9Row} />
-              <div className="addrowinstruction"></div>
+            <div className="AddRows d-flex w-full justify-between items-center text-3xl mb-5">
+              <div className="flex items-center">
+                <MdNoteAdd onClick={addmanufacturingSDRow} />
+                <div className="addrowinstruction  pl-2">
+                  Add Rows by clicking on (+) icon
+                </div>
+              </div>
+              <div className="flex gap-4 ">
+                <ExcelExportImport
+                  data={manufacturingSD}
+                  setimportedData={setimportedData}
+                  fileName="manufacturingSD.xlsx"
+                />
+              </div>
             </div>
             <table>
               <thead>
@@ -4865,9 +4961,20 @@ export default function APQR() {
             </table>
 
             <h3 className="gridName pt-4">Unit Operation 10</h3>
-            <div className="AddRows d-flex">
-              <MdNoteAdd onClick={addUnitOperation10Row} />
-              <div className="addrowinstruction"></div>
+            <div className="AddRows d-flex w-full justify-between items-center text-3xl mb-5">
+              <div className="flex items-center">
+                <MdNoteAdd onClick={addmanufacturingSDRow} />
+                <div className="addrowinstruction  pl-2">
+                  Add Rows by clicking on (+) icon
+                </div>
+              </div>
+              <div className="flex gap-4 ">
+                <ExcelExportImport
+                  data={manufacturingSD}
+                  setimportedData={setimportedData}
+                  fileName="manufacturingSD.xlsx"
+                />
+              </div>
             </div>
             <table>
               <thead>
