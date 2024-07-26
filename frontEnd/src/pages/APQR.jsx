@@ -6060,7 +6060,7 @@ console.log(pQRData,"pQRData")
                 <thead>
                   <tr>
                     <th rowSpan={2}>Sl. No</th>
-                    <th rowSpan={2}>Material</th>
+                    <th rowSpan={2}>Primary Packing Material</th>
                     <th rowSpan={2}>Test parameter</th>
                     <th rowSpan={2}>Specification limit</th>
                     <th className="centerText" colSpan={2}>
