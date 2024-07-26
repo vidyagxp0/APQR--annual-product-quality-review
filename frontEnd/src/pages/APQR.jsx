@@ -806,7 +806,7 @@ export default function APQR() {
     currentLabI,
     previewLabI,
   ]);
-
+console.log(pQRData,"pQRData")
   const addManufacturingStageRow = () => {
     const newRow = {
       productName: "",
@@ -875,7 +875,7 @@ export default function APQR() {
       materialCode: "",
       materialName: "",
       ARNo: "",
-      description: "",
+      expiryDate: "",
     };
     setExpiredRMD([...expiredRMD, newRow]);
   };
@@ -884,7 +884,7 @@ export default function APQR() {
       materialCode: "",
       materialName: "",
       ARNo: "",
-      description: "",
+      expiryDate: "",
     };
     setExpiredPMD([...expiredPMD, newRow]);
   };
@@ -1843,7 +1843,9 @@ export default function APQR() {
             </div>
             {productCodes?.map((productCode, index) => (
               <div key={index} className="group-input">
-                <label>Product Code {index.length > 0 ? index + 1 : ""}</label>
+                <label>
+                  Product Code {productCodes.length > 0 ? index + 1 : ""}
+                </label>
                 <div className="flex gap-4">
                   <input
                     value={productCode}
@@ -1928,8 +1930,7 @@ export default function APQR() {
                   />
                 </div>
               </div>
-              {/* <div className="w-1/2 flex justify-end px-8 py-4">
-              </div> */}
+              
             </div>
             <table>
               <thead>
@@ -1940,7 +1941,7 @@ export default function APQR() {
                 </tr>
               </thead>
               <tbody>
-                {manufacturingStage.map((item, index) => {
+                {manufacturingStage?.map((item, index) => {
                   return (
                     <tr key={index}>
                       <td>
@@ -1988,10 +1989,7 @@ export default function APQR() {
             </div>
 
             <div className="py-4">
-              {/* <div className="AddRows d-flex">
-                <MdNoteAdd onClick={addManufacturingSAPSRow} />
-                <div className="addrowinstruction"></div>
-              </div> */}
+            
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addManufacturingSAPSRow} />
@@ -2013,12 +2011,12 @@ export default function APQR() {
                     <th>Product Name</th>
                     <th>Batch Code</th>
                     <th>SFG Code</th>
-                    <th></th>
+                    {/* <th></th> */}
                     <th>Remarks</th>
                   </tr>
                 </thead>
                 <tbody>
-                  {manufacturingSAPS.map((item, index) => {
+                  {manufacturingSAPS?.map((item, index) => {
                     return (
                       <tr key={index}>
                         <td>
@@ -2081,14 +2079,13 @@ export default function APQR() {
           <>
             <div className="p-4">
               <div className="sub-head">
-                <p className="">Review of Rejected Raw Materials and Packaging Materials</p>
+                <p className="">
+                  Review of Rejected Raw Materials and Packaging Materials
+                </p>
               </div>
               <div className="pb-4">
                 <h4 className="gridName">Raw Materials Rejection Summary</h4>
-                {/* <div className="AddRows d-flex">
-                  <MdNoteAdd onClick={addRawMRSRow} />
-                  <div className="addrowinstruction"></div>
-                </div> */}
+               
                 <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                   <div className="flex items-center">
                     <MdNoteAdd onClick={addRawMRSRow} />
@@ -2117,7 +2114,7 @@ export default function APQR() {
                     </tr>
                   </thead>
                   <tbody>
-                    {rawMRS.map((item, index) => {
+                    {rawMRS?.map((item, index) => {
                       return (
                         <tr key={index}>
                           <td>{index + 1}</td>
@@ -2192,10 +2189,7 @@ export default function APQR() {
                   {" "}
                   Packing Materials Rejection Summary
                 </h4>
-                {/* <div className="AddRows d-flex">
-                  <MdNoteAdd onClick={addPackingMRSRow} />
-                  <div className="addrowinstruction"></div>
-                </div> */}
+                
                 <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                   <div className="flex items-center">
                     <MdNoteAdd onClick={addPackingMRSRow} />
@@ -2223,7 +2217,7 @@ export default function APQR() {
                     </tr>
                   </thead>
                   <tbody>
-                    {packingMRS.map((item, index) => {
+                    {packingMRS?.map((item, index) => {
                       return (
                         <tr key={index}>
                           <td>{index + 1}</td>
@@ -2299,10 +2293,7 @@ export default function APQR() {
               </div>
               <div className="pb-4">
                 <h4 className="gridName">Expired Raw Materials Details</h4>
-                {/* <div className="AddRows d-flex">
-                  <MdNoteAdd onClick={addExpiredRMDRow} />
-                  <div className="addrowinstruction"></div>
-                </div> */}
+                
                 <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                   <div className="flex items-center">
                     <MdNoteAdd onClick={addExpiredRMDRow} />
@@ -2325,11 +2316,11 @@ export default function APQR() {
                       <th>Material Code</th>
                       <th>Material Name</th>
                       <th>Lot No./ A.R. No.</th>
-                      <th>Description</th>
+                      <th>Expiry Date</th>
                     </tr>
                   </thead>
                   <tbody>
-                    {expiredRMD.map((item, index) => {
+                    {expiredRMD?.map((item, index) => {
                       return (
                         <tr key={index}>
                           <td>{index + 1}</td>
@@ -2365,10 +2356,10 @@ export default function APQR() {
                           </td>
                           <td>
                             <input
-                              value={item.description}
+                              value={item.expiryDate}
                               onChange={(e) => {
                                 const newData = [...expiredRMD];
-                                newData[index].description = e.target.value;
+                                newData[index].expiryDate = e.target.value;
                                 setExpiredRMD(newData);
                               }}
                             />
@@ -2392,10 +2383,7 @@ export default function APQR() {
                 <h4 className="gridName">
                   Expired Packaging Materials Details
                 </h4>
-                {/* <div className="AddRows d-flex">
-                  <MdNoteAdd onClick={addExpiredPMDRow} />
-                  <div className="addrowinstruction"></div>
-                </div> */}
+                
                 <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                   <div className="flex items-center">
                     <MdNoteAdd onClick={addExpiredPMDRow} />
@@ -2418,11 +2406,11 @@ export default function APQR() {
                       <th>Material Code</th>
                       <th>Material Name</th>
                       <th>Lot No./ A.R. No.</th>
-                      <th>Description</th>
+                      <th>Expiry Date</th>
                     </tr>
                   </thead>
                   <tbody>
-                    {expiredPMD.map((item, index) => {
+                    {expiredPMD?.map((item, index) => {
                       return (
                         <tr key={index}>
                           <td>{index + 1}</td>
@@ -2458,10 +2446,10 @@ export default function APQR() {
                           </td>
                           <td>
                             <input
-                              value={item.description}
+                              value={item.expiryDate}
                               onChange={(e) => {
                                 const newData = [...expiredPMD];
-                                newData[index].description = e.target.value;
+                                newData[index].expiryDate = e.target.value;
                                 setExpiredPMD(newData);
                               }}
                             />
@@ -2484,10 +2472,7 @@ export default function APQR() {
               </div>
 
               <div className="sub-head">Review of Approved Supplier List</div>
-              {/* <div className="AddRows d-flex">
-                <MdNoteAdd onClick={addreviewOfASLRow} />
-                <div className="addrowinstruction"></div>
-              </div> */}
+              
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addreviewOfASLRow} />
@@ -2515,7 +2500,7 @@ export default function APQR() {
                     </tr>
                   </thead>
                   <tbody>
-                    {reviewOfASL.map((item, index) => {
+                    {reviewOfASL?.map((item, index) => {
                       return (
                         <tr key={index}>
                           <td>{index + 1}</td>
@@ -2577,10 +2562,7 @@ export default function APQR() {
                 Vendor Qualification Details of Raw Material Excipients
               </div>
               <div>
-                {/* <div className="AddRows d-flex">
-                  <MdNoteAdd onClick={addvendorQDORMERow} />
-                  <div className="addrowinstruction"></div>
-                </div> */}
+               
                 <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                   <div className="flex items-center">
                     <MdNoteAdd onClick={addvendorQDORMERow} />
@@ -2605,7 +2587,7 @@ export default function APQR() {
                     <th>Remarks</th>
                   </thead>
                   <tbody>
-                    {vendorQDORME.map((item, index) => {
+                    {vendorQDORME?.map((item, index) => {
                       return (
                         <tr key={index}>
                           <td>
@@ -2679,10 +2661,7 @@ export default function APQR() {
                 Vendor Qualification Details of Primary Packing Materials
               </div>
               <div>
-                {/* <div className="AddRows d-flex">
-                  <MdNoteAdd onClick={addvendorQDOPPMRow} />
-                  <div className="addrowinstruction"></div>
-                </div> */}
+               
                 <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                   <div className="flex items-center">
                     <MdNoteAdd onClick={addvendorQDOPPMRow} />
@@ -2708,7 +2687,7 @@ export default function APQR() {
                     </tr>
                   </thead>
                   <tbody>
-                    {vendorQDOPPM.map((item, index) => {
+                    {vendorQDOPPM?.map((item, index) => {
                       return (
                         <tr key={index}>
                           <td>
@@ -2773,10 +2752,7 @@ export default function APQR() {
                 Vendor Qualification Details of Process Gases
               </div>
               <div>
-                {/* <div className="AddRows d-flex">
-                  <MdNoteAdd onClick={addvendorQDPOGRow} />
-                  <div className="addrowinstruction"></div>
-                </div> */}
+               
                 <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                   <div className="flex items-center">
                     <MdNoteAdd onClick={addvendorQDPOGRow} />
@@ -2802,7 +2778,7 @@ export default function APQR() {
                     </tr>
                   </thead>
                   <tbody>
-                    {vendorQDPOG.map((item, index) => {
+                    {vendorQDPOG?.map((item, index) => {
                       return (
                         <tr key={index}>
                           <td>
@@ -2958,10 +2934,7 @@ export default function APQR() {
             </div>
             <div className="gridName">Code to code transfer details</div>
             <div className="py-4">
-              {/* <div className="AddRows d-flex">
-                <MdNoteAdd onClick={addcodeTCTDRow} />
-                <div className="addrowinstruction"></div>
-              </div> */}
+            
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addcodeTCTDRow} />
@@ -2991,7 +2964,7 @@ export default function APQR() {
                   </tr>
                 </thead>
                 <tbody>
-                  {codeTCTD.map((item, index) => {
+                  {codeTCTD?.map((item, index) => {
                     return (
                       <tr key={index}>
                         <td>{index + 1}</td>
@@ -3147,7 +3120,7 @@ export default function APQR() {
                   </tr>
                 </thead>
                 <tbody>
-                  {reviewORCEC.map((item, index) => {
+                  {reviewORCEC?.map((item, index) => {
                     return (
                       <tr key={index}>
                         <td>{index + 1}</td>
@@ -3230,14 +3203,8 @@ export default function APQR() {
               />
             </div>
 
-            <h1>Deviation Details - Grid CAPA Details – Grid</h1>
-
             <h4 className="gridName">CAPA Details</h4>
             <div>
-              {/* <div className="AddRows d-flex">
-                <MdNoteAdd onClick={addBufferFSDPVRow} />
-                <div className="addrowinstruction"></div>
-              </div> */}
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addCapaDetailsRow} />
@@ -3266,7 +3233,7 @@ export default function APQR() {
                   </tr>
                 </thead>
                 <tbody>
-                  {capaDetails.map((item, index) => {
+                  {capaDetails?.map((item, index) => {
                     return (
                       <tr key={index}>
                         <td>
@@ -3358,10 +3325,6 @@ export default function APQR() {
 
             <h4 className="gridName">Deviation Details</h4>
             <div>
-              {/* <div className="AddRows d-flex">
-                <MdNoteAdd onClick={addBufferFSDPVRow} />
-                <div className="addrowinstruction"></div>
-              </div> */}
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={deviationDetailsRow} />
@@ -3393,7 +3356,7 @@ export default function APQR() {
                   </tr>
                 </thead>
                 <tbody>
-                  {deviationDetails.map((item, index) => {
+                  {deviationDetails?.map((item, index) => {
                     return (
                       <tr key={index}>
                         <td>
@@ -3530,10 +3493,6 @@ export default function APQR() {
 
             <h4 className="gridName">OOS Details</h4>
             <div>
-              {/* <div className="AddRows d-flex">
-                <MdNoteAdd onClick={addBufferFSDPVRow} />
-                <div className="addrowinstruction"></div>
-              </div> */}
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={oosDetailsRow} />
@@ -3561,7 +3520,7 @@ export default function APQR() {
                   </tr>
                 </thead>
                 <tbody>
-                  {oosDetails.map((item, index) => {
+                  {oosDetails?.map((item, index) => {
                     return (
                       <tr key={index}>
                         <td>
@@ -3644,10 +3603,6 @@ export default function APQR() {
 
             <h4 className="gridName">OOT Results</h4>
             <div>
-              {/* <div className="AddRows d-flex">
-                <MdNoteAdd onClick={addBufferFSDPVRow} />
-                <div className="addrowinstruction"></div>
-              </div> */}
               <div className="AddRows d-flex w-full justify-between items-center text-3xl mb-5">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={ootResultsRow} />
@@ -3676,7 +3631,7 @@ export default function APQR() {
                   </tr>
                 </thead>
                 <tbody>
-                  {ootResults.map((item, index) => {
+                  {ootResults?.map((item, index) => {
                     return (
                       <tr key={index}>
                         <td>
@@ -3767,10 +3722,6 @@ export default function APQR() {
             </div>
             <h4 className="gridName">OOA Results</h4>
             <div>
-              {/* <div className="AddRows d-flex">
-                <MdNoteAdd onClick={addBufferFSDPVRow} />
-                <div className="addrowinstruction"></div>
-              </div> */}
               <div className="AddRows d-flex w-full justify-between items-center text-3xl mb-5">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={ooaResultsRow} />
@@ -3799,7 +3750,7 @@ export default function APQR() {
                   </tr>
                 </thead>
                 <tbody>
-                  {ooaResults.map((item, index) => {
+                  {ooaResults?.map((item, index) => {
                     return (
                       <tr key={index}>
                         <td>
@@ -3891,10 +3842,6 @@ export default function APQR() {
             </div>
             <h4 className="gridName">OOL Results</h4>
             <div>
-              {/* <div className="AddRows d-flex">
-                <MdNoteAdd onClick={addBufferFSDPVRow} />
-                <div className="addrowinstruction"></div>
-              </div> */}
               <div className="AddRows d-flex w-full justify-between items-center text-3xl mb-5">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={oolResultsRow} />
@@ -3923,7 +3870,7 @@ export default function APQR() {
                   </tr>
                 </thead>
                 <tbody>
-                  {oolResults.map((item, index) => {
+                  {oolResults?.map((item, index) => {
                     return (
                       <tr key={index}>
                         <td>
@@ -4022,10 +3969,6 @@ export default function APQR() {
               Buffer formulation summary details provided below
             </h4>
             <div>
-              {/* <div className="AddRows d-flex">
-                <MdNoteAdd onClick={addBufferFSDPVRow} />
-                <div className="addrowinstruction"></div>
-              </div> */}
               <div className="AddRows d-flex w-full justify-between items-center text-3xl mb-5">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addBufferFSDPVRow} />
@@ -4056,7 +3999,7 @@ export default function APQR() {
                   </tr>
                 </thead>
                 <tbody>
-                  {bufferFSDPV.map((item, index) => {
+                  {bufferFSDPV?.map((item, index) => {
                     return (
                       <tr key={index}>
                         <td>
@@ -4130,10 +4073,7 @@ export default function APQR() {
             </div>
             <h3 className="gridName pt-4">Unit Operation 2</h3>
             <h4 className="gridName">Manufacturing summary details</h4>
-            {/* <div className="AddRows d-flex">
-              <MdNoteAdd onClick={addmanufacturingSDRow} />
-              <div className="addrowinstruction"></div>
-            </div> */}
+
             <div className="AddRows d-flex w-full justify-between items-center text-3xl mb-5">
               <div className="flex items-center">
                 <MdNoteAdd onClick={addmanufacturingSDRow} />
@@ -4155,7 +4095,9 @@ export default function APQR() {
                   <th rowSpan={2}>Critical Process Parameters</th>
                   <th rowSpan={2}>Codes</th>
                   <th rowSpan={2}>Acceptance criteria</th>
-                  <th className="centerText" colSpan={2} >Results</th>
+                  <th className="centerText" colSpan={2}>
+                    Results
+                  </th>
                   <th rowSpan={2}>Complies / Does not complies</th>
                 </tr>
                 <tr>
@@ -4164,7 +4106,7 @@ export default function APQR() {
                 </tr>
               </thead>
               <tbody>
-                {manufacturingSD.map((item, index) => {
+                {manufacturingSD?.map((item, index) => {
                   return (
                     <tr key={index}>
                       <td>
@@ -4245,7 +4187,9 @@ export default function APQR() {
                   <th rowSpan={2}>Critical Process Parameters</th>
                   <th rowSpan={2}>Codes</th>
                   <th rowSpan={2}>Acceptance criteria</th>
-                  <th className="centerText" colSpan={2}>Results</th>
+                  <th className="centerText" colSpan={2}>
+                    Results
+                  </th>
                   <th rowSpan={2}>Complies / Does not complies</th>
                 </tr>
                 <tr>
@@ -4254,7 +4198,7 @@ export default function APQR() {
                 </tr>
               </thead>
               <tbody>
-                {unitOperation3.map((item, index) => {
+                {unitOperation3?.map((item, index) => {
                   return (
                     <tr key={index}>
                       <td>
@@ -4335,7 +4279,9 @@ export default function APQR() {
                   <th rowSpan={2}>Critical Process Parameters</th>
                   <th rowSpan={2}>Codes</th>
                   <th rowSpan={2}>Acceptance criteria</th>
-                  <th className="centerText" colSpan={2}>Results</th>
+                  <th className="centerText" colSpan={2}>
+                    Results
+                  </th>
                   <th rowSpan={2}>Complies / Does not complies</th>
                 </tr>
                 <tr>
@@ -4344,7 +4290,7 @@ export default function APQR() {
                 </tr>
               </thead>
               <tbody>
-                {unitOperation4.map((item, index) => {
+                {unitOperation4?.map((item, index) => {
                   return (
                     <tr key={index}>
                       <td>
@@ -4425,7 +4371,9 @@ export default function APQR() {
                   <th rowSpan={2}>Critical Process Parameters</th>
                   <th rowSpan={2}>Codes</th>
                   <th rowSpan={2}>Acceptance criteria</th>
-                  <th className="centerText" colSpan={2}>Results</th>
+                  <th className="centerText" colSpan={2}>
+                    Results
+                  </th>
                   <th rowSpan={2}>Complies / Does not complies</th>
                 </tr>
                 <tr>
@@ -4434,7 +4382,7 @@ export default function APQR() {
                 </tr>
               </thead>
               <tbody>
-                {unitOperation5.map((item, index) => {
+                {unitOperation5?.map((item, index) => {
                   return (
                     <tr key={index}>
                       <td>
@@ -4515,7 +4463,9 @@ export default function APQR() {
                   <th rowSpan={2}>Critical Process Parameters</th>
                   <th rowSpan={2}>Codes</th>
                   <th rowSpan={2}>Acceptance criteria</th>
-                  <th className="centerText" colSpan={2}>Results</th>
+                  <th className="centerText" colSpan={2}>
+                    Results
+                  </th>
                   <th rowSpan={2}>Complies / Does not complies</th>
                 </tr>
                 <tr>
@@ -4524,7 +4474,7 @@ export default function APQR() {
                 </tr>
               </thead>
               <tbody>
-                {unitOperation6.map((item, index) => {
+                {unitOperation6?.map((item, index) => {
                   return (
                     <tr key={index}>
                       <td>
@@ -4605,7 +4555,9 @@ export default function APQR() {
                   <th rowSpan={2}>Critical Process Parameters</th>
                   <th rowSpan={2}>Codes</th>
                   <th rowSpan={2}>Acceptance criteria</th>
-                  <th className="centerText" colSpan={2}>Results</th>
+                  <th className="centerText" colSpan={2}>
+                    Results
+                  </th>
                   <th rowSpan={2}>Complies / Does not complies</th>
                 </tr>
                 <tr>
@@ -4614,7 +4566,7 @@ export default function APQR() {
                 </tr>
               </thead>
               <tbody>
-                {unitOperation7.map((item, index) => {
+                {unitOperation7?.map((item, index) => {
                   return (
                     <tr key={index}>
                       <td>
@@ -4695,7 +4647,9 @@ export default function APQR() {
                   <th rowSpan={2}>Critical Process Parameters</th>
                   <th rowSpan={2}>Codes</th>
                   <th rowSpan={2}>Acceptance criteria</th>
-                  <th className="centerText" colSpan={2}>Results</th>
+                  <th className="centerText" colSpan={2}>
+                    Results
+                  </th>
                   <th rowSpan={2}>Complies / Does not complies</th>
                 </tr>
                 <tr>
@@ -4704,7 +4658,7 @@ export default function APQR() {
                 </tr>
               </thead>
               <tbody>
-                {unitOperation8.map((item, index) => {
+                {unitOperation8?.map((item, index) => {
                   return (
                     <tr key={index}>
                       <td>
@@ -4785,7 +4739,9 @@ export default function APQR() {
                   <th rowSpan={2}>Critical Process Parameters</th>
                   <th rowSpan={2}>Codes</th>
                   <th rowSpan={2}>Acceptance criteria</th>
-                  <th className="centerText" colSpan={2}>Results</th>
+                  <th className="centerText" colSpan={2}>
+                    Results
+                  </th>
                   <th rowSpan={2}>Complies / Does not complies</th>
                 </tr>
                 <tr>
@@ -4794,7 +4750,7 @@ export default function APQR() {
                 </tr>
               </thead>
               <tbody>
-                {unitOperation9.map((item, index) => {
+                {unitOperation9?.map((item, index) => {
                   return (
                     <tr key={index}>
                       <td>
@@ -4875,7 +4831,9 @@ export default function APQR() {
                   <th rowSpan={2}>Critical Process Parameters</th>
                   <th rowSpan={2}>Codes</th>
                   <th rowSpan={2}>Acceptance criteria</th>
-                  <th className="centerText" colSpan={2}>Results</th>
+                  <th className="centerText" colSpan={2}>
+                    Results
+                  </th>
                   <th rowSpan={2}>Complies / Does not complies</th>
                 </tr>
                 <tr>
@@ -4884,7 +4842,7 @@ export default function APQR() {
                 </tr>
               </thead>
               <tbody>
-                {unitOperation10.map((item, index) => {
+                {unitOperation10?.map((item, index) => {
                   return (
                     <tr key={index}>
                       <td>
@@ -4958,7 +4916,6 @@ export default function APQR() {
               Critical Process Parameters Review Summary
             </div>
             <div className="group-input">
-              {/* <input placeholder="please insert flex" /> */}
               <TinyEditor
                 editorContent={tiny26}
                 setEditorContent={setTinyContent}
@@ -4975,10 +4932,6 @@ export default function APQR() {
             </div>
             <h1 className="gridName">Drug Substance 1 Test Result</h1>
             <div>
-              {/* <div className="AddRows d-flex">
-                <MdNoteAdd onClick={addReviewODSTRRow} />
-                <div className="addrowinstruction"></div>
-              </div> */}
               <div className="AddRows d-flex w-full justify-between items-center text-3xl mb-5">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addReviewODSTRRow} />
@@ -5000,7 +4953,9 @@ export default function APQR() {
                     <th rowSpan={2}>Sl. No</th>
                     <th rowSpan={2}>Tests parameter</th>
                     <th rowSpan={2}>Specification limit</th>
-                    <th className="centerText" colSpan={2}>Obtained value</th>
+                    <th className="centerText" colSpan={2}>
+                      Obtained value
+                    </th>
                     <th rowSpan={2}>Complies/Does Not complies</th>
                   </tr>
                   <tr>
@@ -5009,7 +4964,7 @@ export default function APQR() {
                   </tr>
                 </thead>
                 <tbody>
-                  {reviewODSTR.map((item, index) => {
+                  {reviewODSTR?.map((item, index) => {
                     return (
                       <tr key={index}>
                         <td>{index + 1}</td>
@@ -5096,7 +5051,9 @@ export default function APQR() {
                     <th rowSpan={2}>Sl. No</th>
                     <th rowSpan={2}>Tests parameter</th>
                     <th rowSpan={2}>Specification limit</th>
-                    <th className="centerText" colSpan={2}>Obtained value</th>
+                    <th className="centerText" colSpan={2}>
+                      Obtained value
+                    </th>
                     <th rowSpan={2}>Complies/Does Not complies</th>
                   </tr>
                   <tr>
@@ -5105,7 +5062,7 @@ export default function APQR() {
                   </tr>
                 </thead>
                 <tbody>
-                  {reviewODSTR2.map((item, index) => {
+                  {reviewODSTR2?.map((item, index) => {
                     return (
                       <tr key={index}>
                         <td>{index + 1}</td>
@@ -5171,10 +5128,6 @@ export default function APQR() {
             </div>{" "}
             <h1 className="gridName pt-8">Drug Substance 3 Test Result</h1>
             <div>
-              {/* <div className="AddRows d-flex">
-    <MdNoteAdd onClick={addReviewODSTRRow} />
-    <div className="addrowinstruction"></div>
-  </div> */}
               <div className="AddRows d-flex w-full justify-between items-center text-3xl mb-5">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addReviewODSTRRow3} />
@@ -5196,7 +5149,9 @@ export default function APQR() {
                     <th rowSpan={2}>Sl. No</th>
                     <th rowSpan={2}>Tests parameter</th>
                     <th rowSpan={2}>Specification limit</th>
-                    <th className="centerText" colSpan={2}>Obtained value</th>
+                    <th className="centerText" colSpan={2}>
+                      Obtained value
+                    </th>
                     <th rowSpan={2}>Complies/Does Not complies</th>
                   </tr>
                   <tr>
@@ -5205,7 +5160,7 @@ export default function APQR() {
                   </tr>
                 </thead>
                 <tbody>
-                  {reviewODSTR3.map((item, index) => {
+                  {reviewODSTR3?.map((item, index) => {
                     return (
                       <tr key={index}>
                         <td>{index + 1}</td>
@@ -5271,10 +5226,6 @@ export default function APQR() {
             </div>{" "}
             <h1 className="gridName pt-8">Drug Substance 4 Test Result</h1>
             <div>
-              {/* <div className="AddRows d-flex">
-    <MdNoteAdd onClick={addReviewODSTRRow} />
-    <div className="addrowinstruction"></div>
-  </div> */}
               <div className="AddRows d-flex w-full justify-between items-center text-3xl mb-5">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addReviewODSTRRow4} />
@@ -5296,7 +5247,9 @@ export default function APQR() {
                     <th rowSpan={2}>Sl. No</th>
                     <th rowSpan={2}>Tests parameter</th>
                     <th rowSpan={2}>Specification limit</th>
-                    <th className="centerText" colSpan={2}>Obtained value</th>
+                    <th className="centerText" colSpan={2}>
+                      Obtained value
+                    </th>
                     <th rowSpan={2}>Complies/Does Not complies</th>
                   </tr>
                   <tr>
@@ -5305,7 +5258,7 @@ export default function APQR() {
                   </tr>
                 </thead>
                 <tbody>
-                  {reviewODSTR4.map((item, index) => {
+                  {reviewODSTR4?.map((item, index) => {
                     return (
                       <tr key={index}>
                         <td>{index + 1}</td>
@@ -5371,10 +5324,6 @@ export default function APQR() {
             </div>{" "}
             <h1 className="gridName pt-8">Drug Substance 5 Test Result</h1>
             <div>
-              {/* <div className="AddRows d-flex">
-    <MdNoteAdd onClick={addReviewODSTRRow} />
-    <div className="addrowinstruction"></div>
-  </div> */}
               <div className="AddRows d-flex w-full justify-between items-center text-3xl mb-5">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addReviewODSTRRow5} />
@@ -5396,7 +5345,9 @@ export default function APQR() {
                     <th rowSpan={2}>Sl. No</th>
                     <th rowSpan={2}>Tests parameter</th>
                     <th rowSpan={2}>Specification limit</th>
-                    <th className="centerText" colSpan={2}>Obtained value</th>
+                    <th className="centerText" colSpan={2}>
+                      Obtained value
+                    </th>
                     <th rowSpan={2}>Complies/Does Not complies</th>
                   </tr>
                   <tr>
@@ -5405,7 +5356,7 @@ export default function APQR() {
                   </tr>
                 </thead>
                 <tbody>
-                  {reviewODSTR5.map((item, index) => {
+                  {reviewODSTR5?.map((item, index) => {
                     return (
                       <tr key={index}>
                         <td>{index + 1}</td>
@@ -5471,10 +5422,6 @@ export default function APQR() {
             </div>{" "}
             <h1 className="gridName pt-8">Drug Substance 6 Test Result</h1>
             <div>
-              {/* <div className="AddRows d-flex">
-    <MdNoteAdd onClick={addReviewODSTRRow} />
-    <div className="addrowinstruction"></div>
-  </div> */}
               <div className="AddRows d-flex w-full justify-between items-center text-3xl mb-5">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addReviewODSTRRow6} />
@@ -5496,7 +5443,9 @@ export default function APQR() {
                     <th rowSpan={2}>Sl. No</th>
                     <th rowSpan={2}>Tests parameter</th>
                     <th rowSpan={2}>Specification limit</th>
-                    <th className="centerText" colSpan={2}>Obtained value</th>
+                    <th className="centerText" colSpan={2}>
+                      Obtained value
+                    </th>
                     <th rowSpan={2}>Complies/Does Not complies</th>
                   </tr>
                   <tr>
@@ -5505,7 +5454,7 @@ export default function APQR() {
                   </tr>
                 </thead>
                 <tbody>
-                  {reviewODSTR6.map((item, index) => {
+                  {reviewODSTR6?.map((item, index) => {
                     return (
                       <tr key={index}>
                         <td>{index + 1}</td>
@@ -5592,7 +5541,9 @@ export default function APQR() {
                     <th rowSpan={2}>Sl. No</th>
                     <th rowSpan={2}>Tests parameter</th>
                     <th rowSpan={2}>Specification limit</th>
-                    <th className="centerText" colSpan={2}>Obtained value</th>
+                    <th className="centerText" colSpan={2}>
+                      Obtained value
+                    </th>
                     <th rowSpan={2}>Complies/Does Not complies</th>
                   </tr>
                   <tr>
@@ -5601,7 +5552,7 @@ export default function APQR() {
                   </tr>
                 </thead>
                 <tbody>
-                  {reviewODSTR7.map((item, index) => {
+                  {reviewODSTR7?.map((item, index) => {
                     return (
                       <tr key={index}>
                         <td>{index + 1}</td>
@@ -5688,7 +5639,9 @@ export default function APQR() {
                     <th rowSpan={2}>Sl. No</th>
                     <th rowSpan={2}>Tests parameter</th>
                     <th rowSpan={2}>Specification limit</th>
-                    <th className="centerText" colSpan={2}>Obtained value</th>
+                    <th className="centerText" colSpan={2}>
+                      Obtained value
+                    </th>
                     <th rowSpan={2}>Complies/Does Not complies</th>
                   </tr>
                   <tr>
@@ -5697,7 +5650,7 @@ export default function APQR() {
                   </tr>
                 </thead>
                 <tbody>
-                  {reviewODSTR8.map((item, index) => {
+                  {reviewODSTR8?.map((item, index) => {
                     return (
                       <tr key={index}>
                         <td>{index + 1}</td>
@@ -5784,7 +5737,9 @@ export default function APQR() {
                     <th rowSpan={2}>Sl. No</th>
                     <th rowSpan={2}>Tests parameter</th>
                     <th rowSpan={2}>Specification limit</th>
-                    <th className="centerText" colSpan={2}>Obtained value</th>
+                    <th className="centerText" colSpan={2}>
+                      Obtained value
+                    </th>
                     <th rowSpan={2}>Complies/Does Not complies</th>
                   </tr>
                   <tr>
@@ -5793,7 +5748,7 @@ export default function APQR() {
                   </tr>
                 </thead>
                 <tbody>
-                  {reviewODSTR9.map((item, index) => {
+                  {reviewODSTR9?.map((item, index) => {
                     return (
                       <tr key={index}>
                         <td>{index + 1}</td>
@@ -5859,10 +5814,6 @@ export default function APQR() {
             </div>{" "}
             <h1 className="gridName pt-8">Drug Substance 10 Test Result</h1>
             <div>
-              {/* <div className="AddRows d-flex">
-    <MdNoteAdd onClick={addReviewODSTRRow} />
-    <div className="addrowinstruction"></div>
-  </div> */}
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addReviewODSTRRow10} />
@@ -5884,7 +5835,9 @@ export default function APQR() {
                     <th rowSpan={2}>Sl. No</th>
                     <th rowSpan={2}>Tests parameter</th>
                     <th rowSpan={2}>Specification limit</th>
-                    <th className="centerText" colSpan={2}>Obtained value</th>
+                    <th className="centerText" colSpan={2}>
+                      Obtained value
+                    </th>
                     <th rowSpan={2}>Complies/Does Not complies</th>
                   </tr>
                   <tr>
@@ -5893,7 +5846,7 @@ export default function APQR() {
                   </tr>
                 </thead>
                 <tbody>
-                  {reviewODSTR10.map((item, index) => {
+                  {reviewODSTR10?.map((item, index) => {
                     return (
                       <tr key={index}>
                         <td>{index + 1}</td>
@@ -5969,10 +5922,6 @@ export default function APQR() {
               Review of Raw Material Excipient Test Results
             </div>
             <div>
-              {/* <div className="AddRows d-flex">
-                <MdNoteAdd onClick={addReviewORMETRRow} />
-                <div className="addrowinstruction"></div>
-              </div> */}
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addReviewORMETRRow} />
@@ -5995,7 +5944,9 @@ export default function APQR() {
                     <th rowSpan={2}>Material</th>
                     <th rowSpan={2}>Test parameter</th>
                     <th rowSpan={2}>Specification limit</th>
-                    <th className="centerText" colSpan={2}>Obtained value</th>
+                    <th className="centerText" colSpan={2}>
+                      Obtained value
+                    </th>
                     <th rowSpan={2}>Complies/ Does Not complies</th>
                   </tr>
                   <tr>
@@ -6004,7 +5955,7 @@ export default function APQR() {
                   </tr>
                 </thead>
                 <tbody>
-                  {reviewORMETR.map((item, index) => {
+                  {reviewORMETR?.map((item, index) => {
                     return (
                       <tr key={index}>
                         <td>{index + 1}</td>
@@ -6090,10 +6041,6 @@ export default function APQR() {
               Review of Packing Material Test Results
             </div>
             <div>
-              {/* <div className="AddRows d-flex">
-                <MdNoteAdd onClick={addreviewOPMTRRow} />
-                <div className="addrowinstruction"></div>
-              </div> */}
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addreviewOPMTRRow} />
@@ -6116,7 +6063,9 @@ export default function APQR() {
                     <th rowSpan={2}>Material</th>
                     <th rowSpan={2}>Test parameter</th>
                     <th rowSpan={2}>Specification limit</th>
-                    <th className="centerText" colSpan={2}>Obtained value</th>
+                    <th className="centerText" colSpan={2}>
+                      Obtained value
+                    </th>
                     <th rowSpan={2}>Complies/ Does Not complies</th>
                   </tr>
                   <tr>
@@ -6125,7 +6074,7 @@ export default function APQR() {
                   </tr>
                 </thead>
                 <tbody>
-                  {reviewOPMTR.map((item, index) => {
+                  {reviewOPMTR?.map((item, index) => {
                     return (
                       <tr key={index}>
                         <td>{index + 1}</td>
@@ -6212,10 +6161,6 @@ export default function APQR() {
             </div>
             <h4 className="gridName pt-2">Dilution Buffer 1 - Test Results</h4>
             <div>
-              {/* <div className="AddRows d-flex">
-                <MdNoteAdd onClick={addReviewODPRow} />
-                <div className="addrowinstruction"></div>
-              </div> */}
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addReviewODPRow} />
@@ -6238,7 +6183,9 @@ export default function APQR() {
                     <th rowSpan={2}>Tests parameter</th>
                     <th rowSpan={2}>Stage</th>
                     <th rowSpan={2}>Specification limit</th>
-                    <th className="centerText" colSpan={2}>Obtained value</th>
+                    <th className="centerText" colSpan={2}>
+                      Obtained value
+                    </th>
                     <th rowSpan={2}>Complies/ Does Not complies</th>
                   </tr>
                   <tr>
@@ -6247,7 +6194,7 @@ export default function APQR() {
                   </tr>
                 </thead>
                 <tbody>
-                  {reviewODP.map((item, index) => {
+                  {reviewODP?.map((item, index) => {
                     return (
                       <tr key={index}>
                         <td>{index + 1}</td>
@@ -6323,10 +6270,6 @@ export default function APQR() {
             </div>
             <h4 className="gridName pt-8 ">Dilution Buffer 2 - Test Results</h4>
             <div>
-              {/* <div className="AddRows d-flex">
-                <MdNoteAdd onClick={addReviewODPRow} />
-                <div className="addrowinstruction"></div>
-              </div> */}
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addReviewODPRow2} />
@@ -6349,7 +6292,9 @@ export default function APQR() {
                     <th rowSpan={2}>Tests parameter</th>
                     <th rowSpan={2}>Stage</th>
                     <th rowSpan={2}>Specification limit</th>
-                    <th className="centerText" colSpan={2}>Obtained value</th>
+                    <th className="centerText" colSpan={2}>
+                      Obtained value
+                    </th>
                     <th rowSpan={2}>Complies/ Does Not complies</th>
                   </tr>
                   <tr>
@@ -6358,7 +6303,7 @@ export default function APQR() {
                   </tr>
                 </thead>
                 <tbody>
-                  {reviewODP2.map((item, index) => {
+                  {reviewODP2?.map((item, index) => {
                     return (
                       <tr key={index}>
                         <td>{index + 1}</td>
@@ -6434,10 +6379,6 @@ export default function APQR() {
             </div>{" "}
             <h4 className="gridName pt-8">Dilution Buffer 3 - Test Results</h4>
             <div>
-              {/* <div className="AddRows d-flex">
-                <MdNoteAdd onClick={addReviewODPRow} />
-                <div className="addrowinstruction"></div>
-              </div> */}
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addReviewODPRow3} />
@@ -6460,7 +6401,9 @@ export default function APQR() {
                     <th rowSpan={2}>Tests parameter</th>
                     <th rowSpan={2}>Stage</th>
                     <th rowSpan={2}>Specification limit</th>
-                    <th className="centerText" colSpan={2}>Obtained value</th>
+                    <th className="centerText" colSpan={2}>
+                      Obtained value
+                    </th>
                     <th rowSpan={2}>Complies/ Does Not complies</th>
                   </tr>
                   <tr>
@@ -6469,7 +6412,7 @@ export default function APQR() {
                   </tr>
                 </thead>
                 <tbody>
-                  {reviewODP3.map((item, index) => {
+                  {reviewODP3?.map((item, index) => {
                     return (
                       <tr key={index}>
                         <td>{index + 1}</td>
@@ -6545,10 +6488,6 @@ export default function APQR() {
             </div>{" "}
             <h4 className="gridName pt-8">Dilution Buffer 4 - Test Results</h4>
             <div>
-              {/* <div className="AddRows d-flex">
-                <MdNoteAdd onClick={addReviewODPRow} />
-                <div className="addrowinstruction"></div>
-              </div> */}
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addReviewODPRow4} />
@@ -6571,7 +6510,9 @@ export default function APQR() {
                     <th rowSpan={2}>Tests parameter</th>
                     <th rowSpan={2}>Stage</th>
                     <th rowSpan={2}>Specification limit</th>
-                    <th className="centerText" colSpan={2}>Obtained value</th>
+                    <th className="centerText" colSpan={2}>
+                      Obtained value
+                    </th>
                     <th rowSpan={2}>Complies/ Does Not complies</th>
                   </tr>
                   <tr>
@@ -6580,7 +6521,7 @@ export default function APQR() {
                   </tr>
                 </thead>
                 <tbody>
-                  {reviewODP4.map((item, index) => {
+                  {reviewODP4?.map((item, index) => {
                     return (
                       <tr key={index}>
                         <td>{index + 1}</td>
@@ -6656,10 +6597,6 @@ export default function APQR() {
             </div>{" "}
             <h4 className="gridName pt-8">Dilution Buffer 5 - Test Results</h4>
             <div>
-              {/* <div className="AddRows d-flex">
-                <MdNoteAdd onClick={addReviewODPRow} />
-                <div className="addrowinstruction"></div>
-              </div> */}
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addReviewODPRow5} />
@@ -6682,7 +6619,9 @@ export default function APQR() {
                     <th rowSpan={2}>Tests parameter</th>
                     <th rowSpan={2}>Stage</th>
                     <th rowSpan={2}>Specification limit</th>
-                    <th className="centerText" colSpan={2}>Obtained value</th>
+                    <th className="centerText" colSpan={2}>
+                      Obtained value
+                    </th>
                     <th rowSpan={2}>Complies/ Does Not complies</th>
                   </tr>
                   <tr>
@@ -6691,7 +6630,7 @@ export default function APQR() {
                   </tr>
                 </thead>
                 <tbody>
-                  {reviewODP5.map((item, index) => {
+                  {reviewODP5?.map((item, index) => {
                     return (
                       <tr key={index}>
                         <td>{index + 1}</td>
@@ -6767,10 +6706,6 @@ export default function APQR() {
             </div>{" "}
             <h4 className="gridName pt-8">Dilution Buffer 6 - Test Results</h4>
             <div>
-              {/* <div className="AddRows d-flex">
-                <MdNoteAdd onClick={addReviewODPRow} />
-                <div className="addrowinstruction"></div>
-              </div> */}
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addReviewODPRow6} />
@@ -6793,7 +6728,9 @@ export default function APQR() {
                     <th rowSpan={2}>Tests parameter</th>
                     <th rowSpan={2}>Stage</th>
                     <th rowSpan={2}>Specification limit</th>
-                    <th className="centerText" colSpan={2}>Obtained value</th>
+                    <th className="centerText" colSpan={2}>
+                      Obtained value
+                    </th>
                     <th rowSpan={2}>Complies/ Does Not complies</th>
                   </tr>
                   <tr>
@@ -6878,10 +6815,6 @@ export default function APQR() {
             </div>{" "}
             <h4 className="gridName pt-8">Dilution Buffer 7 - Test Results</h4>
             <div>
-              {/* <div className="AddRows d-flex">
-                <MdNoteAdd onClick={addReviewODPRow} />
-                <div className="addrowinstruction"></div>
-              </div> */}
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addReviewODPRow7} />
@@ -6904,7 +6837,9 @@ export default function APQR() {
                     <th rowSpan={2}>Tests parameter</th>
                     <th rowSpan={2}>Stage</th>
                     <th rowSpan={2}>Specification limit</th>
-                    <th className="centerText" colSpan={2}>Obtained value</th>
+                    <th className="centerText" colSpan={2}>
+                      Obtained value
+                    </th>
                     <th rowSpan={2}>Complies/ Does Not complies</th>
                   </tr>
                   <tr>
@@ -6989,10 +6924,6 @@ export default function APQR() {
             </div>{" "}
             <h4 className="gridName pt-8">Dilution Buffer 8 - Test Results</h4>
             <div>
-              {/* <div className="AddRows d-flex">
-                <MdNoteAdd onClick={addReviewODPRow} />
-                <div className="addrowinstruction"></div>
-              </div> */}
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addReviewODPRow8} />
@@ -7015,7 +6946,9 @@ export default function APQR() {
                     <th rowSpan={2}>Tests parameter</th>
                     <th rowSpan={2}>Stage</th>
                     <th rowSpan={2}>Specification limit</th>
-                    <th className="centerText" colSpan={2}>Obtained value</th>
+                    <th className="centerText" colSpan={2}>
+                      Obtained value
+                    </th>
                     <th rowSpan={2}>Complies/ Does Not complies</th>
                   </tr>
                   <tr>
@@ -7100,10 +7033,6 @@ export default function APQR() {
             </div>{" "}
             <h4 className="gridName pt-8">Dilution Buffer 9 - Test Results</h4>
             <div>
-              {/* <div className="AddRows d-flex">
-                <MdNoteAdd onClick={addReviewODPRow} />
-                <div className="addrowinstruction"></div>
-              </div> */}
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addReviewODPRow9} />
@@ -7126,7 +7055,9 @@ export default function APQR() {
                     <th rowSpan={2}>Tests parameter</th>
                     <th rowSpan={2}>Stage</th>
                     <th rowSpan={2}>Specification limit</th>
-                    <th className="centerText" colSpan={2}>Obtained value</th>
+                    <th className="centerText" colSpan={2}>
+                      Obtained value
+                    </th>
                     <th rowSpan={2}>Complies/ Does Not complies</th>
                   </tr>
                   <tr>
@@ -7211,10 +7142,6 @@ export default function APQR() {
             </div>
             <h4 className="gridName pt-8">Dilution Buffer 10 - Test Results</h4>
             <div>
-              {/* <div className="AddRows d-flex">
-                <MdNoteAdd onClick={addReviewODPRow} />
-                <div className="addrowinstruction"></div>
-              </div> */}
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addReviewODPRow10} />
@@ -7237,7 +7164,9 @@ export default function APQR() {
                     <th rowSpan={2}>Tests parameter</th>
                     <th rowSpan={2}>Stage</th>
                     <th rowSpan={2}>Specification limit</th>
-                    <th className="centerText" colSpan={2}>Obtained value</th>
+                    <th className="centerText" colSpan={2}>
+                      Obtained value
+                    </th>
                     <th rowSpan={2}>Complies/ Does Not complies</th>
                   </tr>
                   <tr>
@@ -7332,10 +7261,6 @@ export default function APQR() {
               Review of Drug Product –Finished Product Test Results
             </div>
             <div>
-              {/* <div className="AddRows d-flex">
-                <MdNoteAdd onClick={addReviewODPFPTRRow} />
-                <div className="addrowinstruction"></div>
-              </div> */}
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addReviewODPFPTRRow} />
@@ -7357,7 +7282,9 @@ export default function APQR() {
                     <th rowSpan={2}>Sl. No</th>
                     <th rowSpan={2}>Tests parameter</th>
                     <th rowSpan={2}>Specification limit</th>
-                    <th className="centerText" colSpan={2}>Obtained value</th>
+                    <th className="centerText" colSpan={2}>
+                      Obtained value
+                    </th>
                     <th rowSpan={2}>Complies/ Does Not complies</th>
                   </tr>
                   <tr>
@@ -7440,10 +7367,6 @@ export default function APQR() {
             </div>
             <div className="sub-head">Summary of Ongoing Stability Studies</div>
             <div>
-              {/* <div className="AddRows d-flex">
-                <MdNoteAdd onClick={addSummaryOOSSRow} />
-                <div className="addrowinstruction"></div>
-              </div> */}
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addSummaryOOSSRow} />
@@ -7541,10 +7464,7 @@ export default function APQR() {
               </div>
 
               <h4 className="gridName pt-4">Stability Study Related OOS/OOT</h4>
-              {/* <div className="AddRows d-flex">
-                <MdNoteAdd onClick={addStabilitySRRow} />
-                <div className="addrowinstruction"></div>
-              </div> */}
+
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addStabilitySRRow} />
@@ -7622,10 +7542,6 @@ export default function APQR() {
                 Review of Visual Inspection – Reserve Samples
               </div>
               <div>
-                {/* <div className="AddRows d-flex">
-                  <MdNoteAdd onClick={addreviewOVIRSRow} />
-                  <div className="addrowinstruction"></div>
-                </div> */}
                 <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                   <div className="flex items-center">
                     <MdNoteAdd onClick={addreviewOVIRSRow} />
@@ -7807,10 +7723,6 @@ export default function APQR() {
 
             <div className="sub-head">HVAC Qualification Status</div>
             <div>
-              {/* <div className="AddRows">
-                <MdNoteAdd onClick={addHVACQStatusRow} />
-                <div className="addrowinstruction"></div>
-              </div> */}
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addHVACQStatusRow} />
@@ -7890,10 +7802,6 @@ export default function APQR() {
               Sanitization and Sterilization Details of Utilities
             </h4>
             <div>
-              {/* <div className="AddRows">
-                <MdNoteAdd onClick={addSanitizationASDOURow} />
-                <div className="addrowinstruction"></div>
-              </div> */}
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addSanitizationASDOURow} />
@@ -7968,14 +7876,6 @@ export default function APQR() {
 
             <h4 className="gridName pt-4">Compressed Gases</h4>
             <div>
-              {/* <div className="AddRows">
-                <MdNoteAdd onClick={addCompressedGasesRow} />
-                <div className="addrowinstruction">
-                  Compressed gases testing performed as per the scheduled
-                  frequency and results were found to be satisfactory, system is
-                  in qualified state
-                </div>
-              </div> */}
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addCompressedGasesRow} />
@@ -8876,7 +8776,7 @@ export default function APQR() {
                   </tr>
                 </thead>
                 <tbody>
-                  {currentOOAL.map((item, index) => {
+                  {currentOOAL?.map((item, index) => {
                     return (
                       <tr key={index}>
                         <td>{index + 1}</td>
@@ -9004,7 +8904,7 @@ export default function APQR() {
                   </tr>
                 </thead>
                 <tbody>
-                  {previewOOAL.map((item, index) => {
+                  {previewOOAL?.map((item, index) => {
                     return (
                       <tr key={index}>
                         <td>{index + 1}</td>
@@ -9138,7 +9038,7 @@ export default function APQR() {
                   </tr>
                 </thead>
                 <tbody>
-                  {currentOOSA.map((item, index) => {
+                  {currentOOSA?.map((item, index) => {
                     return (
                       <tr key={index}>
                         <td>{index + 1}</td>
@@ -9266,7 +9166,7 @@ export default function APQR() {
                   </tr>
                 </thead>
                 <tbody>
-                  {previewOOSA.map((item, index) => {
+                  {previewOOSA?.map((item, index) => {
                     return (
                       <tr key={index}>
                         <td>{index + 1}</td>
@@ -9399,7 +9299,7 @@ export default function APQR() {
                   </tr>
                 </thead>
                 <tbody>
-                  {currentOOT.map((item, index) => {
+                  {currentOOT?.map((item, index) => {
                     return (
                       <tr key={index}>
                         <td>{index + 1}</td>
@@ -9527,7 +9427,7 @@ export default function APQR() {
                   </tr>
                 </thead>
                 <tbody>
-                  {previewOOT.map((item, index) => {
+                  {previewOOT?.map((item, index) => {
                     return (
                       <tr key={index}>
                         <td>{index + 1}</td>
@@ -9664,7 +9564,7 @@ export default function APQR() {
                   </tr>
                 </thead>
                 <tbody>
-                  {currentCC.map((item, index) => {
+                  {currentCC?.map((item, index) => {
                     return (
                       <tr key={index}>
                         <td>{index + 1}</td>
@@ -9794,7 +9694,7 @@ export default function APQR() {
                   </tr>
                 </thead>
                 <tbody>
-                  {previewCC.map((item, index) => {
+                  {previewCC?.map((item, index) => {
                     return (
                       <tr key={index}>
                         <td>{index + 1}</td>
@@ -9928,7 +9828,7 @@ export default function APQR() {
                   </tr>
                 </thead>
                 <tbody>
-                  {currentLabI.map((item, index) => {
+                  {currentLabI?.map((item, index) => {
                     return (
                       <tr key={index}>
                         <td>{index + 1}</td>
@@ -10056,7 +9956,7 @@ export default function APQR() {
                   </tr>
                 </thead>
                 <tbody>
-                  {previewLabI.map((item, index) => {
+                  {previewLabI?.map((item, index) => {
                     return (
                       <tr key={index}>
                         <td>{index + 1}</td>
@@ -10192,7 +10092,7 @@ export default function APQR() {
                   </tr>
                 </thead>
                 <tbody>
-                  {currentMC.map((item, index) => {
+                  {currentMC?.map((item, index) => {
                     return (
                       <tr key={index}>
                         <td>{index + 1}</td>
@@ -10434,10 +10334,6 @@ export default function APQR() {
               Current Review Period Quality Related Notification
             </div>
             <div>
-              {/* <div className="AddRows">
-                <MdNoteAdd onClick={addCurrentRPQRNRow} />
-                <div className="addrowinstruction"></div>
-              </div> */}
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addCurrentRPQRNRow} />
@@ -10458,8 +10354,12 @@ export default function APQR() {
                   <tr>
                     <th rowSpan={2}>SI. No.</th>
                     <th rowSpan={2}>Batch No.</th>
-                    <th className="centerText" colSpan={4}>Quality Related Notification</th>
-                    <th className="centerText" colSpan={3}>CAPA</th>
+                    <th className="centerText" colSpan={4}>
+                      Quality Related Notification
+                    </th>
+                    <th className="centerText" colSpan={3}>
+                      CAPA
+                    </th>
                   </tr>
                   <tr>
                     <th>No.</th>
@@ -10635,8 +10535,6 @@ export default function APQR() {
           <>
             <div className="gridName">Dossier variation details</div>
             <div className="py-4">
-              {/* <MdNoteAdd onClick={addDossierRow} />
-                <div className="addrowinstruction"></div> */}
               <div className="AddRows d-flex w-full justify-between items-center text-3xl ">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addDossierRow} />
@@ -10693,7 +10591,7 @@ export default function APQR() {
                             value={item.notificationType}
                             onChange={(e) => {
                               const newData = [...dossierRR];
-                              newData[index].notificationTpe = e.target.value;
+                              newData[index].notificationType = e.target.value;
                               setDossierRR(newData);
                             }}
                           />
@@ -10725,8 +10623,6 @@ export default function APQR() {
 
               <div className="gridName">New marketing authorisation</div>
               <div className="py-4">
-                {/* <MdNoteAdd onClick={addDossierRowNma} />
-                  <div className="addrowinstruction"></div> */}
                 <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                   <div className="flex items-center">
                     <MdNoteAdd onClick={addDossierRowNma} />
@@ -10871,9 +10767,6 @@ export default function APQR() {
         ) : null}
         {tab === "DEAC" ? (
           <>
-            {/* <div className="flex items-center justify-center text-[28px] text-red-500 font-semibold animate-spin">
-                Work In Progress. .........
-              </div> */}
             <div>
               <h4 className="gridName">Discussion Evaluation and Conclusion</h4>
               <TinyEditor
