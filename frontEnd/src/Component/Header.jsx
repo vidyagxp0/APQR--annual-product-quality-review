@@ -1,11 +1,21 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { NavLink } from "react-router-dom";
 
 export default function Header() {
   const [dropdownOpen, setDropdownOpen] = useState(false);
+  const timeoutRef = useRef(null);
 
-  const toggleDropdown = () => {
-    setDropdownOpen(!dropdownOpen);
+  const showDropdown = () => {
+    if (timeoutRef.current) {
+      clearTimeout(timeoutRef.current);
+    }
+    setDropdownOpen(true);
+  };
+
+  const hideDropdown = () => {
+    timeoutRef.current = setTimeout(() => {
+      setDropdownOpen(false);
+    }, 500); // 1 second delay
   };
 
   return (
@@ -25,10 +35,13 @@ export default function Header() {
         </div>
 
         {/* Dropdown Menu */}
-        <div className="relative">
+        <div
+          className="relative"
+          onMouseEnter={showDropdown}
+          onMouseLeave={hideDropdown}
+        >
           <button
             className="flex items-center focus:outline-none border border-gray-400 rounded-md px-4 py-2"
-            onClick={toggleDropdown}
           >
             <span>Gaurav</span>
             <svg
@@ -47,18 +60,22 @@ export default function Header() {
             </svg>
           </button>
           {dropdownOpen && (
-            <div className="absolute right-0 mt-2 w-40 bg-white border rounded-md shadow-lg py-1">
+            <div
+              className="absolute right-0 mt-2 w-40 bg-white border rounded-md shadow-lg py-1"
+              onMouseEnter={showDropdown}
+              onMouseLeave={hideDropdown}
+            >
               <div className="flex items-center px-4 py-2">
-                <img src="/avatar.png" alt="User Avatar" className="h-12 w-12 rounded-full mr-2" />
+                <img src="/gg.png" alt="User Avatar" className="h-12 w-12 rounded-full mr-2" />
                 <span className="text-gray-800">Gaurav Meena</span>
               </div>
-              <a href="#" className="block px-4 py-2  hover:bg-gray-200 text-sky-700">
+              <a href="#" className="block px-4 py-2 hover:bg-gray-200 text-sky-700">
                 Help
               </a>
-              <a href="#" className="block px-4 py-2  hover:bg-gray-200 text-sky-700">
+              <a href="#" className="block px-4 py-2 hover:bg-gray-200 text-sky-700">
                 Settings
               </a>
-              <NavLink to={"/"} className="block px-4 py-2  hover:bg-gray-200 text-sky-700">
+              <NavLink to={"/"} className="block px-4 py-2 hover:bg-gray-200 text-sky-700">
                 Logout
               </NavLink>
             </div>

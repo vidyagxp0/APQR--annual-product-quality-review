@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 
 export default function Login() {
   const navigate = useNavigate();
+  
   return (
     <div className="min-h-screen flex items-center justify-center" style={{ backgroundImage: 'linear-gradient(to top, #c1dfc4 0%, #deecdd 100%)' }}>
           <div className="flex w-full max-w-4xl bg-white rounded-lg shadow-lg overflow-hidden">

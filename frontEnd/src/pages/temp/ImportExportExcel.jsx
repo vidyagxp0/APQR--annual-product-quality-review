@@ -1,8 +1,8 @@
 import React, { useRef } from "react";
 import { saveAs } from "file-saver";
 
-const ExcelExportImport = ({ data, fileName, setData }) => {
-    // const [d]
+const ExcelExportImport = ({ data, fileName, setimportedData, setData }) => {
+  // const [d]
   const fileInputRef = useRef();
 
   const exportToExcel = async () => {
@@ -33,8 +33,9 @@ const ExcelExportImport = ({ data, fileName, setData }) => {
       const workbook = xlsx.read(data, { type: "array" });
       const worksheet = workbook.Sheets[workbook.SheetNames[0]];
       const jsonData = xlsx.utils.sheet_to_json(worksheet);
-    //   setData(jsonData);
-      console.log(jsonData);
+      //   setData(jsonData);
+      // console.log(jsonData);
+      setimportedData(jsonData);
     } catch (error) {
       console.error("Error importing from Excel: ", error);
     }
@@ -44,13 +45,14 @@ const ExcelExportImport = ({ data, fileName, setData }) => {
     <div>
       <button
         className="
-          px-4
-          py-2
-          bg-green-500
+          px-2
+          py-1
+          mb-1
+         bg-gradient-to-r from-green-400 via-green-500 to-green-600
           text-white
           font-semibold
           rounded-lg
-          shadow-md
+          shadow-lg
           hover:bg-green-700
           focus:outline-none
           focus:ring-2
@@ -72,13 +74,14 @@ const ExcelExportImport = ({ data, fileName, setData }) => {
       <button
         className="
           ml-4
-          px-4
-          py-2
-          bg-blue-500
+          px-2
+          py-1
+          mb-1
+         bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700
           text-white
           font-semibold
           rounded-lg
-          shadow-md
+          shadow-lg
           hover:bg-blue-700
           focus:outline-none
           focus:ring-2

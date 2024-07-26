@@ -276,7 +276,7 @@ const inflationChartState = {
 
       <div className="flex flex-row justify-center items-center gap-10 m-10">
           <div className="chart-container flex justify-center items-center w-1/2 bg-white shadow-lg p-6">
-            <ReactApexChart options={lineChartState.options} series={lineChartState.series} type="line" height={350} width={390} />
+            <ReactApexChart options={lineChartState.options} series={lineChartState.series} type="line" height={350} width={340} />
           </div>
           <div className="line4 chart-container flex justify-center items-center w-1/2 bg-white shadow-lg p-6">
             <ReactApexChart className="p-34" options={barChartState.options} series={barChartState.series} type="bar" height={350} />
@@ -284,8 +284,8 @@ const inflationChartState = {
         </div>
         
       <div className="line5 flex flex-row justify-center items-center gap-10 m-10">
-        <div className="chart-container flex justify-center items-center w-1/2 bg-white shadow-lg p-6">
-        <ReactApexChart options={inflationChartState.options} series={inflationChartState.series} type="bar" height={350} width={400} />
+        <div className="chart-container flex justify-center items-center w-2/2 bg-white shadow-lg p-6">
+        <ReactApexChart options={inflationChartState.options} series={inflationChartState.series} type="bar" height={350} width={600} />
         </div>
       </div>
       </div>

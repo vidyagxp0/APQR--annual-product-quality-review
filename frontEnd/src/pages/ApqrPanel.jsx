@@ -163,239 +163,25 @@ export default function APQR() {
   const [tiny74, setTiny74] = useState("");
   const [tiny75, setTiny75] = useState("");
   const [tiny76, setTiny76] = useState("");
+  const [reviewOfCPD, setReviewOFCPD] = useState([]);
+  const [previewRPD, setPreviewRPD] = useState([]);
+  const [currentOOS, setCurrentOOS] = useState([]);
+  const [previewOOS, setPreviewOOS] = useState([]);
+  const [currentOOAC, setCurrentOOAC] = useState([]);
+  const [previewOOAC, setPreviewOOAC] = useState([]);
+  const [currentOOAL, setCurrentOOAL] = useState([]);
+  const [previewOOAL, setPreviewOOAL] = useState([]);
+  const [currentOOSA, setCurrentOOSA] = useState([]);
+  const [previewOOSA, setPreviewOOSA] = useState([]);
+  const [currentOOT, setCurrentOOT] = useState([]);
+  const [previewOOT, setPreviewOOT] = useState([]);
+  const [currentCC, setCurrentCC] = useState([]);
+  const [previewCC, setPreviewCC] = useState([]);
+  const [currentMC, setCurrentMC] = useState([]);
+  const [previewMC, setPreviewMC] = useState([]);
+  const [currentLabI, setCurrentLabI] = useState([]);
+  const [previewLabI, setPreviewLabI] = useState([]);
 
-  const setTinyContent = (data, tinyNO) => {
-    switch (tinyNO) {
-      case 1:
-        setTiny1(data);
-        break;
-      case 2:
-        setTiny2(data);
-        break;
-      case 3:
-        setTiny3(data);
-        break;
-      case 4:
-        setTiny4(data);
-        break;
-      case 5:
-        setTiny5(data);
-        break;
-      case 6:
-        setTiny6(data);
-        break;
-      case 7:
-        setTiny7(data);
-        break;
-      case 8:
-        setTiny8(data);
-        break;
-      case 9:
-        setTiny9(data);
-        break;
-      case 10:
-        setTiny10(data);
-        break;
-      case 11:
-        setTiny11(data);
-        break;
-      case 12:
-        setTiny12(data);
-        break;
-      case 13:
-        setTiny13(data);
-        break;
-      case 14:
-        setTiny14(data);
-        break;
-      case 15:
-        setTiny15(data);
-        break;
-      case 16:
-        setTiny16(data);
-        break;
-      case 17:
-        setTiny17(data);
-        break;
-      case 18:
-        setTiny18(data);
-        break;
-      case 19:
-        setTiny19(data);
-        break;
-      case 20:
-        setTiny20(data);
-        break;
-      case 21:
-        setTiny21(data);
-        break;
-      case 22:
-        setTiny22(data);
-        break;
-      case 23:
-        setTiny23(data);
-        break;
-      case 24:
-        setTiny24(data);
-        break;
-      case 25:
-        setTiny25(data);
-        break;
-      case 26:
-        setTiny26(data);
-        break;
-      case 27:
-        setTiny27(data);
-        break;
-      case 28:
-        setTiny28(data);
-        break;
-      case 29:
-        setTiny29(data);
-        break;
-      case 30:
-        setTiny30(data);
-        break;
-      case 31:
-        setTiny31(data);
-        break;
-      case 32:
-        setTiny32(data);
-        break;
-      case 33:
-        setTiny33(data);
-        break;
-      case 34:
-        setTiny34(data);
-        break;
-      case 35:
-        setTiny35(data);
-        break;
-      case 36:
-        setTiny36(data);
-        break;
-      case 37:
-        setTiny37(data);
-        break;
-      case 38:
-        setTiny38(data);
-        break;
-      case 39:
-        setTiny39(data);
-        break;
-      case 40:
-        setTiny40(data);
-        break;
-      case 41:
-        setTiny41(data);
-        break;
-      case 42:
-        setTiny42(data);
-        break;
-      case 43:
-        setTiny43(data);
-        break;
-      case 44:
-        setTiny44(data);
-        break;
-      case 45:
-        setTiny45(data);
-        break;
-      case 46:
-        setTiny46(data);
-        break;
-      case 47:
-        setTiny47(data);
-        break;
-      case 48:
-        setTiny48(data);
-        break;
-      case 49:
-        setTiny49(data);
-        break;
-      case 50:
-        setTiny50(data);
-        break;
-      case 51:
-        setTiny51(data);
-        break;
-      case 52:
-        setTiny52(data);
-        break;
-      case 53:
-        setTiny53(data);
-        break;
-      case 54:
-        setTiny54(data);
-        break;
-      case 55:
-        setTiny55(data);
-        break;
-      case 56:
-        setTiny56(data);
-        break;
-      case 57:
-        setTiny57(data);
-        break;
-      case 58:
-        setTiny58(data);
-        break;
-      case 59:
-        setTiny59(data);
-        break;
-      case 60:
-        setTiny60(data);
-        break;
-      case 61:
-        setTiny61(data);
-        break;
-      case 62:
-        setTiny62(data);
-        break;
-      case 63:
-        setTiny63(data);
-        break;
-      case 64:
-        setTiny64(data);
-        break;
-      case 65:
-        setTiny65(data);
-        break;
-      case 66:
-        setTiny66(data);
-        break;
-      case 67:
-        setTiny67(data);
-        break;
-      case 68:
-        setTiny68(data);
-        break;
-      case 69:
-        setTiny69(data);
-        break;
-      case 70:
-        setTiny70(data);
-        break;
-      case 71:
-        setTiny71(data);
-        break;
-      case 72:
-        setTiny72(data);
-        break;
-      case 73:
-        setTiny73(data);
-        break;
-      case 74:
-        setTiny74(data);
-        break;
-      case 75:
-        setTiny75(data);
-        break;
-      case 76:
-        setTiny76(data);
-        break;
-    }
-  };
   const [pQRData, setPQRData] = useReducer(
     (prev, next) => ({
       ...prev,
@@ -417,8 +203,545 @@ export default function APQR() {
       totalNOBA: "",
       totalNOPVB: "",
       totalNORB: "",
+      tiny1: "",
+      tiny2: "",
+      tiny3: "",
+      tiny4: "",
+      tiny5: "",
+      tiny6: "",
+      tiny7: "",
+      tiny8: "",
+      tiny9: "",
+      tiny10: "",
+      tiny11: "",
+      tiny12: "",
+      tiny13: "",
+      tiny14: "",
+      tiny15: "",
+      tiny16: "",
+      tiny17: "",
+      tiny18: "",
+      tiny19: "",
+      tiny20: "",
+      tiny21: "",
+      tiny22: "",
+      tiny23: "",
+      tiny24: "",
+      tiny25: "",
+      tiny26: "",
+      tiny27: "",
+      tiny28: "",
+      tiny29: "",
+      tiny30: "",
+      tiny31: "",
+      tiny32: "",
+      tiny33: "",
+      tiny34: "",
+      tiny35: "",
+      tiny36: "",
+      tiny37: "",
+      tiny38: "",
+      tiny39: "",
+      tiny40: "",
+      tiny41: "",
+      tiny42: "",
+      tiny43: "",
+      tiny44: "",
+      tiny45: "",
+      tiny46: "",
+      tiny47: "",
+      tiny48: "",
+      tiny49: "",
+      tiny50: "",
+      tiny51: "",
+      tiny52: "",
+      tiny53: "",
+      tiny54: "",
+      tiny55: "",
+      tiny56: "",
+      tiny57: "",
+      tiny58: "",
+      tiny59: "",
+      tiny60: "",
+      tiny61: "",
+      tiny62: "",
+      tiny63: "",
+      tiny64: "",
+      tiny65: "",
+      tiny66: "",
+      tiny67: "",
+      tiny68: "",
+      tiny69: "",
+      tiny70: "",
+      tiny71: "",
+      tiny72: "",
+      tiny73: "",
+      tiny74: "",
+      tiny75: "",
+      tiny76: "",
     }
   );
+
+  const setTinyContent = (data, tinyNO) => {
+    switch (tinyNO) {
+      case 1:
+        setPQRData({
+          ...pQRData,
+          tiny1: data,
+        });
+        break;
+      case 2:
+        setPQRData({
+          ...pQRData,
+          tiny2: data,
+        });
+        break;
+      case 3:
+        setPQRData({
+          ...pQRData,
+          tiny3: data,
+        });
+        break;
+      case 4:
+        setPQRData({
+          ...pQRData,
+          tiny4: data,
+        });
+        break;
+      case 5:
+        setPQRData({
+          ...pQRData,
+          tiny5: data,
+        });
+        break;
+      case 6:
+        setPQRData({
+          ...pQRData,
+          tiny6: data,
+        });
+        break;
+      case 7:
+        setPQRData({
+          ...pQRData,
+          tiny7: data,
+        });
+        break;
+      case 8:
+        setPQRData({
+          ...pQRData,
+          tiny8: data,
+        });
+        break;
+      case 9:
+        setPQRData({
+          ...pQRData,
+          tiny9: data,
+        });
+        break;
+      case 10:
+        setPQRData({
+          ...pQRData,
+          tiny10: data,
+        });
+        break;
+      case 11:
+        setPQRData({
+          ...pQRData,
+          tiny11: data,
+        });
+        break;
+      case 12:
+        setPQRData({
+          ...pQRData,
+          tiny12: data,
+        });
+        break;
+      case 13:
+        setPQRData({
+          ...pQRData,
+          tiny13: data,
+        });
+        break;
+      case 14:
+        setPQRData({
+          ...pQRData,
+          tiny14: data,
+        });
+        break;
+      case 15:
+        setPQRData({
+          ...pQRData,
+          tiny15: data,
+        });
+        break;
+      case 16:
+        setPQRData({
+          ...pQRData,
+          tiny16: data,
+        });
+        break;
+      case 17:
+        setPQRData({
+          ...pQRData,
+          tiny17: data,
+        });
+        break;
+      case 18:
+        setPQRData({
+          ...pQRData,
+          tiny18: data,
+        });
+        break;
+      case 19:
+        setPQRData({
+          ...pQRData,
+          tiny19: data,
+        });
+        break;
+      case 20:
+        setPQRData({
+          ...pQRData,
+          tiny20: data,
+        });
+        break;
+      case 21:
+        setPQRData({
+          ...pQRData,
+          tiny21: data,
+        });
+        break;
+      case 22:
+        setPQRData({
+          ...pQRData,
+          tiny22: data,
+        });
+        break;
+      case 23:
+        setPQRData({
+          ...pQRData,
+          tiny23: data,
+        });
+        break;
+      case 24:
+        setPQRData({
+          ...pQRData,
+          tiny24: data,
+        });
+        break;
+      case 25:
+        setPQRData({
+          ...pQRData,
+          tiny25: data,
+        });
+        break;
+      case 26:
+        setPQRData({
+          ...pQRData,
+          tiny26: data,
+        });
+        break;
+      case 27:
+        setPQRData({
+          ...pQRData,
+          tiny27: data,
+        });
+        break;
+      case 28:
+        setPQRData({
+          ...pQRData,
+          tiny28: data,
+        });
+        break;
+      case 29:
+        setPQRData({
+          ...pQRData,
+          tiny29: data,
+        });
+        break;
+      case 30:
+        setPQRData({
+          ...pQRData,
+          tiny30: data,
+        });
+        break;
+      case 31:
+        setPQRData({
+          ...pQRData,
+          tiny31: data,
+        });
+        break;
+      case 32:
+        setPQRData({
+          ...pQRData,
+          tiny32: data,
+        });
+        break;
+      case 33:
+        setPQRData({
+          ...pQRData,
+          tiny33: data,
+        });
+        break;
+      case 34:
+        setPQRData({
+          ...pQRData,
+          tiny34: data,
+        });
+        break;
+      case 35:
+        setPQRData({
+          ...pQRData,
+          tiny35: data,
+        });
+        break;
+      case 36:
+        setPQRData({
+          ...pQRData,
+          tiny36: data,
+        });
+        break;
+      case 37:
+        setPQRData({
+          ...pQRData,
+          tiny37: data,
+        });
+        break;
+      case 38:
+        setPQRData({
+          ...pQRData,
+          tiny38: data,
+        });
+        break;
+      case 39:
+        setPQRData({
+          ...pQRData,
+          tiny39: data,
+        });
+        break;
+      case 40:
+        setPQRData({
+          ...pQRData,
+          tiny40: data,
+        });
+        break;
+      case 41:
+        setPQRData({
+          ...pQRData,
+          tiny41: data,
+        });
+        break;
+      case 42:
+        setPQRData({
+          ...pQRData,
+          tiny42: data,
+        });
+        break;
+      case 43:
+        setPQRData({
+          ...pQRData,
+          tiny43: data,
+        });
+        break;
+      case 44:
+        setPQRData({
+          ...pQRData,
+          tiny44: data,
+        });
+        break;
+      case 45:
+        setPQRData({
+          ...pQRData,
+          tiny45: data,
+        });
+        break;
+      case 46:
+        setPQRData({
+          ...pQRData,
+          tiny46: data,
+        });
+        break;
+      case 47:
+        setPQRData({
+          ...pQRData,
+          tiny47: data,
+        });
+        break;
+      case 48:
+        setPQRData({
+          ...pQRData,
+          tiny48: data,
+        });
+        break;
+      case 49:
+        setPQRData({
+          ...pQRData,
+          tiny49: data,
+        });
+        break;
+      case 50:
+        setPQRData({
+          ...pQRData,
+          tiny50: data,
+        });
+        break;
+      case 51:
+        setPQRData({
+          ...pQRData,
+          tiny51: data,
+        });
+        break;
+      case 52:
+        setPQRData({
+          ...pQRData,
+          tiny52: data,
+        });
+        break;
+      case 53:
+        setPQRData({
+          ...pQRData,
+          tiny53: data,
+        });
+        break;
+      case 54:
+        setPQRData({
+          ...pQRData,
+          tiny54: data,
+        });
+        break;
+      case 55:
+        setPQRData({
+          ...pQRData,
+          tiny55: data,
+        });
+        break;
+      case 56:
+        setPQRData({
+          ...pQRData,
+          tiny56: data,
+        });
+        break;
+      case 57:
+        setPQRData({
+          ...pQRData,
+          tiny57: data,
+        });
+        break;
+      case 58:
+        setPQRData({
+          ...pQRData,
+          tiny58: data,
+        });
+        break;
+      case 59:
+        setPQRData({
+          ...pQRData,
+          tiny59: data,
+        });
+        break;
+      case 60:
+        setPQRData({
+          ...pQRData,
+          tiny60: data,
+        });
+        break;
+      case 61:
+        setPQRData({
+          ...pQRData,
+          tiny61: data,
+        });
+        break;
+      case 62:
+        setPQRData({
+          ...pQRData,
+          tiny62: data,
+        });
+        break;
+      case 63:
+        setPQRData({
+          ...pQRData,
+          tiny63: data,
+        });
+        break;
+      case 64:
+        setPQRData({
+          ...pQRData,
+          tiny64: data,
+        });
+        break;
+      case 65:
+        setPQRData({
+          ...pQRData,
+          tiny65: data,
+        });
+        break;
+      case 66:
+        setPQRData({
+          ...pQRData,
+          tiny66: data,
+        });
+        break;
+      case 67:
+        setPQRData({
+          ...pQRData,
+          tiny67: data,
+        });
+        break;
+      case 68:
+        setPQRData({
+          ...pQRData,
+          tiny68: data,
+        });
+        break;
+      case 69:
+        setPQRData({
+          ...pQRData,
+          tiny69: data,
+        });
+        break;
+      case 70:
+        setPQRData({
+          ...pQRData,
+          tiny70: data,
+        });
+        break;
+      case 71:
+        setPQRData({
+          ...pQRData,
+          tiny71: data,
+        });
+        break;
+      case 72:
+        setPQRData({
+          ...pQRData,
+          tiny72: data,
+        });
+        break;
+      case 73:
+        setPQRData({
+          ...pQRData,
+          tiny73: data,
+        });
+        break;
+      case 74:
+        setPQRData({
+          ...pQRData,
+          tiny74: data,
+        });
+        break;
+      case 75:
+        setPQRData({
+          ...pQRData,
+          tiny75: data,
+        });
+        break;
+      case 76:
+        setPQRData({
+          ...pQRData,
+          tiny76: data,
+        });
+        break;
+    }
+  };
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const location = useLocation();
@@ -564,6 +887,22 @@ export default function APQR() {
       tiny74: tiny74,
       tiny75: tiny75,
       tiny76: tiny76,
+      reviewOfCPD: reviewOfCPD,
+      previewRPD: previewRPD,
+      previewOOS: previewOOS,
+      currentOOS: currentOOS,
+      previewOOAC: previewOOAC,
+      currentOOAC: currentOOAC,
+      previewOOAL: previewOOAL,
+      currentOOAL: currentOOAL,
+      previewOOT: previewOOT,
+      currentOOT: currentOOT,
+      currentCC: currentCC,
+      previewCC: previewCC,
+      currentMC: currentMC,
+      previewMC: previewMC,
+      currentLabI: currentLabI,
+      previewLabI: previewLabI,
     });
   }, [
     productCodes,
@@ -705,6 +1044,24 @@ export default function APQR() {
     tiny74,
     tiny75,
     tiny76,
+    reviewOfCPD,
+    previewRPD,
+    currentOOS,
+    previewOOS,
+    currentOOAC,
+    previewOOAC,
+    currentOOAL,
+    previewOOAL,
+    previewCC,
+    currentCC,
+    currentOOT,
+    previewOOT,
+    currentCC,
+    previewCC,
+    currentMC,
+    previewMC,
+    previewLabI,
+    currentLabI,
   ]);
 
   useEffect(() => {
@@ -730,7 +1087,7 @@ export default function APQR() {
     };
     setPQRData({
       ...pQRData,
-      manufacturingStage: [...pQRData.manufacturingStage, newRow]
+      manufacturingStage: [...pQRData.manufacturingStage, newRow],
     });
   };
 
@@ -743,9 +1100,8 @@ export default function APQR() {
     };
     setPQRData({
       ...pQRData,
-      dossierRR: [...pQRData.dossierRR, newRow]
+      dossierRR: [...pQRData.dossierRR, newRow],
     });
- 
   };
 
   const addDossierRowNma = () => {
@@ -759,10 +1115,8 @@ export default function APQR() {
     };
     setPQRData({
       ...pQRData,
-      dossierRRNma: [...pQRData.dossierRRNma, newRow]
+      dossierRRNma: [...pQRData.dossierRRNma, newRow],
     });
- 
- 
   };
 
   const addManufacturingSAPSRow = () => {
@@ -774,9 +1128,8 @@ export default function APQR() {
     };
     setPQRData({
       ...pQRData,
-      manufacturingSAPS: [...pQRData.manufacturingSAPS, newRow]
+      manufacturingSAPS: [...pQRData.manufacturingSAPS, newRow],
     });
-  
   };
 
   const addRawMRSRow = () => {
@@ -789,9 +1142,8 @@ export default function APQR() {
     };
     setPQRData({
       ...pQRData,
-      rawMRS: [...pQRData.rawMRS, newRow]
+      rawMRS: [...pQRData.rawMRS, newRow],
     });
-  
   };
 
   const addPackingMRSRow = () => {
@@ -804,9 +1156,8 @@ export default function APQR() {
     };
     setPQRData({
       ...pQRData,
-      packingMRS: [...pQRData.packingMRS, newRow]
+      packingMRS: [...pQRData.packingMRS, newRow],
     });
- 
   };
 
   const addExpiredRMDRow = () => {
@@ -814,26 +1165,24 @@ export default function APQR() {
       materialCode: "",
       materialName: "",
       ARNo: "",
-      description: "",
+      expiryDate: "",
     };
     setPQRData({
       ...pQRData,
-      expiredRMD: [...pQRData.expiredRMD, newRow]
+      expiredRMD: [...pQRData.expiredRMD, newRow],
     });
-  
   };
   const addExpiredPMDRow = () => {
     const newRow = {
       materialCode: "",
       materialName: "",
       ARNo: "",
-      description: "",
+      expiryDate: "",
     };
     setPQRData({
       ...pQRData,
-      expiredPMD: [...pQRData.expiredPMD, newRow]
+      expiredPMD: [...pQRData.expiredPMD, newRow],
     });
- 
   };
   const addreviewOfASLRow = () => {
     const newRow = {
@@ -844,9 +1193,8 @@ export default function APQR() {
     };
     setPQRData({
       ...pQRData,
-      reviewOfASL: [...pQRData.reviewOfASL, newRow]
+      reviewOfASL: [...pQRData.reviewOfASL, newRow],
     });
-  
   };
 
   const addvendorQDORMERow = () => {
@@ -859,9 +1207,8 @@ export default function APQR() {
     };
     setPQRData({
       ...pQRData,
-      vendorQDORME: [...pQRData.vendorQDORME, newRow]
+      vendorQDORME: [...pQRData.vendorQDORME, newRow],
     });
-   
   };
 
   const addvendorQDOPPMRow = () => {
@@ -873,7 +1220,7 @@ export default function APQR() {
     };
     setPQRData({
       ...pQRData,
-      vendorQDORME: [...pQRData.vendorQDORME, newRow]
+      vendorQDORME: [...pQRData.vendorQDORME, newRow],
     });
     setVendorQDOPPM([...vendorQDOPPM, newRow]);
   };
@@ -887,7 +1234,7 @@ export default function APQR() {
     };
     setPQRData({
       ...pQRData,
-      vendorQDPOG: [...pQRData.vendorQDPOG, newRow]
+      vendorQDPOG: [...pQRData.vendorQDPOG, newRow],
     });
   };
 
@@ -903,7 +1250,7 @@ export default function APQR() {
     };
     setPQRData({
       ...pQRData,
-      codeTCTD: [...pQRData.codeTCTD, newRow]
+      codeTCTD: [...pQRData.codeTCTD, newRow],
     });
   };
 
@@ -918,7 +1265,7 @@ export default function APQR() {
     };
     setPQRData({
       ...pQRData,
-      reviewORCEC: [...pQRData.reviewORCEC, newRow]
+      reviewORCEC: [...pQRData.reviewORCEC, newRow],
     });
   };
 
@@ -932,7 +1279,7 @@ export default function APQR() {
     };
     setPQRData({
       ...pQRData,
-      manufacturingSD: [...pQRData.manufacturingSD, newRow]
+      manufacturingSD: [...pQRData.manufacturingSD, newRow],
     });
   };
 
@@ -946,7 +1293,7 @@ export default function APQR() {
     };
     setPQRData({
       ...pQRData,
-      bufferFSDPV: [...pQRData.bufferFSDPV, newRow]
+      bufferFSDPV: [...pQRData.bufferFSDPV, newRow],
     });
   };
   const oosDetailsRow = () => {
@@ -960,7 +1307,7 @@ export default function APQR() {
     };
     setPQRData({
       ...pQRData,
-      oosDetails: [...pQRData.oosDetails, newRow]
+      oosDetails: [...pQRData.oosDetails, newRow],
     });
   };
 
@@ -976,7 +1323,7 @@ export default function APQR() {
     };
     setPQRData({
       ...pQRData,
-      capaDetails: [...pQRData.capaDetails, newRow]
+      capaDetails: [...pQRData.capaDetails, newRow],
     });
   };
   const deviationDetailsRow = () => {
@@ -994,7 +1341,7 @@ export default function APQR() {
     };
     setPQRData({
       ...pQRData,
-      deviationDetails: [...pQRData.deviationDetails, newRow]
+      deviationDetails: [...pQRData.deviationDetails, newRow],
     });
   };
 
@@ -1010,7 +1357,7 @@ export default function APQR() {
     };
     setPQRData({
       ...pQRData,
-      ootResults: [...pQRData.ootResults, newRow]
+      ootResults: [...pQRData.ootResults, newRow],
     });
   };
   const oolResultsRow = () => {
@@ -1025,7 +1372,7 @@ export default function APQR() {
     };
     setPQRData({
       ...pQRData,
-      oolResults: [...pQRData.oolResults, newRow]
+      oolResults: [...pQRData.oolResults, newRow],
     });
   };
   const ooaResultsRow = () => {
@@ -1038,7 +1385,7 @@ export default function APQR() {
     };
     setPQRData({
       ...pQRData,
-      ooaResults: [...pQRData.ooaResults, newRow]
+      ooaResults: [...pQRData.ooaResults, newRow],
     });
   };
 
@@ -1051,7 +1398,7 @@ export default function APQR() {
     };
     setPQRData({
       ...pQRData,
-      reviewODSTR: [...pQRData.reviewODSTR, newRow]
+      reviewODSTR: [...pQRData.reviewODSTR, newRow],
     });
   };
   const addReviewODSTRRow2 = () => {
@@ -1063,7 +1410,7 @@ export default function APQR() {
     };
     setPQRData({
       ...pQRData,
-      reviewODSTR2: [...pQRData.reviewODSTR2, newRow2]
+      reviewODSTR2: [...pQRData.reviewODSTR2, newRow2],
     });
   };
   const addReviewODSTRRow3 = () => {
@@ -1075,7 +1422,7 @@ export default function APQR() {
     };
     setPQRData({
       ...pQRData,
-      reviewODSTR3: [...pQRData.reviewODSTR3, newRow3]
+      reviewODSTR3: [...pQRData.reviewODSTR3, newRow3],
     });
   };
   const addReviewODSTRRow4 = () => {
@@ -1087,7 +1434,7 @@ export default function APQR() {
     };
     setPQRData({
       ...pQRData,
-      reviewODSTR4: [...pQRData.reviewODSTR4, newRow4]
+      reviewODSTR4: [...pQRData.reviewODSTR4, newRow4],
     });
   };
   const addReviewODSTRRow5 = () => {
@@ -1099,7 +1446,7 @@ export default function APQR() {
     };
     setPQRData({
       ...pQRData,
-      reviewODSTR5: [...pQRData.reviewODSTR5, newRow5]
+      reviewODSTR5: [...pQRData.reviewODSTR5, newRow5],
     });
     setReviewOSTR5([...reviewODSTR5, newRow5]);
   };
@@ -1112,7 +1459,7 @@ export default function APQR() {
     };
     setPQRData({
       ...pQRData,
-      reviewODSTR6: [...pQRData.reviewODSTR6, newRow6]
+      reviewODSTR6: [...pQRData.reviewODSTR6, newRow6],
     });
   };
   const addReviewODSTRRow7 = () => {
@@ -1124,7 +1471,7 @@ export default function APQR() {
     };
     setPQRData({
       ...pQRData,
-      reviewODSTR7: [...pQRData.reviewODSTR7, newRow7]
+      reviewODSTR7: [...pQRData.reviewODSTR7, newRow7],
     });
   };
   const addReviewODSTRRow8 = () => {
@@ -1136,7 +1483,7 @@ export default function APQR() {
     };
     setPQRData({
       ...pQRData,
-      reviewODSTR8: [...pQRData.reviewODSTR8, newRow8]
+      reviewODSTR8: [...pQRData.reviewODSTR8, newRow8],
     });
   };
   const addReviewODSTRRow9 = () => {
@@ -1148,7 +1495,7 @@ export default function APQR() {
     };
     setPQRData({
       ...pQRData,
-      reviewODSTR9: [...pQRData.reviewODSTR9, newRow9]
+      reviewODSTR9: [...pQRData.reviewODSTR9, newRow9],
     });
   };
   const addReviewODSTRRow10 = () => {
@@ -1160,7 +1507,7 @@ export default function APQR() {
     };
     setPQRData({
       ...pQRData,
-      reviewODSTR10: [...pQRData.reviewODSTR10, newRow10]
+      reviewODSTR10: [...pQRData.reviewODSTR10, newRow10],
     });
   };
 
@@ -1174,7 +1521,7 @@ export default function APQR() {
     };
     setPQRData({
       ...pQRData,
-      reviewORMETR: [...pQRData.reviewORMETR, newRow]
+      reviewORMETR: [...pQRData.reviewORMETR, newRow],
     });
   };
 
@@ -1188,7 +1535,7 @@ export default function APQR() {
     };
     setPQRData({
       ...pQRData,
-      reviewOPMTR: [...pQRData.reviewOPMTR, newRow]
+      reviewOPMTR: [...pQRData.reviewOPMTR, newRow],
     });
   };
 
@@ -1202,7 +1549,7 @@ export default function APQR() {
     };
     setPQRData({
       ...pQRData,
-      reviewODP: [...pQRData.reviewODP, newRow]
+      reviewODP: [...pQRData.reviewODP, newRow],
     });
   };
 
@@ -1216,7 +1563,7 @@ export default function APQR() {
     };
     setPQRData({
       ...pQRData,
-      reviewODP2: [...pQRData.reviewODP2, newRow2]
+      reviewODP2: [...pQRData.reviewODP2, newRow2],
     });
   };
   const addReviewODPRow3 = () => {
@@ -1229,7 +1576,7 @@ export default function APQR() {
     };
     setPQRData({
       ...pQRData,
-      reviewODP3: [...pQRData.reviewODP3, newRow3]
+      reviewODP3: [...pQRData.reviewODP3, newRow3],
     });
   };
   const addReviewODPRow4 = () => {
@@ -1242,7 +1589,7 @@ export default function APQR() {
     };
     setPQRData({
       ...pQRData,
-      reviewODP4: [...pQRData.reviewODP4, newRow4]
+      reviewODP4: [...pQRData.reviewODP4, newRow4],
     });
   };
   const addReviewODPRow5 = () => {
@@ -1255,7 +1602,7 @@ export default function APQR() {
     };
     setPQRData({
       ...pQRData,
-      reviewODP5: [...pQRData.reviewODP5, newRow5]
+      reviewODP5: [...pQRData.reviewODP5, newRow5],
     });
   };
   const addReviewODPRow6 = () => {
@@ -1268,7 +1615,7 @@ export default function APQR() {
     };
     setPQRData({
       ...pQRData,
-      reviewODP6: [...pQRData.reviewODP6, newRow6]
+      reviewODP6: [...pQRData.reviewODP6, newRow6],
     });
   };
   const addReviewODPRow7 = () => {
@@ -1281,7 +1628,7 @@ export default function APQR() {
     };
     setPQRData({
       ...pQRData,
-      reviewODP7: [...pQRData.reviewODP7, newRow7]
+      reviewODP7: [...pQRData.reviewODP7, newRow7],
     });
   };
   const addReviewODPRow8 = () => {
@@ -1294,9 +1641,8 @@ export default function APQR() {
     };
     setPQRData({
       ...pQRData,
-      reviewODP8: [...pQRData.reviewODP8, newRow8]
+      reviewODP8: [...pQRData.reviewODP8, newRow8],
     });
-  
   };
   const addReviewODPRow9 = () => {
     const newRow9 = {
@@ -1308,7 +1654,7 @@ export default function APQR() {
     };
     setPQRData({
       ...pQRData,
-      reviewODP9: [...pQRData.reviewODP9, newRow9]
+      reviewODP9: [...pQRData.reviewODP9, newRow9],
     });
     setReviewODP9([...reviewODP9, newRow9]);
   };
@@ -1322,9 +1668,8 @@ export default function APQR() {
     };
     setPQRData({
       ...pQRData,
-      reviewODP10: [...pQRData.reviewODP10, newRow10]
+      reviewODP10: [...pQRData.reviewODP10, newRow10],
     });
- 
   };
 
   const addReviewODPFPTRRow = () => {
@@ -1336,7 +1681,7 @@ export default function APQR() {
     };
     setPQRData({
       ...pQRData,
-      reviewODPFPTR: [...pQRData.reviewODPFPTR, newRow]
+      reviewODPFPTR: [...pQRData.reviewODPFPTR, newRow],
     });
   };
 
@@ -1350,7 +1695,7 @@ export default function APQR() {
     };
     setPQRData({
       ...pQRData,
-      summaryOOSS: [...pQRData.summaryOOSS, newRow]
+      summaryOOSS: [...pQRData.summaryOOSS, newRow],
     });
   };
 
@@ -1362,7 +1707,7 @@ export default function APQR() {
     };
     setPQRData({
       ...pQRData,
-      stabilitySR: [...pQRData.stabilitySR, newRow]
+      stabilitySR: [...pQRData.stabilitySR, newRow],
     });
   };
 
@@ -1379,7 +1724,7 @@ export default function APQR() {
     };
     setPQRData({
       ...pQRData,
-      reviewOVIRS: [...pQRData.reviewOVIRS, newRow]
+      reviewOVIRS: [...pQRData.reviewOVIRS, newRow],
     });
   };
 
@@ -1391,8 +1736,274 @@ export default function APQR() {
     };
     setPQRData({
       ...pQRData,
-      hVACQStatus: [...pQRData.hVACQStatus, newRow]
+      hVACQStatus: [...pQRData.hVACQStatus, newRow],
     });
+  };
+  const addReviewOfCPD = () => {
+    const newRow = {
+      dateOfInitiation: "",
+      recordNo: "",
+      siteDivision: "",
+      department: "",
+      initiator: "",
+      shortDescription: "",
+      batchNo: "",
+      dueDate: "",
+      currentStatus: "",
+    };
+    setPQRData({ ...pQRData, reviewOfCPD: [...pQRData.reviewOfCPD, newRow] });
+  };
+
+  const addPreviewRPD = () => {
+    const newRow = {
+      dateOfInitiation: "",
+      recordNo: "",
+      siteDivision: "",
+      department: "",
+      initiator: "",
+      shortDescription: "",
+      batchNo: "",
+      dueDate: "",
+      currentStatus: "",
+    };
+    setPQRData({ ...pQRData, previewRPD: [...pQRData.previewRPD, newRow] });
+  };
+
+  const addCurrentOOS = () => {
+    const newRow = {
+      dateOfInitiation: "",
+      recordNo: "",
+      siteDivision: "",
+      department: "",
+      initiator: "",
+      shortDescription: "",
+      batchNo: "",
+      dueDate: "",
+      currentStatus: "",
+    };
+    setPQRData({ ...pQRData, currentOOS: [...pQRData.currentOOS, newRow] });
+  };
+
+  const addPreviewOOS = () => {
+    const newRow = {
+      dateOfInitiation: "",
+      recordNo: "",
+      siteDivision: "",
+      department: "",
+      initiator: "",
+      shortDescription: "",
+      batchNo: "",
+      dueDate: "",
+      currentStatus: "",
+    };
+    setPQRData({ ...pQRData, previewOOS: [...pQRData.previewOOS, newRow] });
+  };
+  const addCurrentOOAC = () => {
+    const newRow = {
+      dateOfInitiation: "",
+      recordNo: "",
+      siteDivision: "",
+      department: "",
+      initiator: "",
+      shortDescription: "",
+      batchNo: "",
+      dueDate: "",
+      currentStatus: "",
+    };
+    setPQRData({ ...pQRData, currentOOAC: [...pQRData.currentOOAC, newRow] });
+  };
+  const addPreviewOOAC = () => {
+    const newRow = {
+      dateOfInitiation: "",
+      recordNo: "",
+      siteDivision: "",
+      department: "",
+      initiator: "",
+      shortDescription: "",
+      batchNo: "",
+      dueDate: "",
+      currentStatus: "",
+    };
+    setPQRData({ ...pQRData, previewOOAC: [...pQRData.previewOOAC, newRow] });
+  };
+  const addCurrentOOAL = () => {
+    const newRow = {
+      dateOfInitiation: "",
+      recordNo: "",
+      siteDivision: "",
+      department: "",
+      initiator: "",
+      shortDescription: "",
+      batchNo: "",
+      dueDate: "",
+      currentStatus: "",
+    };
+    setPQRData({ ...pQRData, currentOOAL: [...pQRData.currentOOAL, newRow] });
+  };
+  const addPreviewOOAL = () => {
+    const newRow = {
+      dateOfInitiation: "",
+      recordNo: "",
+      siteDivision: "",
+      department: "",
+      initiator: "",
+      shortDescription: "",
+      batchNo: "",
+      dueDate: "",
+      currentStatus: "",
+    };
+    setPQRData({ ...pQRData, previewOOAL: [...pQRData.previewOOAL, newRow] });
+  };
+
+  const addCurrentOOSA = () => {
+    const newRow = {
+      dateOfInitiation: "",
+      recordNo: "",
+      siteDivision: "",
+      department: "",
+      initiator: "",
+      shortDescription: "",
+      batchNo: "",
+      dueDate: "",
+      currentStatus: "",
+    };
+    setPQRData({ ...pQRData, currentOOSA: [...pQRData.currentOOSA, newRow] });
+  };
+
+  const addPreviewOOSA = () => {
+    const newRow = {
+      dateOfInitiation: "",
+      recordNo: "",
+      siteDivision: "",
+      department: "",
+      initiator: "",
+      shortDescription: "",
+      batchNo: "",
+      dueDate: "",
+      currentStatus: "",
+    };
+    setPQRData({ ...pQRData, previewOOSA: [...pQRData.previewOOSA, newRow] });
+  };
+
+  const addCurrentOOT = () => {
+    const newRow = {
+      dateOfInitiation: "",
+      recordNo: "",
+      siteDivision: "",
+      department: "",
+      initiator: "",
+      shortDescription: "",
+      batchNo: "",
+      dueDate: "",
+      currentStatus: "",
+    };
+    setPQRData({ ...pQRData, currentOOT: [...pQRData.currentOOT, newRow] });
+  };
+
+  const addPreviewOOT = () => {
+    const newRow = {
+      dateOfInitiation: "",
+      recordNo: "",
+      siteDivision: "",
+      department: "",
+      initiator: "",
+      shortDescription: "",
+      batchNo: "",
+      dueDate: "",
+      currentStatus: "",
+    };
+    setPQRData({ ...pQRData, previewOOT: [...pQRData.previewOOT, newRow] });
+  };
+
+  const addCurrentCC = () => {
+    const newRow = {
+      dateOfInitiation: "",
+      recordNo: "",
+      siteDivision: "",
+      department: "",
+      initiator: "",
+      shortDescription: "",
+      batchNo: "",
+      dueDate: "",
+      currentStatus: "",
+    };
+    setPQRData({ ...pQRData, currentCC: [...pQRData.currentCC, newRow] });
+  };
+
+  const addPreviewCC = () => {
+    const newRow = {
+      dateOfInitiation: "",
+      recordNo: "",
+      siteDivision: "",
+      department: "",
+      initiator: "",
+      shortDescription: "",
+      batchNo: "",
+      dueDate: "",
+      currentStatus: "",
+    };
+    setPQRData({ ...pQRData, previewCC: [...pQRData.previewCC, newRow] });
+  };
+
+  const addCurrentMC = () => {
+    const newRow = {
+      dateOfInitiation: "",
+      recordNo: "",
+      siteDivision: "",
+      department: "",
+      initiator: "",
+      shortDescription: "",
+      batchNo: "",
+      dueDate: "",
+      currentStatus: "",
+    };
+    setPQRData({ ...pQRData, currentMC: [...pQRData.currentMC, newRow] });
+  };
+
+  const addPreviewMC = () => {
+    const newRow = {
+      dateOfInitiation: "",
+      recordNo: "",
+      siteDivision: "",
+      department: "",
+      initiator: "",
+      shortDescription: "",
+      batchNo: "",
+      dueDate: "",
+      currentStatus: "",
+    };
+    setPQRData({ ...pQRData, previewMC: [...pQRData.previewMC, newRow] });
+  };
+
+  const addCurrentLabI = () => {
+    const newRow = {
+      dateOfInitiation: "",
+      recordNo: "",
+      siteDivision: "",
+      department: "",
+      initiator: "",
+      shortDescription: "",
+      batchNo: "",
+      dueDate: "",
+      currentStatus: "",
+    };
+    setPQRData({ ...pQRData, currentLabI: [...pQRData.currentLabI, newRow] });
+  };
+
+  const addPreviewLabI = () => {
+    const newRow = {
+      dateOfInitiation: "",
+      recordNo: "",
+      siteDivision: "",
+      department: "",
+      initiator: "",
+      shortDescription: "",
+      batchNo: "",
+      dueDate: "",
+      currentStatus: "",
+    };
+    setPreviewLabI([...previewLabI, newRow]);
+    setPQRData({ ...pQRData, previewLabI: [...pQRData.previewLabI, newRow] });
   };
 
   const addSanitizationASDOURow = () => {
@@ -1403,9 +2014,8 @@ export default function APQR() {
     };
     setPQRData({
       ...pQRData,
-      sanitizationASDOU: [...pQRData.sanitizationASDOU, newRow]
+      sanitizationASDOU: [...pQRData.sanitizationASDOU, newRow],
     });
-
   };
 
   const addCompressedGasesRow = () => {
@@ -1417,9 +2027,8 @@ export default function APQR() {
     };
     setPQRData({
       ...pQRData,
-      compressedGas: [...pQRData.compressedGas, newRow]
+      compressedGas: [...pQRData.compressedGas, newRow],
     });
-   
   };
 
   const addCurrentRPQRNRow = () => {
@@ -1435,7 +2044,7 @@ export default function APQR() {
     };
     setPQRData({
       ...pQRData,
-      currentRPQRN: [...pQRData.currentRPQRN, newRow]
+      currentRPQRN: [...pQRData.currentRPQRN, newRow],
     });
   };
 
@@ -1449,7 +2058,7 @@ export default function APQR() {
     };
     setPQRData({
       ...pQRData,
-      unitOperation3: [...pQRData.unitOperation3, newRow]
+      unitOperation3: [...pQRData.unitOperation3, newRow],
     });
   };
 
@@ -1463,7 +2072,7 @@ export default function APQR() {
     };
     setPQRData({
       ...pQRData,
-      unitOperation4: [...pQRData.unitOperation4, newRow]
+      unitOperation4: [...pQRData.unitOperation4, newRow],
     });
   };
 
@@ -1477,7 +2086,7 @@ export default function APQR() {
     };
     setPQRData({
       ...pQRData,
-      unitOperation5: [...pQRData.unitOperation5, newRow]
+      unitOperation5: [...pQRData.unitOperation5, newRow],
     });
   };
 
@@ -1491,7 +2100,7 @@ export default function APQR() {
     };
     setPQRData({
       ...pQRData,
-      unitOperation6: [...pQRData.unitOperation6, newRow]
+      unitOperation6: [...pQRData.unitOperation6, newRow],
     });
   };
 
@@ -1505,7 +2114,7 @@ export default function APQR() {
     };
     setPQRData({
       ...pQRData,
-      unitOperation7: [...pQRData.unitOperation7, newRow]
+      unitOperation7: [...pQRData.unitOperation7, newRow],
     });
   };
 
@@ -1519,9 +2128,8 @@ export default function APQR() {
     };
     setPQRData({
       ...pQRData,
-      unitOperation8: [...pQRData.unitOperation8, newRow]
+      unitOperation8: [...pQRData.unitOperation8, newRow],
     });
-   
   };
 
   const addUnitOperation9Row = () => {
@@ -1534,7 +2142,7 @@ export default function APQR() {
     };
     setPQRData({
       ...pQRData,
-      unitOperation9: [...pQRData.unitOperation9, newRow]
+      unitOperation9: [...pQRData.unitOperation9, newRow],
     });
   };
 
@@ -1548,7 +2156,7 @@ export default function APQR() {
     };
     setPQRData({
       ...pQRData,
-      unitOperation10: [...pQRData.unitOperation10, newRow]
+      unitOperation10: [...pQRData.unitOperation10, newRow],
     });
   };
 
@@ -1557,15 +2165,14 @@ export default function APQR() {
     newProductCodes[index] = value;
     setPQRData({
       ...pQRData,
-      productCodes: newProductCodes
+      productCodes: newProductCodes,
     });
   };
- 
 
   const addProductCodeInput = () => {
     setPQRData({
       ...pQRData,
-      productCodes: [...pQRData.productCodes, ""]
+      productCodes: [...pQRData.productCodes, ""],
     });
   };
 
@@ -1574,7 +2181,7 @@ export default function APQR() {
     newProductCodes.splice(index, 1);
     setPQRData({
       ...pQRData,
-      productCodes: newProductCodes
+      productCodes: newProductCodes,
     });
   };
   return (
@@ -1587,37 +2194,70 @@ export default function APQR() {
       </div>
       <div className="pqrform">
         <div className="form-tabs">
-          <div className={`${tab === "GI" ? "active" : ""}`} onClick={() => setTab("GI")}>
+          <div
+            className={`${tab === "GI" ? "active" : ""}`}
+            onClick={() => setTab("GI")}
+          >
             General Information
           </div>
-          <div className={`${tab === "WR" ? "active" : ""}`} onClick={() => setTab("WR")}>
+          <div
+            className={`${tab === "WR" ? "active" : ""}`}
+            onClick={() => setTab("WR")}
+          >
             Warehouse Review
           </div>
-          <div className={`${tab === "MR" ? "active" : ""}`} onClick={() => setTab("MR")}>
+          <div
+            className={`${tab === "MR" ? "active" : ""}`}
+            onClick={() => setTab("MR")}
+          >
             Manufacturing Review
           </div>
-          <div className={`${tab === "LR" ? "active" : ""}`} onClick={() => setTab("LR")}>
+          <div
+            className={`${tab === "LR" ? "active" : ""}`}
+            onClick={() => setTab("LR")}
+          >
             Laboratory Review
           </div>
-          <div className={`${tab === "EAMR" ? "active" : ""}`} onClick={() => setTab("EAMR")}>
+          <div
+            className={`${tab === "EAMR" ? "active" : ""}`}
+            onClick={() => setTab("EAMR")}
+          >
             Engineering And Maintenance Review
           </div>
-          <div className={`${tab === "QSR" ? "active" : ""}`} onClick={() => setTab("QSR")}>
+          <div
+            className={`${tab === "QSR" ? "active" : ""}`}
+            onClick={() => setTab("QSR")}
+          >
             Quality System Review
           </div>
-          <div className={`${tab === "RR" ? "active" : ""}`} onClick={() => setTab("RR")}>
+          <div
+            className={`${tab === "RR" ? "active" : ""}`}
+            onClick={() => setTab("RR")}
+          >
             Regulatory Review
           </div>
-          <div className={`${tab === "R" ? "active" : ""}`} onClick={() => setTab("R")}>
+          <div
+            className={`${tab === "R" ? "active" : ""}`}
+            onClick={() => setTab("R")}
+          >
             Recommendations{" "}
           </div>
-          <div className={`${tab === "CAPA" ? "active" : ""}`} onClick={() => setTab("CAPA")}>
+          <div
+            className={`${tab === "CAPA" ? "active" : ""}`}
+            onClick={() => setTab("CAPA")}
+          >
             CAPA
           </div>
-          <div className={`${tab === "DEAC" ? "active" : ""}`} onClick={() => setTab("DEAC")}>
+          <div
+            className={`${tab === "DEAC" ? "active" : ""}`}
+            onClick={() => setTab("DEAC")}
+          >
             Discussion, Evaluation And Conclusion
           </div>
-          <div className={`${tab === "LOA" ? "active" : ""}`} onClick={() => setTab("LOA")}>
+          <div
+            className={`${tab === "LOA" ? "active" : ""}`}
+            onClick={() => setTab("LOA")}
+          >
             List Of Annexures/Attachments
           </div>
         </div>
@@ -1670,7 +2310,9 @@ export default function APQR() {
                 <div className="flex gap-4">
                   <input
                     value={productCode}
-                    onChange={(e) => handleProductCodeChange(index, e.target.value)}
+                    onChange={(e) =>
+                      handleProductCodeChange(index, e.target.value)
+                    }
                   />
                   {index === pQRData?.productCodes.length - 1 && (
                     <button
@@ -1737,14 +2379,17 @@ export default function APQR() {
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addManufacturingStageRow} />
-                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
+                  <div className="addrowinstruction  pl-2">
+                    Add Rows by clicking on (+) icon
+                  </div>
                 </div>
                 <div className="flex gap-4 ">
-                  <ExcelExport data={balanceSheet} fileName="balance-sheet-summary.xlsx" />
+                  <ExcelExport
+                    data={balanceSheet}
+                    fileName="balance-sheet-summary.xlsx"
+                  />
                 </div>
               </div>
-              {/* <div className="w-1/2 flex justify-end px-8 py-4">
-              </div> */}
             </div>
             <table>
               <thead>
@@ -1764,7 +2409,10 @@ export default function APQR() {
                           onChange={(e) => {
                             const newData = [...pQRData.manufacturingStage];
                             newData[index].productName = e.target.value;
-                            setPQRData({...pQRData,manufacturingStage:newData});
+                            setPQRData({
+                              ...pQRData,
+                              manufacturingStage: newData,
+                            });
                           }}
                         />
                       </td>
@@ -1774,7 +2422,10 @@ export default function APQR() {
                           onChange={(e) => {
                             const newData = [...pQRData.manufacturingStage];
                             newData[index].sFGCode = e.target.value;
-                            setPQRData({...pQRData,manufacturingStage:newData});
+                            setPQRData({
+                              ...pQRData,
+                              manufacturingStage: newData,
+                            });
                           }}
                         />
                       </td>
@@ -1784,7 +2435,10 @@ export default function APQR() {
                           onChange={(e) => {
                             const newData = [...pQRData.manufacturingStage];
                             newData[index].fGCode = e.target.value;
-                            setPQRData({...pQRData,manufacturingStage:newData});
+                            setPQRData({
+                              ...pQRData,
+                              manufacturingStage: newData,
+                            });
                           }}
                         />
                       </td>
@@ -1803,17 +2457,18 @@ export default function APQR() {
             </div>
 
             <div className="py-4">
-              {/* <div className="AddRows d-flex">
-                <MdNoteAdd onClick={addManufacturingSAPSRow} />
-                <div className="addrowinstruction"></div>
-              </div> */}
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addManufacturingSAPSRow} />
-                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
+                  <div className="addrowinstruction  pl-2">
+                    Add Rows by clicking on (+) icon
+                  </div>
                 </div>
                 <div className="flex gap-4 ">
-                  <ExcelExport data={balanceSheet} fileName="balance-sheet-summary.xlsx" />
+                  <ExcelExport
+                    data={balanceSheet}
+                    fileName="balance-sheet-summary.xlsx"
+                  />
                 </div>
               </div>
               <table>
@@ -1833,11 +2488,14 @@ export default function APQR() {
                         <td>
                           <input
                             value={item.productName}
-                          onChange={(e) => {
-                            const newData = [...pQRData.manufacturingSAPS];
-                            newData[index].productName = e.target.value;
-                            setPQRData({...pQRData,manufacturingSAPS:newData});
-                          }}
+                            onChange={(e) => {
+                              const newData = [...pQRData.manufacturingSAPS];
+                              newData[index].productName = e.target.value;
+                              setPQRData({
+                                ...pQRData,
+                                manufacturingSAPS: newData,
+                              });
+                            }}
                           />
                         </td>
                         <td>
@@ -1846,7 +2504,10 @@ export default function APQR() {
                             onChange={(e) => {
                               const newData = [...pQRData.manufacturingSAPS];
                               newData[index].batchCode = e.target.value;
-                              setPQRData({...pQRData,manufacturingSAPS:newData});
+                              setPQRData({
+                                ...pQRData,
+                                manufacturingSAPS: newData,
+                              });
                             }}
                           />
                         </td>
@@ -1856,19 +2517,15 @@ export default function APQR() {
                             onChange={(e) => {
                               const newData = [...pQRData.manufacturingSAPS];
                               newData[index].sFGCode = e.target.value;
-                              setPQRData({...pQRData,manufacturingSAPS:newData});
+                              setPQRData({
+                                ...pQRData,
+                                manufacturingSAPS: newData,
+                              });
                             }}
                           />
                         </td>
                         <td>
-                          <input
-                          // value={item.productName}
-                          // onChange={(e) => {
-                          //   const newData = [...manufacturingSAPS];
-                          //   newData[index].productName = e.target.value;
-                          //   setManufacturingSAPS(newData);
-                          // }}
-                          />
+                          <input  />
                         </td>
                         <td>
                           <input
@@ -1876,7 +2533,10 @@ export default function APQR() {
                             onChange={(e) => {
                               const newData = [...pQRData.manufacturingSAPS];
                               newData[index].remarks = e.target.value;
-                              setPQRData({...pQRData,manufacturingSAPS:newData});
+                              setPQRData({
+                                ...pQRData,
+                                manufacturingSAPS: newData,
+                              });
                             }}
                           />
                         </td>
@@ -1903,17 +2563,19 @@ export default function APQR() {
               </div>
               <div className="pb-4">
                 <h4 className="gridName">Raw Materials Rejection Summary</h4>
-                {/* <div className="AddRows d-flex">
-                  <MdNoteAdd onClick={addRawMRSRow} />
-                  <div className="addrowinstruction"></div>
-                </div> */}
+               
                 <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                   <div className="flex items-center">
                     <MdNoteAdd onClick={addRawMRSRow} />
-                    <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
+                    <div className="addrowinstruction  pl-2">
+                      Add Rows by clicking on (+) icon
+                    </div>
                   </div>
                   <div className="flex gap-4 ">
-                    <ExcelExport data={balanceSheet} fileName="balance-sheet-summary.xlsx" />
+                    <ExcelExport
+                      data={balanceSheet}
+                      fileName="balance-sheet-summary.xlsx"
+                    />
                   </div>
                 </div>
 
@@ -1939,7 +2601,7 @@ export default function APQR() {
                               onChange={(e) => {
                                 const newData = [...pQRData.rawMRS];
                                 newData[index].materialCode = e.target.value;
-                                setPQRData({...pQRData,rawMRS:newData});
+                                setPQRData({ ...pQRData, rawMRS: newData });
                               }}
                             />
                           </td>
@@ -1949,7 +2611,7 @@ export default function APQR() {
                               onChange={(e) => {
                                 const newData = [...pQRData.rawMRS];
                                 newData[index].materialName = e.target.value;
-                                setPQRData({...pQRData,rawMRS:newData});
+                                setPQRData({ ...pQRData, rawMRS: newData });
                               }}
                             />
                           </td>
@@ -1959,7 +2621,7 @@ export default function APQR() {
                               onChange={(e) => {
                                 const newData = [...pQRData.rawMRS];
                                 newData[index].ARNo = e.target.value;
-                                setPQRData({...pQRData,rawMRS:newData});
+                                setPQRData({ ...pQRData, rawMRS: newData });
                               }}
                             />
                           </td>
@@ -1968,8 +2630,9 @@ export default function APQR() {
                               value={item.reasonOfRejection}
                               onChange={(e) => {
                                 const newData = [...pQRData.rawMRS];
-                                newData[index].reasonOfRejection = e.target.value;
-                                setPQRData({...pQRData,rawMRS:newData});
+                                newData[index].reasonOfRejection =
+                                  e.target.value;
+                                setPQRData({ ...pQRData, rawMRS: newData });
                               }}
                             />
                           </td>
@@ -1979,7 +2642,7 @@ export default function APQR() {
                               onChange={(e) => {
                                 const newData = [...pQRData.rawMRS];
                                 newData[index].description = e.target.value;
-                                setPQRData({...pQRData,rawMRS:newData});
+                                setPQRData({ ...pQRData, rawMRS: newData });
                               }}
                             />
                           </td>
@@ -1999,18 +2662,23 @@ export default function APQR() {
               </div>
 
               <div className="pb-4">
-                <h4 className="gridName"> Packing Materials Rejection Summary</h4>
-                {/* <div className="AddRows d-flex">
-                  <MdNoteAdd onClick={addPackingMRSRow} />
-                  <div className="addrowinstruction"></div>
-                </div> */}
+                <h4 className="gridName">
+                  {" "}
+                  Packing Materials Rejection Summary
+                </h4>
+              
                 <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                   <div className="flex items-center">
                     <MdNoteAdd onClick={addPackingMRSRow} />
-                    <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
+                    <div className="addrowinstruction  pl-2">
+                      Add Rows by clicking on (+) icon
+                    </div>
                   </div>
                   <div className="flex gap-4 ">
-                    <ExcelExport data={balanceSheet} fileName="balance-sheet-summary.xlsx" />
+                    <ExcelExport
+                      data={balanceSheet}
+                      fileName="balance-sheet-summary.xlsx"
+                    />
                   </div>
                 </div>
                 <table>
@@ -2035,7 +2703,7 @@ export default function APQR() {
                               onChange={(e) => {
                                 const newData = [...pQRData.packingMRS];
                                 newData[index].materialCode = e.target.value;
-                                setPQRData({...pQRData,packingMRS:newData});
+                                setPQRData({ ...pQRData, packingMRS: newData });
                               }}
                             />
                           </td>
@@ -2045,7 +2713,7 @@ export default function APQR() {
                               onChange={(e) => {
                                 const newData = [...pQRData.packingMRS];
                                 newData[index].materialName = e.target.value;
-                                setPQRData({...pQRData,packingMRS:newData});
+                                setPQRData({ ...pQRData, packingMRS: newData });
                               }}
                             />
                           </td>
@@ -2055,7 +2723,7 @@ export default function APQR() {
                               onChange={(e) => {
                                 const newData = [...pQRData.packingMRS];
                                 newData[index].ARNo = e.target.value;
-                                setPQRData({...pQRData,packingMRS:newData});
+                                setPQRData({ ...pQRData, packingMRS: newData });
                               }}
                             />
                           </td>
@@ -2064,8 +2732,9 @@ export default function APQR() {
                               value={item.reasonForRepacking}
                               onChange={(e) => {
                                 const newData = [...pQRData.packingMRS];
-                                newData[index].reasonForRepacking = e.target.value;
-                                setPQRData({...pQRData,packingMRS:newData});
+                                newData[index].reasonForRepacking =
+                                  e.target.value;
+                                setPQRData({ ...pQRData, packingMRS: newData });
                               }}
                             />
                           </td>
@@ -2075,7 +2744,7 @@ export default function APQR() {
                               onChange={(e) => {
                                 const newData = [...pQRData.packingMRS];
                                 newData[index].description = e.target.value;
-                                setPQRData({...pQRData,packingMRS:newData});
+                                setPQRData({ ...pQRData, packingMRS: newData });
                               }}
                             />
                           </td>
@@ -2086,7 +2755,8 @@ export default function APQR() {
                 </table>
 
                 <h5 className="gridName pt-4">
-                  Summary of Review of Rejected Raw Materials and Packaging Materials
+                  Summary of Review of Rejected Raw Materials and Packaging
+                  Materials
                 </h5>
                 <TinyEditor
                   editorContent={pQRData.tiny4}
@@ -2106,10 +2776,15 @@ export default function APQR() {
                 <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                   <div className="flex items-center">
                     <MdNoteAdd onClick={addExpiredRMDRow} />
-                    <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
+                    <div className="addrowinstruction  pl-2">
+                      Add Rows by clicking on (+) icon
+                    </div>
                   </div>
                   <div className="flex gap-4 ">
-                    <ExcelExport data={balanceSheet} fileName="balance-sheet-summary.xlsx" />
+                    <ExcelExport
+                      data={balanceSheet}
+                      fileName="balance-sheet-summary.xlsx"
+                    />
                   </div>
                 </div>
                 <table>
@@ -2119,7 +2794,7 @@ export default function APQR() {
                       <th>Material Code</th>
                       <th>Material Name</th>
                       <th>Lot No./ A.R. No.</th>
-                      <th>Description</th>
+                      <th>Expiry Date</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -2133,7 +2808,7 @@ export default function APQR() {
                               onChange={(e) => {
                                 const newData = [...pQRData.expiredRMD];
                                 newData[index].materialCode = e.target.value;
-                                setPQRData({...pQRData,expiredRMD:newData});
+                                setPQRData({ ...pQRData, expiredRMD: newData });
                               }}
                             />
                           </td>
@@ -2143,7 +2818,7 @@ export default function APQR() {
                               onChange={(e) => {
                                 const newData = [...pQRData.expiredRMD];
                                 newData[index].materialName = e.target.value;
-                                setPQRData({...pQRData,expiredRMD:newData});
+                                setPQRData({ ...pQRData, expiredRMD: newData });
                               }}
                             />
                           </td>
@@ -2153,17 +2828,17 @@ export default function APQR() {
                               onChange={(e) => {
                                 const newData = [...pQRData.expiredRMD];
                                 newData[index].ARNo = e.target.value;
-                                setPQRData({...pQRData,expiredRMD:newData});
+                                setPQRData({ ...pQRData, expiredRMD: newData });
                               }}
                             />
                           </td>
                           <td>
                             <input
-                              value={item.description}
+                              value={item.expiryDate}
                               onChange={(e) => {
                                 const newData = [...pQRData.expiredRMD];
-                                newData[index].description = e.target.value;
-                                setPQRData({...pQRData,expiredRMD:newData});
+                                newData[index].expiryDate = e.target.value;
+                                setPQRData({ ...pQRData, expiredRMD: newData });
                               }}
                             />
                           </td>
@@ -2183,7 +2858,9 @@ export default function APQR() {
               </div>
 
               <div className="">
-                <h4 className="gridName">Expired Packaging Materials Details</h4>
+                <h4 className="gridName">
+                  Expired Packaging Materials Details
+                </h4>
                 {/* <div className="AddRows d-flex">
                   <MdNoteAdd onClick={addExpiredPMDRow} />
                   <div className="addrowinstruction"></div>
@@ -2191,10 +2868,15 @@ export default function APQR() {
                 <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                   <div className="flex items-center">
                     <MdNoteAdd onClick={addExpiredPMDRow} />
-                    <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
+                    <div className="addrowinstruction  pl-2">
+                      Add Rows by clicking on (+) icon
+                    </div>
                   </div>
                   <div className="flex gap-4 ">
-                    <ExcelExport data={balanceSheet} fileName="balance-sheet-summary.xlsx" />
+                    <ExcelExport
+                      data={balanceSheet}
+                      fileName="balance-sheet-summary.xlsx"
+                    />
                   </div>
                 </div>
                 <table>
@@ -2204,7 +2886,7 @@ export default function APQR() {
                       <th>Material Code</th>
                       <th>Material Name</th>
                       <th>Lot No./ A.R. No.</th>
-                      <th>Description</th>
+                      <th>Expiry Date</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -2218,7 +2900,7 @@ export default function APQR() {
                               onChange={(e) => {
                                 const newData = [...pQRData.expiredPMD];
                                 newData[index].materialCode = e.target.value;
-                                setPQRData({...pQRData,expiredPMD:newData});
+                                setPQRData({ ...pQRData, expiredPMD: newData });
                               }}
                             />
                           </td>
@@ -2228,7 +2910,7 @@ export default function APQR() {
                               onChange={(e) => {
                                 const newData = [...pQRData.expiredPMD];
                                 newData[index].materialName = e.target.value;
-                                setPQRData({...pQRData,expiredPMD:newData});
+                                setPQRData({ ...pQRData, expiredPMD: newData });
                               }}
                             />
                           </td>
@@ -2238,17 +2920,17 @@ export default function APQR() {
                               onChange={(e) => {
                                 const newData = [...pQRData.expiredPMD];
                                 newData[index].ARNo = e.target.value;
-                                setPQRData({...pQRData,expiredPMD:newData});
+                                setPQRData({ ...pQRData, expiredPMD: newData });
                               }}
                             />
                           </td>
                           <td>
                             <input
-                              value={item.description}
+                              value={item.expiryDate}
                               onChange={(e) => {
                                 const newData = [...pQRData.expiredPMD];
-                                newData[index].description = e.target.value;
-                                setPQRData({...pQRData,expiredPMD:newData});
+                                newData[index].expiryDate = e.target.value;
+                                setPQRData({ ...pQRData, expiredPMD: newData });
                               }}
                             />
                           </td>
@@ -2259,7 +2941,8 @@ export default function APQR() {
                 </table>
 
                 <h4 className="gridName pt-4">
-                  Summary of Review of Expired Raw Materials and Packaging Materials
+                  Summary of Review of Expired Raw Materials and Packaging
+                  Materials
                 </h4>
                 <TinyEditor
                   editorContent={pQRData.tiny6}
@@ -2276,10 +2959,15 @@ export default function APQR() {
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addreviewOfASLRow} />
-                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
+                  <div className="addrowinstruction  pl-2">
+                    Add Rows by clicking on (+) icon
+                  </div>
                 </div>
                 <div className="flex gap-4 ">
-                  <ExcelExport data={balanceSheet} fileName="balance-sheet-summary.xlsx" />
+                  <ExcelExport
+                    data={balanceSheet}
+                    fileName="balance-sheet-summary.xlsx"
+                  />
                 </div>
               </div>
               <div>
@@ -2304,7 +2992,10 @@ export default function APQR() {
                               onChange={(e) => {
                                 const newData = [...pQRData.reviewOfASL];
                                 newData[index].materialCode = e.target.value;
-                                setPQRData({...pQRData,reviewOfASL:newData});
+                                setPQRData({
+                                  ...pQRData,
+                                  reviewOfASL: newData,
+                                });
                               }}
                             />
                           </td>
@@ -2314,7 +3005,10 @@ export default function APQR() {
                               onChange={(e) => {
                                 const newData = [...pQRData.reviewOfASL];
                                 newData[index].materialName = e.target.value;
-                                setPQRData({...pQRData,reviewOfASL:newData});
+                                setPQRData({
+                                  ...pQRData,
+                                  reviewOfASL: newData,
+                                });
                               }}
                             />
                           </td>
@@ -2324,7 +3018,10 @@ export default function APQR() {
                               onChange={(e) => {
                                 const newData = [...pQRData.reviewOfASL];
                                 newData[index].manufacturer = e.target.value;
-                                setPQRData({...pQRData,reviewOfASL:newData});
+                                setPQRData({
+                                  ...pQRData,
+                                  reviewOfASL: newData,
+                                });
                               }}
                             />
                           </td>
@@ -2334,7 +3031,10 @@ export default function APQR() {
                               onChange={(e) => {
                                 const newData = [...pQRData.reviewOfASL];
                                 newData[index].facility = e.target.value;
-                                setPQRData({...pQRData,reviewOfASL:newData});
+                                setPQRData({
+                                  ...pQRData,
+                                  reviewOfASL: newData,
+                                });
                               }}
                             />
                           </td>
@@ -2343,7 +3043,9 @@ export default function APQR() {
                     })}
                   </tbody>
                 </table>
-                <h4 className="gridName pt-4">Summary of Review of Approved Supplier List</h4>
+                <h4 className="gridName pt-4">
+                  Summary of Review of Approved Supplier List
+                </h4>
                 <TinyEditor
                   editorContent={pQRData.tiny7}
                   setEditorContent={setTinyContent}
@@ -2361,10 +3063,15 @@ export default function APQR() {
                 <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                   <div className="flex items-center">
                     <MdNoteAdd onClick={addvendorQDORMERow} />
-                    <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
+                    <div className="addrowinstruction  pl-2">
+                      Add Rows by clicking on (+) icon
+                    </div>
                   </div>
                   <div className="flex gap-4 ">
-                    <ExcelExport data={balanceSheet} fileName="balance-sheet-summary.xlsx" />
+                    <ExcelExport
+                      data={balanceSheet}
+                      fileName="balance-sheet-summary.xlsx"
+                    />
                   </div>
                 </div>
                 <table>
@@ -2385,7 +3092,10 @@ export default function APQR() {
                               onChange={(e) => {
                                 const newData = [...pQRData.vendorQDORME];
                                 newData[index].materialName = e.target.value;
-                                setPQRData({...pQRData,vendorQDORME:newData});
+                                setPQRData({
+                                  ...pQRData,
+                                  vendorQDORME: newData,
+                                });
                               }}
                             />
                           </td>
@@ -2395,7 +3105,10 @@ export default function APQR() {
                               onChange={(e) => {
                                 const newData = [...pQRData.vendorQDORME];
                                 newData[index].materialCode = e.target.value;
-                                setPQRData({...pQRData,vendorQDORME:newData});
+                                setPQRData({
+                                  ...pQRData,
+                                  vendorQDORME: newData,
+                                });
                               }}
                             />
                           </td>
@@ -2404,8 +3117,12 @@ export default function APQR() {
                               value={item.manufacturerName}
                               onChange={(e) => {
                                 const newData = [...pQRData.vendorQDORME];
-                                newData[index].manufacturerName = e.target.value;
-                                setPQRData({...pQRData,vendorQDORME:newData});
+                                newData[index].manufacturerName =
+                                  e.target.value;
+                                setPQRData({
+                                  ...pQRData,
+                                  vendorQDORME: newData,
+                                });
                               }}
                             />
                           </td>
@@ -2414,8 +3131,12 @@ export default function APQR() {
                               value={item.qualificationStatus}
                               onChange={(e) => {
                                 const newData = [...pQRData.vendorQDORME];
-                                newData[index].qualificationStatus = e.target.value;
-                                setPQRData({...pQRData,vendorQDORME:newData});
+                                newData[index].qualificationStatus =
+                                  e.target.value;
+                                setPQRData({
+                                  ...pQRData,
+                                  vendorQDORME: newData,
+                                });
                               }}
                             />
                           </td>
@@ -2425,7 +3146,10 @@ export default function APQR() {
                               onChange={(e) => {
                                 const newData = [...pQRData.vendorQDORME];
                                 newData[index].remarks = e.target.value;
-                                setPQRData({...pQRData,vendorQDORME:newData});
+                                setPQRData({
+                                  ...pQRData,
+                                  vendorQDORME: newData,
+                                });
                               }}
                             />
                           </td>
@@ -2435,7 +3159,8 @@ export default function APQR() {
                   </tbody>
                 </table>
                 <h4 className="gridName pt-4">
-                  Summary of Vendor Qualification Details of Raw Material Excipients
+                  Summary of Vendor Qualification Details of Raw Material
+                  Excipients
                 </h4>
                 <TinyEditor
                   editorContent={pQRData.tiny8}
@@ -2454,10 +3179,15 @@ export default function APQR() {
                 <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                   <div className="flex items-center">
                     <MdNoteAdd onClick={addvendorQDOPPMRow} />
-                    <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
+                    <div className="addrowinstruction  pl-2">
+                      Add Rows by clicking on (+) icon
+                    </div>
                   </div>
                   <div className="flex gap-4 ">
-                    <ExcelExport data={balanceSheet} fileName="balance-sheet-summary.xlsx" />
+                    <ExcelExport
+                      data={balanceSheet}
+                      fileName="balance-sheet-summary.xlsx"
+                    />
                   </div>
                 </div>
                 <table>
@@ -2479,7 +3209,10 @@ export default function APQR() {
                               onChange={(e) => {
                                 const newData = [...pQRData.vendorQDOPPM];
                                 newData[index].materialName = e.target.value;
-                                setPQRData({...pQRData,vendorQDOPPM:newData});
+                                setPQRData({
+                                  ...pQRData,
+                                  vendorQDOPPM: newData,
+                                });
                               }}
                             />
                           </td>
@@ -2489,7 +3222,10 @@ export default function APQR() {
                               onChange={(e) => {
                                 const newData = [...pQRData.vendorQDOPPM];
                                 newData[index].materialCode = e.target.value;
-                                setPQRData({...pQRData,vendorQDOPPM:newData});
+                                setPQRData({
+                                  ...pQRData,
+                                  vendorQDOPPM: newData,
+                                });
                               }}
                             />
                           </td>
@@ -2498,8 +3234,12 @@ export default function APQR() {
                               value={item.manufacturerName}
                               onChange={(e) => {
                                 const newData = [...pQRData.vendorQDOPPM];
-                                newData[index].manufacturerName = e.target.value;
-                                setPQRData({...pQRData,vendorQDOPPM:newData});
+                                newData[index].manufacturerName =
+                                  e.target.value;
+                                setPQRData({
+                                  ...pQRData,
+                                  vendorQDOPPM: newData,
+                                });
                               }}
                             />
                           </td>
@@ -2508,8 +3248,12 @@ export default function APQR() {
                               value={item.qualificationStatus}
                               onChange={(e) => {
                                 const newData = [...pQRData.vendorQDOPPM];
-                                newData[index].qualificationStatus = e.target.value;
-                                setPQRData({...pQRData,vendorQDOPPM:newData});
+                                newData[index].qualificationStatus =
+                                  e.target.value;
+                                setPQRData({
+                                  ...pQRData,
+                                  vendorQDOPPM: newData,
+                                });
                               }}
                             />
                           </td>
@@ -2519,7 +3263,8 @@ export default function APQR() {
                   </tbody>
                 </table>
                 <h4 className="gridName pt-4">
-                  Summary of Vendor Qualification Details of Primary Packing Materials
+                  Summary of Vendor Qualification Details of Primary Packing
+                  Materials
                 </h4>
                 <TinyEditor
                   editorContent={pQRData.tiny9}
@@ -2528,7 +3273,9 @@ export default function APQR() {
                 />
               </div>
 
-              <div className="sub-head">Vendor Qualification Details of Process Gases</div>
+              <div className="sub-head">
+                Vendor Qualification Details of Process Gases
+              </div>
               <div>
                 {/* <div className="AddRows d-flex">
                   <MdNoteAdd onClick={addvendorQDPOGRow} />
@@ -2537,10 +3284,15 @@ export default function APQR() {
                 <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                   <div className="flex items-center">
                     <MdNoteAdd onClick={addvendorQDPOGRow} />
-                    <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
+                    <div className="addrowinstruction  pl-2">
+                      Add Rows by clicking on (+) icon
+                    </div>
                   </div>
                   <div className="flex gap-4 ">
-                    <ExcelExport data={balanceSheet} fileName="balance-sheet-summary.xlsx" />
+                    <ExcelExport
+                      data={balanceSheet}
+                      fileName="balance-sheet-summary.xlsx"
+                    />
                   </div>
                 </div>
                 <table>
@@ -2562,7 +3314,10 @@ export default function APQR() {
                               onChange={(e) => {
                                 const newData = [...pQRData.vendorQDPOG];
                                 newData[index].gasName = e.target.value;
-                                setPQRData({...pQRData,vendorQDPOG:newData});
+                                setPQRData({
+                                  ...pQRData,
+                                  vendorQDPOG: newData,
+                                });
                               }}
                             />
                           </td>
@@ -2572,7 +3327,10 @@ export default function APQR() {
                               onChange={(e) => {
                                 const newData = [...pQRData.vendorQDPOG];
                                 newData[index].gasCode = e.target.value;
-                                setPQRData({...pQRData,vendorQDPOG:newData});
+                                setPQRData({
+                                  ...pQRData,
+                                  vendorQDPOG: newData,
+                                });
                               }}
                             />
                           </td>
@@ -2581,7 +3339,8 @@ export default function APQR() {
                               value={item.manufacturerName}
                               onChange={(e) => {
                                 const newData = [...vendorQDPOG];
-                                newData[index].manufacturerName = e.target.value;
+                                newData[index].manufacturerName =
+                                  e.target.value;
                                 setVendorQDPOG(newData);
                               }}
                             />
@@ -2591,8 +3350,12 @@ export default function APQR() {
                               value={item.qualificationStatus}
                               onChange={(e) => {
                                 const newData = [...pQRData.vendorQDPOG];
-                                newData[index].qualificationStatus = e.target.value;
-                                setPQRData({...pQRData,vendorQDPOG:newData});
+                                newData[index].qualificationStatus =
+                                  e.target.value;
+                                setPQRData({
+                                  ...pQRData,
+                                  vendorQDPOG: newData,
+                                });
                               }}
                             />
                           </td>
@@ -2640,7 +3403,10 @@ export default function APQR() {
 
             <div className="dual-group-input">
               <div className="group-input">
-                <label>Total No. of batches manufactured during the current review period</label>
+                <label>
+                  Total No. of batches manufactured during the current review
+                  period
+                </label>
                 <input
                   type="number"
                   value={pQRData.totalNOBM}
@@ -2711,10 +3477,15 @@ export default function APQR() {
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addcodeTCTDRow} />
-                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
+                  <div className="addrowinstruction  pl-2">
+                    Add Rows by clicking on (+) icon
+                  </div>
                 </div>
                 <div className="flex gap-4 ">
-                  <ExcelExport data={balanceSheet} fileName="balance-sheet-summary.xlsx" />
+                  <ExcelExport
+                    data={balanceSheet}
+                    fileName="balance-sheet-summary.xlsx"
+                  />
                 </div>
               </div>
               <table>
@@ -2741,7 +3512,7 @@ export default function APQR() {
                             onChange={(e) => {
                               const newData = [...pQRData.codeTCTD];
                               newData[index].batchNo = e.target.value;
-                              setPQRData({...pQRData,codeTCTD:newData});
+                              setPQRData({ ...pQRData, codeTCTD: newData });
                             }}
                           />
                         </td>
@@ -2751,7 +3522,7 @@ export default function APQR() {
                             onChange={(e) => {
                               const newData = [...pQRData.codeTCTD];
                               newData[index].existingCode = e.target.value;
-                              setPQRData({...pQRData,codeTCTD:newData});
+                              setPQRData({ ...pQRData, codeTCTD: newData });
                             }}
                           />
                         </td>
@@ -2761,7 +3532,7 @@ export default function APQR() {
                             onChange={(e) => {
                               const newData = [...pQRData.codeTCTD];
                               newData[index].existingMarket = e.target.value;
-                              setPQRData({...pQRData,codeTCTD:newData});
+                              setPQRData({ ...pQRData, codeTCTD: newData });
                             }}
                           />
                         </td>
@@ -2771,7 +3542,7 @@ export default function APQR() {
                             onChange={(e) => {
                               const newData = [...pQRData.codeTCTD];
                               newData[index].proposedCode = e.target.value;
-                              setPQRData({...pQRData,codeTCTD:newData});
+                              setPQRData({ ...pQRData, codeTCTD: newData });
                             }}
                           />
                         </td>
@@ -2781,7 +3552,7 @@ export default function APQR() {
                             onChange={(e) => {
                               const newData = [...pQRData.codeTCTD];
                               newData[index].proposedMarket = e.target.value;
-                              setPQRData({...pQRData,codeTCTD:newData});
+                              setPQRData({ ...pQRData, codeTCTD: newData });
                             }}
                           />
                         </td>
@@ -2791,7 +3562,7 @@ export default function APQR() {
                             onChange={(e) => {
                               const newData = [...pQRData.codeTCTD];
                               newData[index].transferQuality = e.target.value;
-                              setPQRData({...pQRData,codeTCTD:newData});
+                              setPQRData({ ...pQRData, codeTCTD: newData });
                             }}
                           />
                         </td>
@@ -2801,7 +3572,7 @@ export default function APQR() {
                             onChange={(e) => {
                               const newData = [...pQRData.codeTCTD];
                               newData[index].refNo = e.target.value;
-                              setPQRData({...pQRData,codeTCTD:newData});
+                              setPQRData({ ...pQRData, codeTCTD: newData });
                             }}
                           />
                         </td>
@@ -2810,7 +3581,9 @@ export default function APQR() {
                   })}
                 </tbody>
               </table>
-              <h4 className="gridName pt-4">Summary of Code to Code Transfer Details</h4>
+              <h4 className="gridName pt-4">
+                Summary of Code to Code Transfer Details
+              </h4>
               <TinyEditor
                 editorContent={pQRData.tiny14}
                 setEditorContent={setTinyContent}
@@ -2819,7 +3592,8 @@ export default function APQR() {
             </div>
             <div className="sub-head">
               {" "}
-              Review of Manufacturing Process, Packing Process and relevant Validation Status
+              Review of Manufacturing Process, Packing Process and relevant
+              Validation Status
             </div>
             <TinyEditor
               editorContent={pQRData.tiny15}
@@ -2827,8 +3601,8 @@ export default function APQR() {
               tinyNo={15}
             />
             <div className="sub-head">
-              Review of Reprocessing/Repacking/Reworking along with CAPA and Effectiveness Check
-              Verification (if any)
+              Review of Reprocessing/Repacking/Reworking along with CAPA and
+              Effectiveness Check Verification (if any)
             </div>
             <div className="dual-group-input">
               <div className="group-input">
@@ -2857,11 +3631,16 @@ export default function APQR() {
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addreviewORCECRow} />
-                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
+                  <div className="addrowinstruction  pl-2">
+                    Add Rows by clicking on (+) icon
+                  </div>
                 </div>
                 <div className="flex gap-4 ">
                   .
-                  <ExcelExport data={balanceSheet} fileName="balance-sheet-summary.xlsx" />
+                  <ExcelExport
+                    data={balanceSheet}
+                    fileName="balance-sheet-summary.xlsx"
+                  />
                 </div>
               </div>
               <table>
@@ -2886,8 +3665,9 @@ export default function APQR() {
                             value={item.packingBatchNumber}
                             onChange={(e) => {
                               const newData = [...pQRData.reviewORCEC];
-                              newData[index].packingBatchNumber = e.target.value;
-                              setPQRData({...pQRData,reviewORCEC:newData});
+                              newData[index].packingBatchNumber =
+                                e.target.value;
+                              setPQRData({ ...pQRData, reviewORCEC: newData });
                             }}
                           />
                         </td>
@@ -2896,8 +3676,19 @@ export default function APQR() {
                             value={item.manufacturingBatchNumber}
                             onChange={(e) => {
                               const newData = [...pQRData.reviewORCEC];
+                              newData[index].repackingIssuedNumber =
+                                e.target.value;
+                              setPQRData({ ...pQRData, reviewORCEC: newData });
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.repackingIssuedNumber}
+                            onChange={(e) => {
+                              const newData = [...pQRData.reviewORCEC];
                               newData[index].repackingIssuedNumber = e.target.value;
-                              setPQRData({...pQRData,reviewORCEC:newData});
+                              setPQRData({ ...pQRData, reviewORCEC: newData });
                             }}
                           />
                         </td>
@@ -2907,7 +3698,7 @@ export default function APQR() {
                             onChange={(e) => {
                               const newData = [...pQRData.reviewORCEC];
                               newData[index].repackingFor = e.target.value;
-                              setPQRData({...pQRData,reviewORCEC:newData});
+                              setPQRData({ ...pQRData, reviewORCEC: newData });
                             }}
                           />
                         </td>
@@ -2917,17 +3708,19 @@ export default function APQR() {
                             onChange={(e) => {
                               const newData = [...pQRData.reviewORCEC];
                               newData[index].qMS = e.target.value;
-                              setPQRData({...pQRData,reviewORCEC:newData});
+                              setPQRData({ ...pQRData, reviewORCEC: newData });
                             }}
                           />
                         </td>
                         <td>
+                          
                           <input
                             value={item.reasonForRepacking}
                             onChange={(e) => {
                               const newData = [...pQRData.reviewORCEC];
-                              newData[index].reasonForRepacking = e.target.value;
-                              setPQRData({...pQRData,reviewORCEC:newData});
+                              newData[index].reasonForRepacking =
+                                e.target.value;
+                              setPQRData({ ...pQRData, reviewORCEC: newData });
                             }}
                           />
                         </td>
@@ -2946,7 +3739,7 @@ export default function APQR() {
               />
             </div>
 
-            <h1>Deviation Details - Grid CAPA Details – Grid</h1>
+          
 
             <h4 className="gridName">CAPA Details</h4>
             <div>
@@ -2957,10 +3750,15 @@ export default function APQR() {
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={capaDetailsRow} />
-                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
+                  <div className="addrowinstruction  pl-2">
+                    Add Rows by clicking on (+) icon
+                  </div>
                 </div>
                 <div className="flex gap-4 ">
-                  <ExcelExport data={balanceSheet} fileName="balance-sheet-summary.xlsx" />
+                  <ExcelExport
+                    data={balanceSheet}
+                    fileName="balance-sheet-summary.xlsx"
+                  />
                 </div>
               </div>
               <table className="mb-4">
@@ -2985,7 +3783,7 @@ export default function APQR() {
                             onChange={(e) => {
                               const newData = [...pQRData.capaDetails];
                               newData[index].ARNo = e.target.value;
-                              setPQRData({...pQRData,capaDetails:newData});
+                              setPQRData({ ...pQRData, capaDetails: newData });
                             }}
                           />
                         </td>
@@ -2995,7 +3793,7 @@ export default function APQR() {
                             onChange={(e) => {
                               const newData = [...pQRData.capaDetails];
                               newData[index].capaType = e.target.value;
-                              setPQRData({...pQRData,capaDetails:newData});
+                              setPQRData({ ...pQRData, capaDetails: newData });
                             }}
                           />
                         </td>
@@ -3004,8 +3802,9 @@ export default function APQR() {
                             value={item.descriptionOfIssue}
                             onChange={(e) => {
                               const newData = [...pQRData.capaDetails];
-                              newData[index].descriptionOfIssue = e.target.value;
-                              setPQRData({...pQRData,capaDetails:newData});
+                              newData[index].descriptionOfIssue =
+                                e.target.value;
+                              setPQRData({ ...pQRData, capaDetails: newData });
                             }}
                           />
                         </td>
@@ -3015,7 +3814,7 @@ export default function APQR() {
                             onChange={(e) => {
                               const newData = [...pQRData.capaDetails];
                               newData[index].rootCause = e.target.value;
-                              setPQRData({...pQRData,capaDetails:newData});
+                              setPQRData({ ...pQRData, capaDetails: newData });
                             }}
                           />
                         </td>
@@ -3025,7 +3824,7 @@ export default function APQR() {
                             onChange={(e) => {
                               const newData = [...pQRData.capaDetails];
                               newData[index].capaVerification = e.target.value;
-                              setPQRData({...pQRData,capaDetails:newData});
+                              setPQRData({ ...pQRData, capaDetails: newData });
                             }}
                           />
                         </td>
@@ -3036,7 +3835,7 @@ export default function APQR() {
                             onChange={(e) => {
                               const newData = [...pQRData.capaDetails];
                               newData[index].chooseFile = e.target.value;
-                              setPQRData({...pQRData,capaDetails:newData});
+                              setPQRData({ ...pQRData, capaDetails: newData });
                             }}
                           />
                         </td>
@@ -3046,7 +3845,7 @@ export default function APQR() {
                             onChange={(e) => {
                               const newData = [...pQRData.capaDetails];
                               newData[index].remarks = e.target.value;
-                              setPQRData({...pQRData,capaDetails:newData});
+                              setPQRData({ ...pQRData, capaDetails: newData });
                             }}
                           />
                         </td>{" "}
@@ -3074,10 +3873,15 @@ export default function APQR() {
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={deviationDetailsRow} />
-                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
+                  <div className="addrowinstruction  pl-2">
+                    Add Rows by clicking on (+) icon
+                  </div>
                 </div>
                 <div className="flex gap-4 ">
-                  <ExcelExport data={balanceSheet} fileName="balance-sheet-summary.xlsx" />
+                  <ExcelExport
+                    data={balanceSheet}
+                    fileName="balance-sheet-summary.xlsx"
+                  />
                 </div>
               </div>
               <table className="mb-4">
@@ -3105,7 +3909,10 @@ export default function APQR() {
                             onChange={(e) => {
                               const newData = [...pQRData.deviationDetails];
                               newData[index].ARNo = e.target.value;
-                              setPQRData({...pQRData,deviationDetails:newData});
+                              setPQRData({
+                                ...pQRData,
+                                deviationDetails: newData,
+                              });
                             }}
                           />
                         </td>
@@ -3114,8 +3921,12 @@ export default function APQR() {
                             value={item.deviationRelatedTo}
                             onChange={(e) => {
                               const newData = [...pQRData.deviationDetails];
-                              newData[index].deviationRelatedTo = e.target.value;
-                              setPQRData({...pQRData,deviationDetails:newData});
+                              newData[index].deviationRelatedTo =
+                                e.target.value;
+                              setPQRData({
+                                ...pQRData,
+                                deviationDetails: newData,
+                              });
                             }}
                           />
                         </td>
@@ -3125,7 +3936,10 @@ export default function APQR() {
                             onChange={(e) => {
                               const newData = [...pQRData.deviationDetails];
                               newData[index].description = e.target.value;
-                              setPQRData({...pQRData,deviationDetails:newData});
+                              setPQRData({
+                                ...pQRData,
+                                deviationDetails: newData,
+                              });
                             }}
                           />
                         </td>
@@ -3135,7 +3949,10 @@ export default function APQR() {
                             onChange={(e) => {
                               const newData = [...pQRData.deviationDetails];
                               newData[index].rootCause = e.target.value;
-                              setPQRData({...pQRData,deviationDetails:newData});
+                              setPQRData({
+                                ...pQRData,
+                                deviationDetails: newData,
+                              });
                             }}
                           />
                         </td>
@@ -3144,8 +3961,12 @@ export default function APQR() {
                             value={item.deviationObservedOn}
                             onChange={(e) => {
                               const newData = [...pQRData.deviationDetails];
-                              newData[index].deviationObservedOn = e.target.value;
-                              setPQRData({...pQRData,deviationDetails:newData});
+                              newData[index].deviationObservedOn =
+                                e.target.value;
+                              setPQRData({
+                                ...pQRData,
+                                deviationDetails: newData,
+                              });
                             }}
                           />
                         </td>
@@ -3154,8 +3975,12 @@ export default function APQR() {
                             value={item.deviationObservedBy}
                             onChange={(e) => {
                               const newData = [...pQRData.deviationDetails];
-                              newData[index].deviationObservedBy = e.target.value;
-                              setPQRData({...pQRData,deviationDetails:newData});
+                              newData[index].deviationObservedBy =
+                                e.target.value;
+                              setPQRData({
+                                ...pQRData,
+                                deviationDetails: newData,
+                              });
                             }}
                           />
                         </td>
@@ -3164,8 +3989,12 @@ export default function APQR() {
                             value={item.classificationOfDeviation}
                             onChange={(e) => {
                               const newData = [...pQRData.deviationDetails];
-                              newData[index].classificationOfDeviation = e.target.value;
-                              setPQRData({...pQRData,deviationDetails:newData});
+                              newData[index].classificationOfDeviation =
+                                e.target.value;
+                              setPQRData({
+                                ...pQRData,
+                                deviationDetails: newData,
+                              });
                             }}
                           />
                         </td>
@@ -3176,7 +4005,10 @@ export default function APQR() {
                             onChange={(e) => {
                               const newData = [...pQRData.deviationDetails];
                               newData[index].fileAttachment = e.target.value;
-                              setPQRData({...pQRData,deviationDetails:newData});
+                              setPQRData({
+                                ...pQRData,
+                                deviationDetails: newData,
+                              });
                             }}
                           />
                         </td>{" "}
@@ -3186,7 +4018,10 @@ export default function APQR() {
                             onChange={(e) => {
                               const newData = [...pQRData.deviationDetails];
                               newData[index].remarks = e.target.value;
-                              setPQRData({...pQRData,deviationDetails:newData});
+                              setPQRData({
+                                ...pQRData,
+                                deviationDetails: newData,
+                              });
                             }}
                           />
                         </td>{" "}
@@ -3196,7 +4031,10 @@ export default function APQR() {
                             onChange={(e) => {
                               const newData = [...pQRData.deviationDetails];
                               newData[index].status = e.target.value;
-                              setPQRData({...pQRData,deviationDetails:newData});
+                              setPQRData({
+                                ...pQRData,
+                                deviationDetails: newData,
+                              });
                             }}
                           />
                         </td>
@@ -3216,8 +4054,8 @@ export default function APQR() {
             </div>
 
             <div className="sub-head">
-              Review of all Batch Failures/Rejections along with CAPA and Effectiveness Check
-              Verification (if any):
+              Review of all Batch Failures/Rejections along with CAPA and
+              Effectiveness Check Verification (if any):
             </div>
 
             <h4 className="gridName">Batch Failures/Rejections Details </h4>
@@ -3236,10 +4074,15 @@ export default function APQR() {
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={oosDetailsRow} />
-                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
+                  <div className="addrowinstruction  pl-2">
+                    Add Rows by clicking on (+) icon
+                  </div>
                 </div>
                 <div className="flex gap-4 ">
-                  <ExcelExport data={balanceSheet} fileName="balance-sheet-summary.xlsx" />
+                  <ExcelExport
+                    data={balanceSheet}
+                    fileName="balance-sheet-summary.xlsx"
+                  />
                 </div>
               </div>
               <table className="mb-4">
@@ -3248,7 +4091,7 @@ export default function APQR() {
                     <th rowSpan={2}>AR No.</th>
                     <th rowSpan={2}>Test Name Of OOS</th>
                     <th rowSpan={2}>Results Obtained</th>
-                    <th colSpan={2}>Specification Limit</th>
+                    <th>Specification Limit</th>
                     <th rowSpan={2}>Details of Obvious error</th>
                     <th>File Attachment</th>
                   </tr>
@@ -3263,7 +4106,7 @@ export default function APQR() {
                             onChange={(e) => {
                               const newData = [...pQRData.oosDetails];
                               newData[index].ARNo = e.target.value;
-                              setPQRData({...pQRData,oosDetails:newData});
+                              setPQRData({ ...pQRData, oosDetails: newData });
                             }}
                           />
                         </td>
@@ -3273,7 +4116,7 @@ export default function APQR() {
                             onChange={(e) => {
                               const newData = [...pQRData.oosDetails];
                               newData[index].testNameOfOos = e.target.value;
-                              setPQRData({...pQRData,oosDetails:newData});
+                              setPQRData({ ...pQRData, oosDetails: newData });
                             }}
                           />
                         </td>
@@ -3283,7 +4126,7 @@ export default function APQR() {
                             onChange={(e) => {
                               const newData = [...pQRData.oosDetails];
                               newData[index].resultsObtained = e.target.value;
-                              setPQRData({...pQRData,oosDetails:newData});
+                              setPQRData({ ...pQRData, oosDetails: newData });
                             }}
                           />
                         </td>
@@ -3292,8 +4135,9 @@ export default function APQR() {
                             value={item.specificationLimit}
                             onChange={(e) => {
                               const newData = [...pQRData.oosDetails];
-                              newData[index].specificationLimit = e.target.value;
-                              setPQRData({...pQRData,oosDetails:newData});
+                              newData[index].specificationLimit =
+                                e.target.value;
+                              setPQRData({ ...pQRData, oosDetails: newData });
                             }}
                           />
                         </td>
@@ -3302,8 +4146,9 @@ export default function APQR() {
                             value={item.detailsOfObviousError}
                             onChange={(e) => {
                               const newData = [...pQRData.oosDetails];
-                              newData[index].detailsOfObviousError = e.target.value;
-                              setPQRData({...pQRData,oosDetails:newData});
+                              newData[index].detailsOfObviousError =
+                                e.target.value;
+                              setPQRData({ ...pQRData, oosDetails: newData });
                             }}
                           />
                         </td>
@@ -3314,7 +4159,7 @@ export default function APQR() {
                             onChange={(e) => {
                               const newData = [...pQRData.oosDetails];
                               newData[index].fileAttachment = e.target.value;
-                              setPQRData({...pQRData,oosDetails:newData});
+                              setPQRData({ ...pQRData, oosDetails: newData });
                             }}
                           />
                         </td>
@@ -3342,10 +4187,15 @@ export default function APQR() {
               <div className="AddRows d-flex w-full justify-between items-center text-3xl mb-5">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={ootResultsRow} />
-                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
+                  <div className="addrowinstruction  pl-2">
+                    Add Rows by clicking on (+) icon
+                  </div>
                 </div>
                 <div className="flex gap-4 ">
-                  <ExcelExport data={balanceSheet} fileName="balance-sheet-summary.xlsx" />
+                  <ExcelExport
+                    data={balanceSheet}
+                    fileName="balance-sheet-summary.xlsx"
+                  />
                 </div>
               </div>
               <table className="mb-4">
@@ -3370,7 +4220,7 @@ export default function APQR() {
                             onChange={(e) => {
                               const newData = [...pQRData.ootResults];
                               newData[index].ARNo = e.target.value;
-                              setPQRData({...pQRData,ootResults:newData});
+                              setPQRData({ ...pQRData, ootResults: newData });
                             }}
                           />
                         </td>
@@ -3380,7 +4230,7 @@ export default function APQR() {
                             onChange={(e) => {
                               const newData = [...pQRData.ootResults];
                               newData[index].testNameOfOot = e.target.value;
-                              setPQRData({...pQRData,ootResults:newData});
+                              setPQRData({ ...pQRData, ootResults: newData });
                             }}
                           />
                         </td>
@@ -3390,7 +4240,7 @@ export default function APQR() {
                             onChange={(e) => {
                               const newData = [...pQRData.ootResults];
                               newData[index].resultsObtained = e.target.value;
-                              setPQRData({...pQRData,ootResults:newData});
+                              setPQRData({ ...pQRData, ootResults: newData });
                             }}
                           />
                         </td>
@@ -3399,8 +4249,9 @@ export default function APQR() {
                             value={item.initialIntervalDetails}
                             onChange={(e) => {
                               const newData = [...pQRData.ootResults];
-                              newData[index].initialIntervalDetails = e.target.value;
-                              setPQRData({...pQRData,ootResults:newData});
+                              newData[index].initialIntervalDetails =
+                                e.target.value;
+                              setPQRData({ ...pQRData, ootResults: newData });
                             }}
                           />
                         </td>
@@ -3409,8 +4260,9 @@ export default function APQR() {
                             value={item.previousIntervalDetails}
                             onChange={(e) => {
                               const newData = [...pQRData.ootResults];
-                              newData[index].previousIntervalDetails = e.target.value;
-                              setPQRData({...pQRData,ootResults:newData});
+                              newData[index].previousIntervalDetails =
+                                e.target.value;
+                              setPQRData({ ...pQRData, ootResults: newData });
                             }}
                           />
                         </td>
@@ -3419,8 +4271,9 @@ export default function APQR() {
                             value={item.diffrenceOfResult}
                             onChange={(e) => {
                               const newData = [...pQRData.ootResults];
-                              newData[index].diffrenceOfResultrence = e.target.value;
-                              setPQRData({...pQRData,ootResults:newData});
+                              newData[index].diffrenceOfResultrence =
+                                e.target.value;
+                              setPQRData({ ...pQRData, ootResults: newData });
                             }}
                           />
                         </td>
@@ -3430,7 +4283,7 @@ export default function APQR() {
                             onChange={(e) => {
                               const newData = [...pQRData.ootResults];
                               newData[index].trendLimit = e.target.value;
-                              setPQRData({...pQRData,ootResults:newData});
+                              setPQRData({ ...pQRData, ootResults: newData });
                             }}
                           />
                         </td>
@@ -3457,10 +4310,15 @@ export default function APQR() {
               <div className="AddRows d-flex w-full justify-between items-center text-3xl mb-5">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={ooaResultsRow} />
-                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
+                  <div className="addrowinstruction  pl-2">
+                    Add Rows by clicking on (+) icon
+                  </div>
                 </div>
                 <div className="flex gap-4 ">
-                  <ExcelExport data={balanceSheet} fileName="balance-sheet-summary.xlsx" />
+                  <ExcelExport
+                    data={balanceSheet}
+                    fileName="balance-sheet-summary.xlsx"
+                  />
                 </div>
               </div>
               <table className="mb-4">
@@ -3485,7 +4343,7 @@ export default function APQR() {
                             onChange={(e) => {
                               const newData = [...pQRData.ooaResults];
                               newData[index].ARNo = e.target.value;
-                              setPQRData({...pQRData,ooaResults:newData});
+                              setPQRData({ ...pQRData, ooaResults: newData });
                             }}
                           />
                         </td>
@@ -3495,7 +4353,7 @@ export default function APQR() {
                             onChange={(e) => {
                               const newData = [...pQRData.ooaResults];
                               newData[index].testNameOfAlert = e.target.value;
-                              setPQRData({...pQRData,ooaResults:newData});
+                              setPQRData({ ...pQRData, ooaResults: newData });
                             }}
                           />
                         </td>
@@ -3506,7 +4364,7 @@ export default function APQR() {
                             onChange={(e) => {
                               const newData = [...pQRData.ooaResults];
                               newData[index].resultsObtained = e.target.value;
-                              setPQRData({...pQRData,ooaResults:newData});
+                              setPQRData({ ...pQRData, ooaResults: newData });
                             }}
                           />
                         </td>
@@ -3515,8 +4373,9 @@ export default function APQR() {
                             value={item.initialIntervalDetails}
                             onChange={(e) => {
                               const newData = [...pQRData.ooaResults];
-                              newData[index].initialIntervalDetails = e.target.value;
-                              setPQRData({...pQRData,ooaResults:newData});
+                              newData[index].initialIntervalDetails =
+                                e.target.value;
+                              setPQRData({ ...pQRData, ooaResults: newData });
                             }}
                           />
                         </td>
@@ -3525,8 +4384,9 @@ export default function APQR() {
                             value={item.previousIntervalDetails}
                             onChange={(e) => {
                               const newData = [...pQRData.ooaResults];
-                              newData[index].previousIntervalDetails = e.target.value;
-                              setPQRData({...pQRData,ooaResults:newData});
+                              newData[index].previousIntervalDetails =
+                                e.target.value;
+                              setPQRData({ ...pQRData, ooaResults: newData });
                             }}
                           />
                         </td>
@@ -3536,7 +4396,7 @@ export default function APQR() {
                             onChange={(e) => {
                               const newData = [...pQRData.ooaResults];
                               newData[index].diffrenceOfResult = e.target.value;
-                              setPQRData({...pQRData,ooaResults:newData});
+                              setPQRData({ ...pQRData, ooaResults: newData });
                             }}
                           />
                         </td>
@@ -3546,7 +4406,7 @@ export default function APQR() {
                             onChange={(e) => {
                               const newData = [...pQRData.ooaResults];
                               newData[index].trendLimit = e.target.value;
-                              setPQRData({...pQRData,ooaResults:newData});
+                              setPQRData({ ...pQRData, ooaResults: newData });
                             }}
                           />
                         </td>
@@ -3573,10 +4433,15 @@ export default function APQR() {
               <div className="AddRows d-flex w-full justify-between items-center text-3xl mb-5">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={oolResultsRow} />
-                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
+                  <div className="addrowinstruction  pl-2">
+                    Add Rows by clicking on (+) icon
+                  </div>
                 </div>
                 <div className="flex gap-4 ">
-                  <ExcelExport data={balanceSheet} fileName="balance-sheet-summary.xlsx" />
+                  <ExcelExport
+                    data={balanceSheet}
+                    fileName="balance-sheet-summary.xlsx"
+                  />
                 </div>
               </div>
               <table className="mb-4">
@@ -3596,13 +4461,14 @@ export default function APQR() {
                     return (
                       <tr key={index}>
                         <td>
-                          <input value={item.ARNo}
-                          
-                          onChange={(e) => {
-                            const newData = [...pQRData.oolResults];
-                            newData[index].ARNo = e.target.value;
-                            setPQRData({...pQRData,oolResults:newData});
-                          }}/>
+                          <input
+                            value={item.ARNo}
+                            onChange={(e) => {
+                              const newData = [...pQRData.oolResults];
+                              newData[index].ARNo = e.target.value;
+                              setPQRData({ ...pQRData, oolResults: newData });
+                            }}
+                          />
                         </td>
                         <td>
                           <input
@@ -3610,7 +4476,7 @@ export default function APQR() {
                             onChange={(e) => {
                               const newData = [...pQRData.oolResults];
                               newData[index].testNameOfAlert = e.target.value;
-                              setPQRData({...pQRData,oolResults:newData});
+                              setPQRData({ ...pQRData, oolResults: newData });
                             }}
                           />
                         </td>
@@ -3621,7 +4487,7 @@ export default function APQR() {
                             onChange={(e) => {
                               const newData = [...pQRData.oolResults];
                               newData[index].resultsObtained = e.target.value;
-                              setPQRData({...pQRData,oolResults:newData});
+                              setPQRData({ ...pQRData, oolResults: newData });
                             }}
                           />
                         </td>
@@ -3630,8 +4496,9 @@ export default function APQR() {
                             value={item.initialIntervalDetails}
                             onChange={(e) => {
                               const newData = [...pQRData.oolResults];
-                              newData[index].initialIntervalDetails = e.target.value;
-                              setPQRData({...pQRData,oolResults:newData});
+                              newData[index].initialIntervalDetails =
+                                e.target.value;
+                              setPQRData({ ...pQRData, oolResults: newData });
                             }}
                           />
                         </td>
@@ -3640,8 +4507,9 @@ export default function APQR() {
                             value={item.previousIntervalDetails}
                             onChange={(e) => {
                               const newData = [...pQRData.oolResults];
-                              newData[index].previousIntervalDetails = e.target.value;
-                              setPQRData({...pQRData,oolResults:newData});
+                              newData[index].previousIntervalDetails =
+                                e.target.value;
+                              setPQRData({ ...pQRData, oolResults: newData });
                             }}
                           />
                         </td>
@@ -3651,7 +4519,7 @@ export default function APQR() {
                             onChange={(e) => {
                               const newData = [...pQRData.oolResults];
                               newData[index].diffrenceOfResult = e.target.value;
-                              setPQRData({...pQRData,oolResults:newData});
+                              setPQRData({ ...pQRData, oolResults: newData });
                             }}
                           />
                         </td>
@@ -3661,7 +4529,7 @@ export default function APQR() {
                             onChange={(e) => {
                               const newData = [...pQRData.oolResults];
                               newData[index].trendLimit = e.target.value;
-                              setPQRData({...pQRData,oolResults:newData});
+                              setPQRData({ ...pQRData, oolResults: newData });
                             }}
                           />
                         </td>
@@ -3680,10 +4548,14 @@ export default function APQR() {
               />
             </div>
 
-            <div className="sub-head">Review of Product Quality (Critical Process Parameters)</div>
+            <div className="sub-head">
+              Review of Product Quality (Critical Process Parameters)
+            </div>
 
             <h3 className="gridName">Unit Operation 1</h3>
-            <h4 className="gridName">Buffer formulation summary details provided below</h4>
+            <h4 className="gridName">
+              Buffer formulation summary details provided below
+            </h4>
             <div>
               {/* <div className="AddRows d-flex">
                 <MdNoteAdd onClick={addBufferFSDPVRow} />
@@ -3692,38 +4564,45 @@ export default function APQR() {
               <div className="AddRows d-flex w-full justify-between items-center text-3xl mb-5">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addBufferFSDPVRow} />
-                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
+                  <div className="addrowinstruction  pl-2">
+                    Add Rows by clicking on (+) icon
+                  </div>
                 </div>
                 <div className="flex gap-4 ">
-                  <ExcelExport data={balanceSheet} fileName="balance-sheet-summary.xlsx" />
+                  <ExcelExport
+                    data={balanceSheet}
+                    fileName="balance-sheet-summary.xlsx"
+                  />
                 </div>
               </div>
               <table className="mb-4">
                 <thead>
-                <tr>
-                  <th rowSpan={2}>Critical Process Parameters</th>
-                  <th rowSpan={2}>Codes</th>
-                  <th rowSpan={2}>Acceptance criteria</th>
-                  <th colSpan={2}>Results</th>
-                  <th rowSpan={2}>Complies / Does not complies</th>
-                </tr>
-                <tr>
-                  <th>Minimum</th>
-                  <th>Maximum</th>
-                </tr>
+                  <tr>
+                    <th rowSpan={2}>Critical Process Parameters</th>
+                    <th rowSpan={2}>Codes</th>
+                    <th rowSpan={2}>Acceptance criteria</th>
+                    <th colSpan={2}>Results</th>
+                    <th rowSpan={2}>Complies / Does not complies</th>
+                  </tr>
+                  <tr>
+                    <th>Minimum</th>
+                    <th>Maximum</th>
+                  </tr>
                 </thead>
                 <tbody>
                   {pQRData?.bufferFSDPV?.map((item, index) => {
                     return (
                       <tr key={index}>
                         <td>
-                          <input 
-                           value={item.criticalProcessParameter}
-                           onChange={(e) => {
-                             const newData = [...pQRData.bufferFSDPV];
-                             newData[index].criticalProcessParameter = e.target.value;
-                             setPQRData({...pQRData,bufferFSDPV:newData});
-                           }}/>
+                          <input
+                            value={item.criticalProcessParameter}
+                            onChange={(e) => {
+                              const newData = [...pQRData.bufferFSDPV];
+                              newData[index].criticalProcessParameter =
+                                e.target.value;
+                              setPQRData({ ...pQRData, bufferFSDPV: newData });
+                            }}
+                          />
                         </td>
                         <td>
                           <input
@@ -3731,50 +4610,52 @@ export default function APQR() {
                             onChange={(e) => {
                               const newData = [...pQRData.bufferFSDPV];
                               newData[index].codes = e.target.value;
-                              setPQRData({...pQRData,bufferFSDPV:newData});
-                            }} />
-                        </td>
-                        <td>
-                          <input 
-                            value={item.acceptanceCriteria}
-                            onChange={(e) => {
-                              const newData = [...pQRData.bufferFSDPV];
-                              newData[index].acceptanceCriteria = e.target.value;
-                              setPQRData({...pQRData,bufferFSDPV:newData});
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input 
-                            value={item.compliesNotComplies}
-                            onChange={(e) => {
-                              const newData = [...pQRData.bufferFSDPV];
-                              newData[index].compliesNotComplies = e.target.value;
-                              setPQRData({...pQRData,bufferFSDPV:newData});
+                              setPQRData({ ...pQRData, bufferFSDPV: newData });
                             }}
                           />
                         </td>
                         <td>
                           <input
-                            value={item.results.minimun}
+                            value={item.acceptanceCriteria}
                             onChange={(e) => {
                               const newData = [...pQRData.bufferFSDPV];
-                              newData[index].results.minimun = e.target.value;
-                              setPQRData({...pQRData,bufferFSDPV:newData});
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input 
-                            value={item.results.maximum}
-                            onChange={(e) => {
-                              const newData = [...pQRData.bufferFSDPV];
-                              newData[index].results.maximum = e.target.value;
-                              setPQRData({...pQRData,bufferFSDPV:newData});
+                              newData[index].acceptanceCriteria =
+                                e.target.value;
+                              setPQRData({ ...pQRData, bufferFSDPV: newData });
                             }}
                           />
                         </td>
                        
+                        <td>
+                          <input
+                            value={item.results.minimum}
+                            onChange={(e) => {
+                              const newData = [...pQRData.bufferFSDPV];
+                              newData[index].results.minimum = e.target.value;
+                              setPQRData({ ...pQRData, bufferFSDPV: newData });
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.results.maximum}
+                            onChange={(e) => {
+                              const newData = [...pQRData.bufferFSDPV];
+                              newData[index].results.maximum = e.target.value;
+                              setPQRData({ ...pQRData, bufferFSDPV: newData });
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.compliesNotComplies}
+                            onChange={(e) => {
+                              const newData = [...pQRData.bufferFSDPV];
+                              newData[index].compliesNotComplies = e.target.value;
+                              setPQRData({ ...pQRData, bufferFSDPV: newData });
+                            }}
+                          />
+                        </td>
                       </tr>
                     );
                   })}
@@ -3790,10 +4671,15 @@ export default function APQR() {
             <div className="AddRows d-flex w-full justify-between items-center text-3xl mb-5">
               <div className="flex items-center">
                 <MdNoteAdd onClick={addmanufacturingSDRow} />
-                <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
+                <div className="addrowinstruction  pl-2">
+                  Add Rows by clicking on (+) icon
+                </div>
               </div>
               <div className="flex gap-4 ">
-                <ExcelExport data={balanceSheet} fileName="balance-sheet-summary.xlsx" />
+                <ExcelExport
+                  data={balanceSheet}
+                  fileName="balance-sheet-summary.xlsx"
+                />
               </div>
             </div>
             <table>
@@ -3814,66 +4700,87 @@ export default function APQR() {
                 {pQRData?.manufacturingSD?.map((item, index) => {
                   return (
                     <tr key={index}>
-                    <td>
-                      <input 
-                       value={item.criticalProcessParameter}
-                       onChange={(e) => {
-                         const newData = [...pQRData.manufacturingSD];
-                         newData[index].criticalProcessParameter = e.target.value;
-                         setPQRData({...pQRData,manufacturingSD:newData});
-                       }}/>
-                    </td>
-                    <td>
-                      <input
-                        value={item.codes}
-                        onChange={(e) => {
-                          const newData = [...pQRData.manufacturingSD];
-                          newData[index].codes = e.target.value;
-                          setPQRData({...pQRData,manufacturingSD:newData});
-                        }} />
-                    </td>
-                    <td>
-                      <input 
-                        value={item.acceptanceCriteria}
-                        onChange={(e) => {
-                          const newData = [...pQRData.manufacturingSD];
-                          newData[index].acceptanceCriteria = e.target.value;
-                          setPQRData({...pQRData,manufacturingSD:newData});
-                        }}
-                      />
-                    </td>
-                    <td>
-                      <input 
-                        value={item.compliesNotComplies}
-                        onChange={(e) => {
-                          const newData = [...pQRData.manufacturingSD];
-                          newData[index].compliesNotComplies = e.target.value;
-                          setPQRData({...pQRData,manufacturingSD:newData});
-                        }}
-                      />
-                    </td>
-                    <td>
-                      <input
-                        value={item.results.minimun}
-                        onChange={(e) => {
-                          const newData = [...pQRData.manufacturingSD];
-                          newData[index].results.minimun = e.target.value;
-                          setPQRData({...pQRData,manufacturingSD:newData});
-                        }}
-                      />
-                    </td>
-                    <td>
-                      <input 
-                        value={item.results.maximum}
-                        onChange={(e) => {
-                          const newData = [...pQRData.manufacturingSD];
-                          newData[index].results.maximum = e.target.value;
-                          setPQRData({...pQRData,manufacturingSD:newData});
-                        }}
-                      />
-                    </td>
-                   
-                  </tr>
+                      <td>
+                        <input
+                          value={item.criticalProcessParameter}
+                          onChange={(e) => {
+                            const newData = [...pQRData.manufacturingSD];
+                            newData[index].criticalProcessParameter =
+                              e.target.value;
+                            setPQRData({
+                              ...pQRData,
+                              manufacturingSD: newData,
+                            });
+                          }}
+                        />
+                      </td>
+                      <td>
+                        <input
+                          value={item.codes}
+                          onChange={(e) => {
+                            const newData = [...pQRData.manufacturingSD];
+                            newData[index].codes = e.target.value;
+                            setPQRData({
+                              ...pQRData,
+                              manufacturingSD: newData,
+                            });
+                          }}
+                        />
+                      </td>
+                      <td>
+                        <input
+                          value={item.acceptanceCriteria}
+                          onChange={(e) => {
+                            const newData = [...pQRData.manufacturingSD];
+                            newData[index].acceptanceCriteria = e.target.value;
+                            setPQRData({
+                              ...pQRData,
+                              manufacturingSD: newData,
+                            });
+                          }}
+                        />
+                      </td>
+                     
+                      <td>
+                        <input
+                          value={item.results.minimum}
+                          onChange={(e) => {
+                            const newData = [...pQRData.manufacturingSD];
+                            newData[index].results.minimum = e.target.value;
+                            setPQRData({
+                              ...pQRData,
+                              manufacturingSD: newData,
+                            });
+                          }}
+                        />
+                      </td>
+                      <td>
+                        <input
+                          value={item.results.maximum}
+                          onChange={(e) => {
+                            const newData = [...pQRData.manufacturingSD];
+                            newData[index].results.maximum = e.target.value;
+                            setPQRData({
+                              ...pQRData,
+                              manufacturingSD: newData,
+                            });
+                          }}
+                        />
+                      </td>
+                      <td>
+                        <input
+                          value={item.compliesNotComplies}
+                          onChange={(e) => {
+                            const newData = [...pQRData.manufacturingSD];
+                            newData[index].compliesNotComplies = e.target.value;
+                            setPQRData({
+                              ...pQRData,
+                              manufacturingSD: newData,
+                            });
+                          }}
+                        />
+                      </td>
+                    </tr>
                   );
                 })}
               </tbody>
@@ -3902,64 +4809,68 @@ export default function APQR() {
                 {pQRData?.unitOperation3?.map((item, index) => {
                   return (
                     <tr key={index}>
-                    <td>
-                      <input 
-                       value={item.criticalProcessParameter}
-                       onChange={(e) => {
-                         const newData = [...pQRData.unitOperation3];
-                         newData[index].criticalProcessParameter = e.target.value;
-                         setPQRData({...pQRData,unitOperation3:newData});
-                       }}/>
-                    </td>
-                    <td>
-                      <input
-                        value={item.codes}
-                        onChange={(e) => {
-                          const newData = [...pQRData.unitOperation3];
-                          newData[index].codes = e.target.value;
-                          setPQRData({...pQRData,unitOperation3:newData});
-                        }} />
-                    </td>
-                    <td>
-                      <input 
-                        value={item.acceptanceCriteria}
-                        onChange={(e) => {
-                          const newData = [...pQRData.unitOperation3];
-                          newData[index].acceptanceCriteria = e.target.value;
-                          setPQRData({...pQRData,unitOperation3:newData});
-                        }}
-                      />
-                    </td>
-                    <td>
-                      <input 
-                        value={item.compliesNotComplies}
-                        onChange={(e) => {
-                          const newData = [...pQRData.unitOperation3];
-                          newData[index].compliesNotComplies = e.target.value;
-                          setPQRData({...pQRData,unitOperation3:newData});
-                        }}
-                      />
-                    </td>
-                    <td>
-                      <input
-                        value={item.results.minimun}
-                        onChange={(e) => {
-                          const newData = [...pQRData.unitOperation3];
-                          newData[index].results.minimun = e.target.value;
-                          setPQRData({...pQRData,unitOperation3:newData});
-                        }}
-                      />
-                    </td>
-                    <td>
-                      <input 
-                        value={item.results.maximum}
-                        onChange={(e) => {
-                          const newData = [...pQRData.unitOperation3];
-                          newData[index].results.maximum = e.target.value;
-                          setPQRData({...pQRData,unitOperation3:newData});
-                        }}
-                      />
-                    </td>
+                      <td>
+                        <input
+                          value={item.criticalProcessParameter}
+                          onChange={(e) => {
+                            const newData = [...pQRData.unitOperation3];
+                            newData[index].criticalProcessParameter =
+                              e.target.value;
+                            setPQRData({ ...pQRData, unitOperation3: newData });
+                          }}
+                        />
+                      </td>
+                      <td>
+                        <input
+                          value={item.codes}
+                          onChange={(e) => {
+                            const newData = [...pQRData.unitOperation3];
+                            newData[index].codes = e.target.value;
+                            setPQRData({ ...pQRData, unitOperation3: newData });
+                          }}
+                        />
+                      </td>
+                      <td>
+                        <input
+                          value={item.acceptanceCriteria}
+                          onChange={(e) => {
+                            const newData = [...pQRData.unitOperation3];
+                            newData[index].acceptanceCriteria = e.target.value;
+                            setPQRData({ ...pQRData, unitOperation3: newData });
+                          }}
+                        />
+                      </td>
+                    
+                      <td>
+                        <input
+                          value={item.results.minimum}
+                          onChange={(e) => {
+                            const newData = [...pQRData.unitOperation3];
+                            newData[index].results.minimum = e.target.value;
+                            setPQRData({ ...pQRData, unitOperation3: newData });
+                          }}
+                        />
+                      </td>
+                      <td>
+                        <input
+                          value={item.results.maximum}
+                          onChange={(e) => {
+                            const newData = [...pQRData.unitOperation3];
+                            newData[index].results.maximum = e.target.value;
+                            setPQRData({ ...pQRData, unitOperation3: newData });
+                          }}
+                        />
+                      </td>
+                      <td>
+                        <input
+                          value={item.compliesNotComplies}
+                          onChange={(e) => {
+                            const newData = [...pQRData.unitOperation3];
+                            newData[index].compliesNotComplies = e.target.value;
+                            setPQRData({ ...pQRData, unitOperation3: newData });
+                          }}
+                        />
+                      </td>
                     </tr>
                   );
                 })}
@@ -3989,64 +4900,68 @@ export default function APQR() {
                 {pQRData?.unitOperation4?.map((item, index) => {
                   return (
                     <tr key={index}>
-                    <td>
-                      <input 
-                       value={item.criticalProcessParameter}
-                       onChange={(e) => {
-                         const newData = [...pQRData.unitOperation4];
-                         newData[index].criticalProcessParameter = e.target.value;
-                         setPQRData({...pQRData,unitOperation4:newData});
-                       }}/>
-                    </td>
-                    <td>
-                      <input
-                        value={item.codes}
-                        onChange={(e) => {
-                          const newData = [...pQRData.unitOperation4];
-                          newData[index].codes = e.target.value;
-                          setPQRData({...pQRData,unitOperation4:newData});
-                        }} />
-                    </td>
-                    <td>
-                      <input 
-                        value={item.acceptanceCriteria}
-                        onChange={(e) => {
-                          const newData = [...pQRData.unitOperation4];
-                          newData[index].acceptanceCriteria = e.target.value;
-                          setPQRData({...pQRData,unitOperation4:newData});
-                        }}
-                      />
-                    </td>
-                    <td>
-                      <input 
-                        value={item.compliesNotComplies}
-                        onChange={(e) => {
-                          const newData = [...pQRData.unitOperation4];
-                          newData[index].compliesNotComplies = e.target.value;
-                          setPQRData({...pQRData,unitOperation4:newData});
-                        }}
-                      />
-                    </td>
-                    <td>
-                      <input
-                        value={item.results.minimun}
-                        onChange={(e) => {
-                          const newData = [...pQRData.unitOperation4];
-                          newData[index].results.minimun = e.target.value;
-                          setPQRData({...pQRData,unitOperation4:newData});
-                        }}
-                      />
-                    </td>
-                    <td>
-                      <input 
-                        value={item.results.maximum}
-                        onChange={(e) => {
-                          const newData = [...pQRData.unitOperation4];
-                          newData[index].results.maximum = e.target.value;
-                          setPQRData({...pQRData,unitOperation4:newData});
-                        }}
-                      />
-                    </td>
+                      <td>
+                        <input
+                          value={item.criticalProcessParameter}
+                          onChange={(e) => {
+                            const newData = [...pQRData.unitOperation4];
+                            newData[index].criticalProcessParameter =
+                              e.target.value;
+                            setPQRData({ ...pQRData, unitOperation4: newData });
+                          }}
+                        />
+                      </td>
+                      <td>
+                        <input
+                          value={item.codes}
+                          onChange={(e) => {
+                            const newData = [...pQRData.unitOperation4];
+                            newData[index].codes = e.target.value;
+                            setPQRData({ ...pQRData, unitOperation4: newData });
+                          }}
+                        />
+                      </td>
+                      <td>
+                        <input
+                          value={item.acceptanceCriteria}
+                          onChange={(e) => {
+                            const newData = [...pQRData.unitOperation4];
+                            newData[index].acceptanceCriteria = e.target.value;
+                            setPQRData({ ...pQRData, unitOperation4: newData });
+                          }}
+                        />
+                      </td>
+                     
+                      <td>
+                        <input
+                          value={item.results.minimum}
+                          onChange={(e) => {
+                            const newData = [...pQRData.unitOperation4];
+                            newData[index].results.minimum = e.target.value;
+                            setPQRData({ ...pQRData, unitOperation4: newData });
+                          }}
+                        />
+                      </td>
+                      <td>
+                        <input
+                          value={item.results.maximum}
+                          onChange={(e) => {
+                            const newData = [...pQRData.unitOperation4];
+                            newData[index].results.maximum = e.target.value;
+                            setPQRData({ ...pQRData, unitOperation4: newData });
+                          }}
+                        />
+                      </td>
+                      <td>
+                        <input
+                          value={item.compliesNotComplies}
+                          onChange={(e) => {
+                            const newData = [...pQRData.unitOperation4];
+                            newData[index].compliesNotComplies = e.target.value;
+                            setPQRData({ ...pQRData, unitOperation4: newData });
+                          }}
+                        />
+                      </td>
                     </tr>
                   );
                 })}
@@ -4076,64 +4991,68 @@ export default function APQR() {
                 {pQRData?.unitOperation5?.map((item, index) => {
                   return (
                     <tr key={index}>
-                    <td>
-                      <input 
-                       value={item.criticalProcessParameter}
-                       onChange={(e) => {
-                         const newData = [...pQRData.unitOperation5];
-                         newData[index].criticalProcessParameter = e.target.value;
-                         setPQRData({...pQRData,unitOperation5:newData});
-                       }}/>
-                    </td>
-                    <td>
-                      <input
-                        value={item.codes}
-                        onChange={(e) => {
-                          const newData = [...pQRData.unitOperation5];
-                          newData[index].codes = e.target.value;
-                          setPQRData({...pQRData,unitOperation5:newData});
-                        }} />
-                    </td>
-                    <td>
-                      <input 
-                        value={item.acceptanceCriteria}
-                        onChange={(e) => {
-                          const newData = [...pQRData.unitOperation5];
-                          newData[index].acceptanceCriteria = e.target.value;
-                          setPQRData({...pQRData,unitOperation5:newData});
-                        }}
-                      />
-                    </td>
-                    <td>
-                      <input 
-                        value={item.compliesNotComplies}
-                        onChange={(e) => {
-                          const newData = [...pQRData.unitOperation5];
-                          newData[index].compliesNotComplies = e.target.value;
-                          setPQRData({...pQRData,unitOperation5:newData});
-                        }}
-                      />
-                    </td>
-                    <td>
-                      <input
-                        value={item.results.minimun}
-                        onChange={(e) => {
-                          const newData = [...pQRData.unitOperation5];
-                          newData[index].results.minimun = e.target.value;
-                          setPQRData({...pQRData,unitOperation5:newData});
-                        }}
-                      />
-                    </td>
-                    <td>
-                      <input 
-                        value={item.results.maximum}
-                        onChange={(e) => {
-                          const newData = [...pQRData.unitOperation5];
-                          newData[index].results.maximum = e.target.value;
-                          setPQRData({...pQRData,unitOperation5:newData});
-                        }}
-                      />
-                    </td>
+                      <td>
+                        <input
+                          value={item.criticalProcessParameter}
+                          onChange={(e) => {
+                            const newData = [...pQRData.unitOperation5];
+                            newData[index].criticalProcessParameter =
+                              e.target.value;
+                            setPQRData({ ...pQRData, unitOperation5: newData });
+                          }}
+                        />
+                      </td>
+                      <td>
+                        <input
+                          value={item.codes}
+                          onChange={(e) => {
+                            const newData = [...pQRData.unitOperation5];
+                            newData[index].codes = e.target.value;
+                            setPQRData({ ...pQRData, unitOperation5: newData });
+                          }}
+                        />
+                      </td>
+                      <td>
+                        <input
+                          value={item.acceptanceCriteria}
+                          onChange={(e) => {
+                            const newData = [...pQRData.unitOperation5];
+                            newData[index].acceptanceCriteria = e.target.value;
+                            setPQRData({ ...pQRData, unitOperation5: newData });
+                          }}
+                        />
+                      </td>
+                    
+                      <td>
+                        <input
+                          value={item.results.minimum}
+                          onChange={(e) => {
+                            const newData = [...pQRData.unitOperation5];
+                            newData[index].results.minimum = e.target.value;
+                            setPQRData({ ...pQRData, unitOperation5: newData });
+                          }}
+                        />
+                      </td>
+                      <td>
+                        <input
+                          value={item.results.maximum}
+                          onChange={(e) => {
+                            const newData = [...pQRData.unitOperation5];
+                            newData[index].results.maximum = e.target.value;
+                            setPQRData({ ...pQRData, unitOperation5: newData });
+                          }}
+                        />
+                      </td>
+                      <td>
+                        <input
+                          value={item.compliesNotComplies}
+                          onChange={(e) => {
+                            const newData = [...pQRData.unitOperation5];
+                            newData[index].compliesNotComplies = e.target.value;
+                            setPQRData({ ...pQRData, unitOperation5: newData });
+                          }}
+                        />
+                      </td>
                     </tr>
                   );
                 })}
@@ -4163,64 +5082,68 @@ export default function APQR() {
                 {pQRData?.unitOperation6?.map((item, index) => {
                   return (
                     <tr key={index}>
-                    <td>
-                      <input 
-                       value={item.criticalProcessParameter}
-                       onChange={(e) => {
-                         const newData = [...pQRData.unitOperation6];
-                         newData[index].criticalProcessParameter = e.target.value;
-                         setPQRData({...pQRData,unitOperation6:newData});
-                       }}/>
-                    </td>
-                    <td>
-                      <input
-                        value={item.codes}
-                        onChange={(e) => {
-                          const newData = [...pQRData.unitOperation6];
-                          newData[index].codes = e.target.value;
-                          setPQRData({...pQRData,unitOperation6:newData});
-                        }} />
-                    </td>
-                    <td>
-                      <input 
-                        value={item.acceptanceCriteria}
-                        onChange={(e) => {
-                          const newData = [...pQRData.unitOperation6];
-                          newData[index].acceptanceCriteria = e.target.value;
-                          setPQRData({...pQRData,unitOperation6:newData});
-                        }}
-                      />
-                    </td>
-                    <td>
-                      <input 
-                        value={item.compliesNotComplies}
-                        onChange={(e) => {
-                          const newData = [...pQRData.unitOperation6];
-                          newData[index].compliesNotComplies = e.target.value;
-                          setPQRData({...pQRData,unitOperation6:newData});
-                        }}
-                      />
-                    </td>
-                    <td>
-                      <input
-                        value={item.results.minimun}
-                        onChange={(e) => {
-                          const newData = [...pQRData.unitOperation6];
-                          newData[index].results.minimun = e.target.value;
-                          setPQRData({...pQRData,unitOperation6:newData});
-                        }}
-                      />
-                    </td>
-                    <td>
-                      <input 
-                        value={item.results.maximum}
-                        onChange={(e) => {
-                          const newData = [...pQRData.unitOperation6];
-                          newData[index].results.maximum = e.target.value;
-                          setPQRData({...pQRData,unitOperation6:newData});
-                        }}
-                      />
-                    </td>
+                      <td>
+                        <input
+                          value={item.criticalProcessParameter}
+                          onChange={(e) => {
+                            const newData = [...pQRData.unitOperation6];
+                            newData[index].criticalProcessParameter =
+                              e.target.value;
+                            setPQRData({ ...pQRData, unitOperation6: newData });
+                          }}
+                        />
+                      </td>
+                      <td>
+                        <input
+                          value={item.codes}
+                          onChange={(e) => {
+                            const newData = [...pQRData.unitOperation6];
+                            newData[index].codes = e.target.value;
+                            setPQRData({ ...pQRData, unitOperation6: newData });
+                          }}
+                        />
+                      </td>
+                      <td>
+                        <input
+                          value={item.acceptanceCriteria}
+                          onChange={(e) => {
+                            const newData = [...pQRData.unitOperation6];
+                            newData[index].acceptanceCriteria = e.target.value;
+                            setPQRData({ ...pQRData, unitOperation6: newData });
+                          }}
+                        />
+                      </td>
+                     
+                      <td>
+                        <input
+                          value={item.results.minimum}
+                          onChange={(e) => {
+                            const newData = [...pQRData.unitOperation6];
+                            newData[index].results.minimum = e.target.value;
+                            setPQRData({ ...pQRData, unitOperation6: newData });
+                          }}
+                        />
+                      </td>
+                      <td>
+                        <input
+                          value={item.results.maximum}
+                          onChange={(e) => {
+                            const newData = [...pQRData.unitOperation6];
+                            newData[index].results.maximum = e.target.value;
+                            setPQRData({ ...pQRData, unitOperation6: newData });
+                          }}
+                        />
+                      </td>
+                      <td>
+                        <input
+                          value={item.compliesNotComplies}
+                          onChange={(e) => {
+                            const newData = [...pQRData.unitOperation6];
+                            newData[index].compliesNotComplies = e.target.value;
+                            setPQRData({ ...pQRData, unitOperation6: newData });
+                          }}
+                        />
+                      </td>
                     </tr>
                   );
                 })}
@@ -4249,65 +5172,69 @@ export default function APQR() {
               <tbody>
                 {pQRData?.unitOperation7?.map((item, index) => {
                   return (
-                  <tr key={index}>
-                    <td>
-                      <input 
-                       value={item.criticalProcessParameter}
-                       onChange={(e) => {
-                         const newData = [...pQRData.unitOperation7];
-                         newData[index].criticalProcessParameter = e.target.value;
-                         setPQRData({...pQRData,unitOperation7:newData});
-                       }}/>
-                    </td>
-                    <td>
-                      <input
-                        value={item.codes}
-                        onChange={(e) => {
-                          const newData = [...pQRData.unitOperation7];
-                          newData[index].codes = e.target.value;
-                          setPQRData({...pQRData,unitOperation7:newData});
-                        }} />
-                    </td>
-                    <td>
-                      <input 
-                        value={item.acceptanceCriteria}
-                        onChange={(e) => {
-                          const newData = [...pQRData.unitOperation7];
-                          newData[index].acceptanceCriteria = e.target.value;
-                          setPQRData({...pQRData,unitOperation7:newData});
-                        }}
-                      />
-                    </td>
-                    <td>
-                      <input 
-                        value={item.compliesNotComplies}
-                        onChange={(e) => {
-                          const newData = [...pQRData.unitOperation7];
-                          newData[index].compliesNotComplies = e.target.value;
-                          setPQRData({...pQRData,unitOperation7:newData});
-                        }}
-                      />
-                    </td>
-                    <td>
-                      <input
-                        value={item.results.minimun}
-                        onChange={(e) => {
-                          const newData = [...pQRData.unitOperation7];
-                          newData[index].results.minimun = e.target.value;
-                          setPQRData({...pQRData,unitOperation7:newData});
-                        }}
-                      />
-                    </td>
-                    <td>
-                      <input 
-                        value={item.results.maximum}
-                        onChange={(e) => {
-                          const newData = [...pQRData.unitOperation7];
-                          newData[index].results.maximum = e.target.value;
-                          setPQRData({...pQRData,unitOperation7:newData});
-                        }}
-                      />
-                    </td>
+                    <tr key={index}>
+                      <td>
+                        <input
+                          value={item.criticalProcessParameter}
+                          onChange={(e) => {
+                            const newData = [...pQRData.unitOperation7];
+                            newData[index].criticalProcessParameter =
+                              e.target.value;
+                            setPQRData({ ...pQRData, unitOperation7: newData });
+                          }}
+                        />
+                      </td>
+                      <td>
+                        <input
+                          value={item.codes}
+                          onChange={(e) => {
+                            const newData = [...pQRData.unitOperation7];
+                            newData[index].codes = e.target.value;
+                            setPQRData({ ...pQRData, unitOperation7: newData });
+                          }}
+                        />
+                      </td>
+                      <td>
+                        <input
+                          value={item.acceptanceCriteria}
+                          onChange={(e) => {
+                            const newData = [...pQRData.unitOperation7];
+                            newData[index].acceptanceCriteria = e.target.value;
+                            setPQRData({ ...pQRData, unitOperation7: newData });
+                          }}
+                        />
+                      </td>
+                     
+                      <td>
+                        <input
+                          value={item.results.minimum}
+                          onChange={(e) => {
+                            const newData = [...pQRData.unitOperation7];
+                            newData[index].results.minimum = e.target.value;
+                            setPQRData({ ...pQRData, unitOperation7: newData });
+                          }}
+                        />
+                      </td>
+                      <td>
+                        <input
+                          value={item.results.maximum}
+                          onChange={(e) => {
+                            const newData = [...pQRData.unitOperation7];
+                            newData[index].results.maximum = e.target.value;
+                            setPQRData({ ...pQRData, unitOperation7: newData });
+                          }}
+                        />
+                      </td>
+                      <td>
+                        <input
+                          value={item.compliesNotComplies}
+                          onChange={(e) => {
+                            const newData = [...pQRData.unitOperation7];
+                            newData[index].compliesNotComplies = e.target.value;
+                            setPQRData({ ...pQRData, unitOperation7: newData });
+                          }}
+                        />
+                      </td>
                     </tr>
                   );
                 })}
@@ -4337,64 +5264,68 @@ export default function APQR() {
                 {pQRData?.unitOperation8?.map((item, index) => {
                   return (
                     <tr key={index}>
-                    <td>
-                      <input 
-                       value={item.criticalProcessParameter}
-                       onChange={(e) => {
-                         const newData = [...pQRData.unitOperation8];
-                         newData[index].criticalProcessParameter = e.target.value;
-                         setPQRData({...pQRData,unitOperation8:newData});
-                       }}/>
-                    </td>
-                    <td>
-                      <input
-                        value={item.codes}
-                        onChange={(e) => {
-                          const newData = [...pQRData.unitOperation8];
-                          newData[index].codes = e.target.value;
-                          setPQRData({...pQRData,unitOperation8:newData});
-                        }} />
-                    </td>
-                    <td>
-                      <input 
-                        value={item.acceptanceCriteria}
-                        onChange={(e) => {
-                          const newData = [...pQRData.unitOperation8];
-                          newData[index].acceptanceCriteria = e.target.value;
-                          setPQRData({...pQRData,unitOperation8:newData});
-                        }}
-                      />
-                    </td>
-                    <td>
-                      <input 
-                        value={item.compliesNotComplies}
-                        onChange={(e) => {
-                          const newData = [...pQRData.unitOperation8];
-                          newData[index].compliesNotComplies = e.target.value;
-                          setPQRData({...pQRData,unitOperation8:newData});
-                        }}
-                      />
-                    </td>
-                    <td>
-                      <input
-                        value={item.results.minimun}
-                        onChange={(e) => {
-                          const newData = [...pQRData.unitOperation8];
-                          newData[index].results.minimun = e.target.value;
-                          setPQRData({...pQRData,unitOperation8:newData});
-                        }}
-                      />
-                    </td>
-                    <td>
-                      <input 
-                        value={item.results.maximum}
-                        onChange={(e) => {
-                          const newData = [...pQRData.unitOperation8];
-                          newData[index].results.maximum = e.target.value;
-                          setPQRData({...pQRData,unitOperation8:newData});
-                        }}
-                      />
-                    </td>
+                      <td>
+                        <input
+                          value={item.criticalProcessParameter}
+                          onChange={(e) => {
+                            const newData = [...pQRData.unitOperation8];
+                            newData[index].criticalProcessParameter =
+                              e.target.value;
+                            setPQRData({ ...pQRData, unitOperation8: newData });
+                          }}
+                        />
+                      </td>
+                      <td>
+                        <input
+                          value={item.codes}
+                          onChange={(e) => {
+                            const newData = [...pQRData.unitOperation8];
+                            newData[index].codes = e.target.value;
+                            setPQRData({ ...pQRData, unitOperation8: newData });
+                          }}
+                        />
+                      </td>
+                      <td>
+                        <input
+                          value={item.acceptanceCriteria}
+                          onChange={(e) => {
+                            const newData = [...pQRData.unitOperation8];
+                            newData[index].acceptanceCriteria = e.target.value;
+                            setPQRData({ ...pQRData, unitOperation8: newData });
+                          }}
+                        />
+                      </td>
+                      
+                      <td>
+                        <input
+                          value={item.results.minimum}
+                          onChange={(e) => {
+                            const newData = [...pQRData.unitOperation8];
+                            newData[index].results.minimum = e.target.value;
+                            setPQRData({ ...pQRData, unitOperation8: newData });
+                          }}
+                        />
+                      </td>
+                      <td>
+                        <input
+                          value={item.results.maximum}
+                          onChange={(e) => {
+                            const newData = [...pQRData.unitOperation8];
+                            newData[index].results.maximum = e.target.value;
+                            setPQRData({ ...pQRData, unitOperation8: newData });
+                          }}
+                        />
+                      </td>
+                      <td>
+                        <input
+                          value={item.compliesNotComplies}
+                          onChange={(e) => {
+                            const newData = [...pQRData.unitOperation8];
+                            newData[index].compliesNotComplies = e.target.value;
+                            setPQRData({ ...pQRData, unitOperation8: newData });
+                          }}
+                        />
+                      </td>
                     </tr>
                   );
                 })}
@@ -4424,64 +5355,68 @@ export default function APQR() {
                 {pQRData?.unitOperation9?.map((item, index) => {
                   return (
                     <tr key={index}>
-                    <td>
-                      <input 
-                       value={item.criticalProcessParameter}
-                       onChange={(e) => {
-                         const newData = [...pQRData.unitOperation9];
-                         newData[index].criticalProcessParameter = e.target.value;
-                         setPQRData({...pQRData,unitOperation9:newData});
-                       }}/>
-                    </td>
-                    <td>
-                      <input
-                        value={item.codes}
-                        onChange={(e) => {
-                          const newData = [...pQRData.unitOperation9];
-                          newData[index].codes = e.target.value;
-                          setPQRData({...pQRData,unitOperation9:newData});
-                        }} />
-                    </td>
-                    <td>
-                      <input 
-                        value={item.acceptanceCriteria}
-                        onChange={(e) => {
-                          const newData = [...pQRData.unitOperation9];
-                          newData[index].acceptanceCriteria = e.target.value;
-                          setPQRData({...pQRData,unitOperation9:newData});
-                        }}
-                      />
-                    </td>
-                    <td>
-                      <input 
-                        value={item.compliesNotComplies}
-                        onChange={(e) => {
-                          const newData = [...pQRData.unitOperation9];
-                          newData[index].compliesNotComplies = e.target.value;
-                          setPQRData({...pQRData,unitOperation9:newData});
-                        }}
-                      />
-                    </td>
-                    <td>
-                      <input
-                        value={item.results.minimun}
-                        onChange={(e) => {
-                          const newData = [...pQRData.unitOperation9];
-                          newData[index].results.minimun = e.target.value;
-                          setPQRData({...pQRData,unitOperation9:newData});
-                        }}
-                      />
-                    </td>
-                    <td>
-                      <input 
-                        value={item.results.maximum}
-                        onChange={(e) => {
-                          const newData = [...pQRData.unitOperation9];
-                          newData[index].results.maximum = e.target.value;
-                          setPQRData({...pQRData,unitOperation9:newData});
-                        }}
-                      />
-                    </td>
+                      <td>
+                        <input
+                          value={item.criticalProcessParameter}
+                          onChange={(e) => {
+                            const newData = [...pQRData.unitOperation9];
+                            newData[index].criticalProcessParameter =
+                              e.target.value;
+                            setPQRData({ ...pQRData, unitOperation9: newData });
+                          }}
+                        />
+                      </td>
+                      <td>
+                        <input
+                          value={item.codes}
+                          onChange={(e) => {
+                            const newData = [...pQRData.unitOperation9];
+                            newData[index].codes = e.target.value;
+                            setPQRData({ ...pQRData, unitOperation9: newData });
+                          }}
+                        />
+                      </td>
+                      <td>
+                        <input
+                          value={item.acceptanceCriteria}
+                          onChange={(e) => {
+                            const newData = [...pQRData.unitOperation9];
+                            newData[index].acceptanceCriteria = e.target.value;
+                            setPQRData({ ...pQRData, unitOperation9: newData });
+                          }}
+                        />
+                      </td>
+                    
+                      <td>
+                        <input
+                          value={item.results.minimum}
+                          onChange={(e) => {
+                            const newData = [...pQRData.unitOperation9];
+                            newData[index].results.minimum = e.target.value;
+                            setPQRData({ ...pQRData, unitOperation9: newData });
+                          }}
+                        />
+                      </td>
+                      <td>
+                        <input
+                          value={item.results.maximum}
+                          onChange={(e) => {
+                            const newData = [...pQRData.unitOperation9];
+                            newData[index].results.maximum = e.target.value;
+                            setPQRData({ ...pQRData, unitOperation9: newData });
+                          }}
+                        />
+                      </td>
+                      <td>
+                        <input
+                          value={item.compliesNotComplies}
+                          onChange={(e) => {
+                            const newData = [...pQRData.unitOperation9];
+                            newData[index].compliesNotComplies = e.target.value;
+                            setPQRData({ ...pQRData, unitOperation9: newData });
+                          }}
+                        />
+                      </td>
                     </tr>
                   );
                 })}
@@ -4511,71 +5446,95 @@ export default function APQR() {
                 {pQRData?.unitOperation10?.map((item, index) => {
                   return (
                     <tr key={index}>
-                    <td>
-                      <input 
-                       value={item.criticalProcessParameter}
-                       onChange={(e) => {
-                         const newData = [...pQRData.unitOperation10];
-                         newData[index].criticalProcessParameter = e.target.value;
-                         setPQRData({...pQRData,unitOperation10:newData});
-                       }}/>
-                    </td>
-                    <td>
-                      <input
-                        value={item.codes}
-                        onChange={(e) => {
-                          const newData = [...pQRData.unitOperation10];
-                          newData[index].codes = e.target.value;
-                          setPQRData({...pQRData,unitOperation10:newData});
-                        }} />
-                    </td>
-                    <td>
-                      <input 
-                        value={item.acceptanceCriteria}
-                        onChange={(e) => {
-                          const newData = [...pQRData.unitOperation10];
-                          newData[index].acceptanceCriteria = e.target.value;
-                          setPQRData({...pQRData,unitOperation10:newData});
-                        }}
-                      />
-                    </td>
-                    <td>
-                      <input 
-                        value={item.compliesNotComplies}
-                        onChange={(e) => {
-                          const newData = [...pQRData.unitOperation10];
-                          newData[index].compliesNotComplies = e.target.value;
-                          setPQRData({...pQRData,unitOperation10:newData});
-                        }}
-                      />
-                    </td>
-                    <td>
-                      <input
-                        value={item.results.minimun}
-                        onChange={(e) => {
-                          const newData = [...pQRData.unitOperation10];
-                          newData[index].results.minimun = e.target.value;
-                          setPQRData({...pQRData,unitOperation10:newData});
-                        }}
-                      />
-                    </td>
-                    <td>
-                      <input 
-                        value={item.results.maximum}
-                        onChange={(e) => {
-                          const newData = [...pQRData.unitOperation10];
-                          newData[index].results.maximum = e.target.value;
-                          setPQRData({...pQRData,unitOperation10:newData});
-                        }}
-                      />
-                    </td>
+                      <td>
+                        <input
+                          value={item.criticalProcessParameter}
+                          onChange={(e) => {
+                            const newData = [...pQRData.unitOperation10];
+                            newData[index].criticalProcessParameter =
+                              e.target.value;
+                            setPQRData({
+                              ...pQRData,
+                              unitOperation10: newData,
+                            });
+                          }}
+                        />
+                      </td>
+                      <td>
+                        <input
+                          value={item.codes}
+                          onChange={(e) => {
+                            const newData = [...pQRData.unitOperation10];
+                            newData[index].codes = e.target.value;
+                            setPQRData({
+                              ...pQRData,
+                              unitOperation10: newData,
+                            });
+                          }}
+                        />
+                      </td>
+                      <td>
+                        <input
+                          value={item.acceptanceCriteria}
+                          onChange={(e) => {
+                            const newData = [...pQRData.unitOperation10];
+                            newData[index].acceptanceCriteria = e.target.value;
+                            setPQRData({
+                              ...pQRData,
+                              unitOperation10: newData,
+                            });
+                          }}
+                        />
+                      </td>
+                  
+                      <td>
+                        <input
+                          value={item.results.minimum}
+                          onChange={(e) => {
+                            const newData = [...pQRData.unitOperation10];
+                            newData[index].results.minimum = e.target.value;
+                            setPQRData({
+                              ...pQRData,
+                              unitOperation10: newData,
+                            });
+                          }}
+                        />
+                      </td>
+                      <td>
+                        <input
+                          value={item.results.maximum}
+                          onChange={(e) => {
+                            const newData = [...pQRData.unitOperation10];
+                            newData[index].results.maximum = e.target.value;
+                            setPQRData({
+                              ...pQRData,
+                              unitOperation10: newData,
+                            });
+                          }}
+                        />
+                      </td>
+                      <td>
+                        <input
+                          value={item.compliesNotComplies}
+                          onChange={(e) => {
+                            const newData = [...pQRData.unitOperation10];
+                            newData[index].compliesNotComplies = e.target.value;
+                            setPQRData({
+                              ...pQRData,
+                              unitOperation10: newData,
+                            });
+                          }}
+                        />
+                      </td>
                     </tr>
                   );
                 })}
               </tbody>
             </table>
 
-            <div className="sub-head">Critical Process Parameters Review Summary</div>
+            <div className="sub-head">
+              Critical Process Parameters Review Summary
+            </div>
             <div className="group-input">
               {/* <input placeholder="please insert flex" /> */}
               <TinyEditor
@@ -4588,7 +5547,10 @@ export default function APQR() {
         ) : null}
         {tab === "LR" ? (
           <div className="p-4">
-            <div className="sub-head"> Review of Drug Substance Test Results</div>
+            <div className="sub-head">
+              {" "}
+              Review of Drug Substance Test Results
+            </div>
             <h1 className="gridName">Drug Substance 1 Test Result</h1>
             <div>
               {/* <div className="AddRows d-flex">
@@ -4598,10 +5560,15 @@ export default function APQR() {
               <div className="AddRows d-flex w-full justify-between items-center text-3xl mb-5">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addReviewODSTRRow} />
-                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
+                  <div className="addrowinstruction  pl-2">
+                    Add Rows by clicking on (+) icon
+                  </div>
                 </div>
                 <div className="flex gap-4 ">
-                  <ExcelExport data={balanceSheet} fileName="balance-sheet-summary.xlsx" />
+                  <ExcelExport
+                    data={balanceSheet}
+                    fileName="balance-sheet-summary.xlsx"
+                  />
                 </div>
               </div>
               <table>
@@ -4686,10 +5653,15 @@ export default function APQR() {
               <div className="AddRows d-flex w-full justify-between items-center text-3xl mb-5">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addReviewODSTRRow2} />
-                  <div className="addrowinstruction pl-2">Add Rows by clicking on (+) icon</div>
+                  <div className="addrowinstruction pl-2">
+                    Add Rows by clicking on (+) icon
+                  </div>
                 </div>
                 <div className="flex gap-4 ">
-                  <ExcelExport data={balanceSheet} fileName="balance-sheet-summary.xlsx" />
+                  <ExcelExport
+                    data={balanceSheet}
+                    fileName="balance-sheet-summary.xlsx"
+                  />
                 </div>
               </div>
               <table>
@@ -4776,10 +5748,15 @@ export default function APQR() {
               <div className="AddRows d-flex w-full justify-between items-center text-3xl mb-5">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addReviewODSTRRow3} />
-                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
+                  <div className="addrowinstruction  pl-2">
+                    Add Rows by clicking on (+) icon
+                  </div>
                 </div>
                 <div className="flex gap-4 ">
-                  <ExcelExport data={balanceSheet} fileName="balance-sheet-summary.xlsx" />
+                  <ExcelExport
+                    data={balanceSheet}
+                    fileName="balance-sheet-summary.xlsx"
+                  />
                 </div>
               </div>
               <table>
@@ -4866,10 +5843,15 @@ export default function APQR() {
               <div className="AddRows d-flex w-full justify-between items-center text-3xl mb-5">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addReviewODSTRRow4} />
-                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
+                  <div className="addrowinstruction  pl-2">
+                    Add Rows by clicking on (+) icon
+                  </div>
                 </div>
                 <div className="flex gap-4 ">
-                  <ExcelExport data={balanceSheet} fileName="balance-sheet-summary.xlsx" />
+                  <ExcelExport
+                    data={balanceSheet}
+                    fileName="balance-sheet-summary.xlsx"
+                  />
                 </div>
               </div>
               <table>
@@ -4956,10 +5938,15 @@ export default function APQR() {
               <div className="AddRows d-flex w-full justify-between items-center text-3xl mb-5">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addReviewODSTRRow5} />
-                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
+                  <div className="addrowinstruction  pl-2">
+                    Add Rows by clicking on (+) icon
+                  </div>
                 </div>
                 <div className="flex gap-4 ">
-                  <ExcelExport data={balanceSheet} fileName="balance-sheet-summary.xlsx" />
+                  <ExcelExport
+                    data={balanceSheet}
+                    fileName="balance-sheet-summary.xlsx"
+                  />
                 </div>
               </div>
               <table>
@@ -5046,10 +6033,15 @@ export default function APQR() {
               <div className="AddRows d-flex w-full justify-between items-center text-3xl mb-5">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addReviewODSTRRow6} />
-                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
+                  <div className="addrowinstruction  pl-2">
+                    Add Rows by clicking on (+) icon
+                  </div>
                 </div>
                 <div className="flex gap-4 ">
-                  <ExcelExport data={balanceSheet} fileName="balance-sheet-summary.xlsx" />
+                  <ExcelExport
+                    data={balanceSheet}
+                    fileName="balance-sheet-summary.xlsx"
+                  />
                 </div>
               </div>
               <table>
@@ -5136,10 +6128,15 @@ export default function APQR() {
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addReviewODSTRRow7} />
-                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
+                  <div className="addrowinstruction  pl-2">
+                    Add Rows by clicking on (+) icon
+                  </div>
                 </div>
                 <div className="flex gap-4 ">
-                  <ExcelExport data={balanceSheet} fileName="balance-sheet-summary.xlsx" />
+                  <ExcelExport
+                    data={balanceSheet}
+                    fileName="balance-sheet-summary.xlsx"
+                  />
                 </div>
               </div>
               <table>
@@ -5226,10 +6223,15 @@ export default function APQR() {
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addReviewODSTRRow8} />
-                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
+                  <div className="addrowinstruction  pl-2">
+                    Add Rows by clicking on (+) icon
+                  </div>
                 </div>
                 <div className="flex gap-4 ">
-                  <ExcelExport data={balanceSheet} fileName="balance-sheet-summary.xlsx" />
+                  <ExcelExport
+                    data={balanceSheet}
+                    fileName="balance-sheet-summary.xlsx"
+                  />
                 </div>
               </div>
               <table>
@@ -5316,10 +6318,15 @@ export default function APQR() {
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addReviewODSTRRow9} />
-                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
+                  <div className="addrowinstruction  pl-2">
+                    Add Rows by clicking on (+) icon
+                  </div>
                 </div>
                 <div className="flex gap-4 ">
-                  <ExcelExport data={balanceSheet} fileName="balance-sheet-summary.xlsx" />
+                  <ExcelExport
+                    data={balanceSheet}
+                    fileName="balance-sheet-summary.xlsx"
+                  />
                 </div>
               </div>
               <table>
@@ -5407,10 +6414,15 @@ export default function APQR() {
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addReviewODSTRRow10} />
-                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
+                  <div className="addrowinstruction  pl-2">
+                    Add Rows by clicking on (+) icon
+                  </div>
                 </div>
                 <div className="flex gap-4 ">
-                  <ExcelExport data={balanceSheet} fileName="balance-sheet-summary.xlsx" />
+                  <ExcelExport
+                    data={balanceSheet}
+                    fileName="balance-sheet-summary.xlsx"
+                  />
                 </div>
               </div>
               <table>
@@ -5496,7 +6508,9 @@ export default function APQR() {
                 tinyNo={27}
               />
             </div>
-            <div className="sub-head">Review of Raw Material Excipient Test Results</div>
+            <div className="sub-head">
+              Review of Raw Material Excipient Test Results
+            </div>
             <div>
               {/* <div className="AddRows d-flex">
                 <MdNoteAdd onClick={addReviewORMETRRow} />
@@ -5505,10 +6519,15 @@ export default function APQR() {
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addReviewORMETRRow} />
-                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
+                  <div className="addrowinstruction  pl-2">
+                    Add Rows by clicking on (+) icon
+                  </div>
                 </div>
                 <div className="flex gap-4 ">
-                  <ExcelExport data={balanceSheet} fileName="balance-sheet-summary.xlsx" />
+                  <ExcelExport
+                    data={balanceSheet}
+                    fileName="balance-sheet-summary.xlsx"
+                  />
                 </div>
               </div>
               <table>
@@ -5605,7 +6624,9 @@ export default function APQR() {
                 tinyNo={28}
               />
             </div>
-            <div className="sub-head">Review of Packing Material Test Results</div>
+            <div className="sub-head">
+              Review of Packing Material Test Results
+            </div>
             <div>
               {/* <div className="AddRows d-flex">
                 <MdNoteAdd onClick={addreviewOPMTRRow} />
@@ -5614,17 +6635,22 @@ export default function APQR() {
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addreviewOPMTRRow} />
-                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
+                  <div className="addrowinstruction  pl-2">
+                    Add Rows by clicking on (+) icon
+                  </div>
                 </div>
                 <div className="flex gap-4 ">
-                  <ExcelExport data={balanceSheet} fileName="balance-sheet-summary.xlsx" />
+                  <ExcelExport
+                    data={balanceSheet}
+                    fileName="balance-sheet-summary.xlsx"
+                  />
                 </div>
               </div>
               <table>
                 <thead>
                   <tr>
                     <th rowSpan={2}>Sl. No</th>
-                    <th rowSpan={2}>Material</th>
+                    <th rowSpan={2}>Primary Packing Material</th>
                     <th rowSpan={2}>Test parameter</th>
                     <th rowSpan={2}>Specification limit</th>
                     <th colSpan={2}>Obtained value</th>
@@ -5714,7 +6740,9 @@ export default function APQR() {
                 tinyNo={29}
               />
             </div>
-            <div className="sub-head">Review of Drug Product – In process Test Results</div>
+            <div className="sub-head">
+              Review of Drug Product – In process Test Results
+            </div>
             <h4 className="gridName pt-2">Dilution Buffer 1 - Test Results</h4>
             <div>
               {/* <div className="AddRows d-flex">
@@ -5724,10 +6752,15 @@ export default function APQR() {
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addReviewODPRow} />
-                  <div className="addrowinst ruction  pl-2">Add Rows by clicking on (+) icon</div>
+                  <div className="addrowinstruction  pl-2">
+                    Add Rows by clicking on (+) icon
+                  </div>
                 </div>
                 <div className="flex gap-4 ">
-                  <ExcelExport data={balanceSheet} fileName="balance-sheet-summary.xlsx" />
+                  <ExcelExport
+                    data={balanceSheet}
+                    fileName="balance-sheet-summary.xlsx"
+                  />
                 </div>
               </div>
               <table>
@@ -5751,24 +6784,21 @@ export default function APQR() {
                       <tr key={index}>
                         <td>{index + 1}</td>
                         <td>
-                        <input 
-                          value={item.testsParameter}
-                          onChange={(e) => {
-                          const newData = [...pQRData.reviewODP];
-                          newData[index].testsParameter = e.target.value;
-                          setPQRData({...pQRData,reviewODP:newData});
-                        }}
-                      />
+                          <input  value={item.testsParameter}
+                          onChange={(e)=>{
+                            const newData=[...pQRData.reviewODP]
+                            newData[index].testsParameter=e.target.value
+                            setPQRData({...pQRData,reviewODP:newData})
+                          }}/>
                         </td>
                         <td>
-                        <input 
-                          value={item.specificationLimit}
-                          onChange={(e) => {
-                          const newData = [...pQRData.reviewODP];
-                          newData[index]. specificationLimit = e.target.value;
-                          setPQRData({...pQRData,reviewODP:newData});
-                        }}
-                      />
+                          <input  
+                          value={item.stage}
+                          onChange={(e)=>{
+                            const newData=[...pQRData.reviewODP]
+                            newData[index].stage=e.target.value
+                            setPQRData({})
+                          }}/>
                         </td>
                         <td>
                         <input 
@@ -5825,10 +6855,15 @@ export default function APQR() {
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addReviewODPRow2} />
-                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
+                  <div className="addrowinstruction  pl-2">
+                    Add Rows by clicking on (+) icon
+                  </div>
                 </div>
                 <div className="flex gap-4 ">
-                  <ExcelExport data={balanceSheet} fileName="balance-sheet-summary.xlsx" />
+                  <ExcelExport
+                    data={balanceSheet}
+                    fileName="balance-sheet-summary.xlsx"
+                  />
                 </div>
               </div>
               <table>
@@ -5926,10 +6961,15 @@ export default function APQR() {
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addReviewODPRow3} />
-                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
+                  <div className="addrowinstruction  pl-2">
+                    Add Rows by clicking on (+) icon
+                  </div>
                 </div>
                 <div className="flex gap-4 ">
-                  <ExcelExport data={balanceSheet} fileName="balance-sheet-summary.xlsx" />
+                  <ExcelExport
+                    data={balanceSheet}
+                    fileName="balance-sheet-summary.xlsx"
+                  />
                 </div>
               </div>
               <table>
@@ -6027,10 +7067,15 @@ export default function APQR() {
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addReviewODPRow4} />
-                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
+                  <div className="addrowinstruction  pl-2">
+                    Add Rows by clicking on (+) icon
+                  </div>
                 </div>
                 <div className="flex gap-4 ">
-                  <ExcelExport data={balanceSheet} fileName="balance-sheet-summary.xlsx" />
+                  <ExcelExport
+                    data={balanceSheet}
+                    fileName="balance-sheet-summary.xlsx"
+                  />
                 </div>
               </div>
               <table>
@@ -6128,10 +7173,15 @@ export default function APQR() {
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addReviewODPRow5} />
-                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
+                  <div className="addrowinstruction  pl-2">
+                    Add Rows by clicking on (+) icon
+                  </div>
                 </div>
                 <div className="flex gap-4 ">
-                  <ExcelExport data={balanceSheet} fileName="balance-sheet-summary.xlsx" />
+                  <ExcelExport
+                    data={balanceSheet}
+                    fileName="balance-sheet-summary.xlsx"
+                  />
                 </div>
               </div>
               <table>
@@ -6229,10 +7279,15 @@ export default function APQR() {
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addReviewODPRow6} />
-                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
+                  <div className="addrowinstruction  pl-2">
+                    Add Rows by clicking on (+) icon
+                  </div>
                 </div>
                 <div className="flex gap-4 ">
-                  <ExcelExport data={balanceSheet} fileName="balance-sheet-summary.xlsx" />
+                  <ExcelExport
+                    data={balanceSheet}
+                    fileName="balance-sheet-summary.xlsx"
+                  />
                 </div>
               </div>
               <table>
@@ -6330,10 +7385,15 @@ export default function APQR() {
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addReviewODPRow7} />
-                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
+                  <div className="addrowinstruction  pl-2">
+                    Add Rows by clicking on (+) icon
+                  </div>
                 </div>
                 <div className="flex gap-4 ">
-                  <ExcelExport data={balanceSheet} fileName="balance-sheet-summary.xlsx" />
+                  <ExcelExport
+                    data={balanceSheet}
+                    fileName="balance-sheet-summary.xlsx"
+                  />
                 </div>
               </div>
               <table>
@@ -6431,10 +7491,15 @@ export default function APQR() {
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addReviewODPRow8} />
-                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
+                  <div className="addrowinstruction  pl-2">
+                    Add Rows by clicking on (+) icon
+                  </div>
                 </div>
                 <div className="flex gap-4 ">
-                  <ExcelExport data={balanceSheet} fileName="balance-sheet-summary.xlsx" />
+                  <ExcelExport
+                    data={balanceSheet}
+                    fileName="balance-sheet-summary.xlsx"
+                  />
                 </div>
               </div>
               <table>
@@ -6532,10 +7597,15 @@ export default function APQR() {
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addReviewODPRow9} />
-                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
+                  <div className="addrowinstruction  pl-2">
+                    Add Rows by clicking on (+) icon
+                  </div>
                 </div>
                 <div className="flex gap-4 ">
-                  <ExcelExport data={balanceSheet} fileName="balance-sheet-summary.xlsx" />
+                  <ExcelExport
+                    data={balanceSheet}
+                    fileName="balance-sheet-summary.xlsx"
+                  />
                 </div>
               </div>
               <table>
@@ -6633,10 +7703,15 @@ export default function APQR() {
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addReviewODPRow10} />
-                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
+                  <div className="addrowinstruction  pl-2">
+                    Add Rows by clicking on (+) icon
+                  </div>
                 </div>
                 <div className="flex gap-4 ">
-                  <ExcelExport data={balanceSheet} fileName="balance-sheet-summary.xlsx" />
+                  <ExcelExport
+                    data={balanceSheet}
+                    fileName="balance-sheet-summary.xlsx"
+                  />
                 </div>
               </div>
               <table>
@@ -6733,7 +7808,9 @@ export default function APQR() {
                 tinyNo={30}
               />
             </div>
-            <div className="sub-head">Review of Drug Product –Finished Product Test Results</div>
+            <div className="sub-head">
+              Review of Drug Product –Finished Product Test Results
+            </div>
             <div>
               {/* <div className="AddRows d-flex">
                 <MdNoteAdd onClick={addReviewODPFPTRRow} />
@@ -6742,10 +7819,15 @@ export default function APQR() {
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addReviewODPFPTRRow} />
-                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
+                  <div className="addrowinstruction  pl-2">
+                    Add Rows by clicking on (+) icon
+                  </div>
                 </div>
                 <div className="flex gap-4 ">
-                  <ExcelExport data={balanceSheet} fileName="balance-sheet-summary.xlsx" />
+                  <ExcelExport
+                    data={balanceSheet}
+                    fileName="balance-sheet-summary.xlsx"
+                  />
                 </div>
               </div>
               <table>
@@ -6782,7 +7864,8 @@ export default function APQR() {
                             value={item.specificationLimit}
                             onChange={(e) => {
                               const newData = [...reviewODPFPTR];
-                              newData[index].specificationLimit = e.target.value;
+                              newData[index].specificationLimit =
+                                e.target.value;
                               setReviewODPFPTR(newData);
                             }}
                           />
@@ -6792,7 +7875,8 @@ export default function APQR() {
                             value={item.obtainedValue.minimum}
                             onChange={(e) => {
                               const newData = [...reviewODPFPTR];
-                              newData[index].obtainedValue.minimum = e.target.value;
+                              newData[index].obtainedValue.minimum =
+                                e.target.value;
                               setReviewODPFPTR(newData);
                             }}
                           />
@@ -6802,7 +7886,8 @@ export default function APQR() {
                             value={item.obtainedValue.maximum}
                             onChange={(e) => {
                               const newData = [...reviewODPFPTR];
-                              newData[index].obtainedValue.maximum = e.target.value;
+                              newData[index].obtainedValue.maximum =
+                                e.target.value;
                               setReviewODPFPTR(newData);
                             }}
                           />
@@ -6812,7 +7897,8 @@ export default function APQR() {
                             value={item.compliesNotComplies}
                             onChange={(e) => {
                               const newData = [...reviewODPFPTR];
-                              newData[index].compliesNotComplies = e.target.value;
+                              newData[index].compliesNotComplies =
+                                e.target.value;
                               setReviewODPFPTR(newData);
                             }}
                           />
@@ -6840,10 +7926,15 @@ export default function APQR() {
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addSummaryOOSSRow} />
-                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
+                  <div className="addrowinstruction  pl-2">
+                    Add Rows by clicking on (+) icon
+                  </div>
                 </div>
                 <div className="flex gap-4 ">
-                  <ExcelExport data={balanceSheet} fileName="balance-sheet-summary.xlsx" />
+                  <ExcelExport
+                    data={balanceSheet}
+                    fileName="balance-sheet-summary.xlsx"
+                  />
                 </div>
               </div>
               <table>
@@ -6907,7 +7998,8 @@ export default function APQR() {
                             value={item.stabilityProtocolNo}
                             onChange={(e) => {
                               const newData = [...summaryOOSS];
-                              newData[index].stabilityProtocolNo = e.target.value;
+                              newData[index].stabilityProtocolNo =
+                                e.target.value;
                               setSummaryOOSS(newData);
                             }}
                           />
@@ -6934,10 +8026,15 @@ export default function APQR() {
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addStabilitySRRow} />
-                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
+                  <div className="addrowinstruction  pl-2">
+                    Add Rows by clicking on (+) icon
+                  </div>
                 </div>
                 <div className="flex gap-4 ">
-                  <ExcelExport data={balanceSheet} fileName="balance-sheet-summary.xlsx" />
+                  <ExcelExport
+                    data={balanceSheet}
+                    fileName="balance-sheet-summary.xlsx"
+                  />
                 </div>
               </div>
               <table>
@@ -6969,7 +8066,8 @@ export default function APQR() {
                             value={item.testingIntervalMonths}
                             onChange={(e) => {
                               const newData = [...stabilitySR];
-                              newData[index].testingIntervalMonths = e.target.value;
+                              newData[index].testingIntervalMonths =
+                                e.target.value;
                               setStabilitySR(newData);
                             }}
                           />
@@ -6997,7 +8095,9 @@ export default function APQR() {
                 tinyNo={33}
               />
 
-              <div className="sub-head">Review of Visual Inspection – Reserve Samples</div>
+              <div className="sub-head">
+                Review of Visual Inspection – Reserve Samples
+              </div>
               <div>
                 {/* <div className="AddRows d-flex">
                   <MdNoteAdd onClick={addreviewOVIRSRow} />
@@ -7006,10 +8106,15 @@ export default function APQR() {
                 <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                   <div className="flex items-center">
                     <MdNoteAdd onClick={addreviewOVIRSRow} />
-                    <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
+                    <div className="addrowinstruction  pl-2">
+                      Add Rows by clicking on (+) icon
+                    </div>
                   </div>
                   <div className="flex gap-4 ">
-                    <ExcelExport data={balanceSheet} fileName="balance-sheet-summary.xlsx" />
+                    <ExcelExport
+                      data={balanceSheet}
+                      fileName="balance-sheet-summary.xlsx"
+                    />
                   </div>
                 </div>
                 <table>
@@ -7115,20 +8220,25 @@ export default function APQR() {
                 setEditorContent={setTinyContent}
                 tinyNo={34}
               />
-              <h4 className="gridName pt-4">Review of Analytical Method Validations</h4>
+              <h4 className="gridName pt-4">
+                Review of Analytical Method Validations
+              </h4>
               <TinyEditor
                 editorContent={pQRData.tiny35}
                 setEditorContent={setTinyContent}
                 tinyNo={35}
               />
-              <h4 className="gridName pt-4">Review of Contract Testing Laboratories</h4>
+              <h4 className="gridName pt-4">
+                Review of Contract Testing Laboratories
+              </h4>
               <TinyEditor
                 editorContent={pQRData.tiny36}
                 setEditorContent={setTinyContent}
                 tinyNo={36}
               />
               <h4 className="gridName pt-4">
-                Review of Environmental Monitoring Trend and water trends Reports
+                Review of Environmental Monitoring Trend and water trends
+                Reports
               </h4>
               <TinyEditor
                 editorContent={pQRData.tiny37}
@@ -7174,10 +8284,15 @@ export default function APQR() {
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addHVACQStatusRow} />
-                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
+                  <div className="addrowinstruction  pl-2">
+                    Add Rows by clicking on (+) icon
+                  </div>
                 </div>
                 <div className="flex gap-4 ">
-                  <ExcelExport data={balanceSheet} fileName="balance-sheet-summary.xlsx" />
+                  <ExcelExport
+                    data={balanceSheet}
+                    fileName="balance-sheet-summary.xlsx"
+                  />
                 </div>
               </div>
               <table>
@@ -7240,7 +8355,9 @@ export default function APQR() {
               />
             </div>
 
-            <h4 className="gridName pt-4">Sanitization and Sterilization Details of Utilities</h4>
+            <h4 className="gridName pt-4">
+              Sanitization and Sterilization Details of Utilities
+            </h4>
             <div>
               {/* <div className="AddRows">
                 <MdNoteAdd onClick={addSanitizationASDOURow} />
@@ -7249,10 +8366,15 @@ export default function APQR() {
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addSanitizationASDOURow} />
-                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
+                  <div className="addrowinstruction  pl-2">
+                    Add Rows by clicking on (+) icon
+                  </div>
                 </div>
                 <div className="flex gap-4 ">
-                  <ExcelExport data={balanceSheet} fileName="balance-sheet-summary.xlsx" />
+                  <ExcelExport
+                    data={balanceSheet}
+                    fileName="balance-sheet-summary.xlsx"
+                  />
                 </div>
               </div>
               <table>
@@ -7326,12 +8448,16 @@ export default function APQR() {
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addCompressedGasesRow} />
                   <div className="addrowinstruction  pl-2">
-                    Compressed gases testing performed as per the scheduled frequency and results
-                    were found to be satisfactory, system is in qualified state
+                    Compressed gases testing performed as per the scheduled
+                    frequency and results were found to be satisfactory, system
+                    is in qualified state
                   </div>
                 </div>
                 <div className="flex gap-4 ">
-                  <ExcelExport data={balanceSheet} fileName="balance-sheet-summary.xlsx" />
+                  <ExcelExport
+                    data={balanceSheet}
+                    fileName="balance-sheet-summary.xlsx"
+                  />
                 </div>
               </div>
               <table>
@@ -7351,6 +8477,7 @@ export default function APQR() {
                         <td>{index + 1}</td>
                         <td>
                           <input
+                          value={item.compressedGas}
                             onChange={(e) => {
                               const newData = [...compressedGas];
                               newData[index].compressedGas = e.target.value;
@@ -7405,7 +8532,2330 @@ export default function APQR() {
         {tab === "QSR" ? (
           <div>
             <div className="sub-head">Review of Deviations</div>
-            <div className="sub-head">Current Review Period Quality Related Notification</div>
+            <div className="gridName">Review of Current Period Deviations</div>
+            <div>
+              <div className="AddRows d-flex w-full justify-between items-center text-3xl">
+                <div className="flex items-center">
+                  <MdNoteAdd onClick={addReviewOfCPD} />
+                  <div className="addrowinstruction  pl-2">
+                    Add Rows by clicking on (+) icon
+                  </div>
+                </div>
+              </div>
+              <table>
+                <thead>
+                  <tr>
+                    <th>S.No</th>
+                    <th>Date Of Initiation</th>
+                    <th>Record No</th>
+                    <th>Site/Division</th>
+                    <th>Department</th>
+                    <th>Initiator</th>
+                    <th>Short Description</th>
+                    <th>Batch No</th>
+                    <th>Due Date</th>
+                    <th>Current Status</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {pQRData?.reviewOfCPD?.map((item, index) => {
+                    return (
+                      <tr key={index}>
+                        <td>{index + 1}</td>
+                        <td>
+                          <input
+                            value={item.dateOfInitiation}
+                            onChange={(e) => {
+                              const newData = [...pQRData.reviewOfCPD];
+                              newData[index].dateOfInitiation = e.target.value;
+                              setPQRData({ ...pQRData, reviewOfCPD: newData });
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.recordNo}
+                            onChange={(e) => {
+                              const newData = [...pQRData.reviewOfCPD];
+                              newData[index].recordNo = e.target.value;
+                              setPQRData({ ...pQRData, reviewOfCPD: newData });
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.siteDivision}
+                            onChange={(e) => {
+                              const newData = [...reviewOfCPD];
+                              newData[index].siteDivision = e.target.value;
+                              setReviewOFCPD(newData);
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.department}
+                            onChange={(e) => {
+                              const newData = [...pQRData.reviewOfCPD];
+                              newData[index].department = e.target.value;
+                              setPQRData({ ...pQRData, reviewOfCPD: newData });
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.initiator}
+                            onChange={(e) => {
+                              const newData = [...pQRData.reviewOfCPD];
+                              newData[index].initiator = e.target.value;
+                              setPQRData({ ...pQRData, reviewOfCPD: newData });
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.shortDescription}
+                            onChange={(e) => {
+                              const newData = [...pQRData.reviewOfCPD];
+                              newData[index].shortDescription = e.target.value;
+                              setPQRData({ ...pQRData, reviewOfCPD: newData });
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.batchNo}
+                            onChange={(e) => {
+                              const newData = [...pQRData.reviewOfCPD];
+                              newData[index].batchNo = e.target.value;
+                              setPQRData({ ...pQRData, reviewOfCPD: newData });
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.dueDate}
+                            onChange={(e) => {
+                              const newData = [...pQRData.reviewOfCPD];
+                              newData[index].dueDate = e.target.value;
+                              setPQRData({ ...pQRData, reviewOfCPD: newData });
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.currentStatus}
+                            onChange={(e) => {
+                              const newData = [...pQRData.reviewOfCPD];
+                              newData[index].currentStatus = e.target.value;
+                              setPQRData({ ...pQRData, reviewOfCPD: newData });
+                            }}
+                          />
+                        </td>
+                      </tr>
+                    );
+                  })}
+                </tbody>
+              </table>
+            </div>
+            <div className="gridName pt-4">
+              Previous Review Period Deviations
+            </div>
+            <div>
+              <div className="AddRows d-flex w-full justify-between items-center text-3xl">
+                <div className="flex items-center">
+                  <MdNoteAdd onClick={addPreviewRPD} />
+                  <div className="addrowinstruction  pl-2">
+                    Add Rows by clicking on (+) icon
+                  </div>
+                </div>
+              </div>
+              <table>
+                <thead>
+                  <tr>
+                    <th>S.No</th>
+                    <th>Date Of Initiation</th>
+                    <th>Record No</th>
+                    <th>Site/Division</th>
+                    <th>Department</th>
+                    <th>Initiator</th>
+                    <th>Short Description</th>
+                    <th>Batch No</th>
+                    <th>Due Date</th>
+                    <th>Current Status</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {pQRData?.previewRPD?.map((item, index) => {
+                    return (
+                      <tr key={index}>
+                        <td>{index + 1}</td>
+                        <td>
+                          <input
+                            value={item.dateOfInitiation}
+                            onChange={(e) => {
+                              const newData = [...pQRData.previewRPD];
+                              newData[index].dateOfInitiation = e.target.value;
+                              setPQRData({ ...pQRData, previewRPD: newData });
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.recordNo}
+                            onChange={(e) => {
+                              const newData = [...pQRData.previewRPD];
+                              newData[index].recordNo = e.target.value;
+                              setPQRData({ ...pQRData, previewRPD: newData });
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.siteDivision}
+                            onChange={(e) => {
+                              const newData = [...pQRData.previewRPD];
+                              newData[index].siteDivision = e.target.value;
+                              setPQRData({ ...pQRData, previewRPD: newData });
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.department}
+                            onChange={(e) => {
+                              const newData = [...pQRData.previewRPD];
+                              newData[index].department = e.target.value;
+                              setPQRData({ ...pQRData, previewRPD: newData });
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.initiator}
+                            onChange={(e) => {
+                              const newData = [...pQRData.previewRPD];
+                              newData[index].initiator = e.target.value;
+                              setPQRData({ ...pQRData, previewRPD: newData });
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.shortDescription}
+                            onChange={(e) => {
+                              const newData = [...pQRData.previewRPD];
+                              newData[index].shortDescription = e.target.value;
+                              setPQRData({ ...pQRData, previewRPD: newData });
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.batchNo}
+                            onChange={(e) => {
+                              const newData = [...pQRData.previewRPD];
+                              newData[index].batchNo = e.target.value;
+                              setPQRData({ ...pQRData, previewRPD: newData });
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.dueDate}
+                            onChange={(e) => {
+                              const newData = [...pQRData.previewRPD];
+                              newData[index].dueDate = e.target.value;
+                              setPQRData({ ...pQRData, previewRPD: newData });
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.currentStatus}
+                            onChange={(e) => {
+                              const newData = [...pQRData.previewRPD];
+                              newData[index].currentStatus = e.target.value;
+                              setPQRData({ ...pQRData, previewRPD: newData });
+                            }}
+                          />
+                        </td>
+                      </tr>
+                    );
+                  })}
+                </tbody>
+              </table>
+            </div>
+            <h4 className="gridName pt-4">Deviation Summary</h4>
+            <TinyEditor />
+            <div className="sub-head"> Review of OOS (Microbiological)</div>
+            <div className="gridName">Current Review Period OOS</div>
+            <div>
+              <div className="AddRows d-flex w-full justify-between items-center text-3xl">
+                <div className="flex items-center">
+                  <MdNoteAdd onClick={addCurrentOOS} />
+                  <div className="addrowinstruction  pl-2">
+                    Add Rows by clicking on (+) icon
+                  </div>
+                </div>
+              </div>
+              <table>
+                <thead>
+                  <tr>
+                    <th>S.No</th>
+                    <th>Date Of Initiation</th>
+                    <th>Record No</th>
+                    <th>Site/Division</th>
+                    <th>Department</th>
+                    <th>Initiator</th>
+                    <th>Short Description</th>
+                    <th>Batch No</th>
+                    <th>Due Date</th>
+                    <th>Current Status</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {pQRData?.currentOOS?.map((item, index) => {
+                    return (
+                      <tr key={index}>
+                        <td>{index + 1}</td>
+                        <td>
+                          <input
+                            value={item.dateOfInitiation}
+                            onChange={(e) => {
+                              const newData = [...pQRData.currentOOS];
+                              newData[index].dateOfInitiation = e.target.value;
+                              setPQRData({ ...pQRData, currentOOS: newData });
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.recordNo}
+                            onChange={(e) => {
+                              const newData = [...pQRData.currentOOS];
+                              newData[index].recordNo = e.target.value;
+                              setPQRData({ ...pQRData, currentOOS: newData });
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.siteDivision}
+                            onChange={(e) => {
+                              const newData = [...pQRData.currentOOS];
+                              newData[index].siteDivision = e.target.value;
+                              setPQRData({ ...pQRData, currentOOS: newData });
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.department}
+                            onChange={(e) => {
+                              const newData = [...pQRData.currentOOS];
+                              newData[index].department = e.target.value;
+                              setPQRData({ ...pQRData, currentOOS: newData });
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.initiator}
+                            onChange={(e) => {
+                              const newData = [...pQRData.currentOOS];
+                              newData[index].initiator = e.target.value;
+                              setPQRData({ ...pQRData, currentOOS: newData });
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.shortDescription}
+                            onChange={(e) => {
+                              const newData = [...pQRData.currentOOS];
+                              newData[index].shortDescription = e.target.value;
+                              setPQRData({ ...pQRData, currentOOS: newData });
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.batchNo}
+                            onChange={(e) => {
+                              const newData = [...pQRData.currentOOS];
+                              newData[index].batchNo = e.target.value;
+                              setPQRData({ ...pQRData, currentOOS: newData });
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.dueDate}
+                            onChange={(e) => {
+                              const newData = [...pQRData.currentOOS];
+                              newData[index].dueDate = e.target.value;
+                              setPQRData({ ...pQRData, currentOOS: newData });
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.currentStatus}
+                            onChange={(e) => {
+                              const newData = [...pQRData.currentOOS];
+                              newData[index].currentStatus = e.target.value;
+                              setPQRData({ ...pQRData, currentOOS: newData });
+                            }}
+                          />
+                        </td>
+                      </tr>
+                    );
+                  })}
+                </tbody>
+              </table>
+            </div>
+            <div className="gridName">Previous Review Period OOS</div>
+            <div>
+              <div className="AddRows d-flex w-full justify-between items-center text-3xl">
+                <div className="flex items-center">
+                  <MdNoteAdd onClick={addPreviewOOS} />
+                  <div className="addrowinstruction  pl-2">
+                    Add Rows by clicking on (+) icon
+                  </div>
+                </div>
+              </div>
+              <table>
+                <thead>
+                  <tr>
+                    <th>S.No</th>
+                    <th>Date Of Initiation</th>
+                    <th>Record No</th>
+                    <th>Site/Division</th>
+                    <th>Department</th>
+                    <th>Initiator</th>
+                    <th>Short Description</th>
+                    <th>Batch No</th>
+                    <th>Due Date</th>
+                    <th>Current Status</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {pQRData?.previewOOS?.map((item, index) => {
+                    return (
+                      <tr key={index}>
+                        <td>{index + 1}</td>
+                        <td>
+                          <input
+                            value={item.dateOfInitiation}
+                            onChange={(e) => {
+                              const newData = [...pQRData.previewOOS];
+                              newData[index].dateOfInitiation = e.target.value;
+                              setPQRData({ ...pQRData, previewOOS: newData });
+                            }}
+                          />
+                        </td>
+
+                        <td>
+                          <input
+                            value={item.recordNo}
+                            onChange={(e) => {
+                              const newData = [...pQRData.previewOOS];
+                              newData[index].recordNo = e.target.value;
+                              setPQRData({ ...pQRData, previewOOS: newData });
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.siteDivision}
+                            onChange={(e) => {
+                              const newData = [...pQRData.previewOOS];
+                              newData[index].siteDivision = e.target.value;
+                              setPQRData({ ...pQRData, previewOOS: newData });
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.department}
+                            onChange={(e) => {
+                              const newData = [...pQRData.previewOOS];
+                              newData[index].department = e.target.value;
+                              setPQRData({ ...pQRData, previewOOS: newData });
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.initiator}
+                            onChange={(e) => {
+                              const newData = [...pQRData.previewOOS];
+                              newData[index].initiator = e.target.value;
+                              setPQRData({ ...pQRData, previewOOS: newData });
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.shortDescription}
+                            onChange={(e) => {
+                              const newData = [...pQRData.previewOOS];
+                              newData[index].shortDescription = e.target.value;
+                              setPQRData({ ...pQRData, previewOOS: newData });
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.batchNo}
+                            onChange={(e) => {
+                              const newData = [...pQRData.previewOOS];
+                              newData[index].batchNo = e.target.value;
+                              setPQRData({ ...pQRData, previewOOS: newData });
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.dueDate}
+                            onChange={(e) => {
+                              const newData = [...pQRData.previewOOS];
+                              newData[index].dueDate = e.target.value;
+                              setPQRData({ ...pQRData, previewOOS: newData });
+                            }}
+                          />
+                        </td>
+
+                        <td>
+                          <input
+                            value={item.currentStatus}
+                            onChange={(e) => {
+                              const newData = [...pQRData.previewOOS];
+                              newData[index].currentStatus = e.target.value;
+                              setPQRData({ ...pQRData, previewOOS: newData });
+                            }}
+                          />
+                        </td>
+                      </tr>
+                    );
+                  })}
+                </tbody>
+              </table>
+            </div>
+            <h4 className="gridName pt-4">OOS Summary</h4>
+            <TinyEditor />
+            <div className="sub-head"> Review of OOAC (Microbiological)</div>
+            <div className="gridName">Current Review Period OOAC</div>
+            <div>
+              <div className="AddRows d-flex w-full justify-between items-center text-3xl">
+                <div className="flex items-center">
+                  <MdNoteAdd onClick={addCurrentOOAC} />
+                  <div className="addrowinstruction  pl-2">
+                    Add Rows by clicking on (+) icon
+                  </div>
+                </div>
+              </div>
+              <table>
+                <thead>
+                  <tr>
+                    <th>S.No</th>
+                    <th>Date Of Initiation</th>
+                    <th>Record No</th>
+                    <th>Site/Division</th>
+                    <th>Department</th>
+                    <th>Initiator</th>
+                    <th>Short Description</th>
+                    <th>Batch No</th>
+                    <th>Due Date</th>
+                    <th>Current Status</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {pQRData?.currentOOAC?.map((item, index) => {
+                    return (
+                      <tr key={index}>
+                        <td>{index + 1}</td>
+                        <td>
+                          <input
+                            value={item.dateOfInitiation}
+                            onChange={(e) => {
+                              const newData = [...pQRData.currentOOAC];
+                              newData[index].dateOfInitiation = e.target.value;
+                              setPQRData({ ...pQRData, currentOOAC: newData });
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.recordNo}
+                            onChange={(e) => {
+                              const newData = [...pQRData.currentOOAC];
+                              newData[index].recordNo = e.target.value;
+                              setPQRData({ ...pQRData, currentOOAC: newData });
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.siteDivision}
+                            onChange={(e) => {
+                              const newData = [...pQRData.currentOOAC];
+                              newData[index].siteDivision = e.target.value;
+                              setPQRData({ ...pQRData, currentOOAC: newData });
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.department}
+                            onChange={(e) => {
+                              const newData = [...pQRData.currentOOAC];
+                              newData[index].department = e.target.value;
+                              setPQRData({ ...pQRData, currentOOAC: newData });
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.initiator}
+                            onChange={(e) => {
+                              const newData = [...pQRData.currentOOAC];
+                              newData[index].initiator = e.target.value;
+                              setPQRData({ ...pQRData, currentOOAC: newData });
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.shortDescription}
+                            onChange={(e) => {
+                              const newData = [...pQRData.currentOOAC];
+                              newData[index].shortDescription = e.target.value;
+                              setPQRData({ ...pQRData, currentOOAC: newData });
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.batchNo}
+                            onChange={(e) => {
+                              const newData = [...pQRData.currentOOAC];
+                              newData[index].batchNo = e.target.value;
+                              setPQRData({ ...pQRData, currentOOAC: newData });
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.dueDate}
+                            onChange={(e) => {
+                              const newData = [...pQRData.currentOOAC];
+                              newData[index].dueDate = e.target.value;
+                              setPQRData({ ...pQRData, currentOOAC: newData });
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.currentStatus}
+                            onChange={(e) => {
+                              const newData = [...pQRData.currentOOAC];
+                              newData[index].currentStatus = e.target.value;
+                              setPQRData({ ...pQRData, currentOOAC: newData });
+                            }}
+                          />
+                        </td>
+                      </tr>
+                    );
+                  })}
+                </tbody>
+              </table>
+            </div>
+            <div className="gridName">Previous Review Period OOAC</div>
+            <div>
+              <div className="AddRows d-flex w-full justify-between items-center text-3xl">
+                <div className="flex items-center">
+                  <MdNoteAdd onClick={addPreviewOOAC} />
+                  <div className="addrowinstruction  pl-2">
+                    Add Rows by clicking on (+) icon
+                  </div>
+                </div>
+              </div>
+              <table>
+                <thead>
+                  <tr>
+                    <th>S.No</th>
+                    <th>Date Of Initiation</th>
+                    <th>Record No</th>
+                    <th>Site/Division</th>
+                    <th>Department</th>
+                    <th>Initiator</th>
+                    <th>Short Description</th>
+                    <th>Batch No</th>
+                    <th>Due Date</th>
+                    <th>Current Status</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {pQRData?.previewOOAC?.map((item, index) => {
+                    return (
+                      <tr key={index}>
+                        <td>{index + 1}</td>
+                        <td>
+                          <input
+                            value={item.dateOfInitiation}
+                            onChange={(e) => {
+                              const newData = [...pQRData.previewOOAC];
+                              newData[index].dateOfInitiation = e.target.value;
+                              setPQRData({ ...pQRData, previewOOAC: newData });
+                            }}
+                          />
+                        </td>
+
+                        <td>
+                          <input
+                            value={item.recordNo}
+                            onChange={(e) => {
+                              const newData = [...pQRData.previewOOAC];
+                              newData[index].recordNo = e.target.value;
+                              setPQRData({ ...pQRData, previewOOAC: newData });
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.siteDivision}
+                            onChange={(e) => {
+                              const newData = [...pQRData.previewOOAC];
+                              newData[index].siteDivision = e.target.value;
+                              setPQRData({ ...pQRData, previewOOAC: newData });
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.department}
+                            onChange={(e) => {
+                              const newData = [...pQRData.previewOOAC];
+                              newData[index].department = e.target.value;
+                              setPQRData({ ...pQRData, previewOOAC: newData });
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.initiator}
+                            onChange={(e) => {
+                              const newData = [...pQRData.previewOOAC];
+                              newData[index].initiator = e.target.value;
+                              setPQRData({ ...pQRData, previewOOAC: newData });
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.shortDescription}
+                            onChange={(e) => {
+                              const newData = [...pQRData.previewOOAC];
+                              newData[index].shortDescription = e.target.value;
+                              setPQRData({ ...pQRData, previewOOAC: newData });
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.batchNo}
+                            onChange={(e) => {
+                              const newData = [...pQRData.previewOOAC];
+                              newData[index].batchNo = e.target.value;
+                              setPQRData({ ...pQRData, previewOOAC: newData });
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.dueDate}
+                            onChange={(e) => {
+                              const newData = [...pQRData.previewOOAC];
+                              newData[index].dueDate = e.target.value;
+                              setPQRData({ ...pQRData, previewOOAC: newData });
+                            }}
+                          />
+                        </td>
+
+                        <td>
+                          <input
+                            value={item.currentStatus}
+                            onChange={(e) => {
+                              const newData = [...pQRData.previewOOAC];
+                              newData[index].currentStatus = e.target.value;
+                              setPQRData({ ...pQRData, previewOOAC: newData });
+                            }}
+                          />
+                        </td>
+                      </tr>
+                    );
+                  })}
+                </tbody>
+              </table>
+            </div>
+            <h4 className="gridName pt-4">OOAC Summary</h4>
+            <TinyEditor />
+            <div className="sub-head"> Review of OOAL(Microbiological)</div>
+            <div className="gridName">Current Review Period OOAL</div>
+            <div>
+              <div className="AddRows d-flex w-full justify-between items-center text-3xl">
+                <div className="flex items-center">
+                  <MdNoteAdd onClick={addCurrentOOAL} />
+                  <div className="addrowinstruction  pl-2">
+                    Add Rows by clicking on (+) icon
+                  </div>
+                </div>
+              </div>
+              <table>
+                <thead>
+                  <tr>
+                    <th>S.No</th>
+                    <th>Date Of Initiation</th>
+                    <th>Record No</th>
+                    <th>Site/Division</th>
+                    <th>Department</th>
+                    <th>Initiator</th>
+                    <th>Short Description</th>
+                    <th>Batch No</th>
+                    <th>Due Date</th>
+                    <th>Current Status</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {pQRData?.currentOOAL?.map((item, index) => {
+                    return (
+                      <tr key={index}>
+                        <td>{index + 1}</td>
+                        <td>
+                          <input
+                            value={item.dateOfInitiation}
+                            onChange={(e) => {
+                              const newData = [...pQRData.currentOOAL];
+                              newData[index].dateOfInitiation = e.target.value;
+                              setPQRData({ ...pQRData, currentOOAL: newData });
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.recordNo}
+                            onChange={(e) => {
+                              const newData = [...pQRData.currentOOAL];
+                              newData[index].recordNo = e.target.value;
+                              setPQRData({ ...pQRData, currentOOAL: newData });
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.siteDivision}
+                            onChange={(e) => {
+                              const newData = [...pQRData.currentOOAL];
+                              newData[index].siteDivision = e.target.value;
+                              setPQRData({ ...pQRData, currentOOAL: newData });
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.department}
+                            onChange={(e) => {
+                              const newData = [...pQRData.currentOOAL];
+                              newData[index].department = e.target.value;
+                              setPQRData({ ...pQRData, currentOOAL: newData });
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.initiator}
+                            onChange={(e) => {
+                              const newData = [...pQRData.currentOOAL];
+                              newData[index].initiator = e.target.value;
+                              setPQRData({ ...pQRData, currentOOAL: newData });
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.shortDescription}
+                            onChange={(e) => {
+                              const newData = [...pQRData.currentOOAL];
+                              newData[index].shortDescription = e.target.value;
+                              setPQRData({ ...pQRData, currentOOAL: newData });
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.batchNo}
+                            onChange={(e) => {
+                              const newData = [...pQRData.currentOOAL];
+                              newData[index].batchNo = e.target.value;
+                              setPQRData({ ...pQRData, currentOOAL: newData });
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.dueDate}
+                            onChange={(e) => {
+                              const newData = [...pQRData.currentOOAL];
+                              newData[index].dueDate = e.target.value;
+                              setPQRData({ ...pQRData, currentOOAL: newData });
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.currentStatus}
+                            onChange={(e) => {
+                              const newData = [...pQRData.currentOOAL];
+                              newData[index].currentStatus = e.target.value;
+                              setPQRData({ ...pQRData, currentOOAL: newData });
+                            }}
+                          />
+                        </td>
+                      </tr>
+                    );
+                  })}
+                </tbody>
+              </table>
+            </div>
+            <div className="gridName">Previous Review Period OOAL</div>
+            <div>
+              <div className="AddRows d-flex w-full justify-between items-center text-3xl">
+                <div className="flex items-center">
+                  <MdNoteAdd onClick={addPreviewOOAL} />
+                  <div className="addrowinstruction  pl-2">
+                    Add Rows by clicking on (+) icon
+                  </div>
+                </div>
+              </div>
+              <table>
+                <thead>
+                  <tr>
+                    <th>S.No</th>
+                    <th>Date Of Initiation</th>
+                    <th>Record No</th>
+                    <th>Site/Division</th>
+                    <th>Department</th>
+                    <th>Initiator</th>
+                    <th>Short Description</th>
+                    <th>Batch No</th>
+                    <th>Due Date</th>
+                    <th>Current Status</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {pQRData?.previewOOAL?.map((item, index) => {
+                    return (
+                      <tr key={index}>
+                        <td>{index + 1}</td>
+                        <td>
+                          <input
+                            value={item.dateOfInitiation}
+                            onChange={(e) => {
+                              const newData = [...pQRData.previewOOAL];
+                              newData[index].dateOfInitiation = e.target.value;
+                              setPQRData({ ...pQRData, previewOOAL: newData });
+                            }}
+                          />
+                        </td>
+
+                        <td>
+                          <input
+                            value={item.recordNo}
+                            onChange={(e) => {
+                              const newData = [...pQRData.previewOOAL];
+                              newData[index].recordNo = e.target.value;
+                              setPQRData({ ...pQRData, previewOOAL: newData });
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.siteDivision}
+                            onChange={(e) => {
+                              const newData = [...pQRData.previewOOAL];
+                              newData[index].siteDivision = e.target.value;
+                              setPQRData({ ...pQRData, previewOOAL: newData });
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.department}
+                            onChange={(e) => {
+                              const newData = [...pQRData.previewOOAL];
+                              newData[index].department = e.target.value;
+                              setPQRData({ ...pQRData, previewOOAL: newData });
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.initiator}
+                            onChange={(e) => {
+                              const newData = [...pQRData.previewOOAL];
+                              newData[index].initiator = e.target.value;
+                              setPQRData({ ...pQRData, previewOOAL: newData });
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.shortDescription}
+                            onChange={(e) => {
+                              const newData = [...pQRData.previewOOAL];
+                              newData[index].shortDescription = e.target.value;
+                              setPQRData({ ...pQRData, previewOOAL: newData });
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.batchNo}
+                            onChange={(e) => {
+                              const newData = [...pQRData.previewOOAL];
+                              newData[index].batchNo = e.target.value;
+                              setPQRData({ ...pQRData, previewOOAL: newData });
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.dueDate}
+                            onChange={(e) => {
+                              const newData = [...pQRData.previewOOAL];
+                              newData[index].dueDate = e.target.value;
+                              setPQRData({ ...pQRData, previewOOAL: newData });
+                            }}
+                          />
+                        </td>
+
+                        <td>
+                          <input
+                            value={item.currentStatus}
+                            onChange={(e) => {
+                              const newData = [...pQRData.previewOOAL];
+                              newData[index].currentStatus = e.target.value;
+                              setPQRData({ ...pQRData, previewOOAL: newData });
+                            }}
+                          />
+                        </td>
+                      </tr>
+                    );
+                  })}
+                </tbody>
+              </table>
+            </div>
+            <h4 className="gridName pt-4">OOAL Summary</h4>
+            <TinyEditor />
+            <div className="sub-head">Review of OOS (Analytical)</div>
+            <div className="gridName">Current review period OOS</div>
+            <div>
+              <div className="AddRows d-flex w-full justify-between items-center text-3xl">
+                <div className="flex items-center">
+                  <MdNoteAdd onClick={addCurrentOOSA} />
+                  <div className="addrowinstruction  pl-2">
+                    Add Rows by clicking on (+) icon
+                  </div>
+                </div>
+              </div>
+              <table>
+                <thead>
+                  <tr>
+                    <th>S.No</th>
+                    <th>Date Of Initiation</th>
+                    <th>Record No</th>
+                    <th>Site/Division</th>
+                    <th>Department</th>
+                    <th>Initiator</th>
+                    <th>Short Description</th>
+                    <th>Batch No</th>
+                    <th>Due Date</th>
+                    <th>Current Status</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {pQRData?.currentOOSA?.map((item, index) => {
+                    return (
+                      <tr key={index}>
+                        <td>{index + 1}</td>
+                        <td>
+                          <input
+                            value={item.dateOfInitiation}
+                            onChange={(e) => {
+                              const newData = [...pQRData.currentOOSA];
+                              newData[index].dateOfInitiation = e.target.value;
+                              setPQRData({ ...pQRData, currentOOSA: newData });
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.recordNo}
+                            onChange={(e) => {
+                              const newData = [...pQRData.currentOOSA];
+                              newData[index].recordNo = e.target.value;
+                              setPQRData({ ...pQRData, currentOOSA: newData });
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.siteDivision}
+                            onChange={(e) => {
+                              const newData = [...pQRData.currentOOSA];
+                              newData[index].siteDivision = e.target.value;
+                              setPQRData({ ...pQRData, currentOOSA: newData });
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.department}
+                            onChange={(e) => {
+                              const newData = [...pQRData.currentOOSA];
+                              newData[index].department = e.target.value;
+                              setPQRData({ ...pQRData, currentOOSA: newData });
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.initiator}
+                            onChange={(e) => {
+                              const newData = [...pQRData.currentOOSA];
+                              newData[index].initiator = e.target.value;
+                              setPQRData({ ...pQRData, currentOOSA: newData });
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.shortDescription}
+                            onChange={(e) => {
+                              const newData = [...pQRData.currentOOSA];
+                              newData[index].shortDescription = e.target.value;
+                              setPQRData({ ...pQRData, currentOOSA: newData });
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.batchNo}
+                            onChange={(e) => {
+                              const newData = [...pQRData.currentOOSA];
+                              newData[index].batchNo = e.target.value;
+                              setPQRData({ ...pQRData, currentOOSA: newData });
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.dueDate}
+                            onChange={(e) => {
+                              const newData = [...pQRData.currentOOSA];
+                              newData[index].dueDate = e.target.value;
+                              setPQRData({ ...pQRData, currentOOSA: newData });
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.currentStatus}
+                            onChange={(e) => {
+                              const newData = [...pQRData.currentOOSA];
+                              newData[index].currentStatus = e.target.value;
+                              setPQRData({ ...pQRData, currentOOSA: newData });
+                            }}
+                          />
+                        </td>
+                      </tr>
+                    );
+                  })}
+                </tbody>
+              </table>
+            </div>
+            <div className="gridName">Previous review period OOS</div>
+            <div>
+              <div className="AddRows d-flex w-full justify-between items-center text-3xl">
+                <div className="flex items-center">
+                  <MdNoteAdd onClick={addPreviewOOSA} />
+                  <div className="addrowinstruction  pl-2">
+                    Add Rows by clicking on (+) icon
+                  </div>
+                </div>
+              </div>
+              <table>
+                <thead>
+                  <tr>
+                    <th>S.No</th>
+                    <th>Date Of Initiation</th>
+                    <th>Record No</th>
+                    <th>Site/Division</th>
+                    <th>Department</th>
+                    <th>Initiator</th>
+                    <th>Short Description</th>
+                    <th>Batch No</th>
+                    <th>Due Date</th>
+                    <th>Current Status</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {pQRData?.previewOOSA?.map((item, index) => {
+                    return (
+                      <tr key={index}>
+                        <td>{index + 1}</td>
+                        <td>
+                          <input
+                            value={item.dateOfInitiation}
+                            onChange={(e) => {
+                              const newData = [...pQRData.previewOOSA];
+                              newData[index].dateOfInitiation = e.target.value;
+                              setPQRData({ ...pQRData, previewOOSA: newData });
+                            }}
+                          />
+                        </td>
+
+                        <td>
+                          <input
+                            value={item.recordNo}
+                            onChange={(e) => {
+                              const newData = [...pQRData.previewOOSA];
+                              newData[index].recordNo = e.target.value;
+                              setPQRData({ ...pQRData, previewOOSA: newData });
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.siteDivision}
+                            onChange={(e) => {
+                              const newData = [...pQRData.previewOOSA];
+                              newData[index].siteDivision = e.target.value;
+                              setPQRData({ ...pQRData, previewOOSA: newData });
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.department}
+                            onChange={(e) => {
+                              const newData = [...pQRData.previewOOSA];
+                              newData[index].department = e.target.value;
+                              setPQRData({ ...pQRData, previewOOSA: newData });
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.initiator}
+                            onChange={(e) => {
+                              const newData = [...pQRData.previewOOSA];
+                              newData[index].initiator = e.target.value;
+                              setPQRData({ ...pQRData, previewOOSA: newData });
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.shortDescription}
+                            onChange={(e) => {
+                              const newData = [...pQRData.previewOOSA];
+                              newData[index].shortDescription = e.target.value;
+                              setPQRData({ ...pQRData, previewOOSA: newData });
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.batchNo}
+                            onChange={(e) => {
+                              const newData = [...pQRData.previewOOSA];
+                              newData[index].batchNo = e.target.value;
+                              setPQRData({ ...pQRData, previewOOSA: newData });
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.dueDate}
+                            onChange={(e) => {
+                              const newData = [...pQRData.previewOOSA];
+                              newData[index].dueDate = e.target.value;
+                              setPQRData({ ...pQRData, previewOOSA: newData });
+                            }}
+                          />
+                        </td>
+
+                        <td>
+                          <input
+                            value={item.currentStatus}
+                            onChange={(e) => {
+                              const newData = [...pQRData.previewOOSA];
+                              newData[index].currentStatus = e.target.value;
+                              setPQRData({ ...pQRData, previewOOSA: newData });
+                            }}
+                          />
+                        </td>
+                      </tr>
+                    );
+                  })}
+                </tbody>
+              </table>
+            </div>
+            <h4 className="gridName pt-4">OOSA Summary</h4>
+            <TinyEditor />
+            <div className="sub-head">Review of OOT (Analytical)</div>
+            <div className="gridName pt-4">Current Review Period OOT</div>
+            <div>
+              <div className="AddRows d-flex w-full justify-between items-center text-3xl">
+                <div className="flex items-center">
+                  <MdNoteAdd onClick={addCurrentOOT} />
+                  <div className="addrowinstruction  pl-2">
+                    Add Rows by clicking on (+) icon
+                  </div>
+                </div>
+              </div>
+              <table>
+                <thead>
+                  <tr>
+                    <th>S.No</th>
+                    <th>Date Of Initiation</th>
+                    <th>Record No</th>
+                    <th>Site/Division</th>
+                    <th>Department</th>
+                    <th>Initiator</th>
+                    <th>Short Description</th>
+                    <th>Batch No</th>
+                    <th>Due Date</th>
+                    <th>Current Status</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {pQRData?.currentOOT?.map((item, index) => {
+                    return (
+                      <tr key={index}>
+                        <td>{index + 1}</td>
+                        <td>
+                          <input
+                            value={item.dateOfInitiation}
+                            onChange={(e) => {
+                              const newData = [...pQRData.currentOOT];
+                              newData[index].dateOfInitiation = e.target.value;
+                              setPQRData({ ...pQRData, currentOOT: newData });
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.recordNo}
+                            onChange={(e) => {
+                              const newData = [...pQRData.currentOOT];
+                              newData[index].recordNo = e.target.value;
+                              setPQRData({ ...pQRData, currentOOT: newData });
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.siteDivision}
+                            onChange={(e) => {
+                              const newData = [...pQRData.currentOOT];
+                              newData[index].siteDivision = e.target.value;
+                              setPQRData({ ...pQRData, currentOOT: newData });
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.department}
+                            onChange={(e) => {
+                              const newData = [...pQRData.currentOOT];
+                              newData[index].department = e.target.value;
+                              setPQRData({ ...pQRData, currentOOT: newData });
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.initiator}
+                            onChange={(e) => {
+                              const newData = [...pQRData.currentOOT];
+                              newData[index].initiator = e.target.value;
+                              setPQRData({ ...pQRData, currentOOT: newData });
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.shortDescription}
+                            onChange={(e) => {
+                              const newData = [...pQRData.currentOOT];
+                              newData[index].shortDescription = e.target.value;
+                              setPQRData({ ...pQRData, currentOOT: newData });
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.batchNo}
+                            onChange={(e) => {
+                              const newData = [...pQRData.currentOOT];
+                              newData[index].batchNo = e.target.value;
+                              setPQRData({ ...pQRData, currentOOT: newData });
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.dueDate}
+                            onChange={(e) => {
+                              const newData = [...pQRData.currentOOT];
+                              newData[index].dueDate = e.target.value;
+                              setPQRData({ ...pQRData, currentOOT: newData });
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.currentStatus}
+                            onChange={(e) => {
+                              const newData = [...pQRData.currentOOT];
+                              newData[index].currentStatus = e.target.value;
+                              setPQRData({ ...pQRData, currentOOT: newData });
+                            }}
+                          />
+                        </td>
+                      </tr>
+                    );
+                  })}
+                </tbody>
+              </table>
+            </div>
+            <div className="gridName">Previous review period OOS</div>
+            <div>
+              <div className="AddRows d-flex w-full justify-between items-center text-3xl">
+                <div className="flex items-center">
+                  <MdNoteAdd onClick={addPreviewOOT} />
+                  <div className="addrowinstruction  pl-2">
+                    Add Rows by clicking on (+) icon
+                  </div>
+                </div>
+              </div>
+              <table>
+                <thead>
+                  <tr>
+                    <th>S.No</th>
+                    <th>Date Of Initiation</th>
+                    <th>Record No</th>
+                    <th>Site/Division</th>
+                    <th>Department</th>
+                    <th>Initiator</th>
+                    <th>Short Description</th>
+                    <th>Batch No</th>
+                    <th>Due Date</th>
+                    <th>Current Status</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {pQRData?.previewOOT?.map((item, index) => {
+                    return (
+                      <tr key={index}>
+                        <td>{index + 1}</td>
+                        <td>
+                          <input
+                            value={item.dateOfInitiation}
+                            onChange={(e) => {
+                              const newData = [...pQRData.previewOOT];
+                              newData[index].dateOfInitiation = e.target.value;
+                              setPQRData({ ...pQRData, previewOOT: newData });
+                            }}
+                          />
+                        </td>
+
+                        <td>
+                          <input
+                            value={item.recordNo}
+                            onChange={(e) => {
+                              const newData = [...pQRData.previewOOT];
+                              newData[index].recordNo = e.target.value;
+                              setPQRData({ ...pQRData, previewOOT: newData });
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.siteDivision}
+                            onChange={(e) => {
+                              const newData = [...pQRData.previewOOT];
+                              newData[index].siteDivision = e.target.value;
+                              setPQRData({ ...pQRData, previewOOT: newData });
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.department}
+                            onChange={(e) => {
+                              const newData = [...pQRData.previewOOT];
+                              newData[index].department = e.target.value;
+                              setPQRData({ ...pQRData, previewOOT: newData });
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.initiator}
+                            onChange={(e) => {
+                              const newData = [...pQRData.previewOOT];
+                              newData[index].initiator = e.target.value;
+                              setPQRData({ ...pQRData, previewOOT: newData });
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.shortDescription}
+                            onChange={(e) => {
+                              const newData = [...pQRData.previewOOT];
+                              newData[index].shortDescription = e.target.value;
+                              setPQRData({ ...pQRData, previewOOT: newData });
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.batchNo}
+                            onChange={(e) => {
+                              const newData = [...pQRData.previewOOT];
+                              newData[index].batchNo = e.target.value;
+                              setPQRData({ ...pQRData, previewOOT: newData });
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.dueDate}
+                            onChange={(e) => {
+                              const newData = [...pQRData.previewOOT];
+                              newData[index].dueDate = e.target.value;
+                              setPQRData({ ...pQRData, previewOOT: newData });
+                            }}
+                          />
+                        </td>
+
+                        <td>
+                          <input
+                            value={item.currentStatus}
+                            onChange={(e) => {
+                              const newData = [...pQRData.previewOOT];
+                              newData[index].currentStatus = e.target.value;
+                              setPQRData({ ...pQRData, previewOOT: newData });
+                            }}
+                          />
+                        </td>
+                      </tr>
+                    );
+                  })}
+                </tbody>
+              </table>
+            </div>
+            <h4 className="gridName pt-4">OOT Summary</h4>
+            <TinyEditor />
+            <div className="sub-head">Review of Change Controls</div>
+            <div className="gridName pt-4">
+              Current Review Period Change Controls
+            </div>
+            <div>
+              <div className="AddRows d-flex w-full justify-between items-center text-3xl">
+                <div className="flex items-center">
+                  <MdNoteAdd onClick={addCurrentCC} />
+                  <div className="addrowinstruction  pl-2">
+                    Add Rows by clicking on (+) icon
+                  </div>
+                </div>
+              </div>
+              <table>
+                <thead>
+                  <tr>
+                    <th>S.No</th>
+                    <th>Date Of Initiation</th>
+                    <th>Record No</th>
+                    <th>Site/Division</th>
+                    <th>Department</th>
+                    <th>Initiator</th>
+                    <th>Short Description</th>
+                    <th>Batch No</th>
+                    <th>Due Date</th>
+                    <th>Current Status</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {pQRData?.currentCC.map((item, index) => {
+                    return (
+                      <tr key={index}>
+                        <td>{index + 1}</td>
+                        <td>
+                          <input
+                            value={item.dateOfInitiation}
+                            onChange={(e) => {
+                              const newData = [...pQRData.currentCC];
+                              newData[index].dateOfInitiation = e.target.value;
+                              setPQRData({ ...pQRData, currentCC: newData });
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.recordNo}
+                            onChange={(e) => {
+                              const newData = [...pQRData.currentCC];
+                              newData[index].recordNo = e.target.value;
+                              setPQRData({ ...pQRData, currentCC: newData });
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.siteDivision}
+                            onChange={(e) => {
+                              const newData = [...pQRData.currentCC];
+                              newData[index].siteDivision = e.target.value;
+                              setPQRData({ ...pQRData, currentCC: newData });
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.department}
+                            onChange={(e) => {
+                              const newData = [...pQRData.currentCC];
+                              newData[index].department = e.target.value;
+                              setPQRData({ ...pQRData, currentCC: newData });
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.initiator}
+                            onChange={(e) => {
+                              const newData = [...pQRData.currentCC];
+                              newData[index].initiator = e.target.value;
+                              setPQRData({ ...pQRData, currentCC: newData });
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.shortDescription}
+                            onChange={(e) => {
+                              const newData = [...pQRData.currentCC];
+                              newData[index].shortDescription = e.target.value;
+                              setPQRData({ ...pQRData, currentCC: newData });
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.batchNo}
+                            onChange={(e) => {
+                              const newData = [...pQRData.currentCC];
+                              newData[index].batchNo = e.target.value;
+                              setPQRData({ ...pQRData, currentCC: newData });
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.dueDate}
+                            onChange={(e) => {
+                              const newData = [...pQRData.currentCC];
+                              newData[index].dueDate = e.target.value;
+                              setPQRData({ ...pQRData, currentCC: newData });
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.currentStatus}
+                            onChange={(e) => {
+                              const newData = [...pQRData.currentCC];
+                              newData[index].currentStatus = e.target.value;
+                              setPQRData({ ...pQRData, currentCC: newData });
+                            }}
+                          />
+                        </td>
+                      </tr>
+                    );
+                  })}
+                </tbody>
+              </table>
+            </div>
+            <div className="gridName pt-4">
+              Previous Review Period Change Controls
+            </div>
+            <div>
+              <div className="AddRows d-flex w-full justify-between items-center text-3xl">
+                <div className="flex items-center">
+                  <MdNoteAdd onClick={addPreviewCC} />
+                  <div className="addrowinstruction  pl-2">
+                    Add Rows by clicking on (+) icon
+                  </div>
+                </div>
+              </div>
+              <table>
+                <thead>
+                  <tr>
+                    <th>S.No</th>
+                    <th>Date Of Initiation</th>
+                    <th>Record No</th>
+                    <th>Site/Division</th>
+                    <th>Department</th>
+                    <th>Initiator</th>
+                    <th>Short Description</th>
+                    <th>Batch No</th>
+                    <th>Due Date</th>
+                    <th>Current Status</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {pQRData?.previewCC?.map((item, index) => {
+                    return (
+                      <tr key={index}>
+                        <td>{index + 1}</td>
+                        <td>
+                          <input
+                            value={item.dateOfInitiation}
+                            onChange={(e) => {
+                              const newData = [...pQRData.previewCC];
+                              newData[index].dateOfInitiation = e.target.value;
+                              setPQRData({ ...pQRData, previewCC: newData });
+                            }}
+                          />
+                        </td>
+
+                        <td>
+                          <input
+                            value={item.recordNo}
+                            onChange={(e) => {
+                              const newData = [...pQRData.previewCC];
+                              newData[index].recordNo = e.target.value;
+                              setPQRData({ ...pQRData, previewCC: newData });
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.siteDivision}
+                            onChange={(e) => {
+                              const newData = [...pQRData.previewCC];
+                              newData[index].siteDivision = e.target.value;
+                              setPQRData({ ...pQRData, previewCC: newData });
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.department}
+                            onChange={(e) => {
+                              const newData = [...pQRData.previewCC];
+                              newData[index].department = e.target.value;
+                              setPQRData({ ...pQRData, previewCC: newData });
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.initiator}
+                            onChange={(e) => {
+                              const newData = [...pQRData.previewCC];
+                              newData[index].initiator = e.target.value;
+                              setPQRData({ ...pQRData, previewCC: newData });
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.shortDescription}
+                            onChange={(e) => {
+                              const newData = [...pQRData.previewCC];
+                              newData[index].shortDescription = e.target.value;
+                              setPQRData({ ...pQRData, previewCC: newData });
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.batchNo}
+                            onChange={(e) => {
+                              const newData = [...pQRData.previewCC];
+                              newData[index].batchNo = e.target.value;
+                              setPQRData({ ...pQRData, previewCC: newData });
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.dueDate}
+                            onChange={(e) => {
+                              const newData = [...pQRData.previewCC];
+                              newData[index].dueDate = e.target.value;
+                              setPQRData({ ...pQRData, previewCC: newData });
+                            }}
+                          />
+                        </td>
+
+                        <td>
+                          <input
+                            value={item.currentStatus}
+                            onChange={(e) => {
+                              const newData = [...pQRData.previewCC];
+                              newData[index].currentStatus = e.target.value;
+                              setPQRData({ ...pQRData, previewCC: newData });
+                            }}
+                          />
+                        </td>
+                      </tr>
+                    );
+                  })}
+                </tbody>
+              </table>
+            </div>
+            <h4 className="gridName pt-4">Change Control Summary</h4>
+            <TinyEditor />
+            <div className="sub-head">Review of Lab Incident</div>
+            <div className="gridName pt-4">Current Review Lab Incident</div>
+            <div>
+              <div className="AddRows d-flex w-full justify-between items-center text-3xl">
+                <div className="flex items-center">
+                  <MdNoteAdd onClick={addCurrentLabI} />
+                  <div className="addrowinstruction  pl-2">
+                    Add Rows by clicking on (+) icon
+                  </div>
+                </div>
+              </div>
+              <table>
+                <thead>
+                  <tr>
+                    <th>S.No</th>
+                    <th>Date Of Initiation</th>
+                    <th>Record No</th>
+                    <th>Site/Division</th>
+                    <th>Department</th>
+                    <th>Initiator</th>
+                    <th>Short Description</th>
+                    <th>Batch No</th>
+                    <th>Due Date</th>
+                    <th>Current Status</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {pQRData?.currentLabI?.map((item, index) => {
+                    return (
+                      <tr key={index}>
+                        <td>{index + 1}</td>
+                        <td>
+                          <input
+                            value={item.dateOfInitiation}
+                            onChange={(e) => {
+                              const newData = [...pQRData.currentLabI];
+                              newData[index].dateOfInitiation = e.target.value;
+                              setPQRData({ ...pQRData, currentLabI: newData });
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.recordNo}
+                            onChange={(e) => {
+                              const newData = [...pQRData.currentLabI];
+                              newData[index].recordNo = e.target.value;
+                              setPQRData({ ...pQRData, currentLabI: newData });
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.siteDivision}
+                            onChange={(e) => {
+                              const newData = [...pQRData.currentLabI];
+                              newData[index].siteDivision = e.target.value;
+                              setPQRData({ ...pQRData, currentLabI: newData });
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.department}
+                            onChange={(e) => {
+                              const newData = [...pQRData.currentLabI];
+                              newData[index].department = e.target.value;
+                              setPQRData({ ...pQRData, currentLabI: newData });
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.initiator}
+                            onChange={(e) => {
+                              const newData = [...pQRData.currentLabI];
+                              newData[index].initiator = e.target.value;
+                              setPQRData({ ...pQRData, currentLabI: newData });
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.shortDescription}
+                            onChange={(e) => {
+                              const newData = [...pQRData.currentLabI];
+                              newData[index].shortDescription = e.target.value;
+                              setPQRData({ ...pQRData, currentLabI: newData });
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.batchNo}
+                            onChange={(e) => {
+                              const newData = [...pQRData.currentLabI];
+                              newData[index].batchNo = e.target.value;
+                              setPQRData({ ...pQRData, currentLabI: newData });
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.dueDate}
+                            onChange={(e) => {
+                              const newData = [...pQRData.currentLabI];
+                              newData[index].dueDate = e.target.value;
+                              setPQRData({ ...pQRData, currentLabI: newData });
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.currentStatus}
+                            onChange={(e) => {
+                              const newData = [...pQRData.currentLabI];
+                              newData[index].currentStatus = e.target.value;
+                              setPQRData({ ...pQRData, currentLabI: newData });
+                            }}
+                          />
+                        </td>
+                      </tr>
+                    );
+                  })}
+                </tbody>
+              </table>
+            </div>
+            <div className="gridName pt-4">Previous Review Lab Incident</div>
+            <div>
+              <div className="AddRows d-flex w-full justify-between items-center text-3xl">
+                <div className="flex items-center">
+                  <MdNoteAdd onClick={addPreviewLabI} />
+                  <div className="addrowinstruction  pl-2">
+                    Add Rows by clicking on (+) icon
+                  </div>
+                </div>
+              </div>
+              <table>
+                <thead>
+                  <tr>
+                    <th>S.No</th>
+                    <th>Date Of Initiation</th>
+                    <th>Record No</th>
+                    <th>Site/Division</th>
+                    <th>Department</th>
+                    <th>Initiator</th>
+                    <th>Short Description</th>
+                    <th>Batch No</th>
+                    <th>Due Date</th>
+                    <th>Current Status</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {pQRData?.previewLabI.map((item, index) => {
+                    return (
+                      <tr key={index}>
+                        <td>{index + 1}</td>
+                        <td>
+                          <input
+                            value={item.dateOfInitiation}
+                            onChange={(e) => {
+                              const newData = [...pQRData.previewLabI];
+                              newData[index].dateOfInitiation = e.target.value;
+                              setPQRData({ ...pQRData, previewLabI: newData });
+                            }}
+                          />
+                        </td>
+
+                        <td>
+                          <input
+                            value={item.recordNo}
+                            onChange={(e) => {
+                              const newData = [...pQRData.previewLabI];
+                              newData[index].recordNo = e.target.value;
+                              setPQRData({ ...pQRData, previewLabI: newData });
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.siteDivision}
+                            onChange={(e) => {
+                              const newData = [...pQRData.previewLabI];
+                              newData[index].siteDivision = e.target.value;
+                              setPQRData({ ...pQRData, previewLabI: newData });
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.department}
+                            onChange={(e) => {
+                              const newData = [...pQRData.previewLabI];
+                              newData[index].department = e.target.value;
+                              setPQRData({ ...pQRData, previewLabI: newData });
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.initiator}
+                            onChange={(e) => {
+                              const newData = [...pQRData.previewLabI];
+                              newData[index].initiator = e.target.value;
+                              setPQRData({ ...pQRData, previewLabI: newData });
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.shortDescription}
+                            onChange={(e) => {
+                              const newData = [...pQRData.previewLabI];
+                              newData[index].shortDescription = e.target.value;
+                              setPQRData({ ...pQRData, previewLabI: newData });
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.batchNo}
+                            onChange={(e) => {
+                              const newData = [...pQRData.previewLabI];
+                              newData[index].batchNo = e.target.value;
+                              setPQRData({ ...pQRData, previewLabI: newData });
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.dueDate}
+                            onChange={(e) => {
+                              const newData = [...pQRData.previewLabI];
+                              newData[index].dueDate = e.target.value;
+                              setPQRData({ ...pQRData, previewLabI: newData });
+                            }}
+                          />
+                        </td>
+
+                        <td>
+                          <input
+                            value={item.currentStatus}
+                            onChange={(e) => {
+                              const newData = [...pQRData.previewLabI];
+                              newData[index].currentStatus = e.target.value;
+                              setPQRData({ ...pQRData, previewLabI: newData });
+                            }}
+                          />
+                        </td>
+                      </tr>
+                    );
+                  })}
+                </tbody>
+              </table>
+            </div>
+            <h4 className="gridName pt-4">Lab Incident Summary</h4>
+            <TinyEditor />
+            <div className="sub-head">Review of Market Complaints</div>
+            <div className="gridName pt-4">
+              Current Review Period Complaints
+            </div>
+            <div>
+              <div className="AddRows d-flex w-full justify-between items-center text-3xl">
+                <div className="flex items-center">
+                  <MdNoteAdd onClick={addCurrentMC} />
+                  <div className="addrowinstruction  pl-2">
+                    Add Rows by clicking on (+) icon
+                  </div>
+                </div>
+              </div>
+              <table>
+                <thead>
+                  <tr>
+                    <th>S.No</th>
+                    <th>Date Of Initiation</th>
+                    <th>Record No</th>
+                    <th>Site/Division</th>
+                    <th>Department</th>
+                    <th>Initiator</th>
+                    <th>Short Description</th>
+                    <th>Batch No</th>
+                    <th>Due Date</th>
+                    <th>Current Status</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {pQRData?.currentMC?.map((item, index) => {
+                    return (
+                      <tr key={index}>
+                        <td>{index + 1}</td>
+                        <td>
+                          <input
+                            value={item.dateOfInitiation}
+                            onChange={(e) => {
+                              const newData = [...pQRData.currentMC];
+                              newData[index].dateOfInitiation = e.target.value;
+                              setPQRData({ ...pQRData, currentMC: newData });
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.recordNo}
+                            onChange={(e) => {
+                              const newData = [...pQRData.currentMC];
+                              newData[index].recordNo = e.target.value;
+                              setPQRData({ ...pQRData, currentMC: newData });
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.siteDivision}
+                            onChange={(e) => {
+                              const newData = [...pQRData.currentMC];
+                              newData[index].siteDivision = e.target.value;
+                              setPQRData({ ...pQRData, currentMC: newData });
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.department}
+                            onChange={(e) => {
+                              const newData = [...pQRData.currentMC];
+                              newData[index].department = e.target.value;
+                              setPQRData({ ...pQRData, currentMC: newData });
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.initiator}
+                            onChange={(e) => {
+                              const newData = [...pQRData.currentMC];
+                              newData[index].initiator = e.target.value;
+                              setPQRData({ ...pQRData, currentMC: newData });
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.shortDescription}
+                            onChange={(e) => {
+                              const newData = [...pQRData.currentMC];
+                              newData[index].shortDescription = e.target.value;
+                              setPQRData({ ...pQRData, currentMC: newData });
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.batchNo}
+                            onChange={(e) => {
+                              const newData = [...pQRData.currentMC];
+                              newData[index].batchNo = e.target.value;
+                              setPQRData({ ...pQRData, currentMC: newData });
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.dueDate}
+                            onChange={(e) => {
+                              const newData = [...pQRData.currentMC];
+                              newData[index].dueDate = e.target.value;
+                              setPQRData({ ...pQRData, currentMC: newData });
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.currentStatus}
+                            onChange={(e) => {
+                              const newData = [...pQRData.currentMC];
+                              newData[index].currentStatus = e.target.value;
+                              setPQRData({ ...pQRData, currentMC: newData });
+                            }}
+                          />
+                        </td>
+                      </tr>
+                    );
+                  })}
+                </tbody>
+              </table>
+            </div>
+            <div className="gridName pt-4">
+              Previous Review Period Complaints
+            </div>
+            <div>
+              <div className="AddRows d-flex w-full justify-between items-center text-3xl">
+                <div className="flex items-center">
+                  <MdNoteAdd onClick={addPreviewMC} />
+                  <div className="addrowinstruction  pl-2">
+                    Add Rows by clicking on (+) icon
+                  </div>
+                </div>
+              </div>
+              <table>
+                <thead>
+                  <tr>
+                    <th>S.No</th>
+                    <th>Date Of Initiation</th>
+                    <th>Record No</th>
+                    <th>Site/Division</th>
+                    <th>Department</th>
+                    <th>Initiator</th>
+                    <th>Short Description</th>
+                    <th>Batch No</th>
+                    <th>Due Date</th>
+                    <th>Current Status</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {pQRData?.previewMC?.map((item, index) => {
+                    return (
+                      <tr key={index}>
+                        <td>{index + 1}</td>
+                        <td>
+                          <input
+                            value={item.dateOfInitiation}
+                            onChange={(e) => {
+                              const newData = [...pQRData.previewMC];
+                              newData[index].dateOfInitiation = e.target.value;
+                              setPQRData({ ...pQRData, previewMC: newData });
+                            }}
+                          />
+                        </td>
+
+                        <td>
+                          <input
+                            value={item.recordNo}
+                            onChange={(e) => {
+                              const newData = [...pQRData.previewMC];
+                              newData[index].recordNo = e.target.value;
+                              setPQRData({ ...pQRData, previewMC: newData });
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.siteDivision}
+                            onChange={(e) => {
+                              const newData = [...pQRData.previewMC];
+                              newData[index].siteDivision = e.target.value;
+                              setPQRData({ ...pQRData, previewMC: newData });
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.department}
+                            onChange={(e) => {
+                              const newData = [...pQRData.previewMC];
+                              newData[index].department = e.target.value;
+                              setPQRData({ ...pQRData, previewMC: newData });
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.initiator}
+                            onChange={(e) => {
+                              const newData = [...pQRData.previewMC];
+                              newData[index].initiator = e.target.value;
+                              setPQRData({ ...pQRData, previewMC: newData });
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.shortDescription}
+                            onChange={(e) => {
+                              const newData = [...pQRData.previewMC];
+                              newData[index].shortDescription = e.target.value;
+                              setPQRData({ ...pQRData, previewMC: newData });
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.batchNo}
+                            onChange={(e) => {
+                              const newData = [...pQRData.previewMC];
+                              newData[index].batchNo = e.target.value;
+                              setPQRData({ ...pQRData, previewMC: newData });
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.dueDate}
+                            onChange={(e) => {
+                              const newData = [...pQRData.previewMC];
+                              newData[index].dueDate = e.target.value;
+                              setPQRData({ ...pQRData, previewMC: newData });
+                            }}
+                          />
+                        </td>
+
+                        <td>
+                          <input
+                            value={item.currentStatus}
+                            onChange={(e) => {
+                              const newData = [...pQRData.previewMC];
+                              newData[index].currentStatus = e.target.value;
+                              setPQRData({ ...pQRData, previewMC: newData });
+                            }}
+                          />
+                        </td>
+                      </tr>
+                    );
+                  })}
+                </tbody>
+              </table>
+            </div>
+            <h4 className="gridName pt-4">Market Complaints Summary</h4>
+            <TinyEditor />
+            <div className="sub-head">Review of Deviations</div>
+            <div className="sub-head">
+              Current Review Period Quality Related Notification
+            </div>
             <div>
               {/* <div className="AddRows">
                 <MdNoteAdd onClick={addCurrentRPQRNRow} />
@@ -7414,10 +10864,15 @@ export default function APQR() {
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addCurrentRPQRNRow} />
-                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
+                  <div className="addrowinstruction  pl-2">
+                    Add Rows by clicking on (+) icon
+                  </div>
                 </div>
                 <div className="flex gap-4 ">
-                  <ExcelExport data={balanceSheet} fileName="balance-sheet-summary.xlsx" />
+                  <ExcelExport
+                    data={balanceSheet}
+                    fileName="balance-sheet-summary.xlsx"
+                  />
                 </div>
               </div>
               <table>
@@ -7459,7 +10914,8 @@ export default function APQR() {
                             value={item.qualityRelatedNotification.no}
                             onChange={(e) => {
                               const newData = [...currentRPQRN];
-                              newData[index].qualityRelatedNotification.no = e.target.value;
+                              newData[index].qualityRelatedNotification.no =
+                                e.target.value;
                               setCurrentRPQRN(newData);
                             }}
                           />
@@ -7470,7 +10926,9 @@ export default function APQR() {
                             value={item.qualityRelatedNotification.description}
                             onChange={(e) => {
                               const newData = [...currentRPQRN];
-                              newData[index].qualityRelatedNotification.description =
+                              newData[
+                                index
+                              ].qualityRelatedNotification.description =
                                 e.target.value;
                               setCurrentRPQRN(newData);
                             }}
@@ -7482,7 +10940,8 @@ export default function APQR() {
                             value={item.qualityRelatedNotification.impact}
                             onChange={(e) => {
                               const newData = [...currentRPQRN];
-                              newData[index].qualityRelatedNotification.impact = e.target.value;
+                              newData[index].qualityRelatedNotification.impact =
+                                e.target.value;
                               setCurrentRPQRN(newData);
                             }}
                           />
@@ -7493,7 +10952,8 @@ export default function APQR() {
                             value={item.qualityRelatedNotification.status}
                             onChange={(e) => {
                               const newData = [...currentRPQRN];
-                              newData[index].qualityRelatedNotification.status = e.target.value;
+                              newData[index].qualityRelatedNotification.status =
+                                e.target.value;
                               setCurrentRPQRN(newData);
                             }}
                           />
@@ -7503,7 +10963,8 @@ export default function APQR() {
                             value={item.cAPA.descriptionNo}
                             onChange={(e) => {
                               const newData = [...currentRPQRN];
-                              newData[index].cAPA.descriptionNo = e.target.value;
+                              newData[index].cAPA.descriptionNo =
+                                e.target.value;
                               setCurrentRPQRN(newData);
                             }}
                           />
@@ -7535,7 +10996,9 @@ export default function APQR() {
                 </tbody>
               </table>
             </div>
-            <h4 className="gridName pt-4">previous Review Period Quality Related Notification</h4>
+            <h4 className="gridName pt-4">
+              previous Review Period Quality Related Notification
+            </h4>
             <TinyEditor
               editorContent={pQRData.tiny45}
               setEditorContent={setTinyContent}
@@ -7559,7 +11022,9 @@ export default function APQR() {
               setEditorContent={setTinyContent}
               tinyNo={48}
             />{" "}
-            <h4 className="gridName pt-4">Review of previous PQR recommendations</h4>
+            <h4 className="gridName pt-4">
+              Review of previous PQR recommendations
+            </h4>
             <TinyEditor
               editorContent={pQRData.tiny49}
               setEditorContent={setTinyContent}
@@ -7571,7 +11036,9 @@ export default function APQR() {
               setEditorContent={setTinyContent}
               tinyNo={50}
             />{" "}
-            <h4 className="gridName pt-4">Review of Manufacturing Authorizations</h4>
+            <h4 className="gridName pt-4">
+              Review of Manufacturing Authorizations
+            </h4>
             <TinyEditor
               editorContent={pQRData.tiny51}
               setEditorContent={setTinyContent}
@@ -7594,10 +11061,15 @@ export default function APQR() {
               <div className="AddRows d-flex w-full justify-between items-center text-3xl ">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addDossierRow} />
-                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
+                  <div className="addrowinstruction  pl-2">
+                    Add Rows by clicking on (+) icon
+                  </div>
                 </div>
                 <div className="flex gap-4 ">
-                  <ExcelExport data={balanceSheet} fileName="balance-sheet-summary.xlsx" />
+                  <ExcelExport
+                    data={balanceSheet}
+                    fileName="balance-sheet-summary.xlsx"
+                  />
                 </div>
               </div>
               <table>
@@ -7641,7 +11113,7 @@ export default function APQR() {
                             value={item.notificationType}
                             onChange={(e) => {
                               const newData = [...dossierRR];
-                              newData[index].notificationTpe = e.target.value;
+                              newData[index].notificationType = e.target.value;
                               setDossierRR(newData);
                             }}
                           />
@@ -7678,10 +11150,15 @@ export default function APQR() {
                 <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                   <div className="flex items-center">
                     <MdNoteAdd onClick={addDossierRowNma} />
-                    <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
+                    <div className="addrowinstruction  pl-2">
+                      Add Rows by clicking on (+) icon
+                    </div>
                   </div>
                   <div className="flex gap-4 ">
-                    <ExcelExport data={balanceSheet} fileName="balance-sheet-summary.xlsx" />
+                    <ExcelExport
+                      data={balanceSheet}
+                      fileName="balance-sheet-summary.xlsx"
+                    />
                   </div>
                 </div>
                 <table>
@@ -7716,7 +11193,8 @@ export default function APQR() {
                               value={item.descriptionOfPacking}
                               onChange={(e) => {
                                 const newData = [...dossierRRNma];
-                                newData[index].descriptionOfPacking = e.target.value;
+                                newData[index].descriptionOfPacking =
+                                  e.target.value;
                                 setDossierRRNma(newData);
                               }}
                             />
@@ -7726,7 +11204,8 @@ export default function APQR() {
                               value={item.dateOfApplication}
                               onChange={(e) => {
                                 const newData = [...dossierRRNma];
-                                newData[index].dateOfApplication = e.target.value;
+                                newData[index].dateOfApplication =
+                                  e.target.value;
                                 setDossierRRNma(newData);
                               }}
                             />
@@ -7736,7 +11215,8 @@ export default function APQR() {
                               value={item.statusOfApplication}
                               onChange={(e) => {
                                 const newData = [...dossierRRNma];
-                                newData[index].statusOfApplication = e.target.value;
+                                newData[index].statusOfApplication =
+                                  e.target.value;
                                 setDossierRRNma(newData);
                               }}
                             />
@@ -7746,7 +11226,8 @@ export default function APQR() {
                               value={item.dateOfAuthorization}
                               onChange={(e) => {
                                 const newData = [...dossierRRNma];
-                                newData[index].dateOfAuthorization = e.target.value;
+                                newData[index].dateOfAuthorization =
+                                  e.target.value;
                                 setDossierRRNma(newData);
                               }}
                             />
