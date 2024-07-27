@@ -5,5 +5,5 @@ const router = express.Router();
 
 router.get("/generate-pdf", generatePdf);
 
-router.get('/view-report', viewReport)
+router.get("/view-report", viewReport);
 export default router;

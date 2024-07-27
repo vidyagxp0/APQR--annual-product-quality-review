@@ -487,6 +487,7 @@ const pqrData = {
       CompliesNotComplies: "Complies Not Complies",
     },
   ],
+  msaSummary: "Summary of Manufacturing Site Address will be visible here",
 };
 export const generatePdf = async (req, res) => {
   let browser;
