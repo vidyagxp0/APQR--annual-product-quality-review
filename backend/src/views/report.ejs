@@ -86,8 +86,8 @@
     </table>
 
     <!-- Tab 2 -->
-    <h1>Review of Rejected Raw Materials and Packaging Materials</h1>
-    <h2>Warehouse Review</h2>
+    <h1>Warehouse Review</h1>
+    <h2>Review of Rejected Raw Materials and Packaging Materials</h1>
 
     <h3>Raw Materials Rejection Grid</h3>
     <table>
@@ -329,5 +329,495 @@
       &nbsp &nbsp
       <p><%= product.vqdPGSummary %></p>
     </div>
+
+    <!-- Tab 3 -->
+     <h1>Manufacturing Review</h1>
+       <table>
+      <tr>
+        <td>PRODUCT INFO</td>
+        <td><%= product.productInfo %></td>
+      </tr>
+      <tr>
+        <td>PRODUCT NAME</td>
+        <td><%= product.processFlow %></td>
+      </tr>
+    </table>
+
+    <h2>Review of all Batches Manufactured</h2>
+
+    <table>
+      <tr>
+        <td style="text-transform: uppercase;">Total No. of batches manufactured during the current review period</td>
+        <td><%= product.totalBatchesManu %></td>
+      </tr>
+      <tr>
+        <td style="text-transform: uppercase;">Total No. of batches Approved & Released</td>
+        <td><%= product.totalBatchesApproved %></td>
+      </tr>
+      <tr>
+        <td style="text-transform: uppercase;">Total No. of Process Validation Batches</td>
+        <td><%= product.totalNoValidationprocessedBatches %></td>
+      </tr>
+      <tr>
+        <td style="text-transform: uppercase;">Total No. of Reprocessed Batches</td>
+        <td><%= product.totalNoReprocessedBatches %></td>
+      </tr>
+      <tr>
+        <td style="text-transform: uppercase;">Process Validation Batches Details</td>
+        <td><%= product.processValidationBatchesDetails %></td>
+      </tr>
+      <tr>
+        <td style="text-transform: uppercase;">Reprocessing Details</td>
+        <td><%= product.reprocessingDetails %></td>
+      </tr>
+      <tr>
+        <td style="text-transform: uppercase;">Microbial Excursion Details</td>
+        <td><%= product.microbialExcursionDetails %></td>
+      </tr>
+    </table>
+
+    <h2>Code to code transfer details</h2>
+    <table>
+      <thead>
+        <tr style="text-transform: uppercase;">
+          <th>SL NO</th>
+          <th>Batch Number</th>
+          <th>Existing Code</th>
+          <th>Existing Market</th>
+          <th>Proposed Code</th>
+          <th>Proposed Market</th>
+          <th>Transfter Quantity</th>
+          <th>Ref No</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% product.codeToCodetransferDetails.forEach((item) => { %>
+        <tr>
+          <td><%= item.Sl_No %></td>
+          <td><%= item.BatchNumber %></td>
+          <td><%= item.ExistingCode %></td>
+          <td><%= item.ExistingMarket %></td>
+          <td><%= item.ProposedCode %></td>
+          <td><%= item.ProposedMarket %></td>
+          <td><%= item.TransferQuantity %></td>
+          <td><%= item.RefNo %></td>
+        </tr>
+        <% }); %>
+      </tbody>
+    </table>
+
+    <div class="summary">
+      <h3>Summary of Code to Code Transfer Details :-</h3>
+      &nbsp &nbsp
+      <p><%= product.codeToCodetransferSummary %></p>
+    </div>
+
+    <div class="summary">
+      <h3>Review of Manufacturing Process, Packing Process and relevant Validation Status :-</h3>
+      &nbsp &nbsp
+      <p><%= product.reviewOFManuProcessSummary %></p>
+    </div>
+
+    <h2>Review of Reprocessing/Repacking/Reworking along with CAPA and Effectiveness Check Verification (if any)</h2>
+    <div class="summary">
+      <h3>Batch reprocessing/reworking process Details :-</h3>
+      &nbsp &nbsp
+      <p><%= product.brpDetails %></p>
+    </div>
+
+    <div class="summary">
+      <h3>Batch Repacking Details :-</h3>
+      &nbsp &nbsp
+      <p><%= product.batchRepackingDetails %></p>
+    </div>
+
+    <h3>Review of Reprocessing/Repacking/Reworking Grid</h3>
+    <table>
+      <thead>
+        <tr style="text-transform: uppercase;">
+          <th>SL NO</th>
+          <th> Packing Batch Number</th>
+          <th>Manufacturin Batch Number</th>
+          <th>Repacking Issued Number</th>
+          <th>Repacking For</th>
+          <th>QMS</th>
+          <th>Reason For Repacking</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% product.reviewOfReprocessingGrid.forEach((item) => { %>
+        <tr>
+          <td><%= item.Sl_No %></td>
+          <td><%= item.PackingBatchNumber %></td>
+          <td><%= item.ManuBatchNumber %></td>
+          <td><%= item.RepackingIssuedNumber %></td>
+          <td><%= item.RepackingFor %></td>
+          <td><%= item.QMS %></td>
+          <td><%= item.ReasonForRepacking %></td>
+        </tr>
+        <% }); %>
+      </tbody>
+    </table>
+
+    <h3>Capa Details</h3>
+    <table>
+      <thead>
+        <tr style="text-transform: uppercase;">
+          <th>AR No</th>
+          <th>CAPAType</th>
+          <th>Description of Issue</th>
+          <th>Root Cause</th>
+          <th>CAPA Verification</th>
+          <th>CAPA Status</th>
+          <th>Effectiveness Check</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% product.capaDetailsGrid.forEach((item) => { %>
+        <tr>
+          <td><%= item.Ar_No %></td>
+          <td><%= item.CAPAType %></td>
+          <td><%= item.DescriptionOfIssue %></td>
+          <td><%= item.RootCause %></td>
+          <td><%= item.CAPAVerification %></td>
+          <td><%= item.FileAttachment %></td>
+          <td><%= item.Remarks %></td>
+        </tr>
+        <% }); %>
+      </tbody>
+    </table>
+
+    <div class="summary">
+      <h3>Summary of CAPA Details :-</h3>
+      &nbsp &nbsp
+      <p><%= product.capaDetailsSummary %></p>
+    </div>
+
+    <h3>Deviation Details</h3>
+    <table>
+      <thead>
+        <tr style="text-transform: uppercase;">
+          <th>AR No</th>
+          <th>CAPAType</th>
+          <th>Description of Issue</th>
+          <th>Root Cause</th>
+          <th>CAPA Verification</th>
+          <th>CAPA Status</th>
+          <th>Effectiveness Check</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% product.deviationDetailsGrid.forEach((item) => { %>
+        <tr>
+          <td><%= item.Ar_No %></td>
+          <td><%= item.DeviationRelatedTo %></td>
+          <td><%= item.Description %></td>
+          <td><%= item.RootCause %></td>
+          <td><%= item.DeviationObservedOn %></td>
+          <td><%= item.DeviationObservedBy %></td>
+          <td><%= item.ClassificationOfDeviation %></td>
+          <td><%= item.FileAttachment %></td>
+          <td><%= item.Remarks %></td>
+          <td><%= item.Status %></td>
+        </tr>
+        <% }); %>
+      </tbody>
+    </table>
+
+    <div class="summary">
+      <h3>Summary of Deviation Details :-</h3>
+      &nbsp &nbsp
+      <p><%= product.deviationDetailsSummary %></p>
+    </div>
+
+    <h2>Review of all Batch Failures/Rejections along with CAPA and Effectiveness Check Verification (if any):</h2>
+
+    <h3>Batch Failures/Rejections Details</h3>
+
+    <div class="summary">
+      <h3>Summary of Batch Failures/Rejections Details :-</h3>
+      &nbsp &nbsp
+      <p><%= product.batchFailuresRejectionsSummary %></p>
+    </div>
+
+    <h3>OOS Details</h3>
+    <table>
+      <thead>
+        <tr style="text-transform: uppercase;">
+          <th>AR No</th>
+          <th>Test Name Of OOS</th>
+          <th>Results Obtained</th>
+          <th>Specification Limit</th>
+          <th>Details of Obvious error</th>
+          <th>File Attachment</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% product.OosDetails.forEach((item) => { %>
+        <tr>
+          <td><%= item.Ar_No %></td>
+          <td><%= item.TestNameofOOS %></td>
+          <td><%= item.ResultsObtained %></td>
+          <td><%= item.SpecificationLimit %></td>
+          <td><%= item.DetailsOfObviousError %></td>
+          <td><%= item.FileAttachment %></td>
+        </tr>
+        <% }); %>
+      </tbody>
+    </table>
+
+    <div class="summary">
+      <h3>Summary of OOS Details :-</h3>
+      &nbsp &nbsp
+      <p><%= product.OosDetailsSummary %></p>
+    </div>
+
+    <h3>OOT Results</h3>
+    <table>
+      <thead
+        <tr style="text-transform: uppercase;">
+          <th>AR No</th>
+          <th>Test Name Of OOT</th>
+          <th>Results Obtained</th>
+          <th>Initial Interval Details</th>
+          <th>Previous Interval Details</th>
+          <th>% Difference Of Details</th>
+          <th>Trend Alert</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% product.ootDetails.forEach((item) => { %>
+        <tr>
+          <td><%= item.Ar_No %></td>
+          <td><%= item.TestNameofOOT %></td>
+          <td><%= item.ResultsObtained %></td>
+          <td><%= item.InitialIntervalDetails %></td>
+          <td><%= item.PreviousInternalDetails %></td>
+          <td><%= item.PercentDifference %></td>
+          <td><%= item.TrendAlert %></td>
+        </tr>
+        <% }); %>
+      </tbody>
+    </table>
+
+    <div class="summary">
+      <h3>Summary of OOT Details :-</h3>
+      &nbsp &nbsp
+      <p><%= product.ootDetailsSummary %></p>
+    </div>
+
+    <h3>OOA Results</h3>
+    <table>
+      <thead>
+        <tr style="text-transform: uppercase;">
+          <th>AR No</th>
+          <th>Test Name Of OOA</th>
+          <th>Results Obtained</th>
+          <th>Initial Interval Details</th>
+          <th>Previous Interval Details</th>
+          <th>% Difference Of Details</th>
+          <th>Trend Alert</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% product.ooaDetails.forEach((item) => { %>
+        <tr>
+          <td><%= item.Ar_No %></td>
+          <td><%= item.TestNameofOOA %></td>
+          <td><%= item.ResultsObtained %></td>
+          <td><%= item.InitialIntervalDetails %></td>
+          <td><%= item.PreviousInternalDetails %></td>  
+          <td><%= item.PercentDifference %></td>
+          <td><%= item.TrendAlert %></td>
+        </tr>
+        <% }); %>
+      </tbody>
+    </table>
+
+    <div class="summary">
+      <h3>Summary of OOA Details :-</h3> 
+      &nbsp &nbsp
+      <p><%= product.ooaDetailsSummary %></p>
+    </div>
+
+    <h3>OOL Results</h3>
+    <table>
+      <thead>
+        <tr style="text-transform: uppercase;">
+          <th>AR No</th>
+          <th>Test Name Of OOL</th>
+          <th>Results Obtained</th>
+          <th>Initial Interval Details</th>
+          <th>Previous Interval Details</th>
+          <th>% Difference Of Details</th>
+          <th>Trend Alert</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% product.oolDetails.forEach((item) => { %>
+        <tr>
+          <td><%= item.Ar_No %></td>
+          <td><%= item.TestNameofOOL %></td>
+          <td><%= item.ResultsObtained %></td>
+          <td><%= item.InitialIntervalDetails %></td>
+          <td><%= item.PreviousInternalDetails %></td>
+          <td><%= item.PercentDifference %></td>
+          <td><%= item.TrendAlert %></td>
+        </tr>
+        <% }); %>
+      </tbody>
+    </table>
+
+    <div class="summary">
+      <h3>Summary of OOL Details :-</h3>
+      &nbsp &nbsp
+      <p><%= product.oolDetailsSummary %></p>
+    </div>
+
+    <h2>Review of Product Quality (Critical Process Parameters)</h2>
+    <h3>Unit Operation 1</h3>
+    <table>
+      <thead>
+        <tr style="text-transform: uppercase;">
+          <th rowspan="2">Critical Process Parameter</th>
+          <th rowspan="2">Codes</th>
+          <th rowspan="2">Acceptance criteria</th>
+          <th colspan="2">Results </th>
+          <th rowspan="2">Complies / Does not complies</th>
+        </tr>
+        <tr>
+          <th>Minimum</th>
+          <th>Maximum</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% product.unitOperation1.forEach((item) => { %>
+        <tr>
+          <td><%= item.CriticalProcessParameters %></td>
+          <td><%= item.Codes %></td>
+          <td><%= item.AcceptanceCriteria %></td>
+          <td><%= item.Results.Minimum %></td>
+          <td><%= item.Results.Maximum %></td>
+          <td><%= item.CompliesNotComplies %></td>
+        </tr>
+        <% }); %>
+      </tbody>
+    </table>
+
+        <h3>Unit Operation 2</h3>
+    <table>
+      <thead>
+        <tr style="text-transform: uppercase;">
+          <th rowspan="2">Critical Process Parameter</th>
+          <th rowspan="2">Codes</th>
+          <th rowspan="2">Acceptance criteria</th>
+          <th colspan="2">Results </th>
+          <th rowspan="2">Complies / Does not complies</th>
+        </tr>
+        <tr>
+          <th>Minimum</th>
+          <th>Maximum</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% product.unitOperation1.forEach((item) => { %>
+        <tr>
+          <td><%= item.CriticalProcessParameters %></td>
+          <td><%= item.Codes %></td>
+          <td><%= item.AcceptanceCriteria %></td>
+          <td><%= item.Results.Minimum %></td>
+          <td><%= item.Results.Maximum %></td>
+          <td><%= item.CompliesNotComplies %></td>
+        </tr>
+        <% }); %>
+      </tbody>
+    </table>
+
+        <h3>Unit Operation 3</h3>
+    <table>
+      <thead>
+        <tr style="text-transform: uppercase;">
+          <th rowspan="2">Critical Process Parameter</th>
+          <th rowspan="2">Codes</th>
+          <th rowspan="2">Acceptance criteria</th>
+          <th colspan="2">Results </th>
+          <th rowspan="2">Complies / Does not complies</th>
+        </tr>
+        <tr>
+          <th>Minimum</th>
+          <th>Maximum</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% product.unitOperation1.forEach((item) => { %>
+        <tr>
+          <td><%= item.CriticalProcessParameters %></td>
+          <td><%= item.Codes %></td>
+          <td><%= item.AcceptanceCriteria %></td>
+          <td><%= item.Results.Minimum %></td>
+          <td><%= item.Results.Maximum %></td>
+          <td><%= item.CompliesNotComplies %></td>
+        </tr>
+        <% }); %>
+      </tbody>
+    </table>
+
+        <h3>Unit Operation 4</h3>
+    <table>
+      <thead>
+        <tr style="text-transform: uppercase;">
+          <th rowspan="2">Critical Process Parameter</th>
+          <th rowspan="2">Codes</th>
+          <th rowspan="2">Acceptance criteria</th>
+          <th colspan="2">Results </th>
+          <th rowspan="2">Complies / Does not complies</th>
+        </tr>
+        <tr>
+          <th>Minimum</th>
+          <th>Maximum</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% product.unitOperation1.forEach((item) => { %>
+        <tr>
+          <td><%= item.CriticalProcessParameters %></td>
+          <td><%= item.Codes %></td>
+          <td><%= item.AcceptanceCriteria %></td>
+          <td><%= item.Results.Minimum %></td>
+          <td><%= item.Results.Maximum %></td>
+          <td><%= item.CompliesNotComplies %></td>
+        </tr>
+        <% }); %>
+      </tbody>
+    </table>
+
+        <h3>Unit Operation 5</h3>
+    <table>
+      <thead>
+        <tr style="text-transform: uppercase;">
+          <th rowspan="2">Critical Process Parameter</th>
+          <th rowspan="2">Codes</th>
+          <th rowspan="2">Acceptance criteria</th>
+          <th colspan="2">Results </th>
+          <th rowspan="2">Complies / Does not complies</th>
+        </tr>
+        <tr>
+          <th>Minimum</th>
+          <th>Maximum</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% product.unitOperation1.forEach((item) => { %>
+        <tr>
+          <td><%= item.CriticalProcessParameters %></td>
+          <td><%= item.Codes %></td>
+          <td><%= item.AcceptanceCriteria %></td>
+          <td><%= item.Results.Minimum %></td>
+          <td><%= item.Results.Maximum %></td>
+          <td><%= item.CompliesNotComplies %></td>
+        </tr>
+        <% }); %>
+      </tbody>
+    </table>
   </body>
 </html>

@@ -12,10 +12,7 @@ export default function Dashboard() {
     <>
       <Header />
       <BottomHeader />
-      <div
-        className="container mt-5 w-full mx-12"
-        style={{ width: "100%", maxWidth: "95%" }}
-      >
+      <div className="container mt-5 w-full mx-12" style={{ width: "100%", maxWidth: "95%" }}>
         <table className="w-full">
           <thead className="bg-slate-500 text-white">
             <tr>
@@ -23,6 +20,7 @@ export default function Dashboard() {
               <th className="px-4 py-2 border-r-2 ">Product Name</th>
               <th className="px-4 py-2 border-r-2">Generic Name</th>
               <th className="px-4 py-2 border-r-2">Initiated by</th>
+              <th className="px-4 py-2 border-r-2">Reports</th>
             </tr>
           </thead>
           <tbody className="w-full">
@@ -40,6 +38,9 @@ export default function Dashboard() {
                   <td className="px-4 py-2 border-r-2">{item.productName}</td>
                   <td className="px-4 py-2 border-r-2">{item.genericName}</td>
                   <td className="px-4 py-2 border-r-2">{item.initiator}</td>
+                  <td className="px-4 py-2 border-r-2" onClick={() => navigate("/pdftest")}>
+                    Generate Report
+                  </td>
                 </tr>
               );
             })}
