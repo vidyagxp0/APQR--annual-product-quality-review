@@ -7,7 +7,6 @@ import { useNavigate } from "react-router-dom";
 export default function Dashboard() {
   const navigate = useNavigate();
   const data = useSelector((state) => state.form.forms);
-  // console.log(data);
   return (
     <>
       <Header />
@@ -26,9 +25,9 @@ export default function Dashboard() {
             </tr>
           </thead>
           <tbody className="w-full">
-            {data?.map((item) => {
+            {data?.map((item,index) => {
               return (
-                <tr className="border border-black ">
+                <tr className="border border-black " key={index}>
                   <td
                     className="px-4 py-2 border-r-2 cursor-pointer hover:text-blue-700"
                     onClick={() => {
