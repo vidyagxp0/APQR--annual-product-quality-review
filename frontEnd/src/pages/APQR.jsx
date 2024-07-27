@@ -1842,7 +1842,6 @@ console.log(pQRData,"pQRData")
                 />
               </div>
             </div>
-            <div className="dual-group-input">
             {productCodes?.map((productCode, index) => (
               <div key={index} className="group-input">
                 <label>
@@ -1874,22 +1873,6 @@ console.log(pQRData,"pQRData")
                 </div>
               </div>
             ))}
-            <div className="group-input ">
-        <label>Dosage Form</label>
-           <select
-             value={pQRData.dosageForm}
-             onChange={(e) => {
-               setPQRData({ ...pQRData, dosageForm: e.target.value });
-             }}
-           >
-             <option value="">Select Dosage Form</option>
-             <option value="Oral Solid">Oral Solid</option>
-             <option value="Oral Liquid">Oral Liquid</option>
-             <option value="Injectables">Injectables</option>
-             <option value="Semisolid">Semisolid</option>
-           </select>
-        </div>
-        </div>
 
             <div className="dual-group-input">
               <div className="group-input">
@@ -1921,6 +1904,21 @@ console.log(pQRData,"pQRData")
                   }}
                 />
               </div>
+              <div className="group-input ">
+        <label>Dosage Form</label>
+           <select
+             value={pQRData.dosageForm}
+             onChange={(e) => {
+               setPQRData({ ...pQRData, dosageForm: e.target.value });
+             }}
+           >
+             <option value="">Select Dosage Form</option>
+             <option value="Oral Solid">Oral Solid</option>
+             <option value="Oral Liquid">Oral Liquid</option>
+             <option value="Injectables">Injectables</option>
+             <option value="Semisolid">Semisolid</option>
+           </select>
+        </div>
               <div className="group-input">
                 <label>MFG. LIC. No</label>
                 <input

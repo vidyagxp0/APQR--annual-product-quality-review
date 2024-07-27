@@ -2343,6 +2343,21 @@ export default function APQR() {
                   }}
                 />
               </div>
+              <div className="group-input ">
+        <label>Dosage Form</label>
+           <select
+             value={pQRData.dosageForm}
+             onChange={(e) => {
+               setPQRData({ dosageForm: e.target.value });
+             }}
+           >
+             <option value="">Select Dosage Form</option>
+             <option value="Oral Solid">Oral Solid</option>
+             <option value="Oral Liquid">Oral Liquid</option>
+             <option value="Injectables">Injectables</option>
+             <option value="Semisolid">Semisolid</option>
+           </select>
+        </div>
               <div className="group-input">
                 <label>Review Start Date</label>
                 <input
