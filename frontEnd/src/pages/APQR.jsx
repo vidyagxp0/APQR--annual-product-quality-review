@@ -6,7 +6,7 @@ import ExcelExport from "../Component/Exports/Excel/ExcelExport";
 import { useDispatch } from "react-redux";
 import { addForm } from "../redux/formSlice";
 import { useNavigate } from "react-router-dom";
-import ExcelExportImport from "./temp/ImportExportExcel";
+import ExcelExportImport from "../Component/ImportExportExcel";
 export default function APQR() {
   const [tab, setTab] = useState("GI");
   const balanceSheet = [

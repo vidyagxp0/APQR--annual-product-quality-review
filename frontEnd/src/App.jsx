@@ -8,7 +8,6 @@ import Notification from "./pages/Notification";
 import AdminLogin from "./pages/Admin/AdminLogin";
 import AdminDashboard from "./pages/Admin/AdminDashboard";
 import TinyEditor from "./Component/TinyEditor";
-import ExcelExportImport from "./pages/temp/ImportExportExcel";
 import ApqrPanel from "./pages/ApqrPanel";
 import ESignatureModal from "./Component/ESignatureModal";
 import DownloadReportButton from "./pages/temp/DownloadReportButton";
