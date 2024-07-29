@@ -498,12 +498,16 @@
       <thead>
         <tr style="text-transform: uppercase;">
           <th>AR No</th>
-          <th>CAPAType</th>
-          <th>Description of Issue</th>
+          <th>Deviation Related To	</th>
+          <th>Description</th>
           <th>Root Cause</th>
-          <th>CAPA Verification</th>
-          <th>CAPA Status</th>
-          <th>Effectiveness Check</th>
+          <th>Deviation Ovserved On	</th>
+          <th>Deviation Ovserved By	</th>
+          <th>Classification of Deviation	</th>
+          <th>file Attachment	</th>
+          <th>Remarks</th>
+          <th>Status  </th>
+
         </tr>
       </thead>
       <tbody>
@@ -682,7 +686,7 @@
           <th rowspan="2">Critical Process Parameter</th>
           <th rowspan="2">Codes</th>
           <th rowspan="2">Acceptance criteria</th>
-          <th colspan="2">Results </th>
+          <th class="text-center" colspan="2">Results </th>
           <th rowspan="2">Complies / Does not complies</th>
         </tr>
         <tr>
@@ -711,7 +715,7 @@
           <th rowspan="2">Critical Process Parameter</th>
           <th rowspan="2">Codes</th>
           <th rowspan="2">Acceptance criteria</th>
-          <th colspan="2">Results </th>
+          <th class="text-center" colspan="2">Results </th>
           <th rowspan="2">Complies / Does not complies</th>
         </tr>
         <tr>
@@ -740,7 +744,7 @@
           <th rowspan="2">Critical Process Parameter</th>
           <th rowspan="2">Codes</th>
           <th rowspan="2">Acceptance criteria</th>
-          <th colspan="2">Results </th>
+          <th class="text-center" colspan="2">Results </th>
           <th rowspan="2">Complies / Does not complies</th>
         </tr>
         <tr>
@@ -769,7 +773,7 @@
           <th rowspan="2">Critical Process Parameter</th>
           <th rowspan="2">Codes</th>
           <th rowspan="2">Acceptance criteria</th>
-          <th colspan="2">Results </th>
+          <th class="text-center" colspan="2">Results </th>
           <th rowspan="2">Complies / Does not complies</th>
         </tr>
         <tr>
@@ -798,7 +802,7 @@
           <th rowspan="2">Critical Process Parameter</th>
           <th rowspan="2">Codes</th>
           <th rowspan="2">Acceptance criteria</th>
-          <th colspan="2">Results </th>
+          <th class="text-center" colspan="2">Results </th>
           <th rowspan="2">Complies / Does not complies</th>
         </tr>
         <tr>
@@ -827,7 +831,7 @@
           <th rowspan="2">Critical Process Parameter</th>
           <th rowspan="2">Codes</th>
           <th rowspan="2">Acceptance criteria</th>
-          <th colspan="2">Results </th>
+          <th class="text-center" colspan="2">Results </th>
           <th rowspan="2">Complies / Does not complies</th>
         </tr>
         <tr>
@@ -856,7 +860,7 @@
           <th rowspan="2">Critical Process Parameter</th>
           <th rowspan="2">Codes</th>
           <th rowspan="2">Acceptance criteria</th>
-          <th colspan="2">Results </th>
+          <th class="text-center" colspan="2">Results </th>
           <th rowspan="2">Complies / Does not complies</th>
         </tr>
         <tr>
@@ -885,7 +889,7 @@
           <th rowspan="2">Critical Process Parameter</th>
           <th rowspan="2">Codes</th>
           <th rowspan="2">Acceptance criteria</th>
-          <th colspan="2">Results </th>
+          <th class="text-center" colspan="2">Results </th>
           <th rowspan="2">Complies / Does not complies</th>
         </tr>
         <tr>
@@ -914,7 +918,7 @@
           <th rowspan="2">Critical Process Parameter</th>
           <th rowspan="2">Codes</th>
           <th rowspan="2">Acceptance criteria</th>
-          <th colspan="2">Results </th>
+          <th class="text-center" colspan="2">Results </th>
           <th rowspan="2">Complies / Does not complies</th>
         </tr>
         <tr>
@@ -943,7 +947,7 @@
           <th rowspan="2">Critical Process Parameter</th>
           <th rowspan="2">Codes</th>
           <th rowspan="2">Acceptance criteria</th>
-          <th colspan="2">Results </th>
+          <th class="text-center" colspan="2">Results </th>
           <th rowspan="2">Complies / Does not complies</th>
         </tr>
         <tr>
@@ -970,5 +974,1348 @@
       &nbsp &nbsp
       <p><%= product.msaSummary %></p>
     </div>  
+
+    <h1>Laboratory Review</h1>
+    <h2>Review of Drug Substance Test Results
+    </h2>
+    <h3>Drug Substance 1 Test Result
+    </h3>
+
+    <table>
+      <thead>
+        <tr style="text-transform: uppercase;">
+          <th rowspan="2">Sl. No</th>
+          <th rowspan="2">Tests parameter</th>
+          <th rowspan="2">Specification limit</th>
+          <th colspan="2">Obtained value </th>
+          <th rowspan="2">Complies / Does not complies</th>
+        </tr>
+        <tr>
+          <th>Minimum</th>
+          <th>Maximum</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% product.Ds1Results.forEach((item) => { %>
+        <tr>
+          <td><%= item.Sl_No %></td>
+          <td><%= item.Testsparameter %></td>
+          <td><%= item.Specification_limit %></td>
+          <td><%= item.Obtained.Minimum %></td>
+          <td><%= item.Obtained.Maximum %></td>
+          <td><%= item.CompliesNotComplies %></td>
+        </tr>
+        <% }); %>
+      </tbody>
+    </table>
+
+    <h3>Drug Substance 2 Test Result
+    </h3>
+
+    <table>
+      <thead>
+        <tr style="text-transform: uppercase;">
+          <th rowspan="2">Sl. No</th>
+          <th rowspan="2">Tests parameter</th>
+          <th rowspan="2">Specification limit</th>
+          <th colspan="2">Obtained value </th>
+          <th rowspan="2">Complies / Does not complies</th>
+        </tr>
+        <tr>
+          <th>Minimum</th>
+          <th>Maximum</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% product.Ds2Results.forEach((item) => { %>
+        <tr>
+          <td><%= item.Sl_No %></td>
+          <td><%= item.Testsparameter %></td>
+          <td><%= item.Specification_limit %></td>
+          <td><%= item.Obtained.Minimum %></td>
+          <td><%= item.Obtained.Maximum %></td>
+          <td><%= item.CompliesNotComplies %></td>
+        </tr>
+        <% }); %>
+      </tbody>
+    </table>
+
+    <h3>Drug Substance 3 Test Result
+    </h3>
+
+    <table>
+      <thead>
+        <tr style="text-transform: uppercase;">
+          <th rowspan="2">Sl. No</th>
+          <th rowspan="2">Tests parameter</th>
+          <th rowspan="2">Specification limit</th>
+          <th colspan="2">Obtained value </th>
+          <th rowspan="2">Complies / Does not complies</th>
+        </tr>
+        <tr>
+          <th>Minimum</th>
+          <th>Maximum</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% product.Ds3Results.forEach((item) => { %>
+        <tr>
+          <td><%= item.Sl_No %></td>
+          <td><%= item.Testsparameter %></td>
+          <td><%= item.Specification_limit %></td>
+          <td><%= item.Obtained.Minimum %></td>
+          <td><%= item.Obtained.Maximum %></td>
+          <td><%= item.CompliesNotComplies %></td>
+        </tr>
+        <% }); %>
+      </tbody>
+    </table>
+
+    <h3>Drug Substance 4 Test Result
+    </h3>
+
+    <table>
+      <thead>
+        <tr style="text-transform: uppercase;">
+          <th rowspan="2">Sl. No</th>
+          <th rowspan="2">Tests parameter</th>
+          <th rowspan="2">Specification limit</th>
+          <th colspan="2">Obtained value </th>
+          <th rowspan="2">Complies / Does not complies</th>
+        </tr>
+        <tr>
+          <th>Minimum</th>
+          <th>Maximum</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% product.Ds4Results.forEach((item) => { %>
+        <tr>
+          <td><%= item.Sl_No %></td>
+          <td><%= item.Testsparameter %></td>
+          <td><%= item.Specification_limit %></td>
+          <td><%= item.Obtained.Minimum %></td>
+          <td><%= item.Obtained.Maximum %></td>
+          <td><%= item.CompliesNotComplies %></td>
+        </tr>
+        <% }); %>
+      </tbody>
+    </table>
+    <h3>Drug Substance 5 Test Result
+    </h3>
+
+    <table>
+      <thead>
+        <tr style="text-transform: uppercase;">
+          <th rowspan="2">Sl. No</th>
+          <th rowspan="2">Tests parameter</th>
+          <th rowspan="2">Specification limit</th>
+          <th colspan="2">Obtained value </th>
+          <th rowspan="2">Complies / Does not complies</th>
+        </tr>
+        <tr>
+          <th>Minimum</th>
+          <th>Maximum</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% product.Ds5Results.forEach((item) => { %>
+        <tr>
+          <td><%= item.Sl_No %></td>
+          <td><%= item.Testsparameter %></td>
+          <td><%= item.Specification_limit %></td>
+          <td><%= item.Obtained.Minimum %></td>
+          <td><%= item.Obtained.Maximum %></td>
+          <td><%= item.CompliesNotComplies %></td>
+        </tr>
+        <% }); %>
+      </tbody>
+    </table>
+
+    <h3>Drug Substance 6 Test Result
+    </h3>
+
+    <table>
+      <thead>
+        <tr style="text-transform: uppercase;">
+          <th rowspan="2">Sl. No</th>
+          <th rowspan="2">Tests parameter</th>
+          <th rowspan="2">Specification limit</th>
+          <th colspan="2">Obtained value </th>
+          <th rowspan="2">Complies / Does not complies</th>
+        </tr>
+        <tr>
+          <th>Minimum</th>
+          <th>Maximum</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% product.Ds6Results.forEach((item) => { %>
+        <tr>
+          <td><%= item.Sl_No %></td>
+          <td><%= item.Testsparameter %></td>
+          <td><%= item.Specification_limit %></td>
+          <td><%= item.Obtained.Minimum %></td>
+          <td><%= item.Obtained.Maximum %></td>
+          <td><%= item.CompliesNotComplies %></td>
+        </tr>
+        <% }); %>
+      </tbody>
+    </table>
+    <h3>Drug Substance 7 Test Result
+    </h3>
+
+    <table>
+      <thead>
+        <tr style="text-transform: uppercase;">
+          <th rowspan="2">Sl. No</th>
+          <th rowspan="2">Tests parameter</th>
+          <th rowspan="2">Specification limit</th>
+          <th colspan="2">Obtained value </th>
+          <th rowspan="2">Complies / Does not complies</th>
+        </tr>
+        <tr>
+          <th>Minimum</th>
+          <th>Maximum</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% product.Ds7Results.forEach((item) => { %>
+        <tr>
+          <td><%= item.Sl_No %></td>
+          <td><%= item.Testsparameter %></td>
+          <td><%= item.Specification_limit %></td>
+          <td><%= item.Obtained.Minimum %></td>
+          <td><%= item.Obtained.Maximum %></td>
+          <td><%= item.CompliesNotComplies %></td>
+        </tr>
+        <% }); %>
+      </tbody>
+    </table>
+    <h3>Drug Substance 8 Test Result
+    </h3>
+
+    <table>
+      <thead>
+        <tr style="text-transform: uppercase;">
+          <th rowspan="2">Sl. No</th>
+          <th rowspan="2">Tests parameter</th>
+          <th rowspan="2">Specification limit</th>
+          <th colspan="2">Obtained value </th>
+          <th rowspan="2">Complies / Does not complies</th>
+        </tr>
+        <tr>
+          <th>Minimum</th>
+          <th>Maximum</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% product.Ds8Results.forEach((item) => { %>
+        <tr>
+          <td><%= item.Sl_No %></td>
+          <td><%= item.Testsparameter %></td>
+          <td><%= item.Specification_limit %></td>
+          <td><%= item.Obtained.Minimum %></td>
+          <td><%= item.Obtained.Maximum %></td>
+          <td><%= item.CompliesNotComplies %></td>
+        </tr>
+        <% }); %>
+      </tbody>
+    </table>
+    <h3>Drug Substance 9 Test Result
+    </h3>
+
+    <table>
+      <thead>
+        <tr style="text-transform: uppercase;">
+          <th rowspan="2">Sl. No</th>
+          <th rowspan="2">Tests parameter</th>
+          <th rowspan="2">Specification limit</th>
+          <th colspan="2">Obtained value </th>
+          <th rowspan="2">Complies / Does not complies</th>
+        </tr>
+        <tr>
+          <th>Minimum</th>
+          <th>Maximum</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% product.Ds9Results.forEach((item) => { %>
+        <tr>
+          <td><%= item.Sl_No %></td>
+          <td><%= item.Testsparameter %></td>
+          <td><%= item.Specification_limit %></td>
+          <td><%= item.Obtained.Minimum %></td>
+          <td><%= item.Obtained.Maximum %></td>
+          <td><%= item.CompliesNotComplies %></td>
+        </tr>
+        <% }); %>
+      </tbody>
+    </table>
+    <h3>Drug Substance 10 Test Result
+    </h3>
+
+    <table>
+      <thead>
+        <tr style="text-transform: uppercase;">
+          <th rowspan="2">Sl. No</th>
+          <th rowspan="2">Tests parameter</th>
+          <th rowspan="2">Specification limit</th>
+          <th colspan="2">Obtained value </th>
+          <th rowspan="2">Complies / Does not complies</th>
+        </tr>
+        <tr>
+          <th>Minimum</th>
+          <th>Maximum</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% product.Ds10Results.forEach((item) => { %>
+        <tr>
+          <td><%= item.Sl_No %></td>
+          <td><%= item.Testsparameter %></td>
+          <td><%= item.Specification_limit %></td>
+          <td><%= item.Obtained.Minimum %></td>
+          <td><%= item.Obtained.Maximum %></td>
+          <td><%= item.CompliesNotComplies %></td>
+        </tr>
+        <% }); %>
+      </tbody>
+    </table>
+
+    <div class="summary">
+      <h3>Summary of Review of Drug Substance Test Results :-</h3>
+      &nbsp &nbsp
+      <p><%= product.dstSummary %></p>
+    </div>  
+
+
+
+    <h1>Engineering And Maintenance Review</h1>
+    <h3>Preventive Maintenance Details
+    </h3>
+    <div class="summary">
+      <h3>Summary of Review of Preventive Maintenance Details :-</h3>
+      &nbsp &nbsp
+      <p><%= product.rpmSummary %></p>
+    </div> 
+    <div class="summary">
+      <h3>Summary of Qualification details :-</h3>
+      &nbsp &nbsp
+      <p><%= product.qdSummary %></p>
+    </div> 
+    <div class="summary">
+      <h3>Summary of Calibration Details :-</h3>
+      &nbsp &nbsp
+      <p><%= product.cdSummary %></p>
+    </div> 
+    <h2>HVAC Qualification Status
+    </h2>
+    <table>
+      <thead>
+        <tr style="text-transform: uppercase;">
+          <th rowspan="2">Sl. No</th>
+          <th rowspan="2">Test Description</th>
+          <th rowspan="2">Frequency</th>
+          <th colspan="2">Status</th>
+      </thead>
+      <tbody>
+        <% product.HqStatus.forEach((item) => { %>
+        <tr>
+          <td><%= item.Sl_No %></td>
+          <td><%= item.TestsDescription %></td>
+          <td><%= item.Frequency %></td>
+          <td><%= item.Status %></td>
+        </tr>
+        <% }); %>
+      </tbody>
+    </table>
+    <div class="summary">
+      <h3>Summary of HVAC Qualification Status :-</h3>
+      &nbsp &nbsp
+      <p><%= product.hvqSummary %></p>
+    </div>
+    <h3>Sanitization and Sterilization Details of Utilities</h3>
+    <table>
+      <thead>
+        <tr style="text-transform: uppercase;">
+          <th rowspan="2">Sl. No</th>
+          <th rowspan="2">Equipment Name</th>
+          <th rowspan="2">Frequency</th>
+          <th colspan="2">Status</th>
+      </thead>
+      <tbody>
+        <% product.ssd.forEach((item) => { %>
+        <tr>
+          <td><%= item.Sl_No %></td>
+          <td><%= item.Equipment_Name %></td>
+          <td><%= item.Frequency %></td>
+          <td><%= item.Status %></td>
+        </tr>
+        <% }); %>
+      </tbody>
+    </table>
+    <div class="summary">
+      <h3>Summary of Sanitization and Sterilization Details of Utilities :-</h3>
+      &nbsp &nbsp
+      <p><%= product.ssdSummary %></p>
+    </div>
+
+<h3>Compressed Gases</h3>
+<table>
+  <thead>
+    <tr style="text-transform: uppercase;">
+      <th rowspan="2">Sl. No</th>
+      <th rowspan="2">Compressed Gas</th>
+      <th rowspan="2">Test</th>
+      <th rowspan="2">Frequency</th>
+      <th colspan="2">Status</th>
+  </thead>
+  <tbody>
+    <% product.cg.forEach((item) => { %>
+    <tr>
+      <td><%= item.Sl_No %></td>
+      <td><%= item.CompressedGas %></td>
+      <td><%= item.Test %></td>
+      <td><%= item.Frequency %></td>
+      <td><%= item.Status %></td>
+    </tr>
+    <% }); %>
+  </tbody>
+</table>
+<div class="summary">
+  <h3>Summary of Compressed Gas :-</h3>
+  &nbsp &nbsp
+  <p><%= product.cgSummary %></p>
+</div>
+
+<h3>Engineering Summary</h3>
+<div class="summary">
+  <h3>Summary of Engineering :-</h3>
+  &nbsp &nbsp
+  <p><%= product.eSummary %></p>
+</div>
+
+<h1>Quality System Review
+</h1>
+<h2>Review of Deviations
+</h2>
+<h3>Review of Current Period Deviations
+</h3>
+<table>
+  <thead>
+    <tr style="text-transform: uppercase;">
+      <th >S. No</th>
+      <th >Date Of Initiation</th>
+      <th >Record No</th>
+      <th >Site/Division</th>
+      <th >Department</th>
+      <th >Initiator</th>
+      <th >Short Description</th>
+      <th >Batch No</th>
+      <th >Due Date</th>
+      <th >Current Status</th>
+  </thead>
+  <tbody>
+    <% product.rcpd.forEach((item) => { %>
+    <tr>
+      <td><%= item.S_No %></td>
+      <td><%= item.Date_Of_Initiation %></td>
+      <td><%= item.Record_No %></td>
+      <td><%= item.Site_Division %></td>
+      <td><%= item.Department %></td>
+      <td><%= item.Initiator%></td>
+      <td><%= item.Short_Description %></td>
+      <td><%= item.Batch_No %></td>
+      <td><%= item.Due_Date %></td>
+      <td><%= item.Current_Status %></td>
+    </tr>
+    <% }); %>
+  </tbody>
+</table>
+
+<h3>Previous Review Period Deviations
+</h3>
+<table>
+  <thead>
+    <tr style="text-transform: uppercase;">
+      <th >S. No</th>
+      <th >Date Of Initiation</th>
+      <th >Record No</th>
+      <th >Site/Division</th>
+      <th >Department</th>
+      <th >Initiator</th>
+      <th >Short Description</th>
+      <th >Batch No</th>
+      <th >Due Date</th>
+      <th >Current Status</th>
+  </thead>
+  <tbody>
+    <% product.rppd.forEach((item) => { %>
+    <tr>
+      <td><%= item.S_No %></td>
+      <td><%= item.Date_Of_Initiation %></td>
+      <td><%= item.Record_No %></td>
+      <td><%= item.Site_Division %></td>
+      <td><%= item.Department %></td>
+      <td><%= item.Initiator%></td>
+      <td><%= item.Short_Description %></td>
+      <td><%= item.Batch_No %></td>
+      <td><%= item.Due_Date %></td>
+      <td><%= item.Current_Status %></td>
+    </tr>
+    <% }); %>
+  </tbody>
+</table>
+<div class="summary">
+  <h3>Summary of Review of period Deviations :-</h3>
+  &nbsp &nbsp
+  <p><%= product.rdSummary %></p>
+</div>
+
+<h2>Review of OOS (Microbiological)</h2>
+<h3>Current Review Period OOS</h3>
+<table>
+  <thead>
+    <tr style="text-transform: uppercase;">
+      <th >S. No</th>
+      <th >Date Of Initiation</th>
+      <th >Record No</th>
+      <th >Site/Division</th>
+      <th >Department</th>
+      <th >Initiator</th>
+      <th >Short Description</th>
+      <th >Batch No</th>
+      <th >Due Date</th>
+      <th >Current Status</th>
+  </thead>
+  <tbody>
+    <% product.crpo.forEach((item) => { %>
+    <tr>
+      <td><%= item.S_No %></td>
+      <td><%= item.Date_Of_Initiation %></td>
+      <td><%= item.Record_No %></td>
+      <td><%= item.Site_Division %></td>
+      <td><%= item.Department %></td>
+      <td><%= item.Initiator%></td>
+      <td><%= item.Short_Description %></td>
+      <td><%= item.Batch_No %></td>
+      <td><%= item.Due_Date %></td>
+      <td><%= item.Current_Status %></td>
+    </tr>
+    <% }); %>
+  </tbody>
+</table>
+<h3>Previous Review Period OOS</h3>
+<table>
+  <thead>
+    <tr style="text-transform: uppercase;">
+      <th >S. No</th>
+      <th >Date Of Initiation</th>
+      <th >Record No</th>
+      <th >Site/Division</th>
+      <th >Department</th>
+      <th >Initiator</th>
+      <th >Short Description</th>
+      <th >Batch No</th>
+      <th >Due Date</th>
+      <th >Current Status</th>
+  </thead>
+  <tbody>
+    <% product.prpo.forEach((item) => { %>
+    <tr>
+      <td><%= item.S_No %></td>
+      <td><%= item.Date_Of_Initiation %></td>
+      <td><%= item.Record_No %></td>
+      <td><%= item.Site_Division %></td>
+      <td><%= item.Department %></td>
+      <td><%= item.Initiator%></td>
+      <td><%= item.Short_Description %></td>
+      <td><%= item.Batch_No %></td>
+      <td><%= item.Due_Date %></td>
+      <td><%= item.Current_Status %></td>
+    </tr>
+    <% }); %>
+  </tbody>
+</table>
+<h3>OOS Summary</h3>
+<div class="summary">
+  <h3>Summary of OOS :-</h3>
+  &nbsp &nbsp
+  <p><%= product.oosSummary %></p>
+</div>
+
+<h2>Review of OOAC (Microbiological)</h2>
+<h3>Current Review Period OOAC</h3>
+<table>
+  <thead>
+    <tr style="text-transform: uppercase;">
+      <th >S. No</th>
+      <th >Date Of Initiation</th>
+      <th >Record No</th>
+      <th >Site/Division</th>
+      <th >Department</th>
+      <th >Initiator</th>
+      <th >Short Description</th>
+      <th >Batch No</th>
+      <th >Due Date</th>
+      <th >Current Status</th>
+  </thead>
+  <tbody>
+    <% product.ooac.forEach((item) => { %>
+    <tr>
+      <td><%= item.S_No %></td>
+      <td><%= item.Date_Of_Initiation %></td>
+      <td><%= item.Record_No %></td>
+      <td><%= item.Site_Division %></td>
+      <td><%= item.Department %></td>
+      <td><%= item.Initiator%></td>
+      <td><%= item.Short_Description %></td>
+      <td><%= item.Batch_No %></td>
+      <td><%= item.Due_Date %></td>
+      <td><%= item.Current_Status %></td>
+    </tr>
+    <% }); %>
+  </tbody>
+</table>
+
+<h3>Previous Review Period OOAC</h3>
+<table>
+  <thead>
+    <tr style="text-transform: uppercase;">
+      <th >S. No</th>
+      <th >Date Of Initiation</th>
+      <th >Record No</th>
+      <th >Site/Division</th>
+      <th >Department</th>
+      <th >Initiator</th>
+      <th >Short Description</th>
+      <th >Batch No</th>
+      <th >Due Date</th>
+      <th >Current Status</th>
+  </thead>
+  <tbody>
+    <% product.pooac.forEach((item) => { %>
+    <tr>
+      <td><%= item.S_No %></td>
+      <td><%= item.Date_Of_Initiation %></td>
+      <td><%= item.Record_No %></td>
+      <td><%= item.Site_Division %></td>
+      <td><%= item.Department %></td>
+      <td><%= item.Initiator%></td>
+      <td><%= item.Short_Description %></td>
+      <td><%= item.Batch_No %></td>
+      <td><%= item.Due_Date %></td>
+      <td><%= item.Current_Status %></td>
+    </tr>
+    <% }); %>
+  </tbody>
+</table>
+<div class="summary">
+  <h3>Summary of OOAC :-</h3>
+  &nbsp &nbsp
+  <p><%= product.ooacSummary %></p>
+</div>
+
+<h2>Review of OOAL(Microbiological)</h2>
+<h3>Current Review Period OOAL</h3>
+<table>
+  <thead>
+    <tr style="text-transform: uppercase;">
+      <th >S. No</th>
+      <th >Date Of Initiation</th>
+      <th >Record No</th>
+      <th >Site/Division</th>
+      <th >Department</th>
+      <th >Initiator</th>
+      <th >Short Description</th>
+      <th >Batch No</th>
+      <th >Due Date</th>
+      <th >Current Status</th>
+  </thead>
+  <tbody>
+    <% product.ooal.forEach((item) => { %>
+    <tr>
+      <td><%= item.S_No %></td>
+      <td><%= item.Date_Of_Initiation %></td>
+      <td><%= item.Record_No %></td>
+      <td><%= item.Site_Division %></td>
+      <td><%= item.Department %></td>
+      <td><%= item.Initiator%></td>
+      <td><%= item.Short_Description %></td>
+      <td><%= item.Batch_No %></td>
+      <td><%= item.Due_Date %></td>
+      <td><%= item.Current_Status %></td>
+    </tr>
+    <% }); %>
+  </tbody>
+</table>
+
+<h3>Previous Review Period OOAL</h3>
+<table>
+  <thead>
+    <tr style="text-transform: uppercase;">
+      <th >S. No</th>
+      <th >Date Of Initiation</th>
+      <th >Record No</th>
+      <th >Site/Division</th>
+      <th >Department</th>
+      <th >Initiator</th>
+      <th >Short Description</th>
+      <th >Batch No</th>
+      <th >Due Date</th>
+      <th >Current Status</th>
+  </thead>
+  <tbody>
+    <% product.pooal.forEach((item) => { %>
+    <tr>
+      <td><%= item.S_No %></td>
+      <td><%= item.Date_Of_Initiation %></td>
+      <td><%= item.Record_No %></td>
+      <td><%= item.Site_Division %></td>
+      <td><%= item.Department %></td>
+      <td><%= item.Initiator%></td>
+      <td><%= item.Short_Description %></td>
+      <td><%= item.Batch_No %></td>
+      <td><%= item.Due_Date %></td>
+      <td><%= item.Current_Status %></td>
+    </tr>
+    <% }); %>
+  </tbody>
+</table>
+<div class="summary">
+  <h3>Summary of OOAL :-</h3>
+  &nbsp &nbsp
+  <p><%= product.ooalSummary %></p>
+</div>
+
+<h2>Review of OOS (Analytical)</h2>
+<h3>Current review period OOS</h3>
+<table>
+  <thead>
+    <tr style="text-transform: uppercase;">
+      <th >S. No</th>
+      <th >Date Of Initiation</th>
+      <th >Record No</th>
+      <th >Site/Division</th>
+      <th >Department</th>
+      <th >Initiator</th>
+      <th >Short Description</th>
+      <th >Batch No</th>
+      <th >Due Date</th>
+      <th >Current Status</th>
+  </thead>
+  <tbody>
+    <% product.oos.forEach((item) => { %>
+    <tr>
+      <td><%= item.S_No %></td>
+      <td><%= item.Date_Of_Initiation %></td>
+      <td><%= item.Record_No %></td>
+      <td><%= item.Site_Division %></td>
+      <td><%= item.Department %></td>
+      <td><%= item.Initiator%></td>
+      <td><%= item.Short_Description %></td>
+      <td><%= item.Batch_No %></td>
+      <td><%= item.Due_Date %></td>
+      <td><%= item.Current_Status %></td>
+    </tr>
+    <% }); %>
+  </tbody>
+  <h3>Previous review period OOS
+  </h3>
+  <table>
+    <thead>
+      <tr style="text-transform: uppercase;">
+        <th >S. No</th>
+        <th >Date Of Initiation</th>
+        <th >Record No</th>
+        <th >Site/Division</th>
+        <th >Department</th>
+        <th >Initiator</th>
+        <th >Short Description</th>
+        <th >Batch No</th>
+        <th >Due Date</th>
+        <th >Current Status</th>
+    </thead>
+    <tbody>
+      <% product.poos.forEach((item) => { %>
+      <tr>
+        <td><%= item.S_No %></td>
+        <td><%= item.Date_Of_Initiation %></td>
+        <td><%= item.Record_No %></td>
+        <td><%= item.Site_Division %></td>
+        <td><%= item.Department %></td>
+        <td><%= item.Initiator%></td>
+        <td><%= item.Short_Description %></td>
+        <td><%= item.Batch_No %></td>
+        <td><%= item.Due_Date %></td>
+        <td><%= item.Current_Status %></td>
+      </tr>
+      <% }); %>
+    </tbody>
+  </table>
+</table>
+<div class="summary">
+  <h3>Summary of OOSA :-</h3>
+  &nbsp &nbsp
+  <p><%= product.oosaSummary %></p>
+</div>
+
+<h2>Review of OOT (Analytical)</h2>
+<h3>Current Review Period OOT</h3>
+<table>
+  <thead>
+    <tr style="text-transform: uppercase;">
+      <th >S. No</th>
+      <th >Date Of Initiation</th>
+      <th >Record No</th>
+      <th >Site/Division</th>
+      <th >Department</th>
+      <th >Initiator</th>
+      <th >Short Description</th>
+      <th >Batch No</th>
+      <th >Due Date</th>
+      <th >Current Status</th>
+  </thead>
+  <tbody>
+    <% product.oot.forEach((item) => { %>
+    <tr>
+      <td><%= item.S_No %></td>
+      <td><%= item.Date_Of_Initiation %></td>
+      <td><%= item.Record_No %></td>
+      <td><%= item.Site_Division %></td>
+      <td><%= item.Department %></td>
+      <td><%= item.Initiator%></td>
+      <td><%= item.Short_Description %></td>
+      <td><%= item.Batch_No %></td>
+      <td><%= item.Due_Date %></td>
+      <td><%= item.Current_Status %></td>
+    </tr>
+    <% }); %>
+  </tbody>
+</table>
+
+<h3>Previous Review Period OOS</h3>
+<table>
+  <thead>
+    <tr style="text-transform: uppercase;">
+      <th >S. No</th>
+      <th >Date Of Initiation</th>
+      <th >Record No</th>
+      <th >Site/Division</th>
+      <th >Department</th>
+      <th >Initiator</th>
+      <th >Short Description</th>
+      <th >Batch No</th>
+      <th >Due Date</th>
+      <th >Current Status</th>
+  </thead>
+  <tbody>
+    <% product.poot.forEach((item) => { %>
+    <tr>
+      <td><%= item.S_No %></td>
+      <td><%= item.Date_Of_Initiation %></td>
+      <td><%= item.Record_No %></td>
+      <td><%= item.Site_Division %></td>
+      <td><%= item.Department %></td>
+      <td><%= item.Initiator%></td>
+      <td><%= item.Short_Description %></td>
+      <td><%= item.Batch_No %></td>
+      <td><%= item.Due_Date %></td>
+      <td><%= item.Current_Status %></td>
+    </tr>
+    <% }); %>
+  </tbody>
+</table>
+<div class="summary">
+  <h3>Summary of OOT :-</h3>
+  &nbsp &nbsp
+  <p><%= product.ootSummary %></p>
+</div>
+<h2>Review of Change Controls</h2>
+<h3>Current Review Period Change Controls</h3>
+<table>
+  <thead>
+    <tr style="text-transform: uppercase;">
+      <th >S. No</th>
+      <th >Date Of Initiation</th>
+      <th >Record No</th>
+      <th >Site/Division</th>
+      <th >Department</th>
+      <th >Initiator</th>
+      <th >Short Description</th>
+      <th >Batch No</th>
+      <th >Due Date</th>
+      <th >Current Status</th>
+  </thead>
+  <tbody>
+    <% product.cc.forEach((item) => { %>
+    <tr>
+      <td><%= item.S_No %></td>
+      <td><%= item.Date_Of_Initiation %></td>
+      <td><%= item.Record_No %></td>
+      <td><%= item.Site_Division %></td>
+      <td><%= item.Department %></td>
+      <td><%= item.Initiator%></td>
+      <td><%= item.Short_Description %></td>
+      <td><%= item.Batch_No %></td>
+      <td><%= item.Due_Date %></td>
+      <td><%= item.Current_Status %></td>
+    </tr>
+    <% }); %>
+  </tbody>
+</table>
+
+<h3>Previous Review Period Change Controls </h3>
+<table>
+  <thead>
+    <tr style="text-transform: uppercase;">
+      <th >S. No</th>
+      <th >Date Of Initiation</th>
+      <th >Record No</th>
+      <th >Site/Division</th>
+      <th >Department</th>
+      <th >Initiator</th>
+      <th >Short Description</th>
+      <th >Batch No</th>
+      <th >Due Date</th>
+      <th >Current Status</th>
+  </thead>
+  <tbody>
+    <% product.pcc.forEach((item) => { %>
+    <tr>
+      <td><%= item.S_No %></td>
+      <td><%= item.Date_Of_Initiation %></td>
+      <td><%= item.Record_No %></td>
+      <td><%= item.Site_Division %></td>
+      <td><%= item.Department %></td>
+      <td><%= item.Initiator%></td>
+      <td><%= item.Short_Description %></td>
+      <td><%= item.Batch_No %></td>
+      <td><%= item.Due_Date %></td>
+      <td><%= item.Current_Status %></td>
+    </tr>
+    <% }); %>
+  </tbody>
+</table>
+<div class="summary">
+  <h3>Summary of Change Control :-</h3>
+  &nbsp &nbsp
+  <p><%= product.ccSummary %></p>
+</div>
+
+<h2>Review of Lab Incident</h2>
+<h3>Current Review Lab Incident</h3>
+<table>
+  <thead>
+    <tr style="text-transform: uppercase;">
+      <th >S. No</th>
+      <th >Date Of Initiation</th>
+      <th >Record No</th>
+      <th >Site/Division</th>
+      <th >Department</th>
+      <th >Initiator</th>
+      <th >Short Description</th>
+      <th >Batch No</th>
+      <th >Due Date</th>
+      <th >Current Status</th>
+  </thead>
+  <tbody>
+    <% product.li.forEach((item) => { %>
+    <tr>
+      <td><%= item.S_No %></td>
+      <td><%= item.Date_Of_Initiation %></td>
+      <td><%= item.Record_No %></td>
+      <td><%= item.Site_Division %></td>
+      <td><%= item.Department %></td>
+      <td><%= item.Initiator%></td>
+      <td><%= item.Short_Description %></td>
+      <td><%= item.Batch_No %></td>
+      <td><%= item.Due_Date %></td>
+      <td><%= item.Current_Status %></td>
+    </tr>
+    <% }); %>
+  </tbody>
+</table>
+
+<h3>Previous Review Lab Incident</h3>
+<table>
+  <thead>
+    <tr style="text-transform: uppercase;">
+      <th >S. No</th>
+      <th >Date Of Initiation</th>
+      <th >Record No</th>
+      <th >Site/Division</th>
+      <th >Department</th>
+      <th >Initiator</th>
+      <th >Short Description</th>
+      <th >Batch No</th>
+      <th >Due Date</th>
+      <th >Current Status</th>
+  </thead>
+  <tbody>
+    <% product.pli.forEach((item) => { %>
+    <tr>
+      <td><%= item.S_No %></td>
+      <td><%= item.Date_Of_Initiation %></td>
+      <td><%= item.Record_No %></td>
+      <td><%= item.Site_Division %></td>
+      <td><%= item.Department %></td>
+      <td><%= item.Initiator%></td>
+      <td><%= item.Short_Description %></td>
+      <td><%= item.Batch_No %></td>
+      <td><%= item.Due_Date %></td>
+      <td><%= item.Current_Status %></td>
+    </tr>
+    <% }); %>
+  </tbody>
+</table>
+<div class="summary">
+  <h3>Summary of Lab Incident :-</h3>
+  &nbsp &nbsp
+  <p><%= product.liSummary %></p>
+</div>
+
+<h2>Review of Market Complaints</h2>
+<h3>Current Review Period Complaints</h3>
+<table>
+  <thead>
+    <tr style="text-transform: uppercase;">
+      <th >S. No</th>
+      <th >Date Of Initiation</th>
+      <th >Record No</th>
+      <th >Site/Division</th>
+      <th >Department</th>
+      <th >Initiator</th>
+      <th >Short Description</th>
+      <th >Batch No</th>
+      <th >Due Date</th>
+      <th >Current Status</th>
+  </thead>
+  <tbody>
+    <% product.rpc.forEach((item) => { %>
+    <tr>
+      <td><%= item.S_No %></td>
+      <td><%= item.Date_Of_Initiation %></td>
+      <td><%= item.Record_No %></td>
+      <td><%= item.Site_Division %></td>
+      <td><%= item.Department %></td>
+      <td><%= item.Initiator%></td>
+      <td><%= item.Short_Description %></td>
+      <td><%= item.Batch_No %></td>
+      <td><%= item.Due_Date %></td>
+      <td><%= item.Current_Status %></td>
+    </tr>
+    <% }); %>
+  </tbody>
+</table>
+
+<h3>Previous Review Period Complaints</h3>
+<table>
+  <thead>
+    <tr style="text-transform: uppercase;">
+      <th >S. No</th>
+      <th >Date Of Initiation</th>
+      <th >Record No</th>
+      <th >Site/Division</th>
+      <th >Department</th>
+      <th >Initiator</th>
+      <th >Short Description</th>
+      <th >Batch No</th>
+      <th >Due Date</th>
+      <th >Current Status</th>
+  </thead>
+  <tbody>
+    <% product.prpc.forEach((item) => { %>
+    <tr>
+      <td><%= item.S_No %></td>
+      <td><%= item.Date_Of_Initiation %></td>
+      <td><%= item.Record_No %></td>
+      <td><%= item.Site_Division %></td>
+      <td><%= item.Department %></td>
+      <td><%= item.Initiator%></td>
+      <td><%= item.Short_Description %></td>
+      <td><%= item.Batch_No %></td>
+      <td><%= item.Due_Date %></td>
+      <td><%= item.Current_Status %></td>
+    </tr>
+    <% }); %>
+  </tbody>
+</table>
+<div class="summary">
+  <h3>Summary of Market Complaints :-</h3>
+  &nbsp &nbsp
+  <p><%= product.rpcSummary %></p>
+</div>
+
+
+<h2>Quality Related Notification</h2>
+<h3>Current Review Period Quality Related Notification</h3>
+
+<table>
+  <thead>
+    <tr style="text-transform: uppercase;">
+      <th rowspan="2">Sl. No.</th>
+      <th rowspan="2">Batch No.</th>
+      <th colspan="4">Quality Related Notification</th>
+      <th colspan="3">CAPA</th>
+    </tr>
+    <tr>
+      <th>No.</th>
+      <th>Description</th>
+      <th>Impact</th>
+      <th>Status</th>
+    
+      <th>Description No.</th>
+      <th>Status</th>
+      <th>EC</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% product.qrNoti.forEach((item) => { %>
+    <tr>
+      <td><%= item.Sl_No %></td>
+      <td><%= item.Batch_No %></td>
+      <td><%= item.Quality_Related_Notification.No %></td>
+      <td><%= item.Quality_Related_Notification.Description %></td>
+      <td><%= item.Quality_Related_Notification.Impact	 %></td>
+      <td><%= item.Quality_Related_Notification.Status %></td>
+      <td><%= item.CAPA.Description_No %></td>
+      <td><%= item.CAPA.Status %></td>
+      <td><%= item.CAPA.EC %></td>
+    </tr>
+    <% }); %>
+  </tbody>
+  </table>
+
+  <div class="summary">
+    <h3>Summary of previous Review Period Quality Related Notification :-</h3>
+    &nbsp &nbsp
+    <p><%= product.prerSummary %></p>
+  </div>
+
+  <div class="summary">
+    <h3>Summary of Review of Product Recalls :-</h3>
+    &nbsp &nbsp
+    <p><%= product.revrSummary %></p>
+  </div>
+  <div class="summary">
+    <h3>Summary of Review of Returned Products :-</h3>
+    &nbsp &nbsp
+    <p><%= product.revreSummary %></p>
+  </div>
+  <div class="summary">
+    <h3>Summary of Review of Salvaged Drugs :-</h3>
+    &nbsp &nbsp
+    <p><%= product.revsalSummary %></p>
+  </div>
+  <div class="summary">
+    <h3>Summary of Review of previous PQR recommendations :-</h3>
+    &nbsp &nbsp
+    <p><%= product.revPqrSummary %></p>
+  </div>
+  <div class="summary">
+    <h3>Summary of Review of Quality Agreements :-</h3>
+    &nbsp &nbsp
+    <p><%= product.revagrSummary %></p>
+  </div>
+  <div class="summary">
+    <h3>Summary of Review of Manufacturing Authorizations :-</h3>
+    &nbsp &nbsp
+    <p><%= product.revmSummary %></p>
+  </div>
+  <div class="summary">
+    <h3>Summary of Review of Open Validations :-</h3>
+    &nbsp &nbsp
+    <p><%= product.revovSummary %></p>
+  </div>
+
+//Tab 7
+<h1>Regulatory Review</h1>
+<h3>Dossier variation details</h3>
+<table>
+  <thead>
+    <tr style="text-transform: uppercase;">
+      <th>Sl. No</th>
+      <th>Agency</th>
+      <th>Notification No	</th>
+      <th>Notification Type	</th>
+      <th>Description</th>
+  </thead>
+  <tbody>
+    <% product.dosVar.forEach((item) => { %>
+    <tr>
+      <td><%= item.Sl_No %></td>
+      <td><%= item.Agency	 %></td>
+      <td><%= item.Notification_No %></td>
+      <td><%= item.Notification_Type %></td>
+      <td><%= item.Description %></td>
+    </tr>
+    <% }); %>
+  </tbody>
+</table>
+<div class="summary">
+  <h3>Summary of Dossier variation details  :-</h3>
+  &nbsp &nbsp
+  <p><%= product.dosVarSummary %></p>
+</div>
+
+<h3>New marketing authorisation</h3>
+<table>
+  <thead>
+    <tr style="text-transform: uppercase;">
+      <th>Sl. No</th>
+      <th>Country Name</th>
+      <th>Description Of Packing </th>
+      <th>Date of Application	</th>
+      <th>Status of Application	</th>
+      <th>Date of Authorization	</th>
+      <th>Remarks</th>
+  </thead>
+  <tbody>
+    <% product.newm.forEach((item) => { %>
+    <tr>
+      <td><%= item.Sl_No %></td>
+      <td><%= item.Country_Name	 %></td>
+      <td><%= item.Description_Of_Packing %></td>
+      <td><%= item.Date_of_Application %></td>
+      <td><%= item.Status_of_Application %></td>
+      <td><%= item.Date_of_Authorization	 %></td>
+      <td><%= item.Remarks %></td>
+    </tr>
+    <% }); %>
+  </tbody>
+</table>
+<div class="summary">
+  <h3>Summary of New marketing authorisation:-</h3>
+  &nbsp &nbsp
+  <p><%= product.newmSummary %></p>
+</div>
+
+//Tab8
+<h1>Recommendations</h1>
+<h3>Recommendations Summary</h3>
+<div class="summary">
+  <h3>Summary of Recommendations :-</h3>
+  &nbsp &nbsp
+  <p><%= product.recSummary %></p>
+</div>
+
+//Tab 9 
+<h1>CAPA</h1>
+
+//Tab 10
+<h1>Discussion, Evaluation And Conclusion</h1>
+<h3>Discussion Evaluation and Conclusion</h3>
+<div class="summary">
+  <h3>Summary of Discussion, Evaluation And Conclusion  :-</h3>
+  &nbsp &nbsp
+  <p><%= product.decSummary %></p>
+</div>
+
+//Tab 11
+<h1>List Of Annexures/Attachments</h1>
+
+<div class="summary">
+  <h3>Annexure 1 :-</h3>
+  &nbsp &nbsp
+  <p><%= product.A1Summary %></p>
+</div>
+<div class="summary">
+  <h3>Annexure 2 :-</h3>
+  &nbsp &nbsp
+  <p><%= product.A2Summary %></p>
+</div>
+<div class="summary">
+  <h3>Annexure 3 :-</h3>
+  &nbsp &nbsp
+  <p><%= product.A3Summary %></p>
+</div>
+<div class="summary">
+  <h3>Annexure 4 :-</h3>
+  &nbsp &nbsp
+  <p><%= product.A4Summary %></p>
+</div>
+<div class="summary">
+  <h3>Annexure 5 :-</h3>
+  &nbsp &nbsp
+  <p><%= product.A5Summary %></p>
+</div>
+<div class="summary">
+  <h3>Annexure 6 :-</h3>
+  &nbsp &nbsp
+  <p><%= product.A6Summary %></p>
+</div>
+<div class="summary">
+  <h3>Annexure 7 :-</h3>
+  &nbsp &nbsp
+  <p><%= product.A7Summary %></p>
+</div>
+<div class="summary">
+  <h3>Annexure 8 :-</h3>
+  &nbsp &nbsp
+  <p><%= product.A8Summary %></p>
+</div>
+<div class="summary">
+  <h3>Annexure 9 :-</h3>
+  &nbsp &nbsp
+  <p><%= product.A9Summary %></p>
+</div>
+<div class="summary">
+  <h3>Annexure 10 :-</h3>
+  &nbsp &nbsp
+  <p><%= product.A10Summary %></p>
+</div>
+<div class="summary">
+  <h3>Annexure 11 :-</h3>
+  &nbsp &nbsp
+  <p><%= product.A11Summary %></p>
+</div>
+<div class="summary">
+  <h3>Annexure 12 :-</h3>
+  &nbsp &nbsp
+  <p><%= product.A12Summary %></p>
+</div>
+<div class="summary">
+  <h3>Annexure 13 :-</h3>
+  &nbsp &nbsp
+  <p><%= product.A13Summary %></p>
+</div>
+<div class="summary">
+  <h3>Annexure 14 :-</h3>
+  &nbsp &nbsp
+  <p><%= product.A14Summary %></p>
+</div>
+<div class="summary">
+  <h3>Annexure 15 :-</h3>
+  &nbsp &nbsp
+  <p><%= product.A15Summary %></p>
+</div>
+<div class="summary">
+  <h3>Annexure 16 :-</h3>
+  &nbsp &nbsp
+  <p><%= product.A16Summary %></p>
+</div>
+<div class="summary">
+  <h3>Annexure 17 :-</h3>
+  &nbsp &nbsp
+  <p><%= product.A17Summary %></p>
+</div>
+<div class="summary">
+  <h3>Annexure 18 :-</h3>
+  &nbsp &nbsp
+  <p><%= product.A18Summary %></p>
+</div>
+<div class="summary">
+  <h3>Annexure 19 :-</h3>
+  &nbsp &nbsp
+  <p><%= product.A19Summary %></p>
+</div>
+<div class="summary">
+  <h3>Annexure 20 :-</h3>
+  &nbsp &nbsp
+  <p><%= product.A20Summary %></p>
+</div>
+
   </body>
 </html>
