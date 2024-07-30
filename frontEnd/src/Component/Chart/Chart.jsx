@@ -14,6 +14,7 @@ import { Chart } from "react-chartjs-2";
 import annotationPlugin from "chartjs-plugin-annotation";
 import "./Chart.css";
 import { useLocation } from "react-router-dom";
+import zoomPlugin from 'chartjs-plugin-zoom';
 import Header from "../Header";
 import BottomHeader from "../BottomHeader";
 
@@ -27,7 +28,8 @@ ChartJS.register(
   LineElement,
   Title,
   Tooltip,
-  Legend
+  Legend,
+  zoomPlugin
 );
 
 export default function LineChartPQR() {
@@ -375,77 +377,77 @@ export default function LineChartPQR() {
       Average: 100.01,
     },
     {
-      "Batch No.": 100001,
+      "Batch No.": 1000048,
       LSL: 90,
       "Observed Value": 25,
       USL: 110,
       Average: 100.01,
     },
     {
-      "Batch No.": 100002,
+      "Batch No.": 1000049,
       LSL: 90,
       "Observed Value": 50,
       USL: 110,
       Average: 100.01,
     },
     {
-      "Batch No.": 100003,
+      "Batch No.": 1000050,
       LSL: 90,
       "Observed Value": 41,
       USL: 110,
       Average: 100.01,
     },
     {
-      "Batch No.": 100004,
+      "Batch No.": 1000051,
       LSL: 90,
       "Observed Value": 32,
       USL: 110,
       Average: 100.01,
     },
     {
-      "Batch No.": 100005,
+      "Batch No.": 1000052,
       LSL: 90,
       "Observed Value": -25,
       USL: 110,
       Average: 100.01,
     },
     {
-      "Batch No.": 100006,
+      "Batch No.": 1000053,
       LSL: 90,
       "Observed Value": -45,
       USL: 110,
       Average: 100.01,
     },
     {
-      "Batch No.": 100007,
+      "Batch No.": 1000054,
       LSL: 90,
       "Observed Value": -85,
       USL: 110,
       Average: 100.01,
     },
     {
-      "Batch No.": 100008,
+      "Batch No.": 1000055,
       LSL: 90,
       "Observed Value": -120,
       USL: 110,
       Average: 100.01,
     },
     {
-      "Batch No.": 100009,
+      "Batch No.": 1000056,
       LSL: 90,
       "Observed Value": -111,
       USL: 110,
       Average: 100.01,
     },
     {
-      "Batch No.": 100010,
+      "Batch No.": 100057,
       LSL: 90,
       "Observed Value": 111,
       USL: 110,
       Average: 100.01,
     },
     {
-      "Batch No.": 100011,
+      "Batch No.": 100058,
       LSL: 90,
       "Observed Value": 90,
       USL: 110,
@@ -459,231 +461,231 @@ export default function LineChartPQR() {
       Average: 100.01,
     },
     {
-      "Batch No.": 100013,
+      "Batch No.": 100059,
       LSL: 90,
       "Observed Value": 22,
       USL: 110,
       Average: 100.01,
     },
     {
-      "Batch No.": 100014,
+      "Batch No.": 100060,
       LSL: 90,
       "Observed Value": 35,
       USL: 110,
       Average: 100.01,
     },
     {
-      "Batch No.": 100015,
+      "Batch No.": 100061,
       LSL: 90,
       "Observed Value": 79,
       USL: 110,
       Average: 100.01,
     },
     {
-      "Batch No.": 100016,
+      "Batch No.": 100062,
       LSL: 90,
       "Observed Value": 23,
       USL: 110,
       Average: 100.01,
     },
     {
-      "Batch No.": 100017,
+      "Batch No.": 100063,
       LSL: 90,
       "Observed Value": 29,
       USL: 110,
       Average: 100.01,
     },
     {
-      "Batch No.": 100018,
+      "Batch No.": 100064,
       LSL: 90,
       "Observed Value": 45,
       USL: 110,
       Average: 100.01,
     },
     {
-      "Batch No.": 100019,
+      "Batch No.": 100065,
       LSL: 90,
       "Observed Value": -32,
       USL: 110,
       Average: 100.01,
     },
     {
-      "Batch No.": 100020,
+      "Batch No.": 100066,
       LSL: 90,
       "Observed Value": -11,
       USL: 110,
       Average: 100.01,
     },
     {
-      "Batch No.": 100021,
+      "Batch No.": 100067,
       LSL: 90,
       "Observed Value": -13,
       USL: 110,
       Average: 100.01,
     },
     {
-      "Batch No.": 100022,
+      "Batch No.": 100068,
       LSL: 90,
       "Observed Value": 15,
       USL: 110,
       Average: 100.01,
     },
     {
-      "Batch No.": 100023,
+      "Batch No.": 100069,
       LSL: 90,
       "Observed Value": 18,
       USL: 110,
       Average: 100.01,
     },
     {
-      "Batch No.": 100024,
+      "Batch No.": 100070,
       LSL: 90,
       "Observed Value": 20,
       USL: 110,
       Average: 100.01,
     },
     {
-      "Batch No.": 100025,
+      "Batch No.": 100071,
       LSL: 90,
       "Observed Value": 45,
       USL: 110,
       Average: 100.01,
     },
     {
-      "Batch No.": 100026,
+      "Batch No.": 100072,
       LSL: 90,
       "Observed Value": 113,
       USL: 110,
       Average: 100.01,
     },
     {
-      "Batch No.": 100027,
+      "Batch No.": 100073,
       LSL: 90,
       "Observed Value": 34,
       USL: 110,
       Average: 100.01,
     },
     {
-      "Batch No.": 100028,
+      "Batch No.": 100074,
       LSL: 90,
       "Observed Value": -34,
       USL: 110,
       Average: 100.01,
     },
     {
-      "Batch No.": 100029,
+      "Batch No.": 100075,
       LSL: 90,
       "Observed Value": -12,
       USL: 110,
       Average: 100.01,
     },
     {
-      "Batch No.": 100030,
+      "Batch No.": 100076,
       LSL: 90,
       "Observed Value": 18,
       USL: 110,
       Average: 100.01,
     },
     {
-      "Batch No.": 100031,
+      "Batch No.": 100077,
       LSL: 90,
       "Observed Value": -21,
       USL: 110,
       Average: 100.01,
     },
     {
-      "Batch No.": 100032,
+      "Batch No.": 100078,
       LSL: 90,
       "Observed Value": 11,
       USL: 110,
       Average: 100.01,
     },
     {
-      "Batch No.": 100033,
+      "Batch No.": 100079,
       LSL: 90,
       "Observed Value": 78,
       USL: 110,
       Average: 100.01,
     },
     {
-      "Batch No.": 100034,
+      "Batch No.": 100080,
       LSL: 90,
       "Observed Value": 34,
       USL: 110,
       Average: 100.01,
     },
     {
-      "Batch No.": 100035,
+      "Batch No.": 100081,
       LSL: 90,
       "Observed Value": 43,
       USL: 110,
       Average: 100.01,
     },
     {
-      "Batch No.": 100036,
+      "Batch No.": 100082,
       LSL: 90,
       "Observed Value": 12,
       USL: 110,
       Average: 100.01,
     },
     {
-      "Batch No.": 100037,
+      "Batch No.": 100083,
       LSL: 90,
       "Observed Value": -12,
       USL: 110,
       Average: 100.01,
     },
     {
-      "Batch No.": 100038,
+      "Batch No.": 100084,
       LSL: 90,
       "Observed Value": -21,
       USL: 110,
       Average: 100.01,
     },
     {
-      "Batch No.": 100039,
+      "Batch No.": 100085,
       LSL: 90,
       "Observed Value": 21,
       USL: 110,
       Average: 100.01,
     },
     {
-      "Batch No.": 100040,
+      "Batch No.": 100086,
       LSL: 90,
       "Observed Value": 46,
       USL: 110,
       Average: 100.01,
     },
     {
-      "Batch No.": 100041,
+      "Batch No.": 100087,
       LSL: 90,
       "Observed Value": -46,
       USL: 110,
       Average: 100.01,
     },
     {
-      "Batch No.": 100042,
+      "Batch No.": 100088,
       LSL: 90,
       "Observed Value": -71,
       USL: 110,
       Average: 100.01,
     },
     {
-      "Batch No.": 100043,
+      "Batch No.": 100089,
       LSL: 90,
       "Observed Value": 11,
       USL: 110,
       Average: 100.01,
     },
     {
-      "Batch No.": 100044,
+      "Batch No.": 100090,
       LSL: 90,
       "Observed Value": 20,
       USL: 110,
       Average: 100.01,
     },
     {
-      "Batch No.": 100045,
+      "Batch No.": 100091,
       LSL: 90,
       "Observed Value": 24,
       USL: 110,
@@ -697,63 +699,63 @@ export default function LineChartPQR() {
       Average: 100.01,
     },
     {
-      "Batch No.": 100047,
+      "Batch No.": 100092,
       LSL: 90,
       "Observed Value": 1,
       USL: 110,
       Average: 100.01,
     },
     {
-      "Batch No.": 100001,
+      "Batch No.": 1000093,
       LSL: 90,
       "Observed Value": 25,
       USL: 110,
       Average: 100.01,
     },
     {
-      "Batch No.": 100002,
+      "Batch No.": 1000094,
       LSL: 90,
       "Observed Value": 50,
       USL: 110,
       Average: 100.01,
     },
     {
-      "Batch No.": 100003,
+      "Batch No.": 1000095,
       LSL: 90,
       "Observed Value": 41,
       USL: 110,
       Average: 100.01,
     },
     {
-      "Batch No.": 100004,
+      "Batch No.": 1000096,
       LSL: 90,
       "Observed Value": 32,
       USL: 110,
       Average: 100.01,
     },
     {
-      "Batch No.": 100005,
+      "Batch No.": 1000097,
       LSL: 90,
       "Observed Value": -25,
       USL: 110,
       Average: 100.01,
     },
     {
-      "Batch No.": 100006,
+      "Batch No.": 1000098,
       LSL: 90,
       "Observed Value": -45,
       USL: 110,
       Average: 100.01,
     },
     {
-      "Batch No.": 100007,
+      "Batch No.": 1000099,
       LSL: 90,
       "Observed Value": -85,
       USL: 110,
       Average: 100.01,
     },
     {
-      "Batch No.": 100008,
+      "Batch No.": 10000100,
       LSL: 90,
       "Observed Value": -120,
       USL: 110,
@@ -1102,176 +1104,218 @@ export default function LineChartPQR() {
   };
 
   return (
+    <div
+      className="graph-2"
+      style={{ display: "flex", justifyContent: "space-between" }}
+    >
       <div
-        className="graph-2"
-        style={{ display: "flex", justifyContent: "space-between" }}
+        className="chart-analytics chart-container "
+        style={{ width: "1000%" }}
       >
-        <div className="chart-analytics chart-container " style={{ width: "1000%" }}>
-          <Chart
-            data={{
-              labels: chartCategories,
-              datasets: [
-                {
-                  type: "line", // or 'bar', 'bubble', etc.
-                  data: chartData,
-                  borderColor: (context) => {
-                    const { dataIndex, dataset } = context;
-                    const value = dataset.data[dataIndex];
-                    console.log(value);
-                    // Return different colors based on the value
-                    if (value > 100) {
-                      return "rgba(200, 0, 0, 1)"; // Red
-                    } else if (value > 50) {
-                      return "rgba(255, 165, 0, 1)"; // Orange
-                    } else if (value > -50) {
-                      return "rgba(0, 150, 0, 1)"; // Green
-                    } else if (value > -100) {
-                      return "rgba(255, 165, 0, 1)"; // Orange
-                    }else if (value < -100) {
-                      return "rgba(200, 0, 0, 1)"; // Orange
+        <Chart
+          data={{
+            labels: chartCategories,
+            datasets: [
+              {
+                type: "line", // or 'bar', 'bubble', etc.
+                data: chartData,
+                borderColor: (context) => {
+                  const { dataIndex, dataset } = context;
+                  const value = dataset.data[dataIndex];
+                  console.log(value);
+                  // Return different colors based on the value
+                  if (value > 100) {
+                    return "rgba(200, 0, 0, 1)"; // Red
+                  } else if (value > 50) {
+                    return "rgba(255, 165, 0, 1)"; // Orange
+                  } else if (value > -50) {
+                    return "rgba(0, 150, 0, 1)"; // Green
+                  } else if (value > -100) {
+                    return "rgba(255, 165, 0, 1)"; // Orange
+                  } else if (value < -100) {
+                    return "rgba(200, 0, 0, 1)"; // Orange
+                  } else {
+                    return "rgba(0, 0, 0, 0.2)"; // Red
+                  }
+                },
+                pointRadius: 5,
+                borderWidth: 4,
+                tension: 0.5,
+                backgroundColor: (context) => {
+                  const { dataIndex, dataset } = context;
+                  const value = dataset.data[dataIndex];
+                  console.log(value);
+                  // Return different colors based on the value
+                  if (value > 100) {
+                    return "rgba(200, 0, 0, 1)"; // Red
+                  } else if (value > 50) {
+                    return "rgba(255, 165, 0, 1)"; // Orange
+                  } else if (value > -50) {
+                    return "rgba(0, 150, 0, 1)"; // Green
+                  } else if (value > -100) {
+                    return "rgba(255, 165, 0, 1)"; // Orange
+                  } else if (value < -100) {
+                    return "rgba(200, 0, 0, 1)"; // Orange
+                  } else {
+                    return "rgba(0, 0, 0, 0.2)"; // Red
+                  }
+                },
+              },
+            ],
+          }}
+          height={600}
+          width={3000}
+          options={{
+
+            maintainAspectRatio: false,
+            indexAxis: "x",
+            barThickness: 5,
+            plugins: {
+              zoom: {
+                zoom: {
+                  enabled: true,
+                  mode: 'xy', // 'x', 'y', or 'xy'
+                  speed: 0.1,
+                  threshold: 2,
+                },
+                pan: {
+                  enabled: true,
+                  mode: 'xy', // 'x', 'y', or 'xy'
+                  speed: 0.1,
+                },
+              },
+            },
+            scales: {
+              x: {
+                type: 'linear',
+                position: 'bottom',
+              },
+              y: {
+                type: 'linear',
+              },
+              legend: {
+                labels: {
+                  font: {
+                    size: 22,
+                    weight: "bold",
+                  },
+                },
+              },
+              annotation: {
+                annotations: {
+                  ...gridLineLabels.reduce((acc, { value, label }) => {
+                    acc[`yLabel_${value}`] = {
+                      type: "label",
+                      xValue:
+                        chartCategories[Math.floor(chartCategories.length / 2)],
+                      yValue: value,
+                      backgroundColor: "rgba(255, 255, 255, 0.5)",
+                      content: label,
+                      display: true,
+                      position: "center",
+                      padding: {
+                        top: 10,
+                        bottom: 10,
+                        left: 10,
+                        right: 10,
+                      },
+                      font: {
+                        size: 16,
+                        weight: "bold",
+                      },
+                      color: "white",
+                      xAdjust: -10, // Adjust as needed to center on the x-axis
+                      yAdjust: -10, // Adjust as needed
+                    };
+                    return acc;
+                  }, {}),
+                  ...additionalLabels.reduce((acc, { x, y, label }) => {
+                    acc[`customLabel_${x}_${y}`] = {
+                      type: "label",
+                      xValue: x,
+                      yValue: y,
+                      backgroundColor: "rgba(255, 255, 255, 0.5)",
+                      content: label,
+                      display: true,
+                      position: "center",
+                      padding: {
+                        top: 10,
+                        bottom: 10,
+                        left: 10,
+                        right: 10,
+                      },
+                      font: {
+                        size: 16,
+                        weight: "bold",
+                      },
+                      color: "black",
+                      xAdjust: -10, // Adjust as needed
+                      yAdjust: -10, // Adjust as needed
+                    };
+                    return acc;
+                  }, {}),
+                },
+              },
+            },
+            scales: {
+              x: {
+                beginAtZero: true,
+                title: {
+                  display: true,
+                  // text: 'Your Centered Title Here',
+                  font: {
+                    size: 22,
+                    weight: "bold",
+                  },
+                  color: "black",
+                  padding: {
+                    top: 20, // Adjust padding if necessary
+                  },
+                  align: "center", // Center the title horizontally
+                },
+              },
+              y: {
+                beginAtZero: true,
+                ticks: {
+                  color: "blue",
+                  font: {
+                    size: 12,
+                    weight: "bold",
+                  },
+                  stepSize: 25,
+                  callback: customTicks,
+                },
+                grid: {
+                  color: (context) => {
+                    let i = context.tick.value;
+                    if (i === -100 || i === 100) {
+                      return "red";
+                    } else if (i === -50 || i === 50) {
+                      return "orange";
+                    } else if (i === 0) {
+                      return "black";
                     } else {
-                      return "rgba(0, 0, 0, 0.2)"; // Red
+                      return "rgba(0, 0, 0, 0.04)";
                     }
                   },
-                  pointRadius: 8,
-                  borderWidth: 4,
-                  tension: 0.5,
+                },
+                title: {
+                  display: true,
+                  text: "APQR Graph",
 
-                },               
-              ],
-            }}
-            height={600}
-            width={3000}
-            options={{         
-              maintainAspectRatio: false,
-              indexAxis: "x",
-              barThickness: 5,
-              plugins: {
-                legend: {
-                  labels: {
-                    font: {
-                      size: 22,
-                      weight: "bold",
-                    },
+                  font: {
+                    size: 22,
+                    weight: "bold",
                   },
                 },
-                annotation: {
-                  annotations: {
-                    ...gridLineLabels.reduce((acc, { value, label }) => {
-                      acc[`yLabel_${value}`] = {
-                        type: "label",
-                        xValue:
-                          chartCategories[
-                            Math.floor(chartCategories.length / 2)
-                          ],
-                        yValue: value,
-                        backgroundColor: "rgba(255, 255, 255, 0.5)",
-                        content: label,
-                        display: true,
-                        position: "center",
-                        padding: {
-                          top: 10,
-                          bottom: 10,
-                          left: 10,
-                          right: 10,
-                        },
-                        font: {
-                          size: 16,
-                          weight: "bold",
-                        },
-                        color: "white",
-                        xAdjust: -10, // Adjust as needed to center on the x-axis
-                        yAdjust: -10, // Adjust as needed
-                      };
-                      return acc;
-                    }, {}),
-                    ...additionalLabels.reduce((acc, { x, y, label }) => {
-                      acc[`customLabel_${x}_${y}`] = {
-                        type: "label",
-                        xValue: x,
-                        yValue: y,
-                        backgroundColor: "rgba(255, 255, 255, 0.5)",
-                        content: label,
-                        display: true,
-                        position: "center",
-                        padding: {
-                          top: 10,
-                          bottom: 10,
-                          left: 10,
-                          right: 10,
-                        },
-                        font: {
-                          size: 16,
-                          weight: "bold",
-                        },
-                        color: "black",
-                        xAdjust: -10, // Adjust as needed
-                        yAdjust: -10, // Adjust as needed
-                      };
-                      return acc;
-                    }, {}),
-                  },
-                },
+                max: 130,
+                min: -130,
               },
-              scales: {
-                x: {
-                  beginAtZero: true,
-                  title: {
-                    display: true,
-                    // text: 'Your Centered Title Here',
-                    font: {
-                      size: 22,
-                      weight: "bold",
-                    },
-                    color: "black",
-                    padding: {
-                      top: 20, // Adjust padding if necessary
-                    },
-                    align: "center", // Center the title horizontally
-                  },
-                },
-                y: {
-                  beginAtZero: true,
-                  ticks: {
-                    color: "blue",
-                    font: {
-                      size: 12,
-                      weight: "bold",
-                    },
-                    stepSize: 25,
-                    callback: customTicks,
-                  },
-                  grid: {
-                    color: (context) => {
-                      let i = context.tick.value;
-                      if (i === -100 || i === 100) {
-                        return "red";
-                      } else if (i === -50 || i === 50) {
-                        return "orange";
-                      } else if (i === 0) {
-                        return "black";
-                      } else {
-                        return "rgba(0, 0, 0, 0.04)";
-                      }
-                    },
-                  },
-                  title: {
-                    display: true,
-                   text:"APQR Graph",
-                      
-                    font: {
-                      size: 22,
-                      weight: "bold",
-                    },
-                  },
-                  max: 130,
-                  min: -130,
-                },
-              },
-            }}
-          />
-        </div>
-        {/* <div className="chart-data" style={{ width: "200px" }}>
+            },
+          }}
+        />
+      </div>
+      {/* <div className="chart-data" style={{ width: "200px" }}>
           <div className="group-input">
             <label className="color-label">Chart Type</label>
             <div className="instruction">&nbsp;</div>
@@ -1292,7 +1336,6 @@ export default function LineChartPQR() {
             </select>
           </div>
         </div> */}
-      </div>
-
+    </div>
   );
 }

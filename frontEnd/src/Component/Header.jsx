@@ -1,10 +1,10 @@
 import React, { useState, useRef } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 
 export default function Header() {
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const timeoutRef = useRef(null);
-
+const navigate=useNavigate()
   const showDropdown = () => {
     if (timeoutRef.current) {
       clearTimeout(timeoutRef.current);
@@ -23,7 +23,7 @@ export default function Header() {
       <div className="container mx-auto px-6 flex items-center justify-between">
         {/* Logo */}
         <div className="flex items-center">
-          <img src="/gxplogo.png" alt="Logo" className="h-10 mr-2" />
+          <img src="/gxplogo.png" alt="Logo" className="h-10 mr-2 cursor-pointer  "  onClick={()=>navigate("/dashboard")}/>
         </div>
 
         {/* Name */}
