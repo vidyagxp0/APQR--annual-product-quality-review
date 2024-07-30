@@ -8458,7 +8458,7 @@ console.log(pQRData,"pQRData")
               </table>
             </div>
 
-            <div className="gridName">Previous Review Period OOS</div>
+            <div className="gridName pt-4">Previous Review Period OOS</div>
 
             <div>
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
@@ -8720,7 +8720,7 @@ console.log(pQRData,"pQRData")
               </table>
             </div>
 
-            <div className="gridName">Previous Review Period OOAC</div>
+            <div className="gridName pt-4">Previous Review Period OOAC</div>
 
             <div>
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
@@ -8982,7 +8982,7 @@ console.log(pQRData,"pQRData")
               </table>
             </div>
 
-            <div className="gridName">Previous Review Period OOAL</div>
+            <div className="gridName pt-4">Previous Review Period OOAL</div>
 
             <div>
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
@@ -9244,7 +9244,7 @@ console.log(pQRData,"pQRData")
               </table>
             </div>
 
-            <div className="gridName">Previous review period OOS</div>
+            <div className="gridName pt-4">Previous review period OOS</div>
 
             <div>
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
@@ -9505,7 +9505,7 @@ console.log(pQRData,"pQRData")
               </table>
             </div>
 
-            <div className="gridName">Previous review period OOS</div>
+            <div className="gridName pt-4">Previous review period OOS</div>
 
             <div>
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
