@@ -28,7 +28,7 @@ function App() {
         <Route path="/test" element={<TinyEditor />} />
         <Route path="/test2" element={<ESignatureModal />} />
         <Route path="/pdftest" element={<DownloadReportButton />} />
-        <Route path="/chart" element={<Analytics5/>}/>
+        {/* <Route path="/chart" element={<Analytics5/>}/> */}
       </Routes>
     </BrowserRouter>
   );
