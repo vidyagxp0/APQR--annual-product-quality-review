@@ -1845,7 +1845,7 @@ console.log(pQRData,"pQRData")
             {productCodes?.map((productCode, index) => (
               <div key={index} className="group-input">
                 <label>
-                  Product Code {productCodes.length > 0 ? index + 1 : ""}
+                  Product Code {productCodes.length > 1 ? index + 1 : ""}
                 </label>
                 <div className="flex gap-4">
                   <input

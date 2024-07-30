@@ -2306,7 +2306,7 @@ export default function APQR() {
             </div>
             {pQRData?.productCodes?.map((productCode, index) => (
               <div key={index} className="group-input">
-                <label>Product Code {index.length > 0 ? index + 1 : ""}</label>
+                <label>Product Code {pQRData?.productCodes.length > 1 ? index + 1 : ""}</label>
                 <div className="flex gap-4">
                   <input
                     value={productCode}
