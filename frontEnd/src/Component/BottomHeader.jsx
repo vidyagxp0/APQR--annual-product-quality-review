@@ -83,8 +83,8 @@ export default function BottomHeader() {
         </div>
       </div>
       <Dialog open={isOpen}>
-  <div className="w-[500px] h-[455px] bg-white rounded-lg shadow-lg overflow-hidden animate-fadeIn">
-    <div className="grid grid-cols-2">
+  <div className="w-[600px] h-[455px] bg-white shadow-lg overflow-hidden animate-fadeIn">
+    <div className="grid grid-cols-2 ">
       <div className="bg-gray-800 text-white p-4 flex flex-col items-center justify-center border-r text-[20px] font-semibold">
         Site/Division
       </div>
@@ -129,7 +129,7 @@ export default function BottomHeader() {
     <div className="border-t border-gray-300"></div>
     <div className="p-3 flex justify-end">
       <button
-        className="bg-slate-400 text-white px-4 py-2 rounded hover:bg-slate-500 transition-all duration-200 ease-in-out active:scale-95"
+        className="bg-slate-500 text-white px-4 py-2 rounded hover:bg-slate-600 transition-all duration-200 ease-in-out active:scale-95"
         onClick={() => {
           setIsOpen(false);
           setIsSite("");
