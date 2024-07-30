@@ -2306,7 +2306,7 @@ export default function APQR() {
             </div>
             {pQRData?.productCodes?.map((productCode, index) => (
               <div key={index} className="group-input">
-                <label>Product Code {index.length > 0 ? index + 1 : ""}</label>
+                <label>Product Code {pQRData?.productCodes.length > 1 ? index + 1 : ""}</label>
                 <div className="flex gap-4">
                   <input
                     value={productCode}
@@ -9067,7 +9067,7 @@ export default function APQR() {
                 </tbody>
               </table>
             </div>
-            <div className="gridName">Previous Review Period OOS</div>
+            <div className="gridName pt-4">Previous Review Period OOS</div>
             <div>
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
@@ -9324,7 +9324,7 @@ export default function APQR() {
                 </tbody>
               </table>
             </div>
-            <div className="gridName">Previous Review Period OOAC</div>
+            <div className="gridName pt-4">Previous Review Period OOAC</div>
             <div>
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
@@ -9581,7 +9581,7 @@ export default function APQR() {
                 </tbody>
               </table>
             </div>
-            <div className="gridName">Previous Review Period OOAL</div>
+            <div className="gridName pt-4">Previous Review Period OOAL</div>
             <div>
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
@@ -9838,7 +9838,7 @@ export default function APQR() {
                 </tbody>
               </table>
             </div>
-            <div className="gridName">Previous review period OOS</div>
+            <div className="gridName pt-4">Previous review period OOS</div>
             <div>
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
@@ -10095,7 +10095,7 @@ export default function APQR() {
                 </tbody>
               </table>
             </div>
-            <div className="gridName">Previous review period OOS</div>
+            <div className="gridName pt-4">Previous review period OOS</div>
             <div>
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
