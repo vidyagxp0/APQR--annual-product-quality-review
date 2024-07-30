@@ -10,6 +10,7 @@ import { Doughnut } from 'react-chartjs-2';
 import ReactApexChart from 'react-apexcharts';
 import Header from "../Component/Header";
 import BottomHeader from "../Component/BottomHeader";
+import LineChartPQR from '../Component/Chart/Chart';
 
 // Define generateData function
 const generateData = (timestamp, count, range) => {
@@ -262,8 +263,13 @@ const inflationChartState = {
     <div className="bg-gray-100 min-h-screen">
       <Header />
       <BottomHeader />
-      <div className="flex flex-row  justify-center items-center gap-10  m-10">
 
+      <div className="w-full bg-white shadow-lg p-4 overflow-auto">
+          <LineChartPQR />
+        </div>
+      
+      <div className="flex flex-row  justify-center items-center gap-10  m-10">
+ 
            <div className=" chart-container flex flex-wrap justify-center items-center w-1/2 h-96 bg-white shadow-lg p-6">
             <Doughnut data={doughnutData} />
            </div>

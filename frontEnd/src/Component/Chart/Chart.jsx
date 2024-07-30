@@ -1,16 +1,36 @@
 import { useEffect, useState } from "react";
-import { Chart as ChartJS, registerables } from "chart.js";
+import {
+  Chart as ChartJS,
+  registerables,
+  CategoryScale,
+  LinearScale,
+  PointElement,
+  LineElement,
+  Title,
+  Tooltip,
+  Legend,
+} from "chart.js";
 import { Chart } from "react-chartjs-2";
-import annotationPlugin from 'chartjs-plugin-annotation';
+import annotationPlugin from "chartjs-plugin-annotation";
 import "./Chart.css";
 import { useLocation } from "react-router-dom";
 import Header from "../Header";
 import BottomHeader from "../BottomHeader";
 
 // Register Chart.js plugins
-ChartJS.register(...registerables, annotationPlugin);
+ChartJS.register(
+  ...registerables,
+  annotationPlugin,
+  CategoryScale,
+  LinearScale,
+  PointElement,
+  LineElement,
+  Title,
+  Tooltip,
+  Legend
+);
 
-export default function Analytics5() {
+export default function LineChartPQR() {
   const [selectedOption, setSelectedOption] = useState("hourly");
   const [chartData, setChartData] = useState([]);
   const [chartCategories, setChartCategories] = useState([]);
@@ -24,187 +44,1037 @@ export default function Analytics5() {
   const handleChartTypeChange = (event) => {
     setChartType(event.target.value);
   };
-  const records=[  {"Batch No.": 100001, "LSL": 90, "Observed Value": 25, "USL": 110, "Average": 100.01},
-    {"Batch No.": 100002, "LSL": 90, "Observed Value": 50, "USL": 110, "Average": 100.01},
-    {"Batch No.": 100003, "LSL": 90, "Observed Value": 41, "USL": 110, "Average": 100.01},
-    {"Batch No.": 100004, "LSL": 90, "Observed Value": 32, "USL": 110, "Average": 100.01},
-    {"Batch No.": 100005, "LSL": 90, "Observed Value": -25, "USL": 110, "Average": 100.01},
-    {"Batch No.": 100006, "LSL": 90, "Observed Value": -45, "USL": 110, "Average": 100.01},
-    {"Batch No.": 100007, "LSL": 90, "Observed Value": -85, "USL": 110, "Average": 100.01},
-    {"Batch No.": 100008, "LSL": 90, "Observed Value": -120, "USL": 110, "Average": 100.01},
-    {"Batch No.": 100009, "LSL": 90, "Observed Value": -111, "USL": 110, "Average": 100.01},
-    {"Batch No.": 100010, "LSL": 90, "Observed Value": 111, "USL": 110, "Average": 100.01},
-    {"Batch No.": 100011, "LSL": 90, "Observed Value": 90, "USL": 110, "Average": 100.01},
-    {"Batch No.": 100012, "LSL": 90, "Observed Value": 42, "USL": 110, "Average": 100.01},
-    {"Batch No.": 100013, "LSL": 90, "Observed Value": 22, "USL": 110, "Average": 100.01},
-    {"Batch No.": 100014, "LSL": 90, "Observed Value": 35, "USL": 110, "Average": 100.01},
-    {"Batch No.": 100015, "LSL": 90, "Observed Value": 79, "USL": 110, "Average": 100.01},
-    {"Batch No.": 100016, "LSL": 90, "Observed Value": 23, "USL": 110, "Average": 100.01},
-    {"Batch No.": 100017, "LSL": 90, "Observed Value": 29, "USL": 110, "Average": 100.01},
-    {"Batch No.": 100018, "LSL": 90, "Observed Value": 45, "USL": 110, "Average": 100.01},
-    {"Batch No.": 100019, "LSL": 90, "Observed Value": -32, "USL": 110, "Average": 100.01},
-    {"Batch No.": 100020, "LSL": 90, "Observed Value": -11, "USL": 110, "Average": 100.01},
-    {"Batch No.": 100021, "LSL": 90, "Observed Value": -13, "USL": 110, "Average": 100.01},
-    {"Batch No.": 100022, "LSL": 90, "Observed Value": 15, "USL": 110, "Average": 100.01},
-    {"Batch No.": 100023, "LSL": 90, "Observed Value": 18, "USL": 110, "Average": 100.01},
-    {"Batch No.": 100024, "LSL": 90, "Observed Value": 20, "USL": 110, "Average": 100.01},
-    {"Batch No.": 100025, "LSL": 90, "Observed Value": 45, "USL": 110, "Average": 100.01},
-    {"Batch No.": 100026, "LSL": 90, "Observed Value": 113, "USL": 110, "Average": 100.01},
-    {"Batch No.": 100027, "LSL": 90, "Observed Value": 34, "USL": 110, "Average": 100.01},
-    {"Batch No.": 100028, "LSL": 90, "Observed Value": -34, "USL": 110, "Average": 100.01},
-    {"Batch No.": 100029, "LSL": 90, "Observed Value": -12, "USL": 110, "Average": 100.01},
-    {"Batch No.": 100030, "LSL": 90, "Observed Value": 18, "USL": 110, "Average": 100.01},
-    {"Batch No.": 100031, "LSL": 90, "Observed Value": -21, "USL": 110, "Average": 100.01},
-    {"Batch No.": 100032, "LSL": 90, "Observed Value": 11, "USL": 110, "Average": 100.01},
-    {"Batch No.": 100033, "LSL": 90, "Observed Value": 78, "USL": 110, "Average": 100.01},
-    {"Batch No.": 100034, "LSL": 90, "Observed Value":34, "USL": 110, "Average": 100.01},
-    {"Batch No.": 100035, "LSL": 90, "Observed Value": 43, "USL": 110, "Average": 100.01},
-    {"Batch No.": 100036, "LSL": 90, "Observed Value": 12, "USL": 110, "Average": 100.01},
-    {"Batch No.": 100037, "LSL": 90, "Observed Value": -12, "USL": 110, "Average": 100.01},
-    {"Batch No.": 100038, "LSL": 90, "Observed Value": -21, "USL": 110, "Average": 100.01},
-    {"Batch No.": 100039, "LSL": 90, "Observed Value": 21, "USL": 110, "Average": 100.01},
-    {"Batch No.": 100040, "LSL": 90, "Observed Value": 46, "USL": 110, "Average": 100.01},
-    {"Batch No.": 100041, "LSL": 90, "Observed Value": -46, "USL": 110, "Average": 100.01},
-    {"Batch No.": 100042, "LSL": 90, "Observed Value": -71, "USL": 110, "Average": 100.01},
-    {"Batch No.": 100043, "LSL": 90, "Observed Value": 11, "USL": 110, "Average": 100.01},
-    {"Batch No.": 100044, "LSL": 90, "Observed Value": 20, "USL": 110, "Average": 100.01},
-    {"Batch No.": 100045, "LSL": 90, "Observed Value": 24, "USL": 110, "Average": 100.01},
-    {"Batch No.": 100046, "LSL": 90, "Observed Value": 30, "USL": 110, "Average": 100.01},
-    {"Batch No.": 100047, "LSL": 90, "Observed Value": 1, "USL": 110, "Average": 100.01},
-    {"Batch No.": 100001, "LSL": 90, "Observed Value": 25, "USL": 110, "Average": 100.01},
-    {"Batch No.": 100002, "LSL": 90, "Observed Value": 50, "USL": 110, "Average": 100.01},
-    {"Batch No.": 100003, "LSL": 90, "Observed Value": 41, "USL": 110, "Average": 100.01},
-    {"Batch No.": 100004, "LSL": 90, "Observed Value": 32, "USL": 110, "Average": 100.01},
-    {"Batch No.": 100005, "LSL": 90, "Observed Value": -25, "USL": 110, "Average": 100.01},
-    {"Batch No.": 100006, "LSL": 90, "Observed Value": -45, "USL": 110, "Average": 100.01},
-    {"Batch No.": 100007, "LSL": 90, "Observed Value": -85, "USL": 110, "Average": 100.01},
-    {"Batch No.": 100008, "LSL": 90, "Observed Value": -120, "USL": 110, "Average": 100.01},
-    {"Batch No.": 100009, "LSL": 90, "Observed Value": -111, "USL": 110, "Average": 100.01},
-    {"Batch No.": 100010, "LSL": 90, "Observed Value": 111, "USL": 110, "Average": 100.01},
-    {"Batch No.": 100011, "LSL": 90, "Observed Value": 90, "USL": 110, "Average": 100.01},
-    {"Batch No.": 100012, "LSL": 90, "Observed Value": 42, "USL": 110, "Average": 100.01},
-    {"Batch No.": 100013, "LSL": 90, "Observed Value": 22, "USL": 110, "Average": 100.01},
-    {"Batch No.": 100014, "LSL": 90, "Observed Value": 35, "USL": 110, "Average": 100.01},
-    {"Batch No.": 100015, "LSL": 90, "Observed Value": 79, "USL": 110, "Average": 100.01},
-    {"Batch No.": 100016, "LSL": 90, "Observed Value": 23, "USL": 110, "Average": 100.01},
-    {"Batch No.": 100017, "LSL": 90, "Observed Value": 29, "USL": 110, "Average": 100.01},
-    {"Batch No.": 100018, "LSL": 90, "Observed Value": 45, "USL": 110, "Average": 100.01},
-    {"Batch No.": 100019, "LSL": 90, "Observed Value": -32, "USL": 110, "Average": 100.01},
-    {"Batch No.": 100020, "LSL": 90, "Observed Value": -11, "USL": 110, "Average": 100.01},
-    {"Batch No.": 100021, "LSL": 90, "Observed Value": -13, "USL": 110, "Average": 100.01},
-    {"Batch No.": 100022, "LSL": 90, "Observed Value": 15, "USL": 110, "Average": 100.01},
-    {"Batch No.": 100023, "LSL": 90, "Observed Value": 18, "USL": 110, "Average": 100.01},
-    {"Batch No.": 100024, "LSL": 90, "Observed Value": 20, "USL": 110, "Average": 100.01},
-    {"Batch No.": 100025, "LSL": 90, "Observed Value": 45, "USL": 110, "Average": 100.01},
-    {"Batch No.": 100026, "LSL": 90, "Observed Value": 113, "USL": 110, "Average": 100.01},
-    {"Batch No.": 100027, "LSL": 90, "Observed Value": 34, "USL": 110, "Average": 100.01},
-    {"Batch No.": 100028, "LSL": 90, "Observed Value": -34, "USL": 110, "Average": 100.01},
-    {"Batch No.": 100029, "LSL": 90, "Observed Value": -12, "USL": 110, "Average": 100.01},
-    {"Batch No.": 100030, "LSL": 90, "Observed Value": 18, "USL": 110, "Average": 100.01},
-    {"Batch No.": 100031, "LSL": 90, "Observed Value": -21, "USL": 110, "Average": 100.01},
-    {"Batch No.": 100032, "LSL": 90, "Observed Value": 11, "USL": 110, "Average": 100.01},
-    {"Batch No.": 100033, "LSL": 90, "Observed Value": 78, "USL": 110, "Average": 100.01},
-    {"Batch No.": 100034, "LSL": 90, "Observed Value":34, "USL": 110, "Average": 100.01},
-    {"Batch No.": 100035, "LSL": 90, "Observed Value": 43, "USL": 110, "Average": 100.01},
-    {"Batch No.": 100036, "LSL": 90, "Observed Value": 12, "USL": 110, "Average": 100.01},
-    {"Batch No.": 100037, "LSL": 90, "Observed Value": -12, "USL": 110, "Average": 100.01},
-    {"Batch No.": 100038, "LSL": 90, "Observed Value": -21, "USL": 110, "Average": 100.01},
-    {"Batch No.": 100039, "LSL": 90, "Observed Value": 21, "USL": 110, "Average": 100.01},
-    {"Batch No.": 100040, "LSL": 90, "Observed Value": 46, "USL": 110, "Average": 100.01},
-    {"Batch No.": 100041, "LSL": 90, "Observed Value": -46, "USL": 110, "Average": 100.01},
-    {"Batch No.": 100042, "LSL": 90, "Observed Value": -71, "USL": 110, "Average": 100.01},
-    {"Batch No.": 100043, "LSL": 90, "Observed Value": 11, "USL": 110, "Average": 100.01},
-    {"Batch No.": 100044, "LSL": 90, "Observed Value": 20, "USL": 110, "Average": 100.01},
-    {"Batch No.": 100045, "LSL": 90, "Observed Value": 24, "USL": 110, "Average": 100.01},
-    {"Batch No.": 100046, "LSL": 90, "Observed Value": 30, "USL": 110, "Average": 100.01},
-    {"Batch No.": 100047, "LSL": 90, "Observed Value": 1, "USL": 110, "Average": 100.01},
- {"Batch No.": 100001, "LSL": 90, "Observed Value": 25, "USL": 110, "Average": 100.01},
-    {"Batch No.": 100002, "LSL": 90, "Observed Value": 50, "USL": 110, "Average": 100.01},
-    {"Batch No.": 100003, "LSL": 90, "Observed Value": 41, "USL": 110, "Average": 100.01},
-    {"Batch No.": 100004, "LSL": 90, "Observed Value": 32, "USL": 110, "Average": 100.01},
-    {"Batch No.": 100005, "LSL": 90, "Observed Value": -25, "USL": 110, "Average": 100.01},
-    {"Batch No.": 100006, "LSL": 90, "Observed Value": -45, "USL": 110, "Average": 100.01},
-    {"Batch No.": 100007, "LSL": 90, "Observed Value": -85, "USL": 110, "Average": 100.01},
-    {"Batch No.": 100008, "LSL": 90, "Observed Value": -120, "USL": 110, "Average": 100.01},
-    {"Batch No.": 100009, "LSL": 90, "Observed Value": -111, "USL": 110, "Average": 100.01},
-    {"Batch No.": 100010, "LSL": 90, "Observed Value": 111, "USL": 110, "Average": 100.01},
-    {"Batch No.": 100011, "LSL": 90, "Observed Value": 90, "USL": 110, "Average": 100.01},
-    {"Batch No.": 100012, "LSL": 90, "Observed Value": 42, "USL": 110, "Average": 100.01},
-    {"Batch No.": 100013, "LSL": 90, "Observed Value": 22, "USL": 110, "Average": 100.01},
-    {"Batch No.": 100014, "LSL": 90, "Observed Value": 35, "USL": 110, "Average": 100.01},
-    {"Batch No.": 100015, "LSL": 90, "Observed Value": 79, "USL": 110, "Average": 100.01},
-    {"Batch No.": 100016, "LSL": 90, "Observed Value": 23, "USL": 110, "Average": 100.01},
-    {"Batch No.": 100017, "LSL": 90, "Observed Value": 29, "USL": 110, "Average": 100.01},
-    {"Batch No.": 100018, "LSL": 90, "Observed Value": 45, "USL": 110, "Average": 100.01},
-    {"Batch No.": 100019, "LSL": 90, "Observed Value": -32, "USL": 110, "Average": 100.01},
-    {"Batch No.": 100020, "LSL": 90, "Observed Value": -11, "USL": 110, "Average": 100.01},
-    {"Batch No.": 100021, "LSL": 90, "Observed Value": -13, "USL": 110, "Average": 100.01},
-    {"Batch No.": 100022, "LSL": 90, "Observed Value": 15, "USL": 110, "Average": 100.01},
-    {"Batch No.": 100023, "LSL": 90, "Observed Value": 18, "USL": 110, "Average": 100.01},
-    {"Batch No.": 100024, "LSL": 90, "Observed Value": 20, "USL": 110, "Average": 100.01},
-    {"Batch No.": 100025, "LSL": 90, "Observed Value": 45, "USL": 110, "Average": 100.01},
-    {"Batch No.": 100026, "LSL": 90, "Observed Value": 113, "USL": 110, "Average": 100.01},
-    {"Batch No.": 100027, "LSL": 90, "Observed Value": 34, "USL": 110, "Average": 100.01},
-    {"Batch No.": 100028, "LSL": 90, "Observed Value": -34, "USL": 110, "Average": 100.01},
-    {"Batch No.": 100029, "LSL": 90, "Observed Value": -12, "USL": 110, "Average": 100.01},
-    {"Batch No.": 100030, "LSL": 90, "Observed Value": 18, "USL": 110, "Average": 100.01},
-    {"Batch No.": 100031, "LSL": 90, "Observed Value": -21, "USL": 110, "Average": 100.01},
-    {"Batch No.": 100032, "LSL": 90, "Observed Value": 11, "USL": 110, "Average": 100.01},
-    {"Batch No.": 100033, "LSL": 90, "Observed Value": 78, "USL": 110, "Average": 100.01},
-    {"Batch No.": 100034, "LSL": 90, "Observed Value":34, "USL": 110, "Average": 100.01},
-    {"Batch No.": 100035, "LSL": 90, "Observed Value": 43, "USL": 110, "Average": 100.01},
-    {"Batch No.": 100036, "LSL": 90, "Observed Value": 12, "USL": 110, "Average": 100.01},
-    {"Batch No.": 100037, "LSL": 90, "Observed Value": -12, "USL": 110, "Average": 100.01},
-    {"Batch No.": 100038, "LSL": 90, "Observed Value": -21, "USL": 110, "Average": 100.01},
-    {"Batch No.": 100039, "LSL": 90, "Observed Value": 21, "USL": 110, "Average": 100.01},
-    {"Batch No.": 100040, "LSL": 90, "Observed Value": 46, "USL": 110, "Average": 100.01},
-    {"Batch No.": 100041, "LSL": 90, "Observed Value": -46, "USL": 110, "Average": 100.01},
-    {"Batch No.": 100042, "LSL": 90, "Observed Value": -71, "USL": 110, "Average": 100.01},
-    {"Batch No.": 100043, "LSL": 90, "Observed Value": 11, "USL": 110, "Average": 100.01},
-    {"Batch No.": 100044, "LSL": 90, "Observed Value": 20, "USL": 110, "Average": 100.01},
-    {"Batch No.": 100045, "LSL": 90, "Observed Value": 24, "USL": 110, "Average": 100.01},
-    {"Batch No.": 100046, "LSL": 90, "Observed Value": 30, "USL": 110, "Average": 100.01},
-    {"Batch No.": 100047, "LSL": 90, "Observed Value": 1, "USL": 110, "Average": 100.01}
-  ]
+  const records = [
+    {
+      "Batch No.": 100001,
+      LSL: 90,
+      "Observed Value": 25,
+      USL: 110,
+      Average: 100.01,
+    },
+    {
+      "Batch No.": 100002,
+      LSL: 90,
+      "Observed Value": 50,
+      USL: 110,
+      Average: 100.01,
+    },
+    {
+      "Batch No.": 100003,
+      LSL: 90,
+      "Observed Value": 41,
+      USL: 110,
+      Average: 100.01,
+    },
+    {
+      "Batch No.": 100004,
+      LSL: 90,
+      "Observed Value": 32,
+      USL: 110,
+      Average: 100.01,
+    },
+    {
+      "Batch No.": 100005,
+      LSL: 90,
+      "Observed Value": -25,
+      USL: 110,
+      Average: 100.01,
+    },
+    {
+      "Batch No.": 100006,
+      LSL: 90,
+      "Observed Value": -45,
+      USL: 110,
+      Average: 100.01,
+    },
+    {
+      "Batch No.": 100007,
+      LSL: 90,
+      "Observed Value": -85,
+      USL: 110,
+      Average: 100.01,
+    },
+    {
+      "Batch No.": 100008,
+      LSL: 90,
+      "Observed Value": -120,
+      USL: 110,
+      Average: 100.01,
+    },
+    {
+      "Batch No.": 100009,
+      LSL: 90,
+      "Observed Value": -111,
+      USL: 110,
+      Average: 100.01,
+    },
+    {
+      "Batch No.": 100010,
+      LSL: 90,
+      "Observed Value": 111,
+      USL: 110,
+      Average: 100.01,
+    },
+    {
+      "Batch No.": 100011,
+      LSL: 90,
+      "Observed Value": 90,
+      USL: 110,
+      Average: 100.01,
+    },
+    {
+      "Batch No.": 100012,
+      LSL: 90,
+      "Observed Value": 42,
+      USL: 110,
+      Average: 100.01,
+    },
+    {
+      "Batch No.": 100013,
+      LSL: 90,
+      "Observed Value": 22,
+      USL: 110,
+      Average: 100.01,
+    },
+    {
+      "Batch No.": 100014,
+      LSL: 90,
+      "Observed Value": 35,
+      USL: 110,
+      Average: 100.01,
+    },
+    {
+      "Batch No.": 100015,
+      LSL: 90,
+      "Observed Value": 79,
+      USL: 110,
+      Average: 100.01,
+    },
+    {
+      "Batch No.": 100016,
+      LSL: 90,
+      "Observed Value": 23,
+      USL: 110,
+      Average: 100.01,
+    },
+    {
+      "Batch No.": 100017,
+      LSL: 90,
+      "Observed Value": 29,
+      USL: 110,
+      Average: 100.01,
+    },
+    {
+      "Batch No.": 100018,
+      LSL: 90,
+      "Observed Value": 45,
+      USL: 110,
+      Average: 100.01,
+    },
+    {
+      "Batch No.": 100019,
+      LSL: 90,
+      "Observed Value": -32,
+      USL: 110,
+      Average: 100.01,
+    },
+    {
+      "Batch No.": 100020,
+      LSL: 90,
+      "Observed Value": -11,
+      USL: 110,
+      Average: 100.01,
+    },
+    {
+      "Batch No.": 100021,
+      LSL: 90,
+      "Observed Value": -13,
+      USL: 110,
+      Average: 100.01,
+    },
+    {
+      "Batch No.": 100022,
+      LSL: 90,
+      "Observed Value": 15,
+      USL: 110,
+      Average: 100.01,
+    },
+    {
+      "Batch No.": 100023,
+      LSL: 90,
+      "Observed Value": 18,
+      USL: 110,
+      Average: 100.01,
+    },
+    {
+      "Batch No.": 100024,
+      LSL: 90,
+      "Observed Value": 20,
+      USL: 110,
+      Average: 100.01,
+    },
+    {
+      "Batch No.": 100025,
+      LSL: 90,
+      "Observed Value": 45,
+      USL: 110,
+      Average: 100.01,
+    },
+    {
+      "Batch No.": 100026,
+      LSL: 90,
+      "Observed Value": 113,
+      USL: 110,
+      Average: 100.01,
+    },
+    {
+      "Batch No.": 100027,
+      LSL: 90,
+      "Observed Value": 34,
+      USL: 110,
+      Average: 100.01,
+    },
+    {
+      "Batch No.": 100028,
+      LSL: 90,
+      "Observed Value": -34,
+      USL: 110,
+      Average: 100.01,
+    },
+    {
+      "Batch No.": 100029,
+      LSL: 90,
+      "Observed Value": -12,
+      USL: 110,
+      Average: 100.01,
+    },
+    {
+      "Batch No.": 100030,
+      LSL: 90,
+      "Observed Value": 18,
+      USL: 110,
+      Average: 100.01,
+    },
+    {
+      "Batch No.": 100031,
+      LSL: 90,
+      "Observed Value": -21,
+      USL: 110,
+      Average: 100.01,
+    },
+    {
+      "Batch No.": 100032,
+      LSL: 90,
+      "Observed Value": 11,
+      USL: 110,
+      Average: 100.01,
+    },
+    {
+      "Batch No.": 100033,
+      LSL: 90,
+      "Observed Value": 78,
+      USL: 110,
+      Average: 100.01,
+    },
+    {
+      "Batch No.": 100034,
+      LSL: 90,
+      "Observed Value": 34,
+      USL: 110,
+      Average: 100.01,
+    },
+    {
+      "Batch No.": 100035,
+      LSL: 90,
+      "Observed Value": 43,
+      USL: 110,
+      Average: 100.01,
+    },
+    {
+      "Batch No.": 100036,
+      LSL: 90,
+      "Observed Value": 12,
+      USL: 110,
+      Average: 100.01,
+    },
+    {
+      "Batch No.": 100037,
+      LSL: 90,
+      "Observed Value": -12,
+      USL: 110,
+      Average: 100.01,
+    },
+    {
+      "Batch No.": 100038,
+      LSL: 90,
+      "Observed Value": -21,
+      USL: 110,
+      Average: 100.01,
+    },
+    {
+      "Batch No.": 100039,
+      LSL: 90,
+      "Observed Value": 21,
+      USL: 110,
+      Average: 100.01,
+    },
+    {
+      "Batch No.": 100040,
+      LSL: 90,
+      "Observed Value": 46,
+      USL: 110,
+      Average: 100.01,
+    },
+    {
+      "Batch No.": 100041,
+      LSL: 90,
+      "Observed Value": -46,
+      USL: 110,
+      Average: 100.01,
+    },
+    {
+      "Batch No.": 100042,
+      LSL: 90,
+      "Observed Value": -71,
+      USL: 110,
+      Average: 100.01,
+    },
+    {
+      "Batch No.": 100043,
+      LSL: 90,
+      "Observed Value": 11,
+      USL: 110,
+      Average: 100.01,
+    },
+    {
+      "Batch No.": 100044,
+      LSL: 90,
+      "Observed Value": 20,
+      USL: 110,
+      Average: 100.01,
+    },
+    {
+      "Batch No.": 100045,
+      LSL: 90,
+      "Observed Value": 24,
+      USL: 110,
+      Average: 100.01,
+    },
+    {
+      "Batch No.": 100046,
+      LSL: 90,
+      "Observed Value": 30,
+      USL: 110,
+      Average: 100.01,
+    },
+    {
+      "Batch No.": 100047,
+      LSL: 90,
+      "Observed Value": 1,
+      USL: 110,
+      Average: 100.01,
+    },
+    {
+      "Batch No.": 100001,
+      LSL: 90,
+      "Observed Value": 25,
+      USL: 110,
+      Average: 100.01,
+    },
+    {
+      "Batch No.": 100002,
+      LSL: 90,
+      "Observed Value": 50,
+      USL: 110,
+      Average: 100.01,
+    },
+    {
+      "Batch No.": 100003,
+      LSL: 90,
+      "Observed Value": 41,
+      USL: 110,
+      Average: 100.01,
+    },
+    {
+      "Batch No.": 100004,
+      LSL: 90,
+      "Observed Value": 32,
+      USL: 110,
+      Average: 100.01,
+    },
+    {
+      "Batch No.": 100005,
+      LSL: 90,
+      "Observed Value": -25,
+      USL: 110,
+      Average: 100.01,
+    },
+    {
+      "Batch No.": 100006,
+      LSL: 90,
+      "Observed Value": -45,
+      USL: 110,
+      Average: 100.01,
+    },
+    {
+      "Batch No.": 100007,
+      LSL: 90,
+      "Observed Value": -85,
+      USL: 110,
+      Average: 100.01,
+    },
+    {
+      "Batch No.": 100008,
+      LSL: 90,
+      "Observed Value": -120,
+      USL: 110,
+      Average: 100.01,
+    },
+    {
+      "Batch No.": 100009,
+      LSL: 90,
+      "Observed Value": -111,
+      USL: 110,
+      Average: 100.01,
+    },
+    {
+      "Batch No.": 100010,
+      LSL: 90,
+      "Observed Value": 111,
+      USL: 110,
+      Average: 100.01,
+    },
+    {
+      "Batch No.": 100011,
+      LSL: 90,
+      "Observed Value": 90,
+      USL: 110,
+      Average: 100.01,
+    },
+    {
+      "Batch No.": 100012,
+      LSL: 90,
+      "Observed Value": 42,
+      USL: 110,
+      Average: 100.01,
+    },
+    {
+      "Batch No.": 100013,
+      LSL: 90,
+      "Observed Value": 22,
+      USL: 110,
+      Average: 100.01,
+    },
+    {
+      "Batch No.": 100014,
+      LSL: 90,
+      "Observed Value": 35,
+      USL: 110,
+      Average: 100.01,
+    },
+    {
+      "Batch No.": 100015,
+      LSL: 90,
+      "Observed Value": 79,
+      USL: 110,
+      Average: 100.01,
+    },
+    {
+      "Batch No.": 100016,
+      LSL: 90,
+      "Observed Value": 23,
+      USL: 110,
+      Average: 100.01,
+    },
+    {
+      "Batch No.": 100017,
+      LSL: 90,
+      "Observed Value": 29,
+      USL: 110,
+      Average: 100.01,
+    },
+    {
+      "Batch No.": 100018,
+      LSL: 90,
+      "Observed Value": 45,
+      USL: 110,
+      Average: 100.01,
+    },
+    {
+      "Batch No.": 100019,
+      LSL: 90,
+      "Observed Value": -32,
+      USL: 110,
+      Average: 100.01,
+    },
+    {
+      "Batch No.": 100020,
+      LSL: 90,
+      "Observed Value": -11,
+      USL: 110,
+      Average: 100.01,
+    },
+    {
+      "Batch No.": 100021,
+      LSL: 90,
+      "Observed Value": -13,
+      USL: 110,
+      Average: 100.01,
+    },
+    {
+      "Batch No.": 100022,
+      LSL: 90,
+      "Observed Value": 15,
+      USL: 110,
+      Average: 100.01,
+    },
+    {
+      "Batch No.": 100023,
+      LSL: 90,
+      "Observed Value": 18,
+      USL: 110,
+      Average: 100.01,
+    },
+    {
+      "Batch No.": 100024,
+      LSL: 90,
+      "Observed Value": 20,
+      USL: 110,
+      Average: 100.01,
+    },
+    {
+      "Batch No.": 100025,
+      LSL: 90,
+      "Observed Value": 45,
+      USL: 110,
+      Average: 100.01,
+    },
+    {
+      "Batch No.": 100026,
+      LSL: 90,
+      "Observed Value": 113,
+      USL: 110,
+      Average: 100.01,
+    },
+    {
+      "Batch No.": 100027,
+      LSL: 90,
+      "Observed Value": 34,
+      USL: 110,
+      Average: 100.01,
+    },
+    {
+      "Batch No.": 100028,
+      LSL: 90,
+      "Observed Value": -34,
+      USL: 110,
+      Average: 100.01,
+    },
+    {
+      "Batch No.": 100029,
+      LSL: 90,
+      "Observed Value": -12,
+      USL: 110,
+      Average: 100.01,
+    },
+    {
+      "Batch No.": 100030,
+      LSL: 90,
+      "Observed Value": 18,
+      USL: 110,
+      Average: 100.01,
+    },
+    {
+      "Batch No.": 100031,
+      LSL: 90,
+      "Observed Value": -21,
+      USL: 110,
+      Average: 100.01,
+    },
+    {
+      "Batch No.": 100032,
+      LSL: 90,
+      "Observed Value": 11,
+      USL: 110,
+      Average: 100.01,
+    },
+    {
+      "Batch No.": 100033,
+      LSL: 90,
+      "Observed Value": 78,
+      USL: 110,
+      Average: 100.01,
+    },
+    {
+      "Batch No.": 100034,
+      LSL: 90,
+      "Observed Value": 34,
+      USL: 110,
+      Average: 100.01,
+    },
+    {
+      "Batch No.": 100035,
+      LSL: 90,
+      "Observed Value": 43,
+      USL: 110,
+      Average: 100.01,
+    },
+    {
+      "Batch No.": 100036,
+      LSL: 90,
+      "Observed Value": 12,
+      USL: 110,
+      Average: 100.01,
+    },
+    {
+      "Batch No.": 100037,
+      LSL: 90,
+      "Observed Value": -12,
+      USL: 110,
+      Average: 100.01,
+    },
+    {
+      "Batch No.": 100038,
+      LSL: 90,
+      "Observed Value": -21,
+      USL: 110,
+      Average: 100.01,
+    },
+    {
+      "Batch No.": 100039,
+      LSL: 90,
+      "Observed Value": 21,
+      USL: 110,
+      Average: 100.01,
+    },
+    {
+      "Batch No.": 100040,
+      LSL: 90,
+      "Observed Value": 46,
+      USL: 110,
+      Average: 100.01,
+    },
+    {
+      "Batch No.": 100041,
+      LSL: 90,
+      "Observed Value": -46,
+      USL: 110,
+      Average: 100.01,
+    },
+    {
+      "Batch No.": 100042,
+      LSL: 90,
+      "Observed Value": -71,
+      USL: 110,
+      Average: 100.01,
+    },
+    {
+      "Batch No.": 100043,
+      LSL: 90,
+      "Observed Value": 11,
+      USL: 110,
+      Average: 100.01,
+    },
+    {
+      "Batch No.": 100044,
+      LSL: 90,
+      "Observed Value": 20,
+      USL: 110,
+      Average: 100.01,
+    },
+    {
+      "Batch No.": 100045,
+      LSL: 90,
+      "Observed Value": 24,
+      USL: 110,
+      Average: 100.01,
+    },
+    {
+      "Batch No.": 100046,
+      LSL: 90,
+      "Observed Value": 30,
+      USL: 110,
+      Average: 100.01,
+    },
+    {
+      "Batch No.": 100047,
+      LSL: 90,
+      "Observed Value": 1,
+      USL: 110,
+      Average: 100.01,
+    },
+    {
+      "Batch No.": 100001,
+      LSL: 90,
+      "Observed Value": 25,
+      USL: 110,
+      Average: 100.01,
+    },
+    {
+      "Batch No.": 100002,
+      LSL: 90,
+      "Observed Value": 50,
+      USL: 110,
+      Average: 100.01,
+    },
+    {
+      "Batch No.": 100003,
+      LSL: 90,
+      "Observed Value": 41,
+      USL: 110,
+      Average: 100.01,
+    },
+    {
+      "Batch No.": 100004,
+      LSL: 90,
+      "Observed Value": 32,
+      USL: 110,
+      Average: 100.01,
+    },
+    {
+      "Batch No.": 100005,
+      LSL: 90,
+      "Observed Value": -25,
+      USL: 110,
+      Average: 100.01,
+    },
+    {
+      "Batch No.": 100006,
+      LSL: 90,
+      "Observed Value": -45,
+      USL: 110,
+      Average: 100.01,
+    },
+    {
+      "Batch No.": 100007,
+      LSL: 90,
+      "Observed Value": -85,
+      USL: 110,
+      Average: 100.01,
+    },
+    {
+      "Batch No.": 100008,
+      LSL: 90,
+      "Observed Value": -120,
+      USL: 110,
+      Average: 100.01,
+    },
+    {
+      "Batch No.": 100009,
+      LSL: 90,
+      "Observed Value": -111,
+      USL: 110,
+      Average: 100.01,
+    },
+    {
+      "Batch No.": 100010,
+      LSL: 90,
+      "Observed Value": 111,
+      USL: 110,
+      Average: 100.01,
+    },
+    {
+      "Batch No.": 100011,
+      LSL: 90,
+      "Observed Value": 90,
+      USL: 110,
+      Average: 100.01,
+    },
+    {
+      "Batch No.": 100012,
+      LSL: 90,
+      "Observed Value": 42,
+      USL: 110,
+      Average: 100.01,
+    },
+    {
+      "Batch No.": 100013,
+      LSL: 90,
+      "Observed Value": 22,
+      USL: 110,
+      Average: 100.01,
+    },
+    {
+      "Batch No.": 100014,
+      LSL: 90,
+      "Observed Value": 35,
+      USL: 110,
+      Average: 100.01,
+    },
+    {
+      "Batch No.": 100015,
+      LSL: 90,
+      "Observed Value": 79,
+      USL: 110,
+      Average: 100.01,
+    },
+    {
+      "Batch No.": 100016,
+      LSL: 90,
+      "Observed Value": 23,
+      USL: 110,
+      Average: 100.01,
+    },
+    {
+      "Batch No.": 100017,
+      LSL: 90,
+      "Observed Value": 29,
+      USL: 110,
+      Average: 100.01,
+    },
+    {
+      "Batch No.": 100018,
+      LSL: 90,
+      "Observed Value": 45,
+      USL: 110,
+      Average: 100.01,
+    },
+    {
+      "Batch No.": 100019,
+      LSL: 90,
+      "Observed Value": -32,
+      USL: 110,
+      Average: 100.01,
+    },
+    {
+      "Batch No.": 100020,
+      LSL: 90,
+      "Observed Value": -11,
+      USL: 110,
+      Average: 100.01,
+    },
+    {
+      "Batch No.": 100021,
+      LSL: 90,
+      "Observed Value": -13,
+      USL: 110,
+      Average: 100.01,
+    },
+    {
+      "Batch No.": 100022,
+      LSL: 90,
+      "Observed Value": 15,
+      USL: 110,
+      Average: 100.01,
+    },
+    {
+      "Batch No.": 100023,
+      LSL: 90,
+      "Observed Value": 18,
+      USL: 110,
+      Average: 100.01,
+    },
+    {
+      "Batch No.": 100024,
+      LSL: 90,
+      "Observed Value": 20,
+      USL: 110,
+      Average: 100.01,
+    },
+    {
+      "Batch No.": 100025,
+      LSL: 90,
+      "Observed Value": 45,
+      USL: 110,
+      Average: 100.01,
+    },
+    {
+      "Batch No.": 100026,
+      LSL: 90,
+      "Observed Value": 113,
+      USL: 110,
+      Average: 100.01,
+    },
+    {
+      "Batch No.": 100027,
+      LSL: 90,
+      "Observed Value": 34,
+      USL: 110,
+      Average: 100.01,
+    },
+    {
+      "Batch No.": 100028,
+      LSL: 90,
+      "Observed Value": -34,
+      USL: 110,
+      Average: 100.01,
+    },
+    {
+      "Batch No.": 100029,
+      LSL: 90,
+      "Observed Value": -12,
+      USL: 110,
+      Average: 100.01,
+    },
+    {
+      "Batch No.": 100030,
+      LSL: 90,
+      "Observed Value": 18,
+      USL: 110,
+      Average: 100.01,
+    },
+    {
+      "Batch No.": 100031,
+      LSL: 90,
+      "Observed Value": -21,
+      USL: 110,
+      Average: 100.01,
+    },
+    {
+      "Batch No.": 100032,
+      LSL: 90,
+      "Observed Value": 11,
+      USL: 110,
+      Average: 100.01,
+    },
+    {
+      "Batch No.": 100033,
+      LSL: 90,
+      "Observed Value": 78,
+      USL: 110,
+      Average: 100.01,
+    },
+    {
+      "Batch No.": 100034,
+      LSL: 90,
+      "Observed Value": 34,
+      USL: 110,
+      Average: 100.01,
+    },
+    {
+      "Batch No.": 100035,
+      LSL: 90,
+      "Observed Value": 43,
+      USL: 110,
+      Average: 100.01,
+    },
+    {
+      "Batch No.": 100036,
+      LSL: 90,
+      "Observed Value": 12,
+      USL: 110,
+      Average: 100.01,
+    },
+    {
+      "Batch No.": 100037,
+      LSL: 90,
+      "Observed Value": -12,
+      USL: 110,
+      Average: 100.01,
+    },
+    {
+      "Batch No.": 100038,
+      LSL: 90,
+      "Observed Value": -21,
+      USL: 110,
+      Average: 100.01,
+    },
+    {
+      "Batch No.": 100039,
+      LSL: 90,
+      "Observed Value": 21,
+      USL: 110,
+      Average: 100.01,
+    },
+    {
+      "Batch No.": 100040,
+      LSL: 90,
+      "Observed Value": 46,
+      USL: 110,
+      Average: 100.01,
+    },
+    {
+      "Batch No.": 100041,
+      LSL: 90,
+      "Observed Value": -46,
+      USL: 110,
+      Average: 100.01,
+    },
+    {
+      "Batch No.": 100042,
+      LSL: 90,
+      "Observed Value": -71,
+      USL: 110,
+      Average: 100.01,
+    },
+    {
+      "Batch No.": 100043,
+      LSL: 90,
+      "Observed Value": 11,
+      USL: 110,
+      Average: 100.01,
+    },
+    {
+      "Batch No.": 100044,
+      LSL: 90,
+      "Observed Value": 20,
+      USL: 110,
+      Average: 100.01,
+    },
+    {
+      "Batch No.": 100045,
+      LSL: 90,
+      "Observed Value": 24,
+      USL: 110,
+      Average: 100.01,
+    },
+    {
+      "Batch No.": 100046,
+      LSL: 90,
+      "Observed Value": 30,
+      USL: 110,
+      Average: 100.01,
+    },
+    {
+      "Batch No.": 100047,
+      LSL: 90,
+      "Observed Value": 1,
+      USL: 110,
+      Average: 100.01,
+    },
+  ];
 
-    useEffect(() => {
-      let data = [];
-      let categories = [];
-  
-      if (selectedOption === "hourly") {
-          // Assume Batch No. can be used as a unique identifier for each record
-          data = records.map((record) => record["Observed Value"]);
-          categories = records.map((record) => `Batch ${record["Batch No."]}`);
-      } else if (selectedOption === "day") {
-          const dayData = {};
-          records.forEach((record) => {
-              const day = new Date(record["Batch No."]).toLocaleDateString(); // Assumes Batch No. can be used to infer date
-              if (!dayData[day]) {
-                  dayData[day] = [];
-              }
-              dayData[day].push(record["Observed Value"]);
-          });
-          data = Object.keys(dayData).map(
-              (day) => dayData[day].reduce((a, b) => a + b, 0) / dayData[day].length
-          );
-          categories = Object.keys(dayData);
-      } else if (selectedOption === "month") {
-          const monthData = {};
-          records.forEach((record) => {
-              const month = new Date(record["Batch No."]).toLocaleString("default", { month: "short" }); // Assumes Batch No. can be used to infer date
-              if (!monthData[month]) {
-                  monthData[month] = [];
-              }
-              monthData[month].push(record["Observed Value"]);
-          });
-          data = Object.keys(monthData).map(
-              (month) => monthData[month].reduce((a, b) => a + b, 0) / monthData[month].length
-          );
-          categories = Object.keys(monthData);
-      }
-  
-      setChartData(data);
-      setChartCategories(categories);
+  useEffect(() => {
+    let data = [];
+    let categories = [];
+
+    if (selectedOption === "hourly") {
+      // Assume Batch No. can be used as a unique identifier for each record
+      data = records.map((record) => record["Observed Value"]);
+      categories = records.map((record) => `Batch ${record["Batch No."]}`);
+    } else if (selectedOption === "day") {
+      const dayData = {};
+      records.forEach((record) => {
+        const day = new Date(record["Batch No."]).toLocaleDateString(); // Assumes Batch No. can be used to infer date
+        if (!dayData[day]) {
+          dayData[day] = [];
+        }
+        dayData[day].push(record["Observed Value"]);
+      });
+      data = Object.keys(dayData).map(
+        (day) => dayData[day].reduce((a, b) => a + b, 0) / dayData[day].length
+      );
+      categories = Object.keys(dayData);
+    } else if (selectedOption === "month") {
+      const monthData = {};
+      records.forEach((record) => {
+        const month = new Date(record["Batch No."]).toLocaleString("default", {
+          month: "short",
+        }); // Assumes Batch No. can be used to infer date
+        if (!monthData[month]) {
+          monthData[month] = [];
+        }
+        monthData[month].push(record["Observed Value"]);
+      });
+      data = Object.keys(monthData).map(
+        (month) =>
+          monthData[month].reduce((a, b) => a + b, 0) / monthData[month].length
+      );
+      categories = Object.keys(monthData);
+    }
+
+    setChartData(data);
+    setChartCategories(categories);
   }, [selectedOption]);
 
   const gridLineLabels = [
@@ -212,14 +1082,14 @@ export default function Analytics5() {
     { value: 50, label: "UCL ▴" },
     { value: -50, label: "LCL ▾" },
     { value: -100, label: "LSL ▾" },
-    { value: 0, label: "0" } // Added for demonstration
+    { value: 0, label: "0" }, // Added for demonstration
   ];
 
   const additionalLabels = [
-    { x: 100/2, y: 100, label: "OOT" },
-    { x: 100/2, y: 50, label: "OOS" },
-    { x: 100/2, y: -50, label: "OOS" },
-    { x: 100/2, y: -100, label: "OOT" },
+    { x: 100 / 2, y: 100, label: "OOT" },
+    { x: 100 / 2, y: 50, label: "OOS" },
+    { x: 100 / 2, y: -50, label: "OOS" },
+    { x: 100 / 2, y: -100, label: "OOT" },
     // Add more labels as needed
   ];
 
@@ -232,48 +1102,47 @@ export default function Analytics5() {
   };
 
   return (
-    <div>
-      <Header />
-      <BottomHeader />
       <div
         className="graph-2"
         style={{ display: "flex", justifyContent: "space-between" }}
       >
-        <div className="chart-analytics" style={{ width: "100%" }}>
+        <div className="chart-analytics chart-container " style={{ width: "1000%" }}>
           <Chart
             data={{
               labels: chartCategories,
               datasets: [
                 {
-                  type: chartType,
-                  pointRadius: 8,
-                  tension: 0.5,
-                  label:
-                    location.state?.processId === 1
-                      ? "------------  Differential Pressure  ------------"
-                      : location.state?.processId === 4
-                      ? "------------  Temperature Records  ------------"
-                      : "",
+                  type: "line", // or 'bar', 'bubble', etc.
                   data: chartData,
-                  backgroundColor: chartData.map((data) => {
-                    if (data > 100) {
+                  borderColor: (context) => {
+                    const { dataIndex, dataset } = context;
+                    const value = dataset.data[dataIndex];
+                    console.log(value);
+                    // Return different colors based on the value
+                    if (value > 100) {
                       return "rgba(200, 0, 0, 1)"; // Red
-                    } else if (data > 50) {
+                    } else if (value > 50) {
                       return "rgba(255, 165, 0, 1)"; // Orange
-                    } else if (data > -50) {
-                      return "rgba(0, 150, 0, 1)"; // green
-                    } else if (data > -100) {
-                      return "rgba(255, 165, 0, 1)"; // orange
+                    } else if (value > -50) {
+                      return "rgba(0, 150, 0, 1)"; // Green
+                    } else if (value > -100) {
+                      return "rgba(255, 165, 0, 1)"; // Orange
+                    }else if (value < -100) {
+                      return "rgba(200, 0, 0, 1)"; // Orange
                     } else {
-                      return "rgba(200, 0, 0, 1)"; // red
+                      return "rgba(0, 0, 0, 0.2)"; // Red
                     }
-                  }),
-                },
+                  },
+                  pointRadius: 8,
+                  borderWidth: 4,
+                  tension: 0.5,
+
+                },               
               ],
             }}
             height={600}
-            width={1500}
-            options={{
+            width={3000}
+            options={{         
               maintainAspectRatio: false,
               indexAxis: "x",
               barThickness: 5,
@@ -290,24 +1159,27 @@ export default function Analytics5() {
                   annotations: {
                     ...gridLineLabels.reduce((acc, { value, label }) => {
                       acc[`yLabel_${value}`] = {
-                        type: 'label',
-                        xValue: chartCategories[Math.floor(chartCategories.length / 2)],
+                        type: "label",
+                        xValue:
+                          chartCategories[
+                            Math.floor(chartCategories.length / 2)
+                          ],
                         yValue: value,
-                        backgroundColor: 'rgba(255, 255, 255, 0.5)',
+                        backgroundColor: "rgba(255, 255, 255, 0.5)",
                         content: label,
                         display: true,
-                        position: 'center',
+                        position: "center",
                         padding: {
                           top: 10,
                           bottom: 10,
                           left: 10,
-                          right: 10
+                          right: 10,
                         },
                         font: {
                           size: 16,
-                          weight: 'bold'
+                          weight: "bold",
                         },
-                        color: 'white',
+                        color: "white",
                         xAdjust: -10, // Adjust as needed to center on the x-axis
                         yAdjust: -10, // Adjust as needed
                       };
@@ -315,24 +1187,24 @@ export default function Analytics5() {
                     }, {}),
                     ...additionalLabels.reduce((acc, { x, y, label }) => {
                       acc[`customLabel_${x}_${y}`] = {
-                        type: 'label',
+                        type: "label",
                         xValue: x,
                         yValue: y,
-                        backgroundColor: 'rgba(255, 255, 255, 0.5)',
+                        backgroundColor: "rgba(255, 255, 255, 0.5)",
                         content: label,
                         display: true,
-                        position: 'center',
+                        position: "center",
                         padding: {
                           top: 10,
                           bottom: 10,
                           left: 10,
-                          right: 10
+                          right: 10,
                         },
                         font: {
                           size: 16,
-                          weight: 'bold'
+                          weight: "bold",
                         },
-                        color: 'black',
+                        color: "black",
                         xAdjust: -10, // Adjust as needed
                         yAdjust: -10, // Adjust as needed
                       };
@@ -349,13 +1221,13 @@ export default function Analytics5() {
                     // text: 'Your Centered Title Here',
                     font: {
                       size: 22,
-                      weight: 'bold',
+                      weight: "bold",
                     },
-                    color: 'black',
+                    color: "black",
                     padding: {
                       top: 20, // Adjust padding if necessary
                     },
-                    align: 'center', // Center the title horizontally
+                    align: "center", // Center the title horizontally
                   },
                 },
                 y: {
@@ -385,19 +1257,15 @@ export default function Analytics5() {
                   },
                   title: {
                     display: true,
-                    text:
-                      location.state?.processId === 1
-                        ? "------------  Differential Pressure  ------------"
-                        : location.state?.processId === 4
-                        ? "------------  Temperature Records  ------------"
-                        : "",
+                   text:"APQR Graph",
+                      
                     font: {
                       size: 22,
                       weight: "bold",
                     },
                   },
                   max: 130,
-                  min:-130
+                  min: -130,
                 },
               },
             }}
@@ -425,6 +1293,6 @@ export default function Analytics5() {
           </div>
         </div> */}
       </div>
-    </div>
+
   );
 }
