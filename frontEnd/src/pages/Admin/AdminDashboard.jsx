@@ -59,14 +59,14 @@ const AdminDashboard = () => {
       name: 'Gaurav Meena',
       email: 'Gaurav10@email.com',
       permissions: ['Admin', 'Editor', 'Viewer'],
-      lastLogin: 'Sep 5, 2019',
+      lastLogin: 'Jul 2, 2024',
       photo: '/gg.png'
     },
     {
       name: 'Pankaj Jat',
       email: 'Pankaj.Jat@email.com',
       permissions: ['Editor', 'Viewer'],
-      lastLogin: 'Sep 5, 2019',
+      lastLogin: 'April 15, 2024',
       photo: '/p.png'
     },
     {
@@ -80,7 +80,7 @@ const AdminDashboard = () => {
       name: 'Roshani Sahu',
       email: 'Roshani03@wix.com',
       permissions: ['Member'],
-      lastLogin: 'Sep 5, 2019',
+      lastLogin: 'July 30, 2024',
       photo: '/r.png'
     },
     {
@@ -89,6 +89,13 @@ const AdminDashboard = () => {
       permissions: ['Member'],
       lastLogin: 'Sep 5, 2019',
       photo: '/a.png'
+    },
+    {
+      name: 'Roshani ji',
+      email: 'Roshani.ji@wix.com',
+      permissions: ['Member'],
+      lastLogin: 'Jul 3, 2024',
+      photo: '/r.png'
     },
   ]);
   const [showConfirm, setShowConfirm] = useState(false);
