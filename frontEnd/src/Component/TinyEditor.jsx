@@ -1,11 +1,5 @@
 import { Editor } from "@tinymce/tinymce-react";
 import React, { useEffect, useRef, useState } from "react";
-import mammoth from "mammoth";
-import htmlToPdfmake from "html-to-pdfmake";
-import pdfMake from "pdfmake/build/pdfmake";
-import pdfFonts from "pdfmake/build/vfs_fonts";
-
-pdfMake.vfs = pdfFonts.pdfMake.vfs;
 
 export default function TinyEditor({ editorContent, setEditorContent, tinyNo }) {
   const editorRef = useRef(null);
