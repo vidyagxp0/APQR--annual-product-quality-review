@@ -155,7 +155,7 @@ export default function LineChartPQR() {
                   const { dataIndex, dataset } = context;
                   const value = dataset.data[dataIndex];
                   console.log(value);
-                  // Return different colors based on the value
+                  // Return different colors based on the value   
                   if (value > 100) {
                     return "rgba(200, 0, 0, 1)"; // Red
                   } else if (value > 50) {
