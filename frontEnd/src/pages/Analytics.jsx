@@ -11,6 +11,7 @@ import ReactApexChart from 'react-apexcharts';
 import Header from "../Component/Header";
 import BottomHeader from "../Component/BottomHeader";
 import LineChartPQR from '../Component/Chart/Chart';
+import HighchartsChart from '../Component/Chart/HighchartsChart';
 
 // Define generateData function
 const generateData = (timestamp, count, range) => {
@@ -264,9 +265,10 @@ const inflationChartState = {
       <Header />
       <BottomHeader />
 
-      <div className="w-full bg-white shadow-lg p-4 overflow-auto">
+      {/* <div className="w-full bg-white shadow-lg p-4 overflow-auto">
           <LineChartPQR />
-        </div>
+        </div> */}
+        <HighchartsChart/>
       
       <div className="flex flex-row  justify-center items-center gap-10  m-10">
  
