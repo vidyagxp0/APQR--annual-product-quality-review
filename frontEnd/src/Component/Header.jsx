@@ -4,7 +4,7 @@ import { NavLink, useNavigate } from "react-router-dom";
 export default function Header() {
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const timeoutRef = useRef(null);
-const navigate=useNavigate()
+  const navigate = useNavigate();
   const showDropdown = () => {
     if (timeoutRef.current) {
       clearTimeout(timeoutRef.current);
@@ -23,7 +23,12 @@ const navigate=useNavigate()
       <div className="container mx-auto px-6 flex items-center justify-between">
         {/* Logo */}
         <div className="flex items-center">
-          <img src="/gxplogo.png" alt="Logo" className="h-10 mr-2 cursor-pointer  "  onClick={()=>navigate("/dashboard")}/>
+          <img
+            src="/logo1.png"
+            alt="Logo"
+            className="h-10 mr-2 cursor-pointer  "
+            onClick={() => navigate("/dashboard")}
+          />
         </div>
 
         {/* Name */}
@@ -35,14 +40,8 @@ const navigate=useNavigate()
         </div>
 
         {/* Dropdown Menu */}
-        <div
-          className="relative"
-          onMouseEnter={showDropdown}
-          onMouseLeave={hideDropdown}
-        >
-          <button
-            className="flex items-center focus:outline-none border border-gray-400 rounded-md px-4 py-2"
-          >
+        <div className="relative" onMouseEnter={showDropdown} onMouseLeave={hideDropdown}>
+          <button className="flex items-center focus:outline-none border border-gray-400 rounded-md px-4 py-2">
             <span>Gaurav</span>
             <svg
               className="w-6 h-6 ml-2"
