@@ -24,6 +24,7 @@ function App() {
         <Route path="/" element={<Login />} />
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/analytics" element={<AdvancedAnalytics />} />
+        <Route path="/analytics2" element={<Analytics />} />
         <Route path="/notification" element={<Notification />} />
         <Route path="/new-pqr" element={<APQR />} />
         <Route path="/admin-login" element={<AdminLogin />} />
