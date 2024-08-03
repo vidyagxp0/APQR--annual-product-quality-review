@@ -23,13 +23,16 @@ const HighchartsChart = ({heading,xHeading,yHeading,yMin,yMax,yTickInterval,plot
   };
 
   const processData = () => {
-    return highchartData.map((record) => ({
-      x: record["Batch No."],
-      y: record["Observed Value"],
+    console.log(highchartData,"highchartData")
+    return highchartData?.map((record) => ({
+
+      x: parseInt(record["Batch No."]),
+      y: parseInt(record["Observed Value"]),
+      
     }));
   };
 
-  const data = processData();
+  const data = processData()||[]
   const options = {
     chart: {
       type: "line",
@@ -54,7 +57,7 @@ const HighchartsChart = ({heading,xHeading,yHeading,yMin,yMax,yTickInterval,plot
           fontWeight: "bold",
         },
       },
-      categories: highchartData.map((record) => `BatchNo ${record["Batch No."]}`),
+      categories: highchartData?.map((record) => `BatchNo ${record["Batch No."]}`),
       tickInterval: 1,
       step: 1, // Show every data point
       labels: {

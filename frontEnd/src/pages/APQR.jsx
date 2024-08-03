@@ -472,7 +472,7 @@ export default function APQR() {
       initiateDate: Date.now(),
       pqrNO: "",
       productName: "",
-      dosageForm:"",
+      dosageForm: "",
       genericName: "",
       reviewStartDate: "",
       reviewEndDate: "",
@@ -807,7 +807,7 @@ export default function APQR() {
     currentLabI,
     previewLabI,
   ]);
-console.log(pQRData,"pQRData")
+  console.log(pQRData, "pQRData");
   const addManufacturingStageRow = () => {
     const newRow = {
       productName: "",
@@ -1053,9 +1053,13 @@ console.log(pQRData,"pQRData")
 
   const addReviewODSTRRow = () => {
     const newRow = {
+      batchNo:"",
       testsParameter: "",
-      specificationLimit: "",
-      obtainedValue: { minimum: "", maximum: "" },
+      LSL: "",
+      USL: "",
+      LCL: "",
+      UCL: "",
+      observedValue:"",
       compliesNotComplies: "",
     };
     setReviewOSTR([...reviewODSTR, newRow]);
@@ -1905,20 +1909,20 @@ console.log(pQRData,"pQRData")
                 />
               </div>
               <div className="group-input ">
-        <label>Dosage Form</label>
-           <select
-             value={pQRData.dosageForm}
-             onChange={(e) => {
-               setPQRData({ ...pQRData, dosageForm: e.target.value });
-             }}
-           >
-             <option value="">Select Dosage Form</option>
-             <option value="Oral Solid">Oral Solid</option>
-             <option value="Oral Liquid">Oral Liquid</option>
-             <option value="Injectables">Injectables</option>
-             <option value="Semisolid">Semisolid</option>
-           </select>
-        </div>
+                <label>Dosage Form</label>
+                <select
+                  value={pQRData.dosageForm}
+                  onChange={(e) => {
+                    setPQRData({ ...pQRData, dosageForm: e.target.value });
+                  }}
+                >
+                  <option value="">Select Dosage Form</option>
+                  <option value="Oral Solid">Oral Solid</option>
+                  <option value="Oral Liquid">Oral Liquid</option>
+                  <option value="Injectables">Injectables</option>
+                  <option value="Semisolid">Semisolid</option>
+                </select>
+              </div>
               <div className="group-input">
                 <label>MFG. LIC. No</label>
                 <input
@@ -1947,7 +1951,6 @@ console.log(pQRData,"pQRData")
                   />
                 </div>
               </div>
-              
             </div>
             <table>
               <thead>
@@ -2006,7 +2009,6 @@ console.log(pQRData,"pQRData")
             </div>
 
             <div className="py-4">
-            
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addManufacturingSAPSRow} />
@@ -2102,7 +2104,7 @@ console.log(pQRData,"pQRData")
               </div>
               <div className="pb-4">
                 <h4 className="gridName">Raw Materials Rejection Summary</h4>
-               
+
                 <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                   <div className="flex items-center">
                     <MdNoteAdd onClick={addRawMRSRow} />
@@ -2206,7 +2208,7 @@ console.log(pQRData,"pQRData")
                   {" "}
                   Packing Materials Rejection Summary
                 </h4>
-                
+
                 <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                   <div className="flex items-center">
                     <MdNoteAdd onClick={addPackingMRSRow} />
@@ -2310,7 +2312,7 @@ console.log(pQRData,"pQRData")
               </div>
               <div className="pb-4">
                 <h4 className="gridName">Expired Raw Materials Details</h4>
-                
+
                 <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                   <div className="flex items-center">
                     <MdNoteAdd onClick={addExpiredRMDRow} />
@@ -2400,7 +2402,7 @@ console.log(pQRData,"pQRData")
                 <h4 className="gridName">
                   Expired Packaging Materials Details
                 </h4>
-                
+
                 <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                   <div className="flex items-center">
                     <MdNoteAdd onClick={addExpiredPMDRow} />
@@ -2489,7 +2491,7 @@ console.log(pQRData,"pQRData")
               </div>
 
               <div className="sub-head">Review of Approved Supplier List</div>
-              
+
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addreviewOfASLRow} />
@@ -2579,7 +2581,6 @@ console.log(pQRData,"pQRData")
                 Vendor Qualification Details of Raw Material Excipients
               </div>
               <div>
-               
                 <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                   <div className="flex items-center">
                     <MdNoteAdd onClick={addvendorQDORMERow} />
@@ -2678,7 +2679,6 @@ console.log(pQRData,"pQRData")
                 Vendor Qualification Details of Primary Packing Materials
               </div>
               <div>
-               
                 <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                   <div className="flex items-center">
                     <MdNoteAdd onClick={addvendorQDOPPMRow} />
@@ -2769,7 +2769,6 @@ console.log(pQRData,"pQRData")
                 Vendor Qualification Details of Process Gases
               </div>
               <div>
-               
                 <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                   <div className="flex items-center">
                     <MdNoteAdd onClick={addvendorQDPOGRow} />
@@ -2951,7 +2950,6 @@ console.log(pQRData,"pQRData")
             </div>
             <div className="gridName">Code to code transfer details</div>
             <div className="py-4">
-            
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addcodeTCTDRow} />
@@ -4007,7 +4005,9 @@ console.log(pQRData,"pQRData")
                     <th rowSpan={2}>Critical Process Parameters</th>
                     <th rowSpan={2}>Codes</th>
                     <th rowSpan={2}>Acceptance criteria</th>
-                    <th className="centerText" colSpan={2} >Results</th>
+                    <th className="centerText" colSpan={2}>
+                      Results
+                    </th>
                     <th rowSpan={2}>Complies / Does not complies</th>
                   </tr>
                   <tr>
@@ -5035,7 +5035,7 @@ console.log(pQRData,"pQRData")
               {" "}
               Review of Drug Substance Test Results
             </div>
-            <h1 className="gridName">Drug Substance 1 Test Result</h1>
+            <h1 className="gridName"> Paracetamol  pH Test Results</h1>
             <div>
               <div className="AddRows d-flex w-full justify-between items-center text-3xl mb-5">
                 <div className="flex items-center">
@@ -5055,24 +5055,28 @@ console.log(pQRData,"pQRData")
               <table>
                 <thead>
                   <tr>
-                    <th rowSpan={2}>Sl. No</th>
-                    <th rowSpan={2}>Tests parameter</th>
-                    <th rowSpan={2}>Specification limit</th>
-                    <th className="centerText" colSpan={2}>
-                      Obtained value
-                    </th>
-                    <th rowSpan={2}>Complies/Does Not complies</th>
-                  </tr>
-                  <tr>
-                    <th>Minimum</th>
-                    <th>Maximum</th>
+                    <th>Batch No</th>
+                    <th>Tests parameter</th>
+                    <th>LSL</th>
+                    <th>USL</th>
+                    <th>LCL</th>
+                    <th>UCL</th>
+                    <th>Observed Value</th>
+                    <th>Complies/Does Not complies</th>
                   </tr>
                 </thead>
                 <tbody>
                   {reviewODSTR?.map((item, index) => {
                     return (
                       <tr key={index}>
-                        <td>{index + 1}</td>
+                        <td> <input
+                            value={item.batchNo}
+                            onChange={(e) => {
+                              const newData = [...reviewODSTR];
+                              newData[index].batchNo = e.target.value;
+                              setReviewOSTR(newData);
+                            }}
+                          /></td>
                         <td>
                           <input
                             value={item.testsParameter}
@@ -5085,10 +5089,10 @@ console.log(pQRData,"pQRData")
                         </td>
                         <td>
                           <input
-                            value={item.specificationLimit}
+                            value={item.LSL}
                             onChange={(e) => {
                               const newData = [...reviewODSTR];
-                              newData[index].specificationLimit =
+                              newData[index].LSL =
                                 e.target.value;
                               setReviewOSTR(newData);
                             }}
@@ -5096,10 +5100,10 @@ console.log(pQRData,"pQRData")
                         </td>
                         <td>
                           <input
-                            value={item.obtainedValue.minimum}
+                            value={item.USL}
                             onChange={(e) => {
                               const newData = [...reviewODSTR];
-                              newData[index].obtainedValue.minimum =
+                              newData[index].USL =
                                 e.target.value;
                               setReviewOSTR(newData);
                             }}
@@ -5107,15 +5111,38 @@ console.log(pQRData,"pQRData")
                         </td>
                         <td>
                           <input
-                            value={item.obtainedValue.maximum}
+                            value={item.LCL}
                             onChange={(e) => {
                               const newData = [...reviewODSTR];
-                              newData[index].obtainedValue.maximum =
+                              newData[index].LCL =
                                 e.target.value;
                               setReviewOSTR(newData);
                             }}
                           />
                         </td>
+                        <td>
+                          <input
+                            value={item.UCL}
+                            onChange={(e) => {
+                              const newData = [...reviewODSTR];
+                              newData[index].UCL =
+                                e.target.value;
+                              setReviewOSTR(newData);
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.observedValue}
+                            onChange={(e) => {
+                              const newData = [...reviewODSTR];
+                              newData[index].observedValue =
+                                e.target.value;
+                              setReviewOSTR(newData);
+                            }}
+                          />
+                        </td>
+                       
                         <td>
                           <input
                             value={item.compliesNotComplies}

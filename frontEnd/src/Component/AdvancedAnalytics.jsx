@@ -18,8 +18,11 @@ import {
   terbinafinepHZones,
 } from "./Chart/ChartJsFunction";
 import HistogramChart from "./Highcharts/Histogram";
+import { useSelector } from "react-redux";
 
 export default function AdvancedAnalytics() {
+ 
+
   const phOfParacetamol = {
     data: [
       1.65, 2.7, 3.4, 4.1, 2.2, 2.8, 3.3, 4.0, 1.75, 2.9, 3.5, 4.05, 2.1, 2.85, 3.2, 4.15, 1.8,
