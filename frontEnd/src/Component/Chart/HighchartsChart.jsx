@@ -11,7 +11,18 @@ HC_more(Highcharts);
 HC_exporting(Highcharts);
 HC_exportData(Highcharts);
 
-const HighchartsChart = ({heading,xHeading,yHeading,yMin,yMax,yTickInterval,plotLines,annotations,zones,highchartData}) => {
+const HighchartsChart = ({
+  heading,
+  xHeading,
+  yHeading,
+  yMin,
+  yMax,
+  yTickInterval,
+  plotLines,
+  annotations,
+  zones,
+  highchartData,
+}) => {
   useEffect(() => {
     document.title = "Highcharts";
   }, []);
@@ -23,16 +34,15 @@ const HighchartsChart = ({heading,xHeading,yHeading,yMin,yMax,yTickInterval,plot
   };
 
   const processData = () => {
-    console.log(highchartData,"highchartData")
+    console.log(highchartData, "highchartData");
     return highchartData?.map((record) => ({
-
-      x: parseInt(record["Batch No."]),
+      x: parseInt(record["Batch No."].split("_")[1]),
+      // x: parseInt(record["Batch No."]),
       y: parseInt(record["Observed Value"]),
-      
     }));
   };
 
-  const data = processData()||[]
+  const data = processData() || [];
   const options = {
     chart: {
       type: "line",
@@ -57,7 +67,8 @@ const HighchartsChart = ({heading,xHeading,yHeading,yMin,yMax,yTickInterval,plot
           fontWeight: "bold",
         },
       },
-      categories: highchartData?.map((record) => `BatchNo ${record["Batch No."]}`),
+      // categories: highchartData?.map((record) => `BatchNo ${record["Batch No."]}`),
+      categories: highchartData?.map((record) => ` ${record["Batch No."]}`),
       tickInterval: 1,
       step: 1, // Show every data point
       labels: {
@@ -93,7 +104,7 @@ const HighchartsChart = ({heading,xHeading,yHeading,yMin,yMax,yTickInterval,plot
         name: yHeading,
         data: data,
         lineWidth: 2,
-        zones:zones,
+        zones: zones,
       },
     ],
     plotOptions: {
@@ -117,54 +128,50 @@ const HighchartsChart = ({heading,xHeading,yHeading,yMin,yMax,yTickInterval,plot
       },
     },
 
-    annotations: annotations?.map((e,index)=>{
-      return  {
+    annotations: annotations?.map((e, index) => {
+      return {
         point: {
           xAxis: 0,
           yAxis: 0,
           x: data[Math.floor(data.length / 2)].x,
-          y: e.y
+          y: e.y,
         },
         text: e.text,
-      }
-    })
-      // ,
-      // {
-      //   point: {
-      //     xAxis: 0,
-      //     yAxis: 0,
-      //     x: data[Math.floor(data.length / 2)].x,
-      //     y: 25,
-      //   },
-      //   text: "OOS",
-      // },
-      // {
-      //   point: {
-      //     xAxis: 0,
-      //     yAxis: 0,
-      //     x: data[Math.floor(data.length / 2)].x,
-      //     y: -25,
-      //   },
-      //   text: "OOS",
-      // },
-      // {
-      //   point: {
-      //     xAxis: 0,
-      //     yAxis: 0,
-      //     x: data[Math.floor(data.length / 2)].x,
-      //     y: -75,
-      //   },
-      //   text: "OOT",
-      // },
-    
+      };
+    }),
+    // ,
+    // {
+    //   point: {
+    //     xAxis: 0,
+    //     yAxis: 0,
+    //     x: data[Math.floor(data.length / 2)].x,
+    //     y: 25,
+    //   },
+    //   text: "OOS",
+    // },
+    // {
+    //   point: {
+    //     xAxis: 0,
+    //     yAxis: 0,
+    //     x: data[Math.floor(data.length / 2)].x,
+    //     y: -25,
+    //   },
+    //   text: "OOS",
+    // },
+    // {
+    //   point: {
+    //     xAxis: 0,
+    //     yAxis: 0,
+    //     x: data[Math.floor(data.length / 2)].x,
+    //     y: -75,
+    //   },
+    //   text: "OOT",
+    // },
   };
 
   return (
     <div className="w-full bg-white shadow-lg p-4 overflow-auto">
-      <div
-        className="graph-2 "
-        style={{ display: "flex", justifyContent: "space-between" }}
-      >
+      <div className="graph-2 " style={{ display: "flex", justifyContent: "space-between" }}>
         <div className="chart-analytics chart-container ">
           <HighchartsReact highcharts={Highcharts} options={options} />
         </div>

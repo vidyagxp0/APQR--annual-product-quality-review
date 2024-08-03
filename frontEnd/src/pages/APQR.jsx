@@ -181,6 +181,10 @@ export default function APQR() {
   const [previewMC, setPreviewMC] = useState([]);
   const [currentLabI, setCurrentLabI] = useState([]);
   const [previewLabI, setPreviewLabI] = useState([]);
+
+  useEffect(() => {
+    console.log(reviewODSTR);
+  }, [reviewODSTR]);
   const sanitizeKey = (key) => {
     return key.replace(/\s+/g, "").replace(/[\n\r]+/g, "");
   };
@@ -228,9 +232,9 @@ export default function APQR() {
   };
 
   const setimportedData = (data, gridNo) => {
-    console.log(data);
+    // console.log(data);
     const processedData = processData(data, keyMapping);
-    console.log(processedData);
+    // console.log(processedData);
 
     switch (gridNo) {
       case 1:
