@@ -298,3 +298,346 @@ export const records = [
     Average: 100.01,
   },
 ];
+
+export const paracetamolpHData = [
+  { "Batch No.": 101, "Observed Value": 3.3 },
+  { "Batch No.": 102, "Observed Value": 2.6 },
+  { "Batch No.": 103, "Observed Value": 2.9 },
+  { "Batch No.": 104, "Observed Value": 2.1 },
+  { "Batch No.": 105, "Observed Value": 3.8 },
+  { "Batch No.": 106, "Observed Value": 4.2 },
+  { "Batch No.": 107, "Observed Value": 2.3 },
+  { "Batch No.": 108, "Observed Value": 3.5 },
+  { "Batch No.": 109, "Observed Value": 1.7 },
+  { "Batch No.": 110, "Observed Value": 2 },
+  { "Batch No.": 111, "Observed Value": 3.3 },
+  { "Batch No.": 112, "Observed Value": 2.6 },
+  { "Batch No.": 113, "Observed Value": 2.9 },
+  { "Batch No.": 114, "Observed Value": 2.1 },
+  { "Batch No.": 115, "Observed Value": 3.8 },
+  { "Batch No.": 116, "Observed Value": 4.2 },  
+  { "Batch No.": 117, "Observed Value": 2.3 },
+  { "Batch No.": 118, "Observed Value": 3.5 },
+  { "Batch No.": 119, "Observed Value": 1.7 },
+  { "Batch No.": 120, "Observed Value": 2 },
+];
+
+export const ParacetamolpHPlotLines = [
+  {
+    value: 4,
+    color: "red",
+    width: 2,
+    dashStyle: "Dash",
+    label: { text: "USL", style: { color: "black", fontWeight: "bold" } },
+  },
+  {
+    value: 80,
+    color: "orange",
+    width: 2,
+    dashStyle: "Dash",
+    label: { text: "UCL", style: { color: "black", fontWeight: "bold" } },
+  },
+  {
+    value: -80,
+    color: "orange",
+    width: 2,
+    dashStyle: "Dash",
+    label: { text: "LCL", style: { color: "black", fontWeight: "bold" } },
+  },
+  {
+    value: 2,
+    color: "red",
+    width: 2,
+    dashStyle: "Dash",
+    label: {
+      text: "LSL ",
+      style: { color: "black", fontWeight: "bold" },
+    },
+  },
+  {
+    value: 3,
+    color: "black",
+    width: 1,
+    label: { text: "0", style: { color: "black", fontWeight: "bold" } },
+  },
+];
+
+export const paracetamolpHZones = [
+  {
+    value: 2,
+    color: "rgba(200, 0, 0, 1)",
+  },
+  {
+    value: 2,
+    color: "rgba(255, 165, 0, 1)",
+  },
+  {
+    value: 4,
+    color: "rgba(0, 150, 0, 1)",
+  },
+  {
+    value: 4,
+    color: "rgba(255, 165, 0, 1)",
+  },
+  {
+    color: "rgba(200, 0, 0, 1)",
+  },
+];
+
+export const terbinafinepHData = [
+    { "Batch No.": 101, "Observed Value": 4.3 },
+    { "Batch No.": 102, "Observed Value": 5 },
+    { "Batch No.": 103, "Observed Value": 6.5 },
+    { "Batch No.": 104, "Observed Value": 4 },
+    { "Batch No.": 105, "Observed Value": 4.5 },
+    { "Batch No.": 106, "Observed Value":4.8 },
+    { "Batch No.": 107, "Observed Value": 4.3 },
+    { "Batch No.": 108, "Observed Value": 5.3 },
+    { "Batch No.": 109, "Observed Value": 3.7 },
+    { "Batch No.": 110, "Observed Value": 5},
+    { "Batch No.": 111, "Observed Value": 5.3 },
+    { "Batch No.": 112, "Observed Value": 4.6 },
+    { "Batch No.": 113, "Observed Value": 5.9 },
+    { "Batch No.": 114, "Observed Value": 6.1 },
+    { "Batch No.": 115, "Observed Value": 5.8 },
+    { "Batch No.": 116, "Observed Value": 4.2 },  
+    { "Batch No.": 117, "Observed Value": 5.3 },
+    { "Batch No.": 118, "Observed Value": 4.5 },
+    { "Batch No.": 119, "Observed Value": 5.7 },
+    { "Batch No.": 120, "Observed Value": 6},
+  ];
+
+
+export const terbinafinepHPlotLines = [
+    {
+      value: 6,
+      color: "red",
+      width: 2,
+      dashStyle: "Dash",
+      label: { text: "USL", style: { color: "black", fontWeight: "bold" } },
+    },
+    {
+      value: 80,
+      color: "orange",
+      width: 2,
+      dashStyle: "Dash",
+      label: { text: "UCL", style: { color: "black", fontWeight: "bold" } },
+    },
+    {
+      value: -80,
+      color: "orange",
+      width: 2,
+      dashStyle: "Dash",
+      label: { text: "LCL", style: { color: "black", fontWeight: "bold" } },
+    },
+    {
+      value: 4,
+      color: "red",
+      width: 2,
+      dashStyle: "Dash",
+      label: {
+        text: "LSL ",
+        style: { color: "black", fontWeight: "bold" },
+      },
+    },
+    {
+      value: 5,
+      color: "black",
+      width: 1,
+      label: { text: "0", style: { color: "black", fontWeight: "bold" } },
+    },
+  ];
+  
+  export const terbinafinepHZones = [
+    {
+      value: 4,
+      color: "rgba(200, 0, 0, 1)",
+    },
+    {
+      value: 4,
+      color: "rgba(255, 165, 0, 1)",
+    },
+    {
+      value: 6,
+      color: "rgba(0, 150, 0, 1)",
+    },
+    {
+      value: 6,
+      color: "rgba(255, 165, 0, 1)",
+    },
+    {
+      color: "rgba(200, 0, 0, 1)",
+    },
+  ];
+  
+
+  export const PantoprazolepHData = [
+    { "Batch No.": 101, "Observed Value": 7.3 },
+    { "Batch No.": 102, "Observed Value": 6.2 },
+    { "Batch No.": 103, "Observed Value": 6.5 },
+    { "Batch No.": 104, "Observed Value": 7 },
+    { "Batch No.": 105, "Observed Value": 5.5 },
+    { "Batch No.": 106, "Observed Value":6.8 },
+    { "Batch No.": 107, "Observed Value": 6.3 },
+    { "Batch No.": 108, "Observed Value": 7.3 },
+    { "Batch No.": 109, "Observed Value": 8.7 },
+    { "Batch No.": 110, "Observed Value": 7},
+    { "Batch No.": 111, "Observed Value": 6.3 },
+    { "Batch No.": 112, "Observed Value": 6.6 },
+    { "Batch No.": 113, "Observed Value": 7.9 },
+    { "Batch No.": 114, "Observed Value": 6.1 },
+    { "Batch No.": 115, "Observed Value": 8.8 },
+    { "Batch No.": 116, "Observed Value": 6.2 },  
+    { "Batch No.": 117, "Observed Value": 7.3 },
+    { "Batch No.": 118, "Observed Value": 6.5 },
+    { "Batch No.": 119, "Observed Value": 7.7 },
+    { "Batch No.": 120, "Observed Value": 7},
+  ];
+
+
+export const PantoprazolepHPlotLines = [
+    {
+      value: 8,
+      color: "red",
+      width: 2,
+      dashStyle: "Dash",
+      label: { text: "USL", style: { color: "black", fontWeight: "bold" } },
+    },
+    {
+      value: 80,
+      color: "orange",
+      width: 2,
+      dashStyle: "Dash",
+      label: { text: "UCL", style: { color: "black", fontWeight: "bold" } },
+    },
+    {
+      value: -80,
+      color: "orange",
+      width: 2,
+      dashStyle: "Dash",
+      label: { text: "LCL", style: { color: "black", fontWeight: "bold" } },
+    },
+    {
+      value: 6,
+      color: "red",
+      width: 2,
+      dashStyle: "Dash",
+      label: {
+        text: "LSL ",
+        style: { color: "black", fontWeight: "bold" },
+      },
+    },
+    {
+      value: 7,
+      color: "black",
+      width: 1,
+      label: { text: "0", style: { color: "black", fontWeight: "bold" } },
+    },
+  ];
+  
+  export const PantoprazolepHZones = [
+    {
+      value: 6,
+      color: "rgba(200, 0, 0, 1)",
+    },
+    {
+      value: 6,
+      color: "rgba(255, 165, 0, 1)",
+    },
+    {
+      value: 8,
+      color: "rgba(0, 150, 0, 1)",
+    },
+    {
+      value: 8,
+      color: "rgba(255, 165, 0, 1)",
+    },
+    {
+      color: "rgba(200, 0, 0, 1)",
+    },
+  ];
+
+
+ export const phOfParacetamolPlotLines = [
+    {
+      value: 120,
+      color: "red",
+      width: 2,
+      dashStyle: "Dash",
+      label: { text: "USL", style: { color: "black", fontWeight: "bold" } },
+    },
+    {
+      value: 80,
+      color: "orange",
+      width: 2,
+      dashStyle: "Dash",
+      label: { text: "UCL", style: { color: "black", fontWeight: "bold" } },
+    },
+    {
+      value: -80,
+      color: "orange",
+      width: 2,
+      dashStyle: "Dash",
+      label: { text: "LCL", style: { color: "black", fontWeight: "bold" } },
+    },
+    {
+      value: -120,
+      color: "red",
+      width: 2,
+      dashStyle: "Dash",
+      label: {
+        text: "LSL ",
+        style: { color: "black", fontWeight: "bold" },
+      },
+    },
+    {
+      value: 0,
+      color: "black",
+      width: 1,
+      label: { text: "0", style: { color: "black", fontWeight: "bold" } },
+    },
+  ];
+
+ export const paracetamolZones = [
+    {
+      value: -120,
+      color: "rgba(200, 0, 0, 1)",
+    },
+    {
+      value: -75,
+      color: "rgba(255, 165, 0, 1)",
+    },
+    {
+      value: 75,
+      color: "rgba(0, 150, 0, 1)",
+    },
+    {
+      value: 120,
+      color: "rgba(255, 165, 0, 1)",
+    },
+    {
+      color: "rgba(200, 0, 0, 1)",
+    },
+  ];
+ export const paracetamolAnnotations = [
+    {
+      y: 75,
+
+      text: "OOT",
+    },
+    {
+      y: 25,
+
+      text: "OOS",
+    },
+    {
+      y: -25,
+
+      text: "OOS",
+    },
+    {
+      y: -75,
+
+      text: "OOT",
+    },
+  ];

@@ -4,14 +4,14 @@ import HighchartsReact from "highcharts-react-official";
 import HC_more from "highcharts/highcharts-more";
 import HC_exporting from "highcharts/modules/exporting";
 import HC_exportData from "highcharts/modules/export-data";
-import { records } from "./ChartJsFunction";
+// import { records } from "./ChartJsFunction";
 
 // Initialize Highcharts modules
 HC_more(Highcharts);
 HC_exporting(Highcharts);
 HC_exportData(Highcharts);
 
-const HighchartsChart = () => {
+const HighchartsChart = ({heading,xHeading,yHeading,yMin,yMax,yTickInterval,plotLines,annotations,zones,highchartData}) => {
   useEffect(() => {
     document.title = "Highcharts";
   }, []);
@@ -23,7 +23,7 @@ const HighchartsChart = () => {
   };
 
   const processData = () => {
-    return records.map((record) => ({
+    return highchartData.map((record) => ({
       x: record["Batch No."],
       y: record["Observed Value"],
     }));
@@ -40,7 +40,7 @@ const HighchartsChart = () => {
       panKey: "ctrl", // Set the key for panning (optional)
     },
     title: {
-      text: "APQR Graph",
+      text: heading,
       style: {
         fontSize: "22px",
         fontWeight: "bold",
@@ -48,13 +48,13 @@ const HighchartsChart = () => {
     },
     xAxis: {
       title: {
-        text: "Batch No.",
+        text: xHeading,
         style: {
           fontSize: "22px",
           fontWeight: "bold",
         },
       },
-      categories: records.map((record) => `BatchNo ${record["Batch No."]}`),
+      categories: highchartData.map((record) => `BatchNo ${record["Batch No."]}`),
       tickInterval: 1,
       step: 1, // Show every data point
       labels: {
@@ -65,54 +65,16 @@ const HighchartsChart = () => {
     },
     yAxis: {
       title: {
-        text: "Observed Value",
+        text: yHeading,
         style: {
           fontSize: "22px",
           fontWeight: "bold",
         },
       },
-      min: -170,
-      max: 170,
-      tickInterval: 25,
-      plotLines: [
-        {
-          value: 120,
-          color: "red",
-          width: 2,
-          dashStyle: "Dash",
-          label: { text: "USL", style: { color: "black", fontWeight: "bold" } },
-        },
-        {
-          value: 80,
-          color: "orange",
-          width: 2,
-          dashStyle: "Dash",
-          label: { text: "UCL", style: { color: "black", fontWeight: "bold" } },
-        },
-        {
-          value: -80,
-          color: "orange",
-          width: 2,
-          dashStyle: "Dash",
-          label: { text: "LCL", style: { color: "black", fontWeight: "bold" } },
-        },
-        {
-          value: -120,
-          color: "red",
-          width: 2,
-          dashStyle: "Dash",
-          label: {
-            text: "LSL ",
-            style: { color: "black", fontWeight: "bold" },
-          },
-        },
-        {
-          value: 0,
-          color: "black",
-          width: 1,
-          label: { text: "0", style: { color: "black", fontWeight: "bold" } },
-        },
-      ],
+      min: yMin,
+      max: yMax,
+      tickInterval: yTickInterval,
+      plotLines: plotLines,
       labels: {
         step: 1,
         style: {
@@ -125,30 +87,10 @@ const HighchartsChart = () => {
     },
     series: [
       {
-        name: "Observed Value",
+        name: yHeading,
         data: data,
         lineWidth: 2,
-        zones: [
-          {
-            value: -120,
-            color: "rgba(200, 0, 0, 1)",
-          },
-          {
-            value: -75,
-            color: "rgba(255, 165, 0, 1)",
-          },
-          {
-            value: 75,
-            color: "rgba(0, 150, 0, 1)",
-          },
-          {
-            value: 120,
-            color: "rgba(255, 165, 0, 1)",
-          },
-          {
-            color: "rgba(200, 0, 0, 1)",
-          },
-        ],
+        zones:zones,
       },
     ],
     plotOptions: {
@@ -168,48 +110,50 @@ const HighchartsChart = () => {
 
     tooltip: {
       formatter: function () {
-        return `<b>Batch ${this.x}</b><br/>Observed Value: ${this.y}`;
+        return `<b> ${this.x}</b><br/>${yHeading}: ${this.y}`;
       },
     },
 
-    annotations: [
-      {
+    annotations: annotations?.map((e,index)=>{
+      return  {
         point: {
           xAxis: 0,
           yAxis: 0,
           x: data[Math.floor(data.length / 2)].x,
-          y: 75,
+          y: e.y
         },
-        text: "OOT",
-      },
-      {
-        point: {
-          xAxis: 0,
-          yAxis: 0,
-          x: data[Math.floor(data.length / 2)].x,
-          y: 25,
-        },
-        text: "OOS",
-      },
-      {
-        point: {
-          xAxis: 0,
-          yAxis: 0,
-          x: data[Math.floor(data.length / 2)].x,
-          y: -25,
-        },
-        text: "OOS",
-      },
-      {
-        point: {
-          xAxis: 0,
-          yAxis: 0,
-          x: data[Math.floor(data.length / 2)].x,
-          y: -75,
-        },
-        text: "OOT",
-      },
-    ],
+        text: e.text,
+      }
+    })
+      // ,
+      // {
+      //   point: {
+      //     xAxis: 0,
+      //     yAxis: 0,
+      //     x: data[Math.floor(data.length / 2)].x,
+      //     y: 25,
+      //   },
+      //   text: "OOS",
+      // },
+      // {
+      //   point: {
+      //     xAxis: 0,
+      //     yAxis: 0,
+      //     x: data[Math.floor(data.length / 2)].x,
+      //     y: -25,
+      //   },
+      //   text: "OOS",
+      // },
+      // {
+      //   point: {
+      //     xAxis: 0,
+      //     yAxis: 0,
+      //     x: data[Math.floor(data.length / 2)].x,
+      //     y: -75,
+      //   },
+      //   text: "OOT",
+      // },
+    
   };
 
   return (

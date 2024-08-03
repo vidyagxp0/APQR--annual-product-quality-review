@@ -36,6 +36,8 @@ function App() {
         <Route path="/highchart" element={<HighchartsChart />} />
         <Route path="/histogram" element={<HistogramHighChart />} />
         <Route path="/probability" element={<ProbabilityHighChart />} />
+        <Route path="/graph-test" element={<Analytics />} />
+
       </Routes>
     </BrowserRouter>
   );
