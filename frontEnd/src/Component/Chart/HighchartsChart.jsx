@@ -22,8 +22,6 @@ const HighchartsChart = () => {
     setSelectedOption(event.target.value);
   };
 
- 
-
   const processData = () => {
     return records.map((record) => ({
       x: record["Batch No."],
@@ -35,9 +33,9 @@ const HighchartsChart = () => {
   const options = {
     chart: {
       type: "line",
-      zoomType: "xy",
+      zoomType: "x",
       height: 600,
-      width:2000,
+      width: 2000,
       panning: true, // Enable panning
       panKey: "ctrl", // Set the key for panning (optional)
     },
@@ -56,13 +54,13 @@ const HighchartsChart = () => {
           fontWeight: "bold",
         },
       },
-      categories: records.map(record => `BatchNo ${record["Batch No."]}`),
-      tickInterval: 1, 
-      step:1, // Show every data point
+      categories: records.map((record) => `BatchNo ${record["Batch No."]}`),
+      tickInterval: 1,
+      step: 1, // Show every data point
       labels: {
-        formatter: function() {
-          return this.value;  // Customize label format if needed
-        }
+        formatter: function () {
+          return this.value; // Customize label format if needed
+        },
       },
     },
     yAxis: {
@@ -103,7 +101,10 @@ const HighchartsChart = () => {
           color: "red",
           width: 2,
           dashStyle: "Dash",
-          label: { text: "LSL ", style: { color: "black", fontWeight: "bold" } },
+          label: {
+            text: "LSL ",
+            style: { color: "black", fontWeight: "bold" },
+          },
         },
         {
           value: 0,
@@ -119,7 +120,7 @@ const HighchartsChart = () => {
           fontWeight: "bold",
         },
       },
-      tickAmount: 'auto' ,
+      tickAmount: "auto",
       gridLineColor: "rgba(0, 0, 0, 0.05)",
     },
     series: [
@@ -164,23 +165,48 @@ const HighchartsChart = () => {
         },
       },
     },
-    
+
     tooltip: {
       formatter: function () {
         return `<b>Batch ${this.x}</b><br/>Observed Value: ${this.y}`;
       },
     },
-    
+
     annotations: [
-      
-      { point: { xAxis: 0, yAxis: 0, x: data[Math.floor(data.length / 2)].x, y: 75 }, text: "OOT" },
-      { point: { xAxis: 0, yAxis: 0, x: data[Math.floor(data.length / 2)].x, y: 25 }, text: "OOS" },
       {
-        point: { xAxis: 0, yAxis: 0, x: data[Math.floor(data.length / 2)].x, y: -25 },
+        point: {
+          xAxis: 0,
+          yAxis: 0,
+          x: data[Math.floor(data.length / 2)].x,
+          y: 75,
+        },
+        text: "OOT",
+      },
+      {
+        point: {
+          xAxis: 0,
+          yAxis: 0,
+          x: data[Math.floor(data.length / 2)].x,
+          y: 25,
+        },
         text: "OOS",
       },
       {
-        point: { xAxis: 0, yAxis: 0, x: data[Math.floor(data.length / 2)].x, y: -75 },
+        point: {
+          xAxis: 0,
+          yAxis: 0,
+          x: data[Math.floor(data.length / 2)].x,
+          y: -25,
+        },
+        text: "OOS",
+      },
+      {
+        point: {
+          xAxis: 0,
+          yAxis: 0,
+          x: data[Math.floor(data.length / 2)].x,
+          y: -75,
+        },
         text: "OOT",
       },
     ],
@@ -188,11 +214,14 @@ const HighchartsChart = () => {
 
   return (
     <div className="w-full bg-white shadow-lg p-4 overflow-auto">
-    <div className="graph-2 " style={{ display: "flex", justifyContent: "space-between" }}>
-      <div className="chart-analytics chart-container " >
-        <HighchartsReact highcharts={Highcharts} options={options} />
+      <div
+        className="graph-2 "
+        style={{ display: "flex", justifyContent: "space-between" }}
+      >
+        <div className="chart-analytics chart-container ">
+          <HighchartsReact highcharts={Highcharts} options={options} />
+        </div>
       </div>
-    </div>
     </div>
   );
 };
