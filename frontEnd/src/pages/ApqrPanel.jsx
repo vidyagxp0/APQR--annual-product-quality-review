@@ -1396,9 +1396,13 @@ export default function APQR() {
 
   const addReviewODSTRRow = () => {
     const newRow = {
+      batchNo:"",
       testsParameter: "",
-      specificationLimit: "",
-      obtainedValue: { minimum: "", maximum: "" },
+      observedValue: "",
+     LSL:"",
+     USL:"",
+     LCL:"",
+     UCL:"",
       compliesNotComplies: "",
     };
     setPQRData({
@@ -1408,9 +1412,13 @@ export default function APQR() {
   };
   const addReviewODSTRRow2 = () => {
     const newRow2 = {
+      batchNo:"",
       testsParameter: "",
-      specificationLimit: "",
-      obtainedValue: { minimum: "", maximum: "" },
+      observedValue: "",
+     LSL:"",
+     USL:"",
+     LCL:"",
+     UCL:"",
       compliesNotComplies: "",
     };
     setPQRData({
@@ -5571,7 +5579,7 @@ export default function APQR() {
               {" "}
               Review of Drug Substance Test Results
             </div>
-            <h1 className="gridName">Drug Substance 1 Test Result</h1>
+            <h1 className="gridName">Paracetamol pH Test Result</h1>
             <div>
               {/* <div className="AddRows d-flex">
                 <MdNoteAdd onClick={addReviewODSTRRow} />
@@ -5747,83 +5755,116 @@ export default function APQR() {
               <table>
                 <thead>
                   <tr>
-                    <th rowSpan={2}>Sl. No</th>
-                    <th rowSpan={2}>Tests parameter</th>
-                    <th rowSpan={2}>Specification limit</th>
-                    <th colSpan={2}>Obtained value</th>
-                    <th rowSpan={2}>Complies/Does Not complies</th>
-                  </tr>
-                  <tr>
-                    <th>Minimum</th>
-                    <th>Maximum</th>
+                  <th>Batch No</th>
+                    <th>Tests parameter</th>
+                    <th>LSL</th>
+                    <th>USL</th>
+                    <th>LCL</th>
+                    <th>UCL</th>
+                    <th>Observed Value</th>
+                    <th>Complies/Does Not complies</th>
                   </tr>
                 </thead>
                 <tbody>
                   {pQRData?.reviewODSTR2?.map((item, index) => {
                     return (
                       <tr key={index}>
-                        <td>{index + 1}</td>
+                         <input 
+                          value={item.batchNo}
+                          onChange={(e) => {
+                          const newData = [...pQRData.reviewODSTR2];
+                          newData[index].batchNo = e.target.value;
+                          setPQRData({...pQRData,reviewODSTR2:newData});
+                        }}
+                      />
                         <td>
                           <input 
-                           value={item.testsParameter}
+                            value={item.testsParameter}
+                            onChange={(e) => {
+                              const newData = [...pQRData.reviewODSTR2];
+                              newData[index].testsParameter = e.target.value;
+                              setPQRData({
+                                ...pQRData,
+                                reviewODSTR2: newData,
+                              });
+                            }} />
+                        </td>
+                        <td>
+                          <input 
+                           value={item.LSL}
                            onChange={(e) => {
                              const newData = [...pQRData.reviewODSTR2];
-                             newData[index].testsParameter = e.target.value;
+                             newData[index].LSL = e.target.value;
                              setPQRData({
                                ...pQRData,
                                reviewODSTR2: newData,
                              });
-                           }} 
+                           }}
                           />
                         </td>
                         <td>
                           <input 
-                            value={item.specificationLimit}
-                            onChange={(e) => {
-                              const newData = [...pQRData.reviewODSTR2];
-                              newData[index].specificationLimit = e.target.value;
-                              setPQRData({
-                                ...pQRData,
-                                reviewODSTR2: newData,
-                              });
-                            }} 
+                           value={item.USL}
+                           onChange={(e) => {
+                             const newData = [...pQRData.reviewODSTR2];
+                             newData[index].USL = e.target.value;
+                             setPQRData({
+                               ...pQRData,
+                               reviewODSTR2: newData,
+                             });
+                           }}
+                          />
+                        </td> <td>
+                          <input 
+                           value={item.LCL}
+                           onChange={(e) => {
+                             const newData = [...pQRData.reviewODSTR2];
+                             newData[index].LCL = e.target.value;
+                             setPQRData({
+                               ...pQRData,
+                               reviewODSTR2: newData,
+                             });
+                           }}
                           />
                         </td>
                         <td>
                           <input 
-                            value={item.obtainedValue.minimum}
-                            onChange={(e) => {
-                              const newData = [...pQRData.reviewODSTR2];
-                              newData[index].obtainedValue.minimum = e.target.value;
-                              setPQRData({
-                                ...pQRData,
-                                reviewODSTR2: newData,
-                              });
-                            }} />
+                           value={item.UCL}
+                           onChange={(e) => {
+                             const newData = [...pQRData.reviewODSTR2];
+                             newData[index].UCL = e.target.value;
+                             setPQRData({
+                               ...pQRData,
+                               reviewODSTR2: newData,
+                             });
+                           }}
+                          />
                         </td>
                         <td>
                           <input 
-                            value={item.obtainedValue.maximum}
-                            onChange={(e) => {
-                              const newData = [...pQRData.reviewODSTR2];
-                              newData[index].obtainedValue.maximum = e.target.value;
-                              setPQRData({
-                                ...pQRData,
-                                reviewODSTR2: newData,
-                              });
-                            }} />
+                           value={item.observedValue}
+                           onChange={(e) => {
+                             const newData = [...pQRData.reviewODSTR2];
+                             newData[index].observedValue = e.target.value;
+                             setPQRData({
+                               ...pQRData,
+                               reviewODSTR2: newData,
+                             });
+                           }}
+                          />
                         </td>
+
                         <td>
                           <input 
-                            value={item.compliesNotComplies}
-                            onChange={(e) => {
-                              const newData = [...pQRData.reviewODSTR2];
-                              newData[index].compliesNotComplies = e.target.value;
-                              setPQRData({
-                                ...pQRData,
-                                reviewODSTR2: newData,
-                              });
-                            }}/>
+                           value={item.compliesNotComplies}
+                           onChange={(e) => {
+                             const newData = [...pQRData.reviewODSTR2];
+                             newData[index].compliesNotComplies = e.target.value;
+                             setPQRData({
+                               ...pQRData,
+                               reviewODSTR2: newData,
+                             });
+                           }} />
                         </td>
                       </tr>
                     );
@@ -5854,24 +5895,30 @@ export default function APQR() {
               <table>
                 <thead>
                   <tr>
-                    <th rowSpan={2}>Sl. No</th>
-                    <th rowSpan={2}>Tests parameter</th>
-                    <th rowSpan={2}>Specification limit</th>
-                    <th colSpan={2}>Obtained value</th>
-                    <th rowSpan={2}>Complies/Does Not complies</th>
-                  </tr>
-                  <tr>
-                    <th>Minimum</th>
-                    <th>Maximum</th>
+                  <th>Batch No</th>
+                    <th>Tests parameter</th>
+                    <th>LSL</th>
+                    <th>USL</th>
+                    <th>LCL</th>
+                    <th>UCL</th>
+                    <th>Observed Value</th>
+                    <th>Complies/Does Not complies</th>
                   </tr>
                 </thead>
                 <tbody>
                   {pQRData?.reviewODSTR3?.map((item, index) => {
                     return (
                       <tr key={index}>
-                      <td>{index + 1}</td>
-                      <td>
-                        <input 
+                      <input 
+                       value={item.batchNo}
+                       onChange={(e) => {
+                       const newData = [...pQRData.reviewODSTR3];
+                       newData[index].batchNo = e.target.value;
+                       setPQRData({...pQRData,reviewODSTR3:newData});
+                     }}
+                   />
+                     <td>
+                       <input 
                          value={item.testsParameter}
                          onChange={(e) => {
                            const newData = [...pQRData.reviewODSTR3];
@@ -5880,59 +5927,86 @@ export default function APQR() {
                              ...pQRData,
                              reviewODSTR3: newData,
                            });
-                         }} 
-                        />
-                      </td>
-                      <td>
-                        <input 
-                          value={item.specificationLimit}
-                          onChange={(e) => {
-                            const newData = [...pQRData.reviewODSTR3];
-                            newData[index].specificationLimit = e.target.value;
-                            setPQRData({
-                              ...pQRData,
-                              reviewODSTR3: newData,
-                            });
-                          }} 
-                        />
-                      </td>
-                      <td>
-                        <input 
-                          value={item.obtainedValue.minimum}
-                          onChange={(e) => {
-                            const newData = [...pQRData.reviewODSTR3];
-                            newData[index].obtainedValue.minimum = e.target.value;
-                            setPQRData({
-                              ...pQRData,
-                              reviewODSTR3: newData,
-                            });
-                          }} />
-                      </td>
-                      <td>
-                        <input 
-                          value={item.obtainedValue.maximum}
-                          onChange={(e) => {
-                            const newData = [...pQRData.reviewODSTR3];
-                            newData[index].obtainedValue.maximum = e.target.value;
-                            setPQRData({
-                              ...pQRData,
-                              reviewODSTR3: newData,
-                            });
-                          }} />
-                      </td>
-                      <td>
-                        <input 
-                          value={item.compliesNotComplies}
-                          onChange={(e) => {
-                            const newData = [...pQRData.reviewODSTR3];
-                            newData[index].compliesNotComplies = e.target.value;
-                            setPQRData({
-                              ...pQRData,
-                              reviewODSTR3: newData,
-                            });
-                          }}/>
-                      </td>
-                    </tr>
+                         }} />
+                     </td>
+                     <td>
+                       <input 
+                        value={item.LSL}
+                        onChange={(e) => {
+                          const newData = [...pQRData.reviewODSTR3];
+                          newData[index].LSL = e.target.value;
+                          setPQRData({
+                            ...pQRData,
+                            reviewODSTR3: newData,
+                          });
+                        }}
+                       />
+                     </td>
+                     <td>
+                       <input 
+                        value={item.USL}
+                        onChange={(e) => {
+                          const newData = [...pQRData.reviewODSTR3];
+                          newData[index].USL = e.target.value;
+                          setPQRData({
+                            ...pQRData,
+                            reviewODSTR3: newData,
+                          });
+                        }}
+                       />
+                     </td> <td>
+                       <input 
+                        value={item.LCL}
+                        onChange={(e) => {
+                          const newData = [...pQRData.reviewODSTR3];
+                          newData[index].LCL = e.target.value;
+                          setPQRData({
+                            ...pQRData,
+                            reviewODSTR3: newData,
+                          });
+                        }}
+                       />
+                     </td>
+                     <td>
+                       <input 
+                        value={item.UCL}
+                        onChange={(e) => {
+                          const newData = [...pQRData.reviewODSTR3];
+                          newData[index].UCL = e.target.value;
+                          setPQRData({
+                            ...pQRData,
+                            reviewODSTR3: newData,
+                          });
+                        }}
+                       />
+                     </td>
+                     <td>
+                       <input 
+                        value={item.observedValue}
+                        onChange={(e) => {
+                          const newData = [...pQRData.reviewODSTR3];
+                          newData[index].observedValue = e.target.value;
+                          setPQRData({
+                            ...pQRData,
+                            reviewODSTR3: newData,
+                          });
+                        }}
+                       />
+                     </td>
+
+                     <td>
+                       <input 
+                        value={item.compliesNotComplies}
+                        onChange={(e) => {
+                          const newData = [...pQRData.reviewODSTR3];
+                          newData[index].compliesNotComplies = e.target.value;
+                          setPQRData({
+                            ...pQRData,
+                            reviewODSTR3: newData,
+                          });
+                        }} />
+                     </td>
+                   </tr>
                     );
                   })}
                 </tbody>
@@ -5961,24 +6035,30 @@ export default function APQR() {
               <table>
                 <thead>
                   <tr>
-                    <th rowSpan={2}>Sl. No</th>
-                    <th rowSpan={2}>Tests parameter</th>
-                    <th rowSpan={2}>Specification limit</th>
-                    <th colSpan={2}>Obtained value</th>
-                    <th rowSpan={2}>Complies/Does Not complies</th>
-                  </tr>
-                  <tr>
-                    <th>Minimum</th>
-                    <th>Maximum</th>
+                  <th>Batch No</th>
+                    <th>Tests parameter</th>
+                    <th>LSL</th>
+                    <th>USL</th>
+                    <th>LCL</th>
+                    <th>UCL</th>
+                    <th>Observed Value</th>
+                    <th>Complies/Does Not complies</th>
                   </tr>
                 </thead>
                 <tbody>
                   {pQRData?.reviewODSTR4?.map((item, index) => {
                     return (
                       <tr key={index}>
-                      <td>{index + 1}</td>
-                      <td>
-                        <input 
+                      <input 
+                       value={item.batchNo}
+                       onChange={(e) => {
+                       const newData = [...pQRData.reviewODSTR4];
+                       newData[index].batchNo = e.target.value;
+                       setPQRData({...pQRData,reviewODSTR4:newData});
+                     }}
+                   />
+                     <td>
+                       <input 
                          value={item.testsParameter}
                          onChange={(e) => {
                            const newData = [...pQRData.reviewODSTR4];
@@ -5987,59 +6067,86 @@ export default function APQR() {
                              ...pQRData,
                              reviewODSTR4: newData,
                            });
-                         }} 
-                        />
-                      </td>
-                      <td>
-                        <input 
-                          value={item.specificationLimit}
-                          onChange={(e) => {
-                            const newData = [...pQRData.reviewODSTR4];
-                            newData[index].specificationLimit = e.target.value;
-                            setPQRData({
-                              ...pQRData,
-                              reviewODSTR4: newData,
-                            });
-                          }} 
-                        />
-                      </td>
-                      <td>
-                        <input 
-                          value={item.obtainedValue.minimum}
-                          onChange={(e) => {
-                            const newData = [...pQRData.reviewODSTR4];
-                            newData[index].obtainedValue.minimum = e.target.value;
-                            setPQRData({
-                              ...pQRData,
-                              reviewODSTR4: newData,
-                            });
-                          }} />
-                      </td>
-                      <td>
-                        <input 
-                          value={item.obtainedValue.maximum}
-                          onChange={(e) => {
-                            const newData = [...pQRData.reviewODSTR4];
-                            newData[index].obtainedValue.maximum = e.target.value;
-                            setPQRData({
-                              ...pQRData,
-                              reviewODSTR4: newData,
-                            });
-                          }} />
-                      </td>
-                      <td>
-                        <input 
-                          value={item.compliesNotComplies}
-                          onChange={(e) => {
-                            const newData = [...pQRData.reviewODSTR4];
-                            newData[index].compliesNotComplies = e.target.value;
-                            setPQRData({
-                              ...pQRData,
-                              reviewODSTR4: newData,
-                            });
-                          }}/>
-                      </td>
-                    </tr>
+                         }} />
+                     </td>
+                     <td>
+                       <input 
+                        value={item.LSL}
+                        onChange={(e) => {
+                          const newData = [...pQRData.reviewODSTR4];
+                          newData[index].LSL = e.target.value;
+                          setPQRData({
+                            ...pQRData,
+                            reviewODSTR4: newData,
+                          });
+                        }}
+                       />
+                     </td>
+                     <td>
+                       <input 
+                        value={item.USL}
+                        onChange={(e) => {
+                          const newData = [...pQRData.reviewODSTR4];
+                          newData[index].USL = e.target.value;
+                          setPQRData({
+                            ...pQRData,
+                            reviewODSTR4: newData,
+                          });
+                        }}
+                       />
+                     </td> <td>
+                       <input 
+                        value={item.LCL}
+                        onChange={(e) => {
+                          const newData = [...pQRData.reviewODSTR4];
+                          newData[index].LCL = e.target.value;
+                          setPQRData({
+                            ...pQRData,
+                            reviewODSTR4: newData,
+                          });
+                        }}
+                       />
+                     </td>
+                     <td>
+                       <input 
+                        value={item.UCL}
+                        onChange={(e) => {
+                          const newData = [...pQRData.reviewODSTR4];
+                          newData[index].UCL = e.target.value;
+                          setPQRData({
+                            ...pQRData,
+                            reviewODSTR4: newData,
+                          });
+                        }}
+                       />
+                     </td>
+                     <td>
+                       <input 
+                        value={item.observedValue}
+                        onChange={(e) => {
+                          const newData = [...pQRData.reviewODSTR4];
+                          newData[index].observedValue = e.target.value;
+                          setPQRData({
+                            ...pQRData,
+                            reviewODSTR4: newData,
+                          });
+                        }}
+                       />
+                     </td>
+
+                     <td>
+                       <input 
+                        value={item.compliesNotComplies}
+                        onChange={(e) => {
+                          const newData = [...pQRData.reviewODSTR4];
+                          newData[index].compliesNotComplies = e.target.value;
+                          setPQRData({
+                            ...pQRData,
+                            reviewODSTR4: newData,
+                          });
+                        }} />
+                     </td>
+                   </tr>
                     );
                   })}
                 </tbody>
@@ -6067,25 +6174,31 @@ export default function APQR() {
               </div>
               <table>
                 <thead>
-                  <tr>
-                    <th rowSpan={2}>Sl. No</th>
-                    <th rowSpan={2}>Tests parameter</th>
-                    <th rowSpan={2}>Specification limit</th>
-                    <th colSpan={2}>Obtained value</th>
-                    <th rowSpan={2}>Complies/Does Not complies</th>
-                  </tr>
-                  <tr>
-                    <th>Minimum</th>
-                    <th>Maximum</th>
+                <tr>
+                  <th>Batch No</th>
+                    <th>Tests parameter</th>
+                    <th>LSL</th>
+                    <th>USL</th>
+                    <th>LCL</th>
+                    <th>UCL</th>
+                    <th>Observed Value</th>
+                    <th>Complies/Does Not complies</th>
                   </tr>
                 </thead>
                 <tbody>
                   {pQRData?.reviewODSTR5?.map((item, index) => {
                     return (
                       <tr key={index}>
-                      <td>{index + 1}</td>
-                      <td>
-                        <input 
+                      <input 
+                       value={item.batchNo}
+                       onChange={(e) => {
+                       const newData = [...pQRData.reviewODSTR5];
+                       newData[index].batchNo = e.target.value;
+                       setPQRData({...pQRData,reviewODSTR5:newData});
+                     }}
+                   />
+                     <td>
+                       <input 
                          value={item.testsParameter}
                          onChange={(e) => {
                            const newData = [...pQRData.reviewODSTR5];
@@ -6094,59 +6207,86 @@ export default function APQR() {
                              ...pQRData,
                              reviewODSTR5: newData,
                            });
-                         }} 
-                        />
-                      </td>
-                      <td>
-                        <input 
-                          value={item.specificationLimit}
-                          onChange={(e) => {
-                            const newData = [...pQRData.reviewODSTR5];
-                            newData[index].specificationLimit = e.target.value;
-                            setPQRData({
-                              ...pQRData,
-                              reviewODSTR5: newData,
-                            });
-                          }} 
-                        />
-                      </td>
-                      <td>
-                        <input 
-                          value={item.obtainedValue.minimum}
-                          onChange={(e) => {
-                            const newData = [...pQRData.reviewODSTR5];
-                            newData[index].obtainedValue.minimum = e.target.value;
-                            setPQRData({
-                              ...pQRData,
-                              reviewODSTR5: newData,
-                            });
-                          }} />
-                      </td>
-                      <td>
-                        <input 
-                          value={item.obtainedValue.maximum}
-                          onChange={(e) => {
-                            const newData = [...pQRData.reviewODSTR5];
-                            newData[index].obtainedValue.maximum = e.target.value;
-                            setPQRData({
-                              ...pQRData,
-                              reviewODSTR5: newData,
-                            });
-                          }} />
-                      </td>
-                      <td>
-                        <input 
-                          value={item.compliesNotComplies}
-                          onChange={(e) => {
-                            const newData = [...pQRData.reviewODSTR5];
-                            newData[index].compliesNotComplies = e.target.value;
-                            setPQRData({
-                              ...pQRData,
-                              reviewODSTR5: newData,
-                            });
-                          }}/>
-                      </td>
-                    </tr>
+                         }} />
+                     </td>
+                     <td>
+                       <input 
+                        value={item.LSL}
+                        onChange={(e) => {
+                          const newData = [...pQRData.reviewODSTR5];
+                          newData[index].LSL = e.target.value;
+                          setPQRData({
+                            ...pQRData,
+                            reviewODSTR5: newData,
+                          });
+                        }}
+                       />
+                     </td>
+                     <td>
+                       <input 
+                        value={item.USL}
+                        onChange={(e) => {
+                          const newData = [...pQRData.reviewODSTR5];
+                          newData[index].USL = e.target.value;
+                          setPQRData({
+                            ...pQRData,
+                            reviewODSTR5: newData,
+                          });
+                        }}
+                       />
+                     </td> <td>
+                       <input 
+                        value={item.LCL}
+                        onChange={(e) => {
+                          const newData = [...pQRData.reviewODSTR5];
+                          newData[index].LCL = e.target.value;
+                          setPQRData({
+                            ...pQRData,
+                            reviewODSTR5: newData,
+                          });
+                        }}
+                       />
+                     </td>
+                     <td>
+                       <input 
+                        value={item.UCL}
+                        onChange={(e) => {
+                          const newData = [...pQRData.reviewODSTR5];
+                          newData[index].UCL = e.target.value;
+                          setPQRData({
+                            ...pQRData,
+                            reviewODSTR5: newData,
+                          });
+                        }}
+                       />
+                     </td>
+                     <td>
+                       <input 
+                        value={item.observedValue}
+                        onChange={(e) => {
+                          const newData = [...pQRData.reviewODSTR5];
+                          newData[index].observedValue = e.target.value;
+                          setPQRData({
+                            ...pQRData,
+                            reviewODSTR5: newData,
+                          });
+                        }}
+                       />
+                     </td>
+
+                     <td>
+                       <input 
+                        value={item.compliesNotComplies}
+                        onChange={(e) => {
+                          const newData = [...pQRData.reviewODSTR5];
+                          newData[index].compliesNotComplies = e.target.value;
+                          setPQRData({
+                            ...pQRData,
+                            reviewODSTR5: newData,
+                          });
+                        }} />
+                     </td>
+                   </tr>
                     );
                   })}
                 </tbody>
@@ -6174,86 +6314,119 @@ export default function APQR() {
               </div>
               <table>
                 <thead>
-                  <tr>
-                    <th rowSpan={2}>Sl. No</th>
-                    <th rowSpan={2}>Tests parameter</th>
-                    <th rowSpan={2}>Specification limit</th>
-                    <th colSpan={2}>Obtained value</th>
-                    <th rowSpan={2}>Complies/Does Not complies</th>
-                  </tr>
-                  <tr>
-                    <th>Minimum</th>
-                    <th>Maximum</th>
+                <tr>
+                  <th>Batch No</th>
+                    <th>Tests parameter</th>
+                    <th>LSL</th>
+                    <th>USL</th>
+                    <th>LCL</th>
+                    <th>UCL</th>
+                    <th>Observed Value</th>
+                    <th>Complies/Does Not complies</th>
                   </tr>
                 </thead>
                 <tbody>
                   {pQRData?.reviewODSTR6?.map((item, index) => {
                     return (
                       <tr key={index}>
-                      <td>{index + 1}</td>
-                      <td>
-                        <input 
-                         value={item.testsParameter}
-                         onChange={(e) => {
-                           const newData = [...pQRData.reviewODSTR6];
-                           newData[index].testsParameter = e.target.value;
-                           setPQRData({
-                             ...pQRData,
-                             reviewODSTR6: newData,
-                           });
-                         }} 
-                        />
-                      </td>
-                      <td>
-                        <input 
-                          value={item.specificationLimit}
+                         <input 
+                          value={item.batchNo}
                           onChange={(e) => {
-                            const newData = [...pQRData.reviewODSTR6];
-                            newData[index].specificationLimit = e.target.value;
-                            setPQRData({
-                              ...pQRData,
-                              reviewODSTR6: newData,
-                            });
-                          }} 
-                        />
-                      </td>
-                      <td>
-                        <input 
-                          value={item.obtainedValue.minimum}
-                          onChange={(e) => {
-                            const newData = [...pQRData.reviewODSTR6];
-                            newData[index].obtainedValue.minimum = e.target.value;
-                            setPQRData({
-                              ...pQRData,
-                              reviewODSTR6: newData,
-                            });
-                          }} />
-                      </td>
-                      <td>
-                        <input 
-                          value={item.obtainedValue.maximum}
-                          onChange={(e) => {
-                            const newData = [...pQRData.reviewODSTR6];
-                            newData[index].obtainedValue.maximum = e.target.value;
-                            setPQRData({
-                              ...pQRData,
-                              reviewODSTR6: newData,
-                            });
-                          }} />
-                      </td>
-                      <td>
-                        <input 
-                          value={item.compliesNotComplies}
-                          onChange={(e) => {
-                            const newData = [...pQRData.reviewODSTR6];
-                            newData[index].compliesNotComplies = e.target.value;
-                            setPQRData({
-                              ...pQRData,
-                              reviewODSTR6: newData,
-                            });
-                          }}/>
-                      </td>
-                    </tr>
+                          const newData = [...pQRData.reviewODSTR6];
+                          newData[index].batchNo = e.target.value;
+                          setPQRData({...pQRData,reviewODSTR6:newData});
+                        }}
+                      />
+                        <td>
+                          <input 
+                            value={item.testsParameter}
+                            onChange={(e) => {
+                              const newData = [...pQRData.reviewODSTR6];
+                              newData[index].testsParameter = e.target.value;
+                              setPQRData({
+                                ...pQRData,
+                                reviewODSTR6: newData,
+                              });
+                            }} />
+                        </td>
+                        <td>
+                          <input 
+                           value={item.LSL}
+                           onChange={(e) => {
+                             const newData = [...pQRData.reviewODSTR6];
+                             newData[index].LSL = e.target.value;
+                             setPQRData({
+                               ...pQRData,
+                               reviewODSTR6: newData,
+                             });
+                           }}
+                          />
+                        </td>
+                        <td>
+                          <input 
+                           value={item.USL}
+                           onChange={(e) => {
+                             const newData = [...pQRData.reviewODSTR6];
+                             newData[index].USL = e.target.value;
+                             setPQRData({
+                               ...pQRData,
+                               reviewODSTR6: newData,
+                             });
+                           }}
+                          />
+                        </td> <td>
+                          <input 
+                           value={item.LCL}
+                           onChange={(e) => {
+                             const newData = [...pQRData.reviewODSTR6];
+                             newData[index].LCL = e.target.value;
+                             setPQRData({
+                               ...pQRData,
+                               reviewODSTR6: newData,
+                             });
+                           }}
+                          />
+                        </td>
+                        <td>
+                          <input 
+                           value={item.UCL}
+                           onChange={(e) => {
+                             const newData = [...pQRData.reviewODSTR6];
+                             newData[index].UCL = e.target.value;
+                             setPQRData({
+                               ...pQRData,
+                               reviewODSTR6: newData,
+                             });
+                           }}
+                          />
+                        </td>
+                        <td>
+                          <input 
+                           value={item.observedValue}
+                           onChange={(e) => {
+                             const newData = [...pQRData.reviewODSTR6];
+                             newData[index].observedValue = e.target.value;
+                             setPQRData({
+                               ...pQRData,
+                               reviewODSTR6: newData,
+                             });
+                           }}
+                          />
+                        </td>
+
+                        <td>
+                          <input 
+                           value={item.compliesNotComplies}
+                           onChange={(e) => {
+                             const newData = [...pQRData.reviewODSTR6];
+                             newData[index].compliesNotComplies = e.target.value;
+                             setPQRData({
+                               ...pQRData,
+                               reviewODSTR6: newData,
+                             });
+                           }} />
+                        </td>
+                      </tr>
                     );
                   })}
                 </tbody>
