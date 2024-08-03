@@ -5719,6 +5719,8 @@ export default function APQR() {
                   })}
                 </tbody>
               </table>
+
+              
             </div>
              <HighchartsChart
           heading={"Paracetamol pH Graph"}

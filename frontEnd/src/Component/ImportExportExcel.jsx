@@ -1,7 +1,7 @@
 import React, { useRef } from "react";
 import { saveAs } from "file-saver";
 
-const ExcelExportImport = ({ data, fileName, setimportedData, setData }) => {
+const ExcelExportImport = ({ data, fileName, setimportedData, setData, gridNo = 0 }) => {
   // const [d]
   const fileInputRef = useRef();
 
@@ -35,7 +35,7 @@ const ExcelExportImport = ({ data, fileName, setimportedData, setData }) => {
       const jsonData = xlsx.utils.sheet_to_json(worksheet);
       //   setData(jsonData);
       // console.log(jsonData);
-      setimportedData(jsonData);
+      setimportedData(jsonData, gridNo);
     } catch (error) {
       console.error("Error importing from Excel: ", error);
     }
