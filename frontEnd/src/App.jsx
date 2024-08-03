@@ -12,6 +12,9 @@ import ApqrPanel from "./pages/ApqrPanel";
 import ESignatureModal from "./Component/ESignatureModal";
 import DownloadReportButton from "./pages/temp/DownloadReportButton";
 import HighchartsChart from "./Component/Chart/HighchartsChart";
+import HistogramHighChart from "./pages/temp/HistogramHighChart";
+import ProbabilityHighChart from "./pages/temp/ProbabilityHighChart";
+import AdvancedAnalytics from "./Component/AdvancedAnalytics";
 
 
 function App() {
@@ -20,7 +23,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Login />} />
         <Route path="/dashboard" element={<Dashboard />} />
-        <Route path="/analytics" element={<Analytics />} />
+        <Route path="/analytics" element={<AdvancedAnalytics />} />
         <Route path="/notification" element={<Notification />} />
         <Route path="/new-pqr" element={<APQR />} />
         <Route path="/admin-login" element={<AdminLogin />} />
@@ -31,7 +34,8 @@ function App() {
         <Route path="/pdftest" element={<DownloadReportButton />} />
         {/* <Route path="/chart" element={<Analytics5/>}/> */}
         <Route path="/highchart" element={<HighchartsChart />} />
-       
+        <Route path="/histogram" element={<HistogramHighChart />} />
+        <Route path="/probability" element={<ProbabilityHighChart />} />
       </Routes>
     </BrowserRouter>
   );
