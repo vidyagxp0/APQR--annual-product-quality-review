@@ -1152,36 +1152,52 @@ export default function APQR() {
   };
   const addReviewODSTRRow7 = () => {
     const newRow7 = {
+     batchNo: "",
       testsParameter: "",
-      specificationLimit: "",
-      obtainedValue: { minimum: "", maximum: "" },
+      LSL: "",
+      USL: "",
+      LCL: "",
+      UCL: "",
+      observedValue: "",
       compliesNotComplies: "",
     };
     setReviewOSTR7([...reviewODSTR7, newRow7]);
   };
   const addReviewODSTRRow8 = () => {
     const newRow8 = {
+     batchNo: "",
       testsParameter: "",
-      specificationLimit: "",
-      obtainedValue: { minimum: "", maximum: "" },
+      LSL: "",
+      USL: "",
+      LCL: "",
+      UCL: "",
+      observedValue: "",
       compliesNotComplies: "",
     };
     setReviewOSTR8([...reviewODSTR8, newRow8]);
   };
   const addReviewODSTRRow9 = () => {
     const newRow9 = {
+     batchNo: "",
       testsParameter: "",
-      specificationLimit: "",
-      obtainedValue: { minimum: "", maximum: "" },
+      LSL: "",
+      USL: "",
+      LCL: "",
+      UCL: "",
+      observedValue: "",
       compliesNotComplies: "",
     };
     setReviewOSTR9([...reviewODSTR9, newRow9]);
   };
   const addReviewODSTRRow10 = () => {
     const newRow10 = {
+     batchNo: "",
       testsParameter: "",
-      specificationLimit: "",
-      obtainedValue: { minimum: "", maximum: "" },
+      LSL: "",
+      USL: "",
+      LCL: "",
+      UCL: "",
+      observedValue: "",
       compliesNotComplies: "",
     };
     setReviewOSTR10([...reviewODSTR10, newRow10]);
@@ -5545,76 +5561,103 @@ export default function APQR() {
               </div>
               <table>
                 <thead>
-                  <tr>
-                    <th rowSpan={2}>Sl. No</th>
-                    <th rowSpan={2}>Tests parameter</th>
-                    <th rowSpan={2}>Specification limit</th>
-                    <th className="centerText" colSpan={2}>
-                      Obtained value
-                    </th>
-                    <th rowSpan={2}>Complies/Does Not complies</th>
-                  </tr>
-                  <tr>
-                    <th>Minimum</th>
-                    <th>Maximum</th>
+                <tr>
+                    <th>Batch No</th>
+                    <th>Tests parameter</th>
+                    <th>LSL</th>
+                    <th>USL</th>
+                    <th>LCL</th>
+                    <th>UCL</th>
+                    <th>Observed Value</th>
+                    <th>Complies/Does Not complies</th>
                   </tr>
                 </thead>
                 <tbody>
                   {reviewODSTR7?.map((item, index) => {
                     return (
                       <tr key={index}>
-                        <td>{index + 1}</td>
-                        <td>
-                          <input
-                            value={item.testsParameter}
-                            onChange={(e) => {
-                              const newData = [...reviewODSTR7];
-                              newData[index].testsParameter = e.target.value;
-                              setReviewOSTR7(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.specificationLimit}
-                            onChange={(e) => {
-                              const newData = [...reviewODSTR7];
-                              newData[index].specificationLimit = e.target.value;
-                              setReviewOSTR7(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.obtainedValue.minimum}
-                            onChange={(e) => {
-                              const newData = [...reviewODSTR7];
-                              newData[index].obtainedValue.minimum = e.target.value;
-                              setReviewOSTR7(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.obtainedValue.maximum}
-                            onChange={(e) => {
-                              const newData = [...reviewODSTR7];
-                              newData[index].obtainedValue.maximum = e.target.value;
-                              setReviewOSTR7(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.compliesNotComplies}
-                            onChange={(e) => {
-                              const newData = [...reviewODSTR7];
-                              newData[index].compliesNotComplies = e.target.value;
-                              setReviewOSTR7(newData);
-                            }}
-                          />
-                        </td>
-                      </tr>
+                      <td>
+                        <input
+                          value={item.batchNo}
+                          onChange={(e) => {
+                            const newData = [...reviewODSTR7];
+                            newData[index].batchNo = e.target.value;
+                            setReviewOSTR7(newData);
+                          }}
+                        />
+                      </td>
+                      <td>
+                        <input
+                          value={item.testsParameter}
+                          onChange={(e) => {
+                            const newData = [...reviewODSTR7];
+                            newData[index].testsParameter = e.target.value;
+                            setReviewOSTR7(newData);
+                          }}
+                        />
+                      </td>
+                      <td>
+                        <input
+                          value={item.LSL}
+                          onChange={(e) => {
+                            const newData = [...reviewODSTR7];
+                            newData[index].LSL = e.target.value;
+                            setReviewOSTR7(newData);
+                          }}
+                        />
+                      </td>
+                      <td>
+                        <input
+                          value={item.USL}
+                          onChange={(e) => {
+                            const newData = [...reviewODSTR7];
+                            newData[index].USL = e.target.value;
+                            setReviewOSTR7(newData);
+                          }}
+                        />
+                      </td>
+                      <td>
+                        <input
+                          value={item.LCL}
+                          onChange={(e) => {
+                            const newData = [...reviewODSTR7];
+                            newData[index].LCL = e.target.value;
+                            setReviewOSTR7(newData);
+                          }}
+                        />
+                      </td>
+                      <td>
+                        <input
+                          value={item.UCL}
+                          onChange={(e) => {
+                            const newData = [...reviewODSTR7];
+                            newData[index].UCL = e.target.value;
+                            setReviewOSTR7(newData);
+                          }}
+                        />
+                      </td>
+                      <td>
+                        <input
+                          value={item.observedValue}
+                          onChange={(e) => {
+                            const newData = [...reviewODSTR7];
+                            newData[index].observedValue = e.target.value;
+                            setReviewOSTR7(newData);
+                          }}
+                        />
+                      </td>
+
+                      <td>
+                        <input
+                          value={item.compliesNotComplies}
+                          onChange={(e) => {
+                            const newData = [...reviewODSTR7];
+                            newData[index].compliesNotComplies = e.target.value;
+                            setReviewOSTR7(newData);
+                          }}
+                        />
+                      </td>
+                    </tr>
                     );
                   })}
                 </tbody>
@@ -5637,76 +5680,103 @@ export default function APQR() {
               </div>
               <table>
                 <thead>
-                  <tr>
-                    <th rowSpan={2}>Sl. No</th>
-                    <th rowSpan={2}>Tests parameter</th>
-                    <th rowSpan={2}>Specification limit</th>
-                    <th className="centerText" colSpan={2}>
-                      Obtained value
-                    </th>
-                    <th rowSpan={2}>Complies/Does Not complies</th>
-                  </tr>
-                  <tr>
-                    <th>Minimum</th>
-                    <th>Maximum</th>
+                <tr>
+                    <th>Batch No</th>
+                    <th>Tests parameter</th>
+                    <th>LSL</th>
+                    <th>USL</th>
+                    <th>LCL</th>
+                    <th>UCL</th>
+                    <th>Observed Value</th>
+                    <th>Complies/Does Not complies</th>
                   </tr>
                 </thead>
                 <tbody>
                   {reviewODSTR8?.map((item, index) => {
                     return (
                       <tr key={index}>
-                        <td>{index + 1}</td>
-                        <td>
-                          <input
-                            value={item.testsParameter}
-                            onChange={(e) => {
-                              const newData = [...reviewODSTR8];
-                              newData[index].testsParameter = e.target.value;
-                              setReviewOSTR8(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.specificationLimit}
-                            onChange={(e) => {
-                              const newData = [...reviewODSTR8];
-                              newData[index].specificationLimit = e.target.value;
-                              setReviewOSTR8(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.obtainedValue.minimum}
-                            onChange={(e) => {
-                              const newData = [...reviewODSTR8];
-                              newData[index].obtainedValue.minimum = e.target.value;
-                              setReviewOSTR8(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.obtainedValue.maximum}
-                            onChange={(e) => {
-                              const newData = [...reviewODSTR8];
-                              newData[index].obtainedValue.maximum = e.target.value;
-                              setReviewOSTR8(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.compliesNotComplies}
-                            onChange={(e) => {
-                              const newData = [...reviewODSTR8];
-                              newData[index].compliesNotComplies = e.target.value;
-                              setReviewOSTR8(newData);
-                            }}
-                          />
-                        </td>
-                      </tr>
+                      <td>
+                        <input
+                          value={item.batchNo}
+                          onChange={(e) => {
+                            const newData = [...reviewODSTR8];
+                            newData[index].batchNo = e.target.value;
+                            setReviewOSTR8(newData);
+                          }}
+                        />
+                      </td>
+                      <td>
+                        <input
+                          value={item.testsParameter}
+                          onChange={(e) => {
+                            const newData = [...reviewODSTR8];
+                            newData[index].testsParameter = e.target.value;
+                            setReviewOSTR8(newData);
+                          }}
+                        />
+                      </td>
+                      <td>
+                        <input
+                          value={item.LSL}
+                          onChange={(e) => {
+                            const newData = [...reviewODSTR8];
+                            newData[index].LSL = e.target.value;
+                            setReviewOSTR8(newData);
+                          }}
+                        />
+                      </td>
+                      <td>
+                        <input
+                          value={item.USL}
+                          onChange={(e) => {
+                            const newData = [...reviewODSTR8];
+                            newData[index].USL = e.target.value;
+                            setReviewOSTR8(newData);
+                          }}
+                        />
+                      </td>
+                      <td>
+                        <input
+                          value={item.LCL}
+                          onChange={(e) => {
+                            const newData = [...reviewODSTR8];
+                            newData[index].LCL = e.target.value;
+                            setReviewOSTR8(newData);
+                          }}
+                        />
+                      </td>
+                      <td>
+                        <input
+                          value={item.UCL}
+                          onChange={(e) => {
+                            const newData = [...reviewODSTR8];
+                            newData[index].UCL = e.target.value;
+                            setReviewOSTR8(newData);
+                          }}
+                        />
+                      </td>
+                      <td>
+                        <input
+                          value={item.observedValue}
+                          onChange={(e) => {
+                            const newData = [...reviewODSTR8];
+                            newData[index].observedValue = e.target.value;
+                            setReviewOSTR8(newData);
+                          }}
+                        />
+                      </td>
+
+                      <td>
+                        <input
+                          value={item.compliesNotComplies}
+                          onChange={(e) => {
+                            const newData = [...reviewODSTR8];
+                            newData[index].compliesNotComplies = e.target.value;
+                            setReviewOSTR8(newData);
+                          }}
+                        />
+                      </td>
+                    </tr>
                     );
                   })}
                 </tbody>
@@ -5729,76 +5799,103 @@ export default function APQR() {
               </div>
               <table>
                 <thead>
-                  <tr>
-                    <th rowSpan={2}>Sl. No</th>
-                    <th rowSpan={2}>Tests parameter</th>
-                    <th rowSpan={2}>Specification limit</th>
-                    <th className="centerText" colSpan={2}>
-                      Obtained value
-                    </th>
-                    <th rowSpan={2}>Complies/Does Not complies</th>
-                  </tr>
-                  <tr>
-                    <th>Minimum</th>
-                    <th>Maximum</th>
+                <tr>
+                    <th>Batch No</th>
+                    <th>Tests parameter</th>
+                    <th>LSL</th>
+                    <th>USL</th>
+                    <th>LCL</th>
+                    <th>UCL</th>
+                    <th>Observed Value</th>
+                    <th>Complies/Does Not complies</th>
                   </tr>
                 </thead>
                 <tbody>
                   {reviewODSTR9?.map((item, index) => {
                     return (
                       <tr key={index}>
-                        <td>{index + 1}</td>
-                        <td>
-                          <input
-                            value={item.testsParameter}
-                            onChange={(e) => {
-                              const newData = [...reviewODSTR9];
-                              newData[index].testsParameter = e.target.value;
-                              setReviewOSTR9(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.specificationLimit}
-                            onChange={(e) => {
-                              const newData = [...reviewODSTR9];
-                              newData[index].specificationLimit = e.target.value;
-                              setReviewOSTR9(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.obtainedValue.minimum}
-                            onChange={(e) => {
-                              const newData = [...reviewODSTR9];
-                              newData[index].obtainedValue.minimum = e.target.value;
-                              setReviewOSTR9(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.obtainedValue.maximum}
-                            onChange={(e) => {
-                              const newData = [...reviewODSTR9];
-                              newData[index].obtainedValue.maximum = e.target.value;
-                              setReviewOSTR9(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.compliesNotComplies}
-                            onChange={(e) => {
-                              const newData = [...reviewODSTR9];
-                              newData[index].compliesNotComplies = e.target.value;
-                              setReviewOSTR9(newData);
-                            }}
-                          />
-                        </td>
-                      </tr>
+                      <td>
+                        <input
+                          value={item.batchNo}
+                          onChange={(e) => {
+                            const newData = [...reviewODSTR9];
+                            newData[index].batchNo = e.target.value;
+                            setReviewOSTR9(newData);
+                          }}
+                        />
+                      </td>
+                      <td>
+                        <input
+                          value={item.testsParameter}
+                          onChange={(e) => {
+                            const newData = [...reviewODSTR9];
+                            newData[index].testsParameter = e.target.value;
+                            setReviewOSTR9(newData);
+                          }}
+                        />
+                      </td>
+                      <td>
+                        <input
+                          value={item.LSL}
+                          onChange={(e) => {
+                            const newData = [...reviewODSTR9];
+                            newData[index].LSL = e.target.value;
+                            setReviewOSTR9(newData);
+                          }}
+                        />
+                      </td>
+                      <td>
+                        <input
+                          value={item.USL}
+                          onChange={(e) => {
+                            const newData = [...reviewODSTR9];
+                            newData[index].USL = e.target.value;
+                            setReviewOSTR9(newData);
+                          }}
+                        />
+                      </td>
+                      <td>
+                        <input
+                          value={item.LCL}
+                          onChange={(e) => {
+                            const newData = [...reviewODSTR9];
+                            newData[index].LCL = e.target.value;
+                            setReviewOSTR9(newData);
+                          }}
+                        />
+                      </td>
+                      <td>
+                        <input
+                          value={item.UCL}
+                          onChange={(e) => {
+                            const newData = [...reviewODSTR9];
+                            newData[index].UCL = e.target.value;
+                            setReviewOSTR9(newData);
+                          }}
+                        />
+                      </td>
+                      <td>
+                        <input
+                          value={item.observedValue}
+                          onChange={(e) => {
+                            const newData = [...reviewODSTR9];
+                            newData[index].observedValue = e.target.value;
+                            setReviewOSTR9(newData);
+                          }}
+                        />
+                      </td>
+
+                      <td>
+                        <input
+                          value={item.compliesNotComplies}
+                          onChange={(e) => {
+                            const newData = [...reviewODSTR9];
+                            newData[index].compliesNotComplies = e.target.value;
+                            setReviewOSTR9(newData);
+                          }}
+                        />
+                      </td>
+                    </tr>
                     );
                   })}
                 </tbody>
@@ -5821,76 +5918,103 @@ export default function APQR() {
               </div>
               <table>
                 <thead>
-                  <tr>
-                    <th rowSpan={2}>Sl. No</th>
-                    <th rowSpan={2}>Tests parameter</th>
-                    <th rowSpan={2}>Specification limit</th>
-                    <th className="centerText" colSpan={2}>
-                      Obtained value
-                    </th>
-                    <th rowSpan={2}>Complies/Does Not complies</th>
-                  </tr>
-                  <tr>
-                    <th>Minimum</th>
-                    <th>Maximum</th>
+                <tr>
+                    <th>Batch No</th>
+                    <th>Tests parameter</th>
+                    <th>LSL</th>
+                    <th>USL</th>
+                    <th>LCL</th>
+                    <th>UCL</th>
+                    <th>Observed Value</th>
+                    <th>Complies/Does Not complies</th>
                   </tr>
                 </thead>
                 <tbody>
                   {reviewODSTR10?.map((item, index) => {
                     return (
                       <tr key={index}>
-                        <td>{index + 1}</td>
-                        <td>
-                          <input
-                            value={item.testsParameter}
-                            onChange={(e) => {
-                              const newData = [...reviewODSTR10];
-                              newData[index].testsParameter = e.target.value;
-                              setReviewOSTR10(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.specificationLimit}
-                            onChange={(e) => {
-                              const newData = [...reviewODSTR10];
-                              newData[index].specificationLimit = e.target.value;
-                              setReviewOSTR10(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.obtainedValue.minimum}
-                            onChange={(e) => {
-                              const newData = [...reviewODSTR10];
-                              newData[index].obtainedValue.minimum = e.target.value;
-                              setReviewOSTR10(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.obtainedValue.maximum}
-                            onChange={(e) => {
-                              const newData = [...reviewODSTR10];
-                              newData[index].obtainedValue.maximum = e.target.value;
-                              setReviewOSTR10(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.compliesNotComplies}
-                            onChange={(e) => {
-                              const newData = [...reviewODSTR10];
-                              newData[index].compliesNotComplies = e.target.value;
-                              setReviewOSTR10(newData);
-                            }}
-                          />
-                        </td>
-                      </tr>
+                      <td>
+                        <input
+                          value={item.batchNo}
+                          onChange={(e) => {
+                            const newData = [...reviewODSTR10];
+                            newData[index].batchNo = e.target.value;
+                            setReviewOSTR10(newData);
+                          }}
+                        />
+                      </td>
+                      <td>
+                        <input
+                          value={item.testsParameter}
+                          onChange={(e) => {
+                            const newData = [...reviewODSTR10];
+                            newData[index].testsParameter = e.target.value;
+                            setReviewOSTR10(newData);
+                          }}
+                        />
+                      </td>
+                      <td>
+                        <input
+                          value={item.LSL}
+                          onChange={(e) => {
+                            const newData = [...reviewODSTR10];
+                            newData[index].LSL = e.target.value;
+                            setReviewOSTR10(newData);
+                          }}
+                        />
+                      </td>
+                      <td>
+                        <input
+                          value={item.USL}
+                          onChange={(e) => {
+                            const newData = [...reviewODSTR10];
+                            newData[index].USL = e.target.value;
+                            setReviewOSTR10(newData);
+                          }}
+                        />
+                      </td>
+                      <td>
+                        <input
+                          value={item.LCL}
+                          onChange={(e) => {
+                            const newData = [...reviewODSTR10];
+                            newData[index].LCL = e.target.value;
+                            setReviewOSTR10(newData);
+                          }}
+                        />
+                      </td>
+                      <td>
+                        <input
+                          value={item.UCL}
+                          onChange={(e) => {
+                            const newData = [...reviewODSTR10];
+                            newData[index].UCL = e.target.value;
+                            setReviewOSTR10(newData);
+                          }}
+                        />
+                      </td>
+                      <td>
+                        <input
+                          value={item.observedValue}
+                          onChange={(e) => {
+                            const newData = [...reviewODSTR10];
+                            newData[index].observedValue = e.target.value;
+                            setReviewOSTR10(newData);
+                          }}
+                        />
+                      </td>
+
+                      <td>
+                        <input
+                          value={item.compliesNotComplies}
+                          onChange={(e) => {
+                            const newData = [...reviewODSTR10];
+                            newData[index].compliesNotComplies = e.target.value;
+                            setReviewOSTR10(newData);
+                          }}
+                        />
+                      </td>
+                    </tr>
                     );
                   })}
                 </tbody>
@@ -5917,19 +6041,15 @@ export default function APQR() {
               </div>
               <table>
                 <thead>
-                  <tr>
-                    <th rowSpan={2}>Sl. No</th>
-                    <th rowSpan={2}>Material</th>
-                    <th rowSpan={2}>Test parameter</th>
-                    <th rowSpan={2}>Specification limit</th>
-                    <th className="centerText" colSpan={2}>
-                      Obtained value
-                    </th>
-                    <th rowSpan={2}>Complies/ Does Not complies</th>
-                  </tr>
-                  <tr>
-                    <th>Minimum</th>
-                    <th>Maximum</th>
+                <tr>
+                    <th>Batch No</th>
+                    <th>Tests parameter</th>
+                    <th>LSL</th>
+                    <th>USL</th>
+                    <th>LCL</th>
+                    <th>UCL</th>
+                    <th>Observed Value</th>
+                    <th>Complies/Does Not complies</th>
                   </tr>
                 </thead>
                 <tbody>
