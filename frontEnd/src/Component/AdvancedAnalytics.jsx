@@ -19,10 +19,11 @@ import {
 } from "./Chart/ChartJsFunction";
 import HistogramChart from "./Highcharts/Histogram";
 import { useSelector } from "react-redux";
+import HighchartsHistogramScatter from "./Analytics/HWS";
+import HighchartsPareto from "./Analytics/HighchartsPareto";
+import HighchartsScatterPlot from "./Analytics/HighchartsScatterPlot";
 
 export default function AdvancedAnalytics() {
- 
-
   const phOfParacetamol = {
     data: [
       1.65, 2.7, 3.4, 4.1, 2.2, 2.8, 3.3, 4.0, 1.75, 2.9, 3.5, 4.05, 2.1, 2.85, 3.2, 4.15, 1.8,
@@ -115,7 +116,7 @@ export default function AdvancedAnalytics() {
       <Header />
       <BottomHeader />
       <div>
-        <HighchartsChart
+        {/* <HighchartsChart
           heading={"Paracetamol  Graph"}
           xHeading={"Batch No."}
           yHeading={"Observed Value"}
@@ -201,7 +202,18 @@ export default function AdvancedAnalytics() {
           plotLines={PantoprazolepHPlotLines}
           zones={PantoprazolepHZones}
           annotations={paracetamolAnnotations}
-          highchartData={PantoprazolepHData}/>
+          highchartData={PantoprazolepHData}/> */}
+        <div className="flex justify-evenly">
+          <div className="w-5/12">
+            <HighchartsHistogramScatter />
+          </div>
+          <div className="w-5/12">
+            <HighchartsPareto />
+          </div>
+        </div>
+        <div className=" px-40 pt-10 shadow shadow-md">
+          <HighchartsScatterPlot />
+        </div>
         <HistogramChart
           data={phOfParacetamol.data}
           //   data={[
