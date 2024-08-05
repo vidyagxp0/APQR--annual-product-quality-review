@@ -10,12 +10,9 @@ import AdminDashboard from "./pages/Admin/AdminDashboard";
 import TinyEditor from "./Component/TinyEditor";
 import ApqrPanel from "./pages/ApqrPanel";
 import ESignatureModal from "./Component/ESignatureModal";
-import DownloadReportButton from "./pages/temp/DownloadReportButton";
-import HighchartsChart from "./Component/Chart/HighchartsChart";
-import HistogramHighChart from "./pages/temp/HistogramHighChart";
-import ProbabilityHighChart from "./pages/temp/ProbabilityHighChart";
-import AdvancedAnalytics from "./Component/AdvancedAnalytics";
-
+import DownloadReportButton from "./Component/DownloadReportButton";
+import HighchartsLine from "./Component/Analytics/HighchartsLine";
+import AdvancedAnalytics from "./pages/AdvancedAnalytics";
 
 function App() {
   return (
@@ -33,12 +30,7 @@ function App() {
         <Route path="/test" element={<TinyEditor />} />
         <Route path="/test2" element={<ESignatureModal />} />
         <Route path="/pdftest" element={<DownloadReportButton />} />
-        {/* <Route path="/chart" element={<Analytics5/>}/> */}
-        <Route path="/highchart" element={<HighchartsChart />} />
-        <Route path="/histogram" element={<HistogramHighChart />} />
-        <Route path="/probability" element={<ProbabilityHighChart />} />
-        <Route path="/graph-test" element={<Analytics />} />
-
+        <Route path="/highchart" element={<HighchartsLine />} />
       </Routes>
     </BrowserRouter>
   );

@@ -101,14 +101,14 @@ const HighchartsHistogram = ({ phOfParacetamol }) => {
         data: histogramData,
         groupPadding: 0,
         pointPadding: 0,
-        color: "#995af2", // violet
+        color: "#c19df5", // violet
       },
       {
         name: "Distribution Curve",
         type: "spline",
         data: histogramData,
         zIndex: 6,
-        color:"blue",
+        color: "blue",
         marker: {
           enabled: false,
         },

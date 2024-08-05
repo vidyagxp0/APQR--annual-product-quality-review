@@ -1,7 +1,7 @@
 import React from "react";
-import Header from "./Header";
-import BottomHeader from "./BottomHeader";
-import HighchartsChart from "./Chart/HighchartsChart";
+import Header from "../Component/Header";
+import BottomHeader from "../Component/BottomHeader";
+import HighchartsChart from "../Component/Analytics/HighchartsLine";
 import {
   PantoprazolepHData,
   PantoprazolepHPlotLines,
@@ -16,12 +16,10 @@ import {
   terbinafinepHData,
   terbinafinepHPlotLines,
   terbinafinepHZones,
-} from "./Chart/ChartJsFunction";
-import HistogramChart from "./Highcharts/Histogram";
-import { useSelector } from "react-redux";
-import HighchartsHistogramScatter from "./Analytics/HWS";
-import HighchartsPareto from "./Analytics/HighchartsPareto";
-import HighchartsScatterPlot from "./Analytics/HighchartsScatterPlot";
+} from "../Component/Analytics/ChartJsFunction";
+import HighchartsHistogramScatter from "../Component/Analytics/HighchartsHistogram";
+import HighchartsPareto from "../Component/Analytics/HighchartsPareto";
+import HighchartsScatterPlot from "../Component/Analytics/HighchartsScatterPlot";
 
 export default function AdvancedAnalytics() {
   const phOfParacetamol = {
