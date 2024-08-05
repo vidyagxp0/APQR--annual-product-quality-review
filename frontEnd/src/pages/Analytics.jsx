@@ -1,17 +1,9 @@
 import React from "react";
-import {
-  Chart as ChartJS,
-  DoughnutController,
-  ArcElement,
-  Tooltip,
-  Legend,
-} from "chart.js";
+import { Chart as ChartJS, DoughnutController, ArcElement, Tooltip, Legend } from "chart.js";
 import { Doughnut } from "react-chartjs-2";
 import ReactApexChart from "react-apexcharts";
 import Header from "../Component/Header";
 import BottomHeader from "../Component/BottomHeader";
-import LineChartPQR from "../Component/Chart/Chart";
-import HighchartsChart from "../Component/Chart/HighchartsChart";
 import {
   PantoprazolepHData,
   PantoprazolepHPlotLines,
@@ -23,7 +15,7 @@ import {
   terbinafinepHData,
   terbinafinepHPlotLines,
   terbinafinepHZones,
-} from "../Component/Chart/ChartJsFunction";
+} from "../Component/Analytics/ChartJsFunction";
 
 // Define generateData function
 const generateData = (timestamp, count, range) => {
@@ -194,17 +186,7 @@ const Analytics = () => {
         colors: ["transparent"],
       },
       xaxis: {
-        categories: [
-          "Feb",
-          "Mar",
-          "Apr",
-          "May",
-          "Jun",
-          "Jul",
-          "Aug",
-          "Sep",
-          "Oct",
-        ],
+        categories: ["Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct"],
       },
       yaxis: {
         title: {
@@ -408,10 +390,7 @@ const Analytics = () => {
         <Header />
         <BottomHeader />
 
-        {/* <div className="w-full bg-white shadow-lg p-4 overflow-auto">
-          <LineChartPQR />
-        </div> */}
-        <HighchartsChart
+        {/* <HighchartsLine
           heading={"Paracetamol  Graph"}
           xHeading={"Batch No."}
           yHeading={"Observed Value"}
@@ -422,46 +401,7 @@ const Analytics = () => {
           zones={paracetamolZones}
           annotations={paracetamolAnnotations}
           highchartData={records}
-        />
-
-        <HighchartsChart
-          heading={"Paracetamol pH Graph"}
-          xHeading={"Batch No."}
-          yHeading={"Observed Value"}
-          yMax={6}
-          yMin={0}
-          yTickInterval={0.4}
-          plotLines={ParacetamolpHPlotLines}
-          zones={paracetamolpHZones}
-          annotations={paracetamolAnnotations}
-          highchartData={paracetamolpHData}
-        />
-
-        <HighchartsChart
-          heading={"Terbinafine pH Graph"}
-          xHeading={"Batch No."}
-          yHeading={"Observed Value"}
-          yMax={8}
-          yMin={2.8}
-          yTickInterval={0.8}
-          plotLines={terbinafinepHPlotLines}
-          zones={terbinafinepHZones}
-          annotations={paracetamolAnnotations}
-          highchartData={terbinafinepHData}
-        />
-
-        <HighchartsChart
-          heading={"Pantoprazole pH Graph"}
-          xHeading={"Batch No."}
-          yHeading={"Observed Value"}
-          yMax={10}
-          yMin={5.0}
-          yTickInterval={0.5}
-          plotLines={PantoprazolepHPlotLines}
-          zones={PantoprazolepHZones}
-          annotations={paracetamolAnnotations}
-          highchartData={PantoprazolepHData}
-        />
+        /> */}
 
         <div className="flex flex-row  justify-center items-center gap-10  m-10">
           <div className=" chart-container flex flex-wrap justify-center items-center w-1/2 h-96 bg-white shadow-lg p-6">

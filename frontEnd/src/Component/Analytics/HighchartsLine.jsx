@@ -34,7 +34,6 @@ const HighchartsChart = ({
   };
 
   const processData = () => {
-    // console.log(highchartData, "highchartData");
     return highchartData?.map((record) => ({
       x: parseInt(record["Batch No."]),
       // x: parseInt(record["Batch No."]),

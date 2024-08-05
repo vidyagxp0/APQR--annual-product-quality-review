@@ -1,7 +1,7 @@
 import React from "react";
-import Header from "./Header";
-import BottomHeader from "./BottomHeader";
-import HighchartsChart from "./Chart/HighchartsChart";
+import Header from "../Component/Header";
+import BottomHeader from "../Component/BottomHeader";
+import HighchartsChart from "../Component/Analytics/HighchartsLine";
 import {
   PantoprazolepHData,
   PantoprazolepHPlotLines,
@@ -16,12 +16,10 @@ import {
   terbinafinepHData,
   terbinafinepHPlotLines,
   terbinafinepHZones,
-} from "./Chart/ChartJsFunction";
-import HistogramChart from "./Highcharts/Histogram";
-import { useSelector } from "react-redux";
-import HighchartsHistogramScatter from "./Analytics/HWS";
-import HighchartsPareto from "./Analytics/HighchartsPareto";
-import HighchartsScatterPlot from "./Analytics/HighchartsScatterPlot";
+} from "../Component/Analytics/ChartJsFunction";
+import HighchartsHistogramScatter from "../Component/Analytics/HighchartsHistogram";
+import HighchartsPareto from "../Component/Analytics/HighchartsPareto";
+import HighchartsScatterPlot from "../Component/Analytics/HighchartsScatterPlot";
 
 export default function AdvancedAnalytics() {
   const phOfParacetamol = {
@@ -88,6 +86,97 @@ export default function AdvancedAnalytics() {
     ],
   };
 
+  const phOfParacetamolScatter = {
+    data: Array.from({ length: 30 }, () => Math.floor(Math.random() * 5) + 2),
+    data: [
+      2.9, 1.75, 3.45, 2.85, 4.05, 3.2, 2.1, 4.1, 1.9, 2.8, 3.3, 4.0, 2.25, 3.5, 2.3, 4.1, 1.65,
+      3.35, 2.95, 3.4, 2.0, 4.05, 1.8, 2.7, 4.0, 3.45, 2.85, 1.85, 4.1, 2.9, 3.5, 1.7, 3.25, 4.1,
+      2.2, 3.3, 2.95, 1.75, 3.5, 4.1, 1.9, 2.8, 4.05, 2.15, 3.4, 1.75, 4.0, 2.8, 3.45, 4.05, 2.0,
+    ],
+    lsl: 2,
+    usl: 4,
+    heading: "Observation value for pH value of Paracetamol",
+    yAxisTitle: "pH",
+    batchNumbers: [
+      "Batch 1",
+      "Batch 2",
+      "Batch 3",
+      "Batch 4",
+      "Batch 5",
+      "Batch 6",
+      "Batch 7",
+      "Batch 8",
+      "Batch 9",
+      "Batch 10",
+      "Batch 11",
+      "Batch 12",
+      "Batch 13",
+      "Batch 14",
+      "Batch 15",
+      "Batch 16",
+      "Batch 17",
+      "Batch 18",
+      "Batch 19",
+      "Batch 20",
+      "Batch 21",
+      "Batch 22",
+      "Batch 23",
+      "Batch 24",
+      "Batch 25",
+      "Batch 26",
+      "Batch 27",
+      "Batch 28",
+      "Batch 29",
+      "Batch 30",
+      "Batch 31",
+      "Batch 32",
+      "Batch 33",
+      "Batch 34",
+      "Batch 35",
+      "Batch 36",
+      "Batch 37",
+      "Batch 38",
+      "Batch 39",
+      "Batch 40",
+      "Batch 41",
+      "Batch 42",
+      "Batch 43",
+      "Batch 44",
+      "Batch 45",
+      "Batch 46",
+      "Batch 47",
+      "Batch 48",
+      "Batch 49",
+      "Batch 50",
+    ],
+  };
+  const phOfParacetamolPareto = {
+    data: [
+      1.65, 2.7, 3.4, 4.1, 2.2, 2.8, 3.3, 4.0, 1.75, 2.9, 3.5, 4.05, 2.1, 2.85, 3.2, 4.15, 1.8,
+      2.75, 3.45, 4.0, 2.25, 2.95, 3.35, 4.1, 1.9, 2.8, 3.5, 4.05, 2.0, 2.9, 3.3, 4.0, 1.7, 2.85,
+      3.45, 4.1, 2.15, 2.9, 3.25, 4.0, 1.85, 2.8, 3.4, 4.05, 2.3, 2.95, 3.5, 4.1, 1.75, 2.85, 2.85,
+      2.85, 2.85, 2.85, 2.85, 2.85, 2.85, 2.85, 2.85, 2.85, 2.85, 2.85, 2.85, 2.85, 2.85, 2.85,
+      2.85, 2.85, 2.85, 2.85, 2.85, 2.85, 2.85, 2.85, 2.85, 2.85, 2.85, 2.85, 2.85, 2.85, 2.85,
+      2.85, 2.85, 2.85, 2.85, 2.85, 2.85, 2.85, 2.85,
+    ],
+    lsl: 2,
+    usl: 4,
+    heading: "Observation value for pH value of Paracetamol",
+    yAxisTitle: "Number of Batches",
+  };
+  const phOfParacetamolHistogram = {
+    data: [
+      1.65, 2.7, 3.4, 4.1, 2.2, 2.8, 3.3, 4.0, 1.75, 2.9, 3.5, 4.05, 2.1, 2.85, 3.2, 4.15, 1.8,
+      2.75, 3.45, 4.0, 2.25, 2.95, 3.35, 4.1, 1.9, 2.8, 3.5, 4.05, 2.0, 2.9, 3.3, 4.0, 1.7, 2.85,
+      3.45, 4.1, 2.15, 2.9, 3.25, 4.0, 1.85, 2.8, 3.4, 4.05, 2.3, 2.95, 3.5, 4.1, 1.75, 2.85, 3.4,
+      3.9, 3.4,
+    ],
+    lsl: 2,
+    usl: 4,
+    heading: "Observation value for pH value of Paracetamol",
+    yAxisTitle: "Number of Batches",
+    xAxisTitle: "pH Range",
+  };
   const assayofParacetamol = {
     data: [90, 91, 92, 93, 94, 105, 106, 107, 108, 109, 110],
     lsl: 95,
@@ -205,38 +294,15 @@ export default function AdvancedAnalytics() {
           highchartData={PantoprazolepHData}/> */}
         <div className="flex justify-evenly">
           <div className="w-5/12">
-            <HighchartsHistogramScatter />
+            <HighchartsHistogramScatter phOfParacetamol={phOfParacetamolHistogram} />
           </div>
           <div className="w-5/12">
-            <HighchartsPareto />
+            <HighchartsPareto phOfParacetamol={phOfParacetamolPareto} />
           </div>
         </div>
-        <div className=" px-40 pt-10 shadow shadow-md">
-          <HighchartsScatterPlot />
+        <div className=" px-40 pt-10  shadow-md">
+          <HighchartsScatterPlot phOfParacetamol={phOfParacetamolScatter} />
         </div>
-        <HistogramChart
-          data={phOfParacetamol.data}
-          //   data={[
-          //     [1, 2.5],
-          //     [2, 3.1],
-          //     [3, 2.8],
-          //     [4, 3.5],
-          //     [4, 4.5],
-          //   ]} // [batchIndex, pHValue]
-          lsl={phOfParacetamol.lsl}
-          usl={phOfParacetamol.usl}
-          text={phOfParacetamol.heading}
-          yAxisTitle={phOfParacetamol.yAxisTitle}
-          batchNumbers={phOfParacetamol.batchNumbers}
-        />
-        <HistogramChart
-          data={assayofParacetamol.data}
-          lsl={assayofParacetamol.lsl}
-          usl={assayofParacetamol.usl}
-          text={assayofParacetamol.heading}
-          yAxisTitle={assayofParacetamol.yAxisTitle}
-          batchNumbers={assayofParacetamol.batchNumbers}
-        />
       </div>
     </>
   );
