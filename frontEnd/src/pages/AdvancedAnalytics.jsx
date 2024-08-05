@@ -17,7 +17,7 @@ import {
   terbinafinepHPlotLines,
   terbinafinepHZones,
 } from "../Component/Analytics/ChartJsFunction";
-import HighchartsHistogramScatter from "../Component/Analytics/HighchartsHistogram";
+import HighchartsHistogram from "../Component/Analytics/HighchartsHistogram";
 import HighchartsPareto from "../Component/Analytics/HighchartsPareto";
 import HighchartsScatterPlot from "../Component/Analytics/HighchartsScatterPlot";
 
@@ -294,7 +294,7 @@ export default function AdvancedAnalytics() {
           highchartData={PantoprazolepHData}/> */}
         <div className="flex justify-evenly">
           <div className="w-5/12">
-            <HighchartsHistogramScatter phOfParacetamol={phOfParacetamolHistogram} />
+            <HighchartsHistogram phOfParacetamol={phOfParacetamolHistogram} />
           </div>
           <div className="w-5/12">
             <HighchartsPareto phOfParacetamol={phOfParacetamolPareto} />
