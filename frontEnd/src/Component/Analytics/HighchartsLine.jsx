@@ -132,7 +132,7 @@ const HighchartsChart = ({
         point: {
           xAxis: 0,
           yAxis: 0,
-          x: data[Math.floor(data.length / 2)].x,
+          x: data[Math.floor(data.length / 2)],
           y: e.y,
         },
         text: e.text,
