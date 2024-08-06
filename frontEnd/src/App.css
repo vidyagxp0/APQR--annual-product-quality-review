@@ -398,10 +398,9 @@ body {
   letter-spacing: 0.1em;
 }
 
-.form-footer{
+.form-footer {
   width: 80%;
 }
-
 
 .scrollbar-custom {
   scrollbar-width: thin;
@@ -428,6 +427,12 @@ body {
   background-color: #888888;
 }
 
-.centerText{
-  text-align:center !important;
+.centerText {
+  text-align: center !important;
+}
+
+.divWithScrollbar {
+  overflow: auto;
+  scrollbar-width: thin; /* For Firefox */
+  scrollbar-color: #5dbbfa transparent; /* For Firefox */
 }

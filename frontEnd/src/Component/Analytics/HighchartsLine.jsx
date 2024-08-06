@@ -46,8 +46,8 @@ const HighchartsChart = ({
     chart: {
       type: "line",
       zoomType: "x",
-      height: 600,
-      width: 2000,
+      // height: 600,
+      // width: 2000,
       panning: true, // Enable panning
       panKey: "ctrl", // Set the key for panning (optional)
     },
@@ -169,7 +169,9 @@ const HighchartsChart = ({
   };
 
   return (
-    <div className="w-full bg-white shadow-lg p-4 overflow-auto">
+    <div
+      className=" bg-white shadow-lg p-4 overflow-auto divWithScrollbar"
+    >
       <div className="graph-2 " style={{ display: "flex", justifyContent: "space-between" }}>
         <div className="chart-analytics chart-container ">
           <HighchartsReact highcharts={Highcharts} options={options} />
