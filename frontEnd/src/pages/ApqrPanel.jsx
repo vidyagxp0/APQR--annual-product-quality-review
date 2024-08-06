@@ -79,6 +79,11 @@ export default function APQR() {
   const [reviewODSTR8, setReviewOSTR8] = useState([]);
   const [reviewODSTR9, setReviewOSTR9] = useState([]);
   const [reviewODSTR10, setReviewOSTR10] = useState([]);
+  const [reviewODSTR11, setReviewOSTR11] = useState([]);
+  const [reviewODSTR12, setReviewOSTR12] = useState([]);
+  const [reviewODSTR13, setReviewOSTR13] = useState([]);
+  const [reviewODSTR14, setReviewOSTR14] = useState([]);
+  const [reviewODSTR15, setReviewOSTR15] = useState([]);
   const [reviewORMETR, setReviewORMETR] = useState([]);
   const [reviewOPMTR, setReviewOPMTR] = useState([]);
   const [reviewODP, setReviewODP] = useState([]);
@@ -798,6 +803,21 @@ export default function APQR() {
   const paracetamolpHData10 = editData?.reviewODSTR10?.map((item) => {
     return { "Batch No.": item.batchNo, "Observed Value": item.observedValue };
   });
+  const paracetamolpHData11 = editData?.reviewODSTR11?.map((item) => {
+    return { "Batch No.": item.batchNo, "Observed Value": item.observedValue };
+  });
+  const paracetamolpHData12 = editData?.reviewODSTR12?.map((item) => {
+    return { "Batch No.": item.batchNo, "Observed Value": item.observedValue };
+  });
+  const paracetamolpHData13 = editData?.reviewODSTR13?.map((item) => {
+    return { "Batch No.": item.batchNo, "Observed Value": item.observedValue };
+  });
+  const paracetamolpHData14 = editData?.reviewODSTR14?.map((item) => {
+    return { "Batch No.": item.batchNo, "Observed Value": item.observedValue };
+  });
+  const paracetamolpHData15 = editData?.reviewODSTR15?.map((item) => {
+    return { "Batch No.": item.batchNo, "Observed Value": item.observedValue };
+  });
   console.log(paracetamolpHData);
   useEffect(() => {
     setPQRData({
@@ -833,6 +853,11 @@ export default function APQR() {
       reviewODSTR8: reviewODSTR8,
       reviewODSTR9: reviewODSTR9,
       reviewODSTR10: reviewODSTR10,
+      reviewODSTR11: reviewODSTR11,
+      reviewODSTR12: reviewODSTR12,
+      reviewODSTR13: reviewODSTR13,
+      reviewODSTR14: reviewODSTR14,
+      reviewODSTR15: reviewODSTR15,
       reviewORMETR: reviewORMETR,
       reviewOPMTR: reviewOPMTR,
       reviewODP: reviewODP,
@@ -989,6 +1014,11 @@ export default function APQR() {
     reviewODSTR8,
     reviewODSTR9,
     reviewODSTR10,
+    reviewODSTR11,
+    reviewODSTR12,
+    reviewODSTR13,
+    reviewODSTR14,
+    reviewODSTR15,
     reviewORMETR,
     reviewOPMTR,
     reviewODP,
@@ -1658,6 +1688,91 @@ export default function APQR() {
     setPQRData({
       ...pQRData,
       reviewODSTR10: [...pQRData.reviewODSTR10, newRow10],
+    });
+  };
+
+  const addReviewODSTRRow11 = () => {
+    const newRow10 = {
+      batchNo: "",
+      testsParameter: "",
+      observedValue: "",
+      LSL: "",
+      USL: "",
+      LCL: "",
+      UCL: "",
+      compliesNotComplies: "",
+    };
+    setPQRData({
+      ...pQRData,
+      reviewODSTR10: [...pQRData.reviewODSTR11, newRow10],
+    });
+  };
+
+  const addReviewODSTRRow12 = () => {
+    const newRow10 = {
+      batchNo: "",
+      testsParameter: "",
+      observedValue: "",
+      LSL: "",
+      USL: "",
+      LCL: "",
+      UCL: "",
+      compliesNotComplies: "",
+    };
+    setPQRData({
+      ...pQRData,
+      reviewODSTR10: [...pQRData.reviewODSTR12, newRow10],
+    });
+  };
+
+  const addReviewODSTRRow13 = () => {
+    const newRow10 = {
+      batchNo: "",
+      testsParameter: "",
+      observedValue: "",
+      LSL: "",
+      USL: "",
+      LCL: "",
+      UCL: "",
+      compliesNotComplies: "",
+    };
+    setPQRData({
+      ...pQRData,
+      reviewODSTR10: [...pQRData.reviewODSTR13, newRow10],
+    });
+  };
+
+  const addReviewODSTRRow14 = () => {
+    const newRow10 = {
+      batchNo: "",
+      testsParameter: "",
+      observedValue: "",
+      LSL: "",
+      USL: "",
+      LCL: "",
+      UCL: "",
+      compliesNotComplies: "",
+    };
+    setPQRData({
+      ...pQRData,
+      reviewODSTR10: [...pQRData.reviewODSTR14, newRow10],
+    });
+  };
+
+  const addReviewODSTRRow15 = () => {
+    const newRow10 = {
+      batchNo: "",
+      testsParameter: "",
+      observedValue: "",
+      LSL: "",
+      USL: "",
+      LCL: "",
+      UCL: "",
+      compliesNotComplies: "",
+    };
+    setPQRData({
+      ...pQRData,
+      reviewODSTR10: [...pQRData.reviewODSTR15, newRow10],
     });
   };
 
@@ -7182,10 +7297,6 @@ export default function APQR() {
             />
             <h1 className="gridName pt-8">Drug Substance 10 Test Result</h1>
             <div>
-              {/* <div className="AddRows d-flex">
-    <MdNoteAdd onClick={addReviewODSTRRow} />
-    <div className="addrowinstruction"></div>
-  </div> */}
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addReviewODSTRRow10} />
@@ -7337,6 +7448,777 @@ export default function APQR() {
               annotations={paracetamolAnnotations}
               highchartData={paracetamolpHData10}
             />
+
+<h1 className="gridName pt-8">pH Of Pentoprazole Test Result</h1>
+            <div>
+              <div className="AddRows d-flex w-full justify-between items-center text-3xl">
+                <div className="flex items-center">
+                  <MdNoteAdd onClick={addReviewODSTRRow11} />
+                  <div className="addrowinstruction  pl-2">
+                    Add Rows by clicking on (+) icon
+                  </div>
+                </div>
+                <div className="flex gap-4 ">
+                  <ExcelExportImport
+                    data={manufacturingStage}
+                    setimportedData={setimportedData}
+                    fileName="manufacturingStage.xlsx"
+                    gridNo={1}
+                  />{" "}
+                </div>
+              </div>
+              <table>
+                <thead>
+                  <tr>
+                    <th>Batch No</th>
+                    <th>Tests parameter</th>
+                    <th>LSL</th>
+                    <th>USL</th>
+                    <th>LCL</th>
+                    <th>UCL</th>
+                    <th>Observed Value</th>
+                    <th>Complies/Does Not complies</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {pQRData?.reviewODSTR11?.map((item, index) => {
+                    return (
+                      <tr key={index}>
+                        <input
+                          value={item.batchNo}
+                          onChange={(e) => {
+                            const newData = [...pQRData.reviewODSTR11];
+                            newData[index].batchNo = e.target.value;
+                            setPQRData({ ...pQRData, reviewODSTR11: newData });
+                          }}
+                        />
+                        <td>
+                          <input
+                            value={item.testsParameter}
+                            onChange={(e) => {
+                              const newData = [...pQRData.reviewODSTR11];
+                              newData[index].testsParameter = e.target.value;
+                              setPQRData({
+                                ...pQRData,
+                                reviewODSTR11: newData,
+                              });
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.LSL}
+                            onChange={(e) => {
+                              const newData = [...pQRData.reviewODSTR11];
+                              newData[index].LSL = e.target.value;
+                              setPQRData({
+                                ...pQRData,
+                                reviewODSTR11: newData,
+                              });
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.USL}
+                            onChange={(e) => {
+                              const newData = [...pQRData.reviewODSTR11];
+                              newData[index].USL = e.target.value;
+                              setPQRData({
+                                ...pQRData,
+                                reviewODSTR11: newData,
+                              });
+                            }}
+                          />
+                        </td>{" "}
+                        <td>
+                          <input
+                            value={item.LCL}
+                            onChange={(e) => {
+                              const newData = [...pQRData.reviewODSTR11];
+                              newData[index].LCL = e.target.value;
+                              setPQRData({
+                                ...pQRData,
+                                reviewODSTR11: newData,
+                              });
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.UCL}
+                            onChange={(e) => {
+                              const newData = [...pQRData.reviewODSTR11];
+                              newData[index].UCL = e.target.value;
+                              setPQRData({
+                                ...pQRData,
+                                reviewODSTR11: newData,
+                              });
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.observedValue}
+                            onChange={(e) => {
+                              const newData = [...pQRData.reviewODSTR11];
+                              newData[index].observedValue = e.target.value;
+                              setPQRData({
+                                ...pQRData,
+                                reviewODSTR11: newData,
+                              });
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.compliesNotComplies}
+                            onChange={(e) => {
+                              const newData = [...pQRData.reviewODSTR11];
+                              newData[index].compliesNotComplies =
+                                e.target.value;
+                              setPQRData({
+                                ...pQRData,
+                                reviewODSTR11: newData,
+                              });
+                            }}
+                          />
+                        </td>
+                      </tr>
+                    );
+                  })}
+                </tbody>
+              </table>
+            </div>
+            <HighchartsLine
+              heading={" pH Of Pentoprazole Analysis"}
+              xHeading={"Batch No."}
+              yHeading={"Observed Value"}
+              yMax={6}
+              yMin={0}
+              yTickInterval={0.4}
+              plotLines={ParacetamolpHPlotLines}
+              zones={paracetamolpHZones}
+              annotations={paracetamolAnnotations}
+              highchartData={paracetamolpHData11}
+            />
+
+<h1 className="gridName pt-8">Assay Of Pentoprazole Test Result</h1>
+            <div>
+              <div className="AddRows d-flex w-full justify-between items-center text-3xl">
+                <div className="flex items-center">
+                  <MdNoteAdd onClick={addReviewODSTRRow12} />
+                  <div className="addrowinstruction  pl-2">
+                    Add Rows by clicking on (+) icon
+                  </div>
+                </div>
+                <div className="flex gap-4 ">
+                  <ExcelExportImport
+                    data={manufacturingStage}
+                    setimportedData={setimportedData}
+                    fileName="manufacturingStage.xlsx"
+                    gridNo={1}
+                  />{" "}
+                </div>
+              </div>
+              <table>
+                <thead>
+                  <tr>
+                    <th>Batch No</th>
+                    <th>Tests parameter</th>
+                    <th>LSL</th>
+                    <th>USL</th>
+                    <th>LCL</th>
+                    <th>UCL</th>
+                    <th>Observed Value</th>
+                    <th>Complies/Does Not complies</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {pQRData?.reviewODSTR12?.map((item, index) => {
+                    return (
+                      <tr key={index}>
+                        <input
+                          value={item.batchNo}
+                          onChange={(e) => {
+                            const newData = [...pQRData.reviewODSTR12];
+                            newData[index].batchNo = e.target.value;
+                            setPQRData({ ...pQRData, reviewODSTR12: newData });
+                          }}
+                        />
+                        <td>
+                          <input
+                            value={item.testsParameter}
+                            onChange={(e) => {
+                              const newData = [...pQRData.reviewODSTR12];
+                              newData[index].testsParameter = e.target.value;
+                              setPQRData({
+                                ...pQRData,
+                                reviewODSTR12: newData,
+                              });
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.LSL}
+                            onChange={(e) => {
+                              const newData = [...pQRData.reviewODSTR12];
+                              newData[index].LSL = e.target.value;
+                              setPQRData({
+                                ...pQRData,
+                                reviewODSTR12: newData,
+                              });
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.USL}
+                            onChange={(e) => {
+                              const newData = [...pQRData.reviewODSTR12];
+                              newData[index].USL = e.target.value;
+                              setPQRData({
+                                ...pQRData,
+                                reviewODSTR12: newData,
+                              });
+                            }}
+                          />
+                        </td>{" "}
+                        <td>
+                          <input
+                            value={item.LCL}
+                            onChange={(e) => {
+                              const newData = [...pQRData.reviewODSTR12];
+                              newData[index].LCL = e.target.value;
+                              setPQRData({
+                                ...pQRData,
+                                reviewODSTR12: newData,
+                              });
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.UCL}
+                            onChange={(e) => {
+                              const newData = [...pQRData.reviewODSTR12];
+                              newData[index].UCL = e.target.value;
+                              setPQRData({
+                                ...pQRData,
+                                reviewODSTR12: newData,
+                              });
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.observedValue}
+                            onChange={(e) => {
+                              const newData = [...pQRData.reviewODSTR12];
+                              newData[index].observedValue = e.target.value;
+                              setPQRData({
+                                ...pQRData,
+                                reviewODSTR12: newData,
+                              });
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.compliesNotComplies}
+                            onChange={(e) => {
+                              const newData = [...pQRData.reviewODSTR12];
+                              newData[index].compliesNotComplies =
+                                e.target.value;
+                              setPQRData({
+                                ...pQRData,
+                                reviewODSTR12: newData,
+                              });
+                            }}
+                          />
+                        </td>
+                      </tr>
+                    );
+                  })}
+                </tbody>
+              </table>
+            </div>
+            <HighchartsLine
+              heading={"Assay Of Pentoprazole Analysis"}
+              xHeading={"Batch No."}
+              yHeading={"Observed Value"}
+              yMax={6}
+              yMin={0}
+              yTickInterval={0.4}
+              plotLines={ParacetamolpHPlotLines}
+              zones={paracetamolpHZones}
+              annotations={paracetamolAnnotations}
+              highchartData={paracetamolpHData12}
+            />
+
+<h1 className="gridName pt-8">Impurity Of Pentoprazole Test Result</h1>
+            <div>
+              <div className="AddRows d-flex w-full justify-between items-center text-3xl">
+                <div className="flex items-center">
+                  <MdNoteAdd onClick={addReviewODSTRRow13} />
+                  <div className="addrowinstruction  pl-2">
+                    Add Rows by clicking on (+) icon
+                  </div>
+                </div>
+                <div className="flex gap-4 ">
+                  <ExcelExportImport
+                    data={manufacturingStage}
+                    setimportedData={setimportedData}
+                    fileName="manufacturingStage.xlsx"
+                    gridNo={1}
+                  />{" "}
+                </div>
+              </div>
+              <table>
+                <thead>
+                  <tr>
+                    <th>Batch No</th>
+                    <th>Tests parameter</th>
+                    <th>LSL</th>
+                    <th>USL</th>
+                    <th>LCL</th>
+                    <th>UCL</th>
+                    <th>Observed Value</th>
+                    <th>Complies/Does Not complies</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {pQRData?.reviewODSTR13?.map((item, index) => {
+                    return (
+                      <tr key={index}>
+                        <input
+                          value={item.batchNo}
+                          onChange={(e) => {
+                            const newData = [...pQRData.reviewODSTR13];
+                            newData[index].batchNo = e.target.value;
+                            setPQRData({ ...pQRData, reviewODSTR13: newData });
+                          }}
+                        />
+                        <td>
+                          <input
+                            value={item.testsParameter}
+                            onChange={(e) => {
+                              const newData = [...pQRData.reviewODSTR13];
+                              newData[index].testsParameter = e.target.value;
+                              setPQRData({
+                                ...pQRData,
+                                reviewODSTR13: newData,
+                              });
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.LSL}
+                            onChange={(e) => {
+                              const newData = [...pQRData.reviewODSTR13];
+                              newData[index].LSL = e.target.value;
+                              setPQRData({
+                                ...pQRData,
+                                reviewODSTR13: newData,
+                              });
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.USL}
+                            onChange={(e) => {
+                              const newData = [...pQRData.reviewODSTR13];
+                              newData[index].USL = e.target.value;
+                              setPQRData({
+                                ...pQRData,
+                                reviewODSTR13: newData,
+                              });
+                            }}
+                          />
+                        </td>{" "}
+                        <td>
+                          <input
+                            value={item.LCL}
+                            onChange={(e) => {
+                              const newData = [...pQRData.reviewODSTR13];
+                              newData[index].LCL = e.target.value;
+                              setPQRData({
+                                ...pQRData,
+                                reviewODSTR13: newData,
+                              });
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.UCL}
+                            onChange={(e) => {
+                              const newData = [...pQRData.reviewODSTR13];
+                              newData[index].UCL = e.target.value;
+                              setPQRData({
+                                ...pQRData,
+                                reviewODSTR13: newData,
+                              });
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.observedValue}
+                            onChange={(e) => {
+                              const newData = [...pQRData.reviewODSTR13];
+                              newData[index].observedValue = e.target.value;
+                              setPQRData({
+                                ...pQRData,
+                                reviewODSTR13: newData,
+                              });
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.compliesNotComplies}
+                            onChange={(e) => {
+                              const newData = [...pQRData.reviewODSTR13];
+                              newData[index].compliesNotComplies =
+                                e.target.value;
+                              setPQRData({
+                                ...pQRData,
+                                reviewODSTR13: newData,
+                              });
+                            }}
+                          />
+                        </td>
+                      </tr>
+                    );
+                  })}
+                </tbody>
+              </table>
+            </div>
+            <HighchartsLine
+              heading={"Impurity Of Pentoprazole Analysis"}
+              xHeading={"Batch No."}
+              yHeading={"Observed Value"}
+              yMax={6}
+              yMin={0}
+              yTickInterval={0.4}
+              plotLines={ParacetamolpHPlotLines}
+              zones={paracetamolpHZones}
+              annotations={paracetamolAnnotations}
+              highchartData={paracetamolpHData13}
+            />
+
+<h1 className="gridName pt-8">Dissolution Of Pentoprazole Test Result</h1>
+            <div>
+              <div className="AddRows d-flex w-full justify-between items-center text-3xl">
+                <div className="flex items-center">
+                  <MdNoteAdd onClick={addReviewODSTRRow10} />
+                  <div className="addrowinstruction  pl-2">
+                    Add Rows by clicking on (+) icon
+                  </div>
+                </div>
+                <div className="flex gap-4 ">
+                  <ExcelExportImport
+                    data={manufacturingStage}
+                    setimportedData={setimportedData}
+                    fileName="manufacturingStage.xlsx"
+                    gridNo={1}
+                  />{" "}
+                </div>
+              </div>
+              <table>
+                <thead>
+                  <tr>
+                    <th>Batch No</th>
+                    <th>Tests parameter</th>
+                    <th>LSL</th>
+                    <th>USL</th>
+                    <th>LCL</th>
+                    <th>UCL</th>
+                    <th>Observed Value</th>
+                    <th>Complies/Does Not complies</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {pQRData?.reviewODSTR14?.map((item, index) => {
+                    return (
+                      <tr key={index}>
+                        <input
+                          value={item.batchNo}
+                          onChange={(e) => {
+                            const newData = [...pQRData.reviewODSTR14];
+                            newData[index].batchNo = e.target.value;
+                            setPQRData({ ...pQRData, reviewODSTR14: newData });
+                          }}
+                        />
+                        <td>
+                          <input
+                            value={item.testsParameter}
+                            onChange={(e) => {
+                              const newData = [...pQRData.reviewODSTR14];
+                              newData[index].testsParameter = e.target.value;
+                              setPQRData({
+                                ...pQRData,
+                                reviewODSTR14: newData,
+                              });
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.LSL}
+                            onChange={(e) => {
+                              const newData = [...pQRData.reviewODSTR14];
+                              newData[index].LSL = e.target.value;
+                              setPQRData({
+                                ...pQRData,
+                                reviewODSTR14: newData,
+                              });
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.USL}
+                            onChange={(e) => {
+                              const newData = [...pQRData.reviewODSTR14];
+                              newData[index].USL = e.target.value;
+                              setPQRData({
+                                ...pQRData,
+                                reviewODSTR14: newData,
+                              });
+                            }}
+                          />
+                        </td>{" "}
+                        <td>
+                          <input
+                            value={item.LCL}
+                            onChange={(e) => {
+                              const newData = [...pQRData.reviewODSTR14];
+                              newData[index].LCL = e.target.value;
+                              setPQRData({
+                                ...pQRData,
+                                reviewODSTR14: newData,
+                              });
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.UCL}
+                            onChange={(e) => {
+                              const newData = [...pQRData.reviewODSTR14];
+                              newData[index].UCL = e.target.value;
+                              setPQRData({
+                                ...pQRData,
+                                reviewODSTR14: newData,
+                              });
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.observedValue}
+                            onChange={(e) => {
+                              const newData = [...pQRData.reviewODSTR14];
+                              newData[index].observedValue = e.target.value;
+                              setPQRData({
+                                ...pQRData,
+                                reviewODSTR14: newData,
+                              });
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.compliesNotComplies}
+                            onChange={(e) => {
+                              const newData = [...pQRData.reviewODSTR14];
+                              newData[index].compliesNotComplies =
+                                e.target.value;
+                              setPQRData({
+                                ...pQRData,
+                                reviewODSTR14: newData,
+                              });
+                            }}
+                          />
+                        </td>
+                      </tr>
+                    );
+                  })}
+                </tbody>
+              </table>
+            </div>
+            <HighchartsLine
+              heading={"Dissolution Of Pentoprazole  Analysis"}
+              xHeading={"Batch No."}
+              yHeading={"Observed Value"}
+              yMax={6}
+              yMin={0}
+              yTickInterval={0.4}
+              plotLines={ParacetamolpHPlotLines}
+              zones={paracetamolpHZones}
+              annotations={paracetamolAnnotations}
+              highchartData={paracetamolpHData14}
+            />
+
+<h1 className="gridName pt-8">Disintegration Of Pentoprazole Test Result</h1>
+            <div>
+              <div className="AddRows d-flex w-full justify-between items-center text-3xl">
+                <div className="flex items-center">
+                  <MdNoteAdd onClick={addReviewODSTRRow15} />
+                  <div className="addrowinstruction  pl-2">
+                    Add Rows by clicking on (+) icon
+                  </div>
+                </div>
+                <div className="flex gap-4 ">
+                  <ExcelExportImport
+                    data={manufacturingStage}
+                    setimportedData={setimportedData}
+                    fileName="manufacturingStage.xlsx"
+                    gridNo={1}
+                  />{" "}
+                </div>
+              </div>
+              <table>
+                <thead>
+                  <tr>
+                    <th>Batch No</th>
+                    <th>Tests parameter</th>
+                    <th>LSL</th>
+                    <th>USL</th>
+                    <th>LCL</th>
+                    <th>UCL</th>
+                    <th>Observed Value</th>
+                    <th>Complies/Does Not complies</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {pQRData?.reviewODSTR15?.map((item, index) => {
+                    return (
+                      <tr key={index}>
+                        <input
+                          value={item.batchNo}
+                          onChange={(e) => {
+                            const newData = [...pQRData.reviewODSTR15];
+                            newData[index].batchNo = e.target.value;
+                            setPQRData({ ...pQRData, reviewODSTR15: newData });
+                          }}
+                        />
+                        <td>
+                          <input
+                            value={item.testsParameter}
+                            onChange={(e) => {
+                              const newData = [...pQRData.reviewODSTR15];
+                              newData[index].testsParameter = e.target.value;
+                              setPQRData({
+                                ...pQRData,
+                                reviewODSTR15: newData,
+                              });
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.LSL}
+                            onChange={(e) => {
+                              const newData = [...pQRData.reviewODSTR15];
+                              newData[index].LSL = e.target.value;
+                              setPQRData({
+                                ...pQRData,
+                                reviewODSTR15: newData,
+                              });
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.USL}
+                            onChange={(e) => {
+                              const newData = [...pQRData.reviewODSTR15];
+                              newData[index].USL = e.target.value;
+                              setPQRData({
+                                ...pQRData,
+                                reviewODSTR15: newData,
+                              });
+                            }}
+                          />
+                        </td>{" "}
+                        <td>
+                          <input
+                            value={item.LCL}
+                            onChange={(e) => {
+                              const newData = [...pQRData.reviewODSTR15];
+                              newData[index].LCL = e.target.value;
+                              setPQRData({
+                                ...pQRData,
+                                reviewODSTR15: newData,
+                              });
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.UCL}
+                            onChange={(e) => {
+                              const newData = [...pQRData.reviewODSTR15];
+                              newData[index].UCL = e.target.value;
+                              setPQRData({
+                                ...pQRData,
+                                reviewODSTR15: newData,
+                              });
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.observedValue}
+                            onChange={(e) => {
+                              const newData = [...pQRData.reviewODSTR15];
+                              newData[index].observedValue = e.target.value;
+                              setPQRData({
+                                ...pQRData,
+                                reviewODSTR15: newData,
+                              });
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.compliesNotComplies}
+                            onChange={(e) => {
+                              const newData = [...pQRData.reviewODSTR15];
+                              newData[index].compliesNotComplies =
+                                e.target.value;
+                              setPQRData({
+                                ...pQRData,
+                                reviewODSTR15: newData,
+                              });
+                            }}
+                          />
+                        </td>
+                      </tr>
+                    );
+                  })}
+                </tbody>
+              </table>
+            </div>
+            <HighchartsLine
+              heading={"Pentoprazole Disintegration Analysis"}
+              xHeading={"Batch No."}
+              yHeading={"Observed Value"}
+              yMax={6}
+              yMin={0}
+              yTickInterval={0.4}
+              plotLines={ParacetamolpHPlotLines}
+              zones={paracetamolpHZones}
+              annotations={paracetamolAnnotations}
+              highchartData={paracetamolpHData15}
+            />
+
             <div>
               <h4 className="gridName mt-5">Summary</h4>
               <TinyEditor
