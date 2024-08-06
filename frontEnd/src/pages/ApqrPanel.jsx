@@ -9620,59 +9620,65 @@ export default function APQR() {
                           <input
                             value={item.testsParameter}
                             onChange={(e) => {
-                              const newData = [...reviewODPFPTR];
-                              newData[index].testsParameter = e.target.value;
-                              setReviewODPFPTR(newData);
+                              const newData = [...pQRData.reviewODP10];
+                              newData[index].testsParameter =
+                                e.target.value;
+                              setPQRData({ ...pQRData, reviewODP10: newData });
                             }}
                           />
                         </td>
                         <td>
                           <input
-                            value={item.testsParameter}
+                            value={item.stage}
                             onChange={(e) => {
-                              const newData = [...reviewODPFPTR];
-                              newData[index].testsParameter = e.target.value;
-                              setReviewODPFPTR(newData);
+                              const newData = [...pQRData.reviewODP10];
+                              newData[index].stage =
+                                e.target.value;
+                              setPQRData({ ...pQRData, reviewODP10: newData });
                             }}
                           />
                         </td>
                         <td>
                           <input
-                            value={item.testsParameter}
+                            value={item.specificationLimit}
                             onChange={(e) => {
-                              const newData = [...reviewODPFPTR];
-                              newData[index].testsParameter = e.target.value;
-                              setReviewODPFPTR(newData);
+                              const newData = [...pQRData.reviewODP10];
+                              newData[index].specificationLimit =
+                                e.target.value;
+                              setPQRData({ ...pQRData, reviewODP10: newData });
                             }}
                           />
                         </td>
                         <td>
                           <input
-                            value={item.testsParameter}
+                            value={item.obtainedValue.minimum}
                             onChange={(e) => {
-                              const newData = [...reviewODPFPTR];
-                              newData[index].testsParameter = e.target.value;
-                              setReviewODPFPTR(newData);
+                              const newData = [...pQRData.reviewODP10];
+                              newData[index].obtainedValue.minimum =
+                                e.target.value;
+                              setPQRData({ ...pQRData, reviewODP10: newData });
                             }}
                           />
                         </td>
                         <td>
                           <input
-                            value={item.testsParameter}
+                            value={item.obtainedValue.maximum}
                             onChange={(e) => {
-                              const newData = [...reviewODPFPTR];
-                              newData[index].testsParameter = e.target.value;
-                              setReviewODPFPTR(newData);
+                              const newData = [...pQRData.reviewODP10];
+                              newData[index].obtainedValue.maximum =
+                                e.target.value;
+                              setPQRData({ ...pQRData, reviewODP10: newData });
                             }}
                           />
                         </td>
                         <td>
                           <input
-                            value={item.testsParameter}
+                            value={item.compliesNotComplies}
                             onChange={(e) => {
-                              const newData = [...reviewODPFPTR];
-                              newData[index].testsParameter = e.target.value;
-                              setReviewODPFPTR(newData);
+                              const newData = [...pQRData.reviewODP10];
+                              newData[index].compliesNotComplies =
+                                e.target.value;
+                              setPQRData({ ...pQRData, reviewODP10: newData });
                             }}
                           />
                         </td>
@@ -9737,9 +9743,10 @@ export default function APQR() {
                           <input
                             value={item.testsParameter}
                             onChange={(e) => {
-                              const newData = [...reviewODPFPTR];
-                              newData[index].testsParameter = e.target.value;
-                              setReviewODPFPTR(newData);
+                              const newData = [...pQRData.reviewODPFPTR];
+                              newData[index].testsParameter =
+                                e.target.value;
+                              setPQRData({ ...pQRData, reviewODPFPTR: newData });
                             }}
                           />
                         </td>
@@ -9747,10 +9754,10 @@ export default function APQR() {
                           <input
                             value={item.specificationLimit}
                             onChange={(e) => {
-                              const newData = [...reviewODPFPTR];
+                              const newData = [...pQRData.reviewODPFPTR];
                               newData[index].specificationLimit =
                                 e.target.value;
-                              setReviewODPFPTR(newData);
+                              setPQRData({ ...pQRData, reviewODPFPTR: newData });
                             }}
                           />
                         </td>
@@ -9758,10 +9765,10 @@ export default function APQR() {
                           <input
                             value={item.obtainedValue.minimum}
                             onChange={(e) => {
-                              const newData = [...reviewODPFPTR];
+                              const newData = [...pQRData.reviewODPFPTR];
                               newData[index].obtainedValue.minimum =
                                 e.target.value;
-                              setReviewODPFPTR(newData);
+                              setPQRData({ ...pQRData, reviewODPFPTR: newData });
                             }}
                           />
                         </td>
@@ -9769,10 +9776,10 @@ export default function APQR() {
                           <input
                             value={item.obtainedValue.maximum}
                             onChange={(e) => {
-                              const newData = [...reviewODPFPTR];
+                              const newData = [...pQRData.reviewODPFPTR];
                               newData[index].obtainedValue.maximum =
                                 e.target.value;
-                              setReviewODPFPTR(newData);
+                              setPQRData({ ...pQRData, reviewODPFPTR: newData });
                             }}
                           />
                         </td>
@@ -9780,10 +9787,10 @@ export default function APQR() {
                           <input
                             value={item.compliesNotComplies}
                             onChange={(e) => {
-                              const newData = [...reviewODPFPTR];
+                              const newData = [...pQRData.reviewODPFPTR];
                               newData[index].compliesNotComplies =
                                 e.target.value;
-                              setReviewODPFPTR(newData);
+                              setPQRData({ ...pQRData, reviewODPFPTR: newData });
                             }}
                           />
                         </td>
@@ -9843,9 +9850,10 @@ export default function APQR() {
                           <input
                             value={item.batchNo}
                             onChange={(e) => {
-                              const newData = [...summaryOOSS];
-                              newData[index].batchNo = e.target.value;
-                              setSummaryOOSS(newData);
+                              const newData = [...pQRData.summaryOOSS];
+                              newData[index].batchNo =
+                                e.target.value;
+                              setPQRData({ ...pQRData, summaryOOSS: newData });
                             }}
                           />
                         </td>
@@ -9853,9 +9861,10 @@ export default function APQR() {
                           <input
                             value={item.type}
                             onChange={(e) => {
-                              const newData = [...summaryOOSS];
-                              newData[index].type = e.target.value;
-                              setSummaryOOSS(newData);
+                              const newData = [...pQRData.summaryOOSS];
+                              newData[index].type =
+                                e.target.value;
+                              setPQRData({ ...pQRData, summaryOOSS: newData });
                             }}
                           />
                         </td>
@@ -9863,9 +9872,10 @@ export default function APQR() {
                           <input
                             value={item.storageCondition}
                             onChange={(e) => {
-                              const newData = [...summaryOOSS];
-                              newData[index].storageCondition = e.target.value;
-                              setSummaryOOSS(newData);
+                              const newData = [...pQRData.summaryOOSS];
+                              newData[index].storageCondition =
+                                e.target.value;
+                              setPQRData({ ...pQRData, summaryOOSS: newData });
                             }}
                           />
                         </td>
@@ -9873,9 +9883,10 @@ export default function APQR() {
                           <input
                             value={item.testingInterval}
                             onChange={(e) => {
-                              const newData = [...summaryOOSS];
-                              newData[index].testingInterval = e.target.value;
-                              setSummaryOOSS(newData);
+                              const newData = [...pQRData.summaryOOSS];
+                              newData[index].testingInterval =
+                                e.target.value;
+                              setPQRData({ ...pQRData, summaryOOSS: newData });
                             }}
                           />
                         </td>
@@ -9883,10 +9894,10 @@ export default function APQR() {
                           <input
                             value={item.stabilityProtocolNo}
                             onChange={(e) => {
-                              const newData = [...summaryOOSS];
+                              const newData = [...pQRData.summaryOOSS];
                               newData[index].stabilityProtocolNo =
                                 e.target.value;
-                              setSummaryOOSS(newData);
+                              setPQRData({ ...pQRData, summaryOOSS: newData });
                             }}
                           />
                         </td>
@@ -9943,9 +9954,10 @@ export default function APQR() {
                           <input
                             value={item.batchNo}
                             onChange={(e) => {
-                              const newData = [...stabilitySR];
-                              newData[index].batchNo = e.target.value;
-                              setStabilitySR(newData);
+                              const newData = [...pQRData.stabilitySR];
+                              newData[index].batchNo =
+                                e.target.value;
+                              setPQRData({ ...pQRData, stabilitySR: newData });
                             }}
                           />
                         </td>
@@ -9953,10 +9965,10 @@ export default function APQR() {
                           <input
                             value={item.testingIntervalMonths}
                             onChange={(e) => {
-                              const newData = [...stabilitySR];
+                              const newData = [...pQRData.stabilitySR];
                               newData[index].testingIntervalMonths =
                                 e.target.value;
-                              setStabilitySR(newData);
+                              setPQRData({ ...pQRData, stabilitySR: newData });
                             }}
                           />
                         </td>
@@ -9964,9 +9976,10 @@ export default function APQR() {
                           <input
                             value={item.OOSNumber}
                             onChange={(e) => {
-                              const newData = [...stabilitySR];
-                              newData[index].OOSNumber = e.target.value;
-                              setStabilitySR(newData);
+                              const newData = [...pQRData.stabilitySR];
+                              newData[index].OOSNumber =
+                                e.target.value;
+                              setPQRData({ ...pQRData, stabilitySR: newData });
                             }}
                           />
                         </td>
@@ -10022,9 +10035,10 @@ export default function APQR() {
                             <input
                               value={item.column1}
                               onChange={(e) => {
-                                const newData = [...reviewOVIRS];
-                                newData[index].column1 = e.target.value;
-                                setReviewOVIRS(newData);
+                                const newData = [...pQRData.reviewOVIRS];
+                              newData[index].column1 =
+                                e.target.value;
+                              setPQRData({ ...pQRData, reviewOVIRS: newData });
                               }}
                             />
                           </td>
@@ -10032,9 +10046,10 @@ export default function APQR() {
                             <input
                               value={item.column2}
                               onChange={(e) => {
-                                const newData = [...reviewOVIRS];
-                                newData[index].column2 = e.target.value;
-                                setReviewOVIRS(newData);
+                                const newData = [...pQRData.reviewOVIRS];
+                                newData[index].column2 =
+                                  e.target.value;
+                                setPQRData({ ...pQRData, reviewOVIRS: newData });
                               }}
                             />
                           </td>
@@ -10042,9 +10057,10 @@ export default function APQR() {
                             <input
                               value={item.column3}
                               onChange={(e) => {
-                                const newData = [...reviewOVIRS];
-                                newData[index].column3 = e.target.value;
-                                setReviewOVIRS(newData);
+                                const newData = [...pQRData.reviewOVIRS];
+                              newData[index].column3 =
+                                e.target.value;
+                              setPQRData({ ...pQRData, reviewOVIRS: newData });
                               }}
                             />
                           </td>
@@ -10052,9 +10068,10 @@ export default function APQR() {
                             <input
                               value={item.column4}
                               onChange={(e) => {
-                                const newData = [...reviewOVIRS];
-                                newData[index].column4 = e.target.value;
-                                setReviewOVIRS(newData);
+                                const newData = [...pQRData.reviewOVIRS];
+                              newData[index].column4 =
+                                e.target.value;
+                              setPQRData({ ...pQRData, reviewOVIRS: newData });
                               }}
                             />
                           </td>
@@ -10062,9 +10079,10 @@ export default function APQR() {
                             <input
                               value={item.column5}
                               onChange={(e) => {
-                                const newData = [...reviewOVIRS];
-                                newData[index].column5 = e.target.value;
-                                setReviewOVIRS(newData);
+                                const newData = [...pQRData.reviewOVIRS];
+                                newData[index].column5 =
+                                  e.target.value;
+                                setPQRData({ ...pQRData, reviewOVIRS: newData });
                               }}
                             />
                           </td>
@@ -10072,9 +10090,10 @@ export default function APQR() {
                             <input
                               value={item.column6}
                               onChange={(e) => {
-                                const newData = [...reviewOVIRS];
-                                newData[index].column6 = e.target.value;
-                                setReviewOVIRS(newData);
+                                const newData = [...pQRData.reviewOVIRS];
+                              newData[index].column6 =
+                                e.target.value;
+                              setPQRData({ ...pQRData, reviewOVIRS: newData });
                               }}
                             />
                           </td>
@@ -10082,9 +10101,10 @@ export default function APQR() {
                             <input
                               value={item.column7}
                               onChange={(e) => {
-                                const newData = [...reviewOVIRS];
-                                newData[index].column7 = e.target.value;
-                                setReviewOVIRS(newData);
+                                const newData = [...pQRData.reviewOVIRS];
+                                newData[index].column7 =
+                                  e.target.value;
+                                setPQRData({ ...pQRData, reviewOVIRS: newData });
                               }}
                             />
                           </td>
@@ -10092,9 +10112,10 @@ export default function APQR() {
                             <input
                               value={item.column8}
                               onChange={(e) => {
-                                const newData = [...reviewOVIRS];
-                                newData[index].column8 = e.target.value;
-                                setReviewOVIRS(newData);
+                                const newData = [...pQRData.reviewOVIRS];
+                                newData[index].column8 =
+                                  e.target.value;
+                                setPQRData({ ...pQRData, reviewOVIRS: newData });
                               }}
                             />
                           </td>
@@ -10206,9 +10227,10 @@ export default function APQR() {
                           <input
                             value={item.testDescription}
                             onChange={(e) => {
-                              const newData = [...hVACQStatus];
-                              newData[index].testDescription = e.target.value;
-                              setHVACQStatus(newData);
+                              const newData = [...pQRData.hVACQStatus];
+                              newData[index].testDescription =
+                                e.target.value;
+                              setPQRData({ ...pQRData, hVACQStatus: newData });
                             }}
                           />
                         </td>
@@ -10216,9 +10238,10 @@ export default function APQR() {
                           <input
                             value={item.frequency}
                             onChange={(e) => {
-                              const newData = [...hVACQStatus];
-                              newData[index].frequency = e.target.value;
-                              setHVACQStatus(newData);
+                              const newData = [...pQRData.hVACQStatus];
+                              newData[index].frequency =
+                                e.target.value;
+                              setPQRData({ ...pQRData, hVACQStatus: newData });
                             }}
                           />
                         </td>
@@ -10226,9 +10249,10 @@ export default function APQR() {
                           <input
                             value={item.status}
                             onChange={(e) => {
-                              const newData = [...hVACQStatus];
-                              newData[index].status = e.target.value;
-                              setHVACQStatus(newData);
+                              const newData = [...pQRData.hVACQStatus];
+                              newData[index].status =
+                                e.target.value;
+                              setPQRData({ ...pQRData, hVACQStatus: newData });
                             }}
                           />
                         </td>
@@ -10289,9 +10313,10 @@ export default function APQR() {
                           <input
                             value={item.equipmentName}
                             onChange={(e) => {
-                              const newData = [...sanitizationASDOU];
-                              newData[index].equipmentName = e.target.value;
-                              setSanitizationASDOU(newData);
+                              const newData = [...pQRData.sanitizationASDOU];
+                              newData[index].equipmentName =
+                                e.target.value;
+                              setPQRData({ ...pQRData, sanitizationASDOU: newData });
                             }}
                           />
                         </td>
@@ -10299,9 +10324,10 @@ export default function APQR() {
                           <input
                             value={item.frequency}
                             onChange={(e) => {
-                              const newData = [...sanitizationASDOU];
-                              newData[index].frequency = e.target.value;
-                              setSanitizationASDOU(newData);
+                              const newData = [...pQRData.sanitizationASDOU];
+                              newData[index].frequency =
+                                e.target.value;
+                              setPQRData({ ...pQRData, sanitizationASDOU: newData });
                             }}
                           />
                         </td>
@@ -10309,9 +10335,10 @@ export default function APQR() {
                           <input
                             value={item.status}
                             onChange={(e) => {
-                              const newData = [...sanitizationASDOU];
-                              newData[index].status = e.target.value;
-                              setSanitizationASDOU(newData);
+                              const newData = [...pQRData.sanitizationASDOU];
+                              newData[index].status =
+                                e.target.value;
+                              setPQRData({ ...pQRData, sanitizationASDOU: newData });
                             }}
                           />
                         </td>
@@ -10375,9 +10402,10 @@ export default function APQR() {
                           <input
                             value={item.compressedGas}
                             onChange={(e) => {
-                              const newData = [...compressedGas];
-                              newData[index].compressedGas = e.target.value;
-                              setCompressedGas(newData);
+                              const newData = [...pQRData.compressedGas];
+                              newData[index].compressedGas =
+                                e.target.value;
+                              setPQRData({ ...pQRData, compressedGas: newData });
                             }}
                           />
                         </td>
@@ -10385,9 +10413,10 @@ export default function APQR() {
                           <input
                             value={item.test}
                             onChange={(e) => {
-                              const newData = [...compressedGas];
-                              newData[index].test = e.target.value;
-                              setCompressedGas(newData);
+                              const newData = [...pQRData.compressedGas];
+                              newData[index].test =
+                                e.target.value;
+                              setPQRData({ ...pQRData, compressedGas: newData });
                             }}
                           />
                         </td>
@@ -10395,9 +10424,10 @@ export default function APQR() {
                           <input
                             value={item.frequency}
                             onChange={(e) => {
-                              const newData = [...compressedGas];
-                              newData[index].frequency = e.target.value;
-                              setCompressedGas(newData);
+                              const newData = [...pQRData.compressedGas];
+                              newData[index].frequency =
+                                e.target.value;
+                              setPQRData({ ...pQRData, compressedGas: newData });
                             }}
                           />
                         </td>
@@ -10405,9 +10435,10 @@ export default function APQR() {
                           <input
                             value={item.status}
                             onChange={(e) => {
-                              const newData = [...compressedGas];
-                              newData[index].status = e.target.value;
-                              setCompressedGas(newData);
+                              const newData = [...pQRData.compressedGas];
+                              newData[index].status =
+                                e.target.value;
+                              setPQRData({ ...pQRData, compressedGas: newData });
                             }}
                           />
                         </td>
@@ -12801,9 +12832,10 @@ export default function APQR() {
                           <input
                             value={item.batchNo}
                             onChange={(e) => {
-                              const newData = [...currentRPQRN];
-                              newData[index].batchNo = e.target.value;
-                              setCurrentRPQRN(newData);
+                              const newData = [...pQRData.currentRPQRN];
+                              newData[index].batchNo =
+                                e.target.value;
+                              setPQRData({ ...pQRData, currentRPQRN: newData });
                             }}
                           />
                         </td>
@@ -12811,10 +12843,10 @@ export default function APQR() {
                           <input
                             value={item.qualityRelatedNotification.no}
                             onChange={(e) => {
-                              const newData = [...currentRPQRN];
+                              const newData = [...pQRData.currentRPQRN];
                               newData[index].qualityRelatedNotification.no =
                                 e.target.value;
-                              setCurrentRPQRN(newData);
+                              setPQRData({ ...pQRData, currentRPQRN: newData });
                             }}
                           />
                         </td>
@@ -12823,12 +12855,10 @@ export default function APQR() {
                           <input
                             value={item.qualityRelatedNotification.description}
                             onChange={(e) => {
-                              const newData = [...currentRPQRN];
-                              newData[
-                                index
-                              ].qualityRelatedNotification.description =
+                              const newData = [...pQRData.currentRPQRN];
+                              newData[index].qualityRelatedNotification.description =
                                 e.target.value;
-                              setCurrentRPQRN(newData);
+                              setPQRData({ ...pQRData, currentRPQRN: newData });
                             }}
                           />
                         </td>
@@ -12837,10 +12867,10 @@ export default function APQR() {
                           <input
                             value={item.qualityRelatedNotification.impact}
                             onChange={(e) => {
-                              const newData = [...currentRPQRN];
+                              const newData = [...pQRData.currentRPQRN];
                               newData[index].qualityRelatedNotification.impact =
                                 e.target.value;
-                              setCurrentRPQRN(newData);
+                              setPQRData({ ...pQRData, currentRPQRN: newData });
                             }}
                           />
                         </td>
@@ -12849,10 +12879,10 @@ export default function APQR() {
                           <input
                             value={item.qualityRelatedNotification.status}
                             onChange={(e) => {
-                              const newData = [...currentRPQRN];
+                              const newData = [...pQRData.currentRPQRN];
                               newData[index].qualityRelatedNotification.status =
                                 e.target.value;
-                              setCurrentRPQRN(newData);
+                              setPQRData({ ...pQRData, currentRPQRN: newData });
                             }}
                           />
                         </td>
@@ -12860,10 +12890,10 @@ export default function APQR() {
                           <input
                             value={item.cAPA.descriptionNo}
                             onChange={(e) => {
-                              const newData = [...currentRPQRN];
+                              const newData = [...pQRData.currentRPQRN];
                               newData[index].cAPA.descriptionNo =
                                 e.target.value;
-                              setCurrentRPQRN(newData);
+                              setPQRData({ ...pQRData, currentRPQRN: newData });
                             }}
                           />
                         </td>
@@ -12871,9 +12901,10 @@ export default function APQR() {
                           <input
                             value={item.cAPA.status}
                             onChange={(e) => {
-                              const newData = [...currentRPQRN];
-                              newData[index].cAPA.status = e.target.value;
-                              setCurrentRPQRN(newData);
+                              const newData = [...pQRData.currentRPQRN];
+                              newData[index].cAPA.status =
+                                e.target.value;
+                              setPQRData({ ...pQRData, currentRPQRN: newData });
                             }}
                           />
                         </td>
@@ -12882,9 +12913,10 @@ export default function APQR() {
                           <input
                             value={item.cAPA.eC}
                             onChange={(e) => {
-                              const newData = [...currentRPQRN];
-                              newData[index].cAPA.eC = e.target.value;
-                              setCurrentRPQRN(newData);
+                              const newData = [...pQRData.currentRPQRN];
+                              newData[index].cAPA.eC =
+                                e.target.value;
+                              setPQRData({ ...pQRData, currentRPQRN: newData });
                             }}
                           />
                         </td>
@@ -12992,9 +13024,10 @@ export default function APQR() {
                           <input
                             value={item.agency}
                             onChange={(e) => {
-                              const newData = [...dossierRR];
-                              newData[index].agency = e.target.value;
-                              setDossierRR(newData);
+                              const newData = [...pQRData.dossierRR];
+                              newData[index].agency =
+                                e.target.value;
+                              setPQRData({ ...pQRData, dossierRR: newData });
                             }}
                           />
                         </td>
@@ -13002,9 +13035,10 @@ export default function APQR() {
                           <input
                             value={item.notificationNo}
                             onChange={(e) => {
-                              const newData = [...dossierRR];
-                              newData[index].notificationNo = e.target.value;
-                              setDossierRR(newData);
+                              const newData = [...pQRData.dossierRR];
+                              newData[index].notificationNo =
+                                e.target.value;
+                              setPQRData({ ...pQRData, dossierRR: newData });
                             }}
                           />
                         </td>
@@ -13012,9 +13046,10 @@ export default function APQR() {
                           <input
                             value={item.notificationType}
                             onChange={(e) => {
-                              const newData = [...dossierRR];
-                              newData[index].notificationType = e.target.value;
-                              setDossierRR(newData);
+                              const newData = [...pQRData.dossierRR];
+                              newData[index].notificationType =
+                                e.target.value;
+                              setPQRData({ ...pQRData, dossierRR: newData });
                             }}
                           />
                         </td>
@@ -13022,9 +13057,10 @@ export default function APQR() {
                           <input
                             value={item.description}
                             onChange={(e) => {
-                              const newData = [...dossierRR];
-                              newData[index].description = e.target.value;
-                              setDossierRR(newData);
+                              const newData = [...pQRData.dossierRR];
+                              newData[index].description =
+                                e.target.value;
+                              setPQRData({ ...pQRData, dossierRR: newData });
                             }}
                           />
                         </td>
@@ -13084,9 +13120,10 @@ export default function APQR() {
                             <input
                               value={item.countryName}
                               onChange={(e) => {
-                                const newData = [...dossierRRNma];
-                                newData[index].countryName = e.target.value;
-                                setDossierRRNma(newData);
+                                const newData = [...pQRData.dossierRRNma];
+                                newData[index].countryName =
+                                  e.target.value;
+                                setPQRData({ ...pQRData, dossierRRNma: newData });
                               }}
                             />
                           </td>
@@ -13094,10 +13131,10 @@ export default function APQR() {
                             <input
                               value={item.descriptionOfPacking}
                               onChange={(e) => {
-                                const newData = [...dossierRRNma];
+                                const newData = [...pQRData.dossierRRNma];
                                 newData[index].descriptionOfPacking =
                                   e.target.value;
-                                setDossierRRNma(newData);
+                                setPQRData({ ...pQRData, dossierRRNma: newData });
                               }}
                             />
                           </td>
@@ -13105,10 +13142,10 @@ export default function APQR() {
                             <input
                               value={item.dateOfApplication}
                               onChange={(e) => {
-                                const newData = [...dossierRRNma];
+                                const newData = [...pQRData.dossierRRNma];
                                 newData[index].dateOfApplication =
                                   e.target.value;
-                                setDossierRRNma(newData);
+                                setPQRData({ ...pQRData, dossierRRNma: newData });
                               }}
                             />
                           </td>
@@ -13116,10 +13153,10 @@ export default function APQR() {
                             <input
                               value={item.statusOfApplication}
                               onChange={(e) => {
-                                const newData = [...dossierRRNma];
+                                const newData = [...pQRData.dossierRRNma];
                                 newData[index].statusOfApplication =
                                   e.target.value;
-                                setDossierRRNma(newData);
+                                setPQRData({ ...pQRData, dossierRRNma: newData });
                               }}
                             />
                           </td>
@@ -13127,10 +13164,10 @@ export default function APQR() {
                             <input
                               value={item.dateOfAuthorization}
                               onChange={(e) => {
-                                const newData = [...dossierRRNma];
+                                const newData = [...pQRData.dossierRRNma];
                                 newData[index].dateOfAuthorization =
                                   e.target.value;
-                                setDossierRRNma(newData);
+                                setPQRData({ ...pQRData, dossierRRNma: newData });
                               }}
                             />
                           </td>{" "}
@@ -13138,9 +13175,10 @@ export default function APQR() {
                             <input
                               value={item.remarks}
                               onChange={(e) => {
-                                const newData = [...dossierRRNma];
-                                newData[index].remarks = e.target.value;
-                                setDossierRRNma(newData);
+                                const newData = [...pQRData.dossierRRNma];
+                                newData[index].remarks =
+                                  e.target.value;
+                                setPQRData({ ...pQRData, dossierRRNma: newData });
                               }}
                             />
                           </td>
