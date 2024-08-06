@@ -247,6 +247,49 @@ export default function APQR() {
       case 22:
         setReviewOSTR([...reviewODSTR, ...processedData]);
         break;
+      case 23:
+        setReviewOSTR2([...reviewODSTR2, ...processedData]);
+        break;
+      case 24:
+        setReviewOSTR3([...reviewODSTR3, ...processedData]);
+        break;
+        case 25:
+        setReviewOSTR4([...reviewODSTR4, ...processedData]);
+        break;
+        case 26:
+        setReviewOSTR5([...reviewODSTR5, ...processedData]);
+        break;
+        case 27:
+        setReviewOSTR6([...reviewODSTR6, ...processedData]);
+        break;
+        case 28:
+        setReviewOSTR7([...reviewODSTR7, ...processedData]);
+        break;
+        case 29:
+        setReviewOSTR8([...reviewODSTR8, ...processedData]);
+        break;
+        case 30:
+        setReviewOSTR9([...reviewODSTR9, ...processedData]);
+        break;
+        case 31:
+        setReviewOSTR10([...reviewODSTR10, ...processedData]);
+        break;
+        case 32:
+        setReviewOSTR11([...reviewODSTR11, ...processedData]);
+        break;
+        case 33:
+        setReviewOSTR12([...reviewODSTR12, ...processedData]);
+        break;
+        case 34:
+        setReviewOSTR13([...reviewODSTR13, ...processedData]);
+        break;
+        case 35:
+        setReviewOSTR14([...reviewODSTR14, ...processedData]);
+        break;
+        case 36:
+        setReviewOSTR15([...reviewODSTR15, ...processedData]);
+        break;
+       
       case 3:
         setManufacturingStage([...manufacturingStage, ...processedData]);
         break;
@@ -714,7 +757,8 @@ export default function APQR() {
     reviewODSTR11,
     reviewODSTR12,
     reviewODSTR13,
-    reviewODSTR14,reviewODSTR15,
+    reviewODSTR14,
+    reviewODSTR15,
     reviewORMETR,
     reviewOPMTR,
     reviewODP,
@@ -5312,6 +5356,7 @@ export default function APQR() {
                     data={reviewODSTR2}
                     setimportedData={setimportedData}
                     fileName="reviewODSTR2.xlsx"
+                    gridNo={23}
                   />
                 </div>
               </div>
@@ -5436,6 +5481,7 @@ export default function APQR() {
                     data={reviewODSTR3}
                     setimportedData={setimportedData}
                     fileName="reviewODSTR3.xlsx"
+                    gridNo={24}
                   />
                 </div>
               </div>
@@ -5560,6 +5606,7 @@ export default function APQR() {
                     data={reviewODSTR4}
                     setimportedData={setimportedData}
                     fileName="reviewODSTR4.xlsx"
+                    gridNo={25}
                   />
                 </div>
               </div>
@@ -5683,6 +5730,7 @@ export default function APQR() {
                     data={reviewODSTR5}
                     setimportedData={setimportedData}
                     fileName="reviewODSTR5.xlsx"
+                    gridNo={26}
                   />
                 </div>
               </div>
@@ -5805,6 +5853,8 @@ export default function APQR() {
                     data={reviewODSTR6}
                     setimportedData={setimportedData}
                     fileName="reviewODSTR6.xlsx"
+                    gridNo={27}
+
                   />
                 </div>
               </div>
@@ -5927,6 +5977,8 @@ export default function APQR() {
                     data={reviewODSTR7}
                     setimportedData={setimportedData}
                     fileName="reviewODSTR7.xlsx"
+                    gridNo={28}
+
                   />
                 </div>
               </div>
@@ -6051,6 +6103,8 @@ export default function APQR() {
                     data={reviewODSTR8}
                     setimportedData={setimportedData}
                     fileName="reviewODSTR8.xlsx"
+                    gridNo={29}
+
                   />
                 </div>
               </div>
@@ -6175,6 +6229,8 @@ export default function APQR() {
                     data={reviewODSTR9}
                     setimportedData={setimportedData}
                     fileName="reviewODSTR9.xlsx"
+                    gridNo={30}
+
                   />
                 </div>
               </div>
@@ -6299,6 +6355,8 @@ export default function APQR() {
                     data={reviewODSTR10}
                     setimportedData={setimportedData}
                     fileName="reviewODSTR10.xlsx"
+                    gridNo={32}
+
                   />
                 </div>
               </div>
@@ -6407,10 +6465,7 @@ export default function APQR() {
                 </tbody>
               </table>
             </div>
-
-            <h1 className="gridName pt-8">
-              pH Of Pentoprazole Test Result
-            </h1>
+            <h1 className="gridName pt-8">pH Of Pentoprazole Test Result</h1>
             <div>
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
@@ -6424,6 +6479,8 @@ export default function APQR() {
                     data={reviewODSTR11}
                     setimportedData={setimportedData}
                     fileName="reviewODSTR11.xlsx"
+                    gridNo={32}
+
                   />
                 </div>
               </div>
@@ -6532,10 +6589,7 @@ export default function APQR() {
                 </tbody>
               </table>
             </div>
-
-            <h1 className="gridName pt-8">
-              Assay  Of Pentoprazole Test Result
-            </h1>
+            <h1 className="gridName pt-8">Assay Of Pentoprazole Test Result</h1>
             <div>
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
@@ -6549,6 +6603,8 @@ export default function APQR() {
                     data={reviewODSTR12}
                     setimportedData={setimportedData}
                     fileName="reviewODSTR12.xlsx"
+                    gridNo={33}
+
                   />
                 </div>
               </div>
@@ -6657,7 +6713,6 @@ export default function APQR() {
                 </tbody>
               </table>
             </div>
-
             <h1 className="gridName pt-8">
               Impurity Of Pentoprazole Test Result
             </h1>
@@ -6674,6 +6729,8 @@ export default function APQR() {
                     data={reviewODSTR13}
                     setimportedData={setimportedData}
                     fileName="reviewODSTR13.xlsx"
+                    gridNo={34}
+
                   />
                 </div>
               </div>
@@ -6782,7 +6839,6 @@ export default function APQR() {
                 </tbody>
               </table>
             </div>
-
             <h1 className="gridName pt-8">
               Dissolution Of Pentoprazole Test Result
             </h1>
@@ -6799,6 +6855,8 @@ export default function APQR() {
                     data={reviewODSTR14}
                     setimportedData={setimportedData}
                     fileName="reviewODSTR14.xlsx"
+                    gridNo={35}
+
                   />
                 </div>
               </div>
@@ -6907,7 +6965,6 @@ export default function APQR() {
                 </tbody>
               </table>
             </div>
-
             <h1 className="gridName pt-8">
               Disinteration Of Pentoprazole Test Result
             </h1>
@@ -6924,6 +6981,8 @@ export default function APQR() {
                     data={reviewODSTR15}
                     setimportedData={setimportedData}
                     fileName="reviewODSTR15.xlsx"
+                    gridNo={36}
+
                   />
                 </div>
               </div>
@@ -7032,7 +7091,6 @@ export default function APQR() {
                 </tbody>
               </table>
             </div>
-
             <div>
               <h4 className="gridName mt-5">Summary</h4>
               <TinyEditor
