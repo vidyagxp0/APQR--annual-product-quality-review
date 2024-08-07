@@ -57,25 +57,15 @@ const HighchartsPareto = ({ data, heading, xAxisTitle, yAxisTitle, lsl, usl }) =
       type: "column",
     },
     title: {
-      text: phOfParacetamol.heading,
-      style: {
-        fontSize: "14px",
-        fontWeight: "bold",
-      },
+      text: heading,
     },
     xAxis: {
-      title: { text: "pH Range"  ,style: {
-        fontSize: "14px",
-        fontWeight: "bold",
-      },},
+      title: { text: "pH Range" },
       categories: ["1-2", "2-3", "3-4", "4-5"],
     },
     yAxis: [
       {
-        title: { text: phOfParacetamol.yAxisTitle, style: {
-          fontSize: "14px",
-          fontWeight: "bold",
-        }, },
+        title: { text: yAxisTitle },
         allowDecimals: false,
       },
       {

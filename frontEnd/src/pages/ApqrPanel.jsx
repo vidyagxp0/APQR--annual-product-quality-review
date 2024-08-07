@@ -10,10 +10,6 @@ import HighchartsLine from "../Component/Analytics/HighchartsLine";
 import HighchartsHistogramScatter from "../Component/Analytics/HighchartsHistogram";
 
 import {
-  ParacetamolAssayPlotLines,
-  ParacetamolDisintegratePlotLines,
-  ParacetamolDissolutionPlotLines,
-  ParacetamolImpurityPlotLines,
   ParacetamolpHPlotLines,
   paracetamolAnnotations,
   paracetamolpHZones,
@@ -32,7 +28,7 @@ export default function APQR() {
     ],
     lsl: 2,
     usl: 4,
-    heading: "Histogram Analysis",
+    heading: "Observation value for pH value of Paracetamol",
     yAxisTitle: "Number of Batches",
     xAxisTitle: "pH Range",
   };
@@ -45,7 +41,7 @@ export default function APQR() {
     ],
     lsl: 2,
     usl: 4,
-    heading: "Scatter Analysis",
+    heading: "Observation value for pH value of Paracetamol",
     yAxisTitle: "pH",
     batchNumbers: [
       "Batch 1",
@@ -112,7 +108,7 @@ export default function APQR() {
     ],
     lsl: 2,
     usl: 4,
-    heading: "Pareto Analysis",
+    heading: "Observation value for pH value of Paracetamol",
     yAxisTitle: "Number of Batches",
   };
 
@@ -5946,23 +5942,25 @@ export default function APQR() {
                 </tbody>
               </table>
             </div>
-            <div className=" grid grid-cols-10 shadow-md shadow-gray-700/30 my-20 bg-slate-700 p-4 gap-4 mx-[-30px]">
-            <div className="py-2 col-span-10 cursor-pointer text-gray-100 text-[22px] flex justify-center items-center"> pH Of Paracetamol Analysis</div>
-              <div className="col-span-4 row-span-1 mb-10 max-h-38 ">
+            <div className="flex justify-evenly flex-wrap shadow-md shadow-gray-700/30 my-20 bg-slate-700 p-10 gap-20 text-neutral-100	text-2xl	 mb-0 pb-0">
+              <h1>Graphical Analysis of Results of Paracetamol pH</h1>
+            </div>
+            <div className="flex justify-evenly flex-wrap shadow-md shadow-gray-700/30 my-20 bg-slate-700 p-10 gap-20 mt-0">
+              <div className="w-5/12 mb-10 max-h-40">
                 <HighchartsLine
-                  heading={"Line Analytics"}
+                  heading={"Paracetamol pH Analysis"}
                   xHeading={"Batch No."}
                   yHeading={"Observed Value"}
                   yMax={6}
-                  yMin={1}
-                  yTickInterval={0.5}
+                  yMin={0}
+                  yTickInterval={0.4}
                   plotLines={ParacetamolpHPlotLines}
                   zones={paracetamolpHZones}
                   annotations={paracetamolAnnotations}
                   highchartData={paracetamolpHData}
                 />
               </div>
-              <div className="col-span-4 row-span-1">
+              <div className="w-5/12">
                 <HighchartsHistogramScatter
                   // phOfParacetamol={phOfParacetamolHistogram}
                   data={paracetamolpHDataH.observedValues}
@@ -5973,181 +5971,19 @@ export default function APQR() {
                   xAxisTitle={phOfParacetamolHistogram.xAxisTitle}
                 />
               </div>
-              <div className="col-span-2 row-span-2 bg-white">
-                <table>
-                  <tbody>
-                    <tr>
-                      <td>
-                        {" "}
-                        <b>Cp B/W</b>
-                      </td>
-                      <td>
-                        <b>0.67</b>
-                      </td>
-                      <td>Decimal Points</td>
-                      <td>2.00</td>
-                    </tr>
-                    <tr>
-                      <td>
-                        <b>Cpk B/W</b>
-                      </td>
-                      <td>
-                        <b>0.60</b>
-                      </td>
-                      <td>Unit Of Measure</td>
-                      <td>0.001</td>
-                    </tr>
-                    <tr>
-                      <td>CpU B/W</td>
-                      <td>0.60</td>
-                      <td>Number Of Entries</td>
-                      <td>7</td>
-                    </tr>
-                    <tr>
-                      <td>Cpl B/W</td>
-                      <td>0.75</td>
-                      <td>
-                        <b>Average</b>
-                      </td>
-                      <td>
-                        <b>2.89</b>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>Cpm</td>
-                      <td>0.72</td>
-                      <td>
-                        <b>Stdev</b>
-                      </td>
-                      <td>
-                        <b>0.45</b>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>Cr</td>
-                      <td>1.48</td>
-                      <td>
-                        <b>Median</b>
-                      </td>
-                      <td>
-                        <b>3.00</b>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>ZTarget/AZ</td>
-                      <td>0.25</td>
-                      <td>
-                        <b>Mode</b>
-                      </td>
-                      <td>
-                        <b>3.00</b>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>
-                        <b>Pp</b>
-                      </td>
-                      <td>0.74</td>
-                      <td>Minimum Value</td>
-                      <td>2.00</td>
-                    </tr>
-                    <tr>
-                      <td>
-                        <b>Ppk</b>
-                      </td>
-                      <td>0.66</td>
-                      <td>Maximum Value</td>
-                      <td>
-                        <b>2.00</b>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>PpU</td>
-                      <td>0.83</td>
-                      <td>Range</td>
-                      <td>1.50</td>
-                    </tr>
-                    <tr>
-                      <td>Ppl</td>
-                      <td>0.66</td>
-                      <td>
-                        <b>LSL</b>
-                      </td>
-                      <td>
-                        <b>2.00</b>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>Skewness</td>
-                      <td>-1.19</td>
-                      <td>
-                        <b>USL</b>
-                      </td>
-                      <td>
-                        <b>4.00</b>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>Stdev</td>
-                      <td>0.45</td>
-                      <td>Number Of Bars</td>
-                      <td>3.00</td>
-                    </tr>
-                    <tr>
-                      <td>Min</td>
-                      <td>2.00</td>
-                      <td>Number Of Classes</td>
-                      <td>4.00</td>
-                    </tr>
-                    <tr>
-                      <td>Max</td>
-                      <td>3.50</td>
-                      <td>Class Width</td>
-                      <td>0.35</td>
-                    </tr>
-                    <tr>
-                      <td>Range</td>
-                      <td>1.50</td>
-                      <td>Beginning Point</td>
-                      <td>1.65</td>
-                    </tr>
-                    <tr>
-                      <td>Z Bench</td>
-                      <td>1.79</td>
-                      <td>Stdev Est</td>
-                      <td>0.46</td>
-                    </tr>
-                    <tr>
-                      <td>% Defects</td>
-                      <td>0.0%</td>
-                      <td>d2/c4</td>
-                      <td>0.92</td>
-                    </tr>
-                    <tr>
-                      <td>PPM</td>
-                      <td>0.00</td>
-                      <td>Target</td>
-                      <td>3</td>
-                    </tr>
-                    <tr>
-                      <td>Exp PPM ST</td>
-                      <td>36586.97</td>
-                      <td>Sigma</td>
-                      <td>3.29</td>
-                    </tr>
-                    <tr>
-                      <td>Exp PPM LT</td>
-                      <td>30738.66</td>
-                      <td></td>
-                      <td></td>
-                    </tr>
-                  </tbody>
-                </table>
+              <div className="w-5/12">
+                <HighchartsPareto
+                  // phOfParacetamol={phOfParacetamolPareto}
+                  data={paracetamolpHDataH.observedValues}
+                  lsl={phOfParacetamolPareto.lsl}
+                  usl={phOfParacetamolPareto.usl}
+                  heading={phOfParacetamolPareto.heading}
+                  yAxisTitle={phOfParacetamolPareto.yAxisTitle}
+                  xAxisTitle={""}
+                />
               </div>
-              <div className="col-span-4">
-                <HighchartsPareto phOfParacetamol={phOfParacetamolPareto} />
-              </div>
-              <div className="col-span-4">
+              <div className="w-5/12">
+                {/* <HighchartsScatterPlot phOfParacetamol={phOfParacetamolScatter} /> */}
                 <HighchartsScatterPlot
                   data={paracetamolpHDataH.observedValues}
                   lsl={phOfParacetamolScatter.lsl}
@@ -6156,12 +5992,6 @@ export default function APQR() {
                   yAxisTitle={phOfParacetamolScatter.yAxisTitle}
                   batchNumbers={paracetamolpHDataH.batchNumbers}
                 />
-              </div>
-              <div className="py-2 flex justify-end col-span-10 ">
-                <button className="p-2 bg-emerald-400 text-white rounded">
-                  {" "}
-                  Launch Deviation
-                </button>
               </div>
             </div>
             <h1 className="gridName  pt-8">Assay Of Paracetamol Test Result</h1>
@@ -6302,217 +6132,19 @@ export default function APQR() {
                 </tbody>
               </table>
             </div>{" "}
-            <div className=" grid grid-cols-10 shadow-md shadow-gray-700/30 my-20 bg-slate-700 p-4 gap-4 mx-[-30px]">
-            <div className="py-2 col-span-10 cursor-pointer text-gray-100 text-[22px] flex justify-center items-center"> Assay Of Paracetamol Analysis</div>
-              <div className="col-span-4 row-span-1 mb-10 max-h-38 ">
-                <HighchartsLine
-                  heading={"Line Analytics"}
-                  xHeading={"Batch No."}
-                  yHeading={"Observed Value"}
-                  yMax={110}
-                  yMin={86}
-                  yTickInterval={3}
-                  plotLines={ParacetamolAssayPlotLines}
-                  zones={paracetamolpHZones}
-                  annotations={paracetamolAnnotations}
-                  highchartData={paracetamolpHData2}
-                />
-              </div>
-              <div className="col-span-4 row-span-1">
-                <HighchartsHistogramScatter
-                  phOfParacetamol={phOfParacetamolHistogram}
-                />
-              </div>
-              <div className="col-span-2 row-span-2 bg-white">
-                <table>
-                  <tbody>
-                    <tr>
-                      <td>
-                        {" "}
-                        <b>Cp B/W</b>
-                      </td>
-                      <td>
-                        <b>0.67</b>
-                      </td>
-                      <td>Decimal Points</td>
-                      <td>2.00</td>
-                    </tr>
-                    <tr>
-                      <td>
-                        <b>Cpk B/W</b>
-                      </td>
-                      <td>
-                        <b>0.60</b>
-                      </td>
-                      <td>Unit Of Measure</td>
-                      <td>0.001</td>
-                    </tr>
-                    <tr>
-                      <td>CpU B/W</td>
-                      <td>0.60</td>
-                      <td>Number Of Entries</td>
-                      <td>7</td>
-                    </tr>
-                    <tr>
-                      <td>Cpl B/W</td>
-                      <td>0.75</td>
-                      <td>
-                        <b>Average</b>
-                      </td>
-                      <td>
-                        <b>2.89</b>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>Cpm</td>
-                      <td>0.72</td>
-                      <td>
-                        <b>Stdev</b>
-                      </td>
-                      <td>
-                        <b>0.45</b>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>Cr</td>
-                      <td>1.48</td>
-                      <td>
-                        <b>Median</b>
-                      </td>
-                      <td>
-                        <b>3.00</b>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>ZTarget/AZ</td>
-                      <td>0.25</td>
-                      <td>
-                        <b>Mode</b>
-                      </td>
-                      <td>
-                        <b>3.00</b>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>
-                        <b>Pp</b>
-                      </td>
-                      <td>0.74</td>
-                      <td>Minimum Value</td>
-                      <td>2.00</td>
-                    </tr>
-                    <tr>
-                      <td>
-                        <b>Ppk</b>
-                      </td>
-                      <td>0.66</td>
-                      <td>Maximum Value</td>
-                      <td>
-                        <b>2.00</b>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>PpU</td>
-                      <td>0.83</td>
-                      <td>Range</td>
-                      <td>1.50</td>
-                    </tr>
-                    <tr>
-                      <td>Ppl</td>
-                      <td>0.66</td>
-                      <td>
-                        <b>LSL</b>
-                      </td>
-                      <td>
-                        <b>90</b>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>Skewness</td>
-                      <td>-1.19</td>
-                      <td>
-                        <b>USL</b>
-                      </td>
-                      <td>
-                        <b>105</b>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>Stdev</td>
-                      <td>0.45</td>
-                      <td>Number Of Bars</td>
-                      <td>3.00</td>
-                    </tr>
-                    <tr>
-                      <td>Min</td>
-                      <td>2.00</td>
-                      <td>Number Of Classes</td>
-                      <td>4.00</td>
-                    </tr>
-                    <tr>
-                      <td>Max</td>
-                      <td>3.50</td>
-                      <td>Class Width</td>
-                      <td>0.35</td>
-                    </tr>
-                    <tr>
-                      <td>Range</td>
-                      <td>1.50</td>
-                      <td>Beginning Point</td>
-                      <td>1.65</td>
-                    </tr>
-                    <tr>
-                      <td>Z Bench</td>
-                      <td>1.79</td>
-                      <td>Stdev Est</td>
-                      <td>0.46</td>
-                    </tr>
-                    <tr>
-                      <td>% Defects</td>
-                      <td>0.0%</td>
-                      <td>d2/c4</td>
-                      <td>0.92</td>
-                    </tr>
-                    <tr>
-                      <td>PPM</td>
-                      <td>0.00</td>
-                      <td>Target</td>
-                      <td>3</td>
-                    </tr>
-                    <tr>
-                      <td>Exp PPM ST</td>
-                      <td>36586.97</td>
-                      <td>Sigma</td>
-                      <td>3.29</td>
-                    </tr>
-                    <tr>
-                      <td>Exp PPM LT</td>
-                      <td>30738.66</td>
-                      <td></td>
-                      <td></td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-              <div className="col-span-4">
-                <HighchartsPareto phOfParacetamol={phOfParacetamolPareto} />
-              </div>
-              <div className="col-span-4">
-                <HighchartsScatterPlot
-                  phOfParacetamol={phOfParacetamolScatter}
-                />
-              </div>
-              <div className="py-2 flex justify-end col-span-10 ">
-                <button className="p-2 bg-emerald-400 text-white rounded">
-                  {" "}
-                  Launch Deviation
-                </button>
-              </div>
-            </div>
-         
-            <h1 className="gridName pt-8">
-              Impurity Of Paracetamol Test Result
-            </h1>
+            <HighchartsLine
+              heading={"Terbinafine pH Analysis"}
+              xHeading={"Batch No."}
+              yHeading={"Observed Value"}
+              yMax={6}
+              yMin={0}
+              yTickInterval={0.4}
+              plotLines={ParacetamolpHPlotLines}
+              zones={paracetamolpHZones}
+              annotations={paracetamolAnnotations}
+              highchartData={paracetamolpHData2}
+            />
+            <h1 className="gridName pt-8">Impurity Of Paracetamol Test Result</h1>
             <div>
               <div className="AddRows d-flex w-full justify-between items-center text-3xl mb-5">
                 <div className="flex items-center">
@@ -6650,214 +6282,7 @@ export default function APQR() {
                 </tbody>
               </table>
             </div>{" "}
-            <div className=" grid grid-cols-10 shadow-md shadow-gray-700/30 my-20 bg-slate-700 p-4 gap-4 mx-[-30px]">
-            <div className="py-2 col-span-10 cursor-pointer text-gray-100 text-[22px] flex justify-center items-center"> Impurity Of Paracetamol Analysis</div>
-              <div className="col-span-4 row-span-1 mb-10 max-h-38 ">
-                <HighchartsLine
-                  heading={"Line Analysis"}
-                  xHeading={"Batch No."}
-                  yHeading={"Observed Value"}
-                  yMax={7}
-                  yMin={3}
-                  yTickInterval={0.5}
-                  plotLines={ParacetamolImpurityPlotLines}
-                  zones={paracetamolpHZones}
-                  annotations={paracetamolAnnotations}
-                  highchartData={paracetamolpHData3}
-                />
-              </div>
-              <div className="col-span-4 row-span-1">
-                <HighchartsHistogramScatter
-                  phOfParacetamol={phOfParacetamolHistogram}
-                />
-              </div>
-              <div className="col-span-2 row-span-2 bg-white">
-                <table>
-                  <tbody>
-                    <tr>
-                      <td>
-                        {" "}
-                        <b>Cp B/W</b>
-                      </td>
-                      <td>
-                        <b>0.67</b>
-                      </td>
-                      <td>Decimal Points</td>
-                      <td>2.00</td>
-                    </tr>
-                    <tr>
-                      <td>
-                        <b>Cpk B/W</b>
-                      </td>
-                      <td>
-                        <b>0.60</b>
-                      </td>
-                      <td>Unit Of Measure</td>
-                      <td>0.001</td>
-                    </tr>
-                    <tr>
-                      <td>CpU B/W</td>
-                      <td>0.60</td>
-                      <td>Number Of Entries</td>
-                      <td>7</td>
-                    </tr>
-                    <tr>
-                      <td>Cpl B/W</td>
-                      <td>0.75</td>
-                      <td>
-                        <b>Average</b>
-                      </td>
-                      <td>
-                        <b>2.89</b>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>Cpm</td>
-                      <td>0.72</td>
-                      <td>
-                        <b>Stdev</b>
-                      </td>
-                      <td>
-                        <b>0.45</b>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>Cr</td>
-                      <td>1.48</td>
-                      <td>
-                        <b>Median</b>
-                      </td>
-                      <td>
-                        <b>3.00</b>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>ZTarget/AZ</td>
-                      <td>0.25</td>
-                      <td>
-                        <b>Mode</b>
-                      </td>
-                      <td>
-                        <b>3.00</b>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>
-                        <b>Pp</b>
-                      </td>
-                      <td>0.74</td>
-                      <td>Minimum Value</td>
-                      <td>2.00</td>
-                    </tr>
-                    <tr>
-                      <td>
-                        <b>Ppk</b>
-                      </td>
-                      <td>0.66</td>
-                      <td>Maximum Value</td>
-                      <td>
-                        <b>2.00</b>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>PpU</td>
-                      <td>0.83</td>
-                      <td>Range</td>
-                      <td>1.50</td>
-                    </tr>
-                    <tr>
-                      <td>Ppl</td>
-                      <td>0.66</td>
-                      <td>
-                        <b>LSL</b>
-                      </td>
-                      <td>
-                        <b>4.00</b>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>Skewness</td>
-                      <td>-1.19</td>
-                      <td>
-                        <b>USL</b>
-                      </td>
-                      <td>
-                        <b>6.00</b>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>Stdev</td>
-                      <td>0.45</td>
-                      <td>Number Of Bars</td>
-                      <td>3.00</td>
-                    </tr>
-                    <tr>
-                      <td>Min</td>
-                      <td>2.00</td>
-                      <td>Number Of Classes</td>
-                      <td>4.00</td>
-                    </tr>
-                    <tr>
-                      <td>Max</td>
-                      <td>3.50</td>
-                      <td>Class Width</td>
-                      <td>0.35</td>
-                    </tr>
-                    <tr>
-                      <td>Range</td>
-                      <td>1.50</td>
-                      <td>Beginning Point</td>
-                      <td>1.65</td>
-                    </tr>
-                    <tr>
-                      <td>Z Bench</td>
-                      <td>1.79</td>
-                      <td>Stdev Est</td>
-                      <td>0.46</td>
-                    </tr>
-                    <tr>
-                      <td>% Defects</td>
-                      <td>0.0%</td>
-                      <td>d2/c4</td>
-                      <td>0.92</td>
-                    </tr>
-                    <tr>
-                      <td>PPM</td>
-                      <td>0.00</td>
-                      <td>Target</td>
-                      <td>3</td>
-                    </tr>
-                    <tr>
-                      <td>Exp PPM ST</td>
-                      <td>36586.97</td>
-                      <td>Sigma</td>
-                      <td>3.29</td>
-                    </tr>
-                    <tr>
-                      <td>Exp PPM LT</td>
-                      <td>30738.66</td>
-                      <td></td>
-                      <td></td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-              <div className="col-span-4">
-                <HighchartsPareto phOfParacetamol={phOfParacetamolPareto} />
-              </div>
-              <div className="col-span-4">
-                <HighchartsScatterPlot
-                  phOfParacetamol={phOfParacetamolScatter}
-                />
-              </div>
-              <div className="py-2 flex justify-end col-span-10 ">
-                <button className="p-2 bg-emerald-400 text-white rounded">
-                  {" "}
-                  Launch Deviation
-                </button>
-              </div>
-            </div>
-            {/* <HighchartsLine
+            <HighchartsLine
               heading={"Pantroprazole pH Analysis"}
               xHeading={"Batch No."}
               yHeading={"Observed Value"}
@@ -6868,10 +6293,8 @@ export default function APQR() {
               zones={paracetamolpHZones}
               annotations={paracetamolAnnotations}
               highchartData={paracetamolpHData3}
-            /> */}
-            <h1 className="gridName pt-8">
-              Dissolution Of Paracetamol Test Result
-            </h1>
+            />
+            <h1 className="gridName pt-8">Dissolution Of Paracetamol Test Result</h1>
             <div>
               {/* <div className="AddRows d-flex">
                 <MdNoteAdd onClick={addReviewODSTRRow} />
@@ -7013,214 +6436,7 @@ export default function APQR() {
                 </tbody>
               </table>
             </div>{" "}
-            <div className=" grid grid-cols-10 shadow-md shadow-gray-700/30 my-20 bg-slate-700 p-4 gap-4 mx-[-30px]">
-            <div className="py-2 col-span-10 cursor-pointer text-gray-100 text-[22px] flex justify-center items-center">Dissolution Of Paracetamol Analysis</div>
-              <div className="col-span-4 row-span-1 mb-10 max-h-38 ">
-                <HighchartsLine
-                  heading={"Line Analytics"}
-                  xHeading={"Batch No."}
-                  yHeading={"Observed Value"}
-                  yMax={6}
-                  yMin={0}
-                  yTickInterval={0.8}
-                  plotLines={ParacetamolDissolutionPlotLines}
-                  zones={paracetamolpHZones}
-                  annotations={paracetamolAnnotations}
-                  highchartData={paracetamolpHData4}
-                />
-              </div>
-              <div className="col-span-4 row-span-1">
-                <HighchartsHistogramScatter
-                  phOfParacetamol={phOfParacetamolHistogram}
-                />
-              </div>
-              <div className="col-span-2 row-span-2 bg-white">
-                <table>
-                  <tbody>
-                    <tr>
-                      <td>
-                        {" "}
-                        <b>Cp B/W</b>
-                      </td>
-                      <td>
-                        <b>0.67</b>
-                      </td>
-                      <td>Decimal Points</td>
-                      <td>2.00</td>
-                    </tr>
-                    <tr>
-                      <td>
-                        <b>Cpk B/W</b>
-                      </td>
-                      <td>
-                        <b>0.60</b>
-                      </td>
-                      <td>Unit Of Measure</td>
-                      <td>0.001</td>
-                    </tr>
-                    <tr>
-                      <td>CpU B/W</td>
-                      <td>0.60</td>
-                      <td>Number Of Entries</td>
-                      <td>7</td>
-                    </tr>
-                    <tr>
-                      <td>Cpl B/W</td>
-                      <td>0.75</td>
-                      <td>
-                        <b>Average</b>
-                      </td>
-                      <td>
-                        <b>2.89</b>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>Cpm</td>
-                      <td>0.72</td>
-                      <td>
-                        <b>Stdev</b>
-                      </td>
-                      <td>
-                        <b>0.45</b>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>Cr</td>
-                      <td>1.48</td>
-                      <td>
-                        <b>Median</b>
-                      </td>
-                      <td>
-                        <b>3.00</b>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>ZTarget/AZ</td>
-                      <td>0.25</td>
-                      <td>
-                        <b>Mode</b>
-                      </td>
-                      <td>
-                        <b>3.00</b>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>
-                        <b>Pp</b>
-                      </td>
-                      <td>0.74</td>
-                      <td>Minimum Value</td>
-                      <td>2.00</td>
-                    </tr>
-                    <tr>
-                      <td>
-                        <b>Ppk</b>
-                      </td>
-                      <td>0.66</td>
-                      <td>Maximum Value</td>
-                      <td>
-                        <b>2.00</b>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>PpU</td>
-                      <td>0.83</td>
-                      <td>Range</td>
-                      <td>1.50</td>
-                    </tr>
-                    <tr>
-                      <td>Ppl</td>
-                      <td>0.66</td>
-                      <td>
-                        <b>LSL</b>
-                      </td>
-                      <td>
-                        <b>2.00</b>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>Skewness</td>
-                      <td>-1.19</td>
-                      <td>
-                        <b>USL</b>
-                      </td>
-                      <td>
-                        <b>6.00</b>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>Stdev</td>
-                      <td>0.45</td>
-                      <td>Number Of Bars</td>
-                      <td>3.00</td>
-                    </tr>
-                    <tr>
-                      <td>Min</td>
-                      <td>2.00</td>
-                      <td>Number Of Classes</td>
-                      <td>4.00</td>
-                    </tr>
-                    <tr>
-                      <td>Max</td>
-                      <td>3.50</td>
-                      <td>Class Width</td>
-                      <td>0.35</td>
-                    </tr>
-                    <tr>
-                      <td>Range</td>
-                      <td>1.50</td>
-                      <td>Beginning Point</td>
-                      <td>1.65</td>
-                    </tr>
-                    <tr>
-                      <td>Z Bench</td>
-                      <td>1.79</td>
-                      <td>Stdev Est</td>
-                      <td>0.46</td>
-                    </tr>
-                    <tr>
-                      <td>% Defects</td>
-                      <td>0.0%</td>
-                      <td>d2/c4</td>
-                      <td>0.92</td>
-                    </tr>
-                    <tr>
-                      <td>PPM</td>
-                      <td>0.00</td>
-                      <td>Target</td>
-                      <td>3</td>
-                    </tr>
-                    <tr>
-                      <td>Exp PPM ST</td>
-                      <td>36586.97</td>
-                      <td>Sigma</td>
-                      <td>3.29</td>
-                    </tr>
-                    <tr>
-                      <td>Exp PPM LT</td>
-                      <td>30738.66</td>
-                      <td></td>
-                      <td></td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-              <div className="col-span-4">
-                <HighchartsPareto phOfParacetamol={phOfParacetamolPareto} />
-              </div>
-              <div className="col-span-4">
-                <HighchartsScatterPlot
-                  phOfParacetamol={phOfParacetamolScatter}
-                />
-              </div>
-              <div className="py-2 flex justify-end col-span-10 ">
-                <button className="p-2 bg-emerald-400 text-white rounded">
-                  {" "}
-                  Launch Deviation
-                </button>
-              </div>
-            </div>
-            {/* <HighchartsLine
+            <HighchartsLine
               heading={"Paracetamol pH Graph"}
               xHeading={"Batch No."}
               yHeading={"Observed Value"}
@@ -7231,10 +6447,8 @@ export default function APQR() {
               zones={paracetamolpHZones}
               annotations={paracetamolAnnotations}
               highchartData={paracetamolpHData4}
-            /> */}
-            <h1 className="gridName pt-8">
-              Disintegration Of Paracetamol Test Result
-            </h1>
+            />
+            <h1 className="gridName pt-8">Disintegration Of Paracetamol Test Result</h1>
             <div>
               {/* <div className="AddRows d-flex">
     <MdNoteAdd onClick={addReviewODSTRRow} />
@@ -7376,214 +6590,7 @@ export default function APQR() {
                 </tbody>
               </table>
             </div>{" "}
-            <div className=" grid grid-cols-10 shadow-md shadow-gray-700/30 my-20 bg-slate-700 p-4 gap-4 mx-[-30px]">
-            <div className="py-2 col-span-10 cursor-pointer text-gray-100 text-[22px] flex justify-center items-center"> Disintegration Of Paracetamol Analysis</div>
-              <div className="col-span-4 row-span-1 mb-10 max-h-38 ">
-                <HighchartsLine
-                  heading={""}
-                  xHeading={"Batch No."}
-                  yHeading={"Observed Value"}
-                  yMax={100}
-                  yMin={75}
-                  yTickInterval={7}
-                  plotLines={ParacetamolDisintegratePlotLines}
-                  zones={paracetamolpHZones}
-                  annotations={paracetamolAnnotations}
-                  highchartData={paracetamolpHData5}
-                />
-              </div>
-              <div className="col-span-4 row-span-1">
-                <HighchartsHistogramScatter
-                  phOfParacetamol={phOfParacetamolHistogram}
-                />
-              </div>
-              <div className="col-span-2 row-span-2 bg-white">
-                <table>
-                  <tbody>
-                    <tr>
-                      <td>
-                        {" "}
-                        <b>Cp B/W</b>
-                      </td>
-                      <td>
-                        <b>0.67</b>
-                      </td>
-                      <td>Decimal Points</td>
-                      <td>2.00</td>
-                    </tr>
-                    <tr>
-                      <td>
-                        <b>Cpk B/W</b>
-                      </td>
-                      <td>
-                        <b>0.60</b>
-                      </td>
-                      <td>Unit Of Measure</td>
-                      <td>0.001</td>
-                    </tr>
-                    <tr>
-                      <td>CpU B/W</td>
-                      <td>0.60</td>
-                      <td>Number Of Entries</td>
-                      <td>7</td>
-                    </tr>
-                    <tr>
-                      <td>Cpl B/W</td>
-                      <td>0.75</td>
-                      <td>
-                        <b>Average</b>
-                      </td>
-                      <td>
-                        <b>2.89</b>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>Cpm</td>
-                      <td>0.72</td>
-                      <td>
-                        <b>Stdev</b>
-                      </td>
-                      <td>
-                        <b>0.45</b>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>Cr</td>
-                      <td>1.48</td>
-                      <td>
-                        <b>Median</b>
-                      </td>
-                      <td>
-                        <b>3.00</b>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>ZTarget/AZ</td>
-                      <td>0.25</td>
-                      <td>
-                        <b>Mode</b>
-                      </td>
-                      <td>
-                        <b>3.00</b>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>
-                        <b>Pp</b>
-                      </td>
-                      <td>0.74</td>
-                      <td>Minimum Value</td>
-                      <td>2.00</td>
-                    </tr>
-                    <tr>
-                      <td>
-                        <b>Ppk</b>
-                      </td>
-                      <td>0.66</td>
-                      <td>Maximum Value</td>
-                      <td>
-                        <b>2.00</b>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>PpU</td>
-                      <td>0.83</td>
-                      <td>Range</td>
-                      <td>1.50</td>
-                    </tr>
-                    <tr>
-                      <td>Ppl</td>
-                      <td>0.66</td>
-                      <td>
-                        <b>LSL</b>
-                      </td>
-                      <td>
-                        <b>2.00</b>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>Skewness</td>
-                      <td>-1.19</td>
-                      <td>
-                        <b>USL</b>
-                      </td>
-                      <td>
-                        <b>4.00</b>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>Stdev</td>
-                      <td>0.45</td>
-                      <td>Number Of Bars</td>
-                      <td>3.00</td>
-                    </tr>
-                    <tr>
-                      <td>Min</td>
-                      <td>2.00</td>
-                      <td>Number Of Classes</td>
-                      <td>4.00</td>
-                    </tr>
-                    <tr>
-                      <td>Max</td>
-                      <td>3.50</td>
-                      <td>Class Width</td>
-                      <td>0.35</td>
-                    </tr>
-                    <tr>
-                      <td>Range</td>
-                      <td>1.50</td>
-                      <td>Beginning Point</td>
-                      <td>1.65</td>
-                    </tr>
-                    <tr>
-                      <td>Z Bench</td>
-                      <td>1.79</td>
-                      <td>Stdev Est</td>
-                      <td>0.46</td>
-                    </tr>
-                    <tr>
-                      <td>% Defects</td>
-                      <td>0.0%</td>
-                      <td>d2/c4</td>
-                      <td>0.92</td>
-                    </tr>
-                    <tr>
-                      <td>PPM</td>
-                      <td>0.00</td>
-                      <td>Target</td>
-                      <td>3</td>
-                    </tr>
-                    <tr>
-                      <td>Exp PPM ST</td>
-                      <td>36586.97</td>
-                      <td>Sigma</td>
-                      <td>3.29</td>
-                    </tr>
-                    <tr>
-                      <td>Exp PPM LT</td>
-                      <td>30738.66</td>
-                      <td></td>
-                      <td></td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-              <div className="col-span-4">
-                <HighchartsPareto phOfParacetamol={phOfParacetamolPareto} />
-              </div>
-              <div className="col-span-4">
-                <HighchartsScatterPlot
-                  phOfParacetamol={phOfParacetamolScatter}
-                />
-              </div>
-              <div className="py-2 flex justify-end col-span-10 ">
-                <button className="p-2 bg-emerald-400 text-white rounded">
-                  {" "}
-                  Launch Deviation
-                </button>
-              </div>
-            </div>
-            {/* <HighchartsLine
+            <HighchartsLine
               heading={"Paracetamol pH Graph"}
               xHeading={"Batch No."}
               yHeading={"Observed Value"}
@@ -7594,7 +6601,7 @@ export default function APQR() {
               zones={paracetamolpHZones}
               annotations={paracetamolAnnotations}
               highchartData={paracetamolpHData5}
-            /> */}
+            />
             <h1 className="gridName pt-8">pH Of Terbinafine Test Result</h1>
             <div>
               {/* <div className="AddRows d-flex">
@@ -7903,9 +6910,7 @@ export default function APQR() {
               annotations={paracetamolAnnotations}
               highchartData={paracetamolpHData7}
             />
-            <h1 className="gridName pt-8">
-              Impurity Of Terbinafine Test Result
-            </h1>
+            <h1 className="gridName pt-8">Impurity Of Terbinafine Test Result</h1>
             <div>
               {/* <div className="AddRows d-flex">
     <MdNoteAdd onClick={addReviewODSTRRow} />
@@ -8059,9 +7064,7 @@ export default function APQR() {
               annotations={paracetamolAnnotations}
               highchartData={paracetamolpHData8}
             />
-            <h1 className="gridName pt-8">
-              Dissolution Of Terbinafine Test Result
-            </h1>
+            <h1 className="gridName pt-8">Dissolution Of Terbinafine Test Result</h1>
             <div>
               {/* <div className="AddRows d-flex">
     <MdNoteAdd onClick={addReviewODSTRRow} />
@@ -8215,9 +7218,7 @@ export default function APQR() {
               annotations={paracetamolAnnotations}
               highchartData={paracetamolpHData9}
             />
-            <h1 className="gridName pt-8">
-              Disintegration Of Terbinafine Test Result
-            </h1>
+            <h1 className="gridName pt-8">Disintegration Of Terbinafine Test Result</h1>
             <div>
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
@@ -10482,10 +9483,7 @@ export default function APQR() {
                             onChange={(e) => {
                               const newData = [...pQRData.reviewODPFPTR];
                               newData[index].testsParameter = e.target.value;
-                              setPQRData({
-                                ...pQRData,
-                                reviewODPFPTR: newData,
-                              });
+                              setPQRData({ ...pQRData, reviewODPFPTR: newData });
                             }}
                           />
                         </td>
@@ -10504,12 +9502,8 @@ export default function APQR() {
                             value={item.obtainedValue.minimum}
                             onChange={(e) => {
                               const newData = [...pQRData.reviewODPFPTR];
-                              newData[index].obtainedValue.minimum =
-                                e.target.value;
-                              setPQRData({
-                                ...pQRData,
-                                reviewODPFPTR: newData,
-                              });
+                              newData[index].obtainedValue.minimum = e.target.value;
+                              setPQRData({ ...pQRData, reviewODPFPTR: newData });
                             }}
                           />
                         </td>
@@ -10518,12 +9512,8 @@ export default function APQR() {
                             value={item.obtainedValue.maximum}
                             onChange={(e) => {
                               const newData = [...pQRData.reviewODPFPTR];
-                              newData[index].obtainedValue.maximum =
-                                e.target.value;
-                              setPQRData({
-                                ...pQRData,
-                                reviewODPFPTR: newData,
-                              });
+                              newData[index].obtainedValue.maximum = e.target.value;
+                              setPQRData({ ...pQRData, reviewODPFPTR: newData });
                             }}
                           />
                         </td>
@@ -10764,10 +9754,7 @@ export default function APQR() {
                               onChange={(e) => {
                                 const newData = [...pQRData.reviewOVIRS];
                                 newData[index].column1 = e.target.value;
-                                setPQRData({
-                                  ...pQRData,
-                                  reviewOVIRS: newData,
-                                });
+                                setPQRData({ ...pQRData, reviewOVIRS: newData });
                               }}
                             />
                           </td>
@@ -10777,10 +9764,7 @@ export default function APQR() {
                               onChange={(e) => {
                                 const newData = [...pQRData.reviewOVIRS];
                                 newData[index].column2 = e.target.value;
-                                setPQRData({
-                                  ...pQRData,
-                                  reviewOVIRS: newData,
-                                });
+                                setPQRData({ ...pQRData, reviewOVIRS: newData });
                               }}
                             />
                           </td>
@@ -10790,10 +9774,7 @@ export default function APQR() {
                               onChange={(e) => {
                                 const newData = [...pQRData.reviewOVIRS];
                                 newData[index].column3 = e.target.value;
-                                setPQRData({
-                                  ...pQRData,
-                                  reviewOVIRS: newData,
-                                });
+                                setPQRData({ ...pQRData, reviewOVIRS: newData });
                               }}
                             />
                           </td>
@@ -10803,10 +9784,7 @@ export default function APQR() {
                               onChange={(e) => {
                                 const newData = [...pQRData.reviewOVIRS];
                                 newData[index].column4 = e.target.value;
-                                setPQRData({
-                                  ...pQRData,
-                                  reviewOVIRS: newData,
-                                });
+                                setPQRData({ ...pQRData, reviewOVIRS: newData });
                               }}
                             />
                           </td>
@@ -10816,10 +9794,7 @@ export default function APQR() {
                               onChange={(e) => {
                                 const newData = [...pQRData.reviewOVIRS];
                                 newData[index].column5 = e.target.value;
-                                setPQRData({
-                                  ...pQRData,
-                                  reviewOVIRS: newData,
-                                });
+                                setPQRData({ ...pQRData, reviewOVIRS: newData });
                               }}
                             />
                           </td>
@@ -10829,10 +9804,7 @@ export default function APQR() {
                               onChange={(e) => {
                                 const newData = [...pQRData.reviewOVIRS];
                                 newData[index].column6 = e.target.value;
-                                setPQRData({
-                                  ...pQRData,
-                                  reviewOVIRS: newData,
-                                });
+                                setPQRData({ ...pQRData, reviewOVIRS: newData });
                               }}
                             />
                           </td>
@@ -10852,10 +9824,7 @@ export default function APQR() {
                               onChange={(e) => {
                                 const newData = [...pQRData.reviewOVIRS];
                                 newData[index].column8 = e.target.value;
-                                setPQRData({
-                                  ...pQRData,
-                                  reviewOVIRS: newData,
-                                });
+                                setPQRData({ ...pQRData, reviewOVIRS: newData });
                               }}
                             />
                           </td>
@@ -11041,10 +10010,7 @@ export default function APQR() {
                             onChange={(e) => {
                               const newData = [...pQRData.sanitizationASDOU];
                               newData[index].equipmentName = e.target.value;
-                              setPQRData({
-                                ...pQRData,
-                                sanitizationASDOU: newData,
-                              });
+                              setPQRData({ ...pQRData, sanitizationASDOU: newData });
                             }}
                           />
                         </td>
@@ -11064,10 +10030,7 @@ export default function APQR() {
                             onChange={(e) => {
                               const newData = [...pQRData.sanitizationASDOU];
                               newData[index].status = e.target.value;
-                              setPQRData({
-                                ...pQRData,
-                                sanitizationASDOU: newData,
-                              });
+                              setPQRData({ ...pQRData, sanitizationASDOU: newData });
                             }}
                           />
                         </td>
@@ -11132,10 +10095,7 @@ export default function APQR() {
                             onChange={(e) => {
                               const newData = [...pQRData.compressedGas];
                               newData[index].compressedGas = e.target.value;
-                              setPQRData({
-                                ...pQRData,
-                                compressedGas: newData,
-                              });
+                              setPQRData({ ...pQRData, compressedGas: newData });
                             }}
                           />
                         </td>
@@ -13531,9 +12491,7 @@ export default function APQR() {
                             value={item.qualityRelatedNotification.description}
                             onChange={(e) => {
                               const newData = [...pQRData.currentRPQRN];
-                              newData[
-                                index
-                              ].qualityRelatedNotification.description =
+                              newData[index].qualityRelatedNotification.description =
                                 e.target.value;
                               setPQRData({ ...pQRData, currentRPQRN: newData });
                             }}
@@ -14062,7 +13020,7 @@ export default function APQR() {
           </>
         ) : null}
       </div>
-      <div className="w-full h-18 z-[999] bg-slate-200 p-10 py-2  flex justify-between align-middle fixed bottom-0  ">
+      <div className="w-full h-18 z-[999] bg-slate-200 p-10 py-2   flex justify-between align-middle fixed bottom-0  ">
         <div className="flex justify-end gap-10 pr-10"></div>
         <div className="flex justify-end gap-10 pr-10">
           <button

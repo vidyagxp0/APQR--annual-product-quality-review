@@ -331,181 +331,21 @@ export const ParacetamolpHPlotLines = [
     label: { text: "USL", style: { color: "black", fontWeight: "bold" } },
   },
   {
-    value: 2.5,
-    color: "orange",
-    width: 2,
-    dashStyle: "Dash",
-    label: { text: "UCL", style: { color: "black", fontWeight: "bold" } },
-  },
-  {
-    value: 3.5,
-    color: "orange",
-    width: 2,
-    dashStyle: "Dash",
-    label: { text: "LCL", style: { color: "black", fontWeight: "bold" } },
-  },
-  {
-    value: 2,
-    color: "red",
-    width: 2,
-    dashStyle: "Dash",
-    label: {
-      text: "LSL ",
-      style: { color: "black", fontWeight: "bold" },
-    },
-  },
-  {
-    value: 3,
-    color: "black",
-    width: 1,
-    label: { text: "0", style: { color: "black", fontWeight: "bold" } },
-  },
-];
-
-export const ParacetamolAssayPlotLines = [
-  {
-    value: 90,
-    color: "red",
-    width: 2,
-    dashStyle: "Dash",
-    label: { text: "USL", style: { color: "black", fontWeight: "bold" } },
-  },
-  {
-    value: 95,
-    color: "orange",
-    width: 2,
-    dashStyle: "Dash",
-    label: { text: "UCL", style: { color: "black", fontWeight: "bold" } },
-  },
-  {
-    value: 100,
-    color: "orange",
-    width: 2,
-    dashStyle: "Dash",
-    label: { text: "LCL", style: { color: "black", fontWeight: "bold" } },
-  },
-  {
-    value: 105,
-    color: "red",
-    width: 2,
-    dashStyle: "Dash",
-    label: {
-      text: "LSL ",
-      style: { color: "black", fontWeight: "bold" },
-    },
-  },
-  {
-    value: 97.5,
-    color: "black",
-    width: 1,
-    label: { text: "0", style: { color: "black", fontWeight: "bold" } },
-  },
-];
-
-export const ParacetamolImpurityPlotLines = [
-  {
-    value: 6,
-    color: "red",
-    width: 2,
-    dashStyle: "Dash",
-    label: { text: "USL", style: { color: "black", fontWeight: "bold" } },
-  },
-  {
-    value: 5.5,
-    color: "orange",
-    width: 2,
-    dashStyle: "Dash",
-    label: { text: "UCL", style: { color: "black", fontWeight: "bold" } },
-  },
-  {
-    value: 4.5,
-    color: "orange",
-    width: 2,
-    dashStyle: "Dash",
-    label: { text: "LCL", style: { color: "black", fontWeight: "bold" } },
-  },
-  {
-    value: 4,
-    color: "red",
-    width: 2,
-    dashStyle: "Dash",
-    label: {
-      text: "LSL ",
-      style: { color: "black", fontWeight: "bold" },
-    },
-  },
-  {
-    value:5,
-    color: "black",
-    width: 1,
-    label: { text: "0", style: { color: "black", fontWeight: "bold" } },
-  },
-];
-
-export const ParacetamolDissolutionPlotLines = [
-  {
-    value: 2,
-    color: "red",
-    width: 2,
-    dashStyle: "Dash",
-    label: { text: "USL", style: { color: "black", fontWeight: "bold" } },
-  },
-  {
-    value: 3,
-    color: "orange",
-    width: 2,
-    dashStyle: "Dash",
-    label: { text: "UCL", style: { color: "black", fontWeight: "bold" } },
-  },
-  {
-    value: 5,
-    color: "orange",
-    width: 2,
-    dashStyle: "Dash",
-    label: { text: "LCL", style: { color: "black", fontWeight: "bold" } },
-  },
-  {
-    value: 6,
-    color: "red",
-    width: 2,
-    dashStyle: "Dash",
-    label: {
-      text: "LSL ",
-      style: { color: "black", fontWeight: "bold" },
-    },
-  },
-  {
-    value: 4,
-    color: "black",
-    width: 1,
-    label: { text: "0", style: { color: "black", fontWeight: "bold" } },
-  },
-];
-
-export const ParacetamolDisintegratePlotLines = [
-  {
     value: 80,
-    color: "red",
-    width: 2,
-    dashStyle: "Dash",
-    label: { text: "USL", style: { color: "black", fontWeight: "bold" } },
-  },
-  {
-    value: 95,
     color: "orange",
     width: 2,
     dashStyle: "Dash",
     label: { text: "UCL", style: { color: "black", fontWeight: "bold" } },
   },
   {
-    value: 85,
+    value: -80,
     color: "orange",
     width: 2,
     dashStyle: "Dash",
     label: { text: "LCL", style: { color: "black", fontWeight: "bold" } },
   },
   {
-    value: 100,
+    value: 2,
     color: "red",
     width: 2,
     dashStyle: "Dash",
@@ -515,12 +355,13 @@ export const ParacetamolDisintegratePlotLines = [
     },
   },
   {
-    value: 90,
+    value: 3,
     color: "black",
     width: 1,
     label: { text: "0", style: { color: "black", fontWeight: "bold" } },
   },
 ];
+
 export const paracetamolpHZones = [
   {
     value: 2,
@@ -663,14 +504,14 @@ export const PantoprazolepHPlotLines = [
       label: { text: "USL", style: { color: "black", fontWeight: "bold" } },
     },
     {
-      value: 2.5,
+      value: 80,
       color: "orange",
       width: 2,
       dashStyle: "Dash",
       label: { text: "UCL", style: { color: "black", fontWeight: "bold" } },
     },
     {
-      value: 3.5,
+      value: -80,
       color: "orange",
       width: 2,
       dashStyle: "Dash",

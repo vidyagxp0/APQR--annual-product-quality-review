@@ -46,7 +46,7 @@ const HighchartsChart = ({
     chart: {
       type: "line",
       zoomType: "x",
-      height: 367,
+      // height: 370,
       // width: 2000,
       panning: true, // Enable panning
       panKey: "ctrl", // Set the key for panning (optional)
@@ -54,7 +54,7 @@ const HighchartsChart = ({
     title: {
       text: heading,
       style: {
-        fontSize: "14px",
+        fontSize: "22px",
         fontWeight: "bold",
       },
     },
@@ -62,7 +62,7 @@ const HighchartsChart = ({
       title: {
         text: xHeading,
         style: {
-          fontSize: "14px",
+          fontSize: "22px",
           fontWeight: "bold",
         },
       },
@@ -80,7 +80,7 @@ const HighchartsChart = ({
       title: {
         text: yHeading,
         style: {
-          fontSize: "14px",
+          fontSize: "22px",
           fontWeight: "bold",
         },
       },
