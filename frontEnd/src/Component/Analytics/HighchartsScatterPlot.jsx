@@ -17,14 +17,26 @@ const HighchartsScatterPlot = ({ phOfParacetamol }) => {
     },
     title: {
       text: phOfParacetamol.heading,
+      style: {
+        fontSize: "14px",
+        fontWeight: "bold",
+      },
     },
     xAxis: {
-      title: { text: "Batch Number" },
+      title: { text: "Batch Number" , style: {
+        fontSize: "14px",
+        fontWeight: "bold",
+      },},
       categories: phOfParacetamol.batchNumbers,
       tickInterval: 1,
     },
     yAxis: {
-      title: { text: phOfParacetamol.yAxisTitle },
+      title: { text: phOfParacetamol.yAxisTitle,
+        style: {
+          fontSize: "14px",
+          fontWeight: "bold",
+        },
+       },
       allowDecimals: false,
       max: 5,
     },
