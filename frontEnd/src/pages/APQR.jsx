@@ -289,8 +289,7 @@ export default function APQR() {
         case 36:
         setReviewOSTR15([...reviewODSTR15, ...processedData]);
         break;
-       
-      case 3:
+        case 3:
         setManufacturingStage([...manufacturingStage, ...processedData]);
         break;
     }

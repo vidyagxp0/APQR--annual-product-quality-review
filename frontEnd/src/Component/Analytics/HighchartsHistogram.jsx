@@ -5,7 +5,7 @@ import Histogram from "highcharts/modules/histogram-bellcurve";
 
 Histogram(Highcharts);
 
-const HighchartsHistogram = ({ phOfParacetamol }) => {
+const HighchartsHistogram = ({ data, heading, xAxisTitle, yAxisTitle, lsl, usl }) => {
 
   const processData = (data) => {
     const bins = { "1-2": 0, "2-3": 0, "3-4": 0, "4-5": 0 };
@@ -35,17 +35,17 @@ const HighchartsHistogram = ({ phOfParacetamol }) => {
 
     return { histogramData, averagePhData };
   };
-  const { histogramData, averagePhData } = processData(phOfParacetamol.data);
+  const { histogramData, averagePhData } = processData(data);
 
   const options = {
     chart: {
       type: "column",
     },
     title: {
-      text: phOfParacetamol.heading,
+      text: heading,
     },
     xAxis: {
-      title: { text: phOfParacetamol.xAxisTitle },
+      title: { text: xAxisTitle },
       alignTicks: false,
       categories: ["1-2", "2-3", "3-4", "4-5"],
       plotLines: [
@@ -78,9 +78,9 @@ const HighchartsHistogram = ({ phOfParacetamol }) => {
       ],
     },
     yAxis: {
-      title: { text: phOfParacetamol.yAxisTitle },
+      title: { text: yAxisTitle },
       allowDecimals: false,
-      max: phOfParacetamol.data.length / 2.4, // Set yAxis maximum value to 30
+      max: data.length / 2.4, // Set yAxis maximum value to 30
     },
     series: [
       {

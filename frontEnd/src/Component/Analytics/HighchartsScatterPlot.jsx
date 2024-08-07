@@ -2,12 +2,11 @@ import React from "react";
 import Highcharts from "highcharts";
 import HighchartsReact from "highcharts-react-official";
 
-const HighchartsScatterPlot = ({ phOfParacetamol }) => {
-
-  const scatterData = phOfParacetamol.data.map((value, index) => ({
+const HighchartsScatterPlot = ({ data, heading, batchNumbers, yAxisTitle, lsl, usl }) => {
+  const scatterData = data.map((value, index) => ({
     x: index + 1,
     y: value,
-    color: value < phOfParacetamol.lsl || value > phOfParacetamol.usl ? "#ab402b" : "#63db9b",
+    color: value < lsl || value > usl ? "#ab402b" : "#63db9b",
   }));
 
   const options = {
@@ -16,15 +15,15 @@ const HighchartsScatterPlot = ({ phOfParacetamol }) => {
       zoomType: "xy",
     },
     title: {
-      text: phOfParacetamol.heading,
+      text: heading,
     },
     xAxis: {
       title: { text: "Batch Number" },
-      categories: phOfParacetamol.batchNumbers,
+      categories: batchNumbers,
       tickInterval: 1,
     },
     yAxis: {
-      title: { text: phOfParacetamol.yAxisTitle },
+      title: { text: yAxisTitle },
       allowDecimals: false,
       max: 5,
     },
