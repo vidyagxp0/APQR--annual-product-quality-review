@@ -42,10 +42,17 @@ const HighchartsHistogram = ({ data, heading, xAxisTitle, yAxisTitle, lsl, usl }
       type: "column",
     },
     title: {
-      text: heading,
+      text: phOfParacetamol.heading,
+      style: {
+        fontSize: "14px",
+        fontWeight: "bold",
+      },
     },
     xAxis: {
-      title: { text: xAxisTitle },
+      title: { text: phOfParacetamol.xAxisTitle, style: {
+        fontSize: "14px",
+        fontWeight: "bold",
+      }, },
       alignTicks: false,
       categories: ["1-2", "2-3", "3-4", "4-5"],
       plotLines: [
@@ -78,7 +85,10 @@ const HighchartsHistogram = ({ data, heading, xAxisTitle, yAxisTitle, lsl, usl }
       ],
     },
     yAxis: {
-      title: { text: yAxisTitle },
+      title: { text: phOfParacetamol.yAxisTitle, style: {
+        fontSize: "14px",
+        fontWeight: "bold",
+      }, },
       allowDecimals: false,
       max: data.length / 2.4, // Set yAxis maximum value to 30
     },
