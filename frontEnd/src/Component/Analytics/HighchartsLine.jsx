@@ -46,7 +46,7 @@ const HighchartsChart = ({
     chart: {
       type: "line",
       zoomType: "x",
-      // height: 370,
+      height: 355,
       // width: 2000,
       panning: true, // Enable panning
       panKey: "ctrl", // Set the key for panning (optional)

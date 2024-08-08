@@ -294,14 +294,35 @@ export default function AdvancedAnalytics() {
           highchartData={PantoprazolepHData}/> */}
         <div className="flex justify-evenly">
           <div className="w-5/12">
-            <HighchartsHistogram phOfParacetamol={phOfParacetamolHistogram} />
+            <HighchartsHistogram
+             data={phOfParacetamolHistogram.data}
+             lsl={phOfParacetamolHistogram.lsl}
+             usl={phOfParacetamolHistogram.usl}
+             heading={phOfParacetamolHistogram.heading}
+             yAxisTitle={phOfParacetamolHistogram.yAxisTitle}
+             xAxisTitle={phOfParacetamolHistogram.xAxisTitle}
+             />
           </div>
           <div className="w-5/12">
-            <HighchartsPareto phOfParacetamol={phOfParacetamolPareto} />
+            <HighchartsPareto
+              data={phOfParacetamolPareto.data}
+              lsl={phOfParacetamolPareto.lsl}
+              usl={phOfParacetamolPareto.usl}
+              heading={phOfParacetamolPareto.heading}
+              yAxisTitle={phOfParacetamolPareto.yAxisTitle}
+              xAxisTitle={""}
+              />
           </div>
         </div>
         <div className=" px-40 pt-10  shadow-md">
-          <HighchartsScatterPlot phOfParacetamol={phOfParacetamolScatter} />
+          <HighchartsScatterPlot
+            data={phOfParacetamolScatter.data}
+            lsl={phOfParacetamolScatter.lsl}
+            usl={phOfParacetamolScatter.usl}
+            heading={phOfParacetamolScatter.heading}
+            yAxisTitle={phOfParacetamolScatter.yAxisTitle}
+            batchNumbers={phOfParacetamolScatter.batchNumbers}
+           />
         </div>
       </div>
     </>
