@@ -7781,18 +7781,230 @@ export default function APQR() {
                 </tbody>
               </table>
             </div>{" "}
-            <HighchartsLine
-              heading={"Paracetamol pH Graph"}
-              xHeading={"Batch No."}
-              yHeading={"Observed Value"}
-              yMax={6}
-              yMin={0}
-              yTickInterval={0.4}
-              plotLines={ParacetamolpHPlotLines}
-              zones={paracetamolpHZones}
-              annotations={paracetamolAnnotations}
-              highchartData={paracetamolpHData6}
-            />
+            <div className=" grid grid-cols-10 shadow-md shadow-gray-700/30 my-20 bg-slate-700 p-4 gap-4 mx-[-30px]">
+            <div className="py-2 col-span-10 cursor-pointer text-gray-100 text-[22px] flex justify-center items-center"> pH Of Terbinafine Analysis</div>
+              <div className="col-span-4 row-span-1 mb-10 max-h-38 ">
+                <HighchartsLine
+                  heading={"Line Analytics"}
+                  xHeading={"Batch No."}
+                  yHeading={"Observed Value"}
+                  yMax={6}
+                  yMin={1}
+                  yTickInterval={0.5}
+                  plotLines={ParacetamolpHPlotLines}
+                  zones={paracetamolpHZones}
+                  annotations={paracetamolAnnotations}
+                  highchartData={paracetamolpHData6}
+                />
+              </div>
+              <div className="col-span-4 row-span-1">
+                <HighchartsHistogramScatter
+                 data={paracetamolpHDataH.observedValues}
+                 lsl={phOfParacetamolHistogram.lsl}
+                 usl={phOfParacetamolHistogram.usl}
+                 heading={phOfParacetamolHistogram.heading}
+                 yAxisTitle={phOfParacetamolHistogram.yAxisTitle}
+                 xAxisTitle={phOfParacetamolHistogram.xAxisTitle}
+                />
+              </div>
+              <div className="col-span-2 row-span-2 bg-white">
+                <table>
+                  <tbody>
+                    <tr>
+                      <td>
+                        {" "}
+                        <b>Cp B/W</b>
+                      </td>
+                      <td>
+                        <b>0.67</b>
+                      </td>
+                      <td>Decimal Points</td>
+                      <td>2.00</td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <b>Cpk B/W</b>
+                      </td>
+                      <td>
+                        <b>0.60</b>
+                      </td>
+                      <td>Unit Of Measure</td>
+                      <td>0.001</td>
+                    </tr>
+                    <tr>
+                      <td>CpU B/W</td>
+                      <td>0.60</td>
+                      <td>Number Of Entries</td>
+                      <td>7</td>
+                    </tr>
+                    <tr>
+                      <td>Cpl B/W</td>
+                      <td>0.75</td>
+                      <td>
+                        <b>Average</b>
+                      </td>
+                      <td>
+                        <b>2.89</b>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>Cpm</td>
+                      <td>0.72</td>
+                      <td>
+                        <b>Stdev</b>
+                      </td>
+                      <td>
+                        <b>0.45</b>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>Cr</td>
+                      <td>1.48</td>
+                      <td>
+                        <b>Median</b>
+                      </td>
+                      <td>
+                        <b>3.00</b>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>ZTarget/AZ</td>
+                      <td>0.25</td>
+                      <td>
+                        <b>Mode</b>
+                      </td>
+                      <td>
+                        <b>3.00</b>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <b>Pp</b>
+                      </td>
+                      <td>0.74</td>
+                      <td>Minimum Value</td>
+                      <td>2.00</td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <b>Ppk</b>
+                      </td>
+                      <td>0.66</td>
+                      <td>Maximum Value</td>
+                      <td>
+                        <b>2.00</b>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>PpU</td>
+                      <td>0.83</td>
+                      <td>Range</td>
+                      <td>1.50</td>
+                    </tr>
+                    <tr>
+                      <td>Ppl</td>
+                      <td>0.66</td>
+                      <td>
+                        <b>LSL</b>
+                      </td>
+                      <td>
+                        <b>2.00</b>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>Skewness</td>
+                      <td>-1.19</td>
+                      <td>
+                        <b>USL</b>
+                      </td>
+                      <td>
+                        <b>4.00</b>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>Stdev</td>
+                      <td>0.45</td>
+                      <td>Number Of Bars</td>
+                      <td>3.00</td>
+                    </tr>
+                    <tr>
+                      <td>Min</td>
+                      <td>2.00</td>
+                      <td>Number Of Classes</td>
+                      <td>4.00</td>
+                    </tr>
+                    <tr>
+                      <td>Max</td>
+                      <td>3.50</td>
+                      <td>Class Width</td>
+                      <td>0.35</td>
+                    </tr>
+                    <tr>
+                      <td>Range</td>
+                      <td>1.50</td>
+                      <td>Beginning Point</td>
+                      <td>1.65</td>
+                    </tr>
+                    <tr>
+                      <td>Z Bench</td>
+                      <td>1.79</td>
+                      <td>Stdev Est</td>
+                      <td>0.46</td>
+                    </tr>
+                    <tr>
+                      <td>% Defects</td>
+                      <td>0.0%</td>
+                      <td>d2/c4</td>
+                      <td>0.92</td>
+                    </tr>
+                    <tr>
+                      <td>PPM</td>
+                      <td>0.00</td>
+                      <td>Target</td>
+                      <td>3</td>
+                    </tr>
+                    <tr>
+                      <td>Exp PPM ST</td>
+                      <td>36586.97</td>
+                      <td>Sigma</td>
+                      <td>3.29</td>
+                    </tr>
+                    <tr>
+                      <td>Exp PPM LT</td>
+                      <td>30738.66</td>
+                      <td></td>
+                      <td></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <div className="col-span-4">
+                <HighchartsPareto 
+                   data={paracetamolpHDataH.observedValues}
+                   lsl={phOfParacetamolPareto.lsl}
+                   usl={phOfParacetamolPareto.usl}
+                   heading={phOfParacetamolPareto.heading}
+                   yAxisTitle={phOfParacetamolPareto.yAxisTitle}
+                   xAxisTitle={""} />
+              </div>
+              <div className="col-span-4">
+                <HighchartsScatterPlot
+                  // phOfParacetamol={phOfParacetamolScatter}
+                  data={paracetamolpHDataH.observedValues}
+                  lsl={phOfParacetamolScatter.lsl}
+                  usl={phOfParacetamolScatter.usl}
+                  heading={phOfParacetamolScatter.heading}
+                  yAxisTitle={phOfParacetamolScatter.yAxisTitle}
+                  batchNumbers={paracetamolpHDataH.batchNumbers}
+                />
+              </div>
+              <div className="py-2 flex justify-end col-span-10 ">
+                <button className="p-2 bg-emerald-400 text-white rounded">
+                  {" "}
+                  Launch Deviation
+                </button>
+              </div>
+            </div>
             <h1 className="gridName pt-8">Assay Of Terbinafine Test Result</h1>
             <div>
               {/* <div className="AddRows d-flex">
@@ -7935,18 +8147,233 @@ export default function APQR() {
                 </tbody>
               </table>
             </div>{" "}
-            <HighchartsLine
-              heading={"Paracetamol pH Graph"}
-              xHeading={"Batch No."}
-              yHeading={"Observed Value"}
-              yMax={6}
-              yMin={0}
-              yTickInterval={0.4}
-              plotLines={ParacetamolpHPlotLines}
-              zones={paracetamolpHZones}
-              annotations={paracetamolAnnotations}
-              highchartData={paracetamolpHData7}
-            />
+            <div className=" grid grid-cols-10 shadow-md shadow-gray-700/30 my-20 bg-slate-700 p-4 gap-4 mx-[-30px]">
+            <div className="py-2 col-span-10 cursor-pointer text-gray-100 text-[22px] flex justify-center items-center"> Assay Of Terbinafine Analysis</div>
+              <div className="col-span-4 row-span-1 mb-10 max-h-38 ">
+                <HighchartsLine
+                  heading={"Line Analytics"}
+                  xHeading={"Batch No."}
+                  yHeading={"Observed Value"}
+                  yMax={110}
+                  yMin={86}
+                  yTickInterval={3}
+                  plotLines={ParacetamolAssayPlotLines}
+                  zones={paracetamolpHZones}
+                  annotations={paracetamolAnnotations}
+                  highchartData={paracetamolpHData7}
+                />
+              </div>
+              <div className="col-span-4 row-span-1">
+                <HighchartsHistogramScatter
+                  // phOfParacetamol={phOfParacetamolHistogram}
+                  data={paracetamolpHDataH.observedValues}
+                  lsl={phOfParacetamolHistogram.lsl}
+                  usl={phOfParacetamolHistogram.usl}
+                  heading={phOfParacetamolHistogram.heading}
+                  yAxisTitle={phOfParacetamolHistogram.yAxisTitle}
+                  xAxisTitle={phOfParacetamolHistogram.xAxisTitle}
+                />
+              </div>
+              <div className="col-span-2 row-span-2 bg-white">
+                <table>
+                  <tbody>
+                    <tr>
+                      <td>
+                        {" "}
+                        <b>Cp B/W</b>
+                      </td>
+                      <td>
+                        <b>0.67</b>
+                      </td>
+                      <td>Decimal Points</td>
+                      <td>2.00</td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <b>Cpk B/W</b>
+                      </td>
+                      <td>
+                        <b>0.60</b>
+                      </td>
+                      <td>Unit Of Measure</td>
+                      <td>0.001</td>
+                    </tr>
+                    <tr>
+                      <td>CpU B/W</td>
+                      <td>0.60</td>
+                      <td>Number Of Entries</td>
+                      <td>7</td>
+                    </tr>
+                    <tr>
+                      <td>Cpl B/W</td>
+                      <td>0.75</td>
+                      <td>
+                        <b>Average</b>
+                      </td>
+                      <td>
+                        <b>2.89</b>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>Cpm</td>
+                      <td>0.72</td>
+                      <td>
+                        <b>Stdev</b>
+                      </td>
+                      <td>
+                        <b>0.45</b>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>Cr</td>
+                      <td>1.48</td>
+                      <td>
+                        <b>Median</b>
+                      </td>
+                      <td>
+                        <b>3.00</b>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>ZTarget/AZ</td>
+                      <td>0.25</td>
+                      <td>
+                        <b>Mode</b>
+                      </td>
+                      <td>
+                        <b>3.00</b>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <b>Pp</b>
+                      </td>
+                      <td>0.74</td>
+                      <td>Minimum Value</td>
+                      <td>2.00</td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <b>Ppk</b>
+                      </td>
+                      <td>0.66</td>
+                      <td>Maximum Value</td>
+                      <td>
+                        <b>2.00</b>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>PpU</td>
+                      <td>0.83</td>
+                      <td>Range</td>
+                      <td>1.50</td>
+                    </tr>
+                    <tr>
+                      <td>Ppl</td>
+                      <td>0.66</td>
+                      <td>
+                        <b>LSL</b>
+                      </td>
+                      <td>
+                        <b>90</b>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>Skewness</td>
+                      <td>-1.19</td>
+                      <td>
+                        <b>USL</b>
+                      </td>
+                      <td>
+                        <b>105</b>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>Stdev</td>
+                      <td>0.45</td>
+                      <td>Number Of Bars</td>
+                      <td>3.00</td>
+                    </tr>
+                    <tr>
+                      <td>Min</td>
+                      <td>2.00</td>
+                      <td>Number Of Classes</td>
+                      <td>4.00</td>
+                    </tr>
+                    <tr>
+                      <td>Max</td>
+                      <td>3.50</td>
+                      <td>Class Width</td>
+                      <td>0.35</td>
+                    </tr>
+                    <tr>
+                      <td>Range</td>
+                      <td>1.50</td>
+                      <td>Beginning Point</td>
+                      <td>1.65</td>
+                    </tr>
+                    <tr>
+                      <td>Z Bench</td>
+                      <td>1.79</td>
+                      <td>Stdev Est</td>
+                      <td>0.46</td>
+                    </tr>
+                    <tr>
+                      <td>% Defects</td>
+                      <td>0.0%</td>
+                      <td>d2/c4</td>
+                      <td>0.92</td>
+                    </tr>
+                    <tr>
+                      <td>PPM</td>
+                      <td>0.00</td>
+                      <td>Target</td>
+                      <td>3</td>
+                    </tr>
+                    <tr>
+                      <td>Exp PPM ST</td>
+                      <td>36586.97</td>
+                      <td>Sigma</td>
+                      <td>3.29</td>
+                    </tr>
+                    <tr>
+                      <td>Exp PPM LT</td>
+                      <td>30738.66</td>
+                      <td></td>
+                      <td></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <div className="col-span-4">
+                <HighchartsPareto 
+                // phOfParacetamol={phOfParacetamolPareto}
+                data={paracetamolpHDataH.observedValues}
+                lsl={phOfParacetamolPareto.lsl}
+                usl={phOfParacetamolPareto.usl}
+                heading={phOfParacetamolPareto.heading}
+                yAxisTitle={phOfParacetamolPareto.yAxisTitle}
+                xAxisTitle={""}
+                 />
+              </div>
+              <div className="col-span-4">
+                <HighchartsScatterPlot
+                  // phOfParacetamol={phOfParacetamolScatter}
+                  data={paracetamolpHDataH.observedValues}
+                  lsl={phOfParacetamolScatter.lsl}
+                  usl={phOfParacetamolScatter.usl}
+                  heading={phOfParacetamolScatter.heading}
+                  yAxisTitle={phOfParacetamolScatter.yAxisTitle}
+                  batchNumbers={paracetamolpHDataH.batchNumbers}
+                />
+              </div>
+              <div className="py-2 flex justify-end col-span-10 ">
+                <button className="p-2 bg-emerald-400 text-white rounded">
+                  {" "}
+                  Launch Deviation
+                </button>
+              </div>
+            </div>
             <h1 className="gridName pt-8">Impurity Of Terbinafine Test Result</h1>
             <div>
               {/* <div className="AddRows d-flex">
@@ -8089,18 +8516,233 @@ export default function APQR() {
                 </tbody>
               </table>
             </div>{" "}
-            <HighchartsLine
-              heading={"Paracetamol pH Graph"}
-              xHeading={"Batch No."}
-              yHeading={"Observed Value"}
-              yMax={6}
-              yMin={0}
-              yTickInterval={0.4}
-              plotLines={ParacetamolpHPlotLines}
-              zones={paracetamolpHZones}
-              annotations={paracetamolAnnotations}
-              highchartData={paracetamolpHData8}
-            />
+            <div className=" grid grid-cols-10 shadow-md shadow-gray-700/30 my-20 bg-slate-700 p-4 gap-4 mx-[-30px]">
+            <div className="py-2 col-span-10 cursor-pointer text-gray-100 text-[22px] flex justify-center items-center"> Impurity Of Terbinafine Analysis</div>
+              <div className="col-span-4 row-span-1 mb-10 max-h-38 ">
+                <HighchartsLine
+                  heading={"Line Analysis"}
+                  xHeading={"Batch No."}
+                  yHeading={"Observed Value"}
+                  yMax={7}
+                  yMin={3}
+                  yTickInterval={0.5}
+                  plotLines={ParacetamolImpurityPlotLines}
+                  zones={paracetamolpHZones}
+                  annotations={paracetamolAnnotations}
+                  highchartData={paracetamolpHData8}
+                />
+              </div>
+              <div className="col-span-4 row-span-1">
+                <HighchartsHistogramScatter
+                  // phOfParacetamol={phOfParacetamolHistogram}
+                  data={paracetamolpHDataH.observedValues}
+                  lsl={phOfParacetamolHistogram.lsl}
+                  usl={phOfParacetamolHistogram.usl}
+                  heading={phOfParacetamolHistogram.heading}
+                  yAxisTitle={phOfParacetamolHistogram.yAxisTitle}
+                  xAxisTitle={phOfParacetamolHistogram.xAxisTitle}
+                />
+              </div>
+              <div className="col-span-2 row-span-2 bg-white">
+                <table>
+                  <tbody>
+                    <tr>
+                      <td>
+                        {" "}
+                        <b>Cp B/W</b>
+                      </td>
+                      <td>
+                        <b>0.67</b>
+                      </td>
+                      <td>Decimal Points</td>
+                      <td>2.00</td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <b>Cpk B/W</b>
+                      </td>
+                      <td>
+                        <b>0.60</b>
+                      </td>
+                      <td>Unit Of Measure</td>
+                      <td>0.001</td>
+                    </tr>
+                    <tr>
+                      <td>CpU B/W</td>
+                      <td>0.60</td>
+                      <td>Number Of Entries</td>
+                      <td>7</td>
+                    </tr>
+                    <tr>
+                      <td>Cpl B/W</td>
+                      <td>0.75</td>
+                      <td>
+                        <b>Average</b>
+                      </td>
+                      <td>
+                        <b>2.89</b>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>Cpm</td>
+                      <td>0.72</td>
+                      <td>
+                        <b>Stdev</b>
+                      </td>
+                      <td>
+                        <b>0.45</b>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>Cr</td>
+                      <td>1.48</td>
+                      <td>
+                        <b>Median</b>
+                      </td>
+                      <td>
+                        <b>3.00</b>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>ZTarget/AZ</td>
+                      <td>0.25</td>
+                      <td>
+                        <b>Mode</b>
+                      </td>
+                      <td>
+                        <b>3.00</b>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <b>Pp</b>
+                      </td>
+                      <td>0.74</td>
+                      <td>Minimum Value</td>
+                      <td>2.00</td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <b>Ppk</b>
+                      </td>
+                      <td>0.66</td>
+                      <td>Maximum Value</td>
+                      <td>
+                        <b>2.00</b>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>PpU</td>
+                      <td>0.83</td>
+                      <td>Range</td>
+                      <td>1.50</td>
+                    </tr>
+                    <tr>
+                      <td>Ppl</td>
+                      <td>0.66</td>
+                      <td>
+                        <b>LSL</b>
+                      </td>
+                      <td>
+                        <b>4.00</b>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>Skewness</td>
+                      <td>-1.19</td>
+                      <td>
+                        <b>USL</b>
+                      </td>
+                      <td>
+                        <b>6.00</b>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>Stdev</td>
+                      <td>0.45</td>
+                      <td>Number Of Bars</td>
+                      <td>3.00</td>
+                    </tr>
+                    <tr>
+                      <td>Min</td>
+                      <td>2.00</td>
+                      <td>Number Of Classes</td>
+                      <td>4.00</td>
+                    </tr>
+                    <tr>
+                      <td>Max</td>
+                      <td>3.50</td>
+                      <td>Class Width</td>
+                      <td>0.35</td>
+                    </tr>
+                    <tr>
+                      <td>Range</td>
+                      <td>1.50</td>
+                      <td>Beginning Point</td>
+                      <td>1.65</td>
+                    </tr>
+                    <tr>
+                      <td>Z Bench</td>
+                      <td>1.79</td>
+                      <td>Stdev Est</td>
+                      <td>0.46</td>
+                    </tr>
+                    <tr>
+                      <td>% Defects</td>
+                      <td>0.0%</td>
+                      <td>d2/c4</td>
+                      <td>0.92</td>
+                    </tr>
+                    <tr>
+                      <td>PPM</td>
+                      <td>0.00</td>
+                      <td>Target</td>
+                      <td>3</td>
+                    </tr>
+                    <tr>
+                      <td>Exp PPM ST</td>
+                      <td>36586.97</td>
+                      <td>Sigma</td>
+                      <td>3.29</td>
+                    </tr>
+                    <tr>
+                      <td>Exp PPM LT</td>
+                      <td>30738.66</td>
+                      <td></td>
+                      <td></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <div className="col-span-4">
+                <HighchartsPareto
+                //  phOfParacetamol={phOfParacetamolPareto}
+                data={paracetamolpHDataH.observedValues}
+                lsl={phOfParacetamolPareto.lsl}
+                usl={phOfParacetamolPareto.usl}
+                heading={phOfParacetamolPareto.heading}
+                yAxisTitle={phOfParacetamolPareto.yAxisTitle}
+                xAxisTitle={""}
+                  />
+              </div>
+              <div className="col-span-4">
+                <HighchartsScatterPlot
+                  // phOfParacetamol={phOfParacetamolScatter}
+                  data={paracetamolpHDataH.observedValues}
+                  lsl={phOfParacetamolScatter.lsl}
+                  usl={phOfParacetamolScatter.usl}
+                  heading={phOfParacetamolScatter.heading}
+                  yAxisTitle={phOfParacetamolScatter.yAxisTitle}
+                  batchNumbers={paracetamolpHDataH.batchNumbers}
+                />
+              </div>
+              <div className="py-2 flex justify-end col-span-10 ">
+                <button className="p-2 bg-emerald-400 text-white rounded">
+                  {" "}
+                  Launch Deviation
+                </button>
+              </div>
+            </div>
             <h1 className="gridName pt-8">Dissolution Of Terbinafine Test Result</h1>
             <div>
               {/* <div className="AddRows d-flex">
@@ -8243,18 +8885,233 @@ export default function APQR() {
                 </tbody>
               </table>
             </div>{" "}
-            <HighchartsLine
-              heading={"Paracetamol pH Graph"}
-              xHeading={"Batch No."}
-              yHeading={"Observed Value"}
-              yMax={6}
-              yMin={0}
-              yTickInterval={0.4}
-              plotLines={ParacetamolpHPlotLines}
-              zones={paracetamolpHZones}
-              annotations={paracetamolAnnotations}
-              highchartData={paracetamolpHData9}
-            />
+            <div className=" grid grid-cols-10 shadow-md shadow-gray-700/30 my-20 bg-slate-700 p-4 gap-4 mx-[-30px]">
+            <div className="py-2 col-span-10 cursor-pointer text-gray-100 text-[22px] flex justify-center items-center">Dissolution Of Terbinafine Analysis</div>
+              <div className="col-span-4 row-span-1 mb-10 max-h-38 ">
+                <HighchartsLine
+                  heading={"Line Analytics"}
+                  xHeading={"Batch No."}
+                  yHeading={"Observed Value"}
+                  yMax={6}
+                  yMin={0}
+                  yTickInterval={0.8}
+                  plotLines={ParacetamolDissolutionPlotLines}
+                  zones={paracetamolpHZones}
+                  annotations={paracetamolAnnotations}
+                  highchartData={paracetamolpHData9}
+                />
+              </div>
+              <div className="col-span-4 row-span-1">
+                <HighchartsHistogramScatter
+                  // phOfParacetamol={phOfParacetamolHistogram}
+                  data={paracetamolpHDataH.observedValues}
+                  lsl={phOfParacetamolHistogram.lsl}
+                  usl={phOfParacetamolHistogram.usl}
+                  heading={phOfParacetamolHistogram.heading}
+                  yAxisTitle={phOfParacetamolHistogram.yAxisTitle}
+                  xAxisTitle={phOfParacetamolHistogram.xAxisTitle}
+                />
+              </div>
+              <div className="col-span-2 row-span-2 bg-white">
+                <table>
+                  <tbody>
+                    <tr>
+                      <td>
+                        {" "}
+                        <b>Cp B/W</b>
+                      </td>
+                      <td>
+                        <b>0.67</b>
+                      </td>
+                      <td>Decimal Points</td>
+                      <td>2.00</td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <b>Cpk B/W</b>
+                      </td>
+                      <td>
+                        <b>0.60</b>
+                      </td>
+                      <td>Unit Of Measure</td>
+                      <td>0.001</td>
+                    </tr>
+                    <tr>
+                      <td>CpU B/W</td>
+                      <td>0.60</td>
+                      <td>Number Of Entries</td>
+                      <td>7</td>
+                    </tr>
+                    <tr>
+                      <td>Cpl B/W</td>
+                      <td>0.75</td>
+                      <td>
+                        <b>Average</b>
+                      </td>
+                      <td>
+                        <b>2.89</b>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>Cpm</td>
+                      <td>0.72</td>
+                      <td>
+                        <b>Stdev</b>
+                      </td>
+                      <td>
+                        <b>0.45</b>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>Cr</td>
+                      <td>1.48</td>
+                      <td>
+                        <b>Median</b>
+                      </td>
+                      <td>
+                        <b>3.00</b>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>ZTarget/AZ</td>
+                      <td>0.25</td>
+                      <td>
+                        <b>Mode</b>
+                      </td>
+                      <td>
+                        <b>3.00</b>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <b>Pp</b>
+                      </td>
+                      <td>0.74</td>
+                      <td>Minimum Value</td>
+                      <td>2.00</td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <b>Ppk</b>
+                      </td>
+                      <td>0.66</td>
+                      <td>Maximum Value</td>
+                      <td>
+                        <b>2.00</b>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>PpU</td>
+                      <td>0.83</td>
+                      <td>Range</td>
+                      <td>1.50</td>
+                    </tr>
+                    <tr>
+                      <td>Ppl</td>
+                      <td>0.66</td>
+                      <td>
+                        <b>LSL</b>
+                      </td>
+                      <td>
+                        <b>2.00</b>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>Skewness</td>
+                      <td>-1.19</td>
+                      <td>
+                        <b>USL</b>
+                      </td>
+                      <td>
+                        <b>6.00</b>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>Stdev</td>
+                      <td>0.45</td>
+                      <td>Number Of Bars</td>
+                      <td>3.00</td>
+                    </tr>
+                    <tr>
+                      <td>Min</td>
+                      <td>2.00</td>
+                      <td>Number Of Classes</td>
+                      <td>4.00</td>
+                    </tr>
+                    <tr>
+                      <td>Max</td>
+                      <td>3.50</td>
+                      <td>Class Width</td>
+                      <td>0.35</td>
+                    </tr>
+                    <tr>
+                      <td>Range</td>
+                      <td>1.50</td>
+                      <td>Beginning Point</td>
+                      <td>1.65</td>
+                    </tr>
+                    <tr>
+                      <td>Z Bench</td>
+                      <td>1.79</td>
+                      <td>Stdev Est</td>
+                      <td>0.46</td>
+                    </tr>
+                    <tr>
+                      <td>% Defects</td>
+                      <td>0.0%</td>
+                      <td>d2/c4</td>
+                      <td>0.92</td>
+                    </tr>
+                    <tr>
+                      <td>PPM</td>
+                      <td>0.00</td>
+                      <td>Target</td>
+                      <td>3</td>
+                    </tr>
+                    <tr>
+                      <td>Exp PPM ST</td>
+                      <td>36586.97</td>
+                      <td>Sigma</td>
+                      <td>3.29</td>
+                    </tr>
+                    <tr>
+                      <td>Exp PPM LT</td>
+                      <td>30738.66</td>
+                      <td></td>
+                      <td></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <div className="col-span-4">
+                <HighchartsPareto 
+                // phOfParacetamol={phOfParacetamolPareto} 
+                data={paracetamolpHDataH.observedValues}
+                lsl={phOfParacetamolPareto.lsl}
+                usl={phOfParacetamolPareto.usl}
+                heading={phOfParacetamolPareto.heading}
+                yAxisTitle={phOfParacetamolPareto.yAxisTitle}
+                xAxisTitle={""}
+                />
+              </div>
+              <div className="col-span-4">
+                <HighchartsScatterPlot
+                  // phOfParacetamol={phOfParacetamolScatter}
+                  data={paracetamolpHDataH.observedValues}
+                  lsl={phOfParacetamolScatter.lsl}
+                  usl={phOfParacetamolScatter.usl}
+                  heading={phOfParacetamolScatter.heading}
+                  yAxisTitle={phOfParacetamolScatter.yAxisTitle}
+                  batchNumbers={paracetamolpHDataH.batchNumbers}
+                />
+              </div>
+              <div className="py-2 flex justify-end col-span-10 ">
+                <button className="p-2 bg-emerald-400 text-white rounded">
+                  {" "}
+                  Launch Deviation
+                </button>
+              </div>
+            </div>
             <h1 className="gridName pt-8">Disintegration Of Terbinafine Test Result</h1>
             <div>
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
@@ -8393,18 +9250,233 @@ export default function APQR() {
                 </tbody>
               </table>
             </div>
-            <HighchartsLine
-              heading={"Paracetamol pH Graph"}
-              xHeading={"Batch No."}
-              yHeading={"Observed Value"}
-              yMax={6}
-              yMin={0}
-              yTickInterval={0.4}
-              plotLines={ParacetamolpHPlotLines}
-              zones={paracetamolpHZones}
-              annotations={paracetamolAnnotations}
-              highchartData={paracetamolpHData10}
-            />
+            <div className=" grid grid-cols-10 shadow-md shadow-gray-700/30 my-20 bg-slate-700 p-4 gap-4 mx-[-30px]">
+            <div className="py-2 col-span-10 cursor-pointer text-gray-100 text-[22px] flex justify-center items-center"> Disintegration Of Terbinafine Analysis</div>
+              <div className="col-span-4 row-span-1 mb-10 max-h-38 ">
+                <HighchartsLine
+                  heading={""}
+                  xHeading={"Batch No."}
+                  yHeading={"Observed Value"}
+                  yMax={100}
+                  yMin={75}
+                  yTickInterval={7}
+                  plotLines={ParacetamolDisintegratePlotLines}
+                  zones={paracetamolpHZones}
+                  annotations={paracetamolAnnotations}
+                  highchartData={paracetamolpHData10}
+                />
+              </div>
+              <div className="col-span-4 row-span-1">
+                <HighchartsHistogramScatter
+                  // phOfParacetamol={phOfParacetamolHistogram}
+                  data={paracetamolpHDataH.observedValues}
+                  lsl={phOfParacetamolHistogram.lsl}
+                  usl={phOfParacetamolHistogram.usl}
+                  heading={phOfParacetamolHistogram.heading}
+                  yAxisTitle={phOfParacetamolHistogram.yAxisTitle}
+                  xAxisTitle={phOfParacetamolHistogram.xAxisTitle}
+                />
+              </div>
+              <div className="col-span-2 row-span-2 bg-white">
+                <table>
+                  <tbody>
+                    <tr>
+                      <td>
+                        {" "}
+                        <b>Cp B/W</b>
+                      </td>
+                      <td>
+                        <b>0.67</b>
+                      </td>
+                      <td>Decimal Points</td>
+                      <td>2.00</td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <b>Cpk B/W</b>
+                      </td>
+                      <td>
+                        <b>0.60</b>
+                      </td>
+                      <td>Unit Of Measure</td>
+                      <td>0.001</td>
+                    </tr>
+                    <tr>
+                      <td>CpU B/W</td>
+                      <td>0.60</td>
+                      <td>Number Of Entries</td>
+                      <td>7</td>
+                    </tr>
+                    <tr>
+                      <td>Cpl B/W</td>
+                      <td>0.75</td>
+                      <td>
+                        <b>Average</b>
+                      </td>
+                      <td>
+                        <b>2.89</b>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>Cpm</td>
+                      <td>0.72</td>
+                      <td>
+                        <b>Stdev</b>
+                      </td>
+                      <td>
+                        <b>0.45</b>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>Cr</td>
+                      <td>1.48</td>
+                      <td>
+                        <b>Median</b>
+                      </td>
+                      <td>
+                        <b>3.00</b>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>ZTarget/AZ</td>
+                      <td>0.25</td>
+                      <td>
+                        <b>Mode</b>
+                      </td>
+                      <td>
+                        <b>3.00</b>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <b>Pp</b>
+                      </td>
+                      <td>0.74</td>
+                      <td>Minimum Value</td>
+                      <td>2.00</td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <b>Ppk</b>
+                      </td>
+                      <td>0.66</td>
+                      <td>Maximum Value</td>
+                      <td>
+                        <b>2.00</b>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>PpU</td>
+                      <td>0.83</td>
+                      <td>Range</td>
+                      <td>1.50</td>
+                    </tr>
+                    <tr>
+                      <td>Ppl</td>
+                      <td>0.66</td>
+                      <td>
+                        <b>LSL</b>
+                      </td>
+                      <td>
+                        <b>2.00</b>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>Skewness</td>
+                      <td>-1.19</td>
+                      <td>
+                        <b>USL</b>
+                      </td>
+                      <td>
+                        <b>4.00</b>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>Stdev</td>
+                      <td>0.45</td>
+                      <td>Number Of Bars</td>
+                      <td>3.00</td>
+                    </tr>
+                    <tr>
+                      <td>Min</td>
+                      <td>2.00</td>
+                      <td>Number Of Classes</td>
+                      <td>4.00</td>
+                    </tr>
+                    <tr>
+                      <td>Max</td>
+                      <td>3.50</td>
+                      <td>Class Width</td>
+                      <td>0.35</td>
+                    </tr>
+                    <tr>
+                      <td>Range</td>
+                      <td>1.50</td>
+                      <td>Beginning Point</td>
+                      <td>1.65</td>
+                    </tr>
+                    <tr>
+                      <td>Z Bench</td>
+                      <td>1.79</td>
+                      <td>Stdev Est</td>
+                      <td>0.46</td>
+                    </tr>
+                    <tr>
+                      <td>% Defects</td>
+                      <td>0.0%</td>
+                      <td>d2/c4</td>
+                      <td>0.92</td>
+                    </tr>
+                    <tr>
+                      <td>PPM</td>
+                      <td>0.00</td>
+                      <td>Target</td>
+                      <td>3</td>
+                    </tr>
+                    <tr>
+                      <td>Exp PPM ST</td>
+                      <td>36586.97</td>
+                      <td>Sigma</td>
+                      <td>3.29</td>
+                    </tr>
+                    <tr>
+                      <td>Exp PPM LT</td>
+                      <td>30738.66</td>
+                      <td></td>
+                      <td></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <div className="col-span-4">
+                <HighchartsPareto
+                //  phOfParacetamol={phOfParacetamolPareto} 
+                data={paracetamolpHDataH.observedValues}
+                lsl={phOfParacetamolPareto.lsl}
+                usl={phOfParacetamolPareto.usl}
+                heading={phOfParacetamolPareto.heading}
+                yAxisTitle={phOfParacetamolPareto.yAxisTitle}
+                xAxisTitle={""}
+                 />
+              </div>
+              <div className="col-span-4">
+                <HighchartsScatterPlot
+                  // phOfParacetamol={phOfParacetamolScatter}
+                  data={paracetamolpHDataH.observedValues}
+                  lsl={phOfParacetamolScatter.lsl}
+                  usl={phOfParacetamolScatter.usl}
+                  heading={phOfParacetamolScatter.heading}
+                  yAxisTitle={phOfParacetamolScatter.yAxisTitle}
+                  batchNumbers={paracetamolpHDataH.batchNumbers}
+                />
+              </div>
+              <div className="py-2 flex justify-end col-span-10 ">
+                <button className="p-2 bg-emerald-400 text-white rounded">
+                  {" "}
+                  Launch Deviation
+                </button>
+              </div>
+            </div>
             <h1 className="gridName pt-8">pH Of Pentoprazole Test Result</h1>
             <div>
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
@@ -8543,18 +9615,230 @@ export default function APQR() {
                 </tbody>
               </table>
             </div>
-            <HighchartsLine
-              heading={" pH Of Pentoprazole Analysis"}
-              xHeading={"Batch No."}
-              yHeading={"Observed Value"}
-              yMax={6}
-              yMin={0}
-              yTickInterval={0.4}
-              plotLines={ParacetamolpHPlotLines}
-              zones={paracetamolpHZones}
-              annotations={paracetamolAnnotations}
-              highchartData={paracetamolpHData11}
-            />
+            <div className=" grid grid-cols-10 shadow-md shadow-gray-700/30 my-20 bg-slate-700 p-4 gap-4 mx-[-30px]">
+            <div className="py-2 col-span-10 cursor-pointer text-gray-100 text-[22px] flex justify-center items-center"> pH Of Pentoprazole Analysis</div>
+              <div className="col-span-4 row-span-1 mb-10 max-h-38 ">
+                <HighchartsLine
+                  heading={"Line Analytics"}
+                  xHeading={"Batch No."}
+                  yHeading={"Observed Value"}
+                  yMax={6}
+                  yMin={1}
+                  yTickInterval={0.5}
+                  plotLines={ParacetamolpHPlotLines}
+                  zones={paracetamolpHZones}
+                  annotations={paracetamolAnnotations}
+                  highchartData={paracetamolpHData11}
+                />
+              </div>
+              <div className="col-span-4 row-span-1">
+                <HighchartsHistogramScatter
+                 data={paracetamolpHDataH.observedValues}
+                 lsl={phOfParacetamolHistogram.lsl}
+                 usl={phOfParacetamolHistogram.usl}
+                 heading={phOfParacetamolHistogram.heading}
+                 yAxisTitle={phOfParacetamolHistogram.yAxisTitle}
+                 xAxisTitle={phOfParacetamolHistogram.xAxisTitle}
+                />
+              </div>
+              <div className="col-span-2 row-span-2 bg-white">
+                <table>
+                  <tbody>
+                    <tr>
+                      <td>
+                        {" "}
+                        <b>Cp B/W</b>
+                      </td>
+                      <td>
+                        <b>0.67</b>
+                      </td>
+                      <td>Decimal Points</td>
+                      <td>2.00</td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <b>Cpk B/W</b>
+                      </td>
+                      <td>
+                        <b>0.60</b>
+                      </td>
+                      <td>Unit Of Measure</td>
+                      <td>0.001</td>
+                    </tr>
+                    <tr>
+                      <td>CpU B/W</td>
+                      <td>0.60</td>
+                      <td>Number Of Entries</td>
+                      <td>7</td>
+                    </tr>
+                    <tr>
+                      <td>Cpl B/W</td>
+                      <td>0.75</td>
+                      <td>
+                        <b>Average</b>
+                      </td>
+                      <td>
+                        <b>2.89</b>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>Cpm</td>
+                      <td>0.72</td>
+                      <td>
+                        <b>Stdev</b>
+                      </td>
+                      <td>
+                        <b>0.45</b>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>Cr</td>
+                      <td>1.48</td>
+                      <td>
+                        <b>Median</b>
+                      </td>
+                      <td>
+                        <b>3.00</b>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>ZTarget/AZ</td>
+                      <td>0.25</td>
+                      <td>
+                        <b>Mode</b>
+                      </td>
+                      <td>
+                        <b>3.00</b>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <b>Pp</b>
+                      </td>
+                      <td>0.74</td>
+                      <td>Minimum Value</td>
+                      <td>2.00</td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <b>Ppk</b>
+                      </td>
+                      <td>0.66</td>
+                      <td>Maximum Value</td>
+                      <td>
+                        <b>2.00</b>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>PpU</td>
+                      <td>0.83</td>
+                      <td>Range</td>
+                      <td>1.50</td>
+                    </tr>
+                    <tr>
+                      <td>Ppl</td>
+                      <td>0.66</td>
+                      <td>
+                        <b>LSL</b>
+                      </td>
+                      <td>
+                        <b>2.00</b>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>Skewness</td>
+                      <td>-1.19</td>
+                      <td>
+                        <b>USL</b>
+                      </td>
+                      <td>
+                        <b>4.00</b>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>Stdev</td>
+                      <td>0.45</td>
+                      <td>Number Of Bars</td>
+                      <td>3.00</td>
+                    </tr>
+                    <tr>
+                      <td>Min</td>
+                      <td>2.00</td>
+                      <td>Number Of Classes</td>
+                      <td>4.00</td>
+                    </tr>
+                    <tr>
+                      <td>Max</td>
+                      <td>3.50</td>
+                      <td>Class Width</td>
+                      <td>0.35</td>
+                    </tr>
+                    <tr>
+                      <td>Range</td>
+                      <td>1.50</td>
+                      <td>Beginning Point</td>
+                      <td>1.65</td>
+                    </tr>
+                    <tr>
+                      <td>Z Bench</td>
+                      <td>1.79</td>
+                      <td>Stdev Est</td>
+                      <td>0.46</td>
+                    </tr>
+                    <tr>
+                      <td>% Defects</td>
+                      <td>0.0%</td>
+                      <td>d2/c4</td>
+                      <td>0.92</td>
+                    </tr>
+                    <tr>
+                      <td>PPM</td>
+                      <td>0.00</td>
+                      <td>Target</td>
+                      <td>3</td>
+                    </tr>
+                    <tr>
+                      <td>Exp PPM ST</td>
+                      <td>36586.97</td>
+                      <td>Sigma</td>
+                      <td>3.29</td>
+                    </tr>
+                    <tr>
+                      <td>Exp PPM LT</td>
+                      <td>30738.66</td>
+                      <td></td>
+                      <td></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <div className="col-span-4">
+                <HighchartsPareto 
+                   data={paracetamolpHDataH.observedValues}
+                   lsl={phOfParacetamolPareto.lsl}
+                   usl={phOfParacetamolPareto.usl}
+                   heading={phOfParacetamolPareto.heading}
+                   yAxisTitle={phOfParacetamolPareto.yAxisTitle}
+                   xAxisTitle={""} />
+              </div>
+              <div className="col-span-4">
+                <HighchartsScatterPlot
+                  // phOfParacetamol={phOfParacetamolScatter}
+                  data={paracetamolpHDataH.observedValues}
+                  lsl={phOfParacetamolScatter.lsl}
+                  usl={phOfParacetamolScatter.usl}
+                  heading={phOfParacetamolScatter.heading}
+                  yAxisTitle={phOfParacetamolScatter.yAxisTitle}
+                  batchNumbers={paracetamolpHDataH.batchNumbers}
+                />
+              </div>
+              <div className="py-2 flex justify-end col-span-10 ">
+                <button className="p-2 bg-emerald-400 text-white rounded">
+                  {" "}
+                  Launch Deviation
+                </button>
+              </div>
+            </div>
             <h1 className="gridName pt-8">Assay Of Pentoprazole Test Result</h1>
             <div>
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
@@ -8693,18 +9977,233 @@ export default function APQR() {
                 </tbody>
               </table>
             </div>
-            <HighchartsLine
-              heading={"Assay Of Pentoprazole Analysis"}
-              xHeading={"Batch No."}
-              yHeading={"Observed Value"}
-              yMax={6}
-              yMin={0}
-              yTickInterval={0.4}
-              plotLines={ParacetamolpHPlotLines}
-              zones={paracetamolpHZones}
-              annotations={paracetamolAnnotations}
-              highchartData={paracetamolpHData12}
-            />
+            <div className=" grid grid-cols-10 shadow-md shadow-gray-700/30 my-20 bg-slate-700 p-4 gap-4 mx-[-30px]">
+            <div className="py-2 col-span-10 cursor-pointer text-gray-100 text-[22px] flex justify-center items-center"> Assay Of Pentoprazole Analysis</div>
+              <div className="col-span-4 row-span-1 mb-10 max-h-38 ">
+                <HighchartsLine
+                  heading={"Line Analytics"}
+                  xHeading={"Batch No."}
+                  yHeading={"Observed Value"}
+                  yMax={110}
+                  yMin={86}
+                  yTickInterval={3}
+                  plotLines={ParacetamolAssayPlotLines}
+                  zones={paracetamolpHZones}
+                  annotations={paracetamolAnnotations}
+                  highchartData={paracetamolpHData12}
+                />
+              </div>
+              <div className="col-span-4 row-span-1">
+                <HighchartsHistogramScatter
+                  // phOfParacetamol={phOfParacetamolHistogram}
+                  data={paracetamolpHDataH.observedValues}
+                  lsl={phOfParacetamolHistogram.lsl}
+                  usl={phOfParacetamolHistogram.usl}
+                  heading={phOfParacetamolHistogram.heading}
+                  yAxisTitle={phOfParacetamolHistogram.yAxisTitle}
+                  xAxisTitle={phOfParacetamolHistogram.xAxisTitle}
+                />
+              </div>
+              <div className="col-span-2 row-span-2 bg-white">
+                <table>
+                  <tbody>
+                    <tr>
+                      <td>
+                        {" "}
+                        <b>Cp B/W</b>
+                      </td>
+                      <td>
+                        <b>0.67</b>
+                      </td>
+                      <td>Decimal Points</td>
+                      <td>2.00</td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <b>Cpk B/W</b>
+                      </td>
+                      <td>
+                        <b>0.60</b>
+                      </td>
+                      <td>Unit Of Measure</td>
+                      <td>0.001</td>
+                    </tr>
+                    <tr>
+                      <td>CpU B/W</td>
+                      <td>0.60</td>
+                      <td>Number Of Entries</td>
+                      <td>7</td>
+                    </tr>
+                    <tr>
+                      <td>Cpl B/W</td>
+                      <td>0.75</td>
+                      <td>
+                        <b>Average</b>
+                      </td>
+                      <td>
+                        <b>2.89</b>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>Cpm</td>
+                      <td>0.72</td>
+                      <td>
+                        <b>Stdev</b>
+                      </td>
+                      <td>
+                        <b>0.45</b>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>Cr</td>
+                      <td>1.48</td>
+                      <td>
+                        <b>Median</b>
+                      </td>
+                      <td>
+                        <b>3.00</b>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>ZTarget/AZ</td>
+                      <td>0.25</td>
+                      <td>
+                        <b>Mode</b>
+                      </td>
+                      <td>
+                        <b>3.00</b>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <b>Pp</b>
+                      </td>
+                      <td>0.74</td>
+                      <td>Minimum Value</td>
+                      <td>2.00</td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <b>Ppk</b>
+                      </td>
+                      <td>0.66</td>
+                      <td>Maximum Value</td>
+                      <td>
+                        <b>2.00</b>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>PpU</td>
+                      <td>0.83</td>
+                      <td>Range</td>
+                      <td>1.50</td>
+                    </tr>
+                    <tr>
+                      <td>Ppl</td>
+                      <td>0.66</td>
+                      <td>
+                        <b>LSL</b>
+                      </td>
+                      <td>
+                        <b>90</b>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>Skewness</td>
+                      <td>-1.19</td>
+                      <td>
+                        <b>USL</b>
+                      </td>
+                      <td>
+                        <b>105</b>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>Stdev</td>
+                      <td>0.45</td>
+                      <td>Number Of Bars</td>
+                      <td>3.00</td>
+                    </tr>
+                    <tr>
+                      <td>Min</td>
+                      <td>2.00</td>
+                      <td>Number Of Classes</td>
+                      <td>4.00</td>
+                    </tr>
+                    <tr>
+                      <td>Max</td>
+                      <td>3.50</td>
+                      <td>Class Width</td>
+                      <td>0.35</td>
+                    </tr>
+                    <tr>
+                      <td>Range</td>
+                      <td>1.50</td>
+                      <td>Beginning Point</td>
+                      <td>1.65</td>
+                    </tr>
+                    <tr>
+                      <td>Z Bench</td>
+                      <td>1.79</td>
+                      <td>Stdev Est</td>
+                      <td>0.46</td>
+                    </tr>
+                    <tr>
+                      <td>% Defects</td>
+                      <td>0.0%</td>
+                      <td>d2/c4</td>
+                      <td>0.92</td>
+                    </tr>
+                    <tr>
+                      <td>PPM</td>
+                      <td>0.00</td>
+                      <td>Target</td>
+                      <td>3</td>
+                    </tr>
+                    <tr>
+                      <td>Exp PPM ST</td>
+                      <td>36586.97</td>
+                      <td>Sigma</td>
+                      <td>3.29</td>
+                    </tr>
+                    <tr>
+                      <td>Exp PPM LT</td>
+                      <td>30738.66</td>
+                      <td></td>
+                      <td></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <div className="col-span-4">
+                <HighchartsPareto 
+                // phOfParacetamol={phOfParacetamolPareto}
+                data={paracetamolpHDataH.observedValues}
+                lsl={phOfParacetamolPareto.lsl}
+                usl={phOfParacetamolPareto.usl}
+                heading={phOfParacetamolPareto.heading}
+                yAxisTitle={phOfParacetamolPareto.yAxisTitle}
+                xAxisTitle={""}
+                 />
+              </div>
+              <div className="col-span-4">
+                <HighchartsScatterPlot
+                  // phOfParacetamol={phOfParacetamolScatter}
+                  data={paracetamolpHDataH.observedValues}
+                  lsl={phOfParacetamolScatter.lsl}
+                  usl={phOfParacetamolScatter.usl}
+                  heading={phOfParacetamolScatter.heading}
+                  yAxisTitle={phOfParacetamolScatter.yAxisTitle}
+                  batchNumbers={paracetamolpHDataH.batchNumbers}
+                />
+              </div>
+              <div className="py-2 flex justify-end col-span-10 ">
+                <button className="p-2 bg-emerald-400 text-white rounded">
+                  {" "}
+                  Launch Deviation
+                </button>
+              </div>
+            </div>
             <h1 className="gridName pt-8">Impurity Of Pentoprazole Test Result</h1>
             <div>
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
@@ -8843,18 +10342,233 @@ export default function APQR() {
                 </tbody>
               </table>
             </div>
-            <HighchartsLine
-              heading={"Impurity Of Pentoprazole Analysis"}
-              xHeading={"Batch No."}
-              yHeading={"Observed Value"}
-              yMax={6}
-              yMin={0}
-              yTickInterval={0.4}
-              plotLines={ParacetamolpHPlotLines}
-              zones={paracetamolpHZones}
-              annotations={paracetamolAnnotations}
-              highchartData={paracetamolpHData13}
-            />
+            <div className=" grid grid-cols-10 shadow-md shadow-gray-700/30 my-20 bg-slate-700 p-4 gap-4 mx-[-30px]">
+            <div className="py-2 col-span-10 cursor-pointer text-gray-100 text-[22px] flex justify-center items-center"> Impurity Of Pentoprazole Analysis</div>
+              <div className="col-span-4 row-span-1 mb-10 max-h-38 ">
+                <HighchartsLine
+                  heading={"Line Analysis"}
+                  xHeading={"Batch No."}
+                  yHeading={"Observed Value"}
+                  yMax={7}
+                  yMin={3}
+                  yTickInterval={0.5}
+                  plotLines={ParacetamolImpurityPlotLines}
+                  zones={paracetamolpHZones}
+                  annotations={paracetamolAnnotations}
+                  highchartData={paracetamolpHData13}
+                />
+              </div>
+              <div className="col-span-4 row-span-1">
+                <HighchartsHistogramScatter
+                  // phOfParacetamol={phOfParacetamolHistogram}
+                  data={paracetamolpHDataH.observedValues}
+                  lsl={phOfParacetamolHistogram.lsl}
+                  usl={phOfParacetamolHistogram.usl}
+                  heading={phOfParacetamolHistogram.heading}
+                  yAxisTitle={phOfParacetamolHistogram.yAxisTitle}
+                  xAxisTitle={phOfParacetamolHistogram.xAxisTitle}
+                />
+              </div>
+              <div className="col-span-2 row-span-2 bg-white">
+                <table>
+                  <tbody>
+                    <tr>
+                      <td>
+                        {" "}
+                        <b>Cp B/W</b>
+                      </td>
+                      <td>
+                        <b>0.67</b>
+                      </td>
+                      <td>Decimal Points</td>
+                      <td>2.00</td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <b>Cpk B/W</b>
+                      </td>
+                      <td>
+                        <b>0.60</b>
+                      </td>
+                      <td>Unit Of Measure</td>
+                      <td>0.001</td>
+                    </tr>
+                    <tr>
+                      <td>CpU B/W</td>
+                      <td>0.60</td>
+                      <td>Number Of Entries</td>
+                      <td>7</td>
+                    </tr>
+                    <tr>
+                      <td>Cpl B/W</td>
+                      <td>0.75</td>
+                      <td>
+                        <b>Average</b>
+                      </td>
+                      <td>
+                        <b>2.89</b>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>Cpm</td>
+                      <td>0.72</td>
+                      <td>
+                        <b>Stdev</b>
+                      </td>
+                      <td>
+                        <b>0.45</b>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>Cr</td>
+                      <td>1.48</td>
+                      <td>
+                        <b>Median</b>
+                      </td>
+                      <td>
+                        <b>3.00</b>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>ZTarget/AZ</td>
+                      <td>0.25</td>
+                      <td>
+                        <b>Mode</b>
+                      </td>
+                      <td>
+                        <b>3.00</b>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <b>Pp</b>
+                      </td>
+                      <td>0.74</td>
+                      <td>Minimum Value</td>
+                      <td>2.00</td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <b>Ppk</b>
+                      </td>
+                      <td>0.66</td>
+                      <td>Maximum Value</td>
+                      <td>
+                        <b>2.00</b>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>PpU</td>
+                      <td>0.83</td>
+                      <td>Range</td>
+                      <td>1.50</td>
+                    </tr>
+                    <tr>
+                      <td>Ppl</td>
+                      <td>0.66</td>
+                      <td>
+                        <b>LSL</b>
+                      </td>
+                      <td>
+                        <b>4.00</b>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>Skewness</td>
+                      <td>-1.19</td>
+                      <td>
+                        <b>USL</b>
+                      </td>
+                      <td>
+                        <b>6.00</b>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>Stdev</td>
+                      <td>0.45</td>
+                      <td>Number Of Bars</td>
+                      <td>3.00</td>
+                    </tr>
+                    <tr>
+                      <td>Min</td>
+                      <td>2.00</td>
+                      <td>Number Of Classes</td>
+                      <td>4.00</td>
+                    </tr>
+                    <tr>
+                      <td>Max</td>
+                      <td>3.50</td>
+                      <td>Class Width</td>
+                      <td>0.35</td>
+                    </tr>
+                    <tr>
+                      <td>Range</td>
+                      <td>1.50</td>
+                      <td>Beginning Point</td>
+                      <td>1.65</td>
+                    </tr>
+                    <tr>
+                      <td>Z Bench</td>
+                      <td>1.79</td>
+                      <td>Stdev Est</td>
+                      <td>0.46</td>
+                    </tr>
+                    <tr>
+                      <td>% Defects</td>
+                      <td>0.0%</td>
+                      <td>d2/c4</td>
+                      <td>0.92</td>
+                    </tr>
+                    <tr>
+                      <td>PPM</td>
+                      <td>0.00</td>
+                      <td>Target</td>
+                      <td>3</td>
+                    </tr>
+                    <tr>
+                      <td>Exp PPM ST</td>
+                      <td>36586.97</td>
+                      <td>Sigma</td>
+                      <td>3.29</td>
+                    </tr>
+                    <tr>
+                      <td>Exp PPM LT</td>
+                      <td>30738.66</td>
+                      <td></td>
+                      <td></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <div className="col-span-4">
+                <HighchartsPareto
+                //  phOfParacetamol={phOfParacetamolPareto}
+                data={paracetamolpHDataH.observedValues}
+                lsl={phOfParacetamolPareto.lsl}
+                usl={phOfParacetamolPareto.usl}
+                heading={phOfParacetamolPareto.heading}
+                yAxisTitle={phOfParacetamolPareto.yAxisTitle}
+                xAxisTitle={""}
+                  />
+              </div>
+              <div className="col-span-4">
+                <HighchartsScatterPlot
+                  // phOfParacetamol={phOfParacetamolScatter}
+                  data={paracetamolpHDataH.observedValues}
+                  lsl={phOfParacetamolScatter.lsl}
+                  usl={phOfParacetamolScatter.usl}
+                  heading={phOfParacetamolScatter.heading}
+                  yAxisTitle={phOfParacetamolScatter.yAxisTitle}
+                  batchNumbers={paracetamolpHDataH.batchNumbers}
+                />
+              </div>
+              <div className="py-2 flex justify-end col-span-10 ">
+                <button className="p-2 bg-emerald-400 text-white rounded">
+                  {" "}
+                  Launch Deviation
+                </button>
+              </div>
+            </div>
             <h1 className="gridName pt-8">Dissolution Of Pentoprazole Test Result</h1>
             <div>
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
@@ -8993,18 +10707,233 @@ export default function APQR() {
                 </tbody>
               </table>
             </div>
-            <HighchartsLine
-              heading={"Dissolution Of Pentoprazole  Analysis"}
-              xHeading={"Batch No."}
-              yHeading={"Observed Value"}
-              yMax={6}
-              yMin={0}
-              yTickInterval={0.4}
-              plotLines={ParacetamolpHPlotLines}
-              zones={paracetamolpHZones}
-              annotations={paracetamolAnnotations}
-              highchartData={paracetamolpHData14}
-            />
+            <div className=" grid grid-cols-10 shadow-md shadow-gray-700/30 my-20 bg-slate-700 p-4 gap-4 mx-[-30px]">
+            <div className="py-2 col-span-10 cursor-pointer text-gray-100 text-[22px] flex justify-center items-center">Dissolution Of Pentoprazole Analysis</div>
+              <div className="col-span-4 row-span-1 mb-10 max-h-38 ">
+                <HighchartsLine
+                  heading={"Line Analytics"}
+                  xHeading={"Batch No."}
+                  yHeading={"Observed Value"}
+                  yMax={6}
+                  yMin={0}
+                  yTickInterval={0.8}
+                  plotLines={ParacetamolDissolutionPlotLines}
+                  zones={paracetamolpHZones}
+                  annotations={paracetamolAnnotations}
+                  highchartData={paracetamolpHData14}
+                />
+              </div>
+              <div className="col-span-4 row-span-1">
+                <HighchartsHistogramScatter
+                  // phOfParacetamol={phOfParacetamolHistogram}
+                  data={paracetamolpHDataH.observedValues}
+                  lsl={phOfParacetamolHistogram.lsl}
+                  usl={phOfParacetamolHistogram.usl}
+                  heading={phOfParacetamolHistogram.heading}
+                  yAxisTitle={phOfParacetamolHistogram.yAxisTitle}
+                  xAxisTitle={phOfParacetamolHistogram.xAxisTitle}
+                />
+              </div>
+              <div className="col-span-2 row-span-2 bg-white">
+                <table>
+                  <tbody>
+                    <tr>
+                      <td>
+                        {" "}
+                        <b>Cp B/W</b>
+                      </td>
+                      <td>
+                        <b>0.67</b>
+                      </td>
+                      <td>Decimal Points</td>
+                      <td>2.00</td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <b>Cpk B/W</b>
+                      </td>
+                      <td>
+                        <b>0.60</b>
+                      </td>
+                      <td>Unit Of Measure</td>
+                      <td>0.001</td>
+                    </tr>
+                    <tr>
+                      <td>CpU B/W</td>
+                      <td>0.60</td>
+                      <td>Number Of Entries</td>
+                      <td>7</td>
+                    </tr>
+                    <tr>
+                      <td>Cpl B/W</td>
+                      <td>0.75</td>
+                      <td>
+                        <b>Average</b>
+                      </td>
+                      <td>
+                        <b>2.89</b>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>Cpm</td>
+                      <td>0.72</td>
+                      <td>
+                        <b>Stdev</b>
+                      </td>
+                      <td>
+                        <b>0.45</b>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>Cr</td>
+                      <td>1.48</td>
+                      <td>
+                        <b>Median</b>
+                      </td>
+                      <td>
+                        <b>3.00</b>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>ZTarget/AZ</td>
+                      <td>0.25</td>
+                      <td>
+                        <b>Mode</b>
+                      </td>
+                      <td>
+                        <b>3.00</b>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <b>Pp</b>
+                      </td>
+                      <td>0.74</td>
+                      <td>Minimum Value</td>
+                      <td>2.00</td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <b>Ppk</b>
+                      </td>
+                      <td>0.66</td>
+                      <td>Maximum Value</td>
+                      <td>
+                        <b>2.00</b>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>PpU</td>
+                      <td>0.83</td>
+                      <td>Range</td>
+                      <td>1.50</td>
+                    </tr>
+                    <tr>
+                      <td>Ppl</td>
+                      <td>0.66</td>
+                      <td>
+                        <b>LSL</b>
+                      </td>
+                      <td>
+                        <b>2.00</b>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>Skewness</td>
+                      <td>-1.19</td>
+                      <td>
+                        <b>USL</b>
+                      </td>
+                      <td>
+                        <b>6.00</b>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>Stdev</td>
+                      <td>0.45</td>
+                      <td>Number Of Bars</td>
+                      <td>3.00</td>
+                    </tr>
+                    <tr>
+                      <td>Min</td>
+                      <td>2.00</td>
+                      <td>Number Of Classes</td>
+                      <td>4.00</td>
+                    </tr>
+                    <tr>
+                      <td>Max</td>
+                      <td>3.50</td>
+                      <td>Class Width</td>
+                      <td>0.35</td>
+                    </tr>
+                    <tr>
+                      <td>Range</td>
+                      <td>1.50</td>
+                      <td>Beginning Point</td>
+                      <td>1.65</td>
+                    </tr>
+                    <tr>
+                      <td>Z Bench</td>
+                      <td>1.79</td>
+                      <td>Stdev Est</td>
+                      <td>0.46</td>
+                    </tr>
+                    <tr>
+                      <td>% Defects</td>
+                      <td>0.0%</td>
+                      <td>d2/c4</td>
+                      <td>0.92</td>
+                    </tr>
+                    <tr>
+                      <td>PPM</td>
+                      <td>0.00</td>
+                      <td>Target</td>
+                      <td>3</td>
+                    </tr>
+                    <tr>
+                      <td>Exp PPM ST</td>
+                      <td>36586.97</td>
+                      <td>Sigma</td>
+                      <td>3.29</td>
+                    </tr>
+                    <tr>
+                      <td>Exp PPM LT</td>
+                      <td>30738.66</td>
+                      <td></td>
+                      <td></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <div className="col-span-4">
+                <HighchartsPareto 
+                // phOfParacetamol={phOfParacetamolPareto} 
+                data={paracetamolpHDataH.observedValues}
+                lsl={phOfParacetamolPareto.lsl}
+                usl={phOfParacetamolPareto.usl}
+                heading={phOfParacetamolPareto.heading}
+                yAxisTitle={phOfParacetamolPareto.yAxisTitle}
+                xAxisTitle={""}
+                />
+              </div>
+              <div className="col-span-4">
+                <HighchartsScatterPlot
+                  // phOfParacetamol={phOfParacetamolScatter}
+                  data={paracetamolpHDataH.observedValues}
+                  lsl={phOfParacetamolScatter.lsl}
+                  usl={phOfParacetamolScatter.usl}
+                  heading={phOfParacetamolScatter.heading}
+                  yAxisTitle={phOfParacetamolScatter.yAxisTitle}
+                  batchNumbers={paracetamolpHDataH.batchNumbers}
+                />
+              </div>
+              <div className="py-2 flex justify-end col-span-10 ">
+                <button className="p-2 bg-emerald-400 text-white rounded">
+                  {" "}
+                  Launch Deviation
+                </button>
+              </div>
+            </div>
             <h1 className="gridName pt-8">Disintegration Of Pentoprazole Test Result</h1>
             <div>
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
@@ -9143,18 +11072,233 @@ export default function APQR() {
                 </tbody>
               </table>
             </div>
-            <HighchartsLine
-              heading={" Disintegration Of Pentoprazole Analysis"}
-              xHeading={"Batch No."}
-              yHeading={"Observed Value"}
-              yMax={6}
-              yMin={0}
-              yTickInterval={0.4}
-              plotLines={ParacetamolpHPlotLines}
-              zones={paracetamolpHZones}
-              annotations={paracetamolAnnotations}
-              highchartData={paracetamolpHData15}
-            />
+            <div className=" grid grid-cols-10 shadow-md shadow-gray-700/30 my-20 bg-slate-700 p-4 gap-4 mx-[-30px]">
+            <div className="py-2 col-span-10 cursor-pointer text-gray-100 text-[22px] flex justify-center items-center"> Disintegration Of Pentoprazole Analysis</div>
+              <div className="col-span-4 row-span-1 mb-10 max-h-38 ">
+                <HighchartsLine
+                  heading={""}
+                  xHeading={"Batch No."}
+                  yHeading={"Observed Value"}
+                  yMax={100}
+                  yMin={75}
+                  yTickInterval={7}
+                  plotLines={ParacetamolDisintegratePlotLines}
+                  zones={paracetamolpHZones}
+                  annotations={paracetamolAnnotations}
+                  highchartData={paracetamolpHData15}
+                />
+              </div>
+              <div className="col-span-4 row-span-1">
+                <HighchartsHistogramScatter
+                  // phOfParacetamol={phOfParacetamolHistogram}
+                  data={paracetamolpHDataH.observedValues}
+                  lsl={phOfParacetamolHistogram.lsl}
+                  usl={phOfParacetamolHistogram.usl}
+                  heading={phOfParacetamolHistogram.heading}
+                  yAxisTitle={phOfParacetamolHistogram.yAxisTitle}
+                  xAxisTitle={phOfParacetamolHistogram.xAxisTitle}
+                />
+              </div>
+              <div className="col-span-2 row-span-2 bg-white">
+                <table>
+                  <tbody>
+                    <tr>
+                      <td>
+                        {" "}
+                        <b>Cp B/W</b>
+                      </td>
+                      <td>
+                        <b>0.67</b>
+                      </td>
+                      <td>Decimal Points</td>
+                      <td>2.00</td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <b>Cpk B/W</b>
+                      </td>
+                      <td>
+                        <b>0.60</b>
+                      </td>
+                      <td>Unit Of Measure</td>
+                      <td>0.001</td>
+                    </tr>
+                    <tr>
+                      <td>CpU B/W</td>
+                      <td>0.60</td>
+                      <td>Number Of Entries</td>
+                      <td>7</td>
+                    </tr>
+                    <tr>
+                      <td>Cpl B/W</td>
+                      <td>0.75</td>
+                      <td>
+                        <b>Average</b>
+                      </td>
+                      <td>
+                        <b>2.89</b>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>Cpm</td>
+                      <td>0.72</td>
+                      <td>
+                        <b>Stdev</b>
+                      </td>
+                      <td>
+                        <b>0.45</b>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>Cr</td>
+                      <td>1.48</td>
+                      <td>
+                        <b>Median</b>
+                      </td>
+                      <td>
+                        <b>3.00</b>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>ZTarget/AZ</td>
+                      <td>0.25</td>
+                      <td>
+                        <b>Mode</b>
+                      </td>
+                      <td>
+                        <b>3.00</b>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <b>Pp</b>
+                      </td>
+                      <td>0.74</td>
+                      <td>Minimum Value</td>
+                      <td>2.00</td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <b>Ppk</b>
+                      </td>
+                      <td>0.66</td>
+                      <td>Maximum Value</td>
+                      <td>
+                        <b>2.00</b>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>PpU</td>
+                      <td>0.83</td>
+                      <td>Range</td>
+                      <td>1.50</td>
+                    </tr>
+                    <tr>
+                      <td>Ppl</td>
+                      <td>0.66</td>
+                      <td>
+                        <b>LSL</b>
+                      </td>
+                      <td>
+                        <b>2.00</b>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>Skewness</td>
+                      <td>-1.19</td>
+                      <td>
+                        <b>USL</b>
+                      </td>
+                      <td>
+                        <b>4.00</b>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>Stdev</td>
+                      <td>0.45</td>
+                      <td>Number Of Bars</td>
+                      <td>3.00</td>
+                    </tr>
+                    <tr>
+                      <td>Min</td>
+                      <td>2.00</td>
+                      <td>Number Of Classes</td>
+                      <td>4.00</td>
+                    </tr>
+                    <tr>
+                      <td>Max</td>
+                      <td>3.50</td>
+                      <td>Class Width</td>
+                      <td>0.35</td>
+                    </tr>
+                    <tr>
+                      <td>Range</td>
+                      <td>1.50</td>
+                      <td>Beginning Point</td>
+                      <td>1.65</td>
+                    </tr>
+                    <tr>
+                      <td>Z Bench</td>
+                      <td>1.79</td>
+                      <td>Stdev Est</td>
+                      <td>0.46</td>
+                    </tr>
+                    <tr>
+                      <td>% Defects</td>
+                      <td>0.0%</td>
+                      <td>d2/c4</td>
+                      <td>0.92</td>
+                    </tr>
+                    <tr>
+                      <td>PPM</td>
+                      <td>0.00</td>
+                      <td>Target</td>
+                      <td>3</td>
+                    </tr>
+                    <tr>
+                      <td>Exp PPM ST</td>
+                      <td>36586.97</td>
+                      <td>Sigma</td>
+                      <td>3.29</td>
+                    </tr>
+                    <tr>
+                      <td>Exp PPM LT</td>
+                      <td>30738.66</td>
+                      <td></td>
+                      <td></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <div className="col-span-4">
+                <HighchartsPareto
+                //  phOfParacetamol={phOfParacetamolPareto} 
+                data={paracetamolpHDataH.observedValues}
+                lsl={phOfParacetamolPareto.lsl}
+                usl={phOfParacetamolPareto.usl}
+                heading={phOfParacetamolPareto.heading}
+                yAxisTitle={phOfParacetamolPareto.yAxisTitle}
+                xAxisTitle={""}
+                 />
+              </div>
+              <div className="col-span-4">
+                <HighchartsScatterPlot
+                  // phOfParacetamol={phOfParacetamolScatter}
+                  data={paracetamolpHDataH.observedValues}
+                  lsl={phOfParacetamolScatter.lsl}
+                  usl={phOfParacetamolScatter.usl}
+                  heading={phOfParacetamolScatter.heading}
+                  yAxisTitle={phOfParacetamolScatter.yAxisTitle}
+                  batchNumbers={paracetamolpHDataH.batchNumbers}
+                />
+              </div>
+              <div className="py-2 flex justify-end col-span-10 ">
+                <button className="p-2 bg-emerald-400 text-white rounded">
+                  {" "}
+                  Launch Deviation
+                </button>
+              </div>
+            </div>
             <div>
               <h4 className="gridName mt-5">Summary</h4>
               <TinyEditor
