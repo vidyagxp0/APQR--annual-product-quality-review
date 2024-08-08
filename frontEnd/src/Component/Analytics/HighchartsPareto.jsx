@@ -58,6 +58,10 @@ const HighchartsPareto = ({ data, heading, xAxisTitle, yAxisTitle, lsl, usl }) =
     },
     title: {
       text: heading,
+      style: {
+        fontSize: "14px",
+        fontWeight: "bold",
+      },
     },
     xAxis: {
       title: { text: "pH Range" },
@@ -65,7 +69,10 @@ const HighchartsPareto = ({ data, heading, xAxisTitle, yAxisTitle, lsl, usl }) =
     },
     yAxis: [
       {
-        title: { text: yAxisTitle },
+        title: { text: yAxisTitle , style: {
+          fontSize: "14px",
+          fontWeight: "bold",
+        },},
         allowDecimals: false,
       },
       {

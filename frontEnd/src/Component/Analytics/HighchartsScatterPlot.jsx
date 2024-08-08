@@ -16,14 +16,24 @@ const HighchartsScatterPlot = ({ data, heading, batchNumbers, yAxisTitle, lsl, u
     },
     title: {
       text: heading,
+      style: {
+        fontSize: "14px",
+        fontWeight: "bold",
+      },
     },
     xAxis: {
-      title: { text: "Batch Number" },
+      title: { text: "Batch Number", style: {
+        fontSize: "14px",
+        fontWeight: "bold",
+      }, },
       categories: batchNumbers,
       tickInterval: 1,
     },
     yAxis: {
-      title: { text: yAxisTitle },
+      title: { text: yAxisTitle , style: {
+        fontSize: "14px",
+        fontWeight: "bold",
+      },},
       allowDecimals: false,
       max: 5,
     },

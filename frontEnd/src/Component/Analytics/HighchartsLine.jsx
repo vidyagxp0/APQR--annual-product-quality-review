@@ -54,7 +54,7 @@ const HighchartsChart = ({
     title: {
       text: heading,
       style: {
-        fontSize: "22px",
+        fontSize: "14px",
         fontWeight: "bold",
       },
     },
@@ -62,7 +62,7 @@ const HighchartsChart = ({
       title: {
         text: xHeading,
         style: {
-          fontSize: "22px",
+          fontSize: "14px",
           fontWeight: "bold",
         },
       },
@@ -80,7 +80,7 @@ const HighchartsChart = ({
       title: {
         text: yHeading,
         style: {
-          fontSize: "22px",
+          fontSize: "14px",
           fontWeight: "bold",
         },
       },
