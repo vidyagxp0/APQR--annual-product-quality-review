@@ -7,7 +7,7 @@ import { useDispatch } from "react-redux";
 import { updateForm } from "../redux/formSlice";
 import { useLocation, useNavigate } from "react-router-dom";
 import HighchartsLine from "../Component/Analytics/HighchartsLine";
-import HighchartsHistogramScatter from "../Component/Analytics/HighchartsHistogram";
+import HighchartsHistogram from "../Component/Analytics/HighchartsHistogram";
 
 import {
   ParacetamolAssayPlotLines,
@@ -24,10 +24,11 @@ import {
 } from "../Component/Analytics/ChartJsFunction";
 import HighchartsPareto from "../Component/Analytics/HighchartsPareto";
 import HighchartsScatterPlot from "../Component/Analytics/HighchartsScatterPlot";
+import HighchartsHistogram2 from "../Component/Analytics/HighchartsHistogram2";
 export default function APQR() {
   const [tab, setTab] = useState("GI");
 
-  const phOfParacetamolHistogram = {
+  const phHistogramConfig = {
     data: [
       1.65, 2.7, 3.4, 4.1, 2.2, 2.8, 3.3, 4.0, 1.75, 2.9, 3.5, 4.05, 2.1, 2.85, 3.2, 4.15, 1.8,
       2.75, 3.45, 4.0, 2.25, 2.95, 3.35, 4.1, 1.9, 2.8, 3.5, 4.05, 2.0, 2.9, 3.3, 4.0, 1.7, 2.85,
@@ -39,6 +40,36 @@ export default function APQR() {
     heading: "Histogram Analysis",
     yAxisTitle: "Number of Batches",
     xAxisTitle: "pH Range",
+    bins: { "1-2": 0, "2-3": 0, "3-4": 0, "4-5": 0 },
+    plotLines: [
+      { position: 0.5, label: "LSL", align: "right" },
+      { position: 2.5, label: "USL", align: "left" },
+    ],
+  };
+
+  const assayHistogramConfig = {
+    data: [
+      1.65, 2.7, 3.4, 4.1, 2.2, 2.8, 3.3, 4.0, 1.75, 2.9, 3.5, 4.05, 2.1, 2.85, 3.2, 4.15, 1.8,
+      2.75, 3.45, 4.0, 2.25, 2.95, 3.35, 4.1, 1.9, 2.8, 3.5, 4.05, 2.0, 2.9, 3.3, 4.0, 1.7, 2.85,
+      3.45, 4.1, 2.15, 2.9, 3.25, 4.0, 1.85, 2.8, 3.4, 4.05, 2.3, 2.95, 3.5, 4.1, 1.75, 2.85, 3.4,
+      3.9, 3.4,
+    ],
+    lsl: 2,
+    usl: 4,
+    heading: "Histogram Analysis",
+    yAxisTitle: "Number of Batches",
+    xAxisTitle: "pH Range",
+    bins: {
+      "80-95": 0,
+      "95-100": 0,
+      "100-105": 0,
+      "105-120": 0,
+    },
+    plotLines: [
+      { position: 0.5, label: "LSL", align: "right" },
+      { position: 2.5, label: "USL", align: "left" },
+    ],
+    max: 120,
   };
 
   const phOfParacetamolScatter = {
@@ -47,8 +78,8 @@ export default function APQR() {
       3.35, 2.95, 3.4, 2.0, 4.05, 1.8, 2.7, 4.0, 3.45, 2.85, 1.85, 4.1, 2.9, 3.5, 1.7, 3.25, 4.1,
       2.2, 3.3, 2.95, 1.75, 3.5, 4.1, 1.9, 2.8, 4.05, 2.15, 3.4, 1.75, 4.0, 2.8, 3.45, 4.05, 2.0,
     ],
-    lsl: 2,
-    usl: 4,
+    lsl: 95,
+    usl: 105,
     heading: "Scatter Analysis",
     yAxisTitle: "pH",
     batchNumbers: [
@@ -847,7 +878,7 @@ export default function APQR() {
   const location = useLocation();
   const editData = location.state;
 
-  const getGraphData = (inputData) => {    
+  const getGraphData = (inputData) => {
     const outputData = {
       batchNumbers: [],
       observedValues: [],
@@ -861,6 +892,7 @@ export default function APQR() {
     return outputData;
   };
   const paracetamolpHDataH = getGraphData(editData.reviewODSTR);
+  const paracetamolAssayData = getGraphData(editData.reviewODSTR2);
 
   const paracetamolpHData = editData?.reviewODSTR?.map((item) => {
     return { "Batch No.": item.batchNo, "Observed Value": item.observedValue };
@@ -5950,9 +5982,11 @@ export default function APQR() {
                 </tbody>
               </table>
             </div>
-          
             <div className=" grid grid-cols-10 shadow-md shadow-gray-700/30 my-20 bg-slate-700 p-4 gap-4 mx-[-30px]">
-            <div className="py-2 col-span-10 cursor-pointer text-gray-100 text-[22px] flex justify-center items-center"> pH Of Paracetamol Analysis</div>
+              <div className="py-2 col-span-10 cursor-pointer text-gray-100 text-[22px] flex justify-center items-center">
+                {" "}
+                pH Of Paracetamol Analysis
+              </div>
               <div className="col-span-4 row-span-1 mb-10 max-h-38 ">
                 <HighchartsLine
                   heading={"Line Analytics"}
@@ -5968,13 +6002,15 @@ export default function APQR() {
                 />
               </div>
               <div className="col-span-4 row-span-1">
-                <HighchartsHistogramScatter
-                 data={paracetamolpHDataH.observedValues}
-                 lsl={phOfParacetamolHistogram.lsl}
-                 usl={phOfParacetamolHistogram.usl}
-                 heading={phOfParacetamolHistogram.heading}
-                 yAxisTitle={phOfParacetamolHistogram.yAxisTitle}
-                 xAxisTitle={phOfParacetamolHistogram.xAxisTitle}
+                <HighchartsHistogram
+                  data={paracetamolpHDataH.observedValues}
+                  lsl={phHistogramConfig.lsl}
+                  usl={phHistogramConfig.usl}
+                  heading={phHistogramConfig.heading}
+                  yAxisTitle={phHistogramConfig.yAxisTitle}
+                  xAxisTitle={phHistogramConfig.xAxisTitle}
+                  bins={phHistogramConfig.bins}
+                  plotLines={phHistogramConfig.plotLines}
                 />
               </div>
               <div className="col-span-2 row-span-2 bg-white">
@@ -6149,13 +6185,15 @@ export default function APQR() {
                 </table>
               </div>
               <div className="col-span-4">
-                <HighchartsPareto 
-                   data={paracetamolpHDataH.observedValues}
-                   lsl={phOfParacetamolPareto.lsl}
-                   usl={phOfParacetamolPareto.usl}
-                   heading={phOfParacetamolPareto.heading}
-                   yAxisTitle={phOfParacetamolPareto.yAxisTitle}
-                   xAxisTitle={""} />
+                <HighchartsPareto
+                  data={paracetamolpHDataH.observedValues}
+                  lsl={phOfParacetamolPareto.lsl}
+                  usl={phOfParacetamolPareto.usl}
+                  heading={phOfParacetamolPareto.heading}
+                  yAxisTitle={phOfParacetamolPareto.yAxisTitle}
+                  bins={phOfParacetamolPareto.bins}
+                  plotLines={phOfParacetamolPareto.plotLines}
+                />
               </div>
               <div className="col-span-4">
                 <HighchartsScatterPlot
@@ -6169,10 +6207,7 @@ export default function APQR() {
                 />
               </div>
               <div className="py-2 flex justify-end col-span-10 ">
-                <button className="p-2 bg-emerald-400 text-white rounded">
-                  {" "}
-                  Launch Deviation
-                </button>
+                <button className="p-2 bg-emerald-400 text-white rounded"> Launch Deviation</button>
               </div>
             </div>
             <h1 className="gridName  pt-8">Assay Of Paracetamol Test Result</h1>
@@ -6314,7 +6349,10 @@ export default function APQR() {
               </table>
             </div>{" "}
             <div className=" grid grid-cols-10 shadow-md shadow-gray-700/30 my-20 bg-slate-700 p-4 gap-4 mx-[-30px]">
-            <div className="py-2 col-span-10 cursor-pointer text-gray-100 text-[22px] flex justify-center items-center"> Assay Of Paracetamol Analysis</div>
+              <div className="py-2 col-span-10 cursor-pointer text-gray-100 text-[22px] flex justify-center items-center">
+                {" "}
+                Assay Of Paracetamol Analysis
+              </div>
               <div className="col-span-4 row-span-1 mb-10 max-h-38 ">
                 <HighchartsLine
                   heading={"Line Analytics"}
@@ -6330,14 +6368,16 @@ export default function APQR() {
                 />
               </div>
               <div className="col-span-4 row-span-1">
-                <HighchartsHistogramScatter
-                  // phOfParacetamol={phOfParacetamolHistogram}
-                  data={paracetamolpHDataH.observedValues}
-                  lsl={phOfParacetamolHistogram.lsl}
-                  usl={phOfParacetamolHistogram.usl}
-                  heading={phOfParacetamolHistogram.heading}
-                  yAxisTitle={phOfParacetamolHistogram.yAxisTitle}
-                  xAxisTitle={phOfParacetamolHistogram.xAxisTitle}
+                <HighchartsHistogram
+                  // phOfParacetamol={phHistogramConfig}
+                  data={paracetamolAssayData.observedValues}
+                  lsl={assayHistogramConfig.lsl}
+                  usl={assayHistogramConfig.usl}
+                  heading={assayHistogramConfig.heading}
+                  yAxisTitle={assayHistogramConfig.yAxisTitle}
+                  xAxisTitle={assayHistogramConfig.xAxisTitle}
+                  bins={assayHistogramConfig.bins}
+                  plotLines={assayHistogramConfig.plotLines}
                 />
               </div>
               <div className="col-span-2 row-span-2 bg-white">
@@ -6512,32 +6552,31 @@ export default function APQR() {
                 </table>
               </div>
               <div className="col-span-4">
-                <HighchartsPareto 
-                // phOfParacetamol={phOfParacetamolPareto}
-                data={paracetamolpHDataH.observedValues}
-                lsl={phOfParacetamolPareto.lsl}
-                usl={phOfParacetamolPareto.usl}
-                heading={phOfParacetamolPareto.heading}
-                yAxisTitle={phOfParacetamolPareto.yAxisTitle}
-                xAxisTitle={""}
-                 />
+                <HighchartsPareto
+                  // phOfParacetamol={phOfParacetamolPareto}
+                  data={paracetamolAssayData.observedValues}
+                  lsl={assayHistogramConfig.lsl}
+                  usl={assayHistogramConfig.usl}
+                  heading={assayHistogramConfig.heading}
+                  yAxisTitle={assayHistogramConfig.yAxisTitle}
+                  bins={assayHistogramConfig.bins}
+                  plotLines={assayHistogramConfig.plotLines}
+                />
               </div>
               <div className="col-span-4">
                 <HighchartsScatterPlot
                   // phOfParacetamol={phOfParacetamolScatter}
-                  data={paracetamolpHDataH.observedValues}
+                  data={paracetamolAssayData.observedValues}
                   lsl={phOfParacetamolScatter.lsl}
                   usl={phOfParacetamolScatter.usl}
                   heading={phOfParacetamolScatter.heading}
                   yAxisTitle={phOfParacetamolScatter.yAxisTitle}
-                  batchNumbers={paracetamolpHDataH.batchNumbers}
+                  batchNumbers={paracetamolAssayData.batchNumbers}
+                  max={assayHistogramConfig.max}
                 />
               </div>
               <div className="py-2 flex justify-end col-span-10 ">
-                <button className="p-2 bg-emerald-400 text-white rounded">
-                  {" "}
-                  Launch Deviation
-                </button>
+                <button className="p-2 bg-emerald-400 text-white rounded"> Launch Deviation</button>
               </div>
             </div>
             <h1 className="gridName pt-8">Impurity Of Paracetamol Test Result</h1>
@@ -6679,7 +6718,10 @@ export default function APQR() {
               </table>
             </div>{" "}
             <div className=" grid grid-cols-10 shadow-md shadow-gray-700/30 my-20 bg-slate-700 p-4 gap-4 mx-[-30px]">
-            <div className="py-2 col-span-10 cursor-pointer text-gray-100 text-[22px] flex justify-center items-center"> Impurity Of Paracetamol Analysis</div>
+              <div className="py-2 col-span-10 cursor-pointer text-gray-100 text-[22px] flex justify-center items-center">
+                {" "}
+                Impurity Of Paracetamol Analysis
+              </div>
               <div className="col-span-4 row-span-1 mb-10 max-h-38 ">
                 <HighchartsLine
                   heading={"Line Analysis"}
@@ -6695,14 +6737,16 @@ export default function APQR() {
                 />
               </div>
               <div className="col-span-4 row-span-1">
-                <HighchartsHistogramScatter
-                  // phOfParacetamol={phOfParacetamolHistogram}
+                <HighchartsHistogram
+                  // phOfParacetamol={phHistogramConfig}
                   data={paracetamolpHDataH.observedValues}
-                  lsl={phOfParacetamolHistogram.lsl}
-                  usl={phOfParacetamolHistogram.usl}
-                  heading={phOfParacetamolHistogram.heading}
-                  yAxisTitle={phOfParacetamolHistogram.yAxisTitle}
-                  xAxisTitle={phOfParacetamolHistogram.xAxisTitle}
+                  lsl={phHistogramConfig.lsl}
+                  usl={phHistogramConfig.usl}
+                  heading={phHistogramConfig.heading}
+                  yAxisTitle={phHistogramConfig.yAxisTitle}
+                  xAxisTitle={phHistogramConfig.xAxisTitle}
+                  bins={phHistogramConfig.bins}
+                  plotLines={phHistogramConfig.plotLines}
                 />
               </div>
               <div className="col-span-2 row-span-2 bg-white">
@@ -6878,14 +6922,14 @@ export default function APQR() {
               </div>
               <div className="col-span-4">
                 <HighchartsPareto
-                //  phOfParacetamol={phOfParacetamolPareto}
-                data={paracetamolpHDataH.observedValues}
-                lsl={phOfParacetamolPareto.lsl}
-                usl={phOfParacetamolPareto.usl}
-                heading={phOfParacetamolPareto.heading}
-                yAxisTitle={phOfParacetamolPareto.yAxisTitle}
-                xAxisTitle={""}
-                  />
+                  //  phOfParacetamol={phOfParacetamolPareto}
+                  data={paracetamolpHDataH.observedValues}
+                  lsl={phOfParacetamolPareto.lsl}
+                  usl={phOfParacetamolPareto.usl}
+                  heading={phOfParacetamolPareto.heading}
+                  yAxisTitle={phOfParacetamolPareto.yAxisTitle}
+                  xAxisTitle={""}
+                />
               </div>
               <div className="col-span-4">
                 <HighchartsScatterPlot
@@ -6899,10 +6943,7 @@ export default function APQR() {
                 />
               </div>
               <div className="py-2 flex justify-end col-span-10 ">
-                <button className="p-2 bg-emerald-400 text-white rounded">
-                  {" "}
-                  Launch Deviation
-                </button>
+                <button className="p-2 bg-emerald-400 text-white rounded"> Launch Deviation</button>
               </div>
             </div>
             <h1 className="gridName pt-8">Dissolution Of Paracetamol Test Result</h1>
@@ -7048,7 +7089,9 @@ export default function APQR() {
               </table>
             </div>{" "}
             <div className=" grid grid-cols-10 shadow-md shadow-gray-700/30 my-20 bg-slate-700 p-4 gap-4 mx-[-30px]">
-            <div className="py-2 col-span-10 cursor-pointer text-gray-100 text-[22px] flex justify-center items-center">Dissolution Of Paracetamol Analysis</div>
+              <div className="py-2 col-span-10 cursor-pointer text-gray-100 text-[22px] flex justify-center items-center">
+                Dissolution Of Paracetamol Analysis
+              </div>
               <div className="col-span-4 row-span-1 mb-10 max-h-38 ">
                 <HighchartsLine
                   heading={"Line Analytics"}
@@ -7064,14 +7107,16 @@ export default function APQR() {
                 />
               </div>
               <div className="col-span-4 row-span-1">
-                <HighchartsHistogramScatter
-                  // phOfParacetamol={phOfParacetamolHistogram}
+                <HighchartsHistogram
+                  // phOfParacetamol={phHistogramConfig}
                   data={paracetamolpHDataH.observedValues}
-                  lsl={phOfParacetamolHistogram.lsl}
-                  usl={phOfParacetamolHistogram.usl}
-                  heading={phOfParacetamolHistogram.heading}
-                  yAxisTitle={phOfParacetamolHistogram.yAxisTitle}
-                  xAxisTitle={phOfParacetamolHistogram.xAxisTitle}
+                  lsl={phHistogramConfig.lsl}
+                  usl={phHistogramConfig.usl}
+                  heading={phHistogramConfig.heading}
+                  yAxisTitle={phHistogramConfig.yAxisTitle}
+                  xAxisTitle={phHistogramConfig.xAxisTitle}
+                  bins={phHistogramConfig.bins}
+                  plotLines={phHistogramConfig.plotLines}
                 />
               </div>
               <div className="col-span-2 row-span-2 bg-white">
@@ -7246,14 +7291,14 @@ export default function APQR() {
                 </table>
               </div>
               <div className="col-span-4">
-                <HighchartsPareto 
-                // phOfParacetamol={phOfParacetamolPareto} 
-                data={paracetamolpHDataH.observedValues}
-                lsl={phOfParacetamolPareto.lsl}
-                usl={phOfParacetamolPareto.usl}
-                heading={phOfParacetamolPareto.heading}
-                yAxisTitle={phOfParacetamolPareto.yAxisTitle}
-                xAxisTitle={""}
+                <HighchartsPareto
+                  // phOfParacetamol={phOfParacetamolPareto}
+                  data={paracetamolpHDataH.observedValues}
+                  lsl={phOfParacetamolPareto.lsl}
+                  usl={phOfParacetamolPareto.usl}
+                  heading={phOfParacetamolPareto.heading}
+                  yAxisTitle={phOfParacetamolPareto.yAxisTitle}
+                  xAxisTitle={""}
                 />
               </div>
               <div className="col-span-4">
@@ -7268,10 +7313,7 @@ export default function APQR() {
                 />
               </div>
               <div className="py-2 flex justify-end col-span-10 ">
-                <button className="p-2 bg-emerald-400 text-white rounded">
-                  {" "}
-                  Launch Deviation
-                </button>
+                <button className="p-2 bg-emerald-400 text-white rounded"> Launch Deviation</button>
               </div>
             </div>
             <h1 className="gridName pt-8">Disintegration Of Paracetamol Test Result</h1>
@@ -7417,7 +7459,10 @@ export default function APQR() {
               </table>
             </div>{" "}
             <div className=" grid grid-cols-10 shadow-md shadow-gray-700/30 my-20 bg-slate-700 p-4 gap-4 mx-[-30px]">
-            <div className="py-2 col-span-10 cursor-pointer text-gray-100 text-[22px] flex justify-center items-center"> Disintegration Of Paracetamol Analysis</div>
+              <div className="py-2 col-span-10 cursor-pointer text-gray-100 text-[22px] flex justify-center items-center">
+                {" "}
+                Disintegration Of Paracetamol Analysis
+              </div>
               <div className="col-span-4 row-span-1 mb-10 max-h-38 ">
                 <HighchartsLine
                   heading={""}
@@ -7433,14 +7478,16 @@ export default function APQR() {
                 />
               </div>
               <div className="col-span-4 row-span-1">
-                <HighchartsHistogramScatter
-                  // phOfParacetamol={phOfParacetamolHistogram}
+                <HighchartsHistogram
+                  // phOfParacetamol={phHistogramConfig}
                   data={paracetamolpHDataH.observedValues}
-                  lsl={phOfParacetamolHistogram.lsl}
-                  usl={phOfParacetamolHistogram.usl}
-                  heading={phOfParacetamolHistogram.heading}
-                  yAxisTitle={phOfParacetamolHistogram.yAxisTitle}
-                  xAxisTitle={phOfParacetamolHistogram.xAxisTitle}
+                  lsl={phHistogramConfig.lsl}
+                  usl={phHistogramConfig.usl}
+                  heading={phHistogramConfig.heading}
+                  yAxisTitle={phHistogramConfig.yAxisTitle}
+                  xAxisTitle={phHistogramConfig.xAxisTitle}
+                  bins={phHistogramConfig.bins}
+                  plotLines={phHistogramConfig.plotLines}
                 />
               </div>
               <div className="col-span-2 row-span-2 bg-white">
@@ -7616,14 +7663,14 @@ export default function APQR() {
               </div>
               <div className="col-span-4">
                 <HighchartsPareto
-                //  phOfParacetamol={phOfParacetamolPareto} 
-                data={paracetamolpHDataH.observedValues}
-                lsl={phOfParacetamolPareto.lsl}
-                usl={phOfParacetamolPareto.usl}
-                heading={phOfParacetamolPareto.heading}
-                yAxisTitle={phOfParacetamolPareto.yAxisTitle}
-                xAxisTitle={""}
-                 />
+                  //  phOfParacetamol={phOfParacetamolPareto}
+                  data={paracetamolpHDataH.observedValues}
+                  lsl={phOfParacetamolPareto.lsl}
+                  usl={phOfParacetamolPareto.usl}
+                  heading={phOfParacetamolPareto.heading}
+                  yAxisTitle={phOfParacetamolPareto.yAxisTitle}
+                  xAxisTitle={""}
+                />
               </div>
               <div className="col-span-4">
                 <HighchartsScatterPlot
@@ -7637,10 +7684,7 @@ export default function APQR() {
                 />
               </div>
               <div className="py-2 flex justify-end col-span-10 ">
-                <button className="p-2 bg-emerald-400 text-white rounded">
-                  {" "}
-                  Launch Deviation
-                </button>
+                <button className="p-2 bg-emerald-400 text-white rounded"> Launch Deviation</button>
               </div>
             </div>
             <h1 className="gridName pt-8">pH Of Terbinafine Test Result</h1>
@@ -7786,7 +7830,10 @@ export default function APQR() {
               </table>
             </div>{" "}
             <div className=" grid grid-cols-10 shadow-md shadow-gray-700/30 my-20 bg-slate-700 p-4 gap-4 mx-[-30px]">
-            <div className="py-2 col-span-10 cursor-pointer text-gray-100 text-[22px] flex justify-center items-center"> pH Of Terbinafine Analysis</div>
+              <div className="py-2 col-span-10 cursor-pointer text-gray-100 text-[22px] flex justify-center items-center">
+                {" "}
+                pH Of Terbinafine Analysis
+              </div>
               <div className="col-span-4 row-span-1 mb-10 max-h-38 ">
                 <HighchartsLine
                   heading={"Line Analytics"}
@@ -7802,13 +7849,15 @@ export default function APQR() {
                 />
               </div>
               <div className="col-span-4 row-span-1">
-                <HighchartsHistogramScatter
-                 data={paracetamolpHDataH.observedValues}
-                 lsl={phOfParacetamolHistogram.lsl}
-                 usl={phOfParacetamolHistogram.usl}
-                 heading={phOfParacetamolHistogram.heading}
-                 yAxisTitle={phOfParacetamolHistogram.yAxisTitle}
-                 xAxisTitle={phOfParacetamolHistogram.xAxisTitle}
+                <HighchartsHistogram
+                  data={paracetamolpHDataH.observedValues}
+                  lsl={phHistogramConfig.lsl}
+                  usl={phHistogramConfig.usl}
+                  heading={phHistogramConfig.heading}
+                  yAxisTitle={phHistogramConfig.yAxisTitle}
+                  xAxisTitle={phHistogramConfig.xAxisTitle}
+                  bins={phHistogramConfig.bins}
+                  plotLines={phHistogramConfig.plotLines}
                 />
               </div>
               <div className="col-span-2 row-span-2 bg-white">
@@ -7983,13 +8032,14 @@ export default function APQR() {
                 </table>
               </div>
               <div className="col-span-4">
-                <HighchartsPareto 
-                   data={paracetamolpHDataH.observedValues}
-                   lsl={phOfParacetamolPareto.lsl}
-                   usl={phOfParacetamolPareto.usl}
-                   heading={phOfParacetamolPareto.heading}
-                   yAxisTitle={phOfParacetamolPareto.yAxisTitle}
-                   xAxisTitle={""} />
+                <HighchartsPareto
+                  data={paracetamolpHDataH.observedValues}
+                  lsl={phOfParacetamolPareto.lsl}
+                  usl={phOfParacetamolPareto.usl}
+                  heading={phOfParacetamolPareto.heading}
+                  yAxisTitle={phOfParacetamolPareto.yAxisTitle}
+                  xAxisTitle={""}
+                />
               </div>
               <div className="col-span-4">
                 <HighchartsScatterPlot
@@ -8003,10 +8053,7 @@ export default function APQR() {
                 />
               </div>
               <div className="py-2 flex justify-end col-span-10 ">
-                <button className="p-2 bg-emerald-400 text-white rounded">
-                  {" "}
-                  Launch Deviation
-                </button>
+                <button className="p-2 bg-emerald-400 text-white rounded"> Launch Deviation</button>
               </div>
             </div>
             <h1 className="gridName pt-8">Assay Of Terbinafine Test Result</h1>
@@ -8152,7 +8199,10 @@ export default function APQR() {
               </table>
             </div>{" "}
             <div className=" grid grid-cols-10 shadow-md shadow-gray-700/30 my-20 bg-slate-700 p-4 gap-4 mx-[-30px]">
-            <div className="py-2 col-span-10 cursor-pointer text-gray-100 text-[22px] flex justify-center items-center"> Assay Of Terbinafine Analysis</div>
+              <div className="py-2 col-span-10 cursor-pointer text-gray-100 text-[22px] flex justify-center items-center">
+                {" "}
+                Assay Of Terbinafine Analysis
+              </div>
               <div className="col-span-4 row-span-1 mb-10 max-h-38 ">
                 <HighchartsLine
                   heading={"Line Analytics"}
@@ -8168,14 +8218,16 @@ export default function APQR() {
                 />
               </div>
               <div className="col-span-4 row-span-1">
-                <HighchartsHistogramScatter
-                  // phOfParacetamol={phOfParacetamolHistogram}
+                <HighchartsHistogram
+                  // phOfParacetamol={phHistogramConfig}
                   data={paracetamolpHDataH.observedValues}
-                  lsl={phOfParacetamolHistogram.lsl}
-                  usl={phOfParacetamolHistogram.usl}
-                  heading={phOfParacetamolHistogram.heading}
-                  yAxisTitle={phOfParacetamolHistogram.yAxisTitle}
-                  xAxisTitle={phOfParacetamolHistogram.xAxisTitle}
+                  lsl={phHistogramConfig.lsl}
+                  usl={phHistogramConfig.usl}
+                  heading={phHistogramConfig.heading}
+                  yAxisTitle={phHistogramConfig.yAxisTitle}
+                  xAxisTitle={phHistogramConfig.xAxisTitle}
+                  bins={phHistogramConfig.bins}
+                  plotLines={phHistogramConfig.plotLines}
                 />
               </div>
               <div className="col-span-2 row-span-2 bg-white">
@@ -8350,15 +8402,15 @@ export default function APQR() {
                 </table>
               </div>
               <div className="col-span-4">
-                <HighchartsPareto 
-                // phOfParacetamol={phOfParacetamolPareto}
-                data={paracetamolpHDataH.observedValues}
-                lsl={phOfParacetamolPareto.lsl}
-                usl={phOfParacetamolPareto.usl}
-                heading={phOfParacetamolPareto.heading}
-                yAxisTitle={phOfParacetamolPareto.yAxisTitle}
-                xAxisTitle={""}
-                 />
+                <HighchartsPareto
+                  // phOfParacetamol={phOfParacetamolPareto}
+                  data={paracetamolpHDataH.observedValues}
+                  lsl={phOfParacetamolPareto.lsl}
+                  usl={phOfParacetamolPareto.usl}
+                  heading={phOfParacetamolPareto.heading}
+                  yAxisTitle={phOfParacetamolPareto.yAxisTitle}
+                  xAxisTitle={""}
+                />
               </div>
               <div className="col-span-4">
                 <HighchartsScatterPlot
@@ -8372,10 +8424,7 @@ export default function APQR() {
                 />
               </div>
               <div className="py-2 flex justify-end col-span-10 ">
-                <button className="p-2 bg-emerald-400 text-white rounded">
-                  {" "}
-                  Launch Deviation
-                </button>
+                <button className="p-2 bg-emerald-400 text-white rounded"> Launch Deviation</button>
               </div>
             </div>
             <h1 className="gridName pt-8">Impurity Of Terbinafine Test Result</h1>
@@ -8521,7 +8570,10 @@ export default function APQR() {
               </table>
             </div>{" "}
             <div className=" grid grid-cols-10 shadow-md shadow-gray-700/30 my-20 bg-slate-700 p-4 gap-4 mx-[-30px]">
-            <div className="py-2 col-span-10 cursor-pointer text-gray-100 text-[22px] flex justify-center items-center"> Impurity Of Terbinafine Analysis</div>
+              <div className="py-2 col-span-10 cursor-pointer text-gray-100 text-[22px] flex justify-center items-center">
+                {" "}
+                Impurity Of Terbinafine Analysis
+              </div>
               <div className="col-span-4 row-span-1 mb-10 max-h-38 ">
                 <HighchartsLine
                   heading={"Line Analysis"}
@@ -8537,14 +8589,16 @@ export default function APQR() {
                 />
               </div>
               <div className="col-span-4 row-span-1">
-                <HighchartsHistogramScatter
-                  // phOfParacetamol={phOfParacetamolHistogram}
+                <HighchartsHistogram
+                  // phOfParacetamol={phHistogramConfig}
                   data={paracetamolpHDataH.observedValues}
-                  lsl={phOfParacetamolHistogram.lsl}
-                  usl={phOfParacetamolHistogram.usl}
-                  heading={phOfParacetamolHistogram.heading}
-                  yAxisTitle={phOfParacetamolHistogram.yAxisTitle}
-                  xAxisTitle={phOfParacetamolHistogram.xAxisTitle}
+                  lsl={phHistogramConfig.lsl}
+                  usl={phHistogramConfig.usl}
+                  heading={phHistogramConfig.heading}
+                  yAxisTitle={phHistogramConfig.yAxisTitle}
+                  xAxisTitle={phHistogramConfig.xAxisTitle}
+                  bins={phHistogramConfig.bins}
+                  plotLines={phHistogramConfig.plotLines}
                 />
               </div>
               <div className="col-span-2 row-span-2 bg-white">
@@ -8720,14 +8774,14 @@ export default function APQR() {
               </div>
               <div className="col-span-4">
                 <HighchartsPareto
-                //  phOfParacetamol={phOfParacetamolPareto}
-                data={paracetamolpHDataH.observedValues}
-                lsl={phOfParacetamolPareto.lsl}
-                usl={phOfParacetamolPareto.usl}
-                heading={phOfParacetamolPareto.heading}
-                yAxisTitle={phOfParacetamolPareto.yAxisTitle}
-                xAxisTitle={""}
-                  />
+                  //  phOfParacetamol={phOfParacetamolPareto}
+                  data={paracetamolpHDataH.observedValues}
+                  lsl={phOfParacetamolPareto.lsl}
+                  usl={phOfParacetamolPareto.usl}
+                  heading={phOfParacetamolPareto.heading}
+                  yAxisTitle={phOfParacetamolPareto.yAxisTitle}
+                  xAxisTitle={""}
+                />
               </div>
               <div className="col-span-4">
                 <HighchartsScatterPlot
@@ -8741,10 +8795,7 @@ export default function APQR() {
                 />
               </div>
               <div className="py-2 flex justify-end col-span-10 ">
-                <button className="p-2 bg-emerald-400 text-white rounded">
-                  {" "}
-                  Launch Deviation
-                </button>
+                <button className="p-2 bg-emerald-400 text-white rounded"> Launch Deviation</button>
               </div>
             </div>
             <h1 className="gridName pt-8">Dissolution Of Terbinafine Test Result</h1>
@@ -8890,7 +8941,9 @@ export default function APQR() {
               </table>
             </div>{" "}
             <div className=" grid grid-cols-10 shadow-md shadow-gray-700/30 my-20 bg-slate-700 p-4 gap-4 mx-[-30px]">
-            <div className="py-2 col-span-10 cursor-pointer text-gray-100 text-[22px] flex justify-center items-center">Dissolution Of Terbinafine Analysis</div>
+              <div className="py-2 col-span-10 cursor-pointer text-gray-100 text-[22px] flex justify-center items-center">
+                Dissolution Of Terbinafine Analysis
+              </div>
               <div className="col-span-4 row-span-1 mb-10 max-h-38 ">
                 <HighchartsLine
                   heading={"Line Analytics"}
@@ -8906,14 +8959,16 @@ export default function APQR() {
                 />
               </div>
               <div className="col-span-4 row-span-1">
-                <HighchartsHistogramScatter
-                  // phOfParacetamol={phOfParacetamolHistogram}
+                <HighchartsHistogram
+                  // phOfParacetamol={phHistogramConfig}
                   data={paracetamolpHDataH.observedValues}
-                  lsl={phOfParacetamolHistogram.lsl}
-                  usl={phOfParacetamolHistogram.usl}
-                  heading={phOfParacetamolHistogram.heading}
-                  yAxisTitle={phOfParacetamolHistogram.yAxisTitle}
-                  xAxisTitle={phOfParacetamolHistogram.xAxisTitle}
+                  lsl={phHistogramConfig.lsl}
+                  usl={phHistogramConfig.usl}
+                  heading={phHistogramConfig.heading}
+                  yAxisTitle={phHistogramConfig.yAxisTitle}
+                  xAxisTitle={phHistogramConfig.xAxisTitle}
+                  bins={phHistogramConfig.bins}
+                  plotLines={phHistogramConfig.plotLines}
                 />
               </div>
               <div className="col-span-2 row-span-2 bg-white">
@@ -9088,14 +9143,14 @@ export default function APQR() {
                 </table>
               </div>
               <div className="col-span-4">
-                <HighchartsPareto 
-                // phOfParacetamol={phOfParacetamolPareto} 
-                data={paracetamolpHDataH.observedValues}
-                lsl={phOfParacetamolPareto.lsl}
-                usl={phOfParacetamolPareto.usl}
-                heading={phOfParacetamolPareto.heading}
-                yAxisTitle={phOfParacetamolPareto.yAxisTitle}
-                xAxisTitle={""}
+                <HighchartsPareto
+                  // phOfParacetamol={phOfParacetamolPareto}
+                  data={paracetamolpHDataH.observedValues}
+                  lsl={phOfParacetamolPareto.lsl}
+                  usl={phOfParacetamolPareto.usl}
+                  heading={phOfParacetamolPareto.heading}
+                  yAxisTitle={phOfParacetamolPareto.yAxisTitle}
+                  xAxisTitle={""}
                 />
               </div>
               <div className="col-span-4">
@@ -9110,10 +9165,7 @@ export default function APQR() {
                 />
               </div>
               <div className="py-2 flex justify-end col-span-10 ">
-                <button className="p-2 bg-emerald-400 text-white rounded">
-                  {" "}
-                  Launch Deviation
-                </button>
+                <button className="p-2 bg-emerald-400 text-white rounded"> Launch Deviation</button>
               </div>
             </div>
             <h1 className="gridName pt-8">Disintegration Of Terbinafine Test Result</h1>
@@ -9255,7 +9307,10 @@ export default function APQR() {
               </table>
             </div>
             <div className=" grid grid-cols-10 shadow-md shadow-gray-700/30 my-20 bg-slate-700 p-4 gap-4 mx-[-30px]">
-            <div className="py-2 col-span-10 cursor-pointer text-gray-100 text-[22px] flex justify-center items-center"> Disintegration Of Terbinafine Analysis</div>
+              <div className="py-2 col-span-10 cursor-pointer text-gray-100 text-[22px] flex justify-center items-center">
+                {" "}
+                Disintegration Of Terbinafine Analysis
+              </div>
               <div className="col-span-4 row-span-1 mb-10 max-h-38 ">
                 <HighchartsLine
                   heading={""}
@@ -9271,14 +9326,16 @@ export default function APQR() {
                 />
               </div>
               <div className="col-span-4 row-span-1">
-                <HighchartsHistogramScatter
-                  // phOfParacetamol={phOfParacetamolHistogram}
+                <HighchartsHistogram
+                  // phOfParacetamol={phHistogramConfig}
                   data={paracetamolpHDataH.observedValues}
-                  lsl={phOfParacetamolHistogram.lsl}
-                  usl={phOfParacetamolHistogram.usl}
-                  heading={phOfParacetamolHistogram.heading}
-                  yAxisTitle={phOfParacetamolHistogram.yAxisTitle}
-                  xAxisTitle={phOfParacetamolHistogram.xAxisTitle}
+                  lsl={phHistogramConfig.lsl}
+                  usl={phHistogramConfig.usl}
+                  heading={phHistogramConfig.heading}
+                  yAxisTitle={phHistogramConfig.yAxisTitle}
+                  xAxisTitle={phHistogramConfig.xAxisTitle}
+                  bins={phHistogramConfig.bins}
+                  plotLines={phHistogramConfig.plotLines}
                 />
               </div>
               <div className="col-span-2 row-span-2 bg-white">
@@ -9454,14 +9511,14 @@ export default function APQR() {
               </div>
               <div className="col-span-4">
                 <HighchartsPareto
-                //  phOfParacetamol={phOfParacetamolPareto} 
-                data={paracetamolpHDataH.observedValues}
-                lsl={phOfParacetamolPareto.lsl}
-                usl={phOfParacetamolPareto.usl}
-                heading={phOfParacetamolPareto.heading}
-                yAxisTitle={phOfParacetamolPareto.yAxisTitle}
-                xAxisTitle={""}
-                 />
+                  //  phOfParacetamol={phOfParacetamolPareto}
+                  data={paracetamolpHDataH.observedValues}
+                  lsl={phOfParacetamolPareto.lsl}
+                  usl={phOfParacetamolPareto.usl}
+                  heading={phOfParacetamolPareto.heading}
+                  yAxisTitle={phOfParacetamolPareto.yAxisTitle}
+                  xAxisTitle={""}
+                />
               </div>
               <div className="col-span-4">
                 <HighchartsScatterPlot
@@ -9475,10 +9532,7 @@ export default function APQR() {
                 />
               </div>
               <div className="py-2 flex justify-end col-span-10 ">
-                <button className="p-2 bg-emerald-400 text-white rounded">
-                  {" "}
-                  Launch Deviation
-                </button>
+                <button className="p-2 bg-emerald-400 text-white rounded"> Launch Deviation</button>
               </div>
             </div>
             <h1 className="gridName pt-8">pH Of Pentoprazole Test Result</h1>
@@ -9620,7 +9674,10 @@ export default function APQR() {
               </table>
             </div>
             <div className=" grid grid-cols-10 shadow-md shadow-gray-700/30 my-20 bg-slate-700 p-4 gap-4 mx-[-30px]">
-            <div className="py-2 col-span-10 cursor-pointer text-gray-100 text-[22px] flex justify-center items-center"> pH Of Pentoprazole Analysis</div>
+              <div className="py-2 col-span-10 cursor-pointer text-gray-100 text-[22px] flex justify-center items-center">
+                {" "}
+                pH Of Pentoprazole Analysis
+              </div>
               <div className="col-span-4 row-span-1 mb-10 max-h-38 ">
                 <HighchartsLine
                   heading={"Line Analytics"}
@@ -9636,13 +9693,15 @@ export default function APQR() {
                 />
               </div>
               <div className="col-span-4 row-span-1">
-                <HighchartsHistogramScatter
-                 data={paracetamolpHDataH.observedValues}
-                 lsl={phOfParacetamolHistogram.lsl}
-                 usl={phOfParacetamolHistogram.usl}
-                 heading={phOfParacetamolHistogram.heading}
-                 yAxisTitle={phOfParacetamolHistogram.yAxisTitle}
-                 xAxisTitle={phOfParacetamolHistogram.xAxisTitle}
+                <HighchartsHistogram
+                  data={paracetamolpHDataH.observedValues}
+                  lsl={phHistogramConfig.lsl}
+                  usl={phHistogramConfig.usl}
+                  heading={phHistogramConfig.heading}
+                  yAxisTitle={phHistogramConfig.yAxisTitle}
+                  xAxisTitle={phHistogramConfig.xAxisTitle}
+                  bins={phHistogramConfig.bins}
+                  plotLines={phHistogramConfig.plotLines}
                 />
               </div>
               <div className="col-span-2 row-span-2 bg-white">
@@ -9817,13 +9876,14 @@ export default function APQR() {
                 </table>
               </div>
               <div className="col-span-4">
-                <HighchartsPareto 
-                   data={paracetamolpHDataH.observedValues}
-                   lsl={phOfParacetamolPareto.lsl}
-                   usl={phOfParacetamolPareto.usl}
-                   heading={phOfParacetamolPareto.heading}
-                   yAxisTitle={phOfParacetamolPareto.yAxisTitle}
-                   xAxisTitle={""} />
+                <HighchartsPareto
+                  data={paracetamolpHDataH.observedValues}
+                  lsl={phOfParacetamolPareto.lsl}
+                  usl={phOfParacetamolPareto.usl}
+                  heading={phOfParacetamolPareto.heading}
+                  yAxisTitle={phOfParacetamolPareto.yAxisTitle}
+                  xAxisTitle={""}
+                />
               </div>
               <div className="col-span-4">
                 <HighchartsScatterPlot
@@ -9837,10 +9897,7 @@ export default function APQR() {
                 />
               </div>
               <div className="py-2 flex justify-end col-span-10 ">
-                <button className="p-2 bg-emerald-400 text-white rounded">
-                  {" "}
-                  Launch Deviation
-                </button>
+                <button className="p-2 bg-emerald-400 text-white rounded"> Launch Deviation</button>
               </div>
             </div>
             <h1 className="gridName pt-8">Assay Of Pentoprazole Test Result</h1>
@@ -9982,7 +10039,10 @@ export default function APQR() {
               </table>
             </div>
             <div className=" grid grid-cols-10 shadow-md shadow-gray-700/30 my-20 bg-slate-700 p-4 gap-4 mx-[-30px]">
-            <div className="py-2 col-span-10 cursor-pointer text-gray-100 text-[22px] flex justify-center items-center"> Assay Of Pentoprazole Analysis</div>
+              <div className="py-2 col-span-10 cursor-pointer text-gray-100 text-[22px] flex justify-center items-center">
+                {" "}
+                Assay Of Pentoprazole Analysis
+              </div>
               <div className="col-span-4 row-span-1 mb-10 max-h-38 ">
                 <HighchartsLine
                   heading={"Line Analytics"}
@@ -9998,14 +10058,16 @@ export default function APQR() {
                 />
               </div>
               <div className="col-span-4 row-span-1">
-                <HighchartsHistogramScatter
-                  // phOfParacetamol={phOfParacetamolHistogram}
+                <HighchartsHistogram
+                  // phOfParacetamol={phHistogramConfig}
                   data={paracetamolpHDataH.observedValues}
-                  lsl={phOfParacetamolHistogram.lsl}
-                  usl={phOfParacetamolHistogram.usl}
-                  heading={phOfParacetamolHistogram.heading}
-                  yAxisTitle={phOfParacetamolHistogram.yAxisTitle}
-                  xAxisTitle={phOfParacetamolHistogram.xAxisTitle}
+                  lsl={phHistogramConfig.lsl}
+                  usl={phHistogramConfig.usl}
+                  heading={phHistogramConfig.heading}
+                  yAxisTitle={phHistogramConfig.yAxisTitle}
+                  xAxisTitle={phHistogramConfig.xAxisTitle}
+                  bins={phHistogramConfig.bins}
+                  plotLines={phHistogramConfig.plotLines}
                 />
               </div>
               <div className="col-span-2 row-span-2 bg-white">
@@ -10180,15 +10242,15 @@ export default function APQR() {
                 </table>
               </div>
               <div className="col-span-4">
-                <HighchartsPareto 
-                // phOfParacetamol={phOfParacetamolPareto}
-                data={paracetamolpHDataH.observedValues}
-                lsl={phOfParacetamolPareto.lsl}
-                usl={phOfParacetamolPareto.usl}
-                heading={phOfParacetamolPareto.heading}
-                yAxisTitle={phOfParacetamolPareto.yAxisTitle}
-                xAxisTitle={""}
-                 />
+                <HighchartsPareto
+                  // phOfParacetamol={phOfParacetamolPareto}
+                  data={paracetamolpHDataH.observedValues}
+                  lsl={phOfParacetamolPareto.lsl}
+                  usl={phOfParacetamolPareto.usl}
+                  heading={phOfParacetamolPareto.heading}
+                  yAxisTitle={phOfParacetamolPareto.yAxisTitle}
+                  xAxisTitle={""}
+                />
               </div>
               <div className="col-span-4">
                 <HighchartsScatterPlot
@@ -10202,10 +10264,7 @@ export default function APQR() {
                 />
               </div>
               <div className="py-2 flex justify-end col-span-10 ">
-                <button className="p-2 bg-emerald-400 text-white rounded">
-                  {" "}
-                  Launch Deviation
-                </button>
+                <button className="p-2 bg-emerald-400 text-white rounded"> Launch Deviation</button>
               </div>
             </div>
             <h1 className="gridName pt-8">Impurity Of Pentoprazole Test Result</h1>
@@ -10347,7 +10406,10 @@ export default function APQR() {
               </table>
             </div>
             <div className=" grid grid-cols-10 shadow-md shadow-gray-700/30 my-20 bg-slate-700 p-4 gap-4 mx-[-30px]">
-            <div className="py-2 col-span-10 cursor-pointer text-gray-100 text-[22px] flex justify-center items-center"> Impurity Of Pentoprazole Analysis</div>
+              <div className="py-2 col-span-10 cursor-pointer text-gray-100 text-[22px] flex justify-center items-center">
+                {" "}
+                Impurity Of Pentoprazole Analysis
+              </div>
               <div className="col-span-4 row-span-1 mb-10 max-h-38 ">
                 <HighchartsLine
                   heading={"Line Analysis"}
@@ -10363,14 +10425,16 @@ export default function APQR() {
                 />
               </div>
               <div className="col-span-4 row-span-1">
-                <HighchartsHistogramScatter
-                  // phOfParacetamol={phOfParacetamolHistogram}
+                <HighchartsHistogram
+                  // phOfParacetamol={phHistogramConfig}
                   data={paracetamolpHDataH.observedValues}
-                  lsl={phOfParacetamolHistogram.lsl}
-                  usl={phOfParacetamolHistogram.usl}
-                  heading={phOfParacetamolHistogram.heading}
-                  yAxisTitle={phOfParacetamolHistogram.yAxisTitle}
-                  xAxisTitle={phOfParacetamolHistogram.xAxisTitle}
+                  lsl={phHistogramConfig.lsl}
+                  usl={phHistogramConfig.usl}
+                  heading={phHistogramConfig.heading}
+                  yAxisTitle={phHistogramConfig.yAxisTitle}
+                  xAxisTitle={phHistogramConfig.xAxisTitle}
+                  bins={phHistogramConfig.bins}
+                  plotLines={phHistogramConfig.plotLines}
                 />
               </div>
               <div className="col-span-2 row-span-2 bg-white">
@@ -10546,14 +10610,14 @@ export default function APQR() {
               </div>
               <div className="col-span-4">
                 <HighchartsPareto
-                //  phOfParacetamol={phOfParacetamolPareto}
-                data={paracetamolpHDataH.observedValues}
-                lsl={phOfParacetamolPareto.lsl}
-                usl={phOfParacetamolPareto.usl}
-                heading={phOfParacetamolPareto.heading}
-                yAxisTitle={phOfParacetamolPareto.yAxisTitle}
-                xAxisTitle={""}
-                  />
+                  //  phOfParacetamol={phOfParacetamolPareto}
+                  data={paracetamolpHDataH.observedValues}
+                  lsl={phOfParacetamolPareto.lsl}
+                  usl={phOfParacetamolPareto.usl}
+                  heading={phOfParacetamolPareto.heading}
+                  yAxisTitle={phOfParacetamolPareto.yAxisTitle}
+                  xAxisTitle={""}
+                />
               </div>
               <div className="col-span-4">
                 <HighchartsScatterPlot
@@ -10567,10 +10631,7 @@ export default function APQR() {
                 />
               </div>
               <div className="py-2 flex justify-end col-span-10 ">
-                <button className="p-2 bg-emerald-400 text-white rounded">
-                  {" "}
-                  Launch Deviation
-                </button>
+                <button className="p-2 bg-emerald-400 text-white rounded"> Launch Deviation</button>
               </div>
             </div>
             <h1 className="gridName pt-8">Dissolution Of Pentoprazole Test Result</h1>
@@ -10712,7 +10773,9 @@ export default function APQR() {
               </table>
             </div>
             <div className=" grid grid-cols-10 shadow-md shadow-gray-700/30 my-20 bg-slate-700 p-4 gap-4 mx-[-30px]">
-            <div className="py-2 col-span-10 cursor-pointer text-gray-100 text-[22px] flex justify-center items-center">Dissolution Of Pentoprazole Analysis</div>
+              <div className="py-2 col-span-10 cursor-pointer text-gray-100 text-[22px] flex justify-center items-center">
+                Dissolution Of Pentoprazole Analysis
+              </div>
               <div className="col-span-4 row-span-1 mb-10 max-h-38 ">
                 <HighchartsLine
                   heading={"Line Analytics"}
@@ -10728,14 +10791,16 @@ export default function APQR() {
                 />
               </div>
               <div className="col-span-4 row-span-1">
-                <HighchartsHistogramScatter
-                  // phOfParacetamol={phOfParacetamolHistogram}
+                <HighchartsHistogram
+                  // phOfParacetamol={phHistogramConfig}
                   data={paracetamolpHDataH.observedValues}
-                  lsl={phOfParacetamolHistogram.lsl}
-                  usl={phOfParacetamolHistogram.usl}
-                  heading={phOfParacetamolHistogram.heading}
-                  yAxisTitle={phOfParacetamolHistogram.yAxisTitle}
-                  xAxisTitle={phOfParacetamolHistogram.xAxisTitle}
+                  lsl={phHistogramConfig.lsl}
+                  usl={phHistogramConfig.usl}
+                  heading={phHistogramConfig.heading}
+                  yAxisTitle={phHistogramConfig.yAxisTitle}
+                  xAxisTitle={phHistogramConfig.xAxisTitle}
+                  bins={phHistogramConfig.bins}
+                  plotLines={phHistogramConfig.plotLines}
                 />
               </div>
               <div className="col-span-2 row-span-2 bg-white">
@@ -10910,14 +10975,14 @@ export default function APQR() {
                 </table>
               </div>
               <div className="col-span-4">
-                <HighchartsPareto 
-                // phOfParacetamol={phOfParacetamolPareto} 
-                data={paracetamolpHDataH.observedValues}
-                lsl={phOfParacetamolPareto.lsl}
-                usl={phOfParacetamolPareto.usl}
-                heading={phOfParacetamolPareto.heading}
-                yAxisTitle={phOfParacetamolPareto.yAxisTitle}
-                xAxisTitle={""}
+                <HighchartsPareto
+                  // phOfParacetamol={phOfParacetamolPareto}
+                  data={paracetamolpHDataH.observedValues}
+                  lsl={phOfParacetamolPareto.lsl}
+                  usl={phOfParacetamolPareto.usl}
+                  heading={phOfParacetamolPareto.heading}
+                  yAxisTitle={phOfParacetamolPareto.yAxisTitle}
+                  xAxisTitle={""}
                 />
               </div>
               <div className="col-span-4">
@@ -10932,10 +10997,7 @@ export default function APQR() {
                 />
               </div>
               <div className="py-2 flex justify-end col-span-10 ">
-                <button className="p-2 bg-emerald-400 text-white rounded">
-                  {" "}
-                  Launch Deviation
-                </button>
+                <button className="p-2 bg-emerald-400 text-white rounded"> Launch Deviation</button>
               </div>
             </div>
             <h1 className="gridName pt-8">Disintegration Of Pentoprazole Test Result</h1>
@@ -11077,7 +11139,10 @@ export default function APQR() {
               </table>
             </div>
             <div className=" grid grid-cols-10 shadow-md shadow-gray-700/30 my-20 bg-slate-700 p-4 gap-4 mx-[-30px]">
-            <div className="py-2 col-span-10 cursor-pointer text-gray-100 text-[22px] flex justify-center items-center"> Disintegration Of Pentoprazole Analysis</div>
+              <div className="py-2 col-span-10 cursor-pointer text-gray-100 text-[22px] flex justify-center items-center">
+                {" "}
+                Disintegration Of Pentoprazole Analysis
+              </div>
               <div className="col-span-4 row-span-1 mb-10 max-h-38 ">
                 <HighchartsLine
                   heading={""}
@@ -11093,14 +11158,16 @@ export default function APQR() {
                 />
               </div>
               <div className="col-span-4 row-span-1">
-                <HighchartsHistogramScatter
-                  // phOfParacetamol={phOfParacetamolHistogram}
+                <HighchartsHistogram
+                  // phOfParacetamol={phHistogramConfig}
                   data={paracetamolpHDataH.observedValues}
-                  lsl={phOfParacetamolHistogram.lsl}
-                  usl={phOfParacetamolHistogram.usl}
-                  heading={phOfParacetamolHistogram.heading}
-                  yAxisTitle={phOfParacetamolHistogram.yAxisTitle}
-                  xAxisTitle={phOfParacetamolHistogram.xAxisTitle}
+                  lsl={phHistogramConfig.lsl}
+                  usl={phHistogramConfig.usl}
+                  heading={phHistogramConfig.heading}
+                  yAxisTitle={phHistogramConfig.yAxisTitle}
+                  xAxisTitle={phHistogramConfig.xAxisTitle}
+                  bins={phHistogramConfig.bins}
+                  plotLines={phHistogramConfig.plotLines}
                 />
               </div>
               <div className="col-span-2 row-span-2 bg-white">
@@ -11276,14 +11343,14 @@ export default function APQR() {
               </div>
               <div className="col-span-4">
                 <HighchartsPareto
-                //  phOfParacetamol={phOfParacetamolPareto} 
-                data={paracetamolpHDataH.observedValues}
-                lsl={phOfParacetamolPareto.lsl}
-                usl={phOfParacetamolPareto.usl}
-                heading={phOfParacetamolPareto.heading}
-                yAxisTitle={phOfParacetamolPareto.yAxisTitle}
-                xAxisTitle={""}
-                 />
+                  //  phOfParacetamol={phOfParacetamolPareto}
+                  data={paracetamolpHDataH.observedValues}
+                  lsl={phOfParacetamolPareto.lsl}
+                  usl={phOfParacetamolPareto.usl}
+                  heading={phOfParacetamolPareto.heading}
+                  yAxisTitle={phOfParacetamolPareto.yAxisTitle}
+                  xAxisTitle={""}
+                />
               </div>
               <div className="col-span-4">
                 <HighchartsScatterPlot
@@ -11297,10 +11364,7 @@ export default function APQR() {
                 />
               </div>
               <div className="py-2 flex justify-end col-span-10 ">
-                <button className="p-2 bg-emerald-400 text-white rounded">
-                  {" "}
-                  Launch Deviation
-                </button>
+                <button className="p-2 bg-emerald-400 text-white rounded"> Launch Deviation</button>
               </div>
             </div>
             <div>

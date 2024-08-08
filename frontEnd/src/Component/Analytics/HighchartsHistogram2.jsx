@@ -5,14 +5,7 @@ import Histogram from "highcharts/modules/histogram-bellcurve";
 
 Histogram(Highcharts);
 
-const HighchartsHistogram = ({
-  data = [],
-  heading = "Histogram",
-  xAxisTitle = "X-Axis",
-  yAxisTitle = "Y-Axis",
-  bins = { "1-2": 0, "2-3": 0, "3-4": 0, "4-5": 0 }, // Default bins
-  plotLines = [],
-}) => {
+const HighchartsHistogram2 = ({ data, heading, xAxisTitle, yAxisTitle, bins, plotLines }) => {
   const processData = (data, bins) => {
     const binKeys = Object.keys(bins);
     const binCounts = binKeys.reduce((acc, key) => ({ ...acc, [key]: 0 }), {});
@@ -84,7 +77,7 @@ const HighchartsHistogram = ({
         },
       },
       allowDecimals: false,
-      max: data.length, // Adjust the y-axis maximum value
+      max: data.length / (Object.keys(bins).length * 0.6), // Adjust the y-axis maximum value
     },
     series: [
       {
@@ -113,4 +106,4 @@ const HighchartsHistogram = ({
   return <HighchartsReact highcharts={Highcharts} options={options} />;
 };
 
-export default HighchartsHistogram;
+export default HighchartsHistogram2;

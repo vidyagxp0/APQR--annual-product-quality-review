@@ -20,6 +20,7 @@ import {
 import HighchartsHistogram from "../Component/Analytics/HighchartsHistogram";
 import HighchartsPareto from "../Component/Analytics/HighchartsPareto";
 import HighchartsScatterPlot from "../Component/Analytics/HighchartsScatterPlot";
+import HighchartsHistogram2 from "../Component/Analytics/HighchartsHistogram2";
 
 export default function AdvancedAnalytics() {
   const phOfParacetamol = {
@@ -200,11 +201,37 @@ export default function AdvancedAnalytics() {
     ],
   };
 
+  const chartConfig = {
+    data: [1.5, 2.1, 3.4, 2.8, 4.0, 3.6, 2.9, 1.7, 2.3, 4.5, 1, 1, 2.5, 2.5, 4.5, 1, 1, 2.5, 2.5], // Example data
+    bins: {
+      "1-2": 0,
+      "2-3": 0,
+      "3-4": 0,
+      "4-5": 0,
+    },
+    plotLines: [
+      { position: 0.5, label: "LSL", align: "right" },
+      { position: 2.5, label: "USL", align: "left" },
+    ],
+  };
+
+  // console.log(chartConfig.bins);
+
   return (
     <>
       <Header />
       <BottomHeader />
       <div>
+        <div>
+          <HighchartsHistogram2
+            data={chartConfig.data}
+            heading="Histogram Example"
+            xAxisTitle="Value Ranges"
+            yAxisTitle="Frequency"
+            bins={chartConfig.bins}
+            plotLines={chartConfig.plotLines}
+          />
+        </div>
         {/* <HighchartsChart
           heading={"Paracetamol  Graph"}
           xHeading={"Batch No."}
@@ -295,13 +322,13 @@ export default function AdvancedAnalytics() {
         <div className="flex justify-evenly">
           <div className="w-5/12">
             <HighchartsHistogram
-             data={phOfParacetamolHistogram.data}
-             lsl={phOfParacetamolHistogram.lsl}
-             usl={phOfParacetamolHistogram.usl}
-             heading={phOfParacetamolHistogram.heading}
-             yAxisTitle={phOfParacetamolHistogram.yAxisTitle}
-             xAxisTitle={phOfParacetamolHistogram.xAxisTitle}
-             />
+              data={phOfParacetamolHistogram.data}
+              lsl={phOfParacetamolHistogram.lsl}
+              usl={phOfParacetamolHistogram.usl}
+              heading={phOfParacetamolHistogram.heading}
+              yAxisTitle={phOfParacetamolHistogram.yAxisTitle}
+              xAxisTitle={phOfParacetamolHistogram.xAxisTitle}
+            />
           </div>
           <div className="w-5/12">
             <HighchartsPareto
@@ -311,7 +338,7 @@ export default function AdvancedAnalytics() {
               heading={phOfParacetamolPareto.heading}
               yAxisTitle={phOfParacetamolPareto.yAxisTitle}
               xAxisTitle={""}
-              />
+            />
           </div>
         </div>
         <div className=" px-40 pt-10  shadow-md">
@@ -322,7 +349,7 @@ export default function AdvancedAnalytics() {
             heading={phOfParacetamolScatter.heading}
             yAxisTitle={phOfParacetamolScatter.yAxisTitle}
             batchNumbers={phOfParacetamolScatter.batchNumbers}
-           />
+          />
         </div>
       </div>
     </>

@@ -6,38 +6,29 @@ import Pareto from "highcharts/modules/pareto";
 // Initialize the Pareto module
 Pareto(Highcharts);
 
-const HighchartsPareto = ({ data, heading, xAxisTitle, yAxisTitle, lsl, usl }) => {
-  //   const phOfParacetamol = {
-  //     data: [
-  //       1.65, 2.7, 3.4, 4.1, 2.2, 2.8, 3.3, 4.0, 1.75, 2.9, 3.5, 4.05, 2.1, 2.85, 3.2, 4.15, 1.8,
-  //       2.75, 3.45, 4.0, 2.25, 2.95, 3.35, 4.1, 1.9, 2.8, 3.5, 4.05, 2.0, 2.9, 3.3, 4.0, 1.7, 2.85,
-  //       3.45, 4.1, 2.15, 2.9, 3.25, 4.0, 1.85, 2.8, 3.4, 4.05, 2.3, 2.95, 3.5, 4.1, 1.75, 2.85, 2.85,
-  //       2.85, 2.85, 2.85, 2.85, 2.85, 2.85, 2.85, 2.85, 2.85, 2.85, 2.85, 2.85, 2.85, 2.85, 2.85,
-  //       2.85, 2.85, 2.85, 2.85, 2.85, 2.85, 2.85, 2.85, 2.85, 2.85, 2.85, 2.85, 2.85, 2.85, 2.85,
-  //       2.85, 2.85, 2.85, 2.85, 2.85, 2.85, 2.85, 2.85,
-  //     ],
-  //     lsl: 2,
-  //     usl: 4,
-  //     heading: "Observation value for pH value of Paracetamol",
-  //     yAxisTitle: "Number of Batches",
-  //   };
-
-  const processData = (data) => {
-    const bins = { "1-2": 0, "2-3": 0, "3-4": 0, "4-5": 0 };
+const HighchartsPareto = ({
+  data = [],
+  heading = "Histogram",
+  xAxisTitle = "X-Axis",
+  yAxisTitle = "Y-Axis",
+  bins = { "1-2": 0, "2-3": 0, "3-4": 0, "4-5": 0 }, // Default bins
+  plotLines = [],
+}) => {
+  const processData = (data, bins) => {
+    const binKeys = Object.keys(bins);
+    const binCounts = binKeys.reduce((acc, key) => ({ ...acc, [key]: 0 }), {});
 
     data.forEach((value) => {
-      if (value >= 1 && value < 2) {
-        bins["1-2"]++;
-      } else if (value >= 2 && value < 3) {
-        bins["2-3"]++;
-      } else if (value >= 3 && value < 4) {
-        bins["3-4"]++;
-      } else if (value >= 4 && value < 5) {
-        bins["4-5"]++;
+      for (let i = 0; i < binKeys.length; i++) {
+        const [min, max] = binKeys[i].split("-").map(Number);
+        if (value >= min && value < max) {
+          binCounts[binKeys[i]]++;
+          break;
+        }
       }
     });
 
-    const histogramData = Object.keys(bins).map((bin) => bins[bin]);
+    const histogramData = binKeys.map((bin) => binCounts[bin]);
 
     // Calculate cumulative data for the Pareto line
     let cumulativeData = [];
@@ -50,7 +41,8 @@ const HighchartsPareto = ({ data, heading, xAxisTitle, yAxisTitle, lsl, usl }) =
 
     return { histogramData, cumulativeData };
   };
-  const { histogramData, cumulativeData } = processData(data);
+
+  const { histogramData, cumulativeData } = processData(data, bins);
 
   const options = {
     chart: {
@@ -64,19 +56,34 @@ const HighchartsPareto = ({ data, heading, xAxisTitle, yAxisTitle, lsl, usl }) =
       },
     },
     xAxis: {
-      title: { text: "pH Range" },
-      categories: ["1-2", "2-3", "3-4", "4-5"],
+      title: {
+        text: xAxisTitle,
+        style: {
+          fontSize: "14px",
+          fontWeight: "bold",
+        },
+      },
+      categories: Object.keys(bins),
     },
     yAxis: [
       {
-        title: { text: yAxisTitle , style: {
-          fontSize: "14px",
-          fontWeight: "bold",
-        },},
+        title: {
+          text: yAxisTitle,
+          style: {
+            fontSize: "14px",
+            fontWeight: "bold",
+          },
+        },
         allowDecimals: false,
       },
       {
-        title: { text: "Cumulative Percentage" },
+        title: {
+          text: "Cumulative Percentage",
+          style: {
+            fontSize: "14px",
+            fontWeight: "bold",
+          },
+        },
         max: 100,
         opposite: true,
       },
