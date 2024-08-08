@@ -401,6 +401,27 @@ export const ParacetamolAssayPlotLines = [
     label: { text: "0", style: { color: "black", fontWeight: "bold" } },
   },
 ];
+export const paracetamolAssayZones = [
+  {
+    value: 90,
+    color: "rgba(200, 0, 0, 1)",
+  },
+  {
+    value: 95,
+    color: "rgba(255, 165, 0, 1)",
+  },
+  {
+    value: 100,
+    color: "rgba(0, 150, 0, 1)",
+  },
+  {
+    value: 105,
+    color: "rgba(255, 165, 0, 1)",
+  },
+  {
+    color: "rgba(200, 0, 0, 1)",
+  },
+];
 
 export const ParacetamolImpurityPlotLines = [
   {
@@ -442,6 +463,27 @@ export const ParacetamolImpurityPlotLines = [
   },
 ];
 
+export const paracetamolImpurityZones = [
+  {
+    value: 4,
+    color: "rgba(200, 0, 0, 1)",
+  },
+  {
+    value: 4.5,
+    color: "rgba(255, 165, 0, 1)",
+  },
+  {
+    value: 5.5,
+    color: "rgba(0, 150, 0, 1)",
+  },
+  {
+    value: 6,
+    color: "rgba(255, 165, 0, 1)",
+  },
+  {
+    color: "rgba(200, 0, 0, 1)",
+  },
+];
 export const ParacetamolDissolutionPlotLines = [
   {
     value: 2,
@@ -479,6 +521,30 @@ export const ParacetamolDissolutionPlotLines = [
     color: "black",
     width: 1,
     label: { text: "0", style: { color: "black", fontWeight: "bold" } },
+  },
+];
+
+
+export const paracetamolDissolutionZones = [
+  {
+    value: 2,
+    color: "rgba(200, 0, 0, 1)",
+  },
+  {
+    value: 3,
+    color: "rgba(255, 165, 0, 1)",
+  },
+  {
+    value: 5,
+    color: "rgba(0, 150, 0, 1)",
+  },
+ 
+  {
+    value: 6,
+    color: "rgba(255, 165, 0, 1)",
+  },
+  {
+    color: "rgba(200, 0, 0, 1)",
   },
 ];
 
@@ -521,17 +587,42 @@ export const ParacetamolDisintegratePlotLines = [
     label: { text: "0", style: { color: "black", fontWeight: "bold" } },
   },
 ];
+
+export const paracetamolDisinterationZones = [
+  {
+    value: 80, // End of red zone
+    color: "rgba(200, 0, 0, 1)", // Red
+  },
+  {
+    value: 85, // End of orange zone
+    color: "rgba(255, 165, 0, 1)", // Orange
+  },
+  {
+    value: 95, // End of green zone
+    color: "rgba(0, 150, 0, 1)", // Green
+  },
+  {
+    value: 100, // End of orange zone
+    color: "rgba(255, 165, 0, 1)", // Orange
+  },
+  {
+    // No value means this applies to anything above the last zone
+    color: "rgba(200, 0, 0, 1)", // Red for anything above 100
+  },
+];
+
+
 export const paracetamolpHZones = [
   {
     value: 2,
     color: "rgba(200, 0, 0, 1)",
   },
   {
-    value: 2,
+    value: 2.5,
     color: "rgba(255, 165, 0, 1)",
   },
   {
-    value: 4,
+    value: 3.5,
     color: "rgba(0, 150, 0, 1)",
   },
   {

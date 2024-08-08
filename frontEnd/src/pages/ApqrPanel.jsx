@@ -16,6 +16,10 @@ import {
   ParacetamolImpurityPlotLines,
   ParacetamolpHPlotLines,
   paracetamolAnnotations,
+  paracetamolAssayZones,
+  paracetamolDisinterationZones,
+  paracetamolDissolutionZones,
+  paracetamolImpurityZones,
   paracetamolpHZones,
 } from "../Component/Analytics/ChartJsFunction";
 import HighchartsPareto from "../Component/Analytics/HighchartsPareto";
@@ -6320,7 +6324,7 @@ export default function APQR() {
                   yMin={86}
                   yTickInterval={3}
                   plotLines={ParacetamolAssayPlotLines}
-                  zones={paracetamolpHZones}
+                  zones={paracetamolAssayZones}
                   annotations={paracetamolAnnotations}
                   highchartData={paracetamolpHData2}
                 />
@@ -6685,7 +6689,7 @@ export default function APQR() {
                   yMin={3}
                   yTickInterval={0.5}
                   plotLines={ParacetamolImpurityPlotLines}
-                  zones={paracetamolpHZones}
+                  zones={paracetamolImpurityZones}
                   annotations={paracetamolAnnotations}
                   highchartData={paracetamolpHData3}
                 />
@@ -7054,7 +7058,7 @@ export default function APQR() {
                   yMin={0}
                   yTickInterval={0.8}
                   plotLines={ParacetamolDissolutionPlotLines}
-                  zones={paracetamolpHZones}
+                  zones={paracetamolDissolutionZones}
                   annotations={paracetamolAnnotations}
                   highchartData={paracetamolpHData4}
                 />
@@ -7423,7 +7427,7 @@ export default function APQR() {
                   yMin={75}
                   yTickInterval={7}
                   plotLines={ParacetamolDisintegratePlotLines}
-                  zones={paracetamolpHZones}
+                  zones={paracetamolDisinterationZones}
                   annotations={paracetamolAnnotations}
                   highchartData={paracetamolpHData5}
                 />
@@ -8158,7 +8162,7 @@ export default function APQR() {
                   yMin={86}
                   yTickInterval={3}
                   plotLines={ParacetamolAssayPlotLines}
-                  zones={paracetamolpHZones}
+                  zones={paracetamolAssayZones}
                   annotations={paracetamolAnnotations}
                   highchartData={paracetamolpHData7}
                 />
@@ -8527,7 +8531,7 @@ export default function APQR() {
                   yMin={3}
                   yTickInterval={0.5}
                   plotLines={ParacetamolImpurityPlotLines}
-                  zones={paracetamolpHZones}
+                  zones={paracetamolImpurityZones}
                   annotations={paracetamolAnnotations}
                   highchartData={paracetamolpHData8}
                 />
@@ -8896,7 +8900,7 @@ export default function APQR() {
                   yMin={0}
                   yTickInterval={0.8}
                   plotLines={ParacetamolDissolutionPlotLines}
-                  zones={paracetamolpHZones}
+                  zones={paracetamolDissolutionZones}
                   annotations={paracetamolAnnotations}
                   highchartData={paracetamolpHData9}
                 />
@@ -9261,7 +9265,7 @@ export default function APQR() {
                   yMin={75}
                   yTickInterval={7}
                   plotLines={ParacetamolDisintegratePlotLines}
-                  zones={paracetamolpHZones}
+                  zones={paracetamolDisinterationZones}
                   annotations={paracetamolAnnotations}
                   highchartData={paracetamolpHData10}
                 />
@@ -9988,7 +9992,7 @@ export default function APQR() {
                   yMin={86}
                   yTickInterval={3}
                   plotLines={ParacetamolAssayPlotLines}
-                  zones={paracetamolpHZones}
+                  zones={paracetamolAssayZones}
                   annotations={paracetamolAnnotations}
                   highchartData={paracetamolpHData12}
                 />
@@ -10353,7 +10357,7 @@ export default function APQR() {
                   yMin={3}
                   yTickInterval={0.5}
                   plotLines={ParacetamolImpurityPlotLines}
-                  zones={paracetamolpHZones}
+                  zones={paracetamolImpurityZones}
                   annotations={paracetamolAnnotations}
                   highchartData={paracetamolpHData13}
                 />
@@ -10718,7 +10722,7 @@ export default function APQR() {
                   yMin={0}
                   yTickInterval={0.8}
                   plotLines={ParacetamolDissolutionPlotLines}
-                  zones={paracetamolpHZones}
+                  zones={paracetamolDissolutionZones}
                   annotations={paracetamolAnnotations}
                   highchartData={paracetamolpHData14}
                 />
@@ -11083,7 +11087,7 @@ export default function APQR() {
                   yMin={75}
                   yTickInterval={7}
                   plotLines={ParacetamolDisintegratePlotLines}
-                  zones={paracetamolpHZones}
+                  zones={paracetamolDisinterationZones}
                   annotations={paracetamolAnnotations}
                   highchartData={paracetamolpHData15}
                 />
