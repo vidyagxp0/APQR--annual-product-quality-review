@@ -32,7 +32,7 @@ export default function APQR() {
     ],
     lsl: 2,
     usl: 4,
-    heading: "Observation value for pH value of Paracetamol",
+    heading: "Histogram Analysis",
     yAxisTitle: "Number of Batches",
     xAxisTitle: "pH Range",
   };
@@ -45,7 +45,7 @@ export default function APQR() {
     ],
     lsl: 2,
     usl: 4,
-    heading: "Observation value for pH value of Paracetamol",
+    heading: "Scatter Analysis",
     yAxisTitle: "pH",
     batchNumbers: [
       "Batch 1",
@@ -112,7 +112,7 @@ export default function APQR() {
     ],
     lsl: 2,
     usl: 4,
-    heading: "Observation value for pH value of Paracetamol",
+    heading: "Pareto Analysis",
     yAxisTitle: "Number of Batches",
   };
 
