@@ -980,6 +980,11 @@ export default function APQR() {
   const terbinafineImpurityData = getGraphData(editData.reviewODSTR8);
   const terbinafineDissolutionData = getGraphData(editData.reviewODSTR9);
   const terbinafineDisIntegrationData = getGraphData(editData.reviewODSTR10);
+  const pentoprazolepHDataH = getGraphData(editData.reviewODSTR11);
+  const pentoprazoleAssayData = getGraphData(editData.reviewODSTR12);
+  const pentoprazoleImpurityData = getGraphData(editData.reviewODSTR13);
+  const pentoprazoleDissolutionData = getGraphData(editData.reviewODSTR14);
+  const pentoprazoleDisIntegrationData = getGraphData(editData.reviewODSTR15);
 
   const paracetamolpHData = editData?.reviewODSTR?.map((item) => {
     return { "Batch No.": item.batchNo, "Observed Value": item.observedValue };
@@ -6113,7 +6118,6 @@ export default function APQR() {
             </div>
             <div className=" grid grid-cols-10 shadow-md shadow-gray-700/30 my-20 bg-slate-700 p-4 gap-4 mx-[-30px]">
               <div className="py-2 col-span-10 cursor-pointer text-gray-100 text-[22px] flex justify-center items-center">
-                {" "}
                 pH Of Paracetamol Analysis
               </div>
               <div className="col-span-4 row-span-1 mb-10 max-h-38 ">
@@ -7984,10 +7988,10 @@ export default function APQR() {
               </div>
               <div className="col-span-4 row-span-1">
                 <HighchartsHistogram
-                  data={paracetamolpHDataH.observedValues}
+                  data={terbinafinepHDataH.observedValues}
                   lsl={phChartsConfig.lsl}
                   usl={phChartsConfig.usl}
-                  heading={phChartsConfig.heading}
+                  heading={phChartsConfig.histoHeading}
                   yAxisTitle={phChartsConfig.yAxisTitle}
                   xAxisTitle={phChartsConfig.xAxisTitle}
                   bins={phChartsConfig.bins}
@@ -8167,23 +8171,24 @@ export default function APQR() {
               </div>
               <div className="col-span-4">
                 <HighchartsPareto
-                  data={paracetamolpHDataH.observedValues}
-                  lsl={phOfParacetamolPareto.lsl}
-                  usl={phOfParacetamolPareto.usl}
-                  heading={phOfParacetamolPareto.heading}
-                  yAxisTitle={phOfParacetamolPareto.yAxisTitle}
-                  xAxisTitle={""}
+                  data={terbinafinepHDataH.observedValues}
+                  lsl={phChartsConfig.lsl}
+                  usl={phChartsConfig.usl}
+                  heading={phChartsConfig.paretoHeading}
+                  yAxisTitle={phChartsConfig.yAxisTitle}
+                  bins={phChartsConfig.bins}
+                  plotLines={phChartsConfig.plotLines}
                 />
               </div>
               <div className="col-span-4">
                 <HighchartsScatterPlot
                   // phOfParacetamol={phOfParacetamolScatter}
-                  data={paracetamolpHDataH.observedValues}
-                  lsl={phOfParacetamolScatter.lsl}
-                  usl={phOfParacetamolScatter.usl}
-                  heading={phOfParacetamolScatter.heading}
-                  yAxisTitle={phOfParacetamolScatter.yAxisTitle}
-                  batchNumbers={paracetamolpHDataH.batchNumbers}
+                  data={terbinafinepHDataH.observedValues}
+                  batchNumbers={terbinafinepHDataH.batchNumbers}
+                  lsl={phChartsConfig.lsl}
+                  usl={phChartsConfig.usl}
+                  heading={phChartsConfig.scatterHeading}
+                  yAxisTitle={phChartsConfig.yAxisTitle}
                 />
               </div>
               <div className="py-2 flex justify-end col-span-10 ">
@@ -8354,14 +8359,14 @@ export default function APQR() {
               <div className="col-span-4 row-span-1">
                 <HighchartsHistogram
                   // phOfParacetamol={phChartsConfig}
-                  data={paracetamolpHDataH.observedValues}
-                  lsl={phChartsConfig.lsl}
-                  usl={phChartsConfig.usl}
-                  heading={phChartsConfig.heading}
-                  yAxisTitle={phChartsConfig.yAxisTitle}
-                  xAxisTitle={phChartsConfig.xAxisTitle}
-                  bins={phChartsConfig.bins}
-                  plotLines={phChartsConfig.plotLines}
+                  data={terbinafineAssayData.observedValues}
+                  lsl={assayChartsConfig.lsl}
+                  usl={assayChartsConfig.usl}
+                  heading={assayChartsConfig.histoHeading}
+                  yAxisTitle={assayChartsConfig.yAxisTitle}
+                  xAxisTitle={assayChartsConfig.xAxisTitle}
+                  bins={assayChartsConfig.bins}
+                  plotLines={assayChartsConfig.plotLines}
                 />
               </div>
               <div className="col-span-2 row-span-2 bg-white">
@@ -8538,23 +8543,25 @@ export default function APQR() {
               <div className="col-span-4">
                 <HighchartsPareto
                   // phOfParacetamol={phOfParacetamolPareto}
-                  data={paracetamolpHDataH.observedValues}
-                  lsl={phOfParacetamolPareto.lsl}
-                  usl={phOfParacetamolPareto.usl}
-                  heading={phOfParacetamolPareto.heading}
-                  yAxisTitle={phOfParacetamolPareto.yAxisTitle}
-                  xAxisTitle={""}
+                  data={terbinafineAssayData.observedValues}
+                  lsl={assayChartsConfig.lsl}
+                  usl={assayChartsConfig.usl}
+                  heading={assayChartsConfig.paretoHeading}
+                  yAxisTitle={assayChartsConfig.yAxisTitle}
+                  bins={assayChartsConfig.bins}
+                  plotLines={assayChartsConfig.plotLines}
                 />
               </div>
               <div className="col-span-4">
                 <HighchartsScatterPlot
                   // phOfParacetamol={phOfParacetamolScatter}
-                  data={paracetamolpHDataH.observedValues}
-                  lsl={phOfParacetamolScatter.lsl}
-                  usl={phOfParacetamolScatter.usl}
-                  heading={phOfParacetamolScatter.heading}
-                  yAxisTitle={phOfParacetamolScatter.yAxisTitle}
-                  batchNumbers={paracetamolpHDataH.batchNumbers}
+                  data={terbinafineAssayData.observedValues}
+                  batchNumbers={terbinafineAssayData.batchNumbers}
+                  lsl={assayChartsConfig.lsl}
+                  usl={assayChartsConfig.usl}
+                  heading={assayChartsConfig.scatterHeading}
+                  yAxisTitle={assayChartsConfig.yAxisTitle}
+                  max={assayChartsConfig.max}
                 />
               </div>
               <div className="py-2 flex justify-end col-span-10 ">
@@ -8725,14 +8732,14 @@ export default function APQR() {
               <div className="col-span-4 row-span-1">
                 <HighchartsHistogram
                   // phOfParacetamol={phChartsConfig}
-                  data={paracetamolpHDataH.observedValues}
-                  lsl={phChartsConfig.lsl}
-                  usl={phChartsConfig.usl}
-                  heading={phChartsConfig.heading}
-                  yAxisTitle={phChartsConfig.yAxisTitle}
-                  xAxisTitle={phChartsConfig.xAxisTitle}
-                  bins={phChartsConfig.bins}
-                  plotLines={phChartsConfig.plotLines}
+                  data={terbinafineImpurityData.observedValues}
+                  lsl={impurityChartsConfig.lsl}
+                  usl={impurityChartsConfig.usl}
+                  heading={impurityChartsConfig.histoHeading}
+                  yAxisTitle={impurityChartsConfig.yAxisTitle}
+                  xAxisTitle={impurityChartsConfig.xAxisTitle}
+                  bins={impurityChartsConfig.bins}
+                  plotLines={impurityChartsConfig.plotLines}
                 />
               </div>
               <div className="col-span-2 row-span-2 bg-white">
@@ -8908,24 +8915,26 @@ export default function APQR() {
               </div>
               <div className="col-span-4">
                 <HighchartsPareto
-                  //  phOfParacetamol={phOfParacetamolPareto}
-                  data={paracetamolpHDataH.observedValues}
-                  lsl={phOfParacetamolPareto.lsl}
-                  usl={phOfParacetamolPareto.usl}
-                  heading={phOfParacetamolPareto.heading}
-                  yAxisTitle={phOfParacetamolPareto.yAxisTitle}
-                  xAxisTitle={""}
+                  // phOfParacetamol={phOfParacetamolPareto}
+                  data={terbinafineImpurityData.observedValues}
+                  lsl={impurityChartsConfig.lsl}
+                  usl={impurityChartsConfig.usl}
+                  heading={impurityChartsConfig.paretoHeading}
+                  yAxisTitle={impurityChartsConfig.yAxisTitle}
+                  bins={impurityChartsConfig.bins}
+                  plotLines={impurityChartsConfig.plotLines}
                 />
               </div>
               <div className="col-span-4">
                 <HighchartsScatterPlot
                   // phOfParacetamol={phOfParacetamolScatter}
-                  data={paracetamolpHDataH.observedValues}
-                  lsl={phOfParacetamolScatter.lsl}
-                  usl={phOfParacetamolScatter.usl}
-                  heading={phOfParacetamolScatter.heading}
-                  yAxisTitle={phOfParacetamolScatter.yAxisTitle}
-                  batchNumbers={paracetamolpHDataH.batchNumbers}
+                  data={terbinafineImpurityData.observedValues}
+                  batchNumbers={terbinafineImpurityData.batchNumbers}
+                  lsl={impurityChartsConfig.lsl}
+                  usl={impurityChartsConfig.usl}
+                  heading={impurityChartsConfig.scatterHeading}
+                  yAxisTitle={impurityChartsConfig.yAxisTitle}
+                  max={impurityChartsConfig.max}
                 />
               </div>
               <div className="py-2 flex justify-end col-span-10 ">
@@ -9095,14 +9104,14 @@ export default function APQR() {
               <div className="col-span-4 row-span-1">
                 <HighchartsHistogram
                   // phOfParacetamol={phChartsConfig}
-                  data={paracetamolpHDataH.observedValues}
-                  lsl={phChartsConfig.lsl}
-                  usl={phChartsConfig.usl}
-                  heading={phChartsConfig.heading}
-                  yAxisTitle={phChartsConfig.yAxisTitle}
-                  xAxisTitle={phChartsConfig.xAxisTitle}
-                  bins={phChartsConfig.bins}
-                  plotLines={phChartsConfig.plotLines}
+                  data={terbinafineDissolutionData.observedValues}
+                  lsl={dissolutionChartsConfig.lsl}
+                  usl={dissolutionChartsConfig.usl}
+                  heading={dissolutionChartsConfig.histoHeading}
+                  yAxisTitle={dissolutionChartsConfig.yAxisTitle}
+                  xAxisTitle={dissolutionChartsConfig.xAxisTitle}
+                  bins={dissolutionChartsConfig.bins}
+                  plotLines={dissolutionChartsConfig.plotLines}
                 />
               </div>
               <div className="col-span-2 row-span-2 bg-white">
@@ -9279,23 +9288,25 @@ export default function APQR() {
               <div className="col-span-4">
                 <HighchartsPareto
                   // phOfParacetamol={phOfParacetamolPareto}
-                  data={paracetamolpHDataH.observedValues}
-                  lsl={phOfParacetamolPareto.lsl}
-                  usl={phOfParacetamolPareto.usl}
-                  heading={phOfParacetamolPareto.heading}
-                  yAxisTitle={phOfParacetamolPareto.yAxisTitle}
-                  xAxisTitle={""}
+                  data={terbinafineDissolutionData.observedValues}
+                  lsl={dissolutionChartsConfig.lsl}
+                  usl={dissolutionChartsConfig.usl}
+                  heading={dissolutionChartsConfig.paretoHeading}
+                  yAxisTitle={dissolutionChartsConfig.yAxisTitle}
+                  bins={dissolutionChartsConfig.bins}
+                  plotLines={dissolutionChartsConfig.plotLines}
                 />
               </div>
               <div className="col-span-4">
                 <HighchartsScatterPlot
                   // phOfParacetamol={phOfParacetamolScatter}
-                  data={paracetamolpHDataH.observedValues}
-                  lsl={phOfParacetamolScatter.lsl}
-                  usl={phOfParacetamolScatter.usl}
-                  heading={phOfParacetamolScatter.heading}
-                  yAxisTitle={phOfParacetamolScatter.yAxisTitle}
-                  batchNumbers={paracetamolpHDataH.batchNumbers}
+                  data={terbinafineDissolutionData.observedValues}
+                  batchNumbers={terbinafineDissolutionData.batchNumbers}
+                  lsl={dissolutionChartsConfig.lsl}
+                  usl={dissolutionChartsConfig.usl}
+                  heading={dissolutionChartsConfig.scatterHeading}
+                  yAxisTitle={dissolutionChartsConfig.yAxisTitle}
+                  max={dissolutionChartsConfig.max}
                 />
               </div>
               <div className="py-2 flex justify-end col-span-10 ">
@@ -9462,14 +9473,14 @@ export default function APQR() {
               <div className="col-span-4 row-span-1">
                 <HighchartsHistogram
                   // phOfParacetamol={phChartsConfig}
-                  data={paracetamolpHDataH.observedValues}
-                  lsl={phChartsConfig.lsl}
-                  usl={phChartsConfig.usl}
-                  heading={phChartsConfig.heading}
-                  yAxisTitle={phChartsConfig.yAxisTitle}
-                  xAxisTitle={phChartsConfig.xAxisTitle}
-                  bins={phChartsConfig.bins}
-                  plotLines={phChartsConfig.plotLines}
+                  data={terbinafineDisIntegrationData.observedValues}
+                  lsl={disIntegrationChartsConfig.lsl}
+                  usl={disIntegrationChartsConfig.usl}
+                  heading={disIntegrationChartsConfig.histoHeading}
+                  yAxisTitle={disIntegrationChartsConfig.yAxisTitle}
+                  xAxisTitle={disIntegrationChartsConfig.xAxisTitle}
+                  bins={disIntegrationChartsConfig.bins}
+                  plotLines={disIntegrationChartsConfig.plotLines}
                 />
               </div>
               <div className="col-span-2 row-span-2 bg-white">
@@ -9645,24 +9656,26 @@ export default function APQR() {
               </div>
               <div className="col-span-4">
                 <HighchartsPareto
-                  //  phOfParacetamol={phOfParacetamolPareto}
-                  data={paracetamolpHDataH.observedValues}
-                  lsl={phOfParacetamolPareto.lsl}
-                  usl={phOfParacetamolPareto.usl}
-                  heading={phOfParacetamolPareto.heading}
-                  yAxisTitle={phOfParacetamolPareto.yAxisTitle}
-                  xAxisTitle={""}
+                  // phOfParacetamol={phOfParacetamolPareto}
+                  data={terbinafineDisIntegrationData.observedValues}
+                  lsl={disIntegrationChartsConfig.lsl}
+                  usl={disIntegrationChartsConfig.usl}
+                  heading={disIntegrationChartsConfig.paretoHeading}
+                  yAxisTitle={disIntegrationChartsConfig.yAxisTitle}
+                  bins={disIntegrationChartsConfig.bins}
+                  plotLines={disIntegrationChartsConfig.plotLines}
                 />
               </div>
               <div className="col-span-4">
                 <HighchartsScatterPlot
                   // phOfParacetamol={phOfParacetamolScatter}
-                  data={paracetamolpHDataH.observedValues}
-                  lsl={phOfParacetamolScatter.lsl}
-                  usl={phOfParacetamolScatter.usl}
-                  heading={phOfParacetamolScatter.heading}
-                  yAxisTitle={phOfParacetamolScatter.yAxisTitle}
-                  batchNumbers={paracetamolpHDataH.batchNumbers}
+                  data={terbinafineDisIntegrationData.observedValues}
+                  batchNumbers={terbinafineDisIntegrationData.batchNumbers}
+                  lsl={disIntegrationChartsConfig.lsl}
+                  usl={disIntegrationChartsConfig.usl}
+                  heading={disIntegrationChartsConfig.scatterHeading}
+                  yAxisTitle={disIntegrationChartsConfig.yAxisTitle}
+                  max={disIntegrationChartsConfig.max}
                 />
               </div>
               <div className="py-2 flex justify-end col-span-10 ">
@@ -9828,10 +9841,10 @@ export default function APQR() {
               </div>
               <div className="col-span-4 row-span-1">
                 <HighchartsHistogram
-                  data={paracetamolpHDataH.observedValues}
+                  data={pentoprazolepHDataH.observedValues}
                   lsl={phChartsConfig.lsl}
                   usl={phChartsConfig.usl}
-                  heading={phChartsConfig.heading}
+                  heading={phChartsConfig.histoHeading}
                   yAxisTitle={phChartsConfig.yAxisTitle}
                   xAxisTitle={phChartsConfig.xAxisTitle}
                   bins={phChartsConfig.bins}
@@ -10011,23 +10024,24 @@ export default function APQR() {
               </div>
               <div className="col-span-4">
                 <HighchartsPareto
-                  data={paracetamolpHDataH.observedValues}
-                  lsl={phOfParacetamolPareto.lsl}
-                  usl={phOfParacetamolPareto.usl}
-                  heading={phOfParacetamolPareto.heading}
-                  yAxisTitle={phOfParacetamolPareto.yAxisTitle}
-                  xAxisTitle={""}
+                  data={pentoprazolepHDataH.observedValues}
+                  lsl={phChartsConfig.lsl}
+                  usl={phChartsConfig.usl}
+                  heading={phChartsConfig.paretoHeading}
+                  yAxisTitle={phChartsConfig.yAxisTitle}
+                  bins={phChartsConfig.bins}
+                  plotLines={phChartsConfig.plotLines}
                 />
               </div>
               <div className="col-span-4">
                 <HighchartsScatterPlot
                   // phOfParacetamol={phOfParacetamolScatter}
-                  data={paracetamolpHDataH.observedValues}
-                  lsl={phOfParacetamolScatter.lsl}
-                  usl={phOfParacetamolScatter.usl}
-                  heading={phOfParacetamolScatter.heading}
-                  yAxisTitle={phOfParacetamolScatter.yAxisTitle}
-                  batchNumbers={paracetamolpHDataH.batchNumbers}
+                  data={pentoprazolepHDataH.observedValues}
+                  batchNumbers={pentoprazolepHDataH.batchNumbers}
+                  lsl={phChartsConfig.lsl}
+                  usl={phChartsConfig.usl}
+                  heading={phChartsConfig.scatterHeading}
+                  yAxisTitle={phChartsConfig.yAxisTitle}
                 />
               </div>
               <div className="py-2 flex justify-end col-span-10 ">
@@ -10194,14 +10208,14 @@ export default function APQR() {
               <div className="col-span-4 row-span-1">
                 <HighchartsHistogram
                   // phOfParacetamol={phChartsConfig}
-                  data={paracetamolpHDataH.observedValues}
-                  lsl={phChartsConfig.lsl}
-                  usl={phChartsConfig.usl}
-                  heading={phChartsConfig.heading}
-                  yAxisTitle={phChartsConfig.yAxisTitle}
-                  xAxisTitle={phChartsConfig.xAxisTitle}
-                  bins={phChartsConfig.bins}
-                  plotLines={phChartsConfig.plotLines}
+                  data={pentoprazoleAssayData.observedValues}
+                  lsl={assayChartsConfig.lsl}
+                  usl={assayChartsConfig.usl}
+                  heading={assayChartsConfig.histoHeading}
+                  yAxisTitle={assayChartsConfig.yAxisTitle}
+                  xAxisTitle={assayChartsConfig.xAxisTitle}
+                  bins={assayChartsConfig.bins}
+                  plotLines={assayChartsConfig.plotLines}
                 />
               </div>
               <div className="col-span-2 row-span-2 bg-white">
@@ -10378,23 +10392,25 @@ export default function APQR() {
               <div className="col-span-4">
                 <HighchartsPareto
                   // phOfParacetamol={phOfParacetamolPareto}
-                  data={paracetamolpHDataH.observedValues}
-                  lsl={phOfParacetamolPareto.lsl}
-                  usl={phOfParacetamolPareto.usl}
-                  heading={phOfParacetamolPareto.heading}
-                  yAxisTitle={phOfParacetamolPareto.yAxisTitle}
-                  xAxisTitle={""}
+                  data={pentoprazoleAssayData.observedValues}
+                  lsl={assayChartsConfig.lsl}
+                  usl={assayChartsConfig.usl}
+                  heading={assayChartsConfig.paretoHeading}
+                  yAxisTitle={assayChartsConfig.yAxisTitle}
+                  bins={assayChartsConfig.bins}
+                  plotLines={assayChartsConfig.plotLines}
                 />
               </div>
               <div className="col-span-4">
                 <HighchartsScatterPlot
                   // phOfParacetamol={phOfParacetamolScatter}
-                  data={paracetamolpHDataH.observedValues}
-                  lsl={phOfParacetamolScatter.lsl}
-                  usl={phOfParacetamolScatter.usl}
-                  heading={phOfParacetamolScatter.heading}
-                  yAxisTitle={phOfParacetamolScatter.yAxisTitle}
-                  batchNumbers={paracetamolpHDataH.batchNumbers}
+                  data={pentoprazoleAssayData.observedValues}
+                  batchNumbers={pentoprazoleAssayData.batchNumbers}
+                  lsl={assayChartsConfig.lsl}
+                  usl={assayChartsConfig.usl}
+                  heading={assayChartsConfig.scatterHeading}
+                  yAxisTitle={assayChartsConfig.yAxisTitle}
+                  max={assayChartsConfig.max}
                 />
               </div>
               <div className="py-2 flex justify-end col-span-10 ">
@@ -10561,14 +10577,14 @@ export default function APQR() {
               <div className="col-span-4 row-span-1">
                 <HighchartsHistogram
                   // phOfParacetamol={phChartsConfig}
-                  data={paracetamolpHDataH.observedValues}
-                  lsl={phChartsConfig.lsl}
-                  usl={phChartsConfig.usl}
-                  heading={phChartsConfig.heading}
-                  yAxisTitle={phChartsConfig.yAxisTitle}
-                  xAxisTitle={phChartsConfig.xAxisTitle}
-                  bins={phChartsConfig.bins}
-                  plotLines={phChartsConfig.plotLines}
+                  data={pentoprazoleImpurityData.observedValues}
+                  lsl={impurityChartsConfig.lsl}
+                  usl={impurityChartsConfig.usl}
+                  heading={impurityChartsConfig.histoHeading}
+                  yAxisTitle={impurityChartsConfig.yAxisTitle}
+                  xAxisTitle={impurityChartsConfig.xAxisTitle}
+                  bins={impurityChartsConfig.bins}
+                  plotLines={impurityChartsConfig.plotLines}
                 />
               </div>
               <div className="col-span-2 row-span-2 bg-white">
@@ -10744,24 +10760,26 @@ export default function APQR() {
               </div>
               <div className="col-span-4">
                 <HighchartsPareto
-                  //  phOfParacetamol={phOfParacetamolPareto}
-                  data={paracetamolpHDataH.observedValues}
-                  lsl={phOfParacetamolPareto.lsl}
-                  usl={phOfParacetamolPareto.usl}
-                  heading={phOfParacetamolPareto.heading}
-                  yAxisTitle={phOfParacetamolPareto.yAxisTitle}
-                  xAxisTitle={""}
+                  // phOfParacetamol={phOfParacetamolPareto}
+                  data={pentoprazoleImpurityData.observedValues}
+                  lsl={impurityChartsConfig.lsl}
+                  usl={impurityChartsConfig.usl}
+                  heading={impurityChartsConfig.paretoHeading}
+                  yAxisTitle={impurityChartsConfig.yAxisTitle}
+                  bins={impurityChartsConfig.bins}
+                  plotLines={impurityChartsConfig.plotLines}
                 />
               </div>
               <div className="col-span-4">
                 <HighchartsScatterPlot
                   // phOfParacetamol={phOfParacetamolScatter}
-                  data={paracetamolpHDataH.observedValues}
-                  lsl={phOfParacetamolScatter.lsl}
-                  usl={phOfParacetamolScatter.usl}
-                  heading={phOfParacetamolScatter.heading}
-                  yAxisTitle={phOfParacetamolScatter.yAxisTitle}
-                  batchNumbers={paracetamolpHDataH.batchNumbers}
+                  data={pentoprazoleImpurityData.observedValues}
+                  batchNumbers={pentoprazoleImpurityData.batchNumbers}
+                  lsl={impurityChartsConfig.lsl}
+                  usl={impurityChartsConfig.usl}
+                  heading={impurityChartsConfig.scatterHeading}
+                  yAxisTitle={impurityChartsConfig.yAxisTitle}
+                  max={impurityChartsConfig.max}
                 />
               </div>
               <div className="py-2 flex justify-end col-span-10 ">
@@ -10927,14 +10945,14 @@ export default function APQR() {
               <div className="col-span-4 row-span-1">
                 <HighchartsHistogram
                   // phOfParacetamol={phChartsConfig}
-                  data={paracetamolpHDataH.observedValues}
-                  lsl={phChartsConfig.lsl}
-                  usl={phChartsConfig.usl}
-                  heading={phChartsConfig.heading}
-                  yAxisTitle={phChartsConfig.yAxisTitle}
-                  xAxisTitle={phChartsConfig.xAxisTitle}
-                  bins={phChartsConfig.bins}
-                  plotLines={phChartsConfig.plotLines}
+                  data={pentoprazoleDissolutionData.observedValues}
+                  lsl={dissolutionChartsConfig.lsl}
+                  usl={dissolutionChartsConfig.usl}
+                  heading={dissolutionChartsConfig.histoHeading}
+                  yAxisTitle={dissolutionChartsConfig.yAxisTitle}
+                  xAxisTitle={dissolutionChartsConfig.xAxisTitle}
+                  bins={dissolutionChartsConfig.bins}
+                  plotLines={dissolutionChartsConfig.plotLines}
                 />
               </div>
               <div className="col-span-2 row-span-2 bg-white">
@@ -11111,23 +11129,25 @@ export default function APQR() {
               <div className="col-span-4">
                 <HighchartsPareto
                   // phOfParacetamol={phOfParacetamolPareto}
-                  data={paracetamolpHDataH.observedValues}
-                  lsl={phOfParacetamolPareto.lsl}
-                  usl={phOfParacetamolPareto.usl}
-                  heading={phOfParacetamolPareto.heading}
-                  yAxisTitle={phOfParacetamolPareto.yAxisTitle}
-                  xAxisTitle={""}
+                  data={pentoprazoleDissolutionData.observedValues}
+                  lsl={dissolutionChartsConfig.lsl}
+                  usl={dissolutionChartsConfig.usl}
+                  heading={dissolutionChartsConfig.paretoHeading}
+                  yAxisTitle={dissolutionChartsConfig.yAxisTitle}
+                  bins={dissolutionChartsConfig.bins}
+                  plotLines={dissolutionChartsConfig.plotLines}
                 />
               </div>
               <div className="col-span-4">
                 <HighchartsScatterPlot
                   // phOfParacetamol={phOfParacetamolScatter}
-                  data={paracetamolpHDataH.observedValues}
-                  lsl={phOfParacetamolScatter.lsl}
-                  usl={phOfParacetamolScatter.usl}
-                  heading={phOfParacetamolScatter.heading}
-                  yAxisTitle={phOfParacetamolScatter.yAxisTitle}
-                  batchNumbers={paracetamolpHDataH.batchNumbers}
+                  data={pentoprazoleDissolutionData.observedValues}
+                  batchNumbers={pentoprazoleDissolutionData.batchNumbers}
+                  lsl={dissolutionChartsConfig.lsl}
+                  usl={dissolutionChartsConfig.usl}
+                  heading={dissolutionChartsConfig.scatterHeading}
+                  yAxisTitle={dissolutionChartsConfig.yAxisTitle}
+                  max={dissolutionChartsConfig.max}
                 />
               </div>
               <div className="py-2 flex justify-end col-span-10 ">
@@ -11294,14 +11314,14 @@ export default function APQR() {
               <div className="col-span-4 row-span-1">
                 <HighchartsHistogram
                   // phOfParacetamol={phChartsConfig}
-                  data={paracetamolpHDataH.observedValues}
-                  lsl={phChartsConfig.lsl}
-                  usl={phChartsConfig.usl}
-                  heading={phChartsConfig.heading}
-                  yAxisTitle={phChartsConfig.yAxisTitle}
-                  xAxisTitle={phChartsConfig.xAxisTitle}
-                  bins={phChartsConfig.bins}
-                  plotLines={phChartsConfig.plotLines}
+                  data={pentoprazoleDisIntegrationData.observedValues}
+                  lsl={disIntegrationChartsConfig.lsl}
+                  usl={disIntegrationChartsConfig.usl}
+                  heading={disIntegrationChartsConfig.histoHeading}
+                  yAxisTitle={disIntegrationChartsConfig.yAxisTitle}
+                  xAxisTitle={disIntegrationChartsConfig.xAxisTitle}
+                  bins={disIntegrationChartsConfig.bins}
+                  plotLines={disIntegrationChartsConfig.plotLines}
                 />
               </div>
               <div className="col-span-2 row-span-2 bg-white">
@@ -11477,24 +11497,26 @@ export default function APQR() {
               </div>
               <div className="col-span-4">
                 <HighchartsPareto
-                  //  phOfParacetamol={phOfParacetamolPareto}
-                  data={paracetamolpHDataH.observedValues}
-                  lsl={phOfParacetamolPareto.lsl}
-                  usl={phOfParacetamolPareto.usl}
-                  heading={phOfParacetamolPareto.heading}
-                  yAxisTitle={phOfParacetamolPareto.yAxisTitle}
-                  xAxisTitle={""}
+                  // phOfParacetamol={phOfParacetamolPareto}
+                  data={pentoprazoleDisIntegrationData.observedValues}
+                  lsl={disIntegrationChartsConfig.lsl}
+                  usl={disIntegrationChartsConfig.usl}
+                  heading={disIntegrationChartsConfig.paretoHeading}
+                  yAxisTitle={disIntegrationChartsConfig.yAxisTitle}
+                  bins={disIntegrationChartsConfig.bins}
+                  plotLines={disIntegrationChartsConfig.plotLines}
                 />
               </div>
               <div className="col-span-4">
                 <HighchartsScatterPlot
                   // phOfParacetamol={phOfParacetamolScatter}
-                  data={paracetamolpHDataH.observedValues}
-                  lsl={phOfParacetamolScatter.lsl}
-                  usl={phOfParacetamolScatter.usl}
-                  heading={phOfParacetamolScatter.heading}
-                  yAxisTitle={phOfParacetamolScatter.yAxisTitle}
-                  batchNumbers={paracetamolpHDataH.batchNumbers}
+                  data={pentoprazoleDisIntegrationData.observedValues}
+                  batchNumbers={pentoprazoleDisIntegrationData.batchNumbers}
+                  lsl={disIntegrationChartsConfig.lsl}
+                  usl={disIntegrationChartsConfig.usl}
+                  heading={disIntegrationChartsConfig.scatterHeading}
+                  yAxisTitle={disIntegrationChartsConfig.yAxisTitle}
+                  max={disIntegrationChartsConfig.max}
                 />
               </div>
               <div className="py-2 flex justify-end col-span-10 ">
