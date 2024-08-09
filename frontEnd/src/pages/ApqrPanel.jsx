@@ -313,6 +313,9 @@ export default function APQR() {
   const [currentLabI, setCurrentLabI] = useState([]);
   const [previewLabI, setPreviewLabI] = useState([]);
 
+  const sanitizeKey = (key) => {
+    return key.replace(/\s+/g, "").replace(/[\n\r]+/g, "");
+  };
   const [pQRData, setPQRData] = useReducer(
     (prev, next) => ({
       ...prev,
