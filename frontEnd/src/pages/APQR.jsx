@@ -6229,7 +6229,6 @@ export default function APQR() {
                     setimportedData={setimportedData}
                     fileName="reviewODSTR9.xlsx"
                     gridNo={30}
-
                   />
                 </div>
               </div>
@@ -6354,7 +6353,7 @@ export default function APQR() {
                     data={reviewODSTR10}
                     setimportedData={setimportedData}
                     fileName="reviewODSTR10.xlsx"
-                    gridNo={32}
+                    gridNo={31}
 
                   />
                 </div>

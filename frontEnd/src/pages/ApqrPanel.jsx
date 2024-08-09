@@ -1320,7 +1320,49 @@ export default function APQR() {
       case 22:
         setReviewOSTR([...reviewODSTR, ...processedData]);
         break;
-      case 3:
+      case 23:
+        setReviewOSTR2([...reviewODSTR2, ...processedData]);
+        break;
+      case 24:
+        setReviewOSTR3([...reviewODSTR3, ...processedData]);
+        break;
+        case 25:
+        setReviewOSTR4([...reviewODSTR4, ...processedData]);
+        break;
+        case 26:
+        setReviewOSTR5([...reviewODSTR5, ...processedData]);
+        break;
+        case 27:
+        setReviewOSTR6([...reviewODSTR6, ...processedData]);
+        break;
+        case 28:
+        setReviewOSTR7([...reviewODSTR7, ...processedData]);
+        break;
+        case 29:
+        setReviewOSTR8([...reviewODSTR8, ...processedData]);
+        break;
+        case 30:
+        setReviewOSTR9([...reviewODSTR9, ...processedData]);
+        break;
+        case 31:
+        setReviewOSTR10([...reviewODSTR10, ...processedData]);
+        break;
+        case 32:
+        setReviewOSTR11([...reviewODSTR11, ...processedData]);
+        break;
+        case 33:
+        setReviewOSTR12([...reviewODSTR12, ...processedData]);
+        break;
+        case 34:
+        setReviewOSTR13([...reviewODSTR13, ...processedData]);
+        break;
+        case 35:
+        setReviewOSTR14([...reviewODSTR14, ...processedData]);
+        break;
+        case 36:
+        setReviewOSTR15([...reviewODSTR15, ...processedData]);
+        break;
+        case 3:
         setManufacturingStage([...manufacturingStage, ...processedData]);
         break;
     }
@@ -5853,10 +5895,10 @@ export default function APQR() {
                 </div>
                 <div className="flex gap-4 ">
                   <ExcelExportImport
-                    data={manufacturingStage}
+                    data={reviewODSTR}
                     setimportedData={setimportedData}
                     fileName="Paracetamol pH Test Results.xlsx"
-                    gridNo={1}
+                    gridNo={22}
                   />
                 </div>
               </div>
@@ -6219,10 +6261,10 @@ export default function APQR() {
                 </div>
                 <div className="flex gap-4 ">
                   <ExcelExportImport
-                    data={manufacturingStage}
+                    data={reviewODSTR2}
                     setimportedData={setimportedData}
-                    fileName="manufacturingStage.xlsx"
-                    gridNo={1}
+                    fileName="reviewODSTR2.xlsx"
+                    gridNo={23}
                   />{" "}
                 </div>
               </div>
@@ -6588,10 +6630,10 @@ export default function APQR() {
                 </div>
                 <div className="flex gap-4 ">
                   <ExcelExportImport
-                    data={manufacturingStage}
+                    data={reviewODSTR3}
                     setimportedData={setimportedData}
-                    fileName="manufacturingStage.xlsx"
-                    gridNo={1}
+                    fileName="reviewODSTR3.xlsx"
+                    gridNo={24}
                   />{" "}
                 </div>
               </div>
@@ -6959,10 +7001,10 @@ export default function APQR() {
                 </div>
                 <div className="flex gap-4 ">
                   <ExcelExportImport
-                    data={manufacturingStage}
+                    data={reviewODSTR4}
                     setimportedData={setimportedData}
-                    fileName="manufacturingStage.xlsx"
-                    gridNo={1}
+                    fileName="reviewODSTR4.xlsx"
+                    gridNo={25}
                   />{" "}
                 </div>
               </div>
@@ -7329,10 +7371,10 @@ export default function APQR() {
                 </div>
                 <div className="flex gap-4 ">
                   <ExcelExportImport
-                    data={manufacturingStage}
+                    data={reviewODSTR5}
                     setimportedData={setimportedData}
-                    fileName="manufacturingStage.xlsx"
-                    gridNo={1}
+                    fileName="reviewODSTR5.xlsx"
+                    gridNo={26}
                   />{" "}
                 </div>
               </div>
@@ -7700,10 +7742,10 @@ export default function APQR() {
                 </div>
                 <div className="flex gap-4 ">
                   <ExcelExportImport
-                    data={manufacturingStage}
+                    data={reviewODSTR6}
                     setimportedData={setimportedData}
-                    fileName="manufacturingStage.xlsx"
-                    gridNo={1}
+                    fileName="reviewODSTR6.xlsx"
+                    gridNo={27}
                   />{" "}
                 </div>
               </div>
@@ -8069,10 +8111,10 @@ export default function APQR() {
                 </div>
                 <div className="flex gap-4 ">
                   <ExcelExportImport
-                    data={manufacturingStage}
+                    data={reviewODSTR7}
                     setimportedData={setimportedData}
-                    fileName="manufacturingStage.xlsx"
-                    gridNo={1}
+                    fileName="reviewODSTR7.xlsx"
+                    gridNo={28}
                   />{" "}
                 </div>
               </div>
@@ -8440,10 +8482,10 @@ export default function APQR() {
                 </div>
                 <div className="flex gap-4 ">
                   <ExcelExportImport
-                    data={manufacturingStage}
+                    data={reviewODSTR8}
                     setimportedData={setimportedData}
-                    fileName="manufacturingStage.xlsx"
-                    gridNo={1}
+                    fileName="reviewODSTR8.xlsx"
+                    gridNo={29}
                   />{" "}
                 </div>
               </div>
@@ -8811,10 +8853,10 @@ export default function APQR() {
                 </div>
                 <div className="flex gap-4 ">
                   <ExcelExportImport
-                    data={manufacturingStage}
+                    data={reviewODSTR9}
                     setimportedData={setimportedData}
-                    fileName="manufacturingStage.xlsx"
-                    gridNo={1}
+                    fileName="reviewODSTR9.xlsx"
+                    gridNo={30}
                   />{" "}
                 </div>
               </div>
@@ -9177,10 +9219,10 @@ export default function APQR() {
                 </div>
                 <div className="flex gap-4 ">
                   <ExcelExportImport
-                    data={manufacturingStage}
+                    data={reviewODSTR10}
                     setimportedData={setimportedData}
-                    fileName="manufacturingStage.xlsx"
-                    gridNo={1}
+                    fileName="reviewODSTR10.xlsx"
+                    gridNo={31}
                   />{" "}
                 </div>
               </div>
@@ -9544,10 +9586,10 @@ export default function APQR() {
                 </div>
                 <div className="flex gap-4 ">
                   <ExcelExportImport
-                    data={manufacturingStage}
+                    data={reviewODSTR11}
                     setimportedData={setimportedData}
-                    fileName="manufacturingStage.xlsx"
-                    gridNo={1}
+                    fileName="reviewODSTR11.xlsx"
+                    gridNo={32}
                   />{" "}
                 </div>
               </div>
@@ -9909,10 +9951,10 @@ export default function APQR() {
                 </div>
                 <div className="flex gap-4 ">
                   <ExcelExportImport
-                    data={manufacturingStage}
+                    data={reviewODSTR12}
                     setimportedData={setimportedData}
-                    fileName="manufacturingStage.xlsx"
-                    gridNo={1}
+                    fileName="reviewODSTR12.xlsx"
+                    gridNo={33}
                   />{" "}
                 </div>
               </div>
@@ -10276,10 +10318,10 @@ export default function APQR() {
                 </div>
                 <div className="flex gap-4 ">
                   <ExcelExportImport
-                    data={manufacturingStage}
+                    data={reviewODSTR13}
                     setimportedData={setimportedData}
-                    fileName="manufacturingStage.xlsx"
-                    gridNo={1}
+                    fileName="reviewODSTR13.xlsx"
+                    gridNo={34}
                   />{" "}
                 </div>
               </div>
@@ -10638,15 +10680,15 @@ export default function APQR() {
             <div>
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
-                  <MdNoteAdd onClick={addReviewODSTRRow10} />
+                  <MdNoteAdd onClick={addReviewODSTRRow14} />
                   <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
                 </div>
                 <div className="flex gap-4 ">
                   <ExcelExportImport
-                    data={manufacturingStage}
+                    data={reviewODSTR14}
                     setimportedData={setimportedData}
-                    fileName="manufacturingStage.xlsx"
-                    gridNo={1}
+                    fileName="reviewODSTR14.xlsx"
+                    gridNo={35}
                   />{" "}
                 </div>
               </div>
@@ -11009,10 +11051,10 @@ export default function APQR() {
                 </div>
                 <div className="flex gap-4 ">
                   <ExcelExportImport
-                    data={manufacturingStage}
+                    data={reviewODSTR15}
                     setimportedData={setimportedData}
-                    fileName="manufacturingStage.xlsx"
-                    gridNo={1}
+                    fileName="reviewODSTR15.xlsx"
+                    gridNo={36}
                   />{" "}
                 </div>
               </div>
