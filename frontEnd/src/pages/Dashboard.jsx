@@ -37,7 +37,7 @@ export default function Dashboard() {
                   <td className="px-4 py-2 border-r-2">{item.productName}</td>
                   <td className="px-4 py-2 border-r-2">{item.genericName}</td>
                   <td className="px-4 py-2 border-r-2">{item.initiator}</td>
-                  <td className="px-4 py-2 border-r-2" onClick={() => navigate("/pdftest")}>
+                  <td className="px-4 cursor-pointer py-2 border-r-2"  onClick={() => navigate("/pdftest")}>
                     Generate Report
                   </td>
                 </tr>
