@@ -1,11 +1,29 @@
-import React from "react";
+import React, { useState } from "react";
 import Header from "../Component/Header";
 import BottomHeader from "../Component/BottomHeader";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { BsFileEarmarkPdfFill, BsFillFileEarmarkPdfFill } from "react-icons/bs";
 
 export default function Dashboard() {
   const navigate = useNavigate();
+  const downloadPDF = async () => {
+    try {
+      const response = await fetch("http://localhost:3000/report/generate-pdf");
+      console.log("Response:", response);
+      const blob = await response.blob();
+      console.log("Blob:", blob);
+      const url = window.URL.createObjectURL(new Blob([blob]));
+      const link = document.createElement("a");
+      link.href = url;
+      link.setAttribute("download", "APQR_Report.pdf");
+      document.body.appendChild(link);
+      link.click();
+      link.parentNode.removeChild(link);
+    } catch (error) {
+      console.error("Error downloading PDF:", error);
+    }
+  };
   const data = useSelector((state) => state.form.forms);
   return (
     <>
@@ -37,14 +55,15 @@ export default function Dashboard() {
                   <td className="px-4 py-2 border-r-2">{item.productName}</td>
                   <td className="px-4 py-2 border-r-2">{item.genericName}</td>
                   <td className="px-4 py-2 border-r-2">{item.initiator}</td>
-                  <td className="px-4 cursor-pointer py-2 border-r-2"  onClick={() => navigate("/pdftest")}>
-                    Generate Report
+                  <td className="px-4 cursor-pointer py-2 border-r-2"  onClick={downloadPDF}>
+                   <button className="p-[6px] border border-gray-800 rounded flex gap-2 items-center"> Generate Report <BsFillFileEarmarkPdfFill /></button>
                   </td>
                 </tr>
               );
             })}
           </tbody>
         </table>
+       
       </div>
     </>
   );

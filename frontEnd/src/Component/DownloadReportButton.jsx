@@ -19,7 +19,7 @@ const DownloadReportButton = () => {
     }
   };
 
-  return <button onClick={downloadPDF}>Download APQR Report</button>;
+  return <button >Download APQR Report</button>;
 };
 
 export default DownloadReportButton;
