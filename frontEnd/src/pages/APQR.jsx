@@ -6478,7 +6478,6 @@ export default function APQR() {
                     setimportedData={setimportedData}
                     fileName="reviewODSTR11.xlsx"
                     gridNo={32}
-
                   />
                 </div>
               </div>
@@ -6722,7 +6721,7 @@ export default function APQR() {
                     Add Rows by clicking on (+) icon
                   </div>
                 </div>
-                <div className="flex gap-4 ">
+                <div className="flex gap-4">
                   <ExcelExportImport
                     data={reviewODSTR13}
                     setimportedData={setimportedData}
