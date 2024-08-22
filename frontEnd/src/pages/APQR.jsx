@@ -5251,7 +5251,6 @@ export default function APQR() {
                     return (
                       <tr key={index}>
                         <td>
-                          {" "}
                           <input
                             value={item.batchNo}
                             onChange={(e) => {
@@ -6354,7 +6353,6 @@ export default function APQR() {
                     setimportedData={setimportedData}
                     fileName="reviewODSTR10.xlsx"
                     gridNo={31}
-
                   />
                 </div>
               </div>
@@ -6478,7 +6476,6 @@ export default function APQR() {
                     setimportedData={setimportedData}
                     fileName="reviewODSTR11.xlsx"
                     gridNo={32}
-
                   />
                 </div>
               </div>
@@ -6722,7 +6719,7 @@ export default function APQR() {
                     Add Rows by clicking on (+) icon
                   </div>
                 </div>
-                <div className="flex gap-4 ">
+                <div className="flex gap-4">
                   <ExcelExportImport
                     data={reviewODSTR13}
                     setimportedData={setimportedData}

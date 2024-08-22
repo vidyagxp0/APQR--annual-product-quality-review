@@ -1820,35 +1820,3 @@ export const viewReport = (req, res) => {
     res.status(500).send("Error viewing report");
   }
 };
-
-// export const generateReport = async (req, res) => {
-//   console.log("Generating PDF...");
-//   let browser;
-//   try {
-//     browser = await puppeteer.launch({
-//       headless: true,
-//       args: ["--no-sandbox", "--disable-setuid-sandbox"],
-//     });
-//     const page = await browser.newPage();
-
-//     // Define the path to your HTML file
-//     const filePath = path.join(__dirname, "../public", "demoreport.html");
-//     await page.goto(`file://${filePath}`, { waitUntil: "networkidle0", timeout: 60000 });
-
-//     const pdfBuffer = await page.pdf({
-//       format: "A4",
-//       printBackground: true,
-//     });
-
-//     res.setHeader("Content-Disposition", "attachment; filename=APQR_Report.pdf");
-//     res.setHeader("Content-Type", "application/pdf");
-//     res.send(pdfBuffer);
-//   } catch (error) {
-//     console.error("Error generating PDF:", error);
-//     res.status(500).send("Error generating PDF");
-//   } finally {
-//     if (browser) {
-//       await browser.close();
-//     }
-//   }
-// };

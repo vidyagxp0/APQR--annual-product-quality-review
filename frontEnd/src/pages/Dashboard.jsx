@@ -3,7 +3,7 @@ import Header from "../Component/Header";
 import BottomHeader from "../Component/BottomHeader";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { BsFileEarmarkPdfFill, BsFillFileEarmarkPdfFill } from "react-icons/bs";
+import {  BsFillFileEarmarkPdfFill } from "react-icons/bs";
 
 export default function Dashboard() {
   const navigate = useNavigate();
@@ -55,8 +55,8 @@ export default function Dashboard() {
                   <td className="px-4 py-2 border-r-2">{item.productName}</td>
                   <td className="px-4 py-2 border-r-2">{item.genericName}</td>
                   <td className="px-4 py-2 border-r-2">{item.initiator}</td>
-                  <td className="px-4 cursor-pointer py-2 border-r-2"  onClick={downloadPDF}>
-                   <button className="p-[6px] border border-gray-800 rounded flex gap-2 items-center"> Generate Report <BsFillFileEarmarkPdfFill /></button>
+                  <td className="px-4  py-2 border-r-2"  >
+                   <button className="p-[6px] border border-gray-800 rounded flex gap-2 items-center" onClick={downloadPDF}> Generate Report <BsFillFileEarmarkPdfFill /></button>
                   </td>
                 </tr>
               );
