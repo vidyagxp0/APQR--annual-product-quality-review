@@ -5251,7 +5251,6 @@ export default function APQR() {
                     return (
                       <tr key={index}>
                         <td>
-                          {" "}
                           <input
                             value={item.batchNo}
                             onChange={(e) => {
@@ -6354,7 +6353,6 @@ export default function APQR() {
                     setimportedData={setimportedData}
                     fileName="reviewODSTR10.xlsx"
                     gridNo={31}
-
                   />
                 </div>
               </div>
