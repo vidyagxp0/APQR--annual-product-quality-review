@@ -1,7 +1,7 @@
 {
   "development": {
-    "PORT": 1005,
-    "dbName": "ebmrDev",
+    "PORT": 3000,
+    "dbName": "apqr",
     "username": "root",
     "password": "gaurav",
     "dialect": "mysql",
