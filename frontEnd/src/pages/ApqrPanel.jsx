@@ -2759,7 +2759,7 @@ export default function APQR() {
               </div>
 
               <div className="group-input">
-                <label>PQR No</label>
+                <label>Initiate Date</label>
                 <input
                   disabled
                   type="date"
