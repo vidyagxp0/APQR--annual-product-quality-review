@@ -3,11 +3,13 @@ import Header from "../Component/Header";
 import BottomHeader from "../Component/BottomHeader";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import {  BsFillFileEarmarkPdfFill } from "react-icons/bs";
+import { BsFillFileEarmarkPdfFill } from "react-icons/bs";
 
 export default function Dashboard() {
   const navigate = useNavigate();
+  const [loading, setLoading] = useState(false);
   const downloadPDF = async () => {
+    setLoading(true);
     try {
       const response = await fetch("http://localhost:3000/report/generate-pdf");
       // console.log("Response:", response);
@@ -23,6 +25,7 @@ export default function Dashboard() {
     } catch (error) {
       console.error("Error downloading PDF:", error);
     }
+    setLoading(false);
   };
   const data = useSelector((state) => state.form.forms);
   return (
@@ -41,7 +44,7 @@ export default function Dashboard() {
             </tr>
           </thead>
           <tbody className="w-full">
-            {data?.map((item,index) => {
+            {data?.map((item, index) => {
               return (
                 <tr className="border border-black " key={index}>
                   <td
@@ -55,8 +58,19 @@ export default function Dashboard() {
                   <td className="px-4 py-2 border-r-2">{item.productName}</td>
                   <td className="px-4 py-2 border-r-2">{item.genericName}</td>
                   <td className="px-4 py-2 border-r-2">{item.initiator}</td>
-                  <td className="px-4  py-2 border-r-2"  >
-                   <button className="p-[6px] border border-gray-800 rounded flex gap-2 items-center" onClick={downloadPDF}> Generate Report <BsFillFileEarmarkPdfFill /></button>
+                  <td className="px-4  py-2 border-r-2">
+                    <button
+                      className="p-[6px] border border-gray-800 rounded flex gap-2 items-center bg-slate-200"
+                      onClick={downloadPDF}
+                      disabled={loading}
+                    >
+                      Generate Report
+                      {loading ? (
+                        <div className="h-5 w-5 border-t-2 border-b-2 border-black animate-spin rounded-full"></div>
+                      ) : (
+                        <BsFillFileEarmarkPdfFill />
+                      )}
+                    </button>
                   </td>
                 </tr>
               );
