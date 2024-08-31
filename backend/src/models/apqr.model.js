@@ -1,10 +1,8 @@
 import { DataTypes } from "sequelize";
 import { sequelize } from "../config/db.js";
-import { msa2 } from "./grids/msa2.model.js";
-import gridRef from "./gridRef.model.js";
+// import gridRef from "./gridRef.model.js"; // Ensure gridRef is imported before use
 
 export const APQR = sequelize.define("ALL_APQR", {
-  //General Info Datafields
   pqrId: {
     type: DataTypes.INTEGER,
     primaryKey: true,
@@ -15,15 +13,15 @@ export const APQR = sequelize.define("ALL_APQR", {
     allowNull: true,
   },
   pqrNo: {
-    type: DataTypes.INTEGER,
+    type: DataTypes.STRING,
     allowNull: true,
-    defaultValue: 0,
+    // defaultValue: 0,
   },
   productName: {
     type: DataTypes.STRING,
     allowNull: true,
   },
-  productCode: {
+  productCodes: {
     type: DataTypes.JSON,
     allowNull: true,
     defaultValue: [],
@@ -48,7 +46,6 @@ export const APQR = sequelize.define("ALL_APQR", {
     type: DataTypes.STRING,
     allowNull: true,
   },
-  // Manufacturing Review datafields
   productDescription: {
     type: DataTypes.STRING,
     allowNull: true,
@@ -60,29 +57,33 @@ export const APQR = sequelize.define("ALL_APQR", {
   totalBatchesManufactured: {
     type: DataTypes.INTEGER,
     allowNull: true,
-    defaultValue: 0,
   },
   totalBatchesApprovedReleased: {
-    type: DataTypes.INTEGER,
+    type: DataTypes.STRING,
     allowNull: true,
-    defaultValue: 0,
   },
   totalProcessValidationBatches: {
-    type: DataTypes.INTEGER,
+    type: DataTypes.STRING,
     allowNull: true,
-    defaultValue: 0,
   },
   totalReprocessedBatches: {
-    type: DataTypes.INTEGER,
+    type: DataTypes.STRING,
     allowNull: true,
-    defaultValue: 0,
   },
-  // Timestamps
   createdAt: DataTypes.DATE,
   updatedAt: DataTypes.DATE,
 });
+// gridRef.belongsTo(APQR, {
+//   foreignKey: 'apqrId',
+//   targetKey: 'id',
+// });
 
-APQR.hasMany(gridRef, {
-  foreignKey: "apqrId",
-  as: "mainGrids",
-});
+
+
+// Define associations
+// APQR.hasMany(gridRef, {
+//   foreignKey: "apqrId",
+//   as: "mainGrids",
+// });
+
+// export default APQR;

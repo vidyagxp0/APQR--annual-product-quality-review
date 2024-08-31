@@ -1,43 +1,53 @@
 import { DataTypes } from "sequelize";
 import { sequelize } from "../config/db.js";
+import { APQR } from "./apqr.model.js";
 
-// Define the gridRef model without the associations first
+// Define gridRef
 const gridRef = sequelize.define("MainGrid", {
   id: {
     type: DataTypes.INTEGER,
     primaryKey: true,
     autoIncrement: true,
   },
-  apqrId: {
+  pqrId: {
     type: DataTypes.INTEGER,
-    references: {
-      model: null,      
-      key: "pqrId",
-    },
     allowNull: false,
+    references: {
+      model: APQR,
+      key: 'pqrId'
+    }
   },
-  description: {
+  primaryKey: {
     type: DataTypes.STRING,
-    allowNull: true, // Adjust as needed
+    allowNull: true,
+  },
+  data: {
+    type: DataTypes.JSON,
+    allowNull: true,
+    defaultValue: [],
   },
   createdAt: DataTypes.DATE,
   updatedAt: DataTypes.DATE,
 });
 
-// Dynamically import the APQR model and define the association
-import("./apqr.model.js").then(({ APQR }) => {
-  gridRef.belongsTo(APQR, {
-    foreignKey: "apqrId",
-    as: "apqr",
-  });
-});
+// gridRef.belongsTo(APQR, {
+//   foreignKey: 'apqrId',
+//   as: 'apqr' // Alias if needed
+// });
 
-// Dynamically import the msa2 model and define the association
-import("./grids/msa2.model.js").then(({ msa2 }) => {
-  gridRef.hasMany(msa2, {
-    foreignKey: "mainGridId",
-    as: "gridAs",
-  });
-});
+APQR.hasMany(gridRef, { foreignKey: 'pqrId' });
+gridRef.belongsTo(APQR, {foreignKey: 'pqrId'});
+
+// Define associations after initialization
+// gridRef.associate = () => {
+//   gridRef.belongsTo(sequelize.models.APQR, {
+//     foreignKey: "apqrId",
+//     as: "apqr",
+//   });
+//   gridRef.hasMany(sequelize.models.msa2, {
+//     foreignKey: "mainGridId",
+//     as: "gridAs",
+//   });
+// };
 
 export default gridRef;

@@ -19,6 +19,7 @@
     "@reduxjs/toolkit": "^2.2.6",
     "@tinymce/tinymce-react": "^5.1.1",
     "apexcharts": "^3.51.0",
+    "axios": "^1.7.5",
     "chart.js": "^4.4.3",
     "chartjs-plugin-annotation": "^3.0.1",
     "chartjs-plugin-zoom": "^2.0.1",

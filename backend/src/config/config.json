@@ -1,9 +1,9 @@
 {
   "development": {
-    "PORT": 3000,
+    "PORT": 3001,
     "dbName": "apqr",
     "username": "root",
-    "password": "gaurav",
+    "password": "root",
     "dialect": "mysql",
     "host": "localhost",
     "JWT_ADMIN_SECRET": "GAURAV"

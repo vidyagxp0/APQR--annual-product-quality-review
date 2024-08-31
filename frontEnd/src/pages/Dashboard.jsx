@@ -1,20 +1,34 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Header from "../Component/Header";
 import BottomHeader from "../Component/BottomHeader";
-import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { BsFillFileEarmarkPdfFill } from "react-icons/bs";
+import axios from 'axios';
 
 export default function Dashboard() {
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
+  const [data, setData] = useState([]);
+
+  useEffect(() => {
+    // API call inside useEffect to prevent multiple calls
+    const fetchData = async () => {
+      try {
+        const response = await axios.get('http://localhost:3001/get-all-apqr');
+        setData(response.data);
+      } catch (error) {
+        console.error('There was a problem with the API call:', error);
+      }
+    };
+
+    fetchData();
+  }, []); // Empty dependency array ensures this effect runs only once after the component mounts
+
   const downloadPDF = async () => {
     setLoading(true);
     try {
       const response = await fetch("http://localhost:3000/report/generate-pdf");
-      // console.log("Response:", response);
       const blob = await response.blob();
-      // console.log("Blob:", blob);
       const url = window.URL.createObjectURL(new Blob([blob]));
       const link = document.createElement("a");
       link.href = url;
@@ -27,7 +41,7 @@ export default function Dashboard() {
     }
     setLoading(false);
   };
-  const data = useSelector((state) => state.form.forms);
+
   return (
     <>
       <Header />
@@ -53,12 +67,12 @@ export default function Dashboard() {
                       navigate("/apqr-panel", { state: item });
                     }}
                   >
-                    {item.form_id}
+                    {item.pqrId}
                   </td>
                   <td className="px-4 py-2 border-r-2">{item.productName}</td>
                   <td className="px-4 py-2 border-r-2">{item.genericName}</td>
                   <td className="px-4 py-2 border-r-2">{item.initiator}</td>
-                  <td className="px-4  py-2 border-r-2">
+                  <td className="px-4 py-2 border-r-2">
                     <button
                       className="p-[6px] border border-gray-800 rounded flex gap-2 items-center bg-slate-200"
                       onClick={downloadPDF}

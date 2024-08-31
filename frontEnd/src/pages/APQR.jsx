@@ -6,6 +6,8 @@ import { useDispatch } from "react-redux";
 import { addForm } from "../redux/formSlice";
 import { useNavigate } from "react-router-dom";
 import ExcelExportImport from "../Component/ImportExportExcel";
+import axios from 'axios';
+
 export default function APQR() {
   const [tab, setTab] = useState("GI");
   const balanceSheet = [
@@ -38,7 +40,6 @@ export default function APQR() {
   const [codeTCTD, setCodeTCTD] = useState([]);
   const [reviewORCEC, setReviewORCEC] = useState([]);
   const [manufacturingSD, setManufacturingSD] = useState([]);
-  const [manufacturingSD2, setManufacturingSD2] = useState([]);
   const [bufferFSDPV, setBufferFSDPV] = useState([]);
   const [oosDetails, setOosDetails] = useState([]);
   const [capaDetails, setCapaDetails] = useState([]);
@@ -535,9 +536,9 @@ export default function APQR() {
       ...next,
     }),
     {
-      form_id: Date.now(),
+     
       initiator: "Pankaj Jat",
-      initiateDate: Date.now(),
+      initiateDate: "",
       pqrNO: "",
       productName: "",
       dosageForm: "",
@@ -547,14 +548,24 @@ export default function APQR() {
       mfgLicNo: "",
       processFlow: "",
       productDescription: "",
-      totalNOBM: "",
-      totalNOBA: "",
-      totalNOPVB: "",
-      totalNORB: "",
+      totalBatchesManufactured: 0,
+      totalBatchesApprovedReleased: "",
+      totalProcessValidationBatches: "",
+      totalReprocessedBatches: "",
     }
   );
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
+const APQRData=async(data)=>{
+try{
+  const response=await axios.post('http://localhost:3001/create-apqr',data)
+  console.log('Response:', response.data);
+} catch (error) {
+  console.error('Error posting APQR data:', error);
+}
+}
+
 
   useEffect(() => {
     setPQRData({
@@ -572,7 +583,6 @@ export default function APQR() {
       codeTCTD: codeTCTD,
       reviewORCEC: reviewORCEC,
       manufacturingSD: manufacturingSD,
-      manufacturingSD2: manufacturingSD2,
       bufferFSDPV: bufferFSDPV,
       oosDetails: oosDetails,
       capaDetails: capaDetails,
@@ -625,82 +635,82 @@ export default function APQR() {
       unitOperation8: unitOperation8,
       unitOperation9: unitOperation9,
       unitOperation10: unitOperation10,
-      tiny1: tiny1,
-      tiny2: tiny2,
-      tiny3: tiny3,
-      tiny4: tiny4,
-      tiny5: tiny5,
-      tiny6: tiny6,
-      tiny7: tiny7,
-      tiny8: tiny8,
-      tiny9: tiny9,
-      tiny10: tiny10,
-      tiny11: tiny11,
-      tiny12: tiny12,
-      tiny13: tiny13,
-      tiny14: tiny14,
-      tiny15: tiny15,
-      tiny16: tiny16,
-      tiny17: tiny17,
-      tiny18: tiny18,
-      tiny19: tiny19,
-      tiny20: tiny20,
-      tiny21: tiny21,
-      tiny22: tiny22,
-      tiny23: tiny23,
-      tiny24: tiny24,
-      tiny25: tiny25,
-      tiny26: tiny26,
-      tiny27: tiny27,
-      tiny28: tiny28,
-      tiny29: tiny29,
-      tiny30: tiny30,
-      tiny31: tiny31,
-      tiny32: tiny32,
-      tiny33: tiny33,
-      tiny34: tiny34,
-      tiny35: tiny35,
-      tiny36: tiny36,
-      tiny37: tiny37,
-      tiny38: tiny38,
-      tiny39: tiny39,
-      tiny40: tiny40,
-      tiny41: tiny41,
-      tiny42: tiny42,
-      tiny43: tiny43,
-      tiny44: tiny44,
-      tiny45: tiny45,
-      tiny46: tiny46,
-      tiny47: tiny47,
-      tiny48: tiny48,
-      tiny49: tiny49,
-      tiny50: tiny50,
-      tiny51: tiny51,
-      tiny52: tiny52,
-      tiny53: tiny53,
-      tiny54: tiny54,
-      tiny55: tiny55,
-      tiny56: tiny56,
-      tiny57: tiny57,
-      tiny58: tiny58,
-      tiny59: tiny59,
-      tiny60: tiny60,
-      tiny61: tiny61,
-      tiny62: tiny62,
-      tiny63: tiny63,
-      tiny64: tiny64,
-      tiny65: tiny65,
-      tiny66: tiny66,
-      tiny67: tiny67,
-      tiny68: tiny68,
-      tiny69: tiny69,
-      tiny70: tiny70,
-      tiny71: tiny71,
-      tiny72: tiny72,
-      tiny73: tiny73,
-      tiny74: tiny74,
-      tiny75: tiny75,
-      tiny76: tiny76,
+      // tiny1: tiny1,
+      // tiny2: tiny2,
+      // tiny3: tiny3,
+      // tiny4: tiny4,
+      // tiny5: tiny5,
+      // tiny6: tiny6,
+      // tiny7: tiny7,
+      // tiny8: tiny8,
+      // tiny9: tiny9,
+      // tiny10: tiny10,
+      // tiny11: tiny11,
+      // tiny12: tiny12,
+      // tiny13: tiny13,
+      // tiny14: tiny14,
+      // tiny15: tiny15,
+      // tiny16: tiny16,
+      // tiny17: tiny17,
+      // tiny18: tiny18,
+      // tiny19: tiny19,
+      // tiny20: tiny20,
+      // tiny21: tiny21,
+      // tiny22: tiny22,
+      // tiny23: tiny23,
+      // tiny24: tiny24,
+      // tiny25: tiny25,
+      // tiny26: tiny26,
+      // tiny27: tiny27,
+      // tiny28: tiny28,
+      // tiny29: tiny29,
+      // tiny30: tiny30,
+      // tiny31: tiny31,
+      // tiny32: tiny32,
+      // tiny33: tiny33,
+      // tiny34: tiny34,
+      // tiny35: tiny35,
+      // tiny36: tiny36,
+      // tiny37: tiny37,
+      // tiny38: tiny38,
+      // tiny39: tiny39,
+      // tiny40: tiny40,
+      // tiny41: tiny41,
+      // tiny42: tiny42,
+      // tiny43: tiny43,
+      // tiny44: tiny44,
+      // tiny45: tiny45,
+      // tiny46: tiny46,
+      // tiny47: tiny47,
+      // tiny48: tiny48,
+      // tiny49: tiny49,
+      // tiny50: tiny50,
+      // tiny51: tiny51,
+      // tiny52: tiny52,
+      // tiny53: tiny53,
+      // tiny54: tiny54,
+      // tiny55: tiny55,
+      // tiny56: tiny56,
+      // tiny57: tiny57,
+      // tiny58: tiny58,
+      // tiny59: tiny59,
+      // tiny60: tiny60,
+      // tiny61: tiny61,
+      // tiny62: tiny62,
+      // tiny63: tiny63,
+      // tiny64: tiny64,
+      // tiny65: tiny65,
+      // tiny66: tiny66,
+      // tiny67: tiny67,
+      // tiny68: tiny68,
+      // tiny69: tiny69,
+      // tiny70: tiny70,
+      // tiny71: tiny71,
+      // tiny72: tiny72,
+      // tiny73: tiny73,
+      // tiny74: tiny74,
+      // tiny75: tiny75,
+      // tiny76: tiny76,
       reviewOfCPD: reviewOfCPD,
       previewRPD: previewRPD,
       previewOOS: previewOOS,
@@ -735,7 +745,6 @@ export default function APQR() {
     codeTCTD,
     reviewORCEC,
     manufacturingSD,
-    manufacturingSD2,
     bufferFSDPV,
     oosDetails,
     capaDetails,
@@ -2946,36 +2955,36 @@ export default function APQR() {
                 <label>Total No. of batches manufactured during the current review period</label>
                 <input
                   type="number"
-                  value={pQRData.totalNOBM}
+                  value={pQRData.totalBatchesManufactured}
                   onChange={(e) => {
-                    setPQRData({ totalNOBM: e.target.value });
+                    setPQRData({ totalBatchesManufactured: e.target.value });
                   }}
                 />
               </div>
               <div className="group-input">
                 <label>Total No. of batches Approved & Released</label>
                 <input
-                  value={pQRData.totalNOBA}
+                  value={pQRData.totalBatchesApprovedReleased}
                   onChange={(e) => {
-                    setPQRData({ totalNOBA: e.target.value });
+                    setPQRData({ totalBatchesApprovedReleased: e.target.value });
                   }}
                 />
               </div>
               <div className="group-input">
                 <label>Total No. of Process Validation Batches</label>
                 <input
-                  value={pQRData.totalNOPVB}
+                  value={pQRData.totalProcessValidationBatches}
                   onChange={(e) => {
-                    setPQRData({ totalNOPVB: e.target.value });
+                    setPQRData({ totalProcessValidationBatches: e.target.value });
                   }}
                 />
               </div>
               <div className="group-input">
                 <label>Total No. of Reprocessed Batches</label>
                 <input
-                  value={pQRData.totalNORB}
+                  value={pQRData.totalReprocessedBatches}
                   onChange={(e) => {
-                    setPQRData({ totalNORB: e.target.value });
+                    setPQRData({ totalReprocessedBatches: e.target.value });
                   }}
                 />
               </div>
@@ -11451,7 +11460,8 @@ export default function APQR() {
             
               "
             onClick={() => {
-              dispatch(addForm(pQRData));
+              // dispatch(addForm(pQRData));
+              APQRData(pQRData)
               navigate("/dashboard");
             }}
           >

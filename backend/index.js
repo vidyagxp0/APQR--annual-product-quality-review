@@ -74,7 +74,7 @@ app.use(express.static(path.join(__dirname, "public"))); // <-- Add this line
 app.use("/", apqrRouter);
 app.use("/report", reportRouter);
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3001;
 app.listen(PORT, "0.0.0.0", async () => {
   try {
     await connectToDB();
