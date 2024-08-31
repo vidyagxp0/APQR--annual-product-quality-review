@@ -957,7 +957,7 @@ export default function APQR() {
   const navigate = useNavigate();
   const location = useLocation();
   const editData = location.state;
-
+console.log(editData,"edit")
   const getGraphData = (inputData) => {
     const outputData = {
       batchNumbers: [],

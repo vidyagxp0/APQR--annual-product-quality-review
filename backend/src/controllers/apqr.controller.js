@@ -28,7 +28,7 @@ export const createApqr = async (req, res) => {
         totalProcessValidationBatches: req.body.totalProcessValidationBatches ,
         totalReprocessedBatches: req.body.totalReprocessedBatches ,
       },
-      { transaction: t } // Use transaction
+      { transaction: t } 
     );
 
     const grids = [
@@ -117,7 +117,7 @@ export const createApqr = async (req, res) => {
             primaryKey: grids[i],
             data: req.body[grids[i]],
           },
-          { transaction: t } // Use transaction
+          { transaction: t } 
         );
 
         console.log(newGridRef, 'Grid Reference Created');
@@ -148,6 +148,7 @@ export const getAllAPQRData = async (req, res) => {
       ],
       
     });
+
     res.status(200).json(aPQRData);
 
   } catch (error) {
@@ -164,19 +165,105 @@ export const getAPQRById = async (req, res) => {
     const apqrId = req.params.id;
 
     const aPQRData = await APQR.findOne({
-      where: { pqrId: apqrId },
-      include: [
-        {
-          model: gridRef,
-        },
-      ],
+      where: { pqrId: apqrId }
     });
 
     if (!aPQRData) {
       return res.status(404).json({ error: true, message: "APQR not found" });
     }
 
-    res.status(200).json(aPQRData);
+    let gridDatas = {};
+    const grids = [
+      "manufacturingStage",
+      "manufacturingSAPS",
+      "packingMRS",
+      "rawMRS",
+      "reviewOfASL",
+      "expiredRMD",
+      "expiredPMD",
+      "vendorQDORME",
+      "vendorQDOPPM",
+      "vendorQDPOG",
+      "manufacturingSD",
+      "reviewORCEC",
+      "codeTCTD",
+      "bufferFSDPV",
+      "oosDetails",
+      "capaDetails",
+      "deviationDetails",
+      "ootResults",
+      "oolResults",
+      "ooaResults",
+      "reviewODSTR",
+      "reviewODSTR2",
+      "reviewODSTR3",
+      "reviewODSTR4",
+      "reviewODSTR5",
+      "reviewODSTR6",
+      "reviewODSTR7",
+      "reviewODSTR8",
+      "reviewODSTR9",
+      "reviewODSTR10",
+      "reviewODSTR11",
+      "reviewODSTR12",
+      "reviewODSTR13",
+      "reviewODSTR14",
+      "reviewODSTR15",
+      "reviewOPMTR",
+      "reviewORMETR",
+      "reviewODP",
+      "reviewODP2",
+      "reviewODP3",
+      "reviewODP4",
+      "reviewODP5",
+      "reviewODP6",
+      "reviewODP7",
+      "reviewODP8",
+      "reviewODP9",
+      "reviewODP10",
+      "reviewODPFPTR",
+      "summaryOOSS",
+      "stabilitySR",
+      "reviewOVIRS",
+      "hVACQStatus",
+      "dossierRR",
+      "dossierRRNma",
+      "sanitizationASDOU",
+      "compressedGas",
+      "currentRPQRN",
+      "unitOperation3",
+      "unitOperation4",
+      "unitOperation5",
+      "unitOperation6",
+      "unitOperation7",
+      "unitOperation8",
+      "unitOperation9",
+      "unitOperation10",
+      "reviewOfCPD",
+      "previewRPD",
+      "currentOOS",
+      "previewOOS",
+      "currentOOAC",
+      "previewOOAC",
+      "currentOOAL",
+      "previewOOAL"
+    ];
+
+    for (let i = 0; i < grids.length; i++)
+    {
+      let gridData = await gridRef.findOne({
+        where: { pqrId: apqrId, primaryKey: grids[i] }
+      }); 
+
+      gridDatas[grids[i]] = gridData;
+    }
+
+    let resObject = {
+        aPQRData,
+        gridDatas
+    };
+
+    res.status(200).json(resObject);
   } catch (error) {
     console.error("Error fetching APQR data by ID:", error);
     res.status(500).json({
@@ -227,15 +314,13 @@ export const updateAPQRById = async (req, res) => {
         totalProcessValidationBatches: req.body.totalProcessValidationBatches || existingAPQR.totalProcessValidationBatches,
         totalReprocessedBatches: req.body.totalReprocessedBatches || existingAPQR.totalReprocessedBatches,
       },
-      { transaction: t } // Use transaction
+      { transaction: t } 
     );
 
-    // Update GridRefs
     const grids = [
       "manufacturingStage",
       "manufacturingSAPS",
       "packingMRS",
-      // Add other grids here as in the createAPQR function
     ];
 
     for (let i = 0; i < grids.length; i++) {
@@ -245,7 +330,7 @@ export const updateAPQRById = async (req, res) => {
             pqrId: apqrId,
             primaryKey: grids[i],
           },
-          transaction: t, // Use transaction
+          transaction: t, 
         });
 
         if (existingGridRef) {
