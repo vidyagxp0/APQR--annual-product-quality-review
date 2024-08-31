@@ -79,32 +79,32 @@ export const createApqr = async (req, res) => {
       "reviewODP8",
       "reviewODP9",
       "reviewODP10",
-      // "reviewODPFPTR",
-      // "summaryOOSS",
-      // "stabilitySR",
-      // "reviewOVIRS",
-      // "hVACQStatus",
-      // "dossierRR",
-      // "dossierRRNma",
-      // "sanitizationASDOU",
-      // "compressedGas",
-      // "currentRPQRN",
-      // "unitOperation3",
-      // "unitOperation4",
-      // "unitOperation5",
-      // "unitOperation6",
-      // "unitOperation7",
-      // "unitOperation8",
-      // "unitOperation9",
-      // "unitOperation10",
-      // "reviewOfCPD",
-      // "previewRPD",
-      // "currentOOS",
-      // "previewOOS",
-      // "currentOOAC",
-      // "previewOOAC",
-      // "currentOOAL",
-      // "previewOOAL"
+      "reviewODPFPTR",
+      "summaryOOSS",
+      "stabilitySR",
+      "reviewOVIRS",
+      "hVACQStatus",
+      "dossierRR",
+      "dossierRRNma",
+      "sanitizationASDOU",
+      "compressedGas",
+      "currentRPQRN",
+      "unitOperation3",
+      "unitOperation4",
+      "unitOperation5",
+      "unitOperation6",
+      "unitOperation7",
+      "unitOperation8",
+      "unitOperation9",
+      "unitOperation10",
+      "reviewOfCPD",
+      "previewRPD",
+      "currentOOS",
+      "previewOOS",
+      "currentOOAC",
+      "previewOOAC",
+      "currentOOAL",
+      "previewOOAL"
     ];
 
     const gridData = [];
@@ -156,6 +156,127 @@ export const getAllAPQRData = async (req, res) => {
       error: true,
       message: "Failed to fetch APQR data"
     });
+  }
+};
+
+export const getAPQRById = async (req, res) => {
+  try {
+    const apqrId = req.params.id;
+
+    const aPQRData = await APQR.findOne({
+      where: { pqrId: apqrId },
+      include: [
+        {
+          model: gridRef,
+        },
+      ],
+    });
+
+    if (!aPQRData) {
+      return res.status(404).json({ error: true, message: "APQR not found" });
+    }
+
+    res.status(200).json(aPQRData);
+  } catch (error) {
+    console.error("Error fetching APQR data by ID:", error);
+    res.status(500).json({
+      error: true,
+      message: "Failed to fetch APQR data",
+    });
+  }
+};
+
+export const updateAPQRById = async (req, res) => {
+  const t = await sequelize.transaction(); 
+  try {
+    const apqrId = req.params.id;
+
+    const existingAPQR = await APQR.findOne({
+      where: { pqrId: apqrId },
+      include: [
+        {
+          model: gridRef,
+        },
+      ],
+    });
+
+    if (!existingAPQR) {
+      return res.status(404).json({ error: true, message: "APQR not found" });
+    }
+
+    // Update APQR data
+    await existingAPQR.update(
+      {
+        pqrNo: req.body.pqrNo || existingAPQR.pqrNo,
+        productName: req.body.productName || existingAPQR.productName,
+        productCodes: req.body.productCodes || existingAPQR.productCodes,
+        genericName: req.body.genericName || existingAPQR.genericName,
+        dosageForm: req.body.dosageForm || existingAPQR.dosageForm,
+        initiator: req.body.initiator || existingAPQR.initiator,
+        reviewStartDate: req.body.reviewStartDate
+          ? new Date(req.body.reviewStartDate)
+          : existingAPQR.reviewStartDate,
+        reviewEndDate: req.body.reviewEndDate
+          ? new Date(req.body.reviewEndDate)
+          : existingAPQR.reviewEndDate,
+        mfgLicNo: req.body.mfgLicNo || existingAPQR.mfgLicNo,
+        productDescription: req.body.productDescription || existingAPQR.productDescription,
+        processFlow: req.body.processFlow || existingAPQR.processFlow,
+        totalBatchesManufactured: req.body.totalBatchesManufactured || existingAPQR.totalBatchesManufactured,
+        totalBatchesApprovedReleased: req.body.totalBatchesApprovedReleased || existingAPQR.totalBatchesApprovedReleased,
+        totalProcessValidationBatches: req.body.totalProcessValidationBatches || existingAPQR.totalProcessValidationBatches,
+        totalReprocessedBatches: req.body.totalReprocessedBatches || existingAPQR.totalReprocessedBatches,
+      },
+      { transaction: t } // Use transaction
+    );
+
+    // Update GridRefs
+    const grids = [
+      "manufacturingStage",
+      "manufacturingSAPS",
+      "packingMRS",
+      // Add other grids here as in the createAPQR function
+    ];
+
+    for (let i = 0; i < grids.length; i++) {
+      if (req.body[grids[i]]) {
+        const existingGridRef = await gridRef.findOne({
+          where: {
+            pqrId: apqrId,
+            primaryKey: grids[i],
+          },
+          transaction: t, // Use transaction
+        });
+
+        if (existingGridRef) {
+          await existingGridRef.update(
+            {
+              data: req.body[grids[i]],
+            },
+            { transaction: t }
+          );
+        } else {
+          await gridRef.create(
+            {
+              pqrId: apqrId,
+              primaryKey: grids[i],
+              data: req.body[grids[i]],
+            },
+            { transaction: t }
+          );
+        }
+      }
+    }
+
+    await t.commit(); 
+
+    return res.json({
+      message: "APQR updated successfully",
+    });
+  } catch (error) {
+    await t.rollback(); 
+    console.error("Error updating APQR:", error);
+    return res.status(500).json({ error: error.message });
   }
 };
 

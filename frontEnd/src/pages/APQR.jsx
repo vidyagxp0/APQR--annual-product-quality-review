@@ -4154,7 +4154,7 @@ try{
             <h3 className="gridName pt-4">Unit Operation 3</h3>
             <div className="AddRows d-flex w-full justify-between items-center text-3xl mb-5">
               <div className="flex items-center">
-                <MdNoteAdd onClick={addmanufacturingSDRow} />
+                <MdNoteAdd onClick={addUnitOperation3Row} />
                 <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
               </div>
               <div className="flex gap-4 ">
@@ -4254,7 +4254,7 @@ try{
             <h3 className="gridName pt-4">Unit Operation 4</h3>
             <div className="AddRows d-flex w-full justify-between items-center text-3xl mb-5">
               <div className="flex items-center">
-                <MdNoteAdd onClick={addmanufacturingSDRow} />
+                <MdNoteAdd onClick={addUnitOperation4Row} />
                 <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
               </div>
               <div className="flex gap-4 ">
@@ -4354,7 +4354,7 @@ try{
             <h3 className="gridName pt-4">Unit Operation 5</h3>
             <div className="AddRows d-flex w-full justify-between items-center text-3xl mb-5">
               <div className="flex items-center">
-                <MdNoteAdd onClick={addmanufacturingSDRow} />
+                <MdNoteAdd onClick={addUnitOperation5Row} />
                 <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
               </div>
               <div className="flex gap-4 ">
@@ -4454,7 +4454,7 @@ try{
             <h3 className="gridName pt-4">Unit Operation 6</h3>
             <div className="AddRows d-flex w-full justify-between items-center text-3xl mb-5">
               <div className="flex items-center">
-                <MdNoteAdd onClick={addmanufacturingSDRow} />
+                <MdNoteAdd onClick={addUnitOperation6Row} />
                 <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
               </div>
               <div className="flex gap-4 ">
@@ -4554,7 +4554,7 @@ try{
             <h3 className="gridName pt-4">Unit Operation 7</h3>
             <div className="AddRows d-flex w-full justify-between items-center text-3xl mb-5">
               <div className="flex items-center">
-                <MdNoteAdd onClick={addmanufacturingSDRow} />
+                <MdNoteAdd onClick={addUnitOperation7Row} />
                 <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
               </div>
               <div className="flex gap-4 ">
@@ -4654,7 +4654,7 @@ try{
             <h3 className="gridName pt-4">Unit Operation 8</h3>
             <div className="AddRows d-flex w-full justify-between items-center text-3xl mb-5">
               <div className="flex items-center">
-                <MdNoteAdd onClick={addmanufacturingSDRow} />
+                <MdNoteAdd onClick={addUnitOperation8Row} />
                 <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
               </div>
               <div className="flex gap-4 ">
@@ -4754,7 +4754,7 @@ try{
             <h3 className="gridName pt-4">Unit Operation 9</h3>
             <div className="AddRows d-flex w-full justify-between items-center text-3xl mb-5">
               <div className="flex items-center">
-                <MdNoteAdd onClick={addmanufacturingSDRow} />
+                <MdNoteAdd onClick={addUnitOperation8Row} />
                 <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
               </div>
               <div className="flex gap-4 ">
@@ -4854,7 +4854,7 @@ try{
             <h3 className="gridName pt-4">Unit Operation 10</h3>
             <div className="AddRows d-flex w-full justify-between items-center text-3xl mb-5">
               <div className="flex items-center">
-                <MdNoteAdd onClick={addmanufacturingSDRow} />
+                <MdNoteAdd onClick={addUnitOperation10Row} />
                 <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
               </div>
               <div className="flex gap-4 ">
