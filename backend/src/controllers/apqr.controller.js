@@ -374,15 +374,15 @@ export const updateAPQRById = async (req, res) => {
     if (!existingAPQR) {
       return res.status(404).json({ error: true, message: "APQR not found" });
     }
-
+console.log(req.body.pQRData.productName);
     // Update APQR data
     await existingAPQR.update(
       {
         pqrNo: req.body.pqrNo || existingAPQR.pqrNo,
-        productName: req.body.productName || existingAPQR.productName,
-        productCodes: req.body.productCodes || existingAPQR.productCodes,
-        genericName: req.body.genericName || existingAPQR.genericName,
-        dosageForm: req.body.dosageForm || existingAPQR.dosageForm,
+        productName: req.body.pQRData.productName  || existingAPQR.productName,
+        productCodes: req.body.pQRData.productCodes || existingAPQR.productCodes,
+        genericName: req.body.pQRData.genericName || existingAPQR.genericName,
+        dosageForm: req.body.pQRData.dosageForm || existingAPQR.dosageForm,
         initiator: req.body.initiator || existingAPQR.initiator,
         reviewStartDate: req.body.reviewStartDate
           ? new Date(req.body.reviewStartDate)
@@ -390,13 +390,13 @@ export const updateAPQRById = async (req, res) => {
         reviewEndDate: req.body.reviewEndDate
           ? new Date(req.body.reviewEndDate)
           : existingAPQR.reviewEndDate,
-        mfgLicNo: req.body.mfgLicNo || existingAPQR.mfgLicNo,
-        productDescription: req.body.productDescription || existingAPQR.productDescription,
-        processFlow: req.body.processFlow || existingAPQR.processFlow,
-        totalBatchesManufactured: req.body.totalBatchesManufactured || existingAPQR.totalBatchesManufactured,
-        totalBatchesApprovedReleased: req.body.totalBatchesApprovedReleased || existingAPQR.totalBatchesApprovedReleased,
-        totalProcessValidationBatches: req.body.totalProcessValidationBatches || existingAPQR.totalProcessValidationBatches,
-        totalReprocessedBatches: req.body.totalReprocessedBatches || existingAPQR.totalReprocessedBatches,
+        mfgLicNo: req.body.pQRData.mfgLicNo || existingAPQR.mfgLicNo,
+        productDescription: req.body.pQRData.productDescription || existingAPQR.productDescription,
+        processFlow: req.body.pQRData.processFlow || existingAPQR.processFlow,
+        totalBatchesManufactured: req.body.pQRData.totalBatchesManufactured || existingAPQR.totalBatchesManufactured,
+        totalBatchesApprovedReleased: req.body.pQRData.totalBatchesApprovedReleased || existingAPQR.totalBatchesApprovedReleased,
+        totalProcessValidationBatches: req.body.pQRData.totalProcessValidationBatches || existingAPQR.totalProcessValidationBatches,
+        totalReprocessedBatches: req.body.pQRData.totalReprocessedBatches || existingAPQR.totalReprocessedBatches,
       },
       { transaction: t } 
     );
