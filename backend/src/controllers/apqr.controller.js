@@ -3,7 +3,7 @@ import gridRef from "../models/gridRef.model.js";
 import { sequelize } from '../config/db.js';
 
 export const createApqr = async (req, res) => {
-  console.log(req.body.tiny1);
+  // console.log(req.body.tiny1);
   const t = await sequelize.transaction(); 
   try {
 
