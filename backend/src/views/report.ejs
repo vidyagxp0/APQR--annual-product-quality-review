@@ -104,12 +104,12 @@
       <tbody>
         <% product.rawMatRejectionGrid.forEach((item) => { %>
         <tr>
-          <td><%= item.SI_No %></td>
-          <td><%= item.MaterialCode %></td>
-          <td><%= item.MaterialName %></td>
+          <td><%= item.ARNo %></td>    
+          <td><%= item.materialCode %></td>
+          <td><%= item.materialName %></td>
           <td><%= item.LotNo_ArNo %></td>
-          <td><%= item.ReasonForRejection %></td>
-          <td><%= item.Description %></td>
+          <td><%= item.reasonOfRejection %></td>
+          <td><%= item.description %></td>
         </tr>
         <% }); %>
       </tbody>
