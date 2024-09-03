@@ -13,7 +13,7 @@ export default function Dashboard() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get("http://localhost:3001/get-all-apqr");
+        const response = await axios.get("http://localhost:4000/get-all-apqr");
         setData(response.data);
       } catch (error) {
         console.error("There was a problem with the API call:", error);
@@ -26,7 +26,7 @@ export default function Dashboard() {
   const downloadPDF = async (pqrId) => {
     setLoading((prevLoading) => ({ ...prevLoading, [pqrId]: true }));
     try {
-      const response = await fetch("http://localhost:3001/report/generate-pdf");
+      const response = await fetch("http://195.35.6.197:4000/report/generate-pdf");
       const blob = await response.blob();
       const url = window.URL.createObjectURL(new Blob([blob]));
       const link = document.createElement("a");

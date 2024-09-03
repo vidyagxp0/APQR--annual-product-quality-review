@@ -6,7 +6,7 @@ import { useDispatch } from "react-redux";
 import { addForm } from "../redux/formSlice";
 import { useNavigate } from "react-router-dom";
 import ExcelExportImport from "../Component/ImportExportExcel";
-import axios from 'axios';
+import axios from "axios";
 
 export default function APQR() {
   const [tab, setTab] = useState("GI");
@@ -536,7 +536,6 @@ export default function APQR() {
       ...next,
     }),
     {
-     
       initiator: "Pankaj Jat",
       initiateDate: "",
       pqrNO: "",
@@ -557,15 +556,14 @@ export default function APQR() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-const APQRData=async(data)=>{
-try{
-  const response=await axios.post('http://localhost:3001/create-apqr',data)
-  console.log('Response:', response.data);
-} catch (error) {
-  console.error('Error posting APQR data:', error);
-}
-}
-
+  const APQRData = async (data) => {
+    try {
+      const response = await axios.post("http://localhost:4000/create-apqr", data);
+      console.log("Response:", response.data);
+    } catch (error) {
+      console.error("Error posting APQR data:", error);
+    }
+  };
 
   useEffect(() => {
     setPQRData({
@@ -11461,7 +11459,7 @@ try{
               "
             onClick={() => {
               // dispatch(addForm(pQRData));
-              APQRData(pQRData)
+              APQRData(pQRData);
               navigate("/dashboard");
             }}
           >
