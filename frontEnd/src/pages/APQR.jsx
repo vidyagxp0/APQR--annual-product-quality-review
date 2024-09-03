@@ -4754,7 +4754,7 @@ try{
             <h3 className="gridName pt-4">Unit Operation 9</h3>
             <div className="AddRows d-flex w-full justify-between items-center text-3xl mb-5">
               <div className="flex items-center">
-                <MdNoteAdd onClick={addUnitOperation8Row} />
+                <MdNoteAdd onClick={addUnitOperation9Row} />
                 <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
               </div>
               <div className="flex gap-4 ">
@@ -6779,16 +6779,20 @@ try{
                 </div>
               </div>
               <table>
-                <thead>
+              <thead>
                   <tr>
-                    <th>Batch No</th>
-                    <th>Tests parameter</th>
-                    <th>LSL</th>
-                    <th>USL</th>
-                    <th>LCL</th>
-                    <th>UCL</th>
-                    <th>Observed Value</th>
-                    <th>Complies/Does Not complies</th>
+                    <th rowSpan={2}>Sl. No</th>
+                    <th rowSpan={2}>Primary Packing Material</th>
+                    <th rowSpan={2}>Test parameter</th>
+                    <th rowSpan={2}>Specification limit</th>
+                    <th className="centerText" colSpan={2}>
+                      Obtained value
+                    </th>
+                    <th rowSpan={2}>Complies/ Does Not complies</th>
+                  </tr>
+                  <tr>
+                    <th>Minimum</th>
+                    <th>Maximum</th>
                   </tr>
                 </thead>
                 <tbody>
