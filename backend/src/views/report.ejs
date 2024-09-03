@@ -35,7 +35,8 @@
       }
       .summary {
         display: flex;
-        align-items: center;
+        flex-direction: column;
+        /* align-items: center; */
       }
     </style>
   </head>
@@ -72,11 +73,11 @@
     <h3>Manufacturing Site Address</h3>
     <table>
       <tr>
-        <th>Site</th>
+        <th>Product Name	</th>
         <th>SFGCode</th>
         <th>FG Code</th>
       </tr>
-      <% product.ManuSiteGrid.map((obj) => { %>
+      <% product.manufacturingStage.map((obj) => { %>
       <tr>
         <td><%= obj.productName %></td>
         <td><%= obj.sFGCode %></td>
@@ -84,6 +85,37 @@
       </tr>
       <% }); %>
     </table>
+
+      <div class="summary">
+      <h3>Manufacturing Site Address Summary :-</h3>
+      &nbsp &nbsp
+      <p><%= product.msaSummary %></p>
+    </div>
+
+      <h3>Manufacturing Site Address 2</h3>
+    <table>
+      <tr>
+        <th>Product Name	</th>
+        <th>Batch Code</th>
+        <th>SFGCode</th>
+        <th>remarks</th>
+      </tr>
+      <% product.manufacturingSAPS.map((obj) => { %>
+      <tr>
+        <td><%= obj.productName %></td>
+        <td><%= obj.batchCode %></td>
+        <td><%= obj.sFGCode %></td>
+        <td><%= obj.remarks %></td>
+      </tr>
+      <% }); %>
+    </table>
+
+      <div class="summary">
+      <h3>Manufacturing Site Address 2  Summary:-</h3>
+      &nbsp &nbsp
+      <p><%= product.msa2Summary %></p>
+    </div>
+
 
     <!-- Tab 2 -->
     <h1>Warehouse Review</h1>
@@ -102,12 +134,12 @@
         </tr>
       </thead>
       <tbody>
-        <% product.rawMatRejectionGrid.forEach((item) => { %>
+        <% product.rawMRS.forEach((item) => { %>
         <tr>
-          <td><%= item.ARNo %></td>    
+          <td><%= item.slNo %></td>    
           <td><%= item.materialCode %></td>
           <td><%= item.materialName %></td>
-          <td><%= item.LotNo_ArNo %></td>
+          <td><%= item.ARNo %></td>
           <td><%= item.reasonOfRejection %></td>
           <td><%= item.description %></td>
         </tr>
@@ -118,7 +150,7 @@
     <div class="summary">
       <h3>Raw Materials Rejection Summary :-</h3>
       &nbsp &nbsp
-      <p><%= product.rawMatRejectionSummary %></p>
+      <p><%= product.rawMRSSummary %></p>
     </div>
 
     <h3>Packing Materials Rejection Grid</h3>
@@ -134,14 +166,14 @@
         </tr>
       </thead>
       <tbody>
-        <% product.packagingMatRejectionGrid.forEach((item) => { %>
+        <% product.packingMRS.forEach((item) => { %>
         <tr>
           <td><%= item.SI_No %></td>
-          <td><%= item.MaterialCode %></td>
-          <td><%= item.MaterialName %></td>
-          <td><%= item.LotNo_ArNo %></td>
-          <td><%= item.ReasonForRejection %></td>
-          <td><%= item.Description %></td>
+          <td><%= item.materialCode %></td>
+          <td><%= item.materialName %></td>
+          <td><%= item.ARNo %></td>
+          <td><%= item.reasonForRepacking %></td>
+          <td><%= item.description %></td>
         </tr>
         <% }); %>
       </tbody>
@@ -150,7 +182,7 @@
     <div class="summary">
       <h3>Packaging Materials Rejection Summary :-</h3>
       &nbsp &nbsp
-      <p><%= product.packagingMatRejectionSummary %></p>
+      <p><%= product.packingMRSummary %></p>
     </div>
 
     <h2>Review of Expired Raw Materials and Packaging Materials</h2>
@@ -162,26 +194,26 @@
           <th>Material Code</th>
           <th>Material Name</th>
           <th>Lot No/AR No</th>
-          <th>Description</th>
+          <th>Expiry Date</th>
         </tr>
       </thead>
       <tbody>
-        <% product.expireRawMatGrid.forEach((item) => { %>
+        <% product.expiredRMD.forEach((item) => { %>
         <tr>
           <td><%= item.SI_No %></td>
-          <td><%= item.MaterialCode %></td>
-          <td><%= item.MaterialName %></td>
-          <td><%= item.LotNo_ArNo %></td>
-          <td><%= item.Description %></td>
+          <td><%= item.materialCode %></td>
+          <td><%= item.materialName %></td>
+          <td><%= item.ARNo %></td>
+          <td><%= item.expiryDate %></td>
         </tr>
         <% }); %>
-      </tbody>
+      </tbody>  
     </table>
 
     <div class="summary">
       <h3>Expired Raw Materials Summary :-</h3>
       &nbsp &nbsp
-      <p><%= product.expireRawMatSummary %></p>
+      <p><%= product.expiredRMDSummary %></p>
     </div>
 
     <h3>Expired Packaging Materials Details</h3>
@@ -192,17 +224,17 @@
           <th>Material Code</th>
           <th>Material Name</th>
           <th>Lot No/AR No</th>
-          <th>Description</th>
+          <th>Expiry Date</th>
         </tr>
       </thead>
       <tbody>
-        <% product.expirePackagingMatGrid.forEach((item) => { %>
+        <% product.expiredPMD.forEach((item) => { %>
         <tr>
           <td><%= item.SI_No %></td>
-          <td><%= item.MaterialCode %></td>
-          <td><%= item.MaterialName %></td>
-          <td><%= item.LotNo_ArNo %></td>
-          <td><%= item.Description %></td>
+          <td><%= item.materialCode %></td>
+          <td><%= item.materialName %></td>
+          <td><%= item.ARNo %></td>
+          <td><%= item.expiryDate %></td>
         </tr>
         <% }); %>
       </tbody>
@@ -211,7 +243,7 @@
     <div class="summary">
       <h3>Expired Packaging Materials Summary :-</h3>
       &nbsp &nbsp
-      <p><%= product.expirePackagingMatSummary %></p>
+      <p><%= product.expiredPMDSummary %></p>
     </div>
 
     <h2>Review of Approved Supplier List:</h2>
@@ -226,13 +258,13 @@
         </tr>
       </thead>
       <tbody>
-        <% product.aslGrid.forEach((item) => { %>
+        <% product.reviewOfASL.forEach((item) => { %>
         <tr>
           <td><%= item.SI_No %></td>
-          <td><%= item.MaterialCode %></td>
-          <td><%= item.MaterialName %></td>
-          <td><%= item.Manufacturer_Supplier_Vendor %></td>
-          <td><%= item.Facility %></td>
+          <td><%= item.materialCode %></td>
+          <td><%= item.materialName %></td>
+          <td><%= item.manufacturer %></td>
+          <td><%= item.facility %></td>
         </tr>
         <% }); %>
       </tbody>
@@ -241,37 +273,37 @@
     <div class="summary">
       <h3>Summary of Review of Approved Supplier List :-</h3>
       &nbsp &nbsp
-      <p><%= product.aslSummary %></p>
+      <p><%= product.reviewOfASLSummary %></p>
     </div>
 
     <h2>Vendor Qualification Details of Raw Material Excipients</h2>
     <table>
       <thead>
         <tr>
-          <th>Material Code</th>
           <th>Material Name</th>
+          <th>Material Code</th>
           <th>Manufacturer Name</th>
           <th>Qualification Status</th>
-          <th>Remarks</th>
+          <th>remarks</th>
         </tr>
       </thead>
       <tbody>
-        <% product.vqdGrid.forEach((item) => { %>
+        <% product.vendorQDORME.forEach((item) => { %>
         <tr>
-          <td><%= item.MaterialName %></td>
-          <td><%= item.MaterialCode %></td>
-          <td><%= item.Manufacturer_Name %></td>
-          <td><%= item.Qualification_Status %></td>
-          <td><%= item.Remarks %></td>
+          <td><%= item.materialName %></td>
+          <td><%= item.materialCode %></td>
+          <td><%= item.manufacturerName %></td>
+          <td><%= item.qualificationStatus %></td>
+          <td><%= item.remarks %></td>
         </tr>
         <% }); %>
       </tbody>
     </table>
 
     <div class="summary">
-      <h3>Summary of Review of Approved Supplier List :-</h3>
+      <h3>Summary of Vendor Qualification Details of Raw Material Excipients :-</h3>
       &nbsp &nbsp
-      <p><%= product.vqdSummary %></p>
+      <p><%= product.vendorQDORMESummary %></p>
     </div>
 
     <h2>Vendor Qualification Details of Primary Packing Materials</h2>
@@ -285,12 +317,12 @@
         </tr>
       </thead>
       <tbody>
-        <% product.vqdPPMGrid.forEach((item) => { %>
+        <% product.vendorQDOPPM.forEach((item) => { %>
         <tr>
-          <td><%= item.MaterialName %></td>
-          <td><%= item.MaterialCode %></td>
-          <td><%= item.Manufacturer_Name %></td>
-          <td><%= item.Qualification_Status %></td>
+          <td><%= item.materialName %></td>
+          <td><%= item.materialCode %></td>
+          <td><%= item.manufacturerName %></td>
+          <td><%= item.qualificationStatus %></td>
         </tr>
         <% }); %>
       </tbody>
@@ -299,7 +331,7 @@
     <div class="summary">
       <h3>Summary of Vendor Qualification Details of Primary Packing Materials :-</h3>
       &nbsp &nbsp
-      <p><%= product.vqdPPMSummary %></p>
+      <p><%= product.vendorQDOPPMSummary %></p>
     </div>
 
     <h2>Vendor Qualification Details of Process Gases</h2>
@@ -313,12 +345,12 @@
         </tr>
       </thead>
       <tbody>
-        <% product.vqdPGGrid.forEach((item) => { %>
+        <% product.vendorQDPOG.forEach((item) => { %>
         <tr>
-          <td><%= item.GasName %></td>
-          <td><%= item.GasCode %></td>
-          <td><%= item.Manufacturer_Name %></td>
-          <td><%= item.Qualification_Status %></td>
+          <td><%= item.gasName %></td>
+          <td><%= item.gasCode %></td>
+          <td><%= item.manufacturerName %></td>
+          <td><%= item.qualificationStatus %></td>
         </tr>
         <% }); %>
       </tbody>
@@ -327,54 +359,61 @@
     <div class="summary">
       <h3>Summary of Vendor Qualification Details of Process Gases :-</h3>
       &nbsp &nbsp
-      <p><%= product.vqdPGSummary %></p>
+      <p><%= product.vendorQDPOGSummary %></p>
     </div>
 
     <!-- Tab 3 -->
      <h1>Manufacturing Review</h1>
-       <table>
-      <tr>
-        <td>PRODUCT INFO</td>
-        <td><%= product.productInfo %></td>
-      </tr>
-      <tr>
-        <td>PRODUCT NAME</td>
-        <td><%= product.processFlow %></td>
-      </tr>
-    </table>
+      <table>
+        <tr>
+          <td>PRODUCT DESCRIPTION</td>
+          <td><%= product.productInfo %></td>
+        </tr>
+        <tr>
+          <td>Process Flow</td>
+          <td><%= product.processFlow %></td>
+        </tr>
+      </table>
 
     <h2>Review of all Batches Manufactured</h2>
 
-    <table>
-      <tr>
-        <td style="text-transform: uppercase;">Total No. of batches manufactured during the current review period</td>
-        <td><%= product.totalBatchesManu %></td>
-      </tr>
-      <tr>
-        <td style="text-transform: uppercase;">Total No. of batches Approved & Released</td>
-        <td><%= product.totalBatchesApproved %></td>
-      </tr>
-      <tr>
-        <td style="text-transform: uppercase;">Total No. of Process Validation Batches</td>
-        <td><%= product.totalNoValidationprocessedBatches %></td>
-      </tr>
-      <tr>
-        <td style="text-transform: uppercase;">Total No. of Reprocessed Batches</td>
-        <td><%= product.totalNoReprocessedBatches %></td>
-      </tr>
-      <tr>
-        <td style="text-transform: uppercase;">Process Validation Batches Details</td>
-        <td><%= product.processValidationBatchesDetails %></td>
-      </tr>
-      <tr>
-        <td style="text-transform: uppercase;">Reprocessing Details</td>
-        <td><%= product.reprocessingDetails %></td>
-      </tr>
-      <tr>
-        <td style="text-transform: uppercase;">Microbial Excursion Details</td>
-        <td><%= product.microbialExcursionDetails %></td>
-      </tr>
-    </table>
+      <table>
+        <tr>
+          <td style="text-transform: uppercase;">Total No. of batches manufactured during the current review period</td>
+          <td><%= product.totalBatchesManu %></td>
+        </tr>
+        <tr>
+          <td style="text-transform: uppercase;">Total No. of batches Approved & Released</td>
+          <td><%= product.totalBatchesApproved %></td>
+        </tr>
+        <tr>
+          <td style="text-transform: uppercase;">Total No. of Process Validation Batches</td>
+          <td><%= product.totalNoValidationprocessedBatches %></td>
+        </tr>
+        <tr>
+          <td style="text-transform: uppercase;">Total No. of Reprocessed Batches</td>
+          <td><%= product.totalNoReprocessedBatches %></td>
+        </tr>
+
+      </table>
+
+<!-- //Table Summary -->
+    <div class="summary">
+      <h3>  Process Validation Batches Details:-</h3>
+      &nbsp &nbsp
+      <p><%= product.processValidationBatchesDetails %></p>
+    </div>
+    <div class="summary">
+      <h3>  Reprocessing Details	:-</h3>
+      &nbsp &nbsp
+      <p><%= product.reprocessingDetails %></p>
+    </div>
+    <div class="summary">
+      <h3>  Microbial Excursion Details		:-</h3>
+      &nbsp &nbsp
+      <p><%= product.microbialExcursionDetails %></p>
+    </div>
+
 
     <h2>Code to code transfer details</h2>
     <table>
@@ -391,16 +430,16 @@
         </tr>
       </thead>
       <tbody>
-        <% product.codeToCodetransferDetails.forEach((item) => { %>
+        <% product.codeTCTD.forEach((item) => { %>
         <tr>
           <td><%= item.Sl_No %></td>
-          <td><%= item.BatchNumber %></td>
-          <td><%= item.ExistingCode %></td>
-          <td><%= item.ExistingMarket %></td>
-          <td><%= item.ProposedCode %></td>
-          <td><%= item.ProposedMarket %></td>
-          <td><%= item.TransferQuantity %></td>
-          <td><%= item.RefNo %></td>
+          <td><%= item.batchNo %></td>
+          <td><%= item.existingCode %></td>
+          <td><%= item.existingMarket %></td>
+          <td><%= item.proposedCode %></td>
+          <td><%= item.proposedMarket %></td>
+          <td><%= item.transferQuality %></td>
+          <td><%= item.refNo %></td>
         </tr>
         <% }); %>
       </tbody>
@@ -409,7 +448,7 @@
     <div class="summary">
       <h3>Summary of Code to Code Transfer Details :-</h3>
       &nbsp &nbsp
-      <p><%= product.codeToCodetransferSummary %></p>
+      <p><%= product.codeTCTDSummary %></p>
     </div>
 
     <div class="summary">
@@ -445,19 +484,26 @@
         </tr>
       </thead>
       <tbody>
-        <% product.reviewOfReprocessingGrid.forEach((item) => { %>
+        <% product.reviewORCEC.forEach((item) => { %>
         <tr>
           <td><%= item.Sl_No %></td>
-          <td><%= item.PackingBatchNumber %></td>
-          <td><%= item.ManuBatchNumber %></td>
-          <td><%= item.RepackingIssuedNumber %></td>
-          <td><%= item.RepackingFor %></td>
-          <td><%= item.QMS %></td>
-          <td><%= item.ReasonForRepacking %></td>
+          <td><%= item.packingBatchNumber %></td>
+          <td><%= item.manufacturingBatchNumber %></td>
+          <td><%= item.repackingIssuedNumber %></td>
+          <td><%= item.repackingFor %></td>
+          <td><%= item.qMS %></td>
+          <td><%= item.reasonForRepacking %></td>
         </tr>
         <% }); %>
       </tbody>
     </table>
+
+    <div class="summary">
+      <h3>Review of Reprocessing/Repacking/Reworking Summary :-</h3>
+      &nbsp &nbsp
+      <p><%= product.reviewORCECSummary %></p>
+    </div>
+
 
     <h3>Capa Details</h3>
     <table>
@@ -468,20 +514,20 @@
           <th>Description of Issue</th>
           <th>Root Cause</th>
           <th>CAPA Verification</th>
-          <th>CAPA Status</th>
-          <th>Effectiveness Check</th>
+          <th>File Attachment</th>
+          <th>Remarks</th>
         </tr>
       </thead>
       <tbody>
-        <% product.capaDetailsGrid.forEach((item) => { %>
+        <% product.capaDetails.forEach((item) => { %>
         <tr>
-          <td><%= item.Ar_No %></td>
-          <td><%= item.CAPAType %></td>
-          <td><%= item.DescriptionOfIssue %></td>
-          <td><%= item.RootCause %></td>
-          <td><%= item.CAPAVerification %></td>
-          <td><%= item.FileAttachment %></td>
-          <td><%= item.Remarks %></td>
+          <td><%= item.ARNo %></td>
+          <td><%= item.capaType %></td>
+          <td><%= item.descriptionOfIssue %></td>
+          <td><%= item.rootCause %></td>
+          <td><%= item.capaVerification %></td>
+          <td><%= item.fileAttachment %></td>
+          <td><%= item.remarks %></td>
         </tr>
         <% }); %>
       </tbody>
@@ -505,24 +551,24 @@
           <th>Deviation Ovserved By	</th>
           <th>Classification of Deviation	</th>
           <th>file Attachment	</th>
-          <th>Remarks</th>
+          <th>remarks</th>
           <th>Status  </th>
 
         </tr>
       </thead>
       <tbody>
-        <% product.deviationDetailsGrid.forEach((item) => { %>
+        <% product.deviationDetails.forEach((item) => { %>
         <tr>
-          <td><%= item.Ar_No %></td>
-          <td><%= item.DeviationRelatedTo %></td>
-          <td><%= item.Description %></td>
-          <td><%= item.RootCause %></td>
-          <td><%= item.DeviationObservedOn %></td>
-          <td><%= item.DeviationObservedBy %></td>
-          <td><%= item.ClassificationOfDeviation %></td>
-          <td><%= item.FileAttachment %></td>
-          <td><%= item.Remarks %></td>
-          <td><%= item.Status %></td>
+          <td><%= item.ARNo %></td>
+          <td><%= item.deviationRelatedTo %></td>
+          <td><%= item.description %></td>
+          <td><%= item.rootCause %></td>
+          <td><%= item.deviationObservedOn %></td>
+          <td><%= item.deviationObservedBy %></td>
+          <td><%= item.classificationOfDeviation %></td>
+          <td><%= item.fileAttachment %></td>
+          <td><%= item.remarks %></td>
+          <td><%= item.status %></td>
         </tr>
         <% }); %>
       </tbody>
@@ -536,10 +582,8 @@
 
     <h2>Review of all Batch Failures/Rejections along with CAPA and Effectiveness Check Verification (if any):</h2>
 
-    <h3>Batch Failures/Rejections Details</h3>
-
     <div class="summary">
-      <h3>Summary of Batch Failures/Rejections Details :-</h3>
+      <h3>Batch Failures/Rejections Details :-</h3>
       &nbsp &nbsp
       <p><%= product.batchFailuresRejectionsSummary %></p>
     </div>
@@ -557,14 +601,14 @@
         </tr>
       </thead>
       <tbody>
-        <% product.OosDetails.forEach((item) => { %>
+        <% product.oosDetails.forEach((item) => { %>
         <tr>
-          <td><%= item.Ar_No %></td>
-          <td><%= item.TestNameofOOS %></td>
-          <td><%= item.ResultsObtained %></td>
-          <td><%= item.SpecificationLimit %></td>
-          <td><%= item.DetailsOfObviousError %></td>
-          <td><%= item.FileAttachment %></td>
+          <td><%= item.ARNo %></td>
+            <td><%= item.testNameOfOos %></td>
+          <td><%= item.resultsObtained %></td>
+          <td><%= item.specificationLimit %></td>
+          <td><%= item.detailsOfObviousError %></td>
+          <td><%= item.fileAttachment %></td>
         </tr>
         <% }); %>
       </tbody>
@@ -573,7 +617,7 @@
     <div class="summary">
       <h3>Summary of OOS Details :-</h3>
       &nbsp &nbsp
-      <p><%= product.OosDetailsSummary %></p>
+      <p><%= product.oosDetailsSummary %></p> 
     </div>
 
     <h3>OOT Results</h3>
@@ -590,15 +634,15 @@
         </tr>
       </thead>
       <tbody>
-        <% product.ootDetails.forEach((item) => { %>
+        <% product.ootResults.forEach((item) => { %>
         <tr>
-          <td><%= item.Ar_No %></td>
-          <td><%= item.TestNameofOOT %></td>
-          <td><%= item.ResultsObtained %></td>
-          <td><%= item.InitialIntervalDetails %></td>
-          <td><%= item.PreviousInternalDetails %></td>
-          <td><%= item.PercentDifference %></td>
-          <td><%= item.TrendAlert %></td>
+          <td><%= item.ARNo %></td>
+          <td><%= item.testNameOfOot %></td>
+          <td><%= item.resultsObtained %></td>
+          <td><%= item.initialIntervalDetails %></td>
+          <td><%= item.previousIntervalDetails %></td>
+          <td><%= item.diffrenceOfResult %></td>
+          <td><%= item.trendLimit %></td>
         </tr>
         <% }); %>
       </tbody>
@@ -607,7 +651,7 @@
     <div class="summary">
       <h3>Summary of OOT Details :-</h3>
       &nbsp &nbsp
-      <p><%= product.ootDetailsSummary %></p>
+      <p><%= product.ootResultsSummary %></p>
     </div>
 
     <h3>OOA Results</h3>
@@ -615,7 +659,7 @@
       <thead>
         <tr style="text-transform: uppercase;">
           <th>AR No</th>
-          <th>Test Name Of OOA</th>
+          <th>Test Name Of Alert</th>
           <th>Results Obtained</th>
           <th>Initial Interval Details</th>
           <th>Previous Interval Details</th>
@@ -624,15 +668,15 @@
         </tr>
       </thead>
       <tbody>
-        <% product.ooaDetails.forEach((item) => { %>
+        <% product.ooaResults.forEach((item) => { %>
         <tr>
-          <td><%= item.Ar_No %></td>
-          <td><%= item.TestNameofOOA %></td>
-          <td><%= item.ResultsObtained %></td>
-          <td><%= item.InitialIntervalDetails %></td>
-          <td><%= item.PreviousInternalDetails %></td>  
-          <td><%= item.PercentDifference %></td>
-          <td><%= item.TrendAlert %></td>
+          <td><%= item.ARNo %></td>
+          <td><%= item.testNameOfAlert %></td>
+          <td><%= item.resultsObtained %></td>
+          <td><%= item.initialIntervalDetails %></td>
+          <td><%= item.previousIntervalDetails %></td>  
+          <td><%= item.diffrenceOfResult %></td>
+          <td><%= item.trendLimit %></td>
         </tr>
         <% }); %>
       </tbody>
@@ -641,7 +685,7 @@
     <div class="summary">
       <h3>Summary of OOA Details :-</h3> 
       &nbsp &nbsp
-      <p><%= product.ooaDetailsSummary %></p>
+      <p><%= product.ooaResultsSummary %></p>
     </div>
 
     <h3>OOL Results</h3>
@@ -658,15 +702,15 @@
         </tr>
       </thead>
       <tbody>
-        <% product.oolDetails.forEach((item) => { %>
+        <% product.oolResults.forEach((item) => { %>
         <tr>
-          <td><%= item.Ar_No %></td>
-          <td><%= item.TestNameofOOL %></td>
-          <td><%= item.ResultsObtained %></td>
-          <td><%= item.InitialIntervalDetails %></td>
-          <td><%= item.PreviousInternalDetails %></td>
-          <td><%= item.PercentDifference %></td>
-          <td><%= item.TrendAlert %></td>
+          <td><%= item.ARNo %></td>
+          <td><%= item.testNameOfOot %></td>
+          <td><%= item.resultsObtained %></td>
+          <td><%= item.initialIntervalDetails %></td>
+          <td><%= item.previousIntervalDetails %></td>
+          <td><%= item.diffrenceOfResult %></td>
+          <td><%= item.trendLimit %></td>
         </tr>
         <% }); %>
       </tbody>
@@ -675,7 +719,7 @@
     <div class="summary">
       <h3>Summary of OOL Details :-</h3>
       &nbsp &nbsp
-      <p><%= product.oolDetailsSummary %></p>
+      <p><%= product.oolResultsSummary %></p>
     </div>
 
     <h2>Review of Product Quality (Critical Process Parameters)</h2>
@@ -684,7 +728,7 @@
       <thead>
         <tr style="text-transform: uppercase;">
           <th rowspan="2">Critical Process Parameter</th>
-          <th rowspan="2">Codes</th>
+          <th rowspan="2">codes</th>
           <th rowspan="2">Acceptance criteria</th>
           <th class="text-center" colspan="2">Results </th>
           <th rowspan="2">Complies / Does not complies</th>
@@ -697,12 +741,12 @@
       <tbody>
         <% product.unitOperation1.forEach((item) => { %>
         <tr>
-          <td><%= item.CriticalProcessParameters %></td>
-          <td><%= item.Codes %></td>
-          <td><%= item.AcceptanceCriteria %></td>
-          <td><%= item.Results.Minimum %></td>
-          <td><%= item.Results.Maximum %></td>
-          <td><%= item.CompliesNotComplies %></td>
+          <td><%= item.criticalProcessParameter %></td>
+          <td><%= item.codes %></td>
+          <td><%= item.acceptanceCriteria %></td>
+          <td><%= item.results.minimum  %></td>
+          <td><%= item.results.maximum %></td>
+          <td><%= item.compliesNotComplies %></td>
         </tr>
         <% }); %>
       </tbody>
@@ -713,7 +757,7 @@
       <thead>
         <tr style="text-transform: uppercase;">
           <th rowspan="2">Critical Process Parameter</th>
-          <th rowspan="2">Codes</th>
+          <th rowspan="2">codes</th>
           <th rowspan="2">Acceptance criteria</th>
           <th class="text-center" colspan="2">Results </th>
           <th rowspan="2">Complies / Does not complies</th>
@@ -724,14 +768,14 @@
         </tr>
       </thead>
       <tbody>
-        <% product.unitOperation1.forEach((item) => { %>
+        <% product.unitOperation2.forEach((item) => { %>
         <tr>
-          <td><%= item.CriticalProcessParameters %></td>
-          <td><%= item.Codes %></td>
-          <td><%= item.AcceptanceCriteria %></td>
-          <td><%= item.Results.Minimum %></td>
-          <td><%= item.Results.Maximum %></td>
-          <td><%= item.CompliesNotComplies %></td>
+          <td><%= item.criticalProcessParameter %></td>
+          <td><%= item.codes %></td>
+          <td><%= item.acceptanceCriteria %></td>
+          <td><%= item.results.minimum  %></td>
+          <td><%= item.results.maximum %></td>
+          <td><%= item.compliesNotComplies %></td>
         </tr>
         <% }); %>
       </tbody>
@@ -742,7 +786,7 @@
       <thead>
         <tr style="text-transform: uppercase;">
           <th rowspan="2">Critical Process Parameter</th>
-          <th rowspan="2">Codes</th>
+          <th rowspan="2">codes</th>
           <th rowspan="2">Acceptance criteria</th>
           <th class="text-center" colspan="2">Results </th>
           <th rowspan="2">Complies / Does not complies</th>
@@ -753,14 +797,14 @@
         </tr>
       </thead>
       <tbody>
-        <% product.unitOperation1.forEach((item) => { %>
+        <% product.unitOperation3.forEach((item) => { %>
         <tr>
-          <td><%= item.CriticalProcessParameters %></td>
-          <td><%= item.Codes %></td>
-          <td><%= item.AcceptanceCriteria %></td>
-          <td><%= item.Results.Minimum %></td>
-          <td><%= item.Results.Maximum %></td>
-          <td><%= item.CompliesNotComplies %></td>
+          <td><%= item.criticalProcessParameter %></td>
+          <td><%= item.codes %></td>
+          <td><%= item.acceptanceCriteria %></td>
+          <td><%= item.results.minimum  %></td>
+          <td><%= item.results.maximum %></td>
+          <td><%= item.compliesNotComplies %></td>
         </tr>
         <% }); %>
       </tbody>
@@ -771,7 +815,7 @@
       <thead>
         <tr style="text-transform: uppercase;">
           <th rowspan="2">Critical Process Parameter</th>
-          <th rowspan="2">Codes</th>
+          <th rowspan="2">codes</th>
           <th rowspan="2">Acceptance criteria</th>
           <th class="text-center" colspan="2">Results </th>
           <th rowspan="2">Complies / Does not complies</th>
@@ -782,14 +826,14 @@
         </tr>
       </thead>
       <tbody>
-        <% product.unitOperation1.forEach((item) => { %>
+        <% product.unitOperation4.forEach((item) => { %>
         <tr>
-          <td><%= item.CriticalProcessParameters %></td>
-          <td><%= item.Codes %></td>
-          <td><%= item.AcceptanceCriteria %></td>
-          <td><%= item.Results.Minimum %></td>
-          <td><%= item.Results.Maximum %></td>
-          <td><%= item.CompliesNotComplies %></td>
+          <td><%= item.criticalProcessParameter %></td>
+          <td><%= item.codes %></td>
+          <td><%= item.acceptanceCriteria %></td>
+          <td><%= item.results.minimum  %></td>
+          <td><%= item.results.maximum %></td>
+          <td><%= item.compliesNotComplies %></td>
         </tr>
         <% }); %>
       </tbody>
@@ -800,7 +844,7 @@
       <thead>
         <tr style="text-transform: uppercase;">
           <th rowspan="2">Critical Process Parameter</th>
-          <th rowspan="2">Codes</th>
+          <th rowspan="2">codes</th>
           <th rowspan="2">Acceptance criteria</th>
           <th class="text-center" colspan="2">Results </th>
           <th rowspan="2">Complies / Does not complies</th>
@@ -811,14 +855,14 @@
         </tr>
       </thead>
       <tbody>
-        <% product.unitOperation1.forEach((item) => { %>
+        <% product.unitOperation5.forEach((item) => { %>
         <tr>
-          <td><%= item.CriticalProcessParameters %></td>
-          <td><%= item.Codes %></td>
-          <td><%= item.AcceptanceCriteria %></td>
-          <td><%= item.Results.Minimum %></td>
-          <td><%= item.Results.Maximum %></td>
-          <td><%= item.CompliesNotComplies %></td>
+          <td><%= item.criticalProcessParameter %></td>
+          <td><%= item.codes %></td>
+          <td><%= item.acceptanceCriteria %></td>
+          <td><%= item.results.minimum  %></td>
+          <td><%= item.results.maximum %></td>
+          <td><%= item.compliesNotComplies %></td>
         </tr>
         <% }); %>
       </tbody>
@@ -829,7 +873,7 @@
       <thead>
         <tr style="text-transform: uppercase;">
           <th rowspan="2">Critical Process Parameter</th>
-          <th rowspan="2">Codes</th>
+          <th rowspan="2">codes</th>
           <th rowspan="2">Acceptance criteria</th>
           <th class="text-center" colspan="2">Results </th>
           <th rowspan="2">Complies / Does not complies</th>
@@ -840,14 +884,14 @@
         </tr>
       </thead>
       <tbody>
-        <% product.unitOperation1.forEach((item) => { %>
+        <% product.unitOperation6.forEach((item) => { %>
         <tr>
-          <td><%= item.CriticalProcessParameters %></td>
-          <td><%= item.Codes %></td>
-          <td><%= item.AcceptanceCriteria %></td>
-          <td><%= item.Results.Minimum %></td>
-          <td><%= item.Results.Maximum %></td>
-          <td><%= item.CompliesNotComplies %></td>
+          <td><%= item.criticalProcessParameter %></td>
+          <td><%= item.codes %></td>
+          <td><%= item.acceptanceCriteria %></td>
+          <td><%= item.results.minimum  %></td>
+          <td><%= item.results.maximum %></td>
+          <td><%= item.compliesNotComplies %></td>
         </tr>
         <% }); %>
       </tbody>
@@ -858,7 +902,7 @@
       <thead>
         <tr style="text-transform: uppercase;">
           <th rowspan="2">Critical Process Parameter</th>
-          <th rowspan="2">Codes</th>
+          <th rowspan="2">codes</th>
           <th rowspan="2">Acceptance criteria</th>
           <th class="text-center" colspan="2">Results </th>
           <th rowspan="2">Complies / Does not complies</th>
@@ -869,14 +913,14 @@
         </tr>
       </thead>
       <tbody>
-        <% product.unitOperation1.forEach((item) => { %>
+        <% product.unitOperation7.forEach((item) => { %>
         <tr>
-          <td><%= item.CriticalProcessParameters %></td>
-          <td><%= item.Codes %></td>
-          <td><%= item.AcceptanceCriteria %></td>
-          <td><%= item.Results.Minimum %></td>
-          <td><%= item.Results.Maximum %></td>
-          <td><%= item.CompliesNotComplies %></td>
+          <td><%= item.criticalProcessParameter %></td>
+          <td><%= item.codes %></td>
+          <td><%= item.acceptanceCriteria %></td>
+          <td><%= item.results.minimum  %></td>
+          <td><%= item.results.maximum %></td>
+          <td><%= item.compliesNotComplies %></td>
         </tr>
         <% }); %>
       </tbody>
@@ -887,7 +931,7 @@
       <thead>
         <tr style="text-transform: uppercase;">
           <th rowspan="2">Critical Process Parameter</th>
-          <th rowspan="2">Codes</th>
+          <th rowspan="2">codes</th>
           <th rowspan="2">Acceptance criteria</th>
           <th class="text-center" colspan="2">Results </th>
           <th rowspan="2">Complies / Does not complies</th>
@@ -898,14 +942,14 @@
         </tr>
       </thead>
       <tbody>
-        <% product.unitOperation1.forEach((item) => { %>
+        <% product.unitOperation8.forEach((item) => { %>
         <tr>
-          <td><%= item.CriticalProcessParameters %></td>
-          <td><%= item.Codes %></td>
-          <td><%= item.AcceptanceCriteria %></td>
-          <td><%= item.Results.Minimum %></td>
-          <td><%= item.Results.Maximum %></td>
-          <td><%= item.CompliesNotComplies %></td>
+          <td><%= item.criticalProcessParameter %></td>
+          <td><%= item.codes %></td>
+          <td><%= item.acceptanceCriteria %></td>
+          <td><%= item.results.minimum  %></td>
+          <td><%= item.results.maximum %></td>
+          <td><%= item.compliesNotComplies %></td>
         </tr>
         <% }); %>
       </tbody>
@@ -916,7 +960,7 @@
       <thead>
         <tr style="text-transform: uppercase;">
           <th rowspan="2">Critical Process Parameter</th>
-          <th rowspan="2">Codes</th>
+          <th rowspan="2">codes</th>
           <th rowspan="2">Acceptance criteria</th>
           <th class="text-center" colspan="2">Results </th>
           <th rowspan="2">Complies / Does not complies</th>
@@ -927,14 +971,14 @@
         </tr>
       </thead>
       <tbody>
-        <% product.unitOperation1.forEach((item) => { %>
+        <% product.unitOperation9.forEach((item) => { %>
         <tr>
-          <td><%= item.CriticalProcessParameters %></td>
-          <td><%= item.Codes %></td>
-          <td><%= item.AcceptanceCriteria %></td>
-          <td><%= item.Results.Minimum %></td>
-          <td><%= item.Results.Maximum %></td>
-          <td><%= item.CompliesNotComplies %></td>
+          <td><%= item.criticalProcessParameter %></td>
+          <td><%= item.codes %></td>
+          <td><%= item.acceptanceCriteria %></td>
+          <td><%= item.results.minimum  %></td>
+          <td><%= item.results.maximum %></td>
+          <td><%= item.compliesNotComplies %></td>
         </tr>
         <% }); %>
       </tbody>
@@ -945,7 +989,7 @@
       <thead>
         <tr style="text-transform: uppercase;">
           <th rowspan="2">Critical Process Parameter</th>
-          <th rowspan="2">Codes</th>
+          <th rowspan="2">codes</th>
           <th rowspan="2">Acceptance criteria</th>
           <th class="text-center" colspan="2">Results </th>
           <th rowspan="2">Complies / Does not complies</th>
@@ -956,25 +1000,27 @@
         </tr>
       </thead>
       <tbody>
-        <% product.unitOperation1.forEach((item) => { %>
+        <% product.unitOperation10.forEach((item) => { %>
         <tr>
-          <td><%= item.CriticalProcessParameters %></td>
-          <td><%= item.Codes %></td>
-          <td><%= item.AcceptanceCriteria %></td>
-          <td><%= item.Results.Minimum %></td>
-          <td><%= item.Results.Maximum %></td>
-          <td><%= item.CompliesNotComplies %></td>
+          <td><%= item.criticalProcessParameter %></td>
+          <td><%= item.codes %></td>
+          <td><%= item.acceptanceCriteria %></td>
+          <td><%= item.results.minimum  %></td>
+          <td><%= item.results.maximum %></td>
+          <td><%= item.compliesNotComplies %></td>
         </tr>
         <% }); %>
       </tbody>
     </table>
 
     <div class="summary">
-      <h3>Summary of Manufacturing Site Address :-</h3>
+      <h3>Critical Process Parameters Review Summary :-</h3>
       &nbsp &nbsp
-      <p><%= product.msaSummary %></p>
+      <p><%= product.CPPRSSummary %></p>
     </div>  
 
+
+    <!-- Tab 4 -->
     <h1>Laboratory Review</h1>
     <h2>Review of Drug Substance Test Results
     </h2>
@@ -1003,7 +1049,7 @@
           <td><%= item.Specification_limit %></td>
           <td><%= item.Obtained.Minimum %></td>
           <td><%= item.Obtained.Maximum %></td>
-          <td><%= item.CompliesNotComplies %></td>
+          <td><%= item.compliesNotComplies %></td>
         </tr>
         <% }); %>
       </tbody>
@@ -1034,7 +1080,7 @@
           <td><%= item.Specification_limit %></td>
           <td><%= item.Obtained.Minimum %></td>
           <td><%= item.Obtained.Maximum %></td>
-          <td><%= item.CompliesNotComplies %></td>
+          <td><%= item.compliesNotComplies %></td>
         </tr>
         <% }); %>
       </tbody>
@@ -1065,7 +1111,7 @@
           <td><%= item.Specification_limit %></td>
           <td><%= item.Obtained.Minimum %></td>
           <td><%= item.Obtained.Maximum %></td>
-          <td><%= item.CompliesNotComplies %></td>
+          <td><%= item.compliesNotComplies %></td>
         </tr>
         <% }); %>
       </tbody>
@@ -1096,7 +1142,7 @@
           <td><%= item.Specification_limit %></td>
           <td><%= item.Obtained.Minimum %></td>
           <td><%= item.Obtained.Maximum %></td>
-          <td><%= item.CompliesNotComplies %></td>
+          <td><%= item.compliesNotComplies %></td>
         </tr>
         <% }); %>
       </tbody>
@@ -1126,7 +1172,7 @@
           <td><%= item.Specification_limit %></td>
           <td><%= item.Obtained.Minimum %></td>
           <td><%= item.Obtained.Maximum %></td>
-          <td><%= item.CompliesNotComplies %></td>
+          <td><%= item.compliesNotComplies %></td>
         </tr>
         <% }); %>
       </tbody>
@@ -1157,7 +1203,7 @@
           <td><%= item.Specification_limit %></td>
           <td><%= item.Obtained.Minimum %></td>
           <td><%= item.Obtained.Maximum %></td>
-          <td><%= item.CompliesNotComplies %></td>
+          <td><%= item.compliesNotComplies %></td>
         </tr>
         <% }); %>
       </tbody>
@@ -1187,7 +1233,7 @@
           <td><%= item.Specification_limit %></td>
           <td><%= item.Obtained.Minimum %></td>
           <td><%= item.Obtained.Maximum %></td>
-          <td><%= item.CompliesNotComplies %></td>
+          <td><%= item.compliesNotComplies %></td>
         </tr>
         <% }); %>
       </tbody>
@@ -1217,7 +1263,7 @@
           <td><%= item.Specification_limit %></td>
           <td><%= item.Obtained.Minimum %></td>
           <td><%= item.Obtained.Maximum %></td>
-          <td><%= item.CompliesNotComplies %></td>
+          <td><%= item.compliesNotComplies %></td>
         </tr>
         <% }); %>
       </tbody>
@@ -1247,7 +1293,7 @@
           <td><%= item.Specification_limit %></td>
           <td><%= item.Obtained.Minimum %></td>
           <td><%= item.Obtained.Maximum %></td>
-          <td><%= item.CompliesNotComplies %></td>
+          <td><%= item.compliesNotComplies %></td>
         </tr>
         <% }); %>
       </tbody>
@@ -1277,7 +1323,7 @@
           <td><%= item.Specification_limit %></td>
           <td><%= item.Obtained.Minimum %></td>
           <td><%= item.Obtained.Maximum %></td>
-          <td><%= item.CompliesNotComplies %></td>
+          <td><%= item.compliesNotComplies %></td>
         </tr>
         <% }); %>
       </tbody>
@@ -2077,10 +2123,10 @@
       <td><%= item.Sl_No %></td>
       <td><%= item.Batch_No %></td>
       <td><%= item.Quality_Related_Notification.No %></td>
-      <td><%= item.Quality_Related_Notification.Description %></td>
+      <td><%= item.Quality_Related_Notification.description %></td>
       <td><%= item.Quality_Related_Notification.Impact	 %></td>
       <td><%= item.Quality_Related_Notification.Status %></td>
-      <td><%= item.CAPA.Description_No %></td>
+      <td><%= item.CAPA.description_No %></td>
       <td><%= item.CAPA.Status %></td>
       <td><%= item.CAPA.EC %></td>
     </tr>
@@ -2149,7 +2195,7 @@
       <td><%= item.Agency	 %></td>
       <td><%= item.Notification_No %></td>
       <td><%= item.Notification_Type %></td>
-      <td><%= item.Description %></td>
+      <td><%= item.description %></td>
     </tr>
     <% }); %>
   </tbody>
@@ -2170,18 +2216,18 @@
       <th>Date of Application	</th>
       <th>Status of Application	</th>
       <th>Date of Authorization	</th>
-      <th>Remarks</th>
+      <th>remarks</th>
   </thead>
   <tbody>
     <% product.newm.forEach((item) => { %>
     <tr>
       <td><%= item.Sl_No %></td>
       <td><%= item.Country_Name	 %></td>
-      <td><%= item.Description_Of_Packing %></td>
+      <td><%= item.description_Of_Packing %></td>
       <td><%= item.Date_of_Application %></td>
       <td><%= item.Status_of_Application %></td>
       <td><%= item.Date_of_Authorization	 %></td>
-      <td><%= item.Remarks %></td>
+      <td><%= item.remarks %></td>
     </tr>
     <% }); %>
   </tbody>

@@ -3,7 +3,8 @@ import path from "path";
 import { fileURLToPath } from "url";
 import { APQR } from "../models/apqr.model.js";
 import gridRef from "../models/gridRef.model.js";
-import { log } from "console";
+import { htmlToText } from "html-to-text";
+
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
@@ -1748,9 +1749,27 @@ const pqrData = {
   A18Summary: "Summary of Annexure 18 will be visible here",
   A19Summary: "Summary of Annexure 19 will be visible here",
   A20Summary: "Summary of Annexure 20 will be visible here",
-};
+};  
 
-const setapqrdata = (aPQRData) => {
+function htmlToPlainText(html) {
+  // Convert HTML to plain text using html-to-text
+  return htmlToText(html, {
+    wordwrap: false, // Disable word wrapping to preserve code formatting
+  });
+}
+const setapqrdata = (aPQRDataOBJ) => {
+  const { aPQRData, gridDatas } = aPQRDataOBJ;
+  let { tinyData } = aPQRData;
+
+  const tinyDataPlainText = Object.fromEntries(
+    Object.entries(tinyData).map(([key, html]) => [key, htmlToPlainText(html)])
+  );
+  tinyData = tinyDataPlainText;
+
+  if (!aPQRDataOBJ || typeof aPQRDataOBJ !== "object") {
+    console.error("Invalid data provided");
+    return;
+  }
   if (!aPQRData || typeof aPQRData !== "object") {
     console.error("Invalid data provided");
     return;
@@ -1772,9 +1791,62 @@ const setapqrdata = (aPQRData) => {
   pqrData.totalNoReprocessedBatches = aPQRData?.totalReprocessedBatches ?? "";
 
   //Grids
-  pqrData.ManuSiteGrid = aPQRData?.gridDatas?.manufacturingStage?.data ?? [];
-  pqrData.rawMatRejectionGrid = aPQRData?.gridDatas?.rawMRS?.data ?? [];
-  pqrData.packagingMatRejectionGrid = aPQRData?.gridDatas?.packingMRS?.data ?? [];
+  pqrData.manufacturingStage = gridDatas?.manufacturingStage?.data ?? [];
+  pqrData.manufacturingSAPS = gridDatas?.manufacturingSAPS?.data ?? [];
+  pqrData.rawMRS = gridDatas?.rawMRS?.data ?? [];
+  pqrData.packingMRS = gridDatas?.packingMRS?.data ?? [];
+  pqrData.expiredRMD = gridDatas?.expiredRMD?.data ?? [];
+  pqrData.expiredPMD = gridDatas?.expiredPMD?.data ?? [];
+  pqrData.reviewOfASL = gridDatas?.reviewOfASL?.data ?? [];
+  pqrData.vendorQDORME = gridDatas?.vendorQDORME?.data ?? [];
+  pqrData.vendorQDOPPM = gridDatas?.vendorQDOPPM?.data ?? [];
+  pqrData.vendorQDPOG = gridDatas?.vendorQDPOG?.data ?? [];
+  pqrData.codeTCTD = gridDatas?.codeTCTD?.data ?? [];
+  pqrData.reviewORCEC = gridDatas?.reviewORCEC?.data ?? [];
+  pqrData.capaDetails = gridDatas?.capaDetails?.data ?? [];
+  pqrData.deviationDetails = gridDatas?.deviationDetails?.data ?? [];
+  pqrData.oosDetails = gridDatas?.oosDetails?.data ?? [];
+  pqrData.ootResults = gridDatas?.ootResults?.data ?? [];
+  pqrData.ooaResults = gridDatas?.ooaResults?.data ?? [];
+  pqrData.oolResults = gridDatas?.oolResults?.data ?? [];
+  pqrData.unitOperation1 = gridDatas?.bufferFSDPV?.data ?? [];
+  pqrData.unitOperation2 = gridDatas?.manufacturingSD?.data ?? [];
+  pqrData.unitOperation3 = gridDatas?.unitOperation3?.data ?? [];
+  pqrData.unitOperation4 = gridDatas?.unitOperation4?.data ?? [];
+  pqrData.unitOperation5 = gridDatas?.unitOperation5?.data ?? [];
+  pqrData.unitOperation6 = gridDatas?.unitOperation6?.data ?? [];
+  pqrData.unitOperation7 = gridDatas?.unitOperation7?.data ?? [];
+  pqrData.unitOperation8 = gridDatas?.unitOperation8?.data ?? [];
+  pqrData.unitOperation9 = gridDatas?.unitOperation9?.data ?? [];
+  pqrData.unitOperation10 = gridDatas?.unitOperation10  ?.data ?? [];
+
+  //Tiny
+  pqrData.msaSummary = tinyData?.tiny1 ?? "";
+  pqrData.msa2Summary = tinyData?.tiny2 ?? "";
+  pqrData.rawMRSSummary = tinyData?.tiny3 ?? "";
+  pqrData.packingMRSummary = tinyData?.tiny4 ?? "";
+  pqrData.expiredRMDSummary = tinyData?.tiny5 ?? "";
+  pqrData.expiredPMDSummary = tinyData?.tiny6 ?? "";
+  pqrData.reviewOfASLSummary = tinyData?.tiny7 ?? "";
+  pqrData.vendorQDORMESummary = tinyData?.tiny8 ?? "";
+  pqrData.vendorQDOPPMSummary = tinyData?.tiny9 ?? "";
+  pqrData.vendorQDPOGSummary = tinyData?.tiny10 ?? "";
+  pqrData.processValidationBatchesDetails = tinyData?.tiny11 ?? "";
+  pqrData.reprocessingDetails = tinyData?.tiny12 ?? "";
+  pqrData.microbialExcursionDetails = tinyData?.tiny13 ?? "";
+  pqrData.codeTCTDSummary = tinyData?.tiny14 ?? "";
+  pqrData.reviewOFManuProcessSummary = tinyData?.tiny15 ?? "";
+  pqrData.brpDetails = tinyData?.tiny16 ?? "";
+  pqrData.batchRepackingDetails = tinyData?.tiny17 ?? "";
+  pqrData.reviewORCECSummary = tinyData?.tiny18 ?? "";
+  pqrData.capaDetailsSummary = tinyData?.tiny19 ?? "";
+  pqrData.deviationDetailsSummary = tinyData?.tiny20 ?? "";
+  pqrData.batchFailuresRejectionsSummary = tinyData?.tiny21 ?? "";
+  pqrData.oosDetailsSummary = tinyData?.tiny22 ?? "";
+  pqrData.ootResultsSummary = tinyData?.tiny23 ?? "";
+  pqrData.ooaResultsSummary = tinyData?.tiny24 ?? "";
+  pqrData.oolResultsSummary = tinyData?.tiny25 ?? "";
+  pqrData.CPPRSSummary = tinyData?.tiny26 ?? "";
 };
 
 export const generatePdf = async (req, res) => {
@@ -1849,6 +1921,7 @@ export const generatePdfbyId = async (req, res) => {
     });
 
     aPQRData = await aPQRDataRes.json();
+
     setapqrdata(aPQRData);
   } catch (error) {
     console.error("Error fetching APQR data:", error);
@@ -1944,6 +2017,8 @@ export const viewReportByID = async (req, res) => {
     });
 
     aPQRData = await aPQRDataRes.json();
+
+
     setapqrdata(aPQRData);
   } catch (error) {
     console.error("Error fetching APQR data:", error);
