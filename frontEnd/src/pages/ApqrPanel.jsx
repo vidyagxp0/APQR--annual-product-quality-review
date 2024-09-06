@@ -32,10 +32,10 @@ export default function APQR() {
 
   const phChartsConfig = {
     data: [
-      1.65, 2.7, 3.4, 4.1, 2.2, 2.8, 3.3, 4.0, 1.75, 2.9, 3.5, 4.05, 2.1, 2.85,
-      3.2, 4.15, 1.8, 2.75, 3.45, 4.0, 2.25, 2.95, 3.35, 4.1, 1.9, 2.8, 3.5,
-      4.05, 2.0, 2.9, 3.3, 4.0, 1.7, 2.85, 3.45, 4.1, 2.15, 2.9, 3.25, 4.0,
-      1.85, 2.8, 3.4, 4.05, 2.3, 2.95, 3.5, 4.1, 1.75, 2.85, 3.4, 3.9, 3.4,
+      1.65, 2.7, 3.4, 4.1, 2.2, 2.8, 3.3, 4.0, 1.75, 2.9, 3.5, 4.05, 2.1, 2.85, 3.2, 4.15, 1.8,
+      2.75, 3.45, 4.0, 2.25, 2.95, 3.35, 4.1, 1.9, 2.8, 3.5, 4.05, 2.0, 2.9, 3.3, 4.0, 1.7, 2.85,
+      3.45, 4.1, 2.15, 2.9, 3.25, 4.0, 1.85, 2.8, 3.4, 4.05, 2.3, 2.95, 3.5, 4.1, 1.75, 2.85, 3.4,
+      3.9, 3.4,
     ],
     lsl: 2,
     usl: 4,
@@ -54,10 +54,10 @@ export default function APQR() {
 
   const assayChartsConfig = {
     data: [
-      1.65, 2.7, 3.4, 4.1, 2.2, 2.8, 3.3, 4.0, 1.75, 2.9, 3.5, 4.05, 2.1, 2.85,
-      3.2, 4.15, 1.8, 2.75, 3.45, 4.0, 2.25, 2.95, 3.35, 4.1, 1.9, 2.8, 3.5,
-      4.05, 2.0, 2.9, 3.3, 4.0, 1.7, 2.85, 3.45, 4.1, 2.15, 2.9, 3.25, 4.0,
-      1.85, 2.8, 3.4, 4.05, 2.3, 2.95, 3.5, 4.1, 1.75, 2.85, 3.4, 3.9, 3.4,
+      1.65, 2.7, 3.4, 4.1, 2.2, 2.8, 3.3, 4.0, 1.75, 2.9, 3.5, 4.05, 2.1, 2.85, 3.2, 4.15, 1.8,
+      2.75, 3.45, 4.0, 2.25, 2.95, 3.35, 4.1, 1.9, 2.8, 3.5, 4.05, 2.0, 2.9, 3.3, 4.0, 1.7, 2.85,
+      3.45, 4.1, 2.15, 2.9, 3.25, 4.0, 1.85, 2.8, 3.4, 4.05, 2.3, 2.95, 3.5, 4.1, 1.75, 2.85, 3.4,
+      3.9, 3.4,
     ],
     lsl: 95,
     usl: 105,
@@ -82,10 +82,10 @@ export default function APQR() {
 
   const impurityChartsConfig = {
     data: [
-      1.65, 2.7, 3.4, 4.1, 2.2, 2.8, 3.3, 4.0, 1.75, 2.9, 3.5, 4.05, 2.1, 2.85,
-      3.2, 4.15, 1.8, 2.75, 3.45, 4.0, 2.25, 2.95, 3.35, 4.1, 1.9, 2.8, 3.5,
-      4.05, 2.0, 2.9, 3.3, 4.0, 1.7, 2.85, 3.45, 4.1, 2.15, 2.9, 3.25, 4.0,
-      1.85, 2.8, 3.4, 4.05, 2.3, 2.95, 3.5, 4.1, 1.75, 2.85, 3.4, 3.9, 3.4,
+      1.65, 2.7, 3.4, 4.1, 2.2, 2.8, 3.3, 4.0, 1.75, 2.9, 3.5, 4.05, 2.1, 2.85, 3.2, 4.15, 1.8,
+      2.75, 3.45, 4.0, 2.25, 2.95, 3.35, 4.1, 1.9, 2.8, 3.5, 4.05, 2.0, 2.9, 3.3, 4.0, 1.7, 2.85,
+      3.45, 4.1, 2.15, 2.9, 3.25, 4.0, 1.85, 2.8, 3.4, 4.05, 2.3, 2.95, 3.5, 4.1, 1.75, 2.85, 3.4,
+      3.9, 3.4,
     ],
     lsl: 2,
     usl: 4,
@@ -103,10 +103,10 @@ export default function APQR() {
 
   const dissolutionChartsConfig = {
     data: [
-      1.65, 2.7, 3.4, 4.1, 2.2, 2.8, 3.3, 4.0, 1.75, 2.9, 3.5, 4.05, 2.1, 2.85,
-      3.2, 4.15, 1.8, 2.75, 3.45, 4.0, 2.25, 2.95, 3.35, 4.1, 1.9, 2.8, 3.5,
-      4.05, 2.0, 2.9, 3.3, 4.0, 1.7, 2.85, 3.45, 4.1, 2.15, 2.9, 3.25, 4.0,
-      1.85, 2.8, 3.4, 4.05, 2.3, 2.95, 3.5, 4.1, 1.75, 2.85, 3.4, 3.9, 3.4,
+      1.65, 2.7, 3.4, 4.1, 2.2, 2.8, 3.3, 4.0, 1.75, 2.9, 3.5, 4.05, 2.1, 2.85, 3.2, 4.15, 1.8,
+      2.75, 3.45, 4.0, 2.25, 2.95, 3.35, 4.1, 1.9, 2.8, 3.5, 4.05, 2.0, 2.9, 3.3, 4.0, 1.7, 2.85,
+      3.45, 4.1, 2.15, 2.9, 3.25, 4.0, 1.85, 2.8, 3.4, 4.05, 2.3, 2.95, 3.5, 4.1, 1.75, 2.85, 3.4,
+      3.9, 3.4,
     ],
     lsl: 2,
     usl: 4,
@@ -124,10 +124,10 @@ export default function APQR() {
   };
   const disIntegrationChartsConfig = {
     data: [
-      1.65, 2.7, 3.4, 4.1, 2.2, 2.8, 3.3, 4.0, 1.75, 2.9, 3.5, 4.05, 2.1, 2.85,
-      3.2, 4.15, 1.8, 2.75, 3.45, 4.0, 2.25, 2.95, 3.35, 4.1, 1.9, 2.8, 3.5,
-      4.05, 2.0, 2.9, 3.3, 4.0, 1.7, 2.85, 3.45, 4.1, 2.15, 2.9, 3.25, 4.0,
-      1.85, 2.8, 3.4, 4.05, 2.3, 2.95, 3.5, 4.1, 1.75, 2.85, 3.4, 3.9, 3.4,
+      1.65, 2.7, 3.4, 4.1, 2.2, 2.8, 3.3, 4.0, 1.75, 2.9, 3.5, 4.05, 2.1, 2.85, 3.2, 4.15, 1.8,
+      2.75, 3.45, 4.0, 2.25, 2.95, 3.35, 4.1, 1.9, 2.8, 3.5, 4.05, 2.0, 2.9, 3.3, 4.0, 1.7, 2.85,
+      3.45, 4.1, 2.15, 2.9, 3.25, 4.0, 1.85, 2.8, 3.4, 4.05, 2.3, 2.95, 3.5, 4.1, 1.75, 2.85, 3.4,
+      3.9, 3.4,
     ],
     lsl: 95,
     usl: 105,
@@ -152,10 +152,9 @@ export default function APQR() {
 
   const phOfParacetamolScatter = {
     data: [
-      2.9, 1.75, 3.45, 2.85, 4.05, 3.2, 2.1, 4.1, 1.9, 2.8, 3.3, 4.0, 2.25, 3.5,
-      2.3, 4.1, 1.65, 3.35, 2.95, 3.4, 2.0, 4.05, 1.8, 2.7, 4.0, 3.45, 2.85,
-      1.85, 4.1, 2.9, 3.5, 1.7, 3.25, 4.1, 2.2, 3.3, 2.95, 1.75, 3.5, 4.1, 1.9,
-      2.8, 4.05, 2.15, 3.4, 1.75, 4.0, 2.8, 3.45, 4.05, 2.0,
+      2.9, 1.75, 3.45, 2.85, 4.05, 3.2, 2.1, 4.1, 1.9, 2.8, 3.3, 4.0, 2.25, 3.5, 2.3, 4.1, 1.65,
+      3.35, 2.95, 3.4, 2.0, 4.05, 1.8, 2.7, 4.0, 3.45, 2.85, 1.85, 4.1, 2.9, 3.5, 1.7, 3.25, 4.1,
+      2.2, 3.3, 2.95, 1.75, 3.5, 4.1, 1.9, 2.8, 4.05, 2.15, 3.4, 1.75, 4.0, 2.8, 3.45, 4.05, 2.0,
     ],
     lsl: 95,
     usl: 105,
@@ -217,13 +216,12 @@ export default function APQR() {
 
   const phOfParacetamolPareto = {
     data: [
-      1.65, 2.7, 3.4, 4.1, 2.2, 2.8, 3.3, 4.0, 1.75, 2.9, 3.5, 4.05, 2.1, 2.85,
-      3.2, 4.15, 1.8, 2.75, 3.45, 4.0, 2.25, 2.95, 3.35, 4.1, 1.9, 2.8, 3.5,
-      4.05, 2.0, 2.9, 3.3, 4.0, 1.7, 2.85, 3.45, 4.1, 2.15, 2.9, 3.25, 4.0,
-      1.85, 2.8, 3.4, 4.05, 2.3, 2.95, 3.5, 4.1, 1.75, 2.85, 2.85, 2.85, 2.85,
-      2.85, 2.85, 2.85, 2.85, 2.85, 2.85, 2.85, 2.85, 2.85, 2.85, 2.85, 2.85,
-      2.85, 2.85, 2.85, 2.85, 2.85, 2.85, 2.85, 2.85, 2.85, 2.85, 2.85, 2.85,
-      2.85, 2.85, 2.85, 2.85, 2.85, 2.85, 2.85, 2.85, 2.85, 2.85, 2.85, 2.85,
+      1.65, 2.7, 3.4, 4.1, 2.2, 2.8, 3.3, 4.0, 1.75, 2.9, 3.5, 4.05, 2.1, 2.85, 3.2, 4.15, 1.8,
+      2.75, 3.45, 4.0, 2.25, 2.95, 3.35, 4.1, 1.9, 2.8, 3.5, 4.05, 2.0, 2.9, 3.3, 4.0, 1.7, 2.85,
+      3.45, 4.1, 2.15, 2.9, 3.25, 4.0, 1.85, 2.8, 3.4, 4.05, 2.3, 2.95, 3.5, 4.1, 1.75, 2.85, 2.85,
+      2.85, 2.85, 2.85, 2.85, 2.85, 2.85, 2.85, 2.85, 2.85, 2.85, 2.85, 2.85, 2.85, 2.85, 2.85,
+      2.85, 2.85, 2.85, 2.85, 2.85, 2.85, 2.85, 2.85, 2.85, 2.85, 2.85, 2.85, 2.85, 2.85, 2.85,
+      2.85, 2.85, 2.85, 2.85, 2.85, 2.85, 2.85, 2.85,
     ],
     lsl: 2,
     usl: 4,
@@ -1245,7 +1243,7 @@ export default function APQR() {
       const response = await axios.get(
         `http://localhost:4000/get-apqr/${editData.pqrId}`
       );
-      console.log(response.data,"data")
+      // console.log(response.data,"data")
       setData(response.data);
       setTinyData(response.data.aPQRData.tinyData);
       const apiData = response.data.gridDatas;
@@ -2821,70 +2819,37 @@ export default function APQR() {
       </div>
       <div className="pqrform">
         <div className="form-tabs">
-          <div
-            className={`${tab === "GI" ? "active" : ""}`}
-            onClick={() => setTab("GI")}
-          >
+          <div className={`${tab === "GI" ? "active" : ""}`} onClick={() => setTab("GI")}>
             General Information
           </div>
-          <div
-            className={`${tab === "WR" ? "active" : ""}`}
-            onClick={() => setTab("WR")}
-          >
+          <div className={`${tab === "WR" ? "active" : ""}`} onClick={() => setTab("WR")}>
             Warehouse Review
           </div>
-          <div
-            className={`${tab === "MR" ? "active" : ""}`}
-            onClick={() => setTab("MR")}
-          >
+          <div className={`${tab === "MR" ? "active" : ""}`} onClick={() => setTab("MR")}>
             Manufacturing Review
           </div>
-          <div
-            className={`${tab === "LR" ? "active" : ""}`}
-            onClick={() => setTab("LR")}
-          >
+          <div className={`${tab === "LR" ? "active" : ""}`} onClick={() => setTab("LR")}>
             Laboratory Review
           </div>
-          <div
-            className={`${tab === "EAMR" ? "active" : ""}`}
-            onClick={() => setTab("EAMR")}
-          >
+          <div className={`${tab === "EAMR" ? "active" : ""}`} onClick={() => setTab("EAMR")}>
             Engineering And Maintenance Review
           </div>
-          <div
-            className={`${tab === "QSR" ? "active" : ""}`}
-            onClick={() => setTab("QSR")}
-          >
+          <div className={`${tab === "QSR" ? "active" : ""}`} onClick={() => setTab("QSR")}>
             Quality System Review
           </div>
-          <div
-            className={`${tab === "RR" ? "active" : ""}`}
-            onClick={() => setTab("RR")}
-          >
+          <div className={`${tab === "RR" ? "active" : ""}`} onClick={() => setTab("RR")}>
             Regulatory Review
           </div>
-          <div
-            className={`${tab === "R" ? "active" : ""}`}
-            onClick={() => setTab("R")}
-          >
+          <div className={`${tab === "R" ? "active" : ""}`} onClick={() => setTab("R")}>
             Recommendations{" "}
           </div>
-          <div
-            className={`${tab === "CAPA" ? "active" : ""}`}
-            onClick={() => setTab("CAPA")}
-          >
+          <div className={`${tab === "CAPA" ? "active" : ""}`} onClick={() => setTab("CAPA")}>
             CAPA
           </div>
-          <div
-            className={`${tab === "DEAC" ? "active" : ""}`}
-            onClick={() => setTab("DEAC")}
-          >
+          <div className={`${tab === "DEAC" ? "active" : ""}`} onClick={() => setTab("DEAC")}>
             Discussion, Evaluation And Conclusion
           </div>
-          <div
-            className={`${tab === "LOA" ? "active" : ""}`}
-            onClick={() => setTab("LOA")}
-          >
+          <div className={`${tab === "LOA" ? "active" : ""}`} onClick={() => setTab("LOA")}>
             List Of Annexures/Attachments
           </div>
         </div>
@@ -2933,16 +2898,11 @@ export default function APQR() {
             </div>
             {pQRData?.productCodes?.map((productCode, index) => (
               <div key={index} className="group-input">
-                <label>
-                  Product Code{" "}
-                  {pQRData?.productCodes.length > 1 ? index + 1 : ""}
-                </label>
+                <label>Product Code {pQRData?.productCodes.length > 1 ? index + 1 : ""}</label>
                 <div className="flex gap-4">
                   <input
                     value={productCode}
-                    onChange={(e) =>
-                      handleProductCodeChange(index, e.target.value)
-                    }
+                    onChange={(e) => handleProductCodeChange(index, e.target.value)}
                   />
                   {index === pQRData?.productCodes.length - 1 && (
                     <button
@@ -3024,9 +2984,7 @@ export default function APQR() {
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addManufacturingStageRow} />
-                  <div className="addrowinstruction  pl-2">
-                    Add Rows by clicking on (+) icon
-                  </div>
+                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
                 </div>
                 <div className="flex gap-4 ">
                   <ExcelExportImport
@@ -3107,9 +3065,7 @@ export default function APQR() {
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addManufacturingSAPSRow} />
-                  <div className="addrowinstruction  pl-2">
-                    Add Rows by clicking on (+) icon
-                  </div>
+                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
                 </div>
                 <div className="flex gap-4 ">
                   <ExcelExportImport
@@ -3216,9 +3172,7 @@ export default function APQR() {
                 <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                   <div className="flex items-center">
                     <MdNoteAdd onClick={addRawMRSRow} />
-                    <div className="addrowinstruction  pl-2">
-                      Add Rows by clicking on (+) icon
-                    </div>
+                    <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
                   </div>
                   <div className="flex gap-4 ">
                     <ExcelExportImport
@@ -3281,8 +3235,7 @@ export default function APQR() {
                               value={item.reasonOfRejection}
                               onChange={(e) => {
                                 const newData = [...gridDatas.rawMRS];
-                                newData[index].reasonOfRejection =
-                                  e.target.value;
+                                newData[index].reasonOfRejection = e.target.value;
                                 setGridDatas({ ...gridDatas, rawMRS: newData });
                               }}
                             />
@@ -3313,17 +3266,12 @@ export default function APQR() {
               </div>
 
               <div className="pb-4">
-                <h4 className="gridName">
-                  {" "}
-                  Packing Materials Rejection Summary
-                </h4>
+                <h4 className="gridName"> Packing Materials Rejection Summary</h4>
 
                 <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                   <div className="flex items-center">
                     <MdNoteAdd onClick={addPackingMRSRow} />
-                    <div className="addrowinstruction  pl-2">
-                      Add Rows by clicking on (+) icon
-                    </div>
+                    <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
                   </div>
                   <div className="flex gap-4 ">
                     <ExcelExportImport
@@ -3394,8 +3342,7 @@ export default function APQR() {
                               value={item.reasonForRepacking}
                               onChange={(e) => {
                                 const newData = [...gridDatas.packingMRS];
-                                newData[index].reasonForRepacking =
-                                  e.target.value;
+                                newData[index].reasonForRepacking = e.target.value;
                                 setGridDatas({
                                   ...gridDatas,
                                   packingMRS: newData,
@@ -3423,8 +3370,7 @@ export default function APQR() {
                 </table>
 
                 <h5 className="gridName pt-4">
-                  Summary of Review of Rejected Raw Materials and Packaging
-                  Materials
+                  Summary of Review of Rejected Raw Materials and Packaging Materials
                 </h5>
                 <TinyEditor
                   editorContent={tinyData.tiny4}
@@ -3444,9 +3390,7 @@ export default function APQR() {
                 <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                   <div className="flex items-center">
                     <MdNoteAdd onClick={addExpiredRMDRow} />
-                    <div className="addrowinstruction  pl-2">
-                      Add Rows by clicking on (+) icon
-                    </div>
+                    <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
                   </div>
                   <div className="flex gap-4 ">
                     <ExcelExportImport
@@ -3540,9 +3484,7 @@ export default function APQR() {
               </div>
 
               <div className="">
-                <h4 className="gridName">
-                  Expired Packaging Materials Details
-                </h4>
+                <h4 className="gridName">Expired Packaging Materials Details</h4>
                 {/* <div className="AddRows d-flex">
                   <MdNoteAdd onClick={addExpiredPMDRow} />
                   <div className="addrowinstruction"></div>
@@ -3550,9 +3492,7 @@ export default function APQR() {
                 <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                   <div className="flex items-center">
                     <MdNoteAdd onClick={addExpiredPMDRow} />
-                    <div className="addrowinstruction  pl-2">
-                      Add Rows by clicking on (+) icon
-                    </div>
+                    <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
                   </div>
                   <div className="flex gap-4 ">
                     <ExcelExportImport
@@ -3637,8 +3577,7 @@ export default function APQR() {
                 </table>
 
                 <h4 className="gridName pt-4">
-                  Summary of Review of Expired Raw Materials and Packaging
-                  Materials
+                  Summary of Review of Expired Raw Materials and Packaging Materials
                 </h4>
                 <TinyEditor
                   editorContent={tinyData.tiny6}
@@ -3655,9 +3594,7 @@ export default function APQR() {
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addreviewOfASLRow} />
-                  <div className="addrowinstruction  pl-2">
-                    Add Rows by clicking on (+) icon
-                  </div>
+                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
                 </div>
                 <div className="flex gap-4 ">
                   <ExcelExportImport
@@ -3741,9 +3678,7 @@ export default function APQR() {
                     })}
                   </tbody>
                 </table>
-                <h4 className="gridName pt-4">
-                  Summary of Review of Approved Supplier List
-                </h4>
+                <h4 className="gridName pt-4">Summary of Review of Approved Supplier List</h4>
                 <TinyEditor
                   editorContent={tinyData.tiny7}
                   setEditorContent={setTinyContent}
@@ -3761,9 +3696,7 @@ export default function APQR() {
                 <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                   <div className="flex items-center">
                     <MdNoteAdd onClick={addvendorQDORMERow} />
-                    <div className="addrowinstruction  pl-2">
-                      Add Rows by clicking on (+) icon
-                    </div>
+                    <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
                   </div>
                   <div className="flex gap-4 ">
                     <ExcelExportImport
@@ -3817,8 +3750,7 @@ export default function APQR() {
                               value={item.manufacturerName}
                               onChange={(e) => {
                                 const newData = [...gridDatas.vendorQDORME];
-                                newData[index].manufacturerName =
-                                  e.target.value;
+                                newData[index].manufacturerName = e.target.value;
                                 setGridDatas({
                                   ...gridDatas,
                                   vendorQDORME: newData,
@@ -3831,8 +3763,7 @@ export default function APQR() {
                               value={item.qualificationStatus}
                               onChange={(e) => {
                                 const newData = [...gridDatas.vendorQDORME];
-                                newData[index].qualificationStatus =
-                                  e.target.value;
+                                newData[index].qualificationStatus = e.target.value;
                                 setGridDatas({
                                   ...gridDatas,
                                   vendorQDORME: newData,
@@ -3859,8 +3790,7 @@ export default function APQR() {
                   </tbody>
                 </table>
                 <h4 className="gridName pt-4">
-                  Summary of Vendor Qualification Details of Raw Material
-                  Excipients
+                  Summary of Vendor Qualification Details of Raw Material Excipients
                 </h4>
                 <TinyEditor
                   editorContent={tinyData.tiny8}
@@ -3879,9 +3809,7 @@ export default function APQR() {
                 <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                   <div className="flex items-center">
                     <MdNoteAdd onClick={addvendorQDOPPMRow} />
-                    <div className="addrowinstruction  pl-2">
-                      Add Rows by clicking on (+) icon
-                    </div>
+                    <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
                   </div>
                   <div className="flex gap-4 ">
                     <ExcelExportImport
@@ -3936,8 +3864,7 @@ export default function APQR() {
                               value={item.manufacturerName}
                               onChange={(e) => {
                                 const newData = [...gridDatas.vendorQDOPPM];
-                                newData[index].manufacturerName =
-                                  e.target.value;
+                                newData[index].manufacturerName = e.target.value;
                                 setGridDatas({
                                   ...gridDatas,
                                   vendorQDOPPM: newData,
@@ -3950,8 +3877,7 @@ export default function APQR() {
                               value={item.qualificationStatus}
                               onChange={(e) => {
                                 const newData = [...gridDatas.vendorQDOPPM];
-                                newData[index].qualificationStatus =
-                                  e.target.value;
+                                newData[index].qualificationStatus = e.target.value;
                                 setGridDatas({
                                   ...gridDatas,
                                   vendorQDOPPM: newData,
@@ -3965,8 +3891,7 @@ export default function APQR() {
                   </tbody>
                 </table>
                 <h4 className="gridName pt-4">
-                  Summary of Vendor Qualification Details of Primary Packing
-                  Materials
+                  Summary of Vendor Qualification Details of Primary Packing Materials
                 </h4>
                 <TinyEditor
                   editorContent={tinyData.tiny9}
@@ -3975,9 +3900,7 @@ export default function APQR() {
                 />
               </div>
 
-              <div className="sub-head">
-                Vendor Qualification Details of Process Gases
-              </div>
+              <div className="sub-head">Vendor Qualification Details of Process Gases</div>
               <div>
                 {/* <div className="AddRows d-flex">
                   <MdNoteAdd onClick={addvendorQDPOGRow} />
@@ -3986,9 +3909,7 @@ export default function APQR() {
                 <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                   <div className="flex items-center">
                     <MdNoteAdd onClick={addvendorQDPOGRow} />
-                    <div className="addrowinstruction  pl-2">
-                      Add Rows by clicking on (+) icon
-                    </div>
+                    <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
                   </div>
                   <div className="flex gap-4 ">
                     <ExcelExportImport
@@ -4043,8 +3964,7 @@ export default function APQR() {
                               value={item.manufacturerName}
                               onChange={(e) => {
                                 const newData = [...vendorQDPOG];
-                                newData[index].manufacturerName =
-                                  e.target.value;
+                                newData[index].manufacturerName = e.target.value;
                                 setVendorQDPOG(newData);
                               }}
                             />
@@ -4054,8 +3974,7 @@ export default function APQR() {
                               value={item.qualificationStatus}
                               onChange={(e) => {
                                 const newData = [...gridDatas.vendorQDPOG];
-                                newData[index].qualificationStatus =
-                                  e.target.value;
+                                newData[index].qualificationStatus = e.target.value;
                                 setGridDatas({
                                   ...gridDatas,
                                   vendorQDPOG: newData,
@@ -4107,10 +4026,7 @@ export default function APQR() {
 
             <div className="dual-group-input">
               <div className="group-input">
-                <label>
-                  Total No. of batches manufactured during the current review
-                  period
-                </label>
+                <label>Total No. of batches manufactured during the current review period</label>
                 <input
                   type="number"
                   value={pQRData.totalBatchesManufactured}
@@ -4185,9 +4101,7 @@ export default function APQR() {
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addcodeTCTDRow} />
-                  <div className="addrowinstruction  pl-2">
-                    Add Rows by clicking on (+) icon
-                  </div>
+                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
                 </div>
                 <div className="flex gap-4 ">
                   <ExcelExportImport
@@ -4291,9 +4205,7 @@ export default function APQR() {
                   })}
                 </tbody>
               </table>
-              <h4 className="gridName pt-4">
-                Summary of Code to Code Transfer Details
-              </h4>
+              <h4 className="gridName pt-4">Summary of Code to Code Transfer Details</h4>
               <TinyEditor
                 editorContent={tinyData.tiny14}
                 setEditorContent={setTinyContent}
@@ -4302,8 +4214,7 @@ export default function APQR() {
             </div>
             <div className="sub-head">
               {" "}
-              Review of Manufacturing Process, Packing Process and relevant
-              Validation Status
+              Review of Manufacturing Process, Packing Process and relevant Validation Status
             </div>
             <TinyEditor
               editorContent={tinyData.tiny15}
@@ -4311,8 +4222,8 @@ export default function APQR() {
               tinyNo={15}
             />
             <div className="sub-head">
-              Review of Reprocessing/Repacking/Reworking along with CAPA and
-              Effectiveness Check Verification (if any)
+              Review of Reprocessing/Repacking/Reworking along with CAPA and Effectiveness Check
+              Verification (if any)
             </div>
             <div className="dual-group-input">
               <div className="group-input">
@@ -4341,9 +4252,7 @@ export default function APQR() {
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addreviewORCECRow} />
-                  <div className="addrowinstruction  pl-2">
-                    Add Rows by clicking on (+) icon
-                  </div>
+                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
                 </div>
                 <div className="flex gap-4 ">
                   .
@@ -4377,8 +4286,7 @@ export default function APQR() {
                             value={item.packingBatchNumber}
                             onChange={(e) => {
                               const newData = [...gridDatas.reviewORCEC];
-                              newData[index].packingBatchNumber =
-                                e.target.value;
+                              newData[index].packingBatchNumber = e.target.value;
                               setGridDatas({
                                 ...gridDatas,
                                 reviewORCEC: newData,
@@ -4391,8 +4299,7 @@ export default function APQR() {
                             value={item.manufacturingBatchNumber}
                             onChange={(e) => {
                               const newData = [...gridDatas.reviewORCEC];
-                              newData[index].repackingIssuedNumber =
-                                e.target.value;
+                              newData[index].repackingIssuedNumber = e.target.value;
                               setGridDatas({
                                 ...gridDatas,
                                 reviewORCEC: newData,
@@ -4405,8 +4312,7 @@ export default function APQR() {
                             value={item.repackingIssuedNumber}
                             onChange={(e) => {
                               const newData = [...gridDatas.reviewORCEC];
-                              newData[index].repackingIssuedNumber =
-                                e.target.value;
+                              newData[index].repackingIssuedNumber = e.target.value;
                               setGridDatas({
                                 ...gridDatas,
                                 reviewORCEC: newData,
@@ -4445,8 +4351,7 @@ export default function APQR() {
                             value={item.reasonForRepacking}
                             onChange={(e) => {
                               const newData = [...gridDatas.reviewORCEC];
-                              newData[index].reasonForRepacking =
-                                e.target.value;
+                              newData[index].reasonForRepacking = e.target.value;
                               setGridDatas({
                                 ...gridDatas,
                                 reviewORCEC: newData,
@@ -4478,9 +4383,7 @@ export default function APQR() {
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={capaDetailsRow} />
-                  <div className="addrowinstruction  pl-2">
-                    Add Rows by clicking on (+) icon
-                  </div>
+                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
                 </div>
                 <div className="flex gap-4 ">
                   <ExcelExportImport
@@ -4538,8 +4441,7 @@ export default function APQR() {
                             value={item.descriptionOfIssue}
                             onChange={(e) => {
                               const newData = [...gridDatas.capaDetails];
-                              newData[index].descriptionOfIssue =
-                                e.target.value;
+                              newData[index].descriptionOfIssue = e.target.value;
                               setGridDatas({
                                 ...gridDatas,
                                 capaDetails: newData,
@@ -4624,9 +4526,7 @@ export default function APQR() {
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={deviationDetailsRow} />
-                  <div className="addrowinstruction  pl-2">
-                    Add Rows by clicking on (+) icon
-                  </div>
+                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
                 </div>
                 <div className="flex gap-4 ">
                   <ExcelExportImport
@@ -4674,8 +4574,7 @@ export default function APQR() {
                             value={item.deviationRelatedTo}
                             onChange={(e) => {
                               const newData = [...gridDatas.deviationDetails];
-                              newData[index].deviationRelatedTo =
-                                e.target.value;
+                              newData[index].deviationRelatedTo = e.target.value;
                               setGridDatas({
                                 ...gridDatas,
                                 deviationDetails: newData,
@@ -4714,8 +4613,7 @@ export default function APQR() {
                             value={item.deviationObservedOn}
                             onChange={(e) => {
                               const newData = [...gridDatas.deviationDetails];
-                              newData[index].deviationObservedOn =
-                                e.target.value;
+                              newData[index].deviationObservedOn = e.target.value;
                               setGridDatas({
                                 ...gridDatas,
                                 deviationDetails: newData,
@@ -4728,8 +4626,7 @@ export default function APQR() {
                             value={item.deviationObservedBy}
                             onChange={(e) => {
                               const newData = [...gridDatas.deviationDetails];
-                              newData[index].deviationObservedBy =
-                                e.target.value;
+                              newData[index].deviationObservedBy = e.target.value;
                               setGridDatas({
                                 ...gridDatas,
                                 deviationDetails: newData,
@@ -4742,8 +4639,7 @@ export default function APQR() {
                             value={item.classificationOfDeviation}
                             onChange={(e) => {
                               const newData = [...gridDatas.deviationDetails];
-                              newData[index].classificationOfDeviation =
-                                e.target.value;
+                              newData[index].classificationOfDeviation = e.target.value;
                               setGridDatas({
                                 ...gridDatas,
                                 deviationDetails: newData,
@@ -4807,8 +4703,8 @@ export default function APQR() {
             </div>
 
             <div className="sub-head">
-              Review of all Batch Failures/Rejections along with CAPA and
-              Effectiveness Check Verification (if any):
+              Review of all Batch Failures/Rejections along with CAPA and Effectiveness Check
+              Verification (if any):
             </div>
 
             <h4 className="gridName">Batch Failures/Rejections Details </h4>
@@ -4827,9 +4723,7 @@ export default function APQR() {
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={oosDetailsRow} />
-                  <div className="addrowinstruction  pl-2">
-                    Add Rows by clicking on (+) icon
-                  </div>
+                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
                 </div>
                 <div className="flex gap-4 ">
                   <ExcelExportImport
@@ -4899,8 +4793,7 @@ export default function APQR() {
                             value={item.specificationLimit}
                             onChange={(e) => {
                               const newData = [...gridDatas.oosDetails];
-                              newData[index].specificationLimit =
-                                e.target.value;
+                              newData[index].specificationLimit = e.target.value;
                               setGridDatas({
                                 ...gridDatas,
                                 oosDetails: newData,
@@ -4913,8 +4806,7 @@ export default function APQR() {
                             value={item.detailsOfObviousError}
                             onChange={(e) => {
                               const newData = [...gridDatas.oosDetails];
-                              newData[index].detailsOfObviousError =
-                                e.target.value;
+                              newData[index].detailsOfObviousError = e.target.value;
                               setGridDatas({
                                 ...gridDatas,
                                 oosDetails: newData,
@@ -4960,9 +4852,7 @@ export default function APQR() {
               <div className="AddRows d-flex w-full justify-between items-center text-3xl mb-5">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={ootResultsRow} />
-                  <div className="addrowinstruction  pl-2">
-                    Add Rows by clicking on (+) icon
-                  </div>
+                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
                 </div>
                 <div className="flex gap-4 ">
                   <ExcelExportImport
@@ -5033,8 +4923,7 @@ export default function APQR() {
                             value={item.initialIntervalDetails}
                             onChange={(e) => {
                               const newData = [...gridDatas.ootResults];
-                              newData[index].initialIntervalDetails =
-                                e.target.value;
+                              newData[index].initialIntervalDetails = e.target.value;
                               setGridDatas({
                                 ...gridDatas,
                                 ootResults: newData,
@@ -5047,8 +4936,7 @@ export default function APQR() {
                             value={item.previousIntervalDetails}
                             onChange={(e) => {
                               const newData = [...gridDatas.ootResults];
-                              newData[index].previousIntervalDetails =
-                                e.target.value;
+                              newData[index].previousIntervalDetails = e.target.value;
                               setGridDatas({
                                 ...gridDatas,
                                 ootResults: newData,
@@ -5061,8 +4949,7 @@ export default function APQR() {
                             value={item.diffrenceOfResult}
                             onChange={(e) => {
                               const newData = [...gridDatas.ootResults];
-                              newData[index].diffrenceOfResultrence =
-                                e.target.value;
+                              newData[index].diffrenceOfResultrence = e.target.value;
                               setGridDatas({
                                 ...gridDatas,
                                 ootResults: newData,
@@ -5106,9 +4993,7 @@ export default function APQR() {
               <div className="AddRows d-flex w-full justify-between items-center text-3xl mb-5">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={ooaResultsRow} />
-                  <div className="addrowinstruction  pl-2">
-                    Add Rows by clicking on (+) icon
-                  </div>
+                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
                 </div>
                 <div className="flex gap-4 ">
                   <ExcelExportImport
@@ -5180,8 +5065,7 @@ export default function APQR() {
                             value={item.initialIntervalDetails}
                             onChange={(e) => {
                               const newData = [...gridDatas.ooaResults];
-                              newData[index].initialIntervalDetails =
-                                e.target.value;
+                              newData[index].initialIntervalDetails = e.target.value;
                               setGridDatas({
                                 ...gridDatas,
                                 ooaResults: newData,
@@ -5194,8 +5078,7 @@ export default function APQR() {
                             value={item.previousIntervalDetails}
                             onChange={(e) => {
                               const newData = [...gridDatas.ooaResults];
-                              newData[index].previousIntervalDetails =
-                                e.target.value;
+                              newData[index].previousIntervalDetails = e.target.value;
                               setGridDatas({
                                 ...gridDatas,
                                 ooaResults: newData,
@@ -5252,9 +5135,7 @@ export default function APQR() {
               <div className="AddRows d-flex w-full justify-between items-center text-3xl mb-5">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={oolResultsRow} />
-                  <div className="addrowinstruction  pl-2">
-                    Add Rows by clicking on (+) icon
-                  </div>
+                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
                 </div>
                 <div className="flex gap-4 ">
                   <ExcelExportImport
@@ -5326,8 +5207,7 @@ export default function APQR() {
                             value={item.initialIntervalDetails}
                             onChange={(e) => {
                               const newData = [...gridDatas.oolResults];
-                              newData[index].initialIntervalDetails =
-                                e.target.value;
+                              newData[index].initialIntervalDetails = e.target.value;
                               setGridDatas({
                                 ...gridDatas,
                                 oolResults: newData,
@@ -5340,8 +5220,7 @@ export default function APQR() {
                             value={item.previousIntervalDetails}
                             onChange={(e) => {
                               const newData = [...gridDatas.oolResults];
-                              newData[index].previousIntervalDetails =
-                                e.target.value;
+                              newData[index].previousIntervalDetails = e.target.value;
                               setGridDatas({
                                 ...gridDatas,
                                 oolResults: newData,
@@ -5390,14 +5269,10 @@ export default function APQR() {
               />
             </div>
 
-            <div className="sub-head">
-              Review of Product Quality (Critical Process Parameters)
-            </div>
+            <div className="sub-head">Review of Product Quality (Critical Process Parameters)</div>
 
             <h3 className="gridName">Unit Operation 1</h3>
-            <h4 className="gridName">
-              Buffer formulation summary details provided below
-            </h4>
+            <h4 className="gridName">Buffer formulation summary details provided below</h4>
             <div>
               {/* <div className="AddRows d-flex">
                 <MdNoteAdd onClick={addBufferFSDPVRow} />
@@ -5406,9 +5281,7 @@ export default function APQR() {
               <div className="AddRows d-flex w-full justify-between items-center text-3xl mb-5">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addBufferFSDPVRow} />
-                  <div className="addrowinstruction  pl-2">
-                    Add Rows by clicking on (+) icon
-                  </div>
+                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
                 </div>
                 <div className="flex gap-4 ">
                   <ExcelExportImport
@@ -5442,8 +5315,7 @@ export default function APQR() {
                             value={item.criticalProcessParameter}
                             onChange={(e) => {
                               const newData = [...gridDatas.bufferFSDPV];
-                              newData[index].criticalProcessParameter =
-                                e.target.value;
+                              newData[index].criticalProcessParameter = e.target.value;
                               setGridDatas({
                                 ...pQRData,
                                 bufferFSDPV: newData,
@@ -5469,8 +5341,7 @@ export default function APQR() {
                             value={item.acceptanceCriteria}
                             onChange={(e) => {
                               const newData = [...gridDatas.bufferFSDPV];
-                              newData[index].acceptanceCriteria =
-                                e.target.value;
+                              newData[index].acceptanceCriteria = e.target.value;
                               setGridDatas({
                                 ...gridDatas,
                                 bufferFSDPV: newData,
@@ -5510,8 +5381,7 @@ export default function APQR() {
                             value={item.compliesNotComplies}
                             onChange={(e) => {
                               const newData = [...gridDatas.bufferFSDPV];
-                              newData[index].compliesNotComplies =
-                                e.target.value;
+                              newData[index].compliesNotComplies = e.target.value;
                               setGridDatas({
                                 ...gridDatas,
                                 bufferFSDPV: newData,
@@ -5534,9 +5404,7 @@ export default function APQR() {
             <div className="AddRows d-flex w-full justify-between items-center text-3xl mb-5">
               <div className="flex items-center">
                 <MdNoteAdd onClick={addmanufacturingSDRow} />
-                <div className="addrowinstruction  pl-2">
-                  Add Rows by clicking on (+) icon
-                </div>
+                <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
               </div>
               <div className="flex gap-4 ">
                 <ExcelExportImport
@@ -5570,8 +5438,7 @@ export default function APQR() {
                           value={item.criticalProcessParameter}
                           onChange={(e) => {
                             const newData = [...gridDatas.manufacturingSD];
-                            newData[index].criticalProcessParameter =
-                              e.target.value;
+                            newData[index].criticalProcessParameter = e.target.value;
                             setGridDatas({
                               ...gridDatas,
                               manufacturingSD: newData,
@@ -5679,8 +5546,7 @@ export default function APQR() {
                           value={item.criticalProcessParameter}
                           onChange={(e) => {
                             const newData = [...gridDatas.unitOperation3];
-                            newData[index].criticalProcessParameter =
-                              e.target.value;
+                            newData[index].criticalProcessParameter = e.target.value;
                             setGridDatas({
                               ...gridDatas,
                               unitOperation3: newData,
@@ -5788,8 +5654,7 @@ export default function APQR() {
                           value={item.criticalProcessParameter}
                           onChange={(e) => {
                             const newData = [...gridDatas.unitOperation4];
-                            newData[index].criticalProcessParameter =
-                              e.target.value;
+                            newData[index].criticalProcessParameter = e.target.value;
                             setGridDatas({
                               ...gridDatas,
                               unitOperation4: newData,
@@ -5897,8 +5762,7 @@ export default function APQR() {
                           value={item.criticalProcessParameter}
                           onChange={(e) => {
                             const newData = [...gridDatas.unitOperation5];
-                            newData[index].criticalProcessParameter =
-                              e.target.value;
+                            newData[index].criticalProcessParameter = e.target.value;
                             setGridDatas({
                               ...gridDatas,
                               unitOperation5: newData,
@@ -6006,8 +5870,7 @@ export default function APQR() {
                           value={item.criticalProcessParameter}
                           onChange={(e) => {
                             const newData = [...gridDatas.unitOperation6];
-                            newData[index].criticalProcessParameter =
-                              e.target.value;
+                            newData[index].criticalProcessParameter = e.target.value;
                             setGridDatas({
                               ...gridDatas,
                               unitOperation6: newData,
@@ -6115,8 +5978,7 @@ export default function APQR() {
                           value={item.criticalProcessParameter}
                           onChange={(e) => {
                             const newData = [...gridDatas.unitOperation7];
-                            newData[index].criticalProcessParameter =
-                              e.target.value;
+                            newData[index].criticalProcessParameter = e.target.value;
                             setGridDatas({
                               ...gridDatas,
                               unitOperation7: newData,
@@ -6224,8 +6086,7 @@ export default function APQR() {
                           value={item.criticalProcessParameter}
                           onChange={(e) => {
                             const newData = [...gridDatas.unitOperation8];
-                            newData[index].criticalProcessParameter =
-                              e.target.value;
+                            newData[index].criticalProcessParameter = e.target.value;
                             setGridDatas({
                               ...gridDatas,
                               unitOperation8: newData,
@@ -6333,8 +6194,7 @@ export default function APQR() {
                           value={item.criticalProcessParameter}
                           onChange={(e) => {
                             const newData = [...gridDatas.unitOperation9];
-                            newData[index].criticalProcessParameter =
-                              e.target.value;
+                            newData[index].criticalProcessParameter = e.target.value;
                             setGridDatas({
                               ...gridDatas,
                               unitOperation9: newData,
@@ -6442,8 +6302,7 @@ export default function APQR() {
                           value={item.criticalProcessParameter}
                           onChange={(e) => {
                             const newData = [...gridDatas.unitOperation10];
-                            newData[index].criticalProcessParameter =
-                              e.target.value;
+                            newData[index].criticalProcessParameter = e.target.value;
                             setGridDatas({
                               ...gridDatas,
                               unitOperation10: newData,
@@ -6523,9 +6382,7 @@ export default function APQR() {
               </tbody>
             </table>
 
-            <div className="sub-head">
-              Critical Process Parameters Review Summary
-            </div>
+            <div className="sub-head">Critical Process Parameters Review Summary</div>
             <div className="group-input">
               {/* <input placeholder="please insert flex" /> */}
               <TinyEditor
@@ -6538,18 +6395,13 @@ export default function APQR() {
         ) : null}
         {tab === "LR" ? (
           <div className="p-4">
-            <div className="sub-head">
-              {" "}
-              Review of Drug Substance Test Results
-            </div>
+            <div className="sub-head"> Review of Drug Substance Test Results</div>
             <h1 className="gridName"> pH Of Paracetamol Test Result</h1>
             <div>
               <div className="AddRows d-flex w-full justify-between items-center text-3xl mb-5">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addReviewODSTRRow} />
-                  <div className="addrowinstruction  pl-2">
-                    Add Rows by clicking on (+) icon
-                  </div>
+                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
                 </div>
                 <div className="flex gap-4 ">
                   <ExcelExportImport
@@ -6676,8 +6528,7 @@ export default function APQR() {
                             value={item.compliesNotComplies}
                             onChange={(e) => {
                               const newData = [...gridDatas.reviewODSTR];
-                              newData[index].compliesNotComplies =
-                                e.target.value;
+                              newData[index].compliesNotComplies = e.target.value;
                               setGridDatas({
                                 ...gridDatas,
                                 reviewODSTR: newData,
@@ -6915,10 +6766,7 @@ export default function APQR() {
                 />
               </div>
               <div className="py-2 flex justify-end col-span-10 ">
-                <button className="p-2 bg-emerald-400 text-white rounded">
-                  {" "}
-                  Launch Deviation
-                </button>
+                <button className="p-2 bg-emerald-400 text-white rounded"> Launch Deviation</button>
               </div>
             </div>
             <h1 className="gridName  pt-8">Assay Of Paracetamol Test Result</h1>
@@ -6926,9 +6774,7 @@ export default function APQR() {
               <div className="AddRows d-flex w-full justify-between items-center text-3xl mb-5">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addReviewODSTRRow2} />
-                  <div className="addrowinstruction pl-2">
-                    Add Rows by clicking on (+) icon
-                  </div>
+                  <div className="addrowinstruction pl-2">Add Rows by clicking on (+) icon</div>
                 </div>
                 <div className="flex gap-4 ">
                   <ExcelExportImport
@@ -7055,8 +6901,7 @@ export default function APQR() {
                             value={item.compliesNotComplies}
                             onChange={(e) => {
                               const newData = [...gridDatas.reviewODSTR2];
-                              newData[index].compliesNotComplies =
-                                e.target.value;
+                              newData[index].compliesNotComplies = e.target.value;
                               setGridDatas({
                                 ...gridDatas,
                                 reviewODSTR2: newData,
@@ -7130,22 +6975,15 @@ export default function APQR() {
                 />
               </div>
               <div className="py-2 flex justify-end col-span-10 ">
-                <button className="p-2 bg-emerald-400 text-white rounded">
-                  {" "}
-                  Launch Deviation
-                </button>
+                <button className="p-2 bg-emerald-400 text-white rounded"> Launch Deviation</button>
               </div>
             </div>
-            <h1 className="gridName pt-8">
-              Impurity Of Paracetamol Test Result
-            </h1>
+            <h1 className="gridName pt-8">Impurity Of Paracetamol Test Result</h1>
             <div>
               <div className="AddRows d-flex w-full justify-between items-center text-3xl mb-5">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addReviewODSTRRow3} />
-                  <div className="addrowinstruction  pl-2">
-                    Add Rows by clicking on (+) icon
-                  </div>
+                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
                 </div>
                 <div className="flex gap-4 ">
                   <ExcelExportImport
@@ -7272,8 +7110,7 @@ export default function APQR() {
                             value={item.compliesNotComplies}
                             onChange={(e) => {
                               const newData = [...gridDatas.reviewODSTR3];
-                              newData[index].compliesNotComplies =
-                                e.target.value;
+                              newData[index].compliesNotComplies = e.target.value;
                               setGridDatas({
                                 ...gridDatas,
                                 reviewODSTR3: newData,
@@ -7514,15 +7351,10 @@ export default function APQR() {
                 />
               </div>
               <div className="py-2 flex justify-end col-span-10 ">
-                <button className="p-2 bg-emerald-400 text-white rounded">
-                  {" "}
-                  Launch Deviation
-                </button>
+                <button className="p-2 bg-emerald-400 text-white rounded"> Launch Deviation</button>
               </div>
             </div>
-            <h1 className="gridName pt-8">
-              Dissolution Of Paracetamol Test Result
-            </h1>
+            <h1 className="gridName pt-8">Dissolution Of Paracetamol Test Result</h1>
             <div>
               {/* <div className="AddRows d-flex">
                 <MdNoteAdd onClick={addReviewODSTRRow} />
@@ -7531,9 +7363,7 @@ export default function APQR() {
               <div className="AddRows d-flex w-full justify-between items-center text-3xl mb-5">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addReviewODSTRRow4} />
-                  <div className="addrowinstruction  pl-2">
-                    Add Rows by clicking on (+) icon
-                  </div>
+                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
                 </div>
                 <div className="flex gap-4 ">
                   <ExcelExportImport
@@ -7660,8 +7490,7 @@ export default function APQR() {
                             value={item.compliesNotComplies}
                             onChange={(e) => {
                               const newData = [...gridDatas.reviewODSTR4];
-                              newData[index].compliesNotComplies =
-                                e.target.value;
+                              newData[index].compliesNotComplies = e.target.value;
                               setGridDatas({
                                 ...gridDatas,
                                 reviewODSTR4: newData,
@@ -7902,15 +7731,10 @@ export default function APQR() {
                 />
               </div>
               <div className="py-2 flex justify-end col-span-10 ">
-                <button className="p-2 bg-emerald-400 text-white rounded">
-                  {" "}
-                  Launch Deviation
-                </button>
+                <button className="p-2 bg-emerald-400 text-white rounded"> Launch Deviation</button>
               </div>
             </div>
-            <h1 className="gridName pt-8">
-              Disintegration Of Paracetamol Test Result
-            </h1>
+            <h1 className="gridName pt-8">Disintegration Of Paracetamol Test Result</h1>
             <div>
               {/* <div className="AddRows d-flex">
     <MdNoteAdd onClick={addReviewODSTRRow} />
@@ -7919,9 +7743,7 @@ export default function APQR() {
               <div className="AddRows d-flex w-full justify-between items-center text-3xl mb-5">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addReviewODSTRRow5} />
-                  <div className="addrowinstruction  pl-2">
-                    Add Rows by clicking on (+) icon
-                  </div>
+                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
                 </div>
                 <div className="flex gap-4 ">
                   <ExcelExportImport
@@ -8048,8 +7870,7 @@ export default function APQR() {
                             value={item.compliesNotComplies}
                             onChange={(e) => {
                               const newData = [...gridDatas.reviewODSTR5];
-                              newData[index].compliesNotComplies =
-                                e.target.value;
+                              newData[index].compliesNotComplies = e.target.value;
                               setGridDatas({
                                 ...gridDatas,
                                 reviewODSTR5: newData,
@@ -8291,10 +8112,7 @@ export default function APQR() {
                 />
               </div>
               <div className="py-2 flex justify-end col-span-10 ">
-                <button className="p-2 bg-emerald-400 text-white rounded">
-                  {" "}
-                  Launch Deviation
-                </button>
+                <button className="p-2 bg-emerald-400 text-white rounded"> Launch Deviation</button>
               </div>
             </div>
             <h1 className="gridName pt-8">pH Of Terbinafine Test Result</h1>
@@ -8306,9 +8124,7 @@ export default function APQR() {
               <div className="AddRows d-flex w-full justify-between items-center text-3xl mb-5">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addReviewODSTRRow6} />
-                  <div className="addrowinstruction  pl-2">
-                    Add Rows by clicking on (+) icon
-                  </div>
+                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
                 </div>
                 <div className="flex gap-4 ">
                   <ExcelExportImport
@@ -8435,8 +8251,7 @@ export default function APQR() {
                             value={item.compliesNotComplies}
                             onChange={(e) => {
                               const newData = [...gridDatas.reviewODSTR6];
-                              newData[index].compliesNotComplies =
-                                e.target.value;
+                              newData[index].compliesNotComplies = e.target.value;
                               setGridDatas({
                                 ...gridDatas,
                                 reviewODSTR6: newData,
@@ -8675,10 +8490,7 @@ export default function APQR() {
                 />
               </div>
               <div className="py-2 flex justify-end col-span-10 ">
-                <button className="p-2 bg-emerald-400 text-white rounded">
-                  {" "}
-                  Launch Deviation
-                </button>
+                <button className="p-2 bg-emerald-400 text-white rounded"> Launch Deviation</button>
               </div>
             </div>
             <h1 className="gridName pt-8">Assay Of Terbinafine Test Result</h1>
@@ -8690,9 +8502,7 @@ export default function APQR() {
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addReviewODSTRRow7} />
-                  <div className="addrowinstruction  pl-2">
-                    Add Rows by clicking on (+) icon
-                  </div>
+                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
                 </div>
                 <div className="flex gap-4 ">
                   <ExcelExportImport
@@ -8819,8 +8629,7 @@ export default function APQR() {
                             value={item.compliesNotComplies}
                             onChange={(e) => {
                               const newData = [...gridDatas.reviewODSTR7];
-                              newData[index].compliesNotComplies =
-                                e.target.value;
+                              newData[index].compliesNotComplies = e.target.value;
                               setGridDatas({
                                 ...gridDatas,
                                 reviewODSTR7: newData,
@@ -8894,15 +8703,10 @@ export default function APQR() {
                 />
               </div>
               <div className="py-2 flex justify-end col-span-10 ">
-                <button className="p-2 bg-emerald-400 text-white rounded">
-                  {" "}
-                  Launch Deviation
-                </button>
+                <button className="p-2 bg-emerald-400 text-white rounded"> Launch Deviation</button>
               </div>
             </div>
-            <h1 className="gridName pt-8">
-              Impurity Of Terbinafine Test Result
-            </h1>
+            <h1 className="gridName pt-8">Impurity Of Terbinafine Test Result</h1>
             <div>
               {/* <div className="AddRows d-flex">
     <MdNoteAdd onClick={addReviewODSTRRow} />
@@ -8911,9 +8715,7 @@ export default function APQR() {
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addReviewODSTRRow8} />
-                  <div className="addrowinstruction  pl-2">
-                    Add Rows by clicking on (+) icon
-                  </div>
+                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
                 </div>
                 <div className="flex gap-4 ">
                   <ExcelExportImport
@@ -9040,8 +8842,7 @@ export default function APQR() {
                             value={item.compliesNotComplies}
                             onChange={(e) => {
                               const newData = [...gridDatas.reviewODSTR8];
-                              newData[index].compliesNotComplies =
-                                e.target.value;
+                              newData[index].compliesNotComplies = e.target.value;
                               setGridDatas({
                                 ...gridDatas,
                                 reviewODSTR8: newData,
@@ -9283,15 +9084,10 @@ export default function APQR() {
                 />
               </div>
               <div className="py-2 flex justify-end col-span-10 ">
-                <button className="p-2 bg-emerald-400 text-white rounded">
-                  {" "}
-                  Launch Deviation
-                </button>
+                <button className="p-2 bg-emerald-400 text-white rounded"> Launch Deviation</button>
               </div>
             </div>
-            <h1 className="gridName pt-8">
-              Dissolution Of Terbinafine Test Result
-            </h1>
+            <h1 className="gridName pt-8">Dissolution Of Terbinafine Test Result</h1>
             <div>
               {/* <div className="AddRows d-flex">
     <MdNoteAdd onClick={addReviewODSTRRow} />
@@ -9300,9 +9096,7 @@ export default function APQR() {
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addReviewODSTRRow9} />
-                  <div className="addrowinstruction  pl-2">
-                    Add Rows by clicking on (+) icon
-                  </div>
+                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
                 </div>
                 <div className="flex gap-4 ">
                   <ExcelExportImport
@@ -9429,8 +9223,7 @@ export default function APQR() {
                             value={item.compliesNotComplies}
                             onChange={(e) => {
                               const newData = [...gridDatas.reviewODSTR9];
-                              newData[index].compliesNotComplies =
-                                e.target.value;
+                              newData[index].compliesNotComplies = e.target.value;
                               setGridDatas({
                                 ...gridDatas,
                                 reviewODSTR9: newData,
@@ -9671,22 +9464,15 @@ export default function APQR() {
                 />
               </div>
               <div className="py-2 flex justify-end col-span-10 ">
-                <button className="p-2 bg-emerald-400 text-white rounded">
-                  {" "}
-                  Launch Deviation
-                </button>
+                <button className="p-2 bg-emerald-400 text-white rounded"> Launch Deviation</button>
               </div>
             </div>
-            <h1 className="gridName pt-8">
-              Disintegration Of Terbinafine Test Result
-            </h1>
+            <h1 className="gridName pt-8">Disintegration Of Terbinafine Test Result</h1>
             <div>
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addReviewODSTRRow10} />
-                  <div className="addrowinstruction  pl-2">
-                    Add Rows by clicking on (+) icon
-                  </div>
+                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
                 </div>
                 <div className="flex gap-4 ">
                   <ExcelExportImport
@@ -9813,8 +9599,7 @@ export default function APQR() {
                             value={item.compliesNotComplies}
                             onChange={(e) => {
                               const newData = [...gridDatas.reviewODSTR10];
-                              newData[index].compliesNotComplies =
-                                e.target.value;
+                              newData[index].compliesNotComplies = e.target.value;
                               setGridDatas({
                                 ...gridDatas,
                                 reviewODSTR10: newData,
@@ -10056,10 +9841,7 @@ export default function APQR() {
                 />
               </div>
               <div className="py-2 flex justify-end col-span-10 ">
-                <button className="p-2 bg-emerald-400 text-white rounded">
-                  {" "}
-                  Launch Deviation
-                </button>
+                <button className="p-2 bg-emerald-400 text-white rounded"> Launch Deviation</button>
               </div>
             </div>
             <h1 className="gridName pt-8">pH Of Pentoprazole Test Result</h1>
@@ -10067,9 +9849,7 @@ export default function APQR() {
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addReviewODSTRRow11} />
-                  <div className="addrowinstruction  pl-2">
-                    Add Rows by clicking on (+) icon
-                  </div>
+                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
                 </div>
                 <div className="flex gap-4 ">
                   <ExcelExportImport
@@ -10196,8 +9976,7 @@ export default function APQR() {
                             value={item.compliesNotComplies}
                             onChange={(e) => {
                               const newData = [...gridDatas.reviewODSTR11];
-                              newData[index].compliesNotComplies =
-                                e.target.value;
+                              newData[index].compliesNotComplies = e.target.value;
                               setGridDatas({
                                 ...gridDatas,
                                 reviewODSTR11: newData,
@@ -10436,10 +10215,7 @@ export default function APQR() {
                 />
               </div>
               <div className="py-2 flex justify-end col-span-10 ">
-                <button className="p-2 bg-emerald-400 text-white rounded">
-                  {" "}
-                  Launch Deviation
-                </button>
+                <button className="p-2 bg-emerald-400 text-white rounded"> Launch Deviation</button>
               </div>
             </div>
             <h1 className="gridName pt-8">Assay Of Pentoprazole Test Result</h1>
@@ -10447,9 +10223,7 @@ export default function APQR() {
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addReviewODSTRRow12} />
-                  <div className="addrowinstruction  pl-2">
-                    Add Rows by clicking on (+) icon
-                  </div>
+                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
                 </div>
                 <div className="flex gap-4 ">
                   <ExcelExportImport
@@ -10576,8 +10350,7 @@ export default function APQR() {
                             value={item.compliesNotComplies}
                             onChange={(e) => {
                               const newData = [...gridDatas.reviewODSTR12];
-                              newData[index].compliesNotComplies =
-                                e.target.value;
+                              newData[index].compliesNotComplies = e.target.value;
                               setGridDatas({
                                 ...gridDatas,
                                 reviewODSTR12: newData,
@@ -10651,22 +10424,15 @@ export default function APQR() {
                 />
               </div>
               <div className="py-2 flex justify-end col-span-10 ">
-                <button className="p-2 bg-emerald-400 text-white rounded">
-                  {" "}
-                  Launch Deviation
-                </button>
+                <button className="p-2 bg-emerald-400 text-white rounded"> Launch Deviation</button>
               </div>
             </div>
-            <h1 className="gridName pt-8">
-              Impurity Of Pentoprazole Test Result
-            </h1>
+            <h1 className="gridName pt-8">Impurity Of Pentoprazole Test Result</h1>
             <div>
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addReviewODSTRRow13} />
-                  <div className="addrowinstruction  pl-2">
-                    Add Rows by clicking on (+) icon
-                  </div>
+                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
                 </div>
                 <div className="flex gap-4 ">
                   <ExcelExportImport
@@ -10793,8 +10559,7 @@ export default function APQR() {
                             value={item.compliesNotComplies}
                             onChange={(e) => {
                               const newData = [...gridDatas.reviewODSTR13];
-                              newData[index].compliesNotComplies =
-                                e.target.value;
+                              newData[index].compliesNotComplies = e.target.value;
                               setGridDatas({
                                 ...gridDatas,
                                 reviewODSTR13: newData,
@@ -11036,22 +10801,15 @@ export default function APQR() {
                 />
               </div>
               <div className="py-2 flex justify-end col-span-10 ">
-                <button className="p-2 bg-emerald-400 text-white rounded">
-                  {" "}
-                  Launch Deviation
-                </button>
+                <button className="p-2 bg-emerald-400 text-white rounded"> Launch Deviation</button>
               </div>
             </div>
-            <h1 className="gridName pt-8">
-              Dissolution Of Pentoprazole Test Result
-            </h1>
+            <h1 className="gridName pt-8">Dissolution Of Pentoprazole Test Result</h1>
             <div>
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addReviewODSTRRow14} />
-                  <div className="addrowinstruction  pl-2">
-                    Add Rows by clicking on (+) icon
-                  </div>
+                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
                 </div>
                 <div className="flex gap-4 ">
                   <ExcelExportImport
@@ -11178,8 +10936,7 @@ export default function APQR() {
                             value={item.compliesNotComplies}
                             onChange={(e) => {
                               const newData = [...gridDatas.reviewODSTR14];
-                              newData[index].compliesNotComplies =
-                                e.target.value;
+                              newData[index].compliesNotComplies = e.target.value;
                               setGridDatas({
                                 ...gridDatas,
                                 reviewODSTR14: newData,
@@ -11420,22 +11177,15 @@ export default function APQR() {
                 />
               </div>
               <div className="py-2 flex justify-end col-span-10 ">
-                <button className="p-2 bg-emerald-400 text-white rounded">
-                  {" "}
-                  Launch Deviation
-                </button>
+                <button className="p-2 bg-emerald-400 text-white rounded"> Launch Deviation</button>
               </div>
             </div>
-            <h1 className="gridName pt-8">
-              Disintegration Of Pentoprazole Test Result
-            </h1>
+            <h1 className="gridName pt-8">Disintegration Of Pentoprazole Test Result</h1>
             <div>
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addReviewODSTRRow15} />
-                  <div className="addrowinstruction  pl-2">
-                    Add Rows by clicking on (+) icon
-                  </div>
+                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
                 </div>
                 <div className="flex gap-4 ">
                   <ExcelExportImport
@@ -11562,8 +11312,7 @@ export default function APQR() {
                             value={item.compliesNotComplies}
                             onChange={(e) => {
                               const newData = [...gridDatas.reviewODSTR15];
-                              newData[index].compliesNotComplies =
-                                e.target.value;
+                              newData[index].compliesNotComplies = e.target.value;
                               setGridDatas({
                                 ...gridDatas,
                                 reviewODSTR15: newData,
@@ -11805,10 +11554,7 @@ export default function APQR() {
                 />
               </div>
               <div className="py-2 flex justify-end col-span-10 ">
-                <button className="p-2 bg-emerald-400 text-white rounded">
-                  {" "}
-                  Launch Deviation
-                </button>
+                <button className="p-2 bg-emerald-400 text-white rounded"> Launch Deviation</button>
               </div>
             </div>
             <div>
@@ -11819,9 +11565,7 @@ export default function APQR() {
                 tinyNo={27}
               />
             </div>
-            <div className="sub-head">
-              Review of Raw Material Excipient Test Results
-            </div>
+            <div className="sub-head">Review of Raw Material Excipient Test Results</div>
             <div>
               {/* <div className="AddRows d-flex">
                 <MdNoteAdd onClick={addReviewORMETRRow} />
@@ -11830,9 +11574,7 @@ export default function APQR() {
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addReviewORMETRRow} />
-                  <div className="addrowinstruction  pl-2">
-                    Add Rows by clicking on (+) icon
-                  </div>
+                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
                 </div>
                 <div className="flex gap-4 ">
                   <ExcelExportImport
@@ -11894,8 +11636,7 @@ export default function APQR() {
                             value={item.specificationLimit}
                             onChange={(e) => {
                               const newData = [...gridDatas.reviewORMETR];
-                              newData[index].specificationLimit =
-                                e.target.value;
+                              newData[index].specificationLimit = e.target.value;
                               setGridDatas({
                                 ...gridDatas,
                                 reviewORMETR: newData,
@@ -11908,8 +11649,7 @@ export default function APQR() {
                             value={item.obtainedValue.minimum}
                             onChange={(e) => {
                               const newData = [...gridDatas.reviewORMETR];
-                              newData[index].obtainedValue.minimum =
-                                e.target.value;
+                              newData[index].obtainedValue.minimum = e.target.value;
                               setGridDatas({
                                 ...gridDatas,
                                 reviewORMETR: newData,
@@ -11922,8 +11662,7 @@ export default function APQR() {
                             value={item.obtainedValue.maximum}
                             onChange={(e) => {
                               const newData = [...gridDatas.reviewORMETR];
-                              newData[index].obtainedValue.maximum =
-                                e.target.value;
+                              newData[index].obtainedValue.maximum = e.target.value;
                               setGridDatas({
                                 ...gridDatas,
                                 reviewORMETR: newData,
@@ -11936,8 +11675,7 @@ export default function APQR() {
                             value={item.compliesNotComplies}
                             onChange={(e) => {
                               const newData = [...gridDatas.reviewORMETR];
-                              newData[index].compliesNotComplies =
-                                e.target.value;
+                              newData[index].compliesNotComplies = e.target.value;
                               setGridDatas({
                                 ...gridDatas,
                                 reviewORMETR: newData,
@@ -11959,9 +11697,7 @@ export default function APQR() {
                 tinyNo={28}
               />
             </div>
-            <div className="sub-head">
-              Review of Packing Material Test Results
-            </div>
+            <div className="sub-head">Review of Packing Material Test Results</div>
             <div>
               {/* <div className="AddRows d-flex">
                 <MdNoteAdd onClick={addreviewOPMTRRow} />
@@ -11970,9 +11706,7 @@ export default function APQR() {
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addreviewOPMTRRow} />
-                  <div className="addrowinstruction  pl-2">
-                    Add Rows by clicking on (+) icon
-                  </div>
+                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
                 </div>
                 <div className="flex gap-4 ">
                   <ExcelExportImport
@@ -12034,8 +11768,7 @@ export default function APQR() {
                             value={item.specificationLimit}
                             onChange={(e) => {
                               const newData = [...gridDatas.reviewOPMTR];
-                              newData[index].specificationLimit =
-                                e.target.value;
+                              newData[index].specificationLimit = e.target.value;
                               setGridDatas({
                                 ...gridDatas,
                                 reviewOPMTR: newData,
@@ -12048,8 +11781,7 @@ export default function APQR() {
                             value={item.obtainedValue.minimum}
                             onChange={(e) => {
                               const newData = [...gridDatas.reviewOPMTR];
-                              newData[index].obtainedValue.minimum =
-                                e.target.value;
+                              newData[index].obtainedValue.minimum = e.target.value;
                               setGridDatas({
                                 ...gridDatas,
                                 reviewOPMTR: newData,
@@ -12062,8 +11794,7 @@ export default function APQR() {
                             value={item.obtainedValue.maximum}
                             onChange={(e) => {
                               const newData = [...gridDatas.reviewOPMTR];
-                              newData[index].obtainedValue.maximum =
-                                e.target.value;
+                              newData[index].obtainedValue.maximum = e.target.value;
                               setGridDatas({
                                 ...gridDatas,
                                 reviewOPMTR: newData,
@@ -12076,8 +11807,7 @@ export default function APQR() {
                             value={item.compliesNotComplies}
                             onChange={(e) => {
                               const newData = [...gridDatas.reviewOPMTR];
-                              newData[index].compliesNotComplies =
-                                e.target.value;
+                              newData[index].compliesNotComplies = e.target.value;
                               setGridDatas({
                                 ...gridDatas,
                                 reviewOPMTR: newData,
@@ -12099,9 +11829,7 @@ export default function APQR() {
                 tinyNo={29}
               />
             </div>
-            <div className="sub-head">
-              Review of Drug Product – In process Test Results
-            </div>
+            <div className="sub-head">Review of Drug Product – In process Test Results</div>
             <h4 className="gridName pt-2">Dilution Buffer 1 - Test Results</h4>
             <div>
               {/* <div className="AddRows d-flex">
@@ -12111,9 +11839,7 @@ export default function APQR() {
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addReviewODPRow} />
-                  <div className="addrowinstruction  pl-2">
-                    Add Rows by clicking on (+) icon
-                  </div>
+                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
                 </div>
                 <div className="flex gap-4 ">
                   <ExcelExportImport
@@ -12175,8 +11901,7 @@ export default function APQR() {
                             value={item.specificationLimit}
                             onChange={(e) => {
                               const newData = [...gridDatas.reviewODP];
-                              newData[index].specificationLimit =
-                                e.target.value;
+                              newData[index].specificationLimit = e.target.value;
                               setGridDatas({
                                 ...gridDatas,
                                 reviewODP: newData,
@@ -12189,8 +11914,7 @@ export default function APQR() {
                             value={item.obtainedValue.minimum}
                             onChange={(e) => {
                               const newData = [...gridDatas.reviewODP];
-                              newData[index].obtainedValue.minimum =
-                                e.target.value;
+                              newData[index].obtainedValue.minimum = e.target.value;
                               setGridDatas({
                                 ...gridDatas,
                                 reviewODP: newData,
@@ -12203,8 +11927,7 @@ export default function APQR() {
                             value={item.obtainedValue.maximum}
                             onChange={(e) => {
                               const newData = [...gridDatas.reviewODP];
-                              newData[index].obtainedValue.maximum =
-                                e.target.value;
+                              newData[index].obtainedValue.maximum = e.target.value;
                               setGridDatas({
                                 ...gridDatas,
                                 reviewODP: newData,
@@ -12217,8 +11940,7 @@ export default function APQR() {
                             value={item.compliesNotComplies}
                             onChange={(e) => {
                               const newData = [...gridDatas.reviewODP];
-                              newData[index].compliesNotComplies =
-                                e.target.value;
+                              newData[index].compliesNotComplies = e.target.value;
                               setGridDatas({
                                 ...gridDatas,
                                 reviewODP: newData,
@@ -12241,9 +11963,7 @@ export default function APQR() {
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addReviewODPRow2} />
-                  <div className="addrowinstruction  pl-2">
-                    Add Rows by clicking on (+) icon
-                  </div>
+                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
                 </div>
                 <div className="flex gap-4 ">
                   <ExcelExportImport
@@ -12292,8 +12012,7 @@ export default function APQR() {
                             value={item.specificationLimit}
                             onChange={(e) => {
                               const newData = [...gridDatas.reviewODP2];
-                              newData[index].specificationLimit =
-                                e.target.value;
+                              newData[index].specificationLimit = e.target.value;
                               setGridDatas({
                                 ...gridDatas,
                                 reviewODP2: newData,
@@ -12319,8 +12038,7 @@ export default function APQR() {
                             value={item.obtainedValue.minimum}
                             onChange={(e) => {
                               const newData = [...gridDatas.reviewODP2];
-                              newData[index].obtainedValue.minimum =
-                                e.target.value;
+                              newData[index].obtainedValue.minimum = e.target.value;
                               setGridDatas({
                                 ...gridDatas,
                                 reviewODP2: newData,
@@ -12333,8 +12051,7 @@ export default function APQR() {
                             value={item.obtainedValue.maximum}
                             onChange={(e) => {
                               const newData = [...gridDatas.reviewODP2];
-                              newData[index].obtainedValue.maximum =
-                                e.target.value;
+                              newData[index].obtainedValue.maximum = e.target.value;
                               setGridDatas({
                                 ...gridDatas,
                                 reviewODP2: newData,
@@ -12347,8 +12064,7 @@ export default function APQR() {
                             value={item.compliesNotComplies}
                             onChange={(e) => {
                               const newData = [...gridDatas.reviewODP2];
-                              newData[index].compliesNotComplies =
-                                e.target.value;
+                              newData[index].compliesNotComplies = e.target.value;
                               setGridDatas({
                                 ...gridDatas,
                                 reviewODP2: newData,
@@ -12371,9 +12087,7 @@ export default function APQR() {
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addReviewODPRow3} />
-                  <div className="addrowinstruction  pl-2">
-                    Add Rows by clicking on (+) icon
-                  </div>
+                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
                 </div>
                 <div className="flex gap-4 ">
                   <ExcelExportImport
@@ -12422,8 +12136,7 @@ export default function APQR() {
                             value={item.specificationLimit}
                             onChange={(e) => {
                               const newData = [...gridDatas.reviewODP3];
-                              newData[index].specificationLimit =
-                                e.target.value;
+                              newData[index].specificationLimit = e.target.value;
                               setGridDatas({
                                 ...gridDatas,
                                 reviewODP3: newData,
@@ -12449,8 +12162,7 @@ export default function APQR() {
                             value={item.obtainedValue.minimum}
                             onChange={(e) => {
                               const newData = [...gridDatas.reviewODP3];
-                              newData[index].obtainedValue.minimum =
-                                e.target.value;
+                              newData[index].obtainedValue.minimum = e.target.value;
                               setGridDatas({
                                 ...gridDatas,
                                 reviewODP3: newData,
@@ -12463,8 +12175,7 @@ export default function APQR() {
                             value={item.obtainedValue.maximum}
                             onChange={(e) => {
                               const newData = [...gridDatas.reviewODP3];
-                              newData[index].obtainedValue.maximum =
-                                e.target.value;
+                              newData[index].obtainedValue.maximum = e.target.value;
                               setGridDatas({
                                 ...gridDatas,
                                 reviewODP3: newData,
@@ -12477,8 +12188,7 @@ export default function APQR() {
                             value={item.compliesNotComplies}
                             onChange={(e) => {
                               const newData = [...gridDatas.reviewODP3];
-                              newData[index].compliesNotComplies =
-                                e.target.value;
+                              newData[index].compliesNotComplies = e.target.value;
                               setGridDatas({
                                 ...gridDatas,
                                 reviewODP3: newData,
@@ -12501,9 +12211,7 @@ export default function APQR() {
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addReviewODPRow4} />
-                  <div className="addrowinstruction  pl-2">
-                    Add Rows by clicking on (+) icon
-                  </div>
+                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
                 </div>
                 <div className="flex gap-4 ">
                   <ExcelExportImport
@@ -12552,8 +12260,7 @@ export default function APQR() {
                             value={item.specificationLimit}
                             onChange={(e) => {
                               const newData = [...gridDatas.reviewODP4];
-                              newData[index].specificationLimit =
-                                e.target.value;
+                              newData[index].specificationLimit = e.target.value;
                               setGridDatas({
                                 ...gridDatas,
                                 reviewODP4: newData,
@@ -12579,8 +12286,7 @@ export default function APQR() {
                             value={item.obtainedValue.minimum}
                             onChange={(e) => {
                               const newData = [...gridDatas.reviewODP4];
-                              newData[index].obtainedValue.minimum =
-                                e.target.value;
+                              newData[index].obtainedValue.minimum = e.target.value;
                               setGridDatas({
                                 ...gridDatas,
                                 reviewODP4: newData,
@@ -12593,8 +12299,7 @@ export default function APQR() {
                             value={item.obtainedValue.maximum}
                             onChange={(e) => {
                               const newData = [...gridDatas.reviewODP4];
-                              newData[index].obtainedValue.maximum =
-                                e.target.value;
+                              newData[index].obtainedValue.maximum = e.target.value;
                               setGridDatas({
                                 ...gridDatas,
                                 reviewODP4: newData,
@@ -12607,8 +12312,7 @@ export default function APQR() {
                             value={item.compliesNotComplies}
                             onChange={(e) => {
                               const newData = [...gridDatas.reviewODP4];
-                              newData[index].compliesNotComplies =
-                                e.target.value;
+                              newData[index].compliesNotComplies = e.target.value;
                               setGridDatas({
                                 ...gridDatas,
                                 reviewODP4: newData,
@@ -12631,9 +12335,7 @@ export default function APQR() {
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addReviewODPRow5} />
-                  <div className="addrowinstruction  pl-2">
-                    Add Rows by clicking on (+) icon
-                  </div>
+                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
                 </div>
                 <div className="flex gap-4 ">
                   <ExcelExportImport
@@ -12682,8 +12384,7 @@ export default function APQR() {
                             value={item.specificationLimit}
                             onChange={(e) => {
                               const newData = [...gridDatas.reviewODP5];
-                              newData[index].specificationLimit =
-                                e.target.value;
+                              newData[index].specificationLimit = e.target.value;
                               setGridDatas({
                                 ...gridDatas,
                                 reviewODP5: newData,
@@ -12709,8 +12410,7 @@ export default function APQR() {
                             value={item.obtainedValue.minimum}
                             onChange={(e) => {
                               const newData = [...gridDatas.reviewODP5];
-                              newData[index].obtainedValue.minimum =
-                                e.target.value;
+                              newData[index].obtainedValue.minimum = e.target.value;
                               setGridDatas({
                                 ...gridDatas,
                                 reviewODP5: newData,
@@ -12723,8 +12423,7 @@ export default function APQR() {
                             value={item.obtainedValue.maximum}
                             onChange={(e) => {
                               const newData = [...gridDatas.reviewODP5];
-                              newData[index].obtainedValue.maximum =
-                                e.target.value;
+                              newData[index].obtainedValue.maximum = e.target.value;
                               setGridDatas({
                                 ...gridDatas,
                                 reviewODP5: newData,
@@ -12737,8 +12436,7 @@ export default function APQR() {
                             value={item.compliesNotComplies}
                             onChange={(e) => {
                               const newData = [...gridDatas.reviewODP5];
-                              newData[index].compliesNotComplies =
-                                e.target.value;
+                              newData[index].compliesNotComplies = e.target.value;
                               setGridDatas({
                                 ...gridDatas,
                                 reviewODP5: newData,
@@ -12761,9 +12459,7 @@ export default function APQR() {
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addReviewODPRow6} />
-                  <div className="addrowinstruction  pl-2">
-                    Add Rows by clicking on (+) icon
-                  </div>
+                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
                 </div>
                 <div className="flex gap-4 ">
                   <ExcelExportImport
@@ -12812,8 +12508,7 @@ export default function APQR() {
                             value={item.specificationLimit}
                             onChange={(e) => {
                               const newData = [...gridDatas.reviewODP6];
-                              newData[index].specificationLimit =
-                                e.target.value;
+                              newData[index].specificationLimit = e.target.value;
                               setGridDatas({
                                 ...gridDatas,
                                 reviewODP6: newData,
@@ -12839,8 +12534,7 @@ export default function APQR() {
                             value={item.obtainedValue.minimum}
                             onChange={(e) => {
                               const newData = [...gridDatas.reviewODP6];
-                              newData[index].obtainedValue.minimum =
-                                e.target.value;
+                              newData[index].obtainedValue.minimum = e.target.value;
                               setGridDatas({
                                 ...gridDatas,
                                 reviewODP6: newData,
@@ -12853,8 +12547,7 @@ export default function APQR() {
                             value={item.obtainedValue.maximum}
                             onChange={(e) => {
                               const newData = [...gridDatas.reviewODP6];
-                              newData[index].obtainedValue.maximum =
-                                e.target.value;
+                              newData[index].obtainedValue.maximum = e.target.value;
                               setGridDatas({
                                 ...gridDatas,
                                 reviewODP6: newData,
@@ -12867,8 +12560,7 @@ export default function APQR() {
                             value={item.compliesNotComplies}
                             onChange={(e) => {
                               const newData = [...gridDatas.reviewODP6];
-                              newData[index].compliesNotComplies =
-                                e.target.value;
+                              newData[index].compliesNotComplies = e.target.value;
                               setGridDatas({
                                 ...gridDatas,
                                 reviewODP6: newData,
@@ -12891,9 +12583,7 @@ export default function APQR() {
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addReviewODPRow7} />
-                  <div className="addrowinstruction  pl-2">
-                    Add Rows by clicking on (+) icon
-                  </div>
+                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
                 </div>
                 <div className="flex gap-4 ">
                   <ExcelExportImport
@@ -12942,8 +12632,7 @@ export default function APQR() {
                             value={item.specificationLimit}
                             onChange={(e) => {
                               const newData = [...gridDatas.reviewODP7];
-                              newData[index].specificationLimit =
-                                e.target.value;
+                              newData[index].specificationLimit = e.target.value;
                               setGridDatas({
                                 ...gridDatas,
                                 reviewODP7: newData,
@@ -12969,8 +12658,7 @@ export default function APQR() {
                             value={item.obtainedValue.minimum}
                             onChange={(e) => {
                               const newData = [...gridDatas.reviewODP7];
-                              newData[index].obtainedValue.minimum =
-                                e.target.value;
+                              newData[index].obtainedValue.minimum = e.target.value;
                               setGridDatas({
                                 ...gridDatas,
                                 reviewODP7: newData,
@@ -12983,8 +12671,7 @@ export default function APQR() {
                             value={item.obtainedValue.maximum}
                             onChange={(e) => {
                               const newData = [...gridDatas.reviewODP7];
-                              newData[index].obtainedValue.maximum =
-                                e.target.value;
+                              newData[index].obtainedValue.maximum = e.target.value;
                               setGridDatas({
                                 ...gridDatas,
                                 reviewODP7: newData,
@@ -12997,8 +12684,7 @@ export default function APQR() {
                             value={item.compliesNotComplies}
                             onChange={(e) => {
                               const newData = [...gridDatas.reviewODP7];
-                              newData[index].compliesNotComplies =
-                                e.target.value;
+                              newData[index].compliesNotComplies = e.target.value;
                               setGridDatas({
                                 ...gridDatas,
                                 reviewODP7: newData,
@@ -13021,9 +12707,7 @@ export default function APQR() {
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addReviewODPRow8} />
-                  <div className="addrowinstruction  pl-2">
-                    Add Rows by clicking on (+) icon
-                  </div>
+                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
                 </div>
                 <div className="flex gap-4 ">
                   <ExcelExportImport
@@ -13072,8 +12756,7 @@ export default function APQR() {
                             value={item.specificationLimit}
                             onChange={(e) => {
                               const newData = [...gridDatas.reviewODP8];
-                              newData[index].specificationLimit =
-                                e.target.value;
+                              newData[index].specificationLimit = e.target.value;
                               setGridDatas({
                                 ...gridDatas,
                                 reviewODP8: newData,
@@ -13099,8 +12782,7 @@ export default function APQR() {
                             value={item.obtainedValue.minimum}
                             onChange={(e) => {
                               const newData = [...gridDatas.reviewODP8];
-                              newData[index].obtainedValue.minimum =
-                                e.target.value;
+                              newData[index].obtainedValue.minimum = e.target.value;
                               setGridDatas({
                                 ...gridDatas,
                                 reviewODP8: newData,
@@ -13113,8 +12795,7 @@ export default function APQR() {
                             value={item.obtainedValue.maximum}
                             onChange={(e) => {
                               const newData = [...gridDatas.reviewODP8];
-                              newData[index].obtainedValue.maximum =
-                                e.target.value;
+                              newData[index].obtainedValue.maximum = e.target.value;
                               setGridDatas({
                                 ...gridDatas,
                                 reviewODP8: newData,
@@ -13127,8 +12808,7 @@ export default function APQR() {
                             value={item.compliesNotComplies}
                             onChange={(e) => {
                               const newData = [...gridDatas.reviewODP8];
-                              newData[index].compliesNotComplies =
-                                e.target.value;
+                              newData[index].compliesNotComplies = e.target.value;
                               setGridDatas({
                                 ...gridDatas,
                                 reviewODP8: newData,
@@ -13151,9 +12831,7 @@ export default function APQR() {
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addReviewODPRow9} />
-                  <div className="addrowinstruction  pl-2">
-                    Add Rows by clicking on (+) icon
-                  </div>
+                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
                 </div>
                 <div className="flex gap-4 ">
                   <ExcelExportImport
@@ -13202,8 +12880,7 @@ export default function APQR() {
                             value={item.specificationLimit}
                             onChange={(e) => {
                               const newData = [...gridDatas.reviewODP9];
-                              newData[index].specificationLimit =
-                                e.target.value;
+                              newData[index].specificationLimit = e.target.value;
                               setGridDatas({
                                 ...gridDatas,
                                 reviewODP9: newData,
@@ -13229,8 +12906,7 @@ export default function APQR() {
                             value={item.obtainedValue.minimum}
                             onChange={(e) => {
                               const newData = [...gridDatas.reviewODP9];
-                              newData[index].obtainedValue.minimum =
-                                e.target.value;
+                              newData[index].obtainedValue.minimum = e.target.value;
                               setGridDatas({
                                 ...gridDatas,
                                 reviewODP9: newData,
@@ -13243,8 +12919,7 @@ export default function APQR() {
                             value={item.obtainedValue.maximum}
                             onChange={(e) => {
                               const newData = [...gridDatas.reviewODP9];
-                              newData[index].obtainedValue.maximum =
-                                e.target.value;
+                              newData[index].obtainedValue.maximum = e.target.value;
                               setGridDatas({
                                 ...gridDatas,
                                 reviewODP9: newData,
@@ -13257,8 +12932,7 @@ export default function APQR() {
                             value={item.compliesNotComplies}
                             onChange={(e) => {
                               const newData = [...gridDatas.reviewODP9];
-                              newData[index].compliesNotComplies =
-                                e.target.value;
+                              newData[index].compliesNotComplies = e.target.value;
                               setGridDatas({
                                 ...gridDatas,
                                 reviewODP9: newData,
@@ -13281,9 +12955,7 @@ export default function APQR() {
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addReviewODPRow10} />
-                  <div className="addrowinstruction  pl-2">
-                    Add Rows by clicking on (+) icon
-                  </div>
+                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
                 </div>
                 <div className="flex gap-4 ">
                   <ExcelExportImport
@@ -13345,8 +13017,7 @@ export default function APQR() {
                             value={item.specificationLimit}
                             onChange={(e) => {
                               const newData = [...gridDatas.reviewODP10];
-                              newData[index].specificationLimit =
-                                e.target.value;
+                              newData[index].specificationLimit = e.target.value;
                               setGridDatas({
                                 ...gridDatas,
                                 reviewODP10: newData,
@@ -13359,8 +13030,7 @@ export default function APQR() {
                             value={item.obtainedValue.minimum}
                             onChange={(e) => {
                               const newData = [...gridDatas.reviewODP10];
-                              newData[index].obtainedValue.minimum =
-                                e.target.value;
+                              newData[index].obtainedValue.minimum = e.target.value;
                               setGridDatas({
                                 ...gridDatas,
                                 reviewODP10: newData,
@@ -13373,8 +13043,7 @@ export default function APQR() {
                             value={item.obtainedValue.maximum}
                             onChange={(e) => {
                               const newData = [...gridDatas.reviewODP10];
-                              newData[index].obtainedValue.maximum =
-                                e.target.value;
+                              newData[index].obtainedValue.maximum = e.target.value;
                               setGridDatas({
                                 ...gridDatas,
                                 reviewODP10: newData,
@@ -13387,8 +13056,7 @@ export default function APQR() {
                             value={item.compliesNotComplies}
                             onChange={(e) => {
                               const newData = [...gridDatas.reviewODP10];
-                              newData[index].compliesNotComplies =
-                                e.target.value;
+                              newData[index].compliesNotComplies = e.target.value;
                               setGridDatas({
                                 ...gridDatas,
                                 reviewODP10: newData,
@@ -13410,9 +13078,7 @@ export default function APQR() {
                 tinyNo={30}
               />
             </div>
-            <div className="sub-head">
-              Review of Drug Product –Finished Product Test Results
-            </div>
+            <div className="sub-head">Review of Drug Product –Finished Product Test Results</div>
             <div>
               {/* <div className="AddRows d-flex">
                 <MdNoteAdd onClick={addReviewODPFPTRRow} />
@@ -13421,9 +13087,7 @@ export default function APQR() {
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addReviewODPFPTRRow} />
-                  <div className="addrowinstruction  pl-2">
-                    Add Rows by clicking on (+) icon
-                  </div>
+                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
                 </div>
                 <div className="flex gap-4 ">
                   <ExcelExportImport
@@ -13471,8 +13135,7 @@ export default function APQR() {
                             value={item.specificationLimit}
                             onChange={(e) => {
                               const newData = [...gridDatas.reviewODPFPTR];
-                              newData[index].specificationLimit =
-                                e.target.value;
+                              newData[index].specificationLimit = e.target.value;
                               setGridDatas({
                                 ...gridDatas,
                                 reviewODPFPTR: newData,
@@ -13485,8 +13148,7 @@ export default function APQR() {
                             value={item.obtainedValue.minimum}
                             onChange={(e) => {
                               const newData = [...gridDatas.reviewODPFPTR];
-                              newData[index].obtainedValue.minimum =
-                                e.target.value;
+                              newData[index].obtainedValue.minimum = e.target.value;
                               setGridDatas({
                                 ...gridDatas,
                                 reviewODPFPTR: newData,
@@ -13499,8 +13161,7 @@ export default function APQR() {
                             value={item.obtainedValue.maximum}
                             onChange={(e) => {
                               const newData = [...gridDatas.reviewODPFPTR];
-                              newData[index].obtainedValue.maximum =
-                                e.target.value;
+                              newData[index].obtainedValue.maximum = e.target.value;
                               setGridDatas({
                                 ...gridDatas,
                                 reviewODPFPTR: newData,
@@ -13513,8 +13174,7 @@ export default function APQR() {
                             value={item.compliesNotComplies}
                             onChange={(e) => {
                               const newData = [...gridDatas.reviewODPFPTR];
-                              newData[index].compliesNotComplies =
-                                e.target.value;
+                              newData[index].compliesNotComplies = e.target.value;
                               setGridDatas({
                                 ...gridDatas,
                                 reviewODPFPTR: newData,
@@ -13545,9 +13205,7 @@ export default function APQR() {
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addSummaryOOSSRow} />
-                  <div className="addrowinstruction  pl-2">
-                    Add Rows by clicking on (+) icon
-                  </div>
+                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
                 </div>
                 <div className="flex gap-4 ">
                   <ExcelExportImport
@@ -13631,8 +13289,7 @@ export default function APQR() {
                             value={item.stabilityProtocolNo}
                             onChange={(e) => {
                               const newData = [...gridDatas.summaryOOSS];
-                              newData[index].stabilityProtocolNo =
-                                e.target.value;
+                              newData[index].stabilityProtocolNo = e.target.value;
                               setGridDatas({
                                 ...gridDatas,
                                 summaryOOSS: newData,
@@ -13662,9 +13319,7 @@ export default function APQR() {
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addStabilitySRRow} />
-                  <div className="addrowinstruction  pl-2">
-                    Add Rows by clicking on (+) icon
-                  </div>
+                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
                 </div>
                 <div className="flex gap-4 ">
                   <ExcelExportImport
@@ -13707,8 +13362,7 @@ export default function APQR() {
                             value={item.testingIntervalMonths}
                             onChange={(e) => {
                               const newData = [...gridDatas.stabilitySR];
-                              newData[index].testingIntervalMonths =
-                                e.target.value;
+                              newData[index].testingIntervalMonths = e.target.value;
                               setGridDatas({
                                 ...gridDatas,
                                 stabilitySR: newData,
@@ -13742,9 +13396,7 @@ export default function APQR() {
                 tinyNo={33}
               />
 
-              <div className="sub-head">
-                Review of Visual Inspection – Reserve Samples
-              </div>
+              <div className="sub-head">Review of Visual Inspection – Reserve Samples</div>
               <div>
                 {/* <div className="AddRows d-flex">
                   <MdNoteAdd onClick={addreviewOVIRSRow} />
@@ -13753,9 +13405,7 @@ export default function APQR() {
                 <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                   <div className="flex items-center">
                     <MdNoteAdd onClick={addreviewOVIRSRow} />
-                    <div className="addrowinstruction  pl-2">
-                      Add Rows by clicking on (+) icon
-                    </div>
+                    <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
                   </div>
                   <div className="flex gap-4 ">
                     <ExcelExportImport
@@ -13893,25 +13543,20 @@ export default function APQR() {
                 setEditorContent={setTinyContent}
                 tinyNo={34}
               />
-              <h4 className="gridName pt-4">
-                Review of Analytical Method Validations
-              </h4>
+              <h4 className="gridName pt-4">Review of Analytical Method Validations</h4>
               <TinyEditor
                 editorContent={tinyData.tiny35}
                 setEditorContent={setTinyContent}
                 tinyNo={35}
               />
-              <h4 className="gridName pt-4">
-                Review of Contract Testing Laboratories
-              </h4>
+              <h4 className="gridName pt-4">Review of Contract Testing Laboratories</h4>
               <TinyEditor
                 editorContent={tinyData.tiny36}
                 setEditorContent={setTinyContent}
                 tinyNo={36}
               />
               <h4 className="gridName pt-4">
-                Review of Environmental Monitoring Trend and water trends
-                Reports
+                Review of Environmental Monitoring Trend and water trends Reports
               </h4>
               <TinyEditor
                 editorContent={tinyData.tiny37}
@@ -13957,9 +13602,7 @@ export default function APQR() {
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addHVACQStatusRow} />
-                  <div className="addrowinstruction  pl-2">
-                    Add Rows by clicking on (+) icon
-                  </div>
+                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
                 </div>
                 <div className="flex gap-4 ">
                   <ExcelExportImport
@@ -14039,9 +13682,7 @@ export default function APQR() {
               />
             </div>
 
-            <h4 className="gridName pt-4">
-              Sanitization and Sterilization Details of Utilities
-            </h4>
+            <h4 className="gridName pt-4">Sanitization and Sterilization Details of Utilities</h4>
             <div>
               {/* <div className="AddRows">
                 <MdNoteAdd onClick={addSanitizationASDOURow} />
@@ -14050,9 +13691,7 @@ export default function APQR() {
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addSanitizationASDOURow} />
-                  <div className="addrowinstruction  pl-2">
-                    Add Rows by clicking on (+) icon
-                  </div>
+                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
                 </div>
                 <div className="flex gap-4 ">
                   <ExcelExportImport
@@ -14143,9 +13782,8 @@ export default function APQR() {
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addCompressedGasesRow} />
                   <div className="addrowinstruction  pl-2">
-                    Compressed gases testing performed as per the scheduled
-                    frequency and results were found to be satisfactory, system
-                    is in qualified state
+                    Compressed gases testing performed as per the scheduled frequency and results
+                    were found to be satisfactory, system is in qualified state
                   </div>
                 </div>
                 <div className="flex gap-4 ">
@@ -14246,9 +13884,7 @@ export default function APQR() {
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addReviewOfCPD} />
-                  <div className="addrowinstruction  pl-2">
-                    Add Rows by clicking on (+) icon
-                  </div>
+                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
                 </div>
               </div>
               <table>
@@ -14391,16 +14027,12 @@ export default function APQR() {
                 </tbody>
               </table>
             </div>
-            <div className="gridName pt-4">
-              Previous Review Period Deviations
-            </div>
+            <div className="gridName pt-4">Previous Review Period Deviations</div>
             <div>
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addPreviewRPD} />
-                  <div className="addrowinstruction  pl-2">
-                    Add Rows by clicking on (+) icon
-                  </div>
+                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
                 </div>
               </div>
               <table>
@@ -14558,9 +14190,7 @@ export default function APQR() {
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addCurrentOOS} />
-                  <div className="addrowinstruction  pl-2">
-                    Add Rows by clicking on (+) icon
-                  </div>
+                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
                 </div>
               </div>
               <table>
@@ -14711,9 +14341,7 @@ export default function APQR() {
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addPreviewOOS} />
-                  <div className="addrowinstruction  pl-2">
-                    Add Rows by clicking on (+) icon
-                  </div>
+                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
                 </div>
               </div>
               <table>
@@ -14873,9 +14501,7 @@ export default function APQR() {
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addCurrentOOAC} />
-                  <div className="addrowinstruction  pl-2">
-                    Add Rows by clicking on (+) icon
-                  </div>
+                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
                 </div>
               </div>
               <table>
@@ -15026,9 +14652,7 @@ export default function APQR() {
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addPreviewOOAC} />
-                  <div className="addrowinstruction  pl-2">
-                    Add Rows by clicking on (+) icon
-                  </div>
+                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
                 </div>
               </div>
               <table>
@@ -15188,9 +14812,7 @@ export default function APQR() {
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addCurrentOOAL} />
-                  <div className="addrowinstruction  pl-2">
-                    Add Rows by clicking on (+) icon
-                  </div>
+                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
                 </div>
               </div>
               <table>
@@ -15341,9 +14963,7 @@ export default function APQR() {
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addPreviewOOAL} />
-                  <div className="addrowinstruction  pl-2">
-                    Add Rows by clicking on (+) icon
-                  </div>
+                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
                 </div>
               </div>
               <table>
@@ -15503,9 +15123,7 @@ export default function APQR() {
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addCurrentOOSA} />
-                  <div className="addrowinstruction  pl-2">
-                    Add Rows by clicking on (+) icon
-                  </div>
+                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
                 </div>
               </div>
               <table>
@@ -15656,9 +15274,7 @@ export default function APQR() {
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addPreviewOOSA} />
-                  <div className="addrowinstruction  pl-2">
-                    Add Rows by clicking on (+) icon
-                  </div>
+                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
                 </div>
               </div>
               <table>
@@ -15818,9 +15434,7 @@ export default function APQR() {
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addCurrentOOT} />
-                  <div className="addrowinstruction  pl-2">
-                    Add Rows by clicking on (+) icon
-                  </div>
+                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
                 </div>
               </div>
               <table>
@@ -15971,9 +15585,7 @@ export default function APQR() {
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addPreviewOOT} />
-                  <div className="addrowinstruction  pl-2">
-                    Add Rows by clicking on (+) icon
-                  </div>
+                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
                 </div>
               </div>
               <table>
@@ -16128,16 +15740,12 @@ export default function APQR() {
               tinyNo={50}
             />
             <div className="sub-head">Review of Change Controls</div>
-            <div className="gridName pt-4">
-              Current Review Period Change Controls
-            </div>
+            <div className="gridName pt-4">Current Review Period Change Controls</div>
             <div>
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addCurrentCC} />
-                  <div className="addrowinstruction  pl-2">
-                    Add Rows by clicking on (+) icon
-                  </div>
+                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
                 </div>
               </div>
               <table>
@@ -16283,16 +15891,12 @@ export default function APQR() {
                 </tbody>
               </table>
             </div>
-            <div className="gridName pt-4">
-              Previous Review Period Change Controls
-            </div>
+            <div className="gridName pt-4">Previous Review Period Change Controls</div>
             <div>
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addPreviewCC} />
-                  <div className="addrowinstruction  pl-2">
-                    Add Rows by clicking on (+) icon
-                  </div>
+                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
                 </div>
               </div>
               <table>
@@ -16452,9 +16056,7 @@ export default function APQR() {
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addCurrentLabI} />
-                  <div className="addrowinstruction  pl-2">
-                    Add Rows by clicking on (+) icon
-                  </div>
+                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
                 </div>
               </div>
               <table>
@@ -16605,9 +16207,7 @@ export default function APQR() {
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addPreviewLabI} />
-                  <div className="addrowinstruction  pl-2">
-                    Add Rows by clicking on (+) icon
-                  </div>
+                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
                 </div>
               </div>
               <table>
@@ -16762,16 +16362,12 @@ export default function APQR() {
               tinyNo={52}
             />
             <div className="sub-head">Review of Market Complaints</div>
-            <div className="gridName pt-4">
-              Current Review Period Complaints
-            </div>
+            <div className="gridName pt-4">Current Review Period Complaints</div>
             <div>
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addCurrentMC} />
-                  <div className="addrowinstruction  pl-2">
-                    Add Rows by clicking on (+) icon
-                  </div>
+                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
                 </div>
               </div>
               <table>
@@ -16917,16 +16513,12 @@ export default function APQR() {
                 </tbody>
               </table>
             </div>
-            <div className="gridName pt-4">
-              Previous Review Period Complaints
-            </div>
+            <div className="gridName pt-4">Previous Review Period Complaints</div>
             <div>
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addPreviewMC} />
-                  <div className="addrowinstruction  pl-2">
-                    Add Rows by clicking on (+) icon
-                  </div>
+                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
                 </div>
               </div>
               <table>
@@ -17081,9 +16673,7 @@ export default function APQR() {
               tinyNo={53}
             />
             <div className="sub-head">Review of Deviations</div>
-            <div className="sub-head">
-              Current Review Period Quality Related Notification
-            </div>
+            <div className="sub-head">Current Review Period Quality Related Notification</div>
             <div>
               {/* <div className="AddRows">
                 <MdNoteAdd onClick={addCurrentRPQRNRow} />
@@ -17092,9 +16682,7 @@ export default function APQR() {
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addCurrentRPQRNRow} />
-                  <div className="addrowinstruction  pl-2">
-                    Add Rows by clicking on (+) icon
-                  </div>
+                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
                 </div>
                 <div className="flex gap-4 ">
                   <ExcelExportImport
@@ -17147,8 +16735,7 @@ export default function APQR() {
                             value={item.qualityRelatedNotification.no}
                             onChange={(e) => {
                               const newData = [...gridDatas.currentRPQRN];
-                              newData[index].qualityRelatedNotification.no =
-                                e.target.value;
+                              newData[index].qualityRelatedNotification.no = e.target.value;
                               setGridDatas({
                                 ...gridDatas,
                                 currentRPQRN: newData,
@@ -17162,9 +16749,7 @@ export default function APQR() {
                             value={item.qualityRelatedNotification.description}
                             onChange={(e) => {
                               const newData = [...gridDatas.currentRPQRN];
-                              newData[
-                                index
-                              ].qualityRelatedNotification.description =
+                              newData[index].qualityRelatedNotification.description =
                                 e.target.value;
                               setGridDatas({
                                 ...gridDatas,
@@ -17179,8 +16764,7 @@ export default function APQR() {
                             value={item.qualityRelatedNotification.impact}
                             onChange={(e) => {
                               const newData = [...gridDatas.currentRPQRN];
-                              newData[index].qualityRelatedNotification.impact =
-                                e.target.value;
+                              newData[index].qualityRelatedNotification.impact = e.target.value;
                               setGridDatas({
                                 ...gridDatas,
                                 currentRPQRN: newData,
@@ -17194,8 +16778,7 @@ export default function APQR() {
                             value={item.qualityRelatedNotification.status}
                             onChange={(e) => {
                               const newData = [...gridDatas.currentRPQRN];
-                              newData[index].qualityRelatedNotification.status =
-                                e.target.value;
+                              newData[index].qualityRelatedNotification.status = e.target.value;
                               setGridDatas({
                                 ...gridDatas,
                                 currentRPQRN: newData,
@@ -17208,8 +16791,7 @@ export default function APQR() {
                             value={item.cAPA.descriptionNo}
                             onChange={(e) => {
                               const newData = [...gridDatas.currentRPQRN];
-                              newData[index].cAPA.descriptionNo =
-                                e.target.value;
+                              newData[index].cAPA.descriptionNo = e.target.value;
                               setGridDatas({
                                 ...gridDatas,
                                 currentRPQRN: newData,
@@ -17250,9 +16832,7 @@ export default function APQR() {
                 </tbody>
               </table>
             </div>
-            <h4 className="gridName pt-4">
-              previous Review Period Quality Related Notification
-            </h4>
+            <h4 className="gridName pt-4">previous Review Period Quality Related Notification</h4>
             <TinyEditor
               editorContent={tinyData.tiny54}
               setEditorContent={setTinyContent}
@@ -17276,9 +16856,7 @@ export default function APQR() {
               setEditorContent={setTinyContent}
               tinyNo={57}
             />{" "}
-            <h4 className="gridName pt-4">
-              Review of previous PQR recommendations
-            </h4>
+            <h4 className="gridName pt-4">Review of previous PQR recommendations</h4>
             <TinyEditor
               editorContent={tinyData.tiny58}
               setEditorContent={setTinyContent}
@@ -17290,9 +16868,7 @@ export default function APQR() {
               setEditorContent={setTinyContent}
               tinyNo={59}
             />{" "}
-            <h4 className="gridName pt-4">
-              Review of Manufacturing Authorizations
-            </h4>
+            <h4 className="gridName pt-4">Review of Manufacturing Authorizations</h4>
             <TinyEditor
               editorContent={tinyData.tiny60}
               setEditorContent={setTinyContent}
@@ -17315,9 +16891,7 @@ export default function APQR() {
               <div className="AddRows d-flex w-full justify-between items-center text-3xl ">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addDossierRow} />
-                  <div className="addrowinstruction  pl-2">
-                    Add Rows by clicking on (+) icon
-                  </div>
+                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
                 </div>
                 <div className="flex gap-4 ">
                   <ExcelExportImport
@@ -17418,9 +16992,7 @@ export default function APQR() {
                 <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                   <div className="flex items-center">
                     <MdNoteAdd onClick={addDossierRowNma} />
-                    <div className="addrowinstruction  pl-2">
-                      Add Rows by clicking on (+) icon
-                    </div>
+                    <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
                   </div>
                   <div className="flex gap-4 ">
                     <ExcelExportImport
@@ -17466,8 +17038,7 @@ export default function APQR() {
                               value={item.descriptionOfPacking}
                               onChange={(e) => {
                                 const newData = [...gridDatas.dossierRRNma];
-                                newData[index].descriptionOfPacking =
-                                  e.target.value;
+                                newData[index].descriptionOfPacking = e.target.value;
                                 setGridDatas({
                                   ...gridDatas,
                                   dossierRRNma: newData,
@@ -17480,8 +17051,7 @@ export default function APQR() {
                               value={item.dateOfApplication}
                               onChange={(e) => {
                                 const newData = [...gridDatas.dossierRRNma];
-                                newData[index].dateOfApplication =
-                                  e.target.value;
+                                newData[index].dateOfApplication = e.target.value;
                                 setGridDatas({
                                   ...gridDatas,
                                   dossierRRNma: newData,
@@ -17494,8 +17064,7 @@ export default function APQR() {
                               value={item.statusOfApplication}
                               onChange={(e) => {
                                 const newData = [...gridDatas.dossierRRNma];
-                                newData[index].statusOfApplication =
-                                  e.target.value;
+                                newData[index].statusOfApplication = e.target.value;
                                 setGridDatas({
                                   ...gridDatas,
                                   dossierRRNma: newData,
@@ -17508,8 +17077,7 @@ export default function APQR() {
                               value={item.dateOfAuthorization}
                               onChange={(e) => {
                                 const newData = [...gridDatas.dossierRRNma];
-                                newData[index].dateOfAuthorization =
-                                  e.target.value;
+                                newData[index].dateOfAuthorization = e.target.value;
                                 setGridDatas({
                                   ...gridDatas,
                                   dossierRRNma: newData,
@@ -17758,7 +17326,7 @@ export default function APQR() {
           </>
         ) : null}
       </div>
-      <div className="w-full h-18 z-[999] bg-slate-200 p-10 py-2   flex justify-between align-middle fixed bottom-0  ">
+      {/* <div className="w-full h-18 z-[999] bg-slate-200 p-10 py-2   flex justify-between align-middle fixed bottom-0  ">
         <div className="flex justify-end gap-10 pr-10"></div>
         <div className="flex justify-end gap-10 pr-10">
           <button
@@ -17799,7 +17367,56 @@ export default function APQR() {
             Exit
           </button>
         </div>
-      </div>
+      </div> */}
+     <div className="fixed top-3/4 right-0 z-10 flex flex-col">
+          <button
+            className="
+                px-4
+                py-2
+                bg-teal-600
+                text-white
+                font-semibold
+                rounded-l-full
+                shadow-md
+                hover:bg-teal-700
+                focus:outline-none
+                focus:ring-2
+                focus:ring-offset-2
+                focus:ring-teal-500
+                mb-5
+            
+              "
+             onClick={() => {
+              handleUpdateAPQR();
+              // dispatch(updateForm(gridDatas));
+              navigate("/dashboard");
+            }}
+          >
+            Save
+          </button>
+          <button
+            className="
+                px-4
+                py-2
+                bg-teal-600
+                text-white
+                font-semibold
+                rounded-l-full
+                shadow-md
+                hover:bg-teal-700
+                focus:outline-none
+                focus:ring-2
+                focus:ring-offset-2
+                focus:ring-teal-500
+              "
+
+              onClick={() => {
+              navigate("/dashboard");
+            }}
+          >
+            Exit
+          </button>
+        </div>
     </>
   );
 }

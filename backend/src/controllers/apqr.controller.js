@@ -14,12 +14,8 @@ export const createApqr = async (req, res) => {
         genericName: req.body.genericName,
         dosageForm: req.body.dosageForm,
         initiator: req.body.initiator,
-        reviewStartDate: req.body.reviewStartDate
-          ? new Date(req.body.reviewStartDate)
-          : null,
-        reviewEndDate: req.body.reviewEndDate
-          ? new Date(req.body.reviewEndDate)
-          : null,
+        reviewStartDate: req.body.reviewStartDate ? new Date(req.body.reviewStartDate) : null,
+        reviewEndDate: req.body.reviewEndDate ? new Date(req.body.reviewEndDate) : null,
         mfgLicNo: req.body.mfgLicNo,
         productDescription: req.body.productDescription,
         processFlow: req.body.processFlow,
@@ -234,11 +230,9 @@ export const createApqr = async (req, res) => {
 export const getAllAPQRData = async (req, res) => {
   try {
     const aPQRData = await APQR.findAll({
-      include: [
-        {
-          model: gridRef,
-        },
-      ],
+      attributes: {
+        exclude: ["tinyData"],
+      },
     });
 
     res.status(200).json(aPQRData);
