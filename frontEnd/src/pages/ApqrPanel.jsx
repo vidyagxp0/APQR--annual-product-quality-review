@@ -234,7 +234,6 @@ export default function APQR() {
 
   const [productCodes, setProductCodes] = useState([""]);
 
-
   const [tiny1, setTiny1] = useState("");
   const [tiny2, setTiny2] = useState("");
   const [tiny3, setTiny3] = useState("");
@@ -979,70 +978,74 @@ export default function APQR() {
 
     inputData?.forEach((item) => {
       outputData.batchNumbers.push(item.batchNo);
-      outputData.observedValues.push(item.observedValue);
+      outputData.observedValues.push(parseFloat(item.observedValue));
     });
 
     return outputData;
   };
-  const paracetamolpHDataH = getGraphData(editData.reviewODSTR);
-  const paracetamolAssayData = getGraphData(editData.reviewODSTR2);
-  const paracetamolImpurityData = getGraphData(editData.reviewODSTR3);
-  const paracetamolDissolutionData = getGraphData(editData.reviewODSTR4);
-  const paracetamolDisIntegrationData = getGraphData(editData.reviewODSTR5);
-  const terbinafinepHDataH = getGraphData(editData.reviewODSTR6);
-  const terbinafineAssayData = getGraphData(editData.reviewODSTR7);
-  const terbinafineImpurityData = getGraphData(editData.reviewODSTR8);
-  const terbinafineDissolutionData = getGraphData(editData.reviewODSTR9);
-  const terbinafineDisIntegrationData = getGraphData(editData.reviewODSTR10);
-  const pentoprazolepHDataH = getGraphData(editData.reviewODSTR11);
-  const pentoprazoleAssayData = getGraphData(editData.reviewODSTR12);
-  const pentoprazoleImpurityData = getGraphData(editData.reviewODSTR13);
-  const pentoprazoleDissolutionData = getGraphData(editData.reviewODSTR14);
-  const pentoprazoleDisIntegrationData = getGraphData(editData.reviewODSTR15);
+  const paracetamolpHDataH = getGraphData(gridDatas.reviewODSTR);
+  const paracetamolAssayData = getGraphData(gridDatas.reviewODSTR2);
+  const paracetamolImpurityData = getGraphData(gridDatas.reviewODSTR3);
+  const paracetamolDissolutionData = getGraphData(gridDatas.reviewODSTR4);
+  const paracetamolDisIntegrationData = getGraphData(gridDatas.reviewODSTR5);
+  const terbinafinepHDataH = getGraphData(gridDatas.reviewODSTR6);
+  const terbinafineAssayData = getGraphData(gridDatas.reviewODSTR7);
+  const terbinafineImpurityData = getGraphData(gridDatas.reviewODSTR8);
+  const terbinafineDissolutionData = getGraphData(gridDatas.reviewODSTR9);
+  const terbinafineDisIntegrationData = getGraphData(gridDatas.reviewODSTR10);
+  const pentoprazolepHDataH = getGraphData(gridDatas.reviewODSTR11);
+  const pentoprazoleAssayData = getGraphData(gridDatas.reviewODSTR12);
+  const pentoprazoleImpurityData = getGraphData(gridDatas.reviewODSTR13);
+  const pentoprazoleDissolutionData = getGraphData(gridDatas.reviewODSTR14);
+  const pentoprazoleDisIntegrationData = getGraphData(gridDatas.reviewODSTR15);
 
-  const paracetamolpHData = editData?.reviewODSTR?.map((item) => {
+  const paracetamolpHData = gridDatas?.reviewODSTR?.map((item) => {
+    return {
+      "Batch No.": item.batchNo,
+      "Observed Value": Number(item.observedValue),
+    };
+  });
+  console.log(paracetamolpHDataH, "graph");
+  const paracetamolpHData2 = gridDatas?.reviewODSTR2?.map((item) => {
     return { "Batch No.": item.batchNo, "Observed Value": item.observedValue };
   });
-  const paracetamolpHData2 = editData?.reviewODSTR2?.map((item) => {
+  const paracetamolpHData3 = gridDatas?.reviewODSTR3?.map((item) => {
     return { "Batch No.": item.batchNo, "Observed Value": item.observedValue };
   });
-  const paracetamolpHData3 = editData?.reviewODSTR3?.map((item) => {
+  const paracetamolpHData4 = gridDatas?.reviewODSTR4?.map((item) => {
     return { "Batch No.": item.batchNo, "Observed Value": item.observedValue };
   });
-  const paracetamolpHData4 = editData?.reviewODSTR4?.map((item) => {
+  const paracetamolpHData5 = gridDatas?.reviewODSTR5?.map((item) => {
     return { "Batch No.": item.batchNo, "Observed Value": item.observedValue };
   });
-  const paracetamolpHData5 = editData?.reviewODSTR5?.map((item) => {
+  const paracetamolpHData6 = gridDatas?.reviewODSTR6?.map((item) => {
     return { "Batch No.": item.batchNo, "Observed Value": item.observedValue };
   });
-  const paracetamolpHData6 = editData?.reviewODSTR6?.map((item) => {
+  const paracetamolpHData7 = gridDatas?.reviewODSTR7?.map((item) => {
     return { "Batch No.": item.batchNo, "Observed Value": item.observedValue };
   });
-  const paracetamolpHData7 = editData?.reviewODSTR7?.map((item) => {
+  const paracetamolpHData8 = gridDatas?.reviewODSTR8?.map((item) => {
     return { "Batch No.": item.batchNo, "Observed Value": item.observedValue };
   });
-  const paracetamolpHData8 = editData?.reviewODSTR8?.map((item) => {
+  const paracetamolpHData9 = gridDatas?.reviewODSTR9?.map((item) => {
     return { "Batch No.": item.batchNo, "Observed Value": item.observedValue };
   });
-  const paracetamolpHData9 = editData?.reviewODSTR9?.map((item) => {
+  const paracetamolpHData10 = gridDatas?.reviewODSTR10?.map((item) => {
     return { "Batch No.": item.batchNo, "Observed Value": item.observedValue };
   });
-  const paracetamolpHData10 = editData?.reviewODSTR10?.map((item) => {
+  const paracetamolpHData11 = gridDatas?.reviewODSTR11?.map((item) => {
     return { "Batch No.": item.batchNo, "Observed Value": item.observedValue };
   });
-  const paracetamolpHData11 = editData?.reviewODSTR11?.map((item) => {
+  const paracetamolpHData12 = gridDatas?.reviewODSTR12?.map((item) => {
     return { "Batch No.": item.batchNo, "Observed Value": item.observedValue };
   });
-  const paracetamolpHData12 = editData?.reviewODSTR12?.map((item) => {
+  const paracetamolpHData13 = gridDatas?.reviewODSTR13?.map((item) => {
     return { "Batch No.": item.batchNo, "Observed Value": item.observedValue };
   });
-  const paracetamolpHData13 = editData?.reviewODSTR13?.map((item) => {
+  const paracetamolpHData14 = gridDatas?.reviewODSTR14?.map((item) => {
     return { "Batch No.": item.batchNo, "Observed Value": item.observedValue };
   });
-  const paracetamolpHData14 = editData?.reviewODSTR14?.map((item) => {
-    return { "Batch No.": item.batchNo, "Observed Value": item.observedValue };
-  });
-  const paracetamolpHData15 = editData?.reviewODSTR15?.map((item) => {
+  const paracetamolpHData15 = gridDatas?.reviewODSTR15?.map((item) => {
     return { "Batch No.": item.batchNo, "Observed Value": item.observedValue };
   });
 
@@ -1208,31 +1211,38 @@ export default function APQR() {
       productCodes: productCodes,
     });
   }, [productCodes, data]);
+  useEffect(() => {
+    setPQRData({
+      tinyData: tinyData,
+    });
+  }, [tinyData]);
 
+  const handleUpdateAPQR = async () => {
+    try {
+      // Prepare the payload with all fields that need to be updated
+      const payload = {
+        pQRData,
+        gridDatas,
+        tinyData,
+      };
 
-const handleUpdateAPQR = async () => {
-  try {
-    // Prepare the payload with all fields that need to be updated
-    const payload = {
-  pQRData,gridDatas
-     
-    };
+      // Make the PUT request to update the data on the server
+      const response = await axios.put(
+        `http://localhost:4000/update-apqr/${editData.pqrId}`,
+        payload
+      );
 
-    // Make the PUT request to update the data on the server
-    const response = await axios.put(`http://localhost:3001/update-apqr/${editData.pqrId}`, payload);
+      // Handle success (e.g., show a success message)
+    } catch (error) {
+      console.error("Error updating data:", error);
+      // Handle error (e.g., show an error message)
+    }
+  };
 
-    // Handle success (e.g., show a success message)
-  } catch (error) {
-    console.error('Error updating data:', error);
-    // Handle error (e.g., show an error message)
-  }
-};
-
- 
   const fetchData = async () => {
     try {
       const response = await axios.get(
-        `http://localhost:3001/get-apqr/${editData.pqrId}`
+        `http://localhost:4000/get-apqr/${editData.pqrId}`
       );
       setData(response.data);
       setTinyData(response.data.aPQRData.tinyData);
@@ -1383,59 +1393,138 @@ const handleUpdateAPQR = async () => {
 
   const setimportedData = (data, gridNo) => {
     const processedData = processData(data, keyMapping);
-    switch (gridNo) {
-      case 1:
-        // setManufacturingStage([...manufacturingStage, ...processedData]);
-        break;
-      // case 22:
-      //   setReviewOSTR([...reviewODSTR, ...processedData]);
-      //   break;
-      // case 23:
-      //   setReviewOSTR2([...reviewODSTR2, ...processedData]);
-      //   break;
-      // case 24:
-      //   setReviewOSTR3([...reviewODSTR3, ...processedData]);
-      //   break;
-      // case 25:
-      //   setReviewOSTR4([...reviewODSTR4, ...processedData]);
-      //   break;
-      // case 26:
-      //   setReviewOSTR5([...reviewODSTR5, ...processedData]);
-      //   break;
-      // case 27:
-      //   setReviewOSTR6([...reviewODSTR6, ...processedData]);
-      //   break;
-      // case 28:
-      //   setReviewOSTR7([...reviewODSTR7, ...processedData]);
-      //   break;
-      // case 29:
-      //   setReviewOSTR8([...reviewODSTR8, ...processedData]);
-      //   break;
-      // case 30:
-      //   setReviewOSTR9([...reviewODSTR9, ...processedData]);
-      //   break;
-      // case 31:
-      //   setReviewOSTR10([...reviewODSTR10, ...processedData]);
-      //   break;
-      // case 32:
-      //   setReviewOSTR11([...reviewODSTR11, ...processedData]);
-      //   break;
-      // case 33:
-      //   setReviewOSTR12([...reviewODSTR12, ...processedData]);
-      //   break;
-      // case 34:
-      //   setReviewOSTR13([...reviewODSTR13, ...processedData]);
-      //   break;
-      // case 35:
-      //   setReviewOSTR14([...reviewODSTR14, ...processedData]);
-      //   break;
-      // case 36:
-      //   setReviewOSTR15([...reviewODSTR15, ...processedData]);
-      //   break;
-      case 3:
-        // setManufacturingStage([...manufacturingStage, ...processedData]);
-        break;
-    }
+    setGridDatas((prevData) => {
+      switch (gridNo) {
+        case 1:
+          return {
+            ...prevData,
+            manufacturingStage: [
+              ...prevData.manufacturingStage,
+              ...processedData,
+            ],
+          };
+        case 22:
+          return {
+            ...prevData,
+            reviewODSTR: [...prevData.reviewODSTR, ...processedData],
+          };
+        case 23:
+          return {
+            ...prevData,
+            reviewODSTR2: [...prevData.reviewODSTR2, ...processedData],
+          };
+        case 24:
+          return {
+            ...prevData,
+            reviewODSTR3: [...prevData.reviewODSTR3, ...processedData],
+          };
+        case 25:
+          return {
+            ...prevData,
+            reviewODSTR4: [...prevData.reviewODSTR4, ...processedData],
+          };
+        case 26:
+          return {
+            ...prevData,
+            reviewODSTR5: [...prevData.reviewODSTR5, ...processedData],
+          };
+        case 27:
+          return {
+            ...prevData,
+            reviewODSTR6: [...prevData.reviewODSTR6, ...processedData],
+          };
+        case 28:
+          return {
+            ...prevData,
+            reviewODSTR7: [...prevData.reviewODSTR7, ...processedData],
+          };
+        case 29:
+          return {
+            ...prevData,
+            reviewODSTR8: [...prevData.reviewODSTR8, ...processedData],
+          };
+        case 30:
+          return {
+            ...prevData,
+            reviewODSTR9: [...prevData.reviewODSTR9, ...processedData],
+          };
+        case 31:
+          return {
+            ...prevData,
+            reviewODSTR10: [...prevData.reviewODSTR10, ...processedData],
+          };
+        case 32:
+          return {
+            ...prevData,
+            reviewODSTR11: [...prevData.reviewODSTR11, ...processedData],
+          };
+        case 33:
+          return {
+            ...prevData,
+            reviewODSTR12: [...prevData.reviewODSTR12, ...processedData],
+          };
+        case 34:
+          return {
+            ...prevData,
+            reviewODSTR13: [...prevData.reviewODSTR13, ...processedData],
+          };
+        case 35:
+          return {
+            ...prevData,
+            reviewODSTR14: [...prevData.reviewODSTR14, ...processedData],
+          };
+        case 36:
+          return {
+            ...prevData,
+            reviewODSTR15: [...prevData.reviewODSTR15, ...processedData],
+          };
+        default:
+          return prevData;
+      }
+    });
+    //
+    //   setReviewOSTR2([...reviewODSTR2, ...processedData]);
+    //   break;
+    // case 24:
+    //   setReviewOSTR3([...reviewODSTR3, ...processedData]);
+    //   break;
+    // case 25:
+    //   setReviewOSTR4([...reviewODSTR4, ...processedData]);
+    //   break;
+    // case 26:
+    //   setReviewOSTR5([...reviewODSTR5, ...processedData]);
+    //   break;
+    // case 27:
+    //   setReviewOSTR6([...reviewODSTR6, ...processedData]);
+    //   break;
+    // case 28:
+    //   setReviewOSTR7([...reviewODSTR7, ...processedData]);
+    //   break;
+    // case 29:
+    //   setReviewOSTR8([...reviewODSTR8, ...processedData]);
+    //   break;
+    // case 30:
+    //   setReviewOSTR9([...reviewODSTR9, ...processedData]);
+    //   break;
+    // case 31:
+    //   setReviewOSTR10([...reviewODSTR10, ...processedData]);
+    //   break;
+    // case 32:
+    //   setReviewOSTR11([...reviewODSTR11, ...processedData]);
+    //   break;
+    // case 33:
+    //   setReviewOSTR12([...reviewODSTR12, ...processedData]);
+    //   break;
+    // case 34:
+    //   setReviewOSTR13([...reviewODSTR13, ...processedData]);
+    //   break;
+    // case 35:
+    //   setReviewOSTR14([...reviewODSTR14, ...processedData]);
+    //   break;
+    // case 36:
+    //   setReviewOSTR15([...reviewODSTR15, ...processedData]);
+    //   break;
+
     // setManufacturingStage([...manufacturingStage, ...processedData]);
   };
 
@@ -4031,7 +4120,9 @@ const handleUpdateAPQR = async () => {
                 <input
                   value={pQRData.totalBatchesApprovedReleased}
                   onChange={(e) => {
-                    setPQRData({ totalBatchesApprovedReleased: e.target.value });
+                    setPQRData({
+                      totalBatchesApprovedReleased: e.target.value,
+                    });
                   }}
                 />
               </div>
@@ -4040,7 +4131,9 @@ const handleUpdateAPQR = async () => {
                 <input
                   value={pQRData.totalProcessValidationBatches}
                   onChange={(e) => {
-                    setPQRData({ totalProcessValidationBatches: e.target.value });
+                    setPQRData({
+                      totalProcessValidationBatches: e.target.value,
+                    });
                   }}
                 />
               </div>
@@ -6456,10 +6549,10 @@ const handleUpdateAPQR = async () => {
                 </div>
                 <div className="flex gap-4 ">
                   <ExcelExportImport
-                    // data={reviewODSTR}
-                    // setimportedData={setimportedData}
-                    // fileName="Paracetamol pH Test Results.xlsx"
-                    // gridNo={22}
+                    data={gridDatas.reviewODSTR}
+                    setimportedData={setimportedData}
+                    fileName="Paracetamol pH Test Results.xlsx"
+                    gridNo={22}
                   />
                 </div>
               </div>
@@ -6485,7 +6578,10 @@ const handleUpdateAPQR = async () => {
                           onChange={(e) => {
                             const newData = [...gridDatas.reviewODSTR];
                             newData[index].batchNo = e.target.value;
-                            setGridDatas({ ...gridDatas, reviewODSTR: newData });
+                            setGridDatas({
+                              ...gridDatas,
+                              reviewODSTR: newData,
+                            });
                           }}
                         />
                         <td>
@@ -6503,6 +6599,7 @@ const handleUpdateAPQR = async () => {
                         </td>
                         <td>
                           <input
+                            type="number"
                             value={item.LSL}
                             onChange={(e) => {
                               const newData = [...gridDatas.reviewODSTR];
@@ -6516,6 +6613,7 @@ const handleUpdateAPQR = async () => {
                         </td>
                         <td>
                           <input
+                            type="number"
                             value={item.USL}
                             onChange={(e) => {
                               const newData = [...gridDatas.reviewODSTR];
@@ -6529,6 +6627,7 @@ const handleUpdateAPQR = async () => {
                         </td>{" "}
                         <td>
                           <input
+                            type="number"
                             value={item.LCL}
                             onChange={(e) => {
                               const newData = [...gridDatas.reviewODSTR];
@@ -6542,6 +6641,7 @@ const handleUpdateAPQR = async () => {
                         </td>
                         <td>
                           <input
+                            type="number"
                             value={item.UCL}
                             onChange={(e) => {
                               const newData = [...gridDatas.reviewODSTR];
@@ -6555,6 +6655,7 @@ const handleUpdateAPQR = async () => {
                         </td>
                         <td>
                           <input
+                            type="number"
                             value={item.observedValue}
                             onChange={(e) => {
                               const newData = [...gridDatas.reviewODSTR];
@@ -6827,10 +6928,10 @@ const handleUpdateAPQR = async () => {
                 </div>
                 <div className="flex gap-4 ">
                   <ExcelExportImport
-                    // data={reviewODSTR2}
-                    // setimportedData={setimportedData}
-                    // fileName="reviewODSTR2.xlsx"
-                    // gridNo={23}
+                  data={gridDatas.reviewODSTR2}
+                  setimportedData={setimportedData}
+                  fileName="reviewODSTR2.xlsx"
+                  gridNo={23}
                   />{" "}
                 </div>
               </div>
@@ -6856,7 +6957,10 @@ const handleUpdateAPQR = async () => {
                           onChange={(e) => {
                             const newData = [...gridDatas.reviewODSTR2];
                             newData[index].batchNo = e.target.value;
-                            setGridDatas({ ...gridDatas, reviewODSTR2: newData });
+                            setGridDatas({
+                              ...gridDatas,
+                              reviewODSTR2: newData,
+                            });
                           }}
                         />
                         <td>
@@ -6874,6 +6978,7 @@ const handleUpdateAPQR = async () => {
                         </td>
                         <td>
                           <input
+                            type="number"
                             value={item.LSL}
                             onChange={(e) => {
                               const newData = [...gridDatas.reviewODSTR2];
@@ -6887,6 +6992,7 @@ const handleUpdateAPQR = async () => {
                         </td>
                         <td>
                           <input
+                            type="number"
                             value={item.USL}
                             onChange={(e) => {
                               const newData = [...gridDatas.reviewODSTR2];
@@ -6900,6 +7006,7 @@ const handleUpdateAPQR = async () => {
                         </td>{" "}
                         <td>
                           <input
+                            type="number"
                             value={item.LCL}
                             onChange={(e) => {
                               const newData = [...gridDatas.reviewODSTR2];
@@ -6913,6 +7020,7 @@ const handleUpdateAPQR = async () => {
                         </td>
                         <td>
                           <input
+                            type="number"
                             value={item.UCL}
                             onChange={(e) => {
                               const newData = [...gridDatas.reviewODSTR2];
@@ -6926,6 +7034,7 @@ const handleUpdateAPQR = async () => {
                         </td>
                         <td>
                           <input
+                            type="number"
                             value={item.observedValue}
                             onChange={(e) => {
                               const newData = [...gridDatas.reviewODSTR2];
@@ -7036,10 +7145,10 @@ const handleUpdateAPQR = async () => {
                 </div>
                 <div className="flex gap-4 ">
                   <ExcelExportImport
-                    // data={reviewODSTR3}
-                    // setimportedData={setimportedData}
-                    // fileName="reviewODSTR3.xlsx"
-                    // gridNo={24}
+                  data={gridDatas.reviewODSTR3}
+                  setimportedData={setimportedData}
+                  fileName="reviewODSTR3.xlsx"
+                  gridNo={24}
                   />{" "}
                 </div>
               </div>
@@ -7065,7 +7174,10 @@ const handleUpdateAPQR = async () => {
                           onChange={(e) => {
                             const newData = [...gridDatas.reviewODSTR3];
                             newData[index].batchNo = e.target.value;
-                            setGridDatas({ ...gridDatas, reviewODSTR3: newData });
+                            setGridDatas({
+                              ...gridDatas,
+                              reviewODSTR3: newData,
+                            });
                           }}
                         />
                         <td>
@@ -7083,6 +7195,7 @@ const handleUpdateAPQR = async () => {
                         </td>
                         <td>
                           <input
+                            type="number"
                             value={item.LSL}
                             onChange={(e) => {
                               const newData = [...gridDatas.reviewODSTR3];
@@ -7096,6 +7209,7 @@ const handleUpdateAPQR = async () => {
                         </td>
                         <td>
                           <input
+                            type="number"
                             value={item.USL}
                             onChange={(e) => {
                               const newData = [...gridDatas.reviewODSTR3];
@@ -7109,6 +7223,7 @@ const handleUpdateAPQR = async () => {
                         </td>{" "}
                         <td>
                           <input
+                            type="number"
                             value={item.LCL}
                             onChange={(e) => {
                               const newData = [...gridDatas.reviewODSTR3];
@@ -7122,6 +7237,7 @@ const handleUpdateAPQR = async () => {
                         </td>
                         <td>
                           <input
+                            type="number"
                             value={item.UCL}
                             onChange={(e) => {
                               const newData = [...gridDatas.reviewODSTR3];
@@ -7135,6 +7251,7 @@ const handleUpdateAPQR = async () => {
                         </td>
                         <td>
                           <input
+                            type="number"
                             value={item.observedValue}
                             onChange={(e) => {
                               const newData = [...gridDatas.reviewODSTR3];
@@ -7416,10 +7533,10 @@ const handleUpdateAPQR = async () => {
                 </div>
                 <div className="flex gap-4 ">
                   <ExcelExportImport
-                    // data={reviewODSTR4}
-                    // setimportedData={setimportedData}
-                    // fileName="reviewODSTR4.xlsx"
-                    // gridNo={25}
+                  data={gridDatas.reviewODSTR4}
+                  setimportedData={setimportedData}
+                  fileName="reviewODSTR4.xlsx"
+                  gridNo={25}
                   />{" "}
                 </div>
               </div>
@@ -7445,7 +7562,10 @@ const handleUpdateAPQR = async () => {
                           onChange={(e) => {
                             const newData = [...gridDatas.reviewODSTR4];
                             newData[index].batchNo = e.target.value;
-                            setGridDatas({ ...gridDatas, reviewODSTR4: newData });
+                            setGridDatas({
+                              ...gridDatas,
+                              reviewODSTR4: newData,
+                            });
                           }}
                         />
                         <td>
@@ -7463,6 +7583,7 @@ const handleUpdateAPQR = async () => {
                         </td>
                         <td>
                           <input
+                            type="number"
                             value={item.LSL}
                             onChange={(e) => {
                               const newData = [...gridDatas.reviewODSTR4];
@@ -7476,6 +7597,7 @@ const handleUpdateAPQR = async () => {
                         </td>
                         <td>
                           <input
+                            type="number"
                             value={item.USL}
                             onChange={(e) => {
                               const newData = [...gridDatas.reviewODSTR4];
@@ -7489,6 +7611,7 @@ const handleUpdateAPQR = async () => {
                         </td>{" "}
                         <td>
                           <input
+                            type="number"
                             value={item.LCL}
                             onChange={(e) => {
                               const newData = [...gridDatas.reviewODSTR4];
@@ -7502,6 +7625,7 @@ const handleUpdateAPQR = async () => {
                         </td>
                         <td>
                           <input
+                            type="number"
                             value={item.UCL}
                             onChange={(e) => {
                               const newData = [...gridDatas.reviewODSTR4];
@@ -7515,6 +7639,7 @@ const handleUpdateAPQR = async () => {
                         </td>
                         <td>
                           <input
+                            type="number"
                             value={item.observedValue}
                             onChange={(e) => {
                               const newData = [...gridDatas.reviewODSTR4];
@@ -7796,10 +7921,10 @@ const handleUpdateAPQR = async () => {
                 </div>
                 <div className="flex gap-4 ">
                   <ExcelExportImport
-                    // data={reviewODSTR5}
-                    // setimportedData={setimportedData}
-                    // fileName="reviewODSTR5.xlsx"
-                    // gridNo={26}
+                  data={gridDatas.reviewODSTR5}
+                  setimportedData={setimportedData}
+                  fileName="reviewODSTR5.xlsx"
+                  gridNo={26}
                   />{" "}
                 </div>
               </div>
@@ -7825,7 +7950,10 @@ const handleUpdateAPQR = async () => {
                           onChange={(e) => {
                             const newData = [...gridDatas.reviewODSTR5];
                             newData[index].batchNo = e.target.value;
-                            setGridDatas({ ...gridDatas, reviewODSTR5: newData });
+                            setGridDatas({
+                              ...gridDatas,
+                              reviewODSTR5: newData,
+                            });
                           }}
                         />
                         <td>
@@ -7843,6 +7971,7 @@ const handleUpdateAPQR = async () => {
                         </td>
                         <td>
                           <input
+                            type="number"
                             value={item.LSL}
                             onChange={(e) => {
                               const newData = [...gridDatas.reviewODSTR5];
@@ -7856,6 +7985,7 @@ const handleUpdateAPQR = async () => {
                         </td>
                         <td>
                           <input
+                            type="number"
                             value={item.USL}
                             onChange={(e) => {
                               const newData = [...gridDatas.reviewODSTR5];
@@ -7869,6 +7999,7 @@ const handleUpdateAPQR = async () => {
                         </td>{" "}
                         <td>
                           <input
+                            type="number"
                             value={item.LCL}
                             onChange={(e) => {
                               const newData = [...gridDatas.reviewODSTR5];
@@ -7882,6 +8013,7 @@ const handleUpdateAPQR = async () => {
                         </td>
                         <td>
                           <input
+                            type="number"
                             value={item.UCL}
                             onChange={(e) => {
                               const newData = [...gridDatas.reviewODSTR5];
@@ -7895,6 +8027,7 @@ const handleUpdateAPQR = async () => {
                         </td>
                         <td>
                           <input
+                            type="number"
                             value={item.observedValue}
                             onChange={(e) => {
                               const newData = [...gridDatas.reviewODSTR5];
@@ -8175,10 +8308,10 @@ const handleUpdateAPQR = async () => {
                 </div>
                 <div className="flex gap-4 ">
                   <ExcelExportImport
-                    // data={reviewODSTR6}
-                    // setimportedData={setimportedData}
-                    // fileName="reviewODSTR6.xlsx"
-                    // gridNo={27}
+                  data={gridDatas.reviewODSTR6}
+                  setimportedData={setimportedData}
+                  fileName="reviewODSTR6.xlsx"
+                  gridNo={27}
                   />{" "}
                 </div>
               </div>
@@ -8204,7 +8337,10 @@ const handleUpdateAPQR = async () => {
                           onChange={(e) => {
                             const newData = [...gridDatas.reviewODSTR6];
                             newData[index].batchNo = e.target.value;
-                            setGridDatas({ ...gridDatas, reviewODSTR6: newData });
+                            setGridDatas({
+                              ...gridDatas,
+                              reviewODSTR6: newData,
+                            });
                           }}
                         />
                         <td>
@@ -8222,6 +8358,7 @@ const handleUpdateAPQR = async () => {
                         </td>
                         <td>
                           <input
+                            type="number"
                             value={item.LSL}
                             onChange={(e) => {
                               const newData = [...gridDatas.reviewODSTR6];
@@ -8235,6 +8372,7 @@ const handleUpdateAPQR = async () => {
                         </td>
                         <td>
                           <input
+                            type="number"
                             value={item.USL}
                             onChange={(e) => {
                               const newData = [...gridDatas.reviewODSTR6];
@@ -8248,6 +8386,7 @@ const handleUpdateAPQR = async () => {
                         </td>{" "}
                         <td>
                           <input
+                            type="number"
                             value={item.LCL}
                             onChange={(e) => {
                               const newData = [...gridDatas.reviewODSTR6];
@@ -8261,6 +8400,7 @@ const handleUpdateAPQR = async () => {
                         </td>
                         <td>
                           <input
+                            type="number"
                             value={item.UCL}
                             onChange={(e) => {
                               const newData = [...gridDatas.reviewODSTR6];
@@ -8274,6 +8414,7 @@ const handleUpdateAPQR = async () => {
                         </td>
                         <td>
                           <input
+                            type="number"
                             value={item.observedValue}
                             onChange={(e) => {
                               const newData = [...gridDatas.reviewODSTR6];
@@ -8551,10 +8692,10 @@ const handleUpdateAPQR = async () => {
                 </div>
                 <div className="flex gap-4 ">
                   <ExcelExportImport
-                    // data={reviewODSTR7}
-                    // setimportedData={setimportedData}
-                    // fileName="reviewODSTR7.xlsx"
-                    // gridNo={28}
+                  data={gridDatas.reviewODSTR7}
+                  setimportedData={setimportedData}
+                  fileName="reviewODSTR7.xlsx"
+                  gridNo={28}
                   />{" "}
                 </div>
               </div>
@@ -8580,7 +8721,10 @@ const handleUpdateAPQR = async () => {
                           onChange={(e) => {
                             const newData = [...gridDatas.reviewODSTR7];
                             newData[index].batchNo = e.target.value;
-                            setGridDatas({ ...gridDatas, reviewODSTR7: newData });
+                            setGridDatas({
+                              ...gridDatas,
+                              reviewODSTR7: newData,
+                            });
                           }}
                         />
                         <td>
@@ -8598,6 +8742,7 @@ const handleUpdateAPQR = async () => {
                         </td>
                         <td>
                           <input
+                            type="number"
                             value={item.LSL}
                             onChange={(e) => {
                               const newData = [...gridDatas.reviewODSTR7];
@@ -8611,6 +8756,7 @@ const handleUpdateAPQR = async () => {
                         </td>
                         <td>
                           <input
+                            type="number"
                             value={item.USL}
                             onChange={(e) => {
                               const newData = [...gridDatas.reviewODSTR7];
@@ -8624,6 +8770,7 @@ const handleUpdateAPQR = async () => {
                         </td>{" "}
                         <td>
                           <input
+                            type="number"
                             value={item.LCL}
                             onChange={(e) => {
                               const newData = [...gridDatas.reviewODSTR7];
@@ -8637,6 +8784,7 @@ const handleUpdateAPQR = async () => {
                         </td>
                         <td>
                           <input
+                            type="number"
                             value={item.UCL}
                             onChange={(e) => {
                               const newData = [...gridDatas.reviewODSTR7];
@@ -8650,6 +8798,7 @@ const handleUpdateAPQR = async () => {
                         </td>
                         <td>
                           <input
+                            type="number"
                             value={item.observedValue}
                             onChange={(e) => {
                               const newData = [...gridDatas.reviewODSTR7];
@@ -8764,10 +8913,10 @@ const handleUpdateAPQR = async () => {
                 </div>
                 <div className="flex gap-4 ">
                   <ExcelExportImport
-                    // data={reviewODSTR8}
-                    // setimportedData={setimportedData}
-                    // fileName="reviewODSTR8.xlsx"
-                    // gridNo={29}
+                  data={gridDatas.reviewODSTR8}
+                  setimportedData={setimportedData}
+                  fileName="reviewODSTR8.xlsx"
+                  gridNo={29}
                   />{" "}
                 </div>
               </div>
@@ -8793,7 +8942,10 @@ const handleUpdateAPQR = async () => {
                           onChange={(e) => {
                             const newData = [...gridDatas.reviewODSTR8];
                             newData[index].batchNo = e.target.value;
-                            setGridDatas({ ...gridDatas, reviewODSTR8: newData });
+                            setGridDatas({
+                              ...gridDatas,
+                              reviewODSTR8: newData,
+                            });
                           }}
                         />
                         <td>
@@ -8811,6 +8963,7 @@ const handleUpdateAPQR = async () => {
                         </td>
                         <td>
                           <input
+                            type="number"
                             value={item.LSL}
                             onChange={(e) => {
                               const newData = [...gridDatas.reviewODSTR8];
@@ -8824,6 +8977,7 @@ const handleUpdateAPQR = async () => {
                         </td>
                         <td>
                           <input
+                            type="number"
                             value={item.USL}
                             onChange={(e) => {
                               const newData = [...gridDatas.reviewODSTR8];
@@ -8837,6 +8991,7 @@ const handleUpdateAPQR = async () => {
                         </td>{" "}
                         <td>
                           <input
+                            type="number"
                             value={item.LCL}
                             onChange={(e) => {
                               const newData = [...gridDatas.reviewODSTR8];
@@ -8850,6 +9005,7 @@ const handleUpdateAPQR = async () => {
                         </td>
                         <td>
                           <input
+                            type="number"
                             value={item.UCL}
                             onChange={(e) => {
                               const newData = [...gridDatas.reviewODSTR8];
@@ -8863,6 +9019,7 @@ const handleUpdateAPQR = async () => {
                         </td>
                         <td>
                           <input
+                            type="number"
                             value={item.observedValue}
                             onChange={(e) => {
                               const newData = [...gridDatas.reviewODSTR8];
@@ -9145,10 +9302,10 @@ const handleUpdateAPQR = async () => {
                 </div>
                 <div className="flex gap-4 ">
                   <ExcelExportImport
-                    // data={reviewODSTR9}
-                    // setimportedData={setimportedData}
-                    // fileName="reviewODSTR9.xlsx"
-                    // gridNo={30}
+                  data={gridDatas.reviewODSTR9}
+                  setimportedData={setimportedData}
+                  fileName="reviewODSTR9.xlsx"
+                  gridNo={30}
                   />{" "}
                 </div>
               </div>
@@ -9174,7 +9331,10 @@ const handleUpdateAPQR = async () => {
                           onChange={(e) => {
                             const newData = [...gridDatas.reviewODSTR9];
                             newData[index].batchNo = e.target.value;
-                            setGridDatas({ ...gridDatas, reviewODSTR9: newData });
+                            setGridDatas({
+                              ...gridDatas,
+                              reviewODSTR9: newData,
+                            });
                           }}
                         />
                         <td>
@@ -9192,6 +9352,7 @@ const handleUpdateAPQR = async () => {
                         </td>
                         <td>
                           <input
+                            type="number"
                             value={item.LSL}
                             onChange={(e) => {
                               const newData = [...gridDatas.reviewODSTR9];
@@ -9205,6 +9366,7 @@ const handleUpdateAPQR = async () => {
                         </td>
                         <td>
                           <input
+                            type="number"
                             value={item.USL}
                             onChange={(e) => {
                               const newData = [...gridDatas.reviewODSTR9];
@@ -9218,6 +9380,7 @@ const handleUpdateAPQR = async () => {
                         </td>{" "}
                         <td>
                           <input
+                            type="number"
                             value={item.LCL}
                             onChange={(e) => {
                               const newData = [...gridDatas.reviewODSTR9];
@@ -9231,6 +9394,7 @@ const handleUpdateAPQR = async () => {
                         </td>
                         <td>
                           <input
+                            type="number"
                             value={item.UCL}
                             onChange={(e) => {
                               const newData = [...gridDatas.reviewODSTR9];
@@ -9244,6 +9408,7 @@ const handleUpdateAPQR = async () => {
                         </td>
                         <td>
                           <input
+                            type="number"
                             value={item.observedValue}
                             onChange={(e) => {
                               const newData = [...gridDatas.reviewODSTR9];
@@ -9521,10 +9686,10 @@ const handleUpdateAPQR = async () => {
                 </div>
                 <div className="flex gap-4 ">
                   <ExcelExportImport
-                    // data={reviewODSTR10}
-                    // setimportedData={setimportedData}
-                    // fileName="reviewODSTR10.xlsx"
-                    // gridNo={31}
+                  data={gridDatas.reviewODSTR10}
+                  setimportedData={setimportedData}
+                  fileName="reviewODSTR10.xlsx"
+                  gridNo={31}
                   />{" "}
                 </div>
               </div>
@@ -9550,7 +9715,10 @@ const handleUpdateAPQR = async () => {
                           onChange={(e) => {
                             const newData = [...gridDatas.reviewODSTR10];
                             newData[index].batchNo = e.target.value;
-                            setGridDatas({ ...gridDatas, reviewODSTR10: newData });
+                            setGridDatas({
+                              ...gridDatas,
+                              reviewODSTR10: newData,
+                            });
                           }}
                         />
                         <td>
@@ -9568,6 +9736,7 @@ const handleUpdateAPQR = async () => {
                         </td>
                         <td>
                           <input
+                            type="number"
                             value={item.LSL}
                             onChange={(e) => {
                               const newData = [...gridDatas.reviewODSTR10];
@@ -9581,6 +9750,7 @@ const handleUpdateAPQR = async () => {
                         </td>
                         <td>
                           <input
+                            type="number"
                             value={item.USL}
                             onChange={(e) => {
                               const newData = [...gridDatas.reviewODSTR10];
@@ -9594,6 +9764,7 @@ const handleUpdateAPQR = async () => {
                         </td>{" "}
                         <td>
                           <input
+                            type="number"
                             value={item.LCL}
                             onChange={(e) => {
                               const newData = [...gridDatas.reviewODSTR10];
@@ -9607,6 +9778,7 @@ const handleUpdateAPQR = async () => {
                         </td>
                         <td>
                           <input
+                            type="number"
                             value={item.UCL}
                             onChange={(e) => {
                               const newData = [...gridDatas.reviewODSTR10];
@@ -9620,6 +9792,7 @@ const handleUpdateAPQR = async () => {
                         </td>
                         <td>
                           <input
+                            type="number"
                             value={item.observedValue}
                             onChange={(e) => {
                               const newData = [...gridDatas.reviewODSTR10];
@@ -9896,10 +10069,10 @@ const handleUpdateAPQR = async () => {
                 </div>
                 <div className="flex gap-4 ">
                   <ExcelExportImport
-                    // data={reviewODSTR11}
-                    // setimportedData={setimportedData}
-                    // fileName="reviewODSTR11.xlsx"
-                    // gridNo={32}
+                  data={gridDatas.reviewODSTR11}
+                  setimportedData={setimportedData}
+                  fileName="reviewODSTR11.xlsx"
+                  gridNo={32}
                   />{" "}
                 </div>
               </div>
@@ -9925,7 +10098,10 @@ const handleUpdateAPQR = async () => {
                           onChange={(e) => {
                             const newData = [...gridDatas.reviewODSTR11];
                             newData[index].batchNo = e.target.value;
-                            setGridDatas({ ...gridDatas, reviewODSTR11: newData });
+                            setGridDatas({
+                              ...gridDatas,
+                              reviewODSTR11: newData,
+                            });
                           }}
                         />
                         <td>
@@ -9943,6 +10119,7 @@ const handleUpdateAPQR = async () => {
                         </td>
                         <td>
                           <input
+                            type="number"
                             value={item.LSL}
                             onChange={(e) => {
                               const newData = [...gridDatas.reviewODSTR11];
@@ -9956,6 +10133,7 @@ const handleUpdateAPQR = async () => {
                         </td>
                         <td>
                           <input
+                            type="number"
                             value={item.USL}
                             onChange={(e) => {
                               const newData = [...gridDatas.reviewODSTR11];
@@ -9969,6 +10147,7 @@ const handleUpdateAPQR = async () => {
                         </td>{" "}
                         <td>
                           <input
+                            type="number"
                             value={item.LCL}
                             onChange={(e) => {
                               const newData = [...gridDatas.reviewODSTR11];
@@ -9982,6 +10161,7 @@ const handleUpdateAPQR = async () => {
                         </td>
                         <td>
                           <input
+                            type="number"
                             value={item.UCL}
                             onChange={(e) => {
                               const newData = [...gridDatas.reviewODSTR11];
@@ -9995,6 +10175,7 @@ const handleUpdateAPQR = async () => {
                         </td>
                         <td>
                           <input
+                            type="number"
                             value={item.observedValue}
                             onChange={(e) => {
                               const newData = [...gridDatas.reviewODSTR11];
@@ -10268,10 +10449,10 @@ const handleUpdateAPQR = async () => {
                 </div>
                 <div className="flex gap-4 ">
                   <ExcelExportImport
-                    // data={reviewODSTR12}
-                    // setimportedData={setimportedData}
-                    // fileName="reviewODSTR12.xlsx"
-                    // gridNo={33}
+                  data={gridDatas.reviewODSTR12}
+                  setimportedData={setimportedData}
+                  fileName="reviewODSTR12.xlsx"
+                  gridNo={33}
                   />{" "}
                 </div>
               </div>
@@ -10297,7 +10478,10 @@ const handleUpdateAPQR = async () => {
                           onChange={(e) => {
                             const newData = [...gridDatas.reviewODSTR12];
                             newData[index].batchNo = e.target.value;
-                            setGridDatas({ ...gridDatas, reviewODSTR12: newData });
+                            setGridDatas({
+                              ...gridDatas,
+                              reviewODSTR12: newData,
+                            });
                           }}
                         />
                         <td>
@@ -10315,6 +10499,7 @@ const handleUpdateAPQR = async () => {
                         </td>
                         <td>
                           <input
+                            type="number"
                             value={item.LSL}
                             onChange={(e) => {
                               const newData = [...gridDatas.reviewODSTR12];
@@ -10328,6 +10513,7 @@ const handleUpdateAPQR = async () => {
                         </td>
                         <td>
                           <input
+                            type="number"
                             value={item.USL}
                             onChange={(e) => {
                               const newData = [...gridDatas.reviewODSTR12];
@@ -10341,6 +10527,7 @@ const handleUpdateAPQR = async () => {
                         </td>{" "}
                         <td>
                           <input
+                            type="number"
                             value={item.LCL}
                             onChange={(e) => {
                               const newData = [...gridDatas.reviewODSTR12];
@@ -10354,6 +10541,7 @@ const handleUpdateAPQR = async () => {
                         </td>
                         <td>
                           <input
+                            type="number"
                             value={item.UCL}
                             onChange={(e) => {
                               const newData = [...gridDatas.reviewODSTR12];
@@ -10367,6 +10555,7 @@ const handleUpdateAPQR = async () => {
                         </td>
                         <td>
                           <input
+                            type="number"
                             value={item.observedValue}
                             onChange={(e) => {
                               const newData = [...gridDatas.reviewODSTR12];
@@ -10477,10 +10666,10 @@ const handleUpdateAPQR = async () => {
                 </div>
                 <div className="flex gap-4 ">
                   <ExcelExportImport
-                    // data={reviewODSTR13}
-                    // setimportedData={setimportedData}
-                    // fileName="reviewODSTR13.xlsx"
-                    // gridNo={34}
+                  data={gridDatas.reviewODSTR13}
+                  setimportedData={setimportedData}
+                  fileName="reviewODSTR13.xlsx"
+                  gridNo={34}
                   />{" "}
                 </div>
               </div>
@@ -10506,7 +10695,10 @@ const handleUpdateAPQR = async () => {
                           onChange={(e) => {
                             const newData = [...gridDatas.reviewODSTR13];
                             newData[index].batchNo = e.target.value;
-                            setGridDatas({ ...gridDatas, reviewODSTR13: newData });
+                            setGridDatas({
+                              ...gridDatas,
+                              reviewODSTR13: newData,
+                            });
                           }}
                         />
                         <td>
@@ -10524,6 +10716,7 @@ const handleUpdateAPQR = async () => {
                         </td>
                         <td>
                           <input
+                            type="number"
                             value={item.LSL}
                             onChange={(e) => {
                               const newData = [...gridDatas.reviewODSTR13];
@@ -10537,6 +10730,7 @@ const handleUpdateAPQR = async () => {
                         </td>
                         <td>
                           <input
+                            type="number"
                             value={item.USL}
                             onChange={(e) => {
                               const newData = [...gridDatas.reviewODSTR13];
@@ -10550,6 +10744,7 @@ const handleUpdateAPQR = async () => {
                         </td>{" "}
                         <td>
                           <input
+                            type="number"
                             value={item.LCL}
                             onChange={(e) => {
                               const newData = [...gridDatas.reviewODSTR13];
@@ -10563,6 +10758,7 @@ const handleUpdateAPQR = async () => {
                         </td>
                         <td>
                           <input
+                            type="number"
                             value={item.UCL}
                             onChange={(e) => {
                               const newData = [...gridDatas.reviewODSTR13];
@@ -10576,6 +10772,7 @@ const handleUpdateAPQR = async () => {
                         </td>
                         <td>
                           <input
+                            type="number"
                             value={item.observedValue}
                             onChange={(e) => {
                               const newData = [...gridDatas.reviewODSTR13];
@@ -10854,10 +11051,10 @@ const handleUpdateAPQR = async () => {
                 </div>
                 <div className="flex gap-4 ">
                   <ExcelExportImport
-                    // data={reviewODSTR14}
-                    // setimportedData={setimportedData}
-                    // fileName="reviewODSTR14.xlsx"
-                    // gridNo={35}
+                  data={gridDatas.reviewODSTR14}
+                  setimportedData={setimportedData}
+                  fileName="reviewODSTR14.xlsx"
+                  gridNo={35}
                   />{" "}
                 </div>
               </div>
@@ -10883,7 +11080,10 @@ const handleUpdateAPQR = async () => {
                           onChange={(e) => {
                             const newData = [...gridDatas.reviewODSTR14];
                             newData[index].batchNo = e.target.value;
-                            setGridDatas({ ...gridDatas, reviewODSTR14: newData });
+                            setGridDatas({
+                              ...gridDatas,
+                              reviewODSTR14: newData,
+                            });
                           }}
                         />
                         <td>
@@ -10901,6 +11101,7 @@ const handleUpdateAPQR = async () => {
                         </td>
                         <td>
                           <input
+                            type="number"
                             value={item.LSL}
                             onChange={(e) => {
                               const newData = [...gridDatas.reviewODSTR14];
@@ -10914,6 +11115,7 @@ const handleUpdateAPQR = async () => {
                         </td>
                         <td>
                           <input
+                            type="number"
                             value={item.USL}
                             onChange={(e) => {
                               const newData = [...gridDatas.reviewODSTR14];
@@ -10927,6 +11129,7 @@ const handleUpdateAPQR = async () => {
                         </td>{" "}
                         <td>
                           <input
+                            type="number"
                             value={item.LCL}
                             onChange={(e) => {
                               const newData = [...gridDatas.reviewODSTR14];
@@ -10940,6 +11143,7 @@ const handleUpdateAPQR = async () => {
                         </td>
                         <td>
                           <input
+                            type="number"
                             value={item.UCL}
                             onChange={(e) => {
                               const newData = [...gridDatas.reviewODSTR14];
@@ -10953,6 +11157,7 @@ const handleUpdateAPQR = async () => {
                         </td>
                         <td>
                           <input
+                            type="number"
                             value={item.observedValue}
                             onChange={(e) => {
                               const newData = [...gridDatas.reviewODSTR14];
@@ -11230,10 +11435,10 @@ const handleUpdateAPQR = async () => {
                 </div>
                 <div className="flex gap-4 ">
                   <ExcelExportImport
-                    // data={reviewODSTR15}
-                    // setimportedData={setimportedData}
-                    // fileName="reviewODSTR15.xlsx"
-                    // gridNo={36}
+                  data={gridDatas.reviewODSTR15}
+                  setimportedData={setimportedData}
+                  fileName="reviewODSTR15.xlsx"
+                  gridNo={36}
                   />{" "}
                 </div>
               </div>
@@ -11259,7 +11464,10 @@ const handleUpdateAPQR = async () => {
                           onChange={(e) => {
                             const newData = [...gridDatas.reviewODSTR15];
                             newData[index].batchNo = e.target.value;
-                            setGridDatas({ ...gridDatas, reviewODSTR15: newData });
+                            setGridDatas({
+                              ...gridDatas,
+                              reviewODSTR15: newData,
+                            });
                           }}
                         />
                         <td>
@@ -11277,6 +11485,7 @@ const handleUpdateAPQR = async () => {
                         </td>
                         <td>
                           <input
+                            type="number"
                             value={item.LSL}
                             onChange={(e) => {
                               const newData = [...gridDatas.reviewODSTR15];
@@ -11290,6 +11499,7 @@ const handleUpdateAPQR = async () => {
                         </td>
                         <td>
                           <input
+                            type="number"
                             value={item.USL}
                             onChange={(e) => {
                               const newData = [...gridDatas.reviewODSTR15];
@@ -11303,6 +11513,7 @@ const handleUpdateAPQR = async () => {
                         </td>{" "}
                         <td>
                           <input
+                            type="number"
                             value={item.LCL}
                             onChange={(e) => {
                               const newData = [...gridDatas.reviewODSTR15];
@@ -11316,6 +11527,7 @@ const handleUpdateAPQR = async () => {
                         </td>
                         <td>
                           <input
+                            type="number"
                             value={item.UCL}
                             onChange={(e) => {
                               const newData = [...gridDatas.reviewODSTR15];
@@ -11329,6 +11541,7 @@ const handleUpdateAPQR = async () => {
                         </td>
                         <td>
                           <input
+                            type="number"
                             value={item.observedValue}
                             onChange={(e) => {
                               const newData = [...gridDatas.reviewODSTR15];
@@ -17556,7 +17769,7 @@ const handleUpdateAPQR = async () => {
             focus:ring-teal-500
           "
             onClick={() => {
-              handleUpdateAPQR()
+              handleUpdateAPQR();
               // dispatch(updateForm(gridDatas));
               navigate("/dashboard");
             }}

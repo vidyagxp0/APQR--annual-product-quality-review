@@ -23,16 +23,14 @@ const HighchartsChart = ({
   zones,
   highchartData,
 }) => {
-  useEffect(() => {
-    document.title = "Highcharts";
-  }, []);
+
 
   const [selectedOption, setSelectedOption] = useState("hourly");
 
   const handleOptionChange = (event) => {
     setSelectedOption(event.target.value);
   };
-
+console.log(highchartData,"chart")
   const processData = () => {
     return highchartData?.map((record) => ({
       x: parseInt(record["Batch No."].split("_")[1]),

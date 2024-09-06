@@ -5013,6 +5013,7 @@ export default function APQR() {
                         </td>
                         <td>
                           <input
+                          type="number"
                             value={item.LSL}
                             onChange={(e) => {
                               const newData = [...reviewODSTR];
@@ -5023,6 +5024,7 @@ export default function APQR() {
                         </td>
                         <td>
                           <input
+                          type="number"
                             value={item.USL}
                             onChange={(e) => {
                               const newData = [...reviewODSTR];
@@ -5033,6 +5035,7 @@ export default function APQR() {
                         </td>
                         <td>
                           <input
+                          type="number"
                             value={item.LCL}
                             onChange={(e) => {
                               const newData = [...reviewODSTR];
@@ -5043,6 +5046,7 @@ export default function APQR() {
                         </td>
                         <td>
                           <input
+                          type="number"
                             value={item.UCL}
                             onChange={(e) => {
                               const newData = [...reviewODSTR];
@@ -5053,6 +5057,7 @@ export default function APQR() {
                         </td>
                         <td>
                           <input
+                          type="number"
                             value={item.observedValue}
                             onChange={(e) => {
                               const newData = [...reviewODSTR];

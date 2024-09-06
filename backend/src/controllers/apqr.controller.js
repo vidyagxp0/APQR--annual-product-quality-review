@@ -204,7 +204,6 @@ export const createApqr = async (req, res) => {
           { transaction: t } 
         );
 
-        // console.log(newGridRef, 'Grid Reference Created');
         gridData.push(newGridRef);
       }
     }
@@ -374,12 +373,12 @@ export const updateAPQRById = async (req, res) => {
     if (!existingAPQR) {
       return res.status(404).json({ error: true, message: "APQR not found" });
     }
-console.log(req.body.pQRData.productName);
+
     // Update APQR data
     await existingAPQR.update(
       {
         pqrNo: req.body.pqrNo || existingAPQR.pqrNo,
-        productName: req.body.pQRData.productName  || existingAPQR.productName,
+        productName: req.body.pQRData.productName || existingAPQR.productName,
         productCodes: req.body.pQRData.productCodes || existingAPQR.productCodes,
         genericName: req.body.pQRData.genericName || existingAPQR.genericName,
         dosageForm: req.body.pQRData.dosageForm || existingAPQR.dosageForm,
@@ -397,16 +396,90 @@ console.log(req.body.pQRData.productName);
         totalBatchesApprovedReleased: req.body.pQRData.totalBatchesApprovedReleased || existingAPQR.totalBatchesApprovedReleased,
         totalProcessValidationBatches: req.body.pQRData.totalProcessValidationBatches || existingAPQR.totalProcessValidationBatches,
         totalReprocessedBatches: req.body.pQRData.totalReprocessedBatches || existingAPQR.totalReprocessedBatches,
+        tinyData: req.body.pQRData.tinyData
       },
-      { transaction: t } 
+      { transaction: t }
     );
 
+    // Update or create grid data
     const grids = [
       "manufacturingStage",
       "manufacturingSAPS",
       "packingMRS",
+      "rawMRS",
+      "reviewOfASL",
+      "expiredRMD",
+      "expiredPMD",
+      "vendorQDORME",
+      "vendorQDOPPM",
+      "vendorQDPOG",
+      "manufacturingSD",
+      "reviewORCEC",
+      "codeTCTD",
+      "bufferFSDPV",
+      "oosDetails",
+      "capaDetails",
+      "deviationDetails",
+      "ootResults",
+      "oolResults",
+      "ooaResults",
+      "reviewODSTR",
+      "reviewODSTR2",
+      "reviewODSTR3",
+      "reviewODSTR4",
+      "reviewODSTR5",
+      "reviewODSTR6",
+      "reviewODSTR7",
+      "reviewODSTR8",
+      "reviewODSTR9",
+      "reviewODSTR10",
+      "reviewODSTR11",
+      "reviewODSTR12",
+      "reviewODSTR13",
+      "reviewODSTR14",
+      "reviewODSTR15",
+      "reviewOPMTR",
+      "reviewORMETR",
+      "reviewODP",
+      "reviewODP2",
+      "reviewODP3",
+      "reviewODP4",
+      "reviewODP5",
+      "reviewODP6",
+      "reviewODP7",
+      "reviewODP8",
+      "reviewODP9",
+      "reviewODP10",
+      "reviewODPFPTR",
+      "summaryOOSS",
+      "stabilitySR",
+      "reviewOVIRS",
+      "hVACQStatus",
+      "dossierRR",
+      "dossierRRNma",
+      "sanitizationASDOU",
+      "compressedGas",
+      "currentRPQRN",
+      "unitOperation3",
+      "unitOperation4",
+      "unitOperation5",
+      "unitOperation6",
+      "unitOperation7",
+      "unitOperation8",
+      "unitOperation9",
+      "unitOperation10",
+      "reviewOfCPD",
+      "previewRPD",
+      "currentOOS",
+      "previewOOS",
+      "currentOOAC",
+      "previewOOAC",
+      "currentOOAL",
+      "previewOOAL"
     ];
+    // console.log("Updating ManufacturingStage with data:");
 
+    console.log("grid data", i, req.body.gridDatas[grids[i]]);
     for (let i = 0; i < grids.length; i++) {
       if (req.body[grids[i]]) {
         const existingGridRef = await gridRef.findOne({
@@ -414,14 +487,12 @@ console.log(req.body.pQRData.productName);
             pqrId: apqrId,
             primaryKey: grids[i],
           },
-          transaction: t, 
+          transaction: t,
         });
 
         if (existingGridRef) {
           await existingGridRef.update(
-            {
-              data: req.body[grids[i]],
-            },
+            { data: req.body.gridDatas[grids[i]] },
             { transaction: t }
           );
         } else {
@@ -429,7 +500,7 @@ console.log(req.body.pQRData.productName);
             {
               pqrId: apqrId,
               primaryKey: grids[i],
-              data: req.body[grids[i]],
+              data: req.body.gridDatas[grids[i]],
             },
             { transaction: t }
           );
@@ -437,15 +508,13 @@ console.log(req.body.pQRData.productName);
       }
     }
 
-    await t.commit(); 
+    await t.commit(); // Commit the transaction
 
-    return res.json({
-      message: "APQR updated successfully",
-    });
+    res.status(200).json({ message: "APQR updated successfully" });
   } catch (error) {
-    await t.rollback(); 
+    await t.rollback(); // Rollback the transaction in case of error
     console.error("Error updating APQR:", error);
-    return res.status(500).json({ error: error.message });
+    res.status(500).json({ error: error.message });
   }
 };
 

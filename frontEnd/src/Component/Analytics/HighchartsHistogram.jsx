@@ -28,7 +28,7 @@ const HighchartsHistogram = ({
         }
       }
     });
-
+console.log(data,"data")
     const histogramData = binKeys.map((bin) => binCounts[bin]);
     const averageData = binKeys.map((bin) => {
       const sum = binValues[bin].reduce((a, b) => a + b, 0);
