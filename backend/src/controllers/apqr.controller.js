@@ -515,7 +515,6 @@ export const updateAPQRById = async (req, res) => {
     ];
     // console.log("Updating ManufacturingStage with data:");
 
-    console.log("grid data", i, req.body.gridDatas[grids[i]]);
     for (let i = 0; i < grids.length; i++) {
       if (req.body[grids[i]]) {
         const existingGridRef = await gridRef.findOne({
