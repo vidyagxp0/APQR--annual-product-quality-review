@@ -12,7 +12,7 @@ export default function Dashboard() {
   const downloadPDF = async (form_id) => {
     setLoadingStates((prev) => ({ ...prev, [form_id]: true }));
     try {
-      const response = await fetch("https://apqrapi.mydemosoftware.com/report/generate-pdf");
+      const response = await fetch(`https://apqrapi.mydemosoftware.com/report/generate-pdf/2`);
       const blob = await response.blob();
       const url = window.URL.createObjectURL(new Blob([blob]));
       const link = document.createElement("a");
