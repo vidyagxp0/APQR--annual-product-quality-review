@@ -134,9 +134,9 @@
         </tr>
       </thead>
       <tbody>
-        <% product.rawMRS.forEach((item) => { %>
+        <% product.rawMRS.forEach((item,i) => { %>
         <tr>
-          <td><%= item.slNo %></td>    
+          <td><%= item.slNo || i+1 %></td>    
           <td><%= item.materialCode %></td>
           <td><%= item.materialName %></td>
           <td><%= item.ARNo %></td>
@@ -166,7 +166,7 @@
         </tr>
       </thead>
       <tbody>
-        <% product.packingMRS.forEach((item) => { %>
+        <% product.packingMRS.forEach((item,i) => { %>
         <tr>
           <td><%= item.SI_No %></td>
           <td><%= item.materialCode %></td>
@@ -198,7 +198,7 @@
         </tr>
       </thead>
       <tbody>
-        <% product.expiredRMD.forEach((item) => { %>
+        <% product.expiredRMD.forEach((item,i) => { %>
         <tr>
           <td><%= item.SI_No %></td>
           <td><%= item.materialCode %></td>
@@ -228,7 +228,7 @@
         </tr>
       </thead>
       <tbody>
-        <% product.expiredPMD.forEach((item) => { %>
+        <% product.expiredPMD.forEach((item,i) => { %>
         <tr>
           <td><%= item.SI_No %></td>
           <td><%= item.materialCode %></td>
@@ -258,7 +258,7 @@
         </tr>
       </thead>
       <tbody>
-        <% product.reviewOfASL.forEach((item) => { %>
+        <% product.reviewOfASL.forEach((item,i) => { %>
         <tr>
           <td><%= item.SI_No %></td>
           <td><%= item.materialCode %></td>
@@ -288,7 +288,7 @@
         </tr>
       </thead>
       <tbody>
-        <% product.vendorQDORME.forEach((item) => { %>
+        <% product.vendorQDORME.forEach((item,i) => { %>
         <tr>
           <td><%= item.materialName %></td>
           <td><%= item.materialCode %></td>
@@ -317,7 +317,7 @@
         </tr>
       </thead>
       <tbody>
-        <% product.vendorQDOPPM.forEach((item) => { %>
+        <% product.vendorQDOPPM.forEach((item,i) => { %>
         <tr>
           <td><%= item.materialName %></td>
           <td><%= item.materialCode %></td>
@@ -345,7 +345,7 @@
         </tr>
       </thead>
       <tbody>
-        <% product.vendorQDPOG.forEach((item) => { %>
+        <% product.vendorQDPOG.forEach((item,i) => { %>
         <tr>
           <td><%= item.gasName %></td>
           <td><%= item.gasCode %></td>
@@ -430,9 +430,9 @@
         </tr>
       </thead>
       <tbody>
-        <% product.codeTCTD.forEach((item) => { %>
+        <% product.codeTCTD.forEach((item,i) => { %>
         <tr>
-          <td><%= item.Sl_No %></td>
+          <td><%= item.Sl_No || i+1 %></td>
           <td><%= item.batchNo %></td>
           <td><%= item.existingCode %></td>
           <td><%= item.existingMarket %></td>
@@ -484,9 +484,9 @@
         </tr>
       </thead>
       <tbody>
-        <% product.reviewORCEC.forEach((item) => { %>
+        <% product.reviewORCEC.forEach((item,i) => { %>
         <tr>
-          <td><%= item.Sl_No %></td>
+          <td><%= item.Sl_No || i+1 %></td>
           <td><%= item.packingBatchNumber %></td>
           <td><%= item.manufacturingBatchNumber %></td>
           <td><%= item.repackingIssuedNumber %></td>
@@ -519,7 +519,7 @@
         </tr>
       </thead>
       <tbody>
-        <% product.capaDetails.forEach((item) => { %>
+        <% product.capaDetails.forEach((item,i) => { %>
         <tr>
           <td><%= item.ARNo %></td>
           <td><%= item.capaType %></td>
@@ -557,7 +557,7 @@
         </tr>
       </thead>
       <tbody>
-        <% product.deviationDetails.forEach((item) => { %>
+        <% product.deviationDetails.forEach((item,i) => { %>
         <tr>
           <td><%= item.ARNo %></td>
           <td><%= item.deviationRelatedTo %></td>
@@ -601,7 +601,7 @@
         </tr>
       </thead>
       <tbody>
-        <% product.oosDetails.forEach((item) => { %>
+        <% product.oosDetails.forEach((item,i) => { %>
         <tr>
           <td><%= item.ARNo %></td>
             <td><%= item.testNameOfOos %></td>
@@ -634,7 +634,7 @@
         </tr>
       </thead>
       <tbody>
-        <% product.ootResults.forEach((item) => { %>
+        <% product.ootResults.forEach((item,i) => { %>
         <tr>
           <td><%= item.ARNo %></td>
           <td><%= item.testNameOfOot %></td>
@@ -668,7 +668,7 @@
         </tr>
       </thead>
       <tbody>
-        <% product.ooaResults.forEach((item) => { %>
+        <% product.ooaResults.forEach((item,i) => { %>
         <tr>
           <td><%= item.ARNo %></td>
           <td><%= item.testNameOfAlert %></td>
@@ -702,7 +702,7 @@
         </tr>
       </thead>
       <tbody>
-        <% product.oolResults.forEach((item) => { %>
+        <% product.oolResults.forEach((item,i) => { %>
         <tr>
           <td><%= item.ARNo %></td>
           <td><%= item.testNameOfOot %></td>
@@ -739,7 +739,7 @@
         </tr>
       </thead>
       <tbody>
-        <% product.unitOperation1.forEach((item) => { %>
+        <% product.unitOperation1.forEach((item,i) => { %>
         <tr>
           <td><%= item.criticalProcessParameter %></td>
           <td><%= item.codes %></td>
@@ -768,7 +768,7 @@
         </tr>
       </thead>
       <tbody>
-        <% product.unitOperation2.forEach((item) => { %>
+        <% product.unitOperation2.forEach((item,i) => { %>
         <tr>
           <td><%= item.criticalProcessParameter %></td>
           <td><%= item.codes %></td>
@@ -797,7 +797,7 @@
         </tr>
       </thead>
       <tbody>
-        <% product.unitOperation3.forEach((item) => { %>
+        <% product.unitOperation3.forEach((item,i) => { %>
         <tr>
           <td><%= item.criticalProcessParameter %></td>
           <td><%= item.codes %></td>
@@ -826,7 +826,7 @@
         </tr>
       </thead>
       <tbody>
-        <% product.unitOperation4.forEach((item) => { %>
+        <% product.unitOperation4.forEach((item,i) => { %>
         <tr>
           <td><%= item.criticalProcessParameter %></td>
           <td><%= item.codes %></td>
@@ -855,7 +855,7 @@
         </tr>
       </thead>
       <tbody>
-        <% product.unitOperation5.forEach((item) => { %>
+        <% product.unitOperation5.forEach((item,i) => { %>
         <tr>
           <td><%= item.criticalProcessParameter %></td>
           <td><%= item.codes %></td>
@@ -884,7 +884,7 @@
         </tr>
       </thead>
       <tbody>
-        <% product.unitOperation6.forEach((item) => { %>
+        <% product.unitOperation6.forEach((item,i) => { %>
         <tr>
           <td><%= item.criticalProcessParameter %></td>
           <td><%= item.codes %></td>
@@ -913,7 +913,7 @@
         </tr>
       </thead>
       <tbody>
-        <% product.unitOperation7.forEach((item) => { %>
+        <% product.unitOperation7.forEach((item,i) => { %>
         <tr>
           <td><%= item.criticalProcessParameter %></td>
           <td><%= item.codes %></td>
@@ -942,7 +942,7 @@
         </tr>
       </thead>
       <tbody>
-        <% product.unitOperation8.forEach((item) => { %>
+        <% product.unitOperation8.forEach((item,i) => { %>
         <tr>
           <td><%= item.criticalProcessParameter %></td>
           <td><%= item.codes %></td>
@@ -971,7 +971,7 @@
         </tr>
       </thead>
       <tbody>
-        <% product.unitOperation9.forEach((item) => { %>
+        <% product.unitOperation9.forEach((item,i) => { %>
         <tr>
           <td><%= item.criticalProcessParameter %></td>
           <td><%= item.codes %></td>
@@ -1000,7 +1000,7 @@
         </tr>
       </thead>
       <tbody>
-        <% product.unitOperation10.forEach((item) => { %>
+        <% product.unitOperation10.forEach((item,i) => { %>
         <tr>
           <td><%= item.criticalProcessParameter %></td>
           <td><%= item.codes %></td>
@@ -1021,308 +1021,513 @@
 
 
     <!-- Tab 4 -->
+
     <h1>Laboratory Review</h1>
     <h2>Review of Drug Substance Test Results
     </h2>
-    <h3>Drug Substance 1 Test Result
+    <h3>pH Of Paracetamol Test Result
     </h3>
 
     <table>
       <thead>
         <tr style="text-transform: uppercase;">
-          <th rowspan="2">Sl. No</th>
-          <th rowspan="2">Tests parameter</th>
-          <th rowspan="2">Specification limit</th>
-          <th class="text-center" colspan="2">Obtained value </th>
-          <th rowspan="2">Complies / Does not complies</th>
+          <th >Batch No</th>
+          <th >Tests parameter</th>
+          <th >LSL</th>
+          <th >USL</th>
+          <th >LCL</th>
+          <th >UCL</th>
+          <th>Observed Value </th>
+          <th >Complies / Does not complies</th>
         </tr>
-        <tr>
-          <th>Minimum</th>
-          <th>Maximum</th>
-        </tr>
+
       </thead>
       <tbody>
-        <% product.Ds1Results.forEach((item) => { %>
+        <% product.reviewODSTR.forEach((item,i) => { %>
         <tr>
-          <td><%= item.Sl_No %></td>
-          <td><%= item.Testsparameter %></td>
-          <td><%= item.Specification_limit %></td>
-          <td><%= item.Obtained.Minimum %></td>
-          <td><%= item.Obtained.Maximum %></td>
+          <td><%= item.batchNo %></td>
+          <td><%= item.testsParameter %></td>
+          <td><%= item.LSL %></td>
+          <td><%= item.USL %></td>
+          <td><%= item.LCL %></td>
+          <td><%= item.UCL %></td>
+          <td><%= item.observedValue %></td>
           <td><%= item.compliesNotComplies %></td>
         </tr>
         <% }); %>
       </tbody>
     </table>
 
-    <h3>Drug Substance 2 Test Result
+    <h3>Assay Of Paracetamol Test Result
     </h3>
 
-    <table>
+      <table>
       <thead>
         <tr style="text-transform: uppercase;">
-          <th rowspan="2">Sl. No</th>
-          <th rowspan="2">Tests parameter</th>
-          <th rowspan="2">Specification limit</th>
-          <th class="text-center" colspan="2">Obtained value </th>
-          <th rowspan="2">Complies / Does not complies</th>
+          <th >Batch No</th>
+          <th >Tests parameter</th>
+          <th >LSL</th>
+          <th >USL</th>
+          <th >LCL</th>
+          <th >UCL</th>
+          <th>Observed Value </th>
+          <th >Complies / Does not complies</th>
         </tr>
-        <tr>
-          <th>Minimum</th>
-          <th>Maximum</th>
-        </tr>
+
       </thead>
       <tbody>
-        <% product.Ds2Results.forEach((item) => { %>
+        <% product.reviewODSTR2.forEach((item,i) => { %>
         <tr>
-          <td><%= item.Sl_No %></td>
-          <td><%= item.Testsparameter %></td>
-          <td><%= item.Specification_limit %></td>
-          <td><%= item.Obtained.Minimum %></td>
-          <td><%= item.Obtained.Maximum %></td>
+          <td><%= item.batchNo %></td>
+          <td><%= item.testsParameter %></td>
+          <td><%= item.LSL %></td>
+          <td><%= item.USL %></td>
+          <td><%= item.LCL %></td>
+          <td><%= item.UCL %></td>
+          <td><%= item.observedValue %></td>
           <td><%= item.compliesNotComplies %></td>
         </tr>
         <% }); %>
       </tbody>
     </table>
 
-    <h3>Drug Substance 3 Test Result
-    </h3>
 
-    <table>
+        <h3>Impurity Of Paracetamol Test Result</h3>
+
+      <table>
       <thead>
         <tr style="text-transform: uppercase;">
-          <th rowspan="2">Sl. No</th>
-          <th rowspan="2">Tests parameter</th>
-          <th rowspan="2">Specification limit</th>
-          <th class="text-center" colspan="2">Obtained value </th>
-          <th rowspan="2">Complies / Does not complies</th>
+          <th >Batch No</th>
+          <th >Tests parameter</th>
+          <th >LSL</th>
+          <th >USL</th>
+          <th >LCL</th>
+          <th >UCL</th>
+          <th>Observed Value </th>
+          <th >Complies / Does not complies</th>
         </tr>
-        <tr>
-          <th>Minimum</th>
-          <th>Maximum</th>
-        </tr>
+
       </thead>
       <tbody>
-        <% product.Ds3Results.forEach((item) => { %>
+        <% product.reviewODSTR3.forEach((item,i) => { %>
         <tr>
-          <td><%= item.Sl_No %></td>
-          <td><%= item.Testsparameter %></td>
-          <td><%= item.Specification_limit %></td>
-          <td><%= item.Obtained.Minimum %></td>
-          <td><%= item.Obtained.Maximum %></td>
+          <td><%= item.batchNo %></td>
+          <td><%= item.testsParameter %></td>
+          <td><%= item.LSL %></td>
+          <td><%= item.USL %></td>
+          <td><%= item.LCL %></td>
+          <td><%= item.UCL %></td>
+          <td><%= item.observedValue %></td>
+          <td><%= item.compliesNotComplies %></td>
+        </tr>
+        <% }); %>
+      </tbody>
+    </table>
+    
+        <h3>Dissolution Of Paracetamol Test Result </h3>
+
+      <table>
+      <thead>
+        <tr style="text-transform: uppercase;">
+          <th >Batch No</th>
+          <th >Tests parameter</th>
+          <th >LSL</th>
+          <th >USL</th>
+          <th >LCL</th>
+          <th >UCL</th>
+          <th>Observed Value </th>
+          <th >Complies / Does not complies</th>
+        </tr>
+
+      </thead>
+      <tbody>
+        <% product.reviewODSTR4.forEach((item,i) => { %>
+        <tr>
+          <td><%= item.batchNo %></td>
+          <td><%= item.testsParameter %></td>
+          <td><%= item.LSL %></td>
+          <td><%= item.USL %></td>
+          <td><%= item.LCL %></td>
+          <td><%= item.UCL %></td>
+          <td><%= item.observedValue %></td>
           <td><%= item.compliesNotComplies %></td>
         </tr>
         <% }); %>
       </tbody>
     </table>
 
-    <h3>Drug Substance 4 Test Result
+
+        <h3>Disintegration Of Paracetamol Test Result
     </h3>
 
-    <table>
+      <table>
       <thead>
         <tr style="text-transform: uppercase;">
-          <th rowspan="2">Sl. No</th>
-          <th rowspan="2">Tests parameter</th>
-          <th rowspan="2">Specification limit</th>
-          <th class="text-center" colspan="2">Obtained value </th>
-          <th rowspan="2">Complies / Does not complies</th>
+          <th >Batch No</th>
+          <th >Tests parameter</th>
+          <th >LSL</th>
+          <th >USL</th>
+          <th >LCL</th>
+          <th >UCL</th>
+          <th>Observed Value </th>
+          <th >Complies / Does not complies</th>
         </tr>
-        <tr>
-          <th>Minimum</th>
-          <th>Maximum</th>
-        </tr>
-      </thead>
-      <tbody>
-        <% product.Ds4Results.forEach((item) => { %>
-        <tr>
-          <td><%= item.Sl_No %></td>
-          <td><%= item.Testsparameter %></td>
-          <td><%= item.Specification_limit %></td>
-          <td><%= item.Obtained.Minimum %></td>
-          <td><%= item.Obtained.Maximum %></td>
-          <td><%= item.compliesNotComplies %></td>
-        </tr>
-        <% }); %>
-      </tbody>
-    </table>
-    <h3>Drug Substance 5 Test Result
-    </h3>
 
-    <table>
-      <thead>
-        <tr style="text-transform: uppercase;">
-          <th rowspan="2">Sl. No</th>
-          <th rowspan="2">Tests parameter</th>
-          <th rowspan="2">Specification limit</th>
-          <th class="text-center" colspan="2">Obtained value </th>
-          <th rowspan="2">Complies / Does not complies</th>
-        </tr>
-        <tr>
-          <th>Minimum</th>
-          <th>Maximum</th>
-        </tr>
       </thead>
       <tbody>
-        <% product.Ds5Results.forEach((item) => { %>
+        <% product.reviewODSTR5.forEach((item,i) => { %>
         <tr>
-          <td><%= item.Sl_No %></td>
-          <td><%= item.Testsparameter %></td>
-          <td><%= item.Specification_limit %></td>
-          <td><%= item.Obtained.Minimum %></td>
-          <td><%= item.Obtained.Maximum %></td>
+          <td><%= item.batchNo %></td>
+          <td><%= item.testsParameter %></td>
+          <td><%= item.LSL %></td>
+          <td><%= item.USL %></td>
+          <td><%= item.LCL %></td>
+          <td><%= item.UCL %></td>
+          <td><%= item.observedValue %></td>
           <td><%= item.compliesNotComplies %></td>
         </tr>
         <% }); %>
       </tbody>
     </table>
 
-    <h3>Drug Substance 6 Test Result
+        <h3>pH  Of Terbinafine Test Result
     </h3>
 
-    <table>
+      <table>
       <thead>
         <tr style="text-transform: uppercase;">
-          <th rowspan="2">Sl. No</th>
-          <th rowspan="2">Tests parameter</th>
-          <th rowspan="2">Specification limit</th>
-          <th class="text-center" colspan="2">Obtained value </th>
-          <th rowspan="2">Complies / Does not complies</th>
+          <th >Batch No</th>
+          <th >Tests parameter</th>
+          <th >LSL</th>
+          <th >USL</th>
+          <th >LCL</th>
+          <th >UCL</th>
+          <th>Observed Value </th>
+          <th >Complies / Does not complies</th>
         </tr>
-        <tr>
-          <th>Minimum</th>
-          <th>Maximum</th>
-        </tr>
+
       </thead>
       <tbody>
-        <% product.Ds6Results.forEach((item) => { %>
+        <% product.reviewODSTR6.forEach((item,i) => { %>
         <tr>
-          <td><%= item.Sl_No %></td>
-          <td><%= item.Testsparameter %></td>
-          <td><%= item.Specification_limit %></td>
-          <td><%= item.Obtained.Minimum %></td>
-          <td><%= item.Obtained.Maximum %></td>
+          <td><%= item.batchNo %></td>
+          <td><%= item.testsParameter %></td>
+          <td><%= item.LSL %></td>
+          <td><%= item.USL %></td>
+          <td><%= item.LCL %></td>
+          <td><%= item.UCL %></td>
+          <td><%= item.observedValue %></td>
           <td><%= item.compliesNotComplies %></td>
         </tr>
         <% }); %>
       </tbody>
     </table>
-    <h3>Drug Substance 7 Test Result
+
+        <h3>Assay Of Terbinafine Test Result
     </h3>
 
-    <table>
+      <table>
       <thead>
         <tr style="text-transform: uppercase;">
-          <th rowspan="2">Sl. No</th>
-          <th rowspan="2">Tests parameter</th>
-          <th rowspan="2">Specification limit</th>
-          <th class="text-center" colspan="2">Obtained value </th>
-          <th rowspan="2">Complies / Does not complies</th>
+          <th >Batch No</th>
+          <th >Tests parameter</th>
+          <th >LSL</th>
+          <th >USL</th>
+          <th >LCL</th>
+          <th >UCL</th>
+          <th>Observed Value </th>
+          <th >Complies / Does not complies</th>
         </tr>
-        <tr>
-          <th>Minimum</th>
-          <th>Maximum</th>
-        </tr>
+
       </thead>
       <tbody>
-        <% product.Ds7Results.forEach((item) => { %>
+        <% product.reviewODSTR7.forEach((item,i) => { %>
         <tr>
-          <td><%= item.Sl_No %></td>
-          <td><%= item.Testsparameter %></td>
-          <td><%= item.Specification_limit %></td>
-          <td><%= item.Obtained.Minimum %></td>
-          <td><%= item.Obtained.Maximum %></td>
+          <td><%= item.batchNo %></td>
+          <td><%= item.testsParameter %></td>
+          <td><%= item.LSL %></td>
+          <td><%= item.USL %></td>
+          <td><%= item.LCL %></td>
+          <td><%= item.UCL %></td>
+          <td><%= item.observedValue %></td>
           <td><%= item.compliesNotComplies %></td>
         </tr>
         <% }); %>
       </tbody>
     </table>
-    <h3>Drug Substance 8 Test Result
+
+
+        <h3>Impurity Of Terbinafine Test Result
     </h3>
 
-    <table>
+      <table>
       <thead>
         <tr style="text-transform: uppercase;">
-          <th rowspan="2">Sl. No</th>
-          <th rowspan="2">Tests parameter</th>
-          <th rowspan="2">Specification limit</th>
-          <th class="text-center" colspan="2">Obtained value </th>
-          <th rowspan="2">Complies / Does not complies</th>
+          <th >Batch No</th>
+          <th >Tests parameter</th>
+          <th >LSL</th>
+          <th >USL</th>
+          <th >LCL</th>
+          <th >UCL</th>
+          <th>Observed Value </th>
+          <th >Complies / Does not complies</th>
         </tr>
-        <tr>
-          <th>Minimum</th>
-          <th>Maximum</th>
-        </tr>
+
       </thead>
       <tbody>
-        <% product.Ds8Results.forEach((item) => { %>
+        <% product.reviewODSTR8.forEach((item,i) => { %>
         <tr>
-          <td><%= item.Sl_No %></td>
-          <td><%= item.Testsparameter %></td>
-          <td><%= item.Specification_limit %></td>
-          <td><%= item.Obtained.Minimum %></td>
-          <td><%= item.Obtained.Maximum %></td>
+          <td><%= item.batchNo %></td>
+          <td><%= item.testsParameter %></td>
+          <td><%= item.LSL %></td>
+          <td><%= item.USL %></td>
+          <td><%= item.LCL %></td>
+          <td><%= item.UCL %></td>
+          <td><%= item.observedValue %></td>
           <td><%= item.compliesNotComplies %></td>
         </tr>
         <% }); %>
       </tbody>
     </table>
-    <h3>Drug Substance 9 Test Result
+
+
+
+        <h3>Dissolution  Of Terbinafine  Test Result
     </h3>
 
-    <table>
+      <table>
       <thead>
         <tr style="text-transform: uppercase;">
-          <th rowspan="2">Sl. No</th>
-          <th rowspan="2">Tests parameter</th>
-          <th rowspan="2">Specification limit</th>
-          <th class="text-center" colspan="2">Obtained value </th>
-          <th rowspan="2">Complies / Does not complies</th>
+          <th >Batch No</th>
+          <th >Tests parameter</th>
+          <th >LSL</th>
+          <th >USL</th>
+          <th >LCL</th>
+          <th >UCL</th>
+          <th>Observed Value </th>
+          <th >Complies / Does not complies</th>
         </tr>
-        <tr>
-          <th>Minimum</th>
-          <th>Maximum</th>
-        </tr>
+
       </thead>
       <tbody>
-        <% product.Ds9Results.forEach((item) => { %>
+        <% product.reviewODSTR9.forEach((item,i) => { %>
         <tr>
-          <td><%= item.Sl_No %></td>
-          <td><%= item.Testsparameter %></td>
-          <td><%= item.Specification_limit %></td>
-          <td><%= item.Obtained.Minimum %></td>
-          <td><%= item.Obtained.Maximum %></td>
+          <td><%= item.batchNo %></td>
+          <td><%= item.testsParameter %></td>
+          <td><%= item.LSL %></td>
+          <td><%= item.USL %></td>
+          <td><%= item.LCL %></td>
+          <td><%= item.UCL %></td>
+          <td><%= item.observedValue %></td>
           <td><%= item.compliesNotComplies %></td>
         </tr>
         <% }); %>
       </tbody>
     </table>
-    <h3>Drug Substance 10 Test Result
+
+
+
+        <h3>Disintegration Of Terbinafine  Test Result
     </h3>
 
-    <table>
+      <table>
       <thead>
         <tr style="text-transform: uppercase;">
-          <th rowspan="2">Sl. No</th>
-          <th rowspan="2">Tests parameter</th>
-          <th rowspan="2">Specification limit</th>
-          <th class="text-center" colspan="2">Obtained value </th>
-          <th rowspan="2">Complies / Does not complies</th>
+          <th >Batch No</th>
+          <th >Tests parameter</th>
+          <th >LSL</th>
+          <th >USL</th>
+          <th >LCL</th>
+          <th >UCL</th>
+          <th>Observed Value </th>
+          <th >Complies / Does not complies</th>
         </tr>
-        <tr>
-          <th>Minimum</th>
-          <th>Maximum</th>
-        </tr>
+
       </thead>
       <tbody>
-        <% product.Ds10Results.forEach((item) => { %>
+        <% product.reviewODSTR10.forEach((item,i) => { %>
         <tr>
-          <td><%= item.Sl_No %></td>
-          <td><%= item.Testsparameter %></td>
-          <td><%= item.Specification_limit %></td>
-          <td><%= item.Obtained.Minimum %></td>
-          <td><%= item.Obtained.Maximum %></td>
+          <td><%= item.batchNo %></td>
+          <td><%= item.testsParameter %></td>
+          <td><%= item.LSL %></td>
+          <td><%= item.USL %></td>
+          <td><%= item.LCL %></td>
+          <td><%= item.UCL %></td>
+          <td><%= item.observedValue %></td>
+          <td><%= item.compliesNotComplies %></td>
+        </tr>
+        <% }); %>
+      </tbody>
+    </table>
+
+
+
+        <h3>pH Of Pentoprazole  Test Result
+    </h3>
+
+      <table>
+      <thead>
+        <tr style="text-transform: uppercase;">
+          <th >Batch No</th>
+          <th >Tests parameter</th>
+          <th >LSL</th>
+          <th >USL</th>
+          <th >LCL</th>
+          <th >UCL</th>
+          <th>Observed Value </th>
+          <th >Complies / Does not complies</th>
+        </tr>
+
+      </thead>
+      <tbody>
+        <% product.reviewODSTR11.forEach((item,i) => { %>
+        <tr>
+          <td><%= item.batchNo %></td>
+          <td><%= item.testsParameter %></td>
+          <td><%= item.LSL %></td>
+          <td><%= item.USL %></td>
+          <td><%= item.LCL %></td>
+          <td><%= item.UCL %></td>
+          <td><%= item.observedValue %></td>
+          <td><%= item.compliesNotComplies %></td>
+        </tr>
+        <% }); %>
+      </tbody>
+    </table>
+
+
+
+        <h3>Assay Of Pentoprazole  Test Result
+    </h3>
+
+      <table>
+      <thead>
+        <tr style="text-transform: uppercase;">
+          <th >Batch No</th>
+          <th >Tests parameter</th>
+          <th >LSL</th>
+          <th >USL</th>
+          <th >LCL</th>
+          <th >UCL</th>
+          <th>Observed Value </th>
+          <th >Complies / Does not complies</th>
+        </tr>
+
+      </thead>
+      <tbody>
+        <% product.reviewODSTR12.forEach((item,i) => { %>
+        <tr>
+          <td><%= item.batchNo %></td>
+          <td><%= item.testsParameter %></td>
+          <td><%= item.LSL %></td>
+          <td><%= item.USL %></td>
+          <td><%= item.LCL %></td>
+          <td><%= item.UCL %></td>
+          <td><%= item.observedValue %></td>
+          <td><%= item.compliesNotComplies %></td>
+        </tr>
+        <% }); %>
+      </tbody>
+    </table>
+
+        <h3>Impurity  Of Pentoprazole  Test Result
+    </h3>
+
+      <table>
+      <thead>
+        <tr style="text-transform: uppercase;">
+          <th >Batch No</th>
+          <th >Tests parameter</th>
+          <th >LSL</th>
+          <th >USL</th>
+          <th >LCL</th>
+          <th >UCL</th>
+          <th>Observed Value </th>
+          <th >Complies / Does not complies</th>
+        </tr>
+
+      </thead>
+      <tbody>
+        <% product.reviewODSTR13.forEach((item,i) => { %>
+        <tr>
+          <td><%= item.batchNo %></td>
+          <td><%= item.testsParameter %></td>
+          <td><%= item.LSL %></td>
+          <td><%= item.USL %></td>
+          <td><%= item.LCL %></td>
+          <td><%= item.UCL %></td>
+          <td><%= item.observedValue %></td>
+          <td><%= item.compliesNotComplies %></td>
+        </tr>
+        <% }); %>
+      </tbody>
+    </table>
+
+
+
+
+        <h3>Dissolution Of Pentoprazole  Test Result
+    </h3>
+
+      <table>
+      <thead>
+        <tr style="text-transform: uppercase;">
+          <th >Batch No</th>
+          <th >Tests parameter</th>
+          <th >LSL</th>
+          <th >USL</th>
+          <th >LCL</th>
+          <th >UCL</th>
+          <th>Observed Value </th>
+          <th >Complies / Does not complies</th>
+        </tr>
+
+      </thead>
+      <tbody>
+        <% product.reviewODSTR14.forEach((item,i) => { %>
+        <tr>
+          <td><%= item.batchNo %></td>
+          <td><%= item.testsParameter %></td>
+          <td><%= item.LSL %></td>
+          <td><%= item.USL %></td>
+          <td><%= item.LCL %></td>
+          <td><%= item.UCL %></td>
+          <td><%= item.observedValue %></td>
+          <td><%= item.compliesNotComplies %></td>
+        </tr>
+        <% }); %>
+      </tbody>
+    </table>
+
+
+
+        <h3>Disintegration Of Pentoprazole  Test Result
+    </h3>
+
+      <table>
+      <thead>
+        <tr style="text-transform: uppercase;">
+          <th >Batch No</th>
+          <th >Tests parameter</th>
+          <th >LSL</th>
+          <th >USL</th>
+          <th >LCL</th>
+          <th >UCL</th>
+          <th>Observed Value </th>
+          <th >Complies / Does not complies</th>
+        </tr>
+
+      </thead>
+      <tbody>
+        <% product.reviewODSTR15.forEach((item,i) => { %>
+        <tr>
+          <td><%= item.batchNo %></td>
+          <td><%= item.testsParameter %></td>
+          <td><%= item.LSL %></td>
+          <td><%= item.USL %></td>
+          <td><%= item.LCL %></td>
+          <td><%= item.UCL %></td>
+          <td><%= item.observedValue %></td>
           <td><%= item.compliesNotComplies %></td>
         </tr>
         <% }); %>
@@ -1331,29 +1536,607 @@
 
     <div class="summary">
       <h3>Summary of Review of Drug Substance Test Results :-</h3>
+        &nbsp &nbsp
+      <p><%= product.reviewODSTRSummary %></p>
+    </div>  
+
+    <h3>Review of Raw Material Excipient Test Results
+    </h3>
+
+    <table>
+      <thead>
+        <tr style="text-transform: uppercase;">
+          <th rowspan="2">Sl. No</th>
+          <th rowspan="2">Material</th>
+          <th rowspan="2">Test parameter</th>
+          <th rowspan="2">Specification limit</th>
+          <th class="text-center" colspan="2">Obtained value </th>
+          <th rowspan="2">Complies / Does not complies</th>
+        </tr>
+        <tr>
+          <th>Minimum</th>
+          <th>Maximum</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% product.reviewORMETR.forEach((item,i) => { %>
+        <tr>
+          <td><%= item.Sl_No || i+1 %></td>
+          <td><%= item.material %></td>
+          <td><%= item.testsParameter %></td>
+          <td><%= item.specificationLimit %></td>
+          <td><%= item.obtainedValue.minimum %></td>
+          <td><%= item.obtainedValue.maximum %></td>
+          <td><%= item.compliesNotComplies %></td>
+        </tr>
+        <% }); %>
+      </tbody>
+    </table>
+
+    <div class="summary">
+      <h3>Summary of Review of Raw Material Excipient Test Results:-</h3>
       &nbsp &nbsp
-      <p><%= product.dstSummary %></p>
+      <p><%= product.reviewORMETRSummary %></p>
+    </div>  
+
+
+    <h3>Review of Packing Material Test Results
+    </h3>
+
+    <table>
+      <thead>
+        <tr style="text-transform: uppercase;">
+          <th rowspan="2">Sl. No</th>
+          <th rowspan="2">Primary Packing Material</th>
+          <th rowspan="2">Test parameter</th>
+          <th rowspan="2">Specification limit</th>
+          <th class="text-center" colspan="2">Obtained value </th>
+          <th rowspan="2">Complies / Does not complies</th>
+        </tr>
+        <tr>
+          <th>Minimum</th>
+          <th>Maximum</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% product.reviewOPMTR.forEach((item,i) => { %>
+        <tr>
+          <td><%= item.Sl_No || i+1 %></td>
+          <td><%= item.material %></td>
+          <td><%= item.testsParameter %></td>
+          <td><%= item.specificationLimit %></td>
+          <td><%= item.obtainedValue.minimum %></td>
+          <td><%= item.obtainedValue.maximum %></td>
+          <td><%= item.compliesNotComplies %></td>
+        </tr>
+        <% }); %>
+      </tbody>
+    </table>
+
+    <div class="summary">
+      <h3>Summary of Review of Packing Material Test Results :-</h3>
+      &nbsp &nbsp
+      <p><%= product.reviewOPMTRSummary %></p>
+    </div>  
+
+    <h3>Dilution Buffer 1 - Test Results
+    </h3>
+
+    <table>
+      <thead>
+        <tr style="text-transform: uppercase;">
+          <th rowspan="2">Sl. No</th>
+          <th rowspan="2">Tests parameter	</th>
+          <th rowspan="2">Stage</th>
+          <th rowspan="2">Specification limit</th>
+          <th class="text-center" colspan="2">Obtained value </th>
+          <th rowspan="2">Complies / Does not complies</th>
+        </tr>
+        <tr>
+          <th>Minimum</th>
+          <th>Maximum</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% product.reviewODP.forEach((item,i) => { %>
+        <tr>
+          <td><%= item.Sl_No || i+1 %></td>
+          <td><%= item.testsParameter %></td>
+          <td><%= item.stage %></td>
+          <td><%= item.specificationLimit %></td>
+          <td><%= item.obtainedValue.minimum %></td>
+          <td><%= item.obtainedValue.maximum %></td>
+          <td><%= item.compliesNotComplies %></td>
+        </tr>
+        <% }); %>
+      </tbody>
+    </table>
+
+        <h3>Dilution Buffer 2 - Test Results
+    </h3>
+
+    <table>
+      <thead>
+        <tr style="text-transform: uppercase;">
+          <th rowspan="2">Sl. No</th>
+          <th rowspan="2">Tests parameter	</th>
+          <th rowspan="2">Stage</th>
+          <th rowspan="2">Specification limit</th>
+          <th class="text-center" colspan="2">Obtained value </th>
+          <th rowspan="2">Complies / Does not complies</th>
+        </tr>
+        <tr>
+          <th>Minimum</th>
+          <th>Maximum</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% product.reviewODP2.forEach((item,i) => { %>
+        <tr>
+          <td><%= item.Sl_No || i+1 %></td>
+          <td><%= item.testsParameter %></td>
+          <td><%= item.stage %></td>
+          <td><%= item.specificationLimit %></td>
+          <td><%= item.obtainedValue.minimum %></td>
+          <td><%= item.obtainedValue.maximum %></td>
+          <td><%= item.compliesNotComplies %></td>
+        </tr>
+        <% }); %>
+      </tbody>
+    </table>
+
+        <h3>Dilution Buffer 3 - Test Results
+    </h3>
+
+    <table>
+      <thead>
+        <tr style="text-transform: uppercase;">
+          <th rowspan="2">Sl. No</th>
+          <th rowspan="2">Tests parameter	</th>
+          <th rowspan="2">Stage</th>
+          <th rowspan="2">Specification limit</th>
+          <th class="text-center" colspan="2">Obtained value </th>
+          <th rowspan="2">Complies / Does not complies</th>
+        </tr>
+        <tr>
+          <th>Minimum</th>
+          <th>Maximum</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% product.reviewODP3.forEach((item,i) => { %>
+        <tr>
+          <td><%= item.Sl_No || i+1 %></td>
+          <td><%= item.testsParameter %></td>
+          <td><%= item.stage %></td>
+          <td><%= item.specificationLimit %></td>
+          <td><%= item.obtainedValue.minimum %></td>
+          <td><%= item.obtainedValue.maximum %></td>
+          <td><%= item.compliesNotComplies %></td>
+        </tr>
+        <% }); %>
+      </tbody>
+    </table>
+
+        <h3>Dilution Buffer 4 - Test Results
+    </h3>
+
+    <table>
+      <thead>
+        <tr style="text-transform: uppercase;">
+          <th rowspan="2">Sl. No</th>
+          <th rowspan="2">Tests parameter	</th>
+          <th rowspan="2">Stage</th>
+          <th rowspan="2">Specification limit</th>
+          <th class="text-center" colspan="2">Obtained value </th>
+          <th rowspan="2">Complies / Does not complies</th>
+        </tr>
+        <tr>
+          <th>Minimum</th>
+          <th>Maximum</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% product.reviewODP4.forEach((item,i) => { %>
+        <tr>
+          <td><%= item.Sl_No || i+1 %></td>
+          <td><%= item.testsParameter %></td>
+          <td><%= item.stage %></td>
+          <td><%= item.specificationLimit %></td>
+          <td><%= item.obtainedValue.minimum %></td>
+          <td><%= item.obtainedValue.maximum %></td>
+          <td><%= item.compliesNotComplies %></td>
+        </tr>
+        <% }); %>
+      </tbody>
+    </table>
+
+        <h3>Dilution Buffer 5 - Test Results
+    </h3>
+
+    <table>
+      <thead>
+        <tr style="text-transform: uppercase;">
+          <th rowspan="2">Sl. No</th>
+          <th rowspan="2">Tests parameter	</th>
+          <th rowspan="2">Stage</th>
+          <th rowspan="2">Specification limit</th>
+          <th class="text-center" colspan="2">Obtained value </th>
+          <th rowspan="2">Complies / Does not complies</th>
+        </tr>
+        <tr>
+          <th>Minimum</th>
+          <th>Maximum</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% product.reviewODP5.forEach((item,i) => { %>
+        <tr>
+          <td><%= item.Sl_No || i+1 %></td>
+          <td><%= item.testsParameter %></td>
+          <td><%= item.stage %></td>
+          <td><%= item.specificationLimit %></td>
+          <td><%= item.obtainedValue.minimum %></td>
+          <td><%= item.obtainedValue.maximum %></td>
+          <td><%= item.compliesNotComplies %></td>
+        </tr>
+        <% }); %>
+      </tbody>
+    </table>
+
+
+        <h3>Dilution Buffer 6 - Test Results
+    </h3>
+
+    <table>
+      <thead>
+        <tr style="text-transform: uppercase;">
+          <th rowspan="2">Sl. No</th>
+          <th rowspan="2">Tests parameter	</th>
+          <th rowspan="2">Stage</th>
+          <th rowspan="2">Specification limit</th>
+          <th class="text-center" colspan="2">Obtained value </th>
+          <th rowspan="2">Complies / Does not complies</th>
+        </tr>
+        <tr>
+          <th>Minimum</th>
+          <th>Maximum</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% product.reviewODP6.forEach((item,i) => { %>
+        <tr>
+          <td><%= item.Sl_No || i+1 %></td>
+          <td><%= item.testsParameter %></td>
+          <td><%= item.stage %></td>
+          <td><%= item.specificationLimit %></td>
+          <td><%= item.obtainedValue.minimum %></td>
+          <td><%= item.obtainedValue.maximum %></td>
+          <td><%= item.compliesNotComplies %></td>
+        </tr>
+        <% }); %>
+      </tbody>
+    </table>
+
+        <h3>Dilution Buffer 7 - Test Results
+    </h3>
+
+    <table>
+      <thead>
+        <tr style="text-transform: uppercase;">
+          <th rowspan="2">Sl. No</th>
+          <th rowspan="2">Tests parameter	</th>
+          <th rowspan="2">Stage</th>
+          <th rowspan="2">Specification limit</th>
+          <th class="text-center" colspan="2">Obtained value </th>
+          <th rowspan="2">Complies / Does not complies</th>
+        </tr>
+        <tr>
+          <th>Minimum</th>
+          <th>Maximum</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% product.reviewODP7.forEach((item,i) => { %>
+        <tr>
+          <td><%= item.Sl_No || i+1 %></td>
+          <td><%= item.testsParameter %></td>
+          <td><%= item.stage %></td>
+          <td><%= item.specificationLimit %></td>
+          <td><%= item.obtainedValue.minimum %></td>
+          <td><%= item.obtainedValue.maximum %></td>
+          <td><%= item.compliesNotComplies %></td>
+        </tr>
+        <% }); %>
+      </tbody>
+    </table>
+
+
+        <h3>Dilution Buffer 8 - Test Results
+    </h3>
+
+    <table>
+      <thead>
+        <tr style="text-transform: uppercase;">
+          <th rowspan="2">Sl. No</th>
+          <th rowspan="2">Tests parameter	</th>
+          <th rowspan="2">Stage</th>
+          <th rowspan="2">Specification limit</th>
+          <th class="text-center" colspan="2">Obtained value </th>
+          <th rowspan="2">Complies / Does not complies</th>
+        </tr>
+        <tr>
+          <th>Minimum</th>
+          <th>Maximum</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% product.reviewODP8.forEach((item,i) => { %>
+        <tr>
+          <td><%= item.Sl_No || i+1 %></td>
+          <td><%= item.testsParameter %></td>
+          <td><%= item.stage %></td>
+          <td><%= item.specificationLimit %></td>
+          <td><%= item.obtainedValue.minimum %></td>
+          <td><%= item.obtainedValue.maximum %></td>
+          <td><%= item.compliesNotComplies %></td>
+        </tr>
+        <% }); %>
+      </tbody>
+    </table>
+
+        <h3>Dilution Buffer 9 - Test Results
+    </h3>
+
+    <table>
+      <thead>
+        <tr style="text-transform: uppercase;">
+          <th rowspan="2">Sl. No</th>
+          <th rowspan="2">Tests parameter	</th>
+          <th rowspan="2">Stage</th>
+          <th rowspan="2">Specification limit</th>
+          <th class="text-center" colspan="2">Obtained value </th>
+          <th rowspan="2">Complies / Does not complies</th>
+        </tr>
+        <tr>
+          <th>Minimum</th>
+          <th>Maximum</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% product.reviewODP9.forEach((item,i) => { %>
+        <tr>
+          <td><%= item.Sl_No || i+1 %></td>
+          <td><%= item.testsParameter %></td>
+          <td><%= item.stage %></td>
+          <td><%= item.specificationLimit %></td>
+          <td><%= item.obtainedValue.minimum %></td>
+          <td><%= item.obtainedValue.maximum %></td>
+          <td><%= item.compliesNotComplies %></td>
+        </tr>
+        <% }); %>
+      </tbody>
+    </table>
+
+        <h3>Dilution Buffer 10 - Test Results
+    </h3>
+
+    <table>
+      <thead>
+        <tr style="text-transform: uppercase;">
+          <th rowspan="2">Sl. No</th>
+          <th rowspan="2">Tests parameter	</th>
+          <th rowspan="2">Stage</th>
+          <th rowspan="2">Specification limit</th>
+          <th class="text-center" colspan="2">Obtained value </th>
+          <th rowspan="2">Complies / Does not complies</th>
+        </tr>
+        <tr>
+          <th>Minimum</th>
+          <th>Maximum</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% product.reviewODP10.forEach((item,i) => { %>
+        <tr>
+          <td><%= item.Sl_No || i+1 %></td>
+          <td><%= item.testsParameter %></td>
+          <td><%= item.stage %></td>
+          <td><%= item.specificationLimit %></td>
+          <td><%= item.obtainedValue.minimum %></td>
+          <td><%= item.obtainedValue.maximum %></td>
+          <td><%= item.compliesNotComplies %></td>
+        </tr>
+        <% }); %>
+      </tbody>
+    </table>
+
+    <div class="summary">
+      <h3>Summary of Review of Drug Product – In process Test Results :-</h3>
+      &nbsp &nbsp
+      <p><%= product.reviewODPSummary %></p>
     </div>  
 
 
 
+        <h3>Review of Drug Product –Finished Product Test Results</h3>
+
+    <table>
+      <thead>
+        <tr style="text-transform: uppercase;">
+          <th rowspan="2">Sl. No</th>
+          <th rowspan="2">Tests parameter	</th>
+          <th rowspan="2">Specification limit</th>
+          <th class="text-center" colspan="2">Obtained value </th>
+          <th rowspan="2">Complies / Does not complies</th>
+        </tr>
+        <tr>
+          <th>Minimum</th>
+          <th>Maximum</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% product.reviewODPFPTR.forEach((item,i) => { %>
+        <tr>
+          <td><%= item.Sl_No || i+1 %></td>
+          <td><%= item.testsParameter %></td>
+          <td><%= item.specificationLimit %></td>
+          <td><%= item.obtainedValue.minimum %></td>
+          <td><%= item.obtainedValue.maximum %></td>
+          <td><%= item.compliesNotComplies %></td>
+        </tr>
+        <% }); %>
+      </tbody>
+    </table>
+
+    <div class="summary">
+      <h3>Summary of Review of Drug Product –Finished Product Test Results :-</h3>
+      &nbsp &nbsp
+      <p><%= product.reviewODPSummary %></p>
+    </div>  
+
+    
+    <h3>Summary of Ongoing Stability Studies</h3>
+    <table>
+      <thead>
+        <tr style="text-transform: uppercase;">
+          <th >Sl. No</th>
+          <th >Batch No.	</th>
+          <th >Type</th>
+          <th >	Storage Condition</th>
+          <th >	Testing Intervals Months completed</th>
+          <th >Stability Protocol No.</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% product.summaryOOSS.forEach((item,i) => { %>
+        <tr>
+          <td><%= item.Sl_No || i+1 %></td>
+          <td><%= item.batchNo %></td>
+          <td><%= item.type %></td>
+          <td><%= item.storageCondition %></td>
+          <td><%= item.testingInterval %></td>
+          <td><%= item.stabilityProtocolNo %></td>
+        </tr>
+        <% }); %>
+      </tbody>
+    </table>
+
+    <div class="summary">
+      <h3>Summary of Ongoing Stability Studies :-</h3>
+      &nbsp &nbsp
+      <p><%= product.summaryOOSSSummary %></p>
+    </div>  
+
+
+    <h3>Stability Study Related OOS/OOT</h3>
+    <table>
+      <thead>
+        <tr style="text-transform: uppercase;">
+          <th >Sl. No</th>
+          <th >Batch No.	</th>
+          <th >Testing Intervals Months	</th>
+          <th >OOS Number</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% product.stabilitySR.forEach((item,i) => { %>
+        <tr>
+          <td><%= item.Sl_No || i+1 %></td>
+          <td><%= item.batchNo %></td>
+          <td><%= item.testingIntervalMonths %></td>
+          <td><%= item.OOSNumber %></td>
+        </tr>
+        <% }); %>
+      </tbody>
+    </table>
+
+    <div class="summary">
+      <h3>Summary of Stability Study Related OOS/OOT:-</h3>
+      &nbsp &nbsp
+      <p><%= product.stabilitySRSummary %></p>
+    </div>  
+
+    <h3>Review of Visual Inspection – Reserve Samples</h3>
+    <table>
+      <thead>
+        <tr style="text-transform: uppercase;">
+          <th >Column 1</th>
+          <th >Column 2</th>
+          <th >Column 3</th>
+          <th >Column 4</th>
+          <th >Column 5</th>
+          <th >Column 6</th>
+          <th >Column 7</th>
+          <th >Column 8</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% product.reviewOVIRS.forEach((item,i) => { %>
+        <tr>
+          <td><%= item.column1 %></td>
+          <td><%= item.column2 %></td>
+          <td><%= item.column3 %></td>
+          <td><%= item.column4 %></td>
+          <td><%= item.column5 %></td>
+          <td><%= item.column6 %></td>
+          <td><%= item.column7 %></td>
+          <td><%= item.column8 %></td>
+        </tr>
+        <% }); %>
+      </tbody>
+    </table>
+
+    <div class="summary">
+      <h3>Summary of Review of Visual Inspection – Reserve Samples:-</h3>
+      &nbsp &nbsp
+      <p><%= product.reviewOVIRSSummary %></p>
+    </div>  
+
+    <div class="summary">
+      <h3>Summary of Review of Analytical Method Validations:-</h3>
+      &nbsp &nbsp
+      <p><%= product.reviewOAMVSummary %></p>
+    </div>  
+
+    <div class="summary">
+      <h3>Summary of Review of Contract Testing Laboratories:-</h3>
+      &nbsp &nbsp
+      <p><%= product.reviewOCTLSummary %></p>
+    </div>  
+
+    <div class="summary">
+      <h3>Summary of Review of Environmental Monitoring Trend and water trends Reports :-</h3>
+      &nbsp &nbsp
+      <p><%= product.reviewOEMTAWTRSummary %></p>
+    </div>  
+
+    <div class="summary">
+      <h3>Laboratory Review Summary :-</h3>
+      &nbsp &nbsp
+      <p><%= product.reviewLRSummary %></p>
+    </div>  
+
+
+
+    <!-- Tab 5 -->
     <h1>Engineering And Maintenance Review</h1>
-    <h3>Preventive Maintenance Details
-    </h3>
+
+    <h3>Preventive Maintenance Details</h3>
     <div class="summary">
       <h3>Summary of Review of Preventive Maintenance Details :-</h3>
       &nbsp &nbsp
-      <p><%= product.rpmSummary %></p>
+      <p><%= product.pMDSummary %></p>
     </div> 
     <div class="summary">
       <h3>Summary of Qualification details :-</h3>
       &nbsp &nbsp
-      <p><%= product.qdSummary %></p>
+      <p><%= product.qDSummary %></p>
     </div> 
     <div class="summary">
       <h3>Summary of Calibration Details :-</h3>
       &nbsp &nbsp
-      <p><%= product.cdSummary %></p>
+      <p><%= product.cDSummary %></p>
     </div> 
     <h2>HVAC Qualification Status
     </h2>
@@ -1366,12 +2149,12 @@
           <th colspan="2">Status</th>
       </thead>
       <tbody>
-        <% product.HqStatus.forEach((item) => { %>
+        <% product.hVACQStatus.forEach((item,i) => { %>
         <tr>
-          <td><%= item.Sl_No %></td>
-          <td><%= item.TestsDescription %></td>
-          <td><%= item.Frequency %></td>
-          <td><%= item.Status %></td>
+          <td><%= item.Sl_No || i+1 %></td>
+          <td><%= item.testDescription %></td>
+          <td><%= item.frequency %></td>
+          <td><%= item.status %></td>
         </tr>
         <% }); %>
       </tbody>
@@ -1379,8 +2162,9 @@
     <div class="summary">
       <h3>Summary of HVAC Qualification Status :-</h3>
       &nbsp &nbsp
-      <p><%= product.hvqSummary %></p>
+      <p><%= product.hVACSummary %></p>
     </div>
+
     <h3>Sanitization and Sterilization Details of Utilities</h3>
     <table>
       <thead>
@@ -1391,57 +2175,54 @@
           <th colspan="2">Status</th>
       </thead>
       <tbody>
-        <% product.ssd.forEach((item) => { %>
+        <% product.sanitizationASDOU.forEach((item,i) => { %>
         <tr>
-          <td><%= item.Sl_No %></td>
-          <td><%= item.Equipment_Name %></td>
-          <td><%= item.Frequency %></td>
-          <td><%= item.Status %></td>
+          <td><%= item.Sl_No || i+1 %></td>
+          <td><%= item.equipmentName %></td>
+          <td><%= item.frequency %></td>
+          <td><%= item.status %></td>
         </tr>
         <% }); %>
       </tbody>
     </table>
+
     <div class="summary">
       <h3>Summary of Sanitization and Sterilization Details of Utilities :-</h3>
       &nbsp &nbsp
-      <p><%= product.ssdSummary %></p>
+      <p><%= product.sASDOUSummary %></p>
     </div>
 
-<h3>Compressed Gases</h3>
-<table>
-  <thead>
-    <tr style="text-transform: uppercase;">
-      <th rowspan="2">Sl. No</th>
-      <th rowspan="2">Compressed Gas</th>
-      <th rowspan="2">Test</th>
-      <th rowspan="2">Frequency</th>
-      <th colspan="2">Status</th>
-  </thead>
-  <tbody>
-    <% product.cg.forEach((item) => { %>
-    <tr>
-      <td><%= item.Sl_No %></td>
-      <td><%= item.CompressedGas %></td>
-      <td><%= item.Test %></td>
-      <td><%= item.Frequency %></td>
-      <td><%= item.Status %></td>
-    </tr>
-    <% }); %>
-  </tbody>
-</table>
-<div class="summary">
-  <h3>Summary of Compressed Gas :-</h3>
-  &nbsp &nbsp
-  <p><%= product.cgSummary %></p>
-</div>
+    <h3>Compressed Gases</h3>
+    <table>
+      <thead>
+        <tr style="text-transform: uppercase;">
+          <th rowspan="2">Sl. No</th>
+          <th rowspan="2">Compressed Gas</th>
+          <th rowspan="2">Test</th>
+          <th rowspan="2">Frequency</th>
+          <th colspan="2">Status</th>
+      </thead>
+      <tbody>
+        <% product.compressedGas.forEach((item,i) => { %>
+        <tr>
+          <td><%= item.Sl_No || i+1 %></td>
+          <td><%= item.compressedGas %></td>
+          <td><%= item.test %></td>
+          <td><%= item.frequency %></td>
+          <td><%= item.status %></td>
+        </tr>
+        <% }); %>
+      </tbody>
+    </table>
 
 <h3>Engineering Summary</h3>
 <div class="summary">
   <h3>Summary of Engineering :-</h3>
   &nbsp &nbsp
-  <p><%= product.eSummary %></p>
+  <p><%= product.engineeringSummary %></p>
 </div>
 
+<!-- Tab 6 -->
 <h1>Quality System Review
 </h1>
 <h2>Review of Deviations
@@ -1463,18 +2244,18 @@
       <th >Current Status</th>
   </thead>
   <tbody>
-    <% product.rcpd.forEach((item) => { %>
+    <% product.reviewOfCPD.forEach((item,i) => { %>
     <tr>
-      <td><%= item.S_No %></td>
-      <td><%= item.Date_Of_Initiation %></td>
-      <td><%= item.Record_No %></td>
-      <td><%= item.Site_Division %></td>
-      <td><%= item.Department %></td>
-      <td><%= item.Initiator%></td>
-      <td><%= item.Short_Description %></td>
-      <td><%= item.Batch_No %></td>
-      <td><%= item.Due_Date %></td>
-      <td><%= item.Current_Status %></td>
+      <td><%= item.S_No || i+1 %></td>
+      <td><%= item.dateOfInitiation %></td>
+      <td><%= item.recordNo %></td>
+      <td><%= item.siteDivision %></td>
+      <td><%= item.department %></td>
+      <td><%= item.initiator%></td>
+      <td><%= item.shortDescription %></td>
+      <td><%= item.batchNo %></td>
+      <td><%= item.dueDate %></td>
+      <td><%= item.currentStatus %></td>
     </tr>
     <% }); %>
   </tbody>
@@ -1497,7 +2278,7 @@
       <th >Current Status</th>
   </thead>
   <tbody>
-    <% product.rppd.forEach((item) => { %>
+    <% product.rppd.forEach((item,i) => { %>
     <tr>
       <td><%= item.S_No %></td>
       <td><%= item.Date_Of_Initiation %></td>
@@ -1536,7 +2317,7 @@
       <th >Current Status</th>
   </thead>
   <tbody>
-    <% product.crpo.forEach((item) => { %>
+    <% product.crpo.forEach((item,i) => { %>
     <tr>
       <td><%= item.S_No %></td>
       <td><%= item.Date_Of_Initiation %></td>
@@ -1568,7 +2349,7 @@
       <th >Current Status</th>
   </thead>
   <tbody>
-    <% product.prpo.forEach((item) => { %>
+    <% product.prpo.forEach((item,i) => { %>
     <tr>
       <td><%= item.S_No %></td>
       <td><%= item.Date_Of_Initiation %></td>
@@ -1608,7 +2389,7 @@
       <th >Current Status</th>
   </thead>
   <tbody>
-    <% product.ooac.forEach((item) => { %>
+    <% product.ooac.forEach((item,i) => { %>
     <tr>
       <td><%= item.S_No %></td>
       <td><%= item.Date_Of_Initiation %></td>
@@ -1641,7 +2422,7 @@
       <th >Current Status</th>
   </thead>
   <tbody>
-    <% product.pooac.forEach((item) => { %>
+    <% product.pooac.forEach((item,i) => { %>
     <tr>
       <td><%= item.S_No %></td>
       <td><%= item.Date_Of_Initiation %></td>
@@ -1680,7 +2461,7 @@
       <th >Current Status</th>
   </thead>
   <tbody>
-    <% product.ooal.forEach((item) => { %>
+    <% product.ooal.forEach((item,i) => { %>
     <tr>
       <td><%= item.S_No %></td>
       <td><%= item.Date_Of_Initiation %></td>
@@ -1713,7 +2494,7 @@
       <th >Current Status</th>
   </thead>
   <tbody>
-    <% product.pooal.forEach((item) => { %>
+    <% product.pooal.forEach((item,i) => { %>
     <tr>
       <td><%= item.S_No %></td>
       <td><%= item.Date_Of_Initiation %></td>
@@ -1752,7 +2533,7 @@
       <th >Current Status</th>
   </thead>
   <tbody>
-    <% product.oos.forEach((item) => { %>
+    <% product.oos.forEach((item,i) => { %>
     <tr>
       <td><%= item.S_No %></td>
       <td><%= item.Date_Of_Initiation %></td>
@@ -1784,7 +2565,7 @@
         <th >Current Status</th>
     </thead>
     <tbody>
-      <% product.poos.forEach((item) => { %>
+      <% product.poos.forEach((item,i) => { %>
       <tr>
         <td><%= item.S_No %></td>
         <td><%= item.Date_Of_Initiation %></td>
@@ -1824,7 +2605,7 @@
       <th >Current Status</th>
   </thead>
   <tbody>
-    <% product.oot.forEach((item) => { %>
+    <% product.oot.forEach((item,i) => { %>
     <tr>
       <td><%= item.S_No %></td>
       <td><%= item.Date_Of_Initiation %></td>
@@ -1857,7 +2638,7 @@
       <th >Current Status</th>
   </thead>
   <tbody>
-    <% product.poot.forEach((item) => { %>
+    <% product.poot.forEach((item,i) => { %>
     <tr>
       <td><%= item.S_No %></td>
       <td><%= item.Date_Of_Initiation %></td>
@@ -1895,7 +2676,7 @@
       <th >Current Status</th>
   </thead>
   <tbody>
-    <% product.cc.forEach((item) => { %>
+    <% product.cc.forEach((item,i) => { %>
     <tr>
       <td><%= item.S_No %></td>
       <td><%= item.Date_Of_Initiation %></td>
@@ -1928,7 +2709,7 @@
       <th >Current Status</th>
   </thead>
   <tbody>
-    <% product.pcc.forEach((item) => { %>
+    <% product.pcc.forEach((item,i) => { %>
     <tr>
       <td><%= item.S_No %></td>
       <td><%= item.Date_Of_Initiation %></td>
@@ -1967,7 +2748,7 @@
       <th >Current Status</th>
   </thead>
   <tbody>
-    <% product.li.forEach((item) => { %>
+    <% product.li.forEach((item,i) => { %>
     <tr>
       <td><%= item.S_No %></td>
       <td><%= item.Date_Of_Initiation %></td>
@@ -2000,7 +2781,7 @@
       <th >Current Status</th>
   </thead>
   <tbody>
-    <% product.pli.forEach((item) => { %>
+    <% product.pli.forEach((item,i) => { %>
     <tr>
       <td><%= item.S_No %></td>
       <td><%= item.Date_Of_Initiation %></td>
@@ -2039,7 +2820,7 @@
       <th >Current Status</th>
   </thead>
   <tbody>
-    <% product.rpc.forEach((item) => { %>
+    <% product.rpc.forEach((item,i) => { %>
     <tr>
       <td><%= item.S_No %></td>
       <td><%= item.Date_Of_Initiation %></td>
@@ -2072,7 +2853,7 @@
       <th >Current Status</th>
   </thead>
   <tbody>
-    <% product.prpc.forEach((item) => { %>
+    <% product.prpc.forEach((item,i) => { %>
     <tr>
       <td><%= item.S_No %></td>
       <td><%= item.Date_Of_Initiation %></td>
@@ -2118,9 +2899,9 @@
     </tr>
   </thead>
   <tbody>
-    <% product.qrNoti.forEach((item) => { %>
+    <% product.qrNoti.forEach((item,i) => { %>
     <tr>
-      <td><%= item.Sl_No %></td>
+      <td><%= item.Sl_No || i+1 %></td>
       <td><%= item.Batch_No %></td>
       <td><%= item.Quality_Related_Notification.No %></td>
       <td><%= item.Quality_Related_Notification.description %></td>
@@ -2176,8 +2957,9 @@
     <p><%= product.revovSummary %></p>
   </div>
 
-//Tab 7
+<!-- Tab 7 -->
 <h1>Regulatory Review</h1>
+
 <h3>Dossier variation details</h3>
 <table>
   <thead>
@@ -2189,17 +2971,19 @@
       <th>Description</th>
   </thead>
   <tbody>
-    <% product.dosVar.forEach((item) => { %>
+    <% product.dossierRR.forEach((item,i) => { %>
     <tr>
-      <td><%= item.Sl_No %></td>
-      <td><%= item.Agency	 %></td>
-      <td><%= item.Notification_No %></td>
-      <td><%= item.Notification_Type %></td>
+      <td><%= item.Sl_No || i+1 %></td>
+      <td><%= item.agency	 %></td>
+      <td><%= item.notificationNo %></td>
+      <td><%= item.notificationType %></td>
       <td><%= item.description %></td>
     </tr>
     <% }); %>
   </tbody>
 </table>
+
+
 <div class="summary">
   <h3>Summary of Dossier variation details  :-</h3>
   &nbsp &nbsp
@@ -2219,14 +3003,14 @@
       <th>remarks</th>
   </thead>
   <tbody>
-    <% product.newm.forEach((item) => { %>
+    <% product.dossierRRNma.forEach((item,i) => { %>
     <tr>
-      <td><%= item.Sl_No %></td>
-      <td><%= item.Country_Name	 %></td>
-      <td><%= item.description_Of_Packing %></td>
-      <td><%= item.Date_of_Application %></td>
-      <td><%= item.Status_of_Application %></td>
-      <td><%= item.Date_of_Authorization	 %></td>
+      <td><%= item.Sl_No || i+1  %></td>
+      <td><%= item.countryName	 %></td>
+      <td><%= item.descriptionOfPacking %></td>
+      <td><%= item.dateOfApplication %></td>
+      <td><%= item.statusOfApplication %></td>
+      <td><%= item.dateOfAuthorization	 %></td>
       <td><%= item.remarks %></td>
     </tr>
     <% }); %>
@@ -2235,10 +3019,10 @@
 <div class="summary">
   <h3>Summary of New marketing authorisation:-</h3>
   &nbsp &nbsp
-  <p><%= product.newmSummary %></p>
+  <p><%= product.dosnewmSummary %></p>
 </div>
 
-//Tab8
+<!-- Tab 8 -->
 <h1>Recommendations</h1>
 <h3>Recommendations Summary</h3>
 <div class="summary">
@@ -2247,11 +3031,12 @@
   <p><%= product.recSummary %></p>
 </div>
 
+<!-- Tab 9 -->
+<!-- <h1>CAPA</h1> -->
 
-<h1>CAPA</h1>
-
-
+<!-- Tab 10 -->
 <h1>Discussion, Evaluation And Conclusion</h1>
+
 <h3>Discussion Evaluation and Conclusion</h3>
 <div class="summary">
   <h3>Summary of Discussion, Evaluation And Conclusion  :-</h3>
@@ -2259,108 +3044,108 @@
   <p><%= product.decSummary %></p>
 </div>
 
-
+<!-- Tab 11 -->
 <h1>List Of Annexures/Attachments</h1>
 
 <div class="summary">
   <h3>Annexure 1 :-</h3>
   &nbsp &nbsp
-  <p><%= product.A1Summary %></p>
+  <p><%= product.annexure1 %></p>
 </div>
 <div class="summary">
   <h3>Annexure 2 :-</h3>
   &nbsp &nbsp
-  <p><%= product.A2Summary %></p>
+  <p><%= product.annexure2 %></p>
 </div>
 <div class="summary">
   <h3>Annexure 3 :-</h3>
   &nbsp &nbsp
-  <p><%= product.A3Summary %></p>
+  <p><%= product.annexure3 %></p>
 </div>
 <div class="summary">
   <h3>Annexure 4 :-</h3>
   &nbsp &nbsp
-  <p><%= product.A4Summary %></p>
+  <p><%= product.annexure4 %></p>
 </div>
 <div class="summary">
   <h3>Annexure 5 :-</h3>
   &nbsp &nbsp
-  <p><%= product.A5Summary %></p>
+  <p><%= product.annexure5 %></p>
 </div>
 <div class="summary">
   <h3>Annexure 6 :-</h3>
   &nbsp &nbsp
-  <p><%= product.A6Summary %></p>
+  <p><%= product.annexure6 %></p>
 </div>
 <div class="summary">
   <h3>Annexure 7 :-</h3>
   &nbsp &nbsp
-  <p><%= product.A7Summary %></p>
+  <p><%= product.annexure7 %></p>
 </div>
 <div class="summary">
   <h3>Annexure 8 :-</h3>
   &nbsp &nbsp
-  <p><%= product.A8Summary %></p>
+  <p><%= product.annexure8 %></p>
 </div>
 <div class="summary">
   <h3>Annexure 9 :-</h3>
   &nbsp &nbsp
-  <p><%= product.A9Summary %></p>
+  <p><%= product.annexure9 %></p>
 </div>
 <div class="summary">
   <h3>Annexure 10 :-</h3>
   &nbsp &nbsp
-  <p><%= product.A10Summary %></p>
+  <p><%= product.annexure10 %></p>
 </div>
 <div class="summary">
   <h3>Annexure 11 :-</h3>
   &nbsp &nbsp
-  <p><%= product.A11Summary %></p>
+  <p><%= product.annexure11 %></p>
 </div>
 <div class="summary">
   <h3>Annexure 12 :-</h3>
   &nbsp &nbsp
-  <p><%= product.A12Summary %></p>
+  <p><%= product.annexure12 %></p>
 </div>
 <div class="summary">
   <h3>Annexure 13 :-</h3>
   &nbsp &nbsp
-  <p><%= product.A13Summary %></p>
+  <p><%= product.annexure13 %></p>
 </div>
 <div class="summary">
   <h3>Annexure 14 :-</h3>
   &nbsp &nbsp
-  <p><%= product.A14Summary %></p>
+  <p><%= product.annexure14 %></p>
 </div>
 <div class="summary">
   <h3>Annexure 15 :-</h3>
   &nbsp &nbsp
-  <p><%= product.A15Summary %></p>
+  <p><%= product.annexure15 %></p>
 </div>
 <div class="summary">
   <h3>Annexure 16 :-</h3>
   &nbsp &nbsp
-  <p><%= product.A16Summary %></p>
+  <p><%= product.annexure16 %></p>
 </div>
 <div class="summary">
   <h3>Annexure 17 :-</h3>
   &nbsp &nbsp
-  <p><%= product.A17Summary %></p>
+  <p><%= product.annexure17 %></p>
 </div>
 <div class="summary">
   <h3>Annexure 18 :-</h3>
   &nbsp &nbsp
-  <p><%= product.A18Summary %></p>
+  <p><%= product.annexure18 %></p>
 </div>
 <div class="summary">
   <h3>Annexure 19 :-</h3>
   &nbsp &nbsp
-  <p><%= product.A19Summary %></p>
+  <p><%= product.annexure19 %></p>
 </div>
 <div class="summary">
   <h3>Annexure 20 :-</h3>
   &nbsp &nbsp
-  <p><%= product.A20Summary %></p>
+  <p><%= product.annexure20 %></p>
 </div>
 
   </body>

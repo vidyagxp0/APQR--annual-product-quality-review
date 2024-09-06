@@ -1,8 +1,6 @@
 import puppeteer from "puppeteer";
 import path from "path";
 import { fileURLToPath } from "url";
-import { APQR } from "../models/apqr.model.js";
-import gridRef from "../models/gridRef.model.js";
 import { htmlToText } from "html-to-text";
 
 const __filename = fileURLToPath(import.meta.url);
@@ -1749,7 +1747,7 @@ const pqrData = {
   A18Summary: "Summary of Annexure 18 will be visible here",
   A19Summary: "Summary of Annexure 19 will be visible here",
   A20Summary: "Summary of Annexure 20 will be visible here",
-};  
+};
 
 function htmlToPlainText(html) {
   // Convert HTML to plain text using html-to-text
@@ -1757,6 +1755,7 @@ function htmlToPlainText(html) {
     wordwrap: false, // Disable word wrapping to preserve code formatting
   });
 }
+
 const setapqrdata = (aPQRDataOBJ) => {
   const { aPQRData, gridDatas } = aPQRDataOBJ;
   let { tinyData } = aPQRData;
@@ -1774,6 +1773,7 @@ const setapqrdata = (aPQRDataOBJ) => {
     console.error("Invalid data provided");
     return;
   }
+  //Normal Datafields
   pqrData.pqrNo = aPQRData?.pqrId ?? "";
   pqrData.initiator = aPQRData?.initiator ?? "";
   pqrData.productName = aPQRData?.productName ?? "";
@@ -1818,7 +1818,48 @@ const setapqrdata = (aPQRDataOBJ) => {
   pqrData.unitOperation7 = gridDatas?.unitOperation7?.data ?? [];
   pqrData.unitOperation8 = gridDatas?.unitOperation8?.data ?? [];
   pqrData.unitOperation9 = gridDatas?.unitOperation9?.data ?? [];
-  pqrData.unitOperation10 = gridDatas?.unitOperation10  ?.data ?? [];
+  pqrData.unitOperation10 = gridDatas?.unitOperation10?.data ?? [];
+  pqrData.reviewODSTR = gridDatas?.reviewODSTR?.data ?? [];
+  pqrData.reviewODSTR2 = gridDatas?.reviewODSTR2?.data ?? [];
+  pqrData.reviewODSTR3 = gridDatas?.reviewODSTR3?.data ?? [];
+  pqrData.reviewODSTR4 = gridDatas?.reviewODSTR4?.data ?? [];
+  pqrData.reviewODSTR5 = gridDatas?.reviewODSTR5?.data ?? [];
+  pqrData.reviewODSTR6 = gridDatas?.reviewODSTR6?.data ?? [];
+  pqrData.reviewODSTR7 = gridDatas?.reviewODSTR7?.data ?? [];
+  pqrData.reviewODSTR8 = gridDatas?.reviewODSTR8?.data ?? [];
+  pqrData.reviewODSTR9 = gridDatas?.reviewODSTR9?.data ?? [];
+  pqrData.reviewODSTR10 = gridDatas?.reviewODSTR10?.data ?? [];
+  pqrData.reviewODSTR11 = gridDatas?.reviewODSTR11?.data ?? [];
+  pqrData.reviewODSTR12 = gridDatas?.reviewODSTR12?.data ?? [];
+  pqrData.reviewODSTR13 = gridDatas?.reviewODSTR13?.data ?? [];
+  pqrData.reviewODSTR14 = gridDatas?.reviewODSTR14?.data ?? [];
+  pqrData.reviewODSTR15 = gridDatas?.reviewODSTR15?.data ?? [];
+  pqrData.reviewORMETR = gridDatas?.reviewORMETR?.data ?? [];
+  pqrData.reviewOPMTR = gridDatas?.reviewOPMTR?.data ?? [];
+  pqrData.reviewODP = gridDatas?.reviewODP?.data ?? [];
+  pqrData.reviewODP2 = gridDatas?.reviewODP2?.data ?? [];
+  pqrData.reviewODP3 = gridDatas?.reviewODP3?.data ?? [];
+  pqrData.reviewODP4 = gridDatas?.reviewODP4?.data ?? [];
+  pqrData.reviewODP5 = gridDatas?.reviewODP5?.data ?? [];
+  pqrData.reviewODP6 = gridDatas?.reviewODP6?.data ?? [];
+  pqrData.reviewODP7 = gridDatas?.reviewODP7?.data ?? [];
+  pqrData.reviewODP8 = gridDatas?.reviewODP8?.data ?? [];
+  pqrData.reviewODP9 = gridDatas?.reviewODP9?.data ?? [];
+  pqrData.reviewODP10 = gridDatas?.reviewODP10?.data ?? [];
+  pqrData.reviewODPFPTR = gridDatas?.reviewODPFPTR?.data ?? [];
+  pqrData.summaryOOSS = gridDatas?.summaryOOSS?.data ?? [];
+  pqrData.stabilitySR = gridDatas?.stabilitySR?.data ?? [];
+  pqrData.reviewOVIRS = gridDatas?.reviewOVIRS?.data ?? [];
+  pqrData.hVACQStatus = gridDatas?.hVACQStatus?.data ?? [];
+  pqrData.sanitizationASDOU = gridDatas?.sanitizationASDOU?.data ?? [];
+  pqrData.compressedGas = gridDatas?.compressedGas?.data ?? [];
+  pqrData.reviewOfCPD = gridDatas?.reviewOfCPD?.data ?? [];
+  pqrData.previewRPD = gridDatas?.previewRPD?.data ?? [];
+  pqrData.currentOOS = gridDatas?.currentOOS?.data ?? [];
+  pqrData.previewOOS = gridDatas?.previewOOS?.data ?? [];
+
+  pqrData.dossierRR = gridDatas?.dossierRR?.data ?? [];
+  pqrData.dossierRRNma = gridDatas?.dossierRRNma?.data ?? [];
 
   //Tiny
   pqrData.msaSummary = tinyData?.tiny1 ?? "";
@@ -1847,6 +1888,50 @@ const setapqrdata = (aPQRDataOBJ) => {
   pqrData.ooaResultsSummary = tinyData?.tiny24 ?? "";
   pqrData.oolResultsSummary = tinyData?.tiny25 ?? "";
   pqrData.CPPRSSummary = tinyData?.tiny26 ?? "";
+  pqrData.reviewODSTRSummary = tinyData?.tiny27 ?? "";
+  pqrData.reviewORMETRSummary = tinyData?.tiny28 ?? "";
+  pqrData.reviewOPMTRSummary = tinyData?.tiny29 ?? "";
+  pqrData.reviewODPSummary = tinyData?.tiny30 ?? "";
+  pqrData.reviewODPFPTRSummary = tinyData?.tiny31 ?? "";
+  pqrData.summaryOOSSSummary = tinyData?.tiny32 ?? "";
+  pqrData.stabilitySRSummary = tinyData?.tiny33 ?? "";
+  pqrData.reviewOVIRSSummary = tinyData?.tiny34 ?? "";
+  pqrData.reviewOAMVSummary = tinyData?.tiny35 ?? "";
+  pqrData.reviewOCTLSummary = tinyData?.tiny36 ?? "";
+  pqrData.reviewOEMTAWTRSummary = tinyData?.tiny37 ?? "";
+  pqrData.reviewLRSummary = tinyData?.tiny38 ?? "";
+  pqrData.pMDSummary = tinyData?.tiny39 ?? "";
+  pqrData.qDSummary = tinyData?.tiny49 ?? "";
+  pqrData.cDSummary = tinyData?.tiny41 ?? "";
+  pqrData.hVACSummary = tinyData?.tiny42 ?? "";
+  pqrData.sASDOUSummary = tinyData?.tiny43 ?? "";
+  pqrData.engineeringSummary = tinyData?.tiny44 ?? "";
+
+  pqrData.dosVarSummary = tinyData?.tiny53 ?? "";
+  pqrData.dosnewmSummary = tinyData?.tiny54 ?? "";
+  pqrData.recSummary = tinyData?.tiny55 ?? "";
+  pqrData.decSummary = tinyData?.tiny56 ?? "";
+  // last tab
+  pqrData.annexure1 = tinyData?.tiny57 ?? "";
+  pqrData.annexure2 = tinyData?.tiny58 ?? "";
+  pqrData.annexure3 = tinyData?.tiny59 ?? "";
+  pqrData.annexure4 = tinyData?.tiny60 ?? "";
+  pqrData.annexure5 = tinyData?.tiny61 ?? "";
+  pqrData.annexure6 = tinyData?.tiny62 ?? "";
+  pqrData.annexure7 = tinyData?.tiny63 ?? "";
+  pqrData.annexure8 = tinyData?.tiny64 ?? "";
+  pqrData.annexure9 = tinyData?.tiny65 ?? "";
+  pqrData.annexure10 = tinyData?.tiny66 ?? "";
+  pqrData.annexure11 = tinyData?.tiny67 ?? "";
+  pqrData.annexure12 = tinyData?.tiny68 ?? "";
+  pqrData.annexure13 = tinyData?.tiny69 ?? "";
+  pqrData.annexure14 = tinyData?.tiny70 ?? "";
+  pqrData.annexure15 = tinyData?.tiny71 ?? "";
+  pqrData.annexure16 = tinyData?.tiny72 ?? "";
+  pqrData.annexure17 = tinyData?.tiny73 ?? "";
+  pqrData.annexure18 = tinyData?.tiny74 ?? "";
+  pqrData.annexure19 = tinyData?.tiny75 ?? "";
+  pqrData.annexure20 = tinyData?.tiny76 ?? "";
 };
 
 export const generatePdf = async (req, res) => {
@@ -1981,7 +2066,7 @@ export const generatePdfbyId = async (req, res) => {
     res.send(pdfBuffer);
   } catch (error) {
     console.error("Error generating PDF:", error);
-    res.status(500).send("Error generating PDF");
+    res.status(500).send("Error generating PDF", error);
   } finally {
     if (browser) {
       await browser.close();
@@ -2018,12 +2103,12 @@ export const viewReportByID = async (req, res) => {
 
     aPQRData = await aPQRDataRes.json();
 
-
     setapqrdata(aPQRData);
   } catch (error) {
     console.error("Error fetching APQR data:", error);
     return res.status(500).send("Error fetching APQR data");
   }
+
   try {
     req.app.render("report", { product: pqrData }, (err, html) => {
       if (err) {
