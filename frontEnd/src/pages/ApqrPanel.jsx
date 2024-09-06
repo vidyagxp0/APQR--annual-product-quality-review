@@ -17129,7 +17129,7 @@ export default function APQR() {
         ) : null}
         {tab === "CAPA" ? (
           <>
-            <div className="flex items-center justify-center">
+            {/* <div className="flex items-center justify-center">
               <div className="relative w-16 h-16">
                 <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
                   <div className="w-16 h-16 border-t-4 border-b-4 border-blue-500 rounded-full animate-spin">
@@ -17141,6 +17141,12 @@ export default function APQR() {
               <span className="text-[28px] pl-5 text-blue-500 font-semibold">
                 Work In Progress. .........
               </span>
+            </div> */}
+
+            <div className="flex items-center justify-center h-screen">
+              <div className="text-3xl font-bold text-gray-600">
+                No Data To Show Here.....
+              </div>
             </div>
           </>
         ) : null}
