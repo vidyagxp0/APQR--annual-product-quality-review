@@ -553,6 +553,7 @@ export default function APQR() {
       totalReprocessedBatches: "",
     }
   );
+  console.log(pQRData,"data")
   const dispatch = useDispatch();
   const navigate = useNavigate();
 

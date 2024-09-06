@@ -483,6 +483,8 @@ export default function APQR() {
     previewMC: [],
     previewLabI: [],
     currentLabI: [],
+    currentOOSA:[],
+    previewOOSA:[],
   });
 
   const [pQRData, setPQRData] = useReducer(
@@ -1005,7 +1007,6 @@ export default function APQR() {
       "Observed Value": Number(item.observedValue),
     };
   });
-  console.log(paracetamolpHDataH, "graph");
   const paracetamolpHData2 = gridDatas?.reviewODSTR2?.map((item) => {
     return { "Batch No.": item.batchNo, "Observed Value": item.observedValue };
   });
@@ -1244,6 +1245,7 @@ export default function APQR() {
       const response = await axios.get(
         `http://localhost:4000/get-apqr/${editData.pqrId}`
       );
+      console.log(response.data,"data")
       setData(response.data);
       setTinyData(response.data.aPQRData.tinyData);
       const apiData = response.data.gridDatas;
@@ -1284,7 +1286,9 @@ export default function APQR() {
         reviewODP9: apiData.reviewODP9?.data || [],
         reviewODP10: apiData.reviewODP10?.data || [],
         reviewODPFPTR: apiData.reviewODPFPTR?.data || [],
-        summaryOOSS: apiData.currentOOSA?.data || [],
+        currentOOSA:apiData.currentOOSA?.data || [],
+        previewOOSA:apiData.previewOOSA?.data||[],
+        summaryOOSS: apiData.summaryOOSS?.data||[],
         stabilitySR: apiData.stabilitySR?.data || [],
         reviewOVIRS: apiData.reviewOVIRS?.data || [],
         hVACQStatus: apiData.hVACQStatus?.data || [],
