@@ -229,7 +229,10 @@ export default function APQR() {
     yAxisTitle: "Number of Batches",
   };
   const [data, setData] = useState(null);
-
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const location = useLocation();
+  const editData = location.state;
   const [productCodes, setProductCodes] = useState([""]);
 
   const [tiny1, setTiny1] = useState("");
@@ -491,7 +494,7 @@ export default function APQR() {
       ...next,
     }),
     {
-      pqrNO: "",
+      pqrNO: editData.pqrId,
       productName: "",
       genericName: "",
       reviewStartDate: "",
@@ -966,10 +969,7 @@ export default function APQR() {
         break;
     }
   };
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
-  const location = useLocation();
-  const editData = location.state;
+ 
   const getGraphData = (inputData) => {
     const outputData = {
       batchNumbers: [],
