@@ -168,6 +168,17 @@ export default function APQR() {
   const [tiny74, setTiny74] = useState("");
   const [tiny75, setTiny75] = useState("");
   const [tiny76, setTiny76] = useState("");
+  const [tiny77, setTiny77] = useState("");
+  const [tiny78, setTiny78] = useState("");
+  const [tiny79, setTiny79] = useState("");
+  const [tiny80, setTiny80] = useState("");
+  const [tiny81, setTiny81] = useState("");
+  const [tiny82, setTiny82] = useState("");
+  const [tiny83, setTiny83] = useState("");
+  const [tiny84, setTiny84] = useState("");
+  const [tiny85, setTiny85] = useState("");
+
+
   const [reviewOfCPD, setReviewOFCPD] = useState([]);
   const [previewRPD, setPreviewRPD] = useState([]);
   const [currentOOS, setCurrentOOS] = useState([]);
@@ -527,6 +538,25 @@ export default function APQR() {
       case 76:
         setTiny76(data);
         break;
+        case 77:
+          setTiny77(data);
+          break;  case 78:
+          setTiny78(data);
+          break;  case 79:
+          setTiny79(data);
+          break;  case 80:
+          setTiny80(data);
+          break;  case 81:
+          setTiny81(data);
+          break;  case 82:
+          setTiny82(data);
+          break;  case 83:
+          setTiny83(data);
+          break;  case 84:
+          setTiny84(data);
+          break;  case 85:
+          setTiny85(data);
+          break;
     }
   };
 
@@ -567,7 +597,9 @@ export default function APQR() {
   };
 
   useEffect(() => {
+    const today = new Date().toISOString().split('T')[0];
     setPQRData({
+      initiateDate:today,
       productCodes: productCodes,
       manufacturingStage: manufacturingStage,
       manufacturingSAPS: manufacturingSAPS,
@@ -710,6 +742,16 @@ export default function APQR() {
       tiny74: tiny74,
       tiny75: tiny75,
       tiny76: tiny76,
+      tiny77: tiny77,
+      tiny78: tiny78,
+      tiny79: tiny79,
+      tiny80: tiny80,
+      tiny81: tiny81,
+      tiny82: tiny82,
+      tiny83: tiny83,
+      tiny84: tiny84,
+      tiny85: tiny85,
+      
       reviewOfCPD: reviewOfCPD,
       previewRPD: previewRPD,
       previewOOS: previewOOS,
@@ -872,6 +914,15 @@ export default function APQR() {
     tiny74,
     tiny75,
     tiny76,
+    tiny77,
+    tiny78,
+    tiny79,
+    tiny80,
+    tiny81,
+    tiny82,
+    tiny83,
+    tiny84,
+    tiny85,
     reviewOfCPD,
     previewRPD,
     currentOOS,
@@ -5139,6 +5190,7 @@ export default function APQR() {
                         </td>
                         <td>
                           <input
+                            type="number"
                             value={item.LSL}
                             onChange={(e) => {
                               const newData = [...reviewODSTR2];
@@ -5149,6 +5201,7 @@ export default function APQR() {
                         </td>
                         <td>
                           <input
+                            type="number"
                             value={item.USL}
                             onChange={(e) => {
                               const newData = [...reviewODSTR2];
@@ -5159,6 +5212,7 @@ export default function APQR() {
                         </td>
                         <td>
                           <input
+                            type="number"
                             value={item.LCL}
                             onChange={(e) => {
                               const newData = [...reviewODSTR2];
@@ -5169,6 +5223,7 @@ export default function APQR() {
                         </td>
                         <td>
                           <input
+                            type="number"
                             value={item.UCL}
                             onChange={(e) => {
                               const newData = [...reviewODSTR2];
@@ -5179,6 +5234,7 @@ export default function APQR() {
                         </td>
                         <td>
                           <input
+                            type="number"
                             value={item.observedValue}
                             onChange={(e) => {
                               const newData = [...reviewODSTR2];
@@ -5259,6 +5315,7 @@ export default function APQR() {
                         </td>
                         <td>
                           <input
+                            type="number"
                             value={item.LSL}
                             onChange={(e) => {
                               const newData = [...reviewODSTR3];
@@ -5269,6 +5326,7 @@ export default function APQR() {
                         </td>
                         <td>
                           <input
+                            type="number"
                             value={item.USL}
                             onChange={(e) => {
                               const newData = [...reviewODSTR3];
@@ -5279,6 +5337,7 @@ export default function APQR() {
                         </td>
                         <td>
                           <input
+                            type="number"
                             value={item.LCL}
                             onChange={(e) => {
                               const newData = [...reviewODSTR3];
@@ -5289,6 +5348,7 @@ export default function APQR() {
                         </td>
                         <td>
                           <input
+                            type="number"
                             value={item.UCL}
                             onChange={(e) => {
                               const newData = [...reviewODSTR3];
@@ -5299,6 +5359,7 @@ export default function APQR() {
                         </td>
                         <td>
                           <input
+                            type="number"
                             value={item.observedValue}
                             onChange={(e) => {
                               const newData = [...reviewODSTR3];
@@ -5379,6 +5440,7 @@ export default function APQR() {
                         </td>
                         <td>
                           <input
+                            type="number"
                             value={item.LSL}
                             onChange={(e) => {
                               const newData = [...reviewODSTR4];
@@ -5389,6 +5451,7 @@ export default function APQR() {
                         </td>
                         <td>
                           <input
+                            type="number"
                             value={item.USL}
                             onChange={(e) => {
                               const newData = [...reviewODSTR4];
@@ -5399,6 +5462,7 @@ export default function APQR() {
                         </td>
                         <td>
                           <input
+                            type="number"
                             value={item.LCL}
                             onChange={(e) => {
                               const newData = [...reviewODSTR4];
@@ -5409,6 +5473,7 @@ export default function APQR() {
                         </td>{" "}
                         <td>
                           <input
+                            type="number"
                             value={item.UCL}
                             onChange={(e) => {
                               const newData = [...reviewODSTR4];
@@ -5419,6 +5484,7 @@ export default function APQR() {
                         </td>
                         <td>
                           <input
+                            type="number"
                             value={item.observedValue}
                             onChange={(e) => {
                               const newData = [...reviewODSTR4];
@@ -5498,6 +5564,7 @@ export default function APQR() {
                         </td>
                         <td>
                           <input
+                            type="number"
                             value={item.LSL}
                             onChange={(e) => {
                               const newData = [...reviewODSTR5];
@@ -5508,6 +5575,7 @@ export default function APQR() {
                         </td>
                         <td>
                           <input
+                            type="number"
                             value={item.USL}
                             onChange={(e) => {
                               const newData = [...reviewODSTR5];
@@ -5518,6 +5586,7 @@ export default function APQR() {
                         </td>
                         <td>
                           <input
+                            type="number"
                             value={item.LCL}
                             onChange={(e) => {
                               const newData = [...reviewODSTR5];
@@ -5528,6 +5597,7 @@ export default function APQR() {
                         </td>
                         <td>
                           <input
+                            type="number"
                             value={item.UCL}
                             onChange={(e) => {
                               const newData = [...reviewODSTR5];
@@ -5538,6 +5608,7 @@ export default function APQR() {
                         </td>
                         <td>
                           <input
+                            type="number"
                             value={item.observedValue}
                             onChange={(e) => {
                               const newData = [...reviewODSTR5];
@@ -5618,6 +5689,7 @@ export default function APQR() {
                         </td>
                         <td>
                           <input
+                            type="number"
                             value={item.LSL}
                             onChange={(e) => {
                               const newData = [...reviewODSTR6];
@@ -5628,6 +5700,7 @@ export default function APQR() {
                         </td>
                         <td>
                           <input
+                            type="number"
                             value={item.USL}
                             onChange={(e) => {
                               const newData = [...reviewODSTR6];
@@ -5638,6 +5711,7 @@ export default function APQR() {
                         </td>
                         <td>
                           <input
+                            type="number"
                             value={item.LCL}
                             onChange={(e) => {
                               const newData = [...reviewODSTR6];
@@ -5648,6 +5722,7 @@ export default function APQR() {
                         </td>
                         <td>
                           <input
+                            type="number"
                             value={item.UCL}
                             onChange={(e) => {
                               const newData = [...reviewODSTR6];
@@ -5658,6 +5733,7 @@ export default function APQR() {
                         </td>
                         <td>
                           <input
+                            type="number"
                             value={item.observedValue}
                             onChange={(e) => {
                               const newData = [...reviewODSTR6];
@@ -5738,6 +5814,7 @@ export default function APQR() {
                         </td>
                         <td>
                           <input
+                            type="number"
                             value={item.LSL}
                             onChange={(e) => {
                               const newData = [...reviewODSTR7];
@@ -5748,6 +5825,7 @@ export default function APQR() {
                         </td>
                         <td>
                           <input
+                            type="number"
                             value={item.USL}
                             onChange={(e) => {
                               const newData = [...reviewODSTR7];
@@ -5758,6 +5836,7 @@ export default function APQR() {
                         </td>
                         <td>
                           <input
+                            type="number"
                             value={item.LCL}
                             onChange={(e) => {
                               const newData = [...reviewODSTR7];
@@ -5768,6 +5847,7 @@ export default function APQR() {
                         </td>
                         <td>
                           <input
+                            type="number"
                             value={item.UCL}
                             onChange={(e) => {
                               const newData = [...reviewODSTR7];
@@ -5778,6 +5858,7 @@ export default function APQR() {
                         </td>
                         <td>
                           <input
+                            type="number"
                             value={item.observedValue}
                             onChange={(e) => {
                               const newData = [...reviewODSTR7];
@@ -5858,6 +5939,7 @@ export default function APQR() {
                         </td>
                         <td>
                           <input
+                            type="number"
                             value={item.LSL}
                             onChange={(e) => {
                               const newData = [...reviewODSTR8];
@@ -5868,6 +5950,7 @@ export default function APQR() {
                         </td>
                         <td>
                           <input
+                            type="number"
                             value={item.USL}
                             onChange={(e) => {
                               const newData = [...reviewODSTR8];
@@ -5878,6 +5961,7 @@ export default function APQR() {
                         </td>
                         <td>
                           <input
+                            type="number"
                             value={item.LCL}
                             onChange={(e) => {
                               const newData = [...reviewODSTR8];
@@ -5888,6 +5972,7 @@ export default function APQR() {
                         </td>
                         <td>
                           <input
+                            type="number"
                             value={item.UCL}
                             onChange={(e) => {
                               const newData = [...reviewODSTR8];
@@ -5898,6 +5983,7 @@ export default function APQR() {
                         </td>
                         <td>
                           <input
+                            type="number"
                             value={item.observedValue}
                             onChange={(e) => {
                               const newData = [...reviewODSTR8];
@@ -5978,6 +6064,7 @@ export default function APQR() {
                         </td>
                         <td>
                           <input
+                            type="number"
                             value={item.LSL}
                             onChange={(e) => {
                               const newData = [...reviewODSTR9];
@@ -5988,6 +6075,7 @@ export default function APQR() {
                         </td>
                         <td>
                           <input
+                            type="number"
                             value={item.USL}
                             onChange={(e) => {
                               const newData = [...reviewODSTR9];
@@ -5998,6 +6086,7 @@ export default function APQR() {
                         </td>
                         <td>
                           <input
+                            type="number"
                             value={item.LCL}
                             onChange={(e) => {
                               const newData = [...reviewODSTR9];
@@ -6008,6 +6097,7 @@ export default function APQR() {
                         </td>
                         <td>
                           <input
+                            type="number"
                             value={item.UCL}
                             onChange={(e) => {
                               const newData = [...reviewODSTR9];
@@ -6018,6 +6108,7 @@ export default function APQR() {
                         </td>
                         <td>
                           <input
+                            type="number"
                             value={item.observedValue}
                             onChange={(e) => {
                               const newData = [...reviewODSTR9];
@@ -6098,6 +6189,7 @@ export default function APQR() {
                         </td>
                         <td>
                           <input
+                            type="number"
                             value={item.LSL}
                             onChange={(e) => {
                               const newData = [...reviewODSTR10];
@@ -6108,6 +6200,7 @@ export default function APQR() {
                         </td>
                         <td>
                           <input
+                            type="number"
                             value={item.USL}
                             onChange={(e) => {
                               const newData = [...reviewODSTR10];
@@ -6118,6 +6211,7 @@ export default function APQR() {
                         </td>
                         <td>
                           <input
+                            type="number"
                             value={item.LCL}
                             onChange={(e) => {
                               const newData = [...reviewODSTR10];
@@ -6128,6 +6222,7 @@ export default function APQR() {
                         </td>
                         <td>
                           <input
+                            type="number"
                             value={item.UCL}
                             onChange={(e) => {
                               const newData = [...reviewODSTR10];
@@ -6138,6 +6233,7 @@ export default function APQR() {
                         </td>
                         <td>
                           <input
+                            type="number"
                             value={item.observedValue}
                             onChange={(e) => {
                               const newData = [...reviewODSTR10];
@@ -6218,6 +6314,7 @@ export default function APQR() {
                         </td>
                         <td>
                           <input
+                            type="number"
                             value={item.LSL}
                             onChange={(e) => {
                               const newData = [...reviewODSTR11];
@@ -6228,6 +6325,7 @@ export default function APQR() {
                         </td>
                         <td>
                           <input
+                            type="number"
                             value={item.USL}
                             onChange={(e) => {
                               const newData = [...reviewODSTR11];
@@ -6238,6 +6336,7 @@ export default function APQR() {
                         </td>
                         <td>
                           <input
+                            type="number"
                             value={item.LCL}
                             onChange={(e) => {
                               const newData = [...reviewODSTR11];
@@ -6248,6 +6347,7 @@ export default function APQR() {
                         </td>
                         <td>
                           <input
+                            type="number"
                             value={item.UCL}
                             onChange={(e) => {
                               const newData = [...reviewODSTR11];
@@ -6258,6 +6358,7 @@ export default function APQR() {
                         </td>
                         <td>
                           <input
+                            type="number"
                             value={item.observedValue}
                             onChange={(e) => {
                               const newData = [...reviewODSTR11];
@@ -6338,6 +6439,7 @@ export default function APQR() {
                         </td>
                         <td>
                           <input
+                            type="number"
                             value={item.LSL}
                             onChange={(e) => {
                               const newData = [...reviewODSTR12];
@@ -6348,6 +6450,7 @@ export default function APQR() {
                         </td>
                         <td>
                           <input
+                            type="number"
                             value={item.USL}
                             onChange={(e) => {
                               const newData = [...reviewODSTR12];
@@ -6358,6 +6461,7 @@ export default function APQR() {
                         </td>
                         <td>
                           <input
+                            type="number"
                             value={item.LCL}
                             onChange={(e) => {
                               const newData = [...reviewODSTR12];
@@ -6368,6 +6472,7 @@ export default function APQR() {
                         </td>
                         <td>
                           <input
+                            type="number"
                             value={item.UCL}
                             onChange={(e) => {
                               const newData = [...reviewODSTR12];
@@ -6378,6 +6483,7 @@ export default function APQR() {
                         </td>
                         <td>
                           <input
+                            type="number"
                             value={item.observedValue}
                             onChange={(e) => {
                               const newData = [...reviewODSTR12];
@@ -6458,6 +6564,7 @@ export default function APQR() {
                         </td>
                         <td>
                           <input
+                            type="number"
                             value={item.LSL}
                             onChange={(e) => {
                               const newData = [...reviewODSTR13];
@@ -6468,6 +6575,7 @@ export default function APQR() {
                         </td>
                         <td>
                           <input
+                            type="number"
                             value={item.USL}
                             onChange={(e) => {
                               const newData = [...reviewODSTR13];
@@ -6488,6 +6596,7 @@ export default function APQR() {
                         </td>
                         <td>
                           <input
+                            type="number"
                             value={item.UCL}
                             onChange={(e) => {
                               const newData = [...reviewODSTR13];
@@ -6498,6 +6607,7 @@ export default function APQR() {
                         </td>
                         <td>
                           <input
+                            type="number"
                             value={item.observedValue}
                             onChange={(e) => {
                               const newData = [...reviewODSTR13];
@@ -6578,6 +6688,7 @@ export default function APQR() {
                         </td>
                         <td>
                           <input
+                            type="number"
                             value={item.LSL}
                             onChange={(e) => {
                               const newData = [...reviewODSTR14];
@@ -6588,6 +6699,7 @@ export default function APQR() {
                         </td>
                         <td>
                           <input
+                            type="number"
                             value={item.USL}
                             onChange={(e) => {
                               const newData = [...reviewODSTR14];
@@ -6598,6 +6710,7 @@ export default function APQR() {
                         </td>
                         <td>
                           <input
+                            type="number"
                             value={item.LCL}
                             onChange={(e) => {
                               const newData = [...reviewODSTR14];
@@ -6608,6 +6721,7 @@ export default function APQR() {
                         </td>
                         <td>
                           <input
+                            type="number"
                             value={item.UCL}
                             onChange={(e) => {
                               const newData = [...reviewODSTR14];
@@ -6618,6 +6732,7 @@ export default function APQR() {
                         </td>
                         <td>
                           <input
+                            type="number"
                             value={item.observedValue}
                             onChange={(e) => {
                               const newData = [...reviewODSTR14];
@@ -6698,6 +6813,7 @@ export default function APQR() {
                         </td>
                         <td>
                           <input
+                            type="number"
                             value={item.LSL}
                             onChange={(e) => {
                               const newData = [...reviewODSTR15];
@@ -6708,6 +6824,7 @@ export default function APQR() {
                         </td>
                         <td>
                           <input
+                            type="number"
                             value={item.USL}
                             onChange={(e) => {
                               const newData = [...reviewODSTR15];
@@ -6718,6 +6835,7 @@ export default function APQR() {
                         </td>
                         <td>
                           <input
+                            type="number"
                             value={item.LCL}
                             onChange={(e) => {
                               const newData = [...reviewODSTR15];
@@ -6728,6 +6846,7 @@ export default function APQR() {
                         </td>
                         <td>
                           <input
+                            type="number"
                             value={item.UCL}
                             onChange={(e) => {
                               const newData = [...reviewODSTR15];
@@ -6738,6 +6857,7 @@ export default function APQR() {
                         </td>
                         <td>
                           <input
+                            type="number"
                             value={item.observedValue}
                             onChange={(e) => {
                               const newData = [...reviewODSTR15];
@@ -8888,7 +9008,7 @@ export default function APQR() {
               </table>
             </div>
             <h4 className="gridName pt-4">Deviation Summary</h4>
-            <TinyEditor />
+            <TinyEditor editorContent={tiny45} setEditorContent={setTinyContent} tinyNo={45} />
 
             <div className="sub-head"> Review of OOS (Microbiological)</div>
 
@@ -9146,7 +9266,7 @@ export default function APQR() {
               </table>
             </div>
             <h4 className="gridName pt-4">OOS Summary</h4>
-            <TinyEditor />
+            <TinyEditor editorContent={tiny46} setEditorContent={setTinyContent} tinyNo={46} />
 
             <div className="sub-head"> Review of OOAC (Microbiological)</div>
 
@@ -9404,7 +9524,7 @@ export default function APQR() {
               </table>
             </div>
             <h4 className="gridName pt-4">OOAC Summary</h4>
-            <TinyEditor />
+            <TinyEditor editorContent={tiny47} setEditorContent={setTinyContent} tinyNo={47} />
 
             <div className="sub-head"> Review of OOAL(Microbiological)</div>
 
@@ -9662,7 +9782,7 @@ export default function APQR() {
               </table>
             </div>
             <h4 className="gridName pt-4">OOAL Summary</h4>
-            <TinyEditor />
+            <TinyEditor editorContent={tiny48} setEditorContent={setTinyContent} tinyNo={48} />
 
             <div className="sub-head">Review of OOS (Analytical)</div>
 
@@ -9920,7 +10040,7 @@ export default function APQR() {
               </table>
             </div>
             <h4 className="gridName pt-4">OOSA Summary</h4>
-            <TinyEditor />
+            <TinyEditor editorContent={tiny49} setEditorContent={setTinyContent} tinyNo={49} />
 
             <div className="sub-head">Review of OOT (Analytical)</div>
 
@@ -10178,7 +10298,7 @@ export default function APQR() {
             </div>
 
             <h4 className="gridName pt-4">OOT Summary</h4>
-            <TinyEditor />
+            <TinyEditor editorContent={tiny50} setEditorContent={setTinyContent} tinyNo={50} />
 
             <div className="sub-head">Review of Change Controls</div>
 
@@ -10437,7 +10557,7 @@ export default function APQR() {
             </div>
 
             <h4 className="gridName pt-4">Change Control Summary</h4>
-            <TinyEditor />
+            <TinyEditor editorContent={tiny51} setEditorContent={setTinyContent} tinyNo={51} />
 
             <div className="sub-head">Review of Lab Incident</div>
 
@@ -10695,7 +10815,7 @@ export default function APQR() {
             </div>
 
             <h4 className="gridName pt-4">Lab Incident Summary</h4>
-            <TinyEditor />
+            <TinyEditor editorContent={tiny52} setEditorContent={setTinyContent} tinyNo={52} />
 
             <div className="sub-head">Review of Market Complaints</div>
 
@@ -10953,7 +11073,7 @@ export default function APQR() {
             </div>
 
             <h4 className="gridName pt-4">Market Complaints Summary</h4>
-            <TinyEditor />
+            <TinyEditor editorContent={tiny53} setEditorContent={setTinyContent} tinyNo={53} />
 
             <div className="sub-head">Quality Related Notification</div>
             <div className="gridName pt-4"> Current Review Period Quality Related Notification</div>
@@ -11091,22 +11211,22 @@ export default function APQR() {
               </table>
             </div>
             <h4 className="gridName pt-4">previous Review Period Quality Related Notification</h4>
-            <TinyEditor editorContent={tiny45} setEditorContent={setTinyContent} tinyNo={45} />
+            <TinyEditor editorContent={tiny54} setEditorContent={setTinyContent} tinyNo={54} />
 
             <h4 className="gridName pt-4">Review of Product Recalls</h4>
-            <TinyEditor editorContent={tiny46} setEditorContent={setTinyContent} tinyNo={46} />
+            <TinyEditor editorContent={tiny55} setEditorContent={setTinyContent} tinyNo={55} />
             <h4 className="gridName pt-4">Review of Returned Products</h4>
-            <TinyEditor editorContent={tiny47} setEditorContent={setTinyContent} tinyNo={47} />
+            <TinyEditor editorContent={tiny56} setEditorContent={setTinyContent} tinyNo={56} />
             <h4 className="gridName pt-4">Review of Salvaged Drugs</h4>
-            <TinyEditor editorContent={tiny48} setEditorContent={setTinyContent} tinyNo={48} />
+            <TinyEditor editorContent={tiny57} setEditorContent={setTinyContent} tinyNo={57} />
             <h4 className="gridName pt-4">Review of previous PQR recommendations</h4>
-            <TinyEditor editorContent={tiny49} setEditorContent={setTinyContent} tinyNo={49} />
+            <TinyEditor editorContent={tiny58} setEditorContent={setTinyContent} tinyNo={58} />
             <h4 className="gridName pt-4">Review of Quality Agreements</h4>
-            <TinyEditor editorContent={tiny50} setEditorContent={setTinyContent} tinyNo={50} />
+            <TinyEditor editorContent={tiny59} setEditorContent={setTinyContent} tinyNo={59} />
             <h4 className="gridName pt-4">Review of Manufacturing Authorizations</h4>
-            <TinyEditor editorContent={tiny51} setEditorContent={setTinyContent} tinyNo={51} />
+            <TinyEditor editorContent={tiny60} setEditorContent={setTinyContent} tinyNo={60} />
             <h4 className="gridName pt-4">Review of Open Validations</h4>
-            <TinyEditor editorContent={tiny52} setEditorContent={setTinyContent} tinyNo={52} />
+            <TinyEditor editorContent={tiny61} setEditorContent={setTinyContent} tinyNo={61} />
           </div>
         ) : null}
         {tab === "RR" ? (
@@ -11190,7 +11310,7 @@ export default function APQR() {
 
               <div>
                 <h4 className="gridName mt-5">Summary</h4>
-                <TinyEditor editorContent={tiny53} setEditorContent={setTinyContent} tinyNo={53} />
+                <TinyEditor editorContent={tiny62} setEditorContent={setTinyContent} tinyNo={62} />
               </div>
 
               <div className="gridName">New marketing authorisation</div>
@@ -11293,9 +11413,9 @@ export default function APQR() {
                 <div>
                   <h4 className="gridName mt-5">Summary</h4>
                   <TinyEditor
-                    editorContent={tiny54}
+                    editorContent={tiny63}
                     setEditorContent={setTinyContent}
-                    tinyNo={54}
+                    tinyNo={63}
                   />
                 </div>
               </div>
@@ -11306,7 +11426,7 @@ export default function APQR() {
           <>
             <div>
               <h4 className="gridName">Recommendations Summary</h4>
-              <TinyEditor editorContent={tiny55} setEditorContent={setTinyContent} tinyNo={55} />
+              <TinyEditor editorContent={tiny64} setEditorContent={setTinyContent} tinyNo={64} />
             </div>
           </>
         ) : null}
@@ -11331,7 +11451,7 @@ export default function APQR() {
           <>
             <div>
               <h4 className="gridName">Discussion Evaluation and Conclusion</h4>
-              <TinyEditor editorContent={tiny56} setEditorContent={setTinyContent} tinyNo={56} />
+              <TinyEditor editorContent={tiny65} setEditorContent={setTinyContent} tinyNo={65} />
             </div>
           </>
         ) : null}
@@ -11340,83 +11460,83 @@ export default function APQR() {
             <div className="container">
               <div>
                 <h4 className="gridName">Annexure 1</h4>
-                <TinyEditor editorContent={tiny57} setEditorContent={setTinyContent} tinyNo={57} />
-              </div>
-              <div>
-                <h4 className="gridName">Annexure 2</h4>
-                <TinyEditor editorContent={tiny58} setEditorContent={setTinyContent} tinyNo={58} />
-              </div>
-              <div>
-                <h4 className="gridName">Annexure 3</h4>
-                <TinyEditor editorContent={tiny59} setEditorContent={setTinyContent} tinyNo={59} />
-              </div>
-              <div>
-                <h4 className="gridName">Annexure 4</h4>
-                <TinyEditor editorContent={tiny60} setEditorContent={setTinyContent} tinyNo={60} />
-              </div>
-              <div>
-                <h4 className="gridName">Annexure 5</h4>
-                <TinyEditor editorContent={tiny61} setEditorContent={setTinyContent} tinyNo={61} />
-              </div>
-              <div>
-                <h4 className="gridName">Annexure 6</h4>
-                <TinyEditor editorContent={tiny62} setEditorContent={setTinyContent} tinyNo={62} />
-              </div>
-              <div>
-                <h4 className="gridName">Annexure 7</h4>
-                <TinyEditor editorContent={tiny63} setEditorContent={setTinyContent} tinyNo={63} />
-              </div>
-              <div>
-                <h4 className="gridName">Annexure 8</h4>
-                <TinyEditor editorContent={tiny64} setEditorContent={setTinyContent} tinyNo={64} />
-              </div>
-              <div>
-                <h4 className="gridName">Annexure 9</h4>
-                <TinyEditor editorContent={tiny65} setEditorContent={setTinyContent} tinyNo={65} />
-              </div>
-              <div>
-                <h4 className="gridName">Annexure 10</h4>
                 <TinyEditor editorContent={tiny66} setEditorContent={setTinyContent} tinyNo={66} />
               </div>
               <div>
-                <h4 className="gridName">Annexure 11</h4>
+                <h4 className="gridName">Annexure 2</h4>
                 <TinyEditor editorContent={tiny67} setEditorContent={setTinyContent} tinyNo={67} />
               </div>
               <div>
-                <h4 className="gridName">Annexure 12</h4>
+                <h4 className="gridName">Annexure 3</h4>
                 <TinyEditor editorContent={tiny68} setEditorContent={setTinyContent} tinyNo={68} />
               </div>
               <div>
-                <h4 className="gridName">Annexure 13</h4>
+                <h4 className="gridName">Annexure 4</h4>
                 <TinyEditor editorContent={tiny69} setEditorContent={setTinyContent} tinyNo={69} />
               </div>
               <div>
-                <h4 className="gridName">Annexure 14</h4>
+                <h4 className="gridName">Annexure 5</h4>
                 <TinyEditor editorContent={tiny70} setEditorContent={setTinyContent} tinyNo={70} />
               </div>
               <div>
-                <h4 className="gridName">Annexure 15</h4>
+                <h4 className="gridName">Annexure 6</h4>
                 <TinyEditor editorContent={tiny71} setEditorContent={setTinyContent} tinyNo={71} />
               </div>
               <div>
-                <h4 className="gridName">Annexure 16</h4>
+                <h4 className="gridName">Annexure 7</h4>
                 <TinyEditor editorContent={tiny72} setEditorContent={setTinyContent} tinyNo={72} />
               </div>
               <div>
-                <h4 className="gridName">Annexure 17</h4>
+                <h4 className="gridName">Annexure 8</h4>
                 <TinyEditor editorContent={tiny73} setEditorContent={setTinyContent} tinyNo={73} />
               </div>
               <div>
-                <h4 className="gridName">Annexure 18</h4>
+                <h4 className="gridName">Annexure 9</h4>
                 <TinyEditor editorContent={tiny74} setEditorContent={setTinyContent} tinyNo={74} />
               </div>
               <div>
-                <h4 className="gridName">Annexure 19</h4>
+                <h4 className="gridName">Annexure 10</h4>
                 <TinyEditor editorContent={tiny75} setEditorContent={setTinyContent} tinyNo={75} />
               </div>
               <div>
-                <h4 className="gridName">Annexure 20</h4>
+                <h4 className="gridName">Annexure 11</h4>
                 <TinyEditor editorContent={tiny76} setEditorContent={setTinyContent} tinyNo={76} />
+              </div>
+              <div>
+                <h4 className="gridName">Annexure 12</h4>
+                <TinyEditor editorContent={tiny77} setEditorContent={setTinyContent} tinyNo={77} />
+              </div>
+              <div>
+                <h4 className="gridName">Annexure 13</h4>
+                <TinyEditor editorContent={tiny78} setEditorContent={setTinyContent} tinyNo={78} />
+              </div>
+              <div>
+                <h4 className="gridName">Annexure 14</h4>
+                <TinyEditor editorContent={tiny79} setEditorContent={setTinyContent} tinyNo={79} />
+              </div>
+              <div>
+                <h4 className="gridName">Annexure 15</h4>
+                <TinyEditor editorContent={tiny80} setEditorContent={setTinyContent} tinyNo={80} />
+              </div>
+              <div>
+                <h4 className="gridName">Annexure 16</h4>
+                <TinyEditor editorContent={tiny81} setEditorContent={setTinyContent} tinyNo={81} />
+              </div>
+              <div>
+                <h4 className="gridName">Annexure 17</h4>
+                <TinyEditor editorContent={tiny82} setEditorContent={setTinyContent} tinyNo={82} />
+              </div>
+              <div>
+                <h4 className="gridName">Annexure 18</h4>
+                <TinyEditor editorContent={tiny83} setEditorContent={setTinyContent} tinyNo={83} />
+              </div>
+              <div>
+                <h4 className="gridName">Annexure 19</h4>
+                <TinyEditor editorContent={tiny84} setEditorContent={setTinyContent} tinyNo={84} />
+              </div>
+              <div>
+                <h4 className="gridName">Annexure 20</h4>
+                <TinyEditor editorContent={tiny85} setEditorContent={setTinyContent} tinyNo={85} />
               </div>
             </div>
           </>

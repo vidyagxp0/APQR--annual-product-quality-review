@@ -1243,7 +1243,7 @@ export default function APQR() {
       const response = await axios.get(
         `http://localhost:4000/get-apqr/${editData.pqrId}`
       );
-      // console.log(response.data,"data")
+      console.log(response.data,"data")
       setData(response.data);
       setTinyData(response.data.aPQRData.tinyData);
       const apiData = response.data.gridDatas;
@@ -1530,13 +1530,7 @@ export default function APQR() {
     // setManufacturingStage([...manufacturingStage, ...processedData]);
   };
 
-  const handleInputChange = (event) => {
-    const { name, value } = event.target;
-    setPQRData({
-      ...pQRData,
-      [name]: value,
-    });
-  };
+ 
   const addManufacturingStageRow = () => {
     const newRow = {
       productName: "",
@@ -2785,6 +2779,13 @@ export default function APQR() {
     });
   };
 
+  const formatDate = (dateString) => {
+    if (!dateString) return ''; // Return an empty string if the date is invalid or missing  
+    const date = new Date(dateString);
+    if (isNaN(date.getTime())) return ''; // Return an empty string for invalid dates
+    return date.toISOString().split('T')[0]; // Convert to 'YYYY-MM-DD' format
+  };
+
   const handleProductCodeChange = (index, value) => {
     const newProductCodes = [...pQRData.productCodes];
     newProductCodes[index] = value;
@@ -2873,8 +2874,8 @@ export default function APQR() {
                 <input
                   disabled
                   type="date"
-                  value={pQRData.initiateDate}
-                  onChange={handleInputChange}
+                  value={formatDate(pQRData.initiateDate)}
+                  onChange={(e)=>{setPQRData({initiateDate:e.target.value})}}
                 />
               </div>
               <div className="group-input">
@@ -2952,7 +2953,7 @@ export default function APQR() {
                 <label>Review Start Date</label>
                 <input
                   type="date"
-                  value={pQRData.reviewStartDate}
+                  value={formatDate(pQRData.reviewStartDate)}
                   onChange={(e) => {
                     setPQRData({ reviewStartDate: e.target.value });
                   }}
@@ -2962,7 +2963,7 @@ export default function APQR() {
                 <label>Review End Date</label>
                 <input
                   type="date"
-                  value={pQRData.reviewEndDate}
+                  value={formatDate(pQRData.reviewEndDate)}
                   onChange={(e) => {
                     setPQRData({ reviewEndDate: e.target.value });
                   }}
