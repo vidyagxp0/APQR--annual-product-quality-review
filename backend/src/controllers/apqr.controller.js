@@ -14,6 +14,7 @@ export const createApqr = async (req, res) => {
         genericName: req.body.genericName,
         dosageForm: req.body.dosageForm,
         initiator: req.body.initiator,
+        initiateDate:req.body.initiateDate,
         reviewStartDate: req.body.reviewStartDate ? new Date(req.body.reviewStartDate) : null,
         reviewEndDate: req.body.reviewEndDate ? new Date(req.body.reviewEndDate) : null,
         mfgLicNo: req.body.mfgLicNo,
@@ -104,6 +105,13 @@ export const createApqr = async (req, res) => {
           tiny78: req.body.tiny78,
           tiny79: req.body.tiny79,
           tiny80: req.body.tiny80,
+          tiny81: req.body.tiny81,
+          tiny82: req.body.tiny82,
+          tiny83: req.body.tiny83,
+          tiny84: req.body.tiny84,
+          tiny85: req.body.tiny85,
+
+
         },
       },
       { transaction: t }
@@ -394,6 +402,7 @@ export const updateAPQRById = async (req, res) => {
         productName: req.body.pQRData.productName || existingAPQR.productName,
         productCodes:
           req.body.pQRData.productCodes || existingAPQR.productCodes,
+          initiateDate:req.body.initiateDate||existingAPQR.initiateDate,
         genericName: req.body.pQRData.genericName || existingAPQR.genericName,
         dosageForm: req.body.pQRData.dosageForm || existingAPQR.dosageForm,
         initiator: req.body.initiator || existingAPQR.initiator,
