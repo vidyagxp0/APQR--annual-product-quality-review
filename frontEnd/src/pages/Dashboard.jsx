@@ -30,7 +30,7 @@ export default function Dashboard() {
   const downloadPDF = async (pqrId) => {
     setLoading((prevLoading) => ({ ...prevLoading, [pqrId]: true }));
     try {
-      const response = await fetch(`http://localhost:4000/report/generate-pdf/${pqrId}`);
+      const response = await fetch(`http://localhost:4000/report/generate-report/${pqrId}`);
       const blob = await response.blob();
       const url = window.URL.createObjectURL(new Blob([blob]));
       const link = document.createElement("a");

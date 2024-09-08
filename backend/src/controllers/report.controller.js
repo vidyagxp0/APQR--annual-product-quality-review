@@ -2,9 +2,7 @@ import puppeteer from "puppeteer";
 import path from "path";
 import { fileURLToPath } from "url";
 import { htmlToText } from "html-to-text";
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+import { getBase64Image } from "../../index.js";
 
 // Sample data to be passed to the template
 const pqrData = {
@@ -1934,66 +1932,6 @@ const setapqrdata = (aPQRDataOBJ) => {
   pqrData.annexure20 = tinyData?.tiny76 ?? "";
 };
 
-export const generatePdf = async (req, res) => {
-  let browser;
-  try {
-    // Render the main HTML with EJS
-    const htmlContent = await new Promise((resolve, reject) => {
-      req.app.render("report", { product: pqrData }, (err, html) => {
-        if (err) return reject(err);
-        resolve(html);
-      });
-    });
-
-    // Render the header and footer with EJS
-    const headerHtml = await new Promise((resolve, reject) => {
-      req.app.render("header", { title: "Example Product Report" }, (err, html) => {
-        if (err) return reject(err);
-        resolve(html);
-      });
-    });
-
-    const footerHtml = await new Promise((resolve, reject) => {
-      req.app.render("footer", {}, (err, html) => {
-        if (err) return reject(err);
-        resolve(html);
-      });
-    });
-
-    browser = await puppeteer.launch({
-      headless: true,
-      args: ["--no-sandbox", "--disable-setuid-sandbox"],
-    });
-    const page = await browser.newPage();
-    await page.setContent(htmlContent, { waitUntil: "networkidle0" });
-
-    const pdfBuffer = await page.pdf({
-      format: "A4",
-      printBackground: true,
-      displayHeaderFooter: true,
-      headerTemplate: headerHtml,
-      footerTemplate: footerHtml,
-      margin: {
-        top: "160px",
-        right: "50px",
-        bottom: "50px",
-        left: "50px",
-      },
-    });
-
-    res.setHeader("Content-Disposition", "attachment; filename=APQR_Report.pdf");
-    res.setHeader("Content-Type", "application/pdf");
-    res.send(pdfBuffer);
-  } catch (error) {
-    console.error("Error generating PDF:", error);
-    res.status(500).send("Error generating PDF");
-  } finally {
-    if (browser) {
-      await browser.close();
-    }
-  }
-};
-
 export const generatePdfbyId = async (req, res) => {
   const apqrId = req.params.id;
   let aPQRData;
@@ -2014,6 +1952,9 @@ export const generatePdfbyId = async (req, res) => {
   }
   let browser;
   try {
+    const base64Logo = await getBase64Image("public/gxplogo.png");
+    const base64Logo2 = await getBase64Image("public/connexoLogo.jpg");
+
     if (!aPQRData) {
       return res.status(404).json({ error: true, message: "APQR not found" });
     }
@@ -2027,14 +1968,18 @@ export const generatePdfbyId = async (req, res) => {
 
     // Render the header and footer with EJS
     const headerHtml = await new Promise((resolve, reject) => {
-      req.app.render("header", { title: "Example Product Report" }, (err, html) => {
-        if (err) return reject(err);
-        resolve(html);
-      });
+      req.app.render(
+        "header",
+        { base64Image: base64Logo, base64Logo2: base64Logo2, product: pqrData },
+        (err, html) => {
+          if (err) return reject(err);
+          resolve(html);
+        }
+      );
     });
 
     const footerHtml = await new Promise((resolve, reject) => {
-      req.app.render("footer", {}, (err, html) => {
+      req.app.render("footer", { product: pqrData }, (err, html) => {
         if (err) return reject(err);
         resolve(html);
       });
@@ -2071,21 +2016,6 @@ export const generatePdfbyId = async (req, res) => {
     if (browser) {
       await browser.close();
     }
-  }
-};
-
-export const viewReport = (req, res) => {
-  try {
-    req.app.render("report", { product: pqrData }, (err, html) => {
-      if (err) {
-        console.error("Error rendering HTML:", err);
-        return res.status(500).send("Error rendering HTML");
-      }
-      res.send(html);
-    });
-  } catch (error) {
-    console.error("Error viewing report:", error);
-    res.status(500).send("Error viewing report");
   }
 };
 
