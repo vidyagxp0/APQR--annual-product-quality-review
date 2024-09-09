@@ -64,7 +64,7 @@
 
 //   useEffect(() => {
 
-//     let tiny_key = '';
+//     let api_key = '';
 //     // Initialize TinyMCE when the component mounts
 //     if (window.tinymce) {
 //       window.tinymce.init({
@@ -80,7 +80,7 @@
 //           method: 'POST',
 //           headers: {
 //               'Content-Type': 'application/json',
-//               'Authorization': `Bearer ${tiny_key}`
+//               'Authorization': `Bearer ${api_key}`
 //           },
 //           body: JSON.stringify({
 //               model: 'gpt-3.5-turbo',
@@ -183,7 +183,7 @@ export default function TinyEditor({ editorContent, setEditorContent, tinyNo }) 
   const editorRef = useRef(null);
 
   useEffect(() => {
-    let tiny_key = '';
+    let api_key = '';
 
     // Initialize TinyMCE when the component mounts
     if (window.tinymce) {
@@ -200,7 +200,7 @@ export default function TinyEditor({ editorContent, setEditorContent, tinyNo }) 
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',
-              'Authorization': `Bearer ${tiny_key}`
+              'Authorization': `Bearer ${api_key}`
             },
             body: JSON.stringify({
               model: 'gpt-3.5-turbo',
