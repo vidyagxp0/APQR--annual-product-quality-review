@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Header from "../Component/Header";
 import BottomHeader from "../Component/BottomHeader";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { BsFillFileEarmarkPdfFill } from "react-icons/bs";
 import axios from "axios";
 
@@ -10,6 +10,7 @@ export default function Dashboard() {
   const [loading, setLoading] = useState({});
   const [tableDataLoading, setTableDataLoading] = useState(false);
   const [data, setData] = useState([]);
+  const location = useLocation(); // To track navigation and state
 
   useEffect(() => {
     const fetchData = async () => {
@@ -24,9 +25,8 @@ export default function Dashboard() {
       }
     };
 
-    fetchData();
-  }, []);
-
+    setTimeout(fetchData, 500);
+  }, [location]);
   const downloadPDF = async (pqrId) => {
     setLoading((prevLoading) => ({ ...prevLoading, [pqrId]: true }));
     try {
@@ -51,7 +51,7 @@ export default function Dashboard() {
     <>
       <Header />
       <BottomHeader />
-      <div className="container mt-5 w-full mx-12" style={{ width: "100%", maxWidth: "95%" }}>
+      <div className="container mt-5 mb-10 w-full mx-12" style={{ width: "100%", maxWidth: "95%" }}>
         <table className="w-full">
           <thead className="bg-slate-500 text-white">
             <tr>
