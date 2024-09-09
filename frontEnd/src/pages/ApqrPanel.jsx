@@ -484,8 +484,8 @@ export default function APQR() {
     previewMC: [],
     previewLabI: [],
     currentLabI: [],
-    currentOOSA:[],
-    previewOOSA:[],
+    currentOOSA: [],
+    previewOOSA: [],
   });
 
   const [pQRData, setPQRData] = useReducer(
@@ -969,7 +969,7 @@ export default function APQR() {
         break;
     }
   };
- 
+
   const getGraphData = (inputData) => {
     const outputData = {
       batchNumbers: [],
@@ -1227,7 +1227,7 @@ export default function APQR() {
 
       // Make the PUT request to update the data on the server
       const response = await axios.put(
-        `http://localhost:4000/update-apqr/${editData.pqrId}`,
+        `https://apqrapi.mydemosoftware.com/update-apqr/${editData.pqrId}`,
         payload
       );
 
@@ -1241,9 +1241,9 @@ export default function APQR() {
   const fetchData = async () => {
     try {
       const response = await axios.get(
-        `http://localhost:4000/get-apqr/${editData.pqrId}`
+        `https://apqrapi.mydemosoftware.com/get-apqr/${editData.pqrId}`
       );
-      console.log(response.data,"data")
+      console.log(response.data, "data");
       setData(response.data);
       setTinyData(response.data.aPQRData.tinyData);
       const apiData = response.data.gridDatas;
@@ -1284,9 +1284,9 @@ export default function APQR() {
         reviewODP9: apiData.reviewODP9?.data || [],
         reviewODP10: apiData.reviewODP10?.data || [],
         reviewODPFPTR: apiData.reviewODPFPTR?.data || [],
-        currentOOSA:apiData.currentOOSA?.data || [],
-        previewOOSA:apiData.previewOOSA?.data||[],
-        summaryOOSS: apiData.summaryOOSS?.data||[],
+        currentOOSA: apiData.currentOOSA?.data || [],
+        previewOOSA: apiData.previewOOSA?.data || [],
+        summaryOOSS: apiData.summaryOOSS?.data || [],
         stabilitySR: apiData.stabilitySR?.data || [],
         reviewOVIRS: apiData.reviewOVIRS?.data || [],
         hVACQStatus: apiData.hVACQStatus?.data || [],
@@ -1400,10 +1400,7 @@ export default function APQR() {
         case 1:
           return {
             ...prevData,
-            manufacturingStage: [
-              ...prevData.manufacturingStage,
-              ...processedData,
-            ],
+            manufacturingStage: [...prevData.manufacturingStage, ...processedData],
           };
         case 22:
           return {
@@ -1530,7 +1527,6 @@ export default function APQR() {
     // setManufacturingStage([...manufacturingStage, ...processedData]);
   };
 
- 
   const addManufacturingStageRow = () => {
     const newRow = {
       productName: "",
@@ -2780,10 +2776,10 @@ export default function APQR() {
   };
 
   const formatDate = (dateString) => {
-    if (!dateString) return ''; // Return an empty string if the date is invalid or missing  
+    if (!dateString) return ""; // Return an empty string if the date is invalid or missing
     const date = new Date(dateString);
-    if (isNaN(date.getTime())) return ''; // Return an empty string for invalid dates
-    return date.toISOString().split('T')[0]; // Convert to 'YYYY-MM-DD' format
+    if (isNaN(date.getTime())) return ""; // Return an empty string for invalid dates
+    return date.toISOString().split("T")[0]; // Convert to 'YYYY-MM-DD' format
   };
 
   const handleProductCodeChange = (index, value) => {
@@ -2875,7 +2871,9 @@ export default function APQR() {
                   disabled
                   type="date"
                   value={formatDate(pQRData.initiateDate)}
-                  onChange={(e)=>{setPQRData({initiateDate:e.target.value})}}
+                  onChange={(e) => {
+                    setPQRData({ initiateDate: e.target.value });
+                  }}
                 />
               </div>
               <div className="group-input">
@@ -6779,10 +6777,10 @@ export default function APQR() {
                 </div>
                 <div className="flex gap-4 ">
                   <ExcelExportImport
-                  data={gridDatas.reviewODSTR2}
-                  setimportedData={setimportedData}
-                  fileName="reviewODSTR2.xlsx"
-                  gridNo={23}
+                    data={gridDatas.reviewODSTR2}
+                    setimportedData={setimportedData}
+                    fileName="reviewODSTR2.xlsx"
+                    gridNo={23}
                   />{" "}
                 </div>
               </div>
@@ -6988,10 +6986,10 @@ export default function APQR() {
                 </div>
                 <div className="flex gap-4 ">
                   <ExcelExportImport
-                  data={gridDatas.reviewODSTR3}
-                  setimportedData={setimportedData}
-                  fileName="reviewODSTR3.xlsx"
-                  gridNo={24}
+                    data={gridDatas.reviewODSTR3}
+                    setimportedData={setimportedData}
+                    fileName="reviewODSTR3.xlsx"
+                    gridNo={24}
                   />{" "}
                 </div>
               </div>
@@ -7368,10 +7366,10 @@ export default function APQR() {
                 </div>
                 <div className="flex gap-4 ">
                   <ExcelExportImport
-                  data={gridDatas.reviewODSTR4}
-                  setimportedData={setimportedData}
-                  fileName="reviewODSTR4.xlsx"
-                  gridNo={25}
+                    data={gridDatas.reviewODSTR4}
+                    setimportedData={setimportedData}
+                    fileName="reviewODSTR4.xlsx"
+                    gridNo={25}
                   />{" "}
                 </div>
               </div>
@@ -7748,10 +7746,10 @@ export default function APQR() {
                 </div>
                 <div className="flex gap-4 ">
                   <ExcelExportImport
-                  data={gridDatas.reviewODSTR5}
-                  setimportedData={setimportedData}
-                  fileName="reviewODSTR5.xlsx"
-                  gridNo={26}
+                    data={gridDatas.reviewODSTR5}
+                    setimportedData={setimportedData}
+                    fileName="reviewODSTR5.xlsx"
+                    gridNo={26}
                   />{" "}
                 </div>
               </div>
@@ -8129,10 +8127,10 @@ export default function APQR() {
                 </div>
                 <div className="flex gap-4 ">
                   <ExcelExportImport
-                  data={gridDatas.reviewODSTR6}
-                  setimportedData={setimportedData}
-                  fileName="reviewODSTR6.xlsx"
-                  gridNo={27}
+                    data={gridDatas.reviewODSTR6}
+                    setimportedData={setimportedData}
+                    fileName="reviewODSTR6.xlsx"
+                    gridNo={27}
                   />{" "}
                 </div>
               </div>
@@ -8507,10 +8505,10 @@ export default function APQR() {
                 </div>
                 <div className="flex gap-4 ">
                   <ExcelExportImport
-                  data={gridDatas.reviewODSTR7}
-                  setimportedData={setimportedData}
-                  fileName="reviewODSTR7.xlsx"
-                  gridNo={28}
+                    data={gridDatas.reviewODSTR7}
+                    setimportedData={setimportedData}
+                    fileName="reviewODSTR7.xlsx"
+                    gridNo={28}
                   />{" "}
                 </div>
               </div>
@@ -8720,10 +8718,10 @@ export default function APQR() {
                 </div>
                 <div className="flex gap-4 ">
                   <ExcelExportImport
-                  data={gridDatas.reviewODSTR8}
-                  setimportedData={setimportedData}
-                  fileName="reviewODSTR8.xlsx"
-                  gridNo={29}
+                    data={gridDatas.reviewODSTR8}
+                    setimportedData={setimportedData}
+                    fileName="reviewODSTR8.xlsx"
+                    gridNo={29}
                   />{" "}
                 </div>
               </div>
@@ -9101,10 +9099,10 @@ export default function APQR() {
                 </div>
                 <div className="flex gap-4 ">
                   <ExcelExportImport
-                  data={gridDatas.reviewODSTR9}
-                  setimportedData={setimportedData}
-                  fileName="reviewODSTR9.xlsx"
-                  gridNo={30}
+                    data={gridDatas.reviewODSTR9}
+                    setimportedData={setimportedData}
+                    fileName="reviewODSTR9.xlsx"
+                    gridNo={30}
                   />{" "}
                 </div>
               </div>
@@ -9477,10 +9475,10 @@ export default function APQR() {
                 </div>
                 <div className="flex gap-4 ">
                   <ExcelExportImport
-                  data={gridDatas.reviewODSTR10}
-                  setimportedData={setimportedData}
-                  fileName="reviewODSTR10.xlsx"
-                  gridNo={31}
+                    data={gridDatas.reviewODSTR10}
+                    setimportedData={setimportedData}
+                    fileName="reviewODSTR10.xlsx"
+                    gridNo={31}
                   />{" "}
                 </div>
               </div>
@@ -9854,10 +9852,10 @@ export default function APQR() {
                 </div>
                 <div className="flex gap-4 ">
                   <ExcelExportImport
-                  data={gridDatas.reviewODSTR11}
-                  setimportedData={setimportedData}
-                  fileName="reviewODSTR11.xlsx"
-                  gridNo={32}
+                    data={gridDatas.reviewODSTR11}
+                    setimportedData={setimportedData}
+                    fileName="reviewODSTR11.xlsx"
+                    gridNo={32}
                   />{" "}
                 </div>
               </div>
@@ -10228,10 +10226,10 @@ export default function APQR() {
                 </div>
                 <div className="flex gap-4 ">
                   <ExcelExportImport
-                  data={gridDatas.reviewODSTR12}
-                  setimportedData={setimportedData}
-                  fileName="reviewODSTR12.xlsx"
-                  gridNo={33}
+                    data={gridDatas.reviewODSTR12}
+                    setimportedData={setimportedData}
+                    fileName="reviewODSTR12.xlsx"
+                    gridNo={33}
                   />{" "}
                 </div>
               </div>
@@ -10437,10 +10435,10 @@ export default function APQR() {
                 </div>
                 <div className="flex gap-4 ">
                   <ExcelExportImport
-                  data={gridDatas.reviewODSTR13}
-                  setimportedData={setimportedData}
-                  fileName="reviewODSTR13.xlsx"
-                  gridNo={34}
+                    data={gridDatas.reviewODSTR13}
+                    setimportedData={setimportedData}
+                    fileName="reviewODSTR13.xlsx"
+                    gridNo={34}
                   />{" "}
                 </div>
               </div>
@@ -10814,10 +10812,10 @@ export default function APQR() {
                 </div>
                 <div className="flex gap-4 ">
                   <ExcelExportImport
-                  data={gridDatas.reviewODSTR14}
-                  setimportedData={setimportedData}
-                  fileName="reviewODSTR14.xlsx"
-                  gridNo={35}
+                    data={gridDatas.reviewODSTR14}
+                    setimportedData={setimportedData}
+                    fileName="reviewODSTR14.xlsx"
+                    gridNo={35}
                   />{" "}
                 </div>
               </div>
@@ -11190,10 +11188,10 @@ export default function APQR() {
                 </div>
                 <div className="flex gap-4 ">
                   <ExcelExportImport
-                  data={gridDatas.reviewODSTR15}
-                  setimportedData={setimportedData}
-                  fileName="reviewODSTR15.xlsx"
-                  gridNo={36}
+                    data={gridDatas.reviewODSTR15}
+                    setimportedData={setimportedData}
+                    fileName="reviewODSTR15.xlsx"
+                    gridNo={36}
                   />{" "}
                 </div>
               </div>
@@ -17145,9 +17143,7 @@ export default function APQR() {
             </div> */}
 
             <div className="flex items-center justify-center h-screen">
-              <div className="text-3xl font-bold text-gray-600">
-                No Data To Show Here.....
-              </div>
+              <div className="text-3xl font-bold text-gray-600">No Data To Show Here.....</div>
             </div>
           </>
         ) : null}
@@ -17375,9 +17371,9 @@ export default function APQR() {
           </button>
         </div>
       </div> */}
-     <div className="fixed top-3/4 right-0 z-10 flex flex-col">
-          <button
-            className="
+      <div className="fixed top-3/4 right-0 z-10 flex flex-col">
+        <button
+          className="
                 px-4
                 py-2
                 bg-teal-600
@@ -17393,16 +17389,16 @@ export default function APQR() {
                 mb-5
             
               "
-             onClick={() => {
-              handleUpdateAPQR();
-              // dispatch(updateForm(gridDatas));
-              navigate("/dashboard");
-            }}
-          >
-            Save
-          </button>
-          <button
-            className="
+          onClick={() => {
+            handleUpdateAPQR();
+            // dispatch(updateForm(gridDatas));
+            navigate("/dashboard");
+          }}
+        >
+          Save
+        </button>
+        <button
+          className="
                 px-4
                 py-2
                 bg-teal-600
@@ -17416,14 +17412,13 @@ export default function APQR() {
                 focus:ring-offset-2
                 focus:ring-teal-500
               "
-
-              onClick={() => {
-              navigate("/dashboard");
-            }}
-          >
-            Exit
-          </button>
-        </div>
+          onClick={() => {
+            navigate("/dashboard");
+          }}
+        >
+          Exit
+        </button>
+      </div>
     </>
   );
 }

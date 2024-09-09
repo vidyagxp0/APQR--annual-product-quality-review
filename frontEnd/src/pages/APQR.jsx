@@ -178,7 +178,6 @@ export default function APQR() {
   const [tiny84, setTiny84] = useState("");
   const [tiny85, setTiny85] = useState("");
 
-
   const [reviewOfCPD, setReviewOFCPD] = useState([]);
   const [previewRPD, setPreviewRPD] = useState([]);
   const [currentOOS, setCurrentOOS] = useState([]);
@@ -538,25 +537,33 @@ export default function APQR() {
       case 76:
         setTiny76(data);
         break;
-        case 77:
-          setTiny77(data);
-          break;  case 78:
-          setTiny78(data);
-          break;  case 79:
-          setTiny79(data);
-          break;  case 80:
-          setTiny80(data);
-          break;  case 81:
-          setTiny81(data);
-          break;  case 82:
-          setTiny82(data);
-          break;  case 83:
-          setTiny83(data);
-          break;  case 84:
-          setTiny84(data);
-          break;  case 85:
-          setTiny85(data);
-          break;
+      case 77:
+        setTiny77(data);
+        break;
+      case 78:
+        setTiny78(data);
+        break;
+      case 79:
+        setTiny79(data);
+        break;
+      case 80:
+        setTiny80(data);
+        break;
+      case 81:
+        setTiny81(data);
+        break;
+      case 82:
+        setTiny82(data);
+        break;
+      case 83:
+        setTiny83(data);
+        break;
+      case 84:
+        setTiny84(data);
+        break;
+      case 85:
+        setTiny85(data);
+        break;
     }
   };
 
@@ -583,13 +590,13 @@ export default function APQR() {
       totalReprocessedBatches: "",
     }
   );
-  console.log(pQRData,"data")
+  console.log(pQRData, "data");
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const APQRData = async (data) => {
     try {
-      const response = await axios.post("http://localhost:4000/create-apqr", data);
+      const response = await axios.post("https://apqrapi.mydemosoftware.com/create-apqr", data);
       console.log("Response:", response.data);
     } catch (error) {
       console.error("Error posting APQR data:", error);
@@ -597,9 +604,9 @@ export default function APQR() {
   };
 
   useEffect(() => {
-    const today = new Date().toISOString().split('T')[0];
+    const today = new Date().toISOString().split("T")[0];
     setPQRData({
-      initiateDate:today,
+      initiateDate: today,
       productCodes: productCodes,
       manufacturingStage: manufacturingStage,
       manufacturingSAPS: manufacturingSAPS,
@@ -751,7 +758,7 @@ export default function APQR() {
       tiny83: tiny83,
       tiny84: tiny84,
       tiny85: tiny85,
-      
+
       reviewOfCPD: reviewOfCPD,
       previewRPD: previewRPD,
       previewOOS: previewOOS,
@@ -5065,7 +5072,7 @@ export default function APQR() {
                         </td>
                         <td>
                           <input
-                          type="number"
+                            type="number"
                             value={item.LSL}
                             onChange={(e) => {
                               const newData = [...reviewODSTR];
@@ -5076,7 +5083,7 @@ export default function APQR() {
                         </td>
                         <td>
                           <input
-                          type="number"
+                            type="number"
                             value={item.USL}
                             onChange={(e) => {
                               const newData = [...reviewODSTR];
@@ -5087,7 +5094,7 @@ export default function APQR() {
                         </td>
                         <td>
                           <input
-                          type="number"
+                            type="number"
                             value={item.LCL}
                             onChange={(e) => {
                               const newData = [...reviewODSTR];
@@ -5098,7 +5105,7 @@ export default function APQR() {
                         </td>
                         <td>
                           <input
-                          type="number"
+                            type="number"
                             value={item.UCL}
                             onChange={(e) => {
                               const newData = [...reviewODSTR];
@@ -5109,7 +5116,7 @@ export default function APQR() {
                         </td>
                         <td>
                           <input
-                          type="number"
+                            type="number"
                             value={item.observedValue}
                             onChange={(e) => {
                               const newData = [...reviewODSTR];
@@ -6903,7 +6910,7 @@ export default function APQR() {
                 </div>
               </div>
               <table>
-              <thead>
+                <thead>
                   <tr>
                     <th rowSpan={2}>Sl. No</th>
                     <th rowSpan={2}>Primary Packing Material</th>
@@ -11446,9 +11453,7 @@ export default function APQR() {
               </span>
             </div> */}
             <div className="flex items-center justify-center h-screen">
-              <div className="text-3xl font-bold text-gray-600">
-                No Data To Show Here.....
-              </div>
+              <div className="text-3xl font-bold text-gray-600">No Data To Show Here.....</div>
             </div>
           </>
         ) : null}

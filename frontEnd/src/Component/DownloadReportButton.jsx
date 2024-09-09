@@ -3,7 +3,7 @@ import React from "react";
 const DownloadReportButton = () => {
   const downloadPDF = async () => {
     try {
-      const response = await fetch("http://localhost:4000/report/generate-report");
+      const response = await fetch("https://apqrapi.mydemosoftware.com/report/generate-report");
       console.log("Response:", response);
       const blob = await response.blob();
       console.log("Blob:", blob);
