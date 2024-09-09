@@ -70,6 +70,18 @@ export default function BottomHeader() {
           >
             Notification
           </NavLink>
+          <NavLink
+            to="/logs"
+            className={({ isActive }) =>
+              `text-blue-500 ${
+                isActive
+                  ? "text-blue-600 underline  text-xl underline-offset-8"
+                  : "underline-offset-4 hover:underline"
+              }`
+            }
+          >
+            Logs
+          </NavLink>
         </div>
         <div className="p-4">
           <button
@@ -83,64 +95,63 @@ export default function BottomHeader() {
         </div>
       </div>
       <Dialog open={isOpen}>
-  <div className="w-[600px] h-[455px] bg-white shadow-lg overflow-hidden animate-fadeIn">
-    <div className="grid grid-cols-2 ">
-      <div className="bg-gray-800 text-white p-4 flex flex-col items-center justify-center border-r text-[20px] font-semibold">
-        Site/Division
-      </div>
-      <div className="bg-gray-800 text-white flex flex-col items-center justify-center p-4 text-[20px] font-semibold" >
-        Process
-      </div>
-    </div>
-    <div className="grid grid-cols-2">
-      <div className="col-span-1 border-r-2 h-[335px] overflow-y-auto">
-        {division?.map((site, index) => {
-          return (
-            <div
-              key={index}
-              className={`p-3 px-5 cursor-pointer border-b hover:bg-blue-100 transition-all duration-200 ease-in-out text-[20px] ${
-                isSite === site.set ? "bg-blue-200" : ""
-              }`}
+        <div className="w-[600px] h-[455px] bg-white shadow-lg overflow-hidden animate-fadeIn">
+          <div className="grid grid-cols-2 ">
+            <div className="bg-gray-800 text-white p-4 flex flex-col items-center justify-center border-r text-[20px] font-semibold">
+              Site/Division
+            </div>
+            <div className="bg-gray-800 text-white flex flex-col items-center justify-center p-4 text-[20px] font-semibold">
+              Process
+            </div>
+          </div>
+          <div className="grid grid-cols-2">
+            <div className="col-span-1 border-r-2 h-[335px] overflow-y-auto">
+              {division?.map((site, index) => {
+                return (
+                  <div
+                    key={index}
+                    className={`p-3 px-5 cursor-pointer border-b hover:bg-blue-100 transition-all duration-200 ease-in-out text-[20px] ${
+                      isSite === site.set ? "bg-blue-200" : ""
+                    }`}
+                    onClick={() => {
+                      setIsSite(site.set);
+                    }}
+                  >
+                    {site.site}
+                  </div>
+                );
+              })}
+            </div>
+            <div className="col-span-1">
+              {process.map((item, index) => {
+                return (
+                  <div
+                    key={index}
+                    className="p-3 text-[20px] hover:bg-blue-100 cursor-pointer transition-all duration-200 ease-in-out"
+                    onClick={() => navigate(item.route)}
+                  >
+                    {isSite === "Corpo" && <span>{item.process}</span>}
+                    {isSite === "De" && <span>{item.process}</span>}
+                    {isSite === "IDR" && <span>{item.process}</span>}
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+          <div className="border-t border-gray-300"></div>
+          <div className="p-3 flex justify-end">
+            <button
+              className="bg-slate-500 text-white px-4 py-2 rounded hover:bg-slate-600 transition-all duration-200 ease-in-out active:scale-95"
               onClick={() => {
-                setIsSite(site.set);
+                setIsOpen(false);
+                setIsSite("");
               }}
             >
-              {site.site}
-            </div>
-          );
-        })}
-      </div>
-      <div className="col-span-1">
-        {process.map((item, index) => {
-          return (
-            <div
-              key={index}
-              className="p-3 text-[20px] hover:bg-blue-100 cursor-pointer transition-all duration-200 ease-in-out"
-              onClick={() => navigate(item.route)}
-            >
-              {isSite === "Corpo" && <span>{item.process}</span>}
-              {isSite === "De" && <span>{item.process}</span>}
-              {isSite === "IDR" && <span>{item.process}</span>}
-            </div>
-          );
-        })}
-      </div>
-    </div>
-    <div className="border-t border-gray-300"></div>
-    <div className="p-3 flex justify-end">
-      <button
-        className="bg-slate-500 text-white px-4 py-2 rounded hover:bg-slate-600 transition-all duration-200 ease-in-out active:scale-95"
-        onClick={() => {
-          setIsOpen(false);
-          setIsSite("");
-        }}
-      >
-        Cancel
-      </button>
-    </div>
-  </div>
-</Dialog>
-
+              Cancel
+            </button>
+          </div>
+        </div>
+      </Dialog>
     </>
   );
 }

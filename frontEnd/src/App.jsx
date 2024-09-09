@@ -13,6 +13,7 @@ import ESignatureModal from "./Component/ESignatureModal";
 import DownloadReportButton from "./Component/DownloadReportButton";
 import HighchartsLine from "./Component/Analytics/HighchartsLine";
 import AdvancedAnalytics from "./pages/AdvancedAnalytics";
+import Logs from "./pages/Logs";
 
 function App() {
   return (
@@ -29,6 +30,7 @@ function App() {
         <Route path="/apqr-panel" element={<ApqrPanel />} />
         <Route path="/analytics" element={<AdvancedAnalytics />} />
         <Route path="/notification" element={<Notification />} />
+        <Route path="/logs" element={<Logs />} />
 
         {/* test */}
         <Route path="/analytics2" element={<Analytics />} />
