@@ -596,7 +596,7 @@ export default function APQR() {
 
   const APQRData = async (data) => {
     try {
-      const response = await axios.post("https://apqrapi.mydemosoftware.com/create-apqr", data);
+      const response = await axios.post("http://localhost:4000/create-apqr", data);
       console.log("Response:", response.data);
     } catch (error) {
       console.error("Error posting APQR data:", error);
