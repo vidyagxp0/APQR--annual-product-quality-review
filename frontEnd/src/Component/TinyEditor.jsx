@@ -13,7 +13,8 @@ export default function TinyEditor({ editorContent, setEditorContent, tinyNo }) 
       <div className="my-4 shadow-sm shadow-slate-900">
         <Editor
           // apiKey="5vbh0y1nq5y6uokc071mjvy9n4fnss5ctasrjft7x7ajm9fl"
-          apiKey="5xks6zml6w83bmcfwul7tacgt4gofflf43pfx1gmk2gwkzdl"
+          // apiKey="5xks6zml6w83bmcfwul7tacgt4gofflf43pfx1gmk2gwkzdl"
+          apiKey="d4jnpbcnjlfdqcv1e6q86bb244nopswwdhygb27z4m9f33fp"
           onInit={(_evt, editor) => (editorRef.current = editor)}
           value={editorContent}
           onEditorChange={(newValue) => setEditorContent(newValue, tinyNo)}
