@@ -494,7 +494,7 @@ export default function APQR() {
       ...next,
     }),
     {
-      pqrNO: editData.pqrId,
+      pqrNO: "Corporate / APQR / " + editData.productName + " / " + editData.pqrId,
       productName: "",
       genericName: "",
       reviewStartDate: "",
@@ -2881,6 +2881,7 @@ export default function APQR() {
                   onChange={(e) => {
                     setPQRData({ pqrNO: e.target.value });
                   }}
+                  disabled
                 />
               </div>
               <div className="group-input">
@@ -2950,6 +2951,7 @@ export default function APQR() {
                 <input
                   type="date"
                   value={formatDate(pQRData.reviewStartDate)}
+                  onClick={(e) => e.target.showPicker()}
                   onChange={(e) => {
                     setPQRData({ reviewStartDate: e.target.value });
                   }}
@@ -2960,6 +2962,7 @@ export default function APQR() {
                 <input
                   type="date"
                   value={formatDate(pQRData.reviewEndDate)}
+                  onClick={(e) => e.target.showPicker()}
                   onChange={(e) => {
                     setPQRData({ reviewEndDate: e.target.value });
                   }}
