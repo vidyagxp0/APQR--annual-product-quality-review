@@ -18,6 +18,7 @@ export default function Dashboard() {
       try {
         const response = await axios.get("http://localhost:4000/get-all-apqr");
         setData(response.data);
+        console.log(response.data[0]);
       } catch (error) {
         console.error("There was a problem with the API call:", error);
       } finally {
@@ -56,7 +57,9 @@ export default function Dashboard() {
               <th className="px-4 py-2 border-r-2 w-1/12">PQR id</th>
               <th className="px-4 py-2 border-r-2">Product Name</th>
               <th className="px-4 py-2 border-r-2">Generic Name</th>
+              <th className="px-4 py-2 border-r-2">Product Description</th>
               <th className="px-4 py-2 border-r-2">Initiated by</th>
+              <th className="px-4 py-2 border-r-2">Review Start Date</th>
               <th className="px-4 py-2 border-r-2">Reports</th>
             </tr>
           </thead>
@@ -82,11 +85,19 @@ export default function Dashboard() {
                       navigate("/apqr-panel", { state: item });
                     }}
                   >
-                    {item.pqrId}
+                    {`Corporate/APQR/` + +item.pqrId}
                   </td>
                   <td className="px-4 py-2 border-r-2">{item.productName}</td>
                   <td className="px-4 py-2 border-r-2">{item.genericName}</td>
+                  <td className="px-4 py-2 border-r-2">{item.productDescription}</td>
                   <td className="px-4 py-2 border-r-2">{item.initiator}</td>
+                  <td className="px-4 py-2 border-r-2">
+                    {new Intl.DateTimeFormat("en-GB", {
+                      day: "2-digit",
+                      month: "2-digit",
+                      year: "2-digit",
+                    }).format(new Date(item.reviewStartDate))}
+                  </td>
                   <td className="px-4 py-2 border-r-2">
                     <button
                       className="p-[6px] border border-gray-800 rounded flex gap-2 items-center bg-slate-200"
