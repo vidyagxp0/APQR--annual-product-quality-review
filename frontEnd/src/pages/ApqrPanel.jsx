@@ -1481,49 +1481,7 @@ export default function APQR() {
           return prevData;
       }
     });
-    //
-    //   setReviewOSTR2([...reviewODSTR2, ...processedData]);
-    //   break;
-    // case 24:
-    //   setReviewOSTR3([...reviewODSTR3, ...processedData]);
-    //   break;
-    // case 25:
-    //   setReviewOSTR4([...reviewODSTR4, ...processedData]);
-    //   break;
-    // case 26:
-    //   setReviewOSTR5([...reviewODSTR5, ...processedData]);
-    //   break;
-    // case 27:
-    //   setReviewOSTR6([...reviewODSTR6, ...processedData]);
-    //   break;
-    // case 28:
-    //   setReviewOSTR7([...reviewODSTR7, ...processedData]);
-    //   break;
-    // case 29:
-    //   setReviewOSTR8([...reviewODSTR8, ...processedData]);
-    //   break;
-    // case 30:
-    //   setReviewOSTR9([...reviewODSTR9, ...processedData]);
-    //   break;
-    // case 31:
-    //   setReviewOSTR10([...reviewODSTR10, ...processedData]);
-    //   break;
-    // case 32:
-    //   setReviewOSTR11([...reviewODSTR11, ...processedData]);
-    //   break;
-    // case 33:
-    //   setReviewOSTR12([...reviewODSTR12, ...processedData]);
-    //   break;
-    // case 34:
-    //   setReviewOSTR13([...reviewODSTR13, ...processedData]);
-    //   break;
-    // case 35:
-    //   setReviewOSTR14([...reviewODSTR14, ...processedData]);
-    //   break;
-    // case 36:
-    //   setReviewOSTR15([...reviewODSTR15, ...processedData]);
-    //   break;
-
+   
     // setManufacturingStage([...manufacturingStage, ...processedData]);
   };
 

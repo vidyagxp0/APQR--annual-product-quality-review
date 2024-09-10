@@ -237,7 +237,7 @@ export default function TinyEditor({ editorContent, setEditorContent, tinyNo }) 
           editor.on('change', () => {
             const content = editor.getContent();
             setEditorContent(content, tinyNo);  // Update the state with editor content
-            console.log("Editor Content changed:", content);  // Log the editor content
+            // console.log("Editor Content changed:", content);  // Log the editor content
           });
         },
       });
@@ -245,16 +245,16 @@ export default function TinyEditor({ editorContent, setEditorContent, tinyNo }) 
 
     // Cleanup TinyMCE when the component unmounts
     return () => {
-      if (window.tinymce) {
+      if (window.tinymce && editorRef.current) {
         window.tinymce.remove(editorRef.current);
       }
     };
-  }, []);
+  }, [editorRef]);
 
   return (
-    <div style={{ padding: '20px' }}>
+    <div style={{ padding: '15px 0px' }} className="shadow-lg">
       {/* Textarea ref where TinyMCE will be initialized */}
-      <textarea ref={editorRef} value={editorContent}/>
+      <textarea ref={editorRef} defaultValue={editorContent} key={tinyNo}/>
     </div>
   );
 }
