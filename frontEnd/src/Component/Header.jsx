@@ -46,7 +46,7 @@ export default function Header() {
         <div className="flex gap-10">
           <div className="relative" onMouseEnter={showDropdown} onMouseLeave={hideDropdown}>
             <button className="flex items-center focus:outline-none border border-gray-400 rounded-md px-4 py-2">
-              <span>Gaurav</span>
+              <span>Amit</span>
               <svg
                 className="w-6 h-6 ml-2"
                 fill="none"
@@ -70,7 +70,7 @@ export default function Header() {
               >
                 <div className="flex items-center px-4 py-2">
                   <img src="/gg.png" alt="User Avatar" className="h-12 w-12 rounded-full mr-2" />
-                  <span className="text-gray-800">Gaurav Meena</span>
+                  <span className="text-gray-800">Amit Guru</span>
                 </div>
                 <a href="#" className="block px-4 py-2 hover:bg-gray-200 text-sky-700">
                   Help
