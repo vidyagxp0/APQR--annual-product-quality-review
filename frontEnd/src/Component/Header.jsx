@@ -33,11 +33,13 @@ export default function Header() {
         </div>
 
         {/* Name */}
-        <div className="text-center flex gap-2">
-          <img src="/alogo.jpg" alt="Centered Logo" className="mx-auto mb-2 h-10" />
-          <h1 className="text-3xl font-cursive" style={{ fontWeight: "normal" }}>
-            APQR
+        <div className="text-center flex flex-col items-center gap-2">
+          <h1 className="text-3xl font-arial" style={{ fontWeight: "normal" }}>
+            Annual Product Quality Review
           </h1>
+          {/* <div className="text-sm text-gray-500">
+            A platform for maintaining and reviewing product quality
+          </div> */}
         </div>
 
         {/* Dropdown Menu */}
@@ -83,7 +85,10 @@ export default function Header() {
             )}
           </div>
 
-          <div className="flex items-center justify-center text-3xl text-blue-500 cursor-pointer hover:text-blue-700" onClick={() => navigate("/notification")}>
+          <div
+            className="flex items-center justify-center text-3xl text-blue-500 cursor-pointer hover:text-blue-700"
+            onClick={() => navigate("/notification")}
+          >
             <IoIosNotifications />
           </div>
         </div>

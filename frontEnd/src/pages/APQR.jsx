@@ -591,7 +591,7 @@ export default function APQR() {
 
   const APQRData = async (data) => {
     try {
-      const response = await axios.post("https://apqrapi.mydemosoftware.com/create-apqr", data);
+      const response = await axios.post("http://localhost:4000/create-apqr", data);
       console.log("Response:", response.data);
     } catch (error) {
       console.error("Error posting APQR data:", error);
@@ -2038,15 +2038,16 @@ export default function APQR() {
                   }}
                 />
               </div>
-              <div className="group-input">
+              {/* <div className="group-input">
                 <label>PQR No</label>
                 <input
                   value={pQRData.pqrNO}
                   onChange={(e) => {
                     setPQRData({ pqrNO: e.target.value });
                   }}
+                  disabled
                 />
-              </div>
+              </div> */}
               <div className="group-input">
                 <label>Product Name</label>
                 <input
@@ -2100,6 +2101,7 @@ export default function APQR() {
                 <input
                   type="date"
                   value={pQRData.reviewStartDate}
+                  onClick={(e) => e.target.showPicker()}
                   onChange={(e) => {
                     setPQRData({ reviewStartDate: e.target.value });
                   }}
@@ -2109,6 +2111,7 @@ export default function APQR() {
                 <label>Review End Date</label>
                 <input
                   type="date"
+                  onClick={(e) => e.target.showPicker()}
                   value={pQRData.reviewEndDate}
                   onChange={(e) => {
                     setPQRData({ reviewEndDate: e.target.value });

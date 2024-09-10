@@ -494,7 +494,7 @@ export default function APQR() {
       ...next,
     }),
     {
-      pqrNO: editData.pqrId,
+      pqrNO: "Corporate / APQR / " + editData.productName + " / " + editData.pqrId,
       productName: "",
       genericName: "",
       reviewStartDate: "",
@@ -1227,7 +1227,7 @@ export default function APQR() {
 
       // Make the PUT request to update the data on the server
       const response = await axios.put(
-        `https://apqrapi.mydemosoftware.com/update-apqr/${editData.pqrId}`,
+        `http://localhost:4000/update-apqr/${editData.pqrId}`,
         payload
       );
 
@@ -1240,9 +1240,7 @@ export default function APQR() {
 
   const fetchData = async () => {
     try {
-      const response = await axios.get(
-        `https://apqrapi.mydemosoftware.com/get-apqr/${editData.pqrId}`
-      );
+      const response = await axios.get(`http://localhost:4000/get-apqr/${editData.pqrId}`);
       console.log(response.data, "data");
       setData(response.data);
       setTinyData(response.data.aPQRData.tinyData);
@@ -2841,6 +2839,7 @@ export default function APQR() {
                   onChange={(e) => {
                     setPQRData({ pqrNO: e.target.value });
                   }}
+                  disabled
                 />
               </div>
               <div className="group-input">
@@ -2910,6 +2909,7 @@ export default function APQR() {
                 <input
                   type="date"
                   value={formatDate(pQRData.reviewStartDate)}
+                  onClick={(e) => e.target.showPicker()}
                   onChange={(e) => {
                     setPQRData({ reviewStartDate: e.target.value });
                   }}
@@ -2920,6 +2920,7 @@ export default function APQR() {
                 <input
                   type="date"
                   value={formatDate(pQRData.reviewEndDate)}
+                  onClick={(e) => e.target.showPicker()}
                   onChange={(e) => {
                     setPQRData({ reviewEndDate: e.target.value });
                   }}
