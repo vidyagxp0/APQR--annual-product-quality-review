@@ -33,56 +33,44 @@ export default function BottomHeader() {
         {/* <div className="flex items-center">
           <img src="./gxplogo.png" className="h-10 mr-2" alt="" />
         </div> */}
-          <div className="flex gap-4 items-center justify-center bg-slate-300 py-4">
-            <NavLink
-              to="/dashboard"
-              className={({ isActive }) =>
-                `px-4 py-2 rounded-lg font-medium transition-colors duration-300 ${
-                  isActive
-                    ? "bg-blue-600 text-white text-xl"
-                    : "bg-blue-500 text-white hover:bg-blue-600"
-                }`
-              }
-            >
-              Dashboard
-            </NavLink>
-            <NavLink
-              to="/analytics"
-              className={({ isActive }) =>
-                `px-4 py-2 rounded-lg font-medium transition-colors duration-300 ${
-                  isActive
-                    ? "bg-blue-600 text-white text-xl"
-                    : "bg-blue-500 text-white hover:bg-blue-600"
-                }`
-              }
-            >
-              Analytics
-            </NavLink>
-            <NavLink
-              to="/notification"
-              className={({ isActive }) =>
-                `px-4 py-2 rounded-lg font-medium transition-colors duration-300 ${
-                  isActive
-                    ? "bg-blue-600 text-white text-xl"
-                    : "bg-blue-500 text-white hover:bg-blue-600"
-                }`
-              }
-            >
-              Notification
-            </NavLink>
-            <NavLink
-              to="/logs"
-              className={({ isActive }) =>
-                `px-4 py-2 rounded-lg font-medium transition-colors duration-300 ${
-                  isActive
-                    ? "bg-blue-600 text-white text-xl"
-                    : "bg-blue-500 text-white hover:bg-blue-600"
-                }`
-              }
-            >
-              Logs
-            </NavLink>
-          </div>
+            <div className="flex gap-4 items-center justify-center bg-slate-300 py-4">
+              <NavLink
+                to="/dashboard"
+                className={({ isActive }) =>
+                  `px-4 py-2 rounded-lg font-medium transition-colors duration-300 bg-white border-2 border-blue-500 text-blue-500 hover:text-white hover:bg-blue-600 hover:border-blue-700 ${isActive ? "bg-blue-600 text-white border-blue-700" : ""
+                  }`
+                }
+              >
+                Dashboard
+              </NavLink>
+              <NavLink
+                to="/analytics"
+                className={({ isActive }) =>
+                  `px-4 py-2 rounded-lg font-medium transition-colors duration-300 bg-white border-2 border-blue-500 text-blue-500 hover:text-white hover:bg-blue-600 hover:border-blue-700 ${isActive ? "bg-blue-600 text-white border-blue-700" : ""
+                  }`
+                }
+              >
+                Analytics
+              </NavLink>
+              <NavLink
+                to="/notification"
+                className={({ isActive }) =>
+                  `px-4 py-2 rounded-lg font-medium transition-colors duration-300 bg-white border-2 border-blue-500 text-blue-500 hover:text-white hover:bg-blue-600 hover:border-blue-700 ${isActive ? "bg-blue-600 text-white border-blue-700" : ""
+                  }`
+                }
+              >
+                Notification
+              </NavLink>
+              <NavLink
+                to="/logs"
+                className={({ isActive }) =>
+                  `px-4 py-2 rounded-lg font-medium transition-colors duration-300 bg-white border-2 border-blue-500 text-blue-500 hover:text-white hover:bg-blue-600 hover:border-blue-700 ${isActive ? "bg-blue-600 text-white border-blue-700" : ""
+                  }`
+                }
+              >
+                Logs
+              </NavLink>
+            </div>
 
         <div className="p-4">
           <button
