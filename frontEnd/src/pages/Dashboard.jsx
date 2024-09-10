@@ -16,7 +16,7 @@ export default function Dashboard() {
     const fetchData = async () => {
       setTableDataLoading(true);
       try {
-        const response = await axios.get("https://apqrapi.mydemosoftware.com/get-all-apqr");
+        const response = await axios.get("http://localhost:4000/get-all-apqr");
         setData(response.data);
       } catch (error) {
         console.error("There was a problem with the API call:", error);
@@ -30,9 +30,7 @@ export default function Dashboard() {
   const downloadPDF = async (pqrId) => {
     setLoading((prevLoading) => ({ ...prevLoading, [pqrId]: true }));
     try {
-      const response = await fetch(
-        `https://apqrapi.mydemosoftware.com/report/generate-report/${pqrId}`
-      );
+      const response = await fetch(`http://localhost:4000/report/generate-report/${pqrId}`);
       const blob = await response.blob();
       const url = window.URL.createObjectURL(new Blob([blob]));
       const link = document.createElement("a");

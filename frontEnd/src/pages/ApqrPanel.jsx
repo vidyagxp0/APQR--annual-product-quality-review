@@ -1226,7 +1226,7 @@ export default function APQR() {
       };
 
       const response = await axios.put(
-        `https://apqrapi.mydemosoftware.com/update-apqr/${editData.pqrId}`,
+        `http://localhost:4000/update-apqr/${editData.pqrId}`,
         payload
       );
     } catch (error) {
@@ -1236,9 +1236,7 @@ export default function APQR() {
 
   const fetchData = async () => {
     try {
-      const response = await axios.get(
-        `https://apqrapi.mydemosoftware.com/get-apqr/${editData.pqrId}`
-      );
+      const response = await axios.get(`http://localhost:4000/get-apqr/${editData.pqrId}`);
       console.log(response.data, "data");
       setData(response.data);
       setTinyData(response.data.aPQRData.tinyData);
