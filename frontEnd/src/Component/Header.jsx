@@ -30,6 +30,12 @@ export default function Header() {
             className="h-10 mr-2 cursor-pointer  "
             onClick={() => navigate("/dashboard")}
           />
+          {/* <img
+            src="/connexoL.png"
+            alt="Logo"
+            className="h-9 mr-2 cursor-pointer  "
+            onClick={() => navigate("/dashboard")}
+          /> */}
         </div>
 
         {/* Name */}
