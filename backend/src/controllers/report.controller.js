@@ -1952,8 +1952,8 @@ export const generatePdfbyId = async (req, res) => {
   }
   let browser;
   try {
-    const base64Logo = await getBase64Image("public/gxplogo.png");
-    const base64Logo2 = await getBase64Image("public/connexoLogo.jpg");
+    const base64Logo = await getBase64Image("public/connexologo.jpg");
+    const base64Logo2 = await getBase64Image("public/symbiotecLogo.png");
 
     if (!aPQRData) {
       return res.status(404).json({ error: true, message: "APQR not found" });
