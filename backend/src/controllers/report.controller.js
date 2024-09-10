@@ -8,7 +8,7 @@ import { getBase64Image } from "../../index.js";
 const pqrData = {
   pqrNo: "India/PCM/02/29/2002/0001/R1.0",
   productName: "Example Product",
-  initiator: "Gaurav Meena",
+  initiator: "Amit Guru",
   productCode:
     "700001494/700002002/700002589/700001530/700001809/700002194/700002627/70000262/700002573/70000546/70000287  700001494/700002002/700002589/700001530/700001809/700002194/700002627/70000262/700002573/70000546/70000287 70000287",
   genericName: "PEGylated Granulocyte Colony stimulating Factor (PEG GCSF) Injection- 6mg/0.6 mL",

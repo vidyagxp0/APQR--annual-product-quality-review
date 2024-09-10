@@ -10,7 +10,7 @@ import axios from "axios";
 
 export default function APQR() {
   const [tab, setTab] = useState("GI");
-  
+
   const [productCodes, setProductCodes] = useState([""]);
   const [manufacturingStage, setManufacturingStage] = useState([]);
   const [manufacturingSAPS, setManufacturingSAPS] = useState([]);
@@ -77,7 +77,7 @@ export default function APQR() {
   const [unitOperation8, setUnitOperation8] = useState([]);
   const [unitOperation9, setUnitOperation9] = useState([]);
   const [unitOperation10, setUnitOperation10] = useState([]);
-  const [tiny1, setTiny1] = useState("pankaj dhor hai");
+  const [tiny1, setTiny1] = useState("");
   const [tiny2, setTiny2] = useState("jgssgjdrfs");
   const [tiny3, setTiny3] = useState("jdjadfj");
   const [tiny4, setTiny4] = useState("jsfklsjdkz");
@@ -197,13 +197,11 @@ export default function APQR() {
     return typeof value === "string" ? value.trim() : value;
   };
 
+  const api_key =
+    "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";
 
-  const api_key = "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";
-  
-  const useDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
-  const isSmallScreen = window.matchMedia('(max-width: 1023.5px)').matches;
-  
-  
+  const useDarkMode = window.matchMedia("(prefers-color-scheme: dark)").matches;
+  const isSmallScreen = window.matchMedia("(max-width: 1023.5px)").matches;
 
   const processData = (data, keyMapping) => {
     return data.map((item) => {
@@ -302,9 +300,9 @@ export default function APQR() {
 
   const setTinyContent = (data, tinyNO) => {
     switch (tinyNO) {
-      case 1:  
-      console.log(data,"tiny1data");
-      
+      case 1:
+        console.log(data, "tiny1data");
+
         setTiny1(data);
         break;
       case 2:
@@ -568,7 +566,7 @@ export default function APQR() {
       ...next,
     }),
     {
-      initiator: "Pankaj Jat",
+      initiator: "Amit Guru",
       initiateDate: "",
       pqrNO: "",
       productName: "",
@@ -947,9 +945,9 @@ export default function APQR() {
     previewLabI,
   ]);
 
-  useEffect(()=>{
-    console.log("tiny 1 log",tiny1);  
-  },[tiny1])
+  useEffect(() => {
+    console.log("tiny 1 log", tiny1);
+  }, [tiny1]);
   const addManufacturingStageRow = () => {
     const newRow = {
       productName: "",

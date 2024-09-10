@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faEdit, faTrash } from '@fortawesome/free-solid-svg-icons';
-import Header from '../../Component/Header';
-import Select from 'react-select';
+import React, { useState } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faEdit, faTrash } from "@fortawesome/free-solid-svg-icons";
+import Header from "../../Component/Header";
+import Select from "react-select";
 
 const ConfirmationModal = ({ show, onClose, onConfirm, member }) => {
   if (!show) return null;
@@ -11,7 +11,7 @@ const ConfirmationModal = ({ show, onClose, onConfirm, member }) => {
     <div className="fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-60">
       <div className="bg-white p-10 rounded-lg shadow-xl">
         <h2 className="text-xl font-bold">Confirm Deletion</h2>
-        <p className='mt-3 mb-5 font-medium'>Are you sure you want to delete {member.name}?</p>
+        <p className="mt-3 mb-5 font-medium">Are you sure you want to delete {member.name}?</p>
         <div className="mt-4 flex justify-end">
           <button
             className="bg-blue-500 text-white px-4 py-2 rounded mr-2"
@@ -22,10 +22,7 @@ const ConfirmationModal = ({ show, onClose, onConfirm, member }) => {
           >
             Confirm
           </button>
-          <button
-            className="bg-gray-500 text-white px-4 py-2 rounded"
-            onClick={onClose}
-          >
+          <button className="bg-gray-500 text-white px-4 py-2 rounded" onClick={onClose}>
             Cancel
           </button>
         </div>
@@ -47,7 +44,6 @@ const Modal = ({ show, onClose, children }) => {
       </div>
     </div>
   );
-  
 };
 
 const AdminDashboard = () => {
@@ -56,52 +52,52 @@ const AdminDashboard = () => {
   const [isSelected, setIsSelected] = useState([]);
   const [members, setMembers] = useState([
     {
-      name: 'Gaurav Meena',
-      email: 'Gaurav10@email.com',
-      permissions: ['Admin', 'Editor', 'Viewer'],
-      lastLogin: 'Sep 5, 2019',
-      photo: '/gg.png'
+      name: "Amit Guru",
+      email: "Gaurav10@email.com",
+      permissions: ["Admin", "Editor", "Viewer"],
+      lastLogin: "Sep 5, 2019",
+      photo: "/gg.png",
     },
     {
-      name: 'Pankaj Jat',
-      email: 'Pankaj.Jat@email.com',
-      permissions: ['Editor', 'Viewer'],
-      lastLogin: 'Sep 5, 2019',
-      photo: '/p.png'
+      name: "Amit Guru",
+      email: "Pankaj.Jat@email.com",
+      permissions: ["Editor", "Viewer"],
+      lastLogin: "Sep 5, 2019",
+      photo: "/p.png",
     },
     {
-      name: 'Harshita Sahu',
-      email: 'Harshita@email.com',
-      permissions: ['Viewer'],
-      lastLogin: 'Sep 5, 2019',
-      photo: '/hh.jpg'
+      name: "Harshita Sahu",
+      email: "Harshita@email.com",
+      permissions: ["Viewer"],
+      lastLogin: "Sep 5, 2019",
+      photo: "/hh.jpg",
     },
     {
-      name: 'Roshani Sahu',
-      email: 'Roshani03@wix.com',
-      permissions: ['Member'],
-      lastLogin: 'Sep 5, 2019',
-      photo: '/r.png'
+      name: "Roshani Sahu",
+      email: "Roshani03@wix.com",
+      permissions: ["Member"],
+      lastLogin: "Sep 5, 2019",
+      photo: "/r.png",
     },
     {
-      name: 'Anshul Thakur',
-      email: 'Anshul.thakur@wix.com',
-      permissions: ['Member'],
-      lastLogin: 'Sep 5, 2019',
-      photo: '/a.png'
+      name: "Anshul Thakur",
+      email: "Anshul.thakur@wix.com",
+      permissions: ["Member"],
+      lastLogin: "Sep 5, 2019",
+      photo: "/a.png",
     },
   ]);
   const [showConfirm, setShowConfirm] = useState(false);
   const [memberToDelete, setMemberToDelete] = useState(null);
   const [showAddUserModal, setShowAddUserModal] = useState(false);
   const [newUser, setNewUser] = useState({
-    name: '',
-    email: '',
-    age: '',
-    gender: '',
-    password: '',
+    name: "",
+    email: "",
+    age: "",
+    gender: "",
+    password: "",
     profilePicture: null,
-    permissions: []
+    permissions: [],
   });
 
   const togglePermissions = (index) => {
@@ -134,7 +130,7 @@ const AdminDashboard = () => {
   };
 
   const handleConfirmDelete = (email) => {
-    setMembers(members.filter(member => member.email !== email));
+    setMembers(members.filter((member) => member.email !== email));
     setShowConfirm(false);
   };
 
@@ -142,22 +138,22 @@ const AdminDashboard = () => {
     setMembers([...members, newUser]);
     setShowAddUserModal(false);
     setNewUser({
-      name: '',
-      email: '',
-      age: '',
-      gender: '',
-      password: '',
+      name: "",
+      email: "",
+      age: "",
+      gender: "",
+      password: "",
       profilePicture: null,
-      permissions: []
+      permissions: [],
     });
     setIsSelected([]);
   };
 
   const options = [
-    { value: 'Admin', label: 'Admin' },
-    { value: 'Editor', label: 'Editor' },
-    { value: 'Viewer', label: 'Viewer' },
-    { value: 'Member', label: 'Member' }
+    { value: "Admin", label: "Admin" },
+    { value: "Editor", label: "Editor" },
+    { value: "Viewer", label: "Viewer" },
+    { value: "Member", label: "Member" },
   ];
 
   return (
@@ -169,15 +165,19 @@ const AdminDashboard = () => {
             <h2 className="text-4xl font-semibold m-4">Member List</h2>
             <button
               className="bg-sky-500 text-white py-2 px-4 rounded hover:bg-sky-700"
-              onClick={() => setShowAddUserModal(true)} style={{ backgroundImage: 'linear-gradient(135deg, #8bc6ec 0%, #9599e2 100%)' }}
+              onClick={() => setShowAddUserModal(true)}
+              style={{ backgroundImage: "linear-gradient(135deg, #8bc6ec 0%, #9599e2 100%)" }}
             >
               Add User
             </button>
           </div>
           <div className="overflow-x-auto">
-            <table className="min-w-full bg-white" >
+            <table className="min-w-full bg-white">
               <thead>
-                <tr className="w-full bg-sky-400 text-left shadow-lg rounded-s-2xl" style={{ backgroundImage: 'linear-gradient(135deg, #8bc6ec 0%, #9599e2 100%)' }}>
+                <tr
+                  className="w-full bg-sky-400 text-left shadow-lg rounded-s-2xl"
+                  style={{ backgroundImage: "linear-gradient(135deg, #8bc6ec 0%, #9599e2 100%)" }}
+                >
                   <th className="py-4 px-4 uppercase font-semibold text-sm">Name</th>
                   <th className="py-3 px-4 uppercase font-semibold text-sm">Login Email</th>
                   <th className="py-3 px-4 uppercase font-semibold text-sm">Permissions</th>
@@ -189,21 +189,34 @@ const AdminDashboard = () => {
                 {members.map((member, index) => (
                   <tr key={index} className="text-gray-700">
                     <td className="py-3 px-4 flex items-center">
-                      <img className="w-10 h-10 rounded-full mr-4" src={member.photo} alt={`${member.name}'s profile`} />
+                      <img
+                        className="w-10 h-10 rounded-full mr-4"
+                        src={member.photo}
+                        alt={`${member.name}'s profile`}
+                      />
                       {member.name}
                     </td>
                     <td className="py-3 px-4">{member.email}</td>
                     <td className="py-3 px-4">
-                      <button className="text-blue-500 hover:underline" onClick={() => togglePermissions(index)}>
+                      <button
+                        className="text-blue-500 hover:underline"
+                        onClick={() => togglePermissions(index)}
+                      >
                         View Permissions
                       </button>
                     </td>
                     <td className="py-3 px-4">{member.lastLogin}</td>
                     <td className="py-3 px-4">
-                      <button className="text-blue-500 hover:underline mx-2" onClick={() => handleEditClick(index)}>
+                      <button
+                        className="text-blue-500 hover:underline mx-2"
+                        onClick={() => handleEditClick(index)}
+                      >
                         <FontAwesomeIcon icon={faEdit} />
                       </button>
-                      <button className="text-blue-500 hover:underline mx-2" onClick={() => handleDeleteClick(member)}>
+                      <button
+                        className="text-blue-500 hover:underline mx-2"
+                        onClick={() => handleDeleteClick(member)}
+                      >
                         <FontAwesomeIcon icon={faTrash} />
                       </button>
                     </td>
@@ -223,31 +236,31 @@ const AdminDashboard = () => {
         />
       )}
       {viewPermissions && (
-  <div className="fixed inset-0 bg-gray-600 bg-opacity-90 flex justify-center items-center">
-    <div className="bg-white rounded-lg shadow-lg p-6 max-w-md mx-auto relative">
-      <button
-        className="absolute top-4 right-4 text-black py-1 px-2 rounded"
-        onClick={() => togglePermissions(null)}
-      >
-        X
-      </button>
-      <h2 className="text-2xl font-semibold text-blue-400 mb-4 text-center mt-4">
-        Permissions for {viewPermissions.name}
-      </h2>
-      <div className="text-center flex flex-col gap-4 mx-6 mb-6 max-h-60 overflow-y-auto">
-        {viewPermissions.permissions.map((permission, i) => (
-          <li
-            key={i}
-            className="text-lg text-white rounded p-3 hover:bg-gray-200 transition duration-200"
-            style={{ backgroundImage: 'linear-gradient(135deg, #8bc6ec 0%, #9599e2 100%)' }}
-          >
-            {permission}
-          </li>
-        ))}
-      </div>
-    </div>
-  </div>
-)}
+        <div className="fixed inset-0 bg-gray-600 bg-opacity-90 flex justify-center items-center">
+          <div className="bg-white rounded-lg shadow-lg p-6 max-w-md mx-auto relative">
+            <button
+              className="absolute top-4 right-4 text-black py-1 px-2 rounded"
+              onClick={() => togglePermissions(null)}
+            >
+              X
+            </button>
+            <h2 className="text-2xl font-semibold text-blue-400 mb-4 text-center mt-4">
+              Permissions for {viewPermissions.name}
+            </h2>
+            <div className="text-center flex flex-col gap-4 mx-6 mb-6 max-h-60 overflow-y-auto">
+              {viewPermissions.permissions.map((permission, i) => (
+                <li
+                  key={i}
+                  className="text-lg text-white rounded p-3 hover:bg-gray-200 transition duration-200"
+                  style={{ backgroundImage: "linear-gradient(135deg, #8bc6ec 0%, #9599e2 100%)" }}
+                >
+                  {permission}
+                </li>
+              ))}
+            </div>
+          </div>
+        </div>
+      )}
 
       {editMember && (
         <Modal show={!!editMember} onClose={() => setEditMember(null)}>
@@ -258,9 +271,7 @@ const AdminDashboard = () => {
               className="w-full border border-gray-300 p-2 rounded"
               type="text"
               value={editMember.name}
-              onChange={(e) =>
-                setEditMember({ ...editMember, name: e.target.value })
-              }
+              onChange={(e) => setEditMember({ ...editMember, name: e.target.value })}
             />
           </div>
           <div className="mb-4">
@@ -269,16 +280,14 @@ const AdminDashboard = () => {
               className="w-full border border-gray-300 p-2 rounded"
               type="email"
               value={editMember.email}
-              onChange={(e) =>
-                setEditMember({ ...editMember, email: e.target.value })
-              }
+              onChange={(e) => setEditMember({ ...editMember, email: e.target.value })}
             />
           </div>
           <div className="mb-4">
             <label className="block mb-2">Permissions:</label>
             <Select
               isMulti
-              value={editMember.permissions.map(permission => ({
+              value={editMember.permissions.map((permission) => ({
                 value: permission,
                 label: permission,
               }))}
@@ -292,10 +301,7 @@ const AdminDashboard = () => {
             />
           </div>
           <div className="flex justify-end">
-            <button
-              className="bg-blue-500 text-white px-4 py-2 rounded mr-2"
-              onClick={handleSave}
-            >
+            <button className="bg-blue-500 text-white px-4 py-2 rounded mr-2" onClick={handleSave}>
               Save
             </button>
             <button
@@ -341,19 +347,21 @@ const AdminDashboard = () => {
             />
           </div>
           <div className="mb-4">
-  <label className="block mb-2">Gender:</label>
-  <select
-    className="w-full border border-gray-300 p-2 rounded"
-    name="gender"
-    value={newUser.gender}
-    onChange={handleInputChange}
-  >
-    <option value="" disabled>Select Gender</option>
-    <option value="Male">Male</option>
-    <option value="Female">Female</option>
-    <option value="Other">Other</option>
-  </select>
-</div>
+            <label className="block mb-2">Gender:</label>
+            <select
+              className="w-full border border-gray-300 p-2 rounded"
+              name="gender"
+              value={newUser.gender}
+              onChange={handleInputChange}
+            >
+              <option value="" disabled>
+                Select Gender
+              </option>
+              <option value="Male">Male</option>
+              <option value="Female">Female</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
 
           <div className="mb-4">
             <label className="block mb-2">Password:</label>
