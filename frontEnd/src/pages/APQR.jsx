@@ -78,9 +78,9 @@ export default function APQR() {
   const [unitOperation9, setUnitOperation9] = useState([]);
   const [unitOperation10, setUnitOperation10] = useState([]);
   const [tiny1, setTiny1] = useState("");
-  const [tiny2, setTiny2] = useState("jgssgjdrfs");
-  const [tiny3, setTiny3] = useState("jdjadfj");
-  const [tiny4, setTiny4] = useState("jsfklsjdkz");
+  const [tiny2, setTiny2] = useState("");
+  const [tiny3, setTiny3] = useState("");
+  const [tiny4, setTiny4] = useState("");
   const [tiny5, setTiny5] = useState("");
   const [tiny6, setTiny6] = useState("");
   const [tiny7, setTiny7] = useState("");
