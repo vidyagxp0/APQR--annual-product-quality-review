@@ -1,9 +1,9 @@
 import express from "express";
-import { generatePdf, viewReport } from "../controllers/report.controller.js";
+import { generatePdfbyId, viewReportByID } from "../controllers/report.controller.js";
 
 const router = express.Router();
 
-router.get("/generate-pdf", generatePdf);
+router.get("/generate-report/:id", generatePdfbyId);
+router.get("/view-report/:id", viewReportByID);
 
-router.get("/view-report", viewReport);
 export default router;

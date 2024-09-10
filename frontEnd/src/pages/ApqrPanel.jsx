@@ -2,91 +2,239 @@ import React, { useEffect, useReducer, useState } from "react";
 import Header from "../Component/Header";
 import { MdNoteAdd } from "react-icons/md";
 import TinyEditor from "../Component/TinyEditor";
-import ExcelExport from "../Component/Exports/Excel/ExcelExport";
 import ExcelExportImport from "../Component/ImportExportExcel";
 import { useDispatch } from "react-redux";
 import { updateForm } from "../redux/formSlice";
 import { useLocation, useNavigate } from "react-router-dom";
+import HighchartsLine from "../Component/Analytics/HighchartsLine";
+import HighchartsHistogram from "../Component/Analytics/HighchartsHistogram";
+import HighchartsPareto from "../Component/Analytics/HighchartsPareto";
+import HighchartsScatterPlot from "../Component/Analytics/HighchartsScatterPlot";
+import HighchartsHistogram2 from "../Component/Analytics/HighchartsHistogram2";
+
+import {
+  ParacetamolAssayPlotLines,
+  ParacetamolDisintegratePlotLines,
+  ParacetamolDissolutionPlotLines,
+  ParacetamolImpurityPlotLines,
+  ParacetamolpHPlotLines,
+  paracetamolAnnotations,
+  paracetamolAssayZones,
+  paracetamolDisinterationZones,
+  paracetamolDissolutionZones,
+  paracetamolImpurityZones,
+  paracetamolpHZones,
+} from "../Component/Analytics/ChartJsFunction";
+import AnalyticsTable from "../Component/Table/AnalyticsTable";
+import axios from "axios";
 export default function APQR() {
   const [tab, setTab] = useState("GI");
-  const balanceSheet = [
-    {
-      category: "Assets",
-      account: "Checking Account",
-      code: "1060",
-      debit: "$280.00",
-      credit: "$0.00",
+
+  const phChartsConfig = {
+    data: [
+      1.65, 2.7, 3.4, 4.1, 2.2, 2.8, 3.3, 4.0, 1.75, 2.9, 3.5, 4.05, 2.1, 2.85, 3.2, 4.15, 1.8,
+      2.75, 3.45, 4.0, 2.25, 2.95, 3.35, 4.1, 1.9, 2.8, 3.5, 4.05, 2.0, 2.9, 3.3, 4.0, 1.7, 2.85,
+      3.45, 4.1, 2.15, 2.9, 3.25, 4.0, 1.85, 2.8, 3.4, 4.05, 2.3, 2.95, 3.5, 4.1, 1.75, 2.85, 3.4,
+      3.9, 3.4,
+    ],
+    lsl: 2,
+    usl: 4,
+    histoHeading: "Histogram Analysis",
+    paretoHeading: "Pareto Analysis",
+    scatterHeading: "Scatter Analysis",
+    yAxisTitle: "Number of Batches",
+    xAxisTitle: "pH Range",
+    xAxisTitleScatter: "Batch Number",
+    bins: { "1-2": 0, "2-3": 0, "3-4": 0, "4-5": 0 },
+    plotLines: [
+      { position: 0.5, label: "LSL", align: "right" },
+      { position: 2.5, label: "USL", align: "left" },
+    ],
+  };
+
+  const assayChartsConfig = {
+    data: [
+      1.65, 2.7, 3.4, 4.1, 2.2, 2.8, 3.3, 4.0, 1.75, 2.9, 3.5, 4.05, 2.1, 2.85, 3.2, 4.15, 1.8,
+      2.75, 3.45, 4.0, 2.25, 2.95, 3.35, 4.1, 1.9, 2.8, 3.5, 4.05, 2.0, 2.9, 3.3, 4.0, 1.7, 2.85,
+      3.45, 4.1, 2.15, 2.9, 3.25, 4.0, 1.85, 2.8, 3.4, 4.05, 2.3, 2.95, 3.5, 4.1, 1.75, 2.85, 3.4,
+      3.9, 3.4,
+    ],
+    lsl: 95,
+    usl: 105,
+    histoHeading: "Histogram Analysis",
+    paretoHeading: "Pareto Analysis",
+    scatterHeading: "Scatter Analysis",
+    yAxisTitle: "Number of Batches",
+    xAxisTitle: "pH Range",
+    xAxisTitleScatter: "Batch Number",
+    bins: {
+      "80-95": 0,
+      "95-100": 0,
+      "100-105": 0,
+      "105-120": 0,
     },
-    {
-      category: "Assets",
-      account: "Stock of Work In Progress",
-      code: "1530",
-      debit: "$0.00",
-      credit: "$100.00",
+    plotLines: [
+      { position: 0.5, label: "LSL", align: "right" },
+      { position: 2.5, label: "USL", align: "left" },
+    ],
+    max: 120,
+  };
+
+  const impurityChartsConfig = {
+    data: [
+      1.65, 2.7, 3.4, 4.1, 2.2, 2.8, 3.3, 4.0, 1.75, 2.9, 3.5, 4.05, 2.1, 2.85, 3.2, 4.15, 1.8,
+      2.75, 3.45, 4.0, 2.25, 2.95, 3.35, 4.1, 1.9, 2.8, 3.5, 4.05, 2.0, 2.9, 3.3, 4.0, 1.7, 2.85,
+      3.45, 4.1, 2.15, 2.9, 3.25, 4.0, 1.85, 2.8, 3.4, 4.05, 2.3, 2.95, 3.5, 4.1, 1.75, 2.85, 3.4,
+      3.9, 3.4,
+    ],
+    lsl: 2,
+    usl: 4,
+    histoHeading: "Histogram Analysis",
+    paretoHeading: "Pareto Analysis",
+    scatterHeading: "Scatter Analysis",
+    yAxisTitle: "Number of Batches",
+    xAxisTitle: "pH Range",
+    bins: { "1-2": 0, "2-3": 0, "3-4": 0, "4-5": 0 },
+    plotLines: [
+      { position: 0.5, label: "LSL", align: "right" },
+      { position: 2.5, label: "USL", align: "left" },
+    ],
+  };
+
+  const dissolutionChartsConfig = {
+    data: [
+      1.65, 2.7, 3.4, 4.1, 2.2, 2.8, 3.3, 4.0, 1.75, 2.9, 3.5, 4.05, 2.1, 2.85, 3.2, 4.15, 1.8,
+      2.75, 3.45, 4.0, 2.25, 2.95, 3.35, 4.1, 1.9, 2.8, 3.5, 4.05, 2.0, 2.9, 3.3, 4.0, 1.7, 2.85,
+      3.45, 4.1, 2.15, 2.9, 3.25, 4.0, 1.85, 2.8, 3.4, 4.05, 2.3, 2.95, 3.5, 4.1, 1.75, 2.85, 3.4,
+      3.9, 3.4,
+    ],
+    lsl: 2,
+    usl: 4,
+    histoHeading: "Histogram Analysis",
+    paretoHeading: "Pareto Analysis",
+    scatterHeading: "Scatter Analysis",
+    yAxisTitle: "Number of Batches",
+    xAxisTitle: "pH Range",
+    xAxisTitleScatter: "Batch Number",
+    bins: { "1-2": 0, "2-3": 0, "3-4": 0, "4-5": 0 },
+    plotLines: [
+      { position: 0.5, label: "LSL", align: "right" },
+      { position: 2.5, label: "USL", align: "left" },
+    ],
+  };
+  const disIntegrationChartsConfig = {
+    data: [
+      1.65, 2.7, 3.4, 4.1, 2.2, 2.8, 3.3, 4.0, 1.75, 2.9, 3.5, 4.05, 2.1, 2.85, 3.2, 4.15, 1.8,
+      2.75, 3.45, 4.0, 2.25, 2.95, 3.35, 4.1, 1.9, 2.8, 3.5, 4.05, 2.0, 2.9, 3.3, 4.0, 1.7, 2.85,
+      3.45, 4.1, 2.15, 2.9, 3.25, 4.0, 1.85, 2.8, 3.4, 4.05, 2.3, 2.95, 3.5, 4.1, 1.75, 2.85, 3.4,
+      3.9, 3.4,
+    ],
+    lsl: 95,
+    usl: 105,
+    histoHeading: "Histogram Analysis",
+    paretoHeading: "Pareto Analysis",
+    scatterHeading: "Scatter Analysis",
+    yAxisTitle: "Number of Batches",
+    xAxisTitle: "pH Range",
+    xAxisTitleScatter: "Batch Number",
+    bins: {
+      "80-95": 0,
+      "95-100": 0,
+      "100-105": 0,
+      "105-120": 0,
     },
-  ];
+    plotLines: [
+      { position: 0.5, label: "LSL", align: "right" },
+      { position: 2.5, label: "USL", align: "left" },
+    ],
+    max: 120,
+  };
+
+  const phOfParacetamolScatter = {
+    data: [
+      2.9, 1.75, 3.45, 2.85, 4.05, 3.2, 2.1, 4.1, 1.9, 2.8, 3.3, 4.0, 2.25, 3.5, 2.3, 4.1, 1.65,
+      3.35, 2.95, 3.4, 2.0, 4.05, 1.8, 2.7, 4.0, 3.45, 2.85, 1.85, 4.1, 2.9, 3.5, 1.7, 3.25, 4.1,
+      2.2, 3.3, 2.95, 1.75, 3.5, 4.1, 1.9, 2.8, 4.05, 2.15, 3.4, 1.75, 4.0, 2.8, 3.45, 4.05, 2.0,
+    ],
+    lsl: 95,
+    usl: 105,
+    heading: "Scatter Analysis",
+    yAxisTitle: "pH",
+    batchNumbers: [
+      "Batch 1",
+      "Batch 2",
+      "Batch 3",
+      "Batch 4",
+      "Batch 5",
+      "Batch 6",
+      "Batch 7",
+      "Batch 8",
+      "Batch 9",
+      "Batch 10",
+      "Batch 11",
+      "Batch 12",
+      "Batch 13",
+      "Batch 14",
+      "Batch 15",
+      "Batch 16",
+      "Batch 17",
+      "Batch 18",
+      "Batch 19",
+      "Batch 20",
+      "Batch 21",
+      "Batch 22",
+      "Batch 23",
+      "Batch 24",
+      "Batch 25",
+      "Batch 26",
+      "Batch 27",
+      "Batch 28",
+      "Batch 29",
+      "Batch 30",
+      "Batch 31",
+      "Batch 32",
+      "Batch 33",
+      "Batch 34",
+      "Batch 35",
+      "Batch 36",
+      "Batch 37",
+      "Batch 38",
+      "Batch 39",
+      "Batch 40",
+      "Batch 41",
+      "Batch 42",
+      "Batch 43",
+      "Batch 44",
+      "Batch 45",
+      "Batch 46",
+      "Batch 47",
+      "Batch 48",
+      "Batch 49",
+      "Batch 50",
+    ],
+  };
+
+  const phOfParacetamolPareto = {
+    data: [
+      1.65, 2.7, 3.4, 4.1, 2.2, 2.8, 3.3, 4.0, 1.75, 2.9, 3.5, 4.05, 2.1, 2.85, 3.2, 4.15, 1.8,
+      2.75, 3.45, 4.0, 2.25, 2.95, 3.35, 4.1, 1.9, 2.8, 3.5, 4.05, 2.0, 2.9, 3.3, 4.0, 1.7, 2.85,
+      3.45, 4.1, 2.15, 2.9, 3.25, 4.0, 1.85, 2.8, 3.4, 4.05, 2.3, 2.95, 3.5, 4.1, 1.75, 2.85, 2.85,
+      2.85, 2.85, 2.85, 2.85, 2.85, 2.85, 2.85, 2.85, 2.85, 2.85, 2.85, 2.85, 2.85, 2.85, 2.85,
+      2.85, 2.85, 2.85, 2.85, 2.85, 2.85, 2.85, 2.85, 2.85, 2.85, 2.85, 2.85, 2.85, 2.85, 2.85,
+      2.85, 2.85, 2.85, 2.85, 2.85, 2.85, 2.85, 2.85,
+    ],
+    lsl: 2,
+    usl: 4,
+    heading: "Pareto Analysis",
+    yAxisTitle: "Number of Batches",
+  };
+  const [data, setData] = useState(null);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const location = useLocation();
+  const editData = location.state;
   const [productCodes, setProductCodes] = useState([""]);
-  const [manufacturingStage, setManufacturingStage] = useState([]);
-  const [manufacturingSAPS, setManufacturingSAPS] = useState([]);
-  const [rawMRS, setRawMRS] = useState([]);
-  const [packingMRS, setPackingMRS] = useState([]);
-  const [reviewOfASL, setReviewOfASL] = useState([]);
-  const [expiredRMD, setExpiredRMD] = useState([]);
-  const [expiredPMD, setExpiredPMD] = useState([]);
-  const [vendorQDORME, setVendorQDORME] = useState([]);
-  const [vendorQDOPPM, setVendorQDOPPM] = useState([]);
-  const [vendorQDPOG, setVendorQDPOG] = useState([]);
-  const [codeTCTD, setCodeTCTD] = useState([]);
-  const [reviewORCEC, setReviewORCEC] = useState([]);
-  const [manufacturingSD, setManufacturingSD] = useState([]);
-  const [manufacturingSD2, setManufacturingSD2] = useState([]);
-  const [bufferFSDPV, setBufferFSDPV] = useState([]);
-  const [oosDetails, setOosDetails] = useState([]);
-  const [capaDetails, setCapaDetails] = useState([]);
-  const [deviationDetails, setDeviationDetails] = useState([]);
-  const [ootResults, setOotResults] = useState([]);
-  const [oolResults, setOolResults] = useState([]);
-  const [ooaResults, setOoaResults] = useState([]);
-  const [reviewODSTR, setReviewOSTR] = useState([]);
-  const [reviewODSTR2, setReviewOSTR2] = useState([]);
-  const [reviewODSTR3, setReviewOSTR3] = useState([]);
-  const [reviewODSTR4, setReviewOSTR4] = useState([]);
-  const [reviewODSTR5, setReviewOSTR5] = useState([]);
-  const [reviewODSTR6, setReviewOSTR6] = useState([]);
-  const [reviewODSTR7, setReviewOSTR7] = useState([]);
-  const [reviewODSTR8, setReviewOSTR8] = useState([]);
-  const [reviewODSTR9, setReviewOSTR9] = useState([]);
-  const [reviewODSTR10, setReviewOSTR10] = useState([]);
-  const [reviewORMETR, setReviewORMETR] = useState([]);
-  const [reviewOPMTR, setReviewOPMTR] = useState([]);
-  const [reviewODP, setReviewODP] = useState([]);
-  const [reviewODP2, setReviewODP2] = useState([]);
-  const [reviewODP3, setReviewODP3] = useState([]);
-  const [reviewODP4, setReviewODP4] = useState([]);
-  const [reviewODP5, setReviewODP5] = useState([]);
-  const [reviewODP6, setReviewODP6] = useState([]);
-  const [reviewODP7, setReviewODP7] = useState([]);
-  const [reviewODP8, setReviewODP8] = useState([]);
-  const [reviewODP9, setReviewODP9] = useState([]);
-  const [reviewODP10, setReviewODP10] = useState([]);
-  const [reviewODPFPTR, setReviewODPFPTR] = useState([]);
-  const [summaryOOSS, setSummaryOOSS] = useState([]);
-  const [stabilitySR, setStabilitySR] = useState([]);
-  const [reviewOVIRS, setReviewOVIRS] = useState([]);
-  const [hVACQStatus, setHVACQStatus] = useState([]);
-  const [dossierRR, setDossierRR] = useState([]);
-  const [dossierRRNma, setDossierRRNma] = useState([]);
-  const [sanitizationASDOU, setSanitizationASDOU] = useState([]);
-  const [compressedGas, setCompressedGas] = useState([]);
-  const [currentRPQRN, setCurrentRPQRN] = useState([]);
-  const [unitOperation3, setUnitOperation3] = useState([]);
-  const [unitOperation4, setUnitOperation4] = useState([]);
-  const [unitOperation5, setUnitOperation5] = useState([]);
-  const [unitOperation6, setUnitOperation6] = useState([]);
-  const [unitOperation7, setUnitOperation7] = useState([]);
-  const [unitOperation8, setUnitOperation8] = useState([]);
-  const [unitOperation9, setUnitOperation9] = useState([]);
-  const [unitOperation10, setUnitOperation10] = useState([]);
+
   const [tiny1, setTiny1] = useState("");
   const [tiny2, setTiny2] = useState("");
   const [tiny3, setTiny3] = useState("");
@@ -163,46 +311,16 @@ export default function APQR() {
   const [tiny74, setTiny74] = useState("");
   const [tiny75, setTiny75] = useState("");
   const [tiny76, setTiny76] = useState("");
-  const [reviewOfCPD, setReviewOFCPD] = useState([]);
-  const [previewRPD, setPreviewRPD] = useState([]);
-  const [currentOOS, setCurrentOOS] = useState([]);
-  const [previewOOS, setPreviewOOS] = useState([]);
-  const [currentOOAC, setCurrentOOAC] = useState([]);
-  const [previewOOAC, setPreviewOOAC] = useState([]);
-  const [currentOOAL, setCurrentOOAL] = useState([]);
-  const [previewOOAL, setPreviewOOAL] = useState([]);
-  const [currentOOSA, setCurrentOOSA] = useState([]);
-  const [previewOOSA, setPreviewOOSA] = useState([]);
-  const [currentOOT, setCurrentOOT] = useState([]);
-  const [previewOOT, setPreviewOOT] = useState([]);
-  const [currentCC, setCurrentCC] = useState([]);
-  const [previewCC, setPreviewCC] = useState([]);
-  const [currentMC, setCurrentMC] = useState([]);
-  const [previewMC, setPreviewMC] = useState([]);
-  const [currentLabI, setCurrentLabI] = useState([]);
-  const [previewLabI, setPreviewLabI] = useState([]);
 
-  const [pQRData, setPQRData] = useReducer(
+  const sanitizeKey = (key) => {
+    return key.replace(/\s+/g, "").replace(/[\n\r]+/g, "");
+  };
+  const [tinyData, setTinyData] = useReducer(
     (prev, next) => ({
       ...prev,
       ...next,
     }),
     {
-      form_id: Date.now(),
-      initiator: "Pankaj Jat",
-      initiateDate: Date.now(),
-      pqrNO: "",
-      productName: "",
-      genericName: "",
-      reviewStartDate: "",
-      reviewEndDate: "",
-      mfgLicNo: "",
-      processFlow: "",
-      productDescription: "",
-      totalNOBM: "",
-      totalNOBA: "",
-      totalNOPVB: "",
-      totalNORB: "",
       tiny1: "",
       tiny2: "",
       tiny3: "",
@@ -281,536 +399,657 @@ export default function APQR() {
       tiny76: "",
     }
   );
+  const [gridDatas, setGridDatas] = useState({
+    manufacturingStage: [],
+    manufacturingSAPS: [],
+    rawMRS: [],
+    packingMRS: [],
+    reviewOfASL: [],
+    expiredRMD: [],
+    expiredPMD: [],
+    vendorQDORME: [],
+    vendorQDOPPM: [],
+    vendorQDPOG: [],
+    codeTCTD: [],
+    reviewORCEC: [],
+    manufacturingSD: [],
+    manufacturingSD2: [],
+    bufferFSDPV: [],
+    oosDetails: [],
+    capaDetails: [],
+    deviationDetails: [],
+    ootResults: [],
+    oolResults: [],
+    ooaResults: [],
+    reviewODSTR: [],
+    reviewODSTR2: [],
+    reviewODSTR3: [],
+    reviewODSTR4: [],
+    reviewODSTR5: [],
+    reviewODSTR6: [],
+    reviewODSTR7: [],
+    reviewODSTR8: [],
+    reviewODSTR9: [],
+    reviewODSTR10: [],
+    reviewODSTR11: [],
+    reviewODSTR12: [],
+    reviewODSTR13: [],
+    reviewODSTR14: [],
+    reviewODSTR15: [],
+    reviewORMETR: [],
+    reviewOPMTR: [],
+    reviewODP: [],
+    reviewODP2: [],
+    reviewODP3: [],
+    reviewODP4: [],
+    reviewODP5: [],
+    reviewODP6: [],
+    reviewODP7: [],
+    reviewODP8: [],
+    reviewODP9: [],
+    reviewODP10: [],
+    reviewODPFPTR: [],
+    summaryOOSS: [],
+    stabilitySR: [],
+    reviewOVIRS: [],
+    hVACQStatus: [],
+    dossierRR: [],
+    dossierRRNma: [],
+    sanitizationASDOU: [],
+    compressedGas: [],
+    currentRPQRN: [],
+    unitOperation3: [],
+    unitOperation4: [],
+    unitOperation5: [],
+    unitOperation6: [],
+    unitOperation7: [],
+    unitOperation8: [],
+    unitOperation9: [],
+    unitOperation10: [],
+    reviewOfCPD: [],
+    previewRPD: [],
+    currentOOS: [],
+    previewOOS: [],
+    currentOOAC: [],
+    previewOOAC: [],
+    currentOOAL: [],
+    previewOOAL: [],
+    previewCC: [],
+    currentCC: [],
+    currentOOT: [],
+    previewOOT: [],
+    currentCC: [],
+    previewCC: [],
+    currentMC: [],
+    previewMC: [],
+    previewLabI: [],
+    currentLabI: [],
+    currentOOSA: [],
+    previewOOSA: [],
+  });
+
+  const [pQRData, setPQRData] = useReducer(
+    (prev, next) => ({
+      ...prev,
+      ...next,
+    }),
+    {
+      pqrNO: "Corporate / APQR / " + editData.productName + " / " + editData.pqrId,
+      productName: "",
+      genericName: "",
+      reviewStartDate: "",
+      reviewEndDate: "",
+      mfgLicNo: "",
+      processFlow: "",
+      productDescription: "",
+      totalBatchesManufactured: "",
+      totalBatchesApprovedReleased: "",
+      totalProcessValidationBatches: "",
+      totalReprocessedBatches: "",
+    }
+  );
 
   const setTinyContent = (data, tinyNO) => {
     switch (tinyNO) {
       case 1:
-        setPQRData({
-          ...pQRData,
+        setTinyData({
+          ...tinyData,
           tiny1: data,
         });
         break;
       case 2:
-        setPQRData({
-          ...pQRData,
+        setTinyData({
+          ...tinyData,
           tiny2: data,
         });
         break;
       case 3:
-        setPQRData({
-          ...pQRData,
+        setTinyData({
+          ...tinyData,
           tiny3: data,
         });
         break;
       case 4:
-        setPQRData({
-          ...pQRData,
+        setTinyData({
+          ...tinyData,
           tiny4: data,
         });
         break;
       case 5:
-        setPQRData({
-          ...pQRData,
+        setTinyData({
+          ...tinyData,
           tiny5: data,
         });
         break;
       case 6:
-        setPQRData({
-          ...pQRData,
+        setTinyData({
+          ...tinyData,
           tiny6: data,
         });
         break;
       case 7:
-        setPQRData({
-          ...pQRData,
+        setTinyData({
+          ...tinyData,
           tiny7: data,
         });
         break;
       case 8:
-        setPQRData({
-          ...pQRData,
+        setTinyData({
+          ...tinyData,
           tiny8: data,
         });
         break;
       case 9:
-        setPQRData({
-          ...pQRData,
+        setTinyData({
+          ...tinyData,
           tiny9: data,
         });
         break;
       case 10:
-        setPQRData({
-          ...pQRData,
+        setTinyData({
+          ...tinyData,
           tiny10: data,
         });
         break;
       case 11:
-        setPQRData({
-          ...pQRData,
+        setTinyData({
+          ...tinyData,
           tiny11: data,
         });
         break;
       case 12:
-        setPQRData({
-          ...pQRData,
+        setTinyData({
+          ...tinyData,
           tiny12: data,
         });
         break;
       case 13:
-        setPQRData({
-          ...pQRData,
+        setTinyData({
+          ...tinyData,
           tiny13: data,
         });
         break;
       case 14:
-        setPQRData({
-          ...pQRData,
+        setTinyData({
+          ...tinyData,
           tiny14: data,
         });
         break;
       case 15:
-        setPQRData({
-          ...pQRData,
+        setTinyData({
+          ...tinyData,
           tiny15: data,
         });
         break;
       case 16:
-        setPQRData({
-          ...pQRData,
+        setTinyData({
+          ...tinyData,
           tiny16: data,
         });
         break;
       case 17:
-        setPQRData({
-          ...pQRData,
+        setTinyData({
+          ...tinyData,
           tiny17: data,
         });
         break;
       case 18:
-        setPQRData({
-          ...pQRData,
+        setTinyData({
+          ...tinyData,
           tiny18: data,
         });
         break;
       case 19:
-        setPQRData({
-          ...pQRData,
+        setTinyData({
+          ...tinyData,
           tiny19: data,
         });
         break;
       case 20:
-        setPQRData({
-          ...pQRData,
+        setTinyData({
+          ...tinyData,
           tiny20: data,
         });
         break;
       case 21:
-        setPQRData({
-          ...pQRData,
+        setTinyData({
+          ...tinyData,
           tiny21: data,
         });
         break;
       case 22:
-        setPQRData({
-          ...pQRData,
+        setTinyData({
+          ...tinyData,
           tiny22: data,
         });
         break;
       case 23:
-        setPQRData({
-          ...pQRData,
+        setTinyData({
+          ...tinyData,
           tiny23: data,
         });
         break;
       case 24:
-        setPQRData({
-          ...pQRData,
+        setTinyData({
+          ...tinyData,
           tiny24: data,
         });
         break;
       case 25:
-        setPQRData({
-          ...pQRData,
+        setTinyData({
+          ...tinyData,
           tiny25: data,
         });
         break;
       case 26:
-        setPQRData({
-          ...pQRData,
+        setTinyData({
+          ...tinyData,
           tiny26: data,
         });
         break;
       case 27:
-        setPQRData({
-          ...pQRData,
+        setTinyData({
+          ...tinyData,
           tiny27: data,
         });
         break;
       case 28:
-        setPQRData({
-          ...pQRData,
+        setTinyData({
+          ...tinyData,
           tiny28: data,
         });
         break;
       case 29:
-        setPQRData({
-          ...pQRData,
+        setTinyData({
+          ...tinyData,
           tiny29: data,
         });
         break;
       case 30:
-        setPQRData({
-          ...pQRData,
+        setTinyData({
+          ...tinyData,
           tiny30: data,
         });
         break;
       case 31:
-        setPQRData({
-          ...pQRData,
+        setTinyData({
+          ...tinyData,
           tiny31: data,
         });
         break;
       case 32:
-        setPQRData({
-          ...pQRData,
+        setTinyData({
+          ...tinyData,
           tiny32: data,
         });
         break;
       case 33:
-        setPQRData({
-          ...pQRData,
+        setTinyData({
+          ...tinyData,
           tiny33: data,
         });
         break;
       case 34:
-        setPQRData({
-          ...pQRData,
+        setTinyData({
+          ...tinyData,
           tiny34: data,
         });
         break;
       case 35:
-        setPQRData({
-          ...pQRData,
+        setTinyData({
+          ...tinyData,
           tiny35: data,
         });
         break;
       case 36:
-        setPQRData({
-          ...pQRData,
+        setTinyData({
+          ...tinyData,
           tiny36: data,
         });
         break;
       case 37:
-        setPQRData({
-          ...pQRData,
+        setTinyData({
+          ...tinyData,
           tiny37: data,
         });
         break;
       case 38:
-        setPQRData({
-          ...pQRData,
+        setTinyData({
+          ...tinyData,
           tiny38: data,
         });
         break;
       case 39:
-        setPQRData({
-          ...pQRData,
+        setTinyData({
+          ...tinyData,
           tiny39: data,
         });
         break;
       case 40:
-        setPQRData({
-          ...pQRData,
+        setTinyData({
+          ...tinyData,
           tiny40: data,
         });
         break;
       case 41:
-        setPQRData({
-          ...pQRData,
+        setTinyData({
+          ...tinyData,
           tiny41: data,
         });
         break;
       case 42:
-        setPQRData({
-          ...pQRData,
+        setTinyData({
+          ...tinyData,
           tiny42: data,
         });
         break;
       case 43:
-        setPQRData({
-          ...pQRData,
+        setTinyData({
+          ...tinyData,
           tiny43: data,
         });
         break;
       case 44:
-        setPQRData({
-          ...pQRData,
+        setTinyData({
+          ...tinyData,
           tiny44: data,
         });
         break;
       case 45:
-        setPQRData({
-          ...pQRData,
+        setTinyData({
+          ...tinyData,
           tiny45: data,
         });
         break;
       case 46:
-        setPQRData({
-          ...pQRData,
+        setTinyData({
+          ...tinyData,
           tiny46: data,
         });
         break;
       case 47:
-        setPQRData({
-          ...pQRData,
+        setTinyData({
+          ...tinyData,
           tiny47: data,
         });
         break;
       case 48:
-        setPQRData({
-          ...pQRData,
+        setTinyData({
+          ...tinyData,
           tiny48: data,
         });
         break;
       case 49:
-        setPQRData({
-          ...pQRData,
+        setTinyData({
+          ...tinyData,
           tiny49: data,
         });
         break;
       case 50:
-        setPQRData({
-          ...pQRData,
+        setTinyData({
+          ...tinyData,
           tiny50: data,
         });
         break;
       case 51:
-        setPQRData({
-          ...pQRData,
+        setTinyData({
+          ...tinyData,
           tiny51: data,
         });
         break;
       case 52:
-        setPQRData({
-          ...pQRData,
+        setTinyData({
+          ...tinyData,
           tiny52: data,
         });
         break;
       case 53:
-        setPQRData({
-          ...pQRData,
+        setTinyData({
+          ...tinyData,
           tiny53: data,
         });
         break;
       case 54:
-        setPQRData({
-          ...pQRData,
+        setTinyData({
+          ...tinyData,
           tiny54: data,
         });
         break;
       case 55:
-        setPQRData({
-          ...pQRData,
+        setTinyData({
+          ...tinyData,
           tiny55: data,
         });
         break;
       case 56:
-        setPQRData({
-          ...pQRData,
+        setTinyData({
+          ...tinyData,
           tiny56: data,
         });
         break;
       case 57:
-        setPQRData({
-          ...pQRData,
+        setTinyData({
+          ...tinyData,
           tiny57: data,
         });
         break;
       case 58:
-        setPQRData({
-          ...pQRData,
+        setTinyData({
+          ...tinyData,
           tiny58: data,
         });
         break;
       case 59:
-        setPQRData({
-          ...pQRData,
+        setTinyData({
+          ...tinyData,
           tiny59: data,
         });
         break;
       case 60:
-        setPQRData({
-          ...pQRData,
+        setTinyData({
+          ...tinyData,
           tiny60: data,
         });
         break;
       case 61:
-        setPQRData({
-          ...pQRData,
+        setTinyData({
+          ...tinyData,
           tiny61: data,
         });
         break;
       case 62:
-        setPQRData({
-          ...pQRData,
+        setTinyData({
+          ...tinyData,
           tiny62: data,
         });
         break;
       case 63:
-        setPQRData({
-          ...pQRData,
+        setTinyData({
+          ...tinyData,
           tiny63: data,
         });
         break;
       case 64:
-        setPQRData({
-          ...pQRData,
+        setTinyData({
+          ...tinyData,
           tiny64: data,
         });
         break;
       case 65:
-        setPQRData({
-          ...pQRData,
+        setTinyData({
+          ...tinyData,
           tiny65: data,
         });
         break;
       case 66:
-        setPQRData({
-          ...pQRData,
+        setTinyData({
+          ...tinyData,
           tiny66: data,
         });
         break;
       case 67:
-        setPQRData({
-          ...pQRData,
+        setTinyData({
+          ...tinyData,
           tiny67: data,
         });
         break;
       case 68:
-        setPQRData({
-          ...pQRData,
+        setTinyData({
+          ...tinyData,
           tiny68: data,
         });
         break;
       case 69:
-        setPQRData({
-          ...pQRData,
+        setTinyData({
+          ...tinyData,
           tiny69: data,
         });
         break;
       case 70:
-        setPQRData({
-          ...pQRData,
+        setTinyData({
+          ...tinyData,
           tiny70: data,
         });
         break;
       case 71:
-        setPQRData({
-          ...pQRData,
+        setTinyData({
+          ...tinyData,
           tiny71: data,
         });
         break;
       case 72:
-        setPQRData({
-          ...pQRData,
+        setTinyData({
+          ...tinyData,
           tiny72: data,
         });
         break;
       case 73:
-        setPQRData({
-          ...pQRData,
+        setTinyData({
+          ...tinyData,
           tiny73: data,
         });
         break;
       case 74:
-        setPQRData({
-          ...pQRData,
+        setTinyData({
+          ...tinyData,
           tiny74: data,
         });
         break;
       case 75:
-        setPQRData({
-          ...pQRData,
+        setTinyData({
+          ...tinyData,
           tiny75: data,
         });
         break;
       case 76:
-        setPQRData({
-          ...pQRData,
+        setTinyData({
+          ...tinyData,
           tiny76: data,
         });
         break;
     }
   };
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
-  const location = useLocation();
-  const editData = location.state;
-  // console.log(editData, "pankj");
+
+  const getGraphData = (inputData) => {
+    const outputData = {
+      batchNumbers: [],
+      observedValues: [],
+    };
+
+    inputData?.forEach((item) => {
+      outputData.batchNumbers.push(item.batchNo);
+      outputData.observedValues.push(parseFloat(item.observedValue));
+    });
+
+    return outputData;
+  };
+  const paracetamolpHDataH = getGraphData(gridDatas.reviewODSTR);
+  const paracetamolAssayData = getGraphData(gridDatas.reviewODSTR2);
+  const paracetamolImpurityData = getGraphData(gridDatas.reviewODSTR3);
+  const paracetamolDissolutionData = getGraphData(gridDatas.reviewODSTR4);
+  const paracetamolDisIntegrationData = getGraphData(gridDatas.reviewODSTR5);
+  const terbinafinepHDataH = getGraphData(gridDatas.reviewODSTR6);
+  const terbinafineAssayData = getGraphData(gridDatas.reviewODSTR7);
+  const terbinafineImpurityData = getGraphData(gridDatas.reviewODSTR8);
+  const terbinafineDissolutionData = getGraphData(gridDatas.reviewODSTR9);
+  const terbinafineDisIntegrationData = getGraphData(gridDatas.reviewODSTR10);
+  const pentoprazolepHDataH = getGraphData(gridDatas.reviewODSTR11);
+  const pentoprazoleAssayData = getGraphData(gridDatas.reviewODSTR12);
+  const pentoprazoleImpurityData = getGraphData(gridDatas.reviewODSTR13);
+  const pentoprazoleDissolutionData = getGraphData(gridDatas.reviewODSTR14);
+  const pentoprazoleDisIntegrationData = getGraphData(gridDatas.reviewODSTR15);
+
+  const paracetamolpHData = gridDatas?.reviewODSTR?.map((item) => {
+    return {
+      "Batch No.": item.batchNo,
+      "Observed Value": Number(item.observedValue),
+    };
+  });
+  const paracetamolpHData2 = gridDatas?.reviewODSTR2?.map((item) => {
+    return { "Batch No.": item.batchNo, "Observed Value": item.observedValue };
+  });
+  const paracetamolpHData3 = gridDatas?.reviewODSTR3?.map((item) => {
+    return { "Batch No.": item.batchNo, "Observed Value": item.observedValue };
+  });
+  const paracetamolpHData4 = gridDatas?.reviewODSTR4?.map((item) => {
+    return { "Batch No.": item.batchNo, "Observed Value": item.observedValue };
+  });
+  const paracetamolpHData5 = gridDatas?.reviewODSTR5?.map((item) => {
+    return { "Batch No.": item.batchNo, "Observed Value": item.observedValue };
+  });
+  const paracetamolpHData6 = gridDatas?.reviewODSTR6?.map((item) => {
+    return { "Batch No.": item.batchNo, "Observed Value": item.observedValue };
+  });
+  const paracetamolpHData7 = gridDatas?.reviewODSTR7?.map((item) => {
+    return { "Batch No.": item.batchNo, "Observed Value": item.observedValue };
+  });
+  const paracetamolpHData8 = gridDatas?.reviewODSTR8?.map((item) => {
+    return { "Batch No.": item.batchNo, "Observed Value": item.observedValue };
+  });
+  const paracetamolpHData9 = gridDatas?.reviewODSTR9?.map((item) => {
+    return { "Batch No.": item.batchNo, "Observed Value": item.observedValue };
+  });
+  const paracetamolpHData10 = gridDatas?.reviewODSTR10?.map((item) => {
+    return { "Batch No.": item.batchNo, "Observed Value": item.observedValue };
+  });
+  const paracetamolpHData11 = gridDatas?.reviewODSTR11?.map((item) => {
+    return { "Batch No.": item.batchNo, "Observed Value": item.observedValue };
+  });
+  const paracetamolpHData12 = gridDatas?.reviewODSTR12?.map((item) => {
+    return { "Batch No.": item.batchNo, "Observed Value": item.observedValue };
+  });
+  const paracetamolpHData13 = gridDatas?.reviewODSTR13?.map((item) => {
+    return { "Batch No.": item.batchNo, "Observed Value": item.observedValue };
+  });
+  const paracetamolpHData14 = gridDatas?.reviewODSTR14?.map((item) => {
+    return { "Batch No.": item.batchNo, "Observed Value": item.observedValue };
+  });
+  const paracetamolpHData15 = gridDatas?.reviewODSTR15?.map((item) => {
+    return { "Batch No.": item.batchNo, "Observed Value": item.observedValue };
+  });
+
   useEffect(() => {
-    setPQRData({
-      productCodes: productCodes,
-      manufacturingStage: manufacturingStage,
-      manufacturingSAPS: manufacturingSAPS,
-      rawMRS: rawMRS,
-      packingMRS: packingMRS,
-      reviewOfASL: reviewOfASL,
-      expiredRMD: expiredRMD,
-      expiredPMD: expiredPMD,
-      vendorQDORME: vendorQDORME,
-      vendorQDOPPM: vendorQDOPPM,
-      vendorQDPOG: vendorQDPOG,
-      codeTCTD: codeTCTD,
-      reviewORCEC: reviewORCEC,
-      manufacturingSD: manufacturingSD,
-      manufacturingSD2: manufacturingSD2,
-      bufferFSDPV: bufferFSDPV,
-      oosDetails: oosDetails,
-      capaDetails: capaDetails,
-      deviationDetails: deviationDetails,
-      ootResults: ootResults,
-      oolResults: oolResults,
-      ooaResults: ooaResults,
-      reviewODSTR: reviewODSTR,
-      reviewODSTR2: reviewODSTR2,
-      reviewODSTR3: reviewODSTR3,
-      reviewODSTR4: reviewODSTR4,
-      reviewODSTR5: reviewODSTR5,
-      reviewODSTR6: reviewODSTR6,
-      reviewODSTR7: reviewODSTR7,
-      reviewODSTR8: reviewODSTR8,
-      reviewODSTR9: reviewODSTR9,
-      reviewODSTR10: reviewODSTR10,
-      reviewORMETR: reviewORMETR,
-      reviewOPMTR: reviewOPMTR,
-      reviewODP: reviewODP,
-      reviewODP2: reviewODP2,
-      reviewODP3: reviewODP3,
-      reviewODP4: reviewODP4,
-      reviewODP5: reviewODP5,
-      reviewODP6: reviewODP6,
-      reviewODP7: reviewODP7,
-      reviewODP8: reviewODP8,
-      reviewODP9: reviewODP9,
-      reviewODP10: reviewODP10,
-      reviewODPFPTR: reviewODPFPTR,
-      summaryOOSS: summaryOOSS,
-      stabilitySR: stabilitySR,
-      reviewOVIRS: reviewOVIRS,
-      hVACQStatus: hVACQStatus,
-      dossierRR: dossierRR,
-      dossierRRNma: dossierRRNma,
-      sanitizationASDOU: sanitizationASDOU,
-      compressedGas: compressedGas,
-      currentRPQRN: currentRPQRN,
-      unitOperation3: unitOperation3,
-      unitOperation4: unitOperation4,
-      unitOperation5: unitOperation5,
-      unitOperation6: unitOperation6,
-      unitOperation7: unitOperation7,
-      unitOperation8: unitOperation8,
-      unitOperation9: unitOperation9,
-      unitOperation10: unitOperation10,
+    setTinyData({
       tiny1: tiny1,
       tiny2: tiny2,
       tiny3: tiny3,
@@ -887,87 +1126,8 @@ export default function APQR() {
       tiny74: tiny74,
       tiny75: tiny75,
       tiny76: tiny76,
-      reviewOfCPD: reviewOfCPD,
-      previewRPD: previewRPD,
-      previewOOS: previewOOS,
-      currentOOS: currentOOS,
-      previewOOAC: previewOOAC,
-      currentOOAC: currentOOAC,
-      previewOOAL: previewOOAL,
-      currentOOAL: currentOOAL,
-      previewOOT: previewOOT,
-      currentOOT: currentOOT,
-      currentCC: currentCC,
-      previewCC: previewCC,
-      currentMC: currentMC,
-      previewMC: previewMC,
-      currentLabI: currentLabI,
-      previewLabI: previewLabI,
     });
   }, [
-    productCodes,
-    manufacturingStage,
-    manufacturingSAPS,
-    rawMRS,
-    packingMRS,
-    reviewOfASL,
-    expiredRMD,
-    expiredPMD,
-    vendorQDORME,
-    vendorQDOPPM,
-    vendorQDPOG,
-    codeTCTD,
-    reviewORCEC,
-    manufacturingSD,
-    manufacturingSD2,
-    bufferFSDPV,
-    oosDetails,
-    capaDetails,
-    deviationDetails,
-    ootResults,
-    oolResults,
-    ooaResults,
-    reviewODSTR,
-    reviewODSTR2,
-    reviewODSTR3,
-    reviewODSTR4,
-    reviewODSTR5,
-    reviewODSTR6,
-    reviewODSTR7,
-    reviewODSTR8,
-    reviewODSTR9,
-    reviewODSTR10,
-    reviewORMETR,
-    reviewOPMTR,
-    reviewODP,
-    reviewODP2,
-    reviewODP3,
-    reviewODP4,
-    reviewODP5,
-    reviewODP6,
-    reviewODP7,
-    reviewODP8,
-    reviewODP9,
-    reviewODP10,
-    reviewODPFPTR,
-    summaryOOSS,
-    stabilitySR,
-    reviewOVIRS,
-    hVACQStatus,
-    dossierRR,
-    dossierRRNma,
-    sanitizationASDOU,
-    compressedGas,
-    currentRPQRN,
-    unitOperation3,
-    unitOperation4,
-    unitOperation5,
-    unitOperation6,
-    unitOperation7,
-    unitOperation8,
-    unitOperation9,
-    unitOperation10,
-    editData,
     tiny1,
     tiny2,
     tiny3,
@@ -1044,50 +1204,336 @@ export default function APQR() {
     tiny74,
     tiny75,
     tiny76,
-    reviewOfCPD,
-    previewRPD,
-    currentOOS,
-    previewOOS,
-    currentOOAC,
-    previewOOAC,
-    currentOOAL,
-    previewOOAL,
-    previewCC,
-    currentCC,
-    currentOOT,
-    previewOOT,
-    currentCC,
-    previewCC,
-    currentMC,
-    previewMC,
-    previewLabI,
-    currentLabI,
   ]);
+  useEffect(() => {
+    setPQRData({
+      productCodes: productCodes,
+    });
+  }, [productCodes, data]);
+  useEffect(() => {
+    setPQRData({
+      tinyData: tinyData,
+    });
+  }, [tinyData]);
+
+  const handleUpdateAPQR = async () => {
+    try {
+      // Prepare the payload with all fields that need to be updated
+      const payload = {
+        pQRData,
+        gridDatas,
+        tinyData,
+      };
+
+      // Make the PUT request to update the data on the server
+      const response = await axios.put(
+        `http://localhost:4000/update-apqr/${editData.pqrId}`,
+        payload
+      );
+
+      // Handle success (e.g., show a success message)
+    } catch (error) {
+      console.error("Error updating data:", error);
+      // Handle error (e.g., show an error message)
+    }
+  };
+
+  const fetchData = async () => {
+    try {
+      const response = await axios.get(`http://localhost:4000/get-apqr/${editData.pqrId}`);
+      console.log(response.data, "data");
+      setData(response.data);
+      setTinyData(response.data.aPQRData.tinyData);
+      const apiData = response.data.gridDatas;
+
+      // Map each grid from API response to corresponding state
+      setGridDatas({
+        manufacturingStage: apiData.manufacturingStage?.data || {},
+        manufacturingSAPS: apiData.manufacturingSAPS?.data || [],
+        rawMRS: apiData.rawMRS?.data || [],
+        packingMRS: apiData.packingMRS?.data || [],
+        reviewOfASL: apiData.reviewOfASL?.data || [],
+        expiredRMD: apiData.expiredRMD?.data || [],
+        expiredPMD: apiData.expiredPMD?.data || [],
+        vendorQDORME: apiData.vendorQDORME?.data || [],
+        vendorQDOPPM: apiData.vendorQDOPPM?.data || [],
+        vendorQDPOG: apiData.vendorQDPOG?.data || [],
+        codeTCTD: apiData.codeTCTD?.data || [],
+        reviewORCEC: apiData.reviewORCEC?.data || [],
+        manufacturingSD: apiData.manufacturingSD?.data || [],
+        manufacturingSD2: apiData.manufacturingSD2?.data || [],
+        bufferFSDPV: apiData.bufferFSDPV?.data || [],
+        oosDetails: apiData.oosDetails?.data || [],
+        capaDetails: apiData.capaDetails?.data || [],
+        deviationDetails: apiData.deviationDetails?.data || [],
+        ootResults: apiData.ootResults?.data || [],
+        oolResults: apiData.oolResults?.data || [],
+        ooaResults: apiData.ooaResults?.data || [],
+        reviewORMETR: apiData.reviewORMETR?.data || [],
+        reviewOPMTR: apiData.reviewOPMTR?.data || [],
+        reviewODP: apiData.reviewODP?.data || [],
+        reviewODP2: apiData.reviewODP2?.data || [],
+        reviewODP3: apiData.reviewODP3?.data || [],
+        reviewODP4: apiData.reviewODP4?.data || [],
+        reviewODP5: apiData.reviewODP5?.data || [],
+        reviewODP6: apiData.reviewODP6?.data || [],
+        reviewODP7: apiData.reviewODP7?.data || [],
+        reviewODP8: apiData.reviewODP8?.data || [],
+        reviewODP9: apiData.reviewODP9?.data || [],
+        reviewODP10: apiData.reviewODP10?.data || [],
+        reviewODPFPTR: apiData.reviewODPFPTR?.data || [],
+        currentOOSA: apiData.currentOOSA?.data || [],
+        previewOOSA: apiData.previewOOSA?.data || [],
+        summaryOOSS: apiData.summaryOOSS?.data || [],
+        stabilitySR: apiData.stabilitySR?.data || [],
+        reviewOVIRS: apiData.reviewOVIRS?.data || [],
+        hVACQStatus: apiData.hVACQStatus?.data || [],
+        dossierRR: apiData.dossierRR?.data || [],
+        dossierRRNma: apiData.dossierRRNma?.data || [],
+        sanitizationASDOU: apiData.sanitizationASDOU?.data || [],
+        compressedGas: apiData.compressedGas?.data || [],
+        currentRPQRN: apiData.currentRPQRN?.data || [],
+        unitOperation3: apiData.unitOperation3?.data || [],
+        unitOperation4: apiData.unitOperation4?.data || [],
+        unitOperation5: apiData.unitOperation5?.data || [],
+        unitOperation6: apiData.unitOperation6?.data || [],
+        unitOperation7: apiData.unitOperation7?.data || [],
+        unitOperation8: apiData.unitOperation8?.data || [],
+        unitOperation9: apiData.unitOperation9?.data || [],
+        unitOperation10: apiData.unitOperation10?.data || [],
+        reviewOfCPD: apiData.reviewOfCPD?.data || [],
+        previewRPD: apiData.previewRPD?.data || [],
+        currentOOS: apiData.currentOOS?.data || [],
+        previewOOS: apiData.previewOOS?.data || [],
+        currentOOAC: apiData.currentOOAC?.data || [],
+        previewOOAC: apiData.previewOOAC?.data || [],
+        currentOOAL: apiData.currentOOAL?.data || [],
+        previewOOAL: apiData.previewOOAL?.data || [],
+        // previewCC: apiData.previewCC?.data || [],
+        // currentCC: apiData.currentCC?.data || [],
+        currentOOT: apiData.currentOOT?.data || [],
+        previewOOT: apiData.previewOOT?.data || [],
+        currentCC: apiData.currentCC?.data || [],
+        previewCC: apiData.previewCC?.data || [],
+        currentMC: apiData.currentMC?.data || [],
+        previewMC: apiData.previewMC?.data || [],
+        previewLabI: apiData.previewLabI?.data || [],
+        currentLabI: apiData.currentLabI?.data || [],
+        reviewODSTR: apiData.reviewODSTR?.data || [],
+        reviewODSTR2: apiData.reviewODSTR2?.data || [],
+        reviewODSTR3: apiData.reviewODSTR3?.data || [],
+        reviewODSTR4: apiData.reviewODSTR4?.data || [],
+        reviewODSTR5: apiData.reviewODSTR5?.data || [],
+        reviewODSTR6: apiData.reviewODSTR6?.data || [],
+        reviewODSTR7: apiData.reviewODSTR7?.data || [],
+        reviewODSTR8: apiData.reviewODSTR8?.data || [],
+        reviewODSTR9: apiData.reviewODSTR9?.data || [],
+        reviewODSTR10: apiData.reviewODSTR10?.data || [],
+        reviewODSTR11: apiData.reviewODSTR11?.data || [],
+        reviewODSTR12: apiData.reviewODSTR12?.data || [],
+        reviewODSTR13: apiData.reviewODSTR13?.data || [],
+        reviewODSTR14: apiData.reviewODSTR14?.data || [],
+        reviewODSTR15: apiData.reviewODSTR15?.data || [],
+        // Map all other grids here
+      });
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    }
+  };
 
   useEffect(() => {
-    if (editData) {
-      setPQRData(editData);
+    if (editData && editData.pqrId) {
+      fetchData();
+    } else {
+      console.log("editData or pqrId is missing");
     }
   }, [editData]);
-  // useEffect(() => {
-  //   console.log("tiny1:", tiny1);
-  // }, [tiny1]);
-  const handleInputChange = (event) => {
-    const { name, value } = event.target;
-    setPQRData({
-      ...pQRData,
-      [name]: value,
+  useEffect(() => {
+    if (data) {
+      setPQRData(data.aPQRData);
+    }
+  }, [data]);
+  const trimValue = (value) => {
+    return typeof value === "string" ? value.trim() : value;
+  };
+
+  const processData = (data, keyMapping) => {
+    return data.map((item) => {
+      let processedItem = {};
+      for (let originalKey in item) {
+        if (item.hasOwnProperty(originalKey)) {
+          let sanitizedKey = sanitizeKey(originalKey);
+          let newKey = keyMapping[sanitizedKey];
+          if (newKey) {
+            processedItem[newKey] = trimValue(item[originalKey]);
+          }
+        }
+      }
+      return processedItem;
     });
   };
+
+  // Define the key mapping
+  const keyMapping = {
+    ProductName: "productName",
+    SFGCode: "sFGCode",
+    FGCode: "fGCode",
+    BatchNo: "batchNo",
+    Testsparameter: "testsParameter",
+    // testsParameter: "Tests parameter",
+    LSL: "LSL",
+    USL: "USL",
+    LCL: "LCL",
+    UCL: "UCL",
+    ObservedValue: "observedValue",
+    // observedValue: "Observed Value",
+    CompliesDoesNotComplies: "compliesNotComplies",
+    // compliesNotComplies: "Complies/Does Not Complies",
+  };
+
+  const setimportedData = (data, gridNo) => {
+    const processedData = processData(data, keyMapping);
+    setGridDatas((prevData) => {
+      switch (gridNo) {
+        case 1:
+          return {
+            ...prevData,
+            manufacturingStage: [...prevData.manufacturingStage, ...processedData],
+          };
+        case 22:
+          return {
+            ...prevData,
+            reviewODSTR: [...prevData.reviewODSTR, ...processedData],
+          };
+        case 23:
+          return {
+            ...prevData,
+            reviewODSTR2: [...prevData.reviewODSTR2, ...processedData],
+          };
+        case 24:
+          return {
+            ...prevData,
+            reviewODSTR3: [...prevData.reviewODSTR3, ...processedData],
+          };
+        case 25:
+          return {
+            ...prevData,
+            reviewODSTR4: [...prevData.reviewODSTR4, ...processedData],
+          };
+        case 26:
+          return {
+            ...prevData,
+            reviewODSTR5: [...prevData.reviewODSTR5, ...processedData],
+          };
+        case 27:
+          return {
+            ...prevData,
+            reviewODSTR6: [...prevData.reviewODSTR6, ...processedData],
+          };
+        case 28:
+          return {
+            ...prevData,
+            reviewODSTR7: [...prevData.reviewODSTR7, ...processedData],
+          };
+        case 29:
+          return {
+            ...prevData,
+            reviewODSTR8: [...prevData.reviewODSTR8, ...processedData],
+          };
+        case 30:
+          return {
+            ...prevData,
+            reviewODSTR9: [...prevData.reviewODSTR9, ...processedData],
+          };
+        case 31:
+          return {
+            ...prevData,
+            reviewODSTR10: [...prevData.reviewODSTR10, ...processedData],
+          };
+        case 32:
+          return {
+            ...prevData,
+            reviewODSTR11: [...prevData.reviewODSTR11, ...processedData],
+          };
+        case 33:
+          return {
+            ...prevData,
+            reviewODSTR12: [...prevData.reviewODSTR12, ...processedData],
+          };
+        case 34:
+          return {
+            ...prevData,
+            reviewODSTR13: [...prevData.reviewODSTR13, ...processedData],
+          };
+        case 35:
+          return {
+            ...prevData,
+            reviewODSTR14: [...prevData.reviewODSTR14, ...processedData],
+          };
+        case 36:
+          return {
+            ...prevData,
+            reviewODSTR15: [...prevData.reviewODSTR15, ...processedData],
+          };
+        default:
+          return prevData;
+      }
+    });
+    //
+    //   setReviewOSTR2([...reviewODSTR2, ...processedData]);
+    //   break;
+    // case 24:
+    //   setReviewOSTR3([...reviewODSTR3, ...processedData]);
+    //   break;
+    // case 25:
+    //   setReviewOSTR4([...reviewODSTR4, ...processedData]);
+    //   break;
+    // case 26:
+    //   setReviewOSTR5([...reviewODSTR5, ...processedData]);
+    //   break;
+    // case 27:
+    //   setReviewOSTR6([...reviewODSTR6, ...processedData]);
+    //   break;
+    // case 28:
+    //   setReviewOSTR7([...reviewODSTR7, ...processedData]);
+    //   break;
+    // case 29:
+    //   setReviewOSTR8([...reviewODSTR8, ...processedData]);
+    //   break;
+    // case 30:
+    //   setReviewOSTR9([...reviewODSTR9, ...processedData]);
+    //   break;
+    // case 31:
+    //   setReviewOSTR10([...reviewODSTR10, ...processedData]);
+    //   break;
+    // case 32:
+    //   setReviewOSTR11([...reviewODSTR11, ...processedData]);
+    //   break;
+    // case 33:
+    //   setReviewOSTR12([...reviewODSTR12, ...processedData]);
+    //   break;
+    // case 34:
+    //   setReviewOSTR13([...reviewODSTR13, ...processedData]);
+    //   break;
+    // case 35:
+    //   setReviewOSTR14([...reviewODSTR14, ...processedData]);
+    //   break;
+    // case 36:
+    //   setReviewOSTR15([...reviewODSTR15, ...processedData]);
+    //   break;
+
+    // setManufacturingStage([...manufacturingStage, ...processedData]);
+  };
+
   const addManufacturingStageRow = () => {
     const newRow = {
       productName: "",
       sFGCode: "",
       fGCode: "",
     };
-    setPQRData({
-      ...pQRData,
-      manufacturingStage: [...pQRData.manufacturingStage, newRow],
+    setGridDatas({
+      ...gridDatas,
+      manufacturingStage: [...gridDatas.manufacturingStage, newRow],
     });
   };
 
@@ -1098,9 +1544,9 @@ export default function APQR() {
       notificationtype: "",
       description: "",
     };
-    setPQRData({
-      ...pQRData,
-      dossierRR: [...pQRData.dossierRR, newRow],
+    setGridDatas({
+      ...gridDatas,
+      dossierRR: [...gridDatas.dossierRR, newRow],
     });
   };
 
@@ -1113,9 +1559,9 @@ export default function APQR() {
       dateOfAuthorization: "",
       remarks: "",
     };
-    setPQRData({
-      ...pQRData,
-      dossierRRNma: [...pQRData.dossierRRNma, newRow],
+    setGridDatas({
+      ...gridDatas,
+      dossierRRNma: [...gridDatas.dossierRRNma, newRow],
     });
   };
 
@@ -1126,9 +1572,9 @@ export default function APQR() {
       sFGCode: "",
       remarks: "",
     };
-    setPQRData({
-      ...pQRData,
-      manufacturingSAPS: [...pQRData.manufacturingSAPS, newRow],
+    setGridDatas({
+      ...gridDatas,
+      manufacturingSAPS: [...gridDatas.manufacturingSAPS, newRow],
     });
   };
 
@@ -1140,9 +1586,9 @@ export default function APQR() {
       reasonOfRejection: "",
       description: "",
     };
-    setPQRData({
-      ...pQRData,
-      rawMRS: [...pQRData.rawMRS, newRow],
+    setGridDatas({
+      ...gridDatas,
+      rawMRS: [...gridDatas.rawMRS, newRow],
     });
   };
 
@@ -1154,9 +1600,9 @@ export default function APQR() {
       reasonOfRejection: "",
       description: "",
     };
-    setPQRData({
-      ...pQRData,
-      packingMRS: [...pQRData.packingMRS, newRow],
+    setGridDatas({
+      ...gridDatas,
+      packingMRS: [...gridDatas.packingMRS, newRow],
     });
   };
 
@@ -1167,9 +1613,9 @@ export default function APQR() {
       ARNo: "",
       expiryDate: "",
     };
-    setPQRData({
-      ...pQRData,
-      expiredRMD: [...pQRData.expiredRMD, newRow],
+    setGridDatas({
+      ...gridDatas,
+      expiredRMD: [...gridDatas.expiredRMD, newRow],
     });
   };
   const addExpiredPMDRow = () => {
@@ -1179,9 +1625,9 @@ export default function APQR() {
       ARNo: "",
       expiryDate: "",
     };
-    setPQRData({
-      ...pQRData,
-      expiredPMD: [...pQRData.expiredPMD, newRow],
+    setGridDatas({
+      ...gridDatas,
+      expiredPMD: [...gridDatas.expiredPMD, newRow],
     });
   };
   const addreviewOfASLRow = () => {
@@ -1191,9 +1637,9 @@ export default function APQR() {
       manufacturer: "",
       facility: "",
     };
-    setPQRData({
-      ...pQRData,
-      reviewOfASL: [...pQRData.reviewOfASL, newRow],
+    setGridDatas({
+      ...gridDatas,
+      reviewOfASL: [...gridDatas.reviewOfASL, newRow],
     });
   };
 
@@ -1205,9 +1651,9 @@ export default function APQR() {
       qualificationStatus: "",
       remarks: "",
     };
-    setPQRData({
-      ...pQRData,
-      vendorQDORME: [...pQRData.vendorQDORME, newRow],
+    setGridDatas({
+      ...gridDatas,
+      vendorQDORME: [...gridDatas.vendorQDORME, newRow],
     });
   };
 
@@ -1218,9 +1664,9 @@ export default function APQR() {
       manufacturerName: "",
       qualificationStatus: "",
     };
-    setPQRData({
-      ...pQRData,
-      vendorQDORME: [...pQRData.vendorQDORME, newRow],
+    setGridDatas({
+      ...gridDatas,
+      vendorQDORME: [...gridDatas.vendorQDORME, newRow],
     });
     setVendorQDOPPM([...vendorQDOPPM, newRow]);
   };
@@ -1232,9 +1678,9 @@ export default function APQR() {
       manufacturerName: "",
       qualificationStatus: "",
     };
-    setPQRData({
-      ...pQRData,
-      vendorQDPOG: [...pQRData.vendorQDPOG, newRow],
+    setGridDatas({
+      ...gridDatas,
+      vendorQDPOG: [...gridDatas.vendorQDPOG, newRow],
     });
   };
 
@@ -1248,9 +1694,9 @@ export default function APQR() {
       transferQuality: "",
       refNo: "",
     };
-    setPQRData({
-      ...pQRData,
-      codeTCTD: [...pQRData.codeTCTD, newRow],
+    setGridDatas({
+      ...gridDatas,
+      codeTCTD: [...gridDatas.codeTCTD, newRow],
     });
   };
 
@@ -1263,9 +1709,9 @@ export default function APQR() {
       qMS: "",
       reasonForRepacking: "",
     };
-    setPQRData({
-      ...pQRData,
-      reviewORCEC: [...pQRData.reviewORCEC, newRow],
+    setGridDatas({
+      ...gridDatas,
+      reviewORCEC: [...gridDatas.reviewORCEC, newRow],
     });
   };
 
@@ -1277,9 +1723,9 @@ export default function APQR() {
       results: { minimum: "", maximum: "" },
       compliesNotComplies: "",
     };
-    setPQRData({
-      ...pQRData,
-      manufacturingSD: [...pQRData.manufacturingSD, newRow],
+    setGridDatas({
+      ...gridDatas,
+      manufacturingSD: [...gridDatas.manufacturingSD, newRow],
     });
   };
 
@@ -1291,9 +1737,9 @@ export default function APQR() {
       results: { minimum: "", maximum: "" },
       compliesNotComplies: "",
     };
-    setPQRData({
-      ...pQRData,
-      bufferFSDPV: [...pQRData.bufferFSDPV, newRow],
+    setGridDatas({
+      ...gridDatas,
+      bufferFSDPV: [...gridDatas.bufferFSDPV, newRow],
     });
   };
   const oosDetailsRow = () => {
@@ -1305,9 +1751,9 @@ export default function APQR() {
       detailsOfObviousError: "",
       fileAttachment: "",
     };
-    setPQRData({
-      ...pQRData,
-      oosDetails: [...pQRData.oosDetails, newRow],
+    setGridDatas({
+      ...gridDatas,
+      oosDetails: [...gridDatas.oosDetails, newRow],
     });
   };
 
@@ -1321,9 +1767,9 @@ export default function APQR() {
       chooseFile: "",
       remarks: "",
     };
-    setPQRData({
-      ...pQRData,
-      capaDetails: [...pQRData.capaDetails, newRow],
+    setGridDatas({
+      ...gridDatas,
+      capaDetails: [...gridDatas.capaDetails, newRow],
     });
   };
   const deviationDetailsRow = () => {
@@ -1339,9 +1785,9 @@ export default function APQR() {
       remarks: "",
       status: "",
     };
-    setPQRData({
-      ...pQRData,
-      deviationDetails: [...pQRData.deviationDetails, newRow],
+    setGridDatas({
+      ...gridDatas,
+      deviationDetails: [...gridDatas.deviationDetails, newRow],
     });
   };
 
@@ -1355,9 +1801,9 @@ export default function APQR() {
       diffrenceOfResult: "",
       trendLimit: "",
     };
-    setPQRData({
-      ...pQRData,
-      ootResults: [...pQRData.ootResults, newRow],
+    setGridDatas({
+      ...gridDatas,
+      ootResults: [...gridDatas.ootResults, newRow],
     });
   };
   const oolResultsRow = () => {
@@ -1370,9 +1816,9 @@ export default function APQR() {
       diffrenceOfResult: "",
       trendLimit: "",
     };
-    setPQRData({
-      ...pQRData,
-      oolResults: [...pQRData.oolResults, newRow],
+    setGridDatas({
+      ...gridDatas,
+      oolResults: [...gridDatas.oolResults, newRow],
     });
   };
   const ooaResultsRow = () => {
@@ -1383,131 +1829,256 @@ export default function APQR() {
       detailsOfObviousError: "",
       chooseFile: "",
     };
-    setPQRData({
-      ...pQRData,
-      ooaResults: [...pQRData.ooaResults, newRow],
+    setGridDatas({
+      ...gridDatas,
+      ooaResults: [...gridDatas.ooaResults, newRow],
     });
   };
 
   const addReviewODSTRRow = () => {
     const newRow = {
+      batchNo: "",
       testsParameter: "",
-      specificationLimit: "",
-      obtainedValue: { minimum: "", maximum: "" },
+      observedValue: "",
+      LSL: "",
+      USL: "",
+      LCL: "",
+      UCL: "",
       compliesNotComplies: "",
     };
     setPQRData({
-      ...pQRData,
-      reviewODSTR: [...pQRData.reviewODSTR, newRow],
+      ...gridDatas,
+      reviewODSTR: [...gridDatas.reviewODSTR, newRow],
     });
   };
   const addReviewODSTRRow2 = () => {
     const newRow2 = {
+      batchNo: "",
       testsParameter: "",
-      specificationLimit: "",
-      obtainedValue: { minimum: "", maximum: "" },
+      observedValue: "",
+      LSL: "",
+      USL: "",
+      LCL: "",
+      UCL: "",
       compliesNotComplies: "",
     };
-    setPQRData({
-      ...pQRData,
-      reviewODSTR2: [...pQRData.reviewODSTR2, newRow2],
+    setGridDatas({
+      ...gridDatas,
+      reviewODSTR2: [...gridDatas.reviewODSTR2, newRow2],
     });
   };
   const addReviewODSTRRow3 = () => {
     const newRow3 = {
+      batchNo: "",
       testsParameter: "",
-      specificationLimit: "",
-      obtainedValue: { minimum: "", maximum: "" },
+      observedValue: "",
+      LSL: "",
+      USL: "",
+      LCL: "",
+      UCL: "",
       compliesNotComplies: "",
     };
-    setPQRData({
-      ...pQRData,
-      reviewODSTR3: [...pQRData.reviewODSTR3, newRow3],
+    setGridDatas({
+      ...gridDatas,
+      reviewODSTR3: [...gridDatas.reviewODSTR3, newRow3],
     });
   };
   const addReviewODSTRRow4 = () => {
     const newRow4 = {
+      batchNo: "",
       testsParameter: "",
-      specificationLimit: "",
-      obtainedValue: { minimum: "", maximum: "" },
+      observedValue: "",
+      LSL: "",
+      USL: "",
+      LCL: "",
+      UCL: "",
       compliesNotComplies: "",
     };
-    setPQRData({
-      ...pQRData,
-      reviewODSTR4: [...pQRData.reviewODSTR4, newRow4],
+    setGridDatas({
+      ...gridDatas,
+      reviewODSTR4: [...gridDatas.reviewODSTR4, newRow4],
     });
   };
   const addReviewODSTRRow5 = () => {
     const newRow5 = {
+      batchNo: "",
       testsParameter: "",
-      specificationLimit: "",
-      obtainedValue: { minimum: "", maximum: "" },
+      observedValue: "",
+      LSL: "",
+      USL: "",
+      LCL: "",
+      UCL: "",
       compliesNotComplies: "",
     };
-    setPQRData({
-      ...pQRData,
-      reviewODSTR5: [...pQRData.reviewODSTR5, newRow5],
+    setGridDatas({
+      ...gridDatas,
+      reviewODSTR5: [...gridDatas.reviewODSTR5, newRow5],
     });
     setReviewOSTR5([...reviewODSTR5, newRow5]);
   };
   const addReviewODSTRRow6 = () => {
     const newRow6 = {
+      batchNo: "",
       testsParameter: "",
-      specificationLimit: "",
-      obtainedValue: { minimum: "", maximum: "" },
+      observedValue: "",
+      LSL: "",
+      USL: "",
+      LCL: "",
+      UCL: "",
       compliesNotComplies: "",
     };
-    setPQRData({
-      ...pQRData,
-      reviewODSTR6: [...pQRData.reviewODSTR6, newRow6],
+    setGridDatas({
+      ...gridDatas,
+      reviewODSTR6: [...gridDatas.reviewODSTR6, newRow6],
     });
   };
   const addReviewODSTRRow7 = () => {
     const newRow7 = {
+      batchNo: "",
       testsParameter: "",
-      specificationLimit: "",
-      obtainedValue: { minimum: "", maximum: "" },
+      observedValue: "",
+      LSL: "",
+      USL: "",
+      LCL: "",
+      UCL: "",
       compliesNotComplies: "",
     };
-    setPQRData({
-      ...pQRData,
-      reviewODSTR7: [...pQRData.reviewODSTR7, newRow7],
+    setGridDatas({
+      ...gridDatas,
+      reviewODSTR7: [...gridDatas.reviewODSTR7, newRow7],
     });
   };
   const addReviewODSTRRow8 = () => {
     const newRow8 = {
+      batchNo: "",
       testsParameter: "",
-      specificationLimit: "",
-      obtainedValue: { minimum: "", maximum: "" },
+      observedValue: "",
+      LSL: "",
+      USL: "",
+      LCL: "",
+      UCL: "",
       compliesNotComplies: "",
     };
-    setPQRData({
-      ...pQRData,
-      reviewODSTR8: [...pQRData.reviewODSTR8, newRow8],
+    setGridDatas({
+      ...gridDatas,
+      reviewODSTR8: [...gridDatas.reviewODSTR8, newRow8],
     });
   };
   const addReviewODSTRRow9 = () => {
     const newRow9 = {
+      batchNo: "",
       testsParameter: "",
-      specificationLimit: "",
-      obtainedValue: { minimum: "", maximum: "" },
+      observedValue: "",
+      LSL: "",
+      USL: "",
+      LCL: "",
+      UCL: "",
       compliesNotComplies: "",
     };
-    setPQRData({
-      ...pQRData,
-      reviewODSTR9: [...pQRData.reviewODSTR9, newRow9],
+    setGridDatas({
+      ...gridDatas,
+      reviewODSTR9: [...gridDatas.reviewODSTR9, newRow9],
     });
   };
   const addReviewODSTRRow10 = () => {
     const newRow10 = {
+      batchNo: "",
       testsParameter: "",
-      specificationLimit: "",
-      obtainedValue: { minimum: "", maximum: "" },
+      observedValue: "",
+      LSL: "",
+      USL: "",
+      LCL: "",
+      UCL: "",
       compliesNotComplies: "",
     };
-    setPQRData({
-      ...pQRData,
-      reviewODSTR10: [...pQRData.reviewODSTR10, newRow10],
+    setGridDatas({
+      ...gridDatas,
+      reviewODSTR10: [...gridDatas.reviewODSTR10, newRow10],
+    });
+  };
+
+  const addReviewODSTRRow11 = () => {
+    const newRow10 = {
+      batchNo: "",
+      testsParameter: "",
+      observedValue: "",
+      LSL: "",
+      USL: "",
+      LCL: "",
+      UCL: "",
+      compliesNotComplies: "",
+    };
+    setGridDatas({
+      ...gridDatas,
+      reviewODSTR10: [...gridDatas.reviewODSTR11, newRow10],
+    });
+  };
+
+  const addReviewODSTRRow12 = () => {
+    const newRow10 = {
+      batchNo: "",
+      testsParameter: "",
+      observedValue: "",
+      LSL: "",
+      USL: "",
+      LCL: "",
+      UCL: "",
+      compliesNotComplies: "",
+    };
+    setGridDatas({
+      ...gridDatas,
+      reviewODSTR10: [...gridDatas.reviewODSTR12, newRow10],
+    });
+  };
+
+  const addReviewODSTRRow13 = () => {
+    const newRow10 = {
+      batchNo: "",
+      testsParameter: "",
+      observedValue: "",
+      LSL: "",
+      USL: "",
+      LCL: "",
+      UCL: "",
+      compliesNotComplies: "",
+    };
+    setGridDatas({
+      ...gridDatas,
+      reviewODSTR10: [...gridDatas.reviewODSTR13, newRow10],
+    });
+  };
+
+  const addReviewODSTRRow14 = () => {
+    const newRow10 = {
+      batchNo: "",
+      testsParameter: "",
+      observedValue: "",
+      LSL: "",
+      USL: "",
+      LCL: "",
+      UCL: "",
+      compliesNotComplies: "",
+    };
+    setGridDatas({
+      ...gridDatas,
+      reviewODSTR10: [...gridDatas.reviewODSTR14, newRow10],
+    });
+  };
+
+  const addReviewODSTRRow15 = () => {
+    const newRow10 = {
+      batchNo: "",
+      testsParameter: "",
+      observedValue: "",
+      LSL: "",
+      USL: "",
+      LCL: "",
+      UCL: "",
+      compliesNotComplies: "",
+    };
+    setGridDatas({
+      ...gridDatas,
+      reviewODSTR10: [...gridDatas.reviewODSTR15, newRow10],
     });
   };
 
@@ -1519,9 +2090,9 @@ export default function APQR() {
       obtainedValue: { minimum: "", maximum: "" },
       compliesNotComplies: "",
     };
-    setPQRData({
-      ...pQRData,
-      reviewORMETR: [...pQRData.reviewORMETR, newRow],
+    setGridDatas({
+      ...gridDatas,
+      reviewORMETR: [...gridDatas.reviewORMETR, newRow],
     });
   };
 
@@ -1533,9 +2104,9 @@ export default function APQR() {
       obtainedValue: { minimum: "", maximum: "" },
       compliesNotComplies: "",
     };
-    setPQRData({
-      ...pQRData,
-      reviewOPMTR: [...pQRData.reviewOPMTR, newRow],
+    setGridDatas({
+      ...gridDatas,
+      reviewOPMTR: [...gridDatas.reviewOPMTR, newRow],
     });
   };
 
@@ -1547,9 +2118,9 @@ export default function APQR() {
       obtainedValue: { minimum: "", maximum: "" },
       compliesNotComplies: "",
     };
-    setPQRData({
-      ...pQRData,
-      reviewODP: [...pQRData.reviewODP, newRow],
+    setGridDatas({
+      ...gridDatas,
+      reviewODP: [...gridDatas.reviewODP, newRow],
     });
   };
 
@@ -1561,9 +2132,9 @@ export default function APQR() {
       obtainedValue: { minimum: "", maximum: "" },
       compliesNotComplies: "",
     };
-    setPQRData({
-      ...pQRData,
-      reviewODP2: [...pQRData.reviewODP2, newRow2],
+    setGridDatas({
+      ...gridDatas,
+      reviewODP2: [...gridDatas.reviewODP2, newRow2],
     });
   };
   const addReviewODPRow3 = () => {
@@ -1574,9 +2145,9 @@ export default function APQR() {
       obtainedValue: { minimum: "", maximum: "" },
       compliesNotComplies: "",
     };
-    setPQRData({
-      ...pQRData,
-      reviewODP3: [...pQRData.reviewODP3, newRow3],
+    setGridDatas({
+      ...gridDatas,
+      reviewODP3: [...gridDatas.reviewODP3, newRow3],
     });
   };
   const addReviewODPRow4 = () => {
@@ -1587,9 +2158,9 @@ export default function APQR() {
       obtainedValue: { minimum: "", maximum: "" },
       compliesNotComplies: "",
     };
-    setPQRData({
-      ...pQRData,
-      reviewODP4: [...pQRData.reviewODP4, newRow4],
+    setGridDatas({
+      ...gridDatas,
+      reviewODP4: [...gridDatas.reviewODP4, newRow4],
     });
   };
   const addReviewODPRow5 = () => {
@@ -1600,9 +2171,9 @@ export default function APQR() {
       obtainedValue: { minimum: "", maximum: "" },
       compliesNotComplies: "",
     };
-    setPQRData({
-      ...pQRData,
-      reviewODP5: [...pQRData.reviewODP5, newRow5],
+    setGridDatas({
+      ...gridDatas,
+      reviewODP5: [...gridDatas.reviewODP5, newRow5],
     });
   };
   const addReviewODPRow6 = () => {
@@ -1613,9 +2184,9 @@ export default function APQR() {
       obtainedValue: { minimum: "", maximum: "" },
       compliesNotComplies: "",
     };
-    setPQRData({
-      ...pQRData,
-      reviewODP6: [...pQRData.reviewODP6, newRow6],
+    setGridDatas({
+      ...gridDatas,
+      reviewODP6: [...gridDatas.reviewODP6, newRow6],
     });
   };
   const addReviewODPRow7 = () => {
@@ -1626,9 +2197,9 @@ export default function APQR() {
       obtainedValue: { minimum: "", maximum: "" },
       compliesNotComplies: "",
     };
-    setPQRData({
-      ...pQRData,
-      reviewODP7: [...pQRData.reviewODP7, newRow7],
+    setGridDatas({
+      ...gridDatas,
+      reviewODP7: [...gridDatas.reviewODP7, newRow7],
     });
   };
   const addReviewODPRow8 = () => {
@@ -1639,9 +2210,9 @@ export default function APQR() {
       obtainedValue: { minimum: "", maximum: "" },
       compliesNotComplies: "",
     };
-    setPQRData({
-      ...pQRData,
-      reviewODP8: [...pQRData.reviewODP8, newRow8],
+    setGridDatas({
+      ...gridDatas,
+      reviewODP8: [...gridDatas.reviewODP8, newRow8],
     });
   };
   const addReviewODPRow9 = () => {
@@ -1652,9 +2223,9 @@ export default function APQR() {
       obtainedValue: { minimum: "", maximum: "" },
       compliesNotComplies: "",
     };
-    setPQRData({
-      ...pQRData,
-      reviewODP9: [...pQRData.reviewODP9, newRow9],
+    setGridDatas({
+      ...gridDatas,
+      reviewODP9: [...gridDatas.reviewODP9, newRow9],
     });
     setReviewODP9([...reviewODP9, newRow9]);
   };
@@ -1666,9 +2237,9 @@ export default function APQR() {
       obtainedValue: { minimum: "", maximum: "" },
       compliesNotComplies: "",
     };
-    setPQRData({
-      ...pQRData,
-      reviewODP10: [...pQRData.reviewODP10, newRow10],
+    setGridDatas({
+      ...gridDatas,
+      reviewODP10: [...gridDatas.reviewODP10, newRow10],
     });
   };
 
@@ -1679,9 +2250,9 @@ export default function APQR() {
       obtainedValue: { minimum: "", maximum: "" },
       compliesNotComplies: "",
     };
-    setPQRData({
-      ...pQRData,
-      reviewODPFPTR: [...pQRData.reviewODPFPTR, newRow],
+    setGridDatas({
+      ...gridDatas,
+      reviewODPFPTR: [...gridDatas.reviewODPFPTR, newRow],
     });
   };
 
@@ -1693,9 +2264,9 @@ export default function APQR() {
       testingInterval: "",
       stabilityProtocolNo: "",
     };
-    setPQRData({
-      ...pQRData,
-      summaryOOSS: [...pQRData.summaryOOSS, newRow],
+    setGridDatas({
+      ...gridDatas,
+      summaryOOSS: [...gridDatas.summaryOOSS, newRow],
     });
   };
 
@@ -1705,9 +2276,9 @@ export default function APQR() {
       testingIntervalMonths: "",
       OOSNumber: "",
     };
-    setPQRData({
-      ...pQRData,
-      stabilitySR: [...pQRData.stabilitySR, newRow],
+    setGridDatas({
+      ...gridDatas,
+      stabilitySR: [...gridDatas.stabilitySR, newRow],
     });
   };
 
@@ -1722,9 +2293,9 @@ export default function APQR() {
       column7: "",
       column8: "",
     };
-    setPQRData({
-      ...pQRData,
-      reviewOVIRS: [...pQRData.reviewOVIRS, newRow],
+    setGridDatas({
+      ...gridDatas,
+      reviewOVIRS: [...gridDatas.reviewOVIRS, newRow],
     });
   };
 
@@ -1734,9 +2305,9 @@ export default function APQR() {
       frequency: "",
       status: "",
     };
-    setPQRData({
-      ...pQRData,
-      hVACQStatus: [...pQRData.hVACQStatus, newRow],
+    setGridDatas({
+      ...gridDatas,
+      hVACQStatus: [...gridDatas.hVACQStatus, newRow],
     });
   };
   const addReviewOfCPD = () => {
@@ -1751,7 +2322,10 @@ export default function APQR() {
       dueDate: "",
       currentStatus: "",
     };
-    setPQRData({ ...pQRData, reviewOfCPD: [...pQRData.reviewOfCPD, newRow] });
+    setGridDatas({
+      ...gridDatas,
+      reviewOfCPD: [...gridDatas.reviewOfCPD, newRow],
+    });
   };
 
   const addPreviewRPD = () => {
@@ -1766,7 +2340,10 @@ export default function APQR() {
       dueDate: "",
       currentStatus: "",
     };
-    setPQRData({ ...pQRData, previewRPD: [...pQRData.previewRPD, newRow] });
+    setGridDatas({
+      ...gridDatas,
+      previewRPD: [...gridDatas.previewRPD, newRow],
+    });
   };
 
   const addCurrentOOS = () => {
@@ -1781,7 +2358,10 @@ export default function APQR() {
       dueDate: "",
       currentStatus: "",
     };
-    setPQRData({ ...pQRData, currentOOS: [...pQRData.currentOOS, newRow] });
+    setGridDatas({
+      ...gridDatas,
+      currentOOS: [...gridDatas.currentOOS, newRow],
+    });
   };
 
   const addPreviewOOS = () => {
@@ -1796,7 +2376,10 @@ export default function APQR() {
       dueDate: "",
       currentStatus: "",
     };
-    setPQRData({ ...pQRData, previewOOS: [...pQRData.previewOOS, newRow] });
+    setGridDatas({
+      ...gridDatas,
+      previewOOS: [...gridDatas.previewOOS, newRow],
+    });
   };
   const addCurrentOOAC = () => {
     const newRow = {
@@ -1810,7 +2393,10 @@ export default function APQR() {
       dueDate: "",
       currentStatus: "",
     };
-    setPQRData({ ...pQRData, currentOOAC: [...pQRData.currentOOAC, newRow] });
+    setGridDatas({
+      ...gridDatas,
+      currentOOAC: [...gridDatas.currentOOAC, newRow],
+    });
   };
   const addPreviewOOAC = () => {
     const newRow = {
@@ -1824,7 +2410,10 @@ export default function APQR() {
       dueDate: "",
       currentStatus: "",
     };
-    setPQRData({ ...pQRData, previewOOAC: [...pQRData.previewOOAC, newRow] });
+    setGridDatas({
+      ...gridDatas,
+      previewOOAC: [...gridDatas.previewOOAC, newRow],
+    });
   };
   const addCurrentOOAL = () => {
     const newRow = {
@@ -1838,7 +2427,10 @@ export default function APQR() {
       dueDate: "",
       currentStatus: "",
     };
-    setPQRData({ ...pQRData, currentOOAL: [...pQRData.currentOOAL, newRow] });
+    setGridDatas({
+      ...gridDatas,
+      currentOOAL: [...gridDatas.currentOOAL, newRow],
+    });
   };
   const addPreviewOOAL = () => {
     const newRow = {
@@ -1852,7 +2444,10 @@ export default function APQR() {
       dueDate: "",
       currentStatus: "",
     };
-    setPQRData({ ...pQRData, previewOOAL: [...pQRData.previewOOAL, newRow] });
+    setGridDatas({
+      ...gridDatas,
+      previewOOAL: [...gridDatas.previewOOAL, newRow],
+    });
   };
 
   const addCurrentOOSA = () => {
@@ -1867,7 +2462,10 @@ export default function APQR() {
       dueDate: "",
       currentStatus: "",
     };
-    setPQRData({ ...pQRData, currentOOSA: [...pQRData.currentOOSA, newRow] });
+    setGridDatas({
+      ...gridDatas,
+      currentOOSA: [...gridDatas.currentOOSA, newRow],
+    });
   };
 
   const addPreviewOOSA = () => {
@@ -1882,7 +2480,10 @@ export default function APQR() {
       dueDate: "",
       currentStatus: "",
     };
-    setPQRData({ ...pQRData, previewOOSA: [...pQRData.previewOOSA, newRow] });
+    setGridDatas({
+      ...gridDatas,
+      previewOOSA: [...gridDatas.previewOOSA, newRow],
+    });
   };
 
   const addCurrentOOT = () => {
@@ -1897,7 +2498,10 @@ export default function APQR() {
       dueDate: "",
       currentStatus: "",
     };
-    setPQRData({ ...pQRData, currentOOT: [...pQRData.currentOOT, newRow] });
+    setGridDatas({
+      ...gridDatas,
+      currentOOT: [...gridDatas.currentOOT, newRow],
+    });
   };
 
   const addPreviewOOT = () => {
@@ -1912,7 +2516,10 @@ export default function APQR() {
       dueDate: "",
       currentStatus: "",
     };
-    setPQRData({ ...pQRData, previewOOT: [...pQRData.previewOOT, newRow] });
+    setGridDatas({
+      ...gridDatas,
+      previewOOT: [...gridDatas.previewOOT, newRow],
+    });
   };
 
   const addCurrentCC = () => {
@@ -1927,7 +2534,7 @@ export default function APQR() {
       dueDate: "",
       currentStatus: "",
     };
-    setPQRData({ ...pQRData, currentCC: [...pQRData.currentCC, newRow] });
+    setGridDatas({ ...gridDatas, currentCC: [...gridDatas.currentCC, newRow] });
   };
 
   const addPreviewCC = () => {
@@ -1942,7 +2549,7 @@ export default function APQR() {
       dueDate: "",
       currentStatus: "",
     };
-    setPQRData({ ...pQRData, previewCC: [...pQRData.previewCC, newRow] });
+    setGridDatas({ ...gridDatas, previewCC: [...gridDatas.previewCC, newRow] });
   };
 
   const addCurrentMC = () => {
@@ -1957,7 +2564,7 @@ export default function APQR() {
       dueDate: "",
       currentStatus: "",
     };
-    setPQRData({ ...pQRData, currentMC: [...pQRData.currentMC, newRow] });
+    setGridDatas({ ...gridDatas, currentMC: [...gridDatas.currentMC, newRow] });
   };
 
   const addPreviewMC = () => {
@@ -1972,7 +2579,7 @@ export default function APQR() {
       dueDate: "",
       currentStatus: "",
     };
-    setPQRData({ ...pQRData, previewMC: [...pQRData.previewMC, newRow] });
+    setGridDatas({ ...gridDatas, previewMC: [...gridDatas.previewMC, newRow] });
   };
 
   const addCurrentLabI = () => {
@@ -1987,7 +2594,10 @@ export default function APQR() {
       dueDate: "",
       currentStatus: "",
     };
-    setPQRData({ ...pQRData, currentLabI: [...pQRData.currentLabI, newRow] });
+    setGridDatas({
+      ...gridDatas,
+      currentLabI: [...gridDatas.currentLabI, newRow],
+    });
   };
 
   const addPreviewLabI = () => {
@@ -2003,7 +2613,10 @@ export default function APQR() {
       currentStatus: "",
     };
     setPreviewLabI([...previewLabI, newRow]);
-    setPQRData({ ...pQRData, previewLabI: [...pQRData.previewLabI, newRow] });
+    setGridDatas({
+      ...gridDatas,
+      previewLabI: [...gridDatas.previewLabI, newRow],
+    });
   };
 
   const addSanitizationASDOURow = () => {
@@ -2012,9 +2625,9 @@ export default function APQR() {
       frequency: "",
       status: "",
     };
-    setPQRData({
-      ...pQRData,
-      sanitizationASDOU: [...pQRData.sanitizationASDOU, newRow],
+    setGridDatas({
+      ...gridDatas,
+      sanitizationASDOU: [...gridDatas.sanitizationASDOU, newRow],
     });
   };
 
@@ -2025,9 +2638,9 @@ export default function APQR() {
       frequency: "",
       status: "",
     };
-    setPQRData({
-      ...pQRData,
-      compressedGas: [...pQRData.compressedGas, newRow],
+    setGridDatas({
+      ...gridDatas,
+      compressedGas: [...gridDatas.compressedGas, newRow],
     });
   };
 
@@ -2042,9 +2655,9 @@ export default function APQR() {
       },
       cAPA: { descriptionNo: "", status: "", eC: "" },
     };
-    setPQRData({
-      ...pQRData,
-      currentRPQRN: [...pQRData.currentRPQRN, newRow],
+    setGridDatas({
+      ...gridDatas,
+      currentRPQRN: [...gridDatas.currentRPQRN, newRow],
     });
   };
 
@@ -2056,9 +2669,9 @@ export default function APQR() {
       results: { minimum: "", maximum: "" },
       compliesNotComplies: "",
     };
-    setPQRData({
-      ...pQRData,
-      unitOperation3: [...pQRData.unitOperation3, newRow],
+    setGridDatas({
+      ...gridDatas,
+      unitOperation3: [...gridDatas.unitOperation3, newRow],
     });
   };
 
@@ -2070,9 +2683,9 @@ export default function APQR() {
       results: { minimum: "", maximum: "" },
       compliesNotComplies: "",
     };
-    setPQRData({
-      ...pQRData,
-      unitOperation4: [...pQRData.unitOperation4, newRow],
+    setGridDatas({
+      ...gridDatas,
+      unitOperation4: [...gridDatas.unitOperation4, newRow],
     });
   };
 
@@ -2084,9 +2697,9 @@ export default function APQR() {
       results: { minimum: "", maximum: "" },
       compliesNotComplies: "",
     };
-    setPQRData({
-      ...pQRData,
-      unitOperation5: [...pQRData.unitOperation5, newRow],
+    setGridDatas({
+      ...gridDatas,
+      unitOperation5: [...gridDatas.unitOperation5, newRow],
     });
   };
 
@@ -2098,9 +2711,9 @@ export default function APQR() {
       results: { minimum: "", maximum: "" },
       compliesNotComplies: "",
     };
-    setPQRData({
-      ...pQRData,
-      unitOperation6: [...pQRData.unitOperation6, newRow],
+    setGridDatas({
+      ...gridDatas,
+      unitOperation6: [...gridDatas.unitOperation6, newRow],
     });
   };
 
@@ -2112,9 +2725,9 @@ export default function APQR() {
       results: { minimum: "", maximum: "" },
       compliesNotComplies: "",
     };
-    setPQRData({
-      ...pQRData,
-      unitOperation7: [...pQRData.unitOperation7, newRow],
+    setGridDatas({
+      ...gridDatas,
+      unitOperation7: [...gridDatas.unitOperation7, newRow],
     });
   };
 
@@ -2126,9 +2739,9 @@ export default function APQR() {
       results: { minimum: "", maximum: "" },
       compliesNotComplies: "",
     };
-    setPQRData({
-      ...pQRData,
-      unitOperation8: [...pQRData.unitOperation8, newRow],
+    setGridDatas({
+      ...gridDatas,
+      unitOperation8: [...gridDatas.unitOperation8, newRow],
     });
   };
 
@@ -2140,9 +2753,9 @@ export default function APQR() {
       results: { minimum: "", maximum: "" },
       compliesNotComplies: "",
     };
-    setPQRData({
-      ...pQRData,
-      unitOperation9: [...pQRData.unitOperation9, newRow],
+    setGridDatas({
+      ...gridDatas,
+      unitOperation9: [...gridDatas.unitOperation9, newRow],
     });
   };
 
@@ -2154,10 +2767,17 @@ export default function APQR() {
       results: { minimum: "", maximum: "" },
       compliesNotComplies: "",
     };
-    setPQRData({
-      ...pQRData,
-      unitOperation10: [...pQRData.unitOperation10, newRow],
+    setGridDatas({
+      ...gridDatas,
+      unitOperation10: [...gridDatas.unitOperation10, newRow],
     });
+  };
+
+  const formatDate = (dateString) => {
+    if (!dateString) return ""; // Return an empty string if the date is invalid or missing
+    const date = new Date(dateString);
+    if (isNaN(date.getTime())) return ""; // Return an empty string for invalid dates
+    return date.toISOString().split("T")[0]; // Convert to 'YYYY-MM-DD' format
   };
 
   const handleProductCodeChange = (index, value) => {
@@ -2194,70 +2814,37 @@ export default function APQR() {
       </div>
       <div className="pqrform">
         <div className="form-tabs">
-          <div
-            className={`${tab === "GI" ? "active" : ""}`}
-            onClick={() => setTab("GI")}
-          >
+          <div className={`${tab === "GI" ? "active" : ""}`} onClick={() => setTab("GI")}>
             General Information
           </div>
-          <div
-            className={`${tab === "WR" ? "active" : ""}`}
-            onClick={() => setTab("WR")}
-          >
+          <div className={`${tab === "WR" ? "active" : ""}`} onClick={() => setTab("WR")}>
             Warehouse Review
           </div>
-          <div
-            className={`${tab === "MR" ? "active" : ""}`}
-            onClick={() => setTab("MR")}
-          >
+          <div className={`${tab === "MR" ? "active" : ""}`} onClick={() => setTab("MR")}>
             Manufacturing Review
           </div>
-          <div
-            className={`${tab === "LR" ? "active" : ""}`}
-            onClick={() => setTab("LR")}
-          >
+          <div className={`${tab === "LR" ? "active" : ""}`} onClick={() => setTab("LR")}>
             Laboratory Review
           </div>
-          <div
-            className={`${tab === "EAMR" ? "active" : ""}`}
-            onClick={() => setTab("EAMR")}
-          >
+          <div className={`${tab === "EAMR" ? "active" : ""}`} onClick={() => setTab("EAMR")}>
             Engineering And Maintenance Review
           </div>
-          <div
-            className={`${tab === "QSR" ? "active" : ""}`}
-            onClick={() => setTab("QSR")}
-          >
+          <div className={`${tab === "QSR" ? "active" : ""}`} onClick={() => setTab("QSR")}>
             Quality System Review
           </div>
-          <div
-            className={`${tab === "RR" ? "active" : ""}`}
-            onClick={() => setTab("RR")}
-          >
+          <div className={`${tab === "RR" ? "active" : ""}`} onClick={() => setTab("RR")}>
             Regulatory Review
           </div>
-          <div
-            className={`${tab === "R" ? "active" : ""}`}
-            onClick={() => setTab("R")}
-          >
+          <div className={`${tab === "R" ? "active" : ""}`} onClick={() => setTab("R")}>
             Recommendations{" "}
           </div>
-          <div
-            className={`${tab === "CAPA" ? "active" : ""}`}
-            onClick={() => setTab("CAPA")}
-          >
+          <div className={`${tab === "CAPA" ? "active" : ""}`} onClick={() => setTab("CAPA")}>
             CAPA
           </div>
-          <div
-            className={`${tab === "DEAC" ? "active" : ""}`}
-            onClick={() => setTab("DEAC")}
-          >
+          <div className={`${tab === "DEAC" ? "active" : ""}`} onClick={() => setTab("DEAC")}>
             Discussion, Evaluation And Conclusion
           </div>
-          <div
-            className={`${tab === "LOA" ? "active" : ""}`}
-            onClick={() => setTab("LOA")}
-          >
+          <div className={`${tab === "LOA" ? "active" : ""}`} onClick={() => setTab("LOA")}>
             List Of Annexures/Attachments
           </div>
         </div>
@@ -2277,12 +2864,14 @@ export default function APQR() {
               </div>
 
               <div className="group-input">
-                <label>PQR No</label>
+                <label>Initiate Date</label>
                 <input
                   disabled
                   type="date"
-                  value={pQRData.initiateDate}
-                  onChange={handleInputChange}
+                  value={formatDate(pQRData.initiateDate)}
+                  onChange={(e) => {
+                    setPQRData({ initiateDate: e.target.value });
+                  }}
                 />
               </div>
               <div className="group-input">
@@ -2292,6 +2881,7 @@ export default function APQR() {
                   onChange={(e) => {
                     setPQRData({ pqrNO: e.target.value });
                   }}
+                  disabled
                 />
               </div>
               <div className="group-input">
@@ -2310,9 +2900,7 @@ export default function APQR() {
                 <div className="flex gap-4">
                   <input
                     value={productCode}
-                    onChange={(e) =>
-                      handleProductCodeChange(index, e.target.value)
-                    }
+                    onChange={(e) => handleProductCodeChange(index, e.target.value)}
                   />
                   {index === pQRData?.productCodes.length - 1 && (
                     <button
@@ -2344,25 +2932,26 @@ export default function APQR() {
                 />
               </div>
               <div className="group-input ">
-        <label>Dosage Form</label>
-           <select
-             value={pQRData.dosageForm}
-             onChange={(e) => {
-               setPQRData({ dosageForm: e.target.value });
-             }}
-           >
-             <option value="">Select Dosage Form</option>
-             <option value="Oral Solid">Oral Solid</option>
-             <option value="Oral Liquid">Oral Liquid</option>
-             <option value="Injectables">Injectables</option>
-             <option value="Semisolid">Semisolid</option>
-           </select>
-        </div>
+                <label>Dosage Form</label>
+                <select
+                  value={pQRData.dosageForm}
+                  onChange={(e) => {
+                    setPQRData({ dosageForm: e.target.value });
+                  }}
+                >
+                  <option value="">Select Dosage Form</option>
+                  <option value="Oral Solid">Oral Solid</option>
+                  <option value="Oral Liquid">Oral Liquid</option>
+                  <option value="Injectables">Injectables</option>
+                  <option value="Semisolid">Semisolid</option>
+                </select>
+              </div>
               <div className="group-input">
                 <label>Review Start Date</label>
                 <input
                   type="date"
-                  value={pQRData.reviewStartDate}
+                  value={formatDate(pQRData.reviewStartDate)}
+                  onClick={(e) => e.target.showPicker()}
                   onChange={(e) => {
                     setPQRData({ reviewStartDate: e.target.value });
                   }}
@@ -2372,7 +2961,8 @@ export default function APQR() {
                 <label>Review End Date</label>
                 <input
                   type="date"
-                  value={pQRData.reviewEndDate}
+                  value={formatDate(pQRData.reviewEndDate)}
+                  onClick={(e) => e.target.showPicker()}
                   onChange={(e) => {
                     setPQRData({ reviewEndDate: e.target.value });
                   }}
@@ -2394,15 +2984,15 @@ export default function APQR() {
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addManufacturingStageRow} />
-                  <div className="addrowinstruction  pl-2">
-                    Add Rows by clicking on (+) icon
-                  </div>
+                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
                 </div>
                 <div className="flex gap-4 ">
-                  <ExcelExport
-                    data={balanceSheet}
-                    fileName="balance-sheet-summary.xlsx"
-                  />
+                  <ExcelExportImport
+                  // data={manufacturingStage}
+                  // setimportedData={setimportedData}
+                  // fileName="manufacturingStage.xlsx"
+                  // gridNo={1}
+                  />{" "}
                 </div>
               </div>
             </div>
@@ -2415,17 +3005,17 @@ export default function APQR() {
                 </tr>
               </thead>
               <tbody>
-                {pQRData?.manufacturingStage?.map((item, index) => {
+                {gridDatas?.manufacturingStage?.map((item, index) => {
                   return (
                     <tr key={index}>
                       <td>
                         <input
                           value={item.productName}
                           onChange={(e) => {
-                            const newData = [...pQRData.manufacturingStage];
+                            const newData = [...gridDatas.manufacturingStage];
                             newData[index].productName = e.target.value;
-                            setPQRData({
-                              ...pQRData,
+                            setGridDatas({
+                              ...gridDatas,
                               manufacturingStage: newData,
                             });
                           }}
@@ -2435,10 +3025,10 @@ export default function APQR() {
                         <input
                           value={item.sFGCode}
                           onChange={(e) => {
-                            const newData = [...pQRData.manufacturingStage];
+                            const newData = [...gridDatas.manufacturingStage];
                             newData[index].sFGCode = e.target.value;
-                            setPQRData({
-                              ...pQRData,
+                            setGridDatas({
+                              ...gridDatas,
                               manufacturingStage: newData,
                             });
                           }}
@@ -2448,10 +3038,10 @@ export default function APQR() {
                         <input
                           value={item.fGCode}
                           onChange={(e) => {
-                            const newData = [...pQRData.manufacturingStage];
+                            const newData = [...gridDatas.manufacturingStage];
                             newData[index].fGCode = e.target.value;
-                            setPQRData({
-                              ...pQRData,
+                            setGridDatas({
+                              ...gridDatas,
                               manufacturingStage: newData,
                             });
                           }}
@@ -2465,7 +3055,7 @@ export default function APQR() {
             <div>
               <h4 className="gridName mt-4">Summary</h4>
               <TinyEditor
-                editorContent={pQRData.tiny1}
+                editorContent={tinyData.tiny1}
                 setEditorContent={setTinyContent}
                 tinyNo={1}
               />
@@ -2475,15 +3065,15 @@ export default function APQR() {
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addManufacturingSAPSRow} />
-                  <div className="addrowinstruction  pl-2">
-                    Add Rows by clicking on (+) icon
-                  </div>
+                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
                 </div>
                 <div className="flex gap-4 ">
-                  <ExcelExport
-                    data={balanceSheet}
-                    fileName="balance-sheet-summary.xlsx"
-                  />
+                  <ExcelExportImport
+                  // data={manufacturingStage}
+                  // setimportedData={setimportedData}
+                  // fileName="manufacturingStage.xlsx"
+                  // gridNo={1}
+                  />{" "}
                 </div>
               </div>
               <table>
@@ -2497,17 +3087,17 @@ export default function APQR() {
                   </tr>
                 </thead>
                 <tbody>
-                  {pQRData?.manufacturingSAPS?.map((item, index) => {
+                  {gridDatas?.manufacturingSAPS?.map((item, index) => {
                     return (
                       <tr key={index}>
                         <td>
                           <input
                             value={item.productName}
                             onChange={(e) => {
-                              const newData = [...pQRData.manufacturingSAPS];
+                              const newData = [...gridDatas.manufacturingSAPS];
                               newData[index].productName = e.target.value;
-                              setPQRData({
-                                ...pQRData,
+                              setGridDatas({
+                                ...gridDatas,
                                 manufacturingSAPS: newData,
                               });
                             }}
@@ -2517,10 +3107,10 @@ export default function APQR() {
                           <input
                             value={item.batchCode}
                             onChange={(e) => {
-                              const newData = [...pQRData.manufacturingSAPS];
+                              const newData = [...gridDatas.manufacturingSAPS];
                               newData[index].batchCode = e.target.value;
-                              setPQRData({
-                                ...pQRData,
+                              setGridDatas({
+                                ...gridDatas,
                                 manufacturingSAPS: newData,
                               });
                             }}
@@ -2530,26 +3120,26 @@ export default function APQR() {
                           <input
                             value={item.sFGCode}
                             onChange={(e) => {
-                              const newData = [...pQRData.manufacturingSAPS];
+                              const newData = [...gridDatas.manufacturingSAPS];
                               newData[index].sFGCode = e.target.value;
-                              setPQRData({
-                                ...pQRData,
+                              setGridDatas({
+                                ...gridDatas,
                                 manufacturingSAPS: newData,
                               });
                             }}
                           />
                         </td>
                         <td>
-                          <input  />
+                          <input />
                         </td>
                         <td>
                           <input
                             value={item.remarks}
                             onChange={(e) => {
-                              const newData = [...pQRData.manufacturingSAPS];
+                              const newData = [...gridDatas.manufacturingSAPS];
                               newData[index].remarks = e.target.value;
-                              setPQRData({
-                                ...pQRData,
+                              setGridDatas({
+                                ...gridDatas,
                                 manufacturingSAPS: newData,
                               });
                             }}
@@ -2564,7 +3154,7 @@ export default function APQR() {
 
             <h4 className="gridName">Summary of Manufacturing Site Address</h4>
             <TinyEditor
-              editorContent={pQRData.tiny2}
+              editorContent={tinyData.tiny2}
               setEditorContent={setTinyContent}
               tinyNo={2}
             />
@@ -2578,19 +3168,19 @@ export default function APQR() {
               </div>
               <div className="pb-4">
                 <h4 className="gridName">Raw Materials Rejection Summary</h4>
-               
+
                 <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                   <div className="flex items-center">
                     <MdNoteAdd onClick={addRawMRSRow} />
-                    <div className="addrowinstruction  pl-2">
-                      Add Rows by clicking on (+) icon
-                    </div>
+                    <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
                   </div>
                   <div className="flex gap-4 ">
-                    <ExcelExport
-                      data={balanceSheet}
-                      fileName="balance-sheet-summary.xlsx"
-                    />
+                    <ExcelExportImport
+                    // data={manufacturingStage}
+                    // setimportedData={setimportedData}
+                    // fileName="manufacturingStage.xlsx"
+                    // gridNo={1}
+                    />{" "}
                   </div>
                 </div>
 
@@ -2606,7 +3196,7 @@ export default function APQR() {
                     </tr>
                   </thead>
                   <tbody>
-                    {pQRData?.rawMRS?.map((item, index) => {
+                    {gridDatas?.rawMRS?.map((item, index) => {
                       return (
                         <tr key={index}>
                           <td>{index + 1}</td>
@@ -2614,9 +3204,9 @@ export default function APQR() {
                             <input
                               value={item.materialCode}
                               onChange={(e) => {
-                                const newData = [...pQRData.rawMRS];
+                                const newData = [...gridDatas.rawMRS];
                                 newData[index].materialCode = e.target.value;
-                                setPQRData({ ...pQRData, rawMRS: newData });
+                                setGridDatas({ ...gridDatas, rawMRS: newData });
                               }}
                             />
                           </td>
@@ -2624,9 +3214,9 @@ export default function APQR() {
                             <input
                               value={item.materialName}
                               onChange={(e) => {
-                                const newData = [...pQRData.rawMRS];
+                                const newData = [...gridDatas.rawMRS];
                                 newData[index].materialName = e.target.value;
-                                setPQRData({ ...pQRData, rawMRS: newData });
+                                setGridDatas({ ...gridDatas, rawMRS: newData });
                               }}
                             />
                           </td>
@@ -2634,9 +3224,9 @@ export default function APQR() {
                             <input
                               value={item.ARNo}
                               onChange={(e) => {
-                                const newData = [...pQRData.rawMRS];
+                                const newData = [...gridDatas.rawMRS];
                                 newData[index].ARNo = e.target.value;
-                                setPQRData({ ...pQRData, rawMRS: newData });
+                                setGridDatas({ ...gridDatas, rawMRS: newData });
                               }}
                             />
                           </td>
@@ -2644,10 +3234,9 @@ export default function APQR() {
                             <input
                               value={item.reasonOfRejection}
                               onChange={(e) => {
-                                const newData = [...pQRData.rawMRS];
-                                newData[index].reasonOfRejection =
-                                  e.target.value;
-                                setPQRData({ ...pQRData, rawMRS: newData });
+                                const newData = [...gridDatas.rawMRS];
+                                newData[index].reasonOfRejection = e.target.value;
+                                setGridDatas({ ...gridDatas, rawMRS: newData });
                               }}
                             />
                           </td>
@@ -2655,9 +3244,9 @@ export default function APQR() {
                             <input
                               value={item.description}
                               onChange={(e) => {
-                                const newData = [...pQRData.rawMRS];
+                                const newData = [...gridDatas.rawMRS];
                                 newData[index].description = e.target.value;
-                                setPQRData({ ...pQRData, rawMRS: newData });
+                                setGridDatas({ ...gridDatas, rawMRS: newData });
                               }}
                             />
                           </td>
@@ -2669,7 +3258,7 @@ export default function APQR() {
                 <div>
                   <h4 className="gridName mt-5">Summary</h4>
                   <TinyEditor
-                    editorContent={pQRData.tiny3}
+                    editorContent={tinyData.tiny3}
                     setEditorContent={setTinyContent}
                     tinyNo={3}
                   />
@@ -2677,23 +3266,20 @@ export default function APQR() {
               </div>
 
               <div className="pb-4">
-                <h4 className="gridName">
-                  {" "}
-                  Packing Materials Rejection Summary
-                </h4>
-              
+                <h4 className="gridName"> Packing Materials Rejection Summary</h4>
+
                 <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                   <div className="flex items-center">
                     <MdNoteAdd onClick={addPackingMRSRow} />
-                    <div className="addrowinstruction  pl-2">
-                      Add Rows by clicking on (+) icon
-                    </div>
+                    <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
                   </div>
                   <div className="flex gap-4 ">
-                    <ExcelExport
-                      data={balanceSheet}
-                      fileName="balance-sheet-summary.xlsx"
-                    />
+                    <ExcelExportImport
+                    // data={manufacturingStage}
+                    // setimportedData={setimportedData}
+                    // fileName="manufacturingStage.xlsx"
+                    // gridNo={1}
+                    />{" "}
                   </div>
                 </div>
                 <table>
@@ -2708,7 +3294,7 @@ export default function APQR() {
                     </tr>
                   </thead>
                   <tbody>
-                    {pQRData?.packingMRS?.map((item, index) => {
+                    {gridDatas?.packingMRS?.map((item, index) => {
                       return (
                         <tr key={index}>
                           <td>{index + 1}</td>
@@ -2716,9 +3302,12 @@ export default function APQR() {
                             <input
                               value={item.materialCode}
                               onChange={(e) => {
-                                const newData = [...pQRData.packingMRS];
+                                const newData = [...gridDatas.packingMRS];
                                 newData[index].materialCode = e.target.value;
-                                setPQRData({ ...pQRData, packingMRS: newData });
+                                setGridDatas({
+                                  ...gridDatas,
+                                  packingMRS: newData,
+                                });
                               }}
                             />
                           </td>
@@ -2726,9 +3315,12 @@ export default function APQR() {
                             <input
                               value={item.materialName}
                               onChange={(e) => {
-                                const newData = [...pQRData.packingMRS];
+                                const newData = [...gridDatas.packingMRS];
                                 newData[index].materialName = e.target.value;
-                                setPQRData({ ...pQRData, packingMRS: newData });
+                                setGridDatas({
+                                  ...gridDatas,
+                                  packingMRS: newData,
+                                });
                               }}
                             />
                           </td>
@@ -2736,9 +3328,12 @@ export default function APQR() {
                             <input
                               value={item.ARNo}
                               onChange={(e) => {
-                                const newData = [...pQRData.packingMRS];
+                                const newData = [...gridDatas.packingMRS];
                                 newData[index].ARNo = e.target.value;
-                                setPQRData({ ...pQRData, packingMRS: newData });
+                                setGridDatas({
+                                  ...gridDatas,
+                                  packingMRS: newData,
+                                });
                               }}
                             />
                           </td>
@@ -2746,10 +3341,12 @@ export default function APQR() {
                             <input
                               value={item.reasonForRepacking}
                               onChange={(e) => {
-                                const newData = [...pQRData.packingMRS];
-                                newData[index].reasonForRepacking =
-                                  e.target.value;
-                                setPQRData({ ...pQRData, packingMRS: newData });
+                                const newData = [...gridDatas.packingMRS];
+                                newData[index].reasonForRepacking = e.target.value;
+                                setGridDatas({
+                                  ...gridDatas,
+                                  packingMRS: newData,
+                                });
                               }}
                             />
                           </td>
@@ -2757,9 +3354,12 @@ export default function APQR() {
                             <input
                               value={item.description}
                               onChange={(e) => {
-                                const newData = [...pQRData.packingMRS];
+                                const newData = [...gridDatas.packingMRS];
                                 newData[index].description = e.target.value;
-                                setPQRData({ ...pQRData, packingMRS: newData });
+                                setGridDatas({
+                                  ...gridDatas,
+                                  packingMRS: newData,
+                                });
                               }}
                             />
                           </td>
@@ -2770,11 +3370,10 @@ export default function APQR() {
                 </table>
 
                 <h5 className="gridName pt-4">
-                  Summary of Review of Rejected Raw Materials and Packaging
-                  Materials
+                  Summary of Review of Rejected Raw Materials and Packaging Materials
                 </h5>
                 <TinyEditor
-                  editorContent={pQRData.tiny4}
+                  editorContent={tinyData.tiny4}
                   setEditorContent={setTinyContent}
                   tinyNo={4}
                 />
@@ -2791,15 +3390,15 @@ export default function APQR() {
                 <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                   <div className="flex items-center">
                     <MdNoteAdd onClick={addExpiredRMDRow} />
-                    <div className="addrowinstruction  pl-2">
-                      Add Rows by clicking on (+) icon
-                    </div>
+                    <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
                   </div>
                   <div className="flex gap-4 ">
-                    <ExcelExport
-                      data={balanceSheet}
-                      fileName="balance-sheet-summary.xlsx"
-                    />
+                    <ExcelExportImport
+                    // data={manufacturingStage}
+                    // setimportedData={setimportedData}
+                    // fileName="manufacturingStage.xlsx"
+                    // gridNo={1}
+                    />{" "}
                   </div>
                 </div>
                 <table>
@@ -2813,7 +3412,7 @@ export default function APQR() {
                     </tr>
                   </thead>
                   <tbody>
-                    {pQRData?.expiredRMD?.map((item, index) => {
+                    {gridDatas?.expiredRMD?.map((item, index) => {
                       return (
                         <tr key={index}>
                           <td>{index + 1}</td>
@@ -2821,9 +3420,12 @@ export default function APQR() {
                             <input
                               value={item.materialCode}
                               onChange={(e) => {
-                                const newData = [...pQRData.expiredRMD];
+                                const newData = [...gridDatas.expiredRMD];
                                 newData[index].materialCode = e.target.value;
-                                setPQRData({ ...pQRData, expiredRMD: newData });
+                                setGridDatas({
+                                  ...gridDatas,
+                                  expiredRMD: newData,
+                                });
                               }}
                             />
                           </td>
@@ -2831,9 +3433,12 @@ export default function APQR() {
                             <input
                               value={item.materialName}
                               onChange={(e) => {
-                                const newData = [...pQRData.expiredRMD];
+                                const newData = [...gridDatas.expiredRMD];
                                 newData[index].materialName = e.target.value;
-                                setPQRData({ ...pQRData, expiredRMD: newData });
+                                setGridDatas({
+                                  ...gridDatas,
+                                  expiredRMD: newData,
+                                });
                               }}
                             />
                           </td>
@@ -2841,9 +3446,12 @@ export default function APQR() {
                             <input
                               value={item.ARNo}
                               onChange={(e) => {
-                                const newData = [...pQRData.expiredRMD];
+                                const newData = [...gridDatas.expiredRMD];
                                 newData[index].ARNo = e.target.value;
-                                setPQRData({ ...pQRData, expiredRMD: newData });
+                                setGridDatas({
+                                  ...gridDatas,
+                                  expiredRMD: newData,
+                                });
                               }}
                             />
                           </td>
@@ -2851,9 +3459,12 @@ export default function APQR() {
                             <input
                               value={item.expiryDate}
                               onChange={(e) => {
-                                const newData = [...pQRData.expiredRMD];
+                                const newData = [...gridDatas.expiredRMD];
                                 newData[index].expiryDate = e.target.value;
-                                setPQRData({ ...pQRData, expiredRMD: newData });
+                                setGridDatas({
+                                  ...gridDatas,
+                                  expiredRMD: newData,
+                                });
                               }}
                             />
                           </td>
@@ -2865,7 +3476,7 @@ export default function APQR() {
                 <div>
                   <h4 className="gridName">Summary</h4>
                   <TinyEditor
-                    editorContent={pQRData.tiny5}
+                    editorContent={tinyData.tiny5}
                     setEditorContent={setTinyContent}
                     tinyNo={5}
                   />
@@ -2873,9 +3484,7 @@ export default function APQR() {
               </div>
 
               <div className="">
-                <h4 className="gridName">
-                  Expired Packaging Materials Details
-                </h4>
+                <h4 className="gridName">Expired Packaging Materials Details</h4>
                 {/* <div className="AddRows d-flex">
                   <MdNoteAdd onClick={addExpiredPMDRow} />
                   <div className="addrowinstruction"></div>
@@ -2883,15 +3492,15 @@ export default function APQR() {
                 <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                   <div className="flex items-center">
                     <MdNoteAdd onClick={addExpiredPMDRow} />
-                    <div className="addrowinstruction  pl-2">
-                      Add Rows by clicking on (+) icon
-                    </div>
+                    <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
                   </div>
                   <div className="flex gap-4 ">
-                    <ExcelExport
-                      data={balanceSheet}
-                      fileName="balance-sheet-summary.xlsx"
-                    />
+                    <ExcelExportImport
+                    // data={manufacturingStage}
+                    // setimportedData={setimportedData}
+                    // fileName="manufacturingStage.xlsx"
+                    // gridNo={1}
+                    />{" "}
                   </div>
                 </div>
                 <table>
@@ -2905,7 +3514,7 @@ export default function APQR() {
                     </tr>
                   </thead>
                   <tbody>
-                    {pQRData?.expiredPMD?.map((item, index) => {
+                    {gridDatas?.expiredPMD?.map((item, index) => {
                       return (
                         <tr key={index}>
                           <td>{index + 1}</td>
@@ -2913,9 +3522,12 @@ export default function APQR() {
                             <input
                               value={item.materialCode}
                               onChange={(e) => {
-                                const newData = [...pQRData.expiredPMD];
+                                const newData = [...gridDatas.expiredPMD];
                                 newData[index].materialCode = e.target.value;
-                                setPQRData({ ...pQRData, expiredPMD: newData });
+                                setGridDatas({
+                                  ...gridDatas,
+                                  expiredPMD: newData,
+                                });
                               }}
                             />
                           </td>
@@ -2923,9 +3535,12 @@ export default function APQR() {
                             <input
                               value={item.materialName}
                               onChange={(e) => {
-                                const newData = [...pQRData.expiredPMD];
+                                const newData = [...gridDatas.expiredPMD];
                                 newData[index].materialName = e.target.value;
-                                setPQRData({ ...pQRData, expiredPMD: newData });
+                                setGridDatas({
+                                  ...gridDatas,
+                                  expiredPMD: newData,
+                                });
                               }}
                             />
                           </td>
@@ -2933,9 +3548,12 @@ export default function APQR() {
                             <input
                               value={item.ARNo}
                               onChange={(e) => {
-                                const newData = [...pQRData.expiredPMD];
+                                const newData = [...gridDatas.expiredPMD];
                                 newData[index].ARNo = e.target.value;
-                                setPQRData({ ...pQRData, expiredPMD: newData });
+                                setGridDatas({
+                                  ...gridDatas,
+                                  expiredPMD: newData,
+                                });
                               }}
                             />
                           </td>
@@ -2943,9 +3561,12 @@ export default function APQR() {
                             <input
                               value={item.expiryDate}
                               onChange={(e) => {
-                                const newData = [...pQRData.expiredPMD];
+                                const newData = [...gridDatas.expiredPMD];
                                 newData[index].expiryDate = e.target.value;
-                                setPQRData({ ...pQRData, expiredPMD: newData });
+                                setGridDatas({
+                                  ...gridDatas,
+                                  expiredPMD: newData,
+                                });
                               }}
                             />
                           </td>
@@ -2956,11 +3577,10 @@ export default function APQR() {
                 </table>
 
                 <h4 className="gridName pt-4">
-                  Summary of Review of Expired Raw Materials and Packaging
-                  Materials
+                  Summary of Review of Expired Raw Materials and Packaging Materials
                 </h4>
                 <TinyEditor
-                  editorContent={pQRData.tiny6}
+                  editorContent={tinyData.tiny6}
                   setEditorContent={setTinyContent}
                   tinyNo={6}
                 />
@@ -2974,15 +3594,15 @@ export default function APQR() {
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addreviewOfASLRow} />
-                  <div className="addrowinstruction  pl-2">
-                    Add Rows by clicking on (+) icon
-                  </div>
+                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
                 </div>
                 <div className="flex gap-4 ">
-                  <ExcelExport
-                    data={balanceSheet}
-                    fileName="balance-sheet-summary.xlsx"
-                  />
+                  <ExcelExportImport
+                  // data={manufacturingStage}
+                  // setimportedData={setimportedData}
+                  // fileName="manufacturingStage.xlsx"
+                  // gridNo={1}
+                  />{" "}
                 </div>
               </div>
               <div>
@@ -2997,7 +3617,7 @@ export default function APQR() {
                     </tr>
                   </thead>
                   <tbody>
-                    {pQRData?.reviewOfASL?.map((item, index) => {
+                    {gridDatas?.reviewOfASL?.map((item, index) => {
                       return (
                         <tr key={index}>
                           <td>{index + 1}</td>
@@ -3005,10 +3625,10 @@ export default function APQR() {
                             <input
                               value={item.materialCode}
                               onChange={(e) => {
-                                const newData = [...pQRData.reviewOfASL];
+                                const newData = [...gridDatas.reviewOfASL];
                                 newData[index].materialCode = e.target.value;
-                                setPQRData({
-                                  ...pQRData,
+                                setGridDatas({
+                                  ...gridDatas,
                                   reviewOfASL: newData,
                                 });
                               }}
@@ -3018,10 +3638,10 @@ export default function APQR() {
                             <input
                               value={item.materialName}
                               onChange={(e) => {
-                                const newData = [...pQRData.reviewOfASL];
+                                const newData = [...gridDatas.reviewOfASL];
                                 newData[index].materialName = e.target.value;
-                                setPQRData({
-                                  ...pQRData,
+                                setGridDatas({
+                                  ...gridDatas,
                                   reviewOfASL: newData,
                                 });
                               }}
@@ -3031,10 +3651,10 @@ export default function APQR() {
                             <input
                               value={item.manufacturer}
                               onChange={(e) => {
-                                const newData = [...pQRData.reviewOfASL];
+                                const newData = [...gridDatas.reviewOfASL];
                                 newData[index].manufacturer = e.target.value;
-                                setPQRData({
-                                  ...pQRData,
+                                setGridDatas({
+                                  ...gridDatas,
                                   reviewOfASL: newData,
                                 });
                               }}
@@ -3044,10 +3664,10 @@ export default function APQR() {
                             <input
                               value={item.facility}
                               onChange={(e) => {
-                                const newData = [...pQRData.reviewOfASL];
+                                const newData = [...gridDatas.reviewOfASL];
                                 newData[index].facility = e.target.value;
-                                setPQRData({
-                                  ...pQRData,
+                                setGridDatas({
+                                  ...gridDatas,
                                   reviewOfASL: newData,
                                 });
                               }}
@@ -3058,11 +3678,9 @@ export default function APQR() {
                     })}
                   </tbody>
                 </table>
-                <h4 className="gridName pt-4">
-                  Summary of Review of Approved Supplier List
-                </h4>
+                <h4 className="gridName pt-4">Summary of Review of Approved Supplier List</h4>
                 <TinyEditor
-                  editorContent={pQRData.tiny7}
+                  editorContent={tinyData.tiny7}
                   setEditorContent={setTinyContent}
                   tinyNo={7}
                 />
@@ -3078,15 +3696,15 @@ export default function APQR() {
                 <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                   <div className="flex items-center">
                     <MdNoteAdd onClick={addvendorQDORMERow} />
-                    <div className="addrowinstruction  pl-2">
-                      Add Rows by clicking on (+) icon
-                    </div>
+                    <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
                   </div>
                   <div className="flex gap-4 ">
-                    <ExcelExport
-                      data={balanceSheet}
-                      fileName="balance-sheet-summary.xlsx"
-                    />
+                    <ExcelExportImport
+                    // data={manufacturingStage}
+                    // setimportedData={setimportedData}
+                    // fileName="manufacturingStage.xlsx"
+                    // gridNo={1}
+                    />{" "}
                   </div>
                 </div>
                 <table>
@@ -3098,17 +3716,17 @@ export default function APQR() {
                     <th>Remarks</th>
                   </thead>
                   <tbody>
-                    {pQRData?.vendorQDORME?.map((item, index) => {
+                    {gridDatas?.vendorQDORME?.map((item, index) => {
                       return (
                         <tr key={index}>
                           <td>
                             <input
                               value={item.materialName}
                               onChange={(e) => {
-                                const newData = [...pQRData.vendorQDORME];
+                                const newData = [...gridDatas.vendorQDORME];
                                 newData[index].materialName = e.target.value;
-                                setPQRData({
-                                  ...pQRData,
+                                setGridDatas({
+                                  ...gridDatas,
                                   vendorQDORME: newData,
                                 });
                               }}
@@ -3118,10 +3736,10 @@ export default function APQR() {
                             <input
                               value={item.materialCode}
                               onChange={(e) => {
-                                const newData = [...pQRData.vendorQDORME];
+                                const newData = [...gridDatas.vendorQDORME];
                                 newData[index].materialCode = e.target.value;
-                                setPQRData({
-                                  ...pQRData,
+                                setGridDatas({
+                                  ...gridDatas,
                                   vendorQDORME: newData,
                                 });
                               }}
@@ -3131,11 +3749,10 @@ export default function APQR() {
                             <input
                               value={item.manufacturerName}
                               onChange={(e) => {
-                                const newData = [...pQRData.vendorQDORME];
-                                newData[index].manufacturerName =
-                                  e.target.value;
-                                setPQRData({
-                                  ...pQRData,
+                                const newData = [...gridDatas.vendorQDORME];
+                                newData[index].manufacturerName = e.target.value;
+                                setGridDatas({
+                                  ...gridDatas,
                                   vendorQDORME: newData,
                                 });
                               }}
@@ -3145,11 +3762,10 @@ export default function APQR() {
                             <input
                               value={item.qualificationStatus}
                               onChange={(e) => {
-                                const newData = [...pQRData.vendorQDORME];
-                                newData[index].qualificationStatus =
-                                  e.target.value;
-                                setPQRData({
-                                  ...pQRData,
+                                const newData = [...gridDatas.vendorQDORME];
+                                newData[index].qualificationStatus = e.target.value;
+                                setGridDatas({
+                                  ...gridDatas,
                                   vendorQDORME: newData,
                                 });
                               }}
@@ -3159,10 +3775,10 @@ export default function APQR() {
                             <input
                               value={item.remarks}
                               onChange={(e) => {
-                                const newData = [...pQRData.vendorQDORME];
+                                const newData = [...gridDatas.vendorQDORME];
                                 newData[index].remarks = e.target.value;
-                                setPQRData({
-                                  ...pQRData,
+                                setGridDatas({
+                                  ...gridDatas,
                                   vendorQDORME: newData,
                                 });
                               }}
@@ -3174,11 +3790,10 @@ export default function APQR() {
                   </tbody>
                 </table>
                 <h4 className="gridName pt-4">
-                  Summary of Vendor Qualification Details of Raw Material
-                  Excipients
+                  Summary of Vendor Qualification Details of Raw Material Excipients
                 </h4>
                 <TinyEditor
-                  editorContent={pQRData.tiny8}
+                  editorContent={tinyData.tiny8}
                   setEditorContent={setTinyContent}
                   tinyNo={8}
                 />
@@ -3194,15 +3809,15 @@ export default function APQR() {
                 <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                   <div className="flex items-center">
                     <MdNoteAdd onClick={addvendorQDOPPMRow} />
-                    <div className="addrowinstruction  pl-2">
-                      Add Rows by clicking on (+) icon
-                    </div>
+                    <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
                   </div>
                   <div className="flex gap-4 ">
-                    <ExcelExport
-                      data={balanceSheet}
-                      fileName="balance-sheet-summary.xlsx"
-                    />
+                    <ExcelExportImport
+                    // data={manufacturingStage}
+                    // setimportedData={setimportedData}
+                    // fileName="manufacturingStage.xlsx"
+                    // gridNo={1}
+                    />{" "}
                   </div>
                 </div>
                 <table>
@@ -3215,17 +3830,17 @@ export default function APQR() {
                     </tr>
                   </thead>
                   <tbody>
-                    {pQRData?.vendorQDOPPM?.map((item, index) => {
+                    {gridDatas?.vendorQDOPPM?.map((item, index) => {
                       return (
                         <tr key={index}>
                           <td>
                             <input
                               value={item.materialName}
                               onChange={(e) => {
-                                const newData = [...pQRData.vendorQDOPPM];
+                                const newData = [...gridDatas.vendorQDOPPM];
                                 newData[index].materialName = e.target.value;
-                                setPQRData({
-                                  ...pQRData,
+                                setGridDatas({
+                                  ...gridDatas,
                                   vendorQDOPPM: newData,
                                 });
                               }}
@@ -3235,10 +3850,10 @@ export default function APQR() {
                             <input
                               value={item.materialCode}
                               onChange={(e) => {
-                                const newData = [...pQRData.vendorQDOPPM];
+                                const newData = [...gridDatas.vendorQDOPPM];
                                 newData[index].materialCode = e.target.value;
-                                setPQRData({
-                                  ...pQRData,
+                                setGridDatas({
+                                  ...gridDatas,
                                   vendorQDOPPM: newData,
                                 });
                               }}
@@ -3248,11 +3863,10 @@ export default function APQR() {
                             <input
                               value={item.manufacturerName}
                               onChange={(e) => {
-                                const newData = [...pQRData.vendorQDOPPM];
-                                newData[index].manufacturerName =
-                                  e.target.value;
-                                setPQRData({
-                                  ...pQRData,
+                                const newData = [...gridDatas.vendorQDOPPM];
+                                newData[index].manufacturerName = e.target.value;
+                                setGridDatas({
+                                  ...gridDatas,
                                   vendorQDOPPM: newData,
                                 });
                               }}
@@ -3262,11 +3876,10 @@ export default function APQR() {
                             <input
                               value={item.qualificationStatus}
                               onChange={(e) => {
-                                const newData = [...pQRData.vendorQDOPPM];
-                                newData[index].qualificationStatus =
-                                  e.target.value;
-                                setPQRData({
-                                  ...pQRData,
+                                const newData = [...gridDatas.vendorQDOPPM];
+                                newData[index].qualificationStatus = e.target.value;
+                                setGridDatas({
+                                  ...gridDatas,
                                   vendorQDOPPM: newData,
                                 });
                               }}
@@ -3278,19 +3891,16 @@ export default function APQR() {
                   </tbody>
                 </table>
                 <h4 className="gridName pt-4">
-                  Summary of Vendor Qualification Details of Primary Packing
-                  Materials
+                  Summary of Vendor Qualification Details of Primary Packing Materials
                 </h4>
                 <TinyEditor
-                  editorContent={pQRData.tiny9}
+                  editorContent={tinyData.tiny9}
                   setEditorContent={setTinyContent}
                   tinyNo={9}
                 />
               </div>
 
-              <div className="sub-head">
-                Vendor Qualification Details of Process Gases
-              </div>
+              <div className="sub-head">Vendor Qualification Details of Process Gases</div>
               <div>
                 {/* <div className="AddRows d-flex">
                   <MdNoteAdd onClick={addvendorQDPOGRow} />
@@ -3299,15 +3909,15 @@ export default function APQR() {
                 <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                   <div className="flex items-center">
                     <MdNoteAdd onClick={addvendorQDPOGRow} />
-                    <div className="addrowinstruction  pl-2">
-                      Add Rows by clicking on (+) icon
-                    </div>
+                    <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
                   </div>
                   <div className="flex gap-4 ">
-                    <ExcelExport
-                      data={balanceSheet}
-                      fileName="balance-sheet-summary.xlsx"
-                    />
+                    <ExcelExportImport
+                    // data={manufacturingStage}
+                    // setimportedData={setimportedData}
+                    // fileName="manufacturingStage.xlsx"
+                    // gridNo={1}
+                    />{" "}
                   </div>
                 </div>
                 <table>
@@ -3320,17 +3930,17 @@ export default function APQR() {
                     </tr>
                   </thead>
                   <tbody>
-                    {pQRData?.vendorQDPOG?.map((item, index) => {
+                    {gridDatas?.vendorQDPOG?.map((item, index) => {
                       return (
                         <tr key={index}>
                           <td>
                             <input
                               value={item.gasName}
                               onChange={(e) => {
-                                const newData = [...pQRData.vendorQDPOG];
+                                const newData = [...gridDatas.vendorQDPOG];
                                 newData[index].gasName = e.target.value;
-                                setPQRData({
-                                  ...pQRData,
+                                setGridDatas({
+                                  ...gridDatas,
                                   vendorQDPOG: newData,
                                 });
                               }}
@@ -3340,10 +3950,10 @@ export default function APQR() {
                             <input
                               value={item.gasCode}
                               onChange={(e) => {
-                                const newData = [...pQRData.vendorQDPOG];
+                                const newData = [...gridDatas.vendorQDPOG];
                                 newData[index].gasCode = e.target.value;
-                                setPQRData({
-                                  ...pQRData,
+                                setGridDatas({
+                                  ...gridDatas,
                                   vendorQDPOG: newData,
                                 });
                               }}
@@ -3354,8 +3964,7 @@ export default function APQR() {
                               value={item.manufacturerName}
                               onChange={(e) => {
                                 const newData = [...vendorQDPOG];
-                                newData[index].manufacturerName =
-                                  e.target.value;
+                                newData[index].manufacturerName = e.target.value;
                                 setVendorQDPOG(newData);
                               }}
                             />
@@ -3364,11 +3973,10 @@ export default function APQR() {
                             <input
                               value={item.qualificationStatus}
                               onChange={(e) => {
-                                const newData = [...pQRData.vendorQDPOG];
-                                newData[index].qualificationStatus =
-                                  e.target.value;
-                                setPQRData({
-                                  ...pQRData,
+                                const newData = [...gridDatas.vendorQDPOG];
+                                newData[index].qualificationStatus = e.target.value;
+                                setGridDatas({
+                                  ...gridDatas,
                                   vendorQDPOG: newData,
                                 });
                               }}
@@ -3383,7 +3991,7 @@ export default function APQR() {
                   Summary of Vendor Qualification Details of Process Gases
                 </h4>
                 <TinyEditor
-                  editorContent={pQRData.tiny10}
+                  editorContent={tinyData.tiny10}
                   setEditorContent={setTinyContent}
                   tinyNo={10}
                 />
@@ -3418,49 +4026,50 @@ export default function APQR() {
 
             <div className="dual-group-input">
               <div className="group-input">
-                <label>
-                  Total No. of batches manufactured during the current review
-                  period
-                </label>
+                <label>Total No. of batches manufactured during the current review period</label>
                 <input
                   type="number"
-                  value={pQRData.totalNOBM}
+                  value={pQRData.totalBatchesManufactured}
                   onChange={(e) => {
-                    setPQRData({ totalNOBM: e.target.value });
+                    setPQRData({ totalBatchesManufactured: e.target.value });
                   }}
                 />
               </div>
               <div className="group-input">
                 <label>Total No. of batches Approved & Released</label>
                 <input
-                  value={pQRData.totalNOBA}
+                  value={pQRData.totalBatchesApprovedReleased}
                   onChange={(e) => {
-                    setPQRData({ totalNOBA: e.target.value });
+                    setPQRData({
+                      totalBatchesApprovedReleased: e.target.value,
+                    });
                   }}
                 />
               </div>
               <div className="group-input">
                 <label>Total No. of Process Validation Batches</label>
                 <input
-                  value={pQRData.totalNOPVB}
+                  value={pQRData.totalProcessValidationBatches}
                   onChange={(e) => {
-                    setPQRData({ totalNOPVB: e.target.value });
+                    setPQRData({
+                      totalProcessValidationBatches: e.target.value,
+                    });
                   }}
                 />
               </div>
               <div className="group-input">
                 <label>Total No. of Reprocessed Batches</label>
                 <input
-                  value={pQRData.totalNORB}
+                  value={pQRData.totalReprocessedBatches}
                   onChange={(e) => {
-                    setPQRData({ totalNORB: e.target.value });
+                    setPQRData({ totalReprocessedBatches: e.target.value });
                   }}
                 />
               </div>
               <div className="group-input">
                 <label>Process Validation Batches Details</label>
                 <TinyEditor
-                  editorContent={pQRData.tiny11}
+                  editorContent={tinyData.tiny11}
                   setEditorContent={setTinyContent}
                   tinyNo={11}
                 />
@@ -3469,7 +4078,7 @@ export default function APQR() {
               <div className="group-input">
                 <label>Reprocessing Details</label>
                 <TinyEditor
-                  editorContent={pQRData.tiny12}
+                  editorContent={tinyData.tiny12}
                   setEditorContent={setTinyContent}
                   tinyNo={12}
                 />
@@ -3477,7 +4086,7 @@ export default function APQR() {
               <div className="group-input">
                 <label>Microbial Excursion Details</label>
                 <TinyEditor
-                  editorContent={pQRData.tiny13}
+                  editorContent={tinyData.tiny13}
                   setEditorContent={setTinyContent}
                   tinyNo={13}
                 />
@@ -3492,15 +4101,15 @@ export default function APQR() {
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addcodeTCTDRow} />
-                  <div className="addrowinstruction  pl-2">
-                    Add Rows by clicking on (+) icon
-                  </div>
+                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
                 </div>
                 <div className="flex gap-4 ">
-                  <ExcelExport
-                    data={balanceSheet}
-                    fileName="balance-sheet-summary.xlsx"
-                  />
+                  <ExcelExportImport
+                  // data={manufacturingStage}
+                  // setimportedData={setimportedData}
+                  // fileName="manufacturingStage.xlsx"
+                  // gridNo={1}
+                  />{" "}
                 </div>
               </div>
               <table>
@@ -3517,7 +4126,7 @@ export default function APQR() {
                   </tr>
                 </thead>
                 <tbody>
-                  {pQRData?.codeTCTD?.map((item, index) => {
+                  {gridDatas?.codeTCTD?.map((item, index) => {
                     return (
                       <tr key={index}>
                         <td>{index + 1}</td>
@@ -3525,9 +4134,9 @@ export default function APQR() {
                           <input
                             value={item.batchNo}
                             onChange={(e) => {
-                              const newData = [...pQRData.codeTCTD];
+                              const newData = [...gridDatas.codeTCTD];
                               newData[index].batchNo = e.target.value;
-                              setPQRData({ ...pQRData, codeTCTD: newData });
+                              setGridDatas({ ...gridDatas, codeTCTD: newData });
                             }}
                           />
                         </td>
@@ -3535,9 +4144,9 @@ export default function APQR() {
                           <input
                             value={item.existingCode}
                             onChange={(e) => {
-                              const newData = [...pQRData.codeTCTD];
+                              const newData = [...gridDatas.codeTCTD];
                               newData[index].existingCode = e.target.value;
-                              setPQRData({ ...pQRData, codeTCTD: newData });
+                              setGridDatas({ ...gridDatas, codeTCTD: newData });
                             }}
                           />
                         </td>
@@ -3545,9 +4154,9 @@ export default function APQR() {
                           <input
                             value={item.existingMarket}
                             onChange={(e) => {
-                              const newData = [...pQRData.codeTCTD];
+                              const newData = [...gridDatas.codeTCTD];
                               newData[index].existingMarket = e.target.value;
-                              setPQRData({ ...pQRData, codeTCTD: newData });
+                              setGridDatas({ ...gridDatas, codeTCTD: newData });
                             }}
                           />
                         </td>
@@ -3555,9 +4164,9 @@ export default function APQR() {
                           <input
                             value={item.proposedCode}
                             onChange={(e) => {
-                              const newData = [...pQRData.codeTCTD];
+                              const newData = [...gridDatas.codeTCTD];
                               newData[index].proposedCode = e.target.value;
-                              setPQRData({ ...pQRData, codeTCTD: newData });
+                              setGridDatas({ ...gridDatas, codeTCTD: newData });
                             }}
                           />
                         </td>
@@ -3565,9 +4174,9 @@ export default function APQR() {
                           <input
                             value={item.proposedMarket}
                             onChange={(e) => {
-                              const newData = [...pQRData.codeTCTD];
+                              const newData = [...gridDatas.codeTCTD];
                               newData[index].proposedMarket = e.target.value;
-                              setPQRData({ ...pQRData, codeTCTD: newData });
+                              setGridDatas({ ...gridDatas, codeTCTD: newData });
                             }}
                           />
                         </td>
@@ -3575,9 +4184,9 @@ export default function APQR() {
                           <input
                             value={item.transferQuality}
                             onChange={(e) => {
-                              const newData = [...pQRData.codeTCTD];
+                              const newData = [...gridDatas.codeTCTD];
                               newData[index].transferQuality = e.target.value;
-                              setPQRData({ ...pQRData, codeTCTD: newData });
+                              setGridDatas({ ...gridDatas, codeTCTD: newData });
                             }}
                           />
                         </td>
@@ -3585,9 +4194,9 @@ export default function APQR() {
                           <input
                             value={item.refNo}
                             onChange={(e) => {
-                              const newData = [...pQRData.codeTCTD];
+                              const newData = [...gridDatas.codeTCTD];
                               newData[index].refNo = e.target.value;
-                              setPQRData({ ...pQRData, codeTCTD: newData });
+                              setGridDatas({ ...gridDatas, codeTCTD: newData });
                             }}
                           />
                         </td>
@@ -3596,34 +4205,31 @@ export default function APQR() {
                   })}
                 </tbody>
               </table>
-              <h4 className="gridName pt-4">
-                Summary of Code to Code Transfer Details
-              </h4>
+              <h4 className="gridName pt-4">Summary of Code to Code Transfer Details</h4>
               <TinyEditor
-                editorContent={pQRData.tiny14}
+                editorContent={tinyData.tiny14}
                 setEditorContent={setTinyContent}
                 tinyNo={14}
               />
             </div>
             <div className="sub-head">
               {" "}
-              Review of Manufacturing Process, Packing Process and relevant
-              Validation Status
+              Review of Manufacturing Process, Packing Process and relevant Validation Status
             </div>
             <TinyEditor
-              editorContent={pQRData.tiny15}
+              editorContent={tinyData.tiny15}
               setEditorContent={setTinyContent}
               tinyNo={15}
             />
             <div className="sub-head">
-              Review of Reprocessing/Repacking/Reworking along with CAPA and
-              Effectiveness Check Verification (if any)
+              Review of Reprocessing/Repacking/Reworking along with CAPA and Effectiveness Check
+              Verification (if any)
             </div>
             <div className="dual-group-input">
               <div className="group-input">
                 <label>Batch reprocessing/reworking process Details</label>
                 <TinyEditor
-                  editorContent={pQRData.tiny16}
+                  editorContent={tinyData.tiny16}
                   setEditorContent={setTinyContent}
                   tinyNo={16}
                 />
@@ -3631,7 +4237,7 @@ export default function APQR() {
               <div className="group-input">
                 <label>Batch Repacking Details </label>
                 <TinyEditor
-                  editorContent={pQRData.tiny17}
+                  editorContent={tinyData.tiny17}
                   setEditorContent={setTinyContent}
                   tinyNo={17}
                 />
@@ -3646,16 +4252,16 @@ export default function APQR() {
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addreviewORCECRow} />
-                  <div className="addrowinstruction  pl-2">
-                    Add Rows by clicking on (+) icon
-                  </div>
+                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
                 </div>
                 <div className="flex gap-4 ">
                   .
-                  <ExcelExport
-                    data={balanceSheet}
-                    fileName="balance-sheet-summary.xlsx"
-                  />
+                  <ExcelExportImport
+                  // data={manufacturingStage}
+                  // setimportedData={setimportedData}
+                  // fileName="manufacturingStage.xlsx"
+                  // gridNo={1}
+                  />{" "}
                 </div>
               </div>
               <table>
@@ -3671,7 +4277,7 @@ export default function APQR() {
                   </tr>
                 </thead>
                 <tbody>
-                  {pQRData?.reviewORCEC?.map((item, index) => {
+                  {gridDatas?.reviewORCEC?.map((item, index) => {
                     return (
                       <tr key={index}>
                         <td>{index + 1}</td>
@@ -3679,10 +4285,12 @@ export default function APQR() {
                           <input
                             value={item.packingBatchNumber}
                             onChange={(e) => {
-                              const newData = [...pQRData.reviewORCEC];
-                              newData[index].packingBatchNumber =
-                                e.target.value;
-                              setPQRData({ ...pQRData, reviewORCEC: newData });
+                              const newData = [...gridDatas.reviewORCEC];
+                              newData[index].packingBatchNumber = e.target.value;
+                              setGridDatas({
+                                ...gridDatas,
+                                reviewORCEC: newData,
+                              });
                             }}
                           />
                         </td>
@@ -3690,10 +4298,12 @@ export default function APQR() {
                           <input
                             value={item.manufacturingBatchNumber}
                             onChange={(e) => {
-                              const newData = [...pQRData.reviewORCEC];
-                              newData[index].repackingIssuedNumber =
-                                e.target.value;
-                              setPQRData({ ...pQRData, reviewORCEC: newData });
+                              const newData = [...gridDatas.reviewORCEC];
+                              newData[index].repackingIssuedNumber = e.target.value;
+                              setGridDatas({
+                                ...gridDatas,
+                                reviewORCEC: newData,
+                              });
                             }}
                           />
                         </td>
@@ -3701,9 +4311,12 @@ export default function APQR() {
                           <input
                             value={item.repackingIssuedNumber}
                             onChange={(e) => {
-                              const newData = [...pQRData.reviewORCEC];
+                              const newData = [...gridDatas.reviewORCEC];
                               newData[index].repackingIssuedNumber = e.target.value;
-                              setPQRData({ ...pQRData, reviewORCEC: newData });
+                              setGridDatas({
+                                ...gridDatas,
+                                reviewORCEC: newData,
+                              });
                             }}
                           />
                         </td>
@@ -3711,9 +4324,12 @@ export default function APQR() {
                           <input
                             value={item.repackingFor}
                             onChange={(e) => {
-                              const newData = [...pQRData.reviewORCEC];
+                              const newData = [...gridDatas.reviewORCEC];
                               newData[index].repackingFor = e.target.value;
-                              setPQRData({ ...pQRData, reviewORCEC: newData });
+                              setGridDatas({
+                                ...gridDatas,
+                                reviewORCEC: newData,
+                              });
                             }}
                           />
                         </td>
@@ -3721,21 +4337,25 @@ export default function APQR() {
                           <input
                             value={item.qMS}
                             onChange={(e) => {
-                              const newData = [...pQRData.reviewORCEC];
+                              const newData = [...gridDatas.reviewORCEC];
                               newData[index].qMS = e.target.value;
-                              setPQRData({ ...pQRData, reviewORCEC: newData });
+                              setGridDatas({
+                                ...gridDatas,
+                                reviewORCEC: newData,
+                              });
                             }}
                           />
                         </td>
                         <td>
-                          
                           <input
                             value={item.reasonForRepacking}
                             onChange={(e) => {
-                              const newData = [...pQRData.reviewORCEC];
-                              newData[index].reasonForRepacking =
-                                e.target.value;
-                              setPQRData({ ...pQRData, reviewORCEC: newData });
+                              const newData = [...gridDatas.reviewORCEC];
+                              newData[index].reasonForRepacking = e.target.value;
+                              setGridDatas({
+                                ...gridDatas,
+                                reviewORCEC: newData,
+                              });
                             }}
                           />
                         </td>
@@ -3748,13 +4368,11 @@ export default function APQR() {
             <div>
               <h4 className="gridName mt-5">Summary</h4>
               <TinyEditor
-                editorContent={pQRData.tiny18}
+                editorContent={tinyData.tiny18}
                 setEditorContent={setTinyContent}
                 tinyNo={18}
               />
             </div>
-
-          
 
             <h4 className="gridName">CAPA Details</h4>
             <div>
@@ -3765,15 +4383,15 @@ export default function APQR() {
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={capaDetailsRow} />
-                  <div className="addrowinstruction  pl-2">
-                    Add Rows by clicking on (+) icon
-                  </div>
+                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
                 </div>
                 <div className="flex gap-4 ">
-                  <ExcelExport
-                    data={balanceSheet}
-                    fileName="balance-sheet-summary.xlsx"
-                  />
+                  <ExcelExportImport
+                  // data={manufacturingStage}
+                  // setimportedData={setimportedData}
+                  // fileName="manufacturingStage.xlsx"
+                  // gridNo={1}
+                  />{" "}
                 </div>
               </div>
               <table className="mb-4">
@@ -3789,16 +4407,19 @@ export default function APQR() {
                   </tr>
                 </thead>
                 <tbody>
-                  {pQRData?.capaDetails?.map((item, index) => {
+                  {gridDatas?.capaDetails?.map((item, index) => {
                     return (
                       <tr key={index}>
                         <td>
                           <input
                             value={item.ARNo}
                             onChange={(e) => {
-                              const newData = [...pQRData.capaDetails];
+                              const newData = [...gridDatas.capaDetails];
                               newData[index].ARNo = e.target.value;
-                              setPQRData({ ...pQRData, capaDetails: newData });
+                              setGridDatas({
+                                ...gridDatas,
+                                capaDetails: newData,
+                              });
                             }}
                           />
                         </td>
@@ -3806,9 +4427,12 @@ export default function APQR() {
                           <input
                             value={item.capaType}
                             onChange={(e) => {
-                              const newData = [...pQRData.capaDetails];
+                              const newData = [...gridDatas.capaDetails];
                               newData[index].capaType = e.target.value;
-                              setPQRData({ ...pQRData, capaDetails: newData });
+                              setGridDatas({
+                                ...gridDatas,
+                                capaDetails: newData,
+                              });
                             }}
                           />
                         </td>
@@ -3816,10 +4440,12 @@ export default function APQR() {
                           <input
                             value={item.descriptionOfIssue}
                             onChange={(e) => {
-                              const newData = [...pQRData.capaDetails];
-                              newData[index].descriptionOfIssue =
-                                e.target.value;
-                              setPQRData({ ...pQRData, capaDetails: newData });
+                              const newData = [...gridDatas.capaDetails];
+                              newData[index].descriptionOfIssue = e.target.value;
+                              setGridDatas({
+                                ...gridDatas,
+                                capaDetails: newData,
+                              });
                             }}
                           />
                         </td>
@@ -3827,9 +4453,12 @@ export default function APQR() {
                           <input
                             value={item.rootCause}
                             onChange={(e) => {
-                              const newData = [...pQRData.capaDetails];
+                              const newData = [...gridDatas.capaDetails];
                               newData[index].rootCause = e.target.value;
-                              setPQRData({ ...pQRData, capaDetails: newData });
+                              setGridDatas({
+                                ...gridDatas,
+                                capaDetails: newData,
+                              });
                             }}
                           />
                         </td>
@@ -3837,9 +4466,12 @@ export default function APQR() {
                           <input
                             value={item.capaVerification}
                             onChange={(e) => {
-                              const newData = [...pQRData.capaDetails];
+                              const newData = [...gridDatas.capaDetails];
                               newData[index].capaVerification = e.target.value;
-                              setPQRData({ ...pQRData, capaDetails: newData });
+                              setGridDatas({
+                                ...gridDatas,
+                                capaDetails: newData,
+                              });
                             }}
                           />
                         </td>
@@ -3848,9 +4480,12 @@ export default function APQR() {
                             type="file"
                             value={item.chooseFile}
                             onChange={(e) => {
-                              const newData = [...pQRData.capaDetails];
+                              const newData = [...gridDatas.capaDetails];
                               newData[index].chooseFile = e.target.value;
-                              setPQRData({ ...pQRData, capaDetails: newData });
+                              setGridDatas({
+                                ...gridDatas,
+                                capaDetails: newData,
+                              });
                             }}
                           />
                         </td>
@@ -3858,9 +4493,12 @@ export default function APQR() {
                           <input
                             value={item.remarks}
                             onChange={(e) => {
-                              const newData = [...pQRData.capaDetails];
+                              const newData = [...gridDatas.capaDetails];
                               newData[index].remarks = e.target.value;
-                              setPQRData({ ...pQRData, capaDetails: newData });
+                              setGridDatas({
+                                ...gridDatas,
+                                capaDetails: newData,
+                              });
                             }}
                           />
                         </td>{" "}
@@ -3873,7 +4511,7 @@ export default function APQR() {
             <div>
               <h4 className="gridName mt-5">Summary</h4>
               <TinyEditor
-                editorContent={pQRData.tiny19}
+                editorContent={tinyData.tiny19}
                 setEditorContent={setTinyContent}
                 tinyNo={19}
               />
@@ -3888,15 +4526,15 @@ export default function APQR() {
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={deviationDetailsRow} />
-                  <div className="addrowinstruction  pl-2">
-                    Add Rows by clicking on (+) icon
-                  </div>
+                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
                 </div>
                 <div className="flex gap-4 ">
-                  <ExcelExport
-                    data={balanceSheet}
-                    fileName="balance-sheet-summary.xlsx"
-                  />
+                  <ExcelExportImport
+                  // data={manufacturingStage}
+                  // setimportedData={setimportedData}
+                  // fileName="manufacturingStage.xlsx"
+                  // gridNo={1}
+                  />{" "}
                 </div>
               </div>
               <table className="mb-4">
@@ -3915,17 +4553,17 @@ export default function APQR() {
                   </tr>
                 </thead>
                 <tbody>
-                  {pQRData?.deviationDetails?.map((item, index) => {
+                  {gridDatas?.deviationDetails?.map((item, index) => {
                     return (
                       <tr key={index}>
                         <td>
                           <input
                             value={item.ARNo}
                             onChange={(e) => {
-                              const newData = [...pQRData.deviationDetails];
+                              const newData = [...gridDatas.deviationDetails];
                               newData[index].ARNo = e.target.value;
-                              setPQRData({
-                                ...pQRData,
+                              setGridDatas({
+                                ...gridDatas,
                                 deviationDetails: newData,
                               });
                             }}
@@ -3935,11 +4573,10 @@ export default function APQR() {
                           <input
                             value={item.deviationRelatedTo}
                             onChange={(e) => {
-                              const newData = [...pQRData.deviationDetails];
-                              newData[index].deviationRelatedTo =
-                                e.target.value;
-                              setPQRData({
-                                ...pQRData,
+                              const newData = [...gridDatas.deviationDetails];
+                              newData[index].deviationRelatedTo = e.target.value;
+                              setGridDatas({
+                                ...gridDatas,
                                 deviationDetails: newData,
                               });
                             }}
@@ -3949,10 +4586,10 @@ export default function APQR() {
                           <input
                             value={item.description}
                             onChange={(e) => {
-                              const newData = [...pQRData.deviationDetails];
+                              const newData = [...gridDatas.deviationDetails];
                               newData[index].description = e.target.value;
-                              setPQRData({
-                                ...pQRData,
+                              setGridDatas({
+                                ...gridDatas,
                                 deviationDetails: newData,
                               });
                             }}
@@ -3962,10 +4599,10 @@ export default function APQR() {
                           <input
                             value={item.rootCause}
                             onChange={(e) => {
-                              const newData = [...pQRData.deviationDetails];
+                              const newData = [...gridDatas.deviationDetails];
                               newData[index].rootCause = e.target.value;
-                              setPQRData({
-                                ...pQRData,
+                              setGridDatas({
+                                ...gridDatas,
                                 deviationDetails: newData,
                               });
                             }}
@@ -3975,11 +4612,10 @@ export default function APQR() {
                           <input
                             value={item.deviationObservedOn}
                             onChange={(e) => {
-                              const newData = [...pQRData.deviationDetails];
-                              newData[index].deviationObservedOn =
-                                e.target.value;
-                              setPQRData({
-                                ...pQRData,
+                              const newData = [...gridDatas.deviationDetails];
+                              newData[index].deviationObservedOn = e.target.value;
+                              setGridDatas({
+                                ...gridDatas,
                                 deviationDetails: newData,
                               });
                             }}
@@ -3989,11 +4625,10 @@ export default function APQR() {
                           <input
                             value={item.deviationObservedBy}
                             onChange={(e) => {
-                              const newData = [...pQRData.deviationDetails];
-                              newData[index].deviationObservedBy =
-                                e.target.value;
-                              setPQRData({
-                                ...pQRData,
+                              const newData = [...gridDatas.deviationDetails];
+                              newData[index].deviationObservedBy = e.target.value;
+                              setGridDatas({
+                                ...gridDatas,
                                 deviationDetails: newData,
                               });
                             }}
@@ -4003,11 +4638,10 @@ export default function APQR() {
                           <input
                             value={item.classificationOfDeviation}
                             onChange={(e) => {
-                              const newData = [...pQRData.deviationDetails];
-                              newData[index].classificationOfDeviation =
-                                e.target.value;
-                              setPQRData({
-                                ...pQRData,
+                              const newData = [...gridDatas.deviationDetails];
+                              newData[index].classificationOfDeviation = e.target.value;
+                              setGridDatas({
+                                ...gridDatas,
                                 deviationDetails: newData,
                               });
                             }}
@@ -4018,10 +4652,10 @@ export default function APQR() {
                             type="file"
                             value={item.fileAttachment}
                             onChange={(e) => {
-                              const newData = [...pQRData.deviationDetails];
+                              const newData = [...gridDatas.deviationDetails];
                               newData[index].fileAttachment = e.target.value;
-                              setPQRData({
-                                ...pQRData,
+                              setGridDatas({
+                                ...gridDatas,
                                 deviationDetails: newData,
                               });
                             }}
@@ -4031,10 +4665,10 @@ export default function APQR() {
                           <input
                             value={item.remarks}
                             onChange={(e) => {
-                              const newData = [...pQRData.deviationDetails];
+                              const newData = [...gridDatas.deviationDetails];
                               newData[index].remarks = e.target.value;
-                              setPQRData({
-                                ...pQRData,
+                              setGridDatas({
+                                ...gridDatas,
                                 deviationDetails: newData,
                               });
                             }}
@@ -4044,10 +4678,10 @@ export default function APQR() {
                           <input
                             value={item.status}
                             onChange={(e) => {
-                              const newData = [...pQRData.deviationDetails];
+                              const newData = [...gridDatas.deviationDetails];
                               newData[index].status = e.target.value;
-                              setPQRData({
-                                ...pQRData,
+                              setGridDatas({
+                                ...gridDatas,
                                 deviationDetails: newData,
                               });
                             }}
@@ -4062,20 +4696,20 @@ export default function APQR() {
             <div>
               <h4 className="gridName mt-5">Summary</h4>
               <TinyEditor
-                editorContent={pQRData.tiny20}
+                editorContent={tinyData.tiny20}
                 setEditorContent={setTinyContent}
                 tinyNo={20}
               />
             </div>
 
             <div className="sub-head">
-              Review of all Batch Failures/Rejections along with CAPA and
-              Effectiveness Check Verification (if any):
+              Review of all Batch Failures/Rejections along with CAPA and Effectiveness Check
+              Verification (if any):
             </div>
 
             <h4 className="gridName">Batch Failures/Rejections Details </h4>
             <TinyEditor
-              editorContent={pQRData.tiny21}
+              editorContent={tinyData.tiny21}
               setEditorContent={setTinyContent}
               tinyNo={21}
             />
@@ -4089,15 +4723,15 @@ export default function APQR() {
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={oosDetailsRow} />
-                  <div className="addrowinstruction  pl-2">
-                    Add Rows by clicking on (+) icon
-                  </div>
+                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
                 </div>
                 <div className="flex gap-4 ">
-                  <ExcelExport
-                    data={balanceSheet}
-                    fileName="balance-sheet-summary.xlsx"
-                  />
+                  <ExcelExportImport
+                  // data={manufacturingStage}
+                  // setimportedData={setimportedData}
+                  // fileName="manufacturingStage.xlsx"
+                  // gridNo={1}
+                  />{" "}
                 </div>
               </div>
               <table className="mb-4">
@@ -4112,16 +4746,19 @@ export default function APQR() {
                   </tr>
                 </thead>
                 <tbody>
-                  {pQRData?.oosDetails?.map((item, index) => {
+                  {gridDatas?.oosDetails?.map((item, index) => {
                     return (
                       <tr key={index}>
                         <td>
                           <input
                             value={item.ARNo}
                             onChange={(e) => {
-                              const newData = [...pQRData.oosDetails];
+                              const newData = [...gridDatas.oosDetails];
                               newData[index].ARNo = e.target.value;
-                              setPQRData({ ...pQRData, oosDetails: newData });
+                              setGridDatas({
+                                ...gridDatas,
+                                oosDetails: newData,
+                              });
                             }}
                           />
                         </td>
@@ -4129,9 +4766,12 @@ export default function APQR() {
                           <input
                             value={item.testNameOfOos}
                             onChange={(e) => {
-                              const newData = [...pQRData.oosDetails];
+                              const newData = [...gridDatas.oosDetails];
                               newData[index].testNameOfOos = e.target.value;
-                              setPQRData({ ...pQRData, oosDetails: newData });
+                              setGridDatas({
+                                ...gridDatas,
+                                oosDetails: newData,
+                              });
                             }}
                           />
                         </td>
@@ -4139,9 +4779,12 @@ export default function APQR() {
                           <input
                             value={item.resultsObtained}
                             onChange={(e) => {
-                              const newData = [...pQRData.oosDetails];
+                              const newData = [...gridDatas.oosDetails];
                               newData[index].resultsObtained = e.target.value;
-                              setPQRData({ ...pQRData, oosDetails: newData });
+                              setGridDatas({
+                                ...gridDatas,
+                                oosDetails: newData,
+                              });
                             }}
                           />
                         </td>
@@ -4149,10 +4792,12 @@ export default function APQR() {
                           <input
                             value={item.specificationLimit}
                             onChange={(e) => {
-                              const newData = [...pQRData.oosDetails];
-                              newData[index].specificationLimit =
-                                e.target.value;
-                              setPQRData({ ...pQRData, oosDetails: newData });
+                              const newData = [...gridDatas.oosDetails];
+                              newData[index].specificationLimit = e.target.value;
+                              setGridDatas({
+                                ...gridDatas,
+                                oosDetails: newData,
+                              });
                             }}
                           />
                         </td>
@@ -4160,10 +4805,12 @@ export default function APQR() {
                           <input
                             value={item.detailsOfObviousError}
                             onChange={(e) => {
-                              const newData = [...pQRData.oosDetails];
-                              newData[index].detailsOfObviousError =
-                                e.target.value;
-                              setPQRData({ ...pQRData, oosDetails: newData });
+                              const newData = [...gridDatas.oosDetails];
+                              newData[index].detailsOfObviousError = e.target.value;
+                              setGridDatas({
+                                ...gridDatas,
+                                oosDetails: newData,
+                              });
                             }}
                           />
                         </td>
@@ -4172,9 +4819,12 @@ export default function APQR() {
                             type="file"
                             value={item.fileAttachment}
                             onChange={(e) => {
-                              const newData = [...pQRData.oosDetails];
+                              const newData = [...gridDatas.oosDetails];
                               newData[index].fileAttachment = e.target.value;
-                              setPQRData({ ...pQRData, oosDetails: newData });
+                              setGridDatas({
+                                ...gridDatas,
+                                oosDetails: newData,
+                              });
                             }}
                           />
                         </td>
@@ -4187,7 +4837,7 @@ export default function APQR() {
             <div>
               <h4 className="gridName mt-5">Summary</h4>
               <TinyEditor
-                editorContent={pQRData.tiny22}
+                editorContent={tinyData.tiny22}
                 setEditorContent={setTinyContent}
                 tinyNo={22}
               />
@@ -4202,15 +4852,15 @@ export default function APQR() {
               <div className="AddRows d-flex w-full justify-between items-center text-3xl mb-5">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={ootResultsRow} />
-                  <div className="addrowinstruction  pl-2">
-                    Add Rows by clicking on (+) icon
-                  </div>
+                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
                 </div>
                 <div className="flex gap-4 ">
-                  <ExcelExport
-                    data={balanceSheet}
-                    fileName="balance-sheet-summary.xlsx"
-                  />
+                  <ExcelExportImport
+                  // data={manufacturingStage}
+                  // setimportedData={setimportedData}
+                  // fileName="manufacturingStage.xlsx"
+                  // gridNo={1}
+                  />{" "}
                 </div>
               </div>
               <table className="mb-4">
@@ -4226,16 +4876,19 @@ export default function APQR() {
                   </tr>
                 </thead>
                 <tbody>
-                  {pQRData?.ootResults?.map((item, index) => {
+                  {gridDatas?.ootResults?.map((item, index) => {
                     return (
                       <tr key={index}>
                         <td>
                           <input
                             value={item.ARNo}
                             onChange={(e) => {
-                              const newData = [...pQRData.ootResults];
+                              const newData = [...gridDatas.ootResults];
                               newData[index].ARNo = e.target.value;
-                              setPQRData({ ...pQRData, ootResults: newData });
+                              setGridDatas({
+                                ...gridDatas,
+                                ootResults: newData,
+                              });
                             }}
                           />
                         </td>
@@ -4243,9 +4896,12 @@ export default function APQR() {
                           <input
                             value={item.testNameOfOot}
                             onChange={(e) => {
-                              const newData = [...pQRData.ootResults];
+                              const newData = [...gridDatas.ootResults];
                               newData[index].testNameOfOot = e.target.value;
-                              setPQRData({ ...pQRData, ootResults: newData });
+                              setGridDatas({
+                                ...gridDatas,
+                                ootResults: newData,
+                              });
                             }}
                           />
                         </td>
@@ -4253,9 +4909,12 @@ export default function APQR() {
                           <input
                             value={item.resultsObtained}
                             onChange={(e) => {
-                              const newData = [...pQRData.ootResults];
+                              const newData = [...gridDatas.ootResults];
                               newData[index].resultsObtained = e.target.value;
-                              setPQRData({ ...pQRData, ootResults: newData });
+                              setGridDatas({
+                                ...gridDatas,
+                                ootResults: newData,
+                              });
                             }}
                           />
                         </td>
@@ -4263,10 +4922,12 @@ export default function APQR() {
                           <input
                             value={item.initialIntervalDetails}
                             onChange={(e) => {
-                              const newData = [...pQRData.ootResults];
-                              newData[index].initialIntervalDetails =
-                                e.target.value;
-                              setPQRData({ ...pQRData, ootResults: newData });
+                              const newData = [...gridDatas.ootResults];
+                              newData[index].initialIntervalDetails = e.target.value;
+                              setGridDatas({
+                                ...gridDatas,
+                                ootResults: newData,
+                              });
                             }}
                           />
                         </td>
@@ -4274,10 +4935,12 @@ export default function APQR() {
                           <input
                             value={item.previousIntervalDetails}
                             onChange={(e) => {
-                              const newData = [...pQRData.ootResults];
-                              newData[index].previousIntervalDetails =
-                                e.target.value;
-                              setPQRData({ ...pQRData, ootResults: newData });
+                              const newData = [...gridDatas.ootResults];
+                              newData[index].previousIntervalDetails = e.target.value;
+                              setGridDatas({
+                                ...gridDatas,
+                                ootResults: newData,
+                              });
                             }}
                           />
                         </td>
@@ -4285,10 +4948,12 @@ export default function APQR() {
                           <input
                             value={item.diffrenceOfResult}
                             onChange={(e) => {
-                              const newData = [...pQRData.ootResults];
-                              newData[index].diffrenceOfResultrence =
-                                e.target.value;
-                              setPQRData({ ...pQRData, ootResults: newData });
+                              const newData = [...gridDatas.ootResults];
+                              newData[index].diffrenceOfResultrence = e.target.value;
+                              setGridDatas({
+                                ...gridDatas,
+                                ootResults: newData,
+                              });
                             }}
                           />
                         </td>
@@ -4296,9 +4961,12 @@ export default function APQR() {
                           <input
                             value={item.trendLimit}
                             onChange={(e) => {
-                              const newData = [...pQRData.ootResults];
+                              const newData = [...gridDatas.ootResults];
                               newData[index].trendLimit = e.target.value;
-                              setPQRData({ ...pQRData, ootResults: newData });
+                              setGridDatas({
+                                ...gridDatas,
+                                ootResults: newData,
+                              });
                             }}
                           />
                         </td>
@@ -4311,7 +4979,7 @@ export default function APQR() {
             <div>
               <h4 className="gridName mt-5">Summary</h4>
               <TinyEditor
-                editorContent={pQRData.tiny23}
+                editorContent={tinyData.tiny23}
                 setEditorContent={setTinyContent}
                 tinyNo={23}
               />
@@ -4325,15 +4993,15 @@ export default function APQR() {
               <div className="AddRows d-flex w-full justify-between items-center text-3xl mb-5">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={ooaResultsRow} />
-                  <div className="addrowinstruction  pl-2">
-                    Add Rows by clicking on (+) icon
-                  </div>
+                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
                 </div>
                 <div className="flex gap-4 ">
-                  <ExcelExport
-                    data={balanceSheet}
-                    fileName="balance-sheet-summary.xlsx"
-                  />
+                  <ExcelExportImport
+                  // data={manufacturingStage}
+                  // setimportedData={setimportedData}
+                  // fileName="manufacturingStage.xlsx"
+                  // gridNo={1}
+                  />{" "}
                 </div>
               </div>
               <table className="mb-4">
@@ -4349,16 +5017,19 @@ export default function APQR() {
                   </tr>
                 </thead>
                 <tbody>
-                  {pQRData?.ooaResults?.map((item, index) => {
+                  {gridDatas?.ooaResults?.map((item, index) => {
                     return (
                       <tr key={index}>
                         <td>
                           <input
                             value={item.ARNo}
                             onChange={(e) => {
-                              const newData = [...pQRData.ooaResults];
+                              const newData = [...gridDatas.ooaResults];
                               newData[index].ARNo = e.target.value;
-                              setPQRData({ ...pQRData, ooaResults: newData });
+                              setGridDatas({
+                                ...gridDatas,
+                                ooaResults: newData,
+                              });
                             }}
                           />
                         </td>
@@ -4366,9 +5037,12 @@ export default function APQR() {
                           <input
                             value={item.testNameOfAlert}
                             onChange={(e) => {
-                              const newData = [...pQRData.ooaResults];
+                              const newData = [...gridDatas.ooaResults];
                               newData[index].testNameOfAlert = e.target.value;
-                              setPQRData({ ...pQRData, ooaResults: newData });
+                              setGridDatas({
+                                ...gridDatas,
+                                ooaResults: newData,
+                              });
                             }}
                           />
                         </td>
@@ -4377,9 +5051,12 @@ export default function APQR() {
                           <input
                             value={item.resultsObtained}
                             onChange={(e) => {
-                              const newData = [...pQRData.ooaResults];
+                              const newData = [...gridDatas.ooaResults];
                               newData[index].resultsObtained = e.target.value;
-                              setPQRData({ ...pQRData, ooaResults: newData });
+                              setGridDatas({
+                                ...gridDatas,
+                                ooaResults: newData,
+                              });
                             }}
                           />
                         </td>
@@ -4387,10 +5064,12 @@ export default function APQR() {
                           <input
                             value={item.initialIntervalDetails}
                             onChange={(e) => {
-                              const newData = [...pQRData.ooaResults];
-                              newData[index].initialIntervalDetails =
-                                e.target.value;
-                              setPQRData({ ...pQRData, ooaResults: newData });
+                              const newData = [...gridDatas.ooaResults];
+                              newData[index].initialIntervalDetails = e.target.value;
+                              setGridDatas({
+                                ...gridDatas,
+                                ooaResults: newData,
+                              });
                             }}
                           />
                         </td>
@@ -4398,10 +5077,12 @@ export default function APQR() {
                           <input
                             value={item.previousIntervalDetails}
                             onChange={(e) => {
-                              const newData = [...pQRData.ooaResults];
-                              newData[index].previousIntervalDetails =
-                                e.target.value;
-                              setPQRData({ ...pQRData, ooaResults: newData });
+                              const newData = [...gridDatas.ooaResults];
+                              newData[index].previousIntervalDetails = e.target.value;
+                              setGridDatas({
+                                ...gridDatas,
+                                ooaResults: newData,
+                              });
                             }}
                           />
                         </td>
@@ -4409,9 +5090,12 @@ export default function APQR() {
                           <input
                             value={item.diffrenceOfResult}
                             onChange={(e) => {
-                              const newData = [...pQRData.ooaResults];
+                              const newData = [...gridDatas.ooaResults];
                               newData[index].diffrenceOfResult = e.target.value;
-                              setPQRData({ ...pQRData, ooaResults: newData });
+                              setGridDatas({
+                                ...gridDatas,
+                                ooaResults: newData,
+                              });
                             }}
                           />
                         </td>
@@ -4419,9 +5103,12 @@ export default function APQR() {
                           <input
                             value={item.trendLimit}
                             onChange={(e) => {
-                              const newData = [...pQRData.ooaResults];
+                              const newData = [...gridDatas.ooaResults];
                               newData[index].trendLimit = e.target.value;
-                              setPQRData({ ...pQRData, ooaResults: newData });
+                              setGridDatas({
+                                ...gridDatas,
+                                ooaResults: newData,
+                              });
                             }}
                           />
                         </td>
@@ -4434,7 +5121,7 @@ export default function APQR() {
             <div>
               <h4 className="gridName mt-5">Summary</h4>
               <TinyEditor
-                editorContent={pQRData.tiny24}
+                editorContent={tinyData.tiny24}
                 setEditorContent={setTinyContent}
                 tinyNo={24}
               />
@@ -4448,15 +5135,15 @@ export default function APQR() {
               <div className="AddRows d-flex w-full justify-between items-center text-3xl mb-5">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={oolResultsRow} />
-                  <div className="addrowinstruction  pl-2">
-                    Add Rows by clicking on (+) icon
-                  </div>
+                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
                 </div>
                 <div className="flex gap-4 ">
-                  <ExcelExport
-                    data={balanceSheet}
-                    fileName="balance-sheet-summary.xlsx"
-                  />
+                  <ExcelExportImport
+                  // data={manufacturingStage}
+                  // setimportedData={setimportedData}
+                  // fileName="manufacturingStage.xlsx"
+                  // gridNo={1}
+                  />{" "}
                 </div>
               </div>
               <table className="mb-4">
@@ -4472,16 +5159,19 @@ export default function APQR() {
                   </tr>
                 </thead>
                 <tbody>
-                  {pQRData?.oolResults?.map((item, index) => {
+                  {gridDatas?.oolResults?.map((item, index) => {
                     return (
                       <tr key={index}>
                         <td>
                           <input
                             value={item.ARNo}
                             onChange={(e) => {
-                              const newData = [...pQRData.oolResults];
+                              const newData = [...gridDatas.oolResults];
                               newData[index].ARNo = e.target.value;
-                              setPQRData({ ...pQRData, oolResults: newData });
+                              setGridDatas({
+                                ...gridDatas,
+                                oolResults: newData,
+                              });
                             }}
                           />
                         </td>
@@ -4489,9 +5179,12 @@ export default function APQR() {
                           <input
                             value={item.testNameOfAlert}
                             onChange={(e) => {
-                              const newData = [...pQRData.oolResults];
+                              const newData = [...gridDatas.oolResults];
                               newData[index].testNameOfAlert = e.target.value;
-                              setPQRData({ ...pQRData, oolResults: newData });
+                              setGridDatas({
+                                ...gridDatas,
+                                oolResults: newData,
+                              });
                             }}
                           />
                         </td>
@@ -4500,9 +5193,12 @@ export default function APQR() {
                           <input
                             value={item.resultsObtained}
                             onChange={(e) => {
-                              const newData = [...pQRData.oolResults];
+                              const newData = [...gridDatas.oolResults];
                               newData[index].resultsObtained = e.target.value;
-                              setPQRData({ ...pQRData, oolResults: newData });
+                              setGridDatas({
+                                ...gridDatas,
+                                oolResults: newData,
+                              });
                             }}
                           />
                         </td>
@@ -4510,10 +5206,12 @@ export default function APQR() {
                           <input
                             value={item.initialIntervalDetails}
                             onChange={(e) => {
-                              const newData = [...pQRData.oolResults];
-                              newData[index].initialIntervalDetails =
-                                e.target.value;
-                              setPQRData({ ...pQRData, oolResults: newData });
+                              const newData = [...gridDatas.oolResults];
+                              newData[index].initialIntervalDetails = e.target.value;
+                              setGridDatas({
+                                ...gridDatas,
+                                oolResults: newData,
+                              });
                             }}
                           />
                         </td>
@@ -4521,10 +5219,12 @@ export default function APQR() {
                           <input
                             value={item.previousIntervalDetails}
                             onChange={(e) => {
-                              const newData = [...pQRData.oolResults];
-                              newData[index].previousIntervalDetails =
-                                e.target.value;
-                              setPQRData({ ...pQRData, oolResults: newData });
+                              const newData = [...gridDatas.oolResults];
+                              newData[index].previousIntervalDetails = e.target.value;
+                              setGridDatas({
+                                ...gridDatas,
+                                oolResults: newData,
+                              });
                             }}
                           />
                         </td>
@@ -4532,9 +5232,12 @@ export default function APQR() {
                           <input
                             value={item.diffrenceOfResult}
                             onChange={(e) => {
-                              const newData = [...pQRData.oolResults];
+                              const newData = [...gridDatas.oolResults];
                               newData[index].diffrenceOfResult = e.target.value;
-                              setPQRData({ ...pQRData, oolResults: newData });
+                              setGridDatas({
+                                ...gridDatas,
+                                oolResults: newData,
+                              });
                             }}
                           />
                         </td>
@@ -4542,9 +5245,12 @@ export default function APQR() {
                           <input
                             value={item.trendLimit}
                             onChange={(e) => {
-                              const newData = [...pQRData.oolResults];
+                              const newData = [...gridDatas.oolResults];
                               newData[index].trendLimit = e.target.value;
-                              setPQRData({ ...pQRData, oolResults: newData });
+                              setGridDatas({
+                                ...gridDatas,
+                                oolResults: newData,
+                              });
                             }}
                           />
                         </td>
@@ -4557,20 +5263,16 @@ export default function APQR() {
             <div>
               <h4 className="gridName mt-5">Summary</h4>
               <TinyEditor
-                editorContent={pQRData.tiny25}
+                editorContent={tinyData.tiny25}
                 setEditorContent={setTinyContent}
                 tinyNo={25}
               />
             </div>
 
-            <div className="sub-head">
-              Review of Product Quality (Critical Process Parameters)
-            </div>
+            <div className="sub-head">Review of Product Quality (Critical Process Parameters)</div>
 
             <h3 className="gridName">Unit Operation 1</h3>
-            <h4 className="gridName">
-              Buffer formulation summary details provided below
-            </h4>
+            <h4 className="gridName">Buffer formulation summary details provided below</h4>
             <div>
               {/* <div className="AddRows d-flex">
                 <MdNoteAdd onClick={addBufferFSDPVRow} />
@@ -4579,15 +5281,15 @@ export default function APQR() {
               <div className="AddRows d-flex w-full justify-between items-center text-3xl mb-5">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addBufferFSDPVRow} />
-                  <div className="addrowinstruction  pl-2">
-                    Add Rows by clicking on (+) icon
-                  </div>
+                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
                 </div>
                 <div className="flex gap-4 ">
-                  <ExcelExport
-                    data={balanceSheet}
-                    fileName="balance-sheet-summary.xlsx"
-                  />
+                  <ExcelExportImport
+                  // data={manufacturingStage}
+                  // setimportedData={setimportedData}
+                  // fileName="manufacturingStage.xlsx"
+                  // gridNo={1}
+                  />{" "}
                 </div>
               </div>
               <table className="mb-4">
@@ -4605,17 +5307,19 @@ export default function APQR() {
                   </tr>
                 </thead>
                 <tbody>
-                  {pQRData?.bufferFSDPV?.map((item, index) => {
+                  {gridDatas?.bufferFSDPV?.map((item, index) => {
                     return (
                       <tr key={index}>
                         <td>
                           <input
                             value={item.criticalProcessParameter}
                             onChange={(e) => {
-                              const newData = [...pQRData.bufferFSDPV];
-                              newData[index].criticalProcessParameter =
-                                e.target.value;
-                              setPQRData({ ...pQRData, bufferFSDPV: newData });
+                              const newData = [...gridDatas.bufferFSDPV];
+                              newData[index].criticalProcessParameter = e.target.value;
+                              setGridDatas({
+                                ...pQRData,
+                                bufferFSDPV: newData,
+                              });
                             }}
                           />
                         </td>
@@ -4623,9 +5327,12 @@ export default function APQR() {
                           <input
                             value={item.codes}
                             onChange={(e) => {
-                              const newData = [...pQRData.bufferFSDPV];
+                              const newData = [...gridDatas.bufferFSDPV];
                               newData[index].codes = e.target.value;
-                              setPQRData({ ...pQRData, bufferFSDPV: newData });
+                              setGridDatas({
+                                ...gridDatas,
+                                bufferFSDPV: newData,
+                              });
                             }}
                           />
                         </td>
@@ -4633,21 +5340,26 @@ export default function APQR() {
                           <input
                             value={item.acceptanceCriteria}
                             onChange={(e) => {
-                              const newData = [...pQRData.bufferFSDPV];
-                              newData[index].acceptanceCriteria =
-                                e.target.value;
-                              setPQRData({ ...pQRData, bufferFSDPV: newData });
+                              const newData = [...gridDatas.bufferFSDPV];
+                              newData[index].acceptanceCriteria = e.target.value;
+                              setGridDatas({
+                                ...gridDatas,
+                                bufferFSDPV: newData,
+                              });
                             }}
                           />
                         </td>
-                       
+
                         <td>
                           <input
                             value={item.results.minimum}
                             onChange={(e) => {
-                              const newData = [...pQRData.bufferFSDPV];
+                              const newData = [...gridDatas.bufferFSDPV];
                               newData[index].results.minimum = e.target.value;
-                              setPQRData({ ...pQRData, bufferFSDPV: newData });
+                              setGridDatas({
+                                ...gridDatas,
+                                bufferFSDPV: newData,
+                              });
                             }}
                           />
                         </td>
@@ -4655,9 +5367,12 @@ export default function APQR() {
                           <input
                             value={item.results.maximum}
                             onChange={(e) => {
-                              const newData = [...pQRData.bufferFSDPV];
+                              const newData = [...gridDatas.bufferFSDPV];
                               newData[index].results.maximum = e.target.value;
-                              setPQRData({ ...pQRData, bufferFSDPV: newData });
+                              setGridDatas({
+                                ...gridDatas,
+                                bufferFSDPV: newData,
+                              });
                             }}
                           />
                         </td>
@@ -4665,9 +5380,12 @@ export default function APQR() {
                           <input
                             value={item.compliesNotComplies}
                             onChange={(e) => {
-                              const newData = [...pQRData.bufferFSDPV];
+                              const newData = [...gridDatas.bufferFSDPV];
                               newData[index].compliesNotComplies = e.target.value;
-                              setPQRData({ ...pQRData, bufferFSDPV: newData });
+                              setGridDatas({
+                                ...gridDatas,
+                                bufferFSDPV: newData,
+                              });
                             }}
                           />
                         </td>
@@ -4686,15 +5404,15 @@ export default function APQR() {
             <div className="AddRows d-flex w-full justify-between items-center text-3xl mb-5">
               <div className="flex items-center">
                 <MdNoteAdd onClick={addmanufacturingSDRow} />
-                <div className="addrowinstruction  pl-2">
-                  Add Rows by clicking on (+) icon
-                </div>
+                <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
               </div>
               <div className="flex gap-4 ">
-                <ExcelExport
-                  data={balanceSheet}
-                  fileName="balance-sheet-summary.xlsx"
-                />
+                <ExcelExportImport
+                // data={manufacturingStage}
+                // setimportedData={setimportedData}
+                // fileName="manufacturingStage.xlsx"
+                // gridNo={1}
+                />{" "}
               </div>
             </div>
             <table>
@@ -4712,18 +5430,17 @@ export default function APQR() {
                 </tr>
               </thead>
               <tbody>
-                {pQRData?.manufacturingSD?.map((item, index) => {
+                {gridDatas?.manufacturingSD?.map((item, index) => {
                   return (
                     <tr key={index}>
                       <td>
                         <input
                           value={item.criticalProcessParameter}
                           onChange={(e) => {
-                            const newData = [...pQRData.manufacturingSD];
-                            newData[index].criticalProcessParameter =
-                              e.target.value;
-                            setPQRData({
-                              ...pQRData,
+                            const newData = [...gridDatas.manufacturingSD];
+                            newData[index].criticalProcessParameter = e.target.value;
+                            setGridDatas({
+                              ...gridDatas,
                               manufacturingSD: newData,
                             });
                           }}
@@ -4733,10 +5450,10 @@ export default function APQR() {
                         <input
                           value={item.codes}
                           onChange={(e) => {
-                            const newData = [...pQRData.manufacturingSD];
+                            const newData = [...gridDatas.manufacturingSD];
                             newData[index].codes = e.target.value;
-                            setPQRData({
-                              ...pQRData,
+                            setGridDatas({
+                              ...gridDatas,
                               manufacturingSD: newData,
                             });
                           }}
@@ -4746,24 +5463,24 @@ export default function APQR() {
                         <input
                           value={item.acceptanceCriteria}
                           onChange={(e) => {
-                            const newData = [...pQRData.manufacturingSD];
+                            const newData = [...gridDatas.manufacturingSD];
                             newData[index].acceptanceCriteria = e.target.value;
-                            setPQRData({
-                              ...pQRData,
+                            setGridDatas({
+                              ...gridDatas,
                               manufacturingSD: newData,
                             });
                           }}
                         />
                       </td>
-                     
+
                       <td>
                         <input
                           value={item.results.minimum}
                           onChange={(e) => {
-                            const newData = [...pQRData.manufacturingSD];
+                            const newData = [...gridDatas.manufacturingSD];
                             newData[index].results.minimum = e.target.value;
-                            setPQRData({
-                              ...pQRData,
+                            setGridDatas({
+                              ...gridDatas,
                               manufacturingSD: newData,
                             });
                           }}
@@ -4773,10 +5490,10 @@ export default function APQR() {
                         <input
                           value={item.results.maximum}
                           onChange={(e) => {
-                            const newData = [...pQRData.manufacturingSD];
+                            const newData = [...gridDatas.manufacturingSD];
                             newData[index].results.maximum = e.target.value;
-                            setPQRData({
-                              ...pQRData,
+                            setGridDatas({
+                              ...gridDatas,
                               manufacturingSD: newData,
                             });
                           }}
@@ -4786,10 +5503,10 @@ export default function APQR() {
                         <input
                           value={item.compliesNotComplies}
                           onChange={(e) => {
-                            const newData = [...pQRData.manufacturingSD];
+                            const newData = [...gridDatas.manufacturingSD];
                             newData[index].compliesNotComplies = e.target.value;
-                            setPQRData({
-                              ...pQRData,
+                            setGridDatas({
+                              ...gridDatas,
                               manufacturingSD: newData,
                             });
                           }}
@@ -4821,17 +5538,19 @@ export default function APQR() {
                 </tr>
               </thead>
               <tbody>
-                {pQRData?.unitOperation3?.map((item, index) => {
+                {gridDatas?.unitOperation3?.map((item, index) => {
                   return (
                     <tr key={index}>
                       <td>
                         <input
                           value={item.criticalProcessParameter}
                           onChange={(e) => {
-                            const newData = [...pQRData.unitOperation3];
-                            newData[index].criticalProcessParameter =
-                              e.target.value;
-                            setPQRData({ ...pQRData, unitOperation3: newData });
+                            const newData = [...gridDatas.unitOperation3];
+                            newData[index].criticalProcessParameter = e.target.value;
+                            setGridDatas({
+                              ...gridDatas,
+                              unitOperation3: newData,
+                            });
                           }}
                         />
                       </td>
@@ -4839,9 +5558,12 @@ export default function APQR() {
                         <input
                           value={item.codes}
                           onChange={(e) => {
-                            const newData = [...pQRData.unitOperation3];
+                            const newData = [...gridDatas.unitOperation3];
                             newData[index].codes = e.target.value;
-                            setPQRData({ ...pQRData, unitOperation3: newData });
+                            setGridDatas({
+                              ...gridDatas,
+                              unitOperation3: newData,
+                            });
                           }}
                         />
                       </td>
@@ -4849,20 +5571,26 @@ export default function APQR() {
                         <input
                           value={item.acceptanceCriteria}
                           onChange={(e) => {
-                            const newData = [...pQRData.unitOperation3];
+                            const newData = [...gridDatas.unitOperation3];
                             newData[index].acceptanceCriteria = e.target.value;
-                            setPQRData({ ...pQRData, unitOperation3: newData });
+                            setGridDatas({
+                              ...gridDatas,
+                              unitOperation3: newData,
+                            });
                           }}
                         />
                       </td>
-                    
+
                       <td>
                         <input
                           value={item.results.minimum}
                           onChange={(e) => {
-                            const newData = [...pQRData.unitOperation3];
+                            const newData = [...gridDatas.unitOperation3];
                             newData[index].results.minimum = e.target.value;
-                            setPQRData({ ...pQRData, unitOperation3: newData });
+                            setGridDatas({
+                              ...gridDatas,
+                              unitOperation3: newData,
+                            });
                           }}
                         />
                       </td>
@@ -4870,9 +5598,12 @@ export default function APQR() {
                         <input
                           value={item.results.maximum}
                           onChange={(e) => {
-                            const newData = [...pQRData.unitOperation3];
+                            const newData = [...gridDatas.unitOperation3];
                             newData[index].results.maximum = e.target.value;
-                            setPQRData({ ...pQRData, unitOperation3: newData });
+                            setGridDatas({
+                              ...gridDatas,
+                              unitOperation3: newData,
+                            });
                           }}
                         />
                       </td>
@@ -4880,9 +5611,12 @@ export default function APQR() {
                         <input
                           value={item.compliesNotComplies}
                           onChange={(e) => {
-                            const newData = [...pQRData.unitOperation3];
+                            const newData = [...gridDatas.unitOperation3];
                             newData[index].compliesNotComplies = e.target.value;
-                            setPQRData({ ...pQRData, unitOperation3: newData });
+                            setGridDatas({
+                              ...gridDatas,
+                              unitOperation3: newData,
+                            });
                           }}
                         />
                       </td>
@@ -4912,17 +5646,19 @@ export default function APQR() {
                 </tr>
               </thead>
               <tbody>
-                {pQRData?.unitOperation4?.map((item, index) => {
+                {gridDatas?.unitOperation4?.map((item, index) => {
                   return (
                     <tr key={index}>
                       <td>
                         <input
                           value={item.criticalProcessParameter}
                           onChange={(e) => {
-                            const newData = [...pQRData.unitOperation4];
-                            newData[index].criticalProcessParameter =
-                              e.target.value;
-                            setPQRData({ ...pQRData, unitOperation4: newData });
+                            const newData = [...gridDatas.unitOperation4];
+                            newData[index].criticalProcessParameter = e.target.value;
+                            setGridDatas({
+                              ...gridDatas,
+                              unitOperation4: newData,
+                            });
                           }}
                         />
                       </td>
@@ -4930,9 +5666,12 @@ export default function APQR() {
                         <input
                           value={item.codes}
                           onChange={(e) => {
-                            const newData = [...pQRData.unitOperation4];
+                            const newData = [...gridDatas.unitOperation4];
                             newData[index].codes = e.target.value;
-                            setPQRData({ ...pQRData, unitOperation4: newData });
+                            setGridDatas({
+                              ...gridDatas,
+                              unitOperation4: newData,
+                            });
                           }}
                         />
                       </td>
@@ -4940,20 +5679,26 @@ export default function APQR() {
                         <input
                           value={item.acceptanceCriteria}
                           onChange={(e) => {
-                            const newData = [...pQRData.unitOperation4];
+                            const newData = [...gridDatas.unitOperation4];
                             newData[index].acceptanceCriteria = e.target.value;
-                            setPQRData({ ...pQRData, unitOperation4: newData });
+                            setGridDatas({
+                              ...gridDatas,
+                              unitOperation4: newData,
+                            });
                           }}
                         />
                       </td>
-                     
+
                       <td>
                         <input
                           value={item.results.minimum}
                           onChange={(e) => {
-                            const newData = [...pQRData.unitOperation4];
+                            const newData = [...gridDatas.unitOperation4];
                             newData[index].results.minimum = e.target.value;
-                            setPQRData({ ...pQRData, unitOperation4: newData });
+                            setGridDatas({
+                              ...gridDatas,
+                              unitOperation4: newData,
+                            });
                           }}
                         />
                       </td>
@@ -4961,9 +5706,12 @@ export default function APQR() {
                         <input
                           value={item.results.maximum}
                           onChange={(e) => {
-                            const newData = [...pQRData.unitOperation4];
+                            const newData = [...gridDatas.unitOperation4];
                             newData[index].results.maximum = e.target.value;
-                            setPQRData({ ...pQRData, unitOperation4: newData });
+                            setGridDatas({
+                              ...gridDatas,
+                              unitOperation4: newData,
+                            });
                           }}
                         />
                       </td>
@@ -4971,9 +5719,12 @@ export default function APQR() {
                         <input
                           value={item.compliesNotComplies}
                           onChange={(e) => {
-                            const newData = [...pQRData.unitOperation4];
+                            const newData = [...gridDatas.unitOperation4];
                             newData[index].compliesNotComplies = e.target.value;
-                            setPQRData({ ...pQRData, unitOperation4: newData });
+                            setGridDatas({
+                              ...gridDatas,
+                              unitOperation4: newData,
+                            });
                           }}
                         />
                       </td>
@@ -5003,17 +5754,19 @@ export default function APQR() {
                 </tr>
               </thead>
               <tbody>
-                {pQRData?.unitOperation5?.map((item, index) => {
+                {gridDatas?.unitOperation5?.map((item, index) => {
                   return (
                     <tr key={index}>
                       <td>
                         <input
                           value={item.criticalProcessParameter}
                           onChange={(e) => {
-                            const newData = [...pQRData.unitOperation5];
-                            newData[index].criticalProcessParameter =
-                              e.target.value;
-                            setPQRData({ ...pQRData, unitOperation5: newData });
+                            const newData = [...gridDatas.unitOperation5];
+                            newData[index].criticalProcessParameter = e.target.value;
+                            setGridDatas({
+                              ...gridDatas,
+                              unitOperation5: newData,
+                            });
                           }}
                         />
                       </td>
@@ -5021,9 +5774,12 @@ export default function APQR() {
                         <input
                           value={item.codes}
                           onChange={(e) => {
-                            const newData = [...pQRData.unitOperation5];
+                            const newData = [...gridDatas.unitOperation5];
                             newData[index].codes = e.target.value;
-                            setPQRData({ ...pQRData, unitOperation5: newData });
+                            setGridDatas({
+                              ...gridDatas,
+                              unitOperation5: newData,
+                            });
                           }}
                         />
                       </td>
@@ -5031,20 +5787,26 @@ export default function APQR() {
                         <input
                           value={item.acceptanceCriteria}
                           onChange={(e) => {
-                            const newData = [...pQRData.unitOperation5];
+                            const newData = [...gridDatas.unitOperation5];
                             newData[index].acceptanceCriteria = e.target.value;
-                            setPQRData({ ...pQRData, unitOperation5: newData });
+                            setGridDatas({
+                              ...gridDatas,
+                              unitOperation5: newData,
+                            });
                           }}
                         />
                       </td>
-                    
+
                       <td>
                         <input
                           value={item.results.minimum}
                           onChange={(e) => {
-                            const newData = [...pQRData.unitOperation5];
+                            const newData = [...gridDatas.unitOperation5];
                             newData[index].results.minimum = e.target.value;
-                            setPQRData({ ...pQRData, unitOperation5: newData });
+                            setGridDatas({
+                              ...gridDatas,
+                              unitOperation5: newData,
+                            });
                           }}
                         />
                       </td>
@@ -5052,9 +5814,12 @@ export default function APQR() {
                         <input
                           value={item.results.maximum}
                           onChange={(e) => {
-                            const newData = [...pQRData.unitOperation5];
+                            const newData = [...gridDatas.unitOperation5];
                             newData[index].results.maximum = e.target.value;
-                            setPQRData({ ...pQRData, unitOperation5: newData });
+                            setGridDatas({
+                              ...gridDatas,
+                              unitOperation5: newData,
+                            });
                           }}
                         />
                       </td>
@@ -5062,9 +5827,12 @@ export default function APQR() {
                         <input
                           value={item.compliesNotComplies}
                           onChange={(e) => {
-                            const newData = [...pQRData.unitOperation5];
+                            const newData = [...gridDatas.unitOperation5];
                             newData[index].compliesNotComplies = e.target.value;
-                            setPQRData({ ...pQRData, unitOperation5: newData });
+                            setGridDatas({
+                              ...gridDatas,
+                              unitOperation5: newData,
+                            });
                           }}
                         />
                       </td>
@@ -5094,17 +5862,19 @@ export default function APQR() {
                 </tr>
               </thead>
               <tbody>
-                {pQRData?.unitOperation6?.map((item, index) => {
+                {gridDatas?.unitOperation6?.map((item, index) => {
                   return (
                     <tr key={index}>
                       <td>
                         <input
                           value={item.criticalProcessParameter}
                           onChange={(e) => {
-                            const newData = [...pQRData.unitOperation6];
-                            newData[index].criticalProcessParameter =
-                              e.target.value;
-                            setPQRData({ ...pQRData, unitOperation6: newData });
+                            const newData = [...gridDatas.unitOperation6];
+                            newData[index].criticalProcessParameter = e.target.value;
+                            setGridDatas({
+                              ...gridDatas,
+                              unitOperation6: newData,
+                            });
                           }}
                         />
                       </td>
@@ -5112,9 +5882,12 @@ export default function APQR() {
                         <input
                           value={item.codes}
                           onChange={(e) => {
-                            const newData = [...pQRData.unitOperation6];
+                            const newData = [...gridDatas.unitOperation6];
                             newData[index].codes = e.target.value;
-                            setPQRData({ ...pQRData, unitOperation6: newData });
+                            setGridDatas({
+                              ...gridDatas,
+                              unitOperation6: newData,
+                            });
                           }}
                         />
                       </td>
@@ -5122,20 +5895,26 @@ export default function APQR() {
                         <input
                           value={item.acceptanceCriteria}
                           onChange={(e) => {
-                            const newData = [...pQRData.unitOperation6];
+                            const newData = [...gridDatas.unitOperation6];
                             newData[index].acceptanceCriteria = e.target.value;
-                            setPQRData({ ...pQRData, unitOperation6: newData });
+                            setGridDatas({
+                              ...gridDatas,
+                              unitOperation6: newData,
+                            });
                           }}
                         />
                       </td>
-                     
+
                       <td>
                         <input
                           value={item.results.minimum}
                           onChange={(e) => {
-                            const newData = [...pQRData.unitOperation6];
+                            const newData = [...gridDatas.unitOperation6];
                             newData[index].results.minimum = e.target.value;
-                            setPQRData({ ...pQRData, unitOperation6: newData });
+                            setGridDatas({
+                              ...gridDatas,
+                              unitOperation6: newData,
+                            });
                           }}
                         />
                       </td>
@@ -5143,9 +5922,12 @@ export default function APQR() {
                         <input
                           value={item.results.maximum}
                           onChange={(e) => {
-                            const newData = [...pQRData.unitOperation6];
+                            const newData = [...gridDatas.unitOperation6];
                             newData[index].results.maximum = e.target.value;
-                            setPQRData({ ...pQRData, unitOperation6: newData });
+                            setGridDatas({
+                              ...gridDatas,
+                              unitOperation6: newData,
+                            });
                           }}
                         />
                       </td>
@@ -5153,9 +5935,12 @@ export default function APQR() {
                         <input
                           value={item.compliesNotComplies}
                           onChange={(e) => {
-                            const newData = [...pQRData.unitOperation6];
+                            const newData = [...gridDatas.unitOperation6];
                             newData[index].compliesNotComplies = e.target.value;
-                            setPQRData({ ...pQRData, unitOperation6: newData });
+                            setGridDatas({
+                              ...gridDatas,
+                              unitOperation6: newData,
+                            });
                           }}
                         />
                       </td>
@@ -5185,17 +5970,19 @@ export default function APQR() {
                 </tr>
               </thead>
               <tbody>
-                {pQRData?.unitOperation7?.map((item, index) => {
+                {gridDatas?.unitOperation7?.map((item, index) => {
                   return (
                     <tr key={index}>
                       <td>
                         <input
                           value={item.criticalProcessParameter}
                           onChange={(e) => {
-                            const newData = [...pQRData.unitOperation7];
-                            newData[index].criticalProcessParameter =
-                              e.target.value;
-                            setPQRData({ ...pQRData, unitOperation7: newData });
+                            const newData = [...gridDatas.unitOperation7];
+                            newData[index].criticalProcessParameter = e.target.value;
+                            setGridDatas({
+                              ...gridDatas,
+                              unitOperation7: newData,
+                            });
                           }}
                         />
                       </td>
@@ -5203,9 +5990,12 @@ export default function APQR() {
                         <input
                           value={item.codes}
                           onChange={(e) => {
-                            const newData = [...pQRData.unitOperation7];
+                            const newData = [...gridDatas.unitOperation7];
                             newData[index].codes = e.target.value;
-                            setPQRData({ ...pQRData, unitOperation7: newData });
+                            setGridDatas({
+                              ...gridDatas,
+                              unitOperation7: newData,
+                            });
                           }}
                         />
                       </td>
@@ -5213,20 +6003,26 @@ export default function APQR() {
                         <input
                           value={item.acceptanceCriteria}
                           onChange={(e) => {
-                            const newData = [...pQRData.unitOperation7];
+                            const newData = [...gridDatas.unitOperation7];
                             newData[index].acceptanceCriteria = e.target.value;
-                            setPQRData({ ...pQRData, unitOperation7: newData });
+                            setGridDatas({
+                              ...gridDatas,
+                              unitOperation7: newData,
+                            });
                           }}
                         />
                       </td>
-                     
+
                       <td>
                         <input
                           value={item.results.minimum}
                           onChange={(e) => {
-                            const newData = [...pQRData.unitOperation7];
+                            const newData = [...gridDatas.unitOperation7];
                             newData[index].results.minimum = e.target.value;
-                            setPQRData({ ...pQRData, unitOperation7: newData });
+                            setGridDatas({
+                              ...gridDatas,
+                              unitOperation7: newData,
+                            });
                           }}
                         />
                       </td>
@@ -5234,9 +6030,12 @@ export default function APQR() {
                         <input
                           value={item.results.maximum}
                           onChange={(e) => {
-                            const newData = [...pQRData.unitOperation7];
+                            const newData = [...gridDatas.unitOperation7];
                             newData[index].results.maximum = e.target.value;
-                            setPQRData({ ...pQRData, unitOperation7: newData });
+                            setGridDatas({
+                              ...gridDatas,
+                              unitOperation7: newData,
+                            });
                           }}
                         />
                       </td>
@@ -5244,9 +6043,12 @@ export default function APQR() {
                         <input
                           value={item.compliesNotComplies}
                           onChange={(e) => {
-                            const newData = [...pQRData.unitOperation7];
+                            const newData = [...gridDatas.unitOperation7];
                             newData[index].compliesNotComplies = e.target.value;
-                            setPQRData({ ...pQRData, unitOperation7: newData });
+                            setGridDatas({
+                              ...gridDatas,
+                              unitOperation7: newData,
+                            });
                           }}
                         />
                       </td>
@@ -5276,17 +6078,19 @@ export default function APQR() {
                 </tr>
               </thead>
               <tbody>
-                {pQRData?.unitOperation8?.map((item, index) => {
+                {gridDatas?.unitOperation8?.map((item, index) => {
                   return (
                     <tr key={index}>
                       <td>
                         <input
                           value={item.criticalProcessParameter}
                           onChange={(e) => {
-                            const newData = [...pQRData.unitOperation8];
-                            newData[index].criticalProcessParameter =
-                              e.target.value;
-                            setPQRData({ ...pQRData, unitOperation8: newData });
+                            const newData = [...gridDatas.unitOperation8];
+                            newData[index].criticalProcessParameter = e.target.value;
+                            setGridDatas({
+                              ...gridDatas,
+                              unitOperation8: newData,
+                            });
                           }}
                         />
                       </td>
@@ -5294,9 +6098,12 @@ export default function APQR() {
                         <input
                           value={item.codes}
                           onChange={(e) => {
-                            const newData = [...pQRData.unitOperation8];
+                            const newData = [...gridDatas.unitOperation8];
                             newData[index].codes = e.target.value;
-                            setPQRData({ ...pQRData, unitOperation8: newData });
+                            setGridDatas({
+                              ...gridDatas,
+                              unitOperation8: newData,
+                            });
                           }}
                         />
                       </td>
@@ -5304,20 +6111,26 @@ export default function APQR() {
                         <input
                           value={item.acceptanceCriteria}
                           onChange={(e) => {
-                            const newData = [...pQRData.unitOperation8];
+                            const newData = [...gridDatas.unitOperation8];
                             newData[index].acceptanceCriteria = e.target.value;
-                            setPQRData({ ...pQRData, unitOperation8: newData });
+                            setGridDatas({
+                              ...gridDatas,
+                              unitOperation8: newData,
+                            });
                           }}
                         />
                       </td>
-                      
+
                       <td>
                         <input
                           value={item.results.minimum}
                           onChange={(e) => {
-                            const newData = [...pQRData.unitOperation8];
+                            const newData = [...gridDatas.unitOperation8];
                             newData[index].results.minimum = e.target.value;
-                            setPQRData({ ...pQRData, unitOperation8: newData });
+                            setGridDatas({
+                              ...gridDatas,
+                              unitOperation8: newData,
+                            });
                           }}
                         />
                       </td>
@@ -5325,9 +6138,12 @@ export default function APQR() {
                         <input
                           value={item.results.maximum}
                           onChange={(e) => {
-                            const newData = [...pQRData.unitOperation8];
+                            const newData = [...gridDatas.unitOperation8];
                             newData[index].results.maximum = e.target.value;
-                            setPQRData({ ...pQRData, unitOperation8: newData });
+                            setGridDatas({
+                              ...gridDatas,
+                              unitOperation8: newData,
+                            });
                           }}
                         />
                       </td>
@@ -5335,9 +6151,12 @@ export default function APQR() {
                         <input
                           value={item.compliesNotComplies}
                           onChange={(e) => {
-                            const newData = [...pQRData.unitOperation8];
+                            const newData = [...gridDatas.unitOperation8];
                             newData[index].compliesNotComplies = e.target.value;
-                            setPQRData({ ...pQRData, unitOperation8: newData });
+                            setGridDatas({
+                              ...gridDatas,
+                              unitOperation8: newData,
+                            });
                           }}
                         />
                       </td>
@@ -5367,17 +6186,19 @@ export default function APQR() {
                 </tr>
               </thead>
               <tbody>
-                {pQRData?.unitOperation9?.map((item, index) => {
+                {gridDatas?.unitOperation9?.map((item, index) => {
                   return (
                     <tr key={index}>
                       <td>
                         <input
                           value={item.criticalProcessParameter}
                           onChange={(e) => {
-                            const newData = [...pQRData.unitOperation9];
-                            newData[index].criticalProcessParameter =
-                              e.target.value;
-                            setPQRData({ ...pQRData, unitOperation9: newData });
+                            const newData = [...gridDatas.unitOperation9];
+                            newData[index].criticalProcessParameter = e.target.value;
+                            setGridDatas({
+                              ...gridDatas,
+                              unitOperation9: newData,
+                            });
                           }}
                         />
                       </td>
@@ -5385,9 +6206,12 @@ export default function APQR() {
                         <input
                           value={item.codes}
                           onChange={(e) => {
-                            const newData = [...pQRData.unitOperation9];
+                            const newData = [...gridDatas.unitOperation9];
                             newData[index].codes = e.target.value;
-                            setPQRData({ ...pQRData, unitOperation9: newData });
+                            setGridDatas({
+                              ...gridDatas,
+                              unitOperation9: newData,
+                            });
                           }}
                         />
                       </td>
@@ -5395,20 +6219,26 @@ export default function APQR() {
                         <input
                           value={item.acceptanceCriteria}
                           onChange={(e) => {
-                            const newData = [...pQRData.unitOperation9];
+                            const newData = [...gridDatas.unitOperation9];
                             newData[index].acceptanceCriteria = e.target.value;
-                            setPQRData({ ...pQRData, unitOperation9: newData });
+                            setGridDatas({
+                              ...gridDatas,
+                              unitOperation9: newData,
+                            });
                           }}
                         />
                       </td>
-                    
+
                       <td>
                         <input
                           value={item.results.minimum}
                           onChange={(e) => {
-                            const newData = [...pQRData.unitOperation9];
+                            const newData = [...gridDatas.unitOperation9];
                             newData[index].results.minimum = e.target.value;
-                            setPQRData({ ...pQRData, unitOperation9: newData });
+                            setGridDatas({
+                              ...gridDatas,
+                              unitOperation9: newData,
+                            });
                           }}
                         />
                       </td>
@@ -5416,9 +6246,12 @@ export default function APQR() {
                         <input
                           value={item.results.maximum}
                           onChange={(e) => {
-                            const newData = [...pQRData.unitOperation9];
+                            const newData = [...gridDatas.unitOperation9];
                             newData[index].results.maximum = e.target.value;
-                            setPQRData({ ...pQRData, unitOperation9: newData });
+                            setGridDatas({
+                              ...gridDatas,
+                              unitOperation9: newData,
+                            });
                           }}
                         />
                       </td>
@@ -5426,9 +6259,12 @@ export default function APQR() {
                         <input
                           value={item.compliesNotComplies}
                           onChange={(e) => {
-                            const newData = [...pQRData.unitOperation9];
+                            const newData = [...gridDatas.unitOperation9];
                             newData[index].compliesNotComplies = e.target.value;
-                            setPQRData({ ...pQRData, unitOperation9: newData });
+                            setGridDatas({
+                              ...gridDatas,
+                              unitOperation9: newData,
+                            });
                           }}
                         />
                       </td>
@@ -5458,18 +6294,17 @@ export default function APQR() {
                 </tr>
               </thead>
               <tbody>
-                {pQRData?.unitOperation10?.map((item, index) => {
+                {gridDatas?.unitOperation10?.map((item, index) => {
                   return (
                     <tr key={index}>
                       <td>
                         <input
                           value={item.criticalProcessParameter}
                           onChange={(e) => {
-                            const newData = [...pQRData.unitOperation10];
-                            newData[index].criticalProcessParameter =
-                              e.target.value;
-                            setPQRData({
-                              ...pQRData,
+                            const newData = [...gridDatas.unitOperation10];
+                            newData[index].criticalProcessParameter = e.target.value;
+                            setGridDatas({
+                              ...gridDatas,
                               unitOperation10: newData,
                             });
                           }}
@@ -5479,10 +6314,10 @@ export default function APQR() {
                         <input
                           value={item.codes}
                           onChange={(e) => {
-                            const newData = [...pQRData.unitOperation10];
+                            const newData = [...gridDatas.unitOperation10];
                             newData[index].codes = e.target.value;
-                            setPQRData({
-                              ...pQRData,
+                            setGridDatas({
+                              ...gridDatas,
                               unitOperation10: newData,
                             });
                           }}
@@ -5492,24 +6327,24 @@ export default function APQR() {
                         <input
                           value={item.acceptanceCriteria}
                           onChange={(e) => {
-                            const newData = [...pQRData.unitOperation10];
+                            const newData = [...gridDatas.unitOperation10];
                             newData[index].acceptanceCriteria = e.target.value;
-                            setPQRData({
-                              ...pQRData,
+                            setGridDatas({
+                              ...gridDatas,
                               unitOperation10: newData,
                             });
                           }}
                         />
                       </td>
-                  
+
                       <td>
                         <input
                           value={item.results.minimum}
                           onChange={(e) => {
-                            const newData = [...pQRData.unitOperation10];
+                            const newData = [...gridDatas.unitOperation10];
                             newData[index].results.minimum = e.target.value;
-                            setPQRData({
-                              ...pQRData,
+                            setGridDatas({
+                              ...gridDatas,
                               unitOperation10: newData,
                             });
                           }}
@@ -5519,10 +6354,10 @@ export default function APQR() {
                         <input
                           value={item.results.maximum}
                           onChange={(e) => {
-                            const newData = [...pQRData.unitOperation10];
+                            const newData = [...gridDatas.unitOperation10];
                             newData[index].results.maximum = e.target.value;
-                            setPQRData({
-                              ...pQRData,
+                            setGridDatas({
+                              ...gridDatas,
                               unitOperation10: newData,
                             });
                           }}
@@ -5532,10 +6367,10 @@ export default function APQR() {
                         <input
                           value={item.compliesNotComplies}
                           onChange={(e) => {
-                            const newData = [...pQRData.unitOperation10];
+                            const newData = [...gridDatas.unitOperation10];
                             newData[index].compliesNotComplies = e.target.value;
-                            setPQRData({
-                              ...pQRData,
+                            setGridDatas({
+                              ...gridDatas,
                               unitOperation10: newData,
                             });
                           }}
@@ -5547,13 +6382,11 @@ export default function APQR() {
               </tbody>
             </table>
 
-            <div className="sub-head">
-              Critical Process Parameters Review Summary
-            </div>
+            <div className="sub-head">Critical Process Parameters Review Summary</div>
             <div className="group-input">
               {/* <input placeholder="please insert flex" /> */}
               <TinyEditor
-                editorContent={pQRData.tiny26}
+                editorContent={tinyData.tiny26}
                 setEditorContent={setTinyContent}
                 tinyNo={26}
               />
@@ -5562,117 +6395,146 @@ export default function APQR() {
         ) : null}
         {tab === "LR" ? (
           <div className="p-4">
-            <div className="sub-head">
-              {" "}
-              Review of Drug Substance Test Results
-            </div>
-            <h1 className="gridName">Drug Substance 1 Test Result</h1>
+            <div className="sub-head"> Review of Drug Substance Test Results</div>
+            <h1 className="gridName"> pH Of Paracetamol Test Result</h1>
             <div>
-              {/* <div className="AddRows d-flex">
-                <MdNoteAdd onClick={addReviewODSTRRow} />
-                <div className="addrowinstruction"></div>
-              </div> */}
               <div className="AddRows d-flex w-full justify-between items-center text-3xl mb-5">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addReviewODSTRRow} />
-                  <div className="addrowinstruction  pl-2">
-                    Add Rows by clicking on (+) icon
-                  </div>
+                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
                 </div>
                 <div className="flex gap-4 ">
-                  <ExcelExport
-                    data={balanceSheet}
-                    fileName="balance-sheet-summary.xlsx"
+                  <ExcelExportImport
+                    data={gridDatas.reviewODSTR}
+                    setimportedData={setimportedData}
+                    fileName="Paracetamol pH Test Results.xlsx"
+                    gridNo={22}
                   />
                 </div>
               </div>
               <table>
                 <thead>
                   <tr>
-                    <th rowSpan={2}>Sl. No</th>
-                    <th rowSpan={2}>Tests parameter</th>
-                    <th rowSpan={2}>Specification limit</th>
-                    <th colSpan={2}>Obtained value</th>
-                    <th rowSpan={2}>Complies/Does Not complies</th>
-                  </tr>
-                  <tr>
-                    <th>Minimum</th>
-                    <th>Maximum</th>
+                    <th>Batch No</th>
+                    <th>Tests parameter</th>
+                    <th>LSL</th>
+                    <th>USL</th>
+                    <th>LCL</th>
+                    <th>UCL</th>
+                    <th>Observed Value</th>
+                    <th>Complies/Does Not complies</th>
                   </tr>
                 </thead>
                 <tbody>
-                  {pQRData?.reviewODSTR?.map((item, index) => {
+                  {gridDatas?.reviewODSTR?.map((item, index) => {
                     return (
                       <tr key={index}>
-                        <td>{index + 1}</td>
-                        <input 
-                          value={item.testsParameter}
+                        <input
+                          value={item.batchNo}
                           onChange={(e) => {
-                          const newData = [...pQRData.reviewODSTR];
-                          newData[index].testsParameter = e.target.value;
-                          setPQRData({...pQRData,reviewODSTR:newData});
-                        }}
-                      />
+                            const newData = [...gridDatas.reviewODSTR];
+                            newData[index].batchNo = e.target.value;
+                            setGridDatas({
+                              ...gridDatas,
+                              reviewODSTR: newData,
+                            });
+                          }}
+                        />
                         <td>
-                          <input 
+                          <input
                             value={item.testsParameter}
                             onChange={(e) => {
-                              const newData = [...pQRData.reviewODSTR];
+                              const newData = [...gridDatas.reviewODSTR];
                               newData[index].testsParameter = e.target.value;
-                              setPQRData({
-                                ...pQRData,
+                              setGridDatas({
+                                ...gridDatas,
                                 reviewODSTR: newData,
                               });
-                            }} />
-                        </td>
-                        <td>
-                          <input 
-                           value={item.specificationLimit}
-                           onChange={(e) => {
-                             const newData = [...pQRData.reviewODSTR];
-                             newData[index].specificationLimit = e.target.value;
-                             setPQRData({
-                               ...pQRData,
-                               reviewODSTR: newData,
-                             });
-                           }}
+                            }}
                           />
                         </td>
                         <td>
-                          <input 
-                            value={item.obtainedValue.minimum}
+                          <input
+                            type="number"
+                            value={item.LSL}
                             onChange={(e) => {
-                              const newData = [...pQRData.reviewODSTR];
-                              newData[index].obtainedValue.minimum = e.target.value;
-                              setPQRData({
-                                ...pQRData,
+                              const newData = [...gridDatas.reviewODSTR];
+                              newData[index].LSL = e.target.value;
+                              setGridDatas({
+                                ...gridDatas,
                                 reviewODSTR: newData,
                               });
-                            }} />
+                            }}
+                          />
                         </td>
                         <td>
-                          <input                         
-                          value={item.obtainedValue.maximum}
-                          onChange={(e) => {
-                            const newData = [...pQRData.reviewODSTR];
-                            newData[index].obtainedValue.maximum = e.target.value;
-                            setPQRData({
-                              ...pQRData,
-                              reviewODSTR: newData,
-                            });
-                          }}/>
+                          <input
+                            type="number"
+                            value={item.USL}
+                            onChange={(e) => {
+                              const newData = [...gridDatas.reviewODSTR];
+                              newData[index].USL = e.target.value;
+                              setGridDatas({
+                                ...gridDatas,
+                                reviewODSTR: newData,
+                              });
+                            }}
+                          />
+                        </td>{" "}
+                        <td>
+                          <input
+                            type="number"
+                            value={item.LCL}
+                            onChange={(e) => {
+                              const newData = [...gridDatas.reviewODSTR];
+                              newData[index].LCL = e.target.value;
+                              setGridDatas({
+                                ...gridDatas,
+                                reviewODSTR: newData,
+                              });
+                            }}
+                          />
                         </td>
                         <td>
-                          <input 
-                           value={item.compliesNotComplies}
-                           onChange={(e) => {
-                             const newData = [...pQRData.reviewODSTR];
-                             newData[index].compliesNotComplies = e.target.value;
-                             setPQRData({
-                               ...pQRData,
-                               reviewODSTR: newData,
-                             });
-                           }} />
+                          <input
+                            type="number"
+                            value={item.UCL}
+                            onChange={(e) => {
+                              const newData = [...gridDatas.reviewODSTR];
+                              newData[index].UCL = e.target.value;
+                              setGridDatas({
+                                ...gridDatas,
+                                reviewODSTR: newData,
+                              });
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            type="number"
+                            value={item.observedValue}
+                            onChange={(e) => {
+                              const newData = [...gridDatas.reviewODSTR];
+                              newData[index].observedValue = e.target.value;
+                              setGridDatas({
+                                ...gridDatas,
+                                reviewODSTR: newData,
+                              });
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.compliesNotComplies}
+                            onChange={(e) => {
+                              const newData = [...gridDatas.reviewODSTR];
+                              newData[index].compliesNotComplies = e.target.value;
+                              setGridDatas({
+                                ...gridDatas,
+                                reviewODSTR: newData,
+                              });
+                            }}
+                          />
                         </td>
                       </tr>
                     );
@@ -5680,106 +6542,372 @@ export default function APQR() {
                 </tbody>
               </table>
             </div>
-            <h1 className="gridName  pt-8">Drug Substance 2 Test Result</h1>
+            <div className=" grid grid-cols-10 shadow-md shadow-gray-700/30 my-20 bg-slate-700 p-4 gap-4 mx-[-30px]">
+              <div className="py-2 col-span-10 cursor-pointer text-gray-100 text-[22px] flex justify-center items-center">
+                pH Of Paracetamol Analysis
+              </div>
+              <div className="col-span-4 row-span-1 mb-10 max-h-38 ">
+                <HighchartsLine
+                  heading={"Line Analytics"}
+                  xHeading={"Batch No."}
+                  yHeading={"Observed Value"}
+                  yMax={6}
+                  yMin={1}
+                  yTickInterval={0.5}
+                  plotLines={ParacetamolpHPlotLines}
+                  zones={paracetamolpHZones}
+                  annotations={paracetamolAnnotations}
+                  highchartData={paracetamolpHData}
+                />
+              </div>
+              <div className="col-span-4 row-span-1">
+                <HighchartsHistogram
+                  data={paracetamolpHDataH.observedValues}
+                  lsl={phChartsConfig.lsl}
+                  usl={phChartsConfig.usl}
+                  heading={phChartsConfig.histoHeading}
+                  yAxisTitle={phChartsConfig.yAxisTitle}
+                  xAxisTitle={phChartsConfig.xAxisTitle}
+                  bins={phChartsConfig.bins}
+                  plotLines={phChartsConfig.plotLines}
+                />
+              </div>
+              <div className="col-span-2 row-span-2 bg-white">
+                <table>
+                  <tbody>
+                    <tr>
+                      <td>
+                        {" "}
+                        <b>Cp B/W</b>
+                      </td>
+                      <td>
+                        <b>0.67</b>
+                      </td>
+                      <td>Decimal Points</td>
+                      <td>2.00</td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <b>Cpk B/W</b>
+                      </td>
+                      <td>
+                        <b>0.60</b>
+                      </td>
+                      <td>Unit Of Measure</td>
+                      <td>0.001</td>
+                    </tr>
+                    <tr>
+                      <td>CpU B/W</td>
+                      <td>0.60</td>
+                      <td>Number Of Entries</td>
+                      <td>7</td>
+                    </tr>
+                    <tr>
+                      <td>Cpl B/W</td>
+                      <td>0.75</td>
+                      <td>
+                        <b>Average</b>
+                      </td>
+                      <td>
+                        <b>2.89</b>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>Cpm</td>
+                      <td>0.72</td>
+                      <td>
+                        <b>Stdev</b>
+                      </td>
+                      <td>
+                        <b>0.45</b>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>Cr</td>
+                      <td>1.48</td>
+                      <td>
+                        <b>Median</b>
+                      </td>
+                      <td>
+                        <b>3.00</b>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>ZTarget/AZ</td>
+                      <td>0.25</td>
+                      <td>
+                        <b>Mode</b>
+                      </td>
+                      <td>
+                        <b>3.00</b>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <b>Pp</b>
+                      </td>
+                      <td>0.74</td>
+                      <td>Minimum Value</td>
+                      <td>2.00</td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <b>Ppk</b>
+                      </td>
+                      <td>0.66</td>
+                      <td>Maximum Value</td>
+                      <td>
+                        <b>2.00</b>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>PpU</td>
+                      <td>0.83</td>
+                      <td>Range</td>
+                      <td>1.50</td>
+                    </tr>
+                    <tr>
+                      <td>Ppl</td>
+                      <td>0.66</td>
+                      <td>
+                        <b>LSL</b>
+                      </td>
+                      <td>
+                        <b>2.00</b>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>Skewness</td>
+                      <td>-1.19</td>
+                      <td>
+                        <b>USL</b>
+                      </td>
+                      <td>
+                        <b>4.00</b>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>Stdev</td>
+                      <td>0.45</td>
+                      <td>Number Of Bars</td>
+                      <td>3.00</td>
+                    </tr>
+                    <tr>
+                      <td>Min</td>
+                      <td>2.00</td>
+                      <td>Number Of Classes</td>
+                      <td>4.00</td>
+                    </tr>
+                    <tr>
+                      <td>Max</td>
+                      <td>3.50</td>
+                      <td>Class Width</td>
+                      <td>0.35</td>
+                    </tr>
+                    <tr>
+                      <td>Range</td>
+                      <td>1.50</td>
+                      <td>Beginning Point</td>
+                      <td>1.65</td>
+                    </tr>
+                    <tr>
+                      <td>Z Bench</td>
+                      <td>1.79</td>
+                      <td>Stdev Est</td>
+                      <td>0.46</td>
+                    </tr>
+                    <tr>
+                      <td>% Defects</td>
+                      <td>0.0%</td>
+                      <td>d2/c4</td>
+                      <td>0.92</td>
+                    </tr>
+                    <tr>
+                      <td>PPM</td>
+                      <td>0.00</td>
+                      <td>Target</td>
+                      <td>3</td>
+                    </tr>
+                    <tr>
+                      <td>Exp PPM ST</td>
+                      <td>36586.97</td>
+                      <td>Sigma</td>
+                      <td>3.29</td>
+                    </tr>
+                    <tr>
+                      <td>Exp PPM LT</td>
+                      <td>30738.66</td>
+                      <td></td>
+                      <td></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <div className="col-span-4">
+                <HighchartsPareto
+                  data={paracetamolpHDataH.observedValues}
+                  lsl={phChartsConfig.lsl}
+                  usl={phChartsConfig.usl}
+                  heading={phChartsConfig.paretoHeading}
+                  yAxisTitle={phChartsConfig.yAxisTitle}
+                  bins={phChartsConfig.bins}
+                  plotLines={phChartsConfig.plotLines}
+                />
+              </div>
+              <div className="col-span-4">
+                <HighchartsScatterPlot
+                  // phOfParacetamol={phOfParacetamolScatter}
+                  data={paracetamolpHDataH.observedValues}
+                  batchNumbers={paracetamolpHDataH.batchNumbers}
+                  lsl={phChartsConfig.lsl}
+                  usl={phChartsConfig.usl}
+                  heading={phChartsConfig.scatterHeading}
+                  yAxisTitle={phChartsConfig.yAxisTitle}
+                />
+              </div>
+              <div className="py-2 flex justify-end col-span-10 ">
+                <button className="p-2 bg-emerald-400 text-white rounded"> Launch Deviation</button>
+              </div>
+            </div>
+            <h1 className="gridName  pt-8">Assay Of Paracetamol Test Result</h1>
             <div>
-              {/* <div className="AddRows d-flex">
-    <MdNoteAdd onClick={addReviewODSTRRow} />
-    <div className="addrowinstruction"></div>
-  </div> */}
               <div className="AddRows d-flex w-full justify-between items-center text-3xl mb-5">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addReviewODSTRRow2} />
-                  <div className="addrowinstruction pl-2">
-                    Add Rows by clicking on (+) icon
-                  </div>
+                  <div className="addrowinstruction pl-2">Add Rows by clicking on (+) icon</div>
                 </div>
                 <div className="flex gap-4 ">
-                  <ExcelExport
-                    data={balanceSheet}
-                    fileName="balance-sheet-summary.xlsx"
-                  />
+                  <ExcelExportImport
+                    data={gridDatas.reviewODSTR2}
+                    setimportedData={setimportedData}
+                    fileName="reviewODSTR2.xlsx"
+                    gridNo={23}
+                  />{" "}
                 </div>
               </div>
               <table>
                 <thead>
                   <tr>
-                    <th rowSpan={2}>Sl. No</th>
-                    <th rowSpan={2}>Tests parameter</th>
-                    <th rowSpan={2}>Specification limit</th>
-                    <th colSpan={2}>Obtained value</th>
-                    <th rowSpan={2}>Complies/Does Not complies</th>
-                  </tr>
-                  <tr>
-                    <th>Minimum</th>
-                    <th>Maximum</th>
+                    <th>Batch No</th>
+                    <th>Tests parameter</th>
+                    <th>LSL</th>
+                    <th>USL</th>
+                    <th>LCL</th>
+                    <th>UCL</th>
+                    <th>Observed Value</th>
+                    <th>Complies/Does Not complies</th>
                   </tr>
                 </thead>
                 <tbody>
-                  {pQRData?.reviewODSTR2?.map((item, index) => {
+                  {gridDatas?.reviewODSTR2?.map((item, index) => {
                     return (
                       <tr key={index}>
-                        <td>{index + 1}</td>
+                        <input
+                          value={item.batchNo}
+                          onChange={(e) => {
+                            const newData = [...gridDatas.reviewODSTR2];
+                            newData[index].batchNo = e.target.value;
+                            setGridDatas({
+                              ...gridDatas,
+                              reviewODSTR2: newData,
+                            });
+                          }}
+                        />
                         <td>
-                          <input 
-                           value={item.testsParameter}
-                           onChange={(e) => {
-                             const newData = [...pQRData.reviewODSTR2];
-                             newData[index].testsParameter = e.target.value;
-                             setPQRData({
-                               ...pQRData,
-                               reviewODSTR2: newData,
-                             });
-                           }} 
+                          <input
+                            value={item.testsParameter}
+                            onChange={(e) => {
+                              const newData = [...gridDatas.reviewODSTR2];
+                              newData[index].testsParameter = e.target.value;
+                              setGridDatas({
+                                ...gridDatas,
+                                reviewODSTR2: newData,
+                              });
+                            }}
                           />
                         </td>
                         <td>
-                          <input 
-                            value={item.specificationLimit}
+                          <input
+                            type="number"
+                            value={item.LSL}
                             onChange={(e) => {
-                              const newData = [...pQRData.reviewODSTR2];
-                              newData[index].specificationLimit = e.target.value;
-                              setPQRData({
-                                ...pQRData,
+                              const newData = [...gridDatas.reviewODSTR2];
+                              newData[index].LSL = e.target.value;
+                              setGridDatas({
+                                ...gridDatas,
                                 reviewODSTR2: newData,
                               });
-                            }} 
+                            }}
                           />
                         </td>
                         <td>
-                          <input 
-                            value={item.obtainedValue.minimum}
+                          <input
+                            type="number"
+                            value={item.USL}
                             onChange={(e) => {
-                              const newData = [...pQRData.reviewODSTR2];
-                              newData[index].obtainedValue.minimum = e.target.value;
-                              setPQRData({
-                                ...pQRData,
+                              const newData = [...gridDatas.reviewODSTR2];
+                              newData[index].USL = e.target.value;
+                              setGridDatas({
+                                ...gridDatas,
                                 reviewODSTR2: newData,
                               });
-                            }} />
-                        </td>
+                            }}
+                          />
+                        </td>{" "}
                         <td>
-                          <input 
-                            value={item.obtainedValue.maximum}
+                          <input
+                            type="number"
+                            value={item.LCL}
                             onChange={(e) => {
-                              const newData = [...pQRData.reviewODSTR2];
-                              newData[index].obtainedValue.maximum = e.target.value;
-                              setPQRData({
-                                ...pQRData,
+                              const newData = [...gridDatas.reviewODSTR2];
+                              newData[index].LCL = e.target.value;
+                              setGridDatas({
+                                ...gridDatas,
                                 reviewODSTR2: newData,
                               });
-                            }} />
+                            }}
+                          />
                         </td>
                         <td>
-                          <input 
+                          <input
+                            type="number"
+                            value={item.UCL}
+                            onChange={(e) => {
+                              const newData = [...gridDatas.reviewODSTR2];
+                              newData[index].UCL = e.target.value;
+                              setGridDatas({
+                                ...gridDatas,
+                                reviewODSTR2: newData,
+                              });
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            type="number"
+                            value={item.observedValue}
+                            onChange={(e) => {
+                              const newData = [...gridDatas.reviewODSTR2];
+                              newData[index].observedValue = e.target.value;
+                              setGridDatas({
+                                ...gridDatas,
+                                reviewODSTR2: newData,
+                              });
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
                             value={item.compliesNotComplies}
                             onChange={(e) => {
-                              const newData = [...pQRData.reviewODSTR2];
+                              const newData = [...gridDatas.reviewODSTR2];
                               newData[index].compliesNotComplies = e.target.value;
-                              setPQRData({
-                                ...pQRData,
+                              setGridDatas({
+                                ...gridDatas,
                                 reviewODSTR2: newData,
                               });
-                            }}/>
+                            }}
+                          />
                         </td>
                       </tr>
                     );
@@ -5787,114 +6915,446 @@ export default function APQR() {
                 </tbody>
               </table>
             </div>{" "}
-            <h1 className="gridName pt-8">Drug Substance 3 Test Result</h1>
+            <div className=" grid grid-cols-10 shadow-md shadow-gray-700/30 my-20 bg-slate-700 p-4 gap-4 mx-[-30px]">
+              <div className="py-2 col-span-10 cursor-pointer text-gray-100 text-[22px] flex justify-center items-center">
+                {" "}
+                Assay Of Paracetamol Analysis
+              </div>
+              <div className="col-span-4 row-span-1 mb-10 max-h-38 ">
+                <HighchartsLine
+                  heading={"Line Analytics"}
+                  xHeading={"Batch No."}
+                  yHeading={"Observed Value"}
+                  yMax={110}
+                  yMin={86}
+                  yTickInterval={3}
+                  plotLines={ParacetamolAssayPlotLines}
+                  zones={paracetamolAssayZones}
+                  annotations={paracetamolAnnotations}
+                  highchartData={paracetamolpHData2}
+                />
+              </div>
+              <div className="col-span-4 row-span-1">
+                <HighchartsHistogram
+                  // phOfParacetamol={phChartsConfig}
+                  data={paracetamolAssayData.observedValues}
+                  lsl={assayChartsConfig.lsl}
+                  usl={assayChartsConfig.usl}
+                  heading={assayChartsConfig.histoHeading}
+                  yAxisTitle={assayChartsConfig.yAxisTitle}
+                  xAxisTitle={assayChartsConfig.xAxisTitle}
+                  bins={assayChartsConfig.bins}
+                  plotLines={assayChartsConfig.plotLines}
+                />
+              </div>
+              <div className="col-span-2 row-span-2 bg-white">
+                <AnalyticsTable />
+              </div>
+              <div className="col-span-4">
+                <HighchartsPareto
+                  // phOfParacetamol={phOfParacetamolPareto}
+                  data={paracetamolAssayData.observedValues}
+                  lsl={assayChartsConfig.lsl}
+                  usl={assayChartsConfig.usl}
+                  heading={assayChartsConfig.paretoHeading}
+                  yAxisTitle={assayChartsConfig.yAxisTitle}
+                  bins={assayChartsConfig.bins}
+                  plotLines={assayChartsConfig.plotLines}
+                />
+              </div>
+              <div className="col-span-4">
+                <HighchartsScatterPlot
+                  // phOfParacetamol={phOfParacetamolScatter}
+                  data={paracetamolAssayData.observedValues}
+                  batchNumbers={paracetamolAssayData.batchNumbers}
+                  lsl={assayChartsConfig.lsl}
+                  usl={assayChartsConfig.usl}
+                  heading={assayChartsConfig.scatterHeading}
+                  yAxisTitle={assayChartsConfig.yAxisTitle}
+                  max={assayChartsConfig.max}
+                />
+              </div>
+              <div className="py-2 flex justify-end col-span-10 ">
+                <button className="p-2 bg-emerald-400 text-white rounded"> Launch Deviation</button>
+              </div>
+            </div>
+            <h1 className="gridName pt-8">Impurity Of Paracetamol Test Result</h1>
             <div>
-              {/* <div className="AddRows d-flex">
-    <MdNoteAdd onClick={addReviewODSTRRow} />
-    <div className="addrowinstruction"></div>
-  </div> */}
               <div className="AddRows d-flex w-full justify-between items-center text-3xl mb-5">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addReviewODSTRRow3} />
-                  <div className="addrowinstruction  pl-2">
-                    Add Rows by clicking on (+) icon
-                  </div>
+                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
                 </div>
                 <div className="flex gap-4 ">
-                  <ExcelExport
-                    data={balanceSheet}
-                    fileName="balance-sheet-summary.xlsx"
-                  />
+                  <ExcelExportImport
+                    data={gridDatas.reviewODSTR3}
+                    setimportedData={setimportedData}
+                    fileName="reviewODSTR3.xlsx"
+                    gridNo={24}
+                  />{" "}
                 </div>
               </div>
               <table>
                 <thead>
                   <tr>
-                    <th rowSpan={2}>Sl. No</th>
-                    <th rowSpan={2}>Tests parameter</th>
-                    <th rowSpan={2}>Specification limit</th>
-                    <th colSpan={2}>Obtained value</th>
-                    <th rowSpan={2}>Complies/Does Not complies</th>
-                  </tr>
-                  <tr>
-                    <th>Minimum</th>
-                    <th>Maximum</th>
+                    <th>Batch No</th>
+                    <th>Tests parameter</th>
+                    <th>LSL</th>
+                    <th>USL</th>
+                    <th>LCL</th>
+                    <th>UCL</th>
+                    <th>Observed Value</th>
+                    <th>Complies/Does Not complies</th>
                   </tr>
                 </thead>
                 <tbody>
-                  {pQRData?.reviewODSTR3?.map((item, index) => {
+                  {gridDatas?.reviewODSTR3?.map((item, index) => {
                     return (
                       <tr key={index}>
-                      <td>{index + 1}</td>
-                      <td>
-                        <input 
-                         value={item.testsParameter}
-                         onChange={(e) => {
-                           const newData = [...pQRData.reviewODSTR3];
-                           newData[index].testsParameter = e.target.value;
-                           setPQRData({
-                             ...pQRData,
-                             reviewODSTR3: newData,
-                           });
-                         }} 
+                        <input
+                          value={item.batchNo}
+                          onChange={(e) => {
+                            const newData = [...gridDatas.reviewODSTR3];
+                            newData[index].batchNo = e.target.value;
+                            setGridDatas({
+                              ...gridDatas,
+                              reviewODSTR3: newData,
+                            });
+                          }}
                         />
-                      </td>
-                      <td>
-                        <input 
-                          value={item.specificationLimit}
-                          onChange={(e) => {
-                            const newData = [...pQRData.reviewODSTR3];
-                            newData[index].specificationLimit = e.target.value;
-                            setPQRData({
-                              ...pQRData,
-                              reviewODSTR3: newData,
-                            });
-                          }} 
-                        />
-                      </td>
-                      <td>
-                        <input 
-                          value={item.obtainedValue.minimum}
-                          onChange={(e) => {
-                            const newData = [...pQRData.reviewODSTR3];
-                            newData[index].obtainedValue.minimum = e.target.value;
-                            setPQRData({
-                              ...pQRData,
-                              reviewODSTR3: newData,
-                            });
-                          }} />
-                      </td>
-                      <td>
-                        <input 
-                          value={item.obtainedValue.maximum}
-                          onChange={(e) => {
-                            const newData = [...pQRData.reviewODSTR3];
-                            newData[index].obtainedValue.maximum = e.target.value;
-                            setPQRData({
-                              ...pQRData,
-                              reviewODSTR3: newData,
-                            });
-                          }} />
-                      </td>
-                      <td>
-                        <input 
-                          value={item.compliesNotComplies}
-                          onChange={(e) => {
-                            const newData = [...pQRData.reviewODSTR3];
-                            newData[index].compliesNotComplies = e.target.value;
-                            setPQRData({
-                              ...pQRData,
-                              reviewODSTR3: newData,
-                            });
-                          }}/>
-                      </td>
-                    </tr>
+                        <td>
+                          <input
+                            value={item.testsParameter}
+                            onChange={(e) => {
+                              const newData = [...gridDatas.reviewODSTR3];
+                              newData[index].testsParameter = e.target.value;
+                              setGridDatas({
+                                ...gridDatas,
+                                reviewODSTR3: newData,
+                              });
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            type="number"
+                            value={item.LSL}
+                            onChange={(e) => {
+                              const newData = [...gridDatas.reviewODSTR3];
+                              newData[index].LSL = e.target.value;
+                              setGridDatas({
+                                ...gridDatas,
+                                reviewODSTR3: newData,
+                              });
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            type="number"
+                            value={item.USL}
+                            onChange={(e) => {
+                              const newData = [...gridDatas.reviewODSTR3];
+                              newData[index].USL = e.target.value;
+                              setGridDatas({
+                                ...gridDatas,
+                                reviewODSTR3: newData,
+                              });
+                            }}
+                          />
+                        </td>{" "}
+                        <td>
+                          <input
+                            type="number"
+                            value={item.LCL}
+                            onChange={(e) => {
+                              const newData = [...gridDatas.reviewODSTR3];
+                              newData[index].LCL = e.target.value;
+                              setGridDatas({
+                                ...gridDatas,
+                                reviewODSTR3: newData,
+                              });
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            type="number"
+                            value={item.UCL}
+                            onChange={(e) => {
+                              const newData = [...gridDatas.reviewODSTR3];
+                              newData[index].UCL = e.target.value;
+                              setGridDatas({
+                                ...gridDatas,
+                                reviewODSTR3: newData,
+                              });
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            type="number"
+                            value={item.observedValue}
+                            onChange={(e) => {
+                              const newData = [...gridDatas.reviewODSTR3];
+                              newData[index].observedValue = e.target.value;
+                              setGridDatas({
+                                ...gridDatas,
+                                reviewODSTR3: newData,
+                              });
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.compliesNotComplies}
+                            onChange={(e) => {
+                              const newData = [...gridDatas.reviewODSTR3];
+                              newData[index].compliesNotComplies = e.target.value;
+                              setGridDatas({
+                                ...gridDatas,
+                                reviewODSTR3: newData,
+                              });
+                            }}
+                          />
+                        </td>
+                      </tr>
                     );
                   })}
                 </tbody>
               </table>
             </div>{" "}
-            <h1 className="gridName pt-8">Drug Substance 4 Test Result</h1>
+            <div className=" grid grid-cols-10 shadow-md shadow-gray-700/30 my-20 bg-slate-700 p-4 gap-4 mx-[-30px]">
+              <div className="py-2 col-span-10 cursor-pointer text-gray-100 text-[22px] flex justify-center items-center">
+                Impurity Of Paracetamol Analysis
+              </div>
+              <div className="col-span-4 row-span-1 mb-10 max-h-38 ">
+                <HighchartsLine
+                  heading={"Line Analysis"}
+                  xHeading={"Batch No."}
+                  yHeading={"Observed Value"}
+                  yMax={7}
+                  yMin={3}
+                  yTickInterval={0.5}
+                  plotLines={ParacetamolImpurityPlotLines}
+                  zones={paracetamolImpurityZones}
+                  annotations={paracetamolAnnotations}
+                  highchartData={paracetamolpHData3}
+                />
+              </div>
+              <div className="col-span-4 row-span-1">
+                <HighchartsHistogram
+                  // phOfParacetamol={phChartsConfig}
+                  data={paracetamolImpurityData.observedValues}
+                  lsl={impurityChartsConfig.lsl}
+                  usl={impurityChartsConfig.usl}
+                  heading={impurityChartsConfig.histoHeading}
+                  yAxisTitle={impurityChartsConfig.yAxisTitle}
+                  xAxisTitle={impurityChartsConfig.xAxisTitle}
+                  bins={impurityChartsConfig.bins}
+                  plotLines={impurityChartsConfig.plotLines}
+                />
+              </div>
+              <div className="col-span-2 row-span-2 bg-white">
+                <table>
+                  <tbody>
+                    <tr>
+                      <td>
+                        {" "}
+                        <b>Cp B/W</b>
+                      </td>
+                      <td>
+                        <b>0.67</b>
+                      </td>
+                      <td>Decimal Points</td>
+                      <td>2.00</td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <b>Cpk B/W</b>
+                      </td>
+                      <td>
+                        <b>0.60</b>
+                      </td>
+                      <td>Unit Of Measure</td>
+                      <td>0.001</td>
+                    </tr>
+                    <tr>
+                      <td>CpU B/W</td>
+                      <td>0.60</td>
+                      <td>Number Of Entries</td>
+                      <td>7</td>
+                    </tr>
+                    <tr>
+                      <td>Cpl B/W</td>
+                      <td>0.75</td>
+                      <td>
+                        <b>Average</b>
+                      </td>
+                      <td>
+                        <b>2.89</b>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>Cpm</td>
+                      <td>0.72</td>
+                      <td>
+                        <b>Stdev</b>
+                      </td>
+                      <td>
+                        <b>0.45</b>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>Cr</td>
+                      <td>1.48</td>
+                      <td>
+                        <b>Median</b>
+                      </td>
+                      <td>
+                        <b>3.00</b>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>ZTarget/AZ</td>
+                      <td>0.25</td>
+                      <td>
+                        <b>Mode</b>
+                      </td>
+                      <td>
+                        <b>3.00</b>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <b>Pp</b>
+                      </td>
+                      <td>0.74</td>
+                      <td>Minimum Value</td>
+                      <td>2.00</td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <b>Ppk</b>
+                      </td>
+                      <td>0.66</td>
+                      <td>Maximum Value</td>
+                      <td>
+                        <b>2.00</b>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>PpU</td>
+                      <td>0.83</td>
+                      <td>Range</td>
+                      <td>1.50</td>
+                    </tr>
+                    <tr>
+                      <td>Ppl</td>
+                      <td>0.66</td>
+                      <td>
+                        <b>LSL</b>
+                      </td>
+                      <td>
+                        <b>4.00</b>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>Skewness</td>
+                      <td>-1.19</td>
+                      <td>
+                        <b>USL</b>
+                      </td>
+                      <td>
+                        <b>6.00</b>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>Stdev</td>
+                      <td>0.45</td>
+                      <td>Number Of Bars</td>
+                      <td>3.00</td>
+                    </tr>
+                    <tr>
+                      <td>Min</td>
+                      <td>2.00</td>
+                      <td>Number Of Classes</td>
+                      <td>4.00</td>
+                    </tr>
+                    <tr>
+                      <td>Max</td>
+                      <td>3.50</td>
+                      <td>Class Width</td>
+                      <td>0.35</td>
+                    </tr>
+                    <tr>
+                      <td>Range</td>
+                      <td>1.50</td>
+                      <td>Beginning Point</td>
+                      <td>1.65</td>
+                    </tr>
+                    <tr>
+                      <td>Z Bench</td>
+                      <td>1.79</td>
+                      <td>Stdev Est</td>
+                      <td>0.46</td>
+                    </tr>
+                    <tr>
+                      <td>% Defects</td>
+                      <td>0.0%</td>
+                      <td>d2/c4</td>
+                      <td>0.92</td>
+                    </tr>
+                    <tr>
+                      <td>PPM</td>
+                      <td>0.00</td>
+                      <td>Target</td>
+                      <td>3</td>
+                    </tr>
+                    <tr>
+                      <td>Exp PPM ST</td>
+                      <td>36586.97</td>
+                      <td>Sigma</td>
+                      <td>3.29</td>
+                    </tr>
+                    <tr>
+                      <td>Exp PPM LT</td>
+                      <td>30738.66</td>
+                      <td></td>
+                      <td></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <div className="col-span-4">
+                <HighchartsPareto
+                  // phOfParacetamol={phOfParacetamolPareto}
+                  data={paracetamolImpurityData.observedValues}
+                  lsl={impurityChartsConfig.lsl}
+                  usl={impurityChartsConfig.usl}
+                  heading={impurityChartsConfig.paretoHeading}
+                  yAxisTitle={impurityChartsConfig.yAxisTitle}
+                  bins={impurityChartsConfig.bins}
+                  plotLines={impurityChartsConfig.plotLines}
+                />
+              </div>
+              <div className="col-span-4">
+                <HighchartsScatterPlot
+                  // phOfParacetamol={phOfParacetamolScatter}
+                  data={paracetamolImpurityData.observedValues}
+                  batchNumbers={paracetamolImpurityData.batchNumbers}
+                  lsl={impurityChartsConfig.lsl}
+                  usl={impurityChartsConfig.usl}
+                  heading={impurityChartsConfig.scatterHeading}
+                  yAxisTitle={impurityChartsConfig.yAxisTitle}
+                  max={impurityChartsConfig.max}
+                />
+              </div>
+              <div className="py-2 flex justify-end col-span-10 ">
+                <button className="p-2 bg-emerald-400 text-white rounded"> Launch Deviation</button>
+              </div>
+            </div>
+            <h1 className="gridName pt-8">Dissolution Of Paracetamol Test Result</h1>
             <div>
               {/* <div className="AddRows d-flex">
                 <MdNoteAdd onClick={addReviewODSTRRow} />
@@ -5903,105 +7363,378 @@ export default function APQR() {
               <div className="AddRows d-flex w-full justify-between items-center text-3xl mb-5">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addReviewODSTRRow4} />
-                  <div className="addrowinstruction  pl-2">
-                    Add Rows by clicking on (+) icon
-                  </div>
+                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
                 </div>
                 <div className="flex gap-4 ">
-                  <ExcelExport
-                    data={balanceSheet}
-                    fileName="balance-sheet-summary.xlsx"
-                  />
+                  <ExcelExportImport
+                    data={gridDatas.reviewODSTR4}
+                    setimportedData={setimportedData}
+                    fileName="reviewODSTR4.xlsx"
+                    gridNo={25}
+                  />{" "}
                 </div>
               </div>
               <table>
                 <thead>
                   <tr>
-                    <th rowSpan={2}>Sl. No</th>
-                    <th rowSpan={2}>Tests parameter</th>
-                    <th rowSpan={2}>Specification limit</th>
-                    <th colSpan={2}>Obtained value</th>
-                    <th rowSpan={2}>Complies/Does Not complies</th>
-                  </tr>
-                  <tr>
-                    <th>Minimum</th>
-                    <th>Maximum</th>
+                    <th>Batch No</th>
+                    <th>Tests parameter</th>
+                    <th>LSL</th>
+                    <th>USL</th>
+                    <th>LCL</th>
+                    <th>UCL</th>
+                    <th>Observed Value</th>
+                    <th>Complies/Does Not complies</th>
                   </tr>
                 </thead>
                 <tbody>
-                  {pQRData?.reviewODSTR4?.map((item, index) => {
+                  {gridDatas?.reviewODSTR4?.map((item, index) => {
                     return (
                       <tr key={index}>
-                      <td>{index + 1}</td>
-                      <td>
-                        <input 
-                         value={item.testsParameter}
-                         onChange={(e) => {
-                           const newData = [...pQRData.reviewODSTR4];
-                           newData[index].testsParameter = e.target.value;
-                           setPQRData({
-                             ...pQRData,
-                             reviewODSTR4: newData,
-                           });
-                         }} 
+                        <input
+                          value={item.batchNo}
+                          onChange={(e) => {
+                            const newData = [...gridDatas.reviewODSTR4];
+                            newData[index].batchNo = e.target.value;
+                            setGridDatas({
+                              ...gridDatas,
+                              reviewODSTR4: newData,
+                            });
+                          }}
                         />
-                      </td>
-                      <td>
-                        <input 
-                          value={item.specificationLimit}
-                          onChange={(e) => {
-                            const newData = [...pQRData.reviewODSTR4];
-                            newData[index].specificationLimit = e.target.value;
-                            setPQRData({
-                              ...pQRData,
-                              reviewODSTR4: newData,
-                            });
-                          }} 
-                        />
-                      </td>
-                      <td>
-                        <input 
-                          value={item.obtainedValue.minimum}
-                          onChange={(e) => {
-                            const newData = [...pQRData.reviewODSTR4];
-                            newData[index].obtainedValue.minimum = e.target.value;
-                            setPQRData({
-                              ...pQRData,
-                              reviewODSTR4: newData,
-                            });
-                          }} />
-                      </td>
-                      <td>
-                        <input 
-                          value={item.obtainedValue.maximum}
-                          onChange={(e) => {
-                            const newData = [...pQRData.reviewODSTR4];
-                            newData[index].obtainedValue.maximum = e.target.value;
-                            setPQRData({
-                              ...pQRData,
-                              reviewODSTR4: newData,
-                            });
-                          }} />
-                      </td>
-                      <td>
-                        <input 
-                          value={item.compliesNotComplies}
-                          onChange={(e) => {
-                            const newData = [...pQRData.reviewODSTR4];
-                            newData[index].compliesNotComplies = e.target.value;
-                            setPQRData({
-                              ...pQRData,
-                              reviewODSTR4: newData,
-                            });
-                          }}/>
-                      </td>
-                    </tr>
+                        <td>
+                          <input
+                            value={item.testsParameter}
+                            onChange={(e) => {
+                              const newData = [...gridDatas.reviewODSTR4];
+                              newData[index].testsParameter = e.target.value;
+                              setGridDatas({
+                                ...gridDatas,
+                                reviewODSTR4: newData,
+                              });
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            type="number"
+                            value={item.LSL}
+                            onChange={(e) => {
+                              const newData = [...gridDatas.reviewODSTR4];
+                              newData[index].LSL = e.target.value;
+                              setGridDatas({
+                                ...gridDatas,
+                                reviewODSTR4: newData,
+                              });
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            type="number"
+                            value={item.USL}
+                            onChange={(e) => {
+                              const newData = [...gridDatas.reviewODSTR4];
+                              newData[index].USL = e.target.value;
+                              setGridDatas({
+                                ...gridDatas,
+                                reviewODSTR4: newData,
+                              });
+                            }}
+                          />
+                        </td>{" "}
+                        <td>
+                          <input
+                            type="number"
+                            value={item.LCL}
+                            onChange={(e) => {
+                              const newData = [...gridDatas.reviewODSTR4];
+                              newData[index].LCL = e.target.value;
+                              setGridDatas({
+                                ...gridDatas,
+                                reviewODSTR4: newData,
+                              });
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            type="number"
+                            value={item.UCL}
+                            onChange={(e) => {
+                              const newData = [...gridDatas.reviewODSTR4];
+                              newData[index].UCL = e.target.value;
+                              setGridDatas({
+                                ...gridDatas,
+                                reviewODSTR4: newData,
+                              });
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            type="number"
+                            value={item.observedValue}
+                            onChange={(e) => {
+                              const newData = [...gridDatas.reviewODSTR4];
+                              newData[index].observedValue = e.target.value;
+                              setGridDatas({
+                                ...gridDatas,
+                                reviewODSTR4: newData,
+                              });
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.compliesNotComplies}
+                            onChange={(e) => {
+                              const newData = [...gridDatas.reviewODSTR4];
+                              newData[index].compliesNotComplies = e.target.value;
+                              setGridDatas({
+                                ...gridDatas,
+                                reviewODSTR4: newData,
+                              });
+                            }}
+                          />
+                        </td>
+                      </tr>
                     );
                   })}
                 </tbody>
               </table>
             </div>{" "}
-            <h1 className="gridName pt-8">Drug Substance 5 Test Result</h1>
+            <div className=" grid grid-cols-10 shadow-md shadow-gray-700/30 my-20 bg-slate-700 p-4 gap-4 mx-[-30px]">
+              <div className="py-2 col-span-10 cursor-pointer text-gray-100 text-[22px] flex justify-center items-center">
+                Dissolution Of Paracetamol Analysis
+              </div>
+              <div className="col-span-4 row-span-1 mb-10 max-h-38 ">
+                <HighchartsLine
+                  heading={"Line Analytics"}
+                  xHeading={"Batch No."}
+                  yHeading={"Observed Value"}
+                  yMax={6}
+                  yMin={0}
+                  yTickInterval={0.8}
+                  plotLines={ParacetamolDissolutionPlotLines}
+                  zones={paracetamolDissolutionZones}
+                  annotations={paracetamolAnnotations}
+                  highchartData={paracetamolpHData4}
+                />
+              </div>
+              <div className="col-span-4 row-span-1">
+                <HighchartsHistogram
+                  // phOfParacetamol={phChartsConfig}
+                  data={paracetamolDissolutionData.observedValues}
+                  lsl={dissolutionChartsConfig.lsl}
+                  usl={dissolutionChartsConfig.usl}
+                  heading={dissolutionChartsConfig.histoHeading}
+                  yAxisTitle={dissolutionChartsConfig.yAxisTitle}
+                  xAxisTitle={dissolutionChartsConfig.xAxisTitle}
+                  bins={dissolutionChartsConfig.bins}
+                  plotLines={dissolutionChartsConfig.plotLines}
+                />
+              </div>
+              <div className="col-span-2 row-span-2 bg-white">
+                <table>
+                  <tbody>
+                    <tr>
+                      <td>
+                        {" "}
+                        <b>Cp B/W</b>
+                      </td>
+                      <td>
+                        <b>0.67</b>
+                      </td>
+                      <td>Decimal Points</td>
+                      <td>2.00</td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <b>Cpk B/W</b>
+                      </td>
+                      <td>
+                        <b>0.60</b>
+                      </td>
+                      <td>Unit Of Measure</td>
+                      <td>0.001</td>
+                    </tr>
+                    <tr>
+                      <td>CpU B/W</td>
+                      <td>0.60</td>
+                      <td>Number Of Entries</td>
+                      <td>7</td>
+                    </tr>
+                    <tr>
+                      <td>Cpl B/W</td>
+                      <td>0.75</td>
+                      <td>
+                        <b>Average</b>
+                      </td>
+                      <td>
+                        <b>2.89</b>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>Cpm</td>
+                      <td>0.72</td>
+                      <td>
+                        <b>Stdev</b>
+                      </td>
+                      <td>
+                        <b>0.45</b>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>Cr</td>
+                      <td>1.48</td>
+                      <td>
+                        <b>Median</b>
+                      </td>
+                      <td>
+                        <b>3.00</b>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>ZTarget/AZ</td>
+                      <td>0.25</td>
+                      <td>
+                        <b>Mode</b>
+                      </td>
+                      <td>
+                        <b>3.00</b>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <b>Pp</b>
+                      </td>
+                      <td>0.74</td>
+                      <td>Minimum Value</td>
+                      <td>2.00</td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <b>Ppk</b>
+                      </td>
+                      <td>0.66</td>
+                      <td>Maximum Value</td>
+                      <td>
+                        <b>2.00</b>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>PpU</td>
+                      <td>0.83</td>
+                      <td>Range</td>
+                      <td>1.50</td>
+                    </tr>
+                    <tr>
+                      <td>Ppl</td>
+                      <td>0.66</td>
+                      <td>
+                        <b>LSL</b>
+                      </td>
+                      <td>
+                        <b>2.00</b>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>Skewness</td>
+                      <td>-1.19</td>
+                      <td>
+                        <b>USL</b>
+                      </td>
+                      <td>
+                        <b>6.00</b>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>Stdev</td>
+                      <td>0.45</td>
+                      <td>Number Of Bars</td>
+                      <td>3.00</td>
+                    </tr>
+                    <tr>
+                      <td>Min</td>
+                      <td>2.00</td>
+                      <td>Number Of Classes</td>
+                      <td>4.00</td>
+                    </tr>
+                    <tr>
+                      <td>Max</td>
+                      <td>3.50</td>
+                      <td>Class Width</td>
+                      <td>0.35</td>
+                    </tr>
+                    <tr>
+                      <td>Range</td>
+                      <td>1.50</td>
+                      <td>Beginning Point</td>
+                      <td>1.65</td>
+                    </tr>
+                    <tr>
+                      <td>Z Bench</td>
+                      <td>1.79</td>
+                      <td>Stdev Est</td>
+                      <td>0.46</td>
+                    </tr>
+                    <tr>
+                      <td>% Defects</td>
+                      <td>0.0%</td>
+                      <td>d2/c4</td>
+                      <td>0.92</td>
+                    </tr>
+                    <tr>
+                      <td>PPM</td>
+                      <td>0.00</td>
+                      <td>Target</td>
+                      <td>3</td>
+                    </tr>
+                    <tr>
+                      <td>Exp PPM ST</td>
+                      <td>36586.97</td>
+                      <td>Sigma</td>
+                      <td>3.29</td>
+                    </tr>
+                    <tr>
+                      <td>Exp PPM LT</td>
+                      <td>30738.66</td>
+                      <td></td>
+                      <td></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <div className="col-span-4">
+                <HighchartsPareto
+                  // phOfParacetamol={phOfParacetamolPareto}
+                  data={paracetamolDissolutionData.observedValues}
+                  lsl={dissolutionChartsConfig.lsl}
+                  usl={dissolutionChartsConfig.usl}
+                  heading={dissolutionChartsConfig.paretoHeading}
+                  yAxisTitle={dissolutionChartsConfig.yAxisTitle}
+                  bins={dissolutionChartsConfig.bins}
+                  plotLines={dissolutionChartsConfig.plotLines}
+                />
+              </div>
+              <div className="col-span-4">
+                <HighchartsScatterPlot
+                  // phOfParacetamol={phOfParacetamolScatter}
+                  data={paracetamolDissolutionData.observedValues}
+                  batchNumbers={paracetamolDissolutionData.batchNumbers}
+                  lsl={dissolutionChartsConfig.lsl}
+                  usl={dissolutionChartsConfig.usl}
+                  heading={dissolutionChartsConfig.scatterHeading}
+                  yAxisTitle={dissolutionChartsConfig.yAxisTitle}
+                  max={dissolutionChartsConfig.max}
+                />
+              </div>
+              <div className="py-2 flex justify-end col-span-10 ">
+                <button className="p-2 bg-emerald-400 text-white rounded"> Launch Deviation</button>
+              </div>
+            </div>
+            <h1 className="gridName pt-8">Disintegration Of Paracetamol Test Result</h1>
             <div>
               {/* <div className="AddRows d-flex">
     <MdNoteAdd onClick={addReviewODSTRRow} />
@@ -6010,105 +7743,379 @@ export default function APQR() {
               <div className="AddRows d-flex w-full justify-between items-center text-3xl mb-5">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addReviewODSTRRow5} />
-                  <div className="addrowinstruction  pl-2">
-                    Add Rows by clicking on (+) icon
-                  </div>
+                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
                 </div>
                 <div className="flex gap-4 ">
-                  <ExcelExport
-                    data={balanceSheet}
-                    fileName="balance-sheet-summary.xlsx"
-                  />
+                  <ExcelExportImport
+                    data={gridDatas.reviewODSTR5}
+                    setimportedData={setimportedData}
+                    fileName="reviewODSTR5.xlsx"
+                    gridNo={26}
+                  />{" "}
                 </div>
               </div>
               <table>
                 <thead>
                   <tr>
-                    <th rowSpan={2}>Sl. No</th>
-                    <th rowSpan={2}>Tests parameter</th>
-                    <th rowSpan={2}>Specification limit</th>
-                    <th colSpan={2}>Obtained value</th>
-                    <th rowSpan={2}>Complies/Does Not complies</th>
-                  </tr>
-                  <tr>
-                    <th>Minimum</th>
-                    <th>Maximum</th>
+                    <th>Batch No</th>
+                    <th>Tests parameter</th>
+                    <th>LSL</th>
+                    <th>USL</th>
+                    <th>LCL</th>
+                    <th>UCL</th>
+                    <th>Observed Value</th>
+                    <th>Complies/Does Not complies</th>
                   </tr>
                 </thead>
                 <tbody>
-                  {pQRData?.reviewODSTR5?.map((item, index) => {
+                  {gridDatas?.reviewODSTR5?.map((item, index) => {
                     return (
                       <tr key={index}>
-                      <td>{index + 1}</td>
-                      <td>
-                        <input 
-                         value={item.testsParameter}
-                         onChange={(e) => {
-                           const newData = [...pQRData.reviewODSTR5];
-                           newData[index].testsParameter = e.target.value;
-                           setPQRData({
-                             ...pQRData,
-                             reviewODSTR5: newData,
-                           });
-                         }} 
+                        <input
+                          value={item.batchNo}
+                          onChange={(e) => {
+                            const newData = [...gridDatas.reviewODSTR5];
+                            newData[index].batchNo = e.target.value;
+                            setGridDatas({
+                              ...gridDatas,
+                              reviewODSTR5: newData,
+                            });
+                          }}
                         />
-                      </td>
-                      <td>
-                        <input 
-                          value={item.specificationLimit}
-                          onChange={(e) => {
-                            const newData = [...pQRData.reviewODSTR5];
-                            newData[index].specificationLimit = e.target.value;
-                            setPQRData({
-                              ...pQRData,
-                              reviewODSTR5: newData,
-                            });
-                          }} 
-                        />
-                      </td>
-                      <td>
-                        <input 
-                          value={item.obtainedValue.minimum}
-                          onChange={(e) => {
-                            const newData = [...pQRData.reviewODSTR5];
-                            newData[index].obtainedValue.minimum = e.target.value;
-                            setPQRData({
-                              ...pQRData,
-                              reviewODSTR5: newData,
-                            });
-                          }} />
-                      </td>
-                      <td>
-                        <input 
-                          value={item.obtainedValue.maximum}
-                          onChange={(e) => {
-                            const newData = [...pQRData.reviewODSTR5];
-                            newData[index].obtainedValue.maximum = e.target.value;
-                            setPQRData({
-                              ...pQRData,
-                              reviewODSTR5: newData,
-                            });
-                          }} />
-                      </td>
-                      <td>
-                        <input 
-                          value={item.compliesNotComplies}
-                          onChange={(e) => {
-                            const newData = [...pQRData.reviewODSTR5];
-                            newData[index].compliesNotComplies = e.target.value;
-                            setPQRData({
-                              ...pQRData,
-                              reviewODSTR5: newData,
-                            });
-                          }}/>
-                      </td>
-                    </tr>
+                        <td>
+                          <input
+                            value={item.testsParameter}
+                            onChange={(e) => {
+                              const newData = [...gridDatas.reviewODSTR5];
+                              newData[index].testsParameter = e.target.value;
+                              setGridDatas({
+                                ...gridDatas,
+                                reviewODSTR5: newData,
+                              });
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            type="number"
+                            value={item.LSL}
+                            onChange={(e) => {
+                              const newData = [...gridDatas.reviewODSTR5];
+                              newData[index].LSL = e.target.value;
+                              setGridDatas({
+                                ...gridDatas,
+                                reviewODSTR5: newData,
+                              });
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            type="number"
+                            value={item.USL}
+                            onChange={(e) => {
+                              const newData = [...gridDatas.reviewODSTR5];
+                              newData[index].USL = e.target.value;
+                              setGridDatas({
+                                ...gridDatas,
+                                reviewODSTR5: newData,
+                              });
+                            }}
+                          />
+                        </td>{" "}
+                        <td>
+                          <input
+                            type="number"
+                            value={item.LCL}
+                            onChange={(e) => {
+                              const newData = [...gridDatas.reviewODSTR5];
+                              newData[index].LCL = e.target.value;
+                              setGridDatas({
+                                ...gridDatas,
+                                reviewODSTR5: newData,
+                              });
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            type="number"
+                            value={item.UCL}
+                            onChange={(e) => {
+                              const newData = [...gridDatas.reviewODSTR5];
+                              newData[index].UCL = e.target.value;
+                              setGridDatas({
+                                ...gridDatas,
+                                reviewODSTR5: newData,
+                              });
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            type="number"
+                            value={item.observedValue}
+                            onChange={(e) => {
+                              const newData = [...gridDatas.reviewODSTR5];
+                              newData[index].observedValue = e.target.value;
+                              setGridDatas({
+                                ...gridDatas,
+                                reviewODSTR5: newData,
+                              });
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.compliesNotComplies}
+                            onChange={(e) => {
+                              const newData = [...gridDatas.reviewODSTR5];
+                              newData[index].compliesNotComplies = e.target.value;
+                              setGridDatas({
+                                ...gridDatas,
+                                reviewODSTR5: newData,
+                              });
+                            }}
+                          />
+                        </td>
+                      </tr>
                     );
                   })}
                 </tbody>
               </table>
             </div>{" "}
-            <h1 className="gridName pt-8">Drug Substance 6 Test Result</h1>
+            <div className=" grid grid-cols-10 shadow-md shadow-gray-700/30 my-20 bg-slate-700 p-4 gap-4 mx-[-30px]">
+              <div className="py-2 col-span-10 cursor-pointer text-gray-100 text-[22px] flex justify-center items-center">
+                {" "}
+                Disintegration Of Paracetamol Analysis
+              </div>
+              <div className="col-span-4 row-span-1 mb-10 max-h-38 ">
+                <HighchartsLine
+                  heading={""}
+                  xHeading={"Batch No."}
+                  yHeading={"Observed Value"}
+                  yMax={100}
+                  yMin={75}
+                  yTickInterval={7}
+                  plotLines={ParacetamolDisintegratePlotLines}
+                  zones={paracetamolDisinterationZones}
+                  annotations={paracetamolAnnotations}
+                  highchartData={paracetamolpHData5}
+                />
+              </div>
+              <div className="col-span-4 row-span-1">
+                <HighchartsHistogram
+                  // phOfParacetamol={phChartsConfig}
+                  data={paracetamolDisIntegrationData.observedValues}
+                  lsl={disIntegrationChartsConfig.lsl}
+                  usl={disIntegrationChartsConfig.usl}
+                  heading={disIntegrationChartsConfig.histoHeading}
+                  yAxisTitle={disIntegrationChartsConfig.yAxisTitle}
+                  xAxisTitle={disIntegrationChartsConfig.xAxisTitle}
+                  bins={disIntegrationChartsConfig.bins}
+                  plotLines={disIntegrationChartsConfig.plotLines}
+                />
+              </div>
+              <div className="col-span-2 row-span-2 bg-white">
+                <table>
+                  <tbody>
+                    <tr>
+                      <td>
+                        {" "}
+                        <b>Cp B/W</b>
+                      </td>
+                      <td>
+                        <b>0.67</b>
+                      </td>
+                      <td>Decimal Points</td>
+                      <td>2.00</td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <b>Cpk B/W</b>
+                      </td>
+                      <td>
+                        <b>0.60</b>
+                      </td>
+                      <td>Unit Of Measure</td>
+                      <td>0.001</td>
+                    </tr>
+                    <tr>
+                      <td>CpU B/W</td>
+                      <td>0.60</td>
+                      <td>Number Of Entries</td>
+                      <td>7</td>
+                    </tr>
+                    <tr>
+                      <td>Cpl B/W</td>
+                      <td>0.75</td>
+                      <td>
+                        <b>Average</b>
+                      </td>
+                      <td>
+                        <b>2.89</b>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>Cpm</td>
+                      <td>0.72</td>
+                      <td>
+                        <b>Stdev</b>
+                      </td>
+                      <td>
+                        <b>0.45</b>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>Cr</td>
+                      <td>1.48</td>
+                      <td>
+                        <b>Median</b>
+                      </td>
+                      <td>
+                        <b>3.00</b>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>ZTarget/AZ</td>
+                      <td>0.25</td>
+                      <td>
+                        <b>Mode</b>
+                      </td>
+                      <td>
+                        <b>3.00</b>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <b>Pp</b>
+                      </td>
+                      <td>0.74</td>
+                      <td>Minimum Value</td>
+                      <td>2.00</td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <b>Ppk</b>
+                      </td>
+                      <td>0.66</td>
+                      <td>Maximum Value</td>
+                      <td>
+                        <b>2.00</b>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>PpU</td>
+                      <td>0.83</td>
+                      <td>Range</td>
+                      <td>1.50</td>
+                    </tr>
+                    <tr>
+                      <td>Ppl</td>
+                      <td>0.66</td>
+                      <td>
+                        <b>LSL</b>
+                      </td>
+                      <td>
+                        <b>2.00</b>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>Skewness</td>
+                      <td>-1.19</td>
+                      <td>
+                        <b>USL</b>
+                      </td>
+                      <td>
+                        <b>4.00</b>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>Stdev</td>
+                      <td>0.45</td>
+                      <td>Number Of Bars</td>
+                      <td>3.00</td>
+                    </tr>
+                    <tr>
+                      <td>Min</td>
+                      <td>2.00</td>
+                      <td>Number Of Classes</td>
+                      <td>4.00</td>
+                    </tr>
+                    <tr>
+                      <td>Max</td>
+                      <td>3.50</td>
+                      <td>Class Width</td>
+                      <td>0.35</td>
+                    </tr>
+                    <tr>
+                      <td>Range</td>
+                      <td>1.50</td>
+                      <td>Beginning Point</td>
+                      <td>1.65</td>
+                    </tr>
+                    <tr>
+                      <td>Z Bench</td>
+                      <td>1.79</td>
+                      <td>Stdev Est</td>
+                      <td>0.46</td>
+                    </tr>
+                    <tr>
+                      <td>% Defects</td>
+                      <td>0.0%</td>
+                      <td>d2/c4</td>
+                      <td>0.92</td>
+                    </tr>
+                    <tr>
+                      <td>PPM</td>
+                      <td>0.00</td>
+                      <td>Target</td>
+                      <td>3</td>
+                    </tr>
+                    <tr>
+                      <td>Exp PPM ST</td>
+                      <td>36586.97</td>
+                      <td>Sigma</td>
+                      <td>3.29</td>
+                    </tr>
+                    <tr>
+                      <td>Exp PPM LT</td>
+                      <td>30738.66</td>
+                      <td></td>
+                      <td></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <div className="col-span-4">
+                <HighchartsPareto
+                  // phOfParacetamol={phOfParacetamolPareto}
+                  data={paracetamolDisIntegrationData.observedValues}
+                  lsl={disIntegrationChartsConfig.lsl}
+                  usl={disIntegrationChartsConfig.usl}
+                  heading={disIntegrationChartsConfig.paretoHeading}
+                  yAxisTitle={disIntegrationChartsConfig.yAxisTitle}
+                  bins={disIntegrationChartsConfig.bins}
+                  plotLines={disIntegrationChartsConfig.plotLines}
+                />
+              </div>
+              <div className="col-span-4">
+                <HighchartsScatterPlot
+                  // phOfParacetamol={phOfParacetamolScatter}
+                  data={paracetamolDisIntegrationData.observedValues}
+                  batchNumbers={paracetamolDisIntegrationData.batchNumbers}
+                  lsl={disIntegrationChartsConfig.lsl}
+                  usl={disIntegrationChartsConfig.usl}
+                  heading={disIntegrationChartsConfig.scatterHeading}
+                  yAxisTitle={disIntegrationChartsConfig.yAxisTitle}
+                  max={disIntegrationChartsConfig.max}
+                />
+              </div>
+              <div className="py-2 flex justify-end col-span-10 ">
+                <button className="p-2 bg-emerald-400 text-white rounded"> Launch Deviation</button>
+              </div>
+            </div>
+            <h1 className="gridName pt-8">pH Of Terbinafine Test Result</h1>
             <div>
               {/* <div className="AddRows d-flex">
     <MdNoteAdd onClick={addReviewODSTRRow} />
@@ -6117,105 +8124,376 @@ export default function APQR() {
               <div className="AddRows d-flex w-full justify-between items-center text-3xl mb-5">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addReviewODSTRRow6} />
-                  <div className="addrowinstruction  pl-2">
-                    Add Rows by clicking on (+) icon
-                  </div>
+                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
                 </div>
                 <div className="flex gap-4 ">
-                  <ExcelExport
-                    data={balanceSheet}
-                    fileName="balance-sheet-summary.xlsx"
-                  />
+                  <ExcelExportImport
+                    data={gridDatas.reviewODSTR6}
+                    setimportedData={setimportedData}
+                    fileName="reviewODSTR6.xlsx"
+                    gridNo={27}
+                  />{" "}
                 </div>
               </div>
               <table>
                 <thead>
                   <tr>
-                    <th rowSpan={2}>Sl. No</th>
-                    <th rowSpan={2}>Tests parameter</th>
-                    <th rowSpan={2}>Specification limit</th>
-                    <th colSpan={2}>Obtained value</th>
-                    <th rowSpan={2}>Complies/Does Not complies</th>
-                  </tr>
-                  <tr>
-                    <th>Minimum</th>
-                    <th>Maximum</th>
+                    <th>Batch No</th>
+                    <th>Tests parameter</th>
+                    <th>LSL</th>
+                    <th>USL</th>
+                    <th>LCL</th>
+                    <th>UCL</th>
+                    <th>Observed Value</th>
+                    <th>Complies/Does Not complies</th>
                   </tr>
                 </thead>
                 <tbody>
-                  {pQRData?.reviewODSTR6?.map((item, index) => {
+                  {gridDatas?.reviewODSTR6?.map((item, index) => {
                     return (
                       <tr key={index}>
-                      <td>{index + 1}</td>
-                      <td>
-                        <input 
-                         value={item.testsParameter}
-                         onChange={(e) => {
-                           const newData = [...pQRData.reviewODSTR6];
-                           newData[index].testsParameter = e.target.value;
-                           setPQRData({
-                             ...pQRData,
-                             reviewODSTR6: newData,
-                           });
-                         }} 
+                        <input
+                          value={item.batchNo}
+                          onChange={(e) => {
+                            const newData = [...gridDatas.reviewODSTR6];
+                            newData[index].batchNo = e.target.value;
+                            setGridDatas({
+                              ...gridDatas,
+                              reviewODSTR6: newData,
+                            });
+                          }}
                         />
-                      </td>
-                      <td>
-                        <input 
-                          value={item.specificationLimit}
-                          onChange={(e) => {
-                            const newData = [...pQRData.reviewODSTR6];
-                            newData[index].specificationLimit = e.target.value;
-                            setPQRData({
-                              ...pQRData,
-                              reviewODSTR6: newData,
-                            });
-                          }} 
-                        />
-                      </td>
-                      <td>
-                        <input 
-                          value={item.obtainedValue.minimum}
-                          onChange={(e) => {
-                            const newData = [...pQRData.reviewODSTR6];
-                            newData[index].obtainedValue.minimum = e.target.value;
-                            setPQRData({
-                              ...pQRData,
-                              reviewODSTR6: newData,
-                            });
-                          }} />
-                      </td>
-                      <td>
-                        <input 
-                          value={item.obtainedValue.maximum}
-                          onChange={(e) => {
-                            const newData = [...pQRData.reviewODSTR6];
-                            newData[index].obtainedValue.maximum = e.target.value;
-                            setPQRData({
-                              ...pQRData,
-                              reviewODSTR6: newData,
-                            });
-                          }} />
-                      </td>
-                      <td>
-                        <input 
-                          value={item.compliesNotComplies}
-                          onChange={(e) => {
-                            const newData = [...pQRData.reviewODSTR6];
-                            newData[index].compliesNotComplies = e.target.value;
-                            setPQRData({
-                              ...pQRData,
-                              reviewODSTR6: newData,
-                            });
-                          }}/>
-                      </td>
-                    </tr>
+                        <td>
+                          <input
+                            value={item.testsParameter}
+                            onChange={(e) => {
+                              const newData = [...gridDatas.reviewODSTR6];
+                              newData[index].testsParameter = e.target.value;
+                              setGridDatas({
+                                ...gridDatas,
+                                reviewODSTR6: newData,
+                              });
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            type="number"
+                            value={item.LSL}
+                            onChange={(e) => {
+                              const newData = [...gridDatas.reviewODSTR6];
+                              newData[index].LSL = e.target.value;
+                              setGridDatas({
+                                ...gridDatas,
+                                reviewODSTR6: newData,
+                              });
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            type="number"
+                            value={item.USL}
+                            onChange={(e) => {
+                              const newData = [...gridDatas.reviewODSTR6];
+                              newData[index].USL = e.target.value;
+                              setGridDatas({
+                                ...gridDatas,
+                                reviewODSTR6: newData,
+                              });
+                            }}
+                          />
+                        </td>{" "}
+                        <td>
+                          <input
+                            type="number"
+                            value={item.LCL}
+                            onChange={(e) => {
+                              const newData = [...gridDatas.reviewODSTR6];
+                              newData[index].LCL = e.target.value;
+                              setGridDatas({
+                                ...gridDatas,
+                                reviewODSTR6: newData,
+                              });
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            type="number"
+                            value={item.UCL}
+                            onChange={(e) => {
+                              const newData = [...gridDatas.reviewODSTR6];
+                              newData[index].UCL = e.target.value;
+                              setGridDatas({
+                                ...gridDatas,
+                                reviewODSTR6: newData,
+                              });
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            type="number"
+                            value={item.observedValue}
+                            onChange={(e) => {
+                              const newData = [...gridDatas.reviewODSTR6];
+                              newData[index].observedValue = e.target.value;
+                              setGridDatas({
+                                ...gridDatas,
+                                reviewODSTR6: newData,
+                              });
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.compliesNotComplies}
+                            onChange={(e) => {
+                              const newData = [...gridDatas.reviewODSTR6];
+                              newData[index].compliesNotComplies = e.target.value;
+                              setGridDatas({
+                                ...gridDatas,
+                                reviewODSTR6: newData,
+                              });
+                            }}
+                          />
+                        </td>
+                      </tr>
                     );
                   })}
                 </tbody>
               </table>
             </div>{" "}
-            <h1 className="gridName pt-8">Drug Substance 7 Test Result</h1>
+            <div className=" grid grid-cols-10 shadow-md shadow-gray-700/30 my-20 bg-slate-700 p-4 gap-4 mx-[-30px]">
+              <div className="py-2 col-span-10 cursor-pointer text-gray-100 text-[22px] flex justify-center items-center">
+                {" "}
+                pH Of Terbinafine Analysis
+              </div>
+              <div className="col-span-4 row-span-1 mb-10 max-h-38 ">
+                <HighchartsLine
+                  heading={"Line Analytics"}
+                  xHeading={"Batch No."}
+                  yHeading={"Observed Value"}
+                  yMax={6}
+                  yMin={1}
+                  yTickInterval={0.5}
+                  plotLines={ParacetamolpHPlotLines}
+                  zones={paracetamolpHZones}
+                  annotations={paracetamolAnnotations}
+                  highchartData={paracetamolpHData6}
+                />
+              </div>
+              <div className="col-span-4 row-span-1">
+                <HighchartsHistogram
+                  data={terbinafinepHDataH.observedValues}
+                  lsl={phChartsConfig.lsl}
+                  usl={phChartsConfig.usl}
+                  heading={phChartsConfig.histoHeading}
+                  yAxisTitle={phChartsConfig.yAxisTitle}
+                  xAxisTitle={phChartsConfig.xAxisTitle}
+                  bins={phChartsConfig.bins}
+                  plotLines={phChartsConfig.plotLines}
+                />
+              </div>
+              <div className="col-span-2 row-span-2 bg-white">
+                <table>
+                  <tbody>
+                    <tr>
+                      <td>
+                        {" "}
+                        <b>Cp B/W</b>
+                      </td>
+                      <td>
+                        <b>0.67</b>
+                      </td>
+                      <td>Decimal Points</td>
+                      <td>2.00</td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <b>Cpk B/W</b>
+                      </td>
+                      <td>
+                        <b>0.60</b>
+                      </td>
+                      <td>Unit Of Measure</td>
+                      <td>0.001</td>
+                    </tr>
+                    <tr>
+                      <td>CpU B/W</td>
+                      <td>0.60</td>
+                      <td>Number Of Entries</td>
+                      <td>7</td>
+                    </tr>
+                    <tr>
+                      <td>Cpl B/W</td>
+                      <td>0.75</td>
+                      <td>
+                        <b>Average</b>
+                      </td>
+                      <td>
+                        <b>2.89</b>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>Cpm</td>
+                      <td>0.72</td>
+                      <td>
+                        <b>Stdev</b>
+                      </td>
+                      <td>
+                        <b>0.45</b>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>Cr</td>
+                      <td>1.48</td>
+                      <td>
+                        <b>Median</b>
+                      </td>
+                      <td>
+                        <b>3.00</b>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>ZTarget/AZ</td>
+                      <td>0.25</td>
+                      <td>
+                        <b>Mode</b>
+                      </td>
+                      <td>
+                        <b>3.00</b>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <b>Pp</b>
+                      </td>
+                      <td>0.74</td>
+                      <td>Minimum Value</td>
+                      <td>2.00</td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <b>Ppk</b>
+                      </td>
+                      <td>0.66</td>
+                      <td>Maximum Value</td>
+                      <td>
+                        <b>2.00</b>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>PpU</td>
+                      <td>0.83</td>
+                      <td>Range</td>
+                      <td>1.50</td>
+                    </tr>
+                    <tr>
+                      <td>Ppl</td>
+                      <td>0.66</td>
+                      <td>
+                        <b>LSL</b>
+                      </td>
+                      <td>
+                        <b>2.00</b>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>Skewness</td>
+                      <td>-1.19</td>
+                      <td>
+                        <b>USL</b>
+                      </td>
+                      <td>
+                        <b>4.00</b>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>Stdev</td>
+                      <td>0.45</td>
+                      <td>Number Of Bars</td>
+                      <td>3.00</td>
+                    </tr>
+                    <tr>
+                      <td>Min</td>
+                      <td>2.00</td>
+                      <td>Number Of Classes</td>
+                      <td>4.00</td>
+                    </tr>
+                    <tr>
+                      <td>Max</td>
+                      <td>3.50</td>
+                      <td>Class Width</td>
+                      <td>0.35</td>
+                    </tr>
+                    <tr>
+                      <td>Range</td>
+                      <td>1.50</td>
+                      <td>Beginning Point</td>
+                      <td>1.65</td>
+                    </tr>
+                    <tr>
+                      <td>Z Bench</td>
+                      <td>1.79</td>
+                      <td>Stdev Est</td>
+                      <td>0.46</td>
+                    </tr>
+                    <tr>
+                      <td>% Defects</td>
+                      <td>0.0%</td>
+                      <td>d2/c4</td>
+                      <td>0.92</td>
+                    </tr>
+                    <tr>
+                      <td>PPM</td>
+                      <td>0.00</td>
+                      <td>Target</td>
+                      <td>3</td>
+                    </tr>
+                    <tr>
+                      <td>Exp PPM ST</td>
+                      <td>36586.97</td>
+                      <td>Sigma</td>
+                      <td>3.29</td>
+                    </tr>
+                    <tr>
+                      <td>Exp PPM LT</td>
+                      <td>30738.66</td>
+                      <td></td>
+                      <td></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <div className="col-span-4">
+                <HighchartsPareto
+                  data={terbinafinepHDataH.observedValues}
+                  lsl={phChartsConfig.lsl}
+                  usl={phChartsConfig.usl}
+                  heading={phChartsConfig.paretoHeading}
+                  yAxisTitle={phChartsConfig.yAxisTitle}
+                  bins={phChartsConfig.bins}
+                  plotLines={phChartsConfig.plotLines}
+                />
+              </div>
+              <div className="col-span-4">
+                <HighchartsScatterPlot
+                  // phOfParacetamol={phOfParacetamolScatter}
+                  data={terbinafinepHDataH.observedValues}
+                  batchNumbers={terbinafinepHDataH.batchNumbers}
+                  lsl={phChartsConfig.lsl}
+                  usl={phChartsConfig.usl}
+                  heading={phChartsConfig.scatterHeading}
+                  yAxisTitle={phChartsConfig.yAxisTitle}
+                />
+              </div>
+              <div className="py-2 flex justify-end col-span-10 ">
+                <button className="p-2 bg-emerald-400 text-white rounded"> Launch Deviation</button>
+              </div>
+            </div>
+            <h1 className="gridName pt-8">Assay Of Terbinafine Test Result</h1>
             <div>
               {/* <div className="AddRows d-flex">
     <MdNoteAdd onClick={addReviewODSTRRow} />
@@ -6224,105 +8502,211 @@ export default function APQR() {
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addReviewODSTRRow7} />
-                  <div className="addrowinstruction  pl-2">
-                    Add Rows by clicking on (+) icon
-                  </div>
+                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
                 </div>
                 <div className="flex gap-4 ">
-                  <ExcelExport
-                    data={balanceSheet}
-                    fileName="balance-sheet-summary.xlsx"
-                  />
+                  <ExcelExportImport
+                    data={gridDatas.reviewODSTR7}
+                    setimportedData={setimportedData}
+                    fileName="reviewODSTR7.xlsx"
+                    gridNo={28}
+                  />{" "}
                 </div>
               </div>
               <table>
                 <thead>
                   <tr>
-                    <th rowSpan={2}>Sl. No</th>
-                    <th rowSpan={2}>Tests parameter</th>
-                    <th rowSpan={2}>Specification limit</th>
-                    <th colSpan={2}>Obtained value</th>
-                    <th rowSpan={2}>Complies/Does Not complies</th>
-                  </tr>
-                  <tr>
-                    <th>Minimum</th>
-                    <th>Maximum</th>
+                    <th>Batch No</th>
+                    <th>Tests parameter</th>
+                    <th>LSL</th>
+                    <th>USL</th>
+                    <th>LCL</th>
+                    <th>UCL</th>
+                    <th>Observed Value</th>
+                    <th>Complies/Does Not complies</th>
                   </tr>
                 </thead>
                 <tbody>
-                  {pQRData?.reviewODSTR7?.map((item, index) => {
+                  {gridDatas?.reviewODSTR7?.map((item, index) => {
                     return (
                       <tr key={index}>
-                      <td>{index + 1}</td>
-                      <td>
-                        <input 
-                         value={item.testsParameter}
-                         onChange={(e) => {
-                           const newData = [...pQRData.reviewODSTR7];
-                           newData[index].testsParameter = e.target.value;
-                           setPQRData({
-                             ...pQRData,
-                             reviewODSTR7: newData,
-                           });
-                         }} 
+                        <input
+                          value={item.batchNo}
+                          onChange={(e) => {
+                            const newData = [...gridDatas.reviewODSTR7];
+                            newData[index].batchNo = e.target.value;
+                            setGridDatas({
+                              ...gridDatas,
+                              reviewODSTR7: newData,
+                            });
+                          }}
                         />
-                      </td>
-                      <td>
-                        <input 
-                          value={item.specificationLimit}
-                          onChange={(e) => {
-                            const newData = [...pQRData.reviewODSTR7];
-                            newData[index].specificationLimit = e.target.value;
-                            setPQRData({
-                              ...pQRData,
-                              reviewODSTR7: newData,
-                            });
-                          }} 
-                        />
-                      </td>
-                      <td>
-                        <input 
-                          value={item.obtainedValue.minimum}
-                          onChange={(e) => {
-                            const newData = [...pQRData.reviewODSTR7];
-                            newData[index].obtainedValue.minimum = e.target.value;
-                            setPQRData({
-                              ...pQRData,
-                              reviewODSTR7: newData,
-                            });
-                          }} />
-                      </td>
-                      <td>
-                        <input 
-                          value={item.obtainedValue.maximum}
-                          onChange={(e) => {
-                            const newData = [...pQRData.reviewODSTR7];
-                            newData[index].obtainedValue.maximum = e.target.value;
-                            setPQRData({
-                              ...pQRData,
-                              reviewODSTR7: newData,
-                            });
-                          }} />
-                      </td>
-                      <td>
-                        <input 
-                          value={item.compliesNotComplies}
-                          onChange={(e) => {
-                            const newData = [...pQRData.reviewODSTR7];
-                            newData[index].compliesNotComplies = e.target.value;
-                            setPQRData({
-                              ...pQRData,
-                              reviewODSTR7: newData,
-                            });
-                          }}/>
-                      </td>
-                    </tr>
+                        <td>
+                          <input
+                            value={item.testsParameter}
+                            onChange={(e) => {
+                              const newData = [...gridDatas.reviewODSTR7];
+                              newData[index].testsParameter = e.target.value;
+                              setGridDatas({
+                                ...gridDatas,
+                                reviewODSTR7: newData,
+                              });
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            type="number"
+                            value={item.LSL}
+                            onChange={(e) => {
+                              const newData = [...gridDatas.reviewODSTR7];
+                              newData[index].LSL = e.target.value;
+                              setGridDatas({
+                                ...gridDatas,
+                                reviewODSTR7: newData,
+                              });
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            type="number"
+                            value={item.USL}
+                            onChange={(e) => {
+                              const newData = [...gridDatas.reviewODSTR7];
+                              newData[index].USL = e.target.value;
+                              setGridDatas({
+                                ...gridDatas,
+                                reviewODSTR7: newData,
+                              });
+                            }}
+                          />
+                        </td>{" "}
+                        <td>
+                          <input
+                            type="number"
+                            value={item.LCL}
+                            onChange={(e) => {
+                              const newData = [...gridDatas.reviewODSTR7];
+                              newData[index].LCL = e.target.value;
+                              setGridDatas({
+                                ...gridDatas,
+                                reviewODSTR7: newData,
+                              });
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            type="number"
+                            value={item.UCL}
+                            onChange={(e) => {
+                              const newData = [...gridDatas.reviewODSTR7];
+                              newData[index].UCL = e.target.value;
+                              setGridDatas({
+                                ...gridDatas,
+                                reviewODSTR7: newData,
+                              });
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            type="number"
+                            value={item.observedValue}
+                            onChange={(e) => {
+                              const newData = [...gridDatas.reviewODSTR7];
+                              newData[index].observedValue = e.target.value;
+                              setGridDatas({
+                                ...gridDatas,
+                                reviewODSTR7: newData,
+                              });
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.compliesNotComplies}
+                            onChange={(e) => {
+                              const newData = [...gridDatas.reviewODSTR7];
+                              newData[index].compliesNotComplies = e.target.value;
+                              setGridDatas({
+                                ...gridDatas,
+                                reviewODSTR7: newData,
+                              });
+                            }}
+                          />
+                        </td>
+                      </tr>
                     );
                   })}
                 </tbody>
               </table>
             </div>{" "}
-            <h1 className="gridName pt-8">Drug Substance 8 Test Result</h1>
+            <div className=" grid grid-cols-10 shadow-md shadow-gray-700/30 my-20 bg-slate-700 p-4 gap-4 mx-[-30px]">
+              <div className="py-2 col-span-10 cursor-pointer text-gray-100 text-[22px] flex justify-center items-center">
+                {" "}
+                Assay Of Terbinafine Analysis
+              </div>
+              <div className="col-span-4 row-span-1 mb-10 max-h-38 ">
+                <HighchartsLine
+                  heading={"Line Analytics"}
+                  xHeading={"Batch No."}
+                  yHeading={"Observed Value"}
+                  yMax={110}
+                  yMin={86}
+                  yTickInterval={3}
+                  plotLines={ParacetamolAssayPlotLines}
+                  zones={paracetamolAssayZones}
+                  annotations={paracetamolAnnotations}
+                  highchartData={paracetamolpHData7}
+                />
+              </div>
+              <div className="col-span-4 row-span-1">
+                <HighchartsHistogram
+                  // phOfParacetamol={phChartsConfig}
+                  data={terbinafineAssayData.observedValues}
+                  lsl={assayChartsConfig.lsl}
+                  usl={assayChartsConfig.usl}
+                  heading={assayChartsConfig.histoHeading}
+                  yAxisTitle={assayChartsConfig.yAxisTitle}
+                  xAxisTitle={assayChartsConfig.xAxisTitle}
+                  bins={assayChartsConfig.bins}
+                  plotLines={assayChartsConfig.plotLines}
+                />
+              </div>
+              <div className="col-span-2 row-span-2 bg-white">
+                <AnalyticsTable />
+              </div>
+              <div className="col-span-4">
+                <HighchartsPareto
+                  // phOfParacetamol={phOfParacetamolPareto}
+                  data={terbinafineAssayData.observedValues}
+                  lsl={assayChartsConfig.lsl}
+                  usl={assayChartsConfig.usl}
+                  heading={assayChartsConfig.paretoHeading}
+                  yAxisTitle={assayChartsConfig.yAxisTitle}
+                  bins={assayChartsConfig.bins}
+                  plotLines={assayChartsConfig.plotLines}
+                />
+              </div>
+              <div className="col-span-4">
+                <HighchartsScatterPlot
+                  // phOfParacetamol={phOfParacetamolScatter}
+                  data={terbinafineAssayData.observedValues}
+                  batchNumbers={terbinafineAssayData.batchNumbers}
+                  lsl={assayChartsConfig.lsl}
+                  usl={assayChartsConfig.usl}
+                  heading={assayChartsConfig.scatterHeading}
+                  yAxisTitle={assayChartsConfig.yAxisTitle}
+                  max={assayChartsConfig.max}
+                />
+              </div>
+              <div className="py-2 flex justify-end col-span-10 ">
+                <button className="p-2 bg-emerald-400 text-white rounded"> Launch Deviation</button>
+              </div>
+            </div>
+            <h1 className="gridName pt-8">Impurity Of Terbinafine Test Result</h1>
             <div>
               {/* <div className="AddRows d-flex">
     <MdNoteAdd onClick={addReviewODSTRRow} />
@@ -6331,105 +8715,379 @@ export default function APQR() {
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addReviewODSTRRow8} />
-                  <div className="addrowinstruction  pl-2">
-                    Add Rows by clicking on (+) icon
-                  </div>
+                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
                 </div>
                 <div className="flex gap-4 ">
-                  <ExcelExport
-                    data={balanceSheet}
-                    fileName="balance-sheet-summary.xlsx"
-                  />
+                  <ExcelExportImport
+                    data={gridDatas.reviewODSTR8}
+                    setimportedData={setimportedData}
+                    fileName="reviewODSTR8.xlsx"
+                    gridNo={29}
+                  />{" "}
                 </div>
               </div>
               <table>
                 <thead>
                   <tr>
-                    <th rowSpan={2}>Sl. No</th>
-                    <th rowSpan={2}>Tests parameter</th>
-                    <th rowSpan={2}>Specification limit</th>
-                    <th colSpan={2}>Obtained value</th>
-                    <th rowSpan={2}>Complies/Does Not complies</th>
-                  </tr>
-                  <tr>
-                    <th>Minimum</th>
-                    <th>Maximum</th>
+                    <th>Batch No</th>
+                    <th>Tests parameter</th>
+                    <th>LSL</th>
+                    <th>USL</th>
+                    <th>LCL</th>
+                    <th>UCL</th>
+                    <th>Observed Value</th>
+                    <th>Complies/Does Not complies</th>
                   </tr>
                 </thead>
                 <tbody>
-                  {pQRData?.reviewODSTR8?.map((item, index) => {
+                  {gridDatas?.reviewODSTR8?.map((item, index) => {
                     return (
                       <tr key={index}>
-                      <td>{index + 1}</td>
-                      <td>
-                        <input 
-                         value={item.testsParameter}
-                         onChange={(e) => {
-                           const newData = [...pQRData.reviewODSTR8];
-                           newData[index].testsParameter = e.target.value;
-                           setPQRData({
-                             ...pQRData,
-                             reviewODSTR8: newData,
-                           });
-                         }} 
+                        <input
+                          value={item.batchNo}
+                          onChange={(e) => {
+                            const newData = [...gridDatas.reviewODSTR8];
+                            newData[index].batchNo = e.target.value;
+                            setGridDatas({
+                              ...gridDatas,
+                              reviewODSTR8: newData,
+                            });
+                          }}
                         />
-                      </td>
-                      <td>
-                        <input 
-                          value={item.specificationLimit}
-                          onChange={(e) => {
-                            const newData = [...pQRData.reviewODSTR8];
-                            newData[index].specificationLimit = e.target.value;
-                            setPQRData({
-                              ...pQRData,
-                              reviewODSTR8: newData,
-                            });
-                          }} 
-                        />
-                      </td>
-                      <td>
-                        <input 
-                          value={item.obtainedValue.minimum}
-                          onChange={(e) => {
-                            const newData = [...pQRData.reviewODSTR8];
-                            newData[index].obtainedValue.minimum = e.target.value;
-                            setPQRData({
-                              ...pQRData,
-                              reviewODSTR8: newData,
-                            });
-                          }} />
-                      </td>
-                      <td>
-                        <input 
-                          value={item.obtainedValue.maximum}
-                          onChange={(e) => {
-                            const newData = [...pQRData.reviewODSTR8];
-                            newData[index].obtainedValue.maximum = e.target.value;
-                            setPQRData({
-                              ...pQRData,
-                              reviewODSTR8: newData,
-                            });
-                          }} />
-                      </td>
-                      <td>
-                        <input 
-                          value={item.compliesNotComplies}
-                          onChange={(e) => {
-                            const newData = [...pQRData.reviewODSTR8];
-                            newData[index].compliesNotComplies = e.target.value;
-                            setPQRData({
-                              ...pQRData,
-                              reviewODSTR8: newData,
-                            });
-                          }}/>
-                      </td>
-                    </tr>
+                        <td>
+                          <input
+                            value={item.testsParameter}
+                            onChange={(e) => {
+                              const newData = [...gridDatas.reviewODSTR8];
+                              newData[index].testsParameter = e.target.value;
+                              setGridDatas({
+                                ...gridDatas,
+                                reviewODSTR8: newData,
+                              });
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            type="number"
+                            value={item.LSL}
+                            onChange={(e) => {
+                              const newData = [...gridDatas.reviewODSTR8];
+                              newData[index].LSL = e.target.value;
+                              setGridDatas({
+                                ...gridDatas,
+                                reviewODSTR8: newData,
+                              });
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            type="number"
+                            value={item.USL}
+                            onChange={(e) => {
+                              const newData = [...gridDatas.reviewODSTR8];
+                              newData[index].USL = e.target.value;
+                              setGridDatas({
+                                ...gridDatas,
+                                reviewODSTR8: newData,
+                              });
+                            }}
+                          />
+                        </td>{" "}
+                        <td>
+                          <input
+                            type="number"
+                            value={item.LCL}
+                            onChange={(e) => {
+                              const newData = [...gridDatas.reviewODSTR8];
+                              newData[index].LCL = e.target.value;
+                              setGridDatas({
+                                ...gridDatas,
+                                reviewODSTR8: newData,
+                              });
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            type="number"
+                            value={item.UCL}
+                            onChange={(e) => {
+                              const newData = [...gridDatas.reviewODSTR8];
+                              newData[index].UCL = e.target.value;
+                              setGridDatas({
+                                ...gridDatas,
+                                reviewODSTR8: newData,
+                              });
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            type="number"
+                            value={item.observedValue}
+                            onChange={(e) => {
+                              const newData = [...gridDatas.reviewODSTR8];
+                              newData[index].observedValue = e.target.value;
+                              setGridDatas({
+                                ...gridDatas,
+                                reviewODSTR8: newData,
+                              });
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.compliesNotComplies}
+                            onChange={(e) => {
+                              const newData = [...gridDatas.reviewODSTR8];
+                              newData[index].compliesNotComplies = e.target.value;
+                              setGridDatas({
+                                ...gridDatas,
+                                reviewODSTR8: newData,
+                              });
+                            }}
+                          />
+                        </td>
+                      </tr>
                     );
                   })}
                 </tbody>
               </table>
             </div>{" "}
-            <h1 className="gridName pt-8">Drug Substance 9 Test Result</h1>
+            <div className=" grid grid-cols-10 shadow-md shadow-gray-700/30 my-20 bg-slate-700 p-4 gap-4 mx-[-30px]">
+              <div className="py-2 col-span-10 cursor-pointer text-gray-100 text-[22px] flex justify-center items-center">
+                {" "}
+                Impurity Of Terbinafine Analysis
+              </div>
+              <div className="col-span-4 row-span-1 mb-10 max-h-38 ">
+                <HighchartsLine
+                  heading={"Line Analysis"}
+                  xHeading={"Batch No."}
+                  yHeading={"Observed Value"}
+                  yMax={7}
+                  yMin={3}
+                  yTickInterval={0.5}
+                  plotLines={ParacetamolImpurityPlotLines}
+                  zones={paracetamolImpurityZones}
+                  annotations={paracetamolAnnotations}
+                  highchartData={paracetamolpHData8}
+                />
+              </div>
+              <div className="col-span-4 row-span-1">
+                <HighchartsHistogram
+                  // phOfParacetamol={phChartsConfig}
+                  data={terbinafineImpurityData.observedValues}
+                  lsl={impurityChartsConfig.lsl}
+                  usl={impurityChartsConfig.usl}
+                  heading={impurityChartsConfig.histoHeading}
+                  yAxisTitle={impurityChartsConfig.yAxisTitle}
+                  xAxisTitle={impurityChartsConfig.xAxisTitle}
+                  bins={impurityChartsConfig.bins}
+                  plotLines={impurityChartsConfig.plotLines}
+                />
+              </div>
+              <div className="col-span-2 row-span-2 bg-white">
+                <table>
+                  <tbody>
+                    <tr>
+                      <td>
+                        {" "}
+                        <b>Cp B/W</b>
+                      </td>
+                      <td>
+                        <b>0.67</b>
+                      </td>
+                      <td>Decimal Points</td>
+                      <td>2.00</td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <b>Cpk B/W</b>
+                      </td>
+                      <td>
+                        <b>0.60</b>
+                      </td>
+                      <td>Unit Of Measure</td>
+                      <td>0.001</td>
+                    </tr>
+                    <tr>
+                      <td>CpU B/W</td>
+                      <td>0.60</td>
+                      <td>Number Of Entries</td>
+                      <td>7</td>
+                    </tr>
+                    <tr>
+                      <td>Cpl B/W</td>
+                      <td>0.75</td>
+                      <td>
+                        <b>Average</b>
+                      </td>
+                      <td>
+                        <b>2.89</b>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>Cpm</td>
+                      <td>0.72</td>
+                      <td>
+                        <b>Stdev</b>
+                      </td>
+                      <td>
+                        <b>0.45</b>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>Cr</td>
+                      <td>1.48</td>
+                      <td>
+                        <b>Median</b>
+                      </td>
+                      <td>
+                        <b>3.00</b>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>ZTarget/AZ</td>
+                      <td>0.25</td>
+                      <td>
+                        <b>Mode</b>
+                      </td>
+                      <td>
+                        <b>3.00</b>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <b>Pp</b>
+                      </td>
+                      <td>0.74</td>
+                      <td>Minimum Value</td>
+                      <td>2.00</td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <b>Ppk</b>
+                      </td>
+                      <td>0.66</td>
+                      <td>Maximum Value</td>
+                      <td>
+                        <b>2.00</b>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>PpU</td>
+                      <td>0.83</td>
+                      <td>Range</td>
+                      <td>1.50</td>
+                    </tr>
+                    <tr>
+                      <td>Ppl</td>
+                      <td>0.66</td>
+                      <td>
+                        <b>LSL</b>
+                      </td>
+                      <td>
+                        <b>4.00</b>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>Skewness</td>
+                      <td>-1.19</td>
+                      <td>
+                        <b>USL</b>
+                      </td>
+                      <td>
+                        <b>6.00</b>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>Stdev</td>
+                      <td>0.45</td>
+                      <td>Number Of Bars</td>
+                      <td>3.00</td>
+                    </tr>
+                    <tr>
+                      <td>Min</td>
+                      <td>2.00</td>
+                      <td>Number Of Classes</td>
+                      <td>4.00</td>
+                    </tr>
+                    <tr>
+                      <td>Max</td>
+                      <td>3.50</td>
+                      <td>Class Width</td>
+                      <td>0.35</td>
+                    </tr>
+                    <tr>
+                      <td>Range</td>
+                      <td>1.50</td>
+                      <td>Beginning Point</td>
+                      <td>1.65</td>
+                    </tr>
+                    <tr>
+                      <td>Z Bench</td>
+                      <td>1.79</td>
+                      <td>Stdev Est</td>
+                      <td>0.46</td>
+                    </tr>
+                    <tr>
+                      <td>% Defects</td>
+                      <td>0.0%</td>
+                      <td>d2/c4</td>
+                      <td>0.92</td>
+                    </tr>
+                    <tr>
+                      <td>PPM</td>
+                      <td>0.00</td>
+                      <td>Target</td>
+                      <td>3</td>
+                    </tr>
+                    <tr>
+                      <td>Exp PPM ST</td>
+                      <td>36586.97</td>
+                      <td>Sigma</td>
+                      <td>3.29</td>
+                    </tr>
+                    <tr>
+                      <td>Exp PPM LT</td>
+                      <td>30738.66</td>
+                      <td></td>
+                      <td></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <div className="col-span-4">
+                <HighchartsPareto
+                  // phOfParacetamol={phOfParacetamolPareto}
+                  data={terbinafineImpurityData.observedValues}
+                  lsl={impurityChartsConfig.lsl}
+                  usl={impurityChartsConfig.usl}
+                  heading={impurityChartsConfig.paretoHeading}
+                  yAxisTitle={impurityChartsConfig.yAxisTitle}
+                  bins={impurityChartsConfig.bins}
+                  plotLines={impurityChartsConfig.plotLines}
+                />
+              </div>
+              <div className="col-span-4">
+                <HighchartsScatterPlot
+                  // phOfParacetamol={phOfParacetamolScatter}
+                  data={terbinafineImpurityData.observedValues}
+                  batchNumbers={terbinafineImpurityData.batchNumbers}
+                  lsl={impurityChartsConfig.lsl}
+                  usl={impurityChartsConfig.usl}
+                  heading={impurityChartsConfig.scatterHeading}
+                  yAxisTitle={impurityChartsConfig.yAxisTitle}
+                  max={impurityChartsConfig.max}
+                />
+              </div>
+              <div className="py-2 flex justify-end col-span-10 ">
+                <button className="p-2 bg-emerald-400 text-white rounded"> Launch Deviation</button>
+              </div>
+            </div>
+            <h1 className="gridName pt-8">Dissolution Of Terbinafine Test Result</h1>
             <div>
               {/* <div className="AddRows d-flex">
     <MdNoteAdd onClick={addReviewODSTRRow} />
@@ -6438,222 +9096,2476 @@ export default function APQR() {
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addReviewODSTRRow9} />
-                  <div className="addrowinstruction  pl-2">
-                    Add Rows by clicking on (+) icon
-                  </div>
+                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
                 </div>
                 <div className="flex gap-4 ">
-                  <ExcelExport
-                    data={balanceSheet}
-                    fileName="balance-sheet-summary.xlsx"
-                  />
+                  <ExcelExportImport
+                    data={gridDatas.reviewODSTR9}
+                    setimportedData={setimportedData}
+                    fileName="reviewODSTR9.xlsx"
+                    gridNo={30}
+                  />{" "}
                 </div>
               </div>
               <table>
                 <thead>
                   <tr>
-                    <th rowSpan={2}>Sl. No</th>
-                    <th rowSpan={2}>Tests parameter</th>
-                    <th rowSpan={2}>Specification limit</th>
-                    <th colSpan={2}>Obtained value</th>
-                    <th rowSpan={2}>Complies/Does Not complies</th>
-                  </tr>
-                  <tr>
-                    <th>Minimum</th>
-                    <th>Maximum</th>
+                    <th>Batch No</th>
+                    <th>Tests parameter</th>
+                    <th>LSL</th>
+                    <th>USL</th>
+                    <th>LCL</th>
+                    <th>UCL</th>
+                    <th>Observed Value</th>
+                    <th>Complies/Does Not complies</th>
                   </tr>
                 </thead>
                 <tbody>
-                  {pQRData?.reviewODSTR9?.map((item, index) => {
+                  {gridDatas?.reviewODSTR9?.map((item, index) => {
                     return (
                       <tr key={index}>
-                      <td>{index + 1}</td>
-                      <td>
-                        <input 
-                         value={item.testsParameter}
-                         onChange={(e) => {
-                           const newData = [...pQRData.reviewODSTR9];
-                           newData[index].testsParameter = e.target.value;
-                           setPQRData({
-                             ...pQRData,
-                             reviewODSTR9: newData,
-                           });
-                         }} 
+                        <input
+                          value={item.batchNo}
+                          onChange={(e) => {
+                            const newData = [...gridDatas.reviewODSTR9];
+                            newData[index].batchNo = e.target.value;
+                            setGridDatas({
+                              ...gridDatas,
+                              reviewODSTR9: newData,
+                            });
+                          }}
                         />
-                      </td>
-                      <td>
-                        <input 
-                          value={item.specificationLimit}
-                          onChange={(e) => {
-                            const newData = [...pQRData.reviewODSTR9];
-                            newData[index].specificationLimit = e.target.value;
-                            setPQRData({
-                              ...pQRData,
-                              reviewODSTR9: newData,
-                            });
-                          }} 
-                        />
-                      </td>
-                      <td>
-                        <input 
-                          value={item.obtainedValue.minimum}
-                          onChange={(e) => {
-                            const newData = [...pQRData.reviewODSTR9];
-                            newData[index].obtainedValue.minimum = e.target.value;
-                            setPQRData({
-                              ...pQRData,
-                              reviewODSTR9: newData,
-                            });
-                          }} />
-                      </td>
-                      <td>
-                        <input 
-                          value={item.obtainedValue.maximum}
-                          onChange={(e) => {
-                            const newData = [...pQRData.reviewODSTR9];
-                            newData[index].obtainedValue.maximum = e.target.value;
-                            setPQRData({
-                              ...pQRData,
-                              reviewODSTR9: newData,
-                            });
-                          }} />
-                      </td>
-                      <td>
-                        <input 
-                          value={item.compliesNotComplies}
-                          onChange={(e) => {
-                            const newData = [...pQRData.reviewODSTR9];
-                            newData[index].compliesNotComplies = e.target.value;
-                            setPQRData({
-                              ...pQRData,
-                              reviewODSTR9: newData,
-                            });
-                          }}/>
-                      </td>
-                    </tr>
+                        <td>
+                          <input
+                            value={item.testsParameter}
+                            onChange={(e) => {
+                              const newData = [...gridDatas.reviewODSTR9];
+                              newData[index].testsParameter = e.target.value;
+                              setGridDatas({
+                                ...gridDatas,
+                                reviewODSTR9: newData,
+                              });
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            type="number"
+                            value={item.LSL}
+                            onChange={(e) => {
+                              const newData = [...gridDatas.reviewODSTR9];
+                              newData[index].LSL = e.target.value;
+                              setGridDatas({
+                                ...gridDatas,
+                                reviewODSTR9: newData,
+                              });
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            type="number"
+                            value={item.USL}
+                            onChange={(e) => {
+                              const newData = [...gridDatas.reviewODSTR9];
+                              newData[index].USL = e.target.value;
+                              setGridDatas({
+                                ...gridDatas,
+                                reviewODSTR9: newData,
+                              });
+                            }}
+                          />
+                        </td>{" "}
+                        <td>
+                          <input
+                            type="number"
+                            value={item.LCL}
+                            onChange={(e) => {
+                              const newData = [...gridDatas.reviewODSTR9];
+                              newData[index].LCL = e.target.value;
+                              setGridDatas({
+                                ...gridDatas,
+                                reviewODSTR9: newData,
+                              });
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            type="number"
+                            value={item.UCL}
+                            onChange={(e) => {
+                              const newData = [...gridDatas.reviewODSTR9];
+                              newData[index].UCL = e.target.value;
+                              setGridDatas({
+                                ...gridDatas,
+                                reviewODSTR9: newData,
+                              });
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            type="number"
+                            value={item.observedValue}
+                            onChange={(e) => {
+                              const newData = [...gridDatas.reviewODSTR9];
+                              newData[index].observedValue = e.target.value;
+                              setGridDatas({
+                                ...gridDatas,
+                                reviewODSTR9: newData,
+                              });
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.compliesNotComplies}
+                            onChange={(e) => {
+                              const newData = [...gridDatas.reviewODSTR9];
+                              newData[index].compliesNotComplies = e.target.value;
+                              setGridDatas({
+                                ...gridDatas,
+                                reviewODSTR9: newData,
+                              });
+                            }}
+                          />
+                        </td>
+                      </tr>
                     );
                   })}
                 </tbody>
               </table>
             </div>{" "}
-            <h1 className="gridName pt-8">Drug Substance 10 Test Result</h1>
+            <div className=" grid grid-cols-10 shadow-md shadow-gray-700/30 my-20 bg-slate-700 p-4 gap-4 mx-[-30px]">
+              <div className="py-2 col-span-10 cursor-pointer text-gray-100 text-[22px] flex justify-center items-center">
+                Dissolution Of Terbinafine Analysis
+              </div>
+              <div className="col-span-4 row-span-1 mb-10 max-h-38 ">
+                <HighchartsLine
+                  heading={"Line Analytics"}
+                  xHeading={"Batch No."}
+                  yHeading={"Observed Value"}
+                  yMax={6}
+                  yMin={0}
+                  yTickInterval={0.8}
+                  plotLines={ParacetamolDissolutionPlotLines}
+                  zones={paracetamolDissolutionZones}
+                  annotations={paracetamolAnnotations}
+                  highchartData={paracetamolpHData9}
+                />
+              </div>
+              <div className="col-span-4 row-span-1">
+                <HighchartsHistogram
+                  // phOfParacetamol={phChartsConfig}
+                  data={terbinafineDissolutionData.observedValues}
+                  lsl={dissolutionChartsConfig.lsl}
+                  usl={dissolutionChartsConfig.usl}
+                  heading={dissolutionChartsConfig.histoHeading}
+                  yAxisTitle={dissolutionChartsConfig.yAxisTitle}
+                  xAxisTitle={dissolutionChartsConfig.xAxisTitle}
+                  bins={dissolutionChartsConfig.bins}
+                  plotLines={dissolutionChartsConfig.plotLines}
+                />
+              </div>
+              <div className="col-span-2 row-span-2 bg-white">
+                <table>
+                  <tbody>
+                    <tr>
+                      <td>
+                        {" "}
+                        <b>Cp B/W</b>
+                      </td>
+                      <td>
+                        <b>0.67</b>
+                      </td>
+                      <td>Decimal Points</td>
+                      <td>2.00</td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <b>Cpk B/W</b>
+                      </td>
+                      <td>
+                        <b>0.60</b>
+                      </td>
+                      <td>Unit Of Measure</td>
+                      <td>0.001</td>
+                    </tr>
+                    <tr>
+                      <td>CpU B/W</td>
+                      <td>0.60</td>
+                      <td>Number Of Entries</td>
+                      <td>7</td>
+                    </tr>
+                    <tr>
+                      <td>Cpl B/W</td>
+                      <td>0.75</td>
+                      <td>
+                        <b>Average</b>
+                      </td>
+                      <td>
+                        <b>2.89</b>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>Cpm</td>
+                      <td>0.72</td>
+                      <td>
+                        <b>Stdev</b>
+                      </td>
+                      <td>
+                        <b>0.45</b>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>Cr</td>
+                      <td>1.48</td>
+                      <td>
+                        <b>Median</b>
+                      </td>
+                      <td>
+                        <b>3.00</b>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>ZTarget/AZ</td>
+                      <td>0.25</td>
+                      <td>
+                        <b>Mode</b>
+                      </td>
+                      <td>
+                        <b>3.00</b>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <b>Pp</b>
+                      </td>
+                      <td>0.74</td>
+                      <td>Minimum Value</td>
+                      <td>2.00</td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <b>Ppk</b>
+                      </td>
+                      <td>0.66</td>
+                      <td>Maximum Value</td>
+                      <td>
+                        <b>2.00</b>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>PpU</td>
+                      <td>0.83</td>
+                      <td>Range</td>
+                      <td>1.50</td>
+                    </tr>
+                    <tr>
+                      <td>Ppl</td>
+                      <td>0.66</td>
+                      <td>
+                        <b>LSL</b>
+                      </td>
+                      <td>
+                        <b>2.00</b>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>Skewness</td>
+                      <td>-1.19</td>
+                      <td>
+                        <b>USL</b>
+                      </td>
+                      <td>
+                        <b>6.00</b>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>Stdev</td>
+                      <td>0.45</td>
+                      <td>Number Of Bars</td>
+                      <td>3.00</td>
+                    </tr>
+                    <tr>
+                      <td>Min</td>
+                      <td>2.00</td>
+                      <td>Number Of Classes</td>
+                      <td>4.00</td>
+                    </tr>
+                    <tr>
+                      <td>Max</td>
+                      <td>3.50</td>
+                      <td>Class Width</td>
+                      <td>0.35</td>
+                    </tr>
+                    <tr>
+                      <td>Range</td>
+                      <td>1.50</td>
+                      <td>Beginning Point</td>
+                      <td>1.65</td>
+                    </tr>
+                    <tr>
+                      <td>Z Bench</td>
+                      <td>1.79</td>
+                      <td>Stdev Est</td>
+                      <td>0.46</td>
+                    </tr>
+                    <tr>
+                      <td>% Defects</td>
+                      <td>0.0%</td>
+                      <td>d2/c4</td>
+                      <td>0.92</td>
+                    </tr>
+                    <tr>
+                      <td>PPM</td>
+                      <td>0.00</td>
+                      <td>Target</td>
+                      <td>3</td>
+                    </tr>
+                    <tr>
+                      <td>Exp PPM ST</td>
+                      <td>36586.97</td>
+                      <td>Sigma</td>
+                      <td>3.29</td>
+                    </tr>
+                    <tr>
+                      <td>Exp PPM LT</td>
+                      <td>30738.66</td>
+                      <td></td>
+                      <td></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <div className="col-span-4">
+                <HighchartsPareto
+                  // phOfParacetamol={phOfParacetamolPareto}
+                  data={terbinafineDissolutionData.observedValues}
+                  lsl={dissolutionChartsConfig.lsl}
+                  usl={dissolutionChartsConfig.usl}
+                  heading={dissolutionChartsConfig.paretoHeading}
+                  yAxisTitle={dissolutionChartsConfig.yAxisTitle}
+                  bins={dissolutionChartsConfig.bins}
+                  plotLines={dissolutionChartsConfig.plotLines}
+                />
+              </div>
+              <div className="col-span-4">
+                <HighchartsScatterPlot
+                  // phOfParacetamol={phOfParacetamolScatter}
+                  data={terbinafineDissolutionData.observedValues}
+                  batchNumbers={terbinafineDissolutionData.batchNumbers}
+                  lsl={dissolutionChartsConfig.lsl}
+                  usl={dissolutionChartsConfig.usl}
+                  heading={dissolutionChartsConfig.scatterHeading}
+                  yAxisTitle={dissolutionChartsConfig.yAxisTitle}
+                  max={dissolutionChartsConfig.max}
+                />
+              </div>
+              <div className="py-2 flex justify-end col-span-10 ">
+                <button className="p-2 bg-emerald-400 text-white rounded"> Launch Deviation</button>
+              </div>
+            </div>
+            <h1 className="gridName pt-8">Disintegration Of Terbinafine Test Result</h1>
             <div>
-              {/* <div className="AddRows d-flex">
-    <MdNoteAdd onClick={addReviewODSTRRow} />
-    <div className="addrowinstruction"></div>
-  </div> */}
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addReviewODSTRRow10} />
-                  <div className="addrowinstruction  pl-2">
-                    Add Rows by clicking on (+) icon
-                  </div>
+                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
                 </div>
                 <div className="flex gap-4 ">
-                  <ExcelExport
-                    data={balanceSheet}
-                    fileName="balance-sheet-summary.xlsx"
-                  />
+                  <ExcelExportImport
+                    data={gridDatas.reviewODSTR10}
+                    setimportedData={setimportedData}
+                    fileName="reviewODSTR10.xlsx"
+                    gridNo={31}
+                  />{" "}
                 </div>
               </div>
               <table>
                 <thead>
                   <tr>
-                    <th rowSpan={2}>Sl. No</th>
-                    <th rowSpan={2}>Tests parameter</th>
-                    <th rowSpan={2}>Specification limit</th>
-                    <th colSpan={2}>Obtained value</th>
-                    <th rowSpan={2}>Complies/Does Not complies</th>
-                  </tr>
-                  <tr>
-                    <th>Minimum</th>
-                    <th>Maximum</th>
+                    <th>Batch No</th>
+                    <th>Tests parameter</th>
+                    <th>LSL</th>
+                    <th>USL</th>
+                    <th>LCL</th>
+                    <th>UCL</th>
+                    <th>Observed Value</th>
+                    <th>Complies/Does Not complies</th>
                   </tr>
                 </thead>
                 <tbody>
-                  {pQRData?.reviewODSTR10?.map((item, index) => {
+                  {gridDatas?.reviewODSTR10?.map((item, index) => {
                     return (
                       <tr key={index}>
-                      <td>{index + 1}</td>
-                      <td>
-                        <input 
-                         value={item.testsParameter}
-                         onChange={(e) => {
-                           const newData = [...pQRData.reviewODSTR10];
-                           newData[index].testsParameter = e.target.value;
-                           setPQRData({
-                             ...pQRData,
-                             reviewODSTR10: newData,
-                           });
-                         }} 
+                        <input
+                          value={item.batchNo}
+                          onChange={(e) => {
+                            const newData = [...gridDatas.reviewODSTR10];
+                            newData[index].batchNo = e.target.value;
+                            setGridDatas({
+                              ...gridDatas,
+                              reviewODSTR10: newData,
+                            });
+                          }}
                         />
-                      </td>
-                      <td>
-                        <input 
-                          value={item.specificationLimit}
-                          onChange={(e) => {
-                            const newData = [...pQRData.reviewODSTR10];
-                            newData[index].specificationLimit = e.target.value;
-                            setPQRData({
-                              ...pQRData,
-                              reviewODSTR10: newData,
-                            });
-                          }} 
-                        />
-                      </td>
-                      <td>
-                        <input 
-                          value={item.obtainedValue.minimum}
-                          onChange={(e) => {
-                            const newData = [...pQRData.reviewODSTR10];
-                            newData[index].obtainedValue.minimum = e.target.value;
-                            setPQRData({
-                              ...pQRData,
-                              reviewODSTR10: newData,
-                            });
-                          }} />
-                      </td>
-                      <td>
-                        <input 
-                          value={item.obtainedValue.maximum}
-                          onChange={(e) => {
-                            const newData = [...pQRData.reviewODSTR10];
-                            newData[index].obtainedValue.maximum = e.target.value;
-                            setPQRData({
-                              ...pQRData,
-                              reviewODSTR10: newData,
-                            });
-                          }} />
-                      </td>
-                      <td>
-                        <input 
-                          value={item.compliesNotComplies}
-                          onChange={(e) => {
-                            const newData = [...pQRData.reviewODSTR10];
-                            newData[index].compliesNotComplies = e.target.value;
-                            setPQRData({
-                              ...pQRData,
-                              reviewODSTR10: newData,
-                            });
-                          }}/>
-                      </td>
-                    </tr>
+                        <td>
+                          <input
+                            value={item.testsParameter}
+                            onChange={(e) => {
+                              const newData = [...gridDatas.reviewODSTR10];
+                              newData[index].testsParameter = e.target.value;
+                              setGridDatas({
+                                ...gridDatas,
+                                reviewODSTR10: newData,
+                              });
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            type="number"
+                            value={item.LSL}
+                            onChange={(e) => {
+                              const newData = [...gridDatas.reviewODSTR10];
+                              newData[index].LSL = e.target.value;
+                              setGridDatas({
+                                ...gridDatas,
+                                reviewODSTR10: newData,
+                              });
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            type="number"
+                            value={item.USL}
+                            onChange={(e) => {
+                              const newData = [...gridDatas.reviewODSTR10];
+                              newData[index].USL = e.target.value;
+                              setGridDatas({
+                                ...gridDatas,
+                                reviewODSTR10: newData,
+                              });
+                            }}
+                          />
+                        </td>{" "}
+                        <td>
+                          <input
+                            type="number"
+                            value={item.LCL}
+                            onChange={(e) => {
+                              const newData = [...gridDatas.reviewODSTR10];
+                              newData[index].LCL = e.target.value;
+                              setGridDatas({
+                                ...gridDatas,
+                                reviewODSTR10: newData,
+                              });
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            type="number"
+                            value={item.UCL}
+                            onChange={(e) => {
+                              const newData = [...gridDatas.reviewODSTR10];
+                              newData[index].UCL = e.target.value;
+                              setGridDatas({
+                                ...gridDatas,
+                                reviewODSTR10: newData,
+                              });
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            type="number"
+                            value={item.observedValue}
+                            onChange={(e) => {
+                              const newData = [...gridDatas.reviewODSTR10];
+                              newData[index].observedValue = e.target.value;
+                              setGridDatas({
+                                ...gridDatas,
+                                reviewODSTR10: newData,
+                              });
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.compliesNotComplies}
+                            onChange={(e) => {
+                              const newData = [...gridDatas.reviewODSTR10];
+                              newData[index].compliesNotComplies = e.target.value;
+                              setGridDatas({
+                                ...gridDatas,
+                                reviewODSTR10: newData,
+                              });
+                            }}
+                          />
+                        </td>
+                      </tr>
                     );
                   })}
                 </tbody>
               </table>
             </div>
+            <div className=" grid grid-cols-10 shadow-md shadow-gray-700/30 my-20 bg-slate-700 p-4 gap-4 mx-[-30px]">
+              <div className="py-2 col-span-10 cursor-pointer text-gray-100 text-[22px] flex justify-center items-center">
+                {" "}
+                Disintegration Of Terbinafine Analysis
+              </div>
+              <div className="col-span-4 row-span-1 mb-10 max-h-38 ">
+                <HighchartsLine
+                  heading={""}
+                  xHeading={"Batch No."}
+                  yHeading={"Observed Value"}
+                  yMax={100}
+                  yMin={75}
+                  yTickInterval={7}
+                  plotLines={ParacetamolDisintegratePlotLines}
+                  zones={paracetamolDisinterationZones}
+                  annotations={paracetamolAnnotations}
+                  highchartData={paracetamolpHData10}
+                />
+              </div>
+              <div className="col-span-4 row-span-1">
+                <HighchartsHistogram
+                  // phOfParacetamol={phChartsConfig}
+                  data={terbinafineDisIntegrationData.observedValues}
+                  lsl={disIntegrationChartsConfig.lsl}
+                  usl={disIntegrationChartsConfig.usl}
+                  heading={disIntegrationChartsConfig.histoHeading}
+                  yAxisTitle={disIntegrationChartsConfig.yAxisTitle}
+                  xAxisTitle={disIntegrationChartsConfig.xAxisTitle}
+                  bins={disIntegrationChartsConfig.bins}
+                  plotLines={disIntegrationChartsConfig.plotLines}
+                />
+              </div>
+              <div className="col-span-2 row-span-2 bg-white">
+                <table>
+                  <tbody>
+                    <tr>
+                      <td>
+                        {" "}
+                        <b>Cp B/W</b>
+                      </td>
+                      <td>
+                        <b>0.67</b>
+                      </td>
+                      <td>Decimal Points</td>
+                      <td>2.00</td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <b>Cpk B/W</b>
+                      </td>
+                      <td>
+                        <b>0.60</b>
+                      </td>
+                      <td>Unit Of Measure</td>
+                      <td>0.001</td>
+                    </tr>
+                    <tr>
+                      <td>CpU B/W</td>
+                      <td>0.60</td>
+                      <td>Number Of Entries</td>
+                      <td>7</td>
+                    </tr>
+                    <tr>
+                      <td>Cpl B/W</td>
+                      <td>0.75</td>
+                      <td>
+                        <b>Average</b>
+                      </td>
+                      <td>
+                        <b>2.89</b>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>Cpm</td>
+                      <td>0.72</td>
+                      <td>
+                        <b>Stdev</b>
+                      </td>
+                      <td>
+                        <b>0.45</b>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>Cr</td>
+                      <td>1.48</td>
+                      <td>
+                        <b>Median</b>
+                      </td>
+                      <td>
+                        <b>3.00</b>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>ZTarget/AZ</td>
+                      <td>0.25</td>
+                      <td>
+                        <b>Mode</b>
+                      </td>
+                      <td>
+                        <b>3.00</b>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <b>Pp</b>
+                      </td>
+                      <td>0.74</td>
+                      <td>Minimum Value</td>
+                      <td>2.00</td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <b>Ppk</b>
+                      </td>
+                      <td>0.66</td>
+                      <td>Maximum Value</td>
+                      <td>
+                        <b>2.00</b>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>PpU</td>
+                      <td>0.83</td>
+                      <td>Range</td>
+                      <td>1.50</td>
+                    </tr>
+                    <tr>
+                      <td>Ppl</td>
+                      <td>0.66</td>
+                      <td>
+                        <b>LSL</b>
+                      </td>
+                      <td>
+                        <b>2.00</b>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>Skewness</td>
+                      <td>-1.19</td>
+                      <td>
+                        <b>USL</b>
+                      </td>
+                      <td>
+                        <b>4.00</b>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>Stdev</td>
+                      <td>0.45</td>
+                      <td>Number Of Bars</td>
+                      <td>3.00</td>
+                    </tr>
+                    <tr>
+                      <td>Min</td>
+                      <td>2.00</td>
+                      <td>Number Of Classes</td>
+                      <td>4.00</td>
+                    </tr>
+                    <tr>
+                      <td>Max</td>
+                      <td>3.50</td>
+                      <td>Class Width</td>
+                      <td>0.35</td>
+                    </tr>
+                    <tr>
+                      <td>Range</td>
+                      <td>1.50</td>
+                      <td>Beginning Point</td>
+                      <td>1.65</td>
+                    </tr>
+                    <tr>
+                      <td>Z Bench</td>
+                      <td>1.79</td>
+                      <td>Stdev Est</td>
+                      <td>0.46</td>
+                    </tr>
+                    <tr>
+                      <td>% Defects</td>
+                      <td>0.0%</td>
+                      <td>d2/c4</td>
+                      <td>0.92</td>
+                    </tr>
+                    <tr>
+                      <td>PPM</td>
+                      <td>0.00</td>
+                      <td>Target</td>
+                      <td>3</td>
+                    </tr>
+                    <tr>
+                      <td>Exp PPM ST</td>
+                      <td>36586.97</td>
+                      <td>Sigma</td>
+                      <td>3.29</td>
+                    </tr>
+                    <tr>
+                      <td>Exp PPM LT</td>
+                      <td>30738.66</td>
+                      <td></td>
+                      <td></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <div className="col-span-4">
+                <HighchartsPareto
+                  // phOfParacetamol={phOfParacetamolPareto}
+                  data={terbinafineDisIntegrationData.observedValues}
+                  lsl={disIntegrationChartsConfig.lsl}
+                  usl={disIntegrationChartsConfig.usl}
+                  heading={disIntegrationChartsConfig.paretoHeading}
+                  yAxisTitle={disIntegrationChartsConfig.yAxisTitle}
+                  bins={disIntegrationChartsConfig.bins}
+                  plotLines={disIntegrationChartsConfig.plotLines}
+                />
+              </div>
+              <div className="col-span-4">
+                <HighchartsScatterPlot
+                  // phOfParacetamol={phOfParacetamolScatter}
+                  data={terbinafineDisIntegrationData.observedValues}
+                  batchNumbers={terbinafineDisIntegrationData.batchNumbers}
+                  lsl={disIntegrationChartsConfig.lsl}
+                  usl={disIntegrationChartsConfig.usl}
+                  heading={disIntegrationChartsConfig.scatterHeading}
+                  yAxisTitle={disIntegrationChartsConfig.yAxisTitle}
+                  max={disIntegrationChartsConfig.max}
+                />
+              </div>
+              <div className="py-2 flex justify-end col-span-10 ">
+                <button className="p-2 bg-emerald-400 text-white rounded"> Launch Deviation</button>
+              </div>
+            </div>
+            <h1 className="gridName pt-8">pH Of Pentoprazole Test Result</h1>
+            <div>
+              <div className="AddRows d-flex w-full justify-between items-center text-3xl">
+                <div className="flex items-center">
+                  <MdNoteAdd onClick={addReviewODSTRRow11} />
+                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
+                </div>
+                <div className="flex gap-4 ">
+                  <ExcelExportImport
+                    data={gridDatas.reviewODSTR11}
+                    setimportedData={setimportedData}
+                    fileName="reviewODSTR11.xlsx"
+                    gridNo={32}
+                  />{" "}
+                </div>
+              </div>
+              <table>
+                <thead>
+                  <tr>
+                    <th>Batch No</th>
+                    <th>Tests parameter</th>
+                    <th>LSL</th>
+                    <th>USL</th>
+                    <th>LCL</th>
+                    <th>UCL</th>
+                    <th>Observed Value</th>
+                    <th>Complies/Does Not complies</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {gridDatas?.reviewODSTR11?.map((item, index) => {
+                    return (
+                      <tr key={index}>
+                        <input
+                          value={item.batchNo}
+                          onChange={(e) => {
+                            const newData = [...gridDatas.reviewODSTR11];
+                            newData[index].batchNo = e.target.value;
+                            setGridDatas({
+                              ...gridDatas,
+                              reviewODSTR11: newData,
+                            });
+                          }}
+                        />
+                        <td>
+                          <input
+                            value={item.testsParameter}
+                            onChange={(e) => {
+                              const newData = [...gridDatas.reviewODSTR11];
+                              newData[index].testsParameter = e.target.value;
+                              setGridDatas({
+                                ...gridDatas,
+                                reviewODSTR11: newData,
+                              });
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            type="number"
+                            value={item.LSL}
+                            onChange={(e) => {
+                              const newData = [...gridDatas.reviewODSTR11];
+                              newData[index].LSL = e.target.value;
+                              setGridDatas({
+                                ...gridDatas,
+                                reviewODSTR11: newData,
+                              });
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            type="number"
+                            value={item.USL}
+                            onChange={(e) => {
+                              const newData = [...gridDatas.reviewODSTR11];
+                              newData[index].USL = e.target.value;
+                              setGridDatas({
+                                ...gridDatas,
+                                reviewODSTR11: newData,
+                              });
+                            }}
+                          />
+                        </td>{" "}
+                        <td>
+                          <input
+                            type="number"
+                            value={item.LCL}
+                            onChange={(e) => {
+                              const newData = [...gridDatas.reviewODSTR11];
+                              newData[index].LCL = e.target.value;
+                              setGridDatas({
+                                ...gridDatas,
+                                reviewODSTR11: newData,
+                              });
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            type="number"
+                            value={item.UCL}
+                            onChange={(e) => {
+                              const newData = [...gridDatas.reviewODSTR11];
+                              newData[index].UCL = e.target.value;
+                              setGridDatas({
+                                ...gridDatas,
+                                reviewODSTR11: newData,
+                              });
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            type="number"
+                            value={item.observedValue}
+                            onChange={(e) => {
+                              const newData = [...gridDatas.reviewODSTR11];
+                              newData[index].observedValue = e.target.value;
+                              setGridDatas({
+                                ...gridDatas,
+                                reviewODSTR11: newData,
+                              });
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.compliesNotComplies}
+                            onChange={(e) => {
+                              const newData = [...gridDatas.reviewODSTR11];
+                              newData[index].compliesNotComplies = e.target.value;
+                              setGridDatas({
+                                ...gridDatas,
+                                reviewODSTR11: newData,
+                              });
+                            }}
+                          />
+                        </td>
+                      </tr>
+                    );
+                  })}
+                </tbody>
+              </table>
+            </div>
+            <div className=" grid grid-cols-10 shadow-md shadow-gray-700/30 my-20 bg-slate-700 p-4 gap-4 mx-[-30px]">
+              <div className="py-2 col-span-10 cursor-pointer text-gray-100 text-[22px] flex justify-center items-center">
+                {" "}
+                pH Of Pentoprazole Analysis
+              </div>
+              <div className="col-span-4 row-span-1 mb-10 max-h-38 ">
+                <HighchartsLine
+                  heading={"Line Analytics"}
+                  xHeading={"Batch No."}
+                  yHeading={"Observed Value"}
+                  yMax={6}
+                  yMin={1}
+                  yTickInterval={0.5}
+                  plotLines={ParacetamolpHPlotLines}
+                  zones={paracetamolpHZones}
+                  annotations={paracetamolAnnotations}
+                  highchartData={paracetamolpHData11}
+                />
+              </div>
+              <div className="col-span-4 row-span-1">
+                <HighchartsHistogram
+                  data={pentoprazolepHDataH.observedValues}
+                  lsl={phChartsConfig.lsl}
+                  usl={phChartsConfig.usl}
+                  heading={phChartsConfig.histoHeading}
+                  yAxisTitle={phChartsConfig.yAxisTitle}
+                  xAxisTitle={phChartsConfig.xAxisTitle}
+                  bins={phChartsConfig.bins}
+                  plotLines={phChartsConfig.plotLines}
+                />
+              </div>
+              <div className="col-span-2 row-span-2 bg-white">
+                <table>
+                  <tbody>
+                    <tr>
+                      <td>
+                        {" "}
+                        <b>Cp B/W</b>
+                      </td>
+                      <td>
+                        <b>0.67</b>
+                      </td>
+                      <td>Decimal Points</td>
+                      <td>2.00</td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <b>Cpk B/W</b>
+                      </td>
+                      <td>
+                        <b>0.60</b>
+                      </td>
+                      <td>Unit Of Measure</td>
+                      <td>0.001</td>
+                    </tr>
+                    <tr>
+                      <td>CpU B/W</td>
+                      <td>0.60</td>
+                      <td>Number Of Entries</td>
+                      <td>7</td>
+                    </tr>
+                    <tr>
+                      <td>Cpl B/W</td>
+                      <td>0.75</td>
+                      <td>
+                        <b>Average</b>
+                      </td>
+                      <td>
+                        <b>2.89</b>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>Cpm</td>
+                      <td>0.72</td>
+                      <td>
+                        <b>Stdev</b>
+                      </td>
+                      <td>
+                        <b>0.45</b>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>Cr</td>
+                      <td>1.48</td>
+                      <td>
+                        <b>Median</b>
+                      </td>
+                      <td>
+                        <b>3.00</b>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>ZTarget/AZ</td>
+                      <td>0.25</td>
+                      <td>
+                        <b>Mode</b>
+                      </td>
+                      <td>
+                        <b>3.00</b>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <b>Pp</b>
+                      </td>
+                      <td>0.74</td>
+                      <td>Minimum Value</td>
+                      <td>2.00</td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <b>Ppk</b>
+                      </td>
+                      <td>0.66</td>
+                      <td>Maximum Value</td>
+                      <td>
+                        <b>2.00</b>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>PpU</td>
+                      <td>0.83</td>
+                      <td>Range</td>
+                      <td>1.50</td>
+                    </tr>
+                    <tr>
+                      <td>Ppl</td>
+                      <td>0.66</td>
+                      <td>
+                        <b>LSL</b>
+                      </td>
+                      <td>
+                        <b>2.00</b>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>Skewness</td>
+                      <td>-1.19</td>
+                      <td>
+                        <b>USL</b>
+                      </td>
+                      <td>
+                        <b>4.00</b>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>Stdev</td>
+                      <td>0.45</td>
+                      <td>Number Of Bars</td>
+                      <td>3.00</td>
+                    </tr>
+                    <tr>
+                      <td>Min</td>
+                      <td>2.00</td>
+                      <td>Number Of Classes</td>
+                      <td>4.00</td>
+                    </tr>
+                    <tr>
+                      <td>Max</td>
+                      <td>3.50</td>
+                      <td>Class Width</td>
+                      <td>0.35</td>
+                    </tr>
+                    <tr>
+                      <td>Range</td>
+                      <td>1.50</td>
+                      <td>Beginning Point</td>
+                      <td>1.65</td>
+                    </tr>
+                    <tr>
+                      <td>Z Bench</td>
+                      <td>1.79</td>
+                      <td>Stdev Est</td>
+                      <td>0.46</td>
+                    </tr>
+                    <tr>
+                      <td>% Defects</td>
+                      <td>0.0%</td>
+                      <td>d2/c4</td>
+                      <td>0.92</td>
+                    </tr>
+                    <tr>
+                      <td>PPM</td>
+                      <td>0.00</td>
+                      <td>Target</td>
+                      <td>3</td>
+                    </tr>
+                    <tr>
+                      <td>Exp PPM ST</td>
+                      <td>36586.97</td>
+                      <td>Sigma</td>
+                      <td>3.29</td>
+                    </tr>
+                    <tr>
+                      <td>Exp PPM LT</td>
+                      <td>30738.66</td>
+                      <td></td>
+                      <td></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <div className="col-span-4">
+                <HighchartsPareto
+                  data={pentoprazolepHDataH.observedValues}
+                  lsl={phChartsConfig.lsl}
+                  usl={phChartsConfig.usl}
+                  heading={phChartsConfig.paretoHeading}
+                  yAxisTitle={phChartsConfig.yAxisTitle}
+                  bins={phChartsConfig.bins}
+                  plotLines={phChartsConfig.plotLines}
+                />
+              </div>
+              <div className="col-span-4">
+                <HighchartsScatterPlot
+                  // phOfParacetamol={phOfParacetamolScatter}
+                  data={pentoprazolepHDataH.observedValues}
+                  batchNumbers={pentoprazolepHDataH.batchNumbers}
+                  lsl={phChartsConfig.lsl}
+                  usl={phChartsConfig.usl}
+                  heading={phChartsConfig.scatterHeading}
+                  yAxisTitle={phChartsConfig.yAxisTitle}
+                />
+              </div>
+              <div className="py-2 flex justify-end col-span-10 ">
+                <button className="p-2 bg-emerald-400 text-white rounded"> Launch Deviation</button>
+              </div>
+            </div>
+            <h1 className="gridName pt-8">Assay Of Pentoprazole Test Result</h1>
+            <div>
+              <div className="AddRows d-flex w-full justify-between items-center text-3xl">
+                <div className="flex items-center">
+                  <MdNoteAdd onClick={addReviewODSTRRow12} />
+                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
+                </div>
+                <div className="flex gap-4 ">
+                  <ExcelExportImport
+                    data={gridDatas.reviewODSTR12}
+                    setimportedData={setimportedData}
+                    fileName="reviewODSTR12.xlsx"
+                    gridNo={33}
+                  />{" "}
+                </div>
+              </div>
+              <table>
+                <thead>
+                  <tr>
+                    <th>Batch No</th>
+                    <th>Tests parameter</th>
+                    <th>LSL</th>
+                    <th>USL</th>
+                    <th>LCL</th>
+                    <th>UCL</th>
+                    <th>Observed Value</th>
+                    <th>Complies/Does Not complies</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {gridDatas?.reviewODSTR12?.map((item, index) => {
+                    return (
+                      <tr key={index}>
+                        <input
+                          value={item.batchNo}
+                          onChange={(e) => {
+                            const newData = [...gridDatas.reviewODSTR12];
+                            newData[index].batchNo = e.target.value;
+                            setGridDatas({
+                              ...gridDatas,
+                              reviewODSTR12: newData,
+                            });
+                          }}
+                        />
+                        <td>
+                          <input
+                            value={item.testsParameter}
+                            onChange={(e) => {
+                              const newData = [...gridDatas.reviewODSTR12];
+                              newData[index].testsParameter = e.target.value;
+                              setGridDatas({
+                                ...gridDatas,
+                                reviewODSTR12: newData,
+                              });
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            type="number"
+                            value={item.LSL}
+                            onChange={(e) => {
+                              const newData = [...gridDatas.reviewODSTR12];
+                              newData[index].LSL = e.target.value;
+                              setGridDatas({
+                                ...gridDatas,
+                                reviewODSTR12: newData,
+                              });
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            type="number"
+                            value={item.USL}
+                            onChange={(e) => {
+                              const newData = [...gridDatas.reviewODSTR12];
+                              newData[index].USL = e.target.value;
+                              setGridDatas({
+                                ...gridDatas,
+                                reviewODSTR12: newData,
+                              });
+                            }}
+                          />
+                        </td>{" "}
+                        <td>
+                          <input
+                            type="number"
+                            value={item.LCL}
+                            onChange={(e) => {
+                              const newData = [...gridDatas.reviewODSTR12];
+                              newData[index].LCL = e.target.value;
+                              setGridDatas({
+                                ...gridDatas,
+                                reviewODSTR12: newData,
+                              });
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            type="number"
+                            value={item.UCL}
+                            onChange={(e) => {
+                              const newData = [...gridDatas.reviewODSTR12];
+                              newData[index].UCL = e.target.value;
+                              setGridDatas({
+                                ...gridDatas,
+                                reviewODSTR12: newData,
+                              });
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            type="number"
+                            value={item.observedValue}
+                            onChange={(e) => {
+                              const newData = [...gridDatas.reviewODSTR12];
+                              newData[index].observedValue = e.target.value;
+                              setGridDatas({
+                                ...gridDatas,
+                                reviewODSTR12: newData,
+                              });
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.compliesNotComplies}
+                            onChange={(e) => {
+                              const newData = [...gridDatas.reviewODSTR12];
+                              newData[index].compliesNotComplies = e.target.value;
+                              setGridDatas({
+                                ...gridDatas,
+                                reviewODSTR12: newData,
+                              });
+                            }}
+                          />
+                        </td>
+                      </tr>
+                    );
+                  })}
+                </tbody>
+              </table>
+            </div>
+            <div className=" grid grid-cols-10 shadow-md shadow-gray-700/30 my-20 bg-slate-700 p-4 gap-4 mx-[-30px]">
+              <div className="py-2 col-span-10 cursor-pointer text-gray-100 text-[22px] flex justify-center items-center">
+                {" "}
+                Assay Of Pentoprazole Analysis
+              </div>
+              <div className="col-span-4 row-span-1 mb-10 max-h-38 ">
+                <HighchartsLine
+                  heading={"Line Analytics"}
+                  xHeading={"Batch No."}
+                  yHeading={"Observed Value"}
+                  yMax={110}
+                  yMin={86}
+                  yTickInterval={3}
+                  plotLines={ParacetamolAssayPlotLines}
+                  zones={paracetamolAssayZones}
+                  annotations={paracetamolAnnotations}
+                  highchartData={paracetamolpHData12}
+                />
+              </div>
+              <div className="col-span-4 row-span-1">
+                <HighchartsHistogram
+                  // phOfParacetamol={phChartsConfig}
+                  data={pentoprazoleAssayData.observedValues}
+                  lsl={assayChartsConfig.lsl}
+                  usl={assayChartsConfig.usl}
+                  heading={assayChartsConfig.histoHeading}
+                  yAxisTitle={assayChartsConfig.yAxisTitle}
+                  xAxisTitle={assayChartsConfig.xAxisTitle}
+                  bins={assayChartsConfig.bins}
+                  plotLines={assayChartsConfig.plotLines}
+                />
+              </div>
+              <div className="col-span-2 row-span-2 bg-white">
+                <AnalyticsTable />
+              </div>
+              <div className="col-span-4">
+                <HighchartsPareto
+                  // phOfParacetamol={phOfParacetamolPareto}
+                  data={pentoprazoleAssayData.observedValues}
+                  lsl={assayChartsConfig.lsl}
+                  usl={assayChartsConfig.usl}
+                  heading={assayChartsConfig.paretoHeading}
+                  yAxisTitle={assayChartsConfig.yAxisTitle}
+                  bins={assayChartsConfig.bins}
+                  plotLines={assayChartsConfig.plotLines}
+                />
+              </div>
+              <div className="col-span-4">
+                <HighchartsScatterPlot
+                  // phOfParacetamol={phOfParacetamolScatter}
+                  data={pentoprazoleAssayData.observedValues}
+                  batchNumbers={pentoprazoleAssayData.batchNumbers}
+                  lsl={assayChartsConfig.lsl}
+                  usl={assayChartsConfig.usl}
+                  heading={assayChartsConfig.scatterHeading}
+                  yAxisTitle={assayChartsConfig.yAxisTitle}
+                  max={assayChartsConfig.max}
+                />
+              </div>
+              <div className="py-2 flex justify-end col-span-10 ">
+                <button className="p-2 bg-emerald-400 text-white rounded"> Launch Deviation</button>
+              </div>
+            </div>
+            <h1 className="gridName pt-8">Impurity Of Pentoprazole Test Result</h1>
+            <div>
+              <div className="AddRows d-flex w-full justify-between items-center text-3xl">
+                <div className="flex items-center">
+                  <MdNoteAdd onClick={addReviewODSTRRow13} />
+                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
+                </div>
+                <div className="flex gap-4 ">
+                  <ExcelExportImport
+                    data={gridDatas.reviewODSTR13}
+                    setimportedData={setimportedData}
+                    fileName="reviewODSTR13.xlsx"
+                    gridNo={34}
+                  />{" "}
+                </div>
+              </div>
+              <table>
+                <thead>
+                  <tr>
+                    <th>Batch No</th>
+                    <th>Tests parameter</th>
+                    <th>LSL</th>
+                    <th>USL</th>
+                    <th>LCL</th>
+                    <th>UCL</th>
+                    <th>Observed Value</th>
+                    <th>Complies/Does Not complies</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {gridDatas?.reviewODSTR13?.map((item, index) => {
+                    return (
+                      <tr key={index}>
+                        <input
+                          value={item.batchNo}
+                          onChange={(e) => {
+                            const newData = [...gridDatas.reviewODSTR13];
+                            newData[index].batchNo = e.target.value;
+                            setGridDatas({
+                              ...gridDatas,
+                              reviewODSTR13: newData,
+                            });
+                          }}
+                        />
+                        <td>
+                          <input
+                            value={item.testsParameter}
+                            onChange={(e) => {
+                              const newData = [...gridDatas.reviewODSTR13];
+                              newData[index].testsParameter = e.target.value;
+                              setGridDatas({
+                                ...gridDatas,
+                                reviewODSTR13: newData,
+                              });
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            type="number"
+                            value={item.LSL}
+                            onChange={(e) => {
+                              const newData = [...gridDatas.reviewODSTR13];
+                              newData[index].LSL = e.target.value;
+                              setGridDatas({
+                                ...gridDatas,
+                                reviewODSTR13: newData,
+                              });
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            type="number"
+                            value={item.USL}
+                            onChange={(e) => {
+                              const newData = [...gridDatas.reviewODSTR13];
+                              newData[index].USL = e.target.value;
+                              setGridDatas({
+                                ...gridDatas,
+                                reviewODSTR13: newData,
+                              });
+                            }}
+                          />
+                        </td>{" "}
+                        <td>
+                          <input
+                            type="number"
+                            value={item.LCL}
+                            onChange={(e) => {
+                              const newData = [...gridDatas.reviewODSTR13];
+                              newData[index].LCL = e.target.value;
+                              setGridDatas({
+                                ...gridDatas,
+                                reviewODSTR13: newData,
+                              });
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            type="number"
+                            value={item.UCL}
+                            onChange={(e) => {
+                              const newData = [...gridDatas.reviewODSTR13];
+                              newData[index].UCL = e.target.value;
+                              setGridDatas({
+                                ...gridDatas,
+                                reviewODSTR13: newData,
+                              });
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            type="number"
+                            value={item.observedValue}
+                            onChange={(e) => {
+                              const newData = [...gridDatas.reviewODSTR13];
+                              newData[index].observedValue = e.target.value;
+                              setGridDatas({
+                                ...gridDatas,
+                                reviewODSTR13: newData,
+                              });
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.compliesNotComplies}
+                            onChange={(e) => {
+                              const newData = [...gridDatas.reviewODSTR13];
+                              newData[index].compliesNotComplies = e.target.value;
+                              setGridDatas({
+                                ...gridDatas,
+                                reviewODSTR13: newData,
+                              });
+                            }}
+                          />
+                        </td>
+                      </tr>
+                    );
+                  })}
+                </tbody>
+              </table>
+            </div>
+            <div className=" grid grid-cols-10 shadow-md shadow-gray-700/30 my-20 bg-slate-700 p-4 gap-4 mx-[-30px]">
+              <div className="py-2 col-span-10 cursor-pointer text-gray-100 text-[22px] flex justify-center items-center">
+                {" "}
+                Impurity Of Pentoprazole Analysis
+              </div>
+              <div className="col-span-4 row-span-1 mb-10 max-h-38 ">
+                <HighchartsLine
+                  heading={"Line Analysis"}
+                  xHeading={"Batch No."}
+                  yHeading={"Observed Value"}
+                  yMax={7}
+                  yMin={3}
+                  yTickInterval={0.5}
+                  plotLines={ParacetamolImpurityPlotLines}
+                  zones={paracetamolImpurityZones}
+                  annotations={paracetamolAnnotations}
+                  highchartData={paracetamolpHData13}
+                />
+              </div>
+              <div className="col-span-4 row-span-1">
+                <HighchartsHistogram
+                  // phOfParacetamol={phChartsConfig}
+                  data={pentoprazoleImpurityData.observedValues}
+                  lsl={impurityChartsConfig.lsl}
+                  usl={impurityChartsConfig.usl}
+                  heading={impurityChartsConfig.histoHeading}
+                  yAxisTitle={impurityChartsConfig.yAxisTitle}
+                  xAxisTitle={impurityChartsConfig.xAxisTitle}
+                  bins={impurityChartsConfig.bins}
+                  plotLines={impurityChartsConfig.plotLines}
+                />
+              </div>
+              <div className="col-span-2 row-span-2 bg-white">
+                <table>
+                  <tbody>
+                    <tr>
+                      <td>
+                        {" "}
+                        <b>Cp B/W</b>
+                      </td>
+                      <td>
+                        <b>0.67</b>
+                      </td>
+                      <td>Decimal Points</td>
+                      <td>2.00</td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <b>Cpk B/W</b>
+                      </td>
+                      <td>
+                        <b>0.60</b>
+                      </td>
+                      <td>Unit Of Measure</td>
+                      <td>0.001</td>
+                    </tr>
+                    <tr>
+                      <td>CpU B/W</td>
+                      <td>0.60</td>
+                      <td>Number Of Entries</td>
+                      <td>7</td>
+                    </tr>
+                    <tr>
+                      <td>Cpl B/W</td>
+                      <td>0.75</td>
+                      <td>
+                        <b>Average</b>
+                      </td>
+                      <td>
+                        <b>2.89</b>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>Cpm</td>
+                      <td>0.72</td>
+                      <td>
+                        <b>Stdev</b>
+                      </td>
+                      <td>
+                        <b>0.45</b>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>Cr</td>
+                      <td>1.48</td>
+                      <td>
+                        <b>Median</b>
+                      </td>
+                      <td>
+                        <b>3.00</b>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>ZTarget/AZ</td>
+                      <td>0.25</td>
+                      <td>
+                        <b>Mode</b>
+                      </td>
+                      <td>
+                        <b>3.00</b>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <b>Pp</b>
+                      </td>
+                      <td>0.74</td>
+                      <td>Minimum Value</td>
+                      <td>2.00</td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <b>Ppk</b>
+                      </td>
+                      <td>0.66</td>
+                      <td>Maximum Value</td>
+                      <td>
+                        <b>2.00</b>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>PpU</td>
+                      <td>0.83</td>
+                      <td>Range</td>
+                      <td>1.50</td>
+                    </tr>
+                    <tr>
+                      <td>Ppl</td>
+                      <td>0.66</td>
+                      <td>
+                        <b>LSL</b>
+                      </td>
+                      <td>
+                        <b>4.00</b>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>Skewness</td>
+                      <td>-1.19</td>
+                      <td>
+                        <b>USL</b>
+                      </td>
+                      <td>
+                        <b>6.00</b>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>Stdev</td>
+                      <td>0.45</td>
+                      <td>Number Of Bars</td>
+                      <td>3.00</td>
+                    </tr>
+                    <tr>
+                      <td>Min</td>
+                      <td>2.00</td>
+                      <td>Number Of Classes</td>
+                      <td>4.00</td>
+                    </tr>
+                    <tr>
+                      <td>Max</td>
+                      <td>3.50</td>
+                      <td>Class Width</td>
+                      <td>0.35</td>
+                    </tr>
+                    <tr>
+                      <td>Range</td>
+                      <td>1.50</td>
+                      <td>Beginning Point</td>
+                      <td>1.65</td>
+                    </tr>
+                    <tr>
+                      <td>Z Bench</td>
+                      <td>1.79</td>
+                      <td>Stdev Est</td>
+                      <td>0.46</td>
+                    </tr>
+                    <tr>
+                      <td>% Defects</td>
+                      <td>0.0%</td>
+                      <td>d2/c4</td>
+                      <td>0.92</td>
+                    </tr>
+                    <tr>
+                      <td>PPM</td>
+                      <td>0.00</td>
+                      <td>Target</td>
+                      <td>3</td>
+                    </tr>
+                    <tr>
+                      <td>Exp PPM ST</td>
+                      <td>36586.97</td>
+                      <td>Sigma</td>
+                      <td>3.29</td>
+                    </tr>
+                    <tr>
+                      <td>Exp PPM LT</td>
+                      <td>30738.66</td>
+                      <td></td>
+                      <td></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <div className="col-span-4">
+                <HighchartsPareto
+                  // phOfParacetamol={phOfParacetamolPareto}
+                  data={pentoprazoleImpurityData.observedValues}
+                  lsl={impurityChartsConfig.lsl}
+                  usl={impurityChartsConfig.usl}
+                  heading={impurityChartsConfig.paretoHeading}
+                  yAxisTitle={impurityChartsConfig.yAxisTitle}
+                  bins={impurityChartsConfig.bins}
+                  plotLines={impurityChartsConfig.plotLines}
+                />
+              </div>
+              <div className="col-span-4">
+                <HighchartsScatterPlot
+                  // phOfParacetamol={phOfParacetamolScatter}
+                  data={pentoprazoleImpurityData.observedValues}
+                  batchNumbers={pentoprazoleImpurityData.batchNumbers}
+                  lsl={impurityChartsConfig.lsl}
+                  usl={impurityChartsConfig.usl}
+                  heading={impurityChartsConfig.scatterHeading}
+                  yAxisTitle={impurityChartsConfig.yAxisTitle}
+                  max={impurityChartsConfig.max}
+                />
+              </div>
+              <div className="py-2 flex justify-end col-span-10 ">
+                <button className="p-2 bg-emerald-400 text-white rounded"> Launch Deviation</button>
+              </div>
+            </div>
+            <h1 className="gridName pt-8">Dissolution Of Pentoprazole Test Result</h1>
+            <div>
+              <div className="AddRows d-flex w-full justify-between items-center text-3xl">
+                <div className="flex items-center">
+                  <MdNoteAdd onClick={addReviewODSTRRow14} />
+                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
+                </div>
+                <div className="flex gap-4 ">
+                  <ExcelExportImport
+                    data={gridDatas.reviewODSTR14}
+                    setimportedData={setimportedData}
+                    fileName="reviewODSTR14.xlsx"
+                    gridNo={35}
+                  />{" "}
+                </div>
+              </div>
+              <table>
+                <thead>
+                  <tr>
+                    <th>Batch No</th>
+                    <th>Tests parameter</th>
+                    <th>LSL</th>
+                    <th>USL</th>
+                    <th>LCL</th>
+                    <th>UCL</th>
+                    <th>Observed Value</th>
+                    <th>Complies/Does Not complies</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {gridDatas?.reviewODSTR14?.map((item, index) => {
+                    return (
+                      <tr key={index}>
+                        <input
+                          value={item.batchNo}
+                          onChange={(e) => {
+                            const newData = [...gridDatas.reviewODSTR14];
+                            newData[index].batchNo = e.target.value;
+                            setGridDatas({
+                              ...gridDatas,
+                              reviewODSTR14: newData,
+                            });
+                          }}
+                        />
+                        <td>
+                          <input
+                            value={item.testsParameter}
+                            onChange={(e) => {
+                              const newData = [...gridDatas.reviewODSTR14];
+                              newData[index].testsParameter = e.target.value;
+                              setGridDatas({
+                                ...gridDatas,
+                                reviewODSTR14: newData,
+                              });
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            type="number"
+                            value={item.LSL}
+                            onChange={(e) => {
+                              const newData = [...gridDatas.reviewODSTR14];
+                              newData[index].LSL = e.target.value;
+                              setGridDatas({
+                                ...gridDatas,
+                                reviewODSTR14: newData,
+                              });
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            type="number"
+                            value={item.USL}
+                            onChange={(e) => {
+                              const newData = [...gridDatas.reviewODSTR14];
+                              newData[index].USL = e.target.value;
+                              setGridDatas({
+                                ...gridDatas,
+                                reviewODSTR14: newData,
+                              });
+                            }}
+                          />
+                        </td>{" "}
+                        <td>
+                          <input
+                            type="number"
+                            value={item.LCL}
+                            onChange={(e) => {
+                              const newData = [...gridDatas.reviewODSTR14];
+                              newData[index].LCL = e.target.value;
+                              setGridDatas({
+                                ...gridDatas,
+                                reviewODSTR14: newData,
+                              });
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            type="number"
+                            value={item.UCL}
+                            onChange={(e) => {
+                              const newData = [...gridDatas.reviewODSTR14];
+                              newData[index].UCL = e.target.value;
+                              setGridDatas({
+                                ...gridDatas,
+                                reviewODSTR14: newData,
+                              });
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            type="number"
+                            value={item.observedValue}
+                            onChange={(e) => {
+                              const newData = [...gridDatas.reviewODSTR14];
+                              newData[index].observedValue = e.target.value;
+                              setGridDatas({
+                                ...gridDatas,
+                                reviewODSTR14: newData,
+                              });
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.compliesNotComplies}
+                            onChange={(e) => {
+                              const newData = [...gridDatas.reviewODSTR14];
+                              newData[index].compliesNotComplies = e.target.value;
+                              setGridDatas({
+                                ...gridDatas,
+                                reviewODSTR14: newData,
+                              });
+                            }}
+                          />
+                        </td>
+                      </tr>
+                    );
+                  })}
+                </tbody>
+              </table>
+            </div>
+            <div className=" grid grid-cols-10 shadow-md shadow-gray-700/30 my-20 bg-slate-700 p-4 gap-4 mx-[-30px]">
+              <div className="py-2 col-span-10 cursor-pointer text-gray-100 text-[22px] flex justify-center items-center">
+                Dissolution Of Pentoprazole Analysis
+              </div>
+              <div className="col-span-4 row-span-1 mb-10 max-h-38 ">
+                <HighchartsLine
+                  heading={"Line Analytics"}
+                  xHeading={"Batch No."}
+                  yHeading={"Observed Value"}
+                  yMax={6}
+                  yMin={0}
+                  yTickInterval={0.8}
+                  plotLines={ParacetamolDissolutionPlotLines}
+                  zones={paracetamolDissolutionZones}
+                  annotations={paracetamolAnnotations}
+                  highchartData={paracetamolpHData14}
+                />
+              </div>
+              <div className="col-span-4 row-span-1">
+                <HighchartsHistogram
+                  // phOfParacetamol={phChartsConfig}
+                  data={pentoprazoleDissolutionData.observedValues}
+                  lsl={dissolutionChartsConfig.lsl}
+                  usl={dissolutionChartsConfig.usl}
+                  heading={dissolutionChartsConfig.histoHeading}
+                  yAxisTitle={dissolutionChartsConfig.yAxisTitle}
+                  xAxisTitle={dissolutionChartsConfig.xAxisTitle}
+                  bins={dissolutionChartsConfig.bins}
+                  plotLines={dissolutionChartsConfig.plotLines}
+                />
+              </div>
+              <div className="col-span-2 row-span-2 bg-white">
+                <table>
+                  <tbody>
+                    <tr>
+                      <td>
+                        {" "}
+                        <b>Cp B/W</b>
+                      </td>
+                      <td>
+                        <b>0.67</b>
+                      </td>
+                      <td>Decimal Points</td>
+                      <td>2.00</td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <b>Cpk B/W</b>
+                      </td>
+                      <td>
+                        <b>0.60</b>
+                      </td>
+                      <td>Unit Of Measure</td>
+                      <td>0.001</td>
+                    </tr>
+                    <tr>
+                      <td>CpU B/W</td>
+                      <td>0.60</td>
+                      <td>Number Of Entries</td>
+                      <td>7</td>
+                    </tr>
+                    <tr>
+                      <td>Cpl B/W</td>
+                      <td>0.75</td>
+                      <td>
+                        <b>Average</b>
+                      </td>
+                      <td>
+                        <b>2.89</b>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>Cpm</td>
+                      <td>0.72</td>
+                      <td>
+                        <b>Stdev</b>
+                      </td>
+                      <td>
+                        <b>0.45</b>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>Cr</td>
+                      <td>1.48</td>
+                      <td>
+                        <b>Median</b>
+                      </td>
+                      <td>
+                        <b>3.00</b>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>ZTarget/AZ</td>
+                      <td>0.25</td>
+                      <td>
+                        <b>Mode</b>
+                      </td>
+                      <td>
+                        <b>3.00</b>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <b>Pp</b>
+                      </td>
+                      <td>0.74</td>
+                      <td>Minimum Value</td>
+                      <td>2.00</td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <b>Ppk</b>
+                      </td>
+                      <td>0.66</td>
+                      <td>Maximum Value</td>
+                      <td>
+                        <b>2.00</b>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>PpU</td>
+                      <td>0.83</td>
+                      <td>Range</td>
+                      <td>1.50</td>
+                    </tr>
+                    <tr>
+                      <td>Ppl</td>
+                      <td>0.66</td>
+                      <td>
+                        <b>LSL</b>
+                      </td>
+                      <td>
+                        <b>2.00</b>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>Skewness</td>
+                      <td>-1.19</td>
+                      <td>
+                        <b>USL</b>
+                      </td>
+                      <td>
+                        <b>6.00</b>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>Stdev</td>
+                      <td>0.45</td>
+                      <td>Number Of Bars</td>
+                      <td>3.00</td>
+                    </tr>
+                    <tr>
+                      <td>Min</td>
+                      <td>2.00</td>
+                      <td>Number Of Classes</td>
+                      <td>4.00</td>
+                    </tr>
+                    <tr>
+                      <td>Max</td>
+                      <td>3.50</td>
+                      <td>Class Width</td>
+                      <td>0.35</td>
+                    </tr>
+                    <tr>
+                      <td>Range</td>
+                      <td>1.50</td>
+                      <td>Beginning Point</td>
+                      <td>1.65</td>
+                    </tr>
+                    <tr>
+                      <td>Z Bench</td>
+                      <td>1.79</td>
+                      <td>Stdev Est</td>
+                      <td>0.46</td>
+                    </tr>
+                    <tr>
+                      <td>% Defects</td>
+                      <td>0.0%</td>
+                      <td>d2/c4</td>
+                      <td>0.92</td>
+                    </tr>
+                    <tr>
+                      <td>PPM</td>
+                      <td>0.00</td>
+                      <td>Target</td>
+                      <td>3</td>
+                    </tr>
+                    <tr>
+                      <td>Exp PPM ST</td>
+                      <td>36586.97</td>
+                      <td>Sigma</td>
+                      <td>3.29</td>
+                    </tr>
+                    <tr>
+                      <td>Exp PPM LT</td>
+                      <td>30738.66</td>
+                      <td></td>
+                      <td></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <div className="col-span-4">
+                <HighchartsPareto
+                  // phOfParacetamol={phOfParacetamolPareto}
+                  data={pentoprazoleDissolutionData.observedValues}
+                  lsl={dissolutionChartsConfig.lsl}
+                  usl={dissolutionChartsConfig.usl}
+                  heading={dissolutionChartsConfig.paretoHeading}
+                  yAxisTitle={dissolutionChartsConfig.yAxisTitle}
+                  bins={dissolutionChartsConfig.bins}
+                  plotLines={dissolutionChartsConfig.plotLines}
+                />
+              </div>
+              <div className="col-span-4">
+                <HighchartsScatterPlot
+                  // phOfParacetamol={phOfParacetamolScatter}
+                  data={pentoprazoleDissolutionData.observedValues}
+                  batchNumbers={pentoprazoleDissolutionData.batchNumbers}
+                  lsl={dissolutionChartsConfig.lsl}
+                  usl={dissolutionChartsConfig.usl}
+                  heading={dissolutionChartsConfig.scatterHeading}
+                  yAxisTitle={dissolutionChartsConfig.yAxisTitle}
+                  max={dissolutionChartsConfig.max}
+                />
+              </div>
+              <div className="py-2 flex justify-end col-span-10 ">
+                <button className="p-2 bg-emerald-400 text-white rounded"> Launch Deviation</button>
+              </div>
+            </div>
+            <h1 className="gridName pt-8">Disintegration Of Pentoprazole Test Result</h1>
+            <div>
+              <div className="AddRows d-flex w-full justify-between items-center text-3xl">
+                <div className="flex items-center">
+                  <MdNoteAdd onClick={addReviewODSTRRow15} />
+                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
+                </div>
+                <div className="flex gap-4 ">
+                  <ExcelExportImport
+                    data={gridDatas.reviewODSTR15}
+                    setimportedData={setimportedData}
+                    fileName="reviewODSTR15.xlsx"
+                    gridNo={36}
+                  />{" "}
+                </div>
+              </div>
+              <table>
+                <thead>
+                  <tr>
+                    <th>Batch No</th>
+                    <th>Tests parameter</th>
+                    <th>LSL</th>
+                    <th>USL</th>
+                    <th>LCL</th>
+                    <th>UCL</th>
+                    <th>Observed Value</th>
+                    <th>Complies/Does Not complies</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {gridDatas?.reviewODSTR15?.map((item, index) => {
+                    return (
+                      <tr key={index}>
+                        <input
+                          value={item.batchNo}
+                          onChange={(e) => {
+                            const newData = [...gridDatas.reviewODSTR15];
+                            newData[index].batchNo = e.target.value;
+                            setGridDatas({
+                              ...gridDatas,
+                              reviewODSTR15: newData,
+                            });
+                          }}
+                        />
+                        <td>
+                          <input
+                            value={item.testsParameter}
+                            onChange={(e) => {
+                              const newData = [...gridDatas.reviewODSTR15];
+                              newData[index].testsParameter = e.target.value;
+                              setGridDatas({
+                                ...gridDatas,
+                                reviewODSTR15: newData,
+                              });
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            type="number"
+                            value={item.LSL}
+                            onChange={(e) => {
+                              const newData = [...gridDatas.reviewODSTR15];
+                              newData[index].LSL = e.target.value;
+                              setGridDatas({
+                                ...gridDatas,
+                                reviewODSTR15: newData,
+                              });
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            type="number"
+                            value={item.USL}
+                            onChange={(e) => {
+                              const newData = [...gridDatas.reviewODSTR15];
+                              newData[index].USL = e.target.value;
+                              setGridDatas({
+                                ...gridDatas,
+                                reviewODSTR15: newData,
+                              });
+                            }}
+                          />
+                        </td>{" "}
+                        <td>
+                          <input
+                            type="number"
+                            value={item.LCL}
+                            onChange={(e) => {
+                              const newData = [...gridDatas.reviewODSTR15];
+                              newData[index].LCL = e.target.value;
+                              setGridDatas({
+                                ...gridDatas,
+                                reviewODSTR15: newData,
+                              });
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            type="number"
+                            value={item.UCL}
+                            onChange={(e) => {
+                              const newData = [...gridDatas.reviewODSTR15];
+                              newData[index].UCL = e.target.value;
+                              setGridDatas({
+                                ...gridDatas,
+                                reviewODSTR15: newData,
+                              });
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            type="number"
+                            value={item.observedValue}
+                            onChange={(e) => {
+                              const newData = [...gridDatas.reviewODSTR15];
+                              newData[index].observedValue = e.target.value;
+                              setGridDatas({
+                                ...gridDatas,
+                                reviewODSTR15: newData,
+                              });
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.compliesNotComplies}
+                            onChange={(e) => {
+                              const newData = [...gridDatas.reviewODSTR15];
+                              newData[index].compliesNotComplies = e.target.value;
+                              setGridDatas({
+                                ...gridDatas,
+                                reviewODSTR15: newData,
+                              });
+                            }}
+                          />
+                        </td>
+                      </tr>
+                    );
+                  })}
+                </tbody>
+              </table>
+            </div>
+            <div className=" grid grid-cols-10 shadow-md shadow-gray-700/30 my-20 bg-slate-700 p-4 gap-4 mx-[-30px]">
+              <div className="py-2 col-span-10 cursor-pointer text-gray-100 text-[22px] flex justify-center items-center">
+                {" "}
+                Disintegration Of Pentoprazole Analysis
+              </div>
+              <div className="col-span-4 row-span-1 mb-10 max-h-38 ">
+                <HighchartsLine
+                  heading={""}
+                  xHeading={"Batch No."}
+                  yHeading={"Observed Value"}
+                  yMax={100}
+                  yMin={75}
+                  yTickInterval={7}
+                  plotLines={ParacetamolDisintegratePlotLines}
+                  zones={paracetamolDisinterationZones}
+                  annotations={paracetamolAnnotations}
+                  highchartData={paracetamolpHData15}
+                />
+              </div>
+              <div className="col-span-4 row-span-1">
+                <HighchartsHistogram
+                  // phOfParacetamol={phChartsConfig}
+                  data={pentoprazoleDisIntegrationData.observedValues}
+                  lsl={disIntegrationChartsConfig.lsl}
+                  usl={disIntegrationChartsConfig.usl}
+                  heading={disIntegrationChartsConfig.histoHeading}
+                  yAxisTitle={disIntegrationChartsConfig.yAxisTitle}
+                  xAxisTitle={disIntegrationChartsConfig.xAxisTitle}
+                  bins={disIntegrationChartsConfig.bins}
+                  plotLines={disIntegrationChartsConfig.plotLines}
+                />
+              </div>
+              <div className="col-span-2 row-span-2 bg-white">
+                <table>
+                  <tbody>
+                    <tr>
+                      <td>
+                        {" "}
+                        <b>Cp B/W</b>
+                      </td>
+                      <td>
+                        <b>0.67</b>
+                      </td>
+                      <td>Decimal Points</td>
+                      <td>2.00</td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <b>Cpk B/W</b>
+                      </td>
+                      <td>
+                        <b>0.60</b>
+                      </td>
+                      <td>Unit Of Measure</td>
+                      <td>0.001</td>
+                    </tr>
+                    <tr>
+                      <td>CpU B/W</td>
+                      <td>0.60</td>
+                      <td>Number Of Entries</td>
+                      <td>7</td>
+                    </tr>
+                    <tr>
+                      <td>Cpl B/W</td>
+                      <td>0.75</td>
+                      <td>
+                        <b>Average</b>
+                      </td>
+                      <td>
+                        <b>2.89</b>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>Cpm</td>
+                      <td>0.72</td>
+                      <td>
+                        <b>Stdev</b>
+                      </td>
+                      <td>
+                        <b>0.45</b>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>Cr</td>
+                      <td>1.48</td>
+                      <td>
+                        <b>Median</b>
+                      </td>
+                      <td>
+                        <b>3.00</b>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>ZTarget/AZ</td>
+                      <td>0.25</td>
+                      <td>
+                        <b>Mode</b>
+                      </td>
+                      <td>
+                        <b>3.00</b>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <b>Pp</b>
+                      </td>
+                      <td>0.74</td>
+                      <td>Minimum Value</td>
+                      <td>2.00</td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <b>Ppk</b>
+                      </td>
+                      <td>0.66</td>
+                      <td>Maximum Value</td>
+                      <td>
+                        <b>2.00</b>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>PpU</td>
+                      <td>0.83</td>
+                      <td>Range</td>
+                      <td>1.50</td>
+                    </tr>
+                    <tr>
+                      <td>Ppl</td>
+                      <td>0.66</td>
+                      <td>
+                        <b>LSL</b>
+                      </td>
+                      <td>
+                        <b>2.00</b>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>Skewness</td>
+                      <td>-1.19</td>
+                      <td>
+                        <b>USL</b>
+                      </td>
+                      <td>
+                        <b>4.00</b>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>Stdev</td>
+                      <td>0.45</td>
+                      <td>Number Of Bars</td>
+                      <td>3.00</td>
+                    </tr>
+                    <tr>
+                      <td>Min</td>
+                      <td>2.00</td>
+                      <td>Number Of Classes</td>
+                      <td>4.00</td>
+                    </tr>
+                    <tr>
+                      <td>Max</td>
+                      <td>3.50</td>
+                      <td>Class Width</td>
+                      <td>0.35</td>
+                    </tr>
+                    <tr>
+                      <td>Range</td>
+                      <td>1.50</td>
+                      <td>Beginning Point</td>
+                      <td>1.65</td>
+                    </tr>
+                    <tr>
+                      <td>Z Bench</td>
+                      <td>1.79</td>
+                      <td>Stdev Est</td>
+                      <td>0.46</td>
+                    </tr>
+                    <tr>
+                      <td>% Defects</td>
+                      <td>0.0%</td>
+                      <td>d2/c4</td>
+                      <td>0.92</td>
+                    </tr>
+                    <tr>
+                      <td>PPM</td>
+                      <td>0.00</td>
+                      <td>Target</td>
+                      <td>3</td>
+                    </tr>
+                    <tr>
+                      <td>Exp PPM ST</td>
+                      <td>36586.97</td>
+                      <td>Sigma</td>
+                      <td>3.29</td>
+                    </tr>
+                    <tr>
+                      <td>Exp PPM LT</td>
+                      <td>30738.66</td>
+                      <td></td>
+                      <td></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <div className="col-span-4">
+                <HighchartsPareto
+                  // phOfParacetamol={phOfParacetamolPareto}
+                  data={pentoprazoleDisIntegrationData.observedValues}
+                  lsl={disIntegrationChartsConfig.lsl}
+                  usl={disIntegrationChartsConfig.usl}
+                  heading={disIntegrationChartsConfig.paretoHeading}
+                  yAxisTitle={disIntegrationChartsConfig.yAxisTitle}
+                  bins={disIntegrationChartsConfig.bins}
+                  plotLines={disIntegrationChartsConfig.plotLines}
+                />
+              </div>
+              <div className="col-span-4">
+                <HighchartsScatterPlot
+                  // phOfParacetamol={phOfParacetamolScatter}
+                  data={pentoprazoleDisIntegrationData.observedValues}
+                  batchNumbers={pentoprazoleDisIntegrationData.batchNumbers}
+                  lsl={disIntegrationChartsConfig.lsl}
+                  usl={disIntegrationChartsConfig.usl}
+                  heading={disIntegrationChartsConfig.scatterHeading}
+                  yAxisTitle={disIntegrationChartsConfig.yAxisTitle}
+                  max={disIntegrationChartsConfig.max}
+                />
+              </div>
+              <div className="py-2 flex justify-end col-span-10 ">
+                <button className="p-2 bg-emerald-400 text-white rounded"> Launch Deviation</button>
+              </div>
+            </div>
             <div>
               <h4 className="gridName mt-5">Summary</h4>
               <TinyEditor
-                editorContent={pQRData.tiny27}
+                editorContent={tinyData.tiny27}
                 setEditorContent={setTinyContent}
                 tinyNo={27}
               />
             </div>
-            <div className="sub-head">
-              Review of Raw Material Excipient Test Results
-            </div>
+            <div className="sub-head">Review of Raw Material Excipient Test Results</div>
             <div>
               {/* <div className="AddRows d-flex">
                 <MdNoteAdd onClick={addReviewORMETRRow} />
@@ -6662,15 +11574,15 @@ export default function APQR() {
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addReviewORMETRRow} />
-                  <div className="addrowinstruction  pl-2">
-                    Add Rows by clicking on (+) icon
-                  </div>
+                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
                 </div>
                 <div className="flex gap-4 ">
-                  <ExcelExport
-                    data={balanceSheet}
-                    fileName="balance-sheet-summary.xlsx"
-                  />
+                  <ExcelExportImport
+                  // data={manufacturingStage}
+                  // setimportedData={setimportedData}
+                  // fileName="manufacturingStage.xlsx"
+                  // gridNo={1}
+                  />{" "}
                 </div>
               </div>
               <table>
@@ -6689,73 +11601,89 @@ export default function APQR() {
                   </tr>
                 </thead>
                 <tbody>
-                  {pQRData?.reviewORMETR?.map((item, index) => {
+                  {gridDatas?.reviewORMETR?.map((item, index) => {
                     return (
                       <tr key={index}>
-                      <td>{index + 1}</td>
-                      <td>
-                        <input 
-                         value={item.testsParameter}
-                         onChange={(e) => {
-                           const newData = [...pQRData.reviewORMETR];
-                           newData[index].testsParameter = e.target.value;
-                           setPQRData({
-                             ...pQRData,
-                             reviewORMETR: newData,
-                           });
-                         }} 
-                        />
-                      </td>
-                      <td>
-                        <input 
-                          value={item.specificationLimit}
-                          onChange={(e) => {
-                            const newData = [...pQRData.reviewORMETR];
-                            newData[index].specificationLimit = e.target.value;
-                            setPQRData({
-                              ...pQRData,
-                              reviewORMETR: newData,
-                            });
-                          }} 
-                        />
-                      </td>
-                      <td>
-                        <input 
-                          value={item.obtainedValue.minimum}
-                          onChange={(e) => {
-                            const newData = [...pQRData.reviewORMETR];
-                            newData[index].obtainedValue.minimum = e.target.value;
-                            setPQRData({
-                              ...pQRData,
-                              reviewORMETR: newData,
-                            });
-                          }} />
-                      </td>
-                      <td>
-                        <input 
-                          value={item.obtainedValue.maximum}
-                          onChange={(e) => {
-                            const newData = [...pQRData.reviewORMETR];
-                            newData[index].obtainedValue.maximum = e.target.value;
-                            setPQRData({
-                              ...pQRData,
-                              reviewORMETR: newData,
-                            });
-                          }} />
-                      </td>
-                      <td>
-                        <input 
-                          value={item.compliesNotComplies}
-                          onChange={(e) => {
-                            const newData = [...pQRData.reviewORMETR];
-                            newData[index].compliesNotComplies = e.target.value;
-                            setPQRData({
-                              ...pQRData,
-                              reviewORMETR: newData,
-                            });
-                          }}/>
-                      </td>
-                    </tr>
+                        <td>{index + 1}</td>
+                        <td>
+                          <input
+                            value={item.material}
+                            onChange={(e) => {
+                              const newData = [...gridDatas.reviewOPMTR];
+                              newData[index].material = e.target.value;
+                              setGridDatas({
+                                ...gridDatas,
+                                reviewOPMTR: newData,
+                              });
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.testsParameter}
+                            onChange={(e) => {
+                              const newData = [...gridDatas.reviewORMETR];
+                              newData[index].testsParameter = e.target.value;
+                              setGridDatas({
+                                ...gridDatas,
+                                reviewORMETR: newData,
+                              });
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.specificationLimit}
+                            onChange={(e) => {
+                              const newData = [...gridDatas.reviewORMETR];
+                              newData[index].specificationLimit = e.target.value;
+                              setGridDatas({
+                                ...gridDatas,
+                                reviewORMETR: newData,
+                              });
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.obtainedValue.minimum}
+                            onChange={(e) => {
+                              const newData = [...gridDatas.reviewORMETR];
+                              newData[index].obtainedValue.minimum = e.target.value;
+                              setGridDatas({
+                                ...gridDatas,
+                                reviewORMETR: newData,
+                              });
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.obtainedValue.maximum}
+                            onChange={(e) => {
+                              const newData = [...gridDatas.reviewORMETR];
+                              newData[index].obtainedValue.maximum = e.target.value;
+                              setGridDatas({
+                                ...gridDatas,
+                                reviewORMETR: newData,
+                              });
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.compliesNotComplies}
+                            onChange={(e) => {
+                              const newData = [...gridDatas.reviewORMETR];
+                              newData[index].compliesNotComplies = e.target.value;
+                              setGridDatas({
+                                ...gridDatas,
+                                reviewORMETR: newData,
+                              });
+                            }}
+                          />
+                        </td>
+                      </tr>
                     );
                   })}
                 </tbody>
@@ -6764,14 +11692,12 @@ export default function APQR() {
             <div>
               <h4 className="gridName mt-5">Summary</h4>
               <TinyEditor
-                editorContent={pQRData.tiny28}
+                editorContent={tinyData.tiny28}
                 setEditorContent={setTinyContent}
                 tinyNo={28}
               />
             </div>
-            <div className="sub-head">
-              Review of Packing Material Test Results
-            </div>
+            <div className="sub-head">Review of Packing Material Test Results</div>
             <div>
               {/* <div className="AddRows d-flex">
                 <MdNoteAdd onClick={addreviewOPMTRRow} />
@@ -6780,15 +11706,15 @@ export default function APQR() {
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addreviewOPMTRRow} />
-                  <div className="addrowinstruction  pl-2">
-                    Add Rows by clicking on (+) icon
-                  </div>
+                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
                 </div>
                 <div className="flex gap-4 ">
-                  <ExcelExport
-                    data={balanceSheet}
-                    fileName="balance-sheet-summary.xlsx"
-                  />
+                  <ExcelExportImport
+                  // data={manufacturingStage}
+                  // setimportedData={setimportedData}
+                  // fileName="manufacturingStage.xlsx"
+                  // gridNo={1}
+                  />{" "}
                 </div>
               </div>
               <table>
@@ -6807,73 +11733,89 @@ export default function APQR() {
                   </tr>
                 </thead>
                 <tbody>
-                  {pQRData?.reviewOPMTR?.map((item, index) => {
+                  {gridDatas?.reviewOPMTR?.map((item, index) => {
                     return (
                       <tr key={index}>
-                      <td>{index + 1}</td>
-                      <td>
-                        <input 
-                         value={item.testsParameter}
-                         onChange={(e) => {
-                           const newData = [...pQRData.reviewOPMTR];
-                           newData[index].testsParameter = e.target.value;
-                           setPQRData({
-                             ...pQRData,
-                             reviewOPMTR: newData,
-                           });
-                         }} 
-                        />
-                      </td>
-                      <td>
-                        <input 
-                          value={item.specificationLimit}
-                          onChange={(e) => {
-                            const newData = [...pQRData.reviewOPMTR];
-                            newData[index].specificationLimit = e.target.value;
-                            setPQRData({
-                              ...pQRData,
-                              reviewOPMTR: newData,
-                            });
-                          }} 
-                        />
-                      </td>
-                      <td>
-                        <input 
-                          value={item.obtainedValue.minimum}
-                          onChange={(e) => {
-                            const newData = [...pQRData.reviewOPMTR];
-                            newData[index].obtainedValue.minimum = e.target.value;
-                            setPQRData({
-                              ...pQRData,
-                              reviewOPMTR: newData,
-                            });
-                          }} />
-                      </td>
-                      <td>
-                        <input 
-                          value={item.obtainedValue.maximum}
-                          onChange={(e) => {
-                            const newData = [...pQRData.reviewOPMTR];
-                            newData[index].obtainedValue.maximum = e.target.value;
-                            setPQRData({
-                              ...pQRData,
-                              reviewOPMTR: newData,
-                            });
-                          }} />
-                      </td>
-                      <td>
-                        <input 
-                          value={item.compliesNotComplies}
-                          onChange={(e) => {
-                            const newData = [...pQRData.reviewOPMTR];
-                            newData[index].compliesNotComplies = e.target.value;
-                            setPQRData({
-                              ...pQRData,
-                              reviewOPMTR: newData,
-                            });
-                          }}/>
-                      </td>
-                    </tr>
+                        <td>{index + 1}</td>
+                        <td>
+                          <input
+                            value={item.material}
+                            onChange={(e) => {
+                              const newData = [...gridDatas.reviewOPMTR];
+                              newData[index].material = e.target.value;
+                              setGridDatas({
+                                ...gridDatas,
+                                reviewOPMTR: newData,
+                              });
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.testsParameter}
+                            onChange={(e) => {
+                              const newData = [...gridDatas.reviewOPMTR];
+                              newData[index].testsParameter = e.target.value;
+                              setGridDatas({
+                                ...gridDatas,
+                                reviewOPMTR: newData,
+                              });
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.specificationLimit}
+                            onChange={(e) => {
+                              const newData = [...gridDatas.reviewOPMTR];
+                              newData[index].specificationLimit = e.target.value;
+                              setGridDatas({
+                                ...gridDatas,
+                                reviewOPMTR: newData,
+                              });
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.obtainedValue.minimum}
+                            onChange={(e) => {
+                              const newData = [...gridDatas.reviewOPMTR];
+                              newData[index].obtainedValue.minimum = e.target.value;
+                              setGridDatas({
+                                ...gridDatas,
+                                reviewOPMTR: newData,
+                              });
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.obtainedValue.maximum}
+                            onChange={(e) => {
+                              const newData = [...gridDatas.reviewOPMTR];
+                              newData[index].obtainedValue.maximum = e.target.value;
+                              setGridDatas({
+                                ...gridDatas,
+                                reviewOPMTR: newData,
+                              });
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.compliesNotComplies}
+                            onChange={(e) => {
+                              const newData = [...gridDatas.reviewOPMTR];
+                              newData[index].compliesNotComplies = e.target.value;
+                              setGridDatas({
+                                ...gridDatas,
+                                reviewOPMTR: newData,
+                              });
+                            }}
+                          />
+                        </td>
+                      </tr>
                     );
                   })}
                 </tbody>
@@ -6882,14 +11824,12 @@ export default function APQR() {
             <div>
               <h4 className="gridName mt-5">Summary</h4>
               <TinyEditor
-                editorContent={pQRData.tiny29}
+                editorContent={tinyData.tiny29}
                 setEditorContent={setTinyContent}
                 tinyNo={29}
               />
             </div>
-            <div className="sub-head">
-              Review of Drug Product – In process Test Results
-            </div>
+            <div className="sub-head">Review of Drug Product – In process Test Results</div>
             <h4 className="gridName pt-2">Dilution Buffer 1 - Test Results</h4>
             <div>
               {/* <div className="AddRows d-flex">
@@ -6899,15 +11839,15 @@ export default function APQR() {
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addReviewODPRow} />
-                  <div className="addrowinstruction  pl-2">
-                    Add Rows by clicking on (+) icon
-                  </div>
+                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
                 </div>
                 <div className="flex gap-4 ">
-                  <ExcelExport
-                    data={balanceSheet}
-                    fileName="balance-sheet-summary.xlsx"
-                  />
+                  <ExcelExportImport
+                  // data={manufacturingStage}
+                  // setimportedData={setimportedData}
+                  // fileName="manufacturingStage.xlsx"
+                  // gridNo={1}
+                  />{" "}
                 </div>
               </div>
               <table>
@@ -6926,76 +11866,92 @@ export default function APQR() {
                   </tr>
                 </thead>
                 <tbody>
-                  {pQRData?.reviewODP?.map((item, index) => {
+                  {gridDatas?.reviewODP?.map((item, index) => {
                     return (
                       <tr key={index}>
-                      <td>{index + 1}</td>
-                      <td>
-                        <input 
-                         value={item.testsParameter}
-                         onChange={(e) => {
-                           const newData = [...pQRData.reviewODP];
-                           newData[index].testsParameter = e.target.value;
-                           setPQRData({
-                             ...pQRData,
-                             reviewODP: newData,
-                           });
-                         }} 
-                        />
-                      </td>
-                      <td>
-                        <input 
-                          value={item.specificationLimit}
-                          onChange={(e) => {
-                            const newData = [...pQRData.reviewODP];
-                            newData[index].specificationLimit = e.target.value;
-                            setPQRData({
-                              ...pQRData,
-                              reviewODP: newData,
-                            });
-                          }} 
-                        />
-                      </td>
-                      <td>
-                        <input 
-                          value={item.obtainedValue.minimum}
-                          onChange={(e) => {
-                            const newData = [...pQRData.reviewODP];
-                            newData[index].obtainedValue.minimum = e.target.value;
-                            setPQRData({
-                              ...pQRData,
-                              reviewODP: newData,
-                            });
-                          }} />
-                      </td>
-                      <td>
-                        <input 
-                          value={item.obtainedValue.maximum}
-                          onChange={(e) => {
-                            const newData = [...pQRData.reviewODP];
-                            newData[index].obtainedValue.maximum = e.target.value;
-                            setPQRData({
-                              ...pQRData,
-                              reviewODP: newData,
-                            });
-                          }} />
-                      </td>
-                      <td>
-                        <input 
-                          value={item.compliesNotComplies}
-                          onChange={(e) => {
-                            const newData = [...pQRData.reviewODP];
-                            newData[index].compliesNotComplies = e.target.value;
-                            setPQRData({
-                              ...pQRData,
-                              reviewODP: newData,
-                            });
-                          }}/>
-                      </td>
-                    </tr>
+                        <td>{index + 1}</td>
+                        <td>
+                          <input
+                            value={item.testsParameter}
+                            onChange={(e) => {
+                              const newData = [...gridDatas.reviewODP];
+                              newData[index].testsParameter = e.target.value;
+                              setGridDatas({
+                                ...gridDatas,
+                                reviewODP: newData,
+                              });
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.stage}
+                            onChange={(e) => {
+                              const newData = [...gridDatas.reviewOPMTR];
+                              newData[index].stage = e.target.value;
+                              setGridDatas({
+                                ...gridDatas,
+                                reviewOPMTR: newData,
+                              });
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.specificationLimit}
+                            onChange={(e) => {
+                              const newData = [...gridDatas.reviewODP];
+                              newData[index].specificationLimit = e.target.value;
+                              setGridDatas({
+                                ...gridDatas,
+                                reviewODP: newData,
+                              });
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.obtainedValue.minimum}
+                            onChange={(e) => {
+                              const newData = [...gridDatas.reviewODP];
+                              newData[index].obtainedValue.minimum = e.target.value;
+                              setGridDatas({
+                                ...gridDatas,
+                                reviewODP: newData,
+                              });
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.obtainedValue.maximum}
+                            onChange={(e) => {
+                              const newData = [...gridDatas.reviewODP];
+                              newData[index].obtainedValue.maximum = e.target.value;
+                              setGridDatas({
+                                ...gridDatas,
+                                reviewODP: newData,
+                              });
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.compliesNotComplies}
+                            onChange={(e) => {
+                              const newData = [...gridDatas.reviewODP];
+                              newData[index].compliesNotComplies = e.target.value;
+                              setGridDatas({
+                                ...gridDatas,
+                                reviewODP: newData,
+                              });
+                            }}
+                          />
+                        </td>
+                      </tr>
                     );
                   })}
-                </tbody> 
+                </tbody>
               </table>
             </div>
             <h4 className="gridName pt-8 ">Dilution Buffer 2 - Test Results</h4>
@@ -7007,15 +11963,15 @@ export default function APQR() {
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addReviewODPRow2} />
-                  <div className="addrowinstruction  pl-2">
-                    Add Rows by clicking on (+) icon
-                  </div>
+                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
                 </div>
                 <div className="flex gap-4 ">
-                  <ExcelExport
-                    data={balanceSheet}
-                    fileName="balance-sheet-summary.xlsx"
-                  />
+                  <ExcelExportImport
+                  // data={manufacturingStage}
+                  // setimportedData={setimportedData}
+                  // fileName="manufacturingStage.xlsx"
+                  // gridNo={1}
+                  />{" "}
                 </div>
               </div>
               <table>
@@ -7034,69 +11990,87 @@ export default function APQR() {
                   </tr>
                 </thead>
                 <tbody>
-                  {pQRData?.reviewODP2?.map((item, index) => {
+                  {gridDatas?.reviewODP2?.map((item, index) => {
                     return (
                       <tr key={index}>
                         <td>{index + 1}</td>
                         <td>
-                        <input 
-                          value={item.testsParameter}
-                          onChange={(e) => {
-                          const newData = [...pQRData.reviewODP2];
-                          newData[index].testsParameter = e.target.value;
-                          setPQRData({...pQRData,reviewODP2:newData});
-                        }}
-                      />
+                          <input
+                            value={item.testsParameter}
+                            onChange={(e) => {
+                              const newData = [...gridDatas.reviewODP2];
+                              newData[index].testsParameter = e.target.value;
+                              setGridDatas({
+                                ...gridDatas,
+                                reviewODP2: newData,
+                              });
+                            }}
+                          />
                         </td>
                         <td>
-                        <input 
-                          value={item.specificationLimit}
-                          onChange={(e) => {
-                          const newData = [...pQRData.reviewODP2];
-                          newData[index]. specificationLimit = e.target.value;
-                          setPQRData({...pQRData,reviewODP2:newData});
-                        }}
-                      />
+                          <input
+                            value={item.specificationLimit}
+                            onChange={(e) => {
+                              const newData = [...gridDatas.reviewODP2];
+                              newData[index].specificationLimit = e.target.value;
+                              setGridDatas({
+                                ...gridDatas,
+                                reviewODP2: newData,
+                              });
+                            }}
+                          />
                         </td>
                         <td>
-                        <input 
-                          value={item.stage}
-                          onChange={(e) => {
-                          const newData = [...pQRData.reviewODP2];
-                          newData[index].stage = e.target.value;
-                          setPQRData({...pQRData,reviewODP2:newData});
-                        }}
-                      />
+                          <input
+                            value={item.stage}
+                            onChange={(e) => {
+                              const newData = [...gridDatas.reviewODP2];
+                              newData[index].stage = e.target.value;
+                              setGridDatas({
+                                ...gridDatas,
+                                reviewODP2: newData,
+                              });
+                            }}
+                          />
                         </td>
                         <td>
-                        <input 
-                          value={item.obtainedValue.minimum}
-                          onChange={(e) => {
-                          const newData = [...pQRData.reviewODP2];
-                          newData[index].obtainedValue.minimum = e.target.value;
-                          setPQRData({...pQRData,reviewODP2:newData});
-                        }}
-                      />
+                          <input
+                            value={item.obtainedValue.minimum}
+                            onChange={(e) => {
+                              const newData = [...gridDatas.reviewODP2];
+                              newData[index].obtainedValue.minimum = e.target.value;
+                              setGridDatas({
+                                ...gridDatas,
+                                reviewODP2: newData,
+                              });
+                            }}
+                          />
                         </td>
                         <td>
-                        <input 
-                          value={item.obtainedValue.maximum}
-                          onChange={(e) => {
-                          const newData = [...pQRData.reviewODP2];
-                          newData[index].obtainedValue.maximum = e.target.value;
-                          setPQRData({...pQRData,reviewODP2:newData});
-                        }}
-                      />
+                          <input
+                            value={item.obtainedValue.maximum}
+                            onChange={(e) => {
+                              const newData = [...gridDatas.reviewODP2];
+                              newData[index].obtainedValue.maximum = e.target.value;
+                              setGridDatas({
+                                ...gridDatas,
+                                reviewODP2: newData,
+                              });
+                            }}
+                          />
                         </td>
                         <td>
-                        <input 
-                          value={item.compliesNotComplies}
-                          onChange={(e) => {
-                          const newData = [...pQRData.reviewODP2];
-                          newData[index].compliesNotComplies = e.target.value;
-                          setPQRData({...pQRData,reviewODP2:newData});
-                        }}
-                      />
+                          <input
+                            value={item.compliesNotComplies}
+                            onChange={(e) => {
+                              const newData = [...gridDatas.reviewODP2];
+                              newData[index].compliesNotComplies = e.target.value;
+                              setGridDatas({
+                                ...gridDatas,
+                                reviewODP2: newData,
+                              });
+                            }}
+                          />
                         </td>
                       </tr>
                     );
@@ -7113,15 +12087,15 @@ export default function APQR() {
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addReviewODPRow3} />
-                  <div className="addrowinstruction  pl-2">
-                    Add Rows by clicking on (+) icon
-                  </div>
+                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
                 </div>
                 <div className="flex gap-4 ">
-                  <ExcelExport
-                    data={balanceSheet}
-                    fileName="balance-sheet-summary.xlsx"
-                  />
+                  <ExcelExportImport
+                  // data={manufacturingStage}
+                  // setimportedData={setimportedData}
+                  // fileName="manufacturingStage.xlsx"
+                  // gridNo={1}
+                  />{" "}
                 </div>
               </div>
               <table>
@@ -7140,69 +12114,87 @@ export default function APQR() {
                   </tr>
                 </thead>
                 <tbody>
-                  {pQRData?.reviewODP3?.map((item, index) => {
+                  {gridDatas?.reviewODP3?.map((item, index) => {
                     return (
                       <tr key={index}>
                         <td>{index + 1}</td>
                         <td>
-                        <input 
-                          value={item.testsParameter}
-                          onChange={(e) => {
-                          const newData = [...pQRData.reviewODP3];
-                          newData[index].testsParameter = e.target.value;
-                          setPQRData({...pQRData,reviewODP3:newData});
-                        }}
-                      />
+                          <input
+                            value={item.testsParameter}
+                            onChange={(e) => {
+                              const newData = [...gridDatas.reviewODP3];
+                              newData[index].testsParameter = e.target.value;
+                              setGridDatas({
+                                ...gridDatas,
+                                reviewODP3: newData,
+                              });
+                            }}
+                          />
                         </td>
                         <td>
-                        <input 
-                          value={item.specificationLimit}
-                          onChange={(e) => {
-                          const newData = [...pQRData.reviewODP3];
-                          newData[index]. specificationLimit = e.target.value;
-                          setPQRData({...pQRData,reviewODP3:newData});
-                        }}
-                      />
+                          <input
+                            value={item.specificationLimit}
+                            onChange={(e) => {
+                              const newData = [...gridDatas.reviewODP3];
+                              newData[index].specificationLimit = e.target.value;
+                              setGridDatas({
+                                ...gridDatas,
+                                reviewODP3: newData,
+                              });
+                            }}
+                          />
                         </td>
                         <td>
-                        <input 
-                          value={item.stage}
-                          onChange={(e) => {
-                          const newData = [...pQRData.reviewODP3];
-                          newData[index].stage = e.target.value;
-                          setPQRData({...pQRData,reviewODP3:newData});
-                        }}
-                      />
+                          <input
+                            value={item.stage}
+                            onChange={(e) => {
+                              const newData = [...gridDatas.reviewODP3];
+                              newData[index].stage = e.target.value;
+                              setGridDatas({
+                                ...gridDatas,
+                                reviewODP3: newData,
+                              });
+                            }}
+                          />
                         </td>
                         <td>
-                        <input 
-                          value={item.obtainedValue.minimum}
-                          onChange={(e) => {
-                          const newData = [...pQRData.reviewODP3];
-                          newData[index].obtainedValue.minimum = e.target.value;
-                          setPQRData({...pQRData,reviewODP3:newData});
-                        }}
-                      />
+                          <input
+                            value={item.obtainedValue.minimum}
+                            onChange={(e) => {
+                              const newData = [...gridDatas.reviewODP3];
+                              newData[index].obtainedValue.minimum = e.target.value;
+                              setGridDatas({
+                                ...gridDatas,
+                                reviewODP3: newData,
+                              });
+                            }}
+                          />
                         </td>
                         <td>
-                        <input 
-                          value={item.obtainedValue.maximum}
-                          onChange={(e) => {
-                          const newData = [...pQRData.reviewODP3];
-                          newData[index].obtainedValue.maximum = e.target.value;
-                          setPQRData({...pQRData,reviewODP3:newData});
-                        }}
-                      />
+                          <input
+                            value={item.obtainedValue.maximum}
+                            onChange={(e) => {
+                              const newData = [...gridDatas.reviewODP3];
+                              newData[index].obtainedValue.maximum = e.target.value;
+                              setGridDatas({
+                                ...gridDatas,
+                                reviewODP3: newData,
+                              });
+                            }}
+                          />
                         </td>
                         <td>
-                        <input 
-                          value={item.compliesNotComplies}
-                          onChange={(e) => {
-                          const newData = [...pQRData.reviewODP3];
-                          newData[index].compliesNotComplies = e.target.value;
-                          setPQRData({...pQRData,reviewODP3:newData});
-                        }}
-                      />
+                          <input
+                            value={item.compliesNotComplies}
+                            onChange={(e) => {
+                              const newData = [...gridDatas.reviewODP3];
+                              newData[index].compliesNotComplies = e.target.value;
+                              setGridDatas({
+                                ...gridDatas,
+                                reviewODP3: newData,
+                              });
+                            }}
+                          />
                         </td>
                       </tr>
                     );
@@ -7219,15 +12211,15 @@ export default function APQR() {
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addReviewODPRow4} />
-                  <div className="addrowinstruction  pl-2">
-                    Add Rows by clicking on (+) icon
-                  </div>
+                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
                 </div>
                 <div className="flex gap-4 ">
-                  <ExcelExport
-                    data={balanceSheet}
-                    fileName="balance-sheet-summary.xlsx"
-                  />
+                  <ExcelExportImport
+                  // data={manufacturingStage}
+                  // setimportedData={setimportedData}
+                  // fileName="manufacturingStage.xlsx"
+                  // gridNo={1}
+                  />{" "}
                 </div>
               </div>
               <table>
@@ -7246,69 +12238,87 @@ export default function APQR() {
                   </tr>
                 </thead>
                 <tbody>
-                  {pQRData?.reviewODP4?.map((item, index) => {
+                  {gridDatas?.reviewODP4?.map((item, index) => {
                     return (
                       <tr key={index}>
                         <td>{index + 1}</td>
                         <td>
-                        <input 
-                          value={item.testsParameter}
-                          onChange={(e) => {
-                          const newData = [...pQRData.reviewODP4];
-                          newData[index].testsParameter = e.target.value;
-                          setPQRData({...pQRData,reviewODP4:newData});
-                        }}
-                      />
+                          <input
+                            value={item.testsParameter}
+                            onChange={(e) => {
+                              const newData = [...gridDatas.reviewODP4];
+                              newData[index].testsParameter = e.target.value;
+                              setGridDatas({
+                                ...gridDatas,
+                                reviewODP4: newData,
+                              });
+                            }}
+                          />
                         </td>
                         <td>
-                        <input 
-                          value={item.specificationLimit}
-                          onChange={(e) => {
-                          const newData = [...pQRData.reviewODP4];
-                          newData[index]. specificationLimit = e.target.value;
-                          setPQRData({...pQRData,reviewODP4:newData});
-                        }}
-                      />
+                          <input
+                            value={item.specificationLimit}
+                            onChange={(e) => {
+                              const newData = [...gridDatas.reviewODP4];
+                              newData[index].specificationLimit = e.target.value;
+                              setGridDatas({
+                                ...gridDatas,
+                                reviewODP4: newData,
+                              });
+                            }}
+                          />
                         </td>
                         <td>
-                        <input 
-                          value={item.stage}
-                          onChange={(e) => {
-                          const newData = [...pQRData.reviewODP4];
-                          newData[index].stage = e.target.value;
-                          setPQRData({...pQRData,reviewODP4:newData});
-                        }}
-                      />
+                          <input
+                            value={item.stage}
+                            onChange={(e) => {
+                              const newData = [...gridDatas.reviewODP4];
+                              newData[index].stage = e.target.value;
+                              setGridDatas({
+                                ...gridDatas,
+                                reviewODP4: newData,
+                              });
+                            }}
+                          />
                         </td>
                         <td>
-                        <input 
-                          value={item.obtainedValue.minimum}
-                          onChange={(e) => {
-                          const newData = [...pQRData.reviewODP4];
-                          newData[index].obtainedValue.minimum = e.target.value;
-                          setPQRData({...pQRData,reviewODP4:newData});
-                        }}
-                      />
+                          <input
+                            value={item.obtainedValue.minimum}
+                            onChange={(e) => {
+                              const newData = [...gridDatas.reviewODP4];
+                              newData[index].obtainedValue.minimum = e.target.value;
+                              setGridDatas({
+                                ...gridDatas,
+                                reviewODP4: newData,
+                              });
+                            }}
+                          />
                         </td>
                         <td>
-                        <input 
-                          value={item.obtainedValue.maximum}
-                          onChange={(e) => {
-                          const newData = [...pQRData.reviewODP4];
-                          newData[index].obtainedValue.maximum = e.target.value;
-                          setPQRData({...pQRData,reviewODP4:newData});
-                        }}
-                      />
+                          <input
+                            value={item.obtainedValue.maximum}
+                            onChange={(e) => {
+                              const newData = [...gridDatas.reviewODP4];
+                              newData[index].obtainedValue.maximum = e.target.value;
+                              setGridDatas({
+                                ...gridDatas,
+                                reviewODP4: newData,
+                              });
+                            }}
+                          />
                         </td>
                         <td>
-                        <input 
-                          value={item.compliesNotComplies}
-                          onChange={(e) => {
-                          const newData = [...pQRData.reviewODP4];
-                          newData[index].compliesNotComplies = e.target.value;
-                          setPQRData({...pQRData,reviewODP4:newData});
-                        }}
-                      />
+                          <input
+                            value={item.compliesNotComplies}
+                            onChange={(e) => {
+                              const newData = [...gridDatas.reviewODP4];
+                              newData[index].compliesNotComplies = e.target.value;
+                              setGridDatas({
+                                ...gridDatas,
+                                reviewODP4: newData,
+                              });
+                            }}
+                          />
                         </td>
                       </tr>
                     );
@@ -7325,15 +12335,15 @@ export default function APQR() {
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addReviewODPRow5} />
-                  <div className="addrowinstruction  pl-2">
-                    Add Rows by clicking on (+) icon
-                  </div>
+                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
                 </div>
                 <div className="flex gap-4 ">
-                  <ExcelExport
-                    data={balanceSheet}
-                    fileName="balance-sheet-summary.xlsx"
-                  />
+                  <ExcelExportImport
+                  // data={manufacturingStage}
+                  // setimportedData={setimportedData}
+                  // fileName="manufacturingStage.xlsx"
+                  // gridNo={1}
+                  />{" "}
                 </div>
               </div>
               <table>
@@ -7352,70 +12362,88 @@ export default function APQR() {
                   </tr>
                 </thead>
                 <tbody>
-                  {pQRData?.reviewODP5?.map((item, index) => {
+                  {gridDatas?.reviewODP5?.map((item, index) => {
                     return (
                       <tr key={index}>
                         <td>{index + 1}</td>
                         <td>
-                        <input 
-                          value={item.testsParameter}
-                          onChange={(e) => {
-                          const newData = [...pQRData.reviewODP5];
-                          newData[index].testsParameter = e.target.value;
-                          setPQRData({...pQRData,reviewODP5:newData});
-                        }}
-                      />
+                          <input
+                            value={item.testsParameter}
+                            onChange={(e) => {
+                              const newData = [...gridDatas.reviewODP5];
+                              newData[index].testsParameter = e.target.value;
+                              setGridDatas({
+                                ...gridDatas,
+                                reviewODP5: newData,
+                              });
+                            }}
+                          />
                         </td>
                         <td>
-                        <input 
-                          value={item.specificationLimit}
-                          onChange={(e) => {
-                          const newData = [...pQRData.reviewODP5];
-                          newData[index]. specificationLimit = e.target.value;
-                          setPQRData({...pQRData,reviewODP5:newData});
-                        }}
-                      />
+                          <input
+                            value={item.specificationLimit}
+                            onChange={(e) => {
+                              const newData = [...gridDatas.reviewODP5];
+                              newData[index].specificationLimit = e.target.value;
+                              setGridDatas({
+                                ...gridDatas,
+                                reviewODP5: newData,
+                              });
+                            }}
+                          />
                         </td>
                         <td>
-                        <input 
-                          value={item.stage}
-                          onChange={(e) => {
-                          const newData = [...pQRData.reviewODP5];
-                          newData[index].stage = e.target.value;
-                          setPQRData({...pQRData,reviewODP5:newData});
-                        }}
-                      />
+                          <input
+                            value={item.stage}
+                            onChange={(e) => {
+                              const newData = [...gridDatas.reviewODP5];
+                              newData[index].stage = e.target.value;
+                              setGridDatas({
+                                ...gridDatas,
+                                reviewODP5: newData,
+                              });
+                            }}
+                          />
                         </td>
                         <td>
-                        <input 
-                          value={item.obtainedValue.minimum}
-                          onChange={(e) => {
-                          const newData = [...pQRData.reviewODP5];
-                          newData[index].obtainedValue.minimum = e.target.value;
-                          setPQRData({...pQRData,reviewODP5:newData});
-                        }}
-                      />
+                          <input
+                            value={item.obtainedValue.minimum}
+                            onChange={(e) => {
+                              const newData = [...gridDatas.reviewODP5];
+                              newData[index].obtainedValue.minimum = e.target.value;
+                              setGridDatas({
+                                ...gridDatas,
+                                reviewODP5: newData,
+                              });
+                            }}
+                          />
                         </td>
                         <td>
-                        <input 
-                          value={item.obtainedValue.maximum}
-                          onChange={(e) => {
-                          const newData = [...pQRData.reviewODP5];
-                          newData[index].obtainedValue.maximum = e.target.value;
-                          setPQRData({...pQRData,reviewODP5:newData});
-                        }}
-                      />
+                          <input
+                            value={item.obtainedValue.maximum}
+                            onChange={(e) => {
+                              const newData = [...gridDatas.reviewODP5];
+                              newData[index].obtainedValue.maximum = e.target.value;
+                              setGridDatas({
+                                ...gridDatas,
+                                reviewODP5: newData,
+                              });
+                            }}
+                          />
                         </td>
                         <td>
-                        <input 
-                          value={item.compliesNotComplies}
-                          onChange={(e) => {
-                          const newData = [...pQRData.reviewODP5];
-                          newData[index].compliesNotComplies = e.target.value;
-                          setPQRData({...pQRData,reviewODP5:newData});
-                        }}
-                      />
-                        </td> 
+                          <input
+                            value={item.compliesNotComplies}
+                            onChange={(e) => {
+                              const newData = [...gridDatas.reviewODP5];
+                              newData[index].compliesNotComplies = e.target.value;
+                              setGridDatas({
+                                ...gridDatas,
+                                reviewODP5: newData,
+                              });
+                            }}
+                          />
+                        </td>
                       </tr>
                     );
                   })}
@@ -7431,15 +12459,15 @@ export default function APQR() {
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addReviewODPRow6} />
-                  <div className="addrowinstruction  pl-2">
-                    Add Rows by clicking on (+) icon
-                  </div>
+                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
                 </div>
                 <div className="flex gap-4 ">
-                  <ExcelExport
-                    data={balanceSheet}
-                    fileName="balance-sheet-summary.xlsx"
-                  />
+                  <ExcelExportImport
+                  // data={manufacturingStage}
+                  // setimportedData={setimportedData}
+                  // fileName="manufacturingStage.xlsx"
+                  // gridNo={1}
+                  />{" "}
                 </div>
               </div>
               <table>
@@ -7458,70 +12486,88 @@ export default function APQR() {
                   </tr>
                 </thead>
                 <tbody>
-                  {pQRData?.reviewODP6?.map((item, index) => {
+                  {gridDatas?.reviewODP6?.map((item, index) => {
                     return (
                       <tr key={index}>
                         <td>{index + 1}</td>
                         <td>
-                        <input 
-                          value={item.testsParameter}
-                          onChange={(e) => {
-                          const newData = [...pQRData.reviewODP6];
-                          newData[index].testsParameter = e.target.value;
-                          setPQRData({...pQRData,reviewODP6:newData});
-                        }}
-                      />
+                          <input
+                            value={item.testsParameter}
+                            onChange={(e) => {
+                              const newData = [...gridDatas.reviewODP6];
+                              newData[index].testsParameter = e.target.value;
+                              setGridDatas({
+                                ...gridDatas,
+                                reviewODP6: newData,
+                              });
+                            }}
+                          />
                         </td>
                         <td>
-                        <input 
-                          value={item.specificationLimit}
-                          onChange={(e) => {
-                          const newData = [...pQRData.reviewODP6];
-                          newData[index]. specificationLimit = e.target.value;
-                          setPQRData({...pQRData,reviewODP6:newData});
-                        }}
-                      />
+                          <input
+                            value={item.specificationLimit}
+                            onChange={(e) => {
+                              const newData = [...gridDatas.reviewODP6];
+                              newData[index].specificationLimit = e.target.value;
+                              setGridDatas({
+                                ...gridDatas,
+                                reviewODP6: newData,
+                              });
+                            }}
+                          />
                         </td>
                         <td>
-                        <input 
-                          value={item.stage}
-                          onChange={(e) => {
-                          const newData = [...pQRData.reviewODP6];
-                          newData[index].stage = e.target.value;
-                          setPQRData({...pQRData,reviewODP6:newData});
-                        }}
-                      />
+                          <input
+                            value={item.stage}
+                            onChange={(e) => {
+                              const newData = [...gridDatas.reviewODP6];
+                              newData[index].stage = e.target.value;
+                              setGridDatas({
+                                ...gridDatas,
+                                reviewODP6: newData,
+                              });
+                            }}
+                          />
                         </td>
                         <td>
-                        <input 
-                          value={item.obtainedValue.minimum}
-                          onChange={(e) => {
-                          const newData = [...pQRData.reviewODP6];
-                          newData[index].obtainedValue.minimum = e.target.value;
-                          setPQRData({...pQRData,reviewODP6:newData});
-                        }}
-                      />
+                          <input
+                            value={item.obtainedValue.minimum}
+                            onChange={(e) => {
+                              const newData = [...gridDatas.reviewODP6];
+                              newData[index].obtainedValue.minimum = e.target.value;
+                              setGridDatas({
+                                ...gridDatas,
+                                reviewODP6: newData,
+                              });
+                            }}
+                          />
                         </td>
                         <td>
-                        <input 
-                          value={item.obtainedValue.maximum}
-                          onChange={(e) => {
-                          const newData = [...pQRData.reviewODP6];
-                          newData[index].obtainedValue.maximum = e.target.value;
-                          setPQRData({...pQRData,reviewODP6:newData});
-                        }}
-                      />
+                          <input
+                            value={item.obtainedValue.maximum}
+                            onChange={(e) => {
+                              const newData = [...gridDatas.reviewODP6];
+                              newData[index].obtainedValue.maximum = e.target.value;
+                              setGridDatas({
+                                ...gridDatas,
+                                reviewODP6: newData,
+                              });
+                            }}
+                          />
                         </td>
                         <td>
-                        <input 
-                          value={item.compliesNotComplies}
-                          onChange={(e) => {
-                          const newData = [...pQRData.reviewODP6];
-                          newData[index].compliesNotComplies = e.target.value;
-                          setPQRData({...pQRData,reviewODP6:newData});
-                        }}
-                      />
-                        </td> 
+                          <input
+                            value={item.compliesNotComplies}
+                            onChange={(e) => {
+                              const newData = [...gridDatas.reviewODP6];
+                              newData[index].compliesNotComplies = e.target.value;
+                              setGridDatas({
+                                ...gridDatas,
+                                reviewODP6: newData,
+                              });
+                            }}
+                          />
+                        </td>
                       </tr>
                     );
                   })}
@@ -7537,15 +12583,15 @@ export default function APQR() {
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addReviewODPRow7} />
-                  <div className="addrowinstruction  pl-2">
-                    Add Rows by clicking on (+) icon
-                  </div>
+                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
                 </div>
                 <div className="flex gap-4 ">
-                  <ExcelExport
-                    data={balanceSheet}
-                    fileName="balance-sheet-summary.xlsx"
-                  />
+                  <ExcelExportImport
+                  // data={manufacturingStage}
+                  // setimportedData={setimportedData}
+                  // fileName="manufacturingStage.xlsx"
+                  // gridNo={1}
+                  />{" "}
                 </div>
               </div>
               <table>
@@ -7564,70 +12610,88 @@ export default function APQR() {
                   </tr>
                 </thead>
                 <tbody>
-                  {pQRData?.reviewODP7?.map((item, index) => {
+                  {gridDatas?.reviewODP7?.map((item, index) => {
                     return (
                       <tr key={index}>
                         <td>{index + 1}</td>
                         <td>
-                        <input 
-                          value={item.testsParameter}
-                          onChange={(e) => {
-                          const newData = [...pQRData.reviewODP7];
-                          newData[index].testsParameter = e.target.value;
-                          setPQRData({...pQRData,reviewODP7:newData});
-                        }}
-                      />
+                          <input
+                            value={item.testsParameter}
+                            onChange={(e) => {
+                              const newData = [...gridDatas.reviewODP7];
+                              newData[index].testsParameter = e.target.value;
+                              setGridDatas({
+                                ...gridDatas,
+                                reviewODP7: newData,
+                              });
+                            }}
+                          />
                         </td>
                         <td>
-                        <input 
-                          value={item.specificationLimit}
-                          onChange={(e) => {
-                          const newData = [...pQRData.reviewODP7];
-                          newData[index]. specificationLimit = e.target.value;
-                          setPQRData({...pQRData,reviewODP7:newData});
-                        }}
-                      />
+                          <input
+                            value={item.specificationLimit}
+                            onChange={(e) => {
+                              const newData = [...gridDatas.reviewODP7];
+                              newData[index].specificationLimit = e.target.value;
+                              setGridDatas({
+                                ...gridDatas,
+                                reviewODP7: newData,
+                              });
+                            }}
+                          />
                         </td>
                         <td>
-                        <input 
-                          value={item.stage}
-                          onChange={(e) => {
-                          const newData = [...pQRData.reviewODP7];
-                          newData[index].stage = e.target.value;
-                          setPQRData({...pQRData,reviewODP7:newData});
-                        }}
-                      />
+                          <input
+                            value={item.stage}
+                            onChange={(e) => {
+                              const newData = [...gridDatas.reviewODP7];
+                              newData[index].stage = e.target.value;
+                              setGridDatas({
+                                ...gridDatas,
+                                reviewODP7: newData,
+                              });
+                            }}
+                          />
                         </td>
                         <td>
-                        <input 
-                          value={item.obtainedValue.minimum}
-                          onChange={(e) => {
-                          const newData = [...pQRData.reviewODP7];
-                          newData[index].obtainedValue.minimum = e.target.value;
-                          setPQRData({...pQRData,reviewODP7:newData});
-                        }}
-                      />
+                          <input
+                            value={item.obtainedValue.minimum}
+                            onChange={(e) => {
+                              const newData = [...gridDatas.reviewODP7];
+                              newData[index].obtainedValue.minimum = e.target.value;
+                              setGridDatas({
+                                ...gridDatas,
+                                reviewODP7: newData,
+                              });
+                            }}
+                          />
                         </td>
                         <td>
-                        <input 
-                          value={item.obtainedValue.maximum}
-                          onChange={(e) => {
-                          const newData = [...pQRData.reviewODP7];
-                          newData[index].obtainedValue.maximum = e.target.value;
-                          setPQRData({...pQRData,reviewODP7:newData});
-                        }}
-                      />
+                          <input
+                            value={item.obtainedValue.maximum}
+                            onChange={(e) => {
+                              const newData = [...gridDatas.reviewODP7];
+                              newData[index].obtainedValue.maximum = e.target.value;
+                              setGridDatas({
+                                ...gridDatas,
+                                reviewODP7: newData,
+                              });
+                            }}
+                          />
                         </td>
                         <td>
-                        <input 
-                          value={item.compliesNotComplies}
-                          onChange={(e) => {
-                          const newData = [...pQRData.reviewODP7];
-                          newData[index].compliesNotComplies = e.target.value;
-                          setPQRData({...pQRData,reviewODP7:newData});
-                        }}
-                      />
-                        </td> 
+                          <input
+                            value={item.compliesNotComplies}
+                            onChange={(e) => {
+                              const newData = [...gridDatas.reviewODP7];
+                              newData[index].compliesNotComplies = e.target.value;
+                              setGridDatas({
+                                ...gridDatas,
+                                reviewODP7: newData,
+                              });
+                            }}
+                          />
+                        </td>
                       </tr>
                     );
                   })}
@@ -7643,15 +12707,15 @@ export default function APQR() {
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addReviewODPRow8} />
-                  <div className="addrowinstruction  pl-2">
-                    Add Rows by clicking on (+) icon
-                  </div>
+                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
                 </div>
                 <div className="flex gap-4 ">
-                  <ExcelExport
-                    data={balanceSheet}
-                    fileName="balance-sheet-summary.xlsx"
-                  />
+                  <ExcelExportImport
+                  // data={manufacturingStage}
+                  // setimportedData={setimportedData}
+                  // fileName="manufacturingStage.xlsx"
+                  // gridNo={1}
+                  />{" "}
                 </div>
               </div>
               <table>
@@ -7670,70 +12734,88 @@ export default function APQR() {
                   </tr>
                 </thead>
                 <tbody>
-                  {pQRData?.reviewODP8?.map((item, index) => {
+                  {gridDatas?.reviewODP8?.map((item, index) => {
                     return (
                       <tr key={index}>
                         <td>{index + 1}</td>
                         <td>
-                        <input 
-                          value={item.testsParameter}
-                          onChange={(e) => {
-                          const newData = [...pQRData.reviewODP8];
-                          newData[index].testsParameter = e.target.value;
-                          setPQRData({...pQRData,reviewODP8:newData});
-                        }}
-                      />
+                          <input
+                            value={item.testsParameter}
+                            onChange={(e) => {
+                              const newData = [...gridDatas.reviewODP8];
+                              newData[index].testsParameter = e.target.value;
+                              setGridDatas({
+                                ...gridDatas,
+                                reviewODP8: newData,
+                              });
+                            }}
+                          />
                         </td>
                         <td>
-                        <input 
-                          value={item.specificationLimit}
-                          onChange={(e) => {
-                          const newData = [...pQRData.reviewODP8];
-                          newData[index]. specificationLimit = e.target.value;
-                          setPQRData({...pQRData,reviewODP8:newData});
-                        }}
-                      />
+                          <input
+                            value={item.specificationLimit}
+                            onChange={(e) => {
+                              const newData = [...gridDatas.reviewODP8];
+                              newData[index].specificationLimit = e.target.value;
+                              setGridDatas({
+                                ...gridDatas,
+                                reviewODP8: newData,
+                              });
+                            }}
+                          />
                         </td>
                         <td>
-                        <input 
-                          value={item.stage}
-                          onChange={(e) => {
-                          const newData = [...pQRData.reviewODP8];
-                          newData[index].stage = e.target.value;
-                          setPQRData({...pQRData,reviewODP8:newData});
-                        }}
-                      />
+                          <input
+                            value={item.stage}
+                            onChange={(e) => {
+                              const newData = [...gridDatas.reviewODP8];
+                              newData[index].stage = e.target.value;
+                              setGridDatas({
+                                ...gridDatas,
+                                reviewODP8: newData,
+                              });
+                            }}
+                          />
                         </td>
                         <td>
-                        <input 
-                          value={item.obtainedValue.minimum}
-                          onChange={(e) => {
-                          const newData = [...pQRData.reviewODP8];
-                          newData[index].obtainedValue.minimum = e.target.value;
-                          setPQRData({...pQRData,reviewODP8:newData});
-                        }}
-                      />
+                          <input
+                            value={item.obtainedValue.minimum}
+                            onChange={(e) => {
+                              const newData = [...gridDatas.reviewODP8];
+                              newData[index].obtainedValue.minimum = e.target.value;
+                              setGridDatas({
+                                ...gridDatas,
+                                reviewODP8: newData,
+                              });
+                            }}
+                          />
                         </td>
                         <td>
-                        <input 
-                          value={item.obtainedValue.maximum}
-                          onChange={(e) => {
-                          const newData = [...pQRData.reviewODP8];
-                          newData[index].obtainedValue.maximum = e.target.value;
-                          setPQRData({...pQRData,reviewODP8:newData});
-                        }}
-                      />
+                          <input
+                            value={item.obtainedValue.maximum}
+                            onChange={(e) => {
+                              const newData = [...gridDatas.reviewODP8];
+                              newData[index].obtainedValue.maximum = e.target.value;
+                              setGridDatas({
+                                ...gridDatas,
+                                reviewODP8: newData,
+                              });
+                            }}
+                          />
                         </td>
                         <td>
-                        <input 
-                          value={item.compliesNotComplies}
-                          onChange={(e) => {
-                          const newData = [...pQRData.reviewODP8];
-                          newData[index].compliesNotComplies = e.target.value;
-                          setPQRData({...pQRData,reviewODP8:newData});
-                        }}
-                      />
-                        </td> 
+                          <input
+                            value={item.compliesNotComplies}
+                            onChange={(e) => {
+                              const newData = [...gridDatas.reviewODP8];
+                              newData[index].compliesNotComplies = e.target.value;
+                              setGridDatas({
+                                ...gridDatas,
+                                reviewODP8: newData,
+                              });
+                            }}
+                          />
+                        </td>
                       </tr>
                     );
                   })}
@@ -7749,15 +12831,15 @@ export default function APQR() {
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addReviewODPRow9} />
-                  <div className="addrowinstruction  pl-2">
-                    Add Rows by clicking on (+) icon
-                  </div>
+                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
                 </div>
                 <div className="flex gap-4 ">
-                  <ExcelExport
-                    data={balanceSheet}
-                    fileName="balance-sheet-summary.xlsx"
-                  />
+                  <ExcelExportImport
+                  // data={manufacturingStage}
+                  // setimportedData={setimportedData}
+                  // fileName="manufacturingStage.xlsx"
+                  // gridNo={1}
+                  />{" "}
                 </div>
               </div>
               <table>
@@ -7776,70 +12858,88 @@ export default function APQR() {
                   </tr>
                 </thead>
                 <tbody>
-                  {pQRData?.reviewODP9?.map((item, index) => {
+                  {gridDatas?.reviewODP9?.map((item, index) => {
                     return (
                       <tr key={index}>
                         <td>{index + 1}</td>
                         <td>
-                        <input 
-                          value={item.testsParameter}
-                          onChange={(e) => {
-                          const newData = [...pQRData.reviewODP9];
-                          newData[index].testsParameter = e.target.value;
-                          setPQRData({...pQRData,reviewODP9:newData});
-                        }}
-                      />
+                          <input
+                            value={item.testsParameter}
+                            onChange={(e) => {
+                              const newData = [...gridDatas.reviewODP9];
+                              newData[index].testsParameter = e.target.value;
+                              setGridDatas({
+                                ...gridDatas,
+                                reviewODP9: newData,
+                              });
+                            }}
+                          />
                         </td>
                         <td>
-                        <input 
-                          value={item.specificationLimit}
-                          onChange={(e) => {
-                          const newData = [...pQRData.reviewODP9];
-                          newData[index]. specificationLimit = e.target.value;
-                          setPQRData({...pQRData,reviewODP9:newData});
-                        }}
-                      />
+                          <input
+                            value={item.specificationLimit}
+                            onChange={(e) => {
+                              const newData = [...gridDatas.reviewODP9];
+                              newData[index].specificationLimit = e.target.value;
+                              setGridDatas({
+                                ...gridDatas,
+                                reviewODP9: newData,
+                              });
+                            }}
+                          />
                         </td>
                         <td>
-                        <input 
-                          value={item.stage}
-                          onChange={(e) => {
-                          const newData = [...pQRData.reviewODP9];
-                          newData[index].stage = e.target.value;
-                          setPQRData({...pQRData,reviewODP9:newData});
-                        }}
-                      />
+                          <input
+                            value={item.stage}
+                            onChange={(e) => {
+                              const newData = [...gridDatas.reviewODP9];
+                              newData[index].stage = e.target.value;
+                              setGridDatas({
+                                ...gridDatas,
+                                reviewODP9: newData,
+                              });
+                            }}
+                          />
                         </td>
                         <td>
-                        <input 
-                          value={item.obtainedValue.minimum}
-                          onChange={(e) => {
-                          const newData = [...pQRData.reviewODP9];
-                          newData[index].obtainedValue.minimum = e.target.value;
-                          setPQRData({...pQRData,reviewODP9:newData});
-                        }}
-                      />
+                          <input
+                            value={item.obtainedValue.minimum}
+                            onChange={(e) => {
+                              const newData = [...gridDatas.reviewODP9];
+                              newData[index].obtainedValue.minimum = e.target.value;
+                              setGridDatas({
+                                ...gridDatas,
+                                reviewODP9: newData,
+                              });
+                            }}
+                          />
                         </td>
                         <td>
-                        <input 
-                          value={item.obtainedValue.maximum}
-                          onChange={(e) => {
-                          const newData = [...pQRData.reviewODP9];
-                          newData[index].obtainedValue.maximum = e.target.value;
-                          setPQRData({...pQRData,reviewODP9:newData});
-                        }}
-                      />
+                          <input
+                            value={item.obtainedValue.maximum}
+                            onChange={(e) => {
+                              const newData = [...gridDatas.reviewODP9];
+                              newData[index].obtainedValue.maximum = e.target.value;
+                              setGridDatas({
+                                ...gridDatas,
+                                reviewODP9: newData,
+                              });
+                            }}
+                          />
                         </td>
                         <td>
-                        <input 
-                          value={item.compliesNotComplies}
-                          onChange={(e) => {
-                          const newData = [...pQRData.reviewODP9];
-                          newData[index].compliesNotComplies = e.target.value;
-                          setPQRData({...pQRData,reviewODP9 :newData});
-                        }}
-                      />
-                        </td> 
+                          <input
+                            value={item.compliesNotComplies}
+                            onChange={(e) => {
+                              const newData = [...gridDatas.reviewODP9];
+                              newData[index].compliesNotComplies = e.target.value;
+                              setGridDatas({
+                                ...gridDatas,
+                                reviewODP9: newData,
+                              });
+                            }}
+                          />
+                        </td>
                       </tr>
                     );
                   })}
@@ -7855,15 +12955,15 @@ export default function APQR() {
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addReviewODPRow10} />
-                  <div className="addrowinstruction  pl-2">
-                    Add Rows by clicking on (+) icon
-                  </div>
+                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
                 </div>
                 <div className="flex gap-4 ">
-                  <ExcelExport
-                    data={balanceSheet}
-                    fileName="balance-sheet-summary.xlsx"
-                  />
+                  <ExcelExportImport
+                  // data={manufacturingStage}
+                  // setimportedData={setimportedData}
+                  // fileName="manufacturingStage.xlsx"
+                  // gridNo={1}
+                  />{" "}
                 </div>
               </div>
               <table>
@@ -7882,7 +12982,7 @@ export default function APQR() {
                   </tr>
                 </thead>
                 <tbody>
-                  {pQRData?.reviewODP10?.map((item, index) => {
+                  {gridDatas?.reviewODP10?.map((item, index) => {
                     return (
                       <tr key={index}>
                         <td>{index + 1}</td>
@@ -7890,59 +12990,77 @@ export default function APQR() {
                           <input
                             value={item.testsParameter}
                             onChange={(e) => {
-                              const newData = [...reviewODPFPTR];
+                              const newData = [...gridDatas.reviewODP10];
                               newData[index].testsParameter = e.target.value;
-                              setReviewODPFPTR(newData);
+                              setGridDatas({
+                                ...gridDatas,
+                                reviewODP10: newData,
+                              });
                             }}
                           />
                         </td>
                         <td>
                           <input
-                            value={item.testsParameter}
+                            value={item.stage}
                             onChange={(e) => {
-                              const newData = [...reviewODPFPTR];
-                              newData[index].testsParameter = e.target.value;
-                              setReviewODPFPTR(newData);
+                              const newData = [...gridDatas.reviewODP10];
+                              newData[index].stage = e.target.value;
+                              setGridDatas({
+                                ...gridDatas,
+                                reviewODP10: newData,
+                              });
                             }}
                           />
                         </td>
                         <td>
                           <input
-                            value={item.testsParameter}
+                            value={item.specificationLimit}
                             onChange={(e) => {
-                              const newData = [...reviewODPFPTR];
-                              newData[index].testsParameter = e.target.value;
-                              setReviewODPFPTR(newData);
+                              const newData = [...gridDatas.reviewODP10];
+                              newData[index].specificationLimit = e.target.value;
+                              setGridDatas({
+                                ...gridDatas,
+                                reviewODP10: newData,
+                              });
                             }}
                           />
                         </td>
                         <td>
                           <input
-                            value={item.testsParameter}
+                            value={item.obtainedValue.minimum}
                             onChange={(e) => {
-                              const newData = [...reviewODPFPTR];
-                              newData[index].testsParameter = e.target.value;
-                              setReviewODPFPTR(newData);
+                              const newData = [...gridDatas.reviewODP10];
+                              newData[index].obtainedValue.minimum = e.target.value;
+                              setGridDatas({
+                                ...gridDatas,
+                                reviewODP10: newData,
+                              });
                             }}
                           />
                         </td>
                         <td>
                           <input
-                            value={item.testsParameter}
+                            value={item.obtainedValue.maximum}
                             onChange={(e) => {
-                              const newData = [...reviewODPFPTR];
-                              newData[index].testsParameter = e.target.value;
-                              setReviewODPFPTR(newData);
+                              const newData = [...gridDatas.reviewODP10];
+                              newData[index].obtainedValue.maximum = e.target.value;
+                              setGridDatas({
+                                ...gridDatas,
+                                reviewODP10: newData,
+                              });
                             }}
                           />
                         </td>
                         <td>
                           <input
-                            value={item.testsParameter}
+                            value={item.compliesNotComplies}
                             onChange={(e) => {
-                              const newData = [...reviewODPFPTR];
-                              newData[index].testsParameter = e.target.value;
-                              setReviewODPFPTR(newData);
+                              const newData = [...gridDatas.reviewODP10];
+                              newData[index].compliesNotComplies = e.target.value;
+                              setGridDatas({
+                                ...gridDatas,
+                                reviewODP10: newData,
+                              });
                             }}
                           />
                         </td>
@@ -7955,14 +13073,12 @@ export default function APQR() {
             <div>
               <h4 className="gridName mt-5">Summary</h4>
               <TinyEditor
-                editorContent={pQRData.tiny30}
+                editorContent={tinyData.tiny30}
                 setEditorContent={setTinyContent}
                 tinyNo={30}
               />
             </div>
-            <div className="sub-head">
-              Review of Drug Product –Finished Product Test Results
-            </div>
+            <div className="sub-head">Review of Drug Product –Finished Product Test Results</div>
             <div>
               {/* <div className="AddRows d-flex">
                 <MdNoteAdd onClick={addReviewODPFPTRRow} />
@@ -7971,15 +13087,15 @@ export default function APQR() {
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addReviewODPFPTRRow} />
-                  <div className="addrowinstruction  pl-2">
-                    Add Rows by clicking on (+) icon
-                  </div>
+                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
                 </div>
                 <div className="flex gap-4 ">
-                  <ExcelExport
-                    data={balanceSheet}
-                    fileName="balance-sheet-summary.xlsx"
-                  />
+                  <ExcelExportImport
+                  // data={manufacturingStage}
+                  // setimportedData={setimportedData}
+                  // fileName="manufacturingStage.xlsx"
+                  // gridNo={1}
+                  />{" "}
                 </div>
               </div>
               <table>
@@ -7997,7 +13113,7 @@ export default function APQR() {
                   </tr>
                 </thead>
                 <tbody>
-                  {pQRData?.reviewODPFPTR?.map((item, index) => {
+                  {gridDatas?.reviewODPFPTR?.map((item, index) => {
                     return (
                       <tr key={index}>
                         <td>{index + 1}</td>
@@ -8005,9 +13121,12 @@ export default function APQR() {
                           <input
                             value={item.testsParameter}
                             onChange={(e) => {
-                              const newData = [...reviewODPFPTR];
+                              const newData = [...gridDatas.reviewODPFPTR];
                               newData[index].testsParameter = e.target.value;
-                              setReviewODPFPTR(newData);
+                              setGridDatas({
+                                ...gridDatas,
+                                reviewODPFPTR: newData,
+                              });
                             }}
                           />
                         </td>
@@ -8015,10 +13134,12 @@ export default function APQR() {
                           <input
                             value={item.specificationLimit}
                             onChange={(e) => {
-                              const newData = [...reviewODPFPTR];
-                              newData[index].specificationLimit =
-                                e.target.value;
-                              setReviewODPFPTR(newData);
+                              const newData = [...gridDatas.reviewODPFPTR];
+                              newData[index].specificationLimit = e.target.value;
+                              setGridDatas({
+                                ...gridDatas,
+                                reviewODPFPTR: newData,
+                              });
                             }}
                           />
                         </td>
@@ -8026,10 +13147,12 @@ export default function APQR() {
                           <input
                             value={item.obtainedValue.minimum}
                             onChange={(e) => {
-                              const newData = [...reviewODPFPTR];
-                              newData[index].obtainedValue.minimum =
-                                e.target.value;
-                              setReviewODPFPTR(newData);
+                              const newData = [...gridDatas.reviewODPFPTR];
+                              newData[index].obtainedValue.minimum = e.target.value;
+                              setGridDatas({
+                                ...gridDatas,
+                                reviewODPFPTR: newData,
+                              });
                             }}
                           />
                         </td>
@@ -8037,10 +13160,12 @@ export default function APQR() {
                           <input
                             value={item.obtainedValue.maximum}
                             onChange={(e) => {
-                              const newData = [...reviewODPFPTR];
-                              newData[index].obtainedValue.maximum =
-                                e.target.value;
-                              setReviewODPFPTR(newData);
+                              const newData = [...gridDatas.reviewODPFPTR];
+                              newData[index].obtainedValue.maximum = e.target.value;
+                              setGridDatas({
+                                ...gridDatas,
+                                reviewODPFPTR: newData,
+                              });
                             }}
                           />
                         </td>
@@ -8048,10 +13173,12 @@ export default function APQR() {
                           <input
                             value={item.compliesNotComplies}
                             onChange={(e) => {
-                              const newData = [...reviewODPFPTR];
-                              newData[index].compliesNotComplies =
-                                e.target.value;
-                              setReviewODPFPTR(newData);
+                              const newData = [...gridDatas.reviewODPFPTR];
+                              newData[index].compliesNotComplies = e.target.value;
+                              setGridDatas({
+                                ...gridDatas,
+                                reviewODPFPTR: newData,
+                              });
                             }}
                           />
                         </td>
@@ -8064,7 +13191,7 @@ export default function APQR() {
             <div>
               <h4 className="gridName mt-5">Summary</h4>
               <TinyEditor
-                editorContent={pQRData.tiny31}
+                editorContent={tinyData.tiny31}
                 setEditorContent={setTinyContent}
                 tinyNo={31}
               />
@@ -8078,15 +13205,15 @@ export default function APQR() {
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addSummaryOOSSRow} />
-                  <div className="addrowinstruction  pl-2">
-                    Add Rows by clicking on (+) icon
-                  </div>
+                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
                 </div>
                 <div className="flex gap-4 ">
-                  <ExcelExport
-                    data={balanceSheet}
-                    fileName="balance-sheet-summary.xlsx"
-                  />
+                  <ExcelExportImport
+                  // data={manufacturingStage}
+                  // setimportedData={setimportedData}
+                  // fileName="manufacturingStage.xlsx"
+                  // gridNo={1}
+                  />{" "}
                 </div>
               </div>
               <table>
@@ -8101,7 +13228,7 @@ export default function APQR() {
                   </tr>
                 </thead>
                 <tbody>
-                  {pQRData?.summaryOOSS?.map((item, index) => {
+                  {gridDatas?.summaryOOSS?.map((item, index) => {
                     return (
                       <tr key={index}>
                         <td>{index + 1}</td>
@@ -8109,9 +13236,12 @@ export default function APQR() {
                           <input
                             value={item.batchNo}
                             onChange={(e) => {
-                              const newData = [...summaryOOSS];
+                              const newData = [...gridDatas.summaryOOSS];
                               newData[index].batchNo = e.target.value;
-                              setSummaryOOSS(newData);
+                              setGridDatas({
+                                ...gridDatas,
+                                summaryOOSS: newData,
+                              });
                             }}
                           />
                         </td>
@@ -8119,9 +13249,12 @@ export default function APQR() {
                           <input
                             value={item.type}
                             onChange={(e) => {
-                              const newData = [...summaryOOSS];
+                              const newData = [...gridDatas.summaryOOSS];
                               newData[index].type = e.target.value;
-                              setSummaryOOSS(newData);
+                              setGridDatas({
+                                ...gridDatas,
+                                summaryOOSS: newData,
+                              });
                             }}
                           />
                         </td>
@@ -8129,9 +13262,12 @@ export default function APQR() {
                           <input
                             value={item.storageCondition}
                             onChange={(e) => {
-                              const newData = [...summaryOOSS];
+                              const newData = [...gridDatas.summaryOOSS];
                               newData[index].storageCondition = e.target.value;
-                              setSummaryOOSS(newData);
+                              setGridDatas({
+                                ...gridDatas,
+                                summaryOOSS: newData,
+                              });
                             }}
                           />
                         </td>
@@ -8139,9 +13275,12 @@ export default function APQR() {
                           <input
                             value={item.testingInterval}
                             onChange={(e) => {
-                              const newData = [...summaryOOSS];
+                              const newData = [...gridDatas.summaryOOSS];
                               newData[index].testingInterval = e.target.value;
-                              setSummaryOOSS(newData);
+                              setGridDatas({
+                                ...gridDatas,
+                                summaryOOSS: newData,
+                              });
                             }}
                           />
                         </td>
@@ -8149,10 +13288,12 @@ export default function APQR() {
                           <input
                             value={item.stabilityProtocolNo}
                             onChange={(e) => {
-                              const newData = [...summaryOOSS];
-                              newData[index].stabilityProtocolNo =
-                                e.target.value;
-                              setSummaryOOSS(newData);
+                              const newData = [...gridDatas.summaryOOSS];
+                              newData[index].stabilityProtocolNo = e.target.value;
+                              setGridDatas({
+                                ...gridDatas,
+                                summaryOOSS: newData,
+                              });
                             }}
                           />
                         </td>
@@ -8164,7 +13305,7 @@ export default function APQR() {
               <div>
                 <h4 className="gridName mt-5">Summary</h4>
                 <TinyEditor
-                  editorContent={pQRData.tiny32}
+                  editorContent={tinyData.tiny32}
                   setEditorContent={setTinyContent}
                   tinyNo={32}
                 />
@@ -8178,15 +13319,15 @@ export default function APQR() {
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addStabilitySRRow} />
-                  <div className="addrowinstruction  pl-2">
-                    Add Rows by clicking on (+) icon
-                  </div>
+                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
                 </div>
                 <div className="flex gap-4 ">
-                  <ExcelExport
-                    data={balanceSheet}
-                    fileName="balance-sheet-summary.xlsx"
-                  />
+                  <ExcelExportImport
+                  // data={manufacturingStage}
+                  // setimportedData={setimportedData}
+                  // fileName="manufacturingStage.xlsx"
+                  // gridNo={1}
+                  />{" "}
                 </div>
               </div>
               <table>
@@ -8199,7 +13340,7 @@ export default function APQR() {
                   </tr>
                 </thead>
                 <tbody>
-                  {pQRData?.stabilitySR?.map((item, index) => {
+                  {gridDatas?.stabilitySR?.map((item, index) => {
                     return (
                       <tr key={index}>
                         <td>{index + 1}</td>
@@ -8207,9 +13348,12 @@ export default function APQR() {
                           <input
                             value={item.batchNo}
                             onChange={(e) => {
-                              const newData = [...stabilitySR];
+                              const newData = [...gridDatas.stabilitySR];
                               newData[index].batchNo = e.target.value;
-                              setStabilitySR(newData);
+                              setGridDatas({
+                                ...gridDatas,
+                                stabilitySR: newData,
+                              });
                             }}
                           />
                         </td>
@@ -8217,10 +13361,12 @@ export default function APQR() {
                           <input
                             value={item.testingIntervalMonths}
                             onChange={(e) => {
-                              const newData = [...stabilitySR];
-                              newData[index].testingIntervalMonths =
-                                e.target.value;
-                              setStabilitySR(newData);
+                              const newData = [...gridDatas.stabilitySR];
+                              newData[index].testingIntervalMonths = e.target.value;
+                              setGridDatas({
+                                ...gridDatas,
+                                stabilitySR: newData,
+                              });
                             }}
                           />
                         </td>
@@ -8228,9 +13374,12 @@ export default function APQR() {
                           <input
                             value={item.OOSNumber}
                             onChange={(e) => {
-                              const newData = [...stabilitySR];
+                              const newData = [...gridDatas.stabilitySR];
                               newData[index].OOSNumber = e.target.value;
-                              setStabilitySR(newData);
+                              setGridDatas({
+                                ...gridDatas,
+                                stabilitySR: newData,
+                              });
                             }}
                           />
                         </td>
@@ -8242,14 +13391,12 @@ export default function APQR() {
 
               <h4 className="gridName">Summary</h4>
               <TinyEditor
-                editorContent={pQRData.tiny33}
+                editorContent={tinyData.tiny33}
                 setEditorContent={setTinyContent}
                 tinyNo={33}
               />
 
-              <div className="sub-head">
-                Review of Visual Inspection – Reserve Samples
-              </div>
+              <div className="sub-head">Review of Visual Inspection – Reserve Samples</div>
               <div>
                 {/* <div className="AddRows d-flex">
                   <MdNoteAdd onClick={addreviewOVIRSRow} />
@@ -8258,15 +13405,15 @@ export default function APQR() {
                 <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                   <div className="flex items-center">
                     <MdNoteAdd onClick={addreviewOVIRSRow} />
-                    <div className="addrowinstruction  pl-2">
-                      Add Rows by clicking on (+) icon
-                    </div>
+                    <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
                   </div>
                   <div className="flex gap-4 ">
-                    <ExcelExport
-                      data={balanceSheet}
-                      fileName="balance-sheet-summary.xlsx"
-                    />
+                    <ExcelExportImport
+                    // data={manufacturingStage}
+                    // setimportedData={setimportedData}
+                    // fileName="manufacturingStage.xlsx"
+                    // gridNo={1}
+                    />{" "}
                   </div>
                 </div>
                 <table>
@@ -8276,7 +13423,7 @@ export default function APQR() {
                     </th>
                   </thead>
                   <tbody>
-                    {pQRData?.reviewOVIRS?.map((item, index) => {
+                    {gridDatas?.reviewOVIRS?.map((item, index) => {
                       return (
                         <tr key={index}>
                           <td>{index + 1}</td>
@@ -8284,9 +13431,12 @@ export default function APQR() {
                             <input
                               value={item.column1}
                               onChange={(e) => {
-                                const newData = [...reviewOVIRS];
+                                const newData = [...gridDatas.reviewOVIRS];
                                 newData[index].column1 = e.target.value;
-                                setReviewOVIRS(newData);
+                                setGridDatas({
+                                  ...gridDatas,
+                                  reviewOVIRS: newData,
+                                });
                               }}
                             />
                           </td>
@@ -8294,9 +13444,12 @@ export default function APQR() {
                             <input
                               value={item.column2}
                               onChange={(e) => {
-                                const newData = [...reviewOVIRS];
+                                const newData = [...gridDatas.reviewOVIRS];
                                 newData[index].column2 = e.target.value;
-                                setReviewOVIRS(newData);
+                                setGridDatas({
+                                  ...gridDatas,
+                                  reviewOVIRS: newData,
+                                });
                               }}
                             />
                           </td>
@@ -8304,9 +13457,12 @@ export default function APQR() {
                             <input
                               value={item.column3}
                               onChange={(e) => {
-                                const newData = [...reviewOVIRS];
+                                const newData = [...gridDatas.reviewOVIRS];
                                 newData[index].column3 = e.target.value;
-                                setReviewOVIRS(newData);
+                                setGridDatas({
+                                  ...gridDatas,
+                                  reviewOVIRS: newData,
+                                });
                               }}
                             />
                           </td>
@@ -8314,9 +13470,12 @@ export default function APQR() {
                             <input
                               value={item.column4}
                               onChange={(e) => {
-                                const newData = [...reviewOVIRS];
+                                const newData = [...gridDatas.reviewOVIRS];
                                 newData[index].column4 = e.target.value;
-                                setReviewOVIRS(newData);
+                                setGridDatas({
+                                  ...gridDatas,
+                                  reviewOVIRS: newData,
+                                });
                               }}
                             />
                           </td>
@@ -8324,9 +13483,12 @@ export default function APQR() {
                             <input
                               value={item.column5}
                               onChange={(e) => {
-                                const newData = [...reviewOVIRS];
+                                const newData = [...gridDatas.reviewOVIRS];
                                 newData[index].column5 = e.target.value;
-                                setReviewOVIRS(newData);
+                                setGridDatas({
+                                  ...gridDatas,
+                                  reviewOVIRS: newData,
+                                });
                               }}
                             />
                           </td>
@@ -8334,9 +13496,12 @@ export default function APQR() {
                             <input
                               value={item.column6}
                               onChange={(e) => {
-                                const newData = [...reviewOVIRS];
+                                const newData = [...gridDatas.reviewOVIRS];
                                 newData[index].column6 = e.target.value;
-                                setReviewOVIRS(newData);
+                                setGridDatas({
+                                  ...gridDatas,
+                                  reviewOVIRS: newData,
+                                });
                               }}
                             />
                           </td>
@@ -8344,9 +13509,12 @@ export default function APQR() {
                             <input
                               value={item.column7}
                               onChange={(e) => {
-                                const newData = [...reviewOVIRS];
+                                const newData = [...gridDatas.reviewOVIRS];
                                 newData[index].column7 = e.target.value;
-                                setReviewOVIRS(newData);
+                                setGridDatas({
+                                  ...gridDatas,
+                                  reviewOVIRS: newData,
+                                });
                               }}
                             />
                           </td>
@@ -8354,9 +13522,12 @@ export default function APQR() {
                             <input
                               value={item.column8}
                               onChange={(e) => {
-                                const newData = [...reviewOVIRS];
+                                const newData = [...gridDatas.reviewOVIRS];
                                 newData[index].column8 = e.target.value;
-                                setReviewOVIRS(newData);
+                                setGridDatas({
+                                  ...gridDatas,
+                                  reviewOVIRS: newData,
+                                });
                               }}
                             />
                           </td>
@@ -8368,38 +13539,33 @@ export default function APQR() {
               </div>
               <h4 className="gridName mt-4">Summary</h4>
               <TinyEditor
-                editorContent={pQRData.tiny34}
+                editorContent={tinyData.tiny34}
                 setEditorContent={setTinyContent}
                 tinyNo={34}
               />
-              <h4 className="gridName pt-4">
-                Review of Analytical Method Validations
-              </h4>
+              <h4 className="gridName pt-4">Review of Analytical Method Validations</h4>
               <TinyEditor
-                editorContent={pQRData.tiny35}
+                editorContent={tinyData.tiny35}
                 setEditorContent={setTinyContent}
                 tinyNo={35}
               />
-              <h4 className="gridName pt-4">
-                Review of Contract Testing Laboratories
-              </h4>
+              <h4 className="gridName pt-4">Review of Contract Testing Laboratories</h4>
               <TinyEditor
-                editorContent={pQRData.tiny36}
+                editorContent={tinyData.tiny36}
                 setEditorContent={setTinyContent}
                 tinyNo={36}
               />
               <h4 className="gridName pt-4">
-                Review of Environmental Monitoring Trend and water trends
-                Reports
+                Review of Environmental Monitoring Trend and water trends Reports
               </h4>
               <TinyEditor
-                editorContent={pQRData.tiny37}
+                editorContent={tinyData.tiny37}
                 setEditorContent={setTinyContent}
                 tinyNo={37}
               />
               <h4 className="gridName pt-4">Laboratory Review Summary</h4>
               <TinyEditor
-                editorContent={pQRData.tiny38}
+                editorContent={tinyData.tiny38}
                 setEditorContent={setTinyContent}
                 tinyNo={38}
               />
@@ -8410,19 +13576,19 @@ export default function APQR() {
           <div>
             <h4 className="gridName">Preventive Maintenance Details</h4>
             <TinyEditor
-              editorContent={pQRData.tiny39}
+              editorContent={tinyData.tiny39}
               setEditorContent={setTinyContent}
               tinyNo={39}
             />
             <h4 className="gridName pt-4"> Qualification details</h4>
             <TinyEditor
-              editorContent={pQRData.tiny40}
+              editorContent={tinyData.tiny40}
               setEditorContent={setTinyContent}
               tinyNo={40}
             />
             <h4 className="gridName pt-4"> Calibration Details</h4>
             <TinyEditor
-              editorContent={pQRData.tiny41}
+              editorContent={tinyData.tiny41}
               setEditorContent={setTinyContent}
               tinyNo={41}
             />
@@ -8436,15 +13602,15 @@ export default function APQR() {
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addHVACQStatusRow} />
-                  <div className="addrowinstruction  pl-2">
-                    Add Rows by clicking on (+) icon
-                  </div>
+                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
                 </div>
                 <div className="flex gap-4 ">
-                  <ExcelExport
-                    data={balanceSheet}
-                    fileName="balance-sheet-summary.xlsx"
-                  />
+                  <ExcelExportImport
+                  // data={manufacturingStage}
+                  // setimportedData={setimportedData}
+                  // fileName="manufacturingStage.xlsx"
+                  // gridNo={1}
+                  />{" "}
                 </div>
               </div>
               <table>
@@ -8457,7 +13623,7 @@ export default function APQR() {
                   </tr>
                 </thead>
                 <tbody>
-                  {pQRData?.hVACQStatus?.map((item, index) => {
+                  {gridDatas?.hVACQStatus?.map((item, index) => {
                     return (
                       <tr key={index}>
                         <td>{index + 1}</td>
@@ -8466,9 +13632,12 @@ export default function APQR() {
                           <input
                             value={item.testDescription}
                             onChange={(e) => {
-                              const newData = [...hVACQStatus];
+                              const newData = [...gridDatas.hVACQStatus];
                               newData[index].testDescription = e.target.value;
-                              setHVACQStatus(newData);
+                              setGridDatas({
+                                ...gridDatas,
+                                hVACQStatus: newData,
+                              });
                             }}
                           />
                         </td>
@@ -8476,9 +13645,12 @@ export default function APQR() {
                           <input
                             value={item.frequency}
                             onChange={(e) => {
-                              const newData = [...hVACQStatus];
+                              const newData = [...gridDatas.hVACQStatus];
                               newData[index].frequency = e.target.value;
-                              setHVACQStatus(newData);
+                              setGridDatas({
+                                ...gridDatas,
+                                hVACQStatus: newData,
+                              });
                             }}
                           />
                         </td>
@@ -8486,9 +13658,12 @@ export default function APQR() {
                           <input
                             value={item.status}
                             onChange={(e) => {
-                              const newData = [...hVACQStatus];
+                              const newData = [...gridDatas.hVACQStatus];
                               newData[index].status = e.target.value;
-                              setHVACQStatus(newData);
+                              setGridDatas({
+                                ...gridDatas,
+                                hVACQStatus: newData,
+                              });
                             }}
                           />
                         </td>
@@ -8501,15 +13676,13 @@ export default function APQR() {
             <div>
               <h4 className="gridName mt-5">Summary</h4>
               <TinyEditor
-                editorContent={pQRData.tiny42}
+                editorContent={tinyData.tiny42}
                 setEditorContent={setTinyContent}
                 tinyNo={42}
               />
             </div>
 
-            <h4 className="gridName pt-4">
-              Sanitization and Sterilization Details of Utilities
-            </h4>
+            <h4 className="gridName pt-4">Sanitization and Sterilization Details of Utilities</h4>
             <div>
               {/* <div className="AddRows">
                 <MdNoteAdd onClick={addSanitizationASDOURow} />
@@ -8518,15 +13691,15 @@ export default function APQR() {
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addSanitizationASDOURow} />
-                  <div className="addrowinstruction  pl-2">
-                    Add Rows by clicking on (+) icon
-                  </div>
+                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
                 </div>
                 <div className="flex gap-4 ">
-                  <ExcelExport
-                    data={balanceSheet}
-                    fileName="balance-sheet-summary.xlsx"
-                  />
+                  <ExcelExportImport
+                  // data={manufacturingStage}
+                  // setimportedData={setimportedData}
+                  // fileName="manufacturingStage.xlsx"
+                  // gridNo={1}
+                  />{" "}
                 </div>
               </div>
               <table>
@@ -8539,7 +13712,7 @@ export default function APQR() {
                   </tr>
                 </thead>
                 <tbody>
-                  {pQRData?.sanitizationASDOU?.map((item, index) => {
+                  {gridDatas?.sanitizationASDOU?.map((item, index) => {
                     return (
                       <tr key={index}>
                         <td>{index + 1}</td>
@@ -8547,9 +13720,12 @@ export default function APQR() {
                           <input
                             value={item.equipmentName}
                             onChange={(e) => {
-                              const newData = [...sanitizationASDOU];
+                              const newData = [...gridDatas.sanitizationASDOU];
                               newData[index].equipmentName = e.target.value;
-                              setSanitizationASDOU(newData);
+                              setGridDatas({
+                                ...gridDatas,
+                                sanitizationASDOU: newData,
+                              });
                             }}
                           />
                         </td>
@@ -8557,9 +13733,12 @@ export default function APQR() {
                           <input
                             value={item.frequency}
                             onChange={(e) => {
-                              const newData = [...sanitizationASDOU];
+                              const newData = [...gridDatas.sanitizationASDOU];
                               newData[index].frequency = e.target.value;
-                              setSanitizationASDOU(newData);
+                              setGridDatas({
+                                ...gridDatas,
+                                sanitizationASDOU: newData,
+                              });
                             }}
                           />
                         </td>
@@ -8567,9 +13746,12 @@ export default function APQR() {
                           <input
                             value={item.status}
                             onChange={(e) => {
-                              const newData = [...sanitizationASDOU];
+                              const newData = [...gridDatas.sanitizationASDOU];
                               newData[index].status = e.target.value;
-                              setSanitizationASDOU(newData);
+                              setGridDatas({
+                                ...gridDatas,
+                                sanitizationASDOU: newData,
+                              });
                             }}
                           />
                         </td>
@@ -8581,7 +13763,7 @@ export default function APQR() {
             </div>
             <h4 className="gridName pt-4">Summary</h4>
             <TinyEditor
-              editorContent={pQRData.tiny43}
+              editorContent={tinyData.tiny43}
               setEditorContent={setTinyContent}
               tinyNo={43}
             />
@@ -8600,16 +13782,17 @@ export default function APQR() {
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addCompressedGasesRow} />
                   <div className="addrowinstruction  pl-2">
-                    Compressed gases testing performed as per the scheduled
-                    frequency and results were found to be satisfactory, system
-                    is in qualified state
+                    Compressed gases testing performed as per the scheduled frequency and results
+                    were found to be satisfactory, system is in qualified state
                   </div>
                 </div>
                 <div className="flex gap-4 ">
-                  <ExcelExport
-                    data={balanceSheet}
-                    fileName="balance-sheet-summary.xlsx"
-                  />
+                  <ExcelExportImport
+                  // data={manufacturingStage}
+                  // setimportedData={setimportedData}
+                  // fileName="manufacturingStage.xlsx"
+                  // gridNo={1}
+                  />{" "}
                 </div>
               </div>
               <table>
@@ -8623,17 +13806,20 @@ export default function APQR() {
                   </tr>
                 </thead>
                 <tbody>
-                  {pQRData?.compressedGas?.map((item, index) => {
+                  {gridDatas?.compressedGas?.map((item, index) => {
                     return (
                       <tr key={index}>
                         <td>{index + 1}</td>
                         <td>
                           <input
-                          value={item.compressedGas}
+                            value={item.compressedGas}
                             onChange={(e) => {
-                              const newData = [...compressedGas];
+                              const newData = [...gridDatas.compressedGas];
                               newData[index].compressedGas = e.target.value;
-                              setCompressedGas(newData);
+                              setGridDatas({
+                                ...gridDatas,
+                                compressedGas: newData,
+                              });
                             }}
                           />
                         </td>
@@ -8641,9 +13827,12 @@ export default function APQR() {
                           <input
                             value={item.test}
                             onChange={(e) => {
-                              const newData = [...compressedGas];
+                              const newData = [...gridDatas.compressedGas];
                               newData[index].test = e.target.value;
-                              setCompressedGas(newData);
+                              setGridDatas({
+                                ...gridDatas,
+                                compressedGas: newData,
+                              });
                             }}
                           />
                         </td>
@@ -8651,9 +13840,12 @@ export default function APQR() {
                           <input
                             value={item.frequency}
                             onChange={(e) => {
-                              const newData = [...compressedGas];
+                              const newData = [...gridDatas.compressedGas];
                               newData[index].frequency = e.target.value;
-                              setCompressedGas(newData);
+                              setGridDatas({
+                                ...gridDatas,
+                                compressedGas: newData,
+                              });
                             }}
                           />
                         </td>
@@ -8661,9 +13853,12 @@ export default function APQR() {
                           <input
                             value={item.status}
                             onChange={(e) => {
-                              const newData = [...compressedGas];
+                              const newData = [...gridDatas.compressedGas];
                               newData[index].status = e.target.value;
-                              setCompressedGas(newData);
+                              setGridDatas({
+                                ...gridDatas,
+                                compressedGas: newData,
+                              });
                             }}
                           />
                         </td>
@@ -8675,7 +13870,7 @@ export default function APQR() {
             </div>
             <h4 className="gridName pt-4">Engineering Summary</h4>
             <TinyEditor
-              editorContent={pQRData.tiny44}
+              editorContent={tinyData.tiny44}
               setEditorContent={setTinyContent}
               tinyNo={44}
             />
@@ -8689,9 +13884,7 @@ export default function APQR() {
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addReviewOfCPD} />
-                  <div className="addrowinstruction  pl-2">
-                    Add Rows by clicking on (+) icon
-                  </div>
+                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
                 </div>
               </div>
               <table>
@@ -8710,7 +13903,7 @@ export default function APQR() {
                   </tr>
                 </thead>
                 <tbody>
-                  {pQRData?.reviewOfCPD?.map((item, index) => {
+                  {gridDatas?.reviewOfCPD?.map((item, index) => {
                     return (
                       <tr key={index}>
                         <td>{index + 1}</td>
@@ -8718,9 +13911,12 @@ export default function APQR() {
                           <input
                             value={item.dateOfInitiation}
                             onChange={(e) => {
-                              const newData = [...pQRData.reviewOfCPD];
+                              const newData = [...gridDatas.reviewOfCPD];
                               newData[index].dateOfInitiation = e.target.value;
-                              setPQRData({ ...pQRData, reviewOfCPD: newData });
+                              setGridDatas({
+                                ...gridDatas,
+                                reviewOfCPD: newData,
+                              });
                             }}
                           />
                         </td>
@@ -8728,9 +13924,12 @@ export default function APQR() {
                           <input
                             value={item.recordNo}
                             onChange={(e) => {
-                              const newData = [...pQRData.reviewOfCPD];
+                              const newData = [...gridDatas.reviewOfCPD];
                               newData[index].recordNo = e.target.value;
-                              setPQRData({ ...pQRData, reviewOfCPD: newData });
+                              setGridDatas({
+                                ...gridDatas,
+                                reviewOfCPD: newData,
+                              });
                             }}
                           />
                         </td>
@@ -8748,9 +13947,12 @@ export default function APQR() {
                           <input
                             value={item.department}
                             onChange={(e) => {
-                              const newData = [...pQRData.reviewOfCPD];
+                              const newData = [...gridDatas.reviewOfCPD];
                               newData[index].department = e.target.value;
-                              setPQRData({ ...pQRData, reviewOfCPD: newData });
+                              setGridDatas({
+                                ...gridDatas,
+                                reviewOfCPD: newData,
+                              });
                             }}
                           />
                         </td>
@@ -8758,9 +13960,12 @@ export default function APQR() {
                           <input
                             value={item.initiator}
                             onChange={(e) => {
-                              const newData = [...pQRData.reviewOfCPD];
+                              const newData = [...gridDatas.reviewOfCPD];
                               newData[index].initiator = e.target.value;
-                              setPQRData({ ...pQRData, reviewOfCPD: newData });
+                              setGridDatas({
+                                ...gridDatas,
+                                reviewOfCPD: newData,
+                              });
                             }}
                           />
                         </td>
@@ -8768,9 +13973,12 @@ export default function APQR() {
                           <input
                             value={item.shortDescription}
                             onChange={(e) => {
-                              const newData = [...pQRData.reviewOfCPD];
+                              const newData = [...gridDatas.reviewOfCPD];
                               newData[index].shortDescription = e.target.value;
-                              setPQRData({ ...pQRData, reviewOfCPD: newData });
+                              setGridDatas({
+                                ...gridDatas,
+                                reviewOfCPD: newData,
+                              });
                             }}
                           />
                         </td>
@@ -8778,9 +13986,12 @@ export default function APQR() {
                           <input
                             value={item.batchNo}
                             onChange={(e) => {
-                              const newData = [...pQRData.reviewOfCPD];
+                              const newData = [...gridDatas.reviewOfCPD];
                               newData[index].batchNo = e.target.value;
-                              setPQRData({ ...pQRData, reviewOfCPD: newData });
+                              setGridDatas({
+                                ...gridDatas,
+                                reviewOfCPD: newData,
+                              });
                             }}
                           />
                         </td>
@@ -8788,9 +13999,12 @@ export default function APQR() {
                           <input
                             value={item.dueDate}
                             onChange={(e) => {
-                              const newData = [...pQRData.reviewOfCPD];
+                              const newData = [...gridDatas.reviewOfCPD];
                               newData[index].dueDate = e.target.value;
-                              setPQRData({ ...pQRData, reviewOfCPD: newData });
+                              setGridDatas({
+                                ...gridDatas,
+                                reviewOfCPD: newData,
+                              });
                             }}
                           />
                         </td>
@@ -8798,9 +14012,12 @@ export default function APQR() {
                           <input
                             value={item.currentStatus}
                             onChange={(e) => {
-                              const newData = [...pQRData.reviewOfCPD];
+                              const newData = [...gridDatas.reviewOfCPD];
                               newData[index].currentStatus = e.target.value;
-                              setPQRData({ ...pQRData, reviewOfCPD: newData });
+                              setGridDatas({
+                                ...gridDatas,
+                                reviewOfCPD: newData,
+                              });
                             }}
                           />
                         </td>
@@ -8810,16 +14027,12 @@ export default function APQR() {
                 </tbody>
               </table>
             </div>
-            <div className="gridName pt-4">
-              Previous Review Period Deviations
-            </div>
+            <div className="gridName pt-4">Previous Review Period Deviations</div>
             <div>
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addPreviewRPD} />
-                  <div className="addrowinstruction  pl-2">
-                    Add Rows by clicking on (+) icon
-                  </div>
+                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
                 </div>
               </div>
               <table>
@@ -8838,7 +14051,7 @@ export default function APQR() {
                   </tr>
                 </thead>
                 <tbody>
-                  {pQRData?.previewRPD?.map((item, index) => {
+                  {gridDatas?.previewRPD?.map((item, index) => {
                     return (
                       <tr key={index}>
                         <td>{index + 1}</td>
@@ -8846,9 +14059,12 @@ export default function APQR() {
                           <input
                             value={item.dateOfInitiation}
                             onChange={(e) => {
-                              const newData = [...pQRData.previewRPD];
+                              const newData = [...gridDatas.previewRPD];
                               newData[index].dateOfInitiation = e.target.value;
-                              setPQRData({ ...pQRData, previewRPD: newData });
+                              setGridDatas({
+                                ...gridDatas,
+                                previewRPD: newData,
+                              });
                             }}
                           />
                         </td>
@@ -8856,9 +14072,12 @@ export default function APQR() {
                           <input
                             value={item.recordNo}
                             onChange={(e) => {
-                              const newData = [...pQRData.previewRPD];
+                              const newData = [...gridDatas.previewRPD];
                               newData[index].recordNo = e.target.value;
-                              setPQRData({ ...pQRData, previewRPD: newData });
+                              setGridDatas({
+                                ...gridDatas,
+                                previewRPD: newData,
+                              });
                             }}
                           />
                         </td>
@@ -8866,9 +14085,12 @@ export default function APQR() {
                           <input
                             value={item.siteDivision}
                             onChange={(e) => {
-                              const newData = [...pQRData.previewRPD];
+                              const newData = [...gridDatas.previewRPD];
                               newData[index].siteDivision = e.target.value;
-                              setPQRData({ ...pQRData, previewRPD: newData });
+                              setGridDatas({
+                                ...gridDatas,
+                                previewRPD: newData,
+                              });
                             }}
                           />
                         </td>
@@ -8876,9 +14098,12 @@ export default function APQR() {
                           <input
                             value={item.department}
                             onChange={(e) => {
-                              const newData = [...pQRData.previewRPD];
+                              const newData = [...gridDatas.previewRPD];
                               newData[index].department = e.target.value;
-                              setPQRData({ ...pQRData, previewRPD: newData });
+                              setGridDatas({
+                                ...gridDatas,
+                                previewRPD: newData,
+                              });
                             }}
                           />
                         </td>
@@ -8886,9 +14111,12 @@ export default function APQR() {
                           <input
                             value={item.initiator}
                             onChange={(e) => {
-                              const newData = [...pQRData.previewRPD];
+                              const newData = [...gridDatas.previewRPD];
                               newData[index].initiator = e.target.value;
-                              setPQRData({ ...pQRData, previewRPD: newData });
+                              setGridDatas({
+                                ...gridDatas,
+                                previewRPD: newData,
+                              });
                             }}
                           />
                         </td>
@@ -8896,9 +14124,12 @@ export default function APQR() {
                           <input
                             value={item.shortDescription}
                             onChange={(e) => {
-                              const newData = [...pQRData.previewRPD];
+                              const newData = [...gridDatas.previewRPD];
                               newData[index].shortDescription = e.target.value;
-                              setPQRData({ ...pQRData, previewRPD: newData });
+                              setGridDatas({
+                                ...gridDatas,
+                                previewRPD: newData,
+                              });
                             }}
                           />
                         </td>
@@ -8906,9 +14137,12 @@ export default function APQR() {
                           <input
                             value={item.batchNo}
                             onChange={(e) => {
-                              const newData = [...pQRData.previewRPD];
+                              const newData = [...gridDatas.previewRPD];
                               newData[index].batchNo = e.target.value;
-                              setPQRData({ ...pQRData, previewRPD: newData });
+                              setGridDatas({
+                                ...gridDatas,
+                                previewRPD: newData,
+                              });
                             }}
                           />
                         </td>
@@ -8916,9 +14150,12 @@ export default function APQR() {
                           <input
                             value={item.dueDate}
                             onChange={(e) => {
-                              const newData = [...pQRData.previewRPD];
+                              const newData = [...gridDatas.previewRPD];
                               newData[index].dueDate = e.target.value;
-                              setPQRData({ ...pQRData, previewRPD: newData });
+                              setGridDatas({
+                                ...gridDatas,
+                                previewRPD: newData,
+                              });
                             }}
                           />
                         </td>
@@ -8926,9 +14163,12 @@ export default function APQR() {
                           <input
                             value={item.currentStatus}
                             onChange={(e) => {
-                              const newData = [...pQRData.previewRPD];
+                              const newData = [...gridDatas.previewRPD];
                               newData[index].currentStatus = e.target.value;
-                              setPQRData({ ...pQRData, previewRPD: newData });
+                              setGridDatas({
+                                ...gridDatas,
+                                previewRPD: newData,
+                              });
                             }}
                           />
                         </td>
@@ -8939,16 +14179,18 @@ export default function APQR() {
               </table>
             </div>
             <h4 className="gridName pt-4">Deviation Summary</h4>
-            <TinyEditor />
+            <TinyEditor
+              editorContent={tinyData.tiny45}
+              setEditorContent={setTinyContent}
+              tinyNo={45}
+            />
             <div className="sub-head"> Review of OOS (Microbiological)</div>
             <div className="gridName">Current Review Period OOS</div>
             <div>
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addCurrentOOS} />
-                  <div className="addrowinstruction  pl-2">
-                    Add Rows by clicking on (+) icon
-                  </div>
+                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
                 </div>
               </div>
               <table>
@@ -8967,7 +14209,7 @@ export default function APQR() {
                   </tr>
                 </thead>
                 <tbody>
-                  {pQRData?.currentOOS?.map((item, index) => {
+                  {gridDatas?.currentOOS?.map((item, index) => {
                     return (
                       <tr key={index}>
                         <td>{index + 1}</td>
@@ -8975,9 +14217,12 @@ export default function APQR() {
                           <input
                             value={item.dateOfInitiation}
                             onChange={(e) => {
-                              const newData = [...pQRData.currentOOS];
+                              const newData = [...gridDatas.currentOOS];
                               newData[index].dateOfInitiation = e.target.value;
-                              setPQRData({ ...pQRData, currentOOS: newData });
+                              setGridDatas({
+                                ...gridDatas,
+                                currentOOS: newData,
+                              });
                             }}
                           />
                         </td>
@@ -8985,9 +14230,12 @@ export default function APQR() {
                           <input
                             value={item.recordNo}
                             onChange={(e) => {
-                              const newData = [...pQRData.currentOOS];
+                              const newData = [...gridDatas.currentOOS];
                               newData[index].recordNo = e.target.value;
-                              setPQRData({ ...pQRData, currentOOS: newData });
+                              setGridDatas({
+                                ...gridDatas,
+                                currentOOS: newData,
+                              });
                             }}
                           />
                         </td>
@@ -8995,9 +14243,12 @@ export default function APQR() {
                           <input
                             value={item.siteDivision}
                             onChange={(e) => {
-                              const newData = [...pQRData.currentOOS];
+                              const newData = [...gridDatas.currentOOS];
                               newData[index].siteDivision = e.target.value;
-                              setPQRData({ ...pQRData, currentOOS: newData });
+                              setGridDatas({
+                                ...gridDatas,
+                                currentOOS: newData,
+                              });
                             }}
                           />
                         </td>
@@ -9005,9 +14256,12 @@ export default function APQR() {
                           <input
                             value={item.department}
                             onChange={(e) => {
-                              const newData = [...pQRData.currentOOS];
+                              const newData = [...gridDatas.currentOOS];
                               newData[index].department = e.target.value;
-                              setPQRData({ ...pQRData, currentOOS: newData });
+                              setGridDatas({
+                                ...gridDatas,
+                                currentOOS: newData,
+                              });
                             }}
                           />
                         </td>
@@ -9015,9 +14269,12 @@ export default function APQR() {
                           <input
                             value={item.initiator}
                             onChange={(e) => {
-                              const newData = [...pQRData.currentOOS];
+                              const newData = [...gridDatas.currentOOS];
                               newData[index].initiator = e.target.value;
-                              setPQRData({ ...pQRData, currentOOS: newData });
+                              setGridDatas({
+                                ...gridDatas,
+                                currentOOS: newData,
+                              });
                             }}
                           />
                         </td>
@@ -9025,9 +14282,12 @@ export default function APQR() {
                           <input
                             value={item.shortDescription}
                             onChange={(e) => {
-                              const newData = [...pQRData.currentOOS];
+                              const newData = [...gridDatas.currentOOS];
                               newData[index].shortDescription = e.target.value;
-                              setPQRData({ ...pQRData, currentOOS: newData });
+                              setGridDatas({
+                                ...gridDatas,
+                                currentOOS: newData,
+                              });
                             }}
                           />
                         </td>
@@ -9035,9 +14295,12 @@ export default function APQR() {
                           <input
                             value={item.batchNo}
                             onChange={(e) => {
-                              const newData = [...pQRData.currentOOS];
+                              const newData = [...gridDatas.currentOOS];
                               newData[index].batchNo = e.target.value;
-                              setPQRData({ ...pQRData, currentOOS: newData });
+                              setGridDatas({
+                                ...gridDatas,
+                                currentOOS: newData,
+                              });
                             }}
                           />
                         </td>
@@ -9045,9 +14308,12 @@ export default function APQR() {
                           <input
                             value={item.dueDate}
                             onChange={(e) => {
-                              const newData = [...pQRData.currentOOS];
+                              const newData = [...gridDatas.currentOOS];
                               newData[index].dueDate = e.target.value;
-                              setPQRData({ ...pQRData, currentOOS: newData });
+                              setGridDatas({
+                                ...gridDatas,
+                                currentOOS: newData,
+                              });
                             }}
                           />
                         </td>
@@ -9055,9 +14321,12 @@ export default function APQR() {
                           <input
                             value={item.currentStatus}
                             onChange={(e) => {
-                              const newData = [...pQRData.currentOOS];
+                              const newData = [...gridDatas.currentOOS];
                               newData[index].currentStatus = e.target.value;
-                              setPQRData({ ...pQRData, currentOOS: newData });
+                              setGridDatas({
+                                ...gridDatas,
+                                currentOOS: newData,
+                              });
                             }}
                           />
                         </td>
@@ -9072,9 +14341,7 @@ export default function APQR() {
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addPreviewOOS} />
-                  <div className="addrowinstruction  pl-2">
-                    Add Rows by clicking on (+) icon
-                  </div>
+                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
                 </div>
               </div>
               <table>
@@ -9093,7 +14360,7 @@ export default function APQR() {
                   </tr>
                 </thead>
                 <tbody>
-                  {pQRData?.previewOOS?.map((item, index) => {
+                  {gridDatas?.previewOOS?.map((item, index) => {
                     return (
                       <tr key={index}>
                         <td>{index + 1}</td>
@@ -9101,9 +14368,12 @@ export default function APQR() {
                           <input
                             value={item.dateOfInitiation}
                             onChange={(e) => {
-                              const newData = [...pQRData.previewOOS];
+                              const newData = [...gridDatas.previewOOS];
                               newData[index].dateOfInitiation = e.target.value;
-                              setPQRData({ ...pQRData, previewOOS: newData });
+                              setGridDatas({
+                                ...gridDatas,
+                                previewOOS: newData,
+                              });
                             }}
                           />
                         </td>
@@ -9112,9 +14382,12 @@ export default function APQR() {
                           <input
                             value={item.recordNo}
                             onChange={(e) => {
-                              const newData = [...pQRData.previewOOS];
+                              const newData = [...gridDatas.previewOOS];
                               newData[index].recordNo = e.target.value;
-                              setPQRData({ ...pQRData, previewOOS: newData });
+                              setGridDatas({
+                                ...gridDatas,
+                                previewOOS: newData,
+                              });
                             }}
                           />
                         </td>
@@ -9122,9 +14395,12 @@ export default function APQR() {
                           <input
                             value={item.siteDivision}
                             onChange={(e) => {
-                              const newData = [...pQRData.previewOOS];
+                              const newData = [...gridDatas.previewOOS];
                               newData[index].siteDivision = e.target.value;
-                              setPQRData({ ...pQRData, previewOOS: newData });
+                              setGridDatas({
+                                ...gridDatas,
+                                previewOOS: newData,
+                              });
                             }}
                           />
                         </td>
@@ -9132,9 +14408,12 @@ export default function APQR() {
                           <input
                             value={item.department}
                             onChange={(e) => {
-                              const newData = [...pQRData.previewOOS];
+                              const newData = [...gridDatas.previewOOS];
                               newData[index].department = e.target.value;
-                              setPQRData({ ...pQRData, previewOOS: newData });
+                              setGridDatas({
+                                ...gridDatas,
+                                previewOOS: newData,
+                              });
                             }}
                           />
                         </td>
@@ -9142,9 +14421,12 @@ export default function APQR() {
                           <input
                             value={item.initiator}
                             onChange={(e) => {
-                              const newData = [...pQRData.previewOOS];
+                              const newData = [...gridDatas.previewOOS];
                               newData[index].initiator = e.target.value;
-                              setPQRData({ ...pQRData, previewOOS: newData });
+                              setGridDatas({
+                                ...gridDatas,
+                                previewOOS: newData,
+                              });
                             }}
                           />
                         </td>
@@ -9152,9 +14434,12 @@ export default function APQR() {
                           <input
                             value={item.shortDescription}
                             onChange={(e) => {
-                              const newData = [...pQRData.previewOOS];
+                              const newData = [...gridDatas.previewOOS];
                               newData[index].shortDescription = e.target.value;
-                              setPQRData({ ...pQRData, previewOOS: newData });
+                              setGridDatas({
+                                ...gridDatas,
+                                previewOOS: newData,
+                              });
                             }}
                           />
                         </td>
@@ -9162,9 +14447,12 @@ export default function APQR() {
                           <input
                             value={item.batchNo}
                             onChange={(e) => {
-                              const newData = [...pQRData.previewOOS];
+                              const newData = [...gridDatas.previewOOS];
                               newData[index].batchNo = e.target.value;
-                              setPQRData({ ...pQRData, previewOOS: newData });
+                              setGridDatas({
+                                ...gridDatas,
+                                previewOOS: newData,
+                              });
                             }}
                           />
                         </td>
@@ -9172,9 +14460,12 @@ export default function APQR() {
                           <input
                             value={item.dueDate}
                             onChange={(e) => {
-                              const newData = [...pQRData.previewOOS];
+                              const newData = [...gridDatas.previewOOS];
                               newData[index].dueDate = e.target.value;
-                              setPQRData({ ...pQRData, previewOOS: newData });
+                              setGridDatas({
+                                ...gridDatas,
+                                previewOOS: newData,
+                              });
                             }}
                           />
                         </td>
@@ -9183,9 +14474,12 @@ export default function APQR() {
                           <input
                             value={item.currentStatus}
                             onChange={(e) => {
-                              const newData = [...pQRData.previewOOS];
+                              const newData = [...gridDatas.previewOOS];
                               newData[index].currentStatus = e.target.value;
-                              setPQRData({ ...pQRData, previewOOS: newData });
+                              setGridDatas({
+                                ...gridDatas,
+                                previewOOS: newData,
+                              });
                             }}
                           />
                         </td>
@@ -9196,16 +14490,18 @@ export default function APQR() {
               </table>
             </div>
             <h4 className="gridName pt-4">OOS Summary</h4>
-            <TinyEditor />
+            <TinyEditor
+              editorContent={tinyData.tiny46}
+              setEditorContent={setTinyContent}
+              tinyNo={46}
+            />
             <div className="sub-head"> Review of OOAC (Microbiological)</div>
             <div className="gridName">Current Review Period OOAC</div>
             <div>
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addCurrentOOAC} />
-                  <div className="addrowinstruction  pl-2">
-                    Add Rows by clicking on (+) icon
-                  </div>
+                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
                 </div>
               </div>
               <table>
@@ -9224,7 +14520,7 @@ export default function APQR() {
                   </tr>
                 </thead>
                 <tbody>
-                  {pQRData?.currentOOAC?.map((item, index) => {
+                  {gridDatas?.currentOOAC?.map((item, index) => {
                     return (
                       <tr key={index}>
                         <td>{index + 1}</td>
@@ -9232,9 +14528,12 @@ export default function APQR() {
                           <input
                             value={item.dateOfInitiation}
                             onChange={(e) => {
-                              const newData = [...pQRData.currentOOAC];
+                              const newData = [...gridDatas.currentOOAC];
                               newData[index].dateOfInitiation = e.target.value;
-                              setPQRData({ ...pQRData, currentOOAC: newData });
+                              setGridDatas({
+                                ...gridDatas,
+                                currentOOAC: newData,
+                              });
                             }}
                           />
                         </td>
@@ -9242,9 +14541,12 @@ export default function APQR() {
                           <input
                             value={item.recordNo}
                             onChange={(e) => {
-                              const newData = [...pQRData.currentOOAC];
+                              const newData = [...gridDatas.currentOOAC];
                               newData[index].recordNo = e.target.value;
-                              setPQRData({ ...pQRData, currentOOAC: newData });
+                              setGridDatas({
+                                ...gridDatas,
+                                currentOOAC: newData,
+                              });
                             }}
                           />
                         </td>
@@ -9252,9 +14554,12 @@ export default function APQR() {
                           <input
                             value={item.siteDivision}
                             onChange={(e) => {
-                              const newData = [...pQRData.currentOOAC];
+                              const newData = [...gridDatas.currentOOAC];
                               newData[index].siteDivision = e.target.value;
-                              setPQRData({ ...pQRData, currentOOAC: newData });
+                              setGridDatas({
+                                ...gridDatas,
+                                currentOOAC: newData,
+                              });
                             }}
                           />
                         </td>
@@ -9262,9 +14567,12 @@ export default function APQR() {
                           <input
                             value={item.department}
                             onChange={(e) => {
-                              const newData = [...pQRData.currentOOAC];
+                              const newData = [...gridDatas.currentOOAC];
                               newData[index].department = e.target.value;
-                              setPQRData({ ...pQRData, currentOOAC: newData });
+                              setGridDatas({
+                                ...gridDatas,
+                                currentOOAC: newData,
+                              });
                             }}
                           />
                         </td>
@@ -9272,9 +14580,12 @@ export default function APQR() {
                           <input
                             value={item.initiator}
                             onChange={(e) => {
-                              const newData = [...pQRData.currentOOAC];
+                              const newData = [...gridDatas.currentOOAC];
                               newData[index].initiator = e.target.value;
-                              setPQRData({ ...pQRData, currentOOAC: newData });
+                              setGridDatas({
+                                ...gridDatas,
+                                currentOOAC: newData,
+                              });
                             }}
                           />
                         </td>
@@ -9282,9 +14593,12 @@ export default function APQR() {
                           <input
                             value={item.shortDescription}
                             onChange={(e) => {
-                              const newData = [...pQRData.currentOOAC];
+                              const newData = [...gridDatas.currentOOAC];
                               newData[index].shortDescription = e.target.value;
-                              setPQRData({ ...pQRData, currentOOAC: newData });
+                              setGridDatas({
+                                ...gridDatas,
+                                currentOOAC: newData,
+                              });
                             }}
                           />
                         </td>
@@ -9292,9 +14606,12 @@ export default function APQR() {
                           <input
                             value={item.batchNo}
                             onChange={(e) => {
-                              const newData = [...pQRData.currentOOAC];
+                              const newData = [...gridDatas.currentOOAC];
                               newData[index].batchNo = e.target.value;
-                              setPQRData({ ...pQRData, currentOOAC: newData });
+                              setGridDatas({
+                                ...gridDatas,
+                                currentOOAC: newData,
+                              });
                             }}
                           />
                         </td>
@@ -9302,9 +14619,12 @@ export default function APQR() {
                           <input
                             value={item.dueDate}
                             onChange={(e) => {
-                              const newData = [...pQRData.currentOOAC];
+                              const newData = [...gridDatas.currentOOAC];
                               newData[index].dueDate = e.target.value;
-                              setPQRData({ ...pQRData, currentOOAC: newData });
+                              setGridDatas({
+                                ...gridDatas,
+                                currentOOAC: newData,
+                              });
                             }}
                           />
                         </td>
@@ -9312,9 +14632,12 @@ export default function APQR() {
                           <input
                             value={item.currentStatus}
                             onChange={(e) => {
-                              const newData = [...pQRData.currentOOAC];
+                              const newData = [...gridDatas.currentOOAC];
                               newData[index].currentStatus = e.target.value;
-                              setPQRData({ ...pQRData, currentOOAC: newData });
+                              setGridDatas({
+                                ...gridDatas,
+                                currentOOAC: newData,
+                              });
                             }}
                           />
                         </td>
@@ -9329,9 +14652,7 @@ export default function APQR() {
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addPreviewOOAC} />
-                  <div className="addrowinstruction  pl-2">
-                    Add Rows by clicking on (+) icon
-                  </div>
+                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
                 </div>
               </div>
               <table>
@@ -9350,7 +14671,7 @@ export default function APQR() {
                   </tr>
                 </thead>
                 <tbody>
-                  {pQRData?.previewOOAC?.map((item, index) => {
+                  {gridDatas?.previewOOAC?.map((item, index) => {
                     return (
                       <tr key={index}>
                         <td>{index + 1}</td>
@@ -9358,9 +14679,12 @@ export default function APQR() {
                           <input
                             value={item.dateOfInitiation}
                             onChange={(e) => {
-                              const newData = [...pQRData.previewOOAC];
+                              const newData = [...gridDatas.previewOOAC];
                               newData[index].dateOfInitiation = e.target.value;
-                              setPQRData({ ...pQRData, previewOOAC: newData });
+                              setGridDatas({
+                                ...gridDatas,
+                                previewOOAC: newData,
+                              });
                             }}
                           />
                         </td>
@@ -9369,9 +14693,12 @@ export default function APQR() {
                           <input
                             value={item.recordNo}
                             onChange={(e) => {
-                              const newData = [...pQRData.previewOOAC];
+                              const newData = [...gridDatas.previewOOAC];
                               newData[index].recordNo = e.target.value;
-                              setPQRData({ ...pQRData, previewOOAC: newData });
+                              setGridDatas({
+                                ...gridDatas,
+                                previewOOAC: newData,
+                              });
                             }}
                           />
                         </td>
@@ -9379,9 +14706,12 @@ export default function APQR() {
                           <input
                             value={item.siteDivision}
                             onChange={(e) => {
-                              const newData = [...pQRData.previewOOAC];
+                              const newData = [...gridDatas.previewOOAC];
                               newData[index].siteDivision = e.target.value;
-                              setPQRData({ ...pQRData, previewOOAC: newData });
+                              setGridDatas({
+                                ...gridDatas,
+                                previewOOAC: newData,
+                              });
                             }}
                           />
                         </td>
@@ -9389,9 +14719,12 @@ export default function APQR() {
                           <input
                             value={item.department}
                             onChange={(e) => {
-                              const newData = [...pQRData.previewOOAC];
+                              const newData = [...gridDatas.previewOOAC];
                               newData[index].department = e.target.value;
-                              setPQRData({ ...pQRData, previewOOAC: newData });
+                              setGridDatas({
+                                ...gridDatas,
+                                previewOOAC: newData,
+                              });
                             }}
                           />
                         </td>
@@ -9399,9 +14732,12 @@ export default function APQR() {
                           <input
                             value={item.initiator}
                             onChange={(e) => {
-                              const newData = [...pQRData.previewOOAC];
+                              const newData = [...gridDatas.previewOOAC];
                               newData[index].initiator = e.target.value;
-                              setPQRData({ ...pQRData, previewOOAC: newData });
+                              setGridDatas({
+                                ...gridDatas,
+                                previewOOAC: newData,
+                              });
                             }}
                           />
                         </td>
@@ -9409,9 +14745,12 @@ export default function APQR() {
                           <input
                             value={item.shortDescription}
                             onChange={(e) => {
-                              const newData = [...pQRData.previewOOAC];
+                              const newData = [...gridDatas.previewOOAC];
                               newData[index].shortDescription = e.target.value;
-                              setPQRData({ ...pQRData, previewOOAC: newData });
+                              setGridDatas({
+                                ...gridDatas,
+                                previewOOAC: newData,
+                              });
                             }}
                           />
                         </td>
@@ -9419,9 +14758,12 @@ export default function APQR() {
                           <input
                             value={item.batchNo}
                             onChange={(e) => {
-                              const newData = [...pQRData.previewOOAC];
+                              const newData = [...gridDatas.previewOOAC];
                               newData[index].batchNo = e.target.value;
-                              setPQRData({ ...pQRData, previewOOAC: newData });
+                              setGridDatas({
+                                ...gridDatas,
+                                previewOOAC: newData,
+                              });
                             }}
                           />
                         </td>
@@ -9429,9 +14771,12 @@ export default function APQR() {
                           <input
                             value={item.dueDate}
                             onChange={(e) => {
-                              const newData = [...pQRData.previewOOAC];
+                              const newData = [...gridDatas.previewOOAC];
                               newData[index].dueDate = e.target.value;
-                              setPQRData({ ...pQRData, previewOOAC: newData });
+                              setGridDatas({
+                                ...gridDatas,
+                                previewOOAC: newData,
+                              });
                             }}
                           />
                         </td>
@@ -9440,9 +14785,12 @@ export default function APQR() {
                           <input
                             value={item.currentStatus}
                             onChange={(e) => {
-                              const newData = [...pQRData.previewOOAC];
+                              const newData = [...gridDatas.previewOOAC];
                               newData[index].currentStatus = e.target.value;
-                              setPQRData({ ...pQRData, previewOOAC: newData });
+                              setGridDatas({
+                                ...gridDatas,
+                                previewOOAC: newData,
+                              });
                             }}
                           />
                         </td>
@@ -9453,16 +14801,18 @@ export default function APQR() {
               </table>
             </div>
             <h4 className="gridName pt-4">OOAC Summary</h4>
-            <TinyEditor />
+            <TinyEditor
+              editorContent={tinyData.tiny47}
+              setEditorContent={setTinyContent}
+              tinyNo={47}
+            />
             <div className="sub-head"> Review of OOAL(Microbiological)</div>
             <div className="gridName">Current Review Period OOAL</div>
             <div>
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addCurrentOOAL} />
-                  <div className="addrowinstruction  pl-2">
-                    Add Rows by clicking on (+) icon
-                  </div>
+                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
                 </div>
               </div>
               <table>
@@ -9481,7 +14831,7 @@ export default function APQR() {
                   </tr>
                 </thead>
                 <tbody>
-                  {pQRData?.currentOOAL?.map((item, index) => {
+                  {gridDatas?.currentOOAL?.map((item, index) => {
                     return (
                       <tr key={index}>
                         <td>{index + 1}</td>
@@ -9489,9 +14839,12 @@ export default function APQR() {
                           <input
                             value={item.dateOfInitiation}
                             onChange={(e) => {
-                              const newData = [...pQRData.currentOOAL];
+                              const newData = [...gridDatas.currentOOAL];
                               newData[index].dateOfInitiation = e.target.value;
-                              setPQRData({ ...pQRData, currentOOAL: newData });
+                              setGridDatas({
+                                ...gridDatas,
+                                currentOOAL: newData,
+                              });
                             }}
                           />
                         </td>
@@ -9499,9 +14852,12 @@ export default function APQR() {
                           <input
                             value={item.recordNo}
                             onChange={(e) => {
-                              const newData = [...pQRData.currentOOAL];
+                              const newData = [...gridDatas.currentOOAL];
                               newData[index].recordNo = e.target.value;
-                              setPQRData({ ...pQRData, currentOOAL: newData });
+                              setGridDatas({
+                                ...gridDatas,
+                                currentOOAL: newData,
+                              });
                             }}
                           />
                         </td>
@@ -9509,9 +14865,12 @@ export default function APQR() {
                           <input
                             value={item.siteDivision}
                             onChange={(e) => {
-                              const newData = [...pQRData.currentOOAL];
+                              const newData = [...gridDatas.currentOOAL];
                               newData[index].siteDivision = e.target.value;
-                              setPQRData({ ...pQRData, currentOOAL: newData });
+                              setGridDatas({
+                                ...gridDatas,
+                                currentOOAL: newData,
+                              });
                             }}
                           />
                         </td>
@@ -9519,9 +14878,12 @@ export default function APQR() {
                           <input
                             value={item.department}
                             onChange={(e) => {
-                              const newData = [...pQRData.currentOOAL];
+                              const newData = [...gridDatas.currentOOAL];
                               newData[index].department = e.target.value;
-                              setPQRData({ ...pQRData, currentOOAL: newData });
+                              setGridDatas({
+                                ...gridDatas,
+                                currentOOAL: newData,
+                              });
                             }}
                           />
                         </td>
@@ -9529,9 +14891,12 @@ export default function APQR() {
                           <input
                             value={item.initiator}
                             onChange={(e) => {
-                              const newData = [...pQRData.currentOOAL];
+                              const newData = [...gridDatas.currentOOAL];
                               newData[index].initiator = e.target.value;
-                              setPQRData({ ...pQRData, currentOOAL: newData });
+                              setGridDatas({
+                                ...gridDatas,
+                                currentOOAL: newData,
+                              });
                             }}
                           />
                         </td>
@@ -9539,9 +14904,12 @@ export default function APQR() {
                           <input
                             value={item.shortDescription}
                             onChange={(e) => {
-                              const newData = [...pQRData.currentOOAL];
+                              const newData = [...gridDatas.currentOOAL];
                               newData[index].shortDescription = e.target.value;
-                              setPQRData({ ...pQRData, currentOOAL: newData });
+                              setGridDatas({
+                                ...gridDatas,
+                                currentOOAL: newData,
+                              });
                             }}
                           />
                         </td>
@@ -9549,9 +14917,12 @@ export default function APQR() {
                           <input
                             value={item.batchNo}
                             onChange={(e) => {
-                              const newData = [...pQRData.currentOOAL];
+                              const newData = [...gridDatas.currentOOAL];
                               newData[index].batchNo = e.target.value;
-                              setPQRData({ ...pQRData, currentOOAL: newData });
+                              setGridDatas({
+                                ...gridDatas,
+                                currentOOAL: newData,
+                              });
                             }}
                           />
                         </td>
@@ -9559,9 +14930,12 @@ export default function APQR() {
                           <input
                             value={item.dueDate}
                             onChange={(e) => {
-                              const newData = [...pQRData.currentOOAL];
+                              const newData = [...gridDatas.currentOOAL];
                               newData[index].dueDate = e.target.value;
-                              setPQRData({ ...pQRData, currentOOAL: newData });
+                              setGridDatas({
+                                ...gridDatas,
+                                currentOOAL: newData,
+                              });
                             }}
                           />
                         </td>
@@ -9569,9 +14943,12 @@ export default function APQR() {
                           <input
                             value={item.currentStatus}
                             onChange={(e) => {
-                              const newData = [...pQRData.currentOOAL];
+                              const newData = [...gridDatas.currentOOAL];
                               newData[index].currentStatus = e.target.value;
-                              setPQRData({ ...pQRData, currentOOAL: newData });
+                              setGridDatas({
+                                ...gridDatas,
+                                currentOOAL: newData,
+                              });
                             }}
                           />
                         </td>
@@ -9586,9 +14963,7 @@ export default function APQR() {
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addPreviewOOAL} />
-                  <div className="addrowinstruction  pl-2">
-                    Add Rows by clicking on (+) icon
-                  </div>
+                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
                 </div>
               </div>
               <table>
@@ -9607,7 +14982,7 @@ export default function APQR() {
                   </tr>
                 </thead>
                 <tbody>
-                  {pQRData?.previewOOAL?.map((item, index) => {
+                  {gridDatas?.previewOOAL?.map((item, index) => {
                     return (
                       <tr key={index}>
                         <td>{index + 1}</td>
@@ -9615,9 +14990,12 @@ export default function APQR() {
                           <input
                             value={item.dateOfInitiation}
                             onChange={(e) => {
-                              const newData = [...pQRData.previewOOAL];
+                              const newData = [...gridDatas.previewOOAL];
                               newData[index].dateOfInitiation = e.target.value;
-                              setPQRData({ ...pQRData, previewOOAL: newData });
+                              setGridDatas({
+                                ...gridDatas,
+                                previewOOAL: newData,
+                              });
                             }}
                           />
                         </td>
@@ -9626,9 +15004,12 @@ export default function APQR() {
                           <input
                             value={item.recordNo}
                             onChange={(e) => {
-                              const newData = [...pQRData.previewOOAL];
+                              const newData = [...gridDatas.previewOOAL];
                               newData[index].recordNo = e.target.value;
-                              setPQRData({ ...pQRData, previewOOAL: newData });
+                              setGridDatas({
+                                ...gridDatas,
+                                previewOOAL: newData,
+                              });
                             }}
                           />
                         </td>
@@ -9636,9 +15017,12 @@ export default function APQR() {
                           <input
                             value={item.siteDivision}
                             onChange={(e) => {
-                              const newData = [...pQRData.previewOOAL];
+                              const newData = [...gridDatas.previewOOAL];
                               newData[index].siteDivision = e.target.value;
-                              setPQRData({ ...pQRData, previewOOAL: newData });
+                              setGridDatas({
+                                ...gridDatas,
+                                previewOOAL: newData,
+                              });
                             }}
                           />
                         </td>
@@ -9646,9 +15030,12 @@ export default function APQR() {
                           <input
                             value={item.department}
                             onChange={(e) => {
-                              const newData = [...pQRData.previewOOAL];
+                              const newData = [...gridDatas.previewOOAL];
                               newData[index].department = e.target.value;
-                              setPQRData({ ...pQRData, previewOOAL: newData });
+                              setGridDatas({
+                                ...gridDatas,
+                                previewOOAL: newData,
+                              });
                             }}
                           />
                         </td>
@@ -9656,9 +15043,12 @@ export default function APQR() {
                           <input
                             value={item.initiator}
                             onChange={(e) => {
-                              const newData = [...pQRData.previewOOAL];
+                              const newData = [...gridDatas.previewOOAL];
                               newData[index].initiator = e.target.value;
-                              setPQRData({ ...pQRData, previewOOAL: newData });
+                              setGridDatas({
+                                ...gridDatas,
+                                previewOOAL: newData,
+                              });
                             }}
                           />
                         </td>
@@ -9666,9 +15056,12 @@ export default function APQR() {
                           <input
                             value={item.shortDescription}
                             onChange={(e) => {
-                              const newData = [...pQRData.previewOOAL];
+                              const newData = [...gridDatas.previewOOAL];
                               newData[index].shortDescription = e.target.value;
-                              setPQRData({ ...pQRData, previewOOAL: newData });
+                              setGridDatas({
+                                ...gridDatas,
+                                previewOOAL: newData,
+                              });
                             }}
                           />
                         </td>
@@ -9676,9 +15069,12 @@ export default function APQR() {
                           <input
                             value={item.batchNo}
                             onChange={(e) => {
-                              const newData = [...pQRData.previewOOAL];
+                              const newData = [...gridDatas.previewOOAL];
                               newData[index].batchNo = e.target.value;
-                              setPQRData({ ...pQRData, previewOOAL: newData });
+                              setGridDatas({
+                                ...gridDatas,
+                                previewOOAL: newData,
+                              });
                             }}
                           />
                         </td>
@@ -9686,9 +15082,12 @@ export default function APQR() {
                           <input
                             value={item.dueDate}
                             onChange={(e) => {
-                              const newData = [...pQRData.previewOOAL];
+                              const newData = [...gridDatas.previewOOAL];
                               newData[index].dueDate = e.target.value;
-                              setPQRData({ ...pQRData, previewOOAL: newData });
+                              setGridDatas({
+                                ...gridDatas,
+                                previewOOAL: newData,
+                              });
                             }}
                           />
                         </td>
@@ -9697,9 +15096,12 @@ export default function APQR() {
                           <input
                             value={item.currentStatus}
                             onChange={(e) => {
-                              const newData = [...pQRData.previewOOAL];
+                              const newData = [...gridDatas.previewOOAL];
                               newData[index].currentStatus = e.target.value;
-                              setPQRData({ ...pQRData, previewOOAL: newData });
+                              setGridDatas({
+                                ...gridDatas,
+                                previewOOAL: newData,
+                              });
                             }}
                           />
                         </td>
@@ -9710,16 +15112,18 @@ export default function APQR() {
               </table>
             </div>
             <h4 className="gridName pt-4">OOAL Summary</h4>
-            <TinyEditor />
+            <TinyEditor
+              editorContent={tinyData.tiny48}
+              setEditorContent={setTinyContent}
+              tinyNo={48}
+            />
             <div className="sub-head">Review of OOS (Analytical)</div>
             <div className="gridName">Current review period OOS</div>
             <div>
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addCurrentOOSA} />
-                  <div className="addrowinstruction  pl-2">
-                    Add Rows by clicking on (+) icon
-                  </div>
+                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
                 </div>
               </div>
               <table>
@@ -9738,7 +15142,7 @@ export default function APQR() {
                   </tr>
                 </thead>
                 <tbody>
-                  {pQRData?.currentOOSA?.map((item, index) => {
+                  {gridDatas?.currentOOSA?.map((item, index) => {
                     return (
                       <tr key={index}>
                         <td>{index + 1}</td>
@@ -9746,9 +15150,12 @@ export default function APQR() {
                           <input
                             value={item.dateOfInitiation}
                             onChange={(e) => {
-                              const newData = [...pQRData.currentOOSA];
+                              const newData = [...gridDatas.currentOOSA];
                               newData[index].dateOfInitiation = e.target.value;
-                              setPQRData({ ...pQRData, currentOOSA: newData });
+                              setGridDatas({
+                                ...gridDatas,
+                                currentOOSA: newData,
+                              });
                             }}
                           />
                         </td>
@@ -9756,9 +15163,12 @@ export default function APQR() {
                           <input
                             value={item.recordNo}
                             onChange={(e) => {
-                              const newData = [...pQRData.currentOOSA];
+                              const newData = [...gridDatas.currentOOSA];
                               newData[index].recordNo = e.target.value;
-                              setPQRData({ ...pQRData, currentOOSA: newData });
+                              setGridDatas({
+                                ...gridDatas,
+                                currentOOSA: newData,
+                              });
                             }}
                           />
                         </td>
@@ -9766,9 +15176,12 @@ export default function APQR() {
                           <input
                             value={item.siteDivision}
                             onChange={(e) => {
-                              const newData = [...pQRData.currentOOSA];
+                              const newData = [...gridDatas.currentOOSA];
                               newData[index].siteDivision = e.target.value;
-                              setPQRData({ ...pQRData, currentOOSA: newData });
+                              setGridDatas({
+                                ...gridDatas,
+                                currentOOSA: newData,
+                              });
                             }}
                           />
                         </td>
@@ -9776,9 +15189,12 @@ export default function APQR() {
                           <input
                             value={item.department}
                             onChange={(e) => {
-                              const newData = [...pQRData.currentOOSA];
+                              const newData = [...gridDatas.currentOOSA];
                               newData[index].department = e.target.value;
-                              setPQRData({ ...pQRData, currentOOSA: newData });
+                              setGridDatas({
+                                ...gridDatas,
+                                currentOOSA: newData,
+                              });
                             }}
                           />
                         </td>
@@ -9786,9 +15202,12 @@ export default function APQR() {
                           <input
                             value={item.initiator}
                             onChange={(e) => {
-                              const newData = [...pQRData.currentOOSA];
+                              const newData = [...gridDatas.currentOOSA];
                               newData[index].initiator = e.target.value;
-                              setPQRData({ ...pQRData, currentOOSA: newData });
+                              setGridDatas({
+                                ...gridDatas,
+                                currentOOSA: newData,
+                              });
                             }}
                           />
                         </td>
@@ -9796,9 +15215,12 @@ export default function APQR() {
                           <input
                             value={item.shortDescription}
                             onChange={(e) => {
-                              const newData = [...pQRData.currentOOSA];
+                              const newData = [...gridDatas.currentOOSA];
                               newData[index].shortDescription = e.target.value;
-                              setPQRData({ ...pQRData, currentOOSA: newData });
+                              setGridDatas({
+                                ...gridDatas,
+                                currentOOSA: newData,
+                              });
                             }}
                           />
                         </td>
@@ -9806,9 +15228,12 @@ export default function APQR() {
                           <input
                             value={item.batchNo}
                             onChange={(e) => {
-                              const newData = [...pQRData.currentOOSA];
+                              const newData = [...gridDatas.currentOOSA];
                               newData[index].batchNo = e.target.value;
-                              setPQRData({ ...pQRData, currentOOSA: newData });
+                              setGridDatas({
+                                ...gridDatas,
+                                currentOOSA: newData,
+                              });
                             }}
                           />
                         </td>
@@ -9816,9 +15241,12 @@ export default function APQR() {
                           <input
                             value={item.dueDate}
                             onChange={(e) => {
-                              const newData = [...pQRData.currentOOSA];
+                              const newData = [...gridDatas.currentOOSA];
                               newData[index].dueDate = e.target.value;
-                              setPQRData({ ...pQRData, currentOOSA: newData });
+                              setGridDatas({
+                                ...gridDatas,
+                                currentOOSA: newData,
+                              });
                             }}
                           />
                         </td>
@@ -9826,9 +15254,12 @@ export default function APQR() {
                           <input
                             value={item.currentStatus}
                             onChange={(e) => {
-                              const newData = [...pQRData.currentOOSA];
+                              const newData = [...gridDatas.currentOOSA];
                               newData[index].currentStatus = e.target.value;
-                              setPQRData({ ...pQRData, currentOOSA: newData });
+                              setGridDatas({
+                                ...gridDatas,
+                                currentOOSA: newData,
+                              });
                             }}
                           />
                         </td>
@@ -9843,9 +15274,7 @@ export default function APQR() {
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addPreviewOOSA} />
-                  <div className="addrowinstruction  pl-2">
-                    Add Rows by clicking on (+) icon
-                  </div>
+                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
                 </div>
               </div>
               <table>
@@ -9864,7 +15293,7 @@ export default function APQR() {
                   </tr>
                 </thead>
                 <tbody>
-                  {pQRData?.previewOOSA?.map((item, index) => {
+                  {gridDatas?.previewOOSA?.map((item, index) => {
                     return (
                       <tr key={index}>
                         <td>{index + 1}</td>
@@ -9872,9 +15301,12 @@ export default function APQR() {
                           <input
                             value={item.dateOfInitiation}
                             onChange={(e) => {
-                              const newData = [...pQRData.previewOOSA];
+                              const newData = [...gridDatas.previewOOSA];
                               newData[index].dateOfInitiation = e.target.value;
-                              setPQRData({ ...pQRData, previewOOSA: newData });
+                              setGridDatas({
+                                ...gridDatas,
+                                previewOOSA: newData,
+                              });
                             }}
                           />
                         </td>
@@ -9883,9 +15315,12 @@ export default function APQR() {
                           <input
                             value={item.recordNo}
                             onChange={(e) => {
-                              const newData = [...pQRData.previewOOSA];
+                              const newData = [...gridDatas.previewOOSA];
                               newData[index].recordNo = e.target.value;
-                              setPQRData({ ...pQRData, previewOOSA: newData });
+                              setGridDatas({
+                                ...gridDatas,
+                                previewOOSA: newData,
+                              });
                             }}
                           />
                         </td>
@@ -9893,9 +15328,12 @@ export default function APQR() {
                           <input
                             value={item.siteDivision}
                             onChange={(e) => {
-                              const newData = [...pQRData.previewOOSA];
+                              const newData = [...gridDatas.previewOOSA];
                               newData[index].siteDivision = e.target.value;
-                              setPQRData({ ...pQRData, previewOOSA: newData });
+                              setGridDatas({
+                                ...gridDatas,
+                                previewOOSA: newData,
+                              });
                             }}
                           />
                         </td>
@@ -9903,9 +15341,12 @@ export default function APQR() {
                           <input
                             value={item.department}
                             onChange={(e) => {
-                              const newData = [...pQRData.previewOOSA];
+                              const newData = [...gridDatas.previewOOSA];
                               newData[index].department = e.target.value;
-                              setPQRData({ ...pQRData, previewOOSA: newData });
+                              setGridDatas({
+                                ...gridDatas,
+                                previewOOSA: newData,
+                              });
                             }}
                           />
                         </td>
@@ -9913,9 +15354,12 @@ export default function APQR() {
                           <input
                             value={item.initiator}
                             onChange={(e) => {
-                              const newData = [...pQRData.previewOOSA];
+                              const newData = [...gridDatas.previewOOSA];
                               newData[index].initiator = e.target.value;
-                              setPQRData({ ...pQRData, previewOOSA: newData });
+                              setGridDatas({
+                                ...gridDatas,
+                                previewOOSA: newData,
+                              });
                             }}
                           />
                         </td>
@@ -9923,9 +15367,12 @@ export default function APQR() {
                           <input
                             value={item.shortDescription}
                             onChange={(e) => {
-                              const newData = [...pQRData.previewOOSA];
+                              const newData = [...gridDatas.previewOOSA];
                               newData[index].shortDescription = e.target.value;
-                              setPQRData({ ...pQRData, previewOOSA: newData });
+                              setGridDatas({
+                                ...gridDatas,
+                                previewOOSA: newData,
+                              });
                             }}
                           />
                         </td>
@@ -9933,9 +15380,12 @@ export default function APQR() {
                           <input
                             value={item.batchNo}
                             onChange={(e) => {
-                              const newData = [...pQRData.previewOOSA];
+                              const newData = [...gridDatas.previewOOSA];
                               newData[index].batchNo = e.target.value;
-                              setPQRData({ ...pQRData, previewOOSA: newData });
+                              setGridDatas({
+                                ...gridDatas,
+                                previewOOSA: newData,
+                              });
                             }}
                           />
                         </td>
@@ -9943,9 +15393,12 @@ export default function APQR() {
                           <input
                             value={item.dueDate}
                             onChange={(e) => {
-                              const newData = [...pQRData.previewOOSA];
+                              const newData = [...gridDatas.previewOOSA];
                               newData[index].dueDate = e.target.value;
-                              setPQRData({ ...pQRData, previewOOSA: newData });
+                              setGridDatas({
+                                ...gridDatas,
+                                previewOOSA: newData,
+                              });
                             }}
                           />
                         </td>
@@ -9954,9 +15407,12 @@ export default function APQR() {
                           <input
                             value={item.currentStatus}
                             onChange={(e) => {
-                              const newData = [...pQRData.previewOOSA];
+                              const newData = [...gridDatas.previewOOSA];
                               newData[index].currentStatus = e.target.value;
-                              setPQRData({ ...pQRData, previewOOSA: newData });
+                              setGridDatas({
+                                ...gridDatas,
+                                previewOOSA: newData,
+                              });
                             }}
                           />
                         </td>
@@ -9967,16 +15423,18 @@ export default function APQR() {
               </table>
             </div>
             <h4 className="gridName pt-4">OOSA Summary</h4>
-            <TinyEditor />
+            <TinyEditor
+              editorContent={tinyData.tiny49}
+              setEditorContent={setTinyContent}
+              tinyNo={49}
+            />
             <div className="sub-head">Review of OOT (Analytical)</div>
             <div className="gridName pt-4">Current Review Period OOT</div>
             <div>
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addCurrentOOT} />
-                  <div className="addrowinstruction  pl-2">
-                    Add Rows by clicking on (+) icon
-                  </div>
+                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
                 </div>
               </div>
               <table>
@@ -9995,7 +15453,7 @@ export default function APQR() {
                   </tr>
                 </thead>
                 <tbody>
-                  {pQRData?.currentOOT?.map((item, index) => {
+                  {gridDatas?.currentOOT?.map((item, index) => {
                     return (
                       <tr key={index}>
                         <td>{index + 1}</td>
@@ -10003,9 +15461,12 @@ export default function APQR() {
                           <input
                             value={item.dateOfInitiation}
                             onChange={(e) => {
-                              const newData = [...pQRData.currentOOT];
+                              const newData = [...gridDatas.currentOOT];
                               newData[index].dateOfInitiation = e.target.value;
-                              setPQRData({ ...pQRData, currentOOT: newData });
+                              setGridDatas({
+                                ...gridDatas,
+                                currentOOT: newData,
+                              });
                             }}
                           />
                         </td>
@@ -10013,9 +15474,12 @@ export default function APQR() {
                           <input
                             value={item.recordNo}
                             onChange={(e) => {
-                              const newData = [...pQRData.currentOOT];
+                              const newData = [...gridDatas.currentOOT];
                               newData[index].recordNo = e.target.value;
-                              setPQRData({ ...pQRData, currentOOT: newData });
+                              setGridDatas({
+                                ...gridDatas,
+                                currentOOT: newData,
+                              });
                             }}
                           />
                         </td>
@@ -10023,9 +15487,12 @@ export default function APQR() {
                           <input
                             value={item.siteDivision}
                             onChange={(e) => {
-                              const newData = [...pQRData.currentOOT];
+                              const newData = [...gridDatas.currentOOT];
                               newData[index].siteDivision = e.target.value;
-                              setPQRData({ ...pQRData, currentOOT: newData });
+                              setGridDatas({
+                                ...gridDatas,
+                                currentOOT: newData,
+                              });
                             }}
                           />
                         </td>
@@ -10033,9 +15500,12 @@ export default function APQR() {
                           <input
                             value={item.department}
                             onChange={(e) => {
-                              const newData = [...pQRData.currentOOT];
+                              const newData = [...gridDatas.currentOOT];
                               newData[index].department = e.target.value;
-                              setPQRData({ ...pQRData, currentOOT: newData });
+                              setGridDatas({
+                                ...gridDatas,
+                                currentOOT: newData,
+                              });
                             }}
                           />
                         </td>
@@ -10043,9 +15513,12 @@ export default function APQR() {
                           <input
                             value={item.initiator}
                             onChange={(e) => {
-                              const newData = [...pQRData.currentOOT];
+                              const newData = [...gridDatas.currentOOT];
                               newData[index].initiator = e.target.value;
-                              setPQRData({ ...pQRData, currentOOT: newData });
+                              setGridDatas({
+                                ...gridDatas,
+                                currentOOT: newData,
+                              });
                             }}
                           />
                         </td>
@@ -10053,9 +15526,12 @@ export default function APQR() {
                           <input
                             value={item.shortDescription}
                             onChange={(e) => {
-                              const newData = [...pQRData.currentOOT];
+                              const newData = [...gridDatas.currentOOT];
                               newData[index].shortDescription = e.target.value;
-                              setPQRData({ ...pQRData, currentOOT: newData });
+                              setGridDatas({
+                                ...gridDatas,
+                                currentOOT: newData,
+                              });
                             }}
                           />
                         </td>
@@ -10063,9 +15539,12 @@ export default function APQR() {
                           <input
                             value={item.batchNo}
                             onChange={(e) => {
-                              const newData = [...pQRData.currentOOT];
+                              const newData = [...gridDatas.currentOOT];
                               newData[index].batchNo = e.target.value;
-                              setPQRData({ ...pQRData, currentOOT: newData });
+                              setGridDatas({
+                                ...gridDatas,
+                                currentOOT: newData,
+                              });
                             }}
                           />
                         </td>
@@ -10073,9 +15552,12 @@ export default function APQR() {
                           <input
                             value={item.dueDate}
                             onChange={(e) => {
-                              const newData = [...pQRData.currentOOT];
+                              const newData = [...gridDatas.currentOOT];
                               newData[index].dueDate = e.target.value;
-                              setPQRData({ ...pQRData, currentOOT: newData });
+                              setGridDatas({
+                                ...gridDatas,
+                                currentOOT: newData,
+                              });
                             }}
                           />
                         </td>
@@ -10083,9 +15565,12 @@ export default function APQR() {
                           <input
                             value={item.currentStatus}
                             onChange={(e) => {
-                              const newData = [...pQRData.currentOOT];
+                              const newData = [...gridDatas.currentOOT];
                               newData[index].currentStatus = e.target.value;
-                              setPQRData({ ...pQRData, currentOOT: newData });
+                              setGridDatas({
+                                ...gridDatas,
+                                currentOOT: newData,
+                              });
                             }}
                           />
                         </td>
@@ -10100,9 +15585,7 @@ export default function APQR() {
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addPreviewOOT} />
-                  <div className="addrowinstruction  pl-2">
-                    Add Rows by clicking on (+) icon
-                  </div>
+                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
                 </div>
               </div>
               <table>
@@ -10121,7 +15604,7 @@ export default function APQR() {
                   </tr>
                 </thead>
                 <tbody>
-                  {pQRData?.previewOOT?.map((item, index) => {
+                  {gridDatas?.previewOOT?.map((item, index) => {
                     return (
                       <tr key={index}>
                         <td>{index + 1}</td>
@@ -10129,9 +15612,12 @@ export default function APQR() {
                           <input
                             value={item.dateOfInitiation}
                             onChange={(e) => {
-                              const newData = [...pQRData.previewOOT];
+                              const newData = [...gridDatas.previewOOT];
                               newData[index].dateOfInitiation = e.target.value;
-                              setPQRData({ ...pQRData, previewOOT: newData });
+                              setGridDatas({
+                                ...gridDatas,
+                                previewOOT: newData,
+                              });
                             }}
                           />
                         </td>
@@ -10140,9 +15626,12 @@ export default function APQR() {
                           <input
                             value={item.recordNo}
                             onChange={(e) => {
-                              const newData = [...pQRData.previewOOT];
+                              const newData = [...gridDatas.previewOOT];
                               newData[index].recordNo = e.target.value;
-                              setPQRData({ ...pQRData, previewOOT: newData });
+                              setGridDatas({
+                                ...gridDatas,
+                                previewOOT: newData,
+                              });
                             }}
                           />
                         </td>
@@ -10150,9 +15639,12 @@ export default function APQR() {
                           <input
                             value={item.siteDivision}
                             onChange={(e) => {
-                              const newData = [...pQRData.previewOOT];
+                              const newData = [...gridDatas.previewOOT];
                               newData[index].siteDivision = e.target.value;
-                              setPQRData({ ...pQRData, previewOOT: newData });
+                              setGridDatas({
+                                ...gridDatas,
+                                previewOOT: newData,
+                              });
                             }}
                           />
                         </td>
@@ -10160,9 +15652,12 @@ export default function APQR() {
                           <input
                             value={item.department}
                             onChange={(e) => {
-                              const newData = [...pQRData.previewOOT];
+                              const newData = [...gridDatas.previewOOT];
                               newData[index].department = e.target.value;
-                              setPQRData({ ...pQRData, previewOOT: newData });
+                              setGridDatas({
+                                ...gridDatas,
+                                previewOOT: newData,
+                              });
                             }}
                           />
                         </td>
@@ -10170,9 +15665,12 @@ export default function APQR() {
                           <input
                             value={item.initiator}
                             onChange={(e) => {
-                              const newData = [...pQRData.previewOOT];
+                              const newData = [...gridDatas.previewOOT];
                               newData[index].initiator = e.target.value;
-                              setPQRData({ ...pQRData, previewOOT: newData });
+                              setGridDatas({
+                                ...gridDatas,
+                                previewOOT: newData,
+                              });
                             }}
                           />
                         </td>
@@ -10180,9 +15678,12 @@ export default function APQR() {
                           <input
                             value={item.shortDescription}
                             onChange={(e) => {
-                              const newData = [...pQRData.previewOOT];
+                              const newData = [...gridDatas.previewOOT];
                               newData[index].shortDescription = e.target.value;
-                              setPQRData({ ...pQRData, previewOOT: newData });
+                              setGridDatas({
+                                ...gridDatas,
+                                previewOOT: newData,
+                              });
                             }}
                           />
                         </td>
@@ -10190,9 +15691,12 @@ export default function APQR() {
                           <input
                             value={item.batchNo}
                             onChange={(e) => {
-                              const newData = [...pQRData.previewOOT];
+                              const newData = [...gridDatas.previewOOT];
                               newData[index].batchNo = e.target.value;
-                              setPQRData({ ...pQRData, previewOOT: newData });
+                              setGridDatas({
+                                ...gridDatas,
+                                previewOOT: newData,
+                              });
                             }}
                           />
                         </td>
@@ -10200,9 +15704,12 @@ export default function APQR() {
                           <input
                             value={item.dueDate}
                             onChange={(e) => {
-                              const newData = [...pQRData.previewOOT];
+                              const newData = [...gridDatas.previewOOT];
                               newData[index].dueDate = e.target.value;
-                              setPQRData({ ...pQRData, previewOOT: newData });
+                              setGridDatas({
+                                ...gridDatas,
+                                previewOOT: newData,
+                              });
                             }}
                           />
                         </td>
@@ -10211,9 +15718,12 @@ export default function APQR() {
                           <input
                             value={item.currentStatus}
                             onChange={(e) => {
-                              const newData = [...pQRData.previewOOT];
+                              const newData = [...gridDatas.previewOOT];
                               newData[index].currentStatus = e.target.value;
-                              setPQRData({ ...pQRData, previewOOT: newData });
+                              setGridDatas({
+                                ...gridDatas,
+                                previewOOT: newData,
+                              });
                             }}
                           />
                         </td>
@@ -10224,18 +15734,18 @@ export default function APQR() {
               </table>
             </div>
             <h4 className="gridName pt-4">OOT Summary</h4>
-            <TinyEditor />
+            <TinyEditor
+              editorContent={tinyData.tiny50}
+              setEditorContent={setTinyContent}
+              tinyNo={50}
+            />
             <div className="sub-head">Review of Change Controls</div>
-            <div className="gridName pt-4">
-              Current Review Period Change Controls
-            </div>
+            <div className="gridName pt-4">Current Review Period Change Controls</div>
             <div>
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addCurrentCC} />
-                  <div className="addrowinstruction  pl-2">
-                    Add Rows by clicking on (+) icon
-                  </div>
+                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
                 </div>
               </div>
               <table>
@@ -10254,7 +15764,7 @@ export default function APQR() {
                   </tr>
                 </thead>
                 <tbody>
-                  {pQRData?.currentCC.map((item, index) => {
+                  {gridDatas?.currentCC.map((item, index) => {
                     return (
                       <tr key={index}>
                         <td>{index + 1}</td>
@@ -10262,9 +15772,12 @@ export default function APQR() {
                           <input
                             value={item.dateOfInitiation}
                             onChange={(e) => {
-                              const newData = [...pQRData.currentCC];
+                              const newData = [...gridDatas.currentCC];
                               newData[index].dateOfInitiation = e.target.value;
-                              setPQRData({ ...pQRData, currentCC: newData });
+                              setGridDatas({
+                                ...gridDatas,
+                                currentCC: newData,
+                              });
                             }}
                           />
                         </td>
@@ -10272,9 +15785,12 @@ export default function APQR() {
                           <input
                             value={item.recordNo}
                             onChange={(e) => {
-                              const newData = [...pQRData.currentCC];
+                              const newData = [...gridDatas.currentCC];
                               newData[index].recordNo = e.target.value;
-                              setPQRData({ ...pQRData, currentCC: newData });
+                              setGridDatas({
+                                ...gridDatas,
+                                currentCC: newData,
+                              });
                             }}
                           />
                         </td>
@@ -10282,9 +15798,12 @@ export default function APQR() {
                           <input
                             value={item.siteDivision}
                             onChange={(e) => {
-                              const newData = [...pQRData.currentCC];
+                              const newData = [...gridDatas.currentCC];
                               newData[index].siteDivision = e.target.value;
-                              setPQRData({ ...pQRData, currentCC: newData });
+                              setGridDatas({
+                                ...gridDatas,
+                                currentCC: newData,
+                              });
                             }}
                           />
                         </td>
@@ -10292,9 +15811,12 @@ export default function APQR() {
                           <input
                             value={item.department}
                             onChange={(e) => {
-                              const newData = [...pQRData.currentCC];
+                              const newData = [...gridDatas.currentCC];
                               newData[index].department = e.target.value;
-                              setPQRData({ ...pQRData, currentCC: newData });
+                              setGridDatas({
+                                ...gridDatas,
+                                currentCC: newData,
+                              });
                             }}
                           />
                         </td>
@@ -10302,9 +15824,12 @@ export default function APQR() {
                           <input
                             value={item.initiator}
                             onChange={(e) => {
-                              const newData = [...pQRData.currentCC];
+                              const newData = [...gridDatas.currentCC];
                               newData[index].initiator = e.target.value;
-                              setPQRData({ ...pQRData, currentCC: newData });
+                              setGridDatas({
+                                ...gridDatas,
+                                currentCC: newData,
+                              });
                             }}
                           />
                         </td>
@@ -10312,9 +15837,12 @@ export default function APQR() {
                           <input
                             value={item.shortDescription}
                             onChange={(e) => {
-                              const newData = [...pQRData.currentCC];
+                              const newData = [...gridDatas.currentCC];
                               newData[index].shortDescription = e.target.value;
-                              setPQRData({ ...pQRData, currentCC: newData });
+                              setGridDatas({
+                                ...gridDatas,
+                                currentCC: newData,
+                              });
                             }}
                           />
                         </td>
@@ -10322,9 +15850,12 @@ export default function APQR() {
                           <input
                             value={item.batchNo}
                             onChange={(e) => {
-                              const newData = [...pQRData.currentCC];
+                              const newData = [...gridDatas.currentCC];
                               newData[index].batchNo = e.target.value;
-                              setPQRData({ ...pQRData, currentCC: newData });
+                              setGridDatas({
+                                ...gridDatas,
+                                currentCC: newData,
+                              });
                             }}
                           />
                         </td>
@@ -10332,9 +15863,12 @@ export default function APQR() {
                           <input
                             value={item.dueDate}
                             onChange={(e) => {
-                              const newData = [...pQRData.currentCC];
+                              const newData = [...gridDatas.currentCC];
                               newData[index].dueDate = e.target.value;
-                              setPQRData({ ...pQRData, currentCC: newData });
+                              setGridDatas({
+                                ...gridDatas,
+                                currentCC: newData,
+                              });
                             }}
                           />
                         </td>
@@ -10342,9 +15876,12 @@ export default function APQR() {
                           <input
                             value={item.currentStatus}
                             onChange={(e) => {
-                              const newData = [...pQRData.currentCC];
+                              const newData = [...gridDatas.currentCC];
                               newData[index].currentStatus = e.target.value;
-                              setPQRData({ ...pQRData, currentCC: newData });
+                              setGridDatas({
+                                ...gridDatas,
+                                currentCC: newData,
+                              });
                             }}
                           />
                         </td>
@@ -10354,16 +15891,12 @@ export default function APQR() {
                 </tbody>
               </table>
             </div>
-            <div className="gridName pt-4">
-              Previous Review Period Change Controls
-            </div>
+            <div className="gridName pt-4">Previous Review Period Change Controls</div>
             <div>
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addPreviewCC} />
-                  <div className="addrowinstruction  pl-2">
-                    Add Rows by clicking on (+) icon
-                  </div>
+                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
                 </div>
               </div>
               <table>
@@ -10382,7 +15915,7 @@ export default function APQR() {
                   </tr>
                 </thead>
                 <tbody>
-                  {pQRData?.previewCC?.map((item, index) => {
+                  {gridDatas?.previewCC?.map((item, index) => {
                     return (
                       <tr key={index}>
                         <td>{index + 1}</td>
@@ -10390,9 +15923,12 @@ export default function APQR() {
                           <input
                             value={item.dateOfInitiation}
                             onChange={(e) => {
-                              const newData = [...pQRData.previewCC];
+                              const newData = [...gridDatas.previewCC];
                               newData[index].dateOfInitiation = e.target.value;
-                              setPQRData({ ...pQRData, previewCC: newData });
+                              setGridDatas({
+                                ...gridDatas,
+                                previewCC: newData,
+                              });
                             }}
                           />
                         </td>
@@ -10401,9 +15937,12 @@ export default function APQR() {
                           <input
                             value={item.recordNo}
                             onChange={(e) => {
-                              const newData = [...pQRData.previewCC];
+                              const newData = [...gridDatas.previewCC];
                               newData[index].recordNo = e.target.value;
-                              setPQRData({ ...pQRData, previewCC: newData });
+                              setGridDatas({
+                                ...gridDatas,
+                                previewCC: newData,
+                              });
                             }}
                           />
                         </td>
@@ -10411,9 +15950,12 @@ export default function APQR() {
                           <input
                             value={item.siteDivision}
                             onChange={(e) => {
-                              const newData = [...pQRData.previewCC];
+                              const newData = [...gridDatas.previewCC];
                               newData[index].siteDivision = e.target.value;
-                              setPQRData({ ...pQRData, previewCC: newData });
+                              setGridDatas({
+                                ...gridDatas,
+                                previewCC: newData,
+                              });
                             }}
                           />
                         </td>
@@ -10421,9 +15963,12 @@ export default function APQR() {
                           <input
                             value={item.department}
                             onChange={(e) => {
-                              const newData = [...pQRData.previewCC];
+                              const newData = [...gridDatas.previewCC];
                               newData[index].department = e.target.value;
-                              setPQRData({ ...pQRData, previewCC: newData });
+                              setGridDatas({
+                                ...gridDatas,
+                                previewCC: newData,
+                              });
                             }}
                           />
                         </td>
@@ -10431,9 +15976,12 @@ export default function APQR() {
                           <input
                             value={item.initiator}
                             onChange={(e) => {
-                              const newData = [...pQRData.previewCC];
+                              const newData = [...gridDatas.previewCC];
                               newData[index].initiator = e.target.value;
-                              setPQRData({ ...pQRData, previewCC: newData });
+                              setGridDatas({
+                                ...gridDatas,
+                                previewCC: newData,
+                              });
                             }}
                           />
                         </td>
@@ -10441,9 +15989,12 @@ export default function APQR() {
                           <input
                             value={item.shortDescription}
                             onChange={(e) => {
-                              const newData = [...pQRData.previewCC];
+                              const newData = [...gridDatas.previewCC];
                               newData[index].shortDescription = e.target.value;
-                              setPQRData({ ...pQRData, previewCC: newData });
+                              setGridDatas({
+                                ...gridDatas,
+                                previewCC: newData,
+                              });
                             }}
                           />
                         </td>
@@ -10451,9 +16002,12 @@ export default function APQR() {
                           <input
                             value={item.batchNo}
                             onChange={(e) => {
-                              const newData = [...pQRData.previewCC];
+                              const newData = [...gridDatas.previewCC];
                               newData[index].batchNo = e.target.value;
-                              setPQRData({ ...pQRData, previewCC: newData });
+                              setGridDatas({
+                                ...gridDatas,
+                                previewCC: newData,
+                              });
                             }}
                           />
                         </td>
@@ -10461,9 +16015,12 @@ export default function APQR() {
                           <input
                             value={item.dueDate}
                             onChange={(e) => {
-                              const newData = [...pQRData.previewCC];
+                              const newData = [...gridDatas.previewCC];
                               newData[index].dueDate = e.target.value;
-                              setPQRData({ ...pQRData, previewCC: newData });
+                              setGridDatas({
+                                ...gridDatas,
+                                previewCC: newData,
+                              });
                             }}
                           />
                         </td>
@@ -10472,9 +16029,12 @@ export default function APQR() {
                           <input
                             value={item.currentStatus}
                             onChange={(e) => {
-                              const newData = [...pQRData.previewCC];
+                              const newData = [...gridDatas.previewCC];
                               newData[index].currentStatus = e.target.value;
-                              setPQRData({ ...pQRData, previewCC: newData });
+                              setGridDatas({
+                                ...gridDatas,
+                                previewCC: newData,
+                              });
                             }}
                           />
                         </td>
@@ -10485,16 +16045,18 @@ export default function APQR() {
               </table>
             </div>
             <h4 className="gridName pt-4">Change Control Summary</h4>
-            <TinyEditor />
+            <TinyEditor
+              editorContent={tinyData.tiny51}
+              setEditorContent={setTinyContent}
+              tinyNo={51}
+            />
             <div className="sub-head">Review of Lab Incident</div>
             <div className="gridName pt-4">Current Review Lab Incident</div>
             <div>
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addCurrentLabI} />
-                  <div className="addrowinstruction  pl-2">
-                    Add Rows by clicking on (+) icon
-                  </div>
+                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
                 </div>
               </div>
               <table>
@@ -10513,7 +16075,7 @@ export default function APQR() {
                   </tr>
                 </thead>
                 <tbody>
-                  {pQRData?.currentLabI?.map((item, index) => {
+                  {gridDatas?.currentLabI?.map((item, index) => {
                     return (
                       <tr key={index}>
                         <td>{index + 1}</td>
@@ -10521,9 +16083,12 @@ export default function APQR() {
                           <input
                             value={item.dateOfInitiation}
                             onChange={(e) => {
-                              const newData = [...pQRData.currentLabI];
+                              const newData = [...gridDatas.currentLabI];
                               newData[index].dateOfInitiation = e.target.value;
-                              setPQRData({ ...pQRData, currentLabI: newData });
+                              setGridDatas({
+                                ...gridDatas,
+                                currentLabI: newData,
+                              });
                             }}
                           />
                         </td>
@@ -10531,9 +16096,12 @@ export default function APQR() {
                           <input
                             value={item.recordNo}
                             onChange={(e) => {
-                              const newData = [...pQRData.currentLabI];
+                              const newData = [...gridDatas.currentLabI];
                               newData[index].recordNo = e.target.value;
-                              setPQRData({ ...pQRData, currentLabI: newData });
+                              setGridDatas({
+                                ...gridDatas,
+                                currentLabI: newData,
+                              });
                             }}
                           />
                         </td>
@@ -10541,9 +16109,12 @@ export default function APQR() {
                           <input
                             value={item.siteDivision}
                             onChange={(e) => {
-                              const newData = [...pQRData.currentLabI];
+                              const newData = [...gridDatas.currentLabI];
                               newData[index].siteDivision = e.target.value;
-                              setPQRData({ ...pQRData, currentLabI: newData });
+                              setGridDatas({
+                                ...gridDatas,
+                                currentLabI: newData,
+                              });
                             }}
                           />
                         </td>
@@ -10551,9 +16122,12 @@ export default function APQR() {
                           <input
                             value={item.department}
                             onChange={(e) => {
-                              const newData = [...pQRData.currentLabI];
+                              const newData = [...gridDatas.currentLabI];
                               newData[index].department = e.target.value;
-                              setPQRData({ ...pQRData, currentLabI: newData });
+                              setGridDatas({
+                                ...gridDatas,
+                                currentLabI: newData,
+                              });
                             }}
                           />
                         </td>
@@ -10561,9 +16135,12 @@ export default function APQR() {
                           <input
                             value={item.initiator}
                             onChange={(e) => {
-                              const newData = [...pQRData.currentLabI];
+                              const newData = [...gridDatas.currentLabI];
                               newData[index].initiator = e.target.value;
-                              setPQRData({ ...pQRData, currentLabI: newData });
+                              setGridDatas({
+                                ...gridDatas,
+                                currentLabI: newData,
+                              });
                             }}
                           />
                         </td>
@@ -10571,9 +16148,12 @@ export default function APQR() {
                           <input
                             value={item.shortDescription}
                             onChange={(e) => {
-                              const newData = [...pQRData.currentLabI];
+                              const newData = [...gridDatas.currentLabI];
                               newData[index].shortDescription = e.target.value;
-                              setPQRData({ ...pQRData, currentLabI: newData });
+                              setGridDatas({
+                                ...gridDatas,
+                                currentLabI: newData,
+                              });
                             }}
                           />
                         </td>
@@ -10581,9 +16161,12 @@ export default function APQR() {
                           <input
                             value={item.batchNo}
                             onChange={(e) => {
-                              const newData = [...pQRData.currentLabI];
+                              const newData = [...gridDatas.currentLabI];
                               newData[index].batchNo = e.target.value;
-                              setPQRData({ ...pQRData, currentLabI: newData });
+                              setGridDatas({
+                                ...gridDatas,
+                                currentLabI: newData,
+                              });
                             }}
                           />
                         </td>
@@ -10591,9 +16174,12 @@ export default function APQR() {
                           <input
                             value={item.dueDate}
                             onChange={(e) => {
-                              const newData = [...pQRData.currentLabI];
+                              const newData = [...gridDatas.currentLabI];
                               newData[index].dueDate = e.target.value;
-                              setPQRData({ ...pQRData, currentLabI: newData });
+                              setGridDatas({
+                                ...gridDatas,
+                                currentLabI: newData,
+                              });
                             }}
                           />
                         </td>
@@ -10601,9 +16187,12 @@ export default function APQR() {
                           <input
                             value={item.currentStatus}
                             onChange={(e) => {
-                              const newData = [...pQRData.currentLabI];
+                              const newData = [...gridDatas.currentLabI];
                               newData[index].currentStatus = e.target.value;
-                              setPQRData({ ...pQRData, currentLabI: newData });
+                              setGridDatas({
+                                ...gridDatas,
+                                currentLabI: newData,
+                              });
                             }}
                           />
                         </td>
@@ -10618,9 +16207,7 @@ export default function APQR() {
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addPreviewLabI} />
-                  <div className="addrowinstruction  pl-2">
-                    Add Rows by clicking on (+) icon
-                  </div>
+                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
                 </div>
               </div>
               <table>
@@ -10639,7 +16226,7 @@ export default function APQR() {
                   </tr>
                 </thead>
                 <tbody>
-                  {pQRData?.previewLabI.map((item, index) => {
+                  {gridDatas?.previewLabI.map((item, index) => {
                     return (
                       <tr key={index}>
                         <td>{index + 1}</td>
@@ -10647,9 +16234,12 @@ export default function APQR() {
                           <input
                             value={item.dateOfInitiation}
                             onChange={(e) => {
-                              const newData = [...pQRData.previewLabI];
+                              const newData = [...gridDatas.previewLabI];
                               newData[index].dateOfInitiation = e.target.value;
-                              setPQRData({ ...pQRData, previewLabI: newData });
+                              setGridDatas({
+                                ...gridDatas,
+                                previewLabI: newData,
+                              });
                             }}
                           />
                         </td>
@@ -10658,9 +16248,12 @@ export default function APQR() {
                           <input
                             value={item.recordNo}
                             onChange={(e) => {
-                              const newData = [...pQRData.previewLabI];
+                              const newData = [...gridDatas.previewLabI];
                               newData[index].recordNo = e.target.value;
-                              setPQRData({ ...pQRData, previewLabI: newData });
+                              setGridDatas({
+                                ...gridDatas,
+                                previewLabI: newData,
+                              });
                             }}
                           />
                         </td>
@@ -10668,9 +16261,12 @@ export default function APQR() {
                           <input
                             value={item.siteDivision}
                             onChange={(e) => {
-                              const newData = [...pQRData.previewLabI];
+                              const newData = [...gridDatas.previewLabI];
                               newData[index].siteDivision = e.target.value;
-                              setPQRData({ ...pQRData, previewLabI: newData });
+                              setGridDatas({
+                                ...gridDatas,
+                                previewLabI: newData,
+                              });
                             }}
                           />
                         </td>
@@ -10678,9 +16274,12 @@ export default function APQR() {
                           <input
                             value={item.department}
                             onChange={(e) => {
-                              const newData = [...pQRData.previewLabI];
+                              const newData = [...gridDatas.previewLabI];
                               newData[index].department = e.target.value;
-                              setPQRData({ ...pQRData, previewLabI: newData });
+                              setGridDatas({
+                                ...gridDatas,
+                                previewLabI: newData,
+                              });
                             }}
                           />
                         </td>
@@ -10688,9 +16287,12 @@ export default function APQR() {
                           <input
                             value={item.initiator}
                             onChange={(e) => {
-                              const newData = [...pQRData.previewLabI];
+                              const newData = [...gridDatas.previewLabI];
                               newData[index].initiator = e.target.value;
-                              setPQRData({ ...pQRData, previewLabI: newData });
+                              setGridDatas({
+                                ...gridDatas,
+                                previewLabI: newData,
+                              });
                             }}
                           />
                         </td>
@@ -10698,9 +16300,12 @@ export default function APQR() {
                           <input
                             value={item.shortDescription}
                             onChange={(e) => {
-                              const newData = [...pQRData.previewLabI];
+                              const newData = [...gridDatas.previewLabI];
                               newData[index].shortDescription = e.target.value;
-                              setPQRData({ ...pQRData, previewLabI: newData });
+                              setGridDatas({
+                                ...gridDatas,
+                                previewLabI: newData,
+                              });
                             }}
                           />
                         </td>
@@ -10708,9 +16313,12 @@ export default function APQR() {
                           <input
                             value={item.batchNo}
                             onChange={(e) => {
-                              const newData = [...pQRData.previewLabI];
+                              const newData = [...gridDatas.previewLabI];
                               newData[index].batchNo = e.target.value;
-                              setPQRData({ ...pQRData, previewLabI: newData });
+                              setGridDatas({
+                                ...gridDatas,
+                                previewLabI: newData,
+                              });
                             }}
                           />
                         </td>
@@ -10718,9 +16326,12 @@ export default function APQR() {
                           <input
                             value={item.dueDate}
                             onChange={(e) => {
-                              const newData = [...pQRData.previewLabI];
+                              const newData = [...gridDatas.previewLabI];
                               newData[index].dueDate = e.target.value;
-                              setPQRData({ ...pQRData, previewLabI: newData });
+                              setGridDatas({
+                                ...gridDatas,
+                                previewLabI: newData,
+                              });
                             }}
                           />
                         </td>
@@ -10729,9 +16340,12 @@ export default function APQR() {
                           <input
                             value={item.currentStatus}
                             onChange={(e) => {
-                              const newData = [...pQRData.previewLabI];
+                              const newData = [...gridDatas.previewLabI];
                               newData[index].currentStatus = e.target.value;
-                              setPQRData({ ...pQRData, previewLabI: newData });
+                              setGridDatas({
+                                ...gridDatas,
+                                previewLabI: newData,
+                              });
                             }}
                           />
                         </td>
@@ -10742,18 +16356,18 @@ export default function APQR() {
               </table>
             </div>
             <h4 className="gridName pt-4">Lab Incident Summary</h4>
-            <TinyEditor />
+            <TinyEditor
+              editorContent={tinyData.tiny52}
+              setEditorContent={setTinyContent}
+              tinyNo={52}
+            />
             <div className="sub-head">Review of Market Complaints</div>
-            <div className="gridName pt-4">
-              Current Review Period Complaints
-            </div>
+            <div className="gridName pt-4">Current Review Period Complaints</div>
             <div>
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addCurrentMC} />
-                  <div className="addrowinstruction  pl-2">
-                    Add Rows by clicking on (+) icon
-                  </div>
+                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
                 </div>
               </div>
               <table>
@@ -10772,7 +16386,7 @@ export default function APQR() {
                   </tr>
                 </thead>
                 <tbody>
-                  {pQRData?.currentMC?.map((item, index) => {
+                  {gridDatas?.currentMC?.map((item, index) => {
                     return (
                       <tr key={index}>
                         <td>{index + 1}</td>
@@ -10780,9 +16394,12 @@ export default function APQR() {
                           <input
                             value={item.dateOfInitiation}
                             onChange={(e) => {
-                              const newData = [...pQRData.currentMC];
+                              const newData = [...gridDatas.currentMC];
                               newData[index].dateOfInitiation = e.target.value;
-                              setPQRData({ ...pQRData, currentMC: newData });
+                              setGridDatas({
+                                ...gridDatas,
+                                currentMC: newData,
+                              });
                             }}
                           />
                         </td>
@@ -10790,9 +16407,12 @@ export default function APQR() {
                           <input
                             value={item.recordNo}
                             onChange={(e) => {
-                              const newData = [...pQRData.currentMC];
+                              const newData = [...gridDatas.currentMC];
                               newData[index].recordNo = e.target.value;
-                              setPQRData({ ...pQRData, currentMC: newData });
+                              setGridDatas({
+                                ...gridDatas,
+                                currentMC: newData,
+                              });
                             }}
                           />
                         </td>
@@ -10800,9 +16420,12 @@ export default function APQR() {
                           <input
                             value={item.siteDivision}
                             onChange={(e) => {
-                              const newData = [...pQRData.currentMC];
+                              const newData = [...gridDatas.currentMC];
                               newData[index].siteDivision = e.target.value;
-                              setPQRData({ ...pQRData, currentMC: newData });
+                              setGridDatas({
+                                ...gridDatas,
+                                currentMC: newData,
+                              });
                             }}
                           />
                         </td>
@@ -10810,9 +16433,12 @@ export default function APQR() {
                           <input
                             value={item.department}
                             onChange={(e) => {
-                              const newData = [...pQRData.currentMC];
+                              const newData = [...gridDatas.currentMC];
                               newData[index].department = e.target.value;
-                              setPQRData({ ...pQRData, currentMC: newData });
+                              setGridDatas({
+                                ...gridDatas,
+                                currentMC: newData,
+                              });
                             }}
                           />
                         </td>
@@ -10820,9 +16446,12 @@ export default function APQR() {
                           <input
                             value={item.initiator}
                             onChange={(e) => {
-                              const newData = [...pQRData.currentMC];
+                              const newData = [...gridDatas.currentMC];
                               newData[index].initiator = e.target.value;
-                              setPQRData({ ...pQRData, currentMC: newData });
+                              setGridDatas({
+                                ...gridDatas,
+                                currentMC: newData,
+                              });
                             }}
                           />
                         </td>
@@ -10830,9 +16459,12 @@ export default function APQR() {
                           <input
                             value={item.shortDescription}
                             onChange={(e) => {
-                              const newData = [...pQRData.currentMC];
+                              const newData = [...gridDatas.currentMC];
                               newData[index].shortDescription = e.target.value;
-                              setPQRData({ ...pQRData, currentMC: newData });
+                              setGridDatas({
+                                ...gridDatas,
+                                currentMC: newData,
+                              });
                             }}
                           />
                         </td>
@@ -10840,9 +16472,12 @@ export default function APQR() {
                           <input
                             value={item.batchNo}
                             onChange={(e) => {
-                              const newData = [...pQRData.currentMC];
+                              const newData = [...gridDatas.currentMC];
                               newData[index].batchNo = e.target.value;
-                              setPQRData({ ...pQRData, currentMC: newData });
+                              setGridDatas({
+                                ...gridDatas,
+                                currentMC: newData,
+                              });
                             }}
                           />
                         </td>
@@ -10850,9 +16485,12 @@ export default function APQR() {
                           <input
                             value={item.dueDate}
                             onChange={(e) => {
-                              const newData = [...pQRData.currentMC];
+                              const newData = [...gridDatas.currentMC];
                               newData[index].dueDate = e.target.value;
-                              setPQRData({ ...pQRData, currentMC: newData });
+                              setGridDatas({
+                                ...gridDatas,
+                                currentMC: newData,
+                              });
                             }}
                           />
                         </td>
@@ -10860,9 +16498,12 @@ export default function APQR() {
                           <input
                             value={item.currentStatus}
                             onChange={(e) => {
-                              const newData = [...pQRData.currentMC];
+                              const newData = [...gridDatas.currentMC];
                               newData[index].currentStatus = e.target.value;
-                              setPQRData({ ...pQRData, currentMC: newData });
+                              setGridDatas({
+                                ...gridDatas,
+                                currentMC: newData,
+                              });
                             }}
                           />
                         </td>
@@ -10872,16 +16513,12 @@ export default function APQR() {
                 </tbody>
               </table>
             </div>
-            <div className="gridName pt-4">
-              Previous Review Period Complaints
-            </div>
+            <div className="gridName pt-4">Previous Review Period Complaints</div>
             <div>
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addPreviewMC} />
-                  <div className="addrowinstruction  pl-2">
-                    Add Rows by clicking on (+) icon
-                  </div>
+                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
                 </div>
               </div>
               <table>
@@ -10900,7 +16537,7 @@ export default function APQR() {
                   </tr>
                 </thead>
                 <tbody>
-                  {pQRData?.previewMC?.map((item, index) => {
+                  {gridDatas?.previewMC?.map((item, index) => {
                     return (
                       <tr key={index}>
                         <td>{index + 1}</td>
@@ -10908,9 +16545,12 @@ export default function APQR() {
                           <input
                             value={item.dateOfInitiation}
                             onChange={(e) => {
-                              const newData = [...pQRData.previewMC];
+                              const newData = [...gridDatas.previewMC];
                               newData[index].dateOfInitiation = e.target.value;
-                              setPQRData({ ...pQRData, previewMC: newData });
+                              setGridDatas({
+                                ...gridDatas,
+                                previewMC: newData,
+                              });
                             }}
                           />
                         </td>
@@ -10919,9 +16559,12 @@ export default function APQR() {
                           <input
                             value={item.recordNo}
                             onChange={(e) => {
-                              const newData = [...pQRData.previewMC];
+                              const newData = [...gridDatas.previewMC];
                               newData[index].recordNo = e.target.value;
-                              setPQRData({ ...pQRData, previewMC: newData });
+                              setGridDatas({
+                                ...gridDatas,
+                                previewMC: newData,
+                              });
                             }}
                           />
                         </td>
@@ -10929,9 +16572,12 @@ export default function APQR() {
                           <input
                             value={item.siteDivision}
                             onChange={(e) => {
-                              const newData = [...pQRData.previewMC];
+                              const newData = [...gridDatas.previewMC];
                               newData[index].siteDivision = e.target.value;
-                              setPQRData({ ...pQRData, previewMC: newData });
+                              setGridDatas({
+                                ...gridDatas,
+                                previewMC: newData,
+                              });
                             }}
                           />
                         </td>
@@ -10939,9 +16585,12 @@ export default function APQR() {
                           <input
                             value={item.department}
                             onChange={(e) => {
-                              const newData = [...pQRData.previewMC];
+                              const newData = [...gridDatas.previewMC];
                               newData[index].department = e.target.value;
-                              setPQRData({ ...pQRData, previewMC: newData });
+                              setGridDatas({
+                                ...gridDatas,
+                                previewMC: newData,
+                              });
                             }}
                           />
                         </td>
@@ -10949,9 +16598,12 @@ export default function APQR() {
                           <input
                             value={item.initiator}
                             onChange={(e) => {
-                              const newData = [...pQRData.previewMC];
+                              const newData = [...gridDatas.previewMC];
                               newData[index].initiator = e.target.value;
-                              setPQRData({ ...pQRData, previewMC: newData });
+                              setGridDatas({
+                                ...gridDatas,
+                                previewMC: newData,
+                              });
                             }}
                           />
                         </td>
@@ -10959,9 +16611,12 @@ export default function APQR() {
                           <input
                             value={item.shortDescription}
                             onChange={(e) => {
-                              const newData = [...pQRData.previewMC];
+                              const newData = [...gridDatas.previewMC];
                               newData[index].shortDescription = e.target.value;
-                              setPQRData({ ...pQRData, previewMC: newData });
+                              setGridDatas({
+                                ...gridDatas,
+                                previewMC: newData,
+                              });
                             }}
                           />
                         </td>
@@ -10969,9 +16624,12 @@ export default function APQR() {
                           <input
                             value={item.batchNo}
                             onChange={(e) => {
-                              const newData = [...pQRData.previewMC];
+                              const newData = [...gridDatas.previewMC];
                               newData[index].batchNo = e.target.value;
-                              setPQRData({ ...pQRData, previewMC: newData });
+                              setGridDatas({
+                                ...gridDatas,
+                                previewMC: newData,
+                              });
                             }}
                           />
                         </td>
@@ -10979,9 +16637,12 @@ export default function APQR() {
                           <input
                             value={item.dueDate}
                             onChange={(e) => {
-                              const newData = [...pQRData.previewMC];
+                              const newData = [...gridDatas.previewMC];
                               newData[index].dueDate = e.target.value;
-                              setPQRData({ ...pQRData, previewMC: newData });
+                              setGridDatas({
+                                ...gridDatas,
+                                previewMC: newData,
+                              });
                             }}
                           />
                         </td>
@@ -10990,9 +16651,12 @@ export default function APQR() {
                           <input
                             value={item.currentStatus}
                             onChange={(e) => {
-                              const newData = [...pQRData.previewMC];
+                              const newData = [...gridDatas.previewMC];
                               newData[index].currentStatus = e.target.value;
-                              setPQRData({ ...pQRData, previewMC: newData });
+                              setGridDatas({
+                                ...gridDatas,
+                                previewMC: newData,
+                              });
                             }}
                           />
                         </td>
@@ -11003,11 +16667,13 @@ export default function APQR() {
               </table>
             </div>
             <h4 className="gridName pt-4">Market Complaints Summary</h4>
-            <TinyEditor />
+            <TinyEditor
+              editorContent={tinyData.tiny53}
+              setEditorContent={setTinyContent}
+              tinyNo={53}
+            />
             <div className="sub-head">Review of Deviations</div>
-            <div className="sub-head">
-              Current Review Period Quality Related Notification
-            </div>
+            <div className="sub-head">Current Review Period Quality Related Notification</div>
             <div>
               {/* <div className="AddRows">
                 <MdNoteAdd onClick={addCurrentRPQRNRow} />
@@ -11016,15 +16682,15 @@ export default function APQR() {
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addCurrentRPQRNRow} />
-                  <div className="addrowinstruction  pl-2">
-                    Add Rows by clicking on (+) icon
-                  </div>
+                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
                 </div>
                 <div className="flex gap-4 ">
-                  <ExcelExport
-                    data={balanceSheet}
-                    fileName="balance-sheet-summary.xlsx"
-                  />
+                  <ExcelExportImport
+                  // data={manufacturingStage}
+                  // setimportedData={setimportedData}
+                  // fileName="manufacturingStage.xlsx"
+                  // gridNo={1}
+                  />{" "}
                 </div>
               </div>
               <table>
@@ -11046,7 +16712,7 @@ export default function APQR() {
                   </tr>
                 </thead>
                 <tbody>
-                  {pQRData?.currentRPQRN?.map((item, index) => {
+                  {gridDatas?.currentRPQRN?.map((item, index) => {
                     return (
                       <tr key={index}>
                         <td>{index + 1}</td>
@@ -11055,9 +16721,12 @@ export default function APQR() {
                           <input
                             value={item.batchNo}
                             onChange={(e) => {
-                              const newData = [...currentRPQRN];
+                              const newData = [...gridDatas.currentRPQRN];
                               newData[index].batchNo = e.target.value;
-                              setCurrentRPQRN(newData);
+                              setGridDatas({
+                                ...gridDatas,
+                                currentRPQRN: newData,
+                              });
                             }}
                           />
                         </td>
@@ -11065,10 +16734,12 @@ export default function APQR() {
                           <input
                             value={item.qualityRelatedNotification.no}
                             onChange={(e) => {
-                              const newData = [...currentRPQRN];
-                              newData[index].qualityRelatedNotification.no =
-                                e.target.value;
-                              setCurrentRPQRN(newData);
+                              const newData = [...gridDatas.currentRPQRN];
+                              newData[index].qualityRelatedNotification.no = e.target.value;
+                              setGridDatas({
+                                ...gridDatas,
+                                currentRPQRN: newData,
+                              });
                             }}
                           />
                         </td>
@@ -11077,12 +16748,13 @@ export default function APQR() {
                           <input
                             value={item.qualityRelatedNotification.description}
                             onChange={(e) => {
-                              const newData = [...currentRPQRN];
-                              newData[
-                                index
-                              ].qualityRelatedNotification.description =
+                              const newData = [...gridDatas.currentRPQRN];
+                              newData[index].qualityRelatedNotification.description =
                                 e.target.value;
-                              setCurrentRPQRN(newData);
+                              setGridDatas({
+                                ...gridDatas,
+                                currentRPQRN: newData,
+                              });
                             }}
                           />
                         </td>
@@ -11091,10 +16763,12 @@ export default function APQR() {
                           <input
                             value={item.qualityRelatedNotification.impact}
                             onChange={(e) => {
-                              const newData = [...currentRPQRN];
-                              newData[index].qualityRelatedNotification.impact =
-                                e.target.value;
-                              setCurrentRPQRN(newData);
+                              const newData = [...gridDatas.currentRPQRN];
+                              newData[index].qualityRelatedNotification.impact = e.target.value;
+                              setGridDatas({
+                                ...gridDatas,
+                                currentRPQRN: newData,
+                              });
                             }}
                           />
                         </td>
@@ -11103,10 +16777,12 @@ export default function APQR() {
                           <input
                             value={item.qualityRelatedNotification.status}
                             onChange={(e) => {
-                              const newData = [...currentRPQRN];
-                              newData[index].qualityRelatedNotification.status =
-                                e.target.value;
-                              setCurrentRPQRN(newData);
+                              const newData = [...gridDatas.currentRPQRN];
+                              newData[index].qualityRelatedNotification.status = e.target.value;
+                              setGridDatas({
+                                ...gridDatas,
+                                currentRPQRN: newData,
+                              });
                             }}
                           />
                         </td>
@@ -11114,10 +16790,12 @@ export default function APQR() {
                           <input
                             value={item.cAPA.descriptionNo}
                             onChange={(e) => {
-                              const newData = [...currentRPQRN];
-                              newData[index].cAPA.descriptionNo =
-                                e.target.value;
-                              setCurrentRPQRN(newData);
+                              const newData = [...gridDatas.currentRPQRN];
+                              newData[index].cAPA.descriptionNo = e.target.value;
+                              setGridDatas({
+                                ...gridDatas,
+                                currentRPQRN: newData,
+                              });
                             }}
                           />
                         </td>
@@ -11125,9 +16803,12 @@ export default function APQR() {
                           <input
                             value={item.cAPA.status}
                             onChange={(e) => {
-                              const newData = [...currentRPQRN];
+                              const newData = [...gridDatas.currentRPQRN];
                               newData[index].cAPA.status = e.target.value;
-                              setCurrentRPQRN(newData);
+                              setGridDatas({
+                                ...gridDatas,
+                                currentRPQRN: newData,
+                              });
                             }}
                           />
                         </td>
@@ -11136,9 +16817,12 @@ export default function APQR() {
                           <input
                             value={item.cAPA.eC}
                             onChange={(e) => {
-                              const newData = [...currentRPQRN];
+                              const newData = [...gridDatas.currentRPQRN];
                               newData[index].cAPA.eC = e.target.value;
-                              setCurrentRPQRN(newData);
+                              setGridDatas({
+                                ...gridDatas,
+                                currentRPQRN: newData,
+                              });
                             }}
                           />
                         </td>
@@ -11148,59 +16832,53 @@ export default function APQR() {
                 </tbody>
               </table>
             </div>
-            <h4 className="gridName pt-4">
-              previous Review Period Quality Related Notification
-            </h4>
+            <h4 className="gridName pt-4">previous Review Period Quality Related Notification</h4>
             <TinyEditor
-              editorContent={pQRData.tiny45}
+              editorContent={tinyData.tiny54}
               setEditorContent={setTinyContent}
-              tinyNo={45}
+              tinyNo={54}
             />
             <h4 className="gridName pt-4">Review of Product Recalls</h4>
             <TinyEditor
-              editorContent={pQRData.tiny46}
+              editorContent={tinyData.tiny55}
               setEditorContent={setTinyContent}
-              tinyNo={46}
+              tinyNo={55}
             />{" "}
             <h4 className="gridName pt-4">Review of Returned Products</h4>
             <TinyEditor
-              editorContent={pQRData.tiny47}
+              editorContent={tinyData.tiny56}
               setEditorContent={setTinyContent}
-              tinyNo={47}
+              tinyNo={56}
             />{" "}
             <h4 className="gridName pt-4">Review of Salvaged Drugs</h4>
             <TinyEditor
-              editorContent={pQRData.tiny48}
+              editorContent={tinyData.tiny57}
               setEditorContent={setTinyContent}
-              tinyNo={48}
+              tinyNo={57}
             />{" "}
-            <h4 className="gridName pt-4">
-              Review of previous PQR recommendations
-            </h4>
+            <h4 className="gridName pt-4">Review of previous PQR recommendations</h4>
             <TinyEditor
-              editorContent={pQRData.tiny49}
+              editorContent={tinyData.tiny58}
               setEditorContent={setTinyContent}
-              tinyNo={49}
+              tinyNo={58}
             />{" "}
             <h4 className="gridName pt-4">Review of Quality Agreements</h4>
             <TinyEditor
-              editorContent={pQRData.tiny50}
+              editorContent={tinyData.tiny59}
               setEditorContent={setTinyContent}
-              tinyNo={50}
+              tinyNo={59}
             />{" "}
-            <h4 className="gridName pt-4">
-              Review of Manufacturing Authorizations
-            </h4>
+            <h4 className="gridName pt-4">Review of Manufacturing Authorizations</h4>
             <TinyEditor
-              editorContent={pQRData.tiny51}
+              editorContent={tinyData.tiny60}
               setEditorContent={setTinyContent}
-              tinyNo={51}
+              tinyNo={60}
             />{" "}
             <h4 className="gridName pt-4">Review of Open Validations</h4>
             <TinyEditor
-              editorContent={pQRData.tiny52}
+              editorContent={tinyData.tiny61}
               setEditorContent={setTinyContent}
-              tinyNo={52}
+              tinyNo={61}
             />
           </div>
         ) : null}
@@ -11213,15 +16891,15 @@ export default function APQR() {
               <div className="AddRows d-flex w-full justify-between items-center text-3xl ">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addDossierRow} />
-                  <div className="addrowinstruction  pl-2">
-                    Add Rows by clicking on (+) icon
-                  </div>
+                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
                 </div>
                 <div className="flex gap-4 ">
-                  <ExcelExport
-                    data={balanceSheet}
-                    fileName="balance-sheet-summary.xlsx"
-                  />
+                  <ExcelExportImport
+                  // data={manufacturingStage}
+                  // setimportedData={setimportedData}
+                  // fileName="manufacturingStage.xlsx"
+                  // gridNo={1}
+                  />{" "}
                 </div>
               </div>
               <table>
@@ -11235,7 +16913,7 @@ export default function APQR() {
                   </tr>
                 </thead>
                 <tbody>
-                  {pQRData?.dossierRR?.map((item, index) => {
+                  {gridDatas?.dossierRR?.map((item, index) => {
                     return (
                       <tr key={index}>
                         <td>{index + 1}</td>
@@ -11244,9 +16922,12 @@ export default function APQR() {
                           <input
                             value={item.agency}
                             onChange={(e) => {
-                              const newData = [...dossierRR];
+                              const newData = [...gridDatas.dossierRR];
                               newData[index].agency = e.target.value;
-                              setDossierRR(newData);
+                              setGridDatas({
+                                ...gridDatas,
+                                dossierRR: newData,
+                              });
                             }}
                           />
                         </td>
@@ -11254,9 +16935,12 @@ export default function APQR() {
                           <input
                             value={item.notificationNo}
                             onChange={(e) => {
-                              const newData = [...dossierRR];
+                              const newData = [...gridDatas.dossierRR];
                               newData[index].notificationNo = e.target.value;
-                              setDossierRR(newData);
+                              setGridDatas({
+                                ...gridDatas,
+                                dossierRR: newData,
+                              });
                             }}
                           />
                         </td>
@@ -11264,9 +16948,12 @@ export default function APQR() {
                           <input
                             value={item.notificationType}
                             onChange={(e) => {
-                              const newData = [...dossierRR];
+                              const newData = [...gridDatas.dossierRR];
                               newData[index].notificationType = e.target.value;
-                              setDossierRR(newData);
+                              setGridDatas({
+                                ...gridDatas,
+                                dossierRR: newData,
+                              });
                             }}
                           />
                         </td>
@@ -11274,9 +16961,12 @@ export default function APQR() {
                           <input
                             value={item.description}
                             onChange={(e) => {
-                              const newData = [...dossierRR];
+                              const newData = [...gridDatas.dossierRR];
                               newData[index].description = e.target.value;
-                              setDossierRR(newData);
+                              setGridDatas({
+                                ...gridDatas,
+                                dossierRR: newData,
+                              });
                             }}
                           />
                         </td>
@@ -11289,9 +16979,9 @@ export default function APQR() {
               <div>
                 <h4 className="gridName mt-5">Summary</h4>
                 <TinyEditor
-                  editorContent={pQRData.tiny53}
+                  editorContent={tinyData.tiny62}
                   setEditorContent={setTinyContent}
-                  tinyNo={53}
+                  tinyNo={62}
                 />
               </div>
 
@@ -11302,15 +16992,15 @@ export default function APQR() {
                 <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                   <div className="flex items-center">
                     <MdNoteAdd onClick={addDossierRowNma} />
-                    <div className="addrowinstruction  pl-2">
-                      Add Rows by clicking on (+) icon
-                    </div>
+                    <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
                   </div>
                   <div className="flex gap-4 ">
-                    <ExcelExport
-                      data={balanceSheet}
-                      fileName="balance-sheet-summary.xlsx"
-                    />
+                    <ExcelExportImport
+                    // data={manufacturingStage}
+                    // setimportedData={setimportedData}
+                    // fileName="manufacturingStage.xlsx"
+                    // gridNo={1}
+                    />{" "}
                   </div>
                 </div>
                 <table>
@@ -11326,7 +17016,7 @@ export default function APQR() {
                     </tr>
                   </thead>
                   <tbody>
-                    {pQRData?.dossierRRNma?.map((item, index) => {
+                    {gridDatas?.dossierRRNma?.map((item, index) => {
                       return (
                         <tr key={index}>
                           <td>{index + 1}</td>
@@ -11334,9 +17024,12 @@ export default function APQR() {
                             <input
                               value={item.countryName}
                               onChange={(e) => {
-                                const newData = [...dossierRRNma];
+                                const newData = [...gridDatas.dossierRRNma];
                                 newData[index].countryName = e.target.value;
-                                setDossierRRNma(newData);
+                                setGridDatas({
+                                  ...gridDatas,
+                                  dossierRRNma: newData,
+                                });
                               }}
                             />
                           </td>
@@ -11344,10 +17037,12 @@ export default function APQR() {
                             <input
                               value={item.descriptionOfPacking}
                               onChange={(e) => {
-                                const newData = [...dossierRRNma];
-                                newData[index].descriptionOfPacking =
-                                  e.target.value;
-                                setDossierRRNma(newData);
+                                const newData = [...gridDatas.dossierRRNma];
+                                newData[index].descriptionOfPacking = e.target.value;
+                                setGridDatas({
+                                  ...gridDatas,
+                                  dossierRRNma: newData,
+                                });
                               }}
                             />
                           </td>
@@ -11355,10 +17050,12 @@ export default function APQR() {
                             <input
                               value={item.dateOfApplication}
                               onChange={(e) => {
-                                const newData = [...dossierRRNma];
-                                newData[index].dateOfApplication =
-                                  e.target.value;
-                                setDossierRRNma(newData);
+                                const newData = [...gridDatas.dossierRRNma];
+                                newData[index].dateOfApplication = e.target.value;
+                                setGridDatas({
+                                  ...gridDatas,
+                                  dossierRRNma: newData,
+                                });
                               }}
                             />
                           </td>
@@ -11366,10 +17063,12 @@ export default function APQR() {
                             <input
                               value={item.statusOfApplication}
                               onChange={(e) => {
-                                const newData = [...dossierRRNma];
-                                newData[index].statusOfApplication =
-                                  e.target.value;
-                                setDossierRRNma(newData);
+                                const newData = [...gridDatas.dossierRRNma];
+                                newData[index].statusOfApplication = e.target.value;
+                                setGridDatas({
+                                  ...gridDatas,
+                                  dossierRRNma: newData,
+                                });
                               }}
                             />
                           </td>
@@ -11377,10 +17076,12 @@ export default function APQR() {
                             <input
                               value={item.dateOfAuthorization}
                               onChange={(e) => {
-                                const newData = [...dossierRRNma];
-                                newData[index].dateOfAuthorization =
-                                  e.target.value;
-                                setDossierRRNma(newData);
+                                const newData = [...gridDatas.dossierRRNma];
+                                newData[index].dateOfAuthorization = e.target.value;
+                                setGridDatas({
+                                  ...gridDatas,
+                                  dossierRRNma: newData,
+                                });
                               }}
                             />
                           </td>{" "}
@@ -11388,9 +17089,12 @@ export default function APQR() {
                             <input
                               value={item.remarks}
                               onChange={(e) => {
-                                const newData = [...dossierRRNma];
+                                const newData = [...gridDatas.dossierRRNma];
                                 newData[index].remarks = e.target.value;
-                                setDossierRRNma(newData);
+                                setGridDatas({
+                                  ...gridDatas,
+                                  dossierRRNma: newData,
+                                });
                               }}
                             />
                           </td>
@@ -11402,9 +17106,9 @@ export default function APQR() {
                 <div>
                   <h4 className="gridName mt-5">Summary</h4>
                   <TinyEditor
-                    editorContent={pQRData.tiny54}
+                    editorContent={tinyData.tiny63}
                     setEditorContent={setTinyContent}
-                    tinyNo={54}
+                    tinyNo={63}
                   />
                 </div>
               </div>
@@ -11416,16 +17120,16 @@ export default function APQR() {
             <div>
               <h4 className="gridName">Recommendations Summary</h4>
               <TinyEditor
-                editorContent={pQRData.tiny55}
+                editorContent={tinyData.tiny64}
                 setEditorContent={setTinyContent}
-                tinyNo={55}
+                tinyNo={64}
               />
             </div>
           </>
         ) : null}
         {tab === "CAPA" ? (
           <>
-            <div className="flex items-center justify-center">
+            {/* <div className="flex items-center justify-center">
               <div className="relative w-16 h-16">
                 <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
                   <div className="w-16 h-16 border-t-4 border-b-4 border-blue-500 rounded-full animate-spin">
@@ -11437,6 +17141,10 @@ export default function APQR() {
               <span className="text-[28px] pl-5 text-blue-500 font-semibold">
                 Work In Progress. .........
               </span>
+            </div> */}
+
+            <div className="flex items-center justify-center h-screen">
+              <div className="text-3xl font-bold text-gray-600">No Data To Show Here.....</div>
             </div>
           </>
         ) : null}
@@ -11448,9 +17156,9 @@ export default function APQR() {
             <div>
               <h4 className="gridName">Discussion Evaluation and Conclusion</h4>
               <TinyEditor
-                editorContent={pQRData.tiny56}
+                editorContent={tinyData.tiny65}
                 setEditorContent={setTinyContent}
-                tinyNo={56}
+                tinyNo={65}
               />
             </div>
           </>
@@ -11461,168 +17169,168 @@ export default function APQR() {
               <div>
                 <h4 className="gridName">Annexure 1</h4>
                 <TinyEditor
-                  editorContent={pQRData.tiny57}
-                  setEditorContent={setTinyContent}
-                  tinyNo={57}
-                />
-              </div>
-              <div>
-                <h4 className="gridName">Annexure 2</h4>
-                <TinyEditor
-                  editorContent={pQRData.tiny58}
-                  setEditorContent={setTinyContent}
-                  tinyNo={58}
-                />
-              </div>
-              <div>
-                <h4 className="gridName">Annexure 3</h4>
-                <TinyEditor
-                  editorContent={pQRData.tiny59}
-                  setEditorContent={setTinyContent}
-                  tinyNo={59}
-                />
-              </div>
-              <div>
-                <h4 className="gridName">Annexure 4</h4>
-                <TinyEditor
-                  editorContent={pQRData.tiny60}
-                  setEditorContent={setTinyContent}
-                  tinyNo={60}
-                />
-              </div>
-              <div>
-                <h4 className="gridName">Annexure 5</h4>
-                <TinyEditor
-                  editorContent={pQRData.tiny61}
-                  setEditorContent={setTinyContent}
-                  tinyNo={61}
-                />
-              </div>
-              <div>
-                <h4 className="gridName">Annexure 6</h4>
-                <TinyEditor
-                  editorContent={pQRData.tiny62}
-                  setEditorContent={setTinyContent}
-                  tinyNo={62}
-                />
-              </div>
-              <div>
-                <h4 className="gridName">Annexure 7</h4>
-                <TinyEditor
-                  editorContent={pQRData.tiny63}
-                  setEditorContent={setTinyContent}
-                  tinyNo={63}
-                />
-              </div>
-              <div>
-                <h4 className="gridName">Annexure 8</h4>
-                <TinyEditor
-                  editorContent={pQRData.tiny64}
-                  setEditorContent={setTinyContent}
-                  tinyNo={64}
-                />
-              </div>
-              <div>
-                <h4 className="gridName">Annexure 9</h4>
-                <TinyEditor
-                  editorContent={pQRData.tiny65}
-                  setEditorContent={setTinyContent}
-                  tinyNo={65}
-                />
-              </div>
-              <div>
-                <h4 className="gridName">Annexure 10</h4>
-                <TinyEditor
-                  editorContent={pQRData.tiny66}
+                  editorContent={tinyData.tiny66}
                   setEditorContent={setTinyContent}
                   tinyNo={66}
                 />
               </div>
               <div>
-                <h4 className="gridName">Annexure 11</h4>
+                <h4 className="gridName">Annexure 2</h4>
                 <TinyEditor
-                  editorContent={pQRData.tiny67}
+                  editorContent={tinyData.tiny67}
                   setEditorContent={setTinyContent}
                   tinyNo={67}
                 />
               </div>
               <div>
-                <h4 className="gridName">Annexure 12</h4>
+                <h4 className="gridName">Annexure 3</h4>
                 <TinyEditor
-                  editorContent={pQRData.tiny68}
+                  editorContent={tinyData.tiny68}
                   setEditorContent={setTinyContent}
                   tinyNo={68}
                 />
               </div>
               <div>
-                <h4 className="gridName">Annexure 13</h4>
+                <h4 className="gridName">Annexure 4</h4>
                 <TinyEditor
-                  editorContent={pQRData.tiny69}
+                  editorContent={tinyData.tiny69}
                   setEditorContent={setTinyContent}
                   tinyNo={69}
                 />
               </div>
               <div>
-                <h4 className="gridName">Annexure 14</h4>
+                <h4 className="gridName">Annexure 5</h4>
                 <TinyEditor
-                  editorContent={pQRData.tiny70}
+                  editorContent={tinyData.tiny70}
                   setEditorContent={setTinyContent}
                   tinyNo={70}
                 />
               </div>
               <div>
-                <h4 className="gridName">Annexure 15</h4>
+                <h4 className="gridName">Annexure 6</h4>
                 <TinyEditor
-                  editorContent={pQRData.tiny71}
+                  editorContent={tinyData.tiny71}
                   setEditorContent={setTinyContent}
                   tinyNo={71}
                 />
               </div>
               <div>
-                <h4 className="gridName">Annexure 16</h4>
+                <h4 className="gridName">Annexure 7</h4>
                 <TinyEditor
-                  editorContent={pQRData.tiny72}
+                  editorContent={tinyData.tiny72}
                   setEditorContent={setTinyContent}
                   tinyNo={72}
                 />
               </div>
               <div>
-                <h4 className="gridName">Annexure 17</h4>
+                <h4 className="gridName">Annexure 8</h4>
                 <TinyEditor
-                  editorContent={pQRData.tiny73}
+                  editorContent={tinyData.tiny73}
                   setEditorContent={setTinyContent}
                   tinyNo={73}
                 />
               </div>
               <div>
-                <h4 className="gridName">Annexure 18</h4>
+                <h4 className="gridName">Annexure 9</h4>
                 <TinyEditor
-                  editorContent={pQRData.tiny74}
+                  editorContent={tinyData.tiny74}
                   setEditorContent={setTinyContent}
                   tinyNo={74}
                 />
               </div>
               <div>
-                <h4 className="gridName">Annexure 19</h4>
+                <h4 className="gridName">Annexure 10</h4>
                 <TinyEditor
-                  editorContent={pQRData.tiny75}
+                  editorContent={tinyData.tiny75}
                   setEditorContent={setTinyContent}
                   tinyNo={75}
                 />
               </div>
               <div>
-                <h4 className="gridName">Annexure 20</h4>
+                <h4 className="gridName">Annexure 11</h4>
                 <TinyEditor
-                  editorContent={pQRData.tiny76}
+                  editorContent={tinyData.tiny76}
                   setEditorContent={setTinyContent}
                   tinyNo={76}
+                />
+              </div>
+              <div>
+                <h4 className="gridName">Annexure 12</h4>
+                <TinyEditor
+                  editorContent={tinyData.tiny77}
+                  setEditorContent={setTinyContent}
+                  tinyNo={77}
+                />
+              </div>
+              <div>
+                <h4 className="gridName">Annexure 13</h4>
+                <TinyEditor
+                  editorContent={tinyData.tiny78}
+                  setEditorContent={setTinyContent}
+                  tinyNo={78}
+                />
+              </div>
+              <div>
+                <h4 className="gridName">Annexure 14</h4>
+                <TinyEditor
+                  editorContent={tinyData.tiny79}
+                  setEditorContent={setTinyContent}
+                  tinyNo={79}
+                />
+              </div>
+              <div>
+                <h4 className="gridName">Annexure 15</h4>
+                <TinyEditor
+                  editorContent={tinyData.tiny80}
+                  setEditorContent={setTinyContent}
+                  tinyNo={80}
+                />
+              </div>
+              <div>
+                <h4 className="gridName">Annexure 16</h4>
+                <TinyEditor
+                  editorContent={tinyData.tiny81}
+                  setEditorContent={setTinyContent}
+                  tinyNo={81}
+                />
+              </div>
+              <div>
+                <h4 className="gridName">Annexure 17</h4>
+                <TinyEditor
+                  editorContent={tinyData.tiny82}
+                  setEditorContent={setTinyContent}
+                  tinyNo={82}
+                />
+              </div>
+              <div>
+                <h4 className="gridName">Annexure 18</h4>
+                <TinyEditor
+                  editorContent={tinyData.tiny83}
+                  setEditorContent={setTinyContent}
+                  tinyNo={83}
+                />
+              </div>
+              <div>
+                <h4 className="gridName">Annexure 19</h4>
+                <TinyEditor
+                  editorContent={tinyData.tiny84}
+                  setEditorContent={setTinyContent}
+                  tinyNo={84}
+                />
+              </div>
+              <div>
+                <h4 className="gridName">Annexure 20</h4>
+                <TinyEditor
+                  editorContent={tinyData.tiny85}
+                  setEditorContent={setTinyContent}
+                  tinyNo={85}
                 />
               </div>
             </div>
           </>
         ) : null}
       </div>
-      <div className="w-full h-18 z-[999] bg-slate-200 p-10 py-2   flex justify-between align-middle fixed bottom-0  ">
+      {/* <div className="w-full h-18 z-[999] bg-slate-200 p-10 py-2   flex justify-between align-middle fixed bottom-0  ">
         <div className="flex justify-end gap-10 pr-10"></div>
         <div className="flex justify-end gap-10 pr-10">
           <button
@@ -11637,9 +17345,9 @@ export default function APQR() {
             focus:ring-teal-500
           "
             onClick={() => {
-              dispatch(updateForm(pQRData));
+              handleUpdateAPQR();
+              // dispatch(updateForm(gridDatas));
               navigate("/dashboard");
-              console.log(pQRData);
             }}
           >
             Save
@@ -11663,6 +17371,54 @@ export default function APQR() {
             Exit
           </button>
         </div>
+      </div> */}
+      <div className="fixed top-3/4 right-0 z-10 flex flex-col">
+        <button
+          className="
+                px-4
+                py-2
+                bg-teal-600
+                text-white
+                font-semibold
+                rounded-l-full
+                shadow-md
+                hover:bg-teal-700
+                focus:outline-none
+                focus:ring-2
+                focus:ring-offset-2
+                focus:ring-teal-500
+                mb-5
+            
+              "
+          onClick={() => {
+            handleUpdateAPQR();
+            // dispatch(updateForm(gridDatas));
+            navigate("/dashboard");
+          }}
+        >
+          Save
+        </button>
+        <button
+          className="
+                px-4
+                py-2
+                bg-teal-600
+                text-white
+                font-semibold
+                rounded-l-full
+                shadow-md
+                hover:bg-teal-700
+                focus:outline-none
+                focus:ring-2
+                focus:ring-offset-2
+                focus:ring-teal-500
+              "
+          onClick={() => {
+            navigate("/dashboard");
+          }}
+        >
+          Exit
+        </button>
       </div>
     </>
   );

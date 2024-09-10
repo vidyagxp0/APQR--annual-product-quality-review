@@ -10,28 +10,34 @@ import AdminDashboard from "./pages/Admin/AdminDashboard";
 import TinyEditor from "./Component/TinyEditor";
 import ApqrPanel from "./pages/ApqrPanel";
 import ESignatureModal from "./Component/ESignatureModal";
-import DownloadReportButton from "./pages/temp/DownloadReportButton";
-import HighchartsChart from "./Component/Chart/HighchartsChart";
-
+import DownloadReportButton from "./Component/DownloadReportButton";
+import HighchartsLine from "./Component/Analytics/HighchartsLine";
+import AdvancedAnalytics from "./pages/AdvancedAnalytics";
+import Logs from "./pages/Logs";
 
 function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Login />} />
-        <Route path="/dashboard" element={<Dashboard />} />
-        <Route path="/analytics" element={<Analytics />} />
-        <Route path="/notification" element={<Notification />} />
-        <Route path="/new-pqr" element={<APQR />} />
+        {/* Admin */}
         <Route path="/admin-login" element={<AdminLogin />} />
         <Route path="/admin-dashboard" element={<AdminDashboard />} />
+
+        {/* User */}
+        <Route path="/" element={<Login />} />
+        <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/new-pqr" element={<APQR />} />
         <Route path="/apqr-panel" element={<ApqrPanel />} />
+        <Route path="/analytics" element={<AdvancedAnalytics />} />
+        <Route path="/notification" element={<Notification />} />
+        <Route path="/logs" element={<Logs />} />
+
+        {/* test */}
+        <Route path="/analytics2" element={<Analytics />} />
         <Route path="/test" element={<TinyEditor />} />
         <Route path="/test2" element={<ESignatureModal />} />
         <Route path="/pdftest" element={<DownloadReportButton />} />
-        {/* <Route path="/chart" element={<Analytics5/>}/> */}
-        <Route path="/highchart" element={<HighchartsChart />} />
-       
+        <Route path="/highchart" element={<HighchartsLine />} />
       </Routes>
     </BrowserRouter>
   );

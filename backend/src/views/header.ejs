@@ -1,7 +1,6 @@
 <div
   style="
     width: 100%;
-    /* text-align: center; */
     font-size: 10px;
     border-bottom: 1px solid #d2d0d0;
     padding-bottom: 5px;
@@ -9,10 +8,20 @@
     padding-left: 10px;
     padding-right: 10px;
     color: #858181;
+    display: flex;
+    align-items: stretch; /* Ensures both divs align vertically */
   "
 >
-  <!-- <%= title %> -->
-  <table style="width: 100%; border-collapse: collapse; margin-bottom: 20px; color: #d2d0d0" border="1">
+  <table
+    style="
+      width: 70%;
+      border-collapse: collapse;
+      margin-bottom: 20px;
+      color: #d2d0d0;
+      height: 100%; /* Ensures the table takes full height */
+    "
+    border="1"
+  >
     <tr>
       <td colspan="2" style="text-align: center; padding: 0.5%">
         <b>PRODUCT QUALITY REVIEW REPORT </b>
@@ -20,23 +29,55 @@
     </tr>
     <tr>
       <td style="padding: 0.5%">PQR NO.</td>
-      <td style="padding: 0.5%">Site/Product Name/From date/To date/Year/0001/R1.0</td>
+      <td style="padding: 0.5%"><%= product.pqrNo %></td>
     </tr>
     <tr>
       <td style="padding: 0.5%">PRODUCT NAME</td>
-      <td style="padding: 0.5%">Product 1 FOR INJECTION 6mg/0.5 mL</td>
+      <td style="padding: 0.5%"><%= product.productName %></td>
     </tr>
     <tr>
       <td style="padding: 0.5%">GENERIC NAME</td>
-      <td style="padding: 0.5%">
-        PEGylated Granulocyte Colony stimulating Factor (PEG GCSF) Injection-6mg /0.6 mL
-      </td>
+      <td style="padding: 0.5%"><%= product.genericName %></td>
     </tr>
     <tr>
       <td>PRODUCT CODE</td>
-      <td style="padding: 0.5%">
-        700001494/700002002/700002589/700001530/700001809/700002194/700002627/70000262/700002573/70000546/70000287
-      </td>
+      <td style="padding: 0.5%"><%= product.productCode %></td>
     </tr>
   </table>
+
+  <div
+    style="
+      width: 30%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      border: 0.5px solid #858181;
+      height: 100%; /* Ensures this div takes full height */
+      border-left: 0;
+    "
+  >
+    <div
+      style="
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 50%;
+        border-bottom: 0.5px solid #858181; /* Border between images */
+        padding: 0.5%;
+      "
+    >
+      <img src="<%= base64Image %>" alt="Vidyagxp logo" style="width: 70%; height: 40px" />
+    </div>
+    <div
+      style="
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 50%;
+        padding: 0.5%;
+      "
+    >
+      <img src="<%= base64Logo2 %>" alt="Vidyagxp logo" style="width: 70%; height: 40px" />
+    </div>
+  </div>
 </div>

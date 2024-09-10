@@ -2,29 +2,15 @@ import React, { useEffect, useReducer, useState } from "react";
 import Header from "../Component/Header";
 import { MdNoteAdd } from "react-icons/md";
 import TinyEditor from "../Component/TinyEditor";
-import ExcelExport from "../Component/Exports/Excel/ExcelExport";
 import { useDispatch } from "react-redux";
 import { addForm } from "../redux/formSlice";
 import { useNavigate } from "react-router-dom";
 import ExcelExportImport from "../Component/ImportExportExcel";
+import axios from "axios";
+
 export default function APQR() {
   const [tab, setTab] = useState("GI");
-  const balanceSheet = [
-    {
-      category: "Assets",
-      account: "Checking Account",
-      code: "1060",
-      debit: "$280.00",
-      credit: "$0.00",
-    },
-    {
-      category: "Assets",
-      account: "Transaction Account",
-      code: "1044",
-      debit: "$650.00",
-      credit: "$0.00",
-    },
-  ];
+  
   const [productCodes, setProductCodes] = useState([""]);
   const [manufacturingStage, setManufacturingStage] = useState([]);
   const [manufacturingSAPS, setManufacturingSAPS] = useState([]);
@@ -39,7 +25,6 @@ export default function APQR() {
   const [codeTCTD, setCodeTCTD] = useState([]);
   const [reviewORCEC, setReviewORCEC] = useState([]);
   const [manufacturingSD, setManufacturingSD] = useState([]);
-  const [manufacturingSD2, setManufacturingSD2] = useState([]);
   const [bufferFSDPV, setBufferFSDPV] = useState([]);
   const [oosDetails, setOosDetails] = useState([]);
   const [capaDetails, setCapaDetails] = useState([]);
@@ -57,6 +42,11 @@ export default function APQR() {
   const [reviewODSTR8, setReviewOSTR8] = useState([]);
   const [reviewODSTR9, setReviewOSTR9] = useState([]);
   const [reviewODSTR10, setReviewOSTR10] = useState([]);
+  const [reviewODSTR11, setReviewOSTR11] = useState([]);
+  const [reviewODSTR12, setReviewOSTR12] = useState([]);
+  const [reviewODSTR13, setReviewOSTR13] = useState([]);
+  const [reviewODSTR14, setReviewOSTR14] = useState([]);
+  const [reviewODSTR15, setReviewOSTR15] = useState([]);
   const [reviewORMETR, setReviewORMETR] = useState([]);
   const [reviewOPMTR, setReviewOPMTR] = useState([]);
   const [reviewODP, setReviewODP] = useState([]);
@@ -87,10 +77,10 @@ export default function APQR() {
   const [unitOperation8, setUnitOperation8] = useState([]);
   const [unitOperation9, setUnitOperation9] = useState([]);
   const [unitOperation10, setUnitOperation10] = useState([]);
-  const [tiny1, setTiny1] = useState("");
-  const [tiny2, setTiny2] = useState("");
-  const [tiny3, setTiny3] = useState("");
-  const [tiny4, setTiny4] = useState("");
+  const [tiny1, setTiny1] = useState("pankaj dhor hai");
+  const [tiny2, setTiny2] = useState("jgssgjdrfs");
+  const [tiny3, setTiny3] = useState("jdjadfj");
+  const [tiny4, setTiny4] = useState("jsfklsjdkz");
   const [tiny5, setTiny5] = useState("");
   const [tiny6, setTiny6] = useState("");
   const [tiny7, setTiny7] = useState("");
@@ -163,6 +153,16 @@ export default function APQR() {
   const [tiny74, setTiny74] = useState("");
   const [tiny75, setTiny75] = useState("");
   const [tiny76, setTiny76] = useState("");
+  const [tiny77, setTiny77] = useState("");
+  const [tiny78, setTiny78] = useState("");
+  const [tiny79, setTiny79] = useState("");
+  const [tiny80, setTiny80] = useState("");
+  const [tiny81, setTiny81] = useState("");
+  const [tiny82, setTiny82] = useState("");
+  const [tiny83, setTiny83] = useState("");
+  const [tiny84, setTiny84] = useState("");
+  const [tiny85, setTiny85] = useState("");
+
   const [reviewOfCPD, setReviewOFCPD] = useState([]);
   const [previewRPD, setPreviewRPD] = useState([]);
   const [currentOOS, setCurrentOOS] = useState([]);
@@ -181,13 +181,29 @@ export default function APQR() {
   const [previewMC, setPreviewMC] = useState([]);
   const [currentLabI, setCurrentLabI] = useState([]);
   const [previewLabI, setPreviewLabI] = useState([]);
+
+  useEffect(() => {
+    console.log(reviewODSTR);
+  }, [reviewODSTR]);
   const sanitizeKey = (key) => {
     return key.replace(/\s+/g, "").replace(/[\n\r]+/g, "");
   };
 
+  // const trimValue = (value) => {
+  //   return value ? value.trim() : "";
+  // };
+
   const trimValue = (value) => {
-    return value ? value.trim() : "";
+    return typeof value === "string" ? value.trim() : value;
   };
+
+
+  const api_key = "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";
+  
+  const useDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  const isSmallScreen = window.matchMedia('(max-width: 1023.5px)').matches;
+  
+  
 
   const processData = (data, keyMapping) => {
     return data.map((item) => {
@@ -210,27 +226,85 @@ export default function APQR() {
     ProductName: "productName",
     SFGCode: "sFGCode",
     FGCode: "fGCode",
+    BatchNo: "batchNo",
+    Testsparameter: "testsParameter",
+    // testsParameter: "Tests parameter",
+    LSL: "LSL",
+    USL: "USL",
+    LCL: "LCL",
+    UCL: "UCL",
+    ObservedValue: "observedValue",
+    // observedValue: "Observed Value",
+    CompliesDoesNotComplies: "compliesNotComplies",
+    // compliesNotComplies: "Complies/Does Not Complies",
   };
 
-  const setimportedData = (data) => {
+  const setimportedData = (data, gridNo) => {
+    // console.log(data);
     const processedData = processData(data, keyMapping);
-    switch (data.length) {
+    // console.log(processedData);
+
+    switch (gridNo) {
       case 1:
         setManufacturingStage([...manufacturingStage, ...processedData]);
         break;
-      case 2:
-        setManufacturingStage([...manufacturingStage, ...processedData]);
+      case 22:
+        setReviewOSTR([...reviewODSTR, ...processedData]);
+        break;
+      case 23:
+        setReviewOSTR2([...reviewODSTR2, ...processedData]);
+        break;
+      case 24:
+        setReviewOSTR3([...reviewODSTR3, ...processedData]);
+        break;
+      case 25:
+        setReviewOSTR4([...reviewODSTR4, ...processedData]);
+        break;
+      case 26:
+        setReviewOSTR5([...reviewODSTR5, ...processedData]);
+        break;
+      case 27:
+        setReviewOSTR6([...reviewODSTR6, ...processedData]);
+        break;
+      case 28:
+        setReviewOSTR7([...reviewODSTR7, ...processedData]);
+        break;
+      case 29:
+        setReviewOSTR8([...reviewODSTR8, ...processedData]);
+        break;
+      case 30:
+        setReviewOSTR9([...reviewODSTR9, ...processedData]);
+        break;
+      case 31:
+        setReviewOSTR10([...reviewODSTR10, ...processedData]);
+        break;
+      case 32:
+        setReviewOSTR11([...reviewODSTR11, ...processedData]);
+        break;
+      case 33:
+        setReviewOSTR12([...reviewODSTR12, ...processedData]);
+        break;
+      case 34:
+        setReviewOSTR13([...reviewODSTR13, ...processedData]);
+        break;
+      case 35:
+        setReviewOSTR14([...reviewODSTR14, ...processedData]);
+        break;
+      case 36:
+        setReviewOSTR15([...reviewODSTR15, ...processedData]);
         break;
       case 3:
         setManufacturingStage([...manufacturingStage, ...processedData]);
         break;
     }
-    setManufacturingStage([...manufacturingStage, ...processedData]);
+    // setManufacturingStage([...manufacturingStage, ...processedData]);
   };
 
   const setTinyContent = (data, tinyNO) => {
     switch (tinyNO) {
-      case 1:
+      case 1:  
+      console.log(data,"tiny1data");
+      
         setTiny1(data);
         break;
       case 2:
@@ -458,6 +532,33 @@ export default function APQR() {
       case 76:
         setTiny76(data);
         break;
+      case 77:
+        setTiny77(data);
+        break;
+      case 78:
+        setTiny78(data);
+        break;
+      case 79:
+        setTiny79(data);
+        break;
+      case 80:
+        setTiny80(data);
+        break;
+      case 81:
+        setTiny81(data);
+        break;
+      case 82:
+        setTiny82(data);
+        break;
+      case 83:
+        setTiny83(data);
+        break;
+      case 84:
+        setTiny84(data);
+        break;
+      case 85:
+        setTiny85(data);
+        break;
     }
   };
 
@@ -467,29 +568,40 @@ export default function APQR() {
       ...next,
     }),
     {
-      form_id: Date.now(),
       initiator: "Pankaj Jat",
-      initiateDate: Date.now(),
+      initiateDate: "",
       pqrNO: "",
       productName: "",
-      dosageForm:"",
+      dosageForm: "",
       genericName: "",
       reviewStartDate: "",
       reviewEndDate: "",
       mfgLicNo: "",
       processFlow: "",
       productDescription: "",
-      totalNOBM: "",
-      totalNOBA: "",
-      totalNOPVB: "",
-      totalNORB: "",
+      totalBatchesManufactured: 0,
+      totalBatchesApprovedReleased: "",
+      totalProcessValidationBatches: "",
+      totalReprocessedBatches: "",
     }
   );
+  console.log(pQRData, "data");
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
+  const APQRData = async (data) => {
+    try {
+      const response = await axios.post("http://localhost:4000/create-apqr", data);
+      console.log("Response:", response.data);
+    } catch (error) {
+      console.error("Error posting APQR data:", error);
+    }
+  };
+
   useEffect(() => {
+    const today = new Date().toISOString().split("T")[0];
     setPQRData({
+      initiateDate: today,
       productCodes: productCodes,
       manufacturingStage: manufacturingStage,
       manufacturingSAPS: manufacturingSAPS,
@@ -504,7 +616,6 @@ export default function APQR() {
       codeTCTD: codeTCTD,
       reviewORCEC: reviewORCEC,
       manufacturingSD: manufacturingSD,
-      manufacturingSD2: manufacturingSD2,
       bufferFSDPV: bufferFSDPV,
       oosDetails: oosDetails,
       capaDetails: capaDetails,
@@ -522,6 +633,11 @@ export default function APQR() {
       reviewODSTR8: reviewODSTR8,
       reviewODSTR9: reviewODSTR9,
       reviewODSTR10: reviewODSTR10,
+      reviewODSTR11: reviewODSTR11,
+      reviewODSTR12: reviewODSTR12,
+      reviewODSTR13: reviewODSTR13,
+      reviewODSTR14: reviewODSTR14,
+      reviewODSTR15: reviewODSTR15,
       reviewORMETR: reviewORMETR,
       reviewOPMTR: reviewOPMTR,
       reviewODP: reviewODP,
@@ -628,6 +744,16 @@ export default function APQR() {
       tiny74: tiny74,
       tiny75: tiny75,
       tiny76: tiny76,
+      tiny77: tiny77,
+      tiny78: tiny78,
+      tiny79: tiny79,
+      tiny80: tiny80,
+      tiny81: tiny81,
+      tiny82: tiny82,
+      tiny83: tiny83,
+      tiny84: tiny84,
+      tiny85: tiny85,
+
       reviewOfCPD: reviewOfCPD,
       previewRPD: previewRPD,
       previewOOS: previewOOS,
@@ -662,7 +788,6 @@ export default function APQR() {
     codeTCTD,
     reviewORCEC,
     manufacturingSD,
-    manufacturingSD2,
     bufferFSDPV,
     oosDetails,
     capaDetails,
@@ -680,6 +805,11 @@ export default function APQR() {
     reviewODSTR8,
     reviewODSTR9,
     reviewODSTR10,
+    reviewODSTR11,
+    reviewODSTR12,
+    reviewODSTR13,
+    reviewODSTR14,
+    reviewODSTR15,
     reviewORMETR,
     reviewOPMTR,
     reviewODP,
@@ -786,6 +916,15 @@ export default function APQR() {
     tiny74,
     tiny75,
     tiny76,
+    tiny77,
+    tiny78,
+    tiny79,
+    tiny80,
+    tiny81,
+    tiny82,
+    tiny83,
+    tiny84,
+    tiny85,
     reviewOfCPD,
     previewRPD,
     currentOOS,
@@ -807,7 +946,10 @@ export default function APQR() {
     currentLabI,
     previewLabI,
   ]);
-console.log(pQRData,"pQRData")
+
+  useEffect(()=>{
+    console.log("tiny 1 log",tiny1);  
+  },[tiny1])
   const addManufacturingStageRow = () => {
     const newRow = {
       productName: "",
@@ -1053,93 +1195,199 @@ console.log(pQRData,"pQRData")
 
   const addReviewODSTRRow = () => {
     const newRow = {
+      batchNo: "",
       testsParameter: "",
-      specificationLimit: "",
-      obtainedValue: { minimum: "", maximum: "" },
+      LSL: "",
+      USL: "",
+      LCL: "",
+      UCL: "",
+      observedValue: "",
       compliesNotComplies: "",
     };
     setReviewOSTR([...reviewODSTR, newRow]);
   };
   const addReviewODSTRRow2 = () => {
     const newRow2 = {
+      batchNo: "",
       testsParameter: "",
-      specificationLimit: "",
-      obtainedValue: { minimum: "", maximum: "" },
+      LSL: "",
+      USL: "",
+      LCL: "",
+      UCL: "",
+      observedValue: "",
       compliesNotComplies: "",
     };
     setReviewOSTR2([...reviewODSTR2, newRow2]);
   };
   const addReviewODSTRRow3 = () => {
     const newRow3 = {
+      batchNo: "",
       testsParameter: "",
-      specificationLimit: "",
-      obtainedValue: { minimum: "", maximum: "" },
+      LSL: "",
+      USL: "",
+      LCL: "",
+      UCL: "",
+      observedValue: "",
       compliesNotComplies: "",
     };
     setReviewOSTR3([...reviewODSTR3, newRow3]);
   };
   const addReviewODSTRRow4 = () => {
     const newRow4 = {
+      batchNo: "",
       testsParameter: "",
-      specificationLimit: "",
-      obtainedValue: { minimum: "", maximum: "" },
+      LSL: "",
+      USL: "",
+      LCL: "",
+      UCL: "",
+      observedValue: "",
       compliesNotComplies: "",
     };
     setReviewOSTR4([...reviewODSTR4, newRow4]);
   };
   const addReviewODSTRRow5 = () => {
     const newRow5 = {
+      batchNo: "",
       testsParameter: "",
-      specificationLimit: "",
-      obtainedValue: { minimum: "", maximum: "" },
+      LSL: "",
+      USL: "",
+      LCL: "",
+      UCL: "",
+      observedValue: "",
       compliesNotComplies: "",
     };
     setReviewOSTR5([...reviewODSTR5, newRow5]);
   };
   const addReviewODSTRRow6 = () => {
     const newRow6 = {
+      batchNo: "",
       testsParameter: "",
-      specificationLimit: "",
-      obtainedValue: { minimum: "", maximum: "" },
+      LSL: "",
+      USL: "",
+      LCL: "",
+      UCL: "",
+      observedValue: "",
       compliesNotComplies: "",
     };
     setReviewOSTR6([...reviewODSTR6, newRow6]);
   };
   const addReviewODSTRRow7 = () => {
     const newRow7 = {
+      batchNo: "",
       testsParameter: "",
-      specificationLimit: "",
-      obtainedValue: { minimum: "", maximum: "" },
+      LSL: "",
+      USL: "",
+      LCL: "",
+      UCL: "",
+      observedValue: "",
       compliesNotComplies: "",
     };
     setReviewOSTR7([...reviewODSTR7, newRow7]);
   };
   const addReviewODSTRRow8 = () => {
     const newRow8 = {
+      batchNo: "",
       testsParameter: "",
-      specificationLimit: "",
-      obtainedValue: { minimum: "", maximum: "" },
+      LSL: "",
+      USL: "",
+      LCL: "",
+      UCL: "",
+      observedValue: "",
       compliesNotComplies: "",
     };
     setReviewOSTR8([...reviewODSTR8, newRow8]);
   };
   const addReviewODSTRRow9 = () => {
     const newRow9 = {
+      batchNo: "",
       testsParameter: "",
-      specificationLimit: "",
-      obtainedValue: { minimum: "", maximum: "" },
+      LSL: "",
+      USL: "",
+      LCL: "",
+      UCL: "",
+      observedValue: "",
       compliesNotComplies: "",
     };
     setReviewOSTR9([...reviewODSTR9, newRow9]);
   };
   const addReviewODSTRRow10 = () => {
     const newRow10 = {
+      batchNo: "",
       testsParameter: "",
-      specificationLimit: "",
-      obtainedValue: { minimum: "", maximum: "" },
+      LSL: "",
+      USL: "",
+      LCL: "",
+      UCL: "",
+      observedValue: "",
       compliesNotComplies: "",
     };
     setReviewOSTR10([...reviewODSTR10, newRow10]);
+  };
+  const addReviewODSTRRow11 = () => {
+    const newRow10 = {
+      batchNo: "",
+      testsParameter: "",
+      LSL: "",
+      USL: "",
+      LCL: "",
+      UCL: "",
+      observedValue: "",
+      compliesNotComplies: "",
+    };
+    setReviewOSTR11([...reviewODSTR11, newRow10]);
+  };
+  const addReviewODSTRRow12 = () => {
+    const newRow10 = {
+      batchNo: "",
+      testsParameter: "",
+      LSL: "",
+      USL: "",
+      LCL: "",
+      UCL: "",
+      observedValue: "",
+      compliesNotComplies: "",
+    };
+    setReviewOSTR12([...reviewODSTR12, newRow10]);
+  };
+  const addReviewODSTRRow13 = () => {
+    const newRow10 = {
+      batchNo: "",
+      testsParameter: "",
+      LSL: "",
+      USL: "",
+      LCL: "",
+      UCL: "",
+      observedValue: "",
+      compliesNotComplies: "",
+    };
+    setReviewOSTR13([...reviewODSTR13, newRow10]);
+  };
+  const addReviewODSTRRow14 = () => {
+    const newRow10 = {
+      batchNo: "",
+      testsParameter: "",
+      LSL: "",
+      USL: "",
+      LCL: "",
+      UCL: "",
+      observedValue: "",
+      compliesNotComplies: "",
+    };
+    setReviewOSTR14([...reviewODSTR14, newRow10]);
+  };
+
+  const addReviewODSTRRow15 = () => {
+    const newRow10 = {
+      batchNo: "",
+      testsParameter: "",
+      LSL: "",
+      USL: "",
+      LCL: "",
+      UCL: "",
+      observedValue: "",
+      compliesNotComplies: "",
+    };
+    setReviewOSTR15([...reviewODSTR15, newRow10]);
   };
 
   const addReviewORMETRRow = () => {
@@ -1730,70 +1978,37 @@ console.log(pQRData,"pQRData")
       </div>
       <div className="pqrform">
         <div className="form-tabs">
-          <div
-            className={`${tab === "GI" ? "active" : ""}`}
-            onClick={() => setTab("GI")}
-          >
+          <div className={`${tab === "GI" ? "active" : ""}`} onClick={() => setTab("GI")}>
             General Information
           </div>
-          <div
-            className={`${tab === "WR" ? "active" : ""}`}
-            onClick={() => setTab("WR")}
-          >
+          <div className={`${tab === "WR" ? "active" : ""}`} onClick={() => setTab("WR")}>
             Warehouse Review
           </div>
-          <div
-            className={`${tab === "MR" ? "active" : ""}`}
-            onClick={() => setTab("MR")}
-          >
+          <div className={`${tab === "MR" ? "active" : ""}`} onClick={() => setTab("MR")}>
             Manufacturing Review
           </div>
-          <div
-            className={`${tab === "LR" ? "active" : ""}`}
-            onClick={() => setTab("LR")}
-          >
+          <div className={`${tab === "LR" ? "active" : ""}`} onClick={() => setTab("LR")}>
             Laboratory Review
           </div>
-          <div
-            className={`${tab === "EAMR" ? "active" : ""}`}
-            onClick={() => setTab("EAMR")}
-          >
+          <div className={`${tab === "EAMR" ? "active" : ""}`} onClick={() => setTab("EAMR")}>
             Engineering And Maintenance Review
           </div>
-          <div
-            className={`${tab === "QSR" ? "active" : ""}`}
-            onClick={() => setTab("QSR")}
-          >
+          <div className={`${tab === "QSR" ? "active" : ""}`} onClick={() => setTab("QSR")}>
             Quality System Review
           </div>
-          <div
-            className={`${tab === "RR" ? "active" : ""}`}
-            onClick={() => setTab("RR")}
-          >
+          <div className={`${tab === "RR" ? "active" : ""}`} onClick={() => setTab("RR")}>
             Regulatory Review
           </div>
-          <div
-            className={`${tab === "R" ? "active" : ""}`}
-            onClick={() => setTab("R")}
-          >
+          <div className={`${tab === "R" ? "active" : ""}`} onClick={() => setTab("R")}>
             Recommendations{" "}
           </div>
-          <div
-            className={`${tab === "CAPA" ? "active" : ""}`}
-            onClick={() => setTab("CAPA")}
-          >
+          <div className={`${tab === "CAPA" ? "active" : ""}`} onClick={() => setTab("CAPA")}>
             CAPA
           </div>
-          <div
-            className={`${tab === "DEAC" ? "active" : ""}`}
-            onClick={() => setTab("DEAC")}
-          >
+          <div className={`${tab === "DEAC" ? "active" : ""}`} onClick={() => setTab("DEAC")}>
             Discussion, Evaluation And Conclusion
           </div>
-          <div
-            className={`${tab === "LOA" ? "active" : ""}`}
-            onClick={() => setTab("LOA")}
-          >
+          <div className={`${tab === "LOA" ? "active" : ""}`} onClick={() => setTab("LOA")}>
             List Of Annexures/Attachments
           </div>
         </div>
@@ -1813,7 +2028,7 @@ console.log(pQRData,"pQRData")
               </div>
 
               <div className="group-input">
-                <label>PQR No</label>
+                <label>Initiate Date</label>
                 <input
                   disabled
                   type="date"
@@ -1823,15 +2038,16 @@ console.log(pQRData,"pQRData")
                   }}
                 />
               </div>
-              <div className="group-input">
+              {/* <div className="group-input">
                 <label>PQR No</label>
                 <input
                   value={pQRData.pqrNO}
                   onChange={(e) => {
                     setPQRData({ pqrNO: e.target.value });
                   }}
+                  disabled
                 />
-              </div>
+              </div> */}
               <div className="group-input">
                 <label>Product Name</label>
                 <input
@@ -1844,15 +2060,11 @@ console.log(pQRData,"pQRData")
             </div>
             {productCodes?.map((productCode, index) => (
               <div key={index} className="group-input">
-                <label>
-                  Product Code {productCodes.length > 1 ? index + 1 : ""}
-                </label>
+                <label>Product Code {productCodes.length > 1 ? index + 1 : ""}</label>
                 <div className="flex gap-4">
                   <input
                     value={productCode}
-                    onChange={(e) =>
-                      handleProductCodeChange(index, e.target.value)
-                    }
+                    onChange={(e) => handleProductCodeChange(index, e.target.value)}
                   />
                   {index === productCodes.length - 1 && (
                     <button
@@ -1889,6 +2101,7 @@ console.log(pQRData,"pQRData")
                 <input
                   type="date"
                   value={pQRData.reviewStartDate}
+                  onClick={(e) => e.target.showPicker()}
                   onChange={(e) => {
                     setPQRData({ reviewStartDate: e.target.value });
                   }}
@@ -1898,6 +2111,7 @@ console.log(pQRData,"pQRData")
                 <label>Review End Date</label>
                 <input
                   type="date"
+                  onClick={(e) => e.target.showPicker()}
                   value={pQRData.reviewEndDate}
                   onChange={(e) => {
                     setPQRData({ reviewEndDate: e.target.value });
@@ -1905,20 +2119,20 @@ console.log(pQRData,"pQRData")
                 />
               </div>
               <div className="group-input ">
-        <label>Dosage Form</label>
-           <select
-             value={pQRData.dosageForm}
-             onChange={(e) => {
-               setPQRData({ ...pQRData, dosageForm: e.target.value });
-             }}
-           >
-             <option value="">Select Dosage Form</option>
-             <option value="Oral Solid">Oral Solid</option>
-             <option value="Oral Liquid">Oral Liquid</option>
-             <option value="Injectables">Injectables</option>
-             <option value="Semisolid">Semisolid</option>
-           </select>
-        </div>
+                <label>Dosage Form</label>
+                <select
+                  value={pQRData.dosageForm}
+                  onChange={(e) => {
+                    setPQRData({ ...pQRData, dosageForm: e.target.value });
+                  }}
+                >
+                  <option value="">Select Dosage Form</option>
+                  <option value="Oral Solid">Oral Solid</option>
+                  <option value="Oral Liquid">Oral Liquid</option>
+                  <option value="Injectables">Injectables</option>
+                  <option value="Semisolid">Semisolid</option>
+                </select>
+              </div>
               <div className="group-input">
                 <label>MFG. LIC. No</label>
                 <input
@@ -1935,19 +2149,17 @@ console.log(pQRData,"pQRData")
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addManufacturingStageRow} />
-                  <div className="addrowinstruction  pl-2">
-                    Add Rows by clicking on (+) icon
-                  </div>
+                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
                 </div>
                 <div className="flex gap-4 ">
                   <ExcelExportImport
                     data={manufacturingStage}
                     setimportedData={setimportedData}
                     fileName="manufacturingStage.xlsx"
+                    gridNo={1}
                   />
                 </div>
               </div>
-              
             </div>
             <table>
               <thead>
@@ -1998,21 +2210,14 @@ console.log(pQRData,"pQRData")
             </table>
             <div>
               <h4 className="gridName mt-4">Summary</h4>
-              <TinyEditor
-                editorContent={tiny1}
-                setEditorContent={setTinyContent}
-                tinyNo={1}
-              />
+              <TinyEditor editorContent={tiny1} setEditorContent={setTinyContent} tinyNo={1} />
             </div>
 
             <div className="py-4">
-            
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addManufacturingSAPSRow} />
-                  <div className="addrowinstruction  pl-2">
-                    Add Rows by clicking on (+) icon
-                  </div>
+                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
                 </div>
                 <div className="flex gap-4 ">
                   <ExcelExportImport
@@ -2085,30 +2290,22 @@ console.log(pQRData,"pQRData")
             </div>
 
             <h4 className="gridName">Summary of Manufacturing Site Address</h4>
-            <TinyEditor
-              editorContent={tiny2}
-              setEditorContent={setTinyContent}
-              tinyNo={2}
-            />
+            <TinyEditor editorContent={tiny2} setEditorContent={setTinyContent} tinyNo={2} />
           </div>
         ) : null}
         {tab === "WR" ? (
           <>
             <div className="p-4">
               <div className="sub-head">
-                <p className="">
-                  Review of Rejected Raw Materials and Packaging Materials
-                </p>
+                <p className="">Review of Rejected Raw Materials and Packaging Materials</p>
               </div>
               <div className="pb-4">
                 <h4 className="gridName">Raw Materials Rejection Summary</h4>
-               
+
                 <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                   <div className="flex items-center">
                     <MdNoteAdd onClick={addRawMRSRow} />
-                    <div className="addrowinstruction  pl-2">
-                      Add Rows by clicking on (+) icon
-                    </div>
+                    <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
                   </div>
                   <div className="flex gap-4 ">
                     <ExcelExportImport
@@ -2170,8 +2367,7 @@ console.log(pQRData,"pQRData")
                               value={item.reasonOfRejection}
                               onChange={(e) => {
                                 const newData = [...rawMRS];
-                                newData[index].reasonOfRejection =
-                                  e.target.value;
+                                newData[index].reasonOfRejection = e.target.value;
                                 setRawMRS(newData);
                               }}
                             />
@@ -2193,26 +2389,17 @@ console.log(pQRData,"pQRData")
                 </table>
                 <div>
                   <h4 className="gridName mt-5">Summary</h4>
-                  <TinyEditor
-                    editorContent={tiny3}
-                    setEditorContent={setTinyContent}
-                    tinyNo={3}
-                  />
+                  <TinyEditor editorContent={tiny3} setEditorContent={setTinyContent} tinyNo={3} />
                 </div>
               </div>
 
               <div className="pb-4">
-                <h4 className="gridName">
-                  {" "}
-                  Packing Materials Rejection Summary
-                </h4>
-                
+                <h4 className="gridName"> Packing Materials Rejection Summary</h4>
+
                 <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                   <div className="flex items-center">
                     <MdNoteAdd onClick={addPackingMRSRow} />
-                    <div className="addrowinstruction  pl-2">
-                      Add Rows by clicking on (+) icon
-                    </div>
+                    <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
                   </div>
                   <div className="flex gap-4 ">
                     <ExcelExportImport
@@ -2273,8 +2460,7 @@ console.log(pQRData,"pQRData")
                               value={item.reasonForRepacking}
                               onChange={(e) => {
                                 const newData = [...packingMRS];
-                                newData[index].reasonForRepacking =
-                                  e.target.value;
+                                newData[index].reasonForRepacking = e.target.value;
                                 setPackingMRS(newData);
                               }}
                             />
@@ -2296,27 +2482,20 @@ console.log(pQRData,"pQRData")
                 </table>
 
                 <h5 className="gridName pt-4">
-                  Summary of Review of Rejected Raw Materials and Packaging
-                  Materials
+                  Summary of Review of Rejected Raw Materials and Packaging Materials
                 </h5>
-                <TinyEditor
-                  editorContent={tiny4}
-                  setEditorContent={setTinyContent}
-                  tinyNo={4}
-                />
+                <TinyEditor editorContent={tiny4} setEditorContent={setTinyContent} tinyNo={4} />
               </div>
               <div className="sub-head">
                 Review of Expired Raw Materials and Packaging Materials
               </div>
               <div className="pb-4">
                 <h4 className="gridName">Expired Raw Materials Details</h4>
-                
+
                 <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                   <div className="flex items-center">
                     <MdNoteAdd onClick={addExpiredRMDRow} />
-                    <div className="addrowinstruction  pl-2">
-                      Add Rows by clicking on (+) icon
-                    </div>
+                    <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
                   </div>
                   <div className="flex gap-4 ">
                     <ExcelExportImport
@@ -2388,25 +2567,17 @@ console.log(pQRData,"pQRData")
                 </table>
                 <div>
                   <h4 className="gridName">Summary</h4>
-                  <TinyEditor
-                    editorContent={tiny5}
-                    setEditorContent={setTinyContent}
-                    tinyNo={5}
-                  />
+                  <TinyEditor editorContent={tiny5} setEditorContent={setTinyContent} tinyNo={5} />
                 </div>
               </div>
 
               <div className="">
-                <h4 className="gridName">
-                  Expired Packaging Materials Details
-                </h4>
-                
+                <h4 className="gridName">Expired Packaging Materials Details</h4>
+
                 <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                   <div className="flex items-center">
                     <MdNoteAdd onClick={addExpiredPMDRow} />
-                    <div className="addrowinstruction  pl-2">
-                      Add Rows by clicking on (+) icon
-                    </div>
+                    <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
                   </div>
                   <div className="flex gap-4 ">
                     <ExcelExportImport
@@ -2478,24 +2649,17 @@ console.log(pQRData,"pQRData")
                 </table>
 
                 <h4 className="gridName pt-4">
-                  Summary of Review of Expired Raw Materials and Packaging
-                  Materials
+                  Summary of Review of Expired Raw Materials and Packaging Materials
                 </h4>
-                <TinyEditor
-                  editorContent={tiny6}
-                  setEditorContent={setTinyContent}
-                  tinyNo={6}
-                />
+                <TinyEditor editorContent={tiny6} setEditorContent={setTinyContent} tinyNo={6} />
               </div>
 
               <div className="sub-head">Review of Approved Supplier List</div>
-              
+
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addreviewOfASLRow} />
-                  <div className="addrowinstruction  pl-2">
-                    Add Rows by clicking on (+) icon
-                  </div>
+                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
                 </div>
                 <div className="flex gap-4 ">
                   <ExcelExportImport
@@ -2566,26 +2730,17 @@ console.log(pQRData,"pQRData")
                     })}
                   </tbody>
                 </table>
-                <h4 className="gridName pt-4">
-                  Summary of Review of Approved Supplier List
-                </h4>
-                <TinyEditor
-                  editorContent={tiny7}
-                  setEditorContent={setTinyContent}
-                  tinyNo={7}
-                />
+                <h4 className="gridName pt-4">Summary of Review of Approved Supplier List</h4>
+                <TinyEditor editorContent={tiny7} setEditorContent={setTinyContent} tinyNo={7} />
               </div>
               <div className="sub-head">
                 Vendor Qualification Details of Raw Material Excipients
               </div>
               <div>
-               
                 <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                   <div className="flex items-center">
                     <MdNoteAdd onClick={addvendorQDORMERow} />
-                    <div className="addrowinstruction  pl-2">
-                      Add Rows by clicking on (+) icon
-                    </div>
+                    <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
                   </div>
                   <div className="flex gap-4 ">
                     <ExcelExportImport
@@ -2632,8 +2787,7 @@ console.log(pQRData,"pQRData")
                               value={item.manufacturerName}
                               onChange={(e) => {
                                 const newData = [...vendorQDORME];
-                                newData[index].manufacturerName =
-                                  e.target.value;
+                                newData[index].manufacturerName = e.target.value;
                                 setVendorQDORME(newData);
                               }}
                             />
@@ -2643,8 +2797,7 @@ console.log(pQRData,"pQRData")
                               value={item.qualificationStatus}
                               onChange={(e) => {
                                 const newData = [...vendorQDORME];
-                                newData[index].qualificationStatus =
-                                  e.target.value;
+                                newData[index].qualificationStatus = e.target.value;
                                 setVendorQDORME(newData);
                               }}
                             />
@@ -2665,26 +2818,18 @@ console.log(pQRData,"pQRData")
                   </tbody>
                 </table>
                 <h4 className="gridName pt-4">
-                  Summary of Vendor Qualification Details of Raw Material
-                  Excipients
+                  Summary of Vendor Qualification Details of Raw Material Excipients
                 </h4>
-                <TinyEditor
-                  editorContent={tiny8}
-                  setEditorContent={setTinyContent}
-                  tinyNo={8}
-                />
+                <TinyEditor editorContent={tiny8} setEditorContent={setTinyContent} tinyNo={8} />
               </div>
               <div className="sub-head">
                 Vendor Qualification Details of Primary Packing Materials
               </div>
               <div>
-               
                 <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                   <div className="flex items-center">
                     <MdNoteAdd onClick={addvendorQDOPPMRow} />
-                    <div className="addrowinstruction  pl-2">
-                      Add Rows by clicking on (+) icon
-                    </div>
+                    <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
                   </div>
                   <div className="flex gap-4 ">
                     <ExcelExportImport
@@ -2732,8 +2877,7 @@ console.log(pQRData,"pQRData")
                               value={item.manufacturerName}
                               onChange={(e) => {
                                 const newData = [...vendorQDOPPM];
-                                newData[index].manufacturerName =
-                                  e.target.value;
+                                newData[index].manufacturerName = e.target.value;
                                 setVendorQDOPPM(newData);
                               }}
                             />
@@ -2743,8 +2887,7 @@ console.log(pQRData,"pQRData")
                               value={item.qualificationStatus}
                               onChange={(e) => {
                                 const newData = [...vendorQDOPPM];
-                                newData[index].qualificationStatus =
-                                  e.target.value;
+                                newData[index].qualificationStatus = e.target.value;
                                 setVendorQDOPPM(newData);
                               }}
                             />
@@ -2755,27 +2898,17 @@ console.log(pQRData,"pQRData")
                   </tbody>
                 </table>
                 <h4 className="gridName pt-4">
-                  Summary of Vendor Qualification Details of Primary Packing
-                  Materials
+                  Summary of Vendor Qualification Details of Primary Packing Materials
                 </h4>
-                <TinyEditor
-                  editorContent={tiny9}
-                  setEditorContent={setTinyContent}
-                  tinyNo={9}
-                />
+                <TinyEditor editorContent={tiny9} setEditorContent={setTinyContent} tinyNo={9} />
               </div>
 
-              <div className="sub-head">
-                Vendor Qualification Details of Process Gases
-              </div>
+              <div className="sub-head">Vendor Qualification Details of Process Gases</div>
               <div>
-               
                 <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                   <div className="flex items-center">
                     <MdNoteAdd onClick={addvendorQDPOGRow} />
-                    <div className="addrowinstruction  pl-2">
-                      Add Rows by clicking on (+) icon
-                    </div>
+                    <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
                   </div>
                   <div className="flex gap-4 ">
                     <ExcelExportImport
@@ -2823,8 +2956,7 @@ console.log(pQRData,"pQRData")
                               value={item.manufacturerName}
                               onChange={(e) => {
                                 const newData = [...vendorQDPOG];
-                                newData[index].manufacturerName =
-                                  e.target.value;
+                                newData[index].manufacturerName = e.target.value;
                                 setVendorQDPOG(newData);
                               }}
                             />
@@ -2834,8 +2966,7 @@ console.log(pQRData,"pQRData")
                               value={item.qualificationStatus}
                               onChange={(e) => {
                                 const newData = [...vendorQDPOG];
-                                newData[index].qualificationStatus =
-                                  e.target.value;
+                                newData[index].qualificationStatus = e.target.value;
                                 setVendorQDPOG(newData);
                               }}
                             />
@@ -2848,11 +2979,7 @@ console.log(pQRData,"pQRData")
                 <h4 className="gridName pt-4">
                   Summary of Vendor Qualification Details of Process Gases
                 </h4>
-                <TinyEditor
-                  editorContent={tiny10}
-                  setEditorContent={setTinyContent}
-                  tinyNo={10}
-                />
+                <TinyEditor editorContent={tiny10} setEditorContent={setTinyContent} tinyNo={10} />
               </div>
             </div>
           </>
@@ -2884,80 +3011,62 @@ console.log(pQRData,"pQRData")
 
             <div className="dual-group-input">
               <div className="group-input">
-                <label>
-                  Total No. of batches manufactured during the current review
-                  period
-                </label>
+                <label>Total No. of batches manufactured during the current review period</label>
                 <input
                   type="number"
-                  value={pQRData.totalNOBM}
+                  value={pQRData.totalBatchesManufactured}
                   onChange={(e) => {
-                    setPQRData({ totalNOBM: e.target.value });
+                    setPQRData({ totalBatchesManufactured: e.target.value });
                   }}
                 />
               </div>
               <div className="group-input">
                 <label>Total No. of batches Approved & Released</label>
                 <input
-                  value={pQRData.totalNOBA}
+                  value={pQRData.totalBatchesApprovedReleased}
                   onChange={(e) => {
-                    setPQRData({ totalNOBA: e.target.value });
+                    setPQRData({ totalBatchesApprovedReleased: e.target.value });
                   }}
                 />
               </div>
               <div className="group-input">
                 <label>Total No. of Process Validation Batches</label>
                 <input
-                  value={pQRData.totalNOPVB}
+                  value={pQRData.totalProcessValidationBatches}
                   onChange={(e) => {
-                    setPQRData({ totalNOPVB: e.target.value });
+                    setPQRData({ totalProcessValidationBatches: e.target.value });
                   }}
                 />
               </div>
               <div className="group-input">
                 <label>Total No. of Reprocessed Batches</label>
                 <input
-                  value={pQRData.totalNORB}
+                  value={pQRData.totalReprocessedBatches}
                   onChange={(e) => {
-                    setPQRData({ totalNORB: e.target.value });
+                    setPQRData({ totalReprocessedBatches: e.target.value });
                   }}
                 />
               </div>
               <div className="group-input">
                 <label>Process Validation Batches Details</label>
-                <TinyEditor
-                  editorContent={tiny11}
-                  setEditorContent={setTinyContent}
-                  tinyNo={11}
-                />
+                <TinyEditor editorContent={tiny11} setEditorContent={setTinyContent} tinyNo={11} />
               </div>
 
               <div className="group-input">
                 <label>Reprocessing Details</label>
-                <TinyEditor
-                  editorContent={tiny12}
-                  setEditorContent={setTinyContent}
-                  tinyNo={12}
-                />
+                <TinyEditor editorContent={tiny12} setEditorContent={setTinyContent} tinyNo={12} />
               </div>
               <div className="group-input">
                 <label>Microbial Excursion Details</label>
-                <TinyEditor
-                  editorContent={tiny13}
-                  setEditorContent={setTinyContent}
-                  tinyNo={13}
-                />
+                <TinyEditor editorContent={tiny13} setEditorContent={setTinyContent} tinyNo={13} />
               </div>
             </div>
             <div className="gridName">Code to code transfer details</div>
             <div className="py-4">
-            
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addcodeTCTDRow} />
-                  <div className="addrowinstruction  pl-2">
-                    Add Rows by clicking on (+) icon
-                  </div>
+                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
                 </div>
                 <div className="flex gap-4 ">
                   <ExcelExportImport
@@ -3060,46 +3169,27 @@ console.log(pQRData,"pQRData")
                   })}
                 </tbody>
               </table>
-              <h4 className="gridName pt-4">
-                Summary of Code to Code Transfer Details
-              </h4>
-              <TinyEditor
-                editorContent={tiny14}
-                setEditorContent={setTinyContent}
-                tinyNo={14}
-              />
+              <h4 className="gridName pt-4">Summary of Code to Code Transfer Details</h4>
+              <TinyEditor editorContent={tiny14} setEditorContent={setTinyContent} tinyNo={14} />
             </div>
             <div className="sub-head">
               {" "}
-              Review of Manufacturing Process, Packing Process and relevant
-              Validation Status
+              Review of Manufacturing Process, Packing Process and relevant Validation Status
             </div>
-            <TinyEditor
-              editorContent={tiny15}
-              setEditorContent={setTinyContent}
-              tinyNo={15}
-            />
+            <TinyEditor editorContent={tiny15} setEditorContent={setTinyContent} tinyNo={15} />
 
             <div className="sub-head">
-              Review of Reprocessing/Repacking/Reworking along with CAPA and
-              Effectiveness Check Verification (if any)
+              Review of Reprocessing/Repacking/Reworking along with CAPA and Effectiveness Check
+              Verification (if any)
             </div>
             <div className="dual-group-input">
               <div className="group-input">
                 <label>Batch reprocessing/reworking process Details</label>
-                <TinyEditor
-                  editorContent={tiny16}
-                  setEditorContent={setTinyContent}
-                  tinyNo={16}
-                />
+                <TinyEditor editorContent={tiny16} setEditorContent={setTinyContent} tinyNo={16} />
               </div>
               <div className="group-input">
                 <label>Batch Repacking Details </label>
-                <TinyEditor
-                  editorContent={tiny17}
-                  setEditorContent={setTinyContent}
-                  tinyNo={17}
-                />
+                <TinyEditor editorContent={tiny17} setEditorContent={setTinyContent} tinyNo={17} />
               </div>
             </div>
 
@@ -3111,9 +3201,7 @@ console.log(pQRData,"pQRData")
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addreviewORCECRow} />
-                  <div className="addrowinstruction  pl-2">
-                    Add Rows by clicking on (+) icon
-                  </div>
+                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
                 </div>
                 <div className="flex gap-4 ">
                   .
@@ -3146,8 +3234,7 @@ console.log(pQRData,"pQRData")
                             value={item.packingBatchNumber}
                             onChange={(e) => {
                               const newData = [...reviewORCEC];
-                              newData[index].packingBatchNumber =
-                                e.target.value;
+                              newData[index].packingBatchNumber = e.target.value;
                               setReviewORCEC(newData);
                             }}
                           />
@@ -3157,8 +3244,7 @@ console.log(pQRData,"pQRData")
                             value={item.manufacturingBatchNumber}
                             onChange={(e) => {
                               const newData = [...reviewORCEC];
-                              newData[index].manufacturingBatchNumber =
-                                e.target.value;
+                              newData[index].manufacturingBatchNumber = e.target.value;
                               setReviewORCEC(newData);
                             }}
                           />
@@ -3168,8 +3254,7 @@ console.log(pQRData,"pQRData")
                             value={item.repackingIssuedNumber}
                             onChange={(e) => {
                               const newData = [...reviewORCEC];
-                              newData[index].repackingIssuedNumber =
-                                e.target.value;
+                              newData[index].repackingIssuedNumber = e.target.value;
                               setReviewORCEC(newData);
                             }}
                           />
@@ -3199,8 +3284,7 @@ console.log(pQRData,"pQRData")
                             value={item.reasonForRepacking}
                             onChange={(e) => {
                               const newData = [...reviewORCEC];
-                              newData[index].reasonForRepacking =
-                                e.target.value;
+                              newData[index].reasonForRepacking = e.target.value;
                               setReviewORCEC(newData);
                             }}
                           />
@@ -3213,11 +3297,7 @@ console.log(pQRData,"pQRData")
             </div>
             <div>
               <h4 className="gridName mt-5">Summary</h4>
-              <TinyEditor
-                editorContent={tiny18}
-                setEditorContent={setTinyContent}
-                tinyNo={18}
-              />
+              <TinyEditor editorContent={tiny18} setEditorContent={setTinyContent} tinyNo={18} />
             </div>
 
             <h4 className="gridName">CAPA Details</h4>
@@ -3225,9 +3305,7 @@ console.log(pQRData,"pQRData")
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addCapaDetailsRow} />
-                  <div className="addrowinstruction  pl-2">
-                    Add Rows by clicking on (+) icon
-                  </div>
+                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
                 </div>
                 <div className="flex gap-4 ">
                   <ExcelExportImport
@@ -3278,8 +3356,7 @@ console.log(pQRData,"pQRData")
                             value={item.descriptionOfIssue}
                             onChange={(e) => {
                               const newData = [...capaDetails];
-                              newData[index].descriptionOfIssue =
-                                e.target.value;
+                              newData[index].descriptionOfIssue = e.target.value;
                               setCapaDetails(newData);
                             }}
                           />
@@ -3333,11 +3410,7 @@ console.log(pQRData,"pQRData")
             </div>
             <div>
               <h4 className="gridName mt-5">Summary</h4>
-              <TinyEditor
-                editorContent={tiny19}
-                setEditorContent={setTinyContent}
-                tinyNo={19}
-              />
+              <TinyEditor editorContent={tiny19} setEditorContent={setTinyContent} tinyNo={19} />
             </div>
 
             <h4 className="gridName">Deviation Details</h4>
@@ -3345,9 +3418,7 @@ console.log(pQRData,"pQRData")
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={deviationDetailsRow} />
-                  <div className="addrowinstruction  pl-2">
-                    Add Rows by clicking on (+) icon
-                  </div>
+                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
                 </div>
                 <div className="flex gap-4 ">
                   <ExcelExportImport
@@ -3391,8 +3462,7 @@ console.log(pQRData,"pQRData")
                             value={item.deviationRelatedTo}
                             onChange={(e) => {
                               const newData = [...deviationDetails];
-                              newData[index].deviationRelatedTo =
-                                e.target.value;
+                              newData[index].deviationRelatedTo = e.target.value;
                               setDeviationDetails(newData);
                             }}
                           />
@@ -3422,8 +3492,7 @@ console.log(pQRData,"pQRData")
                             value={item.deviationObservedOn}
                             onChange={(e) => {
                               const newData = [...deviationDetails];
-                              newData[index].deviationObservedOn =
-                                e.target.value;
+                              newData[index].deviationObservedOn = e.target.value;
                               setDeviationDetails(newData);
                             }}
                           />
@@ -3433,8 +3502,7 @@ console.log(pQRData,"pQRData")
                             value={item.deviationObservedBy}
                             onChange={(e) => {
                               const newData = [...deviationDetails];
-                              newData[index].deviationObservedBy =
-                                e.target.value;
+                              newData[index].deviationObservedBy = e.target.value;
                               setDeviationDetails(newData);
                             }}
                           />
@@ -3444,8 +3512,7 @@ console.log(pQRData,"pQRData")
                             value={item.classificationOfDeviation}
                             onChange={(e) => {
                               const newData = [...deviationDetails];
-                              newData[index].classificationOfDeviation =
-                                e.target.value;
+                              newData[index].classificationOfDeviation = e.target.value;
                               setDeviationDetails(newData);
                             }}
                           />
@@ -3489,33 +3556,23 @@ console.log(pQRData,"pQRData")
             </div>
             <div>
               <h4 className="gridName mt-5">Summary</h4>
-              <TinyEditor
-                editorContent={tiny20}
-                setEditorContent={setTinyContent}
-                tinyNo={20}
-              />
+              <TinyEditor editorContent={tiny20} setEditorContent={setTinyContent} tinyNo={20} />
             </div>
 
             <div className="sub-head">
-              Review of all Batch Failures/Rejections along with CAPA and
-              Effectiveness Check Verification (if any):
+              Review of all Batch Failures/Rejections along with CAPA and Effectiveness Check
+              Verification (if any):
             </div>
 
             <h4 className="gridName">Batch Failures/Rejections Details </h4>
-            <TinyEditor
-              editorContent={tiny21}
-              setEditorContent={setTinyContent}
-              tinyNo={21}
-            />
+            <TinyEditor editorContent={tiny21} setEditorContent={setTinyContent} tinyNo={21} />
 
             <h4 className="gridName">OOS Details</h4>
             <div>
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={oosDetailsRow} />
-                  <div className="addrowinstruction  pl-2">
-                    Add Rows by clicking on (+) icon
-                  </div>
+                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
                 </div>
                 <div className="flex gap-4 ">
                   <ExcelExportImport
@@ -3575,8 +3632,7 @@ console.log(pQRData,"pQRData")
                             value={item.specificationLimit}
                             onChange={(e) => {
                               const newData = [...oosDetails];
-                              newData[index].specificationLimit =
-                                e.target.value;
+                              newData[index].specificationLimit = e.target.value;
                               setOosDetails(newData);
                             }}
                           />
@@ -3586,8 +3642,7 @@ console.log(pQRData,"pQRData")
                             value={item.detailsOfObviousError}
                             onChange={(e) => {
                               const newData = [...oosDetails];
-                              newData[index].detailsOfObviousError =
-                                e.target.value;
+                              newData[index].detailsOfObviousError = e.target.value;
                               setOosDetails(newData);
                             }}
                           />
@@ -3611,11 +3666,7 @@ console.log(pQRData,"pQRData")
             </div>
             <div>
               <h4 className="gridName mt-5">Summary</h4>
-              <TinyEditor
-                editorContent={tiny22}
-                setEditorContent={setTinyContent}
-                tinyNo={22}
-              />
+              <TinyEditor editorContent={tiny22} setEditorContent={setTinyContent} tinyNo={22} />
             </div>
 
             <h4 className="gridName">OOT Results</h4>
@@ -3623,9 +3674,7 @@ console.log(pQRData,"pQRData")
               <div className="AddRows d-flex w-full justify-between items-center text-3xl mb-5">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={ootResultsRow} />
-                  <div className="addrowinstruction  pl-2">
-                    Add Rows by clicking on (+) icon
-                  </div>
+                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
                 </div>
                 <div className="flex gap-4 ">
                   <ExcelExportImport
@@ -3686,8 +3735,7 @@ console.log(pQRData,"pQRData")
                             value={item.initialIntervalDetails}
                             onChange={(e) => {
                               const newData = [...ootResults];
-                              newData[index].initialIntervalDetails =
-                                e.target.value;
+                              newData[index].initialIntervalDetails = e.target.value;
                               setOotResults(newData);
                             }}
                           />
@@ -3697,8 +3745,7 @@ console.log(pQRData,"pQRData")
                             value={item.previousIntervalDetails}
                             onChange={(e) => {
                               const newData = [...ootResults];
-                              newData[index].previousIntervalDetails =
-                                e.target.value;
+                              newData[index].previousIntervalDetails = e.target.value;
                               setOotResults(newData);
                             }}
                           />
@@ -3731,20 +3778,14 @@ console.log(pQRData,"pQRData")
             </div>
             <div>
               <h4 className="gridName mt-5">Summary</h4>
-              <TinyEditor
-                editorContent={tiny23}
-                setEditorContent={setTinyContent}
-                tinyNo={23}
-              />
+              <TinyEditor editorContent={tiny23} setEditorContent={setTinyContent} tinyNo={23} />
             </div>
             <h4 className="gridName">OOA Results</h4>
             <div>
               <div className="AddRows d-flex w-full justify-between items-center text-3xl mb-5">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={ooaResultsRow} />
-                  <div className="addrowinstruction  pl-2">
-                    Add Rows by clicking on (+) icon
-                  </div>
+                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
                 </div>
                 <div className="flex gap-4 ">
                   <ExcelExportImport
@@ -3806,8 +3847,7 @@ console.log(pQRData,"pQRData")
                             value={item.initialIntervalDetails}
                             onChange={(e) => {
                               const newData = [...ooaResults];
-                              newData[index].initialIntervalDetails =
-                                e.target.value;
+                              newData[index].initialIntervalDetails = e.target.value;
                               setOoaResults(newData);
                             }}
                           />
@@ -3817,8 +3857,7 @@ console.log(pQRData,"pQRData")
                             value={item.previousIntervalDetails}
                             onChange={(e) => {
                               const newData = [...ooaResults];
-                              newData[index].previousIntervalDetails =
-                                e.target.value;
+                              newData[index].previousIntervalDetails = e.target.value;
                               setOoaResults(newData);
                             }}
                           />
@@ -3851,20 +3890,14 @@ console.log(pQRData,"pQRData")
             </div>
             <div>
               <h4 className="gridName mt-5">Summary</h4>
-              <TinyEditor
-                editorContent={tiny24}
-                setEditorContent={setTinyContent}
-                tinyNo={24}
-              />
+              <TinyEditor editorContent={tiny24} setEditorContent={setTinyContent} tinyNo={24} />
             </div>
             <h4 className="gridName">OOL Results</h4>
             <div>
               <div className="AddRows d-flex w-full justify-between items-center text-3xl mb-5">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={oolResultsRow} />
-                  <div className="addrowinstruction  pl-2">
-                    Add Rows by clicking on (+) icon
-                  </div>
+                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
                 </div>
                 <div className="flex gap-4 ">
                   <ExcelExportImport
@@ -3925,8 +3958,7 @@ console.log(pQRData,"pQRData")
                             value={item.initialIntervalDetails}
                             onChange={(e) => {
                               const newData = [...oolResults];
-                              newData[index].initialIntervalDetails =
-                                e.target.value;
+                              newData[index].initialIntervalDetails = e.target.value;
                               setOolResults(newData);
                             }}
                           />
@@ -3936,8 +3968,7 @@ console.log(pQRData,"pQRData")
                             value={item.previousIntervalDetails}
                             onChange={(e) => {
                               const newData = [...oolResults];
-                              newData[index].previousIntervalDetails =
-                                e.target.value;
+                              newData[index].previousIntervalDetails = e.target.value;
                               setOolResults(newData);
                             }}
                           />
@@ -3970,28 +4001,18 @@ console.log(pQRData,"pQRData")
             </div>
             <div>
               <h4 className="gridName mt-5">Summary</h4>
-              <TinyEditor
-                editorContent={tiny25}
-                setEditorContent={setTinyContent}
-                tinyNo={25}
-              />
+              <TinyEditor editorContent={tiny25} setEditorContent={setTinyContent} tinyNo={25} />
             </div>
 
-            <div className="sub-head">
-              Review of Product Quality (Critical Process Parameters)
-            </div>
+            <div className="sub-head">Review of Product Quality (Critical Process Parameters)</div>
 
             <h3 className="gridName">Unit Operation 1</h3>
-            <h4 className="gridName">
-              Buffer formulation summary details provided below
-            </h4>
+            <h4 className="gridName">Buffer formulation summary details provided below</h4>
             <div>
               <div className="AddRows d-flex w-full justify-between items-center text-3xl mb-5">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addBufferFSDPVRow} />
-                  <div className="addrowinstruction  pl-2">
-                    Add Rows by clicking on (+) icon
-                  </div>
+                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
                 </div>
                 <div className="flex gap-4 ">
                   <ExcelExportImport
@@ -4007,7 +4028,9 @@ console.log(pQRData,"pQRData")
                     <th rowSpan={2}>Critical Process Parameters</th>
                     <th rowSpan={2}>Codes</th>
                     <th rowSpan={2}>Acceptance criteria</th>
-                    <th className="centerText" colSpan={2} >Results</th>
+                    <th className="centerText" colSpan={2}>
+                      Results
+                    </th>
                     <th rowSpan={2}>Complies / Does not complies</th>
                   </tr>
                   <tr>
@@ -4024,8 +4047,7 @@ console.log(pQRData,"pQRData")
                             value={item.criticalProcessParameter}
                             onChange={(e) => {
                               const newData = [...bufferFSDPV];
-                              newData[index].criticalProcessParameter =
-                                e.target.value;
+                              newData[index].criticalProcessParameter = e.target.value;
                               setBufferFSDPV(newData);
                             }}
                           />
@@ -4045,8 +4067,7 @@ console.log(pQRData,"pQRData")
                             value={item.acceptanceCriteria}
                             onChange={(e) => {
                               const newData = [...bufferFSDPV];
-                              newData[index].acceptanceCriteria =
-                                e.target.value;
+                              newData[index].acceptanceCriteria = e.target.value;
                               setBufferFSDPV(newData);
                             }}
                           />
@@ -4076,8 +4097,7 @@ console.log(pQRData,"pQRData")
                             value={item.compliesNotComplies}
                             onChange={(e) => {
                               const newData = [...bufferFSDPV];
-                              newData[index].compliesNotComplies =
-                                e.target.value;
+                              newData[index].compliesNotComplies = e.target.value;
                               setBufferFSDPV(newData);
                             }}
                           />
@@ -4094,9 +4114,7 @@ console.log(pQRData,"pQRData")
             <div className="AddRows d-flex w-full justify-between items-center text-3xl mb-5">
               <div className="flex items-center">
                 <MdNoteAdd onClick={addmanufacturingSDRow} />
-                <div className="addrowinstruction  pl-2">
-                  Add Rows by clicking on (+) icon
-                </div>
+                <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
               </div>
               <div className="flex gap-4 ">
                 <ExcelExportImport
@@ -4131,8 +4149,7 @@ console.log(pQRData,"pQRData")
                           value={item.criticalProcessParameter}
                           onChange={(e) => {
                             const newData = [...manufacturingSD];
-                            newData[index].criticalProcessParameter =
-                              e.target.value;
+                            newData[index].criticalProcessParameter = e.target.value;
                             setManufacturingSD(newData);
                           }}
                         />
@@ -4196,10 +4213,8 @@ console.log(pQRData,"pQRData")
             <h3 className="gridName pt-4">Unit Operation 3</h3>
             <div className="AddRows d-flex w-full justify-between items-center text-3xl mb-5">
               <div className="flex items-center">
-                <MdNoteAdd onClick={addmanufacturingSDRow} />
-                <div className="addrowinstruction  pl-2">
-                  Add Rows by clicking on (+) icon
-                </div>
+                <MdNoteAdd onClick={addUnitOperation3Row} />
+                <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
               </div>
               <div className="flex gap-4 ">
                 <ExcelExportImport
@@ -4234,8 +4249,7 @@ console.log(pQRData,"pQRData")
                           value={item.criticalProcessParameter}
                           onChange={(e) => {
                             const newData = [...unitOperation3];
-                            newData[index].criticalProcessParameter =
-                              e.target.value;
+                            newData[index].criticalProcessParameter = e.target.value;
                             setUnitOperation3(newData);
                           }}
                         />
@@ -4299,10 +4313,8 @@ console.log(pQRData,"pQRData")
             <h3 className="gridName pt-4">Unit Operation 4</h3>
             <div className="AddRows d-flex w-full justify-between items-center text-3xl mb-5">
               <div className="flex items-center">
-                <MdNoteAdd onClick={addmanufacturingSDRow} />
-                <div className="addrowinstruction  pl-2">
-                  Add Rows by clicking on (+) icon
-                </div>
+                <MdNoteAdd onClick={addUnitOperation4Row} />
+                <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
               </div>
               <div className="flex gap-4 ">
                 <ExcelExportImport
@@ -4337,8 +4349,7 @@ console.log(pQRData,"pQRData")
                           value={item.criticalProcessParameter}
                           onChange={(e) => {
                             const newData = [...unitOperation4];
-                            newData[index].criticalProcessParameter =
-                              e.target.value;
+                            newData[index].criticalProcessParameter = e.target.value;
                             setUnitOperation4(newData);
                           }}
                         />
@@ -4402,10 +4413,8 @@ console.log(pQRData,"pQRData")
             <h3 className="gridName pt-4">Unit Operation 5</h3>
             <div className="AddRows d-flex w-full justify-between items-center text-3xl mb-5">
               <div className="flex items-center">
-                <MdNoteAdd onClick={addmanufacturingSDRow} />
-                <div className="addrowinstruction  pl-2">
-                  Add Rows by clicking on (+) icon
-                </div>
+                <MdNoteAdd onClick={addUnitOperation5Row} />
+                <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
               </div>
               <div className="flex gap-4 ">
                 <ExcelExportImport
@@ -4440,8 +4449,7 @@ console.log(pQRData,"pQRData")
                           value={item.criticalProcessParameter}
                           onChange={(e) => {
                             const newData = [...unitOperation5];
-                            newData[index].criticalProcessParameter =
-                              e.target.value;
+                            newData[index].criticalProcessParameter = e.target.value;
                             setUnitOperation5(newData);
                           }}
                         />
@@ -4505,10 +4513,8 @@ console.log(pQRData,"pQRData")
             <h3 className="gridName pt-4">Unit Operation 6</h3>
             <div className="AddRows d-flex w-full justify-between items-center text-3xl mb-5">
               <div className="flex items-center">
-                <MdNoteAdd onClick={addmanufacturingSDRow} />
-                <div className="addrowinstruction  pl-2">
-                  Add Rows by clicking on (+) icon
-                </div>
+                <MdNoteAdd onClick={addUnitOperation6Row} />
+                <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
               </div>
               <div className="flex gap-4 ">
                 <ExcelExportImport
@@ -4543,8 +4549,7 @@ console.log(pQRData,"pQRData")
                           value={item.criticalProcessParameter}
                           onChange={(e) => {
                             const newData = [...unitOperation6];
-                            newData[index].criticalProcessParameter =
-                              e.target.value;
+                            newData[index].criticalProcessParameter = e.target.value;
                             setUnitOperation6(newData);
                           }}
                         />
@@ -4608,10 +4613,8 @@ console.log(pQRData,"pQRData")
             <h3 className="gridName pt-4">Unit Operation 7</h3>
             <div className="AddRows d-flex w-full justify-between items-center text-3xl mb-5">
               <div className="flex items-center">
-                <MdNoteAdd onClick={addmanufacturingSDRow} />
-                <div className="addrowinstruction  pl-2">
-                  Add Rows by clicking on (+) icon
-                </div>
+                <MdNoteAdd onClick={addUnitOperation7Row} />
+                <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
               </div>
               <div className="flex gap-4 ">
                 <ExcelExportImport
@@ -4646,8 +4649,7 @@ console.log(pQRData,"pQRData")
                           value={item.criticalProcessParameter}
                           onChange={(e) => {
                             const newData = [...unitOperation7];
-                            newData[index].criticalProcessParameter =
-                              e.target.value;
+                            newData[index].criticalProcessParameter = e.target.value;
                             setUnitOperation7(newData);
                           }}
                         />
@@ -4711,10 +4713,8 @@ console.log(pQRData,"pQRData")
             <h3 className="gridName pt-4">Unit Operation 8</h3>
             <div className="AddRows d-flex w-full justify-between items-center text-3xl mb-5">
               <div className="flex items-center">
-                <MdNoteAdd onClick={addmanufacturingSDRow} />
-                <div className="addrowinstruction  pl-2">
-                  Add Rows by clicking on (+) icon
-                </div>
+                <MdNoteAdd onClick={addUnitOperation8Row} />
+                <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
               </div>
               <div className="flex gap-4 ">
                 <ExcelExportImport
@@ -4749,8 +4749,7 @@ console.log(pQRData,"pQRData")
                           value={item.criticalProcessParameter}
                           onChange={(e) => {
                             const newData = [...unitOperation8];
-                            newData[index].criticalProcessParameter =
-                              e.target.value;
+                            newData[index].criticalProcessParameter = e.target.value;
                             setUnitOperation8(newData);
                           }}
                         />
@@ -4814,10 +4813,8 @@ console.log(pQRData,"pQRData")
             <h3 className="gridName pt-4">Unit Operation 9</h3>
             <div className="AddRows d-flex w-full justify-between items-center text-3xl mb-5">
               <div className="flex items-center">
-                <MdNoteAdd onClick={addmanufacturingSDRow} />
-                <div className="addrowinstruction  pl-2">
-                  Add Rows by clicking on (+) icon
-                </div>
+                <MdNoteAdd onClick={addUnitOperation9Row} />
+                <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
               </div>
               <div className="flex gap-4 ">
                 <ExcelExportImport
@@ -4852,8 +4849,7 @@ console.log(pQRData,"pQRData")
                           value={item.criticalProcessParameter}
                           onChange={(e) => {
                             const newData = [...unitOperation9];
-                            newData[index].criticalProcessParameter =
-                              e.target.value;
+                            newData[index].criticalProcessParameter = e.target.value;
                             setUnitOperation9(newData);
                           }}
                         />
@@ -4917,10 +4913,8 @@ console.log(pQRData,"pQRData")
             <h3 className="gridName pt-4">Unit Operation 10</h3>
             <div className="AddRows d-flex w-full justify-between items-center text-3xl mb-5">
               <div className="flex items-center">
-                <MdNoteAdd onClick={addmanufacturingSDRow} />
-                <div className="addrowinstruction  pl-2">
-                  Add Rows by clicking on (+) icon
-                </div>
+                <MdNoteAdd onClick={addUnitOperation10Row} />
+                <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
               </div>
               <div className="flex gap-4 ">
                 <ExcelExportImport
@@ -4955,8 +4949,7 @@ console.log(pQRData,"pQRData")
                           value={item.criticalProcessParameter}
                           onChange={(e) => {
                             const newData = [...unitOperation10];
-                            newData[index].criticalProcessParameter =
-                              e.target.value;
+                            newData[index].criticalProcessParameter = e.target.value;
                             setUnitOperation10(newData);
                           }}
                         />
@@ -5017,62 +5010,58 @@ console.log(pQRData,"pQRData")
               </tbody>
             </table>
 
-            <div className="sub-head">
-              Critical Process Parameters Review Summary
-            </div>
+            <div className="sub-head">Critical Process Parameters Review Summary</div>
             <div className="group-input">
-              <TinyEditor
-                editorContent={tiny26}
-                setEditorContent={setTinyContent}
-                tinyNo={26}
-              />
+              <TinyEditor editorContent={tiny26} setEditorContent={setTinyContent} tinyNo={26} />
             </div>
           </div>
         ) : null}
         {tab === "LR" ? (
           <div className="p-4">
-            <div className="sub-head">
-              {" "}
-              Review of Drug Substance Test Results
-            </div>
-            <h1 className="gridName">Drug Substance 1 Test Result</h1>
+            <div className="sub-head"> Review of Drug Substance Test Results</div>
+            <h1 className="gridName">pH Of Paracetamol Test Results</h1>
             <div>
               <div className="AddRows d-flex w-full justify-between items-center text-3xl mb-5">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addReviewODSTRRow} />
-                  <div className="addrowinstruction  pl-2">
-                    Add Rows by clicking on (+) icon
-                  </div>
+                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
                 </div>
                 <div className="flex gap-4 ">
                   <ExcelExportImport
                     data={reviewODSTR}
                     setimportedData={setimportedData}
                     fileName="reviewODSTR.xlsx"
+                    gridNo={22}
                   />
                 </div>
               </div>
               <table>
                 <thead>
                   <tr>
-                    <th rowSpan={2}>Sl. No</th>
-                    <th rowSpan={2}>Tests parameter</th>
-                    <th rowSpan={2}>Specification limit</th>
-                    <th className="centerText" colSpan={2}>
-                      Obtained value
-                    </th>
-                    <th rowSpan={2}>Complies/Does Not complies</th>
-                  </tr>
-                  <tr>
-                    <th>Minimum</th>
-                    <th>Maximum</th>
+                    <th>Batch No</th>
+                    <th>Tests parameter</th>
+                    <th>LSL</th>
+                    <th>USL</th>
+                    <th>LCL</th>
+                    <th>UCL</th>
+                    <th>Observed Value</th>
+                    <th>Complies/Does Not complies</th>
                   </tr>
                 </thead>
                 <tbody>
                   {reviewODSTR?.map((item, index) => {
                     return (
                       <tr key={index}>
-                        <td>{index + 1}</td>
+                        <td>
+                          <input
+                            value={item.batchNo}
+                            onChange={(e) => {
+                              const newData = [...reviewODSTR];
+                              newData[index].batchNo = e.target.value;
+                              setReviewOSTR(newData);
+                            }}
+                          />
+                        </td>
                         <td>
                           <input
                             value={item.testsParameter}
@@ -5085,44 +5074,66 @@ console.log(pQRData,"pQRData")
                         </td>
                         <td>
                           <input
-                            value={item.specificationLimit}
+                            type="number"
+                            value={item.LSL}
                             onChange={(e) => {
                               const newData = [...reviewODSTR];
-                              newData[index].specificationLimit =
-                                e.target.value;
+                              newData[index].LSL = e.target.value;
                               setReviewOSTR(newData);
                             }}
                           />
                         </td>
                         <td>
                           <input
-                            value={item.obtainedValue.minimum}
+                            type="number"
+                            value={item.USL}
                             onChange={(e) => {
                               const newData = [...reviewODSTR];
-                              newData[index].obtainedValue.minimum =
-                                e.target.value;
+                              newData[index].USL = e.target.value;
                               setReviewOSTR(newData);
                             }}
                           />
                         </td>
                         <td>
                           <input
-                            value={item.obtainedValue.maximum}
+                            type="number"
+                            value={item.LCL}
                             onChange={(e) => {
                               const newData = [...reviewODSTR];
-                              newData[index].obtainedValue.maximum =
-                                e.target.value;
+                              newData[index].LCL = e.target.value;
                               setReviewOSTR(newData);
                             }}
                           />
                         </td>
+                        <td>
+                          <input
+                            type="number"
+                            value={item.UCL}
+                            onChange={(e) => {
+                              const newData = [...reviewODSTR];
+                              newData[index].UCL = e.target.value;
+                              setReviewOSTR(newData);
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            type="number"
+                            value={item.observedValue}
+                            onChange={(e) => {
+                              const newData = [...reviewODSTR];
+                              newData[index].observedValue = e.target.value;
+                              setReviewOSTR(newData);
+                            }}
+                          />
+                        </td>
+
                         <td>
                           <input
                             value={item.compliesNotComplies}
                             onChange={(e) => {
                               const newData = [...reviewODSTR];
-                              newData[index].compliesNotComplies =
-                                e.target.value;
+                              newData[index].compliesNotComplies = e.target.value;
                               setReviewOSTR(newData);
                             }}
                           />
@@ -5133,44 +5144,49 @@ console.log(pQRData,"pQRData")
                 </tbody>
               </table>
             </div>
-            <h1 className="gridName  pt-8">Drug Substance 2 Test Result</h1>
+            <h1 className="gridName  pt-8">Assay Of Paracetamol Test Results</h1>
             <div>
               <div className="AddRows d-flex w-full justify-between items-center text-3xl mb-5">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addReviewODSTRRow2} />
-                  <div className="addrowinstruction pl-2">
-                    Add Rows by clicking on (+) icon
-                  </div>
+                  <div className="addrowinstruction pl-2">Add Rows by clicking on (+) icon</div>
                 </div>
                 <div className="flex gap-4 ">
                   <ExcelExportImport
                     data={reviewODSTR2}
                     setimportedData={setimportedData}
                     fileName="reviewODSTR2.xlsx"
+                    gridNo={23}
                   />
                 </div>
               </div>
               <table>
                 <thead>
                   <tr>
-                    <th rowSpan={2}>Sl. No</th>
-                    <th rowSpan={2}>Tests parameter</th>
-                    <th rowSpan={2}>Specification limit</th>
-                    <th className="centerText" colSpan={2}>
-                      Obtained value
-                    </th>
-                    <th rowSpan={2}>Complies/Does Not complies</th>
-                  </tr>
-                  <tr>
-                    <th>Minimum</th>
-                    <th>Maximum</th>
+                    <th>Batch No</th>
+                    <th>Tests parameter</th>
+                    <th>LSL</th>
+                    <th>USL</th>
+                    <th>LCL</th>
+                    <th>UCL</th>
+                    <th>Observed Value</th>
+                    <th>Complies/Does Not complies</th>
                   </tr>
                 </thead>
                 <tbody>
                   {reviewODSTR2?.map((item, index) => {
                     return (
                       <tr key={index}>
-                        <td>{index + 1}</td>
+                        <td>
+                          <input
+                            value={item.batchNo}
+                            onChange={(e) => {
+                              const newData = [...reviewODSTR2];
+                              newData[index].batchNo = e.target.value;
+                              setReviewOSTR2(newData);
+                            }}
+                          />
+                        </td>
                         <td>
                           <input
                             value={item.testsParameter}
@@ -5183,44 +5199,66 @@ console.log(pQRData,"pQRData")
                         </td>
                         <td>
                           <input
-                            value={item.specificationLimit}
+                            type="number"
+                            value={item.LSL}
                             onChange={(e) => {
                               const newData = [...reviewODSTR2];
-                              newData[index].specificationLimit =
-                                e.target.value;
+                              newData[index].LSL = e.target.value;
                               setReviewOSTR2(newData);
                             }}
                           />
                         </td>
                         <td>
                           <input
-                            value={item.obtainedValue.minimum}
+                            type="number"
+                            value={item.USL}
                             onChange={(e) => {
                               const newData = [...reviewODSTR2];
-                              newData[index].obtainedValue.minimum =
-                                e.target.value;
+                              newData[index].USL = e.target.value;
                               setReviewOSTR2(newData);
                             }}
                           />
                         </td>
                         <td>
                           <input
-                            value={item.obtainedValue.maximum}
+                            type="number"
+                            value={item.LCL}
                             onChange={(e) => {
                               const newData = [...reviewODSTR2];
-                              newData[index].obtainedValue.maximum =
-                                e.target.value;
+                              newData[index].LCL = e.target.value;
                               setReviewOSTR2(newData);
                             }}
                           />
                         </td>
+                        <td>
+                          <input
+                            type="number"
+                            value={item.UCL}
+                            onChange={(e) => {
+                              const newData = [...reviewODSTR2];
+                              newData[index].UCL = e.target.value;
+                              setReviewOSTR2(newData);
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            type="number"
+                            value={item.observedValue}
+                            onChange={(e) => {
+                              const newData = [...reviewODSTR2];
+                              newData[index].observedValue = e.target.value;
+                              setReviewOSTR2(newData);
+                            }}
+                          />
+                        </td>
+
                         <td>
                           <input
                             value={item.compliesNotComplies}
                             onChange={(e) => {
                               const newData = [...reviewODSTR2];
-                              newData[index].compliesNotComplies =
-                                e.target.value;
+                              newData[index].compliesNotComplies = e.target.value;
                               setReviewOSTR2(newData);
                             }}
                           />
@@ -5231,44 +5269,49 @@ console.log(pQRData,"pQRData")
                 </tbody>
               </table>
             </div>{" "}
-            <h1 className="gridName pt-8">Drug Substance 3 Test Result</h1>
+            <h1 className="gridName pt-8">Impurity Of Paracetamol Test Result</h1>
             <div>
               <div className="AddRows d-flex w-full justify-between items-center text-3xl mb-5">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addReviewODSTRRow3} />
-                  <div className="addrowinstruction  pl-2">
-                    Add Rows by clicking on (+) icon
-                  </div>
+                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
                 </div>
                 <div className="flex gap-4 ">
                   <ExcelExportImport
                     data={reviewODSTR3}
                     setimportedData={setimportedData}
                     fileName="reviewODSTR3.xlsx"
+                    gridNo={24}
                   />
                 </div>
               </div>
               <table>
                 <thead>
                   <tr>
-                    <th rowSpan={2}>Sl. No</th>
-                    <th rowSpan={2}>Tests parameter</th>
-                    <th rowSpan={2}>Specification limit</th>
-                    <th className="centerText" colSpan={2}>
-                      Obtained value
-                    </th>
-                    <th rowSpan={2}>Complies/Does Not complies</th>
-                  </tr>
-                  <tr>
-                    <th>Minimum</th>
-                    <th>Maximum</th>
+                    <th>Batch No</th>
+                    <th>Tests parameter</th>
+                    <th>LSL</th>
+                    <th>USL</th>
+                    <th>LCL</th>
+                    <th>UCL</th>
+                    <th>Observed Value</th>
+                    <th>Complies/Does Not complies</th>
                   </tr>
                 </thead>
                 <tbody>
                   {reviewODSTR3?.map((item, index) => {
                     return (
                       <tr key={index}>
-                        <td>{index + 1}</td>
+                        <td>
+                          <input
+                            value={item.batchNo}
+                            onChange={(e) => {
+                              const newData = [...reviewODSTR3];
+                              newData[index].batchNo = e.target.value;
+                              setReviewOSTR3(newData);
+                            }}
+                          />
+                        </td>
                         <td>
                           <input
                             value={item.testsParameter}
@@ -5281,44 +5324,66 @@ console.log(pQRData,"pQRData")
                         </td>
                         <td>
                           <input
-                            value={item.specificationLimit}
+                            type="number"
+                            value={item.LSL}
                             onChange={(e) => {
                               const newData = [...reviewODSTR3];
-                              newData[index].specificationLimit =
-                                e.target.value;
+                              newData[index].LSL = e.target.value;
                               setReviewOSTR3(newData);
                             }}
                           />
                         </td>
                         <td>
                           <input
-                            value={item.obtainedValue.minimum}
+                            type="number"
+                            value={item.USL}
                             onChange={(e) => {
                               const newData = [...reviewODSTR3];
-                              newData[index].obtainedValue.minimum =
-                                e.target.value;
+                              newData[index].USL = e.target.value;
                               setReviewOSTR3(newData);
                             }}
                           />
                         </td>
                         <td>
                           <input
-                            value={item.obtainedValue.maximum}
+                            type="number"
+                            value={item.LCL}
                             onChange={(e) => {
                               const newData = [...reviewODSTR3];
-                              newData[index].obtainedValue.maximum =
-                                e.target.value;
+                              newData[index].LCL = e.target.value;
                               setReviewOSTR3(newData);
                             }}
                           />
                         </td>
+                        <td>
+                          <input
+                            type="number"
+                            value={item.UCL}
+                            onChange={(e) => {
+                              const newData = [...reviewODSTR3];
+                              newData[index].UCL = e.target.value;
+                              setReviewOSTR3(newData);
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            type="number"
+                            value={item.observedValue}
+                            onChange={(e) => {
+                              const newData = [...reviewODSTR3];
+                              newData[index].observedValue = e.target.value;
+                              setReviewOSTR3(newData);
+                            }}
+                          />
+                        </td>
+
                         <td>
                           <input
                             value={item.compliesNotComplies}
                             onChange={(e) => {
                               const newData = [...reviewODSTR3];
-                              newData[index].compliesNotComplies =
-                                e.target.value;
+                              newData[index].compliesNotComplies = e.target.value;
                               setReviewOSTR3(newData);
                             }}
                           />
@@ -5329,44 +5394,49 @@ console.log(pQRData,"pQRData")
                 </tbody>
               </table>
             </div>{" "}
-            <h1 className="gridName pt-8">Drug Substance 4 Test Result</h1>
+            <h1 className="gridName pt-8">Dissolution Of Paracetamol Test Result</h1>
             <div>
               <div className="AddRows d-flex w-full justify-between items-center text-3xl mb-5">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addReviewODSTRRow4} />
-                  <div className="addrowinstruction  pl-2">
-                    Add Rows by clicking on (+) icon
-                  </div>
+                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
                 </div>
                 <div className="flex gap-4 ">
                   <ExcelExportImport
                     data={reviewODSTR4}
                     setimportedData={setimportedData}
                     fileName="reviewODSTR4.xlsx"
+                    gridNo={25}
                   />
                 </div>
               </div>
               <table>
                 <thead>
                   <tr>
-                    <th rowSpan={2}>Sl. No</th>
-                    <th rowSpan={2}>Tests parameter</th>
-                    <th rowSpan={2}>Specification limit</th>
-                    <th className="centerText" colSpan={2}>
-                      Obtained value
-                    </th>
-                    <th rowSpan={2}>Complies/Does Not complies</th>
-                  </tr>
-                  <tr>
-                    <th>Minimum</th>
-                    <th>Maximum</th>
+                    <th>Batch No</th>
+                    <th>Tests parameter</th>
+                    <th>LSL</th>
+                    <th>USL</th>
+                    <th>LCL</th>
+                    <th>UCL</th>
+                    <th>Observed Value</th>
+                    <th>Complies/Does Not complies</th>
                   </tr>
                 </thead>
                 <tbody>
                   {reviewODSTR4?.map((item, index) => {
                     return (
                       <tr key={index}>
-                        <td>{index + 1}</td>
+                        <td>
+                          <input
+                            value={item.batchNo}
+                            onChange={(e) => {
+                              const newData = [...reviewODSTR4];
+                              newData[index].batchNo = e.target.value;
+                              setReviewOSTR4(newData);
+                            }}
+                          />
+                        </td>
                         <td>
                           <input
                             value={item.testsParameter}
@@ -5379,33 +5449,55 @@ console.log(pQRData,"pQRData")
                         </td>
                         <td>
                           <input
-                            value={item.specificationLimit}
+                            type="number"
+                            value={item.LSL}
                             onChange={(e) => {
                               const newData = [...reviewODSTR4];
-                              newData[index].specificationLimit =
-                                e.target.value;
+                              newData[index].LSL = e.target.value;
                               setReviewOSTR4(newData);
                             }}
                           />
                         </td>
                         <td>
                           <input
-                            value={item.obtainedValue.minimum}
+                            type="number"
+                            value={item.USL}
                             onChange={(e) => {
                               const newData = [...reviewODSTR4];
-                              newData[index].obtainedValue.minimum =
-                                e.target.value;
+                              newData[index].USL = e.target.value;
                               setReviewOSTR4(newData);
                             }}
                           />
                         </td>
                         <td>
                           <input
-                            value={item.obtainedValue.maximum}
+                            type="number"
+                            value={item.LCL}
                             onChange={(e) => {
                               const newData = [...reviewODSTR4];
-                              newData[index].obtainedValue.maximum =
-                                e.target.value;
+                              newData[index].LCL = e.target.value;
+                              setReviewOSTR4(newData);
+                            }}
+                          />
+                        </td>{" "}
+                        <td>
+                          <input
+                            type="number"
+                            value={item.UCL}
+                            onChange={(e) => {
+                              const newData = [...reviewODSTR4];
+                              newData[index].UCL = e.target.value;
+                              setReviewOSTR4(newData);
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            type="number"
+                            value={item.observedValue}
+                            onChange={(e) => {
+                              const newData = [...reviewODSTR4];
+                              newData[index].observedValue = e.target.value;
                               setReviewOSTR4(newData);
                             }}
                           />
@@ -5415,8 +5507,7 @@ console.log(pQRData,"pQRData")
                             value={item.compliesNotComplies}
                             onChange={(e) => {
                               const newData = [...reviewODSTR4];
-                              newData[index].compliesNotComplies =
-                                e.target.value;
+                              newData[index].compliesNotComplies = e.target.value;
                               setReviewOSTR4(newData);
                             }}
                           />
@@ -5427,44 +5518,49 @@ console.log(pQRData,"pQRData")
                 </tbody>
               </table>
             </div>{" "}
-            <h1 className="gridName pt-8">Drug Substance 5 Test Result</h1>
+            <h1 className="gridName pt-8">Disintegration Of Paracetamol Test Result</h1>
             <div>
               <div className="AddRows d-flex w-full justify-between items-center text-3xl mb-5">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addReviewODSTRRow5} />
-                  <div className="addrowinstruction  pl-2">
-                    Add Rows by clicking on (+) icon
-                  </div>
+                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
                 </div>
                 <div className="flex gap-4 ">
                   <ExcelExportImport
                     data={reviewODSTR5}
                     setimportedData={setimportedData}
                     fileName="reviewODSTR5.xlsx"
+                    gridNo={26}
                   />
                 </div>
               </div>
               <table>
                 <thead>
                   <tr>
-                    <th rowSpan={2}>Sl. No</th>
-                    <th rowSpan={2}>Tests parameter</th>
-                    <th rowSpan={2}>Specification limit</th>
-                    <th className="centerText" colSpan={2}>
-                      Obtained value
-                    </th>
-                    <th rowSpan={2}>Complies/Does Not complies</th>
-                  </tr>
-                  <tr>
-                    <th>Minimum</th>
-                    <th>Maximum</th>
+                    <th>Batch No</th>
+                    <th>Tests parameter</th>
+                    <th>LSL</th>
+                    <th>USL</th>
+                    <th>LCL</th>
+                    <th>UCL</th>
+                    <th>Observed Value</th>
+                    <th>Complies/Does Not complies</th>
                   </tr>
                 </thead>
                 <tbody>
                   {reviewODSTR5?.map((item, index) => {
                     return (
                       <tr key={index}>
-                        <td>{index + 1}</td>
+                        <td>
+                          <input
+                            value={item.batchNo}
+                            onChange={(e) => {
+                              const newData = [...reviewODSTR5];
+                              newData[index].batchNo = e.target.value;
+                              setReviewOSTR5(newData);
+                            }}
+                          />
+                        </td>
                         <td>
                           <input
                             value={item.testsParameter}
@@ -5477,44 +5573,66 @@ console.log(pQRData,"pQRData")
                         </td>
                         <td>
                           <input
-                            value={item.specificationLimit}
+                            type="number"
+                            value={item.LSL}
                             onChange={(e) => {
                               const newData = [...reviewODSTR5];
-                              newData[index].specificationLimit =
-                                e.target.value;
+                              newData[index].LSL = e.target.value;
                               setReviewOSTR5(newData);
                             }}
                           />
                         </td>
                         <td>
                           <input
-                            value={item.obtainedValue.minimum}
+                            type="number"
+                            value={item.USL}
                             onChange={(e) => {
                               const newData = [...reviewODSTR5];
-                              newData[index].obtainedValue.minimum =
-                                e.target.value;
+                              newData[index].USL = e.target.value;
                               setReviewOSTR5(newData);
                             }}
                           />
                         </td>
                         <td>
                           <input
-                            value={item.obtainedValue.maximum}
+                            type="number"
+                            value={item.LCL}
                             onChange={(e) => {
                               const newData = [...reviewODSTR5];
-                              newData[index].obtainedValue.maximum =
-                                e.target.value;
+                              newData[index].LCL = e.target.value;
                               setReviewOSTR5(newData);
                             }}
                           />
                         </td>
+                        <td>
+                          <input
+                            type="number"
+                            value={item.UCL}
+                            onChange={(e) => {
+                              const newData = [...reviewODSTR5];
+                              newData[index].UCL = e.target.value;
+                              setReviewOSTR5(newData);
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            type="number"
+                            value={item.observedValue}
+                            onChange={(e) => {
+                              const newData = [...reviewODSTR5];
+                              newData[index].observedValue = e.target.value;
+                              setReviewOSTR5(newData);
+                            }}
+                          />
+                        </td>
+
                         <td>
                           <input
                             value={item.compliesNotComplies}
                             onChange={(e) => {
                               const newData = [...reviewODSTR5];
-                              newData[index].compliesNotComplies =
-                                e.target.value;
+                              newData[index].compliesNotComplies = e.target.value;
                               setReviewOSTR5(newData);
                             }}
                           />
@@ -5525,44 +5643,49 @@ console.log(pQRData,"pQRData")
                 </tbody>
               </table>
             </div>{" "}
-            <h1 className="gridName pt-8">Drug Substance 6 Test Result</h1>
+            <h1 className="gridName pt-8">pH Of Terbinafine Test Result</h1>
             <div>
               <div className="AddRows d-flex w-full justify-between items-center text-3xl mb-5">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addReviewODSTRRow6} />
-                  <div className="addrowinstruction  pl-2">
-                    Add Rows by clicking on (+) icon
-                  </div>
+                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
                 </div>
                 <div className="flex gap-4 ">
                   <ExcelExportImport
                     data={reviewODSTR6}
                     setimportedData={setimportedData}
                     fileName="reviewODSTR6.xlsx"
+                    gridNo={27}
                   />
                 </div>
               </div>
               <table>
                 <thead>
                   <tr>
-                    <th rowSpan={2}>Sl. No</th>
-                    <th rowSpan={2}>Tests parameter</th>
-                    <th rowSpan={2}>Specification limit</th>
-                    <th className="centerText" colSpan={2}>
-                      Obtained value
-                    </th>
-                    <th rowSpan={2}>Complies/Does Not complies</th>
-                  </tr>
-                  <tr>
-                    <th>Minimum</th>
-                    <th>Maximum</th>
+                    <th>Batch No</th>
+                    <th>Tests parameter</th>
+                    <th>LSL</th>
+                    <th>USL</th>
+                    <th>LCL</th>
+                    <th>UCL</th>
+                    <th>Observed Value</th>
+                    <th>Complies/Does Not complies</th>
                   </tr>
                 </thead>
                 <tbody>
                   {reviewODSTR6?.map((item, index) => {
                     return (
                       <tr key={index}>
-                        <td>{index + 1}</td>
+                        <td>
+                          <input
+                            value={item.batchNo}
+                            onChange={(e) => {
+                              const newData = [...reviewODSTR6];
+                              newData[index].batchNo = e.target.value;
+                              setReviewOSTR6(newData);
+                            }}
+                          />
+                        </td>
                         <td>
                           <input
                             value={item.testsParameter}
@@ -5575,44 +5698,66 @@ console.log(pQRData,"pQRData")
                         </td>
                         <td>
                           <input
-                            value={item.specificationLimit}
+                            type="number"
+                            value={item.LSL}
                             onChange={(e) => {
                               const newData = [...reviewODSTR6];
-                              newData[index].specificationLimit =
-                                e.target.value;
+                              newData[index].LSL = e.target.value;
                               setReviewOSTR6(newData);
                             }}
                           />
                         </td>
                         <td>
                           <input
-                            value={item.obtainedValue.minimum}
+                            type="number"
+                            value={item.USL}
                             onChange={(e) => {
                               const newData = [...reviewODSTR6];
-                              newData[index].obtainedValue.minimum =
-                                e.target.value;
+                              newData[index].USL = e.target.value;
                               setReviewOSTR6(newData);
                             }}
                           />
                         </td>
                         <td>
                           <input
-                            value={item.obtainedValue.maximum}
+                            type="number"
+                            value={item.LCL}
                             onChange={(e) => {
                               const newData = [...reviewODSTR6];
-                              newData[index].obtainedValue.maximum =
-                                e.target.value;
+                              newData[index].LCL = e.target.value;
                               setReviewOSTR6(newData);
                             }}
                           />
                         </td>
+                        <td>
+                          <input
+                            type="number"
+                            value={item.UCL}
+                            onChange={(e) => {
+                              const newData = [...reviewODSTR6];
+                              newData[index].UCL = e.target.value;
+                              setReviewOSTR6(newData);
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            type="number"
+                            value={item.observedValue}
+                            onChange={(e) => {
+                              const newData = [...reviewODSTR6];
+                              newData[index].observedValue = e.target.value;
+                              setReviewOSTR6(newData);
+                            }}
+                          />
+                        </td>
+
                         <td>
                           <input
                             value={item.compliesNotComplies}
                             onChange={(e) => {
                               const newData = [...reviewODSTR6];
-                              newData[index].compliesNotComplies =
-                                e.target.value;
+                              newData[index].compliesNotComplies = e.target.value;
                               setReviewOSTR6(newData);
                             }}
                           />
@@ -5623,44 +5768,49 @@ console.log(pQRData,"pQRData")
                 </tbody>
               </table>
             </div>{" "}
-            <h1 className="gridName pt-8">Drug Substance 7 Test Result</h1>
+            <h1 className="gridName pt-8">Assay Of Terbinafine Test Result</h1>
             <div>
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addReviewODSTRRow7} />
-                  <div className="addrowinstruction  pl-2">
-                    Add Rows by clicking on (+) icon
-                  </div>
+                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
                 </div>
                 <div className="flex gap-4 ">
                   <ExcelExportImport
                     data={reviewODSTR7}
                     setimportedData={setimportedData}
                     fileName="reviewODSTR7.xlsx"
+                    gridNo={28}
                   />
                 </div>
               </div>
               <table>
                 <thead>
                   <tr>
-                    <th rowSpan={2}>Sl. No</th>
-                    <th rowSpan={2}>Tests parameter</th>
-                    <th rowSpan={2}>Specification limit</th>
-                    <th className="centerText" colSpan={2}>
-                      Obtained value
-                    </th>
-                    <th rowSpan={2}>Complies/Does Not complies</th>
-                  </tr>
-                  <tr>
-                    <th>Minimum</th>
-                    <th>Maximum</th>
+                    <th>Batch No</th>
+                    <th>Tests parameter</th>
+                    <th>LSL</th>
+                    <th>USL</th>
+                    <th>LCL</th>
+                    <th>UCL</th>
+                    <th>Observed Value</th>
+                    <th>Complies/Does Not complies</th>
                   </tr>
                 </thead>
                 <tbody>
                   {reviewODSTR7?.map((item, index) => {
                     return (
                       <tr key={index}>
-                        <td>{index + 1}</td>
+                        <td>
+                          <input
+                            value={item.batchNo}
+                            onChange={(e) => {
+                              const newData = [...reviewODSTR7];
+                              newData[index].batchNo = e.target.value;
+                              setReviewOSTR7(newData);
+                            }}
+                          />
+                        </td>
                         <td>
                           <input
                             value={item.testsParameter}
@@ -5673,44 +5823,66 @@ console.log(pQRData,"pQRData")
                         </td>
                         <td>
                           <input
-                            value={item.specificationLimit}
+                            type="number"
+                            value={item.LSL}
                             onChange={(e) => {
                               const newData = [...reviewODSTR7];
-                              newData[index].specificationLimit =
-                                e.target.value;
+                              newData[index].LSL = e.target.value;
                               setReviewOSTR7(newData);
                             }}
                           />
                         </td>
                         <td>
                           <input
-                            value={item.obtainedValue.minimum}
+                            type="number"
+                            value={item.USL}
                             onChange={(e) => {
                               const newData = [...reviewODSTR7];
-                              newData[index].obtainedValue.minimum =
-                                e.target.value;
+                              newData[index].USL = e.target.value;
                               setReviewOSTR7(newData);
                             }}
                           />
                         </td>
                         <td>
                           <input
-                            value={item.obtainedValue.maximum}
+                            type="number"
+                            value={item.LCL}
                             onChange={(e) => {
                               const newData = [...reviewODSTR7];
-                              newData[index].obtainedValue.maximum =
-                                e.target.value;
+                              newData[index].LCL = e.target.value;
                               setReviewOSTR7(newData);
                             }}
                           />
                         </td>
+                        <td>
+                          <input
+                            type="number"
+                            value={item.UCL}
+                            onChange={(e) => {
+                              const newData = [...reviewODSTR7];
+                              newData[index].UCL = e.target.value;
+                              setReviewOSTR7(newData);
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            type="number"
+                            value={item.observedValue}
+                            onChange={(e) => {
+                              const newData = [...reviewODSTR7];
+                              newData[index].observedValue = e.target.value;
+                              setReviewOSTR7(newData);
+                            }}
+                          />
+                        </td>
+
                         <td>
                           <input
                             value={item.compliesNotComplies}
                             onChange={(e) => {
                               const newData = [...reviewODSTR7];
-                              newData[index].compliesNotComplies =
-                                e.target.value;
+                              newData[index].compliesNotComplies = e.target.value;
                               setReviewOSTR7(newData);
                             }}
                           />
@@ -5721,44 +5893,49 @@ console.log(pQRData,"pQRData")
                 </tbody>
               </table>
             </div>{" "}
-            <h1 className="gridName pt-8">Drug Substance 8 Test Result</h1>
+            <h1 className="gridName pt-8">Impurity Of Terbinafine Test Result</h1>
             <div>
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addReviewODSTRRow8} />
-                  <div className="addrowinstruction  pl-2">
-                    Add Rows by clicking on (+) icon
-                  </div>
+                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
                 </div>
                 <div className="flex gap-4 ">
                   <ExcelExportImport
                     data={reviewODSTR8}
                     setimportedData={setimportedData}
                     fileName="reviewODSTR8.xlsx"
+                    gridNo={29}
                   />
                 </div>
               </div>
               <table>
                 <thead>
                   <tr>
-                    <th rowSpan={2}>Sl. No</th>
-                    <th rowSpan={2}>Tests parameter</th>
-                    <th rowSpan={2}>Specification limit</th>
-                    <th className="centerText" colSpan={2}>
-                      Obtained value
-                    </th>
-                    <th rowSpan={2}>Complies/Does Not complies</th>
-                  </tr>
-                  <tr>
-                    <th>Minimum</th>
-                    <th>Maximum</th>
+                    <th>Batch No</th>
+                    <th>Tests parameter</th>
+                    <th>LSL</th>
+                    <th>USL</th>
+                    <th>LCL</th>
+                    <th>UCL</th>
+                    <th>Observed Value</th>
+                    <th>Complies/Does Not complies</th>
                   </tr>
                 </thead>
                 <tbody>
                   {reviewODSTR8?.map((item, index) => {
                     return (
                       <tr key={index}>
-                        <td>{index + 1}</td>
+                        <td>
+                          <input
+                            value={item.batchNo}
+                            onChange={(e) => {
+                              const newData = [...reviewODSTR8];
+                              newData[index].batchNo = e.target.value;
+                              setReviewOSTR8(newData);
+                            }}
+                          />
+                        </td>
                         <td>
                           <input
                             value={item.testsParameter}
@@ -5771,44 +5948,66 @@ console.log(pQRData,"pQRData")
                         </td>
                         <td>
                           <input
-                            value={item.specificationLimit}
+                            type="number"
+                            value={item.LSL}
                             onChange={(e) => {
                               const newData = [...reviewODSTR8];
-                              newData[index].specificationLimit =
-                                e.target.value;
+                              newData[index].LSL = e.target.value;
                               setReviewOSTR8(newData);
                             }}
                           />
                         </td>
                         <td>
                           <input
-                            value={item.obtainedValue.minimum}
+                            type="number"
+                            value={item.USL}
                             onChange={(e) => {
                               const newData = [...reviewODSTR8];
-                              newData[index].obtainedValue.minimum =
-                                e.target.value;
+                              newData[index].USL = e.target.value;
                               setReviewOSTR8(newData);
                             }}
                           />
                         </td>
                         <td>
                           <input
-                            value={item.obtainedValue.maximum}
+                            type="number"
+                            value={item.LCL}
                             onChange={(e) => {
                               const newData = [...reviewODSTR8];
-                              newData[index].obtainedValue.maximum =
-                                e.target.value;
+                              newData[index].LCL = e.target.value;
                               setReviewOSTR8(newData);
                             }}
                           />
                         </td>
+                        <td>
+                          <input
+                            type="number"
+                            value={item.UCL}
+                            onChange={(e) => {
+                              const newData = [...reviewODSTR8];
+                              newData[index].UCL = e.target.value;
+                              setReviewOSTR8(newData);
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            type="number"
+                            value={item.observedValue}
+                            onChange={(e) => {
+                              const newData = [...reviewODSTR8];
+                              newData[index].observedValue = e.target.value;
+                              setReviewOSTR8(newData);
+                            }}
+                          />
+                        </td>
+
                         <td>
                           <input
                             value={item.compliesNotComplies}
                             onChange={(e) => {
                               const newData = [...reviewODSTR8];
-                              newData[index].compliesNotComplies =
-                                e.target.value;
+                              newData[index].compliesNotComplies = e.target.value;
                               setReviewOSTR8(newData);
                             }}
                           />
@@ -5819,44 +6018,49 @@ console.log(pQRData,"pQRData")
                 </tbody>
               </table>
             </div>{" "}
-            <h1 className="gridName pt-8">Drug Substance 9 Test Result</h1>
+            <h1 className="gridName pt-8">Dissolution Of Terbinafine Test Result</h1>
             <div>
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addReviewODSTRRow9} />
-                  <div className="addrowinstruction  pl-2">
-                    Add Rows by clicking on (+) icon
-                  </div>
+                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
                 </div>
                 <div className="flex gap-4 ">
                   <ExcelExportImport
                     data={reviewODSTR9}
                     setimportedData={setimportedData}
                     fileName="reviewODSTR9.xlsx"
+                    gridNo={30}
                   />
                 </div>
               </div>
               <table>
                 <thead>
                   <tr>
-                    <th rowSpan={2}>Sl. No</th>
-                    <th rowSpan={2}>Tests parameter</th>
-                    <th rowSpan={2}>Specification limit</th>
-                    <th className="centerText" colSpan={2}>
-                      Obtained value
-                    </th>
-                    <th rowSpan={2}>Complies/Does Not complies</th>
-                  </tr>
-                  <tr>
-                    <th>Minimum</th>
-                    <th>Maximum</th>
+                    <th>Batch No</th>
+                    <th>Tests parameter</th>
+                    <th>LSL</th>
+                    <th>USL</th>
+                    <th>LCL</th>
+                    <th>UCL</th>
+                    <th>Observed Value</th>
+                    <th>Complies/Does Not complies</th>
                   </tr>
                 </thead>
                 <tbody>
                   {reviewODSTR9?.map((item, index) => {
                     return (
                       <tr key={index}>
-                        <td>{index + 1}</td>
+                        <td>
+                          <input
+                            value={item.batchNo}
+                            onChange={(e) => {
+                              const newData = [...reviewODSTR9];
+                              newData[index].batchNo = e.target.value;
+                              setReviewOSTR9(newData);
+                            }}
+                          />
+                        </td>
                         <td>
                           <input
                             value={item.testsParameter}
@@ -5869,44 +6073,66 @@ console.log(pQRData,"pQRData")
                         </td>
                         <td>
                           <input
-                            value={item.specificationLimit}
+                            type="number"
+                            value={item.LSL}
                             onChange={(e) => {
                               const newData = [...reviewODSTR9];
-                              newData[index].specificationLimit =
-                                e.target.value;
+                              newData[index].LSL = e.target.value;
                               setReviewOSTR9(newData);
                             }}
                           />
                         </td>
                         <td>
                           <input
-                            value={item.obtainedValue.minimum}
+                            type="number"
+                            value={item.USL}
                             onChange={(e) => {
                               const newData = [...reviewODSTR9];
-                              newData[index].obtainedValue.minimum =
-                                e.target.value;
+                              newData[index].USL = e.target.value;
                               setReviewOSTR9(newData);
                             }}
                           />
                         </td>
                         <td>
                           <input
-                            value={item.obtainedValue.maximum}
+                            type="number"
+                            value={item.LCL}
                             onChange={(e) => {
                               const newData = [...reviewODSTR9];
-                              newData[index].obtainedValue.maximum =
-                                e.target.value;
+                              newData[index].LCL = e.target.value;
                               setReviewOSTR9(newData);
                             }}
                           />
                         </td>
+                        <td>
+                          <input
+                            type="number"
+                            value={item.UCL}
+                            onChange={(e) => {
+                              const newData = [...reviewODSTR9];
+                              newData[index].UCL = e.target.value;
+                              setReviewOSTR9(newData);
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            type="number"
+                            value={item.observedValue}
+                            onChange={(e) => {
+                              const newData = [...reviewODSTR9];
+                              newData[index].observedValue = e.target.value;
+                              setReviewOSTR9(newData);
+                            }}
+                          />
+                        </td>
+
                         <td>
                           <input
                             value={item.compliesNotComplies}
                             onChange={(e) => {
                               const newData = [...reviewODSTR9];
-                              newData[index].compliesNotComplies =
-                                e.target.value;
+                              newData[index].compliesNotComplies = e.target.value;
                               setReviewOSTR9(newData);
                             }}
                           />
@@ -5917,44 +6143,49 @@ console.log(pQRData,"pQRData")
                 </tbody>
               </table>
             </div>{" "}
-            <h1 className="gridName pt-8">Drug Substance 10 Test Result</h1>
+            <h1 className="gridName pt-8">Disinteration Of Terbinafine Test Result</h1>
             <div>
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addReviewODSTRRow10} />
-                  <div className="addrowinstruction  pl-2">
-                    Add Rows by clicking on (+) icon
-                  </div>
+                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
                 </div>
                 <div className="flex gap-4 ">
                   <ExcelExportImport
                     data={reviewODSTR10}
                     setimportedData={setimportedData}
                     fileName="reviewODSTR10.xlsx"
+                    gridNo={31}
                   />
                 </div>
               </div>
               <table>
                 <thead>
                   <tr>
-                    <th rowSpan={2}>Sl. No</th>
-                    <th rowSpan={2}>Tests parameter</th>
-                    <th rowSpan={2}>Specification limit</th>
-                    <th className="centerText" colSpan={2}>
-                      Obtained value
-                    </th>
-                    <th rowSpan={2}>Complies/Does Not complies</th>
-                  </tr>
-                  <tr>
-                    <th>Minimum</th>
-                    <th>Maximum</th>
+                    <th>Batch No</th>
+                    <th>Tests parameter</th>
+                    <th>LSL</th>
+                    <th>USL</th>
+                    <th>LCL</th>
+                    <th>UCL</th>
+                    <th>Observed Value</th>
+                    <th>Complies/Does Not complies</th>
                   </tr>
                 </thead>
                 <tbody>
                   {reviewODSTR10?.map((item, index) => {
                     return (
                       <tr key={index}>
-                        <td>{index + 1}</td>
+                        <td>
+                          <input
+                            value={item.batchNo}
+                            onChange={(e) => {
+                              const newData = [...reviewODSTR10];
+                              newData[index].batchNo = e.target.value;
+                              setReviewOSTR10(newData);
+                            }}
+                          />
+                        </td>
                         <td>
                           <input
                             value={item.testsParameter}
@@ -5967,45 +6198,691 @@ console.log(pQRData,"pQRData")
                         </td>
                         <td>
                           <input
-                            value={item.specificationLimit}
+                            type="number"
+                            value={item.LSL}
                             onChange={(e) => {
                               const newData = [...reviewODSTR10];
-                              newData[index].specificationLimit =
-                                e.target.value;
+                              newData[index].LSL = e.target.value;
                               setReviewOSTR10(newData);
                             }}
                           />
                         </td>
                         <td>
                           <input
-                            value={item.obtainedValue.minimum}
+                            type="number"
+                            value={item.USL}
                             onChange={(e) => {
                               const newData = [...reviewODSTR10];
-                              newData[index].obtainedValue.minimum =
-                                e.target.value;
+                              newData[index].USL = e.target.value;
                               setReviewOSTR10(newData);
                             }}
                           />
                         </td>
                         <td>
                           <input
-                            value={item.obtainedValue.maximum}
+                            type="number"
+                            value={item.LCL}
                             onChange={(e) => {
                               const newData = [...reviewODSTR10];
-                              newData[index].obtainedValue.maximum =
-                                e.target.value;
+                              newData[index].LCL = e.target.value;
                               setReviewOSTR10(newData);
                             }}
                           />
                         </td>
+                        <td>
+                          <input
+                            type="number"
+                            value={item.UCL}
+                            onChange={(e) => {
+                              const newData = [...reviewODSTR10];
+                              newData[index].UCL = e.target.value;
+                              setReviewOSTR10(newData);
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            type="number"
+                            value={item.observedValue}
+                            onChange={(e) => {
+                              const newData = [...reviewODSTR10];
+                              newData[index].observedValue = e.target.value;
+                              setReviewOSTR10(newData);
+                            }}
+                          />
+                        </td>
+
                         <td>
                           <input
                             value={item.compliesNotComplies}
                             onChange={(e) => {
                               const newData = [...reviewODSTR10];
-                              newData[index].compliesNotComplies =
-                                e.target.value;
+                              newData[index].compliesNotComplies = e.target.value;
                               setReviewOSTR10(newData);
+                            }}
+                          />
+                        </td>
+                      </tr>
+                    );
+                  })}
+                </tbody>
+              </table>
+            </div>
+            <h1 className="gridName pt-8">pH Of Pentoprazole Test Result</h1>
+            <div>
+              <div className="AddRows d-flex w-full justify-between items-center text-3xl">
+                <div className="flex items-center">
+                  <MdNoteAdd onClick={addReviewODSTRRow11} />
+                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
+                </div>
+                <div className="flex gap-4 ">
+                  <ExcelExportImport
+                    data={reviewODSTR11}
+                    setimportedData={setimportedData}
+                    fileName="reviewODSTR11.xlsx"
+                    gridNo={32}
+                  />
+                </div>
+              </div>
+              <table>
+                <thead>
+                  <tr>
+                    <th>Batch No</th>
+                    <th>Tests parameter</th>
+                    <th>LSL</th>
+                    <th>USL</th>
+                    <th>LCL</th>
+                    <th>UCL</th>
+                    <th>Observed Value</th>
+                    <th>Complies/Does Not complies</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {reviewODSTR11?.map((item, index) => {
+                    return (
+                      <tr key={index}>
+                        <td>
+                          <input
+                            value={item.batchNo}
+                            onChange={(e) => {
+                              const newData = [...reviewODSTR11];
+                              newData[index].batchNo = e.target.value;
+                              setReviewOSTR11(newData);
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.testsParameter}
+                            onChange={(e) => {
+                              const newData = [...reviewODSTR11];
+                              newData[index].testsParameter = e.target.value;
+                              setReviewOSTR11(newData);
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            type="number"
+                            value={item.LSL}
+                            onChange={(e) => {
+                              const newData = [...reviewODSTR11];
+                              newData[index].LSL = e.target.value;
+                              setReviewOSTR11(newData);
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            type="number"
+                            value={item.USL}
+                            onChange={(e) => {
+                              const newData = [...reviewODSTR11];
+                              newData[index].USL = e.target.value;
+                              setReviewOSTR11(newData);
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            type="number"
+                            value={item.LCL}
+                            onChange={(e) => {
+                              const newData = [...reviewODSTR11];
+                              newData[index].LCL = e.target.value;
+                              setReviewOSTR11(newData);
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            type="number"
+                            value={item.UCL}
+                            onChange={(e) => {
+                              const newData = [...reviewODSTR11];
+                              newData[index].UCL = e.target.value;
+                              setReviewOSTR11(newData);
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            type="number"
+                            value={item.observedValue}
+                            onChange={(e) => {
+                              const newData = [...reviewODSTR11];
+                              newData[index].observedValue = e.target.value;
+                              setReviewOSTR11(newData);
+                            }}
+                          />
+                        </td>
+
+                        <td>
+                          <input
+                            value={item.compliesNotComplies}
+                            onChange={(e) => {
+                              const newData = [...reviewODSTR11];
+                              newData[index].compliesNotComplies = e.target.value;
+                              setReviewOSTR11(newData);
+                            }}
+                          />
+                        </td>
+                      </tr>
+                    );
+                  })}
+                </tbody>
+              </table>
+            </div>
+            <h1 className="gridName pt-8">Assay Of Pentoprazole Test Result</h1>
+            <div>
+              <div className="AddRows d-flex w-full justify-between items-center text-3xl">
+                <div className="flex items-center">
+                  <MdNoteAdd onClick={addReviewODSTRRow12} />
+                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
+                </div>
+                <div className="flex gap-4 ">
+                  <ExcelExportImport
+                    data={reviewODSTR12}
+                    setimportedData={setimportedData}
+                    fileName="reviewODSTR12.xlsx"
+                    gridNo={33}
+                  />
+                </div>
+              </div>
+              <table>
+                <thead>
+                  <tr>
+                    <th>Batch No</th>
+                    <th>Tests parameter</th>
+                    <th>LSL</th>
+                    <th>USL</th>
+                    <th>LCL</th>
+                    <th>UCL</th>
+                    <th>Observed Value</th>
+                    <th>Complies/Does Not complies</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {reviewODSTR12?.map((item, index) => {
+                    return (
+                      <tr key={index}>
+                        <td>
+                          <input
+                            value={item.batchNo}
+                            onChange={(e) => {
+                              const newData = [...reviewODSTR12];
+                              newData[index].batchNo = e.target.value;
+                              setReviewOSTR12(newData);
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.testsParameter}
+                            onChange={(e) => {
+                              const newData = [...reviewODSTR12];
+                              newData[index].testsParameter = e.target.value;
+                              setReviewOSTR12(newData);
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            type="number"
+                            value={item.LSL}
+                            onChange={(e) => {
+                              const newData = [...reviewODSTR12];
+                              newData[index].LSL = e.target.value;
+                              setReviewOSTR12(newData);
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            type="number"
+                            value={item.USL}
+                            onChange={(e) => {
+                              const newData = [...reviewODSTR12];
+                              newData[index].USL = e.target.value;
+                              setReviewOSTR12(newData);
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            type="number"
+                            value={item.LCL}
+                            onChange={(e) => {
+                              const newData = [...reviewODSTR12];
+                              newData[index].LCL = e.target.value;
+                              setReviewOSTR12(newData);
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            type="number"
+                            value={item.UCL}
+                            onChange={(e) => {
+                              const newData = [...reviewODSTR12];
+                              newData[index].UCL = e.target.value;
+                              setReviewOSTR12(newData);
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            type="number"
+                            value={item.observedValue}
+                            onChange={(e) => {
+                              const newData = [...reviewODSTR12];
+                              newData[index].observedValue = e.target.value;
+                              setReviewOSTR12(newData);
+                            }}
+                          />
+                        </td>
+
+                        <td>
+                          <input
+                            value={item.compliesNotComplies}
+                            onChange={(e) => {
+                              const newData = [...reviewODSTR12];
+                              newData[index].compliesNotComplies = e.target.value;
+                              setReviewOSTR12(newData);
+                            }}
+                          />
+                        </td>
+                      </tr>
+                    );
+                  })}
+                </tbody>
+              </table>
+            </div>
+            <h1 className="gridName pt-8">Impurity Of Pentoprazole Test Result</h1>
+            <div>
+              <div className="AddRows d-flex w-full justify-between items-center text-3xl">
+                <div className="flex items-center">
+                  <MdNoteAdd onClick={addReviewODSTRRow13} />
+                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
+                </div>
+                <div className="flex gap-4">
+                  <ExcelExportImport
+                    data={reviewODSTR13}
+                    setimportedData={setimportedData}
+                    fileName="reviewODSTR13.xlsx"
+                    gridNo={34}
+                  />
+                </div>
+              </div>
+              <table>
+                <thead>
+                  <tr>
+                    <th>Batch No</th>
+                    <th>Tests parameter</th>
+                    <th>LSL</th>
+                    <th>USL</th>
+                    <th>LCL</th>
+                    <th>UCL</th>
+                    <th>Observed Value</th>
+                    <th>Complies/Does Not complies</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {reviewODSTR13?.map((item, index) => {
+                    return (
+                      <tr key={index}>
+                        <td>
+                          <input
+                            value={item.batchNo}
+                            onChange={(e) => {
+                              const newData = [...reviewODSTR13];
+                              newData[index].batchNo = e.target.value;
+                              setReviewOSTR13(newData);
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.testsParameter}
+                            onChange={(e) => {
+                              const newData = [...reviewODSTR13];
+                              newData[index].testsParameter = e.target.value;
+                              setReviewOSTR13(newData);
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            type="number"
+                            value={item.LSL}
+                            onChange={(e) => {
+                              const newData = [...reviewODSTR13];
+                              newData[index].LSL = e.target.value;
+                              setReviewOSTR13(newData);
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            type="number"
+                            value={item.USL}
+                            onChange={(e) => {
+                              const newData = [...reviewODSTR13];
+                              newData[index].USL = e.target.value;
+                              setReviewOSTR13(newData);
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.LCL}
+                            onChange={(e) => {
+                              const newData = [...reviewODSTR13];
+                              newData[index].LCL = e.target.value;
+                              setReviewOSTR13(newData);
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            type="number"
+                            value={item.UCL}
+                            onChange={(e) => {
+                              const newData = [...reviewODSTR13];
+                              newData[index].UCL = e.target.value;
+                              setReviewOSTR13(newData);
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            type="number"
+                            value={item.observedValue}
+                            onChange={(e) => {
+                              const newData = [...reviewODSTR13];
+                              newData[index].observedValue = e.target.value;
+                              setReviewOSTR13(newData);
+                            }}
+                          />
+                        </td>
+
+                        <td>
+                          <input
+                            value={item.compliesNotComplies}
+                            onChange={(e) => {
+                              const newData = [...reviewODSTR13];
+                              newData[index].compliesNotComplies = e.target.value;
+                              setReviewOSTR13(newData);
+                            }}
+                          />
+                        </td>
+                      </tr>
+                    );
+                  })}
+                </tbody>
+              </table>
+            </div>
+            <h1 className="gridName pt-8">Dissolution Of Pentoprazole Test Result</h1>
+            <div>
+              <div className="AddRows d-flex w-full justify-between items-center text-3xl">
+                <div className="flex items-center">
+                  <MdNoteAdd onClick={addReviewODSTRRow14} />
+                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
+                </div>
+                <div className="flex gap-4 ">
+                  <ExcelExportImport
+                    data={reviewODSTR14}
+                    setimportedData={setimportedData}
+                    fileName="reviewODSTR14.xlsx"
+                    gridNo={35}
+                  />
+                </div>
+              </div>
+              <table>
+                <thead>
+                  <tr>
+                    <th>Batch No</th>
+                    <th>Tests parameter</th>
+                    <th>LSL</th>
+                    <th>USL</th>
+                    <th>LCL</th>
+                    <th>UCL</th>
+                    <th>Observed Value</th>
+                    <th>Complies/Does Not complies</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {reviewODSTR14?.map((item, index) => {
+                    return (
+                      <tr key={index}>
+                        <td>
+                          <input
+                            value={item.batchNo}
+                            onChange={(e) => {
+                              const newData = [...reviewODSTR14];
+                              newData[index].batchNo = e.target.value;
+                              setReviewOSTR14(newData);
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.testsParameter}
+                            onChange={(e) => {
+                              const newData = [...reviewODSTR14];
+                              newData[index].testsParameter = e.target.value;
+                              setReviewOSTR14(newData);
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            type="number"
+                            value={item.LSL}
+                            onChange={(e) => {
+                              const newData = [...reviewODSTR14];
+                              newData[index].LSL = e.target.value;
+                              setReviewOSTR14(newData);
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            type="number"
+                            value={item.USL}
+                            onChange={(e) => {
+                              const newData = [...reviewODSTR14];
+                              newData[index].USL = e.target.value;
+                              setReviewOSTR14(newData);
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            type="number"
+                            value={item.LCL}
+                            onChange={(e) => {
+                              const newData = [...reviewODSTR14];
+                              newData[index].LCL = e.target.value;
+                              setReviewOSTR14(newData);
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            type="number"
+                            value={item.UCL}
+                            onChange={(e) => {
+                              const newData = [...reviewODSTR14];
+                              newData[index].UCL = e.target.value;
+                              setReviewOSTR14(newData);
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            type="number"
+                            value={item.observedValue}
+                            onChange={(e) => {
+                              const newData = [...reviewODSTR14];
+                              newData[index].observedValue = e.target.value;
+                              setReviewOSTR14(newData);
+                            }}
+                          />
+                        </td>
+
+                        <td>
+                          <input
+                            value={item.compliesNotComplies}
+                            onChange={(e) => {
+                              const newData = [...reviewODSTR14];
+                              newData[index].compliesNotComplies = e.target.value;
+                              setReviewOSTR14(newData);
+                            }}
+                          />
+                        </td>
+                      </tr>
+                    );
+                  })}
+                </tbody>
+              </table>
+            </div>
+            <h1 className="gridName pt-8">Disinteration Of Pentoprazole Test Result</h1>
+            <div>
+              <div className="AddRows d-flex w-full justify-between items-center text-3xl">
+                <div className="flex items-center">
+                  <MdNoteAdd onClick={addReviewODSTRRow15} />
+                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
+                </div>
+                <div className="flex gap-4 ">
+                  <ExcelExportImport
+                    data={reviewODSTR15}
+                    setimportedData={setimportedData}
+                    fileName="reviewODSTR15.xlsx"
+                    gridNo={36}
+                  />
+                </div>
+              </div>
+              <table>
+                <thead>
+                  <tr>
+                    <th>Batch No</th>
+                    <th>Tests parameter</th>
+                    <th>LSL</th>
+                    <th>USL</th>
+                    <th>LCL</th>
+                    <th>UCL</th>
+                    <th>Observed Value</th>
+                    <th>Complies/Does Not complies</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {reviewODSTR15?.map((item, index) => {
+                    return (
+                      <tr key={index}>
+                        <td>
+                          <input
+                            value={item.batchNo}
+                            onChange={(e) => {
+                              const newData = [...reviewODSTR15];
+                              newData[index].batchNo = e.target.value;
+                              setReviewOSTR15(newData);
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.testsParameter}
+                            onChange={(e) => {
+                              const newData = [...reviewODSTR15];
+                              newData[index].testsParameter = e.target.value;
+                              setReviewOSTR15(newData);
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            type="number"
+                            value={item.LSL}
+                            onChange={(e) => {
+                              const newData = [...reviewODSTR15];
+                              newData[index].LSL = e.target.value;
+                              setReviewOSTR15(newData);
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            type="number"
+                            value={item.USL}
+                            onChange={(e) => {
+                              const newData = [...reviewODSTR15];
+                              newData[index].USL = e.target.value;
+                              setReviewOSTR15(newData);
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            type="number"
+                            value={item.LCL}
+                            onChange={(e) => {
+                              const newData = [...reviewODSTR15];
+                              newData[index].LCL = e.target.value;
+                              setReviewOSTR15(newData);
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            type="number"
+                            value={item.UCL}
+                            onChange={(e) => {
+                              const newData = [...reviewODSTR15];
+                              newData[index].UCL = e.target.value;
+                              setReviewOSTR15(newData);
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            type="number"
+                            value={item.observedValue}
+                            onChange={(e) => {
+                              const newData = [...reviewODSTR15];
+                              newData[index].observedValue = e.target.value;
+                              setReviewOSTR15(newData);
+                            }}
+                          />
+                        </td>
+
+                        <td>
+                          <input
+                            value={item.compliesNotComplies}
+                            onChange={(e) => {
+                              const newData = [...reviewODSTR15];
+                              newData[index].compliesNotComplies = e.target.value;
+                              setReviewOSTR15(newData);
                             }}
                           />
                         </td>
@@ -6017,22 +6894,14 @@ console.log(pQRData,"pQRData")
             </div>
             <div>
               <h4 className="gridName mt-5">Summary</h4>
-              <TinyEditor
-                editorContent={tiny27}
-                setEditorContent={setTinyContent}
-                tinyNo={27}
-              />
+              <TinyEditor editorContent={tiny27} setEditorContent={setTinyContent} tinyNo={27} />
             </div>
-            <div className="sub-head">
-              Review of Raw Material Excipient Test Results
-            </div>
+            <div className="sub-head">Review of Raw Material Excipient Test Results</div>
             <div>
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addReviewORMETRRow} />
-                  <div className="addrowinstruction  pl-2">
-                    Add Rows by clicking on (+) icon
-                  </div>
+                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
                 </div>
                 <div className="flex gap-4 ">
                   <ExcelExportImport
@@ -6046,7 +6915,7 @@ console.log(pQRData,"pQRData")
                 <thead>
                   <tr>
                     <th rowSpan={2}>Sl. No</th>
-                    <th rowSpan={2}>Material</th>
+                    <th rowSpan={2}>Primary Packing Material</th>
                     <th rowSpan={2}>Test parameter</th>
                     <th rowSpan={2}>Specification limit</th>
                     <th className="centerText" colSpan={2}>
@@ -6089,8 +6958,7 @@ console.log(pQRData,"pQRData")
                             value={item.specificationLimit}
                             onChange={(e) => {
                               const newData = [...reviewORMETR];
-                              newData[index].specificationLimit =
-                                e.target.value;
+                              newData[index].specificationLimit = e.target.value;
                               setReviewORMETR(newData);
                             }}
                           />
@@ -6100,8 +6968,7 @@ console.log(pQRData,"pQRData")
                             value={item.obtainedValue.minimum}
                             onChange={(e) => {
                               const newData = [...reviewORMETR];
-                              newData[index].obtainedValue.minimum =
-                                e.target.value;
+                              newData[index].obtainedValue.minimum = e.target.value;
                               setReviewORMETR(newData);
                             }}
                           />
@@ -6111,8 +6978,7 @@ console.log(pQRData,"pQRData")
                             value={item.obtainedValue.maximum}
                             onChange={(e) => {
                               const newData = [...reviewORMETR];
-                              newData[index].obtainedValue.maximum =
-                                e.target.value;
+                              newData[index].obtainedValue.maximum = e.target.value;
                               setReviewORMETR(newData);
                             }}
                           />
@@ -6122,8 +6988,7 @@ console.log(pQRData,"pQRData")
                             value={item.compliesNotComplies}
                             onChange={(e) => {
                               const newData = [...reviewORMETR];
-                              newData[index].compliesNotComplies =
-                                e.target.value;
+                              newData[index].compliesNotComplies = e.target.value;
                               setReviewORMETR(newData);
                             }}
                           />
@@ -6136,22 +7001,14 @@ console.log(pQRData,"pQRData")
             </div>
             <div>
               <h4 className="gridName mt-5">Summary</h4>
-              <TinyEditor
-                editorContent={tiny28}
-                setEditorContent={setTinyContent}
-                tinyNo={28}
-              />
+              <TinyEditor editorContent={tiny28} setEditorContent={setTinyContent} tinyNo={28} />
             </div>
-            <div className="sub-head">
-              Review of Packing Material Test Results
-            </div>
+            <div className="sub-head">Review of Packing Material Test Results</div>
             <div>
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addreviewOPMTRRow} />
-                  <div className="addrowinstruction  pl-2">
-                    Add Rows by clicking on (+) icon
-                  </div>
+                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
                 </div>
                 <div className="flex gap-4 ">
                   <ExcelExportImport
@@ -6208,8 +7065,7 @@ console.log(pQRData,"pQRData")
                             value={item.specificationLimit}
                             onChange={(e) => {
                               const newData = [...reviewOPMTR];
-                              newData[index].specificationLimit =
-                                e.target.value;
+                              newData[index].specificationLimit = e.target.value;
                               setReviewOPMTR(newData);
                             }}
                           />
@@ -6219,8 +7075,7 @@ console.log(pQRData,"pQRData")
                             value={item.obtainedValue.minimum}
                             onChange={(e) => {
                               const newData = [...reviewOPMTR];
-                              newData[index].obtainedValue.minimum =
-                                e.target.value;
+                              newData[index].obtainedValue.minimum = e.target.value;
                               setReviewOPMTR(newData);
                             }}
                           />
@@ -6230,8 +7085,7 @@ console.log(pQRData,"pQRData")
                             value={item.obtainedValue.maximum}
                             onChange={(e) => {
                               const newData = [...reviewOPMTR];
-                              newData[index].obtainedValue.maximum =
-                                e.target.value;
+                              newData[index].obtainedValue.maximum = e.target.value;
                               setReviewOPMTR(newData);
                             }}
                           />
@@ -6241,8 +7095,7 @@ console.log(pQRData,"pQRData")
                             value={item.compliesNotComplies}
                             onChange={(e) => {
                               const newData = [...reviewOPMTR];
-                              newData[index].compliesNotComplies =
-                                e.target.value;
+                              newData[index].compliesNotComplies = e.target.value;
                               setReviewOPMTR(newData);
                             }}
                           />
@@ -6255,23 +7108,15 @@ console.log(pQRData,"pQRData")
             </div>
             <div>
               <h4 className="gridName mt-5">Summary</h4>
-              <TinyEditor
-                editorContent={tiny29}
-                setEditorContent={setTinyContent}
-                tinyNo={29}
-              />
+              <TinyEditor editorContent={tiny29} setEditorContent={setTinyContent} tinyNo={29} />
             </div>
-            <div className="sub-head">
-              Review of Drug Product – In process Test Results
-            </div>
+            <div className="sub-head">Review of Drug Product – In process Test Results</div>
             <h4 className="gridName pt-2">Dilution Buffer 1 - Test Results</h4>
             <div>
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addReviewODPRow} />
-                  <div className="addrowinstruction  pl-2">
-                    Add Rows by clicking on (+) icon
-                  </div>
+                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
                 </div>
                 <div className="flex gap-4 ">
                   <ExcelExportImport
@@ -6328,8 +7173,7 @@ console.log(pQRData,"pQRData")
                             value={item.specificationLimit}
                             onChange={(e) => {
                               const newData = [...reviewODP];
-                              newData[index].specificationLimit =
-                                e.target.value;
+                              newData[index].specificationLimit = e.target.value;
                               setReviewODP(newData);
                             }}
                           />
@@ -6339,8 +7183,7 @@ console.log(pQRData,"pQRData")
                             value={item.obtainedValue.minimum}
                             onChange={(e) => {
                               const newData = [...reviewODP];
-                              newData[index].obtainedValue.minimum =
-                                e.target.value;
+                              newData[index].obtainedValue.minimum = e.target.value;
                               setReviewODP(newData);
                             }}
                           />
@@ -6350,8 +7193,7 @@ console.log(pQRData,"pQRData")
                             value={item.obtainedValue.maximum}
                             onChange={(e) => {
                               const newData = [...reviewODP];
-                              newData[index].obtainedValue.maximum =
-                                e.target.value;
+                              newData[index].obtainedValue.maximum = e.target.value;
                               setReviewODP(newData);
                             }}
                           />
@@ -6361,8 +7203,7 @@ console.log(pQRData,"pQRData")
                             value={item.compliesNotComplies}
                             onChange={(e) => {
                               const newData = [...reviewODP];
-                              newData[index].compliesNotComplies =
-                                e.target.value;
+                              newData[index].compliesNotComplies = e.target.value;
                               setReviewODP(newData);
                             }}
                           />
@@ -6378,9 +7219,7 @@ console.log(pQRData,"pQRData")
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addReviewODPRow2} />
-                  <div className="addrowinstruction  pl-2">
-                    Add Rows by clicking on (+) icon
-                  </div>
+                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
                 </div>
                 <div className="flex gap-4 ">
                   <ExcelExportImport
@@ -6437,8 +7276,7 @@ console.log(pQRData,"pQRData")
                             value={item.specificationLimit}
                             onChange={(e) => {
                               const newData = [...reviewODP2];
-                              newData[index].specificationLimit =
-                                e.target.value;
+                              newData[index].specificationLimit = e.target.value;
                               setReviewODP2(newData);
                             }}
                           />
@@ -6448,8 +7286,7 @@ console.log(pQRData,"pQRData")
                             value={item.obtainedValue.minimum}
                             onChange={(e) => {
                               const newData = [...reviewODP2];
-                              newData[index].obtainedValue.minimum =
-                                e.target.value;
+                              newData[index].obtainedValue.minimum = e.target.value;
                               setReviewODP2(newData);
                             }}
                           />
@@ -6459,8 +7296,7 @@ console.log(pQRData,"pQRData")
                             value={item.obtainedValue.maximum}
                             onChange={(e) => {
                               const newData = [...reviewODP2];
-                              newData[index].obtainedValue.maximum =
-                                e.target.value;
+                              newData[index].obtainedValue.maximum = e.target.value;
                               setReviewODP2(newData);
                             }}
                           />
@@ -6470,8 +7306,7 @@ console.log(pQRData,"pQRData")
                             value={item.compliesNotComplies}
                             onChange={(e) => {
                               const newData = [...reviewODP2];
-                              newData[index].compliesNotComplies =
-                                e.target.value;
+                              newData[index].compliesNotComplies = e.target.value;
                               setReviewODP2(newData);
                             }}
                           />
@@ -6487,9 +7322,7 @@ console.log(pQRData,"pQRData")
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addReviewODPRow3} />
-                  <div className="addrowinstruction  pl-2">
-                    Add Rows by clicking on (+) icon
-                  </div>
+                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
                 </div>
                 <div className="flex gap-4 ">
                   <ExcelExportImport
@@ -6546,8 +7379,7 @@ console.log(pQRData,"pQRData")
                             value={item.specificationLimit}
                             onChange={(e) => {
                               const newData = [...reviewODP3];
-                              newData[index].specificationLimit =
-                                e.target.value;
+                              newData[index].specificationLimit = e.target.value;
                               setReviewODP3(newData);
                             }}
                           />
@@ -6557,8 +7389,7 @@ console.log(pQRData,"pQRData")
                             value={item.obtainedValue.minimum}
                             onChange={(e) => {
                               const newData = [...reviewODP3];
-                              newData[index].obtainedValue.minimum =
-                                e.target.value;
+                              newData[index].obtainedValue.minimum = e.target.value;
                               setReviewODP3(newData);
                             }}
                           />
@@ -6568,8 +7399,7 @@ console.log(pQRData,"pQRData")
                             value={item.obtainedValue.maximum}
                             onChange={(e) => {
                               const newData = [...reviewODP3];
-                              newData[index].obtainedValue.maximum =
-                                e.target.value;
+                              newData[index].obtainedValue.maximum = e.target.value;
                               setReviewODP3(newData);
                             }}
                           />
@@ -6579,8 +7409,7 @@ console.log(pQRData,"pQRData")
                             value={item.compliesNotComplies}
                             onChange={(e) => {
                               const newData = [...reviewODP3];
-                              newData[index].compliesNotComplies =
-                                e.target.value;
+                              newData[index].compliesNotComplies = e.target.value;
                               setReviewODP3(newData);
                             }}
                           />
@@ -6596,9 +7425,7 @@ console.log(pQRData,"pQRData")
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addReviewODPRow4} />
-                  <div className="addrowinstruction  pl-2">
-                    Add Rows by clicking on (+) icon
-                  </div>
+                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
                 </div>
                 <div className="flex gap-4 ">
                   <ExcelExportImport
@@ -6655,8 +7482,7 @@ console.log(pQRData,"pQRData")
                             value={item.specificationLimit}
                             onChange={(e) => {
                               const newData = [...reviewODP4];
-                              newData[index].specificationLimit =
-                                e.target.value;
+                              newData[index].specificationLimit = e.target.value;
                               setReviewODP4(newData);
                             }}
                           />
@@ -6666,8 +7492,7 @@ console.log(pQRData,"pQRData")
                             value={item.obtainedValue.minimum}
                             onChange={(e) => {
                               const newData = [...reviewODP4];
-                              newData[index].obtainedValue.minimum =
-                                e.target.value;
+                              newData[index].obtainedValue.minimum = e.target.value;
                               setReviewODP4(newData);
                             }}
                           />
@@ -6677,8 +7502,7 @@ console.log(pQRData,"pQRData")
                             value={item.obtainedValue.maximum}
                             onChange={(e) => {
                               const newData = [...reviewODP4];
-                              newData[index].obtainedValue.maximum =
-                                e.target.value;
+                              newData[index].obtainedValue.maximum = e.target.value;
                               setReviewODP4(newData);
                             }}
                           />
@@ -6688,8 +7512,7 @@ console.log(pQRData,"pQRData")
                             value={item.compliesNotComplies}
                             onChange={(e) => {
                               const newData = [...reviewODP4];
-                              newData[index].compliesNotComplies =
-                                e.target.value;
+                              newData[index].compliesNotComplies = e.target.value;
                               setReviewODP4(newData);
                             }}
                           />
@@ -6705,9 +7528,7 @@ console.log(pQRData,"pQRData")
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addReviewODPRow5} />
-                  <div className="addrowinstruction  pl-2">
-                    Add Rows by clicking on (+) icon
-                  </div>
+                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
                 </div>
                 <div className="flex gap-4 ">
                   <ExcelExportImport
@@ -6764,8 +7585,7 @@ console.log(pQRData,"pQRData")
                             value={item.specificationLimit}
                             onChange={(e) => {
                               const newData = [...reviewODP5];
-                              newData[index].specificationLimit =
-                                e.target.value;
+                              newData[index].specificationLimit = e.target.value;
                               setReviewODP5(newData);
                             }}
                           />
@@ -6775,8 +7595,7 @@ console.log(pQRData,"pQRData")
                             value={item.obtainedValue.minimum}
                             onChange={(e) => {
                               const newData = [...reviewODP5];
-                              newData[index].obtainedValue.minimum =
-                                e.target.value;
+                              newData[index].obtainedValue.minimum = e.target.value;
                               setReviewODP5(newData);
                             }}
                           />
@@ -6786,8 +7605,7 @@ console.log(pQRData,"pQRData")
                             value={item.obtainedValue.maximum}
                             onChange={(e) => {
                               const newData = [...reviewODP5];
-                              newData[index].obtainedValue.maximum =
-                                e.target.value;
+                              newData[index].obtainedValue.maximum = e.target.value;
                               setReviewODP5(newData);
                             }}
                           />
@@ -6797,8 +7615,7 @@ console.log(pQRData,"pQRData")
                             value={item.compliesNotComplies}
                             onChange={(e) => {
                               const newData = [...reviewODP5];
-                              newData[index].compliesNotComplies =
-                                e.target.value;
+                              newData[index].compliesNotComplies = e.target.value;
                               setReviewODP5(newData);
                             }}
                           />
@@ -6814,9 +7631,7 @@ console.log(pQRData,"pQRData")
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addReviewODPRow6} />
-                  <div className="addrowinstruction  pl-2">
-                    Add Rows by clicking on (+) icon
-                  </div>
+                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
                 </div>
                 <div className="flex gap-4 ">
                   <ExcelExportImport
@@ -6873,8 +7688,7 @@ console.log(pQRData,"pQRData")
                             value={item.specificationLimit}
                             onChange={(e) => {
                               const newData = [...reviewODP6];
-                              newData[index].specificationLimit =
-                                e.target.value;
+                              newData[index].specificationLimit = e.target.value;
                               setReviewODP6(newData);
                             }}
                           />
@@ -6884,8 +7698,7 @@ console.log(pQRData,"pQRData")
                             value={item.obtainedValue.minimum}
                             onChange={(e) => {
                               const newData = [...reviewODP6];
-                              newData[index].obtainedValue.minimum =
-                                e.target.value;
+                              newData[index].obtainedValue.minimum = e.target.value;
                               setReviewODP6(newData);
                             }}
                           />
@@ -6895,8 +7708,7 @@ console.log(pQRData,"pQRData")
                             value={item.obtainedValue.maximum}
                             onChange={(e) => {
                               const newData = [...reviewODP6];
-                              newData[index].obtainedValue.maximum =
-                                e.target.value;
+                              newData[index].obtainedValue.maximum = e.target.value;
                               setReviewODP6(newData);
                             }}
                           />
@@ -6906,8 +7718,7 @@ console.log(pQRData,"pQRData")
                             value={item.compliesNotComplies}
                             onChange={(e) => {
                               const newData = [...reviewODP6];
-                              newData[index].compliesNotComplies =
-                                e.target.value;
+                              newData[index].compliesNotComplies = e.target.value;
                               setReviewODP6(newData);
                             }}
                           />
@@ -6923,9 +7734,7 @@ console.log(pQRData,"pQRData")
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addReviewODPRow7} />
-                  <div className="addrowinstruction  pl-2">
-                    Add Rows by clicking on (+) icon
-                  </div>
+                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
                 </div>
                 <div className="flex gap-4 ">
                   <ExcelExportImport
@@ -6982,8 +7791,7 @@ console.log(pQRData,"pQRData")
                             value={item.specificationLimit}
                             onChange={(e) => {
                               const newData = [...reviewODP7];
-                              newData[index].specificationLimit =
-                                e.target.value;
+                              newData[index].specificationLimit = e.target.value;
                               setReviewODP7(newData);
                             }}
                           />
@@ -6993,8 +7801,7 @@ console.log(pQRData,"pQRData")
                             value={item.obtainedValue.minimum}
                             onChange={(e) => {
                               const newData = [...reviewODP7];
-                              newData[index].obtainedValue.minimum =
-                                e.target.value;
+                              newData[index].obtainedValue.minimum = e.target.value;
                               setReviewODP7(newData);
                             }}
                           />
@@ -7004,8 +7811,7 @@ console.log(pQRData,"pQRData")
                             value={item.obtainedValue.maximum}
                             onChange={(e) => {
                               const newData = [...reviewODP7];
-                              newData[index].obtainedValue.maximum =
-                                e.target.value;
+                              newData[index].obtainedValue.maximum = e.target.value;
                               setReviewODP7(newData);
                             }}
                           />
@@ -7015,8 +7821,7 @@ console.log(pQRData,"pQRData")
                             value={item.compliesNotComplies}
                             onChange={(e) => {
                               const newData = [...reviewODP10];
-                              newData[index].compliesNotComplies =
-                                e.target.value;
+                              newData[index].compliesNotComplies = e.target.value;
                               setReviewODP10(newData);
                             }}
                           />
@@ -7032,9 +7837,7 @@ console.log(pQRData,"pQRData")
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addReviewODPRow8} />
-                  <div className="addrowinstruction  pl-2">
-                    Add Rows by clicking on (+) icon
-                  </div>
+                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
                 </div>
                 <div className="flex gap-4 ">
                   <ExcelExportImport
@@ -7091,8 +7894,7 @@ console.log(pQRData,"pQRData")
                             value={item.specificationLimit}
                             onChange={(e) => {
                               const newData = [...reviewODP8];
-                              newData[index].specificationLimit =
-                                e.target.value;
+                              newData[index].specificationLimit = e.target.value;
                               setReviewODP8(newData);
                             }}
                           />
@@ -7102,8 +7904,7 @@ console.log(pQRData,"pQRData")
                             value={item.obtainedValue.minimum}
                             onChange={(e) => {
                               const newData = [...reviewODP8];
-                              newData[index].obtainedValue.minimum =
-                                e.target.value;
+                              newData[index].obtainedValue.minimum = e.target.value;
                               setReviewODP8(newData);
                             }}
                           />
@@ -7113,8 +7914,7 @@ console.log(pQRData,"pQRData")
                             value={item.obtainedValue.maximum}
                             onChange={(e) => {
                               const newData = [...reviewODP8];
-                              newData[index].obtainedValue.maximum =
-                                e.target.value;
+                              newData[index].obtainedValue.maximum = e.target.value;
                               setReviewODP8(newData);
                             }}
                           />
@@ -7124,8 +7924,7 @@ console.log(pQRData,"pQRData")
                             value={item.compliesNotComplies}
                             onChange={(e) => {
                               const newData = [...reviewODP8];
-                              newData[index].compliesNotComplies =
-                                e.target.value;
+                              newData[index].compliesNotComplies = e.target.value;
                               setReviewODP8(newData);
                             }}
                           />
@@ -7141,9 +7940,7 @@ console.log(pQRData,"pQRData")
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addReviewODPRow9} />
-                  <div className="addrowinstruction  pl-2">
-                    Add Rows by clicking on (+) icon
-                  </div>
+                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
                 </div>
                 <div className="flex gap-4 ">
                   <ExcelExportImport
@@ -7200,8 +7997,7 @@ console.log(pQRData,"pQRData")
                             value={item.specificationLimit}
                             onChange={(e) => {
                               const newData = [...reviewODP9];
-                              newData[index].specificationLimit =
-                                e.target.value;
+                              newData[index].specificationLimit = e.target.value;
                               setReviewODP9(newData);
                             }}
                           />
@@ -7211,8 +8007,7 @@ console.log(pQRData,"pQRData")
                             value={item.obtainedValue.minimum}
                             onChange={(e) => {
                               const newData = [...reviewODP9];
-                              newData[index].obtainedValue.minimum =
-                                e.target.value;
+                              newData[index].obtainedValue.minimum = e.target.value;
                               setReviewODP9(newData);
                             }}
                           />
@@ -7222,8 +8017,7 @@ console.log(pQRData,"pQRData")
                             value={item.obtainedValue.maximum}
                             onChange={(e) => {
                               const newData = [...reviewODP9];
-                              newData[index].obtainedValue.maximum =
-                                e.target.value;
+                              newData[index].obtainedValue.maximum = e.target.value;
                               setReviewODP9(newData);
                             }}
                           />
@@ -7233,8 +8027,7 @@ console.log(pQRData,"pQRData")
                             value={item.compliesNotComplies}
                             onChange={(e) => {
                               const newData = [...reviewODP9];
-                              newData[index].compliesNotComplies =
-                                e.target.value;
+                              newData[index].compliesNotComplies = e.target.value;
                               setReviewODP9(newData);
                             }}
                           />
@@ -7250,9 +8043,7 @@ console.log(pQRData,"pQRData")
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addReviewODPRow10} />
-                  <div className="addrowinstruction  pl-2">
-                    Add Rows by clicking on (+) icon
-                  </div>
+                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
                 </div>
                 <div className="flex gap-4 ">
                   <ExcelExportImport
@@ -7309,8 +8100,7 @@ console.log(pQRData,"pQRData")
                             value={item.specificationLimit}
                             onChange={(e) => {
                               const newData = [...reviewODP10];
-                              newData[index].specificationLimit =
-                                e.target.value;
+                              newData[index].specificationLimit = e.target.value;
                               setReviewODP10(newData);
                             }}
                           />
@@ -7320,8 +8110,7 @@ console.log(pQRData,"pQRData")
                             value={item.obtainedValue.minimum}
                             onChange={(e) => {
                               const newData = [...reviewODP10];
-                              newData[index].obtainedValue.minimum =
-                                e.target.value;
+                              newData[index].obtainedValue.minimum = e.target.value;
                               setReviewODP10(newData);
                             }}
                           />
@@ -7331,8 +8120,7 @@ console.log(pQRData,"pQRData")
                             value={item.obtainedValue.maximum}
                             onChange={(e) => {
                               const newData = [...reviewODP10];
-                              newData[index].obtainedValue.maximum =
-                                e.target.value;
+                              newData[index].obtainedValue.maximum = e.target.value;
                               setReviewODP10(newData);
                             }}
                           />
@@ -7342,8 +8130,7 @@ console.log(pQRData,"pQRData")
                             value={item.compliesNotComplies}
                             onChange={(e) => {
                               const newData = [...reviewODP10];
-                              newData[index].compliesNotComplies =
-                                e.target.value;
+                              newData[index].compliesNotComplies = e.target.value;
                               setReviewODP10(newData);
                             }}
                           />
@@ -7356,22 +8143,14 @@ console.log(pQRData,"pQRData")
             </div>
             <div>
               <h4 className="gridName mt-5">Summary</h4>
-              <TinyEditor
-                editorContent={tiny30}
-                setEditorContent={setTinyContent}
-                tinyNo={30}
-              />
+              <TinyEditor editorContent={tiny30} setEditorContent={setTinyContent} tinyNo={30} />
             </div>
-            <div className="sub-head">
-              Review of Drug Product –Finished Product Test Results
-            </div>
+            <div className="sub-head">Review of Drug Product –Finished Product Test Results</div>
             <div>
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addReviewODPFPTRRow} />
-                  <div className="addrowinstruction  pl-2">
-                    Add Rows by clicking on (+) icon
-                  </div>
+                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
                 </div>
                 <div className="flex gap-4 ">
                   <ExcelExportImport
@@ -7417,8 +8196,7 @@ console.log(pQRData,"pQRData")
                             value={item.specificationLimit}
                             onChange={(e) => {
                               const newData = [...reviewODPFPTR];
-                              newData[index].specificationLimit =
-                                e.target.value;
+                              newData[index].specificationLimit = e.target.value;
                               setReviewODPFPTR(newData);
                             }}
                           />
@@ -7428,8 +8206,7 @@ console.log(pQRData,"pQRData")
                             value={item.obtainedValue.minimum}
                             onChange={(e) => {
                               const newData = [...reviewODPFPTR];
-                              newData[index].obtainedValue.minimum =
-                                e.target.value;
+                              newData[index].obtainedValue.minimum = e.target.value;
                               setReviewODPFPTR(newData);
                             }}
                           />
@@ -7439,8 +8216,7 @@ console.log(pQRData,"pQRData")
                             value={item.obtainedValue.maximum}
                             onChange={(e) => {
                               const newData = [...reviewODPFPTR];
-                              newData[index].obtainedValue.maximum =
-                                e.target.value;
+                              newData[index].obtainedValue.maximum = e.target.value;
                               setReviewODPFPTR(newData);
                             }}
                           />
@@ -7450,8 +8226,7 @@ console.log(pQRData,"pQRData")
                             value={item.compliesNotComplies}
                             onChange={(e) => {
                               const newData = [...reviewODPFPTR];
-                              newData[index].compliesNotComplies =
-                                e.target.value;
+                              newData[index].compliesNotComplies = e.target.value;
                               setReviewODPFPTR(newData);
                             }}
                           />
@@ -7464,20 +8239,14 @@ console.log(pQRData,"pQRData")
             </div>
             <div>
               <h4 className="gridName mt-5">Summary</h4>
-              <TinyEditor
-                editorContent={tiny31}
-                setEditorContent={setTinyContent}
-                tinyNo={31}
-              />
+              <TinyEditor editorContent={tiny31} setEditorContent={setTinyContent} tinyNo={31} />
             </div>
             <div className="sub-head">Summary of Ongoing Stability Studies</div>
             <div>
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addSummaryOOSSRow} />
-                  <div className="addrowinstruction  pl-2">
-                    Add Rows by clicking on (+) icon
-                  </div>
+                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
                 </div>
                 <div className="flex gap-4 ">
                   <ExcelExportImport
@@ -7548,8 +8317,7 @@ console.log(pQRData,"pQRData")
                             value={item.stabilityProtocolNo}
                             onChange={(e) => {
                               const newData = [...summaryOOSS];
-                              newData[index].stabilityProtocolNo =
-                                e.target.value;
+                              newData[index].stabilityProtocolNo = e.target.value;
                               setSummaryOOSS(newData);
                             }}
                           />
@@ -7561,11 +8329,7 @@ console.log(pQRData,"pQRData")
               </table>
               <div>
                 <h4 className="gridName mt-5">Summary</h4>
-                <TinyEditor
-                  editorContent={tiny32}
-                  setEditorContent={setTinyContent}
-                  tinyNo={32}
-                />
+                <TinyEditor editorContent={tiny32} setEditorContent={setTinyContent} tinyNo={32} />
               </div>
 
               <h4 className="gridName pt-4">Stability Study Related OOS/OOT</h4>
@@ -7573,9 +8337,7 @@ console.log(pQRData,"pQRData")
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addStabilitySRRow} />
-                  <div className="addrowinstruction  pl-2">
-                    Add Rows by clicking on (+) icon
-                  </div>
+                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
                 </div>
                 <div className="flex gap-4 ">
                   <ExcelExportImport
@@ -7614,8 +8376,7 @@ console.log(pQRData,"pQRData")
                             value={item.testingIntervalMonths}
                             onChange={(e) => {
                               const newData = [...stabilitySR];
-                              newData[index].testingIntervalMonths =
-                                e.target.value;
+                              newData[index].testingIntervalMonths = e.target.value;
                               setStabilitySR(newData);
                             }}
                           />
@@ -7637,22 +8398,14 @@ console.log(pQRData,"pQRData")
               </table>
 
               <h4 className="gridName">Summary</h4>
-              <TinyEditor
-                editorContent={tiny33}
-                setEditorContent={setTinyContent}
-                tinyNo={33}
-              />
+              <TinyEditor editorContent={tiny33} setEditorContent={setTinyContent} tinyNo={33} />
 
-              <div className="sub-head">
-                Review of Visual Inspection – Reserve Samples
-              </div>
+              <div className="sub-head">Review of Visual Inspection – Reserve Samples</div>
               <div>
                 <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                   <div className="flex items-center">
                     <MdNoteAdd onClick={addreviewOVIRSRow} />
-                    <div className="addrowinstruction  pl-2">
-                      Add Rows by clicking on (+) icon
-                    </div>
+                    <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
                   </div>
                   <div className="flex gap-4 ">
                     <ExcelExportImport
@@ -7760,80 +8513,41 @@ console.log(pQRData,"pQRData")
                 </table>
               </div>
               <h4 className="gridName mt-4">Summary</h4>
-              <TinyEditor
-                editorContent={tiny34}
-                setEditorContent={setTinyContent}
-                tinyNo={34}
-              />
+              <TinyEditor editorContent={tiny34} setEditorContent={setTinyContent} tinyNo={34} />
+
+              <h4 className="gridName pt-4">Review of Analytical Method Validations</h4>
+              <TinyEditor editorContent={tiny35} setEditorContent={setTinyContent} tinyNo={35} />
+
+              <h4 className="gridName pt-4">Review of Contract Testing Laboratories</h4>
+              <TinyEditor editorContent={tiny36} setEditorContent={setTinyContent} tinyNo={36} />
 
               <h4 className="gridName pt-4">
-                Review of Analytical Method Validations
+                Review of Environmental Monitoring Trend and water trends Reports
               </h4>
-              <TinyEditor
-                editorContent={tiny35}
-                setEditorContent={setTinyContent}
-                tinyNo={35}
-              />
-
-              <h4 className="gridName pt-4">
-                Review of Contract Testing Laboratories
-              </h4>
-              <TinyEditor
-                editorContent={tiny36}
-                setEditorContent={setTinyContent}
-                tinyNo={36}
-              />
-
-              <h4 className="gridName pt-4">
-                Review of Environmental Monitoring Trend and water trends
-                Reports
-              </h4>
-              <TinyEditor
-                editorContent={tiny37}
-                setEditorContent={setTinyContent}
-                tinyNo={37}
-              />
+              <TinyEditor editorContent={tiny37} setEditorContent={setTinyContent} tinyNo={37} />
 
               <h4 className="gridName pt-4">Laboratory Review Summary</h4>
-              <TinyEditor
-                editorContent={tiny38}
-                setEditorContent={setTinyContent}
-                tinyNo={38}
-              />
+              <TinyEditor editorContent={tiny38} setEditorContent={setTinyContent} tinyNo={38} />
             </div>
           </div>
         ) : null}
         {tab === "EAMR" ? (
           <div>
             <h4 className="gridName">Preventive Maintenance Details</h4>
-            <TinyEditor
-              editorContent={tiny39}
-              setEditorContent={setTinyContent}
-              tinyNo={39}
-            />
+            <TinyEditor editorContent={tiny39} setEditorContent={setTinyContent} tinyNo={39} />
 
             <h4 className="gridName pt-4"> Qualification details</h4>
-            <TinyEditor
-              editorContent={tiny40}
-              setEditorContent={setTinyContent}
-              tinyNo={40}
-            />
+            <TinyEditor editorContent={tiny40} setEditorContent={setTinyContent} tinyNo={40} />
 
             <h4 className="gridName pt-4"> Calibration Details</h4>
-            <TinyEditor
-              editorContent={tiny41}
-              setEditorContent={setTinyContent}
-              tinyNo={41}
-            />
+            <TinyEditor editorContent={tiny41} setEditorContent={setTinyContent} tinyNo={41} />
 
             <div className="sub-head">HVAC Qualification Status</div>
             <div>
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addHVACQStatusRow} />
-                  <div className="addrowinstruction  pl-2">
-                    Add Rows by clicking on (+) icon
-                  </div>
+                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
                 </div>
                 <div className="flex gap-4 ">
                   <ExcelExportImport
@@ -7896,23 +8610,15 @@ console.log(pQRData,"pQRData")
             </div>
             <div>
               <h4 className="gridName mt-5">Summary</h4>
-              <TinyEditor
-                editorContent={tiny42}
-                setEditorContent={setTinyContent}
-                tinyNo={42}
-              />
+              <TinyEditor editorContent={tiny42} setEditorContent={setTinyContent} tinyNo={42} />
             </div>
 
-            <h4 className="gridName pt-4">
-              Sanitization and Sterilization Details of Utilities
-            </h4>
+            <h4 className="gridName pt-4">Sanitization and Sterilization Details of Utilities</h4>
             <div>
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addSanitizationASDOURow} />
-                  <div className="addrowinstruction  pl-2">
-                    Add Rows by clicking on (+) icon
-                  </div>
+                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
                 </div>
                 <div className="flex gap-4 ">
                   <ExcelExportImport
@@ -7973,11 +8679,7 @@ console.log(pQRData,"pQRData")
               </table>
             </div>
             <h4 className="gridName pt-4">Summary</h4>
-            <TinyEditor
-              editorContent={tiny43}
-              setEditorContent={setTinyContent}
-              tinyNo={43}
-            />
+            <TinyEditor editorContent={tiny43} setEditorContent={setTinyContent} tinyNo={43} />
 
             <h4 className="gridName pt-4">Compressed Gases</h4>
             <div>
@@ -7985,9 +8687,8 @@ console.log(pQRData,"pQRData")
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addCompressedGasesRow} />
                   <div className="addrowinstruction  pl-2">
-                    Compressed gases testing performed as per the scheduled
-                    frequency and results were found to be satisfactory, system
-                    is in qualified state
+                    Compressed gases testing performed as per the scheduled frequency and results
+                    were found to be satisfactory, system is in qualified state
                   </div>
                 </div>
                 <div className="flex gap-4 ">
@@ -8059,11 +8760,7 @@ console.log(pQRData,"pQRData")
               </table>
             </div>
             <h4 className="gridName pt-4">Engineering Summary</h4>
-            <TinyEditor
-              editorContent={tiny44}
-              setEditorContent={setTinyContent}
-              tinyNo={44}
-            />
+            <TinyEditor editorContent={tiny44} setEditorContent={setTinyContent} tinyNo={44} />
           </div>
         ) : null}
         {tab === "QSR" ? (
@@ -8075,9 +8772,7 @@ console.log(pQRData,"pQRData")
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addReviewOfCPD} />
-                  <div className="addrowinstruction  pl-2">
-                    Add Rows by clicking on (+) icon
-                  </div>
+                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
                 </div>
               </div>
               <table>
@@ -8197,16 +8892,12 @@ console.log(pQRData,"pQRData")
               </table>
             </div>
 
-            <div className="gridName pt-4">
-              Previous Review Period Deviations
-            </div>
+            <div className="gridName pt-4">Previous Review Period Deviations</div>
             <div>
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addPreviewRPD} />
-                  <div className="addrowinstruction  pl-2">
-                    Add Rows by clicking on (+) icon
-                  </div>
+                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
                 </div>
               </div>
               <table>
@@ -8326,7 +9017,7 @@ console.log(pQRData,"pQRData")
               </table>
             </div>
             <h4 className="gridName pt-4">Deviation Summary</h4>
-            <TinyEditor />
+            <TinyEditor editorContent={tiny45} setEditorContent={setTinyContent} tinyNo={45} />
 
             <div className="sub-head"> Review of OOS (Microbiological)</div>
 
@@ -8336,9 +9027,7 @@ console.log(pQRData,"pQRData")
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addCurrentOOS} />
-                  <div className="addrowinstruction  pl-2">
-                    Add Rows by clicking on (+) icon
-                  </div>
+                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
                 </div>
               </div>
               <table>
@@ -8464,9 +9153,7 @@ console.log(pQRData,"pQRData")
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addPreviewOOS} />
-                  <div className="addrowinstruction  pl-2">
-                    Add Rows by clicking on (+) icon
-                  </div>
+                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
                 </div>
               </div>
               <table>
@@ -8588,7 +9275,7 @@ console.log(pQRData,"pQRData")
               </table>
             </div>
             <h4 className="gridName pt-4">OOS Summary</h4>
-            <TinyEditor />
+            <TinyEditor editorContent={tiny46} setEditorContent={setTinyContent} tinyNo={46} />
 
             <div className="sub-head"> Review of OOAC (Microbiological)</div>
 
@@ -8598,9 +9285,7 @@ console.log(pQRData,"pQRData")
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addCurrentOOAC} />
-                  <div className="addrowinstruction  pl-2">
-                    Add Rows by clicking on (+) icon
-                  </div>
+                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
                 </div>
               </div>
               <table>
@@ -8726,9 +9411,7 @@ console.log(pQRData,"pQRData")
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addPreviewOOAC} />
-                  <div className="addrowinstruction  pl-2">
-                    Add Rows by clicking on (+) icon
-                  </div>
+                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
                 </div>
               </div>
               <table>
@@ -8850,7 +9533,7 @@ console.log(pQRData,"pQRData")
               </table>
             </div>
             <h4 className="gridName pt-4">OOAC Summary</h4>
-            <TinyEditor />
+            <TinyEditor editorContent={tiny47} setEditorContent={setTinyContent} tinyNo={47} />
 
             <div className="sub-head"> Review of OOAL(Microbiological)</div>
 
@@ -8860,9 +9543,7 @@ console.log(pQRData,"pQRData")
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addCurrentOOAL} />
-                  <div className="addrowinstruction  pl-2">
-                    Add Rows by clicking on (+) icon
-                  </div>
+                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
                 </div>
               </div>
               <table>
@@ -8988,9 +9669,7 @@ console.log(pQRData,"pQRData")
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addPreviewOOAL} />
-                  <div className="addrowinstruction  pl-2">
-                    Add Rows by clicking on (+) icon
-                  </div>
+                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
                 </div>
               </div>
               <table>
@@ -9112,7 +9791,7 @@ console.log(pQRData,"pQRData")
               </table>
             </div>
             <h4 className="gridName pt-4">OOAL Summary</h4>
-            <TinyEditor />
+            <TinyEditor editorContent={tiny48} setEditorContent={setTinyContent} tinyNo={48} />
 
             <div className="sub-head">Review of OOS (Analytical)</div>
 
@@ -9122,9 +9801,7 @@ console.log(pQRData,"pQRData")
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addCurrentOOSA} />
-                  <div className="addrowinstruction  pl-2">
-                    Add Rows by clicking on (+) icon
-                  </div>
+                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
                 </div>
               </div>
               <table>
@@ -9250,9 +9927,7 @@ console.log(pQRData,"pQRData")
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addPreviewOOSA} />
-                  <div className="addrowinstruction  pl-2">
-                    Add Rows by clicking on (+) icon
-                  </div>
+                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
                 </div>
               </div>
               <table>
@@ -9374,7 +10049,7 @@ console.log(pQRData,"pQRData")
               </table>
             </div>
             <h4 className="gridName pt-4">OOSA Summary</h4>
-            <TinyEditor />
+            <TinyEditor editorContent={tiny49} setEditorContent={setTinyContent} tinyNo={49} />
 
             <div className="sub-head">Review of OOT (Analytical)</div>
 
@@ -9383,9 +10058,7 @@ console.log(pQRData,"pQRData")
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addCurrentOOT} />
-                  <div className="addrowinstruction  pl-2">
-                    Add Rows by clicking on (+) icon
-                  </div>
+                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
                 </div>
               </div>
               <table>
@@ -9511,9 +10184,7 @@ console.log(pQRData,"pQRData")
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addPreviewOOT} />
-                  <div className="addrowinstruction  pl-2">
-                    Add Rows by clicking on (+) icon
-                  </div>
+                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
                 </div>
               </div>
               <table>
@@ -9636,21 +10307,17 @@ console.log(pQRData,"pQRData")
             </div>
 
             <h4 className="gridName pt-4">OOT Summary</h4>
-            <TinyEditor />
+            <TinyEditor editorContent={tiny50} setEditorContent={setTinyContent} tinyNo={50} />
 
             <div className="sub-head">Review of Change Controls</div>
 
-            <div className="gridName pt-4">
-              Current Review Period Change Controls
-            </div>
+            <div className="gridName pt-4">Current Review Period Change Controls</div>
 
             <div>
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addCurrentCC} />
-                  <div className="addrowinstruction  pl-2">
-                    Add Rows by clicking on (+) icon
-                  </div>
+                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
                 </div>
               </div>
               <table>
@@ -9770,17 +10437,13 @@ console.log(pQRData,"pQRData")
               </table>
             </div>
 
-            <div className="gridName pt-4">
-              Previous Review Period Change Controls
-            </div>
+            <div className="gridName pt-4">Previous Review Period Change Controls</div>
 
             <div>
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addPreviewCC} />
-                  <div className="addrowinstruction  pl-2">
-                    Add Rows by clicking on (+) icon
-                  </div>
+                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
                 </div>
               </div>
               <table>
@@ -9903,7 +10566,7 @@ console.log(pQRData,"pQRData")
             </div>
 
             <h4 className="gridName pt-4">Change Control Summary</h4>
-            <TinyEditor />
+            <TinyEditor editorContent={tiny51} setEditorContent={setTinyContent} tinyNo={51} />
 
             <div className="sub-head">Review of Lab Incident</div>
 
@@ -9912,9 +10575,7 @@ console.log(pQRData,"pQRData")
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addCurrentLabI} />
-                  <div className="addrowinstruction  pl-2">
-                    Add Rows by clicking on (+) icon
-                  </div>
+                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
                 </div>
               </div>
               <table>
@@ -10040,9 +10701,7 @@ console.log(pQRData,"pQRData")
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addPreviewLabI} />
-                  <div className="addrowinstruction  pl-2">
-                    Add Rows by clicking on (+) icon
-                  </div>
+                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
                 </div>
               </div>
               <table>
@@ -10165,20 +10824,16 @@ console.log(pQRData,"pQRData")
             </div>
 
             <h4 className="gridName pt-4">Lab Incident Summary</h4>
-            <TinyEditor />
+            <TinyEditor editorContent={tiny52} setEditorContent={setTinyContent} tinyNo={52} />
 
             <div className="sub-head">Review of Market Complaints</div>
 
-            <div className="gridName pt-4">
-              Current Review Period Complaints
-            </div>
+            <div className="gridName pt-4">Current Review Period Complaints</div>
             <div>
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addCurrentMC} />
-                  <div className="addrowinstruction  pl-2">
-                    Add Rows by clicking on (+) icon
-                  </div>
+                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
                 </div>
               </div>
               <table>
@@ -10298,17 +10953,13 @@ console.log(pQRData,"pQRData")
               </table>
             </div>
 
-            <div className="gridName pt-4">
-              Previous Review Period Complaints
-            </div>
+            <div className="gridName pt-4">Previous Review Period Complaints</div>
 
             <div>
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addPreviewMC} />
-                  <div className="addrowinstruction  pl-2">
-                    Add Rows by clicking on (+) icon
-                  </div>
+                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
                 </div>
               </div>
               <table>
@@ -10431,20 +11082,15 @@ console.log(pQRData,"pQRData")
             </div>
 
             <h4 className="gridName pt-4">Market Complaints Summary</h4>
-            <TinyEditor />
+            <TinyEditor editorContent={tiny53} setEditorContent={setTinyContent} tinyNo={53} />
 
             <div className="sub-head">Quality Related Notification</div>
-            <div className="gridName pt-4">
-              {" "}
-              Current Review Period Quality Related Notification
-            </div>
+            <div className="gridName pt-4"> Current Review Period Quality Related Notification</div>
             <div>
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addCurrentRPQRNRow} />
-                  <div className="addrowinstruction  pl-2">
-                    Add Rows by clicking on (+) icon
-                  </div>
+                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
                 </div>
                 <div className="flex gap-4 ">
                   <ExcelExportImport
@@ -10497,8 +11143,7 @@ console.log(pQRData,"pQRData")
                             value={item.qualityRelatedNotification.no}
                             onChange={(e) => {
                               const newData = [...currentRPQRN];
-                              newData[index].qualityRelatedNotification.no =
-                                e.target.value;
+                              newData[index].qualityRelatedNotification.no = e.target.value;
                               setCurrentRPQRN(newData);
                             }}
                           />
@@ -10509,9 +11154,7 @@ console.log(pQRData,"pQRData")
                             value={item.qualityRelatedNotification.description}
                             onChange={(e) => {
                               const newData = [...currentRPQRN];
-                              newData[
-                                index
-                              ].qualityRelatedNotification.description =
+                              newData[index].qualityRelatedNotification.description =
                                 e.target.value;
                               setCurrentRPQRN(newData);
                             }}
@@ -10523,8 +11166,7 @@ console.log(pQRData,"pQRData")
                             value={item.qualityRelatedNotification.impact}
                             onChange={(e) => {
                               const newData = [...currentRPQRN];
-                              newData[index].qualityRelatedNotification.impact =
-                                e.target.value;
+                              newData[index].qualityRelatedNotification.impact = e.target.value;
                               setCurrentRPQRN(newData);
                             }}
                           />
@@ -10535,8 +11177,7 @@ console.log(pQRData,"pQRData")
                             value={item.qualityRelatedNotification.status}
                             onChange={(e) => {
                               const newData = [...currentRPQRN];
-                              newData[index].qualityRelatedNotification.status =
-                                e.target.value;
+                              newData[index].qualityRelatedNotification.status = e.target.value;
                               setCurrentRPQRN(newData);
                             }}
                           />
@@ -10546,8 +11187,7 @@ console.log(pQRData,"pQRData")
                             value={item.cAPA.descriptionNo}
                             onChange={(e) => {
                               const newData = [...currentRPQRN];
-                              newData[index].cAPA.descriptionNo =
-                                e.target.value;
+                              newData[index].cAPA.descriptionNo = e.target.value;
                               setCurrentRPQRN(newData);
                             }}
                           />
@@ -10579,61 +11219,23 @@ console.log(pQRData,"pQRData")
                 </tbody>
               </table>
             </div>
-            <h4 className="gridName pt-4">
-              previous Review Period Quality Related Notification
-            </h4>
-            <TinyEditor
-              editorContent={tiny45}
-              setEditorContent={setTinyContent}
-              tinyNo={45}
-            />
+            <h4 className="gridName pt-4">previous Review Period Quality Related Notification</h4>
+            <TinyEditor editorContent={tiny54} setEditorContent={setTinyContent} tinyNo={54} />
 
             <h4 className="gridName pt-4">Review of Product Recalls</h4>
-            <TinyEditor
-              editorContent={tiny46}
-              setEditorContent={setTinyContent}
-              tinyNo={46}
-            />
+            <TinyEditor editorContent={tiny55} setEditorContent={setTinyContent} tinyNo={55} />
             <h4 className="gridName pt-4">Review of Returned Products</h4>
-            <TinyEditor
-              editorContent={tiny47}
-              setEditorContent={setTinyContent}
-              tinyNo={47}
-            />
+            <TinyEditor editorContent={tiny56} setEditorContent={setTinyContent} tinyNo={56} />
             <h4 className="gridName pt-4">Review of Salvaged Drugs</h4>
-            <TinyEditor
-              editorContent={tiny48}
-              setEditorContent={setTinyContent}
-              tinyNo={48}
-            />
-            <h4 className="gridName pt-4">
-              Review of previous PQR recommendations
-            </h4>
-            <TinyEditor
-              editorContent={tiny49}
-              setEditorContent={setTinyContent}
-              tinyNo={49}
-            />
+            <TinyEditor editorContent={tiny57} setEditorContent={setTinyContent} tinyNo={57} />
+            <h4 className="gridName pt-4">Review of previous PQR recommendations</h4>
+            <TinyEditor editorContent={tiny58} setEditorContent={setTinyContent} tinyNo={58} />
             <h4 className="gridName pt-4">Review of Quality Agreements</h4>
-            <TinyEditor
-              editorContent={tiny50}
-              setEditorContent={setTinyContent}
-              tinyNo={50}
-            />
-            <h4 className="gridName pt-4">
-              Review of Manufacturing Authorizations
-            </h4>
-            <TinyEditor
-              editorContent={tiny51}
-              setEditorContent={setTinyContent}
-              tinyNo={51}
-            />
+            <TinyEditor editorContent={tiny59} setEditorContent={setTinyContent} tinyNo={59} />
+            <h4 className="gridName pt-4">Review of Manufacturing Authorizations</h4>
+            <TinyEditor editorContent={tiny60} setEditorContent={setTinyContent} tinyNo={60} />
             <h4 className="gridName pt-4">Review of Open Validations</h4>
-            <TinyEditor
-              editorContent={tiny52}
-              setEditorContent={setTinyContent}
-              tinyNo={52}
-            />
+            <TinyEditor editorContent={tiny61} setEditorContent={setTinyContent} tinyNo={61} />
           </div>
         ) : null}
         {tab === "RR" ? (
@@ -10643,9 +11245,7 @@ console.log(pQRData,"pQRData")
               <div className="AddRows d-flex w-full justify-between items-center text-3xl ">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addDossierRow} />
-                  <div className="addrowinstruction  pl-2">
-                    Add Rows by clicking on (+) icon
-                  </div>
+                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
                 </div>
                 <div className="flex gap-4 ">
                   <ExcelExportImport
@@ -10719,11 +11319,7 @@ console.log(pQRData,"pQRData")
 
               <div>
                 <h4 className="gridName mt-5">Summary</h4>
-                <TinyEditor
-                  editorContent={tiny53}
-                  setEditorContent={setTinyContent}
-                  tinyNo={53}
-                />
+                <TinyEditor editorContent={tiny62} setEditorContent={setTinyContent} tinyNo={62} />
               </div>
 
               <div className="gridName">New marketing authorisation</div>
@@ -10731,9 +11327,7 @@ console.log(pQRData,"pQRData")
                 <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                   <div className="flex items-center">
                     <MdNoteAdd onClick={addDossierRowNma} />
-                    <div className="addrowinstruction  pl-2">
-                      Add Rows by clicking on (+) icon
-                    </div>
+                    <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
                   </div>
                   <div className="flex gap-4 ">
                     <ExcelExportImport
@@ -10775,8 +11369,7 @@ console.log(pQRData,"pQRData")
                               value={item.descriptionOfPacking}
                               onChange={(e) => {
                                 const newData = [...dossierRRNma];
-                                newData[index].descriptionOfPacking =
-                                  e.target.value;
+                                newData[index].descriptionOfPacking = e.target.value;
                                 setDossierRRNma(newData);
                               }}
                             />
@@ -10786,8 +11379,7 @@ console.log(pQRData,"pQRData")
                               value={item.dateOfApplication}
                               onChange={(e) => {
                                 const newData = [...dossierRRNma];
-                                newData[index].dateOfApplication =
-                                  e.target.value;
+                                newData[index].dateOfApplication = e.target.value;
                                 setDossierRRNma(newData);
                               }}
                             />
@@ -10797,8 +11389,7 @@ console.log(pQRData,"pQRData")
                               value={item.statusOfApplication}
                               onChange={(e) => {
                                 const newData = [...dossierRRNma];
-                                newData[index].statusOfApplication =
-                                  e.target.value;
+                                newData[index].statusOfApplication = e.target.value;
                                 setDossierRRNma(newData);
                               }}
                             />
@@ -10808,8 +11399,7 @@ console.log(pQRData,"pQRData")
                               value={item.dateOfAuthorization}
                               onChange={(e) => {
                                 const newData = [...dossierRRNma];
-                                newData[index].dateOfAuthorization =
-                                  e.target.value;
+                                newData[index].dateOfAuthorization = e.target.value;
                                 setDossierRRNma(newData);
                               }}
                             />
@@ -10832,9 +11422,9 @@ console.log(pQRData,"pQRData")
                 <div>
                   <h4 className="gridName mt-5">Summary</h4>
                   <TinyEditor
-                    editorContent={tiny54}
+                    editorContent={tiny63}
                     setEditorContent={setTinyContent}
-                    tinyNo={54}
+                    tinyNo={63}
                   />
                 </div>
               </div>
@@ -10845,17 +11435,13 @@ console.log(pQRData,"pQRData")
           <>
             <div>
               <h4 className="gridName">Recommendations Summary</h4>
-              <TinyEditor
-                editorContent={tiny55}
-                setEditorContent={setTinyContent}
-                tinyNo={55}
-              />
+              <TinyEditor editorContent={tiny64} setEditorContent={setTinyContent} tinyNo={64} />
             </div>
           </>
         ) : null}
         {tab === "CAPA" ? (
           <>
-            <div className="flex items-center justify-center">
+            {/* <div className="flex items-center justify-center">
               <div className="relative w-16 h-16">
                 <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
                   <div className="w-16 h-16 border-t-4 border-b-4 border-blue-500 rounded-full animate-spin">
@@ -10867,6 +11453,9 @@ console.log(pQRData,"pQRData")
               <span className="text-[28px] pl-5 text-blue-500 font-semibold">
                 Work In Progress. .........
               </span>
+            </div> */}
+            <div className="flex items-center justify-center h-screen">
+              <div className="text-3xl font-bold text-gray-600">No Data To Show Here.....</div>
             </div>
           </>
         ) : null}
@@ -10874,11 +11463,7 @@ console.log(pQRData,"pQRData")
           <>
             <div>
               <h4 className="gridName">Discussion Evaluation and Conclusion</h4>
-              <TinyEditor
-                editorContent={tiny56}
-                setEditorContent={setTinyContent}
-                tinyNo={56}
-              />
+              <TinyEditor editorContent={tiny65} setEditorContent={setTinyContent} tinyNo={65} />
             </div>
           </>
         ) : null}
@@ -10887,184 +11472,136 @@ console.log(pQRData,"pQRData")
             <div className="container">
               <div>
                 <h4 className="gridName">Annexure 1</h4>
-                <TinyEditor
-                  editorContent={tiny57}
-                  setEditorContent={setTinyContent}
-                  tinyNo={57}
-                />
+                <TinyEditor editorContent={tiny66} setEditorContent={setTinyContent} tinyNo={66} />
               </div>
               <div>
                 <h4 className="gridName">Annexure 2</h4>
-                <TinyEditor
-                  editorContent={tiny58}
-                  setEditorContent={setTinyContent}
-                  tinyNo={58}
-                />
+                <TinyEditor editorContent={tiny67} setEditorContent={setTinyContent} tinyNo={67} />
               </div>
               <div>
                 <h4 className="gridName">Annexure 3</h4>
-                <TinyEditor
-                  editorContent={tiny59}
-                  setEditorContent={setTinyContent}
-                  tinyNo={59}
-                />
+                <TinyEditor editorContent={tiny68} setEditorContent={setTinyContent} tinyNo={68} />
               </div>
               <div>
                 <h4 className="gridName">Annexure 4</h4>
-                <TinyEditor
-                  editorContent={tiny60}
-                  setEditorContent={setTinyContent}
-                  tinyNo={60}
-                />
+                <TinyEditor editorContent={tiny69} setEditorContent={setTinyContent} tinyNo={69} />
               </div>
               <div>
                 <h4 className="gridName">Annexure 5</h4>
-                <TinyEditor
-                  editorContent={tiny61}
-                  setEditorContent={setTinyContent}
-                  tinyNo={61}
-                />
+                <TinyEditor editorContent={tiny70} setEditorContent={setTinyContent} tinyNo={70} />
               </div>
               <div>
                 <h4 className="gridName">Annexure 6</h4>
-                <TinyEditor
-                  editorContent={tiny62}
-                  setEditorContent={setTinyContent}
-                  tinyNo={62}
-                />
+                <TinyEditor editorContent={tiny71} setEditorContent={setTinyContent} tinyNo={71} />
               </div>
               <div>
                 <h4 className="gridName">Annexure 7</h4>
-                <TinyEditor
-                  editorContent={tiny63}
-                  setEditorContent={setTinyContent}
-                  tinyNo={63}
-                />
+                <TinyEditor editorContent={tiny72} setEditorContent={setTinyContent} tinyNo={72} />
               </div>
               <div>
                 <h4 className="gridName">Annexure 8</h4>
-                <TinyEditor
-                  editorContent={tiny64}
-                  setEditorContent={setTinyContent}
-                  tinyNo={64}
-                />
+                <TinyEditor editorContent={tiny73} setEditorContent={setTinyContent} tinyNo={73} />
               </div>
               <div>
                 <h4 className="gridName">Annexure 9</h4>
-                <TinyEditor
-                  editorContent={tiny65}
-                  setEditorContent={setTinyContent}
-                  tinyNo={65}
-                />
+                <TinyEditor editorContent={tiny74} setEditorContent={setTinyContent} tinyNo={74} />
               </div>
               <div>
                 <h4 className="gridName">Annexure 10</h4>
-                <TinyEditor
-                  editorContent={tiny66}
-                  setEditorContent={setTinyContent}
-                  tinyNo={66}
-                />
+                <TinyEditor editorContent={tiny75} setEditorContent={setTinyContent} tinyNo={75} />
               </div>
               <div>
                 <h4 className="gridName">Annexure 11</h4>
-                <TinyEditor
-                  editorContent={tiny67}
-                  setEditorContent={setTinyContent}
-                  tinyNo={67}
-                />
+                <TinyEditor editorContent={tiny76} setEditorContent={setTinyContent} tinyNo={76} />
               </div>
               <div>
                 <h4 className="gridName">Annexure 12</h4>
-                <TinyEditor
-                  editorContent={tiny68}
-                  setEditorContent={setTinyContent}
-                  tinyNo={68}
-                />
+                <TinyEditor editorContent={tiny77} setEditorContent={setTinyContent} tinyNo={77} />
               </div>
               <div>
                 <h4 className="gridName">Annexure 13</h4>
-                <TinyEditor
-                  editorContent={tiny69}
-                  setEditorContent={setTinyContent}
-                  tinyNo={69}
-                />
+                <TinyEditor editorContent={tiny78} setEditorContent={setTinyContent} tinyNo={78} />
               </div>
               <div>
                 <h4 className="gridName">Annexure 14</h4>
-                <TinyEditor
-                  editorContent={tiny70}
-                  setEditorContent={setTinyContent}
-                  tinyNo={70}
-                />
+                <TinyEditor editorContent={tiny79} setEditorContent={setTinyContent} tinyNo={79} />
               </div>
               <div>
                 <h4 className="gridName">Annexure 15</h4>
-                <TinyEditor
-                  editorContent={tiny71}
-                  setEditorContent={setTinyContent}
-                  tinyNo={71}
-                />
+                <TinyEditor editorContent={tiny80} setEditorContent={setTinyContent} tinyNo={80} />
               </div>
               <div>
                 <h4 className="gridName">Annexure 16</h4>
-                <TinyEditor
-                  editorContent={tiny72}
-                  setEditorContent={setTinyContent}
-                  tinyNo={72}
-                />
+                <TinyEditor editorContent={tiny81} setEditorContent={setTinyContent} tinyNo={81} />
               </div>
               <div>
                 <h4 className="gridName">Annexure 17</h4>
-                <TinyEditor
-                  editorContent={tiny73}
-                  setEditorContent={setTinyContent}
-                  tinyNo={73}
-                />
+                <TinyEditor editorContent={tiny82} setEditorContent={setTinyContent} tinyNo={82} />
               </div>
               <div>
                 <h4 className="gridName">Annexure 18</h4>
-                <TinyEditor
-                  editorContent={tiny74}
-                  setEditorContent={setTinyContent}
-                  tinyNo={74}
-                />
+                <TinyEditor editorContent={tiny83} setEditorContent={setTinyContent} tinyNo={83} />
               </div>
               <div>
                 <h4 className="gridName">Annexure 19</h4>
-                <TinyEditor
-                  editorContent={tiny75}
-                  setEditorContent={setTinyContent}
-                  tinyNo={75}
-                />
+                <TinyEditor editorContent={tiny84} setEditorContent={setTinyContent} tinyNo={84} />
               </div>
               <div>
                 <h4 className="gridName">Annexure 20</h4>
-                <TinyEditor
-                  editorContent={tiny76}
-                  setEditorContent={setTinyContent}
-                  tinyNo={76}
-                />
+                <TinyEditor editorContent={tiny85} setEditorContent={setTinyContent} tinyNo={85} />
               </div>
             </div>
           </>
         ) : null}
       </div>
-      <div className="w-full h-18 z-[999] bg-slate-200 p-10 py-2   flex justify-between align-middle fixed bottom-0  ">
-        <div className="flex justify-end gap-10 pr-10"></div>
-        <div className="flex justify-end gap-10 pr-10">
-          <button
-            className=" px-4 py-2 bg-teal-600 text-white
-            font-semibold
-            rounded-lg
-            shadow-md
-            hover:bg-teal-700
-            focus:outline-none
-            focus:ring-2
-            focus:ring-offset-2
-            focus:ring-teal-500
-          "
+      <div className="flex justify-end gap-10 pr-10">
+        <div className="fixed top-1/2 left-0 z-10 flex flex-col">
+          {/* <button
+            className="
+                px-4
+                py-2
+                bg-teal-600
+                text-white
+                font-semibold
+                rounded-lg
+                shadow-md
+                hover:bg-teal-700
+                focus:outline-none
+                focus:ring-2
+                focus:ring-offset-2
+                focus:ring-teal-500
+                // mb-10
+              "
             onClick={() => {
               dispatch(addForm(pQRData));
+              navigate("/dashboard");
+            }}
+          >
+            Save
+          </button> */}
+        </div>
+
+        <div className="fixed top-3/4 right-0 z-10 flex flex-col">
+          <button
+            className="
+                px-4
+                py-2
+                bg-teal-600
+                text-white
+                font-semibold
+                rounded-l-full
+                shadow-md
+                hover:bg-teal-700
+                focus:outline-none
+                focus:ring-2
+                focus:ring-offset-2
+                focus:ring-teal-500
+                mb-5
+            
+              "
+            onClick={() => {
+              // dispatch(addForm(pQRData));
+              APQRData(pQRData);
               navigate("/dashboard");
             }}
           >
@@ -11072,19 +11609,19 @@ console.log(pQRData,"pQRData")
           </button>
           <button
             className="
-            px-4
-            py-2
-            bg-teal-600
-            text-white
-            font-semibold
-            rounded-lg
-            shadow-md
-            hover:bg-teal-700
-            focus:outline-none
-            focus:ring-2
-            focus:ring-offset-2
-            focus:ring-teal-500
-          "
+                px-4
+                py-2
+                bg-teal-600
+                text-white
+                font-semibold
+                rounded-l-full
+                shadow-md
+                hover:bg-teal-700
+                focus:outline-none
+                focus:ring-2
+                focus:ring-offset-2
+                focus:ring-teal-500
+              "
           >
             Exit
           </button>
