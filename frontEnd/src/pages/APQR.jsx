@@ -10,22 +10,7 @@ import axios from "axios";
 
 export default function APQR() {
   const [tab, setTab] = useState("GI");
-  const balanceSheet = [
-    {
-      category: "Assets",
-      account: "Checking Account",
-      code: "1060",
-      debit: "$280.00",
-      credit: "$0.00",
-    },
-    {
-      category: "Assets",
-      account: "Transaction Account",
-      code: "1044",
-      debit: "$650.00",
-      credit: "$0.00",
-    },
-  ];
+  
   const [productCodes, setProductCodes] = useState([""]);
   const [manufacturingStage, setManufacturingStage] = useState([]);
   const [manufacturingSAPS, setManufacturingSAPS] = useState([]);
@@ -92,10 +77,10 @@ export default function APQR() {
   const [unitOperation8, setUnitOperation8] = useState([]);
   const [unitOperation9, setUnitOperation9] = useState([]);
   const [unitOperation10, setUnitOperation10] = useState([]);
-  const [tiny1, setTiny1] = useState("");
-  const [tiny2, setTiny2] = useState("");
-  const [tiny3, setTiny3] = useState("");
-  const [tiny4, setTiny4] = useState("");
+  const [tiny1, setTiny1] = useState("pankaj dhor hai");
+  const [tiny2, setTiny2] = useState("jgssgjdrfs");
+  const [tiny3, setTiny3] = useState("jdjadfj");
+  const [tiny4, setTiny4] = useState("jsfklsjdkz");
   const [tiny5, setTiny5] = useState("");
   const [tiny6, setTiny6] = useState("");
   const [tiny7, setTiny7] = useState("");
@@ -212,6 +197,14 @@ export default function APQR() {
     return typeof value === "string" ? value.trim() : value;
   };
 
+
+  const api_key = "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";
+  
+  const useDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  const isSmallScreen = window.matchMedia('(max-width: 1023.5px)').matches;
+  
+  
+
   const processData = (data, keyMapping) => {
     return data.map((item) => {
       let processedItem = {};
@@ -309,7 +302,9 @@ export default function APQR() {
 
   const setTinyContent = (data, tinyNO) => {
     switch (tinyNO) {
-      case 1:
+      case 1:  
+      console.log(data,"tiny1data");
+      
         setTiny1(data);
         break;
       case 2:
@@ -951,6 +946,10 @@ export default function APQR() {
     currentLabI,
     previewLabI,
   ]);
+
+  useEffect(()=>{
+    console.log("tiny 1 log",tiny1);  
+  },[tiny1])
   const addManufacturingStageRow = () => {
     const newRow = {
       productName: "",
