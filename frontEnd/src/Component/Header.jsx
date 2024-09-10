@@ -29,7 +29,7 @@ export default function Header() {
             alt="Logo"
             className="h-10 mr-2 cursor-pointer  "
             onClick={() => navigate("/dashboard")}
-          />
+          />  
           {/* <img
             src="/connexoL.png"
             alt="Logo"

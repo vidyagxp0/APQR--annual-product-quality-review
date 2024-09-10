@@ -229,7 +229,7 @@ export default function APQR() {
     yAxisTitle: "Number of Batches",
   };
   const [data, setData] = useState(null);
-  const [isLoading,setIsLoading]=useState(true)
+  const [isLoading, setIsLoading] = useState(true);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const location = useLocation();
@@ -1226,7 +1226,7 @@ export default function APQR() {
       };
 
       const response = await axios.put(
-        `http://localhost:4000/update-apqr/${editData.pqrId}`,
+        `https://apqrapi.mydemosoftware.com/update-apqr/${editData.pqrId}`,
         payload
       );
     } catch (error) {
@@ -1236,7 +1236,9 @@ export default function APQR() {
 
   const fetchData = async () => {
     try {
-      const response = await axios.get(`http://localhost:4000/get-apqr/${editData.pqrId}`);
+      const response = await axios.get(
+        `https://apqrapi.mydemosoftware.com/get-apqr/${editData.pqrId}`
+      );
       console.log(response.data, "data");
       setData(response.data);
       setTinyData(response.data.aPQRData.tinyData);
@@ -1330,7 +1332,7 @@ export default function APQR() {
         reviewODSTR15: apiData.reviewODSTR15?.data || [],
         // Map all other grids here
       });
-      setIsLoading(false)
+      setIsLoading(false);
     } catch (error) {
       console.error("Error fetching data:", error);
     }
@@ -1474,7 +1476,7 @@ export default function APQR() {
           return prevData;
       }
     });
-   
+
     // setManufacturingStage([...manufacturingStage, ...processedData]);
   };
 
@@ -2801,319 +2803,327 @@ export default function APQR() {
             List Of Annexures/Attachments
           </div>
         </div>
-        {isLoading?<div>Data Fetching</div>:<>
-        
-        {tab === "GI" ? (
-          <div className="  p-4">
-            <div className="dual-group-input ">
-              <div className="group-input">
-                <label>Initiator </label>
-                <input
-                  disabled
-                  value={pQRData.initiator}
-                  onChange={(e) => {
-                    setPQRData({ initiator: e.target.value });
-                  }}
-                />
-              </div>
+        {isLoading ? (
+          <div>Data Fetching</div>
+        ) : (
+          <>
+            {tab === "GI" ? (
+              <div className="  p-4">
+                <div className="dual-group-input ">
+                  <div className="group-input">
+                    <label>Initiator </label>
+                    <input
+                      disabled
+                      value={pQRData.initiator}
+                      onChange={(e) => {
+                        setPQRData({ initiator: e.target.value });
+                      }}
+                    />
+                  </div>
 
-              <div className="group-input">
-                <label>Initiate Date</label>
-                <input
-                  disabled
-                  type="date"
-                  value={formatDate(pQRData.initiateDate)}
-                  onChange={(e) => {
-                    setPQRData({ initiateDate: e.target.value });
-                  }}
-                />
-              </div>
-              <div className="group-input">
-                <label>PQR No</label>
-                <input
-                  value={pQRData.pqrNO}
-                  onChange={(e) => {
-                    setPQRData({ pqrNO: e.target.value });
-                  }}
-                  disabled
-                />
-              </div>
-              <div className="group-input">
-                <label>Product Name</label>
-                <input
-                  value={pQRData.productName}
-                  onChange={(e) => {
-                    setPQRData({ productName: e.target.value });
-                  }}
-                />
-              </div>
-            </div>
-            {pQRData?.productCodes?.map((productCode, index) => (
-              <div key={index} className="group-input">
-                <label>Product Code {pQRData?.productCodes.length > 1 ? index + 1 : ""}</label>
-                <div className="flex gap-4">
-                  <input
-                    value={productCode}
-                    onChange={(e) => handleProductCodeChange(index, e.target.value)}
-                  />
-                  {index === pQRData?.productCodes.length - 1 && (
-                    <button
-                      onClick={addProductCodeInput}
-                      className="px-3 py-1 border bg-black text-white border-black rounded"
-                    >
-                      +
-                    </button>
-                  )}
-                  {pQRData?.productCodes.length > 1 && (
-                    <button
-                      onClick={() => removeProductCodeInput(index)}
-                      className="px-3 py-1 border border-red-500 rounded bg-red-500 text-white"
-                    >
-                      -
-                    </button>
-                  )}
+                  <div className="group-input">
+                    <label>Initiate Date</label>
+                    <input
+                      disabled
+                      type="date"
+                      value={formatDate(pQRData.initiateDate)}
+                      onChange={(e) => {
+                        setPQRData({ initiateDate: e.target.value });
+                      }}
+                    />
+                  </div>
+                  <div className="group-input">
+                    <label>PQR No</label>
+                    <input
+                      value={pQRData.pqrNO}
+                      onChange={(e) => {
+                        setPQRData({ pqrNO: e.target.value });
+                      }}
+                      disabled
+                    />
+                  </div>
+                  <div className="group-input">
+                    <label>Product Name</label>
+                    <input
+                      value={pQRData.productName}
+                      onChange={(e) => {
+                        setPQRData({ productName: e.target.value });
+                      }}
+                    />
+                  </div>
                 </div>
-              </div>
-            ))}
-            <div className="dual-group-input">
-              <div className="group-input">
-                <label>Generic Name</label>
-                <input
-                  value={pQRData.genericName}
-                  onChange={(e) => {
-                    setPQRData({ genericName: e.target.value });
-                  }}
-                />
-              </div>
-              <div className="group-input ">
-                <label>Dosage Form</label>
-                <select
-                  value={pQRData.dosageForm}
-                  onChange={(e) => {
-                    setPQRData({ dosageForm: e.target.value });
-                  }}
-                >
-                  <option value="">Select Dosage Form</option>
-                  <option value="Oral Solid">Oral Solid</option>
-                  <option value="Oral Liquid">Oral Liquid</option>
-                  <option value="Injectables">Injectables</option>
-                  <option value="Semisolid">Semisolid</option>
-                </select>
-              </div>
-              <div className="group-input">
-                <label>Review Start Date</label>
-                <input
-                  type="date"
-                  value={formatDate(pQRData.reviewStartDate)}
-                  onClick={(e) => e.target.showPicker()}
-                  onChange={(e) => {
-                    setPQRData({ reviewStartDate: e.target.value });
-                  }}
-                />
-              </div>
-              <div className="group-input">
-                <label>Review End Date</label>
-                <input
-                  type="date"
-                  value={formatDate(pQRData.reviewEndDate)}
-                  onClick={(e) => e.target.showPicker()}
-                  onChange={(e) => {
-                    setPQRData({ reviewEndDate: e.target.value });
-                  }}
-                />
-              </div>
-              <div className="group-input">
-                <label>MFG. LIC. No</label>
-                <input
-                  value={pQRData.mfgLicNo}
-                  onChange={(e) => {
-                    setPQRData({ mfgLicNo: e.target.value });
-                  }}
-                />
-              </div>
-            </div>
+                {pQRData?.productCodes?.map((productCode, index) => (
+                  <div key={index} className="group-input">
+                    <label>Product Code {pQRData?.productCodes.length > 1 ? index + 1 : ""}</label>
+                    <div className="flex gap-4">
+                      <input
+                        value={productCode}
+                        onChange={(e) => handleProductCodeChange(index, e.target.value)}
+                      />
+                      {index === pQRData?.productCodes.length - 1 && (
+                        <button
+                          onClick={addProductCodeInput}
+                          className="px-3 py-1 border bg-black text-white border-black rounded"
+                        >
+                          +
+                        </button>
+                      )}
+                      {pQRData?.productCodes.length > 1 && (
+                        <button
+                          onClick={() => removeProductCodeInput(index)}
+                          className="px-3 py-1 border border-red-500 rounded bg-red-500 text-white"
+                        >
+                          -
+                        </button>
+                      )}
+                    </div>
+                  </div>
+                ))}
+                <div className="dual-group-input">
+                  <div className="group-input">
+                    <label>Generic Name</label>
+                    <input
+                      value={pQRData.genericName}
+                      onChange={(e) => {
+                        setPQRData({ genericName: e.target.value });
+                      }}
+                    />
+                  </div>
+                  <div className="group-input ">
+                    <label>Dosage Form</label>
+                    <select
+                      value={pQRData.dosageForm}
+                      onChange={(e) => {
+                        setPQRData({ dosageForm: e.target.value });
+                      }}
+                    >
+                      <option value="">Select Dosage Form</option>
+                      <option value="Oral Solid">Oral Solid</option>
+                      <option value="Oral Liquid">Oral Liquid</option>
+                      <option value="Injectables">Injectables</option>
+                      <option value="Semisolid">Semisolid</option>
+                    </select>
+                  </div>
+                  <div className="group-input">
+                    <label>Review Start Date</label>
+                    <input
+                      type="date"
+                      value={formatDate(pQRData.reviewStartDate)}
+                      onClick={(e) => e.target.showPicker()}
+                      onChange={(e) => {
+                        setPQRData({ reviewStartDate: e.target.value });
+                      }}
+                    />
+                  </div>
+                  <div className="group-input">
+                    <label>Review End Date</label>
+                    <input
+                      type="date"
+                      value={formatDate(pQRData.reviewEndDate)}
+                      onClick={(e) => e.target.showPicker()}
+                      onChange={(e) => {
+                        setPQRData({ reviewEndDate: e.target.value });
+                      }}
+                    />
+                  </div>
+                  <div className="group-input">
+                    <label>MFG. LIC. No</label>
+                    <input
+                      value={pQRData.mfgLicNo}
+                      onChange={(e) => {
+                        setPQRData({ mfgLicNo: e.target.value });
+                      }}
+                    />
+                  </div>
+                </div>
 
-            <div className="sub-head">Manufacturing Site Address</div>
-            <div className="flex">
-              <div className="AddRows d-flex w-full justify-between items-center text-3xl">
-                <div className="flex items-center">
-                  <MdNoteAdd onClick={addManufacturingStageRow} />
-                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
+                <div className="sub-head">Manufacturing Site Address</div>
+                <div className="flex">
+                  <div className="AddRows d-flex w-full justify-between items-center text-3xl">
+                    <div className="flex items-center">
+                      <MdNoteAdd onClick={addManufacturingStageRow} />
+                      <div className="addrowinstruction  pl-2">
+                        Add Rows by clicking on (+) icon
+                      </div>
+                    </div>
+                    <div className="flex gap-4 ">
+                      <ExcelExportImport
+                      // data={manufacturingStage}
+                      // setimportedData={setimportedData}
+                      // fileName="manufacturingStage.xlsx"
+                      // gridNo={1}
+                      />{" "}
+                    </div>
+                  </div>
                 </div>
-                <div className="flex gap-4 ">
-                  <ExcelExportImport
-                  // data={manufacturingStage}
-                  // setimportedData={setimportedData}
-                  // fileName="manufacturingStage.xlsx"
-                  // gridNo={1}
-                  />{" "}
-                </div>
-              </div>
-            </div>
-            <table>
-              <thead>
-                <tr>
-                  <th>Product Name</th>
-                  <th>SFG Code</th>
-                  <th>FG Code </th>
-                </tr>
-              </thead>
-              <tbody>
-                {gridDatas?.manufacturingStage?.map((item, index) => {
-                  return (
-                    <tr key={index}>
-                      <td>
-                        <input
-                          value={item.productName}
-                          onChange={(e) => {
-                            const newData = [...gridDatas.manufacturingStage];
-                            newData[index].productName = e.target.value;
-                            setGridDatas({
-                              ...gridDatas,
-                              manufacturingStage: newData,
-                            });
-                          }}
-                        />
-                      </td>
-                      <td>
-                        <input
-                          value={item.sFGCode}
-                          onChange={(e) => {
-                            const newData = [...gridDatas.manufacturingStage];
-                            newData[index].sFGCode = e.target.value;
-                            setGridDatas({
-                              ...gridDatas,
-                              manufacturingStage: newData,
-                            });
-                          }}
-                        />
-                      </td>
-                      <td>
-                        <input
-                          value={item.fGCode}
-                          onChange={(e) => {
-                            const newData = [...gridDatas.manufacturingStage];
-                            newData[index].fGCode = e.target.value;
-                            setGridDatas({
-                              ...gridDatas,
-                              manufacturingStage: newData,
-                            });
-                          }}
-                        />
-                      </td>
+                <table>
+                  <thead>
+                    <tr>
+                      <th>Product Name</th>
+                      <th>SFG Code</th>
+                      <th>FG Code </th>
                     </tr>
-                  );
-                })}
-              </tbody>
-            </table>
-            <div>
-              <h4 className="gridName mt-4">Summary</h4>
-              <TinyEditor
-                editorContent={tinyData.tiny1}
-                setEditorContent={setTinyContent}
-                tinyNo={1}
-              />
-            </div>
+                  </thead>
+                  <tbody>
+                    {gridDatas?.manufacturingStage?.map((item, index) => {
+                      return (
+                        <tr key={index}>
+                          <td>
+                            <input
+                              value={item.productName}
+                              onChange={(e) => {
+                                const newData = [...gridDatas.manufacturingStage];
+                                newData[index].productName = e.target.value;
+                                setGridDatas({
+                                  ...gridDatas,
+                                  manufacturingStage: newData,
+                                });
+                              }}
+                            />
+                          </td>
+                          <td>
+                            <input
+                              value={item.sFGCode}
+                              onChange={(e) => {
+                                const newData = [...gridDatas.manufacturingStage];
+                                newData[index].sFGCode = e.target.value;
+                                setGridDatas({
+                                  ...gridDatas,
+                                  manufacturingStage: newData,
+                                });
+                              }}
+                            />
+                          </td>
+                          <td>
+                            <input
+                              value={item.fGCode}
+                              onChange={(e) => {
+                                const newData = [...gridDatas.manufacturingStage];
+                                newData[index].fGCode = e.target.value;
+                                setGridDatas({
+                                  ...gridDatas,
+                                  manufacturingStage: newData,
+                                });
+                              }}
+                            />
+                          </td>
+                        </tr>
+                      );
+                    })}
+                  </tbody>
+                </table>
+                <div>
+                  <h4 className="gridName mt-4">Summary</h4>
+                  <TinyEditor
+                    editorContent={tinyData.tiny1}
+                    setEditorContent={setTinyContent}
+                    tinyNo={1}
+                  />
+                </div>
 
-            <div className="py-4">
-              <div className="AddRows d-flex w-full justify-between items-center text-3xl">
-                <div className="flex items-center">
-                  <MdNoteAdd onClick={addManufacturingSAPSRow} />
-                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
-                </div>
-                <div className="flex gap-4 ">
-                  <ExcelExportImport
-                  // data={manufacturingStage}
-                  // setimportedData={setimportedData}
-                  // fileName="manufacturingStage.xlsx"
-                  // gridNo={1}
-                  />{" "}
-                </div>
-              </div>
-              <table>
-                <thead>
-                  <tr>
-                    <th>Product Name</th>
-                    <th>Batch Code</th>
-                    <th>SFG Code</th>
-                    <th></th>
-                    <th>Remarks</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {gridDatas?.manufacturingSAPS?.map((item, index) => {
-                    return (
-                      <tr key={index}>
-                        <td>
-                          <input
-                            value={item.productName}
-                            onChange={(e) => {
-                              const newData = [...gridDatas.manufacturingSAPS];
-                              newData[index].productName = e.target.value;
-                              setGridDatas({
-                                ...gridDatas,
-                                manufacturingSAPS: newData,
-                              });
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.batchCode}
-                            onChange={(e) => {
-                              const newData = [...gridDatas.manufacturingSAPS];
-                              newData[index].batchCode = e.target.value;
-                              setGridDatas({
-                                ...gridDatas,
-                                manufacturingSAPS: newData,
-                              });
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.sFGCode}
-                            onChange={(e) => {
-                              const newData = [...gridDatas.manufacturingSAPS];
-                              newData[index].sFGCode = e.target.value;
-                              setGridDatas({
-                                ...gridDatas,
-                                manufacturingSAPS: newData,
-                              });
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input />
-                        </td>
-                        <td>
-                          <input
-                            value={item.remarks}
-                            onChange={(e) => {
-                              const newData = [...gridDatas.manufacturingSAPS];
-                              newData[index].remarks = e.target.value;
-                              setGridDatas({
-                                ...gridDatas,
-                                manufacturingSAPS: newData,
-                              });
-                            }}
-                          />
-                        </td>
+                <div className="py-4">
+                  <div className="AddRows d-flex w-full justify-between items-center text-3xl">
+                    <div className="flex items-center">
+                      <MdNoteAdd onClick={addManufacturingSAPSRow} />
+                      <div className="addrowinstruction  pl-2">
+                        Add Rows by clicking on (+) icon
+                      </div>
+                    </div>
+                    <div className="flex gap-4 ">
+                      <ExcelExportImport
+                      // data={manufacturingStage}
+                      // setimportedData={setimportedData}
+                      // fileName="manufacturingStage.xlsx"
+                      // gridNo={1}
+                      />{" "}
+                    </div>
+                  </div>
+                  <table>
+                    <thead>
+                      <tr>
+                        <th>Product Name</th>
+                        <th>Batch Code</th>
+                        <th>SFG Code</th>
+                        <th></th>
+                        <th>Remarks</th>
                       </tr>
-                    );
-                  })}
-                </tbody>
-              </table>
-            </div>
+                    </thead>
+                    <tbody>
+                      {gridDatas?.manufacturingSAPS?.map((item, index) => {
+                        return (
+                          <tr key={index}>
+                            <td>
+                              <input
+                                value={item.productName}
+                                onChange={(e) => {
+                                  const newData = [...gridDatas.manufacturingSAPS];
+                                  newData[index].productName = e.target.value;
+                                  setGridDatas({
+                                    ...gridDatas,
+                                    manufacturingSAPS: newData,
+                                  });
+                                }}
+                              />
+                            </td>
+                            <td>
+                              <input
+                                value={item.batchCode}
+                                onChange={(e) => {
+                                  const newData = [...gridDatas.manufacturingSAPS];
+                                  newData[index].batchCode = e.target.value;
+                                  setGridDatas({
+                                    ...gridDatas,
+                                    manufacturingSAPS: newData,
+                                  });
+                                }}
+                              />
+                            </td>
+                            <td>
+                              <input
+                                value={item.sFGCode}
+                                onChange={(e) => {
+                                  const newData = [...gridDatas.manufacturingSAPS];
+                                  newData[index].sFGCode = e.target.value;
+                                  setGridDatas({
+                                    ...gridDatas,
+                                    manufacturingSAPS: newData,
+                                  });
+                                }}
+                              />
+                            </td>
+                            <td>
+                              <input />
+                            </td>
+                            <td>
+                              <input
+                                value={item.remarks}
+                                onChange={(e) => {
+                                  const newData = [...gridDatas.manufacturingSAPS];
+                                  newData[index].remarks = e.target.value;
+                                  setGridDatas({
+                                    ...gridDatas,
+                                    manufacturingSAPS: newData,
+                                  });
+                                }}
+                              />
+                            </td>
+                          </tr>
+                        );
+                      })}
+                    </tbody>
+                  </table>
+                </div>
 
-            <h4 className="gridName">Summary of Manufacturing Site Address</h4>
-            <TinyEditor
-              editorContent={tinyData.tiny2}
-              setEditorContent={setTinyContent}
-              tinyNo={2}
-            />
-          </div>
-        ) : null}</>}
+                <h4 className="gridName">Summary of Manufacturing Site Address</h4>
+                <TinyEditor
+                  editorContent={tinyData.tiny2}
+                  setEditorContent={setTinyContent}
+                  tinyNo={2}
+                />
+              </div>
+            ) : null}
+          </>
+        )}
         {tab === "WR" ? (
           <>
             <div className="p-4">
