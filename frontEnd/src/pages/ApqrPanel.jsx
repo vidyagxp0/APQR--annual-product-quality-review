@@ -229,6 +229,7 @@ export default function APQR() {
     yAxisTitle: "Number of Batches",
   };
   const [data, setData] = useState(null);
+  const [isLoading,setIsLoading]=useState(true)
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const location = useLocation();
@@ -1218,23 +1219,18 @@ export default function APQR() {
 
   const handleUpdateAPQR = async () => {
     try {
-      // Prepare the payload with all fields that need to be updated
       const payload = {
         pQRData,
         gridDatas,
         tinyData,
       };
 
-      // Make the PUT request to update the data on the server
       const response = await axios.put(
         `http://localhost:4000/update-apqr/${editData.pqrId}`,
         payload
       );
-
-      // Handle success (e.g., show a success message)
     } catch (error) {
       console.error("Error updating data:", error);
-      // Handle error (e.g., show an error message)
     }
   };
 
@@ -1309,8 +1305,6 @@ export default function APQR() {
         previewOOAC: apiData.previewOOAC?.data || [],
         currentOOAL: apiData.currentOOAL?.data || [],
         previewOOAL: apiData.previewOOAL?.data || [],
-        // previewCC: apiData.previewCC?.data || [],
-        // currentCC: apiData.currentCC?.data || [],
         currentOOT: apiData.currentOOT?.data || [],
         previewOOT: apiData.previewOOT?.data || [],
         currentCC: apiData.currentCC?.data || [],
@@ -1336,6 +1330,7 @@ export default function APQR() {
         reviewODSTR15: apiData.reviewODSTR15?.data || [],
         // Map all other grids here
       });
+      setIsLoading(false)
     } catch (error) {
       console.error("Error fetching data:", error);
     }
@@ -2806,7 +2801,8 @@ export default function APQR() {
             List Of Annexures/Attachments
           </div>
         </div>
-
+        {isLoading?<div>Data Fetching</div>:<>
+        
         {tab === "GI" ? (
           <div className="  p-4">
             <div className="dual-group-input ">
@@ -3117,7 +3113,7 @@ export default function APQR() {
               tinyNo={2}
             />
           </div>
-        ) : null}
+        ) : null}</>}
         {tab === "WR" ? (
           <>
             <div className="p-4">
