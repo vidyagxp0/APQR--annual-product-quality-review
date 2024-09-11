@@ -429,128 +429,128 @@ export const updateAPQRById = async (req, res) => {
         totalReprocessedBatches:
           req.body.pQRData.totalReprocessedBatches ||
           existingAPQR.totalReprocessedBatches,
-        tinyData: req.body.pQRData.tinyData,
+        tinyData: req.body.pQRData.tinyData, 
       },
       { transaction: t }
     );
-
-    // Update or create grid data
-    const grids = [
-      "manufacturingStage",
-      "manufacturingSAPS",
-      "rawMRS",
-      "packingMRS",
-      "reviewOfASL",
-      "expiredRMD",
-      "expiredPMD",
-      "vendorQDORME",
-      "vendorQDOPPM",
-      "vendorQDPOG",
-      "codeTCTD",
-      "reviewORCEC",
-      "manufacturingSD",
-      "bufferFSDPV",
-      "oosDetails",
-      "capaDetails",
-      "deviationDetails",
-      "ootResults",
-      "oolResults",
-      "ooaResults",
-      "reviewODSTR",
-      "reviewODSTR2",
-      "reviewODSTR3",
-      "reviewODSTR4",
-      "reviewODSTR5",
-      "reviewODSTR6",
-      "reviewODSTR7",
-      "reviewODSTR8",
-      "reviewODSTR9",
-      "reviewODSTR10",
-      "reviewODSTR11",
-      "reviewODSTR12",
-      "reviewODSTR13",
-      "reviewODSTR14",
-      "reviewODSTR15",
-      "reviewORMETR",
-      "reviewOPMTR",
-      "reviewODP",
-      "reviewODP2",
-      "reviewODP3",
-      "reviewODP4",
-      "reviewODP5",
-      "reviewODP6",
-      "reviewODP7",
-      "reviewODP8",
-      "reviewODP9",
-      "reviewODP10",
-      "reviewODPFPTR",
-      "summaryOOSS",
-      "stabilitySR",
-      "reviewOVIRS",
-      "hVACQStatus",
-      "dossierRR",
-      "dossierRRNma",
-      "sanitizationASDOU",
-      "compressedGas",
-      "currentRPQRN",
-      "unitOperation3",
-      "unitOperation4",
-      "unitOperation5",
-      "unitOperation6",
-      "unitOperation7",
-      "unitOperation8",
-      "unitOperation9",
-      "unitOperation10",
-      "reviewOfCPD",
-      "previewRPD",
-      "currentOOS",
-      "previewOOS",
-      "currentOOAC",
-      "previewOOAC",
-      "currentOOAL",
-      "previewOOAL",
-      "previewCC",
-      "currentCC",
-      "currentOOT",
-      "previewOOT",
-      "currentCC",
-      "previewCC",
-      "currentMC",
-      "previewMC",
-      "currentOOSA",
-      "previewOOSA",
-      "currentLabI",
-      "previewLabI",
-    ];
+    
+ // Update or create grid data
+ const grids = [
+  "manufacturingStage",
+  "manufacturingSAPS",
+  "rawMRS",
+  "packingMRS",
+  "reviewOfASL",
+  "expiredRMD",
+  "expiredPMD",
+  "vendorQDORME",
+  "vendorQDOPPM",
+  "vendorQDPOG",
+  "codeTCTD",
+  "reviewORCEC",
+  "manufacturingSD",
+  "bufferFSDPV",
+  "oosDetails",
+  "capaDetails",
+  "deviationDetails",
+  "ootResults",
+  "oolResults",
+  "ooaResults",
+  "reviewODSTR",
+  "reviewODSTR2",
+  "reviewODSTR3",
+  "reviewODSTR4",
+  "reviewODSTR5",
+  "reviewODSTR6",
+  "reviewODSTR7",
+  "reviewODSTR8",
+  "reviewODSTR9",
+  "reviewODSTR10",
+  "reviewODSTR11",
+  "reviewODSTR12",
+  "reviewODSTR13",
+  "reviewODSTR14",
+  "reviewODSTR15",
+  "reviewORMETR",
+  "reviewOPMTR",
+  "reviewODP",
+  "reviewODP2",
+  "reviewODP3",
+  "reviewODP4",
+  "reviewODP5",
+  "reviewODP6",
+  "reviewODP7",
+  "reviewODP8",
+  "reviewODP9",
+  "reviewODP10",
+  "reviewODPFPTR",
+  "summaryOOSS",
+  "stabilitySR",
+  "reviewOVIRS",
+  "hVACQStatus",
+  "dossierRR",
+  "dossierRRNma",
+  "sanitizationASDOU",
+  "compressedGas",
+  "currentRPQRN",
+  "unitOperation3",
+  "unitOperation4",
+  "unitOperation5",
+  "unitOperation6",
+  "unitOperation7",
+  "unitOperation8",
+  "unitOperation9",
+  "unitOperation10",
+  "reviewOfCPD",
+  "previewRPD",
+  "currentOOS",
+  "previewOOS",
+  "currentOOAC",
+  "previewOOAC",
+  "currentOOAL",
+  "previewOOAL",
+  "previewCC",
+  "currentCC",
+  "currentOOT",
+  "previewOOT",
+  "currentCC",
+  "previewCC",
+  "currentMC",
+  "previewMC",
+  "currentOOSA",
+  "previewOOSA",
+  "currentLabI",
+  "previewLabI",
+];
     // console.log("Updating ManufacturingStage with data:");
 
-    for (let i = 0; i < grids.length; i++) {
-      if (req.body[grids[i]]) {
-        const existingGridRef = await gridRef.findOne({
-          where: {
-            pqrId: apqrId,
-            primaryKey: grids[i],
-          },
-          transaction: t,
-        });
+for (let i = 0; i < grids.length; i++) {
+  if (req.body.gridDatas[grids[i]]) {
+    const existingGridRef = await gridRef.findOne({
+      where: {
+        pqrId: apqrId,
+        primaryKey: grids[i],
+      },
+      transaction: t,
+    });
 
-        if (existingGridRef) {
-          await existingGridRef.update(
-            { data: req.body.gridDatas[grids[i]] },
-            { transaction: t }
-          );
-        } else {
-          await gridRef.create(
-            {
-              pqrId: apqrId,
-              primaryKey: grids[i],
-              data: req.body.gridDatas[grids[i]],
-            },
-            { transaction: t }
-          );
-        }
-      }
+    if (existingGridRef) {
+      await existingGridRef.update(
+        { data: req.body.gridDatas[grids[i]] },
+        { transaction: t }
+      );
+    } else {
+      await gridRef.create(
+        {
+          pqrId: apqrId,
+          primaryKey: grids[i],
+          data: req.body.gridDatas[grids[i]],
+        },
+        { transaction: t }
+      );
     }
+}
+}
 
     await t.commit(); // Commit the transaction
 
