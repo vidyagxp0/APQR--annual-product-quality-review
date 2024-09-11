@@ -353,7 +353,7 @@ export default function Logs() {
       <Header />
       <BottomHeader />
       <div
-        className="container mt-5 mb-10 w-full mx-12"
+        className="container mt-5 mb-10 w-full mx-12 max-h-[75vh] overflow-y-auto scrollbar-custom "
         style={{ width: "100%", maxWidth: "95%", overflowX: "scroll" }}
       >
         <table className="w-full">

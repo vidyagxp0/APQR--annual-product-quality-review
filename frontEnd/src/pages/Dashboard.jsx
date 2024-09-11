@@ -50,9 +50,12 @@ export default function Dashboard() {
     <>
       <Header />
       <BottomHeader />
-      <div className="container mt-5 mb-10 w-full mx-12" style={{ width: "100%", maxWidth: "95%" }}>
+      <div
+        className="container mt-5 mb-10 w-full mx-12 max-h-[75vh] overflow-y-auto scrollbar-custom"
+        style={{ width: "100%", maxWidth: "95%" }}
+      >
         <table className="w-full">
-          <thead className="bg-slate-500 text-white">
+          <thead className="bg-slate-500 sticky top-0 text-white">
             <tr>
               <th className="px-4 py-2 border-r-2 w-1/12">PQR id</th>
               <th className="px-4 py-2 border-r-2">Product Name</th>
