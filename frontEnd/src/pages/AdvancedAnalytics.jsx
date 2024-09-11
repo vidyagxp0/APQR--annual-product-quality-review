@@ -222,7 +222,7 @@ export default function AdvancedAnalytics() {
       <Header />
       <BottomHeader />
       <div>
-        <div>
+        <div className="h-[500px] p-6">
           <HighchartsHistogram2
             data={chartConfig.data}
             heading="Histogram Example"
@@ -232,6 +232,7 @@ export default function AdvancedAnalytics() {
             plotLines={chartConfig.plotLines}
           />
         </div>
+      
         {/* <HighchartsChart
           heading={"Paracetamol  Graph"}
           xHeading={"Batch No."}
@@ -319,16 +320,22 @@ export default function AdvancedAnalytics() {
           zones={PantoprazolepHZones}
           annotations={paracetamolAnnotations}
           highchartData={PantoprazolepHData}/> */}
-        <div className="flex justify-evenly">
+        <div className="flex justify-evenly h-[500px]">
           <div className="w-5/12">
-            <HighchartsHistogram
-              data={phOfParacetamolHistogram.data}
-              lsl={phOfParacetamolHistogram.lsl}
-              usl={phOfParacetamolHistogram.usl}
-              heading={phOfParacetamolHistogram.heading}
-              yAxisTitle={phOfParacetamolHistogram.yAxisTitle}
-              xAxisTitle={phOfParacetamolHistogram.xAxisTitle}
-            />
+       
+        <HighchartsChart
+          heading={"Assay Of Terbinafine "}
+          xHeading={"Batch No."}
+          yHeading={"Observed Value"}
+          yMax={10}
+          yMin={5.0}
+          yTickInterval={0.5}
+          plotLines={PantoprazolepHPlotLines}
+          zones={PantoprazolepHZones}
+          annotations={paracetamolAnnotations}
+          highchartData={PantoprazolepHData}
+        />
+  
           </div>
           <div className="w-5/12">
             <HighchartsPareto
@@ -341,7 +348,8 @@ export default function AdvancedAnalytics() {
             />
           </div>
         </div>
-        <div className=" px-40 pt-10  shadow-md">
+        
+        <div className=" p-6 shadow-md">
           <HighchartsScatterPlot
             data={phOfParacetamolScatter.data}
             lsl={phOfParacetamolScatter.lsl}
