@@ -3,6 +3,7 @@ import path from "path";
 import { fileURLToPath } from "url";
 import { htmlToText } from "html-to-text";
 import { getBase64Image } from "../../index.js";
+import fs from "fs";
 
 // Sample data to be passed to the template
 const pqrData = {
@@ -2005,6 +2006,9 @@ export const generatePdfbyId = async (req, res) => {
         left: "50px",
       },
     });
+
+    const filePath = path.resolve("pdfs", `APQR_Report_${apqrId}.pdf`);
+    fs.writeFileSync(filePath, pdfBuffer);
 
     res.setHeader("Content-Disposition", "attachment; filename=APQR_Report.pdf");
     res.setHeader("Content-Type", "application/pdf");

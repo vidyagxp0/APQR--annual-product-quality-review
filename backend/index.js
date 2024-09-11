@@ -26,6 +26,10 @@ app.use(
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
+const pdfsFolder = path.resolve(__dirname, "pdfs");
+
+app.use("/pdfs", express.static(pdfsFolder));
+
 // Set the views directory and view engine
 app.set("views", path.join(__dirname, "src/views"));
 app.set("view engine", "ejs");
