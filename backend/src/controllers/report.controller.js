@@ -1933,7 +1933,7 @@ const setapqrdata = (aPQRDataOBJ) => {
   pqrData.annexure20 = tinyData?.tiny76 ?? "";
 };
 
-export const generatePdfbyId = async (req, res) => {
+export const chatPdf = async (req, res) => {
   const apqrId = req.params.id;
   let aPQRData;
   try {
@@ -2009,6 +2009,91 @@ export const generatePdfbyId = async (req, res) => {
 
     const filePath = path.resolve("pdfs", `APQR_Report_${apqrId}.pdf`);
     fs.writeFileSync(filePath, pdfBuffer);
+
+    res.status(200).json({ filename: `APQR_Report_${apqrId}.pdf` });
+  } catch (error) {
+    console.error("Error generating PDF:", error);
+    res.status(500).send("Error generating PDF", error);
+  } finally {
+    if (browser) {
+      await browser.close();
+    }
+  }
+};
+
+export const generatePdfbyId = async (req, res) => {
+  const apqrId = req.params.id;
+  let aPQRData;
+  try {
+    const aPQRDataRes = await fetch(`http://localhost:4000/get-apqr/${apqrId}`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+
+    aPQRData = await aPQRDataRes.json();
+
+    setapqrdata(aPQRData);
+  } catch (error) {
+    console.error("Error fetching APQR data:", error);
+    return res.status(500).send("Error fetching APQR data");
+  }
+  let browser;
+  try {
+    const base64Logo = await getBase64Image("public/connexologo.jpg");
+    const base64Logo2 = await getBase64Image("public/symbiotecLogo.png");
+
+    if (!aPQRData) {
+      return res.status(404).json({ error: true, message: "APQR not found" });
+    }
+    // Render the main HTML with EJS
+    const htmlContent = await new Promise((resolve, reject) => {
+      req.app.render("report", { product: pqrData }, (err, html) => {
+        if (err) return reject(err);
+        resolve(html);
+      });
+    });
+
+    // Render the header and footer with EJS
+    const headerHtml = await new Promise((resolve, reject) => {
+      req.app.render(
+        "header",
+        { base64Image: base64Logo, base64Logo2: base64Logo2, product: pqrData },
+        (err, html) => {
+          if (err) return reject(err);
+          resolve(html);
+        }
+      );
+    });
+
+    const footerHtml = await new Promise((resolve, reject) => {
+      req.app.render("footer", { product: pqrData }, (err, html) => {
+        if (err) return reject(err);
+        resolve(html);
+      });
+    });
+
+    browser = await puppeteer.launch({
+      headless: true,
+      args: ["--no-sandbox", "--disable-setuid-sandbox"],
+    });
+    const page = await browser.newPage();
+    await page.setContent(htmlContent, { waitUntil: "networkidle0" });
+
+    const pdfBuffer = await page.pdf({
+      format: "A4",
+      printBackground: true,
+      displayHeaderFooter: true,
+      headerTemplate: headerHtml,
+      footerTemplate: footerHtml,
+      margin: {
+        top: "160px",
+        right: "50px",
+        bottom: "50px",
+        left: "50px",
+      },
+    });
 
     res.setHeader("Content-Disposition", "attachment; filename=APQR_Report.pdf");
     res.setHeader("Content-Type", "application/pdf");
