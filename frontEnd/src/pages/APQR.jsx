@@ -1,6 +1,8 @@
 import React, { useEffect, useReducer, useState } from "react";
 import Header from "../Component/Header";
 import { MdNoteAdd } from "react-icons/md";
+import { FaMicrophone } from "react-icons/fa6";
+import { AiFillSound } from "react-icons/ai";
 import TinyEditor from "../Component/TinyEditor";
 import { useDispatch } from "react-redux";
 import { addForm } from "../redux/formSlice";
@@ -1966,6 +1968,27 @@ export default function APQR() {
     newProductCodes.splice(index, 1);
     setProductCodes(newProductCodes);
   };
+
+
+  //  Speech functionality ----------------------------
+
+  // Text-to-Speech functionality
+  const handleTextToSpeech = (text) => {
+    const speech = new SpeechSynthesisUtterance(text);
+    window.speechSynthesis.speak(speech);
+  };
+
+  // Speech-to-Text functionality
+  const handleSpeechToText = (updater) => {
+    const recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
+    recognition.lang = 'en-US'; // Set language
+    recognition.onresult = (event) => {
+      const speechToText = event.results[0][0].transcript;
+      updater(speechToText);
+    };
+    recognition.start();
+  };
+
   return (
     <>
       <Header />
@@ -2054,6 +2077,8 @@ export default function APQR() {
                     setPQRData({ productName: e.target.value });
                   }}
                 />
+                <button onClick={() => handleSpeechToText((text) => setPQRData({ productName: text }))} className="rounded-full border p-2  mr-3 mt-1 bg-slate-100 hover:bg-slate-200"><FaMicrophone/></button>
+                <button onClick={() => handleTextToSpeech(pQRData.productName)} className="rounded-full border p-2 bg-slate-100 hover:bg-slate-200"><AiFillSound/></button>
               </div>
             </div>
             {productCodes?.map((productCode, index) => (
@@ -2093,6 +2118,8 @@ export default function APQR() {
                     setPQRData({ genericName: e.target.value });
                   }}
                 />
+                <button onClick={() => handleSpeechToText((text) => setPQRData({ genericName: text }))} className="rounded-full border p-2  mr-3 mt-1 bg-slate-100 hover:bg-slate-200"><FaMicrophone/></button>
+                <button onClick={() => handleTextToSpeech(pQRData.genericName)} className="rounded-full border p-2 bg-slate-100 hover:bg-slate-200"><AiFillSound/></button>
               </div>
               <div className="group-input">
                 <label>Review Start Date</label>
@@ -2139,6 +2166,8 @@ export default function APQR() {
                     setPQRData({ mfgLicNo: e.target.value });
                   }}
                 />
+                <button onClick={() => handleSpeechToText((text) => setPQRData({ mfgLicNo: text }))} className="rounded-full border p-2  mr-3 mt-1 bg-slate-100 hover:bg-slate-200"><FaMicrophone/></button>
+                <button onClick={() => handleTextToSpeech(pQRData.mfgLicNo)} className="rounded-full border p-2 bg-slate-100 hover:bg-slate-200"><AiFillSound/></button>
               </div>
             </div>
 
