@@ -3,6 +3,7 @@ import Header from "../Component/Header";
 import BottomHeader from "../Component/BottomHeader";
 import { useLocation, useNavigate } from "react-router-dom";
 import { BsFillFileEarmarkPdfFill } from "react-icons/bs";
+import { IoEyeSharp } from "react-icons/io5";
 import axios from "axios";
 
 export default function Dashboard() {
@@ -11,6 +12,13 @@ export default function Dashboard() {
   const [tableDataLoading, setTableDataLoading] = useState(false);
   const [data, setData] = useState([]);
   const location = useLocation(); // To track navigation and state
+
+  const chatPdfConfig = {
+      headers: {
+          "x-api-key": "sec_qLUcsYBeIWAt564Tk5zhHg76DQHjastL",
+          "Content-Type": "application/json",
+      },
+  };
 
   useEffect(() => {
     const fetchData = async () => {
@@ -28,18 +36,44 @@ export default function Dashboard() {
 
     setTimeout(fetchData, 500);
   }, [location]);
+
+  const initializeChatModal = async (data) => {
+      console.log('initializeChatModal')
+      try {
+          const addPdfUrl = "https://api.chatpdf.com/v1/sources/add-url";
+
+          const res = await axios.post(addPdfUrl, data, chatPdfConfig)
+
+          console.log('res', res);
+
+          srcId = res.data.sourceId;
+
+      } catch (err) {
+          console.log('Error in initializeChatModal fn', err.message)
+      }
+  }
+
   const downloadPDF = async (pqrId) => {
     setLoading((prevLoading) => ({ ...prevLoading, [pqrId]: true }));
     try {
-      const response = await fetch(`http://localhost:4000/report/generate-report/${pqrId}`);
-      const blob = await response.blob();
-      const url = window.URL.createObjectURL(new Blob([blob]));
-      const link = document.createElement("a");
-      link.href = url;
-      link.setAttribute("download", "APQR_Report.pdf");
-      document.body.appendChild(link);
-      link.click();
-      link.parentNode.removeChild(link);
+
+      const pdfUrl = `http://localhost:4000/pdfs/APQR_Report_${pqrId}.pdf`;
+      initializeChatModal({
+        // url: pdfUrl
+        url: "https://pdfobject.com/pdf/sample.pdf"
+      })
+
+      // const response = await fetch(`http://localhost:4000/report/generate-report/${pqrId}`);
+      
+      // const blob = await response.blob();
+      // const url = window.URL.createObjectURL(new Blob([blob]));
+      // const link = document.createElement("a");
+      // link.href = url;
+      // link.setAttribute("download", "APQR_Report.pdf");
+      // document.body.appendChild(link);
+      // link.click();
+      // link.parentNode.removeChild(link);
+
     } catch (error) {
       console.error("Error downloading PDF:", error);
     }
@@ -98,7 +132,7 @@ export default function Dashboard() {
                       year: "2-digit",
                     }).format(new Date(item.reviewStartDate))}
                   </td>
-                  <td className="px-4 py-2 border-r-2">
+                  <td className="px-4 py-2 border-r-2 flex gap-6">
                     <button
                       className="p-[6px] border border-gray-800 rounded flex gap-2 items-center bg-slate-200"
                       onClick={() => downloadPDF(item.pqrId)}
@@ -109,6 +143,18 @@ export default function Dashboard() {
                         <div className="h-5 w-5 border-t-2 border-b-2 border-black animate-spin rounded-full"></div>
                       ) : (
                         <BsFillFileEarmarkPdfFill />
+                      )}
+                    </button>
+                    <button
+                      className="p-[6px] border border-gray-800 rounded flex gap-2 items-center bg-slate-200"
+                      onClick={() => navigate("/view-report")}
+                      // disabled={loading[item.pqrId]}
+                    >
+                      View Report
+                      {loading[item.pqrId] ? (
+                        <div className="h-5 w-5 border-t-2 border-b-2 border-black animate-spin rounded-full"></div>
+                      ) : (
+                        <IoEyeSharp /> 
                       )}
                     </button>
                   </td>

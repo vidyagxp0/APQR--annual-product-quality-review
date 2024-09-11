@@ -14,6 +14,7 @@ import DownloadReportButton from "./Component/DownloadReportButton";
 import HighchartsLine from "./Component/Analytics/HighchartsLine";
 import AdvancedAnalytics from "./pages/AdvancedAnalytics";
 import Logs from "./pages/Logs";
+import ViewReport from "./pages/ViewReport";
 
 function App() {
   return (
@@ -31,6 +32,7 @@ function App() {
         <Route path="/analytics" element={<AdvancedAnalytics />} />
         <Route path="/notification" element={<Notification />} />
         <Route path="/logs" element={<Logs />} />
+        <Route path="/view-report" element={<ViewReport />} />
 
         {/* test */}
         <Route path="/analytics2" element={<Analytics />} />
@@ -38,6 +40,7 @@ function App() {
         <Route path="/test2" element={<ESignatureModal />} />
         <Route path="/pdftest" element={<DownloadReportButton />} />
         <Route path="/highchart" element={<HighchartsLine />} />
+
       </Routes>
     </BrowserRouter>
   );
