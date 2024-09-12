@@ -9,17 +9,16 @@ import axios from "axios";
 export default function Dashboard() {
   const navigate = useNavigate();
   const [loading, setLoading] = useState({});
+  const [viewLoading, setvieLoading] = useState({});
   const [tableDataLoading, setTableDataLoading] = useState(false);
   const [data, setData] = useState([]);
   const location = useLocation(); // To track navigation and state
-
-  
 
   useEffect(() => {
     const fetchData = async () => {
       setTableDataLoading(true);
       try {
-        const response = await axios.get("http://localhost:4000/get-all-apqr");
+        const response = await axios.get("https://apqrapi.mydemosoftware.com/get-all-apqr");
         setData(response.data);
         console.log(response.data[0]);
       } catch (error) {
@@ -32,13 +31,13 @@ export default function Dashboard() {
     setTimeout(fetchData, 500);
   }, [location]);
 
-
   const downloadPDF = async (pqrId) => {
     setLoading((prevLoading) => ({ ...prevLoading, [pqrId]: true }));
     try {
+      const response = await fetch(
+        `https://apqrapi.mydemosoftware.com/report/generate-report/${pqrId}`
+      );
 
-      const response = await fetch(`http://localhost:4000/report/generate-report/${pqrId}`);
-      
       const blob = await response.blob();
       const url = window.URL.createObjectURL(new Blob([blob]));
       const link = document.createElement("a");
@@ -47,13 +46,30 @@ export default function Dashboard() {
       document.body.appendChild(link);
       link.click();
       link.parentNode.removeChild(link);
-
     } catch (error) {
       console.error("Error downloading PDF:", error);
     }
     setLoading((prevLoading) => ({ ...prevLoading, [pqrId]: false }));
   };
 
+  const openChatPdf = async (pqrId) => {
+    setvieLoading((prevLoading) => ({ ...prevLoading, [pqrId]: true }));
+    try {
+      const response = await fetch(`https://apqrapi.mydemosoftware.com/report/chat-pdf/${pqrId}`);
+      const { filename } = await response.json();
+      // const filename=data.filename
+
+      // navigate("/view-report",  { state: { pqrId, filename } });
+
+      const reportUrl = `/view-report?pqrId=${pqrId}&filename=${filename}`;
+
+      // Open the report in a new tab
+      window.open(reportUrl, "_blank", "noopener,noreferrer");
+    } catch (error) {
+      console.log("Error opening chat pdf PDF:", error);
+    }
+    setvieLoading((prevLoading) => ({ ...prevLoading, [pqrId]: false }));
+  };
   return (
     <>
       <Header />
@@ -124,14 +140,14 @@ export default function Dashboard() {
                     </button>
                     <button
                       className="p-[6px] border border-gray-800 rounded flex gap-2 items-center bg-slate-200"
-                      onClick={() => navigate("/view-report")}
-                      // disabled={loading[item.pqrId]}
+                      onClick={() => openChatPdf(item.pqrId)}
+                      disabled={viewLoading[item.pqrId]}
                     >
                       View Report
-                      {loading[item.pqrId] ? (
+                      {viewLoading[item.pqrId] ? (
                         <div className="h-5 w-5 border-t-2 border-b-2 border-black animate-spin rounded-full"></div>
                       ) : (
-                        <IoEyeSharp /> 
+                        <IoEyeSharp />
                       )}
                     </button>
                   </td>
