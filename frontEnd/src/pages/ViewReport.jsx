@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { FaComments, FaTimes } from 'react-icons/fa'; // Icon for chat button and close button
+import { useLocation } from 'react-router-dom';
 
 const ViewReport = () => {
   const [isChatOpen, setIsChatOpen] = useState(false);
@@ -8,8 +9,9 @@ const ViewReport = () => {
   const [newMessage, setNewMessage] = useState("");
   const [awaitingResponse, setAwaitingResponse] = useState(false);
   const [srcId, setSrcId] = useState('');
-
-  const pqrId = 1;
+  const location = useLocation();
+  
+  const pqrId = location.state.pqrId
 
   const pdfUrl = `http://localhost:4000/pdfs/APQR_Report_${pqrId}.pdf`;
 
@@ -85,7 +87,7 @@ const ViewReport = () => {
         Your browser does not support iframes.
       </iframe>
 
-      {/* Chatbox Toggle Button (Conditional Rendering) */}
+    
       {!isChatOpen && (
         <div
           className="absolute bottom-5 right-8 bg-blue-500 text-white p-4 rounded-full shadow-lg cursor-pointer z-50"
@@ -103,7 +105,7 @@ const ViewReport = () => {
             <FaTimes
               size={20}
               className="cursor-pointer"
-              onClick={() => setIsChatOpen(false)} // Close chatbox on click
+              onClick={() => setIsChatOpen(false)} 
             />
           </div>
           <div className="h-[500px] overflow-y-auto p-3">
@@ -112,8 +114,8 @@ const ViewReport = () => {
                 key={index}
                 className={`p-2 my-1 rounded-lg mt-5 ${
                   message.sender === "user"
-                    ? "bg-blue-300 ml-10 text-white text-right" // Lightened background for user
-                    : "bg-gray-300 mr-10 text-black text-left pl-4" // Added padding for bot messages
+                    ? "bg-blue-300 ml-10 text-white text-right" 
+                    : "bg-gray-300 mr-10 text-black text-left pl-4" 
                 }`}
               >
                 {message.text}
@@ -126,12 +128,12 @@ const ViewReport = () => {
               value={newMessage}
               onChange={(e) => setNewMessage(e.target.value)}
               placeholder="Type a message..."
-              className="flex-grow p-2 h-12 border-none focus:outline-none" // Increased height
+              className="flex-grow p-2 h-12 border-none focus:outline-none" 
             />
             <button
               onClick={handleSendMessage}
               disabled={awaitingResponse}
-              className="bg-blue-500 text-white px-4 py-2 h-12 hover:bg-blue-600 -ml-3 flex min-w-24 space-x-4 items-center" // Shifted left with negative margin
+              className="bg-blue-500 text-white px-4 py-2 h-12 hover:bg-blue-600 -ml-3 flex min-w-24 space-x-4 items-center" 
             >
               <p>Send</p>
               {awaitingResponse && (

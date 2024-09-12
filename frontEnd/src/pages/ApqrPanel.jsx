@@ -31,7 +31,7 @@ import { FaMicrophone } from "react-icons/fa6";
 import { AiFillSound } from "react-icons/ai";
 export default function APQR() {
   const [tab, setTab] = useState("GI");
-
+  const [isSaving, setIsSaving] = useState(false);
   const phChartsConfig = {
     data: [
       1.65, 2.7, 3.4, 4.1, 2.2, 2.8, 3.3, 4.0, 1.75, 2.9, 3.5, 4.05, 2.1, 2.85,
@@ -1223,6 +1223,7 @@ export default function APQR() {
   }, [tinyData]);
 
   const handleUpdateAPQR = async () => {
+    setIsSaving(true); // Start the spinner
     try {
       const payload = {
         pQRData,
@@ -1234,11 +1235,14 @@ export default function APQR() {
         `http://localhost:4000/update-apqr/${editData.pqrId}`,
         payload
       );
+      console.log('Update successful:', response.data);
+      navigate("/dashboard")
     } catch (error) {
-      console.error("Error updating data:", error);
+      console.error('Error updating data:', error);
+    } finally {
+      setIsSaving(false); // Stop the spinner
     }
   };
-
   const fetchData = async () => {
     try {
       const response = await axios.get(
@@ -2866,7 +2870,15 @@ export default function APQR() {
           </div>
         </div>
         {isLoading ? (
-          <div>Data Fetching</div>
+          <div className="flex items-center justify-center h-40">
+          <div className="flex items-center justify-center">
+            <div className="relative w-16 h-16">
+              <div className="w-16 h-16 border-t-4 border-b-4 border-blue-500 rounded-full animate-spin"></div>
+            </div>
+            <span className="text-[28px] pl-5 text-blue-500 font-semibold">Data Fetching...</span>
+          </div>
+        </div>
+         
         ) : (
           <>
             {tab === "GI" ? (
@@ -18087,31 +18099,32 @@ export default function APQR() {
         </div>
       </div> */}
       <div className="fixed top-3/4 right-0 z-10 flex flex-col">
-        <button
-          className="
-                px-4
-                py-2
-                bg-teal-600
-                text-white
-                font-semibold
-                rounded-l-full
-                shadow-md
-                hover:bg-teal-700
-                focus:outline-none
-                focus:ring-2
-                focus:ring-offset-2
-                focus:ring-teal-500
-                mb-5
-            
-              "
-          onClick={() => {
-            handleUpdateAPQR();
-            // dispatch(updateForm(gridDatas));
-            navigate("/dashboard");
-          }}
-        >
-          Save
-        </button>
+      <button
+      className="
+        px-4
+        py-2
+        bg-teal-600
+        text-white
+        font-semibold
+        rounded-l-full
+        shadow-md
+        hover:bg-teal-700
+        focus:outline-none
+        focus:ring-2
+        focus:ring-offset-2
+        focus:ring-teal-500
+        mb-5
+        flex items-center justify-center
+      "
+      onClick={handleUpdateAPQR}
+      disabled={isSaving} // Disable button while saving
+    >
+      {isSaving ? (
+        <div className="h-5 w-5 border-t-2 border-b-2 border-white animate-spin rounded-full mr-3"></div>
+      ) : null}
+      {isSaving ? 'Saving...' : 'Save'}
+    </button>
+
         <button
           className="
                 px-4
