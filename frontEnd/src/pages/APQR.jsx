@@ -7,6 +7,8 @@ import { addForm } from "../redux/formSlice";
 import { useNavigate } from "react-router-dom";
 import ExcelExportImport from "../Component/ImportExportExcel";
 import axios from "axios";
+import { FaMicrophone } from "react-icons/fa6";
+import { AiFillSound } from "react-icons/ai";
 
 export default function APQR() {
   const [tab, setTab] = useState("GI");

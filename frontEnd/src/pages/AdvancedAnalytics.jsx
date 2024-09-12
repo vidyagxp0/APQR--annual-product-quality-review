@@ -21,6 +21,8 @@ import HighchartsHistogram from "../Component/Analytics/HighchartsHistogram";
 import HighchartsPareto from "../Component/Analytics/HighchartsPareto";
 import HighchartsScatterPlot from "../Component/Analytics/HighchartsScatterPlot";
 import HighchartsHistogram2 from "../Component/Analytics/HighchartsHistogram2";
+import HighChartColumn from "../Component/Analytics/HighChartColumn";
+import HighchartsChartForDemo from "../Component/Analytics/ForDemo";
 
 export default function AdvancedAnalytics() {
   const phOfParacetamol = {
@@ -222,15 +224,20 @@ export default function AdvancedAnalytics() {
       <Header />
       <BottomHeader />
       <div>
-        <div className="h-[500px] p-6">
-          <HighchartsHistogram2
-            data={chartConfig.data}
-            heading="Histogram Example"
-            xAxisTitle="Value Ranges"
-            yAxisTitle="Frequency"
-            bins={chartConfig.bins}
-            plotLines={chartConfig.plotLines}
-          />
+        <div className="h-[600px] p-8">
+        <HighchartsChartForDemo
+          heading={"Assay Of Terbinafine "}
+          xHeading={"Batch No."}
+          yHeading={"Observed Value"}
+          yMax={10}
+          yMin={5.0}
+          yTickInterval={0.5}
+          plotLines={PantoprazolepHPlotLines}
+          zones={PantoprazolepHZones}
+          annotations={paracetamolAnnotations}
+          highchartData={PantoprazolepHData}
+        />
+         
         </div>
       
         {/* <HighchartsChart
@@ -320,21 +327,17 @@ export default function AdvancedAnalytics() {
           zones={PantoprazolepHZones}
           annotations={paracetamolAnnotations}
           highchartData={PantoprazolepHData}/> */}
-        <div className="flex justify-evenly h-[500px]">
+        <div className="flex justify-evenly h-[500px] shadow-lg ">
           <div className="w-5/12">
+          <HighchartsHistogram2
+            data={chartConfig.data}
+            heading="Histogram Example"
+            xAxisTitle="Value Ranges"
+            yAxisTitle="Frequency"
+            bins={chartConfig.bins}
+            plotLines={chartConfig.plotLines}
+          />
        
-        <HighchartsChart
-          heading={"Assay Of Terbinafine "}
-          xHeading={"Batch No."}
-          yHeading={"Observed Value"}
-          yMax={10}
-          yMin={5.0}
-          yTickInterval={0.5}
-          plotLines={PantoprazolepHPlotLines}
-          zones={PantoprazolepHZones}
-          annotations={paracetamolAnnotations}
-          highchartData={PantoprazolepHData}
-        />
   
           </div>
           <div className="w-5/12">
@@ -349,7 +352,7 @@ export default function AdvancedAnalytics() {
           </div>
         </div>
         
-        <div className=" p-6 shadow-md">
+        <div className=" p-8 shadow-lg">
           <HighchartsScatterPlot
             data={phOfParacetamolScatter.data}
             lsl={phOfParacetamolScatter.lsl}
@@ -358,6 +361,9 @@ export default function AdvancedAnalytics() {
             yAxisTitle={phOfParacetamolScatter.yAxisTitle}
             batchNumbers={phOfParacetamolScatter.batchNumbers}
           />
+        </div>
+        <div className="p-8 shadow-lg ">
+        <HighChartColumn data={PantoprazolepHData}/>
         </div>
       </div>
     </>
