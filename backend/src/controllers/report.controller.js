@@ -1937,7 +1937,7 @@ export const chatPdf = async (req, res) => {
   const apqrId = req.params.id;
   let aPQRData;
   try {
-    const aPQRDataRes = await fetch(`https://apqr.mydemosoftware.com/get-apqr/${apqrId}`, {
+    const aPQRDataRes = await fetch(`https://apqrapi.mydemosoftware.com/get-apqr/${apqrId}`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -2025,7 +2025,7 @@ export const generatePdfbyId = async (req, res) => {
   const apqrId = req.params.id;
   let aPQRData;
   try {
-    const aPQRDataRes = await fetch(`https://apqr.mydemosoftware.com/get-apqr/${apqrId}`, {
+    const aPQRDataRes = await fetch(`https://apqrapi.mydemosoftware.com/get-apqr/${apqrId}`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -2113,7 +2113,7 @@ export const viewReportByID = async (req, res) => {
 
   let aPQRData;
   try {
-    const aPQRDataRes = await fetch(`https://apqr.mydemosoftware.com/get-apqr/${apqrId}`, {
+    const aPQRDataRes = await fetch(`https://apqrapi.mydemosoftware.com/get-apqr/${apqrId}`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
