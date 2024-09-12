@@ -164,7 +164,7 @@ export default function APQR() {
   const [tiny83, setTiny83] = useState("");
   const [tiny84, setTiny84] = useState("");
   const [tiny85, setTiny85] = useState("");
-
+  const [loading, setLoading] = useState(false);
   const [reviewOfCPD, setReviewOFCPD] = useState([]);
   const [previewRPD, setPreviewRPD] = useState([]);
   const [currentOOS, setCurrentOOS] = useState([]);
@@ -190,10 +190,6 @@ export default function APQR() {
   const sanitizeKey = (key) => {
     return key.replace(/\s+/g, "").replace(/[\n\r]+/g, "");
   };
-
-  // const trimValue = (value) => {
-  //   return value ? value.trim() : "";
-  // };
 
   const trimValue = (value) => {
     return typeof value === "string" ? value.trim() : value;
@@ -11851,31 +11847,43 @@ export default function APQR() {
         </div>
 
         <div className="fixed top-3/4 right-0 z-10 flex flex-col">
-          <button
-            className="
-                px-4
-                py-2
-                bg-teal-600
-                text-white
-                font-semibold
-                rounded-l-full
-                shadow-md
-                hover:bg-teal-700
-                focus:outline-none
-                focus:ring-2
-                focus:ring-offset-2
-                focus:ring-teal-500
-                mb-5
-            
-              "
-            onClick={() => {
-              // dispatch(addForm(pQRData));
-              APQRData(pQRData);
-              navigate("/dashboard");
-            }}
-          >
-            Save
-          </button>
+        <button
+  className="
+    px-4
+    py-2
+    bg-teal-600
+    text-white
+    font-semibold
+    rounded-l-full
+    shadow-md
+    hover:bg-teal-700
+    focus:outline-none
+    focus:ring-2
+    focus:ring-offset-2
+    focus:ring-teal-500
+    mb-5
+    flex items-center justify-center
+  "
+  onClick={async () => {
+    setLoading(true); // Set loading to true when clicking the button
+    try {
+      // Simulate the async operation
+      await APQRData(pQRData);
+      navigate("/dashboard");
+    } catch (error) {
+      console.error("Error saving data:", error);
+    } finally {
+      setLoading(false); // Set loading to false after completion
+    }
+  }}
+  disabled={loading} // Disable the button while loading
+>
+  {loading ? (
+    <div className="h-5 w-5 border-t-2 border-b-2 border-white animate-spin rounded-full mr-3"></div>
+  ) : null}
+  {loading ? 'Saving...' : 'Save'}
+</button>
+
           <button
             className="
                 px-4

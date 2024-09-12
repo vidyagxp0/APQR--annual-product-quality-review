@@ -70,7 +70,7 @@ export default function Header() {
             </button>
             {dropdownOpen && (
               <div
-                className="absolute right-0 mt-2 w-40 bg-white border rounded-md shadow-lg py-1"
+                className="absolute right-0 mt-2 w-40 bg-white border rounded-md shadow-lg py-1 z-10"
                 onMouseEnter={showDropdown}
                 onMouseLeave={hideDropdown}
               >
