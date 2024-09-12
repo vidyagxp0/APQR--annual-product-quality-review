@@ -23,6 +23,8 @@ import HighchartsScatterPlot from "../Component/Analytics/HighchartsScatterPlot"
 import HighchartsHistogram2 from "../Component/Analytics/HighchartsHistogram2";
 import HighChartColumn from "../Component/Analytics/HighChartColumn";
 import HighchartsChartForDemo from "../Component/Analytics/ForDemo";
+import HighChartDonut from "../Component/Analytics/HighChartDonut";
+import HighChartArea from "../Component/Analytics/HighChartArea";
 
 export default function AdvancedAnalytics() {
   const phOfParacetamol = {
@@ -361,6 +363,14 @@ export default function AdvancedAnalytics() {
             yAxisTitle={phOfParacetamolScatter.yAxisTitle}
             batchNumbers={phOfParacetamolScatter.batchNumbers}
           />
+        </div>
+        <div className="flex justify-evenly h-[550px] shadow-lg mt-8 ">
+        <div>
+          <HighChartDonut data={PantoprazolepHData}/>
+        </div>
+        <div>
+          <HighChartArea data={PantoprazolepHData}/>
+        </div>
         </div>
         <div className="p-8 shadow-lg ">
         <HighChartColumn data={PantoprazolepHData}/>
