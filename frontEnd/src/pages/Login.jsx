@@ -30,8 +30,8 @@ export default function Login() {
         </div>
 
         <div className="w-1/2 p-8">
-          <img src="./gxplogo.png" alt="gxp logo" className=" mx-24 w-1/2 " />
-          {/* <img src="./connexoL.png" alt="gxp logo" className=" mx-24 w-1/2 " /> */}
+          {/* <img src="./gxplogo.png" alt="gxp logo" className=" mx-24 w-1/2 " /> */}
+          <img src="./connexoL.png" alt="gxp logo" className=" mx-24 w-1/2 " />
           <h2 className="text-3xl font-bold text-gray-700 mb-8 text-center mt-12 ">
             Login to APQR
           </h2>
