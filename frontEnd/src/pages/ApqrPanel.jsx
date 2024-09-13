@@ -969,6 +969,51 @@ export default function APQR() {
           ...tinyData,
           tiny76: data,
         });
+      case 77:
+        setTinyData({
+          ...tinyData,
+          tiny77: data,
+        });
+      case 78:
+        setTinyData({
+          ...tinyData,
+          tiny78: data,
+        });
+      case 79:
+        setTinyData({
+          ...tinyData,
+          tiny79: data,
+        });
+      case 80:
+        setTinyData({
+          ...tinyData,
+          tiny80: data,
+        });
+      case 81:
+        setTinyData({
+          ...tinyData,
+          tiny81: data,
+        });
+      case 82:
+        setTinyData({
+          ...tinyData,
+          tiny82: data,
+        });
+      case 83:
+        setTinyData({
+          ...tinyData,
+          tiny83: data,
+        });
+      case 84:
+        setTinyData({
+          ...tinyData,
+          tiny84: data,
+        });
+      case 85:
+        setTinyData({
+          ...tinyData,
+          tiny85: data,
+        });
         break;
     }
   };
