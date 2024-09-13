@@ -1222,7 +1222,7 @@ export default function APQR() {
   }, [tinyData]);
 
   const handleUpdateAPQR = async () => {
-    setIsSaving(true); // Start the spinner
+    setLoading(true); // Start the spinner
     try {
       const payload = {
         pQRData,
@@ -1239,7 +1239,7 @@ export default function APQR() {
     } catch (error) {
       console.error("Error updating data:", error);
     } finally {
-      setIsSaving(false); // Stop the spinner
+      setLoading(false); // Stop the spinner
     }
   };
   const fetchData = async () => {
@@ -17751,18 +17751,7 @@ export default function APQR() {
           mb-5
           flex items-center justify-center
         "
-            onClick={async () => {
-              setLoading(true); // Set loading to true when clicking the button
-              try {
-                // Simulate the async operation
-                await APQRData(pQRData);
-                navigate("/dashboard");
-              } catch (error) {
-                console.error("Error saving data:", error);
-              } finally {
-                setLoading(false); // Set loading to false after completion
-              }
-            }}
+            onClick={handleUpdateAPQR}
             disabled={loading} // Disable the button while loading
           >
             {loading ? (
@@ -17773,6 +17762,7 @@ export default function APQR() {
 
           {/* Exit Button */}
           <button
+          onClick={()=>navigate('/dashboard')}
             className="
           px-4
           py-2
