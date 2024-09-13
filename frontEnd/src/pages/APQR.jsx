@@ -12625,7 +12625,7 @@ export default function APQR() {
         <div className="fixed top-3/4 right-0 z-10 flex flex-col">
           {/* Launch QMS Button */}
           <div>
-            <button
+            {/* <button
               onClick={() => setIsModalOpen(true)}
               className="
             px-4
@@ -12645,7 +12645,7 @@ export default function APQR() {
           "
             >
               Launch QMS
-            </button>
+            </button> */}
 
             {/* Modal */}
             {isModalOpen && (
