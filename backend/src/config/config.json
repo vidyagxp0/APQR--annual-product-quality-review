@@ -6,7 +6,8 @@
     "password": "root",
     "dialect": "mysql",
     "host": "localhost",
-    "JWT_ADMIN_SECRET": "GAURAV"
+    "JWT_ADMIN_SECRET": "GAURAV",
+    "URL": "http://localhost"
   },
   "production": {}
 }

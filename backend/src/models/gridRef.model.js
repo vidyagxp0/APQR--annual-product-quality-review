@@ -26,6 +26,11 @@ const gridRef = sequelize.define("MainGrid", {
     allowNull: true,
     defaultValue: [],
   },
+  fileAttachment: {
+    type: DataTypes.JSON,
+    allowNull: true,
+    defaultValue: [],
+  },
   createdAt: DataTypes.DATE,
   updatedAt: DataTypes.DATE,
 });

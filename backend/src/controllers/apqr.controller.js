@@ -1,6 +1,7 @@
 import { APQR } from "../models/apqr.model.js";
 import gridRef from "../models/gridRef.model.js";
 import { sequelize } from "../config/db.js";
+import { getImageUrl } from "../middleware/authentication.js";
 
 export const createApqr = async (req, res) => {
   // console.log(req.body.tiny1);
@@ -14,9 +15,13 @@ export const createApqr = async (req, res) => {
         genericName: req.body.genericName,
         dosageForm: req.body.dosageForm,
         initiator: req.body.initiator,
-        initiateDate:req.body.initiateDate,
-        reviewStartDate: req.body.reviewStartDate ? new Date(req.body.reviewStartDate) : null,
-        reviewEndDate: req.body.reviewEndDate ? new Date(req.body.reviewEndDate) : null,
+        initiateDate: req.body.initiateDate,
+        reviewStartDate: req.body.reviewStartDate
+          ? new Date(req.body.reviewStartDate)
+          : null,
+        reviewEndDate: req.body.reviewEndDate
+          ? new Date(req.body.reviewEndDate)
+          : null,
         mfgLicNo: req.body.mfgLicNo,
         productDescription: req.body.productDescription,
         processFlow: req.body.processFlow,
@@ -110,8 +115,6 @@ export const createApqr = async (req, res) => {
           tiny83: req.body.tiny83,
           tiny84: req.body.tiny84,
           tiny85: req.body.tiny85,
-
-
         },
       },
       { transaction: t }
@@ -208,12 +211,27 @@ export const createApqr = async (req, res) => {
     const gridData = [];
 
     for (let i = 0; i < grids.length; i++) {
-      if (req.body[grids[i]]) {
+      const gridName = grids[i];
+      const gridInfo = req.body[gridName];
+
+      if (gridInfo) {
+        let filePath = null;
+        const files = req.files?.filter((f) => f.fieldname === gridName); // Exact match between field name and grid name
+
+        if (files && files.length > 0) {
+          filePath = files.map((file) => ({
+            // uniqueId: req.body.gridDatas[gridName],
+            fileName: file.originalname,
+            fileUrl: getImageUrl(file),
+          }));
+        }
+
         const newGridRef = await gridRef.create(
           {
             pqrId: newAPQR.pqrId,
-            primaryKey: grids[i],
-            data: req.body[grids[i]],
+            primaryKey: gridName,
+            data: gridInfo, // Assuming JSON string is passed in request
+            fileAttachment: filePath ? filePath : null, // Store file URL if uploaded
           },
           { transaction: t }
         );
@@ -402,7 +420,7 @@ export const updateAPQRById = async (req, res) => {
         productName: req.body.pQRData.productName || existingAPQR.productName,
         productCodes:
           req.body.pQRData.productCodes || existingAPQR.productCodes,
-          initiateDate:req.body.initiateDate||existingAPQR.initiateDate,
+        initiateDate: req.body.initiateDate || existingAPQR.initiateDate,
         genericName: req.body.pQRData.genericName || existingAPQR.genericName,
         dosageForm: req.body.pQRData.dosageForm || existingAPQR.dosageForm,
         initiator: req.body.initiator || existingAPQR.initiator,
@@ -429,128 +447,128 @@ export const updateAPQRById = async (req, res) => {
         totalReprocessedBatches:
           req.body.pQRData.totalReprocessedBatches ||
           existingAPQR.totalReprocessedBatches,
-        tinyData: req.body.pQRData.tinyData, 
+        tinyData: req.body.pQRData.tinyData,
       },
       { transaction: t }
     );
-    
- // Update or create grid data
- const grids = [
-  "manufacturingStage",
-  "manufacturingSAPS",
-  "rawMRS",
-  "packingMRS",
-  "reviewOfASL",
-  "expiredRMD",
-  "expiredPMD",
-  "vendorQDORME",
-  "vendorQDOPPM",
-  "vendorQDPOG",
-  "codeTCTD",
-  "reviewORCEC",
-  "manufacturingSD",
-  "bufferFSDPV",
-  "oosDetails",
-  "capaDetails",
-  "deviationDetails",
-  "ootResults",
-  "oolResults",
-  "ooaResults",
-  "reviewODSTR",
-  "reviewODSTR2",
-  "reviewODSTR3",
-  "reviewODSTR4",
-  "reviewODSTR5",
-  "reviewODSTR6",
-  "reviewODSTR7",
-  "reviewODSTR8",
-  "reviewODSTR9",
-  "reviewODSTR10",
-  "reviewODSTR11",
-  "reviewODSTR12",
-  "reviewODSTR13",
-  "reviewODSTR14",
-  "reviewODSTR15",
-  "reviewORMETR",
-  "reviewOPMTR",
-  "reviewODP",
-  "reviewODP2",
-  "reviewODP3",
-  "reviewODP4",
-  "reviewODP5",
-  "reviewODP6",
-  "reviewODP7",
-  "reviewODP8",
-  "reviewODP9",
-  "reviewODP10",
-  "reviewODPFPTR",
-  "summaryOOSS",
-  "stabilitySR",
-  "reviewOVIRS",
-  "hVACQStatus",
-  "dossierRR",
-  "dossierRRNma",
-  "sanitizationASDOU",
-  "compressedGas",
-  "currentRPQRN",
-  "unitOperation3",
-  "unitOperation4",
-  "unitOperation5",
-  "unitOperation6",
-  "unitOperation7",
-  "unitOperation8",
-  "unitOperation9",
-  "unitOperation10",
-  "reviewOfCPD",
-  "previewRPD",
-  "currentOOS",
-  "previewOOS",
-  "currentOOAC",
-  "previewOOAC",
-  "currentOOAL",
-  "previewOOAL",
-  "previewCC",
-  "currentCC",
-  "currentOOT",
-  "previewOOT",
-  "currentCC",
-  "previewCC",
-  "currentMC",
-  "previewMC",
-  "currentOOSA",
-  "previewOOSA",
-  "currentLabI",
-  "previewLabI",
-];
+
+    // Update or create grid data
+    const grids = [
+      "manufacturingStage",
+      "manufacturingSAPS",
+      "rawMRS",
+      "packingMRS",
+      "reviewOfASL",
+      "expiredRMD",
+      "expiredPMD",
+      "vendorQDORME",
+      "vendorQDOPPM",
+      "vendorQDPOG",
+      "codeTCTD",
+      "reviewORCEC",
+      "manufacturingSD",
+      "bufferFSDPV",
+      "oosDetails",
+      "capaDetails",
+      "deviationDetails",
+      "ootResults",
+      "oolResults",
+      "ooaResults",
+      "reviewODSTR",
+      "reviewODSTR2",
+      "reviewODSTR3",
+      "reviewODSTR4",
+      "reviewODSTR5",
+      "reviewODSTR6",
+      "reviewODSTR7",
+      "reviewODSTR8",
+      "reviewODSTR9",
+      "reviewODSTR10",
+      "reviewODSTR11",
+      "reviewODSTR12",
+      "reviewODSTR13",
+      "reviewODSTR14",
+      "reviewODSTR15",
+      "reviewORMETR",
+      "reviewOPMTR",
+      "reviewODP",
+      "reviewODP2",
+      "reviewODP3",
+      "reviewODP4",
+      "reviewODP5",
+      "reviewODP6",
+      "reviewODP7",
+      "reviewODP8",
+      "reviewODP9",
+      "reviewODP10",
+      "reviewODPFPTR",
+      "summaryOOSS",
+      "stabilitySR",
+      "reviewOVIRS",
+      "hVACQStatus",
+      "dossierRR",
+      "dossierRRNma",
+      "sanitizationASDOU",
+      "compressedGas",
+      "currentRPQRN",
+      "unitOperation3",
+      "unitOperation4",
+      "unitOperation5",
+      "unitOperation6",
+      "unitOperation7",
+      "unitOperation8",
+      "unitOperation9",
+      "unitOperation10",
+      "reviewOfCPD",
+      "previewRPD",
+      "currentOOS",
+      "previewOOS",
+      "currentOOAC",
+      "previewOOAC",
+      "currentOOAL",
+      "previewOOAL",
+      "previewCC",
+      "currentCC",
+      "currentOOT",
+      "previewOOT",
+      "currentCC",
+      "previewCC",
+      "currentMC",
+      "previewMC",
+      "currentOOSA",
+      "previewOOSA",
+      "currentLabI",
+      "previewLabI",
+    ];
     // console.log("Updating ManufacturingStage with data:");
 
-for (let i = 0; i < grids.length; i++) {
-  if (req.body.gridDatas[grids[i]]) {
-    const existingGridRef = await gridRef.findOne({
-      where: {
-        pqrId: apqrId,
-        primaryKey: grids[i],
-      },
-      transaction: t,
-    });
+    for (let i = 0; i < grids.length; i++) {
+      if (req.body.gridDatas[grids[i]]) {
+        const existingGridRef = await gridRef.findOne({
+          where: {
+            pqrId: apqrId,
+            primaryKey: grids[i],
+          },
+          transaction: t,
+        });
 
-    if (existingGridRef) {
-      await existingGridRef.update(
-        { data: req.body.gridDatas[grids[i]] },
-        { transaction: t }
-      );
-    } else {
-      await gridRef.create(
-        {
-          pqrId: apqrId,
-          primaryKey: grids[i],
-          data: req.body.gridDatas[grids[i]],
-        },
-        { transaction: t }
-      );
+        if (existingGridRef) {
+          await existingGridRef.update(
+            { data: req.body.gridDatas[grids[i]] },
+            { transaction: t }
+          );
+        } else {
+          await gridRef.create(
+            {
+              pqrId: apqrId,
+              primaryKey: grids[i],
+              data: req.body.gridDatas[grids[i]],
+            },
+            { transaction: t }
+          );
+        }
+      }
     }
-}
-}
 
     await t.commit(); // Commit the transaction
 
