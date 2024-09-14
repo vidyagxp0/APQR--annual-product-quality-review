@@ -24,18 +24,18 @@ export default function Header() {
       <div className="container mx-auto px-6 flex items-center justify-between">
         {/* Logo */}
         <div className="flex items-center">
-          <img
+          {/* <img
             src="/gxplogo.png"
             alt="Logo"
             className="h-10 mr-2 cursor-pointer  "
             onClick={() => navigate("/dashboard")}
-          />  
-          {/* <img
+          />   */}
+          <img
             src="/connexoL.png"
             alt="Logo"
             className="h-9 mr-2 cursor-pointer  "
             onClick={() => navigate("/dashboard")}
-          /> */}
+          />
         </div>
 
         {/* Name */}
@@ -70,7 +70,7 @@ export default function Header() {
             </button>
             {dropdownOpen && (
               <div
-                className="absolute right-0 mt-2 w-40 bg-white border rounded-md shadow-lg py-1"
+                className="absolute right-0 mt-2 w-40 bg-white border rounded-md shadow-lg py-1 z-10"
                 onMouseEnter={showDropdown}
                 onMouseLeave={hideDropdown}
               >

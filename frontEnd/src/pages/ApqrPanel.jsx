@@ -27,9 +27,11 @@ import {
 } from "../Component/Analytics/ChartJsFunction";
 import AnalyticsTable from "../Component/Table/AnalyticsTable";
 import axios from "axios";
+import { FaMicrophone } from "react-icons/fa6";
+import { AiFillSound } from "react-icons/ai";
 export default function APQR() {
   const [tab, setTab] = useState("GI");
-
+  const [isSaving, setIsSaving] = useState(false);
   const phChartsConfig = {
     data: [
       1.65, 2.7, 3.4, 4.1, 2.2, 2.8, 3.3, 4.0, 1.75, 2.9, 3.5, 4.05, 2.1, 2.85, 3.2, 4.15, 1.8,
@@ -235,6 +237,8 @@ export default function APQR() {
   const location = useLocation();
   const editData = location.state;
   const [productCodes, setProductCodes] = useState([""]);
+  const [isModalOpen, setIsModalOpen] = useState(false); // To control modal visibility
+  const [loading, setLoading] = useState(false); // To manage loading state for Save button
 
   const [tiny1, setTiny1] = useState("");
   const [tiny2, setTiny2] = useState("");
@@ -967,6 +971,51 @@ export default function APQR() {
           ...tinyData,
           tiny76: data,
         });
+      case 77:
+        setTinyData({
+          ...tinyData,
+          tiny77: data,
+        });
+      case 78:
+        setTinyData({
+          ...tinyData,
+          tiny78: data,
+        });
+      case 79:
+        setTinyData({
+          ...tinyData,
+          tiny79: data,
+        });
+      case 80:
+        setTinyData({
+          ...tinyData,
+          tiny80: data,
+        });
+      case 81:
+        setTinyData({
+          ...tinyData,
+          tiny81: data,
+        });
+      case 82:
+        setTinyData({
+          ...tinyData,
+          tiny82: data,
+        });
+      case 83:
+        setTinyData({
+          ...tinyData,
+          tiny83: data,
+        });
+      case 84:
+        setTinyData({
+          ...tinyData,
+          tiny84: data,
+        });
+      case 85:
+        setTinyData({
+          ...tinyData,
+          tiny85: data,
+        });
         break;
     }
   };
@@ -1218,6 +1267,7 @@ export default function APQR() {
   }, [tinyData]);
 
   const handleUpdateAPQR = async () => {
+    setLoading(true); // Start the spinner
     try {
       const payload = {
         pQRData,
@@ -1226,17 +1276,22 @@ export default function APQR() {
       };
 
       const response = await axios.put(
-        `http://localhost:4000/update-apqr/${editData.pqrId}`,
+        `https://apqrapi.mydemosoftware.com/update-apqr/${editData.pqrId}`,
         payload
       );
+      console.log("Update successful:", response.data);
+      navigate("/dashboard");
     } catch (error) {
       console.error("Error updating data:", error);
+    } finally {
+      setLoading(false); // Stop the spinner
     }
   };
-
   const fetchData = async () => {
     try {
-      const response = await axios.get(`http://localhost:4000/get-apqr/${editData.pqrId}`);
+      const response = await axios.get(
+        `https://apqrapi.mydemosoftware.com/get-apqr/${editData.pqrId}`
+      );
       console.log(response.data, "data");
       setData(response.data);
       setTinyData(response.data.aPQRData.tinyData);
@@ -2757,6 +2812,26 @@ export default function APQR() {
       productCodes: newProductCodes,
     });
   };
+
+  //  Speech functionality ----------------------------
+
+  // Text-to-Speech functionality
+  const handleTextToSpeech = (text) => {
+    const speech = new SpeechSynthesisUtterance(text);
+    window.speechSynthesis.speak(speech);
+  };
+
+  // Speech-to-Text functionality
+  const handleSpeechToText = (updater) => {
+    const recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
+    recognition.lang = "en-US"; // Set language
+    recognition.onresult = (event) => {
+      const speechToText = event.results[0][0].transcript;
+      updater(speechToText);
+    };
+    recognition.start();
+  };
+
   return (
     <>
       <Header />
@@ -2802,7 +2877,14 @@ export default function APQR() {
           </div>
         </div>
         {isLoading ? (
-          <div>Data Fetching</div>
+          <div className="flex items-center justify-center h-40">
+            <div className="flex items-center justify-center">
+              <div className="relative w-16 h-16">
+                <div className="w-16 h-16 border-t-4 border-b-4 border-blue-500 rounded-full animate-spin"></div>
+              </div>
+              <span className="text-[28px] pl-5 text-blue-500 font-semibold">Fetching data...</span>
+            </div>
+          </div>
         ) : (
           <>
             {tab === "GI" ? (
@@ -2840,14 +2922,41 @@ export default function APQR() {
                       disabled
                     />
                   </div>
-                  <div className="group-input">
+                  <div className="group-input" style={{ position: "relative" }}>
                     <label>Product Name</label>
                     <input
                       value={pQRData.productName}
                       onChange={(e) => {
                         setPQRData({ productName: e.target.value });
                       }}
+                      style={{ paddingRight: "60px" }} // Add padding to make space for the buttons
                     />
+                    <button
+                      onClick={() =>
+                        handleSpeechToText((text) => setPQRData({ productName: text }))
+                      }
+                      className="rounded-full border p-2 mr-3 bg-slate-100 hover:bg-slate-200"
+                      style={{
+                        position: "absolute",
+                        right: "35px",
+                        top: "68%",
+                        transform: "translateY(-50%)",
+                      }}
+                    >
+                      <FaMicrophone />
+                    </button>
+                    <button
+                      onClick={() => handleTextToSpeech(pQRData.productName)}
+                      className="rounded-full border p-2 bg-slate-100 hover:bg-slate-200"
+                      style={{
+                        position: "absolute",
+                        right: "5px",
+                        top: "68%",
+                        transform: "translateY(-50%)",
+                      }}
+                    >
+                      <AiFillSound />
+                    </button>
                   </div>
                 </div>
                 {pQRData?.productCodes?.map((productCode, index) => (
@@ -2878,15 +2987,43 @@ export default function APQR() {
                   </div>
                 ))}
                 <div className="dual-group-input">
-                  <div className="group-input">
+                  <div className="group-input" style={{ position: "relative" }}>
                     <label>Generic Name</label>
                     <input
                       value={pQRData.genericName}
                       onChange={(e) => {
                         setPQRData({ genericName: e.target.value });
                       }}
+                      style={{ paddingRight: "60px" }} // Add padding to make space for the buttons
                     />
+                    <button
+                      onClick={() =>
+                        handleSpeechToText((text) => setPQRData({ genericName: text }))
+                      }
+                      className="rounded-full border p-2 mr-3 bg-slate-100 hover:bg-slate-200"
+                      style={{
+                        position: "absolute",
+                        right: "35px",
+                        top: "68%",
+                        transform: "translateY(-50%)",
+                      }}
+                    >
+                      <FaMicrophone />
+                    </button>
+                    <button
+                      onClick={() => handleTextToSpeech(pQRData.genericName)}
+                      className="rounded-full border p-2 bg-slate-100 hover:bg-slate-200"
+                      style={{
+                        position: "absolute",
+                        right: "5px",
+                        top: "68%",
+                        transform: "translateY(-50%)",
+                      }}
+                    >
+                      <AiFillSound />
+                    </button>
                   </div>
+
                   <div className="group-input ">
                     <label>Dosage Form</label>
                     <select
@@ -2924,14 +3061,39 @@ export default function APQR() {
                       }}
                     />
                   </div>
-                  <div className="group-input">
+                  <div className="group-input" style={{ position: "relative" }}>
                     <label>MFG. LIC. No</label>
                     <input
                       value={pQRData.mfgLicNo}
                       onChange={(e) => {
                         setPQRData({ mfgLicNo: e.target.value });
                       }}
+                      style={{ paddingRight: "60px" }} // Add padding to make space for the buttons
                     />
+                    <button
+                      onClick={() => handleSpeechToText((text) => setPQRData({ mfgLicNo: text }))}
+                      className="rounded-full border mr-3 p-2 bg-slate-100 hover:bg-slate-200"
+                      style={{
+                        position: "absolute",
+                        right: "35px",
+                        top: "68%",
+                        transform: "translateY(-50%)",
+                      }}
+                    >
+                      <FaMicrophone />
+                    </button>
+                    <button
+                      onClick={() => handleTextToSpeech(pQRData.mfgLicNo)}
+                      className="rounded-full border p-2 bg-slate-100 hover:bg-slate-200"
+                      style={{
+                        position: "absolute",
+                        right: "5px",
+                        top: "68%",
+                        transform: "translateY(-50%)",
+                      }}
+                    >
+                      <AiFillSound />
+                    </button>
                   </div>
                 </div>
 
@@ -3964,30 +4126,83 @@ export default function APQR() {
         {tab === "MR" ? (
           <div className="p-4">
             <div className="dual-group-input">
-              <div className="group-input">
+              <div className="group-input" style={{ position: "relative" }}>
                 <label>Product Description</label>
                 <input
                   value={pQRData?.productDescription}
                   onChange={(e) => {
                     setPQRData({ productDescription: e.target.value });
                   }}
+                  style={{ paddingRight: "60px" }} // Add padding to make space for the buttons
                 />
+                <button
+                  onClick={() =>
+                    handleSpeechToText((text) => setPQRData({ productDescription: text }))
+                  }
+                  className="rounded-full border mr-3 p-2 bg-slate-100 hover:bg-slate-200"
+                  style={{
+                    position: "absolute",
+                    right: "35px",
+                    top: "68%",
+                    transform: "translateY(-50%)",
+                  }}
+                >
+                  <FaMicrophone />
+                </button>
+                <button
+                  onClick={() => handleTextToSpeech(pQRData?.productDescription)}
+                  className="rounded-full border p-2 bg-slate-100 hover:bg-slate-200"
+                  style={{
+                    position: "absolute",
+                    right: "5px",
+                    top: "68%",
+                    transform: "translateY(-50%)",
+                  }}
+                >
+                  <AiFillSound />
+                </button>
               </div>
-              <div className="group-input">
+
+              <div className="group-input" style={{ position: "relative" }}>
                 <label>Process Flow</label>
                 <input
                   value={pQRData?.processFlow}
                   onChange={(e) => {
                     setPQRData({ processFlow: e.target.value });
                   }}
+                  style={{ paddingRight: "60px" }} // Add padding to make space for the buttons
                 />
+                <button
+                  onClick={() => handleSpeechToText((text) => setPQRData({ processFlow: text }))}
+                  className="rounded-full border mr-3 p-2 bg-slate-100 hover:bg-slate-200"
+                  style={{
+                    position: "absolute",
+                    right: "35px",
+                    top: "68%",
+                    transform: "translateY(-50%)",
+                  }}
+                >
+                  <FaMicrophone />
+                </button>
+                <button
+                  onClick={() => handleTextToSpeech(pQRData?.processFlow)}
+                  className="rounded-full border p-2 bg-slate-100 hover:bg-slate-200"
+                  style={{
+                    position: "absolute",
+                    right: "5px",
+                    top: "68%",
+                    transform: "translateY(-50%)",
+                  }}
+                >
+                  <AiFillSound />
+                </button>
               </div>
             </div>
 
             <div className="sub-head">Review of all Batches Manufactured</div>
 
             <div className="dual-group-input">
-              <div className="group-input">
+              <div className="group-input" style={{ position: "relative" }}>
                 <label>Total No. of batches manufactured during the current review period</label>
                 <input
                   type="number"
@@ -3995,9 +4210,37 @@ export default function APQR() {
                   onChange={(e) => {
                     setPQRData({ totalBatchesManufactured: e.target.value });
                   }}
+                  style={{ paddingRight: "60px" }} // Add padding to make space for the buttons
                 />
+                <button
+                  onClick={() =>
+                    handleSpeechToText((text) => setPQRData({ totalBatchesManufactured: text }))
+                  }
+                  className="rounded-full border mr-3 p-2 bg-slate-100 hover:bg-slate-200"
+                  style={{
+                    position: "absolute",
+                    right: "35px",
+                    top: "68%",
+                    transform: "translateY(-50%)",
+                  }}
+                >
+                  <FaMicrophone />
+                </button>
+                <button
+                  onClick={() => handleTextToSpeech(pQRData.totalBatchesManufactured)}
+                  className="rounded-full border p-2 bg-slate-100 hover:bg-slate-200"
+                  style={{
+                    position: "absolute",
+                    right: "5px",
+                    top: "68%",
+                    transform: "translateY(-50%)",
+                  }}
+                >
+                  <AiFillSound />
+                </button>
               </div>
-              <div className="group-input">
+
+              <div className="group-input" style={{ position: "relative" }}>
                 <label>Total No. of batches Approved & Released</label>
                 <input
                   value={pQRData.totalBatchesApprovedReleased}
@@ -4006,9 +4249,37 @@ export default function APQR() {
                       totalBatchesApprovedReleased: e.target.value,
                     });
                   }}
+                  style={{ paddingRight: "60px" }} // Add padding to make space for the buttons
                 />
+                <button
+                  onClick={() =>
+                    handleSpeechToText((text) => setPQRData({ totalBatchesApprovedReleased: text }))
+                  }
+                  className="rounded-full border mr-3 p-2 bg-slate-100 hover:bg-slate-200"
+                  style={{
+                    position: "absolute",
+                    right: "35px",
+                    top: "68%",
+                    transform: "translateY(-50%)",
+                  }}
+                >
+                  <FaMicrophone />
+                </button>
+                <button
+                  onClick={() => handleTextToSpeech(pQRData.totalBatchesApprovedReleased)}
+                  className="rounded-full border p-2 bg-slate-100 hover:bg-slate-200"
+                  style={{
+                    position: "absolute",
+                    right: "5px",
+                    top: "68%",
+                    transform: "translateY(-50%)",
+                  }}
+                >
+                  <AiFillSound />
+                </button>
               </div>
-              <div className="group-input">
+
+              <div className="group-input" style={{ position: "relative" }}>
                 <label>Total No. of Process Validation Batches</label>
                 <input
                   value={pQRData.totalProcessValidationBatches}
@@ -4017,17 +4288,75 @@ export default function APQR() {
                       totalProcessValidationBatches: e.target.value,
                     });
                   }}
+                  style={{ paddingRight: "60px" }} // Add padding to make space for the buttons
                 />
+                <button
+                  onClick={() =>
+                    handleSpeechToText((text) =>
+                      setPQRData({ totalProcessValidationBatches: text })
+                    )
+                  }
+                  className="rounded-full border mr-3 p-2 bg-slate-100 hover:bg-slate-200"
+                  style={{
+                    position: "absolute",
+                    right: "35px",
+                    top: "68%",
+                    transform: "translateY(-50%)",
+                  }}
+                >
+                  <FaMicrophone />
+                </button>
+                <button
+                  onClick={() => handleTextToSpeech(pQRData.totalProcessValidationBatches)}
+                  className="rounded-full border p-2 bg-slate-100 hover:bg-slate-200"
+                  style={{
+                    position: "absolute",
+                    right: "5px",
+                    top: "68%",
+                    transform: "translateY(-50%)",
+                  }}
+                >
+                  <AiFillSound />
+                </button>
               </div>
-              <div className="group-input">
+
+              <div className="group-input" style={{ position: "relative" }}>
                 <label>Total No. of Reprocessed Batches</label>
                 <input
                   value={pQRData.totalReprocessedBatches}
                   onChange={(e) => {
                     setPQRData({ totalReprocessedBatches: e.target.value });
                   }}
+                  style={{ paddingRight: "60px" }} // Add padding to make space for the buttons
                 />
+                <button
+                  onClick={() =>
+                    handleSpeechToText((text) => setPQRData({ totalReprocessedBatches: text }))
+                  }
+                  className="rounded-full border mr-3 p-2 bg-slate-100 hover:bg-slate-200"
+                  style={{
+                    position: "absolute",
+                    right: "35px",
+                    top: "68%",
+                    transform: "translateY(-50%)",
+                  }}
+                >
+                  <FaMicrophone />
+                </button>
+                <button
+                  onClick={() => handleTextToSpeech(pQRData.totalReprocessedBatches)}
+                  className="rounded-full border p-2 bg-slate-100 hover:bg-slate-200"
+                  style={{
+                    position: "absolute",
+                    right: "5px",
+                    top: "68%",
+                    transform: "translateY(-50%)",
+                  }}
+                >
+                  <AiFillSound />
+                </button>
               </div>
+
               <div className="group-input">
                 <label>Process Validation Batches Details</label>
                 <TinyEditor
@@ -17334,53 +17663,169 @@ export default function APQR() {
           </button>
         </div>
       </div> */}
-      <div className="fixed top-3/4 right-0 z-10 flex flex-col">
-        <button
-          className="
+        <div className="flex justify-end gap-10 pr-10">
+        <div className="fixed top-1/2 left-0 z-10 flex flex-col">
+          {/* <button
+            className="
                 px-4
                 py-2
                 bg-teal-600
                 text-white
                 font-semibold
-                rounded-l-full
+                rounded-lg
                 shadow-md
                 hover:bg-teal-700
                 focus:outline-none
                 focus:ring-2
                 focus:ring-offset-2
                 focus:ring-teal-500
-                mb-5
-            
+                // mb-10
               "
-          onClick={() => {
-            handleUpdateAPQR();
-            // dispatch(updateForm(gridDatas));
-            navigate("/dashboard");
-          }}
-        >
-          Save
-        </button>
-        <button
-          className="
-                px-4
-                py-2
-                bg-teal-600
-                text-white
-                font-semibold
-                rounded-l-full
-                shadow-md
-                hover:bg-teal-700
-                focus:outline-none
-                focus:ring-2
-                focus:ring-offset-2
-                focus:ring-teal-500
-              "
-          onClick={() => {
-            navigate("/dashboard");
-          }}
-        >
-          Exit
-        </button>
+            onClick={() => {
+              dispatch(addForm(pQRData));
+              navigate("/dashboard");
+            }}
+          >
+            Save
+          </button> */}
+        </div>
+
+        <div className="fixed top-3/4 right-0 z-10 flex flex-col">
+          {/* Launch QMS Button */}
+          <div>
+            <button
+              onClick={() => setIsModalOpen(true)}
+              className="
+            px-4
+            py-2
+            bg-teal-600
+            text-white
+            font-semibold
+            rounded-l-full
+            shadow-md
+            hover:bg-teal-700
+            focus:outline-none
+            focus:ring-2
+            focus:ring-offset-2
+            focus:ring-teal-500
+            mb-5
+            flex items-center justify-center
+          "
+            >
+              Launch QMS
+            </button>
+
+            {/* Modal */}
+            {isModalOpen && (
+              <>
+                <div className="fixed inset-0 flex items-center justify-end z-50">
+                  <div className="bg-white p-5 rounded-lg shadow-lg mt-[70px] w-[250px] z-50 mr-[20px]  ">
+                   <a href="https://sym.vidyagxp.com">
+                   <button
+                      className="mt-4 px-4 py-2 bg-blue-500 text-white font-semibold rounded hover:bg-blue-700"
+                    
+                    >
+                      Deviation
+                    </button>
+                   </a>
+                   <a href="https://sym.vidyagxp.com">
+                    <button
+                      className="mt-4 px-4 py-2 bg-blue-500 text-white font-semibold rounded hover:bg-blue-700"
+                      onClick={() => navigate("Sym.vidyagxp.com")}
+                    >
+                      Root Cause Analysis
+                    </button>
+                    </a>
+                    <a href="https://sym.vidyagxp.com">
+                    <button
+                      className="mt-4 px-4 py-2 bg-blue-500 text-white font-semibold rounded hover:bg-blue-700"
+                      onClick={() => navigate("Sym.vidyagxp.com")}
+                    >
+                      Action Items
+                    </button>
+                    </a>
+                    <a href="https://sym.vidyagxp.com">
+                    <button
+                      className="mt-4 px-4 py-2 bg-blue-500 text-white font-semibold rounded hover:bg-blue-700"
+                      onClick={() => navigate("Sym.vidyagxp.com")}
+                    >
+                      Lab Incident
+                    </button>
+                    </a><a href="https://sym.vidyagxp.com">
+                    <button
+                      className="mt-4 px-4 py-2 bg-blue-500 text-white font-semibold rounded hover:bg-blue-700"
+                      onClick={() => navigate("Sym.vidyagxp.com")}
+                    >
+                      Risk Assissment
+                    </button>
+                    </a>
+
+                    <button
+                      className="mt-4 px-4 py-2 bg-red-600 text-white font-semibold rounded hover:bg-red-700"
+                      onClick={() => setIsModalOpen(false)} // Close modal on button click
+                    >
+                      Cancel
+                    </button>
+                  </div>
+                </div>
+
+                {/* Overlay */}
+                <div
+                  className="fixed inset-0 bg-black opacity-50 z-40"
+                  onClick={() => setIsModalOpen(false)} // Close modal when clicking on overlay
+                ></div>
+              </>
+            )}
+          </div>
+
+          {/* Save Button */}
+          <button
+            className="
+          px-4
+          py-2
+          bg-teal-600
+          text-white
+          font-semibold
+          rounded-l-full
+          shadow-md
+          hover:bg-teal-700
+          focus:outline-none
+          focus:ring-2
+          focus:ring-offset-2
+          focus:ring-teal-500
+          mb-5
+          flex items-center justify-center
+        "
+            onClick={handleUpdateAPQR}
+            disabled={loading} // Disable the button while loading
+          >
+            {loading ? (
+              <div className="h-5 w-5 border-t-2 border-b-2 border-white animate-spin rounded-full mr-3"></div>
+            ) : null}
+            {loading ? "Saving..." : "Save"}
+          </button>
+
+          {/* Exit Button */}
+          <button
+          onClick={()=>navigate('/dashboard')}
+            className="
+          px-4
+          py-2
+          bg-teal-600
+          text-white
+          font-semibold
+          rounded-l-full
+          shadow-md
+          hover:bg-teal-700
+          focus:outline-none
+          focus:ring-2
+          focus:ring-offset-2
+          focus:ring-teal-500
+        "
+          >
+            Exit
+          </button>
+        </div>
       </div>
     </>
   );
