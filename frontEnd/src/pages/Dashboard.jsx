@@ -18,7 +18,7 @@ export default function Dashboard() {
     const fetchData = async () => {
       setTableDataLoading(true);
       try {
-        const response = await axios.get("https://apqrapi.mydemosoftware.com/get-all-apqr");
+        const response = await axios.get("http://localhost:4000/get-all-apqr");
         setData(response.data);
         console.log(response.data[0]);
       } catch (error) {
@@ -35,7 +35,7 @@ export default function Dashboard() {
     setLoading((prevLoading) => ({ ...prevLoading, [pqrId]: true }));
     try {
       const response = await fetch(
-        `https://apqrapi.mydemosoftware.com/report/generate-report/${pqrId}`
+        `http://localhost:4000/report/generate-report/${pqrId}`
       );
 
       const blob = await response.blob();
@@ -55,7 +55,7 @@ export default function Dashboard() {
   const openChatPdf = async (pqrId) => {
     setviewLoading((prevLoading) => ({ ...prevLoading, [pqrId]: true }));
     try {
-      const response = await fetch(`https://apqrapi.mydemosoftware.com/report/chat-pdf/${pqrId}`);
+      const response = await fetch(`http://localhost:4000/report/chat-pdf/${pqrId}`);
       const { filename } = await response.json();
       // const filename=data.filename
 

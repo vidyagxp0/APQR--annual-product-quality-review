@@ -240,82 +240,7 @@ export default function APQR() {
   const [isModalOpen, setIsModalOpen] = useState(false); // To control modal visibility
   const [loading, setLoading] = useState(false); // To manage loading state for Save button
 
-  const [tiny1, setTiny1] = useState("");
-  const [tiny2, setTiny2] = useState("");
-  const [tiny3, setTiny3] = useState("");
-  const [tiny4, setTiny4] = useState("");
-  const [tiny5, setTiny5] = useState("");
-  const [tiny6, setTiny6] = useState("");
-  const [tiny7, setTiny7] = useState("");
-  const [tiny8, setTiny8] = useState("");
-  const [tiny9, setTiny9] = useState("");
-  const [tiny10, setTiny10] = useState("");
-  const [tiny11, setTiny11] = useState("");
-  const [tiny12, setTiny12] = useState("");
-  const [tiny13, setTiny13] = useState("");
-  const [tiny14, setTiny14] = useState("");
-  const [tiny15, setTiny15] = useState("");
-  const [tiny16, setTiny16] = useState("");
-  const [tiny17, setTiny17] = useState("");
-  const [tiny18, setTiny18] = useState("");
-  const [tiny19, setTiny19] = useState("");
-  const [tiny20, setTiny20] = useState("");
-  const [tiny21, setTiny21] = useState("");
-  const [tiny22, setTiny22] = useState("");
-  const [tiny23, setTiny23] = useState("");
-  const [tiny24, setTiny24] = useState("");
-  const [tiny25, setTiny25] = useState("");
-  const [tiny26, setTiny26] = useState("");
-  const [tiny27, setTiny27] = useState("");
-  const [tiny28, setTiny28] = useState("");
-  const [tiny29, setTiny29] = useState("");
-  const [tiny30, setTiny30] = useState("");
-  const [tiny31, setTiny31] = useState("");
-  const [tiny32, setTiny32] = useState("");
-  const [tiny33, setTiny33] = useState("");
-  const [tiny34, setTiny34] = useState("");
-  const [tiny35, setTiny35] = useState("");
-  const [tiny36, setTiny36] = useState("");
-  const [tiny37, setTiny37] = useState("");
-  const [tiny38, setTiny38] = useState("");
-  const [tiny39, setTiny39] = useState("");
-  const [tiny40, setTiny40] = useState("");
-  const [tiny41, setTiny41] = useState("");
-  const [tiny42, setTiny42] = useState("");
-  const [tiny43, setTiny43] = useState("");
-  const [tiny44, setTiny44] = useState("");
-  const [tiny45, setTiny45] = useState("");
-  const [tiny46, setTiny46] = useState("");
-  const [tiny47, setTiny47] = useState("");
-  const [tiny48, setTiny48] = useState("");
-  const [tiny49, setTiny49] = useState("");
-  const [tiny50, setTiny50] = useState("");
-  const [tiny51, setTiny51] = useState("");
-  const [tiny52, setTiny52] = useState("");
-  const [tiny53, setTiny53] = useState("");
-  const [tiny54, setTiny54] = useState("");
-  const [tiny55, setTiny55] = useState("");
-  const [tiny56, setTiny56] = useState("");
-  const [tiny57, setTiny57] = useState("");
-  const [tiny58, setTiny58] = useState("");
-  const [tiny59, setTiny59] = useState("");
-  const [tiny60, setTiny60] = useState("");
-  const [tiny61, setTiny61] = useState("");
-  const [tiny62, setTiny62] = useState("");
-  const [tiny63, setTiny63] = useState("");
-  const [tiny64, setTiny64] = useState("");
-  const [tiny65, setTiny65] = useState("");
-  const [tiny66, setTiny66] = useState("");
-  const [tiny67, setTiny67] = useState("");
-  const [tiny68, setTiny68] = useState("");
-  const [tiny69, setTiny69] = useState("");
-  const [tiny70, setTiny70] = useState("");
-  const [tiny71, setTiny71] = useState("");
-  const [tiny72, setTiny72] = useState("");
-  const [tiny73, setTiny73] = useState("");
-  const [tiny74, setTiny74] = useState("");
-  const [tiny75, setTiny75] = useState("");
-  const [tiny76, setTiny76] = useState("");
+
 
   const sanitizeKey = (key) => {
     return key.replace(/\s+/g, "").replace(/[\n\r]+/g, "");
@@ -331,7 +256,7 @@ export default function APQR() {
       tiny3: "",
       tiny4: "",
       tiny5: "",
-      tiny6: "",
+      tiny6: "", 
       tiny7: "",
       tiny8: "",
       tiny9: "",
@@ -402,6 +327,15 @@ export default function APQR() {
       tiny74: "",
       tiny75: "",
       tiny76: "",
+      tiny77: "",
+      tiny78: "",
+      tiny79: "",
+      tiny80: "",
+      tiny81: "",
+      tiny82: "",
+      tiny83: "",
+      tiny84: "",
+      tiny85: "",
     }
   );
   const [gridDatas, setGridDatas] = useState({
@@ -514,511 +448,12 @@ export default function APQR() {
     }
   );
 
-  const setTinyContent = (data, tinyNO) => {
-    switch (tinyNO) {
-      case 1:
-        setTinyData({
-          ...tinyData,
-          tiny1: data,
-        });
-        break;
-      case 2:
-        setTinyData({
-          ...tinyData,
-          tiny2: data,
-        });
-        break;
-      case 3:
-        setTinyData({
-          ...tinyData,
-          tiny3: data,
-        });
-        break;
-      case 4:
-        setTinyData({
-          ...tinyData,
-          tiny4: data,
-        });
-        break;
-      case 5:
-        setTinyData({
-          ...tinyData,
-          tiny5: data,
-        });
-        break;
-      case 6:
-        setTinyData({
-          ...tinyData,
-          tiny6: data,
-        });
-        break;
-      case 7:
-        setTinyData({
-          ...tinyData,
-          tiny7: data,
-        });
-        break;
-      case 8:
-        setTinyData({
-          ...tinyData,
-          tiny8: data,
-        });
-        break;
-      case 9:
-        setTinyData({
-          ...tinyData,
-          tiny9: data,
-        });
-        break;
-      case 10:
-        setTinyData({
-          ...tinyData,
-          tiny10: data,
-        });
-        break;
-      case 11:
-        setTinyData({
-          ...tinyData,
-          tiny11: data,
-        });
-        break;
-      case 12:
-        setTinyData({
-          ...tinyData,
-          tiny12: data,
-        });
-        break;
-      case 13:
-        setTinyData({
-          ...tinyData,
-          tiny13: data,
-        });
-        break;
-      case 14:
-        setTinyData({
-          ...tinyData,
-          tiny14: data,
-        });
-        break;
-      case 15:
-        setTinyData({
-          ...tinyData,
-          tiny15: data,
-        });
-        break;
-      case 16:
-        setTinyData({
-          ...tinyData,
-          tiny16: data,
-        });
-        break;
-      case 17:
-        setTinyData({
-          ...tinyData,
-          tiny17: data,
-        });
-        break;
-      case 18:
-        setTinyData({
-          ...tinyData,
-          tiny18: data,
-        });
-        break;
-      case 19:
-        setTinyData({
-          ...tinyData,
-          tiny19: data,
-        });
-        break;
-      case 20:
-        setTinyData({
-          ...tinyData,
-          tiny20: data,
-        });
-        break;
-      case 21:
-        setTinyData({
-          ...tinyData,
-          tiny21: data,
-        });
-        break;
-      case 22:
-        setTinyData({
-          ...tinyData,
-          tiny22: data,
-        });
-        break;
-      case 23:
-        setTinyData({
-          ...tinyData,
-          tiny23: data,
-        });
-        break;
-      case 24:
-        setTinyData({
-          ...tinyData,
-          tiny24: data,
-        });
-        break;
-      case 25:
-        setTinyData({
-          ...tinyData,
-          tiny25: data,
-        });
-        break;
-      case 26:
-        setTinyData({
-          ...tinyData,
-          tiny26: data,
-        });
-        break;
-      case 27:
-        setTinyData({
-          ...tinyData,
-          tiny27: data,
-        });
-        break;
-      case 28:
-        setTinyData({
-          ...tinyData,
-          tiny28: data,
-        });
-        break;
-      case 29:
-        setTinyData({
-          ...tinyData,
-          tiny29: data,
-        });
-        break;
-      case 30:
-        setTinyData({
-          ...tinyData,
-          tiny30: data,
-        });
-        break;
-      case 31:
-        setTinyData({
-          ...tinyData,
-          tiny31: data,
-        });
-        break;
-      case 32:
-        setTinyData({
-          ...tinyData,
-          tiny32: data,
-        });
-        break;
-      case 33:
-        setTinyData({
-          ...tinyData,
-          tiny33: data,
-        });
-        break;
-      case 34:
-        setTinyData({
-          ...tinyData,
-          tiny34: data,
-        });
-        break;
-      case 35:
-        setTinyData({
-          ...tinyData,
-          tiny35: data,
-        });
-        break;
-      case 36:
-        setTinyData({
-          ...tinyData,
-          tiny36: data,
-        });
-        break;
-      case 37:
-        setTinyData({
-          ...tinyData,
-          tiny37: data,
-        });
-        break;
-      case 38:
-        setTinyData({
-          ...tinyData,
-          tiny38: data,
-        });
-        break;
-      case 39:
-        setTinyData({
-          ...tinyData,
-          tiny39: data,
-        });
-        break;
-      case 40:
-        setTinyData({
-          ...tinyData,
-          tiny40: data,
-        });
-        break;
-      case 41:
-        setTinyData({
-          ...tinyData,
-          tiny41: data,
-        });
-        break;
-      case 42:
-        setTinyData({
-          ...tinyData,
-          tiny42: data,
-        });
-        break;
-      case 43:
-        setTinyData({
-          ...tinyData,
-          tiny43: data,
-        });
-        break;
-      case 44:
-        setTinyData({
-          ...tinyData,
-          tiny44: data,
-        });
-        break;
-      case 45:
-        setTinyData({
-          ...tinyData,
-          tiny45: data,
-        });
-        break;
-      case 46:
-        setTinyData({
-          ...tinyData,
-          tiny46: data,
-        });
-        break;
-      case 47:
-        setTinyData({
-          ...tinyData,
-          tiny47: data,
-        });
-        break;
-      case 48:
-        setTinyData({
-          ...tinyData,
-          tiny48: data,
-        });
-        break;
-      case 49:
-        setTinyData({
-          ...tinyData,
-          tiny49: data,
-        });
-        break;
-      case 50:
-        setTinyData({
-          ...tinyData,
-          tiny50: data,
-        });
-        break;
-      case 51:
-        setTinyData({
-          ...tinyData,
-          tiny51: data,
-        });
-        break;
-      case 52:
-        setTinyData({
-          ...tinyData,
-          tiny52: data,
-        });
-        break;
-      case 53:
-        setTinyData({
-          ...tinyData,
-          tiny53: data,
-        });
-        break;
-      case 54:
-        setTinyData({
-          ...tinyData,
-          tiny54: data,
-        });
-        break;
-      case 55:
-        setTinyData({
-          ...tinyData,
-          tiny55: data,
-        });
-        break;
-      case 56:
-        setTinyData({
-          ...tinyData,
-          tiny56: data,
-        });
-        break;
-      case 57:
-        setTinyData({
-          ...tinyData,
-          tiny57: data,
-        });
-        break;
-      case 58:
-        setTinyData({
-          ...tinyData,
-          tiny58: data,
-        });
-        break;
-      case 59:
-        setTinyData({
-          ...tinyData,
-          tiny59: data,
-        });
-        break;
-      case 60:
-        setTinyData({
-          ...tinyData,
-          tiny60: data,
-        });
-        break;
-      case 61:
-        setTinyData({
-          ...tinyData,
-          tiny61: data,
-        });
-        break;
-      case 62:
-        setTinyData({
-          ...tinyData,
-          tiny62: data,
-        });
-        break;
-      case 63:
-        setTinyData({
-          ...tinyData,
-          tiny63: data,
-        });
-        break;
-      case 64:
-        setTinyData({
-          ...tinyData,
-          tiny64: data,
-        });
-        break;
-      case 65:
-        setTinyData({
-          ...tinyData,
-          tiny65: data,
-        });
-        break;
-      case 66:
-        setTinyData({
-          ...tinyData,
-          tiny66: data,
-        });
-        break;
-      case 67:
-        setTinyData({
-          ...tinyData,
-          tiny67: data,
-        });
-        break;
-      case 68:
-        setTinyData({
-          ...tinyData,
-          tiny68: data,
-        });
-        break;
-      case 69:
-        setTinyData({
-          ...tinyData,
-          tiny69: data,
-        });
-        break;
-      case 70:
-        setTinyData({
-          ...tinyData,
-          tiny70: data,
-        });
-        break;
-      case 71:
-        setTinyData({
-          ...tinyData,
-          tiny71: data,
-        });
-        break;
-      case 72:
-        setTinyData({
-          ...tinyData,
-          tiny72: data,
-        });
-        break;
-      case 73:
-        setTinyData({
-          ...tinyData,
-          tiny73: data,
-        });
-        break;
-      case 74:
-        setTinyData({
-          ...tinyData,
-          tiny74: data,
-        });
-        break;
-      case 75:
-        setTinyData({
-          ...tinyData,
-          tiny75: data,
-        });
-        break;
-      case 76:
-        setTinyData({
-          ...tinyData,
-          tiny76: data,
-        });
-      case 77:
-        setTinyData({
-          ...tinyData,
-          tiny77: data,
-        });
-      case 78:
-        setTinyData({
-          ...tinyData,
-          tiny78: data,
-        });
-      case 79:
-        setTinyData({
-          ...tinyData,
-          tiny79: data,
-        });
-      case 80:
-        setTinyData({
-          ...tinyData,
-          tiny80: data,
-        });
-      case 81:
-        setTinyData({
-          ...tinyData,
-          tiny81: data,
-        });
-      case 82:
-        setTinyData({
-          ...tinyData,
-          tiny82: data,
-        });
-      case 83:
-        setTinyData({
-          ...tinyData,
-          tiny83: data,
-        });
-      case 84:
-        setTinyData({
-          ...tinyData,
-          tiny84: data,
-        });
-      case 85:
-        setTinyData({
-          ...tinyData,
-          tiny85: data,
-        });
-        break;
-    }
+  const setTinyContent = (data, tinyNo) => {
+    setTinyData({
+      [`tiny${tinyNo}`]: data, 
+    });
   };
+  
 
   const getGraphData = (inputData) => {
     const outputData = {
@@ -1098,168 +533,190 @@ export default function APQR() {
     return { "Batch No.": item.batchNo, "Observed Value": item.observedValue };
   });
 
-  useEffect(() => {
-    setTinyData({
-      tiny1: tiny1,
-      tiny2: tiny2,
-      tiny3: tiny3,
-      tiny4: tiny4,
-      tiny5: tiny5,
-      tiny6: tiny6,
-      tiny7: tiny7,
-      tiny8: tiny8,
-      tiny9: tiny9,
-      tiny10: tiny10,
-      tiny11: tiny11,
-      tiny12: tiny12,
-      tiny13: tiny13,
-      tiny14: tiny14,
-      tiny15: tiny15,
-      tiny16: tiny16,
-      tiny17: tiny17,
-      tiny18: tiny18,
-      tiny19: tiny19,
-      tiny20: tiny20,
-      tiny21: tiny21,
-      tiny22: tiny22,
-      tiny23: tiny23,
-      tiny24: tiny24,
-      tiny25: tiny25,
-      tiny26: tiny26,
-      tiny27: tiny27,
-      tiny28: tiny28,
-      tiny29: tiny29,
-      tiny30: tiny30,
-      tiny31: tiny31,
-      tiny32: tiny32,
-      tiny33: tiny33,
-      tiny34: tiny34,
-      tiny35: tiny35,
-      tiny36: tiny36,
-      tiny37: tiny37,
-      tiny38: tiny38,
-      tiny39: tiny39,
-      tiny40: tiny40,
-      tiny41: tiny41,
-      tiny42: tiny42,
-      tiny43: tiny43,
-      tiny44: tiny44,
-      tiny45: tiny45,
-      tiny46: tiny46,
-      tiny47: tiny47,
-      tiny48: tiny48,
-      tiny49: tiny49,
-      tiny50: tiny50,
-      tiny51: tiny51,
-      tiny52: tiny52,
-      tiny53: tiny53,
-      tiny54: tiny54,
-      tiny55: tiny55,
-      tiny56: tiny56,
-      tiny57: tiny57,
-      tiny58: tiny58,
-      tiny59: tiny59,
-      tiny60: tiny60,
-      tiny61: tiny61,
-      tiny62: tiny62,
-      tiny63: tiny63,
-      tiny64: tiny64,
-      tiny65: tiny65,
-      tiny66: tiny66,
-      tiny67: tiny67,
-      tiny68: tiny68,
-      tiny69: tiny69,
-      tiny70: tiny70,
-      tiny71: tiny71,
-      tiny72: tiny72,
-      tiny73: tiny73,
-      tiny74: tiny74,
-      tiny75: tiny75,
-      tiny76: tiny76,
-    });
-  }, [
-    tiny1,
-    tiny2,
-    tiny3,
-    tiny4,
-    tiny5,
-    tiny6,
-    tiny7,
-    tiny8,
-    tiny9,
-    tiny10,
-    tiny11,
-    tiny12,
-    tiny13,
-    tiny14,
-    tiny15,
-    tiny16,
-    tiny17,
-    tiny18,
-    tiny19,
-    tiny20,
-    tiny21,
-    tiny22,
-    tiny23,
-    tiny24,
-    tiny25,
-    tiny26,
-    tiny27,
-    tiny28,
-    tiny29,
-    tiny30,
-    tiny31,
-    tiny32,
-    tiny33,
-    tiny34,
-    tiny35,
-    tiny36,
-    tiny37,
-    tiny38,
-    tiny39,
-    tiny40,
-    tiny41,
-    tiny42,
-    tiny43,
-    tiny44,
-    tiny45,
-    tiny46,
-    tiny47,
-    tiny48,
-    tiny49,
-    tiny50,
-    tiny51,
-    tiny52,
-    tiny53,
-    tiny54,
-    tiny55,
-    tiny56,
-    tiny57,
-    tiny58,
-    tiny59,
-    tiny60,
-    tiny61,
-    tiny62,
-    tiny63,
-    tiny64,
-    tiny65,
-    tiny66,
-    tiny67,
-    tiny68,
-    tiny69,
-    tiny70,
-    tiny71,
-    tiny72,
-    tiny73,
-    tiny74,
-    tiny75,
-    tiny76,
-  ]);
+  // useEffect(() => {
+  //   setTinyData({
+  //     tiny1: tiny1,
+  //     tiny2: tiny2,
+  //     tiny3: tiny3,
+  //     tiny4: tiny4,
+  //     tiny5: tiny5,
+  //     tiny6: tiny6,
+  //     tiny7: tiny7,
+  //     tiny8: tiny8,
+  //     tiny9: tiny9,
+  //     tiny10: tiny10,
+  //     tiny11: tiny11,
+  //     tiny12: tiny12,
+  //     tiny13: tiny13,
+  //     tiny14: tiny14,
+  //     tiny15: tiny15,
+  //     tiny16: tiny16,
+  //     tiny17: tiny17,
+  //     tiny18: tiny18,
+  //     tiny19: tiny19,
+  //     tiny20: tiny20,
+  //     tiny21: tiny21,
+  //     tiny22: tiny22,
+  //     tiny23: tiny23,
+  //     tiny24: tiny24,
+  //     tiny25: tiny25,
+  //     tiny26: tiny26,
+  //     tiny27: tiny27,
+  //     tiny28: tiny28,
+  //     tiny29: tiny29,
+  //     tiny30: tiny30,
+  //     tiny31: tiny31,
+  //     tiny32: tiny32,
+  //     tiny33: tiny33,
+  //     tiny34: tiny34,
+  //     tiny35: tiny35,
+  //     tiny36: tiny36,
+  //     tiny37: tiny37,
+  //     tiny38: tiny38,
+  //     tiny39: tiny39,
+  //     tiny40: tiny40,
+  //     tiny41: tiny41,
+  //     tiny42: tiny42,
+  //     tiny43: tiny43,
+  //     tiny44: tiny44,
+  //     tiny45: tiny45,
+  //     tiny46: tiny46,
+  //     tiny47: tiny47,
+  //     tiny48: tiny48,
+  //     tiny49: tiny49,
+  //     tiny50: tiny50,
+  //     tiny51: tiny51,
+  //     tiny52: tiny52,
+  //     tiny53: tiny53,
+  //     tiny54: tiny54,
+  //     tiny55: tiny55,
+  //     tiny56: tiny56,
+  //     tiny57: tiny57,
+  //     tiny58: tiny58,
+  //     tiny59: tiny59,
+  //     tiny60: tiny60,
+  //     tiny61: tiny61,
+  //     tiny62: tiny62,
+  //     tiny63: tiny63,
+  //     tiny64: tiny64,
+  //     tiny65: tiny65,
+  //     tiny66: tiny66,
+  //     tiny67: tiny67,
+  //     tiny68: tiny68,
+  //     tiny69: tiny69,
+  //     tiny70: tiny70,
+  //     tiny71: tiny71,
+  //     tiny72: tiny72,
+  //     tiny73: tiny73,
+  //     tiny74: tiny74,
+  //     tiny75: tiny75,
+  //     tiny76: tiny76,
+  //     tiny77: tiny77,
+  //     tiny78: tiny78,
+  //     tiny79: tiny79,
+  //     tiny80: tiny80,
+  //     tiny81: tiny81,
+  //     tiny82: tiny82,
+  //     tiny83: tiny83,
+  //     tiny84: tiny84,
+  //     tiny85: tiny85,
+
+
+  //   });
+  // }, [
+  //   tiny1,
+  //   tiny2,
+  //   tiny3,
+  //   tiny4,
+  //   tiny5,
+  //   tiny6,
+  //   tiny7,
+  //   tiny8,
+  //   tiny9,
+  //   tiny10,
+  //   tiny11,
+  //   tiny12,
+  //   tiny13,
+  //   tiny14,
+  //   tiny15,
+  //   tiny16,
+  //   tiny17,
+  //   tiny18,
+  //   tiny19,
+  //   tiny20,
+  //   tiny21,
+  //   tiny22,
+  //   tiny23,
+  //   tiny24,
+  //   tiny25,
+  //   tiny26,
+  //   tiny27,
+  //   tiny28,
+  //   tiny29,
+  //   tiny30,
+  //   tiny31,
+  //   tiny32,
+  //   tiny33,
+  //   tiny34,
+  //   tiny35,
+  //   tiny36,
+  //   tiny37,
+  //   tiny38,
+  //   tiny39,
+  //   tiny40,
+  //   tiny41,
+  //   tiny42,
+  //   tiny43,
+  //   tiny44,
+  //   tiny45,
+  //   tiny46,
+  //   tiny47,
+  //   tiny48,
+  //   tiny49,
+  //   tiny50,
+  //   tiny51,
+  //   tiny52,
+  //   tiny53,
+  //   tiny54,
+  //   tiny55,
+  //   tiny56,
+  //   tiny57,
+  //   tiny58,
+  //   tiny59,
+  //   tiny60,
+  //   tiny61,
+  //   tiny62,
+  //   tiny63,
+  //   tiny64,
+  //   tiny65,
+  //   tiny66,
+  //   tiny67,
+  //   tiny68,
+  //   tiny69,
+  //   tiny70,
+  //   tiny71,
+  //   tiny72,
+  //   tiny73,
+  //   tiny74,
+  //   tiny75,
+  //   tiny76,
+  //   tiny77,
+  //   tiny78,
+  //   tiny78,
+  //   tiny79,
+  //   tiny80,
+  //   tiny81,
+  //   tiny82,
+  //   tiny83,
+  //   tiny84,
+  //   tiny85,
+  // ]);
   useEffect(() => {
     setPQRData({
       productCodes: productCodes,
     });
   }, [productCodes, data]);
+
   useEffect(() => {
     setPQRData({
       tinyData: tinyData,
@@ -1276,10 +733,9 @@ export default function APQR() {
       };
 
       const response = await axios.put(
-        `https://apqrapi.mydemosoftware.com/update-apqr/${editData.pqrId}`,
+        `http://localhost:4000/update-apqr/${editData.pqrId}`,
         payload
       );
-      console.log("Update successful:", response.data);
       navigate("/dashboard");
     } catch (error) {
       console.error("Error updating data:", error);
@@ -1290,9 +746,8 @@ export default function APQR() {
   const fetchData = async () => {
     try {
       const response = await axios.get(
-        `https://apqrapi.mydemosoftware.com/get-apqr/${editData.pqrId}`
+        `http://localhost:4000/get-apqr/${editData.pqrId}`
       );
-      console.log(response.data, "data");
       setData(response.data);
       setTinyData(response.data.aPQRData.tinyData);
       const apiData = response.data.gridDatas;
@@ -1674,9 +1129,8 @@ export default function APQR() {
     };
     setGridDatas({
       ...gridDatas,
-      vendorQDORME: [...gridDatas.vendorQDORME, newRow],
+      vendorQDOPPM: [...gridDatas.vendorQDOPPM, newRow],
     });
-    setVendorQDOPPM([...vendorQDOPPM, newRow]);
   };
 
   const addvendorQDPOGRow = () => {
@@ -3175,10 +2629,10 @@ export default function APQR() {
                 <div>
                   <h4 className="gridName mt-4">Summary</h4>
                   <TinyEditor
-                    editorContent={tinyData.tiny1}
-                    setEditorContent={setTinyContent}
-                    tinyNo={1}
-                  />
+  editorContent={tinyData.tiny1}  // Ensure the content matches the correct state property
+  setEditorContent={(data) => setTinyContent(data, 1)} // Passing the editor number and content
+  tinyNo={1}
+/>
                 </div>
 
                 <div className="py-4">
@@ -3276,10 +2730,10 @@ export default function APQR() {
 
                 <h4 className="gridName">Summary of Manufacturing Site Address</h4>
                 <TinyEditor
-                  editorContent={tinyData.tiny2}
-                  setEditorContent={setTinyContent}
-                  tinyNo={2}
-                />
+  editorContent={tinyData.tiny2}  // Ensure the content matches the correct state property
+  setEditorContent={(data) => setTinyContent(data, 2)} // Passing the editor number and content
+  tinyNo={2}
+/>
               </div>
             ) : null}
           </>
@@ -3382,10 +2836,10 @@ export default function APQR() {
                 <div>
                   <h4 className="gridName mt-5">Summary</h4>
                   <TinyEditor
-                    editorContent={tinyData.tiny3}
-                    setEditorContent={setTinyContent}
-                    tinyNo={3}
-                  />
+  editorContent={tinyData.tiny3}  
+  setEditorContent={(data) => setTinyContent(data, 3)} 
+  tinyNo={3}
+/>
                 </div>
               </div>
 
@@ -3497,10 +2951,10 @@ export default function APQR() {
                   Summary of Review of Rejected Raw Materials and Packaging Materials
                 </h5>
                 <TinyEditor
-                  editorContent={tinyData.tiny4}
-                  setEditorContent={setTinyContent}
-                  tinyNo={4}
-                />
+  editorContent={tinyData.tiny4}  
+  setEditorContent={(data) => setTinyContent(data, 4)} 
+  tinyNo={4}
+/>
               </div>
               <div className="sub-head">
                 Review of Expired Raw Materials and Packaging Materials
@@ -3600,8 +3054,8 @@ export default function APQR() {
                 <div>
                   <h4 className="gridName">Summary</h4>
                   <TinyEditor
-                    editorContent={tinyData.tiny5}
-                    setEditorContent={setTinyContent}
+                    editorContent={tinyData.tiny5}  
+                    setEditorContent={(data) => setTinyContent(data, 5)} 
                     tinyNo={5}
                   />
                 </div>
@@ -3705,8 +3159,8 @@ export default function APQR() {
                 </h4>
                 <TinyEditor
                   editorContent={tinyData.tiny6}
-                  setEditorContent={setTinyContent}
-                  tinyNo={6}
+                  setEditorContent={(data) => setTinyContent(data, 6)} 
+                    tinyNo={6}
                 />
               </div>
 
@@ -3805,7 +3259,7 @@ export default function APQR() {
                 <h4 className="gridName pt-4">Summary of Review of Approved Supplier List</h4>
                 <TinyEditor
                   editorContent={tinyData.tiny7}
-                  setEditorContent={setTinyContent}
+                  setEditorContent={(data) => setTinyContent(data, 7)} 
                   tinyNo={7}
                 />
               </div>
@@ -3918,7 +3372,7 @@ export default function APQR() {
                 </h4>
                 <TinyEditor
                   editorContent={tinyData.tiny8}
-                  setEditorContent={setTinyContent}
+                  setEditorContent={(data) => setTinyContent(data, 8)} 
                   tinyNo={8}
                 />
               </div>
@@ -4019,7 +3473,7 @@ export default function APQR() {
                 </h4>
                 <TinyEditor
                   editorContent={tinyData.tiny9}
-                  setEditorContent={setTinyContent}
+                  setEditorContent={(data) => setTinyContent(data, 9)} 
                   tinyNo={9}
                 />
               </div>
@@ -4116,7 +3570,7 @@ export default function APQR() {
                 </h4>
                 <TinyEditor
                   editorContent={tinyData.tiny10}
-                  setEditorContent={setTinyContent}
+                  setEditorContent={(data) => setTinyContent(data, 10)} 
                   tinyNo={10}
                 />
               </div>
@@ -4361,7 +3815,7 @@ export default function APQR() {
                 <label>Process Validation Batches Details</label>
                 <TinyEditor
                   editorContent={tinyData.tiny11}
-                  setEditorContent={setTinyContent}
+  setEditorContent={(data) => setTinyContent(data, 11)} 
                   tinyNo={11}
                 />
               </div>
@@ -4370,7 +3824,7 @@ export default function APQR() {
                 <label>Reprocessing Details</label>
                 <TinyEditor
                   editorContent={tinyData.tiny12}
-                  setEditorContent={setTinyContent}
+                  setEditorContent={(data) => setTinyContent(data, 12)} 
                   tinyNo={12}
                 />
               </div>
@@ -4378,7 +3832,8 @@ export default function APQR() {
                 <label>Microbial Excursion Details</label>
                 <TinyEditor
                   editorContent={tinyData.tiny13}
-                  setEditorContent={setTinyContent}
+                  setEditorContent={(data) => setTinyContent(data, 13)} 
+
                   tinyNo={13}
                 />
               </div>
@@ -4499,7 +3954,8 @@ export default function APQR() {
               <h4 className="gridName pt-4">Summary of Code to Code Transfer Details</h4>
               <TinyEditor
                 editorContent={tinyData.tiny14}
-                setEditorContent={setTinyContent}
+                 setEditorContent={(data) => setTinyContent(data, 14)} 
+
                 tinyNo={14}
               />
             </div>
@@ -4509,7 +3965,8 @@ export default function APQR() {
             </div>
             <TinyEditor
               editorContent={tinyData.tiny15}
-              setEditorContent={setTinyContent}
+               setEditorContent={(data) => setTinyContent(data, 15)} 
+
               tinyNo={15}
             />
             <div className="sub-head">
@@ -4521,7 +3978,8 @@ export default function APQR() {
                 <label>Batch reprocessing/reworking process Details</label>
                 <TinyEditor
                   editorContent={tinyData.tiny16}
-                  setEditorContent={setTinyContent}
+                   setEditorContent={(data) => setTinyContent(data, 16)} 
+
                   tinyNo={16}
                 />
               </div>
@@ -4529,7 +3987,8 @@ export default function APQR() {
                 <label>Batch Repacking Details </label>
                 <TinyEditor
                   editorContent={tinyData.tiny17}
-                  setEditorContent={setTinyContent}
+                   setEditorContent={(data) => setTinyContent(data, 17)} 
+
                   tinyNo={17}
                 />
               </div>
@@ -4660,7 +4119,8 @@ export default function APQR() {
               <h4 className="gridName mt-5">Summary</h4>
               <TinyEditor
                 editorContent={tinyData.tiny18}
-                setEditorContent={setTinyContent}
+                 setEditorContent={(data) => setTinyContent(data, 18)} 
+
                 tinyNo={18}
               />
             </div>
@@ -4803,7 +4263,8 @@ export default function APQR() {
               <h4 className="gridName mt-5">Summary</h4>
               <TinyEditor
                 editorContent={tinyData.tiny19}
-                setEditorContent={setTinyContent}
+                 setEditorContent={(data) => setTinyContent(data, 19)} 
+
                 tinyNo={19}
               />
             </div>
@@ -4988,7 +4449,8 @@ export default function APQR() {
               <h4 className="gridName mt-5">Summary</h4>
               <TinyEditor
                 editorContent={tinyData.tiny20}
-                setEditorContent={setTinyContent}
+                 setEditorContent={(data) => setTinyContent(data, 20)} 
+
                 tinyNo={20}
               />
             </div>
@@ -5001,7 +4463,8 @@ export default function APQR() {
             <h4 className="gridName">Batch Failures/Rejections Details </h4>
             <TinyEditor
               editorContent={tinyData.tiny21}
-              setEditorContent={setTinyContent}
+               setEditorContent={(data) => setTinyContent(data, 21)} 
+
               tinyNo={21}
             />
 
@@ -5129,7 +4592,8 @@ export default function APQR() {
               <h4 className="gridName mt-5">Summary</h4>
               <TinyEditor
                 editorContent={tinyData.tiny22}
-                setEditorContent={setTinyContent}
+                 setEditorContent={(data) => setTinyContent(data, 22)} 
+
                 tinyNo={22}
               />
             </div>
@@ -5271,7 +4735,8 @@ export default function APQR() {
               <h4 className="gridName mt-5">Summary</h4>
               <TinyEditor
                 editorContent={tinyData.tiny23}
-                setEditorContent={setTinyContent}
+                 setEditorContent={(data) => setTinyContent(data, 23)} 
+
                 tinyNo={23}
               />
             </div>
@@ -5413,7 +4878,8 @@ export default function APQR() {
               <h4 className="gridName mt-5">Summary</h4>
               <TinyEditor
                 editorContent={tinyData.tiny24}
-                setEditorContent={setTinyContent}
+                 setEditorContent={(data) => setTinyContent(data, 24)} 
+
                 tinyNo={24}
               />
             </div>
@@ -5555,7 +5021,8 @@ export default function APQR() {
               <h4 className="gridName mt-5">Summary</h4>
               <TinyEditor
                 editorContent={tinyData.tiny25}
-                setEditorContent={setTinyContent}
+                 setEditorContent={(data) => setTinyContent(data, 25)} 
+
                 tinyNo={25}
               />
             </div>
@@ -5608,7 +5075,7 @@ export default function APQR() {
                               const newData = [...gridDatas.bufferFSDPV];
                               newData[index].criticalProcessParameter = e.target.value;
                               setGridDatas({
-                                ...pQRData,
+                                ...gridDatas,
                                 bufferFSDPV: newData,
                               });
                             }}
@@ -6678,7 +6145,8 @@ export default function APQR() {
               {/* <input placeholder="please insert flex" /> */}
               <TinyEditor
                 editorContent={tinyData.tiny26}
-                setEditorContent={setTinyContent}
+                 setEditorContent={(data) => setTinyContent(data, 26)} 
+
                 tinyNo={26}
               />
             </div>
@@ -11852,7 +11320,8 @@ export default function APQR() {
               <h4 className="gridName mt-5">Summary</h4>
               <TinyEditor
                 editorContent={tinyData.tiny27}
-                setEditorContent={setTinyContent}
+                 setEditorContent={(data) => setTinyContent(data, 27)} 
+
                 tinyNo={27}
               />
             </div>
@@ -11984,7 +11453,8 @@ export default function APQR() {
               <h4 className="gridName mt-5">Summary</h4>
               <TinyEditor
                 editorContent={tinyData.tiny28}
-                setEditorContent={setTinyContent}
+                 setEditorContent={(data) => setTinyContent(data, 28)} 
+
                 tinyNo={28}
               />
             </div>
@@ -12116,7 +11586,8 @@ export default function APQR() {
               <h4 className="gridName mt-5">Summary</h4>
               <TinyEditor
                 editorContent={tinyData.tiny29}
-                setEditorContent={setTinyContent}
+                 setEditorContent={(data) => setTinyContent(data, 29)} 
+
                 tinyNo={29}
               />
             </div>
@@ -13365,7 +12836,8 @@ export default function APQR() {
               <h4 className="gridName mt-5">Summary</h4>
               <TinyEditor
                 editorContent={tinyData.tiny30}
-                setEditorContent={setTinyContent}
+                 setEditorContent={(data) => setTinyContent(data, 30)} 
+
                 tinyNo={30}
               />
             </div>
@@ -13483,7 +12955,8 @@ export default function APQR() {
               <h4 className="gridName mt-5">Summary</h4>
               <TinyEditor
                 editorContent={tinyData.tiny31}
-                setEditorContent={setTinyContent}
+                 setEditorContent={(data) => setTinyContent(data, 31)} 
+
                 tinyNo={31}
               />
             </div>
@@ -13597,7 +13070,8 @@ export default function APQR() {
                 <h4 className="gridName mt-5">Summary</h4>
                 <TinyEditor
                   editorContent={tinyData.tiny32}
-                  setEditorContent={setTinyContent}
+                   setEditorContent={(data) => setTinyContent(data, 32)} 
+
                   tinyNo={32}
                 />
               </div>
@@ -13683,7 +13157,8 @@ export default function APQR() {
               <h4 className="gridName">Summary</h4>
               <TinyEditor
                 editorContent={tinyData.tiny33}
-                setEditorContent={setTinyContent}
+                 setEditorContent={(data) => setTinyContent(data, 33)} 
+
                 tinyNo={33}
               />
 
@@ -13831,19 +13306,22 @@ export default function APQR() {
               <h4 className="gridName mt-4">Summary</h4>
               <TinyEditor
                 editorContent={tinyData.tiny34}
-                setEditorContent={setTinyContent}
+                 setEditorContent={(data) => setTinyContent(data, 34)} 
+
                 tinyNo={34}
               />
               <h4 className="gridName pt-4">Review of Analytical Method Validations</h4>
               <TinyEditor
                 editorContent={tinyData.tiny35}
-                setEditorContent={setTinyContent}
+                 setEditorContent={(data) => setTinyContent(data, 35)} 
+
                 tinyNo={35}
               />
               <h4 className="gridName pt-4">Review of Contract Testing Laboratories</h4>
               <TinyEditor
                 editorContent={tinyData.tiny36}
-                setEditorContent={setTinyContent}
+                 setEditorContent={(data) => setTinyContent(data, 36)} 
+
                 tinyNo={36}
               />
               <h4 className="gridName pt-4">
@@ -13851,13 +13329,15 @@ export default function APQR() {
               </h4>
               <TinyEditor
                 editorContent={tinyData.tiny37}
-                setEditorContent={setTinyContent}
+                 setEditorContent={(data) => setTinyContent(data, 37)} 
+
                 tinyNo={37}
               />
               <h4 className="gridName pt-4">Laboratory Review Summary</h4>
               <TinyEditor
                 editorContent={tinyData.tiny38}
-                setEditorContent={setTinyContent}
+                 setEditorContent={(data) => setTinyContent(data, 38)} 
+
                 tinyNo={38}
               />
             </div>
@@ -13868,19 +13348,22 @@ export default function APQR() {
             <h4 className="gridName">Preventive Maintenance Details</h4>
             <TinyEditor
               editorContent={tinyData.tiny39}
-              setEditorContent={setTinyContent}
+               setEditorContent={(data) => setTinyContent(data, 39)} 
+
               tinyNo={39}
             />
             <h4 className="gridName pt-4"> Qualification details</h4>
             <TinyEditor
               editorContent={tinyData.tiny40}
-              setEditorContent={setTinyContent}
+               setEditorContent={(data) => setTinyContent(data, 40)} 
+
               tinyNo={40}
             />
             <h4 className="gridName pt-4"> Calibration Details</h4>
             <TinyEditor
               editorContent={tinyData.tiny41}
-              setEditorContent={setTinyContent}
+               setEditorContent={(data) => setTinyContent(data, 41)} 
+
               tinyNo={41}
             />
 
@@ -13968,7 +13451,8 @@ export default function APQR() {
               <h4 className="gridName mt-5">Summary</h4>
               <TinyEditor
                 editorContent={tinyData.tiny42}
-                setEditorContent={setTinyContent}
+                 setEditorContent={(data) => setTinyContent(data, 42)} 
+
                 tinyNo={42}
               />
             </div>
@@ -14055,7 +13539,8 @@ export default function APQR() {
             <h4 className="gridName pt-4">Summary</h4>
             <TinyEditor
               editorContent={tinyData.tiny43}
-              setEditorContent={setTinyContent}
+               setEditorContent={(data) => setTinyContent(data, 43)} 
+
               tinyNo={43}
             />
 
@@ -14162,7 +13647,8 @@ export default function APQR() {
             <h4 className="gridName pt-4">Engineering Summary</h4>
             <TinyEditor
               editorContent={tinyData.tiny44}
-              setEditorContent={setTinyContent}
+               setEditorContent={(data) => setTinyContent(data, 44)} 
+
               tinyNo={44}
             />
           </div>
@@ -14472,7 +13958,8 @@ export default function APQR() {
             <h4 className="gridName pt-4">Deviation Summary</h4>
             <TinyEditor
               editorContent={tinyData.tiny45}
-              setEditorContent={setTinyContent}
+               setEditorContent={(data) => setTinyContent(data, 45)} 
+
               tinyNo={45}
             />
             <div className="sub-head"> Review of OOS (Microbiological)</div>
@@ -14783,7 +14270,8 @@ export default function APQR() {
             <h4 className="gridName pt-4">OOS Summary</h4>
             <TinyEditor
               editorContent={tinyData.tiny46}
-              setEditorContent={setTinyContent}
+               setEditorContent={(data) => setTinyContent(data, 46)} 
+
               tinyNo={46}
             />
             <div className="sub-head"> Review of OOAC (Microbiological)</div>
@@ -15094,7 +14582,8 @@ export default function APQR() {
             <h4 className="gridName pt-4">OOAC Summary</h4>
             <TinyEditor
               editorContent={tinyData.tiny47}
-              setEditorContent={setTinyContent}
+               setEditorContent={(data) => setTinyContent(data, 47)} 
+
               tinyNo={47}
             />
             <div className="sub-head"> Review of OOAL(Microbiological)</div>
@@ -15405,7 +14894,8 @@ export default function APQR() {
             <h4 className="gridName pt-4">OOAL Summary</h4>
             <TinyEditor
               editorContent={tinyData.tiny48}
-              setEditorContent={setTinyContent}
+               setEditorContent={(data) => setTinyContent(data, 48)} 
+
               tinyNo={48}
             />
             <div className="sub-head">Review of OOS (Analytical)</div>
@@ -15716,7 +15206,8 @@ export default function APQR() {
             <h4 className="gridName pt-4">OOSA Summary</h4>
             <TinyEditor
               editorContent={tinyData.tiny49}
-              setEditorContent={setTinyContent}
+               setEditorContent={(data) => setTinyContent(data, 49)} 
+
               tinyNo={49}
             />
             <div className="sub-head">Review of OOT (Analytical)</div>
@@ -16027,7 +15518,8 @@ export default function APQR() {
             <h4 className="gridName pt-4">OOT Summary</h4>
             <TinyEditor
               editorContent={tinyData.tiny50}
-              setEditorContent={setTinyContent}
+               setEditorContent={(data) => setTinyContent(data, 50)} 
+
               tinyNo={50}
             />
             <div className="sub-head">Review of Change Controls</div>
@@ -16338,7 +15830,8 @@ export default function APQR() {
             <h4 className="gridName pt-4">Change Control Summary</h4>
             <TinyEditor
               editorContent={tinyData.tiny51}
-              setEditorContent={setTinyContent}
+               setEditorContent={(data) => setTinyContent(data, 51)} 
+
               tinyNo={51}
             />
             <div className="sub-head">Review of Lab Incident</div>
@@ -16649,7 +16142,8 @@ export default function APQR() {
             <h4 className="gridName pt-4">Lab Incident Summary</h4>
             <TinyEditor
               editorContent={tinyData.tiny52}
-              setEditorContent={setTinyContent}
+               setEditorContent={(data) => setTinyContent(data, 52)} 
+
               tinyNo={52}
             />
             <div className="sub-head">Review of Market Complaints</div>
@@ -16960,7 +16454,8 @@ export default function APQR() {
             <h4 className="gridName pt-4">Market Complaints Summary</h4>
             <TinyEditor
               editorContent={tinyData.tiny53}
-              setEditorContent={setTinyContent}
+               setEditorContent={(data) => setTinyContent(data, 53)} 
+
               tinyNo={53}
             />
             <div className="sub-head">Review of Deviations</div>
@@ -17126,49 +16621,57 @@ export default function APQR() {
             <h4 className="gridName pt-4">previous Review Period Quality Related Notification</h4>
             <TinyEditor
               editorContent={tinyData.tiny54}
-              setEditorContent={setTinyContent}
+               setEditorContent={(data) => setTinyContent(data, 54)} 
+
               tinyNo={54}
             />
             <h4 className="gridName pt-4">Review of Product Recalls</h4>
             <TinyEditor
               editorContent={tinyData.tiny55}
-              setEditorContent={setTinyContent}
+               setEditorContent={(data) => setTinyContent(data, 55)} 
+
               tinyNo={55}
             />{" "}
             <h4 className="gridName pt-4">Review of Returned Products</h4>
             <TinyEditor
               editorContent={tinyData.tiny56}
-              setEditorContent={setTinyContent}
+               setEditorContent={(data) => setTinyContent(data, 56)} 
+
               tinyNo={56}
             />{" "}
             <h4 className="gridName pt-4">Review of Salvaged Drugs</h4>
             <TinyEditor
               editorContent={tinyData.tiny57}
-              setEditorContent={setTinyContent}
+               setEditorContent={(data) => setTinyContent(data, 57)} 
+
               tinyNo={57}
             />{" "}
             <h4 className="gridName pt-4">Review of previous PQR recommendations</h4>
             <TinyEditor
               editorContent={tinyData.tiny58}
-              setEditorContent={setTinyContent}
+               setEditorContent={(data) => setTinyContent(data, 58)} 
+
               tinyNo={58}
             />{" "}
             <h4 className="gridName pt-4">Review of Quality Agreements</h4>
             <TinyEditor
               editorContent={tinyData.tiny59}
-              setEditorContent={setTinyContent}
+               setEditorContent={(data) => setTinyContent(data, 59)} 
+
               tinyNo={59}
             />{" "}
             <h4 className="gridName pt-4">Review of Manufacturing Authorizations</h4>
             <TinyEditor
               editorContent={tinyData.tiny60}
-              setEditorContent={setTinyContent}
+               setEditorContent={(data) => setTinyContent(data, 60)} 
+
               tinyNo={60}
             />{" "}
             <h4 className="gridName pt-4">Review of Open Validations</h4>
             <TinyEditor
               editorContent={tinyData.tiny61}
-              setEditorContent={setTinyContent}
+               setEditorContent={(data) => setTinyContent(data, 61)} 
+
               tinyNo={61}
             />
           </div>
@@ -17271,7 +16774,8 @@ export default function APQR() {
                 <h4 className="gridName mt-5">Summary</h4>
                 <TinyEditor
                   editorContent={tinyData.tiny62}
-                  setEditorContent={setTinyContent}
+                   setEditorContent={(data) => setTinyContent(data, 62)} 
+
                   tinyNo={62}
                 />
               </div>
@@ -17398,7 +16902,8 @@ export default function APQR() {
                   <h4 className="gridName mt-5">Summary</h4>
                   <TinyEditor
                     editorContent={tinyData.tiny63}
-                    setEditorContent={setTinyContent}
+                     setEditorContent={(data) => setTinyContent(data, 63)} 
+
                     tinyNo={63}
                   />
                 </div>
@@ -17412,7 +16917,8 @@ export default function APQR() {
               <h4 className="gridName">Recommendations Summary</h4>
               <TinyEditor
                 editorContent={tinyData.tiny64}
-                setEditorContent={setTinyContent}
+                 setEditorContent={(data) => setTinyContent(data, 64)} 
+
                 tinyNo={64}
               />
             </div>
@@ -17448,7 +16954,8 @@ export default function APQR() {
               <h4 className="gridName">Discussion Evaluation and Conclusion</h4>
               <TinyEditor
                 editorContent={tinyData.tiny65}
-                setEditorContent={setTinyContent}
+                 setEditorContent={(data) => setTinyContent(data, 65)} 
+
                 tinyNo={65}
               />
             </div>
@@ -17461,7 +16968,8 @@ export default function APQR() {
                 <h4 className="gridName">Annexure 1</h4>
                 <TinyEditor
                   editorContent={tinyData.tiny66}
-                  setEditorContent={setTinyContent}
+                   setEditorContent={(data) => setTinyContent(data, 66)} 
+
                   tinyNo={66}
                 />
               </div>
@@ -17469,7 +16977,8 @@ export default function APQR() {
                 <h4 className="gridName">Annexure 2</h4>
                 <TinyEditor
                   editorContent={tinyData.tiny67}
-                  setEditorContent={setTinyContent}
+                   setEditorContent={(data) => setTinyContent(data, 67)} 
+
                   tinyNo={67}
                 />
               </div>
@@ -17477,7 +16986,8 @@ export default function APQR() {
                 <h4 className="gridName">Annexure 3</h4>
                 <TinyEditor
                   editorContent={tinyData.tiny68}
-                  setEditorContent={setTinyContent}
+                   setEditorContent={(data) => setTinyContent(data, 68)} 
+
                   tinyNo={68}
                 />
               </div>
@@ -17485,7 +16995,8 @@ export default function APQR() {
                 <h4 className="gridName">Annexure 4</h4>
                 <TinyEditor
                   editorContent={tinyData.tiny69}
-                  setEditorContent={setTinyContent}
+                   setEditorContent={(data) => setTinyContent(data, 69)} 
+
                   tinyNo={69}
                 />
               </div>
@@ -17493,7 +17004,8 @@ export default function APQR() {
                 <h4 className="gridName">Annexure 5</h4>
                 <TinyEditor
                   editorContent={tinyData.tiny70}
-                  setEditorContent={setTinyContent}
+                   setEditorContent={(data) => setTinyContent(data, 70)} 
+
                   tinyNo={70}
                 />
               </div>
@@ -17501,7 +17013,8 @@ export default function APQR() {
                 <h4 className="gridName">Annexure 6</h4>
                 <TinyEditor
                   editorContent={tinyData.tiny71}
-                  setEditorContent={setTinyContent}
+                   setEditorContent={(data) => setTinyContent(data, 71)} 
+
                   tinyNo={71}
                 />
               </div>
@@ -17509,7 +17022,8 @@ export default function APQR() {
                 <h4 className="gridName">Annexure 7</h4>
                 <TinyEditor
                   editorContent={tinyData.tiny72}
-                  setEditorContent={setTinyContent}
+                   setEditorContent={(data) => setTinyContent(data, 72)} 
+
                   tinyNo={72}
                 />
               </div>
@@ -17517,7 +17031,8 @@ export default function APQR() {
                 <h4 className="gridName">Annexure 8</h4>
                 <TinyEditor
                   editorContent={tinyData.tiny73}
-                  setEditorContent={setTinyContent}
+                   setEditorContent={(data) => setTinyContent(data, 73)} 
+
                   tinyNo={73}
                 />
               </div>
@@ -17525,7 +17040,8 @@ export default function APQR() {
                 <h4 className="gridName">Annexure 9</h4>
                 <TinyEditor
                   editorContent={tinyData.tiny74}
-                  setEditorContent={setTinyContent}
+                   setEditorContent={(data) => setTinyContent(data, 74)} 
+
                   tinyNo={74}
                 />
               </div>
@@ -17533,7 +17049,8 @@ export default function APQR() {
                 <h4 className="gridName">Annexure 10</h4>
                 <TinyEditor
                   editorContent={tinyData.tiny75}
-                  setEditorContent={setTinyContent}
+                   setEditorContent={(data) => setTinyContent(data, 75)} 
+
                   tinyNo={75}
                 />
               </div>
@@ -17541,7 +17058,8 @@ export default function APQR() {
                 <h4 className="gridName">Annexure 11</h4>
                 <TinyEditor
                   editorContent={tinyData.tiny76}
-                  setEditorContent={setTinyContent}
+                   setEditorContent={(data) => setTinyContent(data, 76)} 
+
                   tinyNo={76}
                 />
               </div>
@@ -17549,7 +17067,8 @@ export default function APQR() {
                 <h4 className="gridName">Annexure 12</h4>
                 <TinyEditor
                   editorContent={tinyData.tiny77}
-                  setEditorContent={setTinyContent}
+                   setEditorContent={(data) => setTinyContent(data, 77)} 
+
                   tinyNo={77}
                 />
               </div>
@@ -17557,7 +17076,8 @@ export default function APQR() {
                 <h4 className="gridName">Annexure 13</h4>
                 <TinyEditor
                   editorContent={tinyData.tiny78}
-                  setEditorContent={setTinyContent}
+                   setEditorContent={(data) => setTinyContent(data, 78)} 
+
                   tinyNo={78}
                 />
               </div>
@@ -17565,7 +17085,8 @@ export default function APQR() {
                 <h4 className="gridName">Annexure 14</h4>
                 <TinyEditor
                   editorContent={tinyData.tiny79}
-                  setEditorContent={setTinyContent}
+                   setEditorContent={(data) => setTinyContent(data, 79)} 
+
                   tinyNo={79}
                 />
               </div>
@@ -17573,7 +17094,8 @@ export default function APQR() {
                 <h4 className="gridName">Annexure 15</h4>
                 <TinyEditor
                   editorContent={tinyData.tiny80}
-                  setEditorContent={setTinyContent}
+                   setEditorContent={(data) => setTinyContent(data, 80)} 
+
                   tinyNo={80}
                 />
               </div>
@@ -17581,7 +17103,8 @@ export default function APQR() {
                 <h4 className="gridName">Annexure 16</h4>
                 <TinyEditor
                   editorContent={tinyData.tiny81}
-                  setEditorContent={setTinyContent}
+                   setEditorContent={(data) => setTinyContent(data, 81)} 
+
                   tinyNo={81}
                 />
               </div>
@@ -17589,7 +17112,8 @@ export default function APQR() {
                 <h4 className="gridName">Annexure 17</h4>
                 <TinyEditor
                   editorContent={tinyData.tiny82}
-                  setEditorContent={setTinyContent}
+                   setEditorContent={(data) => setTinyContent(data, 82)} 
+
                   tinyNo={82}
                 />
               </div>
@@ -17597,7 +17121,8 @@ export default function APQR() {
                 <h4 className="gridName">Annexure 18</h4>
                 <TinyEditor
                   editorContent={tinyData.tiny83}
-                  setEditorContent={setTinyContent}
+                   setEditorContent={(data) => setTinyContent(data, 83)} 
+
                   tinyNo={83}
                 />
               </div>
@@ -17605,7 +17130,8 @@ export default function APQR() {
                 <h4 className="gridName">Annexure 19</h4>
                 <TinyEditor
                   editorContent={tinyData.tiny84}
-                  setEditorContent={setTinyContent}
+                   setEditorContent={(data) => setTinyContent(data, 84)} 
+
                   tinyNo={84}
                 />
               </div>
@@ -17613,7 +17139,8 @@ export default function APQR() {
                 <h4 className="gridName">Annexure 20</h4>
                 <TinyEditor
                   editorContent={tinyData.tiny85}
-                  setEditorContent={setTinyContent}
+                   setEditorContent={(data) => setTinyContent(data, 85)} 
+
                   tinyNo={85}
                 />
               </div>

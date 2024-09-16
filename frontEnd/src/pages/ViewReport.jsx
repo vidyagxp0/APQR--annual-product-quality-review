@@ -16,7 +16,7 @@ const ViewReport = () => {
   // }, [pqrId || filename]);
   const url = new URL(window.location.href);
   const pqrIdValue = url.searchParams.get("pqrId") || 1;
-  const pdfUrl = `https://apqrapi.mydemosoftware.com/pdfs/APQR_Report_${pqrIdValue}.pdf`;
+  const pdfUrl = `http://localhost:4000/pdfs/APQR_Report_${pqrIdValue}.pdf`;
   // APQR_Report_13.pdf;
   const chatPdfConfig = {
     headers: {
