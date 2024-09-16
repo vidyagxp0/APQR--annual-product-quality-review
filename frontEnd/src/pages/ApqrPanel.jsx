@@ -1276,7 +1276,7 @@ export default function APQR() {
       };
 
       const response = await axios.put(
-        `https://apqrapi.mydemosoftware.com/update-apqr/${editData.pqrId}`,
+        `http://localhost:4000/update-apqr/${editData.pqrId}`,
         payload
       );
       console.log("Update successful:", response.data);
@@ -1289,9 +1289,7 @@ export default function APQR() {
   };
   const fetchData = async () => {
     try {
-      const response = await axios.get(
-        `https://apqrapi.mydemosoftware.com/get-apqr/${editData.pqrId}`
-      );
+      const response = await axios.get(`http://localhost:4000/get-apqr/${editData.pqrId}`);
       console.log(response.data, "data");
       setData(response.data);
       setTinyData(response.data.aPQRData.tinyData);
@@ -2819,7 +2817,7 @@ export default function APQR() {
   const handleTextToSpeech = (text) => {
     const speech = new SpeechSynthesisUtterance(text);
     window.speechSynthesis.speak(speech);
-  };
+  };     
 
   // Speech-to-Text functionality
   const handleSpeechToText = (updater) => {
@@ -17663,7 +17661,7 @@ export default function APQR() {
           </button>
         </div>
       </div> */}
-        <div className="flex justify-end gap-10 pr-10">
+      <div className="flex justify-end gap-10 pr-10">
         <div className="fixed top-1/2 left-0 z-10 flex flex-col">
           {/* <button
             className="
@@ -17720,44 +17718,42 @@ export default function APQR() {
               <>
                 <div className="fixed inset-0 flex items-center justify-end z-50">
                   <div className="bg-white p-5 rounded-lg shadow-lg mt-[70px] w-[250px] z-50 mr-[20px]  ">
-                   <a href="https://sym.vidyagxp.com">
-                   <button
-                      className="mt-4 px-4 py-2 bg-blue-500 text-white font-semibold rounded hover:bg-blue-700"
-                    
-                    >
-                      Deviation
-                    </button>
-                   </a>
-                   <a href="https://sym.vidyagxp.com">
-                    <button
-                      className="mt-4 px-4 py-2 bg-blue-500 text-white font-semibold rounded hover:bg-blue-700"
-                      onClick={() => navigate("Sym.vidyagxp.com")}
-                    >
-                      Root Cause Analysis
-                    </button>
+                    <a href="https://sym.vidyagxp.com">
+                      <button className="mt-4 px-4 py-2 bg-blue-500 text-white font-semibold rounded hover:bg-blue-700">
+                        Deviation
+                      </button>
                     </a>
                     <a href="https://sym.vidyagxp.com">
-                    <button
-                      className="mt-4 px-4 py-2 bg-blue-500 text-white font-semibold rounded hover:bg-blue-700"
-                      onClick={() => navigate("Sym.vidyagxp.com")}
-                    >
-                      Action Items
-                    </button>
+                      <button
+                        className="mt-4 px-4 py-2 bg-blue-500 text-white font-semibold rounded hover:bg-blue-700"
+                        onClick={() => navigate("Sym.vidyagxp.com")}
+                      >
+                        Root Cause Analysis
+                      </button>
                     </a>
                     <a href="https://sym.vidyagxp.com">
-                    <button
-                      className="mt-4 px-4 py-2 bg-blue-500 text-white font-semibold rounded hover:bg-blue-700"
-                      onClick={() => navigate("Sym.vidyagxp.com")}
-                    >
-                      Lab Incident
-                    </button>
-                    </a><a href="https://sym.vidyagxp.com">
-                    <button
-                      className="mt-4 px-4 py-2 bg-blue-500 text-white font-semibold rounded hover:bg-blue-700"
-                      onClick={() => navigate("Sym.vidyagxp.com")}
-                    >
-                      Risk Assissment
-                    </button>
+                      <button
+                        className="mt-4 px-4 py-2 bg-blue-500 text-white font-semibold rounded hover:bg-blue-700"
+                        onClick={() => navigate("Sym.vidyagxp.com")}
+                      >
+                        Action Items
+                      </button>
+                    </a>
+                    <a href="https://sym.vidyagxp.com">
+                      <button
+                        className="mt-4 px-4 py-2 bg-blue-500 text-white font-semibold rounded hover:bg-blue-700"
+                        onClick={() => navigate("Sym.vidyagxp.com")}
+                      >
+                        Lab Incident
+                      </button>
+                    </a>
+                    <a href="https://sym.vidyagxp.com">
+                      <button
+                        className="mt-4 px-4 py-2 bg-blue-500 text-white font-semibold rounded hover:bg-blue-700"
+                        onClick={() => navigate("Sym.vidyagxp.com")}
+                      >
+                        Risk Assissment
+                      </button>
                     </a>
 
                     <button
@@ -17807,7 +17803,7 @@ export default function APQR() {
 
           {/* Exit Button */}
           <button
-          onClick={()=>navigate('/dashboard')}
+            onClick={() => navigate("/dashboard")}
             className="
           px-4
           py-2
