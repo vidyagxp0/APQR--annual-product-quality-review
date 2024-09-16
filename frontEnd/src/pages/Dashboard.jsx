@@ -20,7 +20,7 @@ export default function Dashboard() {
       try {
         const response = await axios.get("http://localhost:4000/get-all-apqr");
         setData(response.data);
-        console.log(response.data[0]);
+        // console.log(response.data[0]);
       } catch (error) {
         console.error("There was a problem with the API call:", error);
       } finally {

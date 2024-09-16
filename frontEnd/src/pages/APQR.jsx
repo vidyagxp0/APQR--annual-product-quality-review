@@ -185,7 +185,6 @@ export default function APQR() {
   const [previewLabI, setPreviewLabI] = useState([]);
 
   useEffect(() => {
-    console.log(reviewODSTR);
   }, [reviewODSTR]);
   const sanitizeKey = (key) => {
     return key.replace(/\s+/g, "").replace(/[\n\r]+/g, "");
@@ -299,7 +298,6 @@ export default function APQR() {
   const setTinyContent = (data, tinyNO) => {
     switch (tinyNO) {
       case 1:
-        console.log(data, "tiny1data");
 
         setTiny1(data);
         break;
@@ -581,14 +579,13 @@ export default function APQR() {
       totalReprocessedBatches: "",
     }
   );
-  console.log(pQRData, "data");
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const APQRData = async (data) => {
     try {
       const response = await axios.post("http://localhost:4000/create-apqr", data);
-      console.log("Response:", response.data);
+      // console.log("Response:", response.data);
     } catch (error) {
       console.error("Error posting APQR data:", error);
     }
@@ -944,7 +941,6 @@ export default function APQR() {
   ]);
 
   useEffect(() => {
-    console.log("tiny 1 log", tiny1);
   }, [tiny1]);
   const addManufacturingStageRow = () => {
     const newRow = {
@@ -11905,14 +11901,14 @@ export default function APQR() {
                         Lab Incident
                       </button>
                     </a>
-                    <a href="https://sym.vidyagxp.com">
+                    <a href="https://sym.vidyagxp.com"> 
                       <button
                         className="mt-4 px-4 py-2 bg-blue-500 text-white font-semibold rounded hover:bg-blue-700"
                         onClick={() => navigate("Sym.vidyagxp.com")}
                       >
                         Risk Assissment
                       </button>
-                    </a>
+                        </a>
 
                     <button
                       className="mt-4 px-4 py-2 bg-red-600 text-white font-semibold rounded hover:bg-red-700"
