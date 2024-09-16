@@ -1308,7 +1308,7 @@ export default function APQR() {
       UCL: "",
       compliesNotComplies: "",
     };
-    setPQRData({
+    setGridDatas({
       ...gridDatas,
       reviewODSTR: [...gridDatas.reviewODSTR, newRow],
     });
@@ -2074,7 +2074,6 @@ export default function APQR() {
       dueDate: "",
       currentStatus: "",
     };
-    setPreviewLabI([...previewLabI, newRow]);
     setGridDatas({
       ...gridDatas,
       previewLabI: [...gridDatas.previewLabI, newRow],
