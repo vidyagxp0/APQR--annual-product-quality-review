@@ -36,7 +36,13 @@
       .summary {
         display: flex;
         flex-direction: column;
-        /* align-items: center; */
+        gap: 0;
+      }
+      .summary h3{
+       margin: 0;
+      }
+      .summary p{
+       /* margin: 0; */
       }
     </style>
   </head>
@@ -88,7 +94,7 @@
 
       <div class="summary">
       <h3>Manufacturing Site Address Summary :-</h3>
-      &nbsp &nbsp
+      <!-- &nbsp &nbsp -->
       <p><%= product.msaSummary %></p>
     </div>
 
@@ -168,7 +174,7 @@
       <tbody>
         <% product.packingMRS.forEach((item,i) => { %>
         <tr>
-          <td><%= item.SI_No %></td>
+          <td><%= item.SI_No || i+1 %></td>
           <td><%= item.materialCode %></td>
           <td><%= item.materialName %></td>
           <td><%= item.ARNo %></td>
@@ -200,7 +206,7 @@
       <tbody>
         <% product.expiredRMD.forEach((item,i) => { %>
         <tr>
-          <td><%= item.SI_No %></td>
+          <td><%= item.SI_No || i+1 %></td>
           <td><%= item.materialCode %></td>
           <td><%= item.materialName %></td>
           <td><%= item.ARNo %></td>
@@ -230,7 +236,7 @@
       <tbody>
         <% product.expiredPMD.forEach((item,i) => { %>
         <tr>
-          <td><%= item.SI_No %></td>
+          <td><%= item.SI_No || i+1 %></td>
           <td><%= item.materialCode %></td>
           <td><%= item.materialName %></td>
           <td><%= item.ARNo %></td>
@@ -260,7 +266,7 @@
       <tbody>
         <% product.reviewOfASL.forEach((item,i) => { %>
         <tr>
-          <td><%= item.SI_No %></td>
+          <td><%= item.SI_No || i+1 %></td>
           <td><%= item.materialCode %></td>
           <td><%= item.materialName %></td>
           <td><%= item.manufacturer %></td>
@@ -2278,18 +2284,18 @@
       <th >Current Status</th>
   </thead>
   <tbody>
-    <% product.rppd.forEach((item,i) => { %>
+    <% product.previewRPD.forEach((item,i) => { %>
     <tr>
-      <td><%= item.S_No %></td>
-      <td><%= item.Date_Of_Initiation %></td>
-      <td><%= item.Record_No %></td>
-      <td><%= item.Site_Division %></td>
-      <td><%= item.Department %></td>
-      <td><%= item.Initiator%></td>
-      <td><%= item.Short_Description %></td>
-      <td><%= item.Batch_No %></td>
-      <td><%= item.Due_Date %></td>
-      <td><%= item.Current_Status %></td>
+      <td><%= item.S_No || i+1 %></td>
+      <td><%= item.dateOfInitiation %></td>
+      <td><%= item.recordNo %></td>
+      <td><%= item.siteDivision %></td>
+      <td><%= item.department %></td>
+      <td><%= item.initiator%></td>
+      <td><%= item.shortDescription %></td>
+      <td><%= item.batchNo %></td>
+      <td><%= item.dueDate %></td>
+      <td><%= item.currentStatus %></td>
     </tr>
     <% }); %>
   </tbody>
@@ -2317,18 +2323,18 @@
       <th >Current Status</th>
   </thead>
   <tbody>
-    <% product.crpo.forEach((item,i) => { %>
+    <% product.currentOOS.forEach((item,i) => { %>
     <tr>
-      <td><%= item.S_No %></td>
-      <td><%= item.Date_Of_Initiation %></td>
-      <td><%= item.Record_No %></td>
-      <td><%= item.Site_Division %></td>
-      <td><%= item.Department %></td>
-      <td><%= item.Initiator%></td>
-      <td><%= item.Short_Description %></td>
-      <td><%= item.Batch_No %></td>
-      <td><%= item.Due_Date %></td>
-      <td><%= item.Current_Status %></td>
+      <td><%= item.S_No || i+1 %></td>
+      <td><%= item.dateOfInitiation %></td>
+      <td><%= item.recordNo %></td>
+      <td><%= item.siteDivision %></td>
+      <td><%= item.department %></td>
+      <td><%= item.initiator %></td>
+      <td><%= item.shortDescription %></td>
+      <td><%= item.batchNo %></td>
+      <td><%= item.dueDate %></td>
+      <td><%= item.currentStatus %></td>
     </tr>
     <% }); %>
   </tbody>
@@ -2349,18 +2355,18 @@
       <th >Current Status</th>
   </thead>
   <tbody>
-    <% product.prpo.forEach((item,i) => { %>
+    <% product.previewOOS.forEach((item,i) => { %>
     <tr>
-      <td><%= item.S_No %></td>
-      <td><%= item.Date_Of_Initiation %></td>
-      <td><%= item.Record_No %></td>
-      <td><%= item.Site_Division %></td>
-      <td><%= item.Department %></td>
-      <td><%= item.Initiator%></td>
-      <td><%= item.Short_Description %></td>
-      <td><%= item.Batch_No %></td>
-      <td><%= item.Due_Date %></td>
-      <td><%= item.Current_Status %></td>
+      <td><%= item.S_No || i+1 %></td>
+      <td><%= item.dateOfInitiation %></td>
+      <td><%= item.recordNo %></td>
+      <td><%= item.siteDivision %></td>
+      <td><%= item.department %></td>
+      <td><%= item.initiator%></td>
+      <td><%= item.shortDescription %></td>
+      <td><%= item.batchNo %></td>
+      <td><%= item.dueDate %></td>
+      <td><%= item.currentStatus %></td>
     </tr>
     <% }); %>
   </tbody>
@@ -2389,18 +2395,18 @@
       <th >Current Status</th>
   </thead>
   <tbody>
-    <% product.ooac.forEach((item,i) => { %>
+    <% product.currentOOAC.forEach((item,i) => { %>
     <tr>
-      <td><%= item.S_No %></td>
-      <td><%= item.Date_Of_Initiation %></td>
-      <td><%= item.Record_No %></td>
-      <td><%= item.Site_Division %></td>
-      <td><%= item.Department %></td>
-      <td><%= item.Initiator%></td>
-      <td><%= item.Short_Description %></td>
-      <td><%= item.Batch_No %></td>
-      <td><%= item.Due_Date %></td>
-      <td><%= item.Current_Status %></td>
+      <td><%= item.S_No || i+1 %></td>
+      <td><%= item.dateOfInitiation %></td>
+      <td><%= item.recordNo %></td>
+      <td><%= item.siteDivision %></td>
+      <td><%= item.department %></td>
+      <td><%= item.initiator%></td>
+      <td><%= item.shortDescription %></td>
+      <td><%= item.batchNo %></td>
+      <td><%= item.dueDate %></td>
+      <td><%= item.currentStatus %></td>
     </tr>
     <% }); %>
   </tbody>
@@ -2422,18 +2428,18 @@
       <th >Current Status</th>
   </thead>
   <tbody>
-    <% product.pooac.forEach((item,i) => { %>
+    <% product.previewOOAC.forEach((item,i) => { %>
     <tr>
-      <td><%= item.S_No %></td>
-      <td><%= item.Date_Of_Initiation %></td>
-      <td><%= item.Record_No %></td>
-      <td><%= item.Site_Division %></td>
-      <td><%= item.Department %></td>
-      <td><%= item.Initiator%></td>
-      <td><%= item.Short_Description %></td>
-      <td><%= item.Batch_No %></td>
-      <td><%= item.Due_Date %></td>
-      <td><%= item.Current_Status %></td>
+      <td><%= item.S_No || i+1 %></td>
+      <td><%= item.dateOfInitiation %></td>
+      <td><%= item.recordNo %></td>
+      <td><%= item.siteDivision %></td>
+      <td><%= item.department %></td>
+      <td><%= item.initiator%></td>
+      <td><%= item.shortDescription %></td>
+      <td><%= item.batchNo %></td>
+      <td><%= item.dueDate %></td>
+      <td><%= item.currentStatus %></td>
     </tr>
     <% }); %>
   </tbody>
@@ -2461,18 +2467,18 @@
       <th >Current Status</th>
   </thead>
   <tbody>
-    <% product.ooal.forEach((item,i) => { %>
+    <% product.currentOOAL.forEach((item,i) => { %>
     <tr>
-      <td><%= item.S_No %></td>
-      <td><%= item.Date_Of_Initiation %></td>
-      <td><%= item.Record_No %></td>
-      <td><%= item.Site_Division %></td>
-      <td><%= item.Department %></td>
-      <td><%= item.Initiator%></td>
-      <td><%= item.Short_Description %></td>
-      <td><%= item.Batch_No %></td>
-      <td><%= item.Due_Date %></td>
-      <td><%= item.Current_Status %></td>
+      <td><%= item.S_No || i+1 %></td>
+      <td><%= item.dateOfInitiation %></td>
+      <td><%= item.recordNo %></td>
+      <td><%= item.siteDivision %></td>
+      <td><%= item.department %></td>
+      <td><%= item.initiator%></td>
+      <td><%= item.shortDescription %></td>
+      <td><%= item.batchNo %></td>
+      <td><%= item.dueDate %></td>
+      <td><%= item.currentStatus %></td>
     </tr>
     <% }); %>
   </tbody>
@@ -2494,18 +2500,18 @@
       <th >Current Status</th>
   </thead>
   <tbody>
-    <% product.pooal.forEach((item,i) => { %>
+    <% product.previewOOAL.forEach((item,i) => { %>
     <tr>
-      <td><%= item.S_No %></td>
-      <td><%= item.Date_Of_Initiation %></td>
-      <td><%= item.Record_No %></td>
-      <td><%= item.Site_Division %></td>
-      <td><%= item.Department %></td>
-      <td><%= item.Initiator%></td>
-      <td><%= item.Short_Description %></td>
-      <td><%= item.Batch_No %></td>
-      <td><%= item.Due_Date %></td>
-      <td><%= item.Current_Status %></td>
+      <td><%= item.S_No || i+1 %></td>
+      <td><%= item.dateOfInitiation %></td>
+      <td><%= item.recordNo %></td>
+      <td><%= item.siteDivision %></td>
+      <td><%= item.department %></td>
+      <td><%= item.initiator%></td>
+      <td><%= item.shortDescription %></td>
+      <td><%= item.batchNo %></td>
+      <td><%= item.dueDate %></td>
+      <td><%= item.currentStatus %></td>
     </tr>
     <% }); %>
   </tbody>
@@ -2533,18 +2539,18 @@
       <th >Current Status</th>
   </thead>
   <tbody>
-    <% product.oos.forEach((item,i) => { %>
+    <% product.currentOOSA.forEach((item,i) => { %>
     <tr>
-      <td><%= item.S_No %></td>
-      <td><%= item.Date_Of_Initiation %></td>
-      <td><%= item.Record_No %></td>
-      <td><%= item.Site_Division %></td>
-      <td><%= item.Department %></td>
-      <td><%= item.Initiator%></td>
-      <td><%= item.Short_Description %></td>
-      <td><%= item.Batch_No %></td>
-      <td><%= item.Due_Date %></td>
-      <td><%= item.Current_Status %></td>
+      <td><%= item.S_No || i+1 %></td>
+      <td><%= item.dateOfInitiation %></td>
+      <td><%= item.recordNo %></td>
+      <td><%= item.siteDivision %></td>
+      <td><%= item.department %></td>
+      <td><%= item.initiator%></td>
+      <td><%= item.shortDescription %></td>
+      <td><%= item.batchNo %></td>
+      <td><%= item.dueDate %></td>
+      <td><%= item.currentStatus %></td>
     </tr>
     <% }); %>
   </tbody>
@@ -2565,25 +2571,25 @@
         <th >Current Status</th>
     </thead>
     <tbody>
-      <% product.poos.forEach((item,i) => { %>
+      <% product.previewOOSA.forEach((item,i) => { %>
       <tr>
-        <td><%= item.S_No %></td>
-        <td><%= item.Date_Of_Initiation %></td>
-        <td><%= item.Record_No %></td>
-        <td><%= item.Site_Division %></td>
-        <td><%= item.Department %></td>
-        <td><%= item.Initiator%></td>
-        <td><%= item.Short_Description %></td>
-        <td><%= item.Batch_No %></td>
-        <td><%= item.Due_Date %></td>
-        <td><%= item.Current_Status %></td>
+        <td><%= item.S_No || i+1 %></td>
+        <td><%= item.dateOfInitiation %></td>
+        <td><%= item.recordNo %></td>
+        <td><%= item.siteDivision %></td>
+        <td><%= item.department %></td>
+        <td><%= item.initiator%></td>
+        <td><%= item.shortDescription %></td>
+        <td><%= item.batchNo %></td>
+        <td><%= item.dueDate %></td>
+        <td><%= item.currentStatus %></td>
       </tr>
       <% }); %>
     </tbody>
   </table>
 </table>
 <div class="summary">
-  <h3>Summary of OOSA :-</h3>
+  <h3>Summary of OOSA :- </h3>
   &nbsp &nbsp
   <p><%= product.oosaSummary %></p>
 </div>
@@ -2605,18 +2611,18 @@
       <th >Current Status</th>
   </thead>
   <tbody>
-    <% product.oot.forEach((item,i) => { %>
+    <% product.currentOOT.forEach((item,i) => { %>
     <tr>
-      <td><%= item.S_No %></td>
-      <td><%= item.Date_Of_Initiation %></td>
-      <td><%= item.Record_No %></td>
-      <td><%= item.Site_Division %></td>
-      <td><%= item.Department %></td>
-      <td><%= item.Initiator%></td>
-      <td><%= item.Short_Description %></td>
-      <td><%= item.Batch_No %></td>
-      <td><%= item.Due_Date %></td>
-      <td><%= item.Current_Status %></td>
+      <td><%= item.S_No || i+1 %></td>
+      <td><%= item.dateOfInitiation %></td>
+      <td><%= item.recordNo %></td>
+      <td><%= item.siteDivision %></td>
+      <td><%= item.department %></td>
+      <td><%= item.initiator%></td>
+      <td><%= item.shortDescription %></td>
+      <td><%= item.batchNo %></td>
+      <td><%= item.dueDate %></td>
+      <td><%= item.currentStatus %></td>
     </tr>
     <% }); %>
   </tbody>
@@ -2638,18 +2644,18 @@
       <th >Current Status</th>
   </thead>
   <tbody>
-    <% product.poot.forEach((item,i) => { %>
+    <% product.previewOOT.forEach((item,i) => { %>
     <tr>
-      <td><%= item.S_No %></td>
-      <td><%= item.Date_Of_Initiation %></td>
-      <td><%= item.Record_No %></td>
-      <td><%= item.Site_Division %></td>
-      <td><%= item.Department %></td>
-      <td><%= item.Initiator%></td>
-      <td><%= item.Short_Description %></td>
-      <td><%= item.Batch_No %></td>
-      <td><%= item.Due_Date %></td>
-      <td><%= item.Current_Status %></td>
+      <td><%= item.S_No || i+1 %></td>
+      <td><%= item.dateOfInitiation %></td>
+      <td><%= item.recordNo %></td>
+      <td><%= item.siteDivision %></td>
+      <td><%= item.department %></td>
+      <td><%= item.initiator%></td>
+      <td><%= item.shortDescription %></td>
+      <td><%= item.batchNo %></td>
+      <td><%= item.dueDate %></td>
+      <td><%= item.currentStatus %></td>
     </tr>
     <% }); %>
   </tbody>
@@ -2676,18 +2682,18 @@
       <th >Current Status</th>
   </thead>
   <tbody>
-    <% product.cc.forEach((item,i) => { %>
+    <% product.currentCC.forEach((item,i) => { %>
     <tr>
-      <td><%= item.S_No %></td>
-      <td><%= item.Date_Of_Initiation %></td>
-      <td><%= item.Record_No %></td>
-      <td><%= item.Site_Division %></td>
-      <td><%= item.Department %></td>
-      <td><%= item.Initiator%></td>
-      <td><%= item.Short_Description %></td>
-      <td><%= item.Batch_No %></td>
-      <td><%= item.Due_Date %></td>
-      <td><%= item.Current_Status %></td>
+      <td><%= item.S_No || i+1 %></td>
+      <td><%= item.dateOfInitiation %></td>
+      <td><%= item.recordNo %></td>
+      <td><%= item.siteDivision %></td>
+      <td><%= item.department %></td>
+      <td><%= item.initiator%></td>
+      <td><%= item.shortDescription %></td>
+      <td><%= item.batchNo %></td>
+      <td><%= item.dueDate %></td>
+      <td><%= item.currentStatus %></td>
     </tr>
     <% }); %>
   </tbody>
@@ -2709,18 +2715,18 @@
       <th >Current Status</th>
   </thead>
   <tbody>
-    <% product.pcc.forEach((item,i) => { %>
+    <% product.previewCC.forEach((item,i) => { %>
     <tr>
-      <td><%= item.S_No %></td>
-      <td><%= item.Date_Of_Initiation %></td>
-      <td><%= item.Record_No %></td>
-      <td><%= item.Site_Division %></td>
-      <td><%= item.Department %></td>
-      <td><%= item.Initiator%></td>
-      <td><%= item.Short_Description %></td>
-      <td><%= item.Batch_No %></td>
-      <td><%= item.Due_Date %></td>
-      <td><%= item.Current_Status %></td>
+      <td><%= item.S_No || i+1 %></td>
+      <td><%= item.dateOfInitiation %></td>
+      <td><%= item.recordNo %></td>
+      <td><%= item.siteDivision %></td>
+      <td><%= item.department %></td>
+      <td><%= item.initiator%></td>
+      <td><%= item.shortDescription %></td>
+      <td><%= item.batchNo %></td>
+      <td><%= item.dueDate %></td>
+      <td><%= item.currentStatus %></td>
     </tr>
     <% }); %>
   </tbody>
@@ -2748,18 +2754,18 @@
       <th >Current Status</th>
   </thead>
   <tbody>
-    <% product.li.forEach((item,i) => { %>
+    <% product.currentLabI.forEach((item,i) => { %>
     <tr>
-      <td><%= item.S_No %></td>
-      <td><%= item.Date_Of_Initiation %></td>
-      <td><%= item.Record_No %></td>
-      <td><%= item.Site_Division %></td>
-      <td><%= item.Department %></td>
-      <td><%= item.Initiator%></td>
-      <td><%= item.Short_Description %></td>
-      <td><%= item.Batch_No %></td>
-      <td><%= item.Due_Date %></td>
-      <td><%= item.Current_Status %></td>
+      <td><%= item.S_No || i+1 %></td>
+      <td><%= item.dateOfInitiation %></td>
+      <td><%= item.recordNo %></td>
+      <td><%= item.siteDivision %></td>
+      <td><%= item.department %></td>
+      <td><%= item.initiator%></td>
+      <td><%= item.shortDescription %></td>
+      <td><%= item.batchNo %></td>
+      <td><%= item.dueDate %></td>
+      <td><%= item.currentStatus %></td>
     </tr>
     <% }); %>
   </tbody>
@@ -2781,18 +2787,18 @@
       <th >Current Status</th>
   </thead>
   <tbody>
-    <% product.pli.forEach((item,i) => { %>
+    <% product.previewLabI.forEach((item,i) => { %>
     <tr>
-      <td><%= item.S_No %></td>
-      <td><%= item.Date_Of_Initiation %></td>
-      <td><%= item.Record_No %></td>
-      <td><%= item.Site_Division %></td>
-      <td><%= item.Department %></td>
-      <td><%= item.Initiator%></td>
-      <td><%= item.Short_Description %></td>
-      <td><%= item.Batch_No %></td>
-      <td><%= item.Due_Date %></td>
-      <td><%= item.Current_Status %></td>
+      <td><%= item.S_No || i+1 %></td>
+      <td><%= item.dateOfInitiation %></td>
+      <td><%= item.recordNo %></td>
+      <td><%= item.siteDivision %></td>
+      <td><%= item.department %></td>
+      <td><%= item.initiator%></td>
+      <td><%= item.shortDescription %></td>
+      <td><%= item.batchNo %></td>
+      <td><%= item.dueDate %></td>
+      <td><%= item.currentStatus %></td>
     </tr>
     <% }); %>
   </tbody>
@@ -2820,18 +2826,18 @@
       <th >Current Status</th>
   </thead>
   <tbody>
-    <% product.rpc.forEach((item,i) => { %>
+    <% product.currentMC.forEach((item,i) => { %>
     <tr>
-      <td><%= item.S_No %></td>
-      <td><%= item.Date_Of_Initiation %></td>
-      <td><%= item.Record_No %></td>
-      <td><%= item.Site_Division %></td>
-      <td><%= item.Department %></td>
-      <td><%= item.Initiator%></td>
-      <td><%= item.Short_Description %></td>
-      <td><%= item.Batch_No %></td>
-      <td><%= item.Due_Date %></td>
-      <td><%= item.Current_Status %></td>
+      <td><%= item.S_No || i+1 %></td>
+      <td><%= item.dateOfInitiation %></td>
+      <td><%= item.recordNo %></td>
+      <td><%= item.siteDivision %></td>
+      <td><%= item.department %></td>
+      <td><%= item.initiator%></td>
+      <td><%= item.shortDescription %></td>
+      <td><%= item.batchNo %></td>
+      <td><%= item.dueDate %></td>
+      <td><%= item.currentStatus %></td>
     </tr>
     <% }); %>
   </tbody>
@@ -2853,18 +2859,18 @@
       <th >Current Status</th>
   </thead>
   <tbody>
-    <% product.prpc.forEach((item,i) => { %>
+    <% product.previewMC.forEach((item,i) => { %>
     <tr>
-      <td><%= item.S_No %></td>
-      <td><%= item.Date_Of_Initiation %></td>
-      <td><%= item.Record_No %></td>
-      <td><%= item.Site_Division %></td>
-      <td><%= item.Department %></td>
-      <td><%= item.Initiator%></td>
-      <td><%= item.Short_Description %></td>
-      <td><%= item.Batch_No %></td>
-      <td><%= item.Due_Date %></td>
-      <td><%= item.Current_Status %></td>
+      <td><%= item.S_No || i+1 %></td>
+      <td><%= item.dateOfInitiation %></td>
+      <td><%= item.recordNo %></td>
+      <td><%= item.siteDivision %></td>
+      <td><%= item.department %></td>
+      <td><%= item.initiator%></td>
+      <td><%= item.shortDescription %></td>
+      <td><%= item.batchNo %></td>
+      <td><%= item.dueDate %></td>
+      <td><%= item.currentStatus %></td>
     </tr>
     <% }); %>
   </tbody>
@@ -2872,7 +2878,7 @@
 <div class="summary">
   <h3>Summary of Market Complaints :-</h3>
   &nbsp &nbsp
-  <p><%= product.rpcSummary %></p>
+  <p><%= product.mcSummary %></p>
 </div>
 
 
@@ -2899,17 +2905,17 @@
     </tr>
   </thead>
   <tbody>
-    <% product.qrNoti.forEach((item,i) => { %>
+    <% product.currentRPQRN.forEach((item,i) => { %>
     <tr>
       <td><%= item.Sl_No || i+1 %></td>
-      <td><%= item.Batch_No %></td>
-      <td><%= item.Quality_Related_Notification.No %></td>
-      <td><%= item.Quality_Related_Notification.description %></td>
-      <td><%= item.Quality_Related_Notification.Impact	 %></td>
-      <td><%= item.Quality_Related_Notification.Status %></td>
-      <td><%= item.CAPA.description_No %></td>
-      <td><%= item.CAPA.Status %></td>
-      <td><%= item.CAPA.EC %></td>
+      <td><%= item.batchNo %></td>
+      <td><%= item.qualityRelatedNotification.no %></td>
+      <td><%= item.qualityRelatedNotification.description %></td>
+      <td><%= item.qualityRelatedNotification.impact	 %></td>
+      <td><%= item.qualityRelatedNotification.status %></td>
+      <td><%= item.cAPA.descriptionNo %></td>
+      <td><%= item.cAPA.status %></td>
+      <td><%= item.cAPA.eC %></td>
     </tr>
     <% }); %>
   </tbody>
@@ -2918,43 +2924,43 @@
   <div class="summary">
     <h3>Summary of previous Review Period Quality Related Notification :-</h3>
     &nbsp &nbsp
-    <p><%= product.prerSummary %></p>
+    <p><%= product.prpqrn %></p>
   </div>
 
   <div class="summary">
     <h3>Summary of Review of Product Recalls :-</h3>
     &nbsp &nbsp
-    <p><%= product.revrSummary %></p>
+    <p><%= product.reviewOpr %></p>
   </div>
   <div class="summary">
     <h3>Summary of Review of Returned Products :-</h3>
     &nbsp &nbsp
-    <p><%= product.revreSummary %></p>
+    <p><%= product.reviewOrp %></p>
   </div>
   <div class="summary">
     <h3>Summary of Review of Salvaged Drugs :-</h3>
     &nbsp &nbsp
-    <p><%= product.revsalSummary %></p>
+    <p><%= product.reviewOsd %></p>
   </div>
   <div class="summary">
     <h3>Summary of Review of previous PQR recommendations :-</h3>
     &nbsp &nbsp
-    <p><%= product.revPqrSummary %></p>
+    <p><%= product.reviewOppqrr %></p>
   </div>
   <div class="summary">
     <h3>Summary of Review of Quality Agreements :-</h3>
     &nbsp &nbsp
-    <p><%= product.revagrSummary %></p>
+    <p><%= product.reviewOqa %></p>
   </div>
   <div class="summary">
     <h3>Summary of Review of Manufacturing Authorizations :-</h3>
     &nbsp &nbsp
-    <p><%= product.revmSummary %></p>
+    <p><%= product.reviewOma %></p>
   </div>
   <div class="summary">
     <h3>Summary of Review of Open Validations :-</h3>
     &nbsp &nbsp
-    <p><%= product.revovSummary %></p>
+    <p><%= product.reviewOov %></p>
   </div>
 
 <!-- Tab 7 -->
