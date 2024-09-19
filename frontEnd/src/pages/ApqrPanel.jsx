@@ -744,9 +744,8 @@ export default function APQR() {
   };
   const fetchData = async () => {
     try {
-      const response = await axios.get(
-        `http://localhost:4000/get-apqr/${editData.pqrId}`
-      );
+      const response = await axios.get(`http://localhost:4000/get-apqr/${editData.pqrId}`);
+      console.log(response.data, "data");
       setData(response.data);
       setTinyData(response.data.aPQRData.tinyData);
       const apiData = response.data.gridDatas;
@@ -2274,7 +2273,7 @@ export default function APQR() {
   const handleTextToSpeech = (text) => {
     const speech = new SpeechSynthesisUtterance(text);
     window.speechSynthesis.speak(speech);
-  };
+  };     
 
   // Speech-to-Text functionality
   const handleSpeechToText = (updater) => {

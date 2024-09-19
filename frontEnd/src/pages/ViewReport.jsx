@@ -94,7 +94,6 @@ const ViewReport = () => {
         Your browser does not support iframes.
       </iframe>
 
-    
       {!isChatOpen && (
         <div
           className="absolute bottom-5 right-8 bg-blue-500 text-white p-4 rounded-full shadow-lg cursor-pointer z-50"
@@ -109,11 +108,7 @@ const ViewReport = () => {
         <div className="absolute bottom-5 right-5 w-[450px] bg-white border border-gray-300 rounded-lg shadow-lg z-50 transition-all duration-300 transform translate-y-0">
           <div className="bg-blue-500 text-white flex justify-between items-center p-2 rounded-t-lg">
             <span>Chat with PDF</span>
-            <FaTimes
-              size={20}
-              className="cursor-pointer"
-              onClick={() => setIsChatOpen(false)} 
-            />
+            <FaTimes size={20} className="cursor-pointer" onClick={() => setIsChatOpen(false)} />
           </div>
           <div className="h-[500px] overflow-y-auto p-3">
             {messages.map((message, index) => (
@@ -121,8 +116,8 @@ const ViewReport = () => {
                 key={index}
                 className={`p-2 my-1 rounded-lg mt-5 ${
                   message.sender === "user"
-                    ? "bg-blue-300 ml-10 text-white text-right" 
-                    : "bg-gray-300 mr-10 text-black text-left pl-4" 
+                    ? "bg-blue-300 ml-10 text-white text-right"
+                    : "bg-gray-300 mr-10 text-black text-left pl-4"
                 }`}
               >
                 {message.text}
@@ -135,12 +130,12 @@ const ViewReport = () => {
               value={newMessage}
               onChange={(e) => setNewMessage(e.target.value)}
               placeholder="Type a message..."
-              className="flex-grow p-2 h-12 border-none focus:outline-none" 
+              className="flex-grow p-2 h-12 border-none focus:outline-none"
             />
             <button
               onClick={handleSendMessage}
               disabled={awaitingResponse}
-              className="bg-blue-500 text-white px-4 py-2 h-12 hover:bg-blue-600 -ml-3 flex min-w-24 space-x-4 items-center" 
+              className="bg-blue-500 text-white px-4 py-2 h-12 hover:bg-blue-600 -ml-3 flex min-w-24 space-x-4 items-center"
             >
               <p>Send</p>
               {awaitingResponse && (
