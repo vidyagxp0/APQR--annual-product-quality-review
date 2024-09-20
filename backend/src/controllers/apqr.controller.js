@@ -2,11 +2,13 @@ import { APQR } from "../models/apqr.model.js";
 import gridRef from "../models/gridRef.model.js";
 import { sequelize } from "../config/db.js";
 import { getImageUrl } from "../middleware/authentication.js";
+import { FormAuditTrail } from "../models/formAuditTrail.js";
+import { User } from "../models/user.model.js";
 
 export const createApqr = async (req, res) => {
-  // console.log(req.body.tiny1);
   const t = await sequelize.transaction();
   try {
+    const { userId, comments, declaration } = req.body;
     const newAPQR = await APQR.create(
       {
         pqrNo: req.body.pqrNo,
@@ -216,7 +218,9 @@ export const createApqr = async (req, res) => {
 
       if (gridInfo) {
         let filePath = null;
-        const files = req.files?.filter((f) => f.fieldname === gridName); // Exact match between field name and grid name
+        const files = req.files
+          ? req.files.filter((f) => f.fieldname === gridName)
+          : []; // Exact match between field name and grid name
 
         if (files && files.length > 0) {
           filePath = files.map((file) => ({
@@ -240,11 +244,27 @@ export const createApqr = async (req, res) => {
       }
     }
 
-    await t.commit();
+    // Create audit trail
+    const data = await FormAuditTrail.create(
+      {
+        pqrId: newAPQR.pqrId,
+        changed_by: userId || 2,
+        previous_value: null,
+        new_value: newAPQR.pqrId,
+        previous_status: "Not Applicable",
+        new_status: "Under Initiation",
+        declaration: declaration || "dec",
+        comments: comments || "com",
+        action: "APQR Created",
+      },
+      { transaction: t }
+    );
 
-    return res.json({
+    await t.commit();
+    return res.status(200).json({
       newAPQR,
       gridData,
+      data,
     });
   } catch (error) {
     await t.rollback();
@@ -412,45 +432,122 @@ export const updateAPQRById = async (req, res) => {
     if (!existingAPQR) {
       return res.status(404).json({ error: true, message: "APQR not found" });
     }
+    const updateData = {
+      pqrNo: req.body.pqrNo || existingAPQR.pqrNo,
+      initiator: req.body.initiator || existingAPQR.initiator,
+      initiateDate: req.body.initiateDate
+        ? new Date(req.body.initiateDate)
+        : undefined,
+      reviewStartDate: req.body.reviewStartDate
+        ? new Date(req.body.reviewStartDate)
+        : undefined,
+      reviewEndDate: req.body.reviewEndDate
+        ? new Date(req.body.reviewEndDate)
+        : undefined,
+      productName: req.body.pQRData.productName || existingAPQR.productName,
+      productCodes: req.body.pQRData.productCodes || existingAPQR.productCodes,
+      genericName: req.body.pQRData.genericName || existingAPQR.genericName,
+      dosageForm: req.body.pQRData.dosageForm || existingAPQR.dosageForm,
+      mfgLicNo: req.body.pQRData.mfgLicNo || existingAPQR.mfgLicNo,
+      productDescription:
+        req.body.pQRData.productDescription || existingAPQR.productDescription,
+      processFlow: req.body.pQRData.processFlow || existingAPQR.processFlow,
+      totalBatchesManufactured:
+        req.body.pQRData.totalBatchesManufactured ||
+        existingAPQR.totalBatchesManufactured,
+      totalBatchesApprovedReleased:
+        req.body.pQRData.totalBatchesApprovedReleased ||
+        existingAPQR.totalBatchesApprovedReleased,
+      totalProcessValidationBatches:
+        req.body.pQRData.totalProcessValidationBatches ||
+        existingAPQR.totalProcessValidationBatches,
+      totalReprocessedBatches:
+        req.body.pQRData.totalReprocessedBatches ||
+        existingAPQR.totalReprocessedBatches,
+      tinyData: req.body.pQRData.tinyData || existingAPQR.pQRData.tinyData,
+    };
 
+    const auditTrailEntries = [];
+    for (const field in updateData) {
+      const oldValue = existingAPQR[field];
+      const newValue = updateData[field];
+
+      if (field == "tinyData") {
+        const oldTinyData = existingAPQR.tinyData || {};
+        const newTinyData = req.body.pQRData.tinyData || {};
+
+        for (const tinyField in newTinyData) {
+          if (oldTinyData[tinyField] !== newTinyData[tinyField]) {
+            auditTrailEntries.push({
+              pqrId: apqrId,
+              changed_by: req.body.userId || 1,
+              previous_value: JSON.stringify(oldTinyData[tinyField]),
+              new_value: JSON.stringify(newTinyData[tinyField]),
+              previous_status: "Not Applicable",
+              new_status: "Under Initiation",
+              declaration: `Changed ${tinyField}` || "dec-0",
+              comments: req.body.comments || `${tinyField} updated` || "comm-0",
+              action: "Updated",
+            });
+          }
+        }
+      } else if (
+        field === "initiateDate" ||
+        field === "reviewStartDate" ||
+        field === "reviewEndDate"
+      ) {
+        if (
+          oldValue &&
+          newValue &&
+          new Date(oldValue).getTime() !== new Date(newValue).getTime()
+        ) {
+          auditTrailEntries.push({
+            pqrId: apqrId,
+            changed_by: req.body.userId || 1,
+            previous_value: oldValue.toISOString(),
+            new_value: new Date(newValue).toISOString(),
+            previous_status: "Not Applicable",
+            new_status: "Under Initiation",
+            declaration: `Changed ${field}`,
+            comments: req.body.comments || `${field} updated`,
+            action: "Updated",
+          });
+        }
+      } else if (field === "productCodes") {
+        const oldProductCodes = oldValue || [];
+        const newProductCodes = newValue || [];
+
+        if (
+          JSON.stringify(oldProductCodes) !== JSON.stringify(newProductCodes)
+        ) {
+          auditTrailEntries.push({
+            pqrId: apqrId,
+            changed_by: req.body.userId || 1,
+            previous_value: JSON.stringify(oldProductCodes),
+            new_value: JSON.stringify(newProductCodes),
+            previous_status: "Not Applicable",
+            new_status: "Under Initiation",
+            declaration: `Changed ${field}`,
+            comments: req.body.comments || `${field} updated`,
+            action: "Updated",
+          });
+        }
+      } else if (newValue !== oldValue) {
+        auditTrailEntries.push({
+          pqrId: apqrId,
+          changed_by: req.body.userId || 1,
+          previous_value: JSON.stringify(oldValue),
+          new_value: JSON.stringify(newValue),
+          previous_status: "Not Applicable",
+          new_status: "Under Initiation",
+          declaration: `Changed ${field}` || "dec0",
+          comments: req.body.comments || `${field} updated` || "comm0",
+          action: "Updated",
+        });
+      }
+    }
     // Update APQR data
-    await existingAPQR.update(
-      {
-        pqrNo: req.body.pqrNo || existingAPQR.pqrNo,
-        productName: req.body.pQRData.productName || existingAPQR.productName,
-        productCodes:
-          req.body.pQRData.productCodes || existingAPQR.productCodes,
-        initiateDate: req.body.initiateDate || existingAPQR.initiateDate,
-        genericName: req.body.pQRData.genericName || existingAPQR.genericName,
-        dosageForm: req.body.pQRData.dosageForm || existingAPQR.dosageForm,
-        initiator: req.body.initiator || existingAPQR.initiator,
-        reviewStartDate: req.body.reviewStartDate
-          ? new Date(req.body.reviewStartDate)
-          : existingAPQR.reviewStartDate,
-        reviewEndDate: req.body.reviewEndDate
-          ? new Date(req.body.reviewEndDate)
-          : existingAPQR.reviewEndDate,
-        mfgLicNo: req.body.pQRData.mfgLicNo || existingAPQR.mfgLicNo,
-        productDescription:
-          req.body.pQRData.productDescription ||
-          existingAPQR.productDescription,
-        processFlow: req.body.pQRData.processFlow || existingAPQR.processFlow,
-        totalBatchesManufactured:
-          req.body.pQRData.totalBatchesManufactured ||
-          existingAPQR.totalBatchesManufactured,
-        totalBatchesApprovedReleased:
-          req.body.pQRData.totalBatchesApprovedReleased ||
-          existingAPQR.totalBatchesApprovedReleased,
-        totalProcessValidationBatches:
-          req.body.pQRData.totalProcessValidationBatches ||
-          existingAPQR.totalProcessValidationBatches,
-        totalReprocessedBatches:
-          req.body.pQRData.totalReprocessedBatches ||
-          existingAPQR.totalReprocessedBatches,
-        tinyData: req.body.pQRData.tinyData,
-      },
-      { transaction: t }
-    );
+    await existingAPQR.update(updateData, { transaction: t });
 
     // Update or create grid data
     const grids = [
@@ -540,10 +637,11 @@ export const updateAPQRById = async (req, res) => {
       "currentLabI",
       "previewLabI",
     ];
-    // console.log("Updating ManufacturingStage with data:");
 
     for (let i = 0; i < grids.length; i++) {
       if (req.body.gridDatas[grids[i]]) {
+        const newGridData = req.body.gridDatas[grids[i]];
+
         const existingGridRef = await gridRef.findOne({
           where: {
             pqrId: apqrId,
@@ -553,29 +651,101 @@ export const updateAPQRById = async (req, res) => {
         });
 
         if (existingGridRef) {
-          await existingGridRef.update(
-            { data: req.body.gridDatas[grids[i]] },
-            { transaction: t }
-          );
+          const oldValue = existingGridRef.data;
+          const oldGridDataString = JSON.stringify(oldValue);
+          const newGridDataString = JSON.stringify(newGridData);
+
+          // Check if data changed and log it in audit trail
+          if (newGridDataString !== oldGridDataString) {
+            auditTrailEntries.push({
+              pqrId: apqrId,
+              changed_by: req.body.userId || 1,
+              previous_value: oldGridDataString,
+              new_value: newGridDataString,
+              previous_status: "Not Applicable",
+              new_status: "Under Initiation",
+              declaration: `Changed ${grids[i]} grid data`,
+              comments: req.body.comments || `Grid ${grids[i]} updated`,
+              action: "Updated",
+            });
+            await existingGridRef.update(
+              { data: req.body.gridDatas[grids[i]] },
+              { transaction: t }
+            );
+          }
         } else {
           await gridRef.create(
             {
               pqrId: apqrId,
               primaryKey: grids[i],
-              data: req.body.gridDatas[grids[i]],
+              data: newGridData,
             },
             { transaction: t }
           );
+          auditTrailEntries.push({
+            pqrId: apqrId,
+            changed_by: req.body.userId || 1,
+            previous_value: null,
+            new_value: newGridData,
+            previous_status: "Not Applicable",
+            new_status: "Under Initiation",
+            declaration: `Created ${grids[i]} grid data`,
+            comments: req.body.comments || `Grid ${grids[i]} created`,
+            action: "Created",
+          });
         }
       }
     }
 
-    await t.commit(); // Commit the transaction
+    // Insert all audit trail entries in bulk
+    if (auditTrailEntries.length > 0) {
+      await FormAuditTrail.bulkCreate(auditTrailEntries, {
+        transaction: t,
+      });
+    }
 
+    await t.commit();
     res.status(200).json({ message: "APQR updated successfully" });
   } catch (error) {
-    await t.rollback(); // Rollback the transaction in case of error
+    if (!t.finished) {
+      await t.rollback();
+    }
     console.error("Error updating APQR:", error);
     res.status(500).json({ error: error.message });
+  }
+};
+
+export const getAPQRAuditTrail = async (req, res) => {
+  try {
+    const APQRId = req.params.id;
+
+    if (!APQRId) {
+      return res
+        .status(400)
+        .json({ error: true, message: "APQR ID is required." });
+    }
+
+    const auditTrail = await FormAuditTrail.findAll({
+      where: { pqrId: APQRId },
+      include: {
+        model: User,
+        attributes: ["user_id", "name"],
+      },
+      order: [["auditTrail_id", "DESC"]],
+    });
+
+    if (!auditTrail || auditTrail.length === 0) {
+      return res.status(404).json({
+        error: true,
+        message: "No audit trail found for the given APQR ID.",
+      });
+    }
+
+    return res.status(200).json({ error: false, auditTrail });
+  } catch (error) {
+    return res.status(500).json({
+      error: true,
+      message: `Error retrieving audit trail: ${error.message}`,
+    });
   }
 };

@@ -227,20 +227,24 @@ export const editUser = async (req, res) => {
       transaction,
     });
 
-    for (const role of req.body.rolesArray) {
-      const roles = await Role.findAll({
-        where: {
-          role_id: role,
-        },
-        transaction,
-      });
-      // Add roles to UserRole table
-      const userRoles = roles.map((role) => ({
-        user_id: req.params.id,
-        role_id: role.role_id,
-        role: role.role,
-      }));
-      await UserRole.bulkCreate(userRoles, { transaction });
+    // Check if rolesArray exists and is an array before iterating
+    const rolesArray = req.body?.rolesArray;
+    if (Array.isArray(rolesArray)) {
+      for (const role of rolesArray) {
+        const roles = await Role.findAll({
+          where: {
+            role_id: role,
+          },
+          transaction,
+        });
+        // Add roles to UserRole table
+        const userRoles = roles.map((role) => ({
+          user_id: req.params.id,
+          role_id: role.role_id,
+          role: role.role,
+        }));
+        await UserRole.bulkCreate(userRoles, { transaction });
+      }
     }
     // // Process roles array
     // const rolesArray = req.body?.rolesArray;
