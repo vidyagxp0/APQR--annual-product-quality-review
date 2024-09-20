@@ -2684,8 +2684,8 @@ export default function APQR() {
                 <div>
                   <h4 className="gridName mt-4">Summary</h4>
                   <TinyEditor
-                    editorContent={tinyData.tiny1} // Ensure the content matches the correct state property
-                    setEditorContent={(data) => setTinyContent(data, 1)} // Passing the editor number and content
+                    editorContent={tinyData.tiny1} 
+                    setEditorContent={(data) => setTinyContent(data, 1)} 
                     tinyNo={1}
                   />
                 </div>
@@ -2713,7 +2713,7 @@ export default function APQR() {
                         <th>Product Name</th>
                         <th>Batch Code</th>
                         <th>SFG Code</th>
-                        <th></th>
+                        {/* <th></th> */}
                         <th>Remarks</th>
                       </tr>
                     </thead>
@@ -2766,9 +2766,9 @@ export default function APQR() {
                                 }}
                               />
                             </td>
-                            <td>
+                            {/* <td>
                               <input />
-                            </td>
+                            </td> */}
                             <td>
                               <input
                                 value={item.remarks}
@@ -3641,10 +3641,13 @@ export default function APQR() {
                             <input
                               value={item.manufacturerName}
                               onChange={(e) => {
-                                const newData = [...vendorQDPOG];
+                                const newData = [...gridDatas.vendorQDPOG];
                                 newData[index].manufacturerName =
                                   e.target.value;
-                                setVendorQDPOG(newData);
+                                  setGridDatas({
+                                    ...gridDatas,
+                                    vendorQDPOG: newData,
+                                  });
                               }}
                             />
                           </td>
@@ -4179,7 +4182,7 @@ export default function APQR() {
                             value={item.manufacturingBatchNumber}
                             onChange={(e) => {
                               const newData = [...gridDatas.reviewORCEC];
-                              newData[index].repackingIssuedNumber =
+                              newData[index].manufacturingBatchNumber =
                                 e.target.value;
                               setGridDatas({
                                 ...gridDatas,
