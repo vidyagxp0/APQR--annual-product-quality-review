@@ -79,13 +79,13 @@ export default function APQR() {
   const [unitOperation8, setUnitOperation8] = useState([]);
   const [unitOperation9, setUnitOperation9] = useState([]);
   const [unitOperation10, setUnitOperation10] = useState([]);
-  const [yieldTOS1,setYieldTOS1]=useState([]);
-  const [yieldTOS2,setYieldTOS2]=useState([]);
-  const [yieldTOS3,setYieldTOS3]=useState([]);
-  const [yieldTOS4,setYieldTOS4]=useState([]);
-  const [yieldTOS5,setYieldTOS5]=useState([]);
-  const [trendingOCPPS1,setTrendingOCPPS1]=useState([]);
-  const [trendingOIPIPS1,setTrendingOIPIPS1]=useState([]);
+  const [yieldTOS1, setYieldTOS1] = useState([]);
+  const [yieldTOS2, setYieldTOS2] = useState([]);
+  const [yieldTOS3, setYieldTOS3] = useState([]);
+  const [yieldTOS4, setYieldTOS4] = useState([]);
+  const [yieldTOS5, setYieldTOS5] = useState([]);
+  const [trendingOCPPS1, setTrendingOCPPS1] = useState([]);
+  const [trendingOIPIPS1, setTrendingOIPIPS1] = useState([]);
   const [tiny1, setTiny1] = useState("");
   const [tiny2, setTiny2] = useState("");
   const [tiny3, setTiny3] = useState("");
@@ -191,8 +191,7 @@ export default function APQR() {
   const [currentLabI, setCurrentLabI] = useState([]);
   const [previewLabI, setPreviewLabI] = useState([]);
 
-  useEffect(() => {
-  }, [reviewODSTR]);
+  useEffect(() => {}, [reviewODSTR]);
   const sanitizeKey = (key) => {
     return key.replace(/\s+/g, "").replace(/[\n\r]+/g, "");
   };
@@ -305,7 +304,6 @@ export default function APQR() {
   const setTinyContent = (data, tinyNO) => {
     switch (tinyNO) {
       case 1:
-
         setTiny1(data);
         break;
       case 2:
@@ -947,8 +945,7 @@ export default function APQR() {
     previewLabI,
   ]);
 
-  useEffect(() => {
-  }, [tiny1]);
+  useEffect(() => {}, [tiny1]);
   const addManufacturingStageRow = () => {
     const newRow = {
       productName: "",
@@ -1867,13 +1864,12 @@ export default function APQR() {
   const addYieldTOS1Row = () => {
     const newRow = {
       batchNo: "",
-      mfgMonth:"",
-      actualInput:"",
-      actualOutput:"",
-      lLimit:"",
-      uLimit:"",
-      yield:"",
-      
+      mfgMonth: "",
+      actualInput: "",
+      actualOutput: "",
+      lLimit: "",
+      uLimit: "",
+      yield: "",
     };
     setYieldTOS1([...yieldTOS1, newRow]);
   };
@@ -1881,13 +1877,12 @@ export default function APQR() {
   const addYieldTOS2Row = () => {
     const newRow = {
       batchNo: "",
-      mfgMonth:"",
-      actualInput:"",
-      actualOutput:"",
-      lLimit:"",
-      uLimit:"",
-      yield:"",
-      
+      mfgMonth: "",
+      actualInput: "",
+      actualOutput: "",
+      lLimit: "",
+      uLimit: "",
+      yield: "",
     };
     setYieldTOS2([...yieldTOS2, newRow]);
   };
@@ -1895,13 +1890,12 @@ export default function APQR() {
   const addYieldTOS3Row = () => {
     const newRow = {
       batchNo: "",
-      mfgMonth:"",
-      actualInput:"",
-      actualOutput:"",
-      lLimit:"",
-      uLimit:"",
-      yield:"",
-      
+      mfgMonth: "",
+      actualInput: "",
+      actualOutput: "",
+      lLimit: "",
+      uLimit: "",
+      yield: "",
     };
     setYieldTOS3([...yieldTOS3, newRow]);
   };
@@ -1909,13 +1903,12 @@ export default function APQR() {
   const addYieldTOS4Row = () => {
     const newRow = {
       batchNo: "",
-      mfgMonth:"",
-      actualInput:"",
-      actualOutput:"",
-      lLimit:"",
-      uLimit:"",
-      yield:"",
-      
+      mfgMonth: "",
+      actualInput: "",
+      actualOutput: "",
+      lLimit: "",
+      uLimit: "",
+      yield: "",
     };
     setYieldTOS4([...yieldTOS4, newRow]);
   };
@@ -1923,23 +1916,21 @@ export default function APQR() {
   const addYieldTOS5Row = () => {
     const newRow = {
       batchNo: "",
-      mfgMonth:"",
-      actualInput:"",
-      actualOutput:"",
-      lLimit:"",
-      uLimit:"",
-      yield:"",
-      
+      mfgMonth: "",
+      actualInput: "",
+      actualOutput: "",
+      lLimit: "",
+      uLimit: "",
+      yield: "",
     };
     setYieldTOS5([...yieldTOS5, newRow]);
   };
   const addTrendingOCPPS1Row = () => {
     const newRow = {
       batchNo: "",
-     criticalParameter1:"",
-     criticalParameter2:"",
-     criticalParameter3:"",
-
+      criticalParameter1: "",
+      criticalParameter2: "",
+      criticalParameter3: "",
     };
     setTrendingOCPPS1([...trendingOCPPS1, newRow]);
   };
@@ -1947,25 +1938,28 @@ export default function APQR() {
   const addTrendingOIPIPS1Row = () => {
     const newRow = {
       batchNo: "",
-      unreactedDiolone :"",
-      limit:"",
-      chromatographicPurity:"",
-      unreactedTCA:"",
-      purityForInformation:"",
-      pH6:"",
-      lLimit:"",
-      uLimit:"",
-      pH65:"",
-      lLimit:"",
-      uLimit:"",
-      waterContent:"",
-      wLimit:"",
-      composite:{waterContentNmt:"",chromatographicPurity:{
-        limit:"",
-        tCAStage:"",
-        tLimit:"",
-        dryingHours:"",
-      }}, 
+      unreactedDiolone: "",
+      limit: "",
+      chromatographicPurity: "",
+      unreactedTCA: "",
+      purityForInformation: "",
+      pH6: "",
+      lLimit: "",
+      uLimit: "",
+      pH65: "",
+      lLimit: "",
+      uLimit: "",
+      waterContent: "",
+      wLimit: "",
+      composite: {
+        waterContentNmt: "",
+        chromatographicPurity: {
+          limit: "",
+          tCAStage: "",
+          tLimit: "",
+          dryingHours: "",
+        },
+      },
     };
     setTrendingOIPIPS1([...trendingOIPIPS1, newRow]);
   };
@@ -2141,13 +2135,13 @@ export default function APQR() {
             Yield Trend Of Stage
           </div>
           <div className={`${tab === "TOCPP" ? "active" : ""}`} onClick={() => setTab("TOCPP")}>
-          Trending of Critical Process Parameter
+            Trending of Critical Process Parameter
           </div>
           <div className={`${tab === "TOIIP" ? "active" : ""}`} onClick={() => setTab("TOIIP")}>
-          Trending of In-process & Intermediate Parameter
+            Trending of In-process & Intermediate Parameter
           </div>
           <div className={`${tab === "FPAT" ? "active" : ""}`} onClick={() => setTab("FPAT")}>
-          Finished Product Analytical Trend
+            Finished Product Analytical Trend
           </div>
         </div>
 
@@ -11938,8 +11932,9 @@ export default function APQR() {
             </div>
           </>
         ) : null}
-        {tab==="YTOS"?(<>
-          <div className="gridName pt-4">Yield Trend Of Stage-1</div>
+        {tab === "YTOS" ? (
+          <>
+            <div className="gridName pt-4">Yield Trend Of Stage-1</div>
             <div>
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
@@ -11957,20 +11952,15 @@ export default function APQR() {
               <table>
                 <thead>
                   <tr>
-                    <th >SI. No.</th>
-                    <th >Batch No.</th>
-                    <th>
-                    Mfg. Month
-                    </th>
-                    <th>
-                    Actual Input in (50.000 Kg)Kg
-                    </th>
-                    <th>Actual Output in Expected Output Range  (50.000 – 57.000Kg)</th>
+                    <th>SI. No.</th>
+                    <th>Batch No.</th>
+                    <th>Mfg. Month</th>
+                    <th>Actual Input in (50.000 Kg)Kg</th>
+                    <th>Actual Output in Expected Output Range (50.000 – 57.000Kg)</th>
                     <th>L Limit</th>
                     <th>U Limit</th>
                     <th>Yield %</th>
                   </tr>
-                 
                 </thead>
                 <tbody>
                   {yieldTOS1.map((item, index) => {
@@ -12004,8 +11994,7 @@ export default function APQR() {
                             value={item.actualInput}
                             onChange={(e) => {
                               const newData = [...yieldTOS1];
-                              newData[index].actualInput =
-                                e.target.value;
+                              newData[index].actualInput = e.target.value;
                               setYieldTOS1(newData);
                             }}
                           />
@@ -12077,20 +12066,15 @@ export default function APQR() {
               <table>
                 <thead>
                   <tr>
-                    <th >SI. No.</th>
-                    <th >Batch No.</th>
-                    <th>
-                    Mfg. Month
-                    </th>
-                    <th>
-                    Actual Input in (50.000 Kg)Kg
-                    </th>
-                    <th>Actual Output in Expected Output Range  (50.000 – 57.000Kg)</th>
+                    <th>SI. No.</th>
+                    <th>Batch No.</th>
+                    <th>Mfg. Month</th>
+                    <th>Actual Input in (50.000 Kg)Kg</th>
+                    <th>Actual Output in Expected Output Range (50.000 – 57.000Kg)</th>
                     <th>L Limit</th>
                     <th>U Limit</th>
                     <th>Yield %</th>
                   </tr>
-                 
                 </thead>
                 <tbody>
                   {yieldTOS2.map((item, index) => {
@@ -12124,8 +12108,7 @@ export default function APQR() {
                             value={item.actualInput}
                             onChange={(e) => {
                               const newData = [...yieldTOS2];
-                              newData[index].actualInput =
-                                e.target.value;
+                              newData[index].actualInput = e.target.value;
                               setYieldTOS2(newData);
                             }}
                           />
@@ -12197,20 +12180,15 @@ export default function APQR() {
               <table>
                 <thead>
                   <tr>
-                    <th >SI. No.</th>
-                    <th >Batch No.</th>
-                    <th>
-                    Mfg. Month
-                    </th>
-                    <th>
-                    Actual Input in (50.000 Kg)Kg
-                    </th>
-                    <th>Actual Output in Expected Output Range  (50.000 – 57.000Kg)</th>
+                    <th>SI. No.</th>
+                    <th>Batch No.</th>
+                    <th>Mfg. Month</th>
+                    <th>Actual Input in (50.000 Kg)Kg</th>
+                    <th>Actual Output in Expected Output Range (50.000 – 57.000Kg)</th>
                     <th>L Limit</th>
                     <th>U Limit</th>
                     <th>Yield %</th>
                   </tr>
-                 
                 </thead>
                 <tbody>
                   {yieldTOS3.map((item, index) => {
@@ -12244,8 +12222,7 @@ export default function APQR() {
                             value={item.actualInput}
                             onChange={(e) => {
                               const newData = [...yieldTOS3];
-                              newData[index].actualInput =
-                                e.target.value;
+                              newData[index].actualInput = e.target.value;
                               setYieldTOS3(newData);
                             }}
                           />
@@ -12317,20 +12294,15 @@ export default function APQR() {
               <table>
                 <thead>
                   <tr>
-                    <th >SI. No.</th>
-                    <th >Batch No.</th>
-                    <th>
-                    Mfg. Month
-                    </th>
-                    <th>
-                    Actual Input in (50.000 Kg)Kg
-                    </th>
-                    <th>Actual Output in Expected Output Range  (50.000 – 57.000Kg)</th>
+                    <th>SI. No.</th>
+                    <th>Batch No.</th>
+                    <th>Mfg. Month</th>
+                    <th>Actual Input in (50.000 Kg)Kg</th>
+                    <th>Actual Output in Expected Output Range (50.000 – 57.000Kg)</th>
                     <th>L Limit</th>
                     <th>U Limit</th>
                     <th>Yield %</th>
                   </tr>
-                 
                 </thead>
                 <tbody>
                   {yieldTOS4.map((item, index) => {
@@ -12364,8 +12336,7 @@ export default function APQR() {
                             value={item.actualInput}
                             onChange={(e) => {
                               const newData = [...yieldTOS4];
-                              newData[index].actualInput =
-                                e.target.value;
+                              newData[index].actualInput = e.target.value;
                               setYieldTOS4(newData);
                             }}
                           />
@@ -12437,20 +12408,15 @@ export default function APQR() {
               <table>
                 <thead>
                   <tr>
-                    <th >SI. No.</th>
-                    <th >Batch No.</th>
-                    <th>
-                    Mfg. Month
-                    </th>
-                    <th>
-                    Actual Input in (50.000 Kg)Kg
-                    </th>
-                    <th>Actual Output in Expected Output Range  (50.000 – 57.000Kg)</th>
+                    <th>SI. No.</th>
+                    <th>Batch No.</th>
+                    <th>Mfg. Month</th>
+                    <th>Actual Input in (50.000 Kg)Kg</th>
+                    <th>Actual Output in Expected Output Range (50.000 – 57.000Kg)</th>
                     <th>L Limit</th>
                     <th>U Limit</th>
                     <th>Yield %</th>
                   </tr>
-                 
                 </thead>
                 <tbody>
                   {yieldTOS5.map((item, index) => {
@@ -12484,8 +12450,7 @@ export default function APQR() {
                             value={item.actualInput}
                             onChange={(e) => {
                               const newData = [...yieldTOS5];
-                              newData[index].actualInput =
-                                e.target.value;
+                              newData[index].actualInput = e.target.value;
                               setYieldTOS5(newData);
                             }}
                           />
@@ -12538,11 +12503,12 @@ export default function APQR() {
                 </tbody>
               </table>
             </div>
-
-        </>): null}
-        {tab==="TOCPP"? <>
-          <div className="gridName pt-4">Trending of Critical Process Parameter: Stage - I</div>
-          <div>
+          </>
+        ) : null}
+        {tab === "TOCPP" ? (
+          <>
+            <div className="gridName pt-4">Trending of Critical Process Parameter: Stage - I</div>
+            <div>
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addTrendingOCPPS1Row} />
@@ -12559,18 +12525,21 @@ export default function APQR() {
               <table>
                 <thead>
                   <tr>
-                    <th >SI. No.</th>
-                    <th >Batch No.</th>
+                    <th>SI. No.</th>
+                    <th>Batch No.</th>
                     <th>
-                    Critical Parameter: 01 Nitrogen gas purging should be carried out in advance in Acetonide formation reaction (part I) 
+                      Critical Parameter: 01 Nitrogen gas purging should be carried out in advance
+                      in Acetonide formation reaction (part I)
                     </th>
                     <th>
-                    Critical Parameter: 02 In Bromination reaction (part II), slow agitation is required during the reaction. 
+                      Critical Parameter: 02 In Bromination reaction (part II), slow agitation is
+                      required during the reaction.
                     </th>
-                    <th>Critical Parameter: 03 Epoxydation reaction (part III) required Argon gas bubbling to remove oxygen content from the reaction mass. </th>
-                   
+                    <th>
+                      Critical Parameter: 03 Epoxydation reaction (part III) required Argon gas
+                      bubbling to remove oxygen content from the reaction mass.{" "}
+                    </th>
                   </tr>
-                 
                 </thead>
                 <tbody>
                   {trendingOCPPS1.map((item, index) => {
@@ -12604,8 +12573,7 @@ export default function APQR() {
                             value={item.criticalParameter2}
                             onChange={(e) => {
                               const newData = [...trendingOCPPS1];
-                              newData[index].criticalParameter2 =
-                                e.target.value;
+                              newData[index].criticalParameter2 = e.target.value;
                               setTrendingOCPPS1(newData);
                             }}
                           />
@@ -12627,9 +12595,9 @@ export default function APQR() {
                 </tbody>
               </table>
             </div>
-            
+
             <div className="gridName pt-4">Trending of Critical Process Parameter: Stage - II</div>
-          <div>
+            <div>
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addTrendingOCPPS1Row} />
@@ -12646,18 +12614,21 @@ export default function APQR() {
               <table>
                 <thead>
                   <tr>
-                    <th >SI. No.</th>
-                    <th >Batch No.</th>
+                    <th>SI. No.</th>
+                    <th>Batch No.</th>
                     <th>
-                    Critical Parameter: 01 Nitrogen gas purging should be carried out in advance in Acetonide formation reaction (part I) 
+                      Critical Parameter: 01 Nitrogen gas purging should be carried out in advance
+                      in Acetonide formation reaction (part I)
                     </th>
                     <th>
-                    Critical Parameter: 02 In Bromination reaction (part II), slow agitation is required during the reaction. 
+                      Critical Parameter: 02 In Bromination reaction (part II), slow agitation is
+                      required during the reaction.
                     </th>
-                    <th>Critical Parameter: 03 Epoxydation reaction (part III) required Argon gas bubbling to remove oxygen content from the reaction mass. </th>
-                   
+                    <th>
+                      Critical Parameter: 03 Epoxydation reaction (part III) required Argon gas
+                      bubbling to remove oxygen content from the reaction mass.{" "}
+                    </th>
                   </tr>
-                 
                 </thead>
                 <tbody>
                   {trendingOCPPS1.map((item, index) => {
@@ -12691,8 +12662,7 @@ export default function APQR() {
                             value={item.criticalParameter2}
                             onChange={(e) => {
                               const newData = [...trendingOCPPS1];
-                              newData[index].criticalParameter2 =
-                                e.target.value;
+                              newData[index].criticalParameter2 = e.target.value;
                               setTrendingOCPPS1(newData);
                             }}
                           />
@@ -12716,7 +12686,7 @@ export default function APQR() {
             </div>
 
             <div className="gridName pt-4">Trending of Critical Process Parameter: Stage - III</div>
-          <div>
+            <div>
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addTrendingOCPPS1Row} />
@@ -12733,18 +12703,21 @@ export default function APQR() {
               <table>
                 <thead>
                   <tr>
-                    <th >SI. No.</th>
-                    <th >Batch No.</th>
+                    <th>SI. No.</th>
+                    <th>Batch No.</th>
                     <th>
-                    Critical Parameter: 01 Nitrogen gas purging should be carried out in advance in Acetonide formation reaction (part I) 
+                      Critical Parameter: 01 Nitrogen gas purging should be carried out in advance
+                      in Acetonide formation reaction (part I)
                     </th>
                     <th>
-                    Critical Parameter: 02 In Bromination reaction (part II), slow agitation is required during the reaction. 
+                      Critical Parameter: 02 In Bromination reaction (part II), slow agitation is
+                      required during the reaction.
                     </th>
-                    <th>Critical Parameter: 03 Epoxydation reaction (part III) required Argon gas bubbling to remove oxygen content from the reaction mass. </th>
-                   
+                    <th>
+                      Critical Parameter: 03 Epoxydation reaction (part III) required Argon gas
+                      bubbling to remove oxygen content from the reaction mass.{" "}
+                    </th>
                   </tr>
-                 
                 </thead>
                 <tbody>
                   {trendingOCPPS1.map((item, index) => {
@@ -12778,8 +12751,7 @@ export default function APQR() {
                             value={item.criticalParameter2}
                             onChange={(e) => {
                               const newData = [...trendingOCPPS1];
-                              newData[index].criticalParameter2 =
-                                e.target.value;
+                              newData[index].criticalParameter2 = e.target.value;
                               setTrendingOCPPS1(newData);
                             }}
                           />
@@ -12803,7 +12775,7 @@ export default function APQR() {
             </div>
 
             <div className="gridName pt-4">Trending of Critical Process Parameter: Stage - IV</div>
-          <div>
+            <div>
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addTrendingOCPPS1Row} />
@@ -12820,18 +12792,21 @@ export default function APQR() {
               <table>
                 <thead>
                   <tr>
-                    <th >SI. No.</th>
-                    <th >Batch No.</th>
+                    <th>SI. No.</th>
+                    <th>Batch No.</th>
                     <th>
-                    Critical Parameter: 01 Nitrogen gas purging should be carried out in advance in Acetonide formation reaction (part I) 
+                      Critical Parameter: 01 Nitrogen gas purging should be carried out in advance
+                      in Acetonide formation reaction (part I)
                     </th>
                     <th>
-                    Critical Parameter: 02 In Bromination reaction (part II), slow agitation is required during the reaction. 
+                      Critical Parameter: 02 In Bromination reaction (part II), slow agitation is
+                      required during the reaction.
                     </th>
-                    <th>Critical Parameter: 03 Epoxydation reaction (part III) required Argon gas bubbling to remove oxygen content from the reaction mass. </th>
-                   
+                    <th>
+                      Critical Parameter: 03 Epoxydation reaction (part III) required Argon gas
+                      bubbling to remove oxygen content from the reaction mass.{" "}
+                    </th>
                   </tr>
-                 
                 </thead>
                 <tbody>
                   {trendingOCPPS1.map((item, index) => {
@@ -12865,8 +12840,7 @@ export default function APQR() {
                             value={item.criticalParameter2}
                             onChange={(e) => {
                               const newData = [...trendingOCPPS1];
-                              newData[index].criticalParameter2 =
-                                e.target.value;
+                              newData[index].criticalParameter2 = e.target.value;
                               setTrendingOCPPS1(newData);
                             }}
                           />
@@ -12888,10 +12862,14 @@ export default function APQR() {
                 </tbody>
               </table>
             </div>
-            </> : null}
-        {tab==="TOIIP" ? <>
-          <div className="gridName pt-4">Trending of In-process & Intermediate Parameter of U3TCAg  - Stage-I  </div>
-          <div>
+          </>
+        ) : null}
+        {tab === "TOIIP" ? (
+          <>
+            <div className="gridName pt-4">
+              Trending of In-process & Intermediate Parameter of U3TCAg - Stage-I{" "}
+            </div>
+            <div>
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addTrendingOIPIPS1Row} />
@@ -12910,42 +12888,43 @@ export default function APQR() {
                   <tr>
                     <th rowSpan={3}>S. No.</th>
                     <th rowSpan={3}>Batch No.</th>
-                    <th rowSpan={3}>
-                    Unreacted Diolone Acetate NMT 0.5 % 
-                    </th>
-                    <th rowSpan={3}>
-                    Limit
-                    </th>
+                    <th rowSpan={3}>Unreacted Diolone Acetate NMT 0.5 %</th>
+                    <th rowSpan={3}>Limit</th>
                     <th rowSpan={3}>Chromatographic Purity (for information)</th>
                     <th rowSpan={3}>Unreacted TCA Step – I B NMT 0.5 % </th>
                     <th rowSpan={3}>Purity (for information)</th>
                     <th rowSpan={3}>pH 6.0 – 6.5</th>
                     <th rowSpan={3}>L Limit</th>
                     <th rowSpan={3}>U Limit</th>
-                    <th rowSpan={3}>pH  6.0 – 6.5</th>
+                    <th rowSpan={3}>pH 6.0 – 6.5</th>
                     <th rowSpan={3}>L Limit</th>
                     <th rowSpan={3}>U Limit</th>
                     <th rowSpan={3}>Water content NMT 1.0 % w/w</th>
                     <th rowSpan={3}>Limit</th>
-                    <th rowSpan={1} colSpan={5}>Composite </th>
+                    <th rowSpan={1} colSpan={5}>
+                      Composite{" "}
+                    </th>
                   </tr>
-                 <tr>
-                  <th colSpan={1} rowSpan={2}>Water content NMT 1.0 % w/w</th>
-                  <th rowspan={1} colSpan={4}>Chromatographic purity in area % by HPLC</th>
-                 </tr>
-                 <tr>
-                  <th>Limit</th>
-                  <th>TCA stage – I NLT 93.0 %  </th>
-                  <th>Limit</th>
-                  <th>Drying Hours</th>
-                 </tr>
+                  <tr>
+                    <th colSpan={1} rowSpan={2}>
+                      Water content NMT 1.0 % w/w
+                    </th>
+                    <th rowspan={1} colSpan={4}>
+                      Chromatographic purity in area % by HPLC
+                    </th>
+                  </tr>
+                  <tr>
+                    <th>Limit</th>
+                    <th>TCA stage – I NLT 93.0 % </th>
+                    <th>Limit</th>
+                    <th>Drying Hours</th>
+                  </tr>
                 </thead>
                 <tbody>
                   {trendingOIPIPS1.map((item, index) => {
                     return (
                       <tr key={index}>
                         <td>{index + 1}</td>
-
                         <td>
                           <input
                             value={item.batchNo}
@@ -12966,19 +12945,16 @@ export default function APQR() {
                             }}
                           />
                         </td>
-
                         <td>
                           <input
                             value={item.limit}
                             onChange={(e) => {
                               const newData = [...trendingOIPIPS1];
-                              newData[index].limit =
-                                e.target.value;
+                              newData[index].limit = e.target.value;
                               setTrendingOIPIPS1(newData);
                             }}
                           />
                         </td>
-
                         <td>
                           <input
                             value={item.chromatographicPurity}
@@ -12989,7 +12965,6 @@ export default function APQR() {
                             }}
                           />
                         </td>
-
                         <td>
                           <input
                             value={item.unreactedTCA}
@@ -13109,30 +13084,36 @@ export default function APQR() {
                               setTrendingOIPIPS1(newData);
                             }}
                           />
-                        </td>   <td>
+                        </td>{" "}
+                        <td>
                           <input
                             value={item.composite.chromatographicPurity.tCAStage}
                             onChange={(e) => {
                               const newData = [...trendingOIPIPS1];
-                              newData[index].composite.chromatographicPurity.tCAStage = e.target.value;
+                              newData[index].composite.chromatographicPurity.tCAStage =
+                                e.target.value;
                               setTrendingOIPIPS1(newData);
                             }}
                           />
-                        </td>   <td>
+                        </td>{" "}
+                        <td>
                           <input
                             value={item.composite.chromatographicPurity.tLimit}
                             onChange={(e) => {
                               const newData = [...trendingOIPIPS1];
-                              newData[index].composite.chromatographicPurity.tLimit = e.target.value;
+                              newData[index].composite.chromatographicPurity.tLimit =
+                                e.target.value;
                               setTrendingOIPIPS1(newData);
                             }}
                           />
-                        </td>   <td>
+                        </td>{" "}
+                        <td>
                           <input
                             value={item.composite.chromatographicPurity.dryingHours}
                             onChange={(e) => {
                               const newData = [...trendingOIPIPS1];
-                              newData[index].composite.chromatographicPurity.dryingHours = e.target.value;
+                              newData[index].composite.chromatographicPurity.dryingHours =
+                                e.target.value;
                               setTrendingOIPIPS1(newData);
                             }}
                           />
@@ -13143,9 +13124,11 @@ export default function APQR() {
                 </tbody>
               </table>
             </div>
-            
-            <div className="gridName pt-4">Trending of In-process & Intermediate Parameter of U3TCAg  - Stage-II  </div>
-          <div>
+
+            <div className="gridName pt-4">
+              Trending of In-process & Intermediate Parameter of U3TCAg - Stage-II{" "}
+            </div>
+            <div>
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addTrendingOIPIPS1Row} />
@@ -13164,42 +13147,43 @@ export default function APQR() {
                   <tr>
                     <th rowSpan={3}>S. No.</th>
                     <th rowSpan={3}>Batch No.</th>
-                    <th rowSpan={3}>
-                    Unreacted Diolone Acetate NMT 0.5 % 
-                    </th>
-                    <th rowSpan={3}>
-                    Limit
-                    </th>
+                    <th rowSpan={3}>Unreacted Diolone Acetate NMT 0.5 %</th>
+                    <th rowSpan={3}>Limit</th>
                     <th rowSpan={3}>Chromatographic Purity (for information)</th>
                     <th rowSpan={3}>Unreacted TCA Step – I B NMT 0.5 % </th>
                     <th rowSpan={3}>Purity (for information)</th>
                     <th rowSpan={3}>pH 6.0 – 6.5</th>
                     <th rowSpan={3}>L Limit</th>
                     <th rowSpan={3}>U Limit</th>
-                    <th rowSpan={3}>pH  6.0 – 6.5</th>
+                    <th rowSpan={3}>pH 6.0 – 6.5</th>
                     <th rowSpan={3}>L Limit</th>
                     <th rowSpan={3}>U Limit</th>
                     <th rowSpan={3}>Water content NMT 1.0 % w/w</th>
                     <th rowSpan={3}>Limit</th>
-                    <th rowSpan={1} colSpan={5}>Composite </th>
+                    <th rowSpan={1} colSpan={5}>
+                      Composite{" "}
+                    </th>
                   </tr>
-                 <tr>
-                  <th colSpan={1} rowSpan={2}>Water content NMT 1.0 % w/w</th>
-                  <th rowspan={1} colSpan={4}>Chromatographic purity in area % by HPLC</th>
-                 </tr>
-                 <tr>
-                  <th>Limit</th>
-                  <th>TCA stage – I NLT 93.0 %  </th>
-                  <th>Limit</th>
-                  <th>Drying Hours</th>
-                 </tr>
+                  <tr>
+                    <th colSpan={1} rowSpan={2}>
+                      Water content NMT 1.0 % w/w
+                    </th>
+                    <th rowspan={1} colSpan={4}>
+                      Chromatographic purity in area % by HPLC
+                    </th>
+                  </tr>
+                  <tr>
+                    <th>Limit</th>
+                    <th>TCA stage – I NLT 93.0 % </th>
+                    <th>Limit</th>
+                    <th>Drying Hours</th>
+                  </tr>
                 </thead>
                 <tbody>
                   {trendingOIPIPS1.map((item, index) => {
                     return (
                       <tr key={index}>
                         <td>{index + 1}</td>
-
                         <td>
                           <input
                             value={item.batchNo}
@@ -13220,19 +13204,16 @@ export default function APQR() {
                             }}
                           />
                         </td>
-
                         <td>
                           <input
                             value={item.limit}
                             onChange={(e) => {
                               const newData = [...trendingOIPIPS1];
-                              newData[index].limit =
-                                e.target.value;
+                              newData[index].limit = e.target.value;
                               setTrendingOIPIPS1(newData);
                             }}
                           />
                         </td>
-
                         <td>
                           <input
                             value={item.chromatographicPurity}
@@ -13243,7 +13224,6 @@ export default function APQR() {
                             }}
                           />
                         </td>
-
                         <td>
                           <input
                             value={item.unreactedTCA}
@@ -13363,30 +13343,36 @@ export default function APQR() {
                               setTrendingOIPIPS1(newData);
                             }}
                           />
-                        </td>   <td>
+                        </td>{" "}
+                        <td>
                           <input
                             value={item.composite.chromatographicPurity.tCAStage}
                             onChange={(e) => {
                               const newData = [...trendingOIPIPS1];
-                              newData[index].composite.chromatographicPurity.tCAStage = e.target.value;
+                              newData[index].composite.chromatographicPurity.tCAStage =
+                                e.target.value;
                               setTrendingOIPIPS1(newData);
                             }}
                           />
-                        </td>   <td>
+                        </td>{" "}
+                        <td>
                           <input
                             value={item.composite.chromatographicPurity.tLimit}
                             onChange={(e) => {
                               const newData = [...trendingOIPIPS1];
-                              newData[index].composite.chromatographicPurity.tLimit = e.target.value;
+                              newData[index].composite.chromatographicPurity.tLimit =
+                                e.target.value;
                               setTrendingOIPIPS1(newData);
                             }}
                           />
-                        </td>   <td>
+                        </td>{" "}
+                        <td>
                           <input
                             value={item.composite.chromatographicPurity.dryingHours}
                             onChange={(e) => {
                               const newData = [...trendingOIPIPS1];
-                              newData[index].composite.chromatographicPurity.dryingHours = e.target.value;
+                              newData[index].composite.chromatographicPurity.dryingHours =
+                                e.target.value;
                               setTrendingOIPIPS1(newData);
                             }}
                           />
@@ -13398,8 +13384,10 @@ export default function APQR() {
               </table>
             </div>
 
-            <div className="gridName pt-4">Trending of In-process & Intermediate Parameter of U3TCAg  - Stage-III  </div>
-          <div>
+            <div className="gridName pt-4">
+              Trending of In-process & Intermediate Parameter of U3TCAg - Stage-III{" "}
+            </div>
+            <div>
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addTrendingOIPIPS1Row} />
@@ -13418,42 +13406,43 @@ export default function APQR() {
                   <tr>
                     <th rowSpan={3}>S. No.</th>
                     <th rowSpan={3}>Batch No.</th>
-                    <th rowSpan={3}>
-                    Unreacted Diolone Acetate NMT 0.5 % 
-                    </th>
-                    <th rowSpan={3}>
-                    Limit
-                    </th>
+                    <th rowSpan={3}>Unreacted Diolone Acetate NMT 0.5 %</th>
+                    <th rowSpan={3}>Limit</th>
                     <th rowSpan={3}>Chromatographic Purity (for information)</th>
                     <th rowSpan={3}>Unreacted TCA Step – I B NMT 0.5 % </th>
                     <th rowSpan={3}>Purity (for information)</th>
                     <th rowSpan={3}>pH 6.0 – 6.5</th>
                     <th rowSpan={3}>L Limit</th>
                     <th rowSpan={3}>U Limit</th>
-                    <th rowSpan={3}>pH  6.0 – 6.5</th>
+                    <th rowSpan={3}>pH 6.0 – 6.5</th>
                     <th rowSpan={3}>L Limit</th>
                     <th rowSpan={3}>U Limit</th>
                     <th rowSpan={3}>Water content NMT 1.0 % w/w</th>
                     <th rowSpan={3}>Limit</th>
-                    <th rowSpan={1} colSpan={5}>Composite </th>
+                    <th rowSpan={1} colSpan={5}>
+                      Composite{" "}
+                    </th>
                   </tr>
-                 <tr>
-                  <th colSpan={1} rowSpan={2}>Water content NMT 1.0 % w/w</th>
-                  <th rowspan={1} colSpan={4}>Chromatographic purity in area % by HPLC</th>
-                 </tr>
-                 <tr>
-                  <th>Limit</th>
-                  <th>TCA stage – I NLT 93.0 %  </th>
-                  <th>Limit</th>
-                  <th>Drying Hours</th>
-                 </tr>
+                  <tr>
+                    <th colSpan={1} rowSpan={2}>
+                      Water content NMT 1.0 % w/w
+                    </th>
+                    <th rowspan={1} colSpan={4}>
+                      Chromatographic purity in area % by HPLC
+                    </th>
+                  </tr>
+                  <tr>
+                    <th>Limit</th>
+                    <th>TCA stage – I NLT 93.0 % </th>
+                    <th>Limit</th>
+                    <th>Drying Hours</th>
+                  </tr>
                 </thead>
                 <tbody>
                   {trendingOIPIPS1.map((item, index) => {
                     return (
                       <tr key={index}>
                         <td>{index + 1}</td>
-
                         <td>
                           <input
                             value={item.batchNo}
@@ -13474,19 +13463,16 @@ export default function APQR() {
                             }}
                           />
                         </td>
-
                         <td>
                           <input
                             value={item.limit}
                             onChange={(e) => {
                               const newData = [...trendingOIPIPS1];
-                              newData[index].limit =
-                                e.target.value;
+                              newData[index].limit = e.target.value;
                               setTrendingOIPIPS1(newData);
                             }}
                           />
                         </td>
-
                         <td>
                           <input
                             value={item.chromatographicPurity}
@@ -13497,7 +13483,6 @@ export default function APQR() {
                             }}
                           />
                         </td>
-
                         <td>
                           <input
                             value={item.unreactedTCA}
@@ -13617,30 +13602,36 @@ export default function APQR() {
                               setTrendingOIPIPS1(newData);
                             }}
                           />
-                        </td>   <td>
+                        </td>{" "}
+                        <td>
                           <input
                             value={item.composite.chromatographicPurity.tCAStage}
                             onChange={(e) => {
                               const newData = [...trendingOIPIPS1];
-                              newData[index].composite.chromatographicPurity.tCAStage = e.target.value;
+                              newData[index].composite.chromatographicPurity.tCAStage =
+                                e.target.value;
                               setTrendingOIPIPS1(newData);
                             }}
                           />
-                        </td>   <td>
+                        </td>{" "}
+                        <td>
                           <input
                             value={item.composite.chromatographicPurity.tLimit}
                             onChange={(e) => {
                               const newData = [...trendingOIPIPS1];
-                              newData[index].composite.chromatographicPurity.tLimit = e.target.value;
+                              newData[index].composite.chromatographicPurity.tLimit =
+                                e.target.value;
                               setTrendingOIPIPS1(newData);
                             }}
                           />
-                        </td>   <td>
+                        </td>{" "}
+                        <td>
                           <input
                             value={item.composite.chromatographicPurity.dryingHours}
                             onChange={(e) => {
                               const newData = [...trendingOIPIPS1];
-                              newData[index].composite.chromatographicPurity.dryingHours = e.target.value;
+                              newData[index].composite.chromatographicPurity.dryingHours =
+                                e.target.value;
                               setTrendingOIPIPS1(newData);
                             }}
                           />
@@ -13652,8 +13643,10 @@ export default function APQR() {
               </table>
             </div>
 
-            <div className="gridName pt-4">Trending of In-process & Intermediate Parameter of U3TCAg  - Stage-IV  </div>
-          <div>
+            <div className="gridName pt-4">
+              Trending of In-process & Intermediate Parameter of U3TCAg - Stage-IV{" "}
+            </div>
+            <div>
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addTrendingOIPIPS1Row} />
@@ -13672,42 +13665,43 @@ export default function APQR() {
                   <tr>
                     <th rowSpan={3}>S. No.</th>
                     <th rowSpan={3}>Batch No.</th>
-                    <th rowSpan={3}>
-                    Unreacted Diolone Acetate NMT 0.5 % 
-                    </th>
-                    <th rowSpan={3}>
-                    Limit
-                    </th>
+                    <th rowSpan={3}>Unreacted Diolone Acetate NMT 0.5 %</th>
+                    <th rowSpan={3}>Limit</th>
                     <th rowSpan={3}>Chromatographic Purity (for information)</th>
                     <th rowSpan={3}>Unreacted TCA Step – I B NMT 0.5 % </th>
                     <th rowSpan={3}>Purity (for information)</th>
                     <th rowSpan={3}>pH 6.0 – 6.5</th>
                     <th rowSpan={3}>L Limit</th>
                     <th rowSpan={3}>U Limit</th>
-                    <th rowSpan={3}>pH  6.0 – 6.5</th>
+                    <th rowSpan={3}>pH 6.0 – 6.5</th>
                     <th rowSpan={3}>L Limit</th>
                     <th rowSpan={3}>U Limit</th>
                     <th rowSpan={3}>Water content NMT 1.0 % w/w</th>
                     <th rowSpan={3}>Limit</th>
-                    <th rowSpan={1} colSpan={5}>Composite </th>
+                    <th rowSpan={1} colSpan={5}>
+                      Composite{" "}
+                    </th>
                   </tr>
-                 <tr>
-                  <th colSpan={1} rowSpan={2}>Water content NMT 1.0 % w/w</th>
-                  <th rowspan={1} colSpan={4}>Chromatographic purity in area % by HPLC</th>
-                 </tr>
-                 <tr>
-                  <th>Limit</th>
-                  <th>TCA stage – I NLT 93.0 %  </th>
-                  <th>Limit</th>
-                  <th>Drying Hours</th>
-                 </tr>
+                  <tr>
+                    <th colSpan={1} rowSpan={2}>
+                      Water content NMT 1.0 % w/w
+                    </th>
+                    <th rowspan={1} colSpan={4}>
+                      Chromatographic purity in area % by HPLC
+                    </th>
+                  </tr>
+                  <tr>
+                    <th>Limit</th>
+                    <th>TCA stage – I NLT 93.0 % </th>
+                    <th>Limit</th>
+                    <th>Drying Hours</th>
+                  </tr>
                 </thead>
                 <tbody>
                   {trendingOIPIPS1.map((item, index) => {
                     return (
                       <tr key={index}>
                         <td>{index + 1}</td>
-
                         <td>
                           <input
                             value={item.batchNo}
@@ -13728,19 +13722,16 @@ export default function APQR() {
                             }}
                           />
                         </td>
-
                         <td>
                           <input
                             value={item.limit}
                             onChange={(e) => {
                               const newData = [...trendingOIPIPS1];
-                              newData[index].limit =
-                                e.target.value;
+                              newData[index].limit = e.target.value;
                               setTrendingOIPIPS1(newData);
                             }}
                           />
                         </td>
-
                         <td>
                           <input
                             value={item.chromatographicPurity}
@@ -13751,7 +13742,6 @@ export default function APQR() {
                             }}
                           />
                         </td>
-
                         <td>
                           <input
                             value={item.unreactedTCA}
@@ -13871,30 +13861,36 @@ export default function APQR() {
                               setTrendingOIPIPS1(newData);
                             }}
                           />
-                        </td>   <td>
+                        </td>{" "}
+                        <td>
                           <input
                             value={item.composite.chromatographicPurity.tCAStage}
                             onChange={(e) => {
                               const newData = [...trendingOIPIPS1];
-                              newData[index].composite.chromatographicPurity.tCAStage = e.target.value;
+                              newData[index].composite.chromatographicPurity.tCAStage =
+                                e.target.value;
                               setTrendingOIPIPS1(newData);
                             }}
                           />
-                        </td>   <td>
+                        </td>{" "}
+                        <td>
                           <input
                             value={item.composite.chromatographicPurity.tLimit}
                             onChange={(e) => {
                               const newData = [...trendingOIPIPS1];
-                              newData[index].composite.chromatographicPurity.tLimit = e.target.value;
+                              newData[index].composite.chromatographicPurity.tLimit =
+                                e.target.value;
                               setTrendingOIPIPS1(newData);
                             }}
                           />
-                        </td>   <td>
+                        </td>{" "}
+                        <td>
                           <input
                             value={item.composite.chromatographicPurity.dryingHours}
                             onChange={(e) => {
                               const newData = [...trendingOIPIPS1];
-                              newData[index].composite.chromatographicPurity.dryingHours = e.target.value;
+                              newData[index].composite.chromatographicPurity.dryingHours =
+                                e.target.value;
                               setTrendingOIPIPS1(newData);
                             }}
                           />
@@ -13906,8 +13902,10 @@ export default function APQR() {
               </table>
             </div>
 
-            <div className="gridName pt-4">Trending of In-process & Intermediate Parameter of U3TCAg  - Stage-V  </div>
-          <div>
+            <div className="gridName pt-4">
+              Trending of In-process & Intermediate Parameter of U3TCAg - Stage-V{" "}
+            </div>
+            <div>
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addTrendingOIPIPS1Row} />
@@ -13926,42 +13924,43 @@ export default function APQR() {
                   <tr>
                     <th rowSpan={3}>S. No.</th>
                     <th rowSpan={3}>Batch No.</th>
-                    <th rowSpan={3}>
-                    Unreacted Diolone Acetate NMT 0.5 % 
-                    </th>
-                    <th rowSpan={3}>
-                    Limit
-                    </th>
+                    <th rowSpan={3}>Unreacted Diolone Acetate NMT 0.5 %</th>
+                    <th rowSpan={3}>Limit</th>
                     <th rowSpan={3}>Chromatographic Purity (for information)</th>
                     <th rowSpan={3}>Unreacted TCA Step – I B NMT 0.5 % </th>
                     <th rowSpan={3}>Purity (for information)</th>
                     <th rowSpan={3}>pH 6.0 – 6.5</th>
                     <th rowSpan={3}>L Limit</th>
                     <th rowSpan={3}>U Limit</th>
-                    <th rowSpan={3}>pH  6.0 – 6.5</th>
+                    <th rowSpan={3}>pH 6.0 – 6.5</th>
                     <th rowSpan={3}>L Limit</th>
                     <th rowSpan={3}>U Limit</th>
                     <th rowSpan={3}>Water content NMT 1.0 % w/w</th>
                     <th rowSpan={3}>Limit</th>
-                    <th rowSpan={1} colSpan={5}>Composite </th>
+                    <th rowSpan={1} colSpan={5}>
+                      Composite{" "}
+                    </th>
                   </tr>
-                 <tr>
-                  <th colSpan={1} rowSpan={2}>Water content NMT 1.0 % w/w</th>
-                  <th rowspan={1} colSpan={4}>Chromatographic purity in area % by HPLC</th>
-                 </tr>
-                 <tr>
-                  <th>Limit</th>
-                  <th>TCA stage – I NLT 93.0 %  </th>
-                  <th>Limit</th>
-                  <th>Drying Hours</th>
-                 </tr>
+                  <tr>
+                    <th colSpan={1} rowSpan={2}>
+                      Water content NMT 1.0 % w/w
+                    </th>
+                    <th rowspan={1} colSpan={4}>
+                      Chromatographic purity in area % by HPLC
+                    </th>
+                  </tr>
+                  <tr>
+                    <th>Limit</th>
+                    <th>TCA stage – I NLT 93.0 % </th>
+                    <th>Limit</th>
+                    <th>Drying Hours</th>
+                  </tr>
                 </thead>
                 <tbody>
                   {trendingOIPIPS1.map((item, index) => {
                     return (
                       <tr key={index}>
                         <td>{index + 1}</td>
-
                         <td>
                           <input
                             value={item.batchNo}
@@ -13982,19 +13981,16 @@ export default function APQR() {
                             }}
                           />
                         </td>
-
                         <td>
                           <input
                             value={item.limit}
                             onChange={(e) => {
                               const newData = [...trendingOIPIPS1];
-                              newData[index].limit =
-                                e.target.value;
+                              newData[index].limit = e.target.value;
                               setTrendingOIPIPS1(newData);
                             }}
                           />
                         </td>
-
                         <td>
                           <input
                             value={item.chromatographicPurity}
@@ -14005,7 +14001,6 @@ export default function APQR() {
                             }}
                           />
                         </td>
-
                         <td>
                           <input
                             value={item.unreactedTCA}
@@ -14125,30 +14120,36 @@ export default function APQR() {
                               setTrendingOIPIPS1(newData);
                             }}
                           />
-                        </td>   <td>
+                        </td>{" "}
+                        <td>
                           <input
                             value={item.composite.chromatographicPurity.tCAStage}
                             onChange={(e) => {
                               const newData = [...trendingOIPIPS1];
-                              newData[index].composite.chromatographicPurity.tCAStage = e.target.value;
+                              newData[index].composite.chromatographicPurity.tCAStage =
+                                e.target.value;
                               setTrendingOIPIPS1(newData);
                             }}
                           />
-                        </td>   <td>
+                        </td>{" "}
+                        <td>
                           <input
                             value={item.composite.chromatographicPurity.tLimit}
                             onChange={(e) => {
                               const newData = [...trendingOIPIPS1];
-                              newData[index].composite.chromatographicPurity.tLimit = e.target.value;
+                              newData[index].composite.chromatographicPurity.tLimit =
+                                e.target.value;
                               setTrendingOIPIPS1(newData);
                             }}
                           />
-                        </td>   <td>
+                        </td>{" "}
+                        <td>
                           <input
                             value={item.composite.chromatographicPurity.dryingHours}
                             onChange={(e) => {
                               const newData = [...trendingOIPIPS1];
-                              newData[index].composite.chromatographicPurity.dryingHours = e.target.value;
+                              newData[index].composite.chromatographicPurity.dryingHours =
+                                e.target.value;
                               setTrendingOIPIPS1(newData);
                             }}
                           />
@@ -14159,10 +14160,12 @@ export default function APQR() {
                 </tbody>
               </table>
             </div>
-            </> :null}
-        {tab==="FPAT" ? <>
-          <div className="gridName pt-4">Finished Product Analytical Trend as per USP</div>
-          <div>
+          </>
+        ) : null}
+        {tab === "FPAT" ? (
+          <>
+            <div className="gridName pt-4">Finished Product Analytical Trend as per USP</div>
+            <div>
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addYieldTOS1Row} />
@@ -14179,20 +14182,42 @@ export default function APQR() {
               <table>
                 <thead>
                   <tr>
-                    <th >SI. No.</th>
-                    <th >Batch No.</th>
-                    <th>
-                    Mfg. Month
-                    </th>
-                    <th>
-                    Actual Input in (50.000 Kg)Kg
-                    </th>
-                    <th>Actual Output in Expected Output Range  (50.000 – 57.000Kg)</th>
-                    <th>L Limit</th>
-                    <th>U Limit</th>
-                    <th>Yield %</th>
+                    <th rowSpan="2">S. No.</th>
+                    <th rowSpan="2">Batch No.</th>
+                    <th rowSpan="2">Specific Rotation b/w +118° and +130° </th>
+                    <th rowSpan="2">L Limit</th>
+                    <th rowSpan="2">U Limit</th>
+                    <th rowSpan="2">Loss on Drying NMT 1.5 % w/w</th>
+                    <th colSpan="11">Chromatographic purity by HPLC as per USP</th>
+                    <th rowSpan="2">Assay (By HPLC) b/w 97.0 % and 102.0 % w/w </th>
+                    <th rowSpan="2">L Limit</th>
+                    <th rowSpan="2">U Limit</th>
+                    <th colSpan="4">Residual solvent By GC</th>
+                    <th colSpan="4">Particle Size</th>
                   </tr>
-                 
+                  <tr>
+                    <th>Limit</th>
+                    <th>Impurity K NMT 0.25%</th>
+                    <th>Limit</th>
+                    <th>Impurity H NMT 0.10%</th>
+                    <th>Impurity D NMT 0.10%</th>
+                    <th>Limit</th>
+                    <th>Impurity I NMT 0.10%</th>
+                    <th>Unspecified Impurities NMT 0.10%</th>
+                    <th>Limit</th>
+                    <th>Total Impurities NMT 0.5%</th>
+                    <th>Limit</th>
+
+                    <th>Methanol NMT 1500 ppm</th>
+                    <th>Acetone NMT 2000 ppm</th>
+                    <th>Methylene chloride NMT 400 ppm</th>
+                    <th>Limit</th>
+
+                    <th>{"90%  < 10 μm"}</th>
+                    <th>Limit</th>
+                    <th>{"99.5% < 20 μm"}</th>
+                    <th>Limit</th>
+                  </tr>
                 </thead>
                 <tbody>
                   {yieldTOS1.map((item, index) => {
@@ -14226,8 +14251,7 @@ export default function APQR() {
                             value={item.actualInput}
                             onChange={(e) => {
                               const newData = [...yieldTOS1];
-                              newData[index].actualInput =
-                                e.target.value;
+                              newData[index].actualInput = e.target.value;
                               setYieldTOS1(newData);
                             }}
                           />
@@ -14274,12 +14298,535 @@ export default function APQR() {
                             }}
                           />
                         </td>
+                        <td>
+                          <input
+                            value={item.yield}
+                            onChange={(e) => {
+                              const newData = [...yieldTOS1];
+                              newData[index].yield = e.target.value;
+                              setYieldTOS1(newData);
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.yield}
+                            onChange={(e) => {
+                              const newData = [...yieldTOS1];
+                              newData[index].yield = e.target.value;
+                              setYieldTOS1(newData);
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.yield}
+                            onChange={(e) => {
+                              const newData = [...yieldTOS1];
+                              newData[index].yield = e.target.value;
+                              setYieldTOS1(newData);
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.yield}
+                            onChange={(e) => {
+                              const newData = [...yieldTOS1];
+                              newData[index].yield = e.target.value;
+                              setYieldTOS1(newData);
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.yield}
+                            onChange={(e) => {
+                              const newData = [...yieldTOS1];
+                              newData[index].yield = e.target.value;
+                              setYieldTOS1(newData);
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.yield}
+                            onChange={(e) => {
+                              const newData = [...yieldTOS1];
+                              newData[index].yield = e.target.value;
+                              setYieldTOS1(newData);
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.yield}
+                            onChange={(e) => {
+                              const newData = [...yieldTOS1];
+                              newData[index].yield = e.target.value;
+                              setYieldTOS1(newData);
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.yield}
+                            onChange={(e) => {
+                              const newData = [...yieldTOS1];
+                              newData[index].yield = e.target.value;
+                              setYieldTOS1(newData);
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.yield}
+                            onChange={(e) => {
+                              const newData = [...yieldTOS1];
+                              newData[index].yield = e.target.value;
+                              setYieldTOS1(newData);
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.yield}
+                            onChange={(e) => {
+                              const newData = [...yieldTOS1];
+                              newData[index].yield = e.target.value;
+                              setYieldTOS1(newData);
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.yield}
+                            onChange={(e) => {
+                              const newData = [...yieldTOS1];
+                              newData[index].yield = e.target.value;
+                              setYieldTOS1(newData);
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.yield}
+                            onChange={(e) => {
+                              const newData = [...yieldTOS1];
+                              newData[index].yield = e.target.value;
+                              setYieldTOS1(newData);
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.yield}
+                            onChange={(e) => {
+                              const newData = [...yieldTOS1];
+                              newData[index].yield = e.target.value;
+                              setYieldTOS1(newData);
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.yield}
+                            onChange={(e) => {
+                              const newData = [...yieldTOS1];
+                              newData[index].yield = e.target.value;
+                              setYieldTOS1(newData);
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.yield}
+                            onChange={(e) => {
+                              const newData = [...yieldTOS1];
+                              newData[index].yield = e.target.value;
+                              setYieldTOS1(newData);
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.yield}
+                            onChange={(e) => {
+                              const newData = [...yieldTOS1];
+                              newData[index].yield = e.target.value;
+                              setYieldTOS1(newData);
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.yield}
+                            onChange={(e) => {
+                              const newData = [...yieldTOS1];
+                              newData[index].yield = e.target.value;
+                              setYieldTOS1(newData);
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.yield}
+                            onChange={(e) => {
+                              const newData = [...yieldTOS1];
+                              newData[index].yield = e.target.value;
+                              setYieldTOS1(newData);
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.yield}
+                            onChange={(e) => {
+                              const newData = [...yieldTOS1];
+                              newData[index].yield = e.target.value;
+                              setYieldTOS1(newData);
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.yield}
+                            onChange={(e) => {
+                              const newData = [...yieldTOS1];
+                              newData[index].yield = e.target.value;
+                              setYieldTOS1(newData);
+                            }}
+                          />
+                        </td>
                       </tr>
                     );
                   })}
                 </tbody>
               </table>
-            </div></> :null}
+            </div>
+
+            <div className="gridName pt-4">
+              Finished Product Analytical Trend As per PhEur Specification (Micronised)
+            </div>
+            <div>
+              <div className="AddRows d-flex w-full justify-between items-center text-3xl">
+                <div className="flex items-center">
+                  <MdNoteAdd onClick={addYieldTOS1Row} />
+                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
+                </div>
+                <div className="flex gap-4 ">
+                  <ExcelExportImport
+                    data={currentRPQRN}
+                    setimportedData={setimportedData}
+                    fileName="currentRPQRN.xlsx"
+                  />
+                </div>
+              </div>
+              <table>
+                <thead>
+                  <tr>
+                    <th rowSpan="2">S. No.</th>
+                    <th rowSpan="2">Batch No.</th>
+                    <th rowSpan="2">Specific Rotation b/w +110° and +117° </th>
+                    <th rowSpan="2">L Limit</th>
+                    <th rowSpan="2">U Limit</th>
+                    <th colSpan="8">Related substence (by HPLC) as per PhEur 11.0</th>
+                    <th rowSpan="2">Water (By KF) NMT 2.0 % w/w</th>
+                    <th rowSpan="2">Limit</th>
+                    <th rowSpan="2">Assay (By HPLC) b/w 97.5 % and 102.0 % w/w</th>
+                    <th rowSpan="2">Limit</th>
+                    <th rowspan="2">Limit</th>
+                    <th colSpan="4">Residual solvent By GC</th>
+                    <th colSpan="4">Particle Size Malvern (By Dry Method)</th>
+                  </tr>
+                  <tr>
+                    <th>Impurity B NMT 0.2%</th>
+                    <th>Limit</th>
+                    <th>Impurity C NMT 0.15%</th>
+                    <th>Limit</th>
+                    <th>Unspecified Impurities NMT 0.10%</th>
+                    <th>Limit</th>
+                    <th>Total Impurities NMT 0.5%</th>
+                    <th>Limit</th>
+
+                    <th>Methylene chloride NMT 400 ppm</th>
+                    <th>Methanol NMT 1500 ppm</th>
+                    <th>Acetone NMT 2000 ppm</th>
+                    <th>Limit</th>
+
+                    <th>{"90%  < 10 μm"}</th>
+                    <th>Limit</th>
+                    <th>{"99.5% < 20 μm"}</th>
+                    <th>Limit</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {yieldTOS1.map((item, index) => {
+                    return (
+                      <tr key={index}>
+                        <td>{index + 1}</td>
+
+                        <td>
+                          <input
+                            value={item.batchNo}
+                            onChange={(e) => {
+                              const newData = [...yieldTOS1];
+                              newData[index].batchNo = e.target.value;
+                              setYieldTOS1(newData);
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.mfgMonth}
+                            onChange={(e) => {
+                              const newData = [...yieldTOS1];
+                              newData[index].mfgMonth = e.target.value;
+                              setYieldTOS1(newData);
+                            }}
+                          />
+                        </td>
+
+                        <td>
+                          <input
+                            value={item.actualInput}
+                            onChange={(e) => {
+                              const newData = [...yieldTOS1];
+                              newData[index].actualInput = e.target.value;
+                              setYieldTOS1(newData);
+                            }}
+                          />
+                        </td>
+
+                        <td>
+                          <input
+                            value={item.actualOutput}
+                            onChange={(e) => {
+                              const newData = [...yieldTOS1];
+                              newData[index].actualOutput = e.target.value;
+                              setYieldTOS1(newData);
+                            }}
+                          />
+                        </td>
+
+                        <td>
+                          <input
+                            value={item.lLimit}
+                            onChange={(e) => {
+                              const newData = [...yieldTOS1];
+                              newData[index].lLimit = e.target.value;
+                              setYieldTOS1(newData);
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.uLimit}
+                            onChange={(e) => {
+                              const newData = [...yieldTOS1];
+                              newData[index].uLimit = e.target.value;
+                              setYieldTOS1(newData);
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.yield}
+                            onChange={(e) => {
+                              const newData = [...yieldTOS1];
+                              newData[index].yield = e.target.value;
+                              setYieldTOS1(newData);
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.yield}
+                            onChange={(e) => {
+                              const newData = [...yieldTOS1];
+                              newData[index].yield = e.target.value;
+                              setYieldTOS1(newData);
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.yield}
+                            onChange={(e) => {
+                              const newData = [...yieldTOS1];
+                              newData[index].yield = e.target.value;
+                              setYieldTOS1(newData);
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.yield}
+                            onChange={(e) => {
+                              const newData = [...yieldTOS1];
+                              newData[index].yield = e.target.value;
+                              setYieldTOS1(newData);
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.yield}
+                            onChange={(e) => {
+                              const newData = [...yieldTOS1];
+                              newData[index].yield = e.target.value;
+                              setYieldTOS1(newData);
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.yield}
+                            onChange={(e) => {
+                              const newData = [...yieldTOS1];
+                              newData[index].yield = e.target.value;
+                              setYieldTOS1(newData);
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.yield}
+                            onChange={(e) => {
+                              const newData = [...yieldTOS1];
+                              newData[index].yield = e.target.value;
+                              setYieldTOS1(newData);
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.yield}
+                            onChange={(e) => {
+                              const newData = [...yieldTOS1];
+                              newData[index].yield = e.target.value;
+                              setYieldTOS1(newData);
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.yield}
+                            onChange={(e) => {
+                              const newData = [...yieldTOS1];
+                              newData[index].yield = e.target.value;
+                              setYieldTOS1(newData);
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.yield}
+                            onChange={(e) => {
+                              const newData = [...yieldTOS1];
+                              newData[index].yield = e.target.value;
+                              setYieldTOS1(newData);
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.yield}
+                            onChange={(e) => {
+                              const newData = [...yieldTOS1];
+                              newData[index].yield = e.target.value;
+                              setYieldTOS1(newData);
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.yield}
+                            onChange={(e) => {
+                              const newData = [...yieldTOS1];
+                              newData[index].yield = e.target.value;
+                              setYieldTOS1(newData);
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.yield}
+                            onChange={(e) => {
+                              const newData = [...yieldTOS1];
+                              newData[index].yield = e.target.value;
+                              setYieldTOS1(newData);
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.yield}
+                            onChange={(e) => {
+                              const newData = [...yieldTOS1];
+                              newData[index].yield = e.target.value;
+                              setYieldTOS1(newData);
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.yield}
+                            onChange={(e) => {
+                              const newData = [...yieldTOS1];
+                              newData[index].yield = e.target.value;
+                              setYieldTOS1(newData);
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.yield}
+                            onChange={(e) => {
+                              const newData = [...yieldTOS1];
+                              newData[index].yield = e.target.value;
+                              setYieldTOS1(newData);
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.yield}
+                            onChange={(e) => {
+                              const newData = [...yieldTOS1];
+                              newData[index].yield = e.target.value;
+                              setYieldTOS1(newData);
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.yield}
+                            onChange={(e) => {
+                              const newData = [...yieldTOS1];
+                              newData[index].yield = e.target.value;
+                              setYieldTOS1(newData);
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.yield}
+                            onChange={(e) => {
+                              const newData = [...yieldTOS1];
+                              newData[index].yield = e.target.value;
+                              setYieldTOS1(newData);
+                            }}
+                          />
+                        </td>
+                      </tr>
+                    );
+                  })}
+                </tbody>
+              </table>
+            </div>
+          </>
+        ) : null}
       </div>
       <div className="flex justify-end gap-10 pr-10">
         <div className="fixed top-1/2 left-0 z-10 flex flex-col">
@@ -14367,14 +14914,14 @@ export default function APQR() {
                         Lab Incident
                       </button>
                     </a>
-                    <a href="https://sym.vidyagxp.com"> 
+                    <a href="https://sym.vidyagxp.com">
                       <button
                         className="mt-4 px-4 py-2 bg-blue-500 text-white font-semibold rounded hover:bg-blue-700"
                         onClick={() => navigate("Sym.vidyagxp.com")}
                       >
                         Risk Assissment
                       </button>
-                        </a>
+                    </a>
 
                     <button
                       className="mt-4 px-4 py-2 bg-red-600 text-white font-semibold rounded hover:bg-red-700"
