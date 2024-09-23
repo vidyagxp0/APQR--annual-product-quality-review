@@ -89,6 +89,10 @@ export default function APQR() {
   const [trendingOCPPS3,setTrendingOCPPS3]=useState([]);
   const [trendingOCPPS4,setTrendingOCPPS4]=useState([]);
   const [trendingOIPIPS1,setTrendingOIPIPS1]=useState([]);
+  const [trendingOIPIPS2,setTrendingOIPIPS2]=useState([]);
+  const [trendingOIPIPS3,setTrendingOIPIPS3]=useState([]);
+  const [trendingOIPIPS4,setTrendingOIPIPS4]=useState([]);
+  const [trendingOIPIPS5,setTrendingOIPIPS5]=useState([]);
   const [tiny1, setTiny1] = useState("");
   const [tiny2, setTiny2] = useState("");
   const [tiny3, setTiny3] = useState("");
@@ -2017,6 +2021,96 @@ criticalParameter4:"",
       }}, 
     };
     setTrendingOIPIPS1([...trendingOIPIPS1, newRow]);
+  };
+
+  const addTrendingOIPIPS2Row = () => {
+    const newRow = {
+      batchNo: "",
+      unreactedTCA :"",
+      limit:"",
+      unreactedTriamcilone:"",
+      limit2:"",
+      purityForInformation:"",
+      pH6:"",
+      lLimit:"",
+      uLimit:"",
+      pH67:"",
+      lLimit2:"",
+      uLimit2:"",
+      composite:{
+        purityByHPLC:"",
+        limit1:"",
+        unreactedTca:"",
+        limit2:"",
+      }, 
+    };
+    setTrendingOIPIPS2([...trendingOIPIPS2, newRow]);
+  };
+
+  const addTrendingOIPIPS3Row = () => {
+    const newRow = {
+      batchNo: "",
+      pH75:"",
+      lLimit:"",
+      uLimit:"",
+      unreactedTCA:"",
+      limit:"",
+  chromatographic:"",
+  pH5:"",
+  lLimit2:"",
+  uLimit2:"",
+    
+      composite:{chromatographicPurity:"",limit:""}, 
+    };
+    setTrendingOIPIPS3([...trendingOIPIPS3, newRow]);
+  };
+
+  const addTrendingOIPIPS4Row = () => {
+    const newRow = {
+      batchNo: "",
+      waterContent :"",
+      limit:"",
+      composite:{waterContentNmt:"",
+        limit:"",
+        lossOnDrying:"",
+        limitLoss:"",
+        relatedSubstanceByHPLC:{
+        impurityKNMT:"",
+        limitNMT:"",
+        impurityHNMT:"",
+        impurityDNMT:"",
+        limitDNMT:"",
+        impurityINMT:"",
+        unknownImpurity:"",
+        limitUnknown:"",
+        totalimpuriritie:"",
+        limitTotal:"",
+        dryingHours:"",
+      }}, 
+    };
+    setTrendingOIPIPS4([...trendingOIPIPS4, newRow]);
+  };
+
+  const addTrendingOIPIPS5Row = () => {
+    const newRow = {
+      batchNo: "",
+      lossOfDrying :"",
+      limit:"",
+    
+      composite:{lossOfDrying:"",chromatographicPurity:{
+        limit:"",
+        impurityKNMT:"",
+        limitKNMT:"",
+        impurityOfHNMT:"",
+        impurityDNMT:"",
+        impurityINMT:"",
+        impurityNMT:"",
+        limitNMT:"",
+        totalImpurityNMT:"",
+        limitTNMT:""
+      }}, 
+    };
+    setTrendingOIPIPS5([...trendingOIPIPS5, newRow]);
   };
   const addUnitOperation3Row = () => {
     const newRow = {
@@ -13300,7 +13394,7 @@ criticalParameter4:"",
           <div>
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
-                  <MdNoteAdd onClick={addTrendingOIPIPS1Row} />
+                  <MdNoteAdd onClick={addTrendingOIPIPS2Row} />
                   <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
                 </div>
                 <div className="flex gap-4 ">
@@ -13317,37 +13411,32 @@ criticalParameter4:"",
                     <th rowSpan={3}>S. No.</th>
                     <th rowSpan={3}>Batch No.</th>
                     <th rowSpan={3}>
-                    Unreacted Diolone Acetate NMT 0.5 % 
+                    Unreacted TCA Stage – I by HPLC NMT 0.5 % 
                     </th>
                     <th rowSpan={3}>
                     Limit
                     </th>
-                    <th rowSpan={3}>Chromatographic Purity (for information)</th>
-                    <th rowSpan={3}>Unreacted TCA Step – I B NMT 0.5 % </th>
-                    <th rowSpan={3}>Purity (for information)</th>
-                    <th rowSpan={3}>pH 6.0 – 6.5</th>
-                    <th rowSpan={3}>L Limit</th>
-                    <th rowSpan={3}>U Limit</th>
-                    <th rowSpan={3}>pH  6.0 – 6.5</th>
-                    <th rowSpan={3}>L Limit</th>
-                    <th rowSpan={3}>U Limit</th>
-                    <th rowSpan={3}>Water content NMT 1.0 % w/w</th>
+                    <th rowSpan={3}>Unreacted Triamcinolone acetate by HPLC  NMT 2.5 %</th>
                     <th rowSpan={3}>Limit</th>
-                    <th rowSpan={1} colSpan={5}>Composite </th>
+                    <th rowSpan={3}>Purity (for information)</th>
+                    <th rowSpan={3}>pH 6.0 – 7.0</th>
+                    <th rowSpan={3}>L Limit</th>
+                    <th rowSpan={3}>U Limit</th>
+                    <th rowSpan={3}>pH 6.0 – 7.0 (After ANFD)</th>
+                    <th rowSpan={3}>L Limit</th>
+                    <th rowSpan={3}>U Limit</th>
+                    <th rowSpan={1} colSpan={4}>Composite </th>
                   </tr>
+                
                  <tr>
-                  <th colSpan={1} rowSpan={2}>Water content NMT 1.0 % w/w</th>
-                  <th rowspan={1} colSpan={4}>Chromatographic purity in area % by HPLC</th>
-                 </tr>
-                 <tr>
+                  <th>Purity by HPLC  NLT 85.0 % </th>
+                  <th>Limit </th>
+                  <th>Unreacted TCA stage – I  NMT 0.5 %</th>
                   <th>Limit</th>
-                  <th>TCA stage – I NLT 93.0 %  </th>
-                  <th>Limit</th>
-                  <th>Drying Hours</th>
                  </tr>
                 </thead>
                 <tbody>
-                  {trendingOIPIPS1.map((item, index) => {
+                  {trendingOIPIPS2.map((item, index) => {
                     return (
                       <tr key={index}>
                         <td>{index + 1}</td>
@@ -13356,19 +13445,19 @@ criticalParameter4:"",
                           <input
                             value={item.batchNo}
                             onChange={(e) => {
-                              const newData = [...trendingOIPIPS1];
+                              const newData = [...trendingOIPIPS2];
                               newData[index].batchNo = e.target.value;
-                              setTrendingOIPIPS1(newData);
+                              setTrendingOIPIPS2(newData);
                             }}
                           />
                         </td>
                         <td>
                           <input
-                            value={item.unreactedDiolone}
+                            value={item.unreactedTCA}
                             onChange={(e) => {
-                              const newData = [...trendingOIPIPS1];
-                              newData[index].unreactedDiolone = e.target.value;
-                              setTrendingOIPIPS1(newData);
+                              const newData = [...trendingOIPIPS2];
+                              newData[index].unreactedTCA = e.target.value;
+                              setTrendingOIPIPS2(newData);
                             }}
                           />
                         </td>
@@ -13377,32 +13466,32 @@ criticalParameter4:"",
                           <input
                             value={item.limit}
                             onChange={(e) => {
-                              const newData = [...trendingOIPIPS1];
+                              const newData = [...trendingOIPIPS2];
                               newData[index].limit =
                                 e.target.value;
-                              setTrendingOIPIPS1(newData);
+                              setTrendingOIPIPS2(newData);
                             }}
                           />
                         </td>
 
                         <td>
                           <input
-                            value={item.chromatographicPurity}
+                            value={item.unreactedTriamcilone}
                             onChange={(e) => {
-                              const newData = [...trendingOIPIPS1];
-                              newData[index].chromatographicPurity = e.target.value;
-                              setTrendingOIPIPS1(newData);
+                              const newData = [...trendingOIPIPS2];
+                              newData[index].unreactedTriamcilone = e.target.value;
+                              setTrendingOIPIPS2(newData);
                             }}
                           />
                         </td>
 
                         <td>
                           <input
-                            value={item.unreactedTCA}
+                            value={item.limit2}
                             onChange={(e) => {
-                              const newData = [...trendingOIPIPS1];
-                              newData[index].unreactedTCA = e.target.value;
-                              setTrendingOIPIPS1(newData);
+                              const newData = [...trendingOIPIPS2];
+                              newData[index].limit2 = e.target.value;
+                              setTrendingOIPIPS2(newData);
                             }}
                           />
                         </td>
@@ -13410,9 +13499,9 @@ criticalParameter4:"",
                           <input
                             value={item.purityForInformation}
                             onChange={(e) => {
-                              const newData = [...trendingOIPIPS1];
+                              const newData = [...trendingOIPIPS2];
                               newData[index].purityForInformation = e.target.value;
-                              setTrendingOIPIPS1(newData);
+                              setTrendingOIPIPS2(newData);
                             }}
                           />
                         </td>
@@ -13420,9 +13509,9 @@ criticalParameter4:"",
                           <input
                             value={item.pH6}
                             onChange={(e) => {
-                              const newData = [...trendingOIPIPS1];
+                              const newData = [...trendingOIPIPS2];
                               newData[index].pH6 = e.target.value;
-                              setTrendingOIPIPS1(newData);
+                              setTrendingOIPIPS2(newData);
                             }}
                           />
                         </td>
@@ -13430,9 +13519,9 @@ criticalParameter4:"",
                           <input
                             value={item.lLimit}
                             onChange={(e) => {
-                              const newData = [...trendingOIPIPS1];
+                              const newData = [...trendingOIPIPS2];
                               newData[index].lLimit = e.target.value;
-                              setTrendingOIPIPS1(newData);
+                              setTrendingOIPIPS2(newData);
                             }}
                           />
                         </td>
@@ -13440,109 +13529,83 @@ criticalParameter4:"",
                           <input
                             value={item.uLimit}
                             onChange={(e) => {
-                              const newData = [...trendingOIPIPS1];
+                              const newData = [...trendingOIPIPS2];
                               newData[index].uLimit = e.target.value;
-                              setTrendingOIPIPS1(newData);
+                              setTrendingOIPIPS2(newData);
                             }}
                           />
                         </td>
                         <td>
                           <input
-                            value={item.pH65}
+                            value={item.pH67}
                             onChange={(e) => {
-                              const newData = [...trendingOIPIPS1];
-                              newData[index].pH65 = e.target.value;
-                              setTrendingOIPIPS1(newData);
+                              const newData = [...trendingOIPIPS2];
+                              newData[index].pH67 = e.target.value;
+                              setTrendingOIPIPS2(newData);
                             }}
                           />
                         </td>
                         <td>
                           <input
-                            value={item.lLimit}
+                            value={item.lLimit2}
                             onChange={(e) => {
-                              const newData = [...trendingOIPIPS1];
-                              newData[index].lLimit = e.target.value;
-                              setTrendingOIPIPS1(newData);
+                              const newData = [...trendingOIPIPS2];
+                              newData[index].lLimit2 = e.target.value;
+                              setTrendingOIPIPS2(newData);
                             }}
                           />
                         </td>
                         <td>
                           <input
-                            value={item.uLimit}
+                            value={item.uLimit2}
                             onChange={(e) => {
-                              const newData = [...trendingOIPIPS1];
-                              newData[index].uLimit = e.target.value;
-                              setTrendingOIPIPS1(newData);
+                              const newData = [...trendingOIPIPS2];
+                              newData[index].uLimit2 = e.target.value;
+                              setTrendingOIPIPS2(newData);
                             }}
                           />
                         </td>
+                      
+                       
                         <td>
                           <input
-                            value={item.waterContent}
+                            value={item.composite.purityByHPLC}
                             onChange={(e) => {
-                              const newData = [...trendingOIPIPS1];
-                              newData[index].waterContent = e.target.value;
-                              setTrendingOIPIPS1(newData);
+                              const newData = [...trendingOIPIPS2];
+                              newData[index].composite.purityByHPLC = e.target.value;
+                              setTrendingOIPIPS2(newData);
                             }}
                           />
-                        </td>
+                        </td> 
                         <td>
                           <input
-                            value={item.wLimit}
+                            value={item.composite.limit1}
                             onChange={(e) => {
-                              const newData = [...trendingOIPIPS1];
-                              newData[index].wLimit = e.target.value;
-                              setTrendingOIPIPS1(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.composite.waterContentNmt}
-                            onChange={(e) => {
-                              const newData = [...trendingOIPIPS1];
-                              newData[index].composite.waterContentNmt = e.target.value;
-                              setTrendingOIPIPS1(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.composite.chromatographicPurity.limit}
-                            onChange={(e) => {
-                              const newData = [...trendingOIPIPS1];
-                              newData[index].composite.chromatographicPurity.limit = e.target.value;
-                              setTrendingOIPIPS1(newData);
+                              const newData = [...trendingOIPIPS2];
+                              newData[index].composite.limit1 = e.target.value;
+                              setTrendingOIPIPS2(newData);
                             }}
                           />
                         </td>   <td>
                           <input
-                            value={item.composite.chromatographicPurity.tCAStage}
+                            value={item.composite.unreactedTca}
                             onChange={(e) => {
-                              const newData = [...trendingOIPIPS1];
-                              newData[index].composite.chromatographicPurity.tCAStage = e.target.value;
-                              setTrendingOIPIPS1(newData);
+                              const newData = [...trendingOIPIPS2];
+                              newData[index].composite.unreactedTca = e.target.value;
+                              setTrendingOIPIPS2(newData);
                             }}
                           />
                         </td>   <td>
                           <input
-                            value={item.composite.chromatographicPurity.tLimit}
+                            value={item.composite.limit2}
                             onChange={(e) => {
-                              const newData = [...trendingOIPIPS1];
-                              newData[index].composite.chromatographicPurity.tLimit = e.target.value;
-                              setTrendingOIPIPS1(newData);
+                              const newData = [...trendingOIPIPS2];
+                              newData[index].composite.limit2 = e.target.value;
+                              setTrendingOIPIPS2(newData);
                             }}
                           />
-                        </td>   <td>
-                          <input
-                            value={item.composite.chromatographicPurity.dryingHours}
-                            onChange={(e) => {
-                              const newData = [...trendingOIPIPS1];
-                              newData[index].composite.chromatographicPurity.dryingHours = e.target.value;
-                              setTrendingOIPIPS1(newData);
-                            }}
-                          />
-                        </td>
+                        </td>  
+                      
                       </tr>
                     );
                   })}
@@ -13554,7 +13617,7 @@ criticalParameter4:"",
           <div>
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
-                  <MdNoteAdd onClick={addTrendingOIPIPS1Row} />
+                  <MdNoteAdd onClick={addTrendingOIPIPS3Row} />
                   <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
                 </div>
                 <div className="flex gap-4 ">
@@ -13570,38 +13633,24 @@ criticalParameter4:"",
                   <tr>
                     <th rowSpan={3}>S. No.</th>
                     <th rowSpan={3}>Batch No.</th>
-                    <th rowSpan={3}>
-                    Unreacted Diolone Acetate NMT 0.5 % 
-                    </th>
-                    <th rowSpan={3}>
-                    Limit
-                    </th>
-                    <th rowSpan={3}>Chromatographic Purity (for information)</th>
-                    <th rowSpan={3}>Unreacted TCA Step – I B NMT 0.5 % </th>
-                    <th rowSpan={3}>Purity (for information)</th>
-                    <th rowSpan={3}>pH 6.0 – 6.5</th>
+                    <th rowSpan={3}>pH 7.75 – 8.0</th>
                     <th rowSpan={3}>L Limit</th>
                     <th rowSpan={3}>U Limit</th>
-                    <th rowSpan={3}>pH  6.0 – 6.5</th>
+                    <th rowSpan={3}>Unreacted TCA Stage – II by HPLC NMT 0.5 %</th>
+                    <th rowSpan={3}>pH  5.0 – 6.0</th>
                     <th rowSpan={3}>L Limit</th>
                     <th rowSpan={3}>U Limit</th>
-                    <th rowSpan={3}>Water content NMT 1.0 % w/w</th>
-                    <th rowSpan={3}>Limit</th>
+                   
                     <th rowSpan={1} colSpan={5}>Composite </th>
                   </tr>
+                 
                  <tr>
-                  <th colSpan={1} rowSpan={2}>Water content NMT 1.0 % w/w</th>
-                  <th rowspan={1} colSpan={4}>Chromatographic purity in area % by HPLC</th>
-                 </tr>
-                 <tr>
+                  <th>Chromatographic purity in area % by HPLC Purity NLT 98.0 %</th>
                   <th>Limit</th>
-                  <th>TCA stage – I NLT 93.0 %  </th>
-                  <th>Limit</th>
-                  <th>Drying Hours</th>
                  </tr>
                 </thead>
                 <tbody>
-                  {trendingOIPIPS1.map((item, index) => {
+                  {trendingOIPIPS3.map((item, index) => {
                     return (
                       <tr key={index}>
                         <td>{index + 1}</td>
@@ -13610,190 +13659,86 @@ criticalParameter4:"",
                           <input
                             value={item.batchNo}
                             onChange={(e) => {
-                              const newData = [...trendingOIPIPS1];
+                              const newData = [...trendingOIPIPS3];
                               newData[index].batchNo = e.target.value;
-                              setTrendingOIPIPS1(newData);
+                              setTrendingOIPIPS3(newData);
+                            }}
+                          />
+                        </td>
+                      
+
+                      
+
+                       
+                        <td>
+                          <input
+                            value={item.pH75}
+                            onChange={(e) => {
+                              const newData = [...trendingOIPIPS3];
+                              newData[index].pH75 = e.target.value;
+                              setTrendingOIPIPS3(newData);
                             }}
                           />
                         </td>
                         <td>
                           <input
-                            value={item.unreactedDiolone}
+                            value={item.lLimit}
                             onChange={(e) => {
-                              const newData = [...trendingOIPIPS1];
-                              newData[index].unreactedDiolone = e.target.value;
-                              setTrendingOIPIPS1(newData);
+                              const newData = [...trendingOIPIPS3];
+                              newData[index].lLimit = e.target.value;
+                              setTrendingOIPIPS3(newData);
                             }}
                           />
                         </td>
-
                         <td>
                           <input
-                            value={item.limit}
+                            value={item.uLimit}
                             onChange={(e) => {
-                              const newData = [...trendingOIPIPS1];
-                              newData[index].limit =
-                                e.target.value;
-                              setTrendingOIPIPS1(newData);
+                              const newData = [...trendingOIPIPS3];
+                              newData[index].uLimit = e.target.value;
+                              setTrendingOIPIPS3(newData);
                             }}
                           />
                         </td>
-
-                        <td>
-                          <input
-                            value={item.chromatographicPurity}
-                            onChange={(e) => {
-                              const newData = [...trendingOIPIPS1];
-                              newData[index].chromatographicPurity = e.target.value;
-                              setTrendingOIPIPS1(newData);
-                            }}
-                          />
-                        </td>
-
                         <td>
                           <input
                             value={item.unreactedTCA}
                             onChange={(e) => {
-                              const newData = [...trendingOIPIPS1];
+                              const newData = [...trendingOIPIPS3];
                               newData[index].unreactedTCA = e.target.value;
-                              setTrendingOIPIPS1(newData);
+                              setTrendingOIPIPS3(newData);
                             }}
                           />
                         </td>
                         <td>
                           <input
-                            value={item.purityForInformation}
+                            value={item.chromatographic}
                             onChange={(e) => {
-                              const newData = [...trendingOIPIPS1];
-                              newData[index].purityForInformation = e.target.value;
-                              setTrendingOIPIPS1(newData);
+                              const newData = [...trendingOIPIPS3];
+                              newData[index].chromatographic = e.target.value;
+                              setTrendingOIPIPS3(newData);
                             }}
                           />
                         </td>
-                        <td>
+                      
+                        
+                     
+                         <td>
                           <input
-                            value={item.pH6}
+                            value={item.composite.chromatographicPurity}
                             onChange={(e) => {
-                              const newData = [...trendingOIPIPS1];
-                              newData[index].pH6 = e.target.value;
-                              setTrendingOIPIPS1(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.lLimit}
-                            onChange={(e) => {
-                              const newData = [...trendingOIPIPS1];
-                              newData[index].lLimit = e.target.value;
-                              setTrendingOIPIPS1(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.uLimit}
-                            onChange={(e) => {
-                              const newData = [...trendingOIPIPS1];
-                              newData[index].uLimit = e.target.value;
-                              setTrendingOIPIPS1(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.pH65}
-                            onChange={(e) => {
-                              const newData = [...trendingOIPIPS1];
-                              newData[index].pH65 = e.target.value;
-                              setTrendingOIPIPS1(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.lLimit}
-                            onChange={(e) => {
-                              const newData = [...trendingOIPIPS1];
-                              newData[index].lLimit = e.target.value;
-                              setTrendingOIPIPS1(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.uLimit}
-                            onChange={(e) => {
-                              const newData = [...trendingOIPIPS1];
-                              newData[index].uLimit = e.target.value;
-                              setTrendingOIPIPS1(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.waterContent}
-                            onChange={(e) => {
-                              const newData = [...trendingOIPIPS1];
-                              newData[index].waterContent = e.target.value;
-                              setTrendingOIPIPS1(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.wLimit}
-                            onChange={(e) => {
-                              const newData = [...trendingOIPIPS1];
-                              newData[index].wLimit = e.target.value;
-                              setTrendingOIPIPS1(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.composite.waterContentNmt}
-                            onChange={(e) => {
-                              const newData = [...trendingOIPIPS1];
-                              newData[index].composite.waterContentNmt = e.target.value;
-                              setTrendingOIPIPS1(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.composite.chromatographicPurity.limit}
-                            onChange={(e) => {
-                              const newData = [...trendingOIPIPS1];
-                              newData[index].composite.chromatographicPurity.limit = e.target.value;
-                              setTrendingOIPIPS1(newData);
+                              const newData = [...trendingOIPIPS3];
+                              newData[index].composite.chromatographicPurity = e.target.value;
+                              setTrendingOIPIPS3(newData);
                             }}
                           />
                         </td>   <td>
                           <input
-                            value={item.composite.chromatographicPurity.tCAStage}
+                            value={item.composite.limit}
                             onChange={(e) => {
-                              const newData = [...trendingOIPIPS1];
-                              newData[index].composite.chromatographicPurity.tCAStage = e.target.value;
-                              setTrendingOIPIPS1(newData);
-                            }}
-                          />
-                        </td>   <td>
-                          <input
-                            value={item.composite.chromatographicPurity.tLimit}
-                            onChange={(e) => {
-                              const newData = [...trendingOIPIPS1];
-                              newData[index].composite.chromatographicPurity.tLimit = e.target.value;
-                              setTrendingOIPIPS1(newData);
-                            }}
-                          />
-                        </td>   <td>
-                          <input
-                            value={item.composite.chromatographicPurity.dryingHours}
-                            onChange={(e) => {
-                              const newData = [...trendingOIPIPS1];
-                              newData[index].composite.chromatographicPurity.dryingHours = e.target.value;
-                              setTrendingOIPIPS1(newData);
+                              const newData = [...trendingOIPIPS3];
+                              newData[index].composite.limit = e.target.value;
+                              setTrendingOIPIPS3(newData);
                             }}
                           />
                         </td>
@@ -13808,7 +13753,7 @@ criticalParameter4:"",
           <div>
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
-                  <MdNoteAdd onClick={addTrendingOIPIPS1Row} />
+                  <MdNoteAdd onClick={addTrendingOIPIPS4Row} />
                   <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
                 </div>
                 <div className="flex gap-4 ">
@@ -13825,37 +13770,37 @@ criticalParameter4:"",
                     <th rowSpan={3}>S. No.</th>
                     <th rowSpan={3}>Batch No.</th>
                     <th rowSpan={3}>
-                    Unreacted Diolone Acetate NMT 0.5 % 
+                    Water content  NMT 1.0 % w/w
                     </th>
                     <th rowSpan={3}>
                     Limit
                     </th>
-                    <th rowSpan={3}>Chromatographic Purity (for information)</th>
-                    <th rowSpan={3}>Unreacted TCA Step – I B NMT 0.5 % </th>
-                    <th rowSpan={3}>Purity (for information)</th>
-                    <th rowSpan={3}>pH 6.0 – 6.5</th>
-                    <th rowSpan={3}>L Limit</th>
-                    <th rowSpan={3}>U Limit</th>
-                    <th rowSpan={3}>pH  6.0 – 6.5</th>
-                    <th rowSpan={3}>L Limit</th>
-                    <th rowSpan={3}>U Limit</th>
-                    <th rowSpan={3}>Water content NMT 1.0 % w/w</th>
-                    <th rowSpan={3}>Limit</th>
-                    <th rowSpan={1} colSpan={5}>Composite </th>
+                   
+                    <th rowSpan={1} colSpan={15}>Composite </th>
                   </tr>
                  <tr>
                   <th colSpan={1} rowSpan={2}>Water content NMT 1.0 % w/w</th>
-                  <th rowspan={1} colSpan={4}>Chromatographic purity in area % by HPLC</th>
+                  <th colSpan={1} rowSpan={2}>Limit</th>
+                  <th colSpan={1} rowSpan={2}>Loss on drying NMT 1.0 % w/w</th>
+                  <th colSpan={1} rowSpan={2}>Limit</th>
+                  <th rowspan={1} colSpan={11}>Related Substances by HPLC</th>
                  </tr>
                  <tr>
+                  <th>Impurity K NMT 0.25%</th>
                   <th>Limit</th>
-                  <th>TCA stage – I NLT 93.0 %  </th>
+                  <th>Impurity H NMT 0.15%</th>
+                  <th>Impurity D NMT 0.15%</th>
+                  <th>Limit</th>
+                  <th>Impurity I NMT 0.15%</th>
+                  <th>Unknown Impurity NMT 0.15%</th>
+                  <th>Limit</th>
+                  <th>Total Impurities NMT 0.50%</th>
                   <th>Limit</th>
                   <th>Drying Hours</th>
                  </tr>
                 </thead>
                 <tbody>
-                  {trendingOIPIPS1.map((item, index) => {
+                  {trendingOIPIPS4.map((item, index) => {
                     return (
                       <tr key={index}>
                         <td>{index + 1}</td>
@@ -13864,19 +13809,19 @@ criticalParameter4:"",
                           <input
                             value={item.batchNo}
                             onChange={(e) => {
-                              const newData = [...trendingOIPIPS1];
+                              const newData = [...trendingOIPIPS4];
                               newData[index].batchNo = e.target.value;
-                              setTrendingOIPIPS1(newData);
+                              setTrendingOIPIPS4(newData);
                             }}
                           />
                         </td>
                         <td>
                           <input
-                            value={item.unreactedDiolone}
+                            value={item.waterContent}
                             onChange={(e) => {
-                              const newData = [...trendingOIPIPS1];
-                              newData[index].unreactedDiolone = e.target.value;
-                              setTrendingOIPIPS1(newData);
+                              const newData = [...trendingOIPIPS4];
+                              newData[index].waterContent = e.target.value;
+                              setTrendingOIPIPS4(newData);
                             }}
                           />
                         </td>
@@ -13885,172 +13830,164 @@ criticalParameter4:"",
                           <input
                             value={item.limit}
                             onChange={(e) => {
-                              const newData = [...trendingOIPIPS1];
+                              const newData = [...trendingOIPIPS4];
                               newData[index].limit =
                                 e.target.value;
-                              setTrendingOIPIPS1(newData);
+                              setTrendingOIPIPS4(newData);
                             }}
                           />
                         </td>
 
                         <td>
                           <input
-                            value={item.chromatographicPurity}
+                            value={item.composite.waterContentNMT}
                             onChange={(e) => {
-                              const newData = [...trendingOIPIPS1];
-                              newData[index].chromatographicPurity = e.target.value;
-                              setTrendingOIPIPS1(newData);
+                              const newData = [...trendingOIPIPS4];
+                              newData[index].composite.waterContentNMT = e.target.value;
+                              setTrendingOIPIPS4(newData);
                             }}
                           />
                         </td>
 
                         <td>
                           <input
-                            value={item.unreactedTCA}
+                            value={item.composite.limit}
                             onChange={(e) => {
-                              const newData = [...trendingOIPIPS1];
-                              newData[index].unreactedTCA = e.target.value;
-                              setTrendingOIPIPS1(newData);
+                              const newData = [...trendingOIPIPS4];
+                              newData[index].composite.limit = e.target.value;
+                              setTrendingOIPIPS4(newData);
                             }}
                           />
                         </td>
                         <td>
                           <input
-                            value={item.purityForInformation}
+                            value={item.composite.lossOnDrying}
                             onChange={(e) => {
-                              const newData = [...trendingOIPIPS1];
-                              newData[index].purityForInformation = e.target.value;
-                              setTrendingOIPIPS1(newData);
+                              const newData = [...trendingOIPIPS4];
+                              newData[index].composite.lossOnDrying = e.target.value;
+                              setTrendingOIPIPS4(newData);
                             }}
                           />
                         </td>
                         <td>
                           <input
-                            value={item.pH6}
+                            value={item.composite.limitLoss}
                             onChange={(e) => {
-                              const newData = [...trendingOIPIPS1];
-                              newData[index].pH6 = e.target.value;
-                              setTrendingOIPIPS1(newData);
+                              const newData = [...trendingOIPIPS4];
+                              newData[index].composite.limitLoss = e.target.value;
+                              setTrendingOIPIPS4(newData);
+                            }}
+                          />
+                        </td>
+                 
+                        <td>
+                          <input
+                            value={item.composite.relatedSubstanceByHPLC.impurityKNMT}
+                            onChange={(e) => {
+                              const newData = [...trendingOIPIPS4];
+                              newData[index].composite.relatedSubstanceByHPLC.impurityKNMT = e.target.value;
+                              setTrendingOIPIPS4(newData);
                             }}
                           />
                         </td>
                         <td>
                           <input
-                            value={item.lLimit}
+                            value={item.composite.relatedSubstanceByHPLC.limitNMT}
                             onChange={(e) => {
-                              const newData = [...trendingOIPIPS1];
-                              newData[index].lLimit = e.target.value;
-                              setTrendingOIPIPS1(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.uLimit}
-                            onChange={(e) => {
-                              const newData = [...trendingOIPIPS1];
-                              newData[index].uLimit = e.target.value;
-                              setTrendingOIPIPS1(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.pH65}
-                            onChange={(e) => {
-                              const newData = [...trendingOIPIPS1];
-                              newData[index].pH65 = e.target.value;
-                              setTrendingOIPIPS1(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.lLimit}
-                            onChange={(e) => {
-                              const newData = [...trendingOIPIPS1];
-                              newData[index].lLimit = e.target.value;
-                              setTrendingOIPIPS1(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.uLimit}
-                            onChange={(e) => {
-                              const newData = [...trendingOIPIPS1];
-                              newData[index].uLimit = e.target.value;
-                              setTrendingOIPIPS1(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.waterContent}
-                            onChange={(e) => {
-                              const newData = [...trendingOIPIPS1];
-                              newData[index].waterContent = e.target.value;
-                              setTrendingOIPIPS1(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.wLimit}
-                            onChange={(e) => {
-                              const newData = [...trendingOIPIPS1];
-                              newData[index].wLimit = e.target.value;
-                              setTrendingOIPIPS1(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.composite.waterContentNmt}
-                            onChange={(e) => {
-                              const newData = [...trendingOIPIPS1];
-                              newData[index].composite.waterContentNmt = e.target.value;
-                              setTrendingOIPIPS1(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.composite.chromatographicPurity.limit}
-                            onChange={(e) => {
-                              const newData = [...trendingOIPIPS1];
-                              newData[index].composite.chromatographicPurity.limit = e.target.value;
-                              setTrendingOIPIPS1(newData);
+                              const newData = [...trendingOIPIPS4];
+                              newData[index].composite.relatedSubstanceByHPLC.limitNMT = e.target.value;
+                              setTrendingOIPIPS4(newData);
                             }}
                           />
                         </td>   <td>
                           <input
-                            value={item.composite.chromatographicPurity.tCAStage}
+                            value={item.composite.relatedSubstanceByHPLC.impurityHNMT}
                             onChange={(e) => {
-                              const newData = [...trendingOIPIPS1];
-                              newData[index].composite.chromatographicPurity.tCAStage = e.target.value;
-                              setTrendingOIPIPS1(newData);
+                              const newData = [...trendingOIPIPS4];
+                              newData[index].composite.relatedSubstanceByHPLC.impurityHNMT = e.target.value;
+                              setTrendingOIPIPS4(newData);
                             }}
                           />
                         </td>   <td>
                           <input
-                            value={item.composite.chromatographicPurity.tLimit}
+                            value={item.composite.relatedSubstanceByHPLC.impurityDNMT}
                             onChange={(e) => {
-                              const newData = [...trendingOIPIPS1];
-                              newData[index].composite.chromatographicPurity.tLimit = e.target.value;
-                              setTrendingOIPIPS1(newData);
+                              const newData = [...trendingOIPIPS4];
+                              newData[index].composite.relatedSubstanceByHPLC.impurityDNMT = e.target.value;
+                              setTrendingOIPIPS4(newData);
                             }}
                           />
                         </td>   <td>
                           <input
-                            value={item.composite.chromatographicPurity.dryingHours}
+                            value={item.composite.relatedSubstanceByHPLC.limitDNMT}
                             onChange={(e) => {
-                              const newData = [...trendingOIPIPS1];
-                              newData[index].composite.chromatographicPurity.dryingHours = e.target.value;
-                              setTrendingOIPIPS1(newData);
+                              const newData = [...trendingOIPIPS4];
+                              newData[index].composite.relatedSubstanceByHPLC.limitDNMT = e.target.value;
+                              setTrendingOIPIPS4(newData);
                             }}
                           />
                         </td>
+                        <td>
+                          <input
+                            value={item.composite.relatedSubstanceByHPLC.impurityINMT}
+                            onChange={(e) => {
+                              const newData = [...trendingOIPIPS4];
+                              newData[index].composite.relatedSubstanceByHPLC.impurityINMT = e.target.value;
+                              setTrendingOIPIPS4(newData);
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.composite.relatedSubstanceByHPLC.unknownImpurity}
+                            onChange={(e) => {
+                              const newData = [...trendingOIPIPS4];
+                              newData[index].composite.relatedSubstanceByHPLC.unknownImpurity = e.target.value;
+                              setTrendingOIPIPS4(newData);
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.composite.relatedSubstanceByHPLC.limitUnknown}
+                            onChange={(e) => {
+                              const newData = [...trendingOIPIPS4];
+                              newData[index].composite.relatedSubstanceByHPLC.limitUnknown = e.target.value;
+                              setTrendingOIPIPS4(newData);
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.composite.relatedSubstanceByHPLC.totalimpuriritie}
+                            onChange={(e) => {
+                              const newData = [...trendingOIPIPS4];
+                              newData[index].composite.relatedSubstanceByHPLC.totalimpuriritie = e.target.value;
+                              setTrendingOIPIPS4(newData);
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.composite.relatedSubstanceByHPLC.limitTotal}
+                            onChange={(e) => {
+                              const newData = [...trendingOIPIPS4];
+                              newData[index].composite.relatedSubstanceByHPLC.limitTotal = e.target.value;
+                              setTrendingOIPIPS4(newData);
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.composite.relatedSubstanceByHPLC.dryingHours}
+                            onChange={(e) => {
+                              const newData = [...trendingOIPIPS4];
+                              newData[index].composite.relatedSubstanceByHPLC.dryingHours = e.target.value;
+                              setTrendingOIPIPS4(newData);
+                            }}
+                          />
+                        </td>
+
                       </tr>
                     );
                   })}
@@ -14062,7 +13999,7 @@ criticalParameter4:"",
           <div>
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
-                  <MdNoteAdd onClick={addTrendingOIPIPS1Row} />
+                  <MdNoteAdd onClick={addTrendingOIPIPS5Row} />
                   <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
                 </div>
                 <div className="flex gap-4 ">
@@ -14074,42 +14011,40 @@ criticalParameter4:"",
                 </div>
               </div>
               <table>
-                <thead>
+              <thead>
                   <tr>
                     <th rowSpan={3}>S. No.</th>
                     <th rowSpan={3}>Batch No.</th>
                     <th rowSpan={3}>
-                    Unreacted Diolone Acetate NMT 0.5 % 
+                    Loss on drying NMT 1.0 % w/w
                     </th>
                     <th rowSpan={3}>
                     Limit
                     </th>
-                    <th rowSpan={3}>Chromatographic Purity (for information)</th>
-                    <th rowSpan={3}>Unreacted TCA Step – I B NMT 0.5 % </th>
-                    <th rowSpan={3}>Purity (for information)</th>
-                    <th rowSpan={3}>pH 6.0 – 6.5</th>
-                    <th rowSpan={3}>L Limit</th>
-                    <th rowSpan={3}>U Limit</th>
-                    <th rowSpan={3}>pH  6.0 – 6.5</th>
-                    <th rowSpan={3}>L Limit</th>
-                    <th rowSpan={3}>U Limit</th>
-                    <th rowSpan={3}>Water content NMT 1.0 % w/w</th>
-                    <th rowSpan={3}>Limit</th>
-                    <th rowSpan={1} colSpan={5}>Composite </th>
+                   
+                    <th rowSpan={1} colSpan={11}>Composite </th>
                   </tr>
                  <tr>
-                  <th colSpan={1} rowSpan={2}>Water content NMT 1.0 % w/w</th>
-                  <th rowspan={1} colSpan={4}>Chromatographic purity in area % by HPLC</th>
+                  <th colSpan={1} rowSpan={2}>Loss on drying NMT 1.0 % w/w</th>
+                 <th colSpan={10}>Chromatographic purity by HPLC as per USP</th>
                  </tr>
                  <tr>
+                 
                   <th>Limit</th>
-                  <th>TCA stage – I NLT 93.0 %  </th>
+                  <th>Impurity K NMT 0.25%</th>
                   <th>Limit</th>
-                  <th>Drying Hours</th>
+                  <th>Impurity H NMT 0.10%</th>
+                  <th>Impurity D NMT 0.10%</th>
+                  <th>Impurity I NMT 0.10%</th>
+                  <th>Unspecified Impurities NMT 0.10%</th>
+                  <th>Limit</th>
+                  <th>Total Impurities NMT 0.5%</th>
+                  <th>Limit</th>
+                 
                  </tr>
                 </thead>
                 <tbody>
-                  {trendingOIPIPS1.map((item, index) => {
+                  {trendingOIPIPS5.map((item, index) => {
                     return (
                       <tr key={index}>
                         <td>{index + 1}</td>
@@ -14118,19 +14053,19 @@ criticalParameter4:"",
                           <input
                             value={item.batchNo}
                             onChange={(e) => {
-                              const newData = [...trendingOIPIPS1];
+                              const newData = [...trendingOIPIPS5];
                               newData[index].batchNo = e.target.value;
-                              setTrendingOIPIPS1(newData);
+                              setTrendingOIPIPS5(newData);
                             }}
                           />
                         </td>
                         <td>
                           <input
-                            value={item.unreactedDiolone}
+                            value={item.lossOfDrying}
                             onChange={(e) => {
-                              const newData = [...trendingOIPIPS1];
-                              newData[index].unreactedDiolone = e.target.value;
-                              setTrendingOIPIPS1(newData);
+                              const newData = [...trendingOIPIPS5];
+                              newData[index].lossOfDrying = e.target.value;
+                              setTrendingOIPIPS5(newData);
                             }}
                           />
                         </td>
@@ -14139,172 +14074,127 @@ criticalParameter4:"",
                           <input
                             value={item.limit}
                             onChange={(e) => {
-                              const newData = [...trendingOIPIPS1];
+                              const newData = [...trendingOIPIPS5];
                               newData[index].limit =
                                 e.target.value;
-                              setTrendingOIPIPS1(newData);
+                              setTrendingOIPIPS5(newData);
                             }}
                           />
                         </td>
 
                         <td>
                           <input
-                            value={item.chromatographicPurity}
+                            value={item.composite.lossOfDrying}
                             onChange={(e) => {
-                              const newData = [...trendingOIPIPS1];
-                              newData[index].chromatographicPurity = e.target.value;
-                              setTrendingOIPIPS1(newData);
+                              const newData = [...trendingOIPIPS5];
+                              newData[index].composite.lossOfDrying = e.target.value;
+                              setTrendingOIPIPS5(newData);
                             }}
                           />
                         </td>
 
-                        <td>
-                          <input
-                            value={item.unreactedTCA}
-                            onChange={(e) => {
-                              const newData = [...trendingOIPIPS1];
-                              newData[index].unreactedTCA = e.target.value;
-                              setTrendingOIPIPS1(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.purityForInformation}
-                            onChange={(e) => {
-                              const newData = [...trendingOIPIPS1];
-                              newData[index].purityForInformation = e.target.value;
-                              setTrendingOIPIPS1(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.pH6}
-                            onChange={(e) => {
-                              const newData = [...trendingOIPIPS1];
-                              newData[index].pH6 = e.target.value;
-                              setTrendingOIPIPS1(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.lLimit}
-                            onChange={(e) => {
-                              const newData = [...trendingOIPIPS1];
-                              newData[index].lLimit = e.target.value;
-                              setTrendingOIPIPS1(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.uLimit}
-                            onChange={(e) => {
-                              const newData = [...trendingOIPIPS1];
-                              newData[index].uLimit = e.target.value;
-                              setTrendingOIPIPS1(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.pH65}
-                            onChange={(e) => {
-                              const newData = [...trendingOIPIPS1];
-                              newData[index].pH65 = e.target.value;
-                              setTrendingOIPIPS1(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.lLimit}
-                            onChange={(e) => {
-                              const newData = [...trendingOIPIPS1];
-                              newData[index].lLimit = e.target.value;
-                              setTrendingOIPIPS1(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.uLimit}
-                            onChange={(e) => {
-                              const newData = [...trendingOIPIPS1];
-                              newData[index].uLimit = e.target.value;
-                              setTrendingOIPIPS1(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.waterContent}
-                            onChange={(e) => {
-                              const newData = [...trendingOIPIPS1];
-                              newData[index].waterContent = e.target.value;
-                              setTrendingOIPIPS1(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.wLimit}
-                            onChange={(e) => {
-                              const newData = [...trendingOIPIPS1];
-                              newData[index].wLimit = e.target.value;
-                              setTrendingOIPIPS1(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.composite.waterContentNmt}
-                            onChange={(e) => {
-                              const newData = [...trendingOIPIPS1];
-                              newData[index].composite.waterContentNmt = e.target.value;
-                              setTrendingOIPIPS1(newData);
-                            }}
-                          />
-                        </td>
                         <td>
                           <input
                             value={item.composite.chromatographicPurity.limit}
                             onChange={(e) => {
-                              const newData = [...trendingOIPIPS1];
+                              const newData = [...trendingOIPIPS5];
                               newData[index].composite.chromatographicPurity.limit = e.target.value;
-                              setTrendingOIPIPS1(newData);
-                            }}
-                          />
-                        </td>   <td>
-                          <input
-                            value={item.composite.chromatographicPurity.tCAStage}
-                            onChange={(e) => {
-                              const newData = [...trendingOIPIPS1];
-                              newData[index].composite.chromatographicPurity.tCAStage = e.target.value;
-                              setTrendingOIPIPS1(newData);
-                            }}
-                          />
-                        </td>   <td>
-                          <input
-                            value={item.composite.chromatographicPurity.tLimit}
-                            onChange={(e) => {
-                              const newData = [...trendingOIPIPS1];
-                              newData[index].composite.chromatographicPurity.tLimit = e.target.value;
-                              setTrendingOIPIPS1(newData);
-                            }}
-                          />
-                        </td>   <td>
-                          <input
-                            value={item.composite.chromatographicPurity.dryingHours}
-                            onChange={(e) => {
-                              const newData = [...trendingOIPIPS1];
-                              newData[index].composite.chromatographicPurity.dryingHours = e.target.value;
-                              setTrendingOIPIPS1(newData);
+                              setTrendingOIPIPS5(newData);
                             }}
                           />
                         </td>
+                        <td>
+                          <input
+                            value={item.composite.chromatographicPurity.impurityKNMT}
+                            onChange={(e) => {
+                              const newData = [...trendingOIPIPS5];
+                              newData[index].composite.chromatographicPurity.impurityKNMT = e.target.value;
+                              setTrendingOIPIPS5(newData);
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.composite.chromatographicPurity.limitKNMT}
+                            onChange={(e) => {
+                              const newData = [...trendingOIPIPS5];
+                              newData[index].composite.chromatographicPurity.limitKNMT = e.target.value;
+                              setTrendingOIPIPS5(newData);
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.composite.chromatographicPurity.impurityOfHNMT}
+                            onChange={(e) => {
+                              const newData = [...trendingOIPIPS5];
+                              newData[index].composite.chromatographicPurity.impurityOfHNMT = e.target.value;
+                              setTrendingOIPIPS5(newData);
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.composite.chromatographicPurity.impurityDNMT}
+                            onChange={(e) => {
+                              const newData = [...trendingOIPIPS5];
+                              newData[index].composite.chromatographicPurity.impurityDNMT = e.target.value;
+                              setTrendingOIPIPS5(newData);
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.composite.chromatographicPurity.impurityINMT}
+                            onChange={(e) => {
+                              const newData = [...trendingOIPIPS5];
+                              newData[index].composite.chromatographicPurity.impurityINMT = e.target.value;
+                              setTrendingOIPIPS5(newData);
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.composite.chromatographicPurity.impurityNMT}
+                            onChange={(e) => {
+                              const newData = [...trendingOIPIPS5];
+                              newData[index].composite.chromatographicPurity.impurityNMT = e.target.value;
+                              setTrendingOIPIPS5(newData);
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.composite.chromatographicPurity.limitNMT}
+                            onChange={(e) => {
+                              const newData = [...trendingOIPIPS5];
+                              newData[index].composite.chromatographicPurity.limitNMT = e.target.value;
+                              setTrendingOIPIPS5(newData);
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.composite.chromatographicPurity.totalImpurityNMT}
+                            onChange={(e) => {
+                              const newData = [...trendingOIPIPS5];
+                              newData[index].composite.chromatographicPurity.totalImpurityNMT = e.target.value;
+                              setTrendingOIPIPS5(newData);
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.composite.chromatographicPurity.limitTNMT}
+                            onChange={(e) => {
+                              const newData = [...trendingOIPIPS5];
+                              newData[index].composite.chromatographicPurity.limitTNMT = e.target.value;
+                              setTrendingOIPIPS5(newData);
+                            }}
+                          />
+                        </td>
+                      
+                      
                       </tr>
                     );
                   })}
