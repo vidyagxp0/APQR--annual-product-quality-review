@@ -11998,6 +11998,487 @@ export default function APQR() {
                 </tbody>
               </table>
             </div>
+
+            <div className="gridName pt-4">Yield Trend Of Stage-2</div>
+            <div>
+              <div className="AddRows d-flex w-full justify-between items-center text-3xl">
+                <div className="flex items-center">
+                  <MdNoteAdd onClick={addYieldTOS1Row} />
+                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
+                </div>
+                <div className="flex gap-4 ">
+                  <ExcelExportImport
+                    data={currentRPQRN}
+                    setimportedData={setimportedData}
+                    fileName="currentRPQRN.xlsx"
+                  />
+                </div>
+              </div>
+              <table>
+                <thead>
+                  <tr>
+                    <th >SI. No.</th>
+                    <th >Batch No.</th>
+                    <th>
+                    Mfg. Month
+                    </th>
+                    <th>
+                    Actual Input in (50.000 Kg)Kg
+                    </th>
+                    <th>Actual Output in Expected Output Range  (50.000 – 57.000Kg)</th>
+                    <th>L Limit</th>
+                    <th>U Limit</th>
+                    <th>Yield %</th>
+                  </tr>
+                 
+                </thead>
+                <tbody>
+                  {yieldTOS1.map((item, index) => {
+                    return (
+                      <tr key={index}>
+                        <td>{index + 1}</td>
+
+                        <td>
+                          <input
+                            value={item.batchNo}
+                            onChange={(e) => {
+                              const newData = [...yieldTOS1];
+                              newData[index].batchNo = e.target.value;
+                              setYieldTOS1(newData);
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.mfgMonth}
+                            onChange={(e) => {
+                              const newData = [...yieldTOS1];
+                              newData[index].mfgMonth = e.target.value;
+                              setYieldTOS1(newData);
+                            }}
+                          />
+                        </td>
+
+                        <td>
+                          <input
+                            value={item.actualInput}
+                            onChange={(e) => {
+                              const newData = [...yieldTOS1];
+                              newData[index].actualInput =
+                                e.target.value;
+                              setYieldTOS1(newData);
+                            }}
+                          />
+                        </td>
+
+                        <td>
+                          <input
+                            value={item.actualOutput}
+                            onChange={(e) => {
+                              const newData = [...yieldTOS1];
+                              newData[index].actualOutput = e.target.value;
+                              setYieldTOS1(newData);
+                            }}
+                          />
+                        </td>
+
+                        <td>
+                          <input
+                            value={item.lLimit}
+                            onChange={(e) => {
+                              const newData = [...yieldTOS1];
+                              newData[index].lLimit = e.target.value;
+                              setYieldTOS1(newData);
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.uLimit}
+                            onChange={(e) => {
+                              const newData = [...yieldTOS1];
+                              newData[index].uLimit = e.target.value;
+                              setYieldTOS1(newData);
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.yield}
+                            onChange={(e) => {
+                              const newData = [...yieldTOS1];
+                              newData[index].yield = e.target.value;
+                              setYieldTOS1(newData);
+                            }}
+                          />
+                        </td>
+                      </tr>
+                    );
+                  })}
+                </tbody>
+              </table>
+            </div>
+
+            <div className="gridName pt-4">Yield Trend Of Stage-3</div>
+            <div>
+              <div className="AddRows d-flex w-full justify-between items-center text-3xl">
+                <div className="flex items-center">
+                  <MdNoteAdd onClick={addYieldTOS1Row} />
+                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
+                </div>
+                <div className="flex gap-4 ">
+                  <ExcelExportImport
+                    data={currentRPQRN}
+                    setimportedData={setimportedData}
+                    fileName="currentRPQRN.xlsx"
+                  />
+                </div>
+              </div>
+              <table>
+                <thead>
+                  <tr>
+                    <th >SI. No.</th>
+                    <th >Batch No.</th>
+                    <th>
+                    Mfg. Month
+                    </th>
+                    <th>
+                    Actual Input in (50.000 Kg)Kg
+                    </th>
+                    <th>Actual Output in Expected Output Range  (50.000 – 57.000Kg)</th>
+                    <th>L Limit</th>
+                    <th>U Limit</th>
+                    <th>Yield %</th>
+                  </tr>
+                 
+                </thead>
+                <tbody>
+                  {yieldTOS1.map((item, index) => {
+                    return (
+                      <tr key={index}>
+                        <td>{index + 1}</td>
+
+                        <td>
+                          <input
+                            value={item.batchNo}
+                            onChange={(e) => {
+                              const newData = [...yieldTOS1];
+                              newData[index].batchNo = e.target.value;
+                              setYieldTOS1(newData);
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.mfgMonth}
+                            onChange={(e) => {
+                              const newData = [...yieldTOS1];
+                              newData[index].mfgMonth = e.target.value;
+                              setYieldTOS1(newData);
+                            }}
+                          />
+                        </td>
+
+                        <td>
+                          <input
+                            value={item.actualInput}
+                            onChange={(e) => {
+                              const newData = [...yieldTOS1];
+                              newData[index].actualInput =
+                                e.target.value;
+                              setYieldTOS1(newData);
+                            }}
+                          />
+                        </td>
+
+                        <td>
+                          <input
+                            value={item.actualOutput}
+                            onChange={(e) => {
+                              const newData = [...yieldTOS1];
+                              newData[index].actualOutput = e.target.value;
+                              setYieldTOS1(newData);
+                            }}
+                          />
+                        </td>
+
+                        <td>
+                          <input
+                            value={item.lLimit}
+                            onChange={(e) => {
+                              const newData = [...yieldTOS1];
+                              newData[index].lLimit = e.target.value;
+                              setYieldTOS1(newData);
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.uLimit}
+                            onChange={(e) => {
+                              const newData = [...yieldTOS1];
+                              newData[index].uLimit = e.target.value;
+                              setYieldTOS1(newData);
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.yield}
+                            onChange={(e) => {
+                              const newData = [...yieldTOS1];
+                              newData[index].yield = e.target.value;
+                              setYieldTOS1(newData);
+                            }}
+                          />
+                        </td>
+                      </tr>
+                    );
+                  })}
+                </tbody>
+              </table>
+            </div>
+
+            <div className="gridName pt-4">Yield Trend Of Stage-4</div>
+            <div>
+              <div className="AddRows d-flex w-full justify-between items-center text-3xl">
+                <div className="flex items-center">
+                  <MdNoteAdd onClick={addYieldTOS1Row} />
+                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
+                </div>
+                <div className="flex gap-4 ">
+                  <ExcelExportImport
+                    data={currentRPQRN}
+                    setimportedData={setimportedData}
+                    fileName="currentRPQRN.xlsx"
+                  />
+                </div>
+              </div>
+              <table>
+                <thead>
+                  <tr>
+                    <th >SI. No.</th>
+                    <th >Batch No.</th>
+                    <th>
+                    Mfg. Month
+                    </th>
+                    <th>
+                    Actual Input in (50.000 Kg)Kg
+                    </th>
+                    <th>Actual Output in Expected Output Range  (50.000 – 57.000Kg)</th>
+                    <th>L Limit</th>
+                    <th>U Limit</th>
+                    <th>Yield %</th>
+                  </tr>
+                 
+                </thead>
+                <tbody>
+                  {yieldTOS1.map((item, index) => {
+                    return (
+                      <tr key={index}>
+                        <td>{index + 1}</td>
+
+                        <td>
+                          <input
+                            value={item.batchNo}
+                            onChange={(e) => {
+                              const newData = [...yieldTOS1];
+                              newData[index].batchNo = e.target.value;
+                              setYieldTOS1(newData);
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.mfgMonth}
+                            onChange={(e) => {
+                              const newData = [...yieldTOS1];
+                              newData[index].mfgMonth = e.target.value;
+                              setYieldTOS1(newData);
+                            }}
+                          />
+                        </td>
+
+                        <td>
+                          <input
+                            value={item.actualInput}
+                            onChange={(e) => {
+                              const newData = [...yieldTOS1];
+                              newData[index].actualInput =
+                                e.target.value;
+                              setYieldTOS1(newData);
+                            }}
+                          />
+                        </td>
+
+                        <td>
+                          <input
+                            value={item.actualOutput}
+                            onChange={(e) => {
+                              const newData = [...yieldTOS1];
+                              newData[index].actualOutput = e.target.value;
+                              setYieldTOS1(newData);
+                            }}
+                          />
+                        </td>
+
+                        <td>
+                          <input
+                            value={item.lLimit}
+                            onChange={(e) => {
+                              const newData = [...yieldTOS1];
+                              newData[index].lLimit = e.target.value;
+                              setYieldTOS1(newData);
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.uLimit}
+                            onChange={(e) => {
+                              const newData = [...yieldTOS1];
+                              newData[index].uLimit = e.target.value;
+                              setYieldTOS1(newData);
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.yield}
+                            onChange={(e) => {
+                              const newData = [...yieldTOS1];
+                              newData[index].yield = e.target.value;
+                              setYieldTOS1(newData);
+                            }}
+                          />
+                        </td>
+                      </tr>
+                    );
+                  })}
+                </tbody>
+              </table>
+            </div>
+
+            <div className="gridName pt-4">Yield Trend Of Stage-5</div>
+            <div>
+              <div className="AddRows d-flex w-full justify-between items-center text-3xl">
+                <div className="flex items-center">
+                  <MdNoteAdd onClick={addYieldTOS1Row} />
+                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
+                </div>
+                <div className="flex gap-4 ">
+                  <ExcelExportImport
+                    data={currentRPQRN}
+                    setimportedData={setimportedData}
+                    fileName="currentRPQRN.xlsx"
+                  />
+                </div>
+              </div>
+              <table>
+                <thead>
+                  <tr>
+                    <th >SI. No.</th>
+                    <th >Batch No.</th>
+                    <th>
+                    Mfg. Month
+                    </th>
+                    <th>
+                    Actual Input in (50.000 Kg)Kg
+                    </th>
+                    <th>Actual Output in Expected Output Range  (50.000 – 57.000Kg)</th>
+                    <th>L Limit</th>
+                    <th>U Limit</th>
+                    <th>Yield %</th>
+                  </tr>
+                 
+                </thead>
+                <tbody>
+                  {yieldTOS1.map((item, index) => {
+                    return (
+                      <tr key={index}>
+                        <td>{index + 1}</td>
+
+                        <td>
+                          <input
+                            value={item.batchNo}
+                            onChange={(e) => {
+                              const newData = [...yieldTOS1];
+                              newData[index].batchNo = e.target.value;
+                              setYieldTOS1(newData);
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.mfgMonth}
+                            onChange={(e) => {
+                              const newData = [...yieldTOS1];
+                              newData[index].mfgMonth = e.target.value;
+                              setYieldTOS1(newData);
+                            }}
+                          />
+                        </td>
+
+                        <td>
+                          <input
+                            value={item.actualInput}
+                            onChange={(e) => {
+                              const newData = [...yieldTOS1];
+                              newData[index].actualInput =
+                                e.target.value;
+                              setYieldTOS1(newData);
+                            }}
+                          />
+                        </td>
+
+                        <td>
+                          <input
+                            value={item.actualOutput}
+                            onChange={(e) => {
+                              const newData = [...yieldTOS1];
+                              newData[index].actualOutput = e.target.value;
+                              setYieldTOS1(newData);
+                            }}
+                          />
+                        </td>
+
+                        <td>
+                          <input
+                            value={item.lLimit}
+                            onChange={(e) => {
+                              const newData = [...yieldTOS1];
+                              newData[index].lLimit = e.target.value;
+                              setYieldTOS1(newData);
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.uLimit}
+                            onChange={(e) => {
+                              const newData = [...yieldTOS1];
+                              newData[index].uLimit = e.target.value;
+                              setYieldTOS1(newData);
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.yield}
+                            onChange={(e) => {
+                              const newData = [...yieldTOS1];
+                              newData[index].yield = e.target.value;
+                              setYieldTOS1(newData);
+                            }}
+                          />
+                        </td>
+                      </tr>
+                    );
+                  })}
+                </tbody>
+              </table>
+            </div>
+
         </>): null}
         {tab==="TOCPP"? <>
           <div className="gridName pt-4">Trending of Critical Process Parameter: Stage - I</div>
@@ -12088,6 +12569,7 @@ export default function APQR() {
             </div></> : null}
         {tab==="TOIIP" ? <>
           <div className="gridName pt-4">Trending of In-process & Intermediate Parameter of U3TCAg  - Stage-I  </div>
+          <div>
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addTrendingOIPIPS1Row} />
