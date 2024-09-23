@@ -1919,7 +1919,7 @@ export default function APQR() {
     };
     setYieldTOS4([...yieldTOS4, newRow]);
   };
-
+  
   const addYieldTOS5Row = () => {
     const newRow = {
       batchNo: "",
@@ -1933,7 +1933,7 @@ export default function APQR() {
     };
     setYieldTOS5([...yieldTOS5, newRow]);
   };
-  
+
   const addTrendingOCPPS1Row = () => {
     const newRow = {
       batchNo: "",
