@@ -79,13 +79,16 @@ export default function APQR() {
   const [unitOperation8, setUnitOperation8] = useState([]);
   const [unitOperation9, setUnitOperation9] = useState([]);
   const [unitOperation10, setUnitOperation10] = useState([]);
-  const [yieldTOS1, setYieldTOS1] = useState([]);
-  const [yieldTOS2, setYieldTOS2] = useState([]);
-  const [yieldTOS3, setYieldTOS3] = useState([]);
-  const [yieldTOS4, setYieldTOS4] = useState([]);
-  const [yieldTOS5, setYieldTOS5] = useState([]);
-  const [trendingOCPPS1, setTrendingOCPPS1] = useState([]);
-  const [trendingOIPIPS1, setTrendingOIPIPS1] = useState([]);
+  const [yieldTOS1,setYieldTOS1]=useState([]);
+  const [yieldTOS2,setYieldTOS2]=useState([]);
+  const [yieldTOS3,setYieldTOS3]=useState([]);
+  const [yieldTOS4,setYieldTOS4]=useState([]);
+  const [yieldTOS5,setYieldTOS5]=useState([]);
+  const [trendingOCPPS1,setTrendingOCPPS1]=useState([]);
+  const [trendingOCPPS2,setTrendingOCPPS2]=useState([]);
+  const [trendingOCPPS3,setTrendingOCPPS3]=useState([]);
+  const [trendingOCPPS4,setTrendingOCPPS4]=useState([]);
+  const [trendingOIPIPS1,setTrendingOIPIPS1]=useState([]);
   const [tiny1, setTiny1] = useState("");
   const [tiny2, setTiny2] = useState("");
   const [tiny3, setTiny3] = useState("");
@@ -1933,6 +1936,98 @@ export default function APQR() {
       criticalParameter3: "",
     };
     setTrendingOCPPS1([...trendingOCPPS1, newRow]);
+  };
+
+  const addTrendingOCPPS2Row = () => {
+    const newRow = {
+      batchNo: "",
+     criticalParameter1:"",
+     criticalParameter2:"",
+     criticalParameter3:"",
+lowerLimit:"",
+upperLimit:"",
+criticalParameter4:"",
+    };
+    setTrendingOCPPS2([...trendingOCPPS2, newRow]);
+  };
+
+  const addTrendingOCPPS3Row = () => {
+    const newRow = {
+      batchNo: "",
+     criticalParameter1:"",
+     criticalParameter2:{
+      actualQuantity:"",
+      actualpH:"",
+      lowerLimit:"",
+      upperLimit:""
+     },
+ 
+
+    };
+    setTrendingOCPPS3([...trendingOCPPS3, newRow]);
+  };
+
+  const addTrendingOCPPS4Row = () => {
+    const newRow = {
+      batchNo: "",
+     criticalParameter1:{
+      actualTime:"",
+      actualTemprature:"",
+      lowerLimit:"",
+      upperLimit:"",
+     },
+     criticalParameter2:"",
+     lowerLimit:"",
+     upperLimit:"",
+
+    };
+    setTrendingOCPPS4([...trendingOCPPS4, newRow]);
+  };
+
+  const addTrendingOCPPS2Row = () => {
+    const newRow = {
+      batchNo: "",
+     criticalParameter1:"",
+     criticalParameter2:"",
+     criticalParameter3:"",
+lowerLimit:"",
+upperLimit:"",
+criticalParameter4:"",
+    };
+    setTrendingOCPPS2([...trendingOCPPS2, newRow]);
+  };
+
+  const addTrendingOCPPS3Row = () => {
+    const newRow = {
+      batchNo: "",
+     criticalParameter1:"",
+     criticalParameter2:{
+      actualQuantity:"",
+      actualpH:"",
+      lowerLimit:"",
+      upperLimit:""
+     },
+ 
+
+    };
+    setTrendingOCPPS3([...trendingOCPPS3, newRow]);
+  };
+
+  const addTrendingOCPPS4Row = () => {
+    const newRow = {
+      batchNo: "",
+     criticalParameter1:{
+      actualTime:"",
+      actualTemprature:"",
+      lowerLimit:"",
+      upperLimit:"",
+     },
+     criticalParameter2:"",
+     lowerLimit:"",
+     upperLimit:"",
+
+    };
+    setTrendingOCPPS4([...trendingOCPPS4, newRow]);
   };
 
   const addTrendingOIPIPS1Row = () => {
@@ -12527,6 +12622,8 @@ export default function APQR() {
                   <tr>
                     <th>SI. No.</th>
                     <th>Batch No.</th>
+                    <th >S. No.</th>
+                    <th >Batch No.</th>
                     <th>
                       Critical Parameter: 01 Nitrogen gas purging should be carried out in advance
                       in Acetonide formation reaction (part I)
@@ -12600,7 +12697,7 @@ export default function APQR() {
             <div>
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
-                  <MdNoteAdd onClick={addTrendingOCPPS1Row} />
+                  <MdNoteAdd onClick={addTrendingOCPPS2Row} />
                   <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
                 </div>
                 <div className="flex gap-4 ">
@@ -12614,24 +12711,30 @@ export default function APQR() {
               <table>
                 <thead>
                   <tr>
-                    <th>SI. No.</th>
-                    <th>Batch No.</th>
+                    <th >S. No.</th>
+                    <th >Batch No.</th>
                     <th>
                       Critical Parameter: 01 Nitrogen gas purging should be carried out in advance
                       in Acetonide formation reaction (part I)
+                    Critical Parameter: 01 During handling of Hydrofluoric Acid use necessary protective acid proof mask, dress and shoes. 
                     </th>
                     <th>
                       Critical Parameter: 02 In Bromination reaction (part II), slow agitation is
                       required during the reaction.
+                    Critical Parameter: 02 Addition of the material should be done portion wise during reaction.                  Std. Qty. in kg. ( 50.000 – 57.000)
                     </th>
                     <th>
                       Critical Parameter: 03 Epoxydation reaction (part III) required Argon gas
                       bubbling to remove oxygen content from the reaction mass.{" "}
                     </th>
+                    <th>Critical Parameter: 03 During addition of material,   exothermicity appears, so control the temperature (-40°C) to (-30°C).                                           Actual  Temperature ºC   (-40°C) to (-30°C) </th>
+                   <th>Lower Limit</th>
+                   <th>Upper Limit</th>
+                   <th>Critical Parameter: 04 Temperature should be within specified range of (-20°C) to   (-25°C) for timely completion of reaction and controlled impurity level.                        Actual  Temperature ºC     (-20°C) to (-25°C)</th>
                   </tr>
                 </thead>
                 <tbody>
-                  {trendingOCPPS1.map((item, index) => {
+                  {trendingOCPPS2.map((item, index) => {
                     return (
                       <tr key={index}>
                         <td>{index + 1}</td>
@@ -12640,9 +12743,9 @@ export default function APQR() {
                           <input
                             value={item.batchNo}
                             onChange={(e) => {
-                              const newData = [...trendingOCPPS1];
+                              const newData = [...trendingOCPPS2];
                               newData[index].batchNo = e.target.value;
-                              setTrendingOCPPS1(newData);
+                              setTrendingOCPPS2(newData);
                             }}
                           />
                         </td>
@@ -12650,9 +12753,9 @@ export default function APQR() {
                           <input
                             value={item.criticalParameter1}
                             onChange={(e) => {
-                              const newData = [...trendingOCPPS1];
+                              const newData = [...trendingOCPPS2];
                               newData[index].criticalParameter1 = e.target.value;
-                              setTrendingOCPPS1(newData);
+                              setTrendingOCPPS2(newData);
                             }}
                           />
                         </td>
@@ -12661,9 +12764,10 @@ export default function APQR() {
                           <input
                             value={item.criticalParameter2}
                             onChange={(e) => {
-                              const newData = [...trendingOCPPS1];
-                              newData[index].criticalParameter2 = e.target.value;
-                              setTrendingOCPPS1(newData);
+                              const newData = [...trendingOCPPS2];
+                              newData[index].criticalParameter2 =
+                                e.target.value;
+                              setTrendingOCPPS2(newData);
                             }}
                           />
                         </td>
@@ -12672,9 +12776,39 @@ export default function APQR() {
                           <input
                             value={item.criticalParameter3}
                             onChange={(e) => {
-                              const newData = [...trendingOCPPS1];
+                              const newData = [...trendingOCPPS2];
                               newData[index].criticalParameter3 = e.target.value;
-                              setTrendingOCPPS1(newData);
+                              setTrendingOCPPS2(newData);
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.lowerLimit}
+                            onChange={(e) => {
+                              const newData = [...trendingOCPPS2];
+                              newData[index].lowerLimit = e.target.value;
+                              setTrendingOCPPS2(newData);
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.upperLimit}
+                            onChange={(e) => {
+                              const newData = [...trendingOCPPS2];
+                              newData[index].upperLimit = e.target.value;
+                              setTrendingOCPPS2(newData);
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.criticalParameter4}
+                            onChange={(e) => {
+                              const newData = [...trendingOCPPS2];
+                              newData[index].criticalParameter4 = e.target.value;
+                              setTrendingOCPPS2(newData);
                             }}
                           />
                         </td>
@@ -12689,7 +12823,7 @@ export default function APQR() {
             <div>
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
-                  <MdNoteAdd onClick={addTrendingOCPPS1Row} />
+                  <MdNoteAdd onClick={addTrendingOCPPS3Row} />
                   <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
                 </div>
                 <div className="flex gap-4 ">
@@ -12703,24 +12837,26 @@ export default function APQR() {
               <table>
                 <thead>
                   <tr>
-                    <th>SI. No.</th>
-                    <th>Batch No.</th>
-                    <th>
-                      Critical Parameter: 01 Nitrogen gas purging should be carried out in advance
-                      in Acetonide formation reaction (part I)
+                    <th rowSpan={2}>S. No.</th>
+                    <th rowSpan={2}>Batch No.</th>
+                    <th rowSpan={2}>
+                    Critical Parameter: 01 Nitrogen gas purging should be carried out in advance in Acetonide formation reaction (part I) 
                     </th>
-                    <th>
-                      Critical Parameter: 02 In Bromination reaction (part II), slow agitation is
-                      required during the reaction.
+                    <th colSpan={4} rowSpan={1}>
+                    Critical Parameter: 02 In Bromination reaction (part II), slow agitation is required during the reaction. 
                     </th>
-                    <th>
-                      Critical Parameter: 03 Epoxydation reaction (part III) required Argon gas
-                      bubbling to remove oxygen content from the reaction mass.{" "}
-                    </th>
+                    {/* <th >Critical Parameter: 03 Epoxydation reaction (part III) required Argon gas bubbling to remove oxygen content from the reaction mass. </th> */}
+                   
                   </tr>
+                 <tr>
+                  <th>  Actual                  Qt. of Glacial Acetic acid</th>
+                  <th>Actual pH  (between 5.0 - 6.0)</th>
+                  <th>Lower Limit</th>
+                  <th>Upper Limit</th>
+                 </tr>
                 </thead>
                 <tbody>
-                  {trendingOCPPS1.map((item, index) => {
+                  {trendingOCPPS3.map((item, index) => {
                     return (
                       <tr key={index}>
                         <td>{index + 1}</td>
@@ -12729,9 +12865,9 @@ export default function APQR() {
                           <input
                             value={item.batchNo}
                             onChange={(e) => {
-                              const newData = [...trendingOCPPS1];
+                              const newData = [...trendingOCPPS3];
                               newData[index].batchNo = e.target.value;
-                              setTrendingOCPPS1(newData);
+                              setTrendingOCPPS3(newData);
                             }}
                           />
                         </td>
@@ -12739,31 +12875,52 @@ export default function APQR() {
                           <input
                             value={item.criticalParameter1}
                             onChange={(e) => {
-                              const newData = [...trendingOCPPS1];
+                              const newData = [...trendingOCPPS3];
                               newData[index].criticalParameter1 = e.target.value;
-                              setTrendingOCPPS1(newData);
+                              setTrendingOCPPS3(newData);
                             }}
                           />
                         </td>
 
                         <td>
                           <input
-                            value={item.criticalParameter2}
+                            value={item.criticalParameter2.actualQuantity}
                             onChange={(e) => {
-                              const newData = [...trendingOCPPS1];
-                              newData[index].criticalParameter2 = e.target.value;
-                              setTrendingOCPPS1(newData);
+                              const newData = [...trendingOCPPS3];
+                              newData[index].criticalParameter2.actualQuantity =
+                                e.target.value;
+                              setTrendingOCPPS3(newData);
                             }}
                           />
                         </td>
 
                         <td>
                           <input
-                            value={item.criticalParameter3}
+                            value={item.criticalParameter2.actualpH}
                             onChange={(e) => {
-                              const newData = [...trendingOCPPS1];
-                              newData[index].criticalParameter3 = e.target.value;
-                              setTrendingOCPPS1(newData);
+                              const newData = [...trendingOCPPS3];
+                              newData[index].criticalParameter2.actualpH = e.target.value;
+                              setTrendingOCPPS3(newData);
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.criticalParameter2.lowerLimit}
+                            onChange={(e) => {
+                              const newData = [...trendingOCPPS3];
+                              newData[index].criticalParameter2.lowerLimit = e.target.value;
+                              setTrendingOCPPS3(newData);
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.criticalParameter2.upperLimit}
+                            onChange={(e) => {
+                              const newData = [...trendingOCPPS3];
+                              newData[index].criticalParameter2.upperLimit = e.target.value;
+                              setTrendingOCPPS3(newData);
                             }}
                           />
                         </td>
@@ -12778,7 +12935,7 @@ export default function APQR() {
             <div>
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
-                  <MdNoteAdd onClick={addTrendingOCPPS1Row} />
+                  <MdNoteAdd onClick={addTrendingOCPPS4Row} />
                   <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
                 </div>
                 <div className="flex gap-4 ">
@@ -12792,24 +12949,28 @@ export default function APQR() {
               <table>
                 <thead>
                   <tr>
-                    <th>SI. No.</th>
-                    <th>Batch No.</th>
-                    <th>
-                      Critical Parameter: 01 Nitrogen gas purging should be carried out in advance
-                      in Acetonide formation reaction (part I)
+                    <th rowSpan={2}>S. No.</th>
+                    <th rowSpan={2}>Batch No.</th>
+                    <th rowSpan={1} colSpan={4}>
+                    Critical Parameter: 01                                            
+                    The reaction mass should be refluxed for 3-5 hour at temperature between 55 to 60° C.  
                     </th>
-                    <th>
-                      Critical Parameter: 02 In Bromination reaction (part II), slow agitation is
-                      required during the reaction.
+                    <th rowSpan={2}>
+                    Critical Parameter: 02                    Crystallization of finished product should be at 0°C to 5°C.                                                           Actual Temperature °C                                 (0°C to 5°C)
                     </th>
-                    <th>
-                      Critical Parameter: 03 Epoxydation reaction (part III) required Argon gas
-                      bubbling to remove oxygen content from the reaction mass.{" "}
-                    </th>
+                    <th rowSpan={2}>Lower Limit </th>
+                    <th rowSpan={2}>Upper Limit</th>
+                   
                   </tr>
+                 <tr>
+                  <th>Actual Time (In hrs.) </th>
+                  <th>Actual Temperature °C (55°C to 60°C)</th>
+                  <th>Lower Limit</th>
+                  <th>Upper Limit</th>
+                 </tr>
                 </thead>
                 <tbody>
-                  {trendingOCPPS1.map((item, index) => {
+                  {trendingOCPPS4.map((item, index) => {
                     return (
                       <tr key={index}>
                         <td>{index + 1}</td>
@@ -12818,41 +12979,81 @@ export default function APQR() {
                           <input
                             value={item.batchNo}
                             onChange={(e) => {
-                              const newData = [...trendingOCPPS1];
+                              const newData = [...trendingOCPPS4];
                               newData[index].batchNo = e.target.value;
-                              setTrendingOCPPS1(newData);
+                              setTrendingOCPPS4(newData);
                             }}
                           />
                         </td>
                         <td>
                           <input
-                            value={item.criticalParameter1}
+                            value={item.criticalParameter1.actualTime}
                             onChange={(e) => {
-                              const newData = [...trendingOCPPS1];
-                              newData[index].criticalParameter1 = e.target.value;
-                              setTrendingOCPPS1(newData);
+                              const newData = [...trendingOCPPS4];
+                              newData[index].criticalParameter1.actualTime = e.target.value;
+                              setTrendingOCPPS4(newData);
                             }}
                           />
                         </td>
-
+                        <td>
+                          <input
+                            value={item.criticalParameter1.actualTemprature}
+                            onChange={(e) => {
+                              const newData = [...trendingOCPPS4];
+                              newData[index].criticalParameter1.actualTemprature = e.target.value;
+                              setTrendingOCPPS4(newData);
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.criticalParameter1.lowerLimit}
+                            onChange={(e) => {
+                              const newData = [...trendingOCPPS4];
+                              newData[index].criticalParameter1.lowerLimit = e.target.value;
+                              setTrendingOCPPS4(newData);
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.criticalParameter1.upperLimit}
+                            onChange={(e) => {
+                              const newData = [...trendingOCPPS4];
+                              newData[index].criticalParameter1.upperLimit = e.target.value;
+                              setTrendingOCPPS4(newData);
+                            }}
+                          />
+                        </td>
                         <td>
                           <input
                             value={item.criticalParameter2}
                             onChange={(e) => {
-                              const newData = [...trendingOCPPS1];
-                              newData[index].criticalParameter2 = e.target.value;
-                              setTrendingOCPPS1(newData);
+                              const newData = [...trendingOCPPS4];
+                              newData[index].criticalParameter2 =
+                                e.target.value;
+                              setTrendingOCPPS4(newData);
                             }}
                           />
                         </td>
 
                         <td>
                           <input
-                            value={item.criticalParameter3}
+                            value={item.lowerLimit}
                             onChange={(e) => {
-                              const newData = [...trendingOCPPS1];
-                              newData[index].criticalParameter3 = e.target.value;
-                              setTrendingOCPPS1(newData);
+                              const newData = [...trendingOCPPS4];
+                              newData[index].lowerLimit = e.target.value;
+                              setTrendingOCPPS4(newData);
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.upperLimit}
+                            onChange={(e) => {
+                              const newData = [...trendingOCPPS4];
+                              newData[index].upperLimit = e.target.value;
+                              setTrendingOCPPS4(newData);
                             }}
                           />
                         </td>
