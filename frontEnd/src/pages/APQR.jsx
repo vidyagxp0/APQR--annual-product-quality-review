@@ -1933,6 +1933,7 @@ export default function APQR() {
     };
     setYieldTOS5([...yieldTOS5, newRow]);
   };
+  
   const addTrendingOCPPS1Row = () => {
     const newRow = {
       batchNo: "",
@@ -2150,6 +2151,7 @@ export default function APQR() {
           Finished Product Analytical Trend
           </div>
         </div>
+
 
         {tab === "GI" ? (
           <div className="  p-4">
@@ -14280,6 +14282,7 @@ export default function APQR() {
                 </tbody>
               </table>
             </div></> :null}
+
       </div>
       <div className="flex justify-end gap-10 pr-10">
         <div className="fixed top-1/2 left-0 z-10 flex flex-col">
