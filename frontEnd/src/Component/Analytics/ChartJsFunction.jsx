@@ -1032,6 +1032,411 @@ export const YieldTrendS5PlotLines = [
   },
 ];
 
+
+export const TrendOfCriticalprocessS2PlotLines = [
+  {
+    value: -40,
+    color: "red",
+    width: 2,
+    dashStyle: "Line",
+    label: {
+      text: "Upper Limit",
+      style: { color: "black", fontWeight: "bold" },
+    },
+  },
+  {
+    value: -30,
+    color: "green",
+    width: 2,
+    dashStyle: "Line",
+    label: {
+      text: "Lower Limit",
+      style: { color: "black", fontWeight: "bold" },
+    },
+  },
+];
+export const TrendOfCriticalprocessS01PlotLines = [
+  {
+    value: 60,
+    color: "red",
+    width: 2,
+    dashStyle: "Line",
+    label: {
+      text: "Upper Limit",
+      style: { color: "black", fontWeight: "bold" },
+    },
+  },
+  {
+    value: 54.5,
+    color: "green",
+    width: 2,
+    dashStyle: "Line",
+    label: {
+      text: "Lower Limit",
+      style: { color: "black", fontWeight: "bold" },
+    },
+  },
+];
+export const TrendOfCriticalprocessS02PlotLines = [
+  {
+    value: 5,
+    color: "red",
+    width: 2,
+    dashStyle: "Line",
+    label: {
+      text: "Upper Limit",
+      style: { color: "black", fontWeight: "bold" },
+    },
+  },
+  {
+    value: 0,
+    color: "green",
+    width: 2,
+    dashStyle: "Line",
+    label: {
+      text: "Lower Limit",
+      style: { color: "black", fontWeight: "bold" },
+    },
+  },
+];
+export const TOIPIP_S01G1PlotLines = [
+  // {
+  //   value: 5,
+  //   color: "red",
+  //   width: 2,
+  //   dashStyle: "Line",
+  //   label: {
+  //     text: "Upper Limit",
+  //     style: { color: "black", fontWeight: "bold" },
+  //   },
+  // },
+  {
+    value: 1,
+    color: "green",
+    width: 2,
+    dashStyle: "Line",
+    label: {
+      text: "Lower Limit",
+      style: { color: "black", fontWeight: "bold" },
+    },
+  },
+];
+export const TOIPIP_S01G2PlotLines = [
+  // {
+  //   value: 5,
+  //   color: "red",
+  //   width: 2,
+  //   dashStyle: "Line",
+  //   label: {
+  //     text: "Upper Limit",
+  //     style: { color: "black", fontWeight: "bold" },
+  //   },
+  // },
+  {
+    value: 93,
+    color: "green",
+    width: 2,
+    dashStyle: "Line",
+    label: {
+      text: "Lower Limit",
+      style: { color: "black", fontWeight: "bold" },
+    },
+  },
+];
+export const TOIPIP_S02PlotLines = [
+  // {
+  //   value: 5,
+  //   color: "red",
+  //   width: 2,
+  //   dashStyle: "Line",
+  //   label: {
+  //     text: "Upper Limit",
+  //     style: { color: "black", fontWeight: "bold" },
+  //   },
+  // },
+  {
+    value: 84.5,
+    color: "green",
+    width: 2,
+    dashStyle: "Line",
+    label: {
+      text: "Lower Limit",
+      style: { color: "black", fontWeight: "bold" },
+    },
+  },
+];
+export const TOIPIP_S03PlotLines = [
+  // {
+  //   value: 5,
+  //   color: "red",
+  //   width: 2,
+  //   dashStyle: "Line",
+  //   label: {
+  //     text: "Upper Limit",
+  //     style: { color: "black", fontWeight: "bold" },
+  //   },
+  // },
+  {
+    value: 98,
+    color: "green",
+    width: 2,
+    dashStyle: "Line",
+    label: {
+      text: "Lower Limit",
+      style: { color: "black", fontWeight: "bold" },
+    },
+  },
+];
+
+export const TOIPIP_S04G1PlotLines = [
+  // {
+  //   value: 5,
+  //   color: "red",
+  //   width: 2,
+  //   dashStyle: "Line",
+  //   label: {
+  //     text: "Upper Limit",
+  //     style: { color: "black", fontWeight: "bold" },
+  //   },
+  // },
+  {
+    value: 1,
+    color: "green",
+    width: 2,
+    dashStyle: "Line",
+    label: {
+      text: "Lower Limit",
+      style: { color: "black", fontWeight: "bold" },
+    },
+  },
+];
+export const TOIPIP_S04G2PlotLines = [
+  // {
+  //   value: 5,
+  //   color: "red",
+  //   width: 2,
+  //   dashStyle: "Line",
+  //   label: {
+  //     text: "Upper Limit",
+  //     style: { color: "black", fontWeight: "bold" },
+  //   },
+  // },
+  {
+    value: 0.25,
+    color: "green",
+    width: 2,
+    dashStyle: "Line",
+    label: {
+      text: "Lower Limit",
+      style: { color: "black", fontWeight: "bold" },
+    },
+  },
+];
+export const TOIPIP_S04G3PlotLines = [
+  // {
+  //   value: 5,
+  //   color: "red",
+  //   width: 2,
+  //   dashStyle: "Line",
+  //   label: {
+  //     text: "Upper Limit",
+  //     style: { color: "black", fontWeight: "bold" },
+  //   },
+  // },
+  {
+    value: 0.15,
+    color: "green",
+    width: 2,
+    dashStyle: "Line",
+    label: {
+      text: "Lower Limit",
+      style: { color: "black", fontWeight: "bold" },
+    },
+  },
+];
+export const TOIPIP_S04G4PlotLines = [
+  // {
+  //   value: 5,
+  //   color: "red",
+  //   width: 2,
+  //   dashStyle: "Line",
+  //   label: {
+  //     text: "Upper Limit",
+  //     style: { color: "black", fontWeight: "bold" },
+  //   },
+  // },
+  {
+    value: 1,
+    color: "green",
+    width: 2,
+    dashStyle: "Line",
+    label: {
+      text: "Lower Limit",
+      style: { color: "black", fontWeight: "bold" },
+    },
+  },
+];
+export const TOIPIP_S04G5PlotLines = [
+  // {
+  //   value: 5,
+  //   color: "red",
+  //   width: 2,
+  //   dashStyle: "Line",
+  //   label: {
+  //     text: "Upper Limit",
+  //     style: { color: "black", fontWeight: "bold" },
+  //   },
+  // },
+  {
+    value: 0.15,
+    color: "green",
+    width: 2,
+    dashStyle: "Line",
+    label: {
+      text: "Lower Limit",
+      style: { color: "black", fontWeight: "bold" },
+    },
+  },
+];
+export const TOIPIP_S04G6PlotLines = [
+  // {
+  //   value: 5,
+  //   color: "red",
+  //   width: 2,
+  //   dashStyle: "Line",
+  //   label: {
+  //     text: "Upper Limit",
+  //     style: { color: "black", fontWeight: "bold" },
+  //   },
+  // },
+  {
+    value: 0.45,
+    color: "green",
+    width: 2,
+    dashStyle: "Line",
+    label: {
+      text: "Lower Limit",
+      style: { color: "black", fontWeight: "bold" },
+    },
+  },
+];
+export const TOIPIP_S05G1PlotLines = [
+  // {
+  //   value: 5,
+  //   color: "red",
+  //   width: 2,
+  //   dashStyle: "Line",
+  //   label: {
+  //     text: "Upper Limit",
+  //     style: { color: "black", fontWeight: "bold" },
+  //   },
+  // },
+  {
+    value: 1,
+    color: "green",
+    width: 2,
+    dashStyle: "Line",
+    label: {
+      text: "Lower Limit",
+      style: { color: "black", fontWeight: "bold" },
+    },
+  },
+];
+export const TOIPIP_S05G2PlotLines = [
+  // {
+  //   value: 5,
+  //   color: "red",
+  //   width: 2,
+  //   dashStyle: "Line",
+  //   label: {
+  //     text: "Upper Limit",
+  //     style: { color: "black", fontWeight: "bold" },
+  //   },
+  // },
+  {
+    value: 0.10,
+    color: "green",
+    width: 2,
+    dashStyle: "Line",
+    label: {
+      text: "Lower Limit",
+      style: { color: "black", fontWeight: "bold" },
+    },
+  },
+];
+export const TOIPIP_S05G3PlotLines = [
+  // {
+  //   value: 5,
+  //   color: "red",
+  //   width: 2,
+  //   dashStyle: "Line",
+  //   label: {
+  //     text: "Upper Limit",
+  //     style: { color: "black", fontWeight: "bold" },
+  //   },
+  // },
+  {
+    value: 0.5,
+    color: "green",
+    width: 2,
+    dashStyle: "Line",
+    label: {
+      text: "Lower Limit",
+      style: { color: "black", fontWeight: "bold" },
+    },
+  },
+];
+export const TOIPIP_S05G4PlotLines = [
+  // {
+  //   value: 5,
+  //   color: "red",
+  //   width: 2,
+  //   dashStyle: "Line",
+  //   label: {
+  //     text: "Upper Limit",
+  //     style: { color: "black", fontWeight: "bold" },
+  //   },
+  // },
+  {
+    value: 0.25,
+    color: "green",
+    width: 2,
+    dashStyle: "Line",
+    label: {
+      text: "Lower Limit",
+      style: { color: "black", fontWeight: "bold" },
+    },
+  },
+];
+export const TOIPIP_S05G5PlotLines = [
+  // {
+  //   value: 5,
+  //   color: "red",
+  //   width: 2,
+  //   dashStyle: "Line",
+  //   label: {
+  //     text: "Upper Limit",
+  //     style: { color: "black", fontWeight: "bold" },
+  //   },
+  // },
+  {
+    value: 0.50,
+    color: "green",
+    width: 2,
+    dashStyle: "Line",
+    label: {
+      text: "Lower Limit",
+      style: { color: "black", fontWeight: "bold" },
+    },
+  },
+];
+
+
+
+
+
+
+
 export const trend1 = [
   { batchNo: "U3TCAyI23_001", actualOutput: "51.94" },
   { batchNo: "U3TCAyI23_002", actualOutput: "53.58" },

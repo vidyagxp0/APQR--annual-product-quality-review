@@ -22,6 +22,24 @@ import {
   YieldTrendS3PlotLines,
   YieldTrendS4PlotLines,
   YieldTrendS5PlotLines,
+  TrendOfCriticalprocessS2PlotLines,
+  TrendOfCriticalprocessS01PlotLines,
+  TrendOfCriticalprocessS02PlotLines,
+  TOIPIP_S01G1PlotLines,
+  TOIPIP_S01G2PlotLines,
+  TOIPIP_S02PlotLines,
+  TOIPIP_S03PlotLines,
+  TOIPIP_S04G1PlotLines,
+  TOIPIP_S04G2PlotLines,
+  TOIPIP_S04G3PlotLines,
+  TOIPIP_S04G4PlotLines,
+  TOIPIP_S04G5PlotLines,
+  TOIPIP_S04G6PlotLines,
+  TOIPIP_S05G1PlotLines,
+  TOIPIP_S05G2PlotLines,
+  TOIPIP_S05G3PlotLines,
+  TOIPIP_S05G4PlotLines,
+  TOIPIP_S05G5PlotLines,
   paracetamolAnnotations,
   paracetamolAssayZones,
   paracetamolDisinterationZones,
@@ -17543,7 +17561,7 @@ export default function APQR() {
             </div>
             <div className="">
               <HighchartsLine
-                heading={"Trend Analytics"}
+                heading={"The Graphical Presentation of  Yield of  Intermediate (Stage-I) "}
                 xHeading={"Batch No."}
                 yHeading={"OutPut Range in Kg "}
                 yMax={60}
@@ -17691,7 +17709,7 @@ export default function APQR() {
             </div>
             <div className="">
               <HighchartsLine
-                heading={"Trend Analytics"}
+                heading={"The Graphical Presentation of  Yield of  Intermediate (Stage-II) "}
                 xHeading={"Batch No."}
                 yHeading={"OutPut Range in Kg "}
                 yMax={84}
@@ -17840,7 +17858,7 @@ export default function APQR() {
             </div>
             <div className="">
               <HighchartsLine
-                heading={"Trend Analytics"}
+                heading={"The Graphical Presentation of  Yield of  Intermediate (Stage-III) "}
                 xHeading={"Batch No."}
                 yHeading={"OutPut Range in Kg "}
                 yMax={55}
@@ -17989,7 +18007,7 @@ export default function APQR() {
             </div>
             <div className="">
               <HighchartsLine
-                heading={"Trend Analytics"}
+                heading={"04 The Graphical Presentation of  Yield of  Intermediate (Stage-IV"}
                 xHeading={"Batch No."}
                 yHeading={"OutPut Range in Kg "}
                 yMax={44}
@@ -18138,7 +18156,7 @@ export default function APQR() {
             </div>
             <div className="">
               <HighchartsLine
-                heading={"Trend Analytics"}
+                heading={"The Graphical Presentation of  Yield of  Intermediate (Stage-V) "}
                 xHeading={"Batch No."}
                 yHeading={"OutPut Range in Kg "}
                 yMax={38}
@@ -18406,6 +18424,20 @@ export default function APQR() {
                 </tbody>
               </table>
             </div>
+            <div className="">
+              <HighchartsLine
+                heading={"The Graphical Presentation of Tepmerature of CPP-03Stage-II "}
+                xHeading={"Batch No."}
+                yHeading={"OutPut Range in Kg "}
+                yMax={10}
+                yMin={-40}
+                yTickInterval={10}
+                plotLines={TrendOfCriticalprocessS2PlotLines}
+                // zones={paracetamolpHZones}
+                // annotations={paracetamolAnnotations}
+                highchartData={yieldTrendS1Data}
+              />
+            </div>
 
             <div className="gridName pt-4">Trending of Critical Process Parameter: Stage - III</div>
             <div>
@@ -18536,6 +18568,36 @@ export default function APQR() {
                   })}
                 </tbody>
               </table>
+            </div>
+            <div className="w-full shadow-lg flex-wrap mb-3 flex items-center justify-evenly mt-3  ">
+            <div className="">
+              <HighchartsLine
+                heading={"The Graphical Presentation off Tempearture of CPP-01Stage-V "}
+                xHeading={"Batch No."}
+                yHeading={"OutPut Range in Kg "}
+                yMax={64}
+                yMin={50}
+                yTickInterval={2}
+                plotLines={TrendOfCriticalprocessS01PlotLines}
+                // zones={paracetamolpHZones}
+                // annotations={paracetamolAnnotations}
+                highchartData={yieldTrendS1Data}
+              />
+            </div>
+            <div className="">
+              <HighchartsLine
+                heading={"The Graphical Presentation off Tempearture of CPP-02Stage-V "}
+                xHeading={"Batch No."}
+                yHeading={"OutPut Range in Kg "}
+                yMax={7}
+                yMin={-1}
+                yTickInterval={1}
+                plotLines={TrendOfCriticalprocessS02PlotLines}
+                // zones={paracetamolpHZones}
+                // annotations={paracetamolAnnotations}
+                highchartData={yieldTrendS1Data}
+              />
+            </div>
             </div>
 
             <div className="gridName pt-4">Trending of Critical Process Parameter: Stage - IV</div>
@@ -19010,6 +19072,36 @@ export default function APQR() {
                 </tbody>
               </table>
             </div>
+            <div className="w-full shadow-lg wrap flex items-center justify-between mt-3 gap-5">
+              <div className="w-1/2">
+                <HighchartsLine
+                  heading={"The Graphical Presentation of  Water Content of Intermediate Stage-I"}
+                  xHeading={"Batch No."}
+                  yHeading={"OutPut Range in Kg "}
+                  yMax={1.40}
+                  yMin={0}
+                  yTickInterval={0.0}
+                  plotLines={TOIPIP_S01G1PlotLines}
+                  // zones={paracetamolpHZones}
+                  // annotations={paracetamolAnnotations}
+                  highchartData={yieldTrendS1Data}
+                />
+              </div>
+              <div className="w-1/2">
+                <HighchartsLine
+                  heading={"The Graphical Presentation of  Chromatographic Purity by HPLC of Intermediate Stage-I"}
+                  xHeading={"Batch No."}
+                  yHeading={"OutPut Range in Kg "}
+                  yMax={100}
+                  yMin={92}
+                  yTickInterval={1}
+                  plotLines={TOIPIP_S01G2PlotLines}
+                  // zones={paracetamolpHZones}
+                  // annotations={paracetamolAnnotations}
+                  highchartData={yieldTrendS1Data}
+                />
+              </div>
+            </div>
 
             <div className="gridName pt-4">
               Trending of In-process & Intermediate Parameter of U3TCAg - Stage-II{" "}
@@ -19276,6 +19368,20 @@ export default function APQR() {
                 </tbody>
               </table>
             </div>
+            <div>
+              <HighchartsLine
+                heading={"Graph - 08 The Graphical Presentation of Purity by HPLC Intermediate Stage-II"}
+                xHeading={"Batch No."}
+                yHeading={"OutPut Range in Kg "}
+                yMax={98}
+                yMin={82}
+                yTickInterval={2}
+                plotLines={TOIPIP_S02PlotLines}
+                // zones={paracetamolpHZones}
+                // annotations={paracetamolAnnotations}
+                highchartData={yieldTrendS1Data}
+              />
+            </div>
 
             <div className="gridName pt-4">
               Trending of In-process & Intermediate Parameter of U3TCAg - Stage-III{" "}
@@ -19457,6 +19563,20 @@ export default function APQR() {
                   })}
                 </tbody>
               </table>
+            </div>
+            <div>
+              <HighchartsLine
+                heading={"09 The Graphical Presentation of  Chromatographic Purity in area% Intermediate Stage-III "}
+                xHeading={"Batch No."}
+                yHeading={"OutPut Range in Kg "}
+                yMax={104}
+                yMin={94}
+                yTickInterval={1}
+                plotLines={TOIPIP_S03PlotLines}
+                // zones={paracetamolpHZones}
+                // annotations={paracetamolAnnotations}
+                highchartData={yieldTrendS1Data}
+              />
             </div>
 
             <div className="gridName pt-4">
@@ -19794,6 +19914,92 @@ export default function APQR() {
                 </tbody>
               </table>
             </div>
+            <div className="w-full shadow-lg flex-wrap mb-3 flex items-center justify-evenly mt-3  ">
+              <div className="w-1/2">
+                <HighchartsLine
+                  heading={"The Graphical Presentation of Water Content Intermediate Stage-IV "}
+                  xHeading={"Batch No."}
+                  yHeading={"OutPut Range in Kg "}
+                  yMax={1.4}
+                  yMin={0}
+                  yTickInterval={0.2}
+                  plotLines={TOIPIP_S04G1PlotLines}
+                  // zones={paracetamolpHZones}
+                  // annotations={paracetamolAnnotations}
+                  highchartData={yieldTrendS1Data}
+                />
+              </div>
+              <div className="w-1/2">
+                <HighchartsLine
+                  heading={"The Graphical Presentation of  Related Substances by HPLC Test - Impurity K  Intermediate Stage-IV"}
+                  xHeading={"Batch No."}
+                  yHeading={"OutPut Range in Kg "}
+                  yMax={0.4}
+                  yMin={0}
+                  yTickInterval={0.1}
+                  plotLines={TOIPIP_S04G2PlotLines}
+                  // zones={paracetamolpHZones}
+                  // annotations={paracetamolAnnotations}
+                  highchartData={yieldTrendS1Data}
+                />
+              </div>
+              <div className="w-1/2">
+                <HighchartsLine
+                  heading={"The Graphical Presentation of  Related Substances by HPLC Test - Unknown Impurity Intermediate Stage-IV"}
+                  xHeading={"Batch No."}
+                  yHeading={"OutPut Range in Kg "}
+                  yMax={0.2}
+                  yMin={0}
+                  yTickInterval={0.5}
+                  plotLines={TOIPIP_S04G3PlotLines}
+                  // zones={paracetamolpHZones}
+                  // annotations={paracetamolAnnotations}
+                  highchartData={yieldTrendS1Data}
+                />
+              </div>
+              <div className="w-1/2">
+                <HighchartsLine
+                  heading={"11 The Graphical Presentation of  Loss On Drying Intermediate Stage-IV "}
+                  xHeading={"Batch No."}
+                  yHeading={"OutPut Range in Kg "}
+                  yMax={1.4}
+                  yMin={0}
+                  yTickInterval={0.2}
+                  plotLines={TOIPIP_S04G4PlotLines}
+                  // zones={paracetamolpHZones}
+                  // annotations={paracetamolAnnotations}
+                  highchartData={yieldTrendS1Data}
+                />
+              </div>
+              <div className="w-1/2">
+                <HighchartsLine
+                  heading={"13 The Graphical Presentation of  Related Substances by HPLC Test - Impurity D  Intermediate Stage-IV"}
+                  xHeading={"Batch No."}
+                  yHeading={"OutPut Range in Kg "}
+                  yMax={0.4}
+                  yMin={0}
+                  yTickInterval={0.1}
+                  plotLines={TOIPIP_S04G5PlotLines}
+                  // zones={paracetamolpHZones}
+                  // annotations={paracetamolAnnotations}
+                  highchartData={yieldTrendS1Data}
+                />
+              </div>
+              <div className="w-1/2">
+                <HighchartsLine
+                  heading={"The Graphical Presentation of  Related Substances by HPLC Test - Total Impurities Intermediate (Stage-IV)"}
+                  xHeading={"Batch No."}
+                  yHeading={"OutPut Range in Kg "}
+                  yMax={0.8}
+                  yMin={0}
+                  yTickInterval={0.1}
+                  plotLines={TOIPIP_S04G6PlotLines}
+                  // zones={paracetamolpHZones}
+                  // annotations={paracetamolAnnotations}
+                  highchartData={yieldTrendS1Data}
+                />
+              </div>
+            </div>
 
             <div className="gridName pt-4">
               Trending of In-process & Intermediate Parameter of U3TCAg - Stage-V{" "}
@@ -20044,6 +20250,78 @@ export default function APQR() {
                   })}
                 </tbody>
               </table>
+            </div>
+            <div className="w-full shadow-lg flex-wrap mb-3 flex items-center justify-evenly mt-3  gap-3 ">
+              <div classname="w-1/2">
+                <HighchartsLine
+                  heading={"16  The Graphical Presentation of Loss on Drying Intermediate Stage-V"}
+                  xHeading={"Batch No."}
+                  yHeading={"OutPut Range in Kg "}
+                  yMax={2.0}
+                  yMin={0}
+                  yTickInterval={0.2}
+                  plotLines={TOIPIP_S05G1PlotLines}
+                  // zones={paracetamolpHZones}
+                  // annotations={paracetamolAnnotations}
+                  highchartData={yieldTrendS1Data}
+                />
+              </div>
+              <div classname="w-1/2">
+                <HighchartsLine
+                  heading={"The Graphical Presentation of  Related Substances by HPLC As per USP Test - Unspecified Impurity Intermediate Stage-V "}
+                  xHeading={"Batch No."}
+                  yHeading={"OutPut Range in Kg "}
+                  yMax={0.2}
+                  yMin={0}
+                  yTickInterval={0.05}
+                  plotLines={TOIPIP_S05G2PlotLines}
+                  // zones={paracetamolpHZones}
+                  // annotations={paracetamolAnnotations}
+                  highchartData={yieldTrendS1Data}
+                />
+              </div>
+              <div classname="w-1/2">
+                <HighchartsLine
+                  heading={"- 20 The Graphical Presentation of  Related Substances by HPLC As per PhEur 7.5 Test - Total Impurities Intermediate Stage-V "}
+                  xHeading={"Batch No."}
+                  yHeading={"OutPut Range in Kg "}
+                  yMax={0.8}
+                  yMin={0}
+                  yTickInterval={0.1}
+                  plotLines={TOIPIP_S05G3PlotLines}
+                  // zones={paracetamolpHZones}
+                  // annotations={paracetamolAnnotations}
+                  highchartData={yieldTrendS1Data}
+                />
+              </div>
+              <div classname="w-1/2">
+                <HighchartsLine
+                  heading={"17 The Graphical Presentation of  Related Substances by HPLC As per USP Test - Impurity K Intermediate Stage-V"}
+                  xHeading={"Batch No."}
+                  yHeading={"OutPut Range in Kg "}
+                  yMax={0.3}
+                  yMin={0}
+                  yTickInterval={0.5}
+                  plotLines={TOIPIP_S05G4PlotLines}
+                  // zones={paracetamolpHZones}
+                  // annotations={paracetamolAnnotations}
+                  highchartData={yieldTrendS1Data}
+                />
+              </div>
+              <div classname="w-1/2">
+                <HighchartsLine
+                  heading={"The Graphical Presentation of  Related Substances by HPLC As per USP Test - Total Impurities Intermediate Stage-V"}
+                  xHeading={"Batch No."}
+                  yHeading={"OutPut Range in Kg "}
+                  yMax={0.8}
+                  yMin={0}
+                  yTickInterval={0.1}
+                  plotLines={TOIPIP_S05G5PlotLines}
+                  // zones={paracetamolpHZones}
+                  // annotations={paracetamolAnnotations}
+                  highchartData={yieldTrendS1Data}
+                />
+              </div>
             </div>
           </>
         ) : null}
