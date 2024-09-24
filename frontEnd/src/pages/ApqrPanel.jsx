@@ -18569,36 +18569,7 @@ export default function APQR() {
                 </tbody>
               </table>
             </div>
-            <div className="w-full shadow-lg flex-wrap mb-3 flex items-center justify-evenly mt-3  ">
-            <div className="">
-              <HighchartsLine
-                heading={"The Graphical Presentation off Tempearture of CPP-01Stage-V "}
-                xHeading={"Batch No."}
-                yHeading={"OutPut Range in Kg "}
-                yMax={64}
-                yMin={50}
-                yTickInterval={2}
-                plotLines={TrendOfCriticalprocessS01PlotLines}
-                // zones={paracetamolpHZones}
-                // annotations={paracetamolAnnotations}
-                highchartData={yieldTrendS1Data}
-              />
-            </div>
-            <div className="">
-              <HighchartsLine
-                heading={"The Graphical Presentation off Tempearture of CPP-02Stage-V "}
-                xHeading={"Batch No."}
-                yHeading={"OutPut Range in Kg "}
-                yMax={7}
-                yMin={-1}
-                yTickInterval={1}
-                plotLines={TrendOfCriticalprocessS02PlotLines}
-                // zones={paracetamolpHZones}
-                // annotations={paracetamolAnnotations}
-                highchartData={yieldTrendS1Data}
-              />
-            </div>
-            </div>
+          
 
             <div className="gridName pt-4">Trending of Critical Process Parameter: Stage - IV</div>
             <div>
@@ -18752,6 +18723,36 @@ export default function APQR() {
                   })}
                 </tbody>
               </table>
+            </div>
+            <div className="w-full shadow-lg flex-wrap mb-3 flex items-center justify-evenly mt-3  ">
+            <div className="">
+              <HighchartsLine
+                heading={"The Graphical Presentation off Tempearture of CPP-01Stage-IV "}
+                xHeading={"Batch No."}
+                yHeading={"OutPut Range in Kg "}
+                yMax={64}
+                yMin={50}
+                yTickInterval={2}
+                plotLines={TrendOfCriticalprocessS01PlotLines}
+                // zones={paracetamolpHZones}
+                // annotations={paracetamolAnnotations}
+                highchartData={yieldTrendS1Data}
+              />
+            </div>
+            <div className="">
+              <HighchartsLine
+                heading={"The Graphical Presentation off Tempearture of CPP-02Stage-IV "}
+                xHeading={"Batch No."}
+                yHeading={"OutPut Range in Kg "}
+                yMax={7}
+                yMin={-1}
+                yTickInterval={1}
+                plotLines={TrendOfCriticalprocessS02PlotLines}
+                // zones={paracetamolpHZones}
+                // annotations={paracetamolAnnotations}
+                highchartData={yieldTrendS1Data}
+              />
+            </div>
             </div>
           </>
         ) : null}
