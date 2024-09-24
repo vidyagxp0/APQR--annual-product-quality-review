@@ -10,7 +10,6 @@ import AdminDashboard from "./pages/Admin/AdminDashboard";
 import TinyEditor from "./Component/TinyEditor";
 import ApqrPanel from "./pages/ApqrPanel";
 import ESignatureModal from "./Component/ESignatureModal";
-import DownloadReportButton from "./Component/DownloadReportButton";
 import HighchartsLine from "./Component/Analytics/HighchartsLine";
 import AdvancedAnalytics from "./pages/AdvancedAnalytics";
 import Logs from "./pages/Logs";
@@ -38,7 +37,6 @@ function App() {
         <Route path="/analytics2" element={<Analytics />} />
         <Route path="/test" element={<TinyEditor />} />
         <Route path="/test2" element={<ESignatureModal />} />
-        <Route path="/pdftest" element={<DownloadReportButton />} />
         <Route path="/highchart" element={<HighchartsLine />} />
 
       </Routes>
