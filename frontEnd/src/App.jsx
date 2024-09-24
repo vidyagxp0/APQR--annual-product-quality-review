@@ -20,7 +20,7 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        {/* Admin */}
+        {/* Admin Panel */}
         <Route path="/admin-login" element={<AdminLogin />} />
         <Route path="/admin-dashboard" element={<AdminDashboard />} />
 
@@ -40,7 +40,6 @@ function App() {
         <Route path="/test2" element={<ESignatureModal />} />
         <Route path="/pdftest" element={<DownloadReportButton />} />
         <Route path="/highchart" element={<HighchartsLine />} />
-
       </Routes>
     </BrowserRouter>
   );
