@@ -18,6 +18,10 @@ import {
   ParacetamolImpurityPlotLines,
   ParacetamolpHPlotLines,
   YieldTrendS1PlotLines,
+  YieldTrendS2PlotLines,
+  YieldTrendS3PlotLines,
+  YieldTrendS4PlotLines,
+  YieldTrendS5PlotLines,
   paracetamolAnnotations,
   paracetamolAssayZones,
   paracetamolDisinterationZones,
@@ -18181,6 +18185,20 @@ export default function APQR() {
                 </tbody>
               </table>
             </div>
+            <div className="">
+              <HighchartsLine
+                heading={"Trend Analytics"}
+                xHeading={"Batch No."}
+                yHeading={"OutPut Range in Kg "}
+                yMax={84}
+                yMin={52}
+                yTickInterval={2}
+                plotLines={YieldTrendS2PlotLines}
+                // zones={paracetamolpHZones}
+                // annotations={paracetamolAnnotations}
+                highchartData={yieldTrendS1Data}
+              />
+            </div>
 
             <div className="gridName pt-4">Yield Trend Of Stage-3</div>
             <div>
@@ -18319,6 +18337,20 @@ export default function APQR() {
                   })}
                 </tbody>
               </table>
+            </div>
+            <div className="">
+              <HighchartsLine
+                heading={"Trend Analytics"}
+                xHeading={"Batch No."}
+                yHeading={"OutPut Range in Kg "}
+                yMax={55}
+                yMin={35}
+                yTickInterval={2}
+                plotLines={YieldTrendS3PlotLines}
+                // zones={paracetamolpHZones}
+                // annotations={paracetamolAnnotations}
+                highchartData={yieldTrendS1Data}
+              />
             </div>
 
             <div className="gridName pt-4">Yield Trend Of Stage-4</div>
@@ -18459,6 +18491,20 @@ export default function APQR() {
                 </tbody>
               </table>
             </div>
+            <div className="">
+              <HighchartsLine
+                heading={"Trend Analytics"}
+                xHeading={"Batch No."}
+                yHeading={"OutPut Range in Kg "}
+                yMax={44}
+                yMin={32}
+                yTickInterval={2}
+                plotLines={YieldTrendS4PlotLines}
+                // zones={paracetamolpHZones}
+                // annotations={paracetamolAnnotations}
+                highchartData={yieldTrendS1Data}
+              />
+            </div>
 
             <div className="gridName pt-4">Yield Trend Of Stage-5</div>
             <div>
@@ -18597,6 +18643,20 @@ export default function APQR() {
                   })}
                 </tbody>
               </table>
+            </div>
+            <div className="">
+              <HighchartsLine
+                heading={"Trend Analytics"}
+                xHeading={"Batch No."}
+                yHeading={"OutPut Range in Kg "}
+                yMax={38}
+                yMin={33}
+                yTickInterval={1}
+                plotLines={YieldTrendS5PlotLines}
+                // zones={paracetamolpHZones}
+                // annotations={paracetamolAnnotations}
+                highchartData={yieldTrendS1Data}
+              />
             </div>
           </>
         ) : null}

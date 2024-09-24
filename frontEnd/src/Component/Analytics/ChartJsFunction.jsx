@@ -901,7 +901,10 @@ export const YieldTrendS1PlotLines = [
     color: "red",
     width: 2,
     dashStyle: "Line",
-    label: { text: "Upper Limit", style: { color: "black", fontWeight: "bold" } },
+    label: {
+      text: "Upper Limit",
+      style: { color: "black", fontWeight: "bold" },
+    },
   },
   {
     value: 2.5,
@@ -915,7 +918,10 @@ export const YieldTrendS1PlotLines = [
     color: "green",
     width: 2,
     dashStyle: "Line",
-    label: { text: "Lower Limit", style: { color: "black", fontWeight: "bold" } },
+    label: {
+      text: "Lower Limit",
+      style: { color: "black", fontWeight: "bold" },
+    },
   },
   {
     value: 2,
@@ -932,6 +938,97 @@ export const YieldTrendS1PlotLines = [
     color: "black",
     width: 1,
     label: { text: "0", style: { color: "black", fontWeight: "bold" } },
+  },
+];
+
+export const YieldTrendS2PlotLines = [
+  {
+    value: 78,
+    color: "red",
+    width: 2,
+    dashStyle: "Line",
+    label: {
+      text: "Upper Limit",
+      style: { color: "black", fontWeight: "bold" },
+    },
+  },
+  {
+    value: 54,
+    color: "green",
+    width: 2,
+    dashStyle: "Line",
+    label: {
+      text: "Lower Limit",
+      style: { color: "black", fontWeight: "bold" },
+    },
+  },
+];
+
+export const YieldTrendS3PlotLines = [
+  {
+    value: 49.5,
+    color: "red",
+    width: 2,
+    dashStyle: "Line",
+    label: {
+      text: "Upper Limit",
+      style: { color: "black", fontWeight: "bold" },
+    },
+  },
+  {
+    value: 37,
+    color: "green",
+    width: 2,
+    dashStyle: "Line",
+    label: {
+      text: "Lower Limit",
+      style: { color: "black", fontWeight: "bold" },
+    },
+  },
+];
+
+export const YieldTrendS4PlotLines = [
+  {
+    value: 40,
+    color: "red",
+    width: 2,
+    dashStyle: "Line",
+    label: {
+      text: "Upper Limit",
+      style: { color: "black", fontWeight: "bold" },
+    },
+  },
+  {
+    value: 34,
+    color: "green",
+    width: 2,
+    dashStyle: "Line",
+    label: {
+      text: "Lower Limit",
+      style: { color: "black", fontWeight: "bold" },
+    },
+  },
+];
+export const YieldTrendS5PlotLines = [
+  {
+    value: 38,
+    color: "red",
+    width: 2,
+    dashStyle: "Line",
+    label: {
+      text: "Upper Limit",
+      style: { color: "black", fontWeight: "bold" },
+    },
+  },
+  {
+    value: 33,
+    color: "green",
+    width: 2,
+    dashStyle: "Line",
+    label: {
+      text: "Lower Limit",
+      style: { color: "black", fontWeight: "bold" },
+    },
   },
 ];
 
