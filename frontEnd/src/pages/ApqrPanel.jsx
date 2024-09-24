@@ -18509,7 +18509,7 @@ export default function APQR() {
                   </tr>
                 </thead>
                 <tbody>
-                  {gridDatas.trendingOCP4.map((item, index) => {
+                  {gridDatas?.trendingOCP4?.map((item, index) => {
                     return (
                       <tr key={index}>
                         <td>{index + 1}</td>
