@@ -13656,9 +13656,9 @@ export default function APQR() {
                           <input
                             value={item.limit}
                             onChange={(e) => {
-                              const newData = [...trendingOIPIPS3];
+                              const newData = [...trendingOIPIPS1];
                               newData[index].limit = e.target.value;
-                              setTrendingOIPIPS3(newData);
+                              setTrendingOIPIPS1(newData);
                             }}
                           />
                         </td>
@@ -13666,9 +13666,9 @@ export default function APQR() {
                           <input
                             value={item.chromatographicPurity}
                             onChange={(e) => {
-                              const newData = [...trendingOIPIPS3];
+                              const newData = [...trendingOIPIPS1];
                               newData[index].chromatographicPurity = e.target.value;
-                              setTrendingOIPIPS3(newData);
+                              setTrendingOIPIPS1(newData);
                             }}
                           />
                         </td>
@@ -13736,9 +13736,9 @@ export default function APQR() {
                           <input
                             value={item.composite.limit}
                             onChange={(e) => {
-                              const newData = [...trendingOIPIPS3];
-                              newData[index].composite.limit = e.target.value;
-                              setTrendingOIPIPS3(newData);
+                              const newData = [...trendingOIPIPS2];
+                              newData[index].composite.unreactedTca = e.target.value;
+                              setTrendingOIPIPS2(newData);
                             }}
                           />
                         </td>{" "}
@@ -13839,9 +13839,9 @@ export default function APQR() {
                           <input
                             value={item.limit}
                             onChange={(e) => {
-                              const newData = [...trendingOIPIPS4];
+                              const newData = [...trendingOIPIPS1];
                               newData[index].limit = e.target.value;
-                              setTrendingOIPIPS4(newData);
+                              setTrendingOIPIPS1(newData);
                             }}
                           />
                         </td>
@@ -13889,10 +13889,9 @@ export default function APQR() {
                           <input
                             value={item.composite.relatedSubstanceByHPLC.impurityKNMT}
                             onChange={(e) => {
-                              const newData = [...trendingOIPIPS4];
-                              newData[index].composite.relatedSubstanceByHPLC.impurityKNMT =
-                                e.target.value;
-                              setTrendingOIPIPS4(newData);
+                              const newData = [...trendingOIPIPS1];
+                              newData[index].impurityKNMT = e.target.value;
+                              setTrendingOIPIPS3(newData);
                             }}
                           />
                         </td>
@@ -13900,10 +13899,9 @@ export default function APQR() {
                           <input
                             value={item.composite.relatedSubstanceByHPLC.limitNMT}
                             onChange={(e) => {
-                              const newData = [...trendingOIPIPS4];
-                              newData[index].composite.relatedSubstanceByHPLC.limitNMT =
-                                e.target.value;
-                              setTrendingOIPIPS4(newData);
+                              const newData = [...trendingOIPIPS1];
+                              newData[index].limitNMT = e.target.value;
+                              setTrendingOIPIPS3(newData);
                             }}
                           />
                         </td>{" "}
@@ -13988,10 +13986,10 @@ export default function APQR() {
                           <input
                             value={item.composite.relatedSubstanceByHPLC.limitTotal}
                             onChange={(e) => {
-                              const newData = [...trendingOIPIPS4];
+                              const newData = [...trendingOIPIPS1];
                               newData[index].composite.relatedSubstanceByHPLC.limitTotal =
                                 e.target.value;
-                              setTrendingOIPIPS4(newData);
+                              setTrendingOIPIPS1(newData);
                             }}
                           />
                         </td>{" "}
@@ -13999,10 +13997,10 @@ export default function APQR() {
                           <input
                             value={item.composite.relatedSubstanceByHPLC.dryingHours}
                             onChange={(e) => {
-                              const newData = [...trendingOIPIPS4];
+                              const newData = [...trendingOIPIPS1];
                               newData[index].composite.relatedSubstanceByHPLC.dryingHours =
                                 e.target.value;
-                              setTrendingOIPIPS4(newData);
+                              setTrendingOIPIPS1(newData);
                             }}
                           />
                         </td>
@@ -14090,9 +14088,9 @@ export default function APQR() {
                           <input
                             value={item.limit}
                             onChange={(e) => {
-                              const newData = [...trendingOIPIPS5];
+                              const newData = [...trendingOIPIPS4];
                               newData[index].limit = e.target.value;
-                              setTrendingOIPIPS5(newData);
+                              setTrendingOIPIPS4(newData);
                             }}
                           />
                         </td>
