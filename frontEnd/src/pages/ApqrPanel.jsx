@@ -431,15 +431,15 @@ export default function APQR() {
     yieldTOS3: [],
     yieldTOS4: [],
     yieldTOS5: [],
-    trendingOCP1:[],
-    trendingOCP2:[],
-    trendingOCP3:[],
-    trendingOCP4:[],
-    trendingOIPIPS1:[],
-    trendingOIPIPS2:[],
-    trendingOIPIPS3:[],
-    trendingOIPIPS4:[],
-    trendingOIPIPS5:[],
+    trendingOCP1: [],
+    trendingOCP2: [],
+    trendingOCP3: [],
+    trendingOCP4: [],
+    trendingOIPIPS1: [],
+    trendingOIPIPS2: [],
+    trendingOIPIPS3: [],
+    trendingOIPIPS4: [],
+    trendingOIPIPS5: [],
   });
 
   const [pQRData, setPQRData] = useReducer(
@@ -740,7 +740,7 @@ export default function APQR() {
   const handleUpdateAPQR = async () => {
     setLoading(true); // Start the spinner
     try {
-      const payload = {pQRData,gridDatas,tinyData};
+      const payload = { pQRData, gridDatas, tinyData };
 
       const response = await axios.put(
         `http://localhost:4000/update-apqr/${editData.pqrId}`,
@@ -2417,32 +2417,34 @@ export default function APQR() {
     });
   };
 
-
   const addTrendingOIPIPS1Row = () => {
     const newRow = {
       batchNo: "",
-      unreactedDiolone :"",
-      limit:"",
-      chromatographicPurity:"",
-      unreactedTCA:"",
-      purityForInformation:"",
-      pH6:"",
-      lLimit:"",
-      uLimit:"",
-      pH65:"",
-      lLimit:"",
-      uLimit:"",
-      waterContent:"",
-      wLimit:"",
-      composite:{waterContentNmt:"",chromatographicPurity:{
-        limit:"",
-        tCAStage:"",
-        tLimit:"",
-        dryingHours:"",
-      }}, 
+      unreactedDiolone: "",
+      limit: "",
+      chromatographicPurity: "",
+      unreactedTCA: "",
+      purityForInformation: "",
+      pH6: "",
+      lLimit: "",
+      uLimit: "",
+      pH65: "",
+      lLimit: "",
+      uLimit: "",
+      waterContent: "",
+      wLimit: "",
+      composite: {
+        waterContentNmt: "",
+        chromatographicPurity: {
+          limit: "",
+          tCAStage: "",
+          tLimit: "",
+          dryingHours: "",
+        },
+      },
     };
     // setTrendingOIPIPS1([...trendingOIPIPS1, newRow]);
-      setGridDatas({
+    setGridDatas({
       ...gridDatas,
       trendingOIPIPS1: [...gridDatas.trendingOIPIPS1, newRow],
     });
@@ -2450,28 +2452,31 @@ export default function APQR() {
   const addTrendingOIPIPS2Row = () => {
     const newRow = {
       batchNo: "",
-      unreactedDiolone :"",
-      limit:"",
-      chromatographicPurity:"",
-      unreactedTCA:"",
-      purityForInformation:"",
-      pH6:"",
-      lLimit:"",
-      uLimit:"",
-      pH65:"",
-      lLimit:"",
-      uLimit:"",
-      waterContent:"",
-      wLimit:"",
-      composite:{waterContentNmt:"",chromatographicPurity:{
-        limit:"",
-        tCAStage:"",
-        tLimit:"",
-        dryingHours:"",
-      }}, 
+      unreactedDiolone: "",
+      limit: "",
+      chromatographicPurity: "",
+      unreactedTCA: "",
+      purityForInformation: "",
+      pH6: "",
+      lLimit: "",
+      uLimit: "",
+      pH65: "",
+      lLimit: "",
+      uLimit: "",
+      waterContent: "",
+      wLimit: "",
+      composite: {
+        waterContentNmt: "",
+        chromatographicPurity: {
+          limit: "",
+          tCAStage: "",
+          tLimit: "",
+          dryingHours: "",
+        },
+      },
     };
     // setTrendingOIPIPS2([...trendingOIPIPS2, newRow]);
-      setGridDatas({
+    setGridDatas({
       ...gridDatas,
       trendingOIPIPS2: [...gridDatas.trendingOIPIPS2, newRow],
     });
@@ -2479,28 +2484,31 @@ export default function APQR() {
   const addTrendingOIPIPS3Row = () => {
     const newRow = {
       batchNo: "",
-      unreactedDiolone :"",
-      limit:"",
-      chromatographicPurity:"",
-      unreactedTCA:"",
-      purityForInformation:"",
-      pH6:"",
-      lLimit:"",
-      uLimit:"",
-      pH65:"",
-      lLimit:"",
-      uLimit:"",
-      waterContent:"",
-      wLimit:"",
-      composite:{waterContentNmt:"",chromatographicPurity:{
-        limit:"",
-        tCAStage:"",
-        tLimit:"",
-        dryingHours:"",
-      }}, 
+      unreactedDiolone: "",
+      limit: "",
+      chromatographicPurity: "",
+      unreactedTCA: "",
+      purityForInformation: "",
+      pH6: "",
+      lLimit: "",
+      uLimit: "",
+      pH65: "",
+      lLimit: "",
+      uLimit: "",
+      waterContent: "",
+      wLimit: "",
+      composite: {
+        waterContentNmt: "",
+        chromatographicPurity: {
+          limit: "",
+          tCAStage: "",
+          tLimit: "",
+          dryingHours: "",
+        },
+      },
     };
     // setTrendingOIPIPS3([...trendingOIPIPS3, newRow]);
-      setGridDatas({
+    setGridDatas({
       ...gridDatas,
       trendingOIPIPS3: [...gridDatas.trendingOIPIPS3, newRow],
     });
@@ -2508,25 +2516,28 @@ export default function APQR() {
   const addTrendingOIPIPS4Row = () => {
     const newRow = {
       batchNo: "",
-      unreactedDiolone :"",
-      limit:"",
-      chromatographicPurity:"",
-      unreactedTCA:"",
-      purityForInformation:"",
-      pH6:"",
-      lLimit:"",
-      uLimit:"",
-      pH65:"",
-      lLimit:"",
-      uLimit:"",
-      waterContent:"",
-      wLimit:"",
-      composite:{waterContentNmt:"",chromatographicPurity:{
-        limit:"",
-        tCAStage:"",
-        tLimit:"",
-        dryingHours:"",
-      }}, 
+      unreactedDiolone: "",
+      limit: "",
+      chromatographicPurity: "",
+      unreactedTCA: "",
+      purityForInformation: "",
+      pH6: "",
+      lLimit: "",
+      uLimit: "",
+      pH65: "",
+      lLimit: "",
+      uLimit: "",
+      waterContent: "",
+      wLimit: "",
+      composite: {
+        waterContentNmt: "",
+        chromatographicPurity: {
+          limit: "",
+          tCAStage: "",
+          tLimit: "",
+          dryingHours: "",
+        },
+      },
     };
     // setTrendingOIPIPS4([...trendingOIPIPS4, newRow]);
     setGridDatas({
@@ -2537,25 +2548,28 @@ export default function APQR() {
   const addTrendingOIPIPS5Row = () => {
     const newRow = {
       batchNo: "",
-      unreactedDiolone :"",
-      limit:"",
-      chromatographicPurity:"",
-      unreactedTCA:"",
-      purityForInformation:"",
-      pH6:"",
-      lLimit:"",
-      uLimit:"",
-      pH65:"",
-      lLimit:"",
-      uLimit:"",
-      waterContent:"",
-      wLimit:"",
-      composite:{waterContentNmt:"",chromatographicPurity:{
-        limit:"",
-        tCAStage:"",
-        tLimit:"",
-        dryingHours:"",
-      }}, 
+      unreactedDiolone: "",
+      limit: "",
+      chromatographicPurity: "",
+      unreactedTCA: "",
+      purityForInformation: "",
+      pH6: "",
+      lLimit: "",
+      uLimit: "",
+      pH65: "",
+      lLimit: "",
+      uLimit: "",
+      waterContent: "",
+      wLimit: "",
+      composite: {
+        waterContentNmt: "",
+        chromatographicPurity: {
+          limit: "",
+          tCAStage: "",
+          tLimit: "",
+          dryingHours: "",
+        },
+      },
     };
     // setTrendingOIPIPS5([...trendingOIPIPS5, newRow]);
     setGridDatas({
@@ -2563,9 +2577,6 @@ export default function APQR() {
       trendingOIPIPS5: [...gridDatas.trendingOIPIPS5, newRow],
     });
   };
-
-
-
 
   //  Speech functionality ----------------------------
 
@@ -18041,9 +18052,9 @@ export default function APQR() {
                     <th>SI. No.</th>
                     <th>Batch No.</th>
                     <th>Mfg. Month</th>
-                    <th>Actual Input in (50.000 Kg)Kg</th>
+                    <th>Actual Input in (50.000 - 57.000 Kg)Kg</th>
                     <th>
-                      Actual Output in Expected Output Range (50.000 – 57.000Kg)
+                      Actual Output in Expected Output Range (54.000 – 78.000Kg)
                     </th>
                     <th>L Limit</th>
                     <th>U Limit</th>
@@ -18180,9 +18191,9 @@ export default function APQR() {
                     <th>SI. No.</th>
                     <th>Batch No.</th>
                     <th>Mfg. Month</th>
-                    <th>Actual Input in (50.000 Kg)Kg</th>
+                    <th>Actual Input in (54.000 - 78.000 Kg)Kg</th>
                     <th>
-                      Actual Output in Expected Output Range (50.000 – 57.000Kg)
+                      Actual Output in Expected Output Range (37.500 – 50.000Kg)
                     </th>
                     <th>L Limit</th>
                     <th>U Limit</th>
@@ -18319,9 +18330,9 @@ export default function APQR() {
                     <th>SI. No.</th>
                     <th>Batch No.</th>
                     <th>Mfg. Month</th>
-                    <th>Actual Input in (50.000 Kg)Kg</th>
+                    <th>Actual Input in (37.500 - 50.000 Kg)Kg</th>
                     <th>
-                      Actual Output in Expected Output Range (50.000 – 57.000Kg)
+                      Actual Output in Expected Output Range (34.000 – 40.000Kg)
                     </th>
                     <th>L Limit</th>
                     <th>U Limit</th>
@@ -18458,9 +18469,9 @@ export default function APQR() {
                     <th>SI. No.</th>
                     <th>Batch No.</th>
                     <th>Mfg. Month</th>
-                    <th>Actual Input in (50.000 Kg)Kg</th>
+                    <th>Actual Input in (34.000 40.000 Kg)Kg</th>
                     <th>
-                      Actual Output in Expected Output Range (50.000 – 57.000Kg)
+                      Actual Output in Expected Output Range (33.000 – 38.000Kg)
                     </th>
                     <th>L Limit</th>
                     <th>U Limit</th>
@@ -18641,7 +18652,8 @@ export default function APQR() {
                             value={item.criticalParameter1}
                             onChange={(e) => {
                               const newData = [...gridDatas.trendingOCP1];
-                              newData[index].criticalParameter1 = e.target.value;
+                              newData[index].criticalParameter1 =
+                                e.target.value;
                               setGridDatas({
                                 ...gridDatas,
                                 trendingOCP1: newData,
@@ -18655,7 +18667,8 @@ export default function APQR() {
                             value={item.criticalParameter2}
                             onChange={(e) => {
                               const newData = [...gridDatas.trendingOCP1];
-                              newData[index].criticalParameter2 = e.target.value;
+                              newData[index].criticalParameter2 =
+                                e.target.value;
                               setGridDatas({
                                 ...gridDatas,
                                 trendingOCP1: newData,
@@ -18669,7 +18682,8 @@ export default function APQR() {
                             value={item.criticalParameter3}
                             onChange={(e) => {
                               const newData = [...gridDatas.trendingOCP1];
-                              newData[index].criticalParameter3 = e.target.value;
+                              newData[index].criticalParameter3 =
+                                e.target.value;
                               setGridDatas({
                                 ...gridDatas,
                                 trendingOCP1: newData,
@@ -18706,21 +18720,35 @@ export default function APQR() {
               <table>
                 <thead>
                   <tr>
-                    <th>SI. No.</th>
+                    <th>S. No.</th>
                     <th>Batch No.</th>
                     <th>
                       Critical Parameter: 01 Nitrogen gas purging should be
                       carried out in advance in Acetonide formation reaction
-                      (part I)
+                      (part I) Critical Parameter: 01 During handling of
+                      Hydrofluoric Acid use necessary protective acid proof
+                      mask, dress and shoes.
                     </th>
                     <th>
                       Critical Parameter: 02 In Bromination reaction (part II),
-                      slow agitation is required during the reaction.
+                      slow agitation is required during the reaction. Critical
+                      Parameter: 02 Addition of the material should be done
+                      portion wise during reaction. Std. Qty. in kg. ( 50.000 –
+                      57.000)
                     </th>
+
                     <th>
-                      Critical Parameter: 03 Epoxydation reaction (part III)
-                      required Argon gas bubbling to remove oxygen content from
-                      the reaction mass.{" "}
+                      Critical Parameter: 03 During addition of material,
+                      exothermicity appears, so control the temperature (-40°C)
+                      to (-30°C). Actual Temperature ºC (-40°C) to (-30°C){" "}
+                    </th>
+                    <th>Lower Limit</th>
+                    <th>Upper Limit</th>
+                    <th>
+                      Critical Parameter: 04 Temperature should be within
+                      specified range of (-20°C) to (-25°C) for timely
+                      completion of reaction and controlled impurity level.
+                      Actual Temperature ºC (-20°C) to (-25°C)
                     </th>
                   </tr>
                 </thead>
@@ -18748,7 +18776,8 @@ export default function APQR() {
                             value={item.criticalParameter1}
                             onChange={(e) => {
                               const newData = [...gridDatas.trendingOCP2];
-                              newData[index].criticalParameter1 = e.target.value;
+                              newData[index].criticalParameter1 =
+                                e.target.value;
                               setGridDatas({
                                 ...gridDatas,
                                 trendingOCP2: newData,
@@ -18762,7 +18791,8 @@ export default function APQR() {
                             value={item.criticalParameter2}
                             onChange={(e) => {
                               const newData = [...gridDatas.trendingOCP2];
-                              newData[index].criticalParameter2 = e.target.value;
+                              newData[index].criticalParameter2 =
+                                e.target.value;
                               setGridDatas({
                                 ...gridDatas,
                                 trendingOCP2: newData,
@@ -18770,13 +18800,53 @@ export default function APQR() {
                             }}
                           />
                         </td>
-
                         <td>
                           <input
                             value={item.criticalParameter3}
                             onChange={(e) => {
                               const newData = [...gridDatas.trendingOCP2];
-                              newData[index].criticalParameter3 = e.target.value;
+                              newData[index].criticalParameter3 =
+                                e.target.value;
+                              setGridDatas({
+                                ...gridDatas,
+                                trendingOCP2: newData,
+                              });
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.lLimit}
+                            onChange={(e) => {
+                              const newData = [...gridDatas.trendingOCP2];
+                              newData[index].lLimit = e.target.value;
+                              setGridDatas({
+                                ...gridDatas,
+                                trendingOCP2: newData,
+                              });
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.uLimit}
+                            onChange={(e) => {
+                              const newData = [...gridDatas.trendingOCP2];
+                              newData[index].uLimit = e.target.value;
+                              setGridDatas({
+                                ...gridDatas,
+                                trendingOCP2: newData,
+                              });
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.criticalParameter4}
+                            onChange={(e) => {
+                              const newData = [...gridDatas.trendingOCP2];
+                              newData[index].criticalParameter4 =
+                                e.target.value;
                               setGridDatas({
                                 ...gridDatas,
                                 trendingOCP2: newData,
@@ -18813,22 +18883,24 @@ export default function APQR() {
               <table>
                 <thead>
                   <tr>
-                    <th>SI. No.</th>
-                    <th>Batch No.</th>
-                    <th>
+                    <th rowSpan={2}>S. No.</th>
+                    <th rowSpan={2}>Batch No.</th>
+                    <th rowSpan={2}>
                       Critical Parameter: 01 Nitrogen gas purging should be
                       carried out in advance in Acetonide formation reaction
                       (part I)
                     </th>
-                    <th>
+                    <th colSpan={4} rowSpan={1}>
                       Critical Parameter: 02 In Bromination reaction (part II),
                       slow agitation is required during the reaction.
                     </th>
-                    <th>
-                      Critical Parameter: 03 Epoxydation reaction (part III)
-                      required Argon gas bubbling to remove oxygen content from
-                      the reaction mass.{" "}
-                    </th>
+                    {/* <th >Critical Parameter: 03 Epoxydation reaction (part III) required Argon gas bubbling to remove oxygen content from the reaction mass. </th> */}
+                  </tr>
+                  <tr>
+                    <th> Actual Qt. of Glacial Acetic acid</th>
+                    <th>Actual pH (between 5.0 - 6.0)</th>
+                    <th>Lower Limit</th>
+                    <th>Upper Limit</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -18855,7 +18927,8 @@ export default function APQR() {
                             value={item.criticalParameter1}
                             onChange={(e) => {
                               const newData = [...gridDatas.trendingOCP3];
-                              newData[index].criticalParameter1 = e.target.value;
+                              newData[index].criticalParameter1 =
+                                e.target.value;
                               setGridDatas({
                                 ...gridDatas,
                                 trendingOCP3: newData,
@@ -18866,10 +18939,11 @@ export default function APQR() {
 
                         <td>
                           <input
-                            value={item.criticalParameter2}
+                            value={item.criticalParameter2.actualQuantity}
                             onChange={(e) => {
                               const newData = [...gridDatas.trendingOCP3];
-                              newData[index].criticalParameter2 = e.target.value;
+                              newData[index].criticalParameter2.actualQuantity =
+                                e.target.value;
                               setGridDatas({
                                 ...gridDatas,
                                 trendingOCP3: newData,
@@ -18880,10 +18954,36 @@ export default function APQR() {
 
                         <td>
                           <input
-                            value={item.criticalParameter3}
+                            value={item.criticalParameter3.actualpH}
+                            onChange={(e) => {
+                              const newData = [...gridDatas.criticalParameter3.actualpH];
+                              newData[index].lLimit = e.target.value;
+                              setGridDatas({
+                                ...gridDatas,
+                                trendingOCP3: newData,
+                              });
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.lLimit}
                             onChange={(e) => {
                               const newData = [...gridDatas.trendingOCP3];
-                              newData[index].criticalParameter3 = e.target.value;
+                              newData[index].lLimit = e.target.value;
+                              setGridDatas({
+                                ...gridDatas,
+                                trendingOCP3: newData,
+                              });
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.uLimit}
+                            onChange={(e) => {
+                              const newData = [...gridDatas.trendingOCP3];
+                              newData[index].uLimit = e.target.value;
                               setGridDatas({
                                 ...gridDatas,
                                 trendingOCP3: newData,
@@ -18919,23 +19019,25 @@ export default function APQR() {
               </div>
               <table>
                 <thead>
+                <tr>
+                    <th rowSpan={2}>S. No.</th>
+                    <th rowSpan={2}>Batch No.</th>
+                    <th rowSpan={1} colSpan={4}>
+                      Critical Parameter: 01 The reaction mass should be refluxed for 3-5 hour at
+                      temperature between 55 to 60° C.
+                    </th>
+                    <th rowSpan={2}>
+                      Critical Parameter: 02 Crystallization of finished product should be at 0°C to
+                      5°C. Actual Temperature °C (0°C to 5°C)
+                    </th>
+                    <th rowSpan={2}>Lower Limit </th>
+                    <th rowSpan={2}>Upper Limit</th>
+                  </tr>
                   <tr>
-                    <th>SI. No.</th>
-                    <th>Batch No.</th>
-                    <th>
-                      Critical Parameter: 01 Nitrogen gas purging should be
-                      carried out in advance in Acetonide formation reaction
-                      (part I)
-                    </th>
-                    <th>
-                      Critical Parameter: 02 In Bromination reaction (part II),
-                      slow agitation is required during the reaction.
-                    </th>
-                    <th>
-                      Critical Parameter: 03 Epoxydation reaction (part III)
-                      required Argon gas bubbling to remove oxygen content from
-                      the reaction mass.{" "}
-                    </th>
+                    <th>Actual Time (In hrs.) </th>
+                    <th>Actual Temperature °C (55°C to 60°C)</th>
+                    <th>Lower Limit</th>
+                    <th>Upper Limit</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -18959,10 +19061,11 @@ export default function APQR() {
                         </td>
                         <td>
                           <input
-                            value={item.criticalParameter1}
+                            value={item.criticalParameter1.actualTime}
                             onChange={(e) => {
                               const newData = [...gridDatas.trendingOCP4];
-                              newData[index].criticalParameter1 = e.target.value;
+                              newData[index].criticalParameter1.actualTime =
+                                e.target.value;
                               setGridDatas({
                                 ...gridDatas,
                                 trendingOCP4: newData,
@@ -18971,26 +19074,82 @@ export default function APQR() {
                           />
                         </td>
 
+                        <td>
+                          <input
+                            value={item.criticalParameter1.actualTemprature}
+                            onChange={(e) => {
+                              const newData = [...gridDatas.trendingOCP4];
+                              newData[index].criticalParameter1.actualTemprature =
+                                e.target.value;
+                              setGridDatas({
+                                ...gridDatas,
+                                trendingOCP4: newData,
+                              });
+                            }}
+                          />
+                        </td>
+
+                        <td>
+                          <input
+                            value={item.criticalParameter1.lowerLimit}
+                            onChange={(e) => {
+                              const newData = [...gridDatas.trendingOCP4];
+                              newData[index].criticalParameter1.lowerLimit =
+                                e.target.value;
+                              setGridDatas({
+                                ...gridDatas,
+                                trendingOCP4: newData,
+                              });
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.criticalParameter1.upperLimit}
+                            onChange={(e) => {
+                              const newData = [...gridDatas.trendingOCP4];
+                              newData[index].criticalParameter1.upperLimit =
+                                e.target.value;
+                              setGridDatas({
+                                ...gridDatas,
+                                trendingOCP4: newData,
+                              });
+                            }}
+                          />
+                        </td>
                         <td>
                           <input
                             value={item.criticalParameter2}
                             onChange={(e) => {
                               const newData = [...gridDatas.trendingOCP4];
-                              newData[index].criticalParameter2 = e.target.value;
+                              newData[index].criticalParameter2 =
+                                e.target.value;
                               setGridDatas({
                                 ...gridDatas,
                                 trendingOCP4: newData,
                               });
                             }}
                           />
-                        </td>
-
-                        <td>
+                        </td> <td>
                           <input
-                            value={item.criticalParameter3}
+                            value={item.lowerLimit}
                             onChange={(e) => {
                               const newData = [...gridDatas.trendingOCP4];
-                              newData[index].criticalParameter3 = e.target.value;
+                              newData[index].lowerLimit =
+                                e.target.value;
+                              setGridDatas({
+                                ...gridDatas,
+                                trendingOCP4: newData,
+                              });
+                            }}
+                          />
+                        </td> <td>
+                          <input
+                            value={item.upperLimit}
+                            onChange={(e) => {
+                              const newData = [...gridDatas.trendingOCP4];
+                              newData[index].upperLimit =
+                                e.target.value;
                               setGridDatas({
                                 ...gridDatas,
                                 trendingOCP4: newData,
@@ -19116,7 +19275,8 @@ export default function APQR() {
                             value={item.chromatographicPurity}
                             onChange={(e) => {
                               const newData = [...gridDatas.trendingOIPIPS1];
-                              newData[index].chromatographicPurity = e.target.value;
+                              newData[index].chromatographicPurity =
+                                e.target.value;
                               setGridDatas({
                                 ...gridDatas,
                                 trendingOIPIPS1: newData,
@@ -19142,7 +19302,8 @@ export default function APQR() {
                             value={item.purityForInformation}
                             onChange={(e) => {
                               const newData = [...gridDatas.trendingOIPIPS1];
-                              newData[index].purityForInformation = e.target.value;
+                              newData[index].purityForInformation =
+                                e.target.value;
                               setGridDatas({
                                 ...gridDatas,
                                 trendingOIPIPS1: newData,
@@ -19259,7 +19420,8 @@ export default function APQR() {
                             value={item.composite.waterContentNmt}
                             onChange={(e) => {
                               const newData = [...gridDatas.trendingOIPIPS1];
-                              newData[index].composite.waterContentNmt = e.target.value;
+                              newData[index].composite.waterContentNmt =
+                                e.target.value;
                               setGridDatas({
                                 ...gridDatas,
                                 trendingOIPIPS1: newData,
@@ -19272,7 +19434,10 @@ export default function APQR() {
                             value={item.composite.chromatographicPurity.limit}
                             onChange={(e) => {
                               const newData = [...gridDatas.trendingOIPIPS1];
-                              newData[index].composite.chromatographicPurity.limit = e.target.value;
+                              newData[
+                                index
+                              ].composite.chromatographicPurity.limit =
+                                e.target.value;
                               setGridDatas({
                                 ...gridDatas,
                                 trendingOIPIPS1: newData,
@@ -19287,7 +19452,10 @@ export default function APQR() {
                             }
                             onChange={(e) => {
                               const newData = [...gridDatas.trendingOIPIPS1];
-                              newData[index].composite.chromatographicPurity.tCAStage = e.target.value;
+                              newData[
+                                index
+                              ].composite.chromatographicPurity.tCAStage =
+                                e.target.value;
                               setGridDatas({
                                 ...gridDatas,
                                 trendingOIPIPS1: newData,
@@ -19300,7 +19468,10 @@ export default function APQR() {
                             value={item.composite.chromatographicPurity.tLimit}
                             onChange={(e) => {
                               const newData = [...gridDatas.trendingOIPIPS1];
-                              newData[index].composite.chromatographicPurity.tLimit = e.target.value;
+                              newData[
+                                index
+                              ].composite.chromatographicPurity.tLimit =
+                                e.target.value;
                               setGridDatas({
                                 ...gridDatas,
                                 trendingOIPIPS1: newData,
@@ -19315,7 +19486,10 @@ export default function APQR() {
                             }
                             onChange={(e) => {
                               const newData = [...gridDatas.trendingOIPIPS1];
-                              newData[index].composite.chromatographicPurity.dryingHours = e.target.value;
+                              newData[
+                                index
+                              ].composite.chromatographicPurity.dryingHours =
+                                e.target.value;
                               setGridDatas({
                                 ...gridDatas,
                                 trendingOIPIPS1: newData,
@@ -19352,41 +19526,31 @@ export default function APQR() {
               </div>
               <table>
                 <thead>
-                  <tr>
+                <tr>
                     <th rowSpan={3}>S. No.</th>
                     <th rowSpan={3}>Batch No.</th>
-                    <th rowSpan={3}>Unreacted Diolone Acetate NMT 0.5 %</th>
+                    <th rowSpan={3}>Unreacted TCA Stage – I by HPLC NMT 0.5 %</th>
                     <th rowSpan={3}>Limit</th>
-                    <th rowSpan={3}>
-                      Chromatographic Purity (for information)
-                    </th>
-                    <th rowSpan={3}>Unreacted TCA Step – I B NMT 0.5 % </th>
+                    <th rowSpan={3}>Unreacted Triamcinolone acetate by HPLC NMT 2.5 %</th>
+                    <th rowSpan={3}>Limit</th>
                     <th rowSpan={3}>Purity (for information)</th>
-                    <th rowSpan={3}>pH 6.0 – 6.5</th>
+                    <th rowSpan={3}>pH 6.0 – 7.0</th>
                     <th rowSpan={3}>L Limit</th>
                     <th rowSpan={3}>U Limit</th>
-                    <th rowSpan={3}>pH 6.0 – 6.5</th>
+                    <th rowSpan={3}>pH 6.0 – 7.0 (After ANFD)</th>
                     <th rowSpan={3}>L Limit</th>
                     <th rowSpan={3}>U Limit</th>
-                    <th rowSpan={3}>Water content NMT 1.0 % w/w</th>
-                    <th rowSpan={3}>Limit</th>
-                    <th rowSpan={1} colSpan={5}>
+                    <th rowSpan={1} colSpan={4}>
                       Composite{" "}
                     </th>
                   </tr>
+
                   <tr>
-                    <th colSpan={1} rowSpan={2}>
-                      Water content NMT 1.0 % w/w
-                    </th>
-                    <th rowspan={1} colSpan={4}>
-                      Chromatographic purity in area % by HPLC
-                    </th>
-                  </tr>
-                  <tr>
+                    <th>Purity by HPLC NLT 85.0 % </th>
+                    <th>Limit </th>
+                    <th>Unreacted TCA stage – I NMT 0.5 %</th>
+
                     <th>Limit</th>
-                    <th>TCA stage – I NLT 93.0 % </th>
-                    <th>Limit</th>
-                    <th>Drying Hours</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -19409,10 +19573,10 @@ export default function APQR() {
                         </td>
                         <td>
                           <input
-                            value={item.unreactedDiolone}
+                            value={item.unreactedTCA}
                             onChange={(e) => {
                               const newData = [...gridDatas.trendingOIPIPS2];
-                              newData[index].unreactedDiolone = e.target.value;
+                              newData[index].unreactedTCA = e.target.value;
                               setGridDatas({
                                 ...gridDatas,
                                 trendingOIPIPS2: newData,
@@ -19435,10 +19599,11 @@ export default function APQR() {
                         </td>
                         <td>
                           <input
-                            value={item.chromatographicPurity}
+                            value={item.unreactedTriamcilone}
                             onChange={(e) => {
                               const newData = [...gridDatas.trendingOIPIPS2];
-                              newData[index].chromatographicPurity = e.target.value;
+                              newData[index].unreactedTriamcilone =
+                                e.target.value;
                               setGridDatas({
                                 ...gridDatas,
                                 trendingOIPIPS2: newData,
@@ -19448,10 +19613,10 @@ export default function APQR() {
                         </td>
                         <td>
                           <input
-                            value={item.unreactedTCA}
+                            value={item.limit2}
                             onChange={(e) => {
                               const newData = [...gridDatas.trendingOIPIPS2];
-                              newData[index].unreactedTCA = e.target.value;
+                              newData[index].limit2 = e.target.value;
                               setGridDatas({
                                 ...gridDatas,
                                 trendingOIPIPS2: newData,
@@ -19464,7 +19629,8 @@ export default function APQR() {
                             value={item.purityForInformation}
                             onChange={(e) => {
                               const newData = [...gridDatas.trendingOIPIPS2];
-                              newData[index].purityForInformation = e.target.value;
+                              newData[index].purityForInformation =
+                                e.target.value;
                               setGridDatas({
                                 ...gridDatas,
                                 trendingOIPIPS2: newData,
@@ -19513,10 +19679,10 @@ export default function APQR() {
                         </td>
                         <td>
                           <input
-                            value={item.pH65}
+                            value={item.pH67}
                             onChange={(e) => {
                               const newData = [...gridDatas.trendingOIPIPS2];
-                              newData[index].pH65 = e.target.value;
+                              newData[index].pH67 = e.target.value;
                               setGridDatas({
                                 ...gridDatas,
                                 trendingOIPIPS2: newData,
@@ -19526,10 +19692,10 @@ export default function APQR() {
                         </td>
                         <td>
                           <input
-                            value={item.lLimit}
+                            value={item.lLimit2}
                             onChange={(e) => {
                               const newData = [...gridDatas.trendingOIPIPS2];
-                              newData[index].lLimit = e.target.value;
+                              newData[index].lLimit2 = e.target.value;
                               setGridDatas({
                                 ...gridDatas,
                                 trendingOIPIPS2: newData,
@@ -19539,10 +19705,10 @@ export default function APQR() {
                         </td>
                         <td>
                           <input
-                            value={item.uLimit}
+                            value={item.uLimit2}
                             onChange={(e) => {
                               const newData = [...gridDatas.trendingOIPIPS2];
-                              newData[index].uLimit = e.target.value;
+                              newData[index].uLimit2 = e.target.value;
                               setGridDatas({
                                 ...gridDatas,
                                 trendingOIPIPS2: newData,
@@ -19552,10 +19718,10 @@ export default function APQR() {
                         </td>
                         <td>
                           <input
-                            value={item.waterContent}
+                            value={item.composite.purityByHPLC}
                             onChange={(e) => {
                               const newData = [...gridDatas.trendingOIPIPS2];
-                              newData[index].waterContent = e.target.value;
+                              newData[index].composite.purityByHPLC = e.target.value;
                               setGridDatas({
                                 ...gridDatas,
                                 trendingOIPIPS2: newData,
@@ -19565,10 +19731,10 @@ export default function APQR() {
                         </td>
                         <td>
                           <input
-                            value={item.wLimit}
+                            value={item.composite.limit1}
                             onChange={(e) => {
                               const newData = [...gridDatas.trendingOIPIPS2];
-                              newData[index].wLimit = e.target.value;
+                              newData[index].limit1 = e.target.value;
                               setGridDatas({
                                 ...gridDatas,
                                 trendingOIPIPS2: newData,
@@ -19578,10 +19744,11 @@ export default function APQR() {
                         </td>
                         <td>
                           <input
-                            value={item.composite.waterContentNmt}
+                            value={item.composite.unreactedTca}
                             onChange={(e) => {
                               const newData = [...gridDatas.trendingOIPIPS2];
-                              newData[index].composite.waterContentNmt = e.target.value;
+                              newData[index].composite.unreactedTca =
+                                e.target.value;
                               setGridDatas({
                                 ...gridDatas,
                                 trendingOIPIPS2: newData,
@@ -19591,10 +19758,13 @@ export default function APQR() {
                         </td>
                         <td>
                           <input
-                            value={item.composite.chromatographicPurity.limit}
+                            value={item.composite.limit2}
                             onChange={(e) => {
                               const newData = [...gridDatas.trendingOIPIPS2];
-                              newData[index].composite.chromatographicPurity.limit = e.target.value;
+                              newData[
+                                index
+                              ].composite.limit2 =
+                                e.target.value;
                               setGridDatas({
                                 ...gridDatas,
                                 trendingOIPIPS2: newData,
@@ -19602,49 +19772,6 @@ export default function APQR() {
                             }}
                           />
                         </td>{" "}
-                        <td>
-                          <input
-                            value={
-                              item.composite.chromatographicPurity.tCAStage
-                            }
-                            onChange={(e) => {
-                              const newData = [...gridDatas.trendingOIPIPS2];
-                              newData[index].composite.chromatographicPurity.tCAStage = e.target.value;
-                              setGridDatas({
-                                ...gridDatas,
-                                trendingOIPIPS2: newData,
-                              });
-                            }}
-                          />
-                        </td>{" "}
-                        <td>
-                          <input
-                            value={item.composite.chromatographicPurity.tLimit}
-                            onChange={(e) => {
-                              const newData = [...gridDatas.trendingOIPIPS2];
-                              newData[index].composite.chromatographicPurity.tLimit = e.target.value;
-                              setGridDatas({
-                                ...gridDatas,
-                                trendingOIPIPS2: newData,
-                              });
-                            }}
-                          />
-                        </td>{" "}
-                        <td>
-                          <input
-                            value={
-                              item.composite.chromatographicPurity.dryingHours
-                            }
-                            onChange={(e) => {
-                              const newData = [...gridDatas.trendingOIPIPS2];
-                              newData[index].composite.chromatographicPurity.dryingHours = e.target.value;
-                              setGridDatas({
-                                ...gridDatas,
-                                trendingOIPIPS2: newData,
-                              });
-                            }}
-                          />
-                        </td>
                       </tr>
                     );
                   })}
@@ -19674,41 +19801,25 @@ export default function APQR() {
               </div>
               <table>
                 <thead>
-                  <tr>
+                <tr>
                     <th rowSpan={3}>S. No.</th>
                     <th rowSpan={3}>Batch No.</th>
-                    <th rowSpan={3}>Unreacted Diolone Acetate NMT 0.5 %</th>
-                    <th rowSpan={3}>Limit</th>
-                    <th rowSpan={3}>
-                      Chromatographic Purity (for information)
-                    </th>
-                    <th rowSpan={3}>Unreacted TCA Step – I B NMT 0.5 % </th>
-                    <th rowSpan={3}>Purity (for information)</th>
-                    <th rowSpan={3}>pH 6.0 – 6.5</th>
+                    <th rowSpan={3}>pH 7.75 – 8.0</th>
                     <th rowSpan={3}>L Limit</th>
                     <th rowSpan={3}>U Limit</th>
-                    <th rowSpan={3}>pH 6.0 – 6.5</th>
+                    <th rowSpan={3}>Unreacted TCA Stage – II by HPLC NMT 0.5 %</th>
+                    <th rowSpan={3}>pH 5.0 – 6.0</th>
                     <th rowSpan={3}>L Limit</th>
                     <th rowSpan={3}>U Limit</th>
-                    <th rowSpan={3}>Water content NMT 1.0 % w/w</th>
-                    <th rowSpan={3}>Limit</th>
+
                     <th rowSpan={1} colSpan={5}>
                       Composite{" "}
                     </th>
                   </tr>
+
                   <tr>
-                    <th colSpan={1} rowSpan={2}>
-                      Water content NMT 1.0 % w/w
-                    </th>
-                    <th rowspan={1} colSpan={4}>
-                      Chromatographic purity in area % by HPLC
-                    </th>
-                  </tr>
-                  <tr>
+                    <th>Chromatographic purity in area % by HPLC Purity NLT 98.0 %</th>
                     <th>Limit</th>
-                    <th>TCA stage – I NLT 93.0 % </th>
-                    <th>Limit</th>
-                    <th>Drying Hours</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -19722,19 +19833,6 @@ export default function APQR() {
                             onChange={(e) => {
                               const newData = [...gridDatas.trendingOIPIPS3];
                               newData[index].batchNo = e.target.value;
-                              setGridDatas({
-                                ...gridDatas,
-                                trendingOIPIPS3: newData,
-                              });
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.unreactedDiolone}
-                            onChange={(e) => {
-                              const newData = [...gridDatas.trendingOIPIPS3];
-                              newData[index].unreactedDiolone = e.target.value;
                               setGridDatas({
                                 ...gridDatas,
                                 trendingOIPIPS3: newData,
@@ -19770,6 +19868,47 @@ export default function APQR() {
                         </td>
                         <td>
                           <input
+                            value={item.pH75}
+                            onChange={(e) => {
+                              const newData = [...gridDatas.trendingOIPIPS3];
+                              newData[index].pH75 =
+                                e.target.value;
+                              setGridDatas({
+                                ...gridDatas,
+                                trendingOIPIPS3: newData,
+                              });
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.lLimit}
+                            onChange={(e) => {
+                              const newData = [...gridDatas.trendingOIPIPS3];
+                              newData[index].lLimit = e.target.value;
+                              setGridDatas({
+                                ...gridDatas,
+                                trendingOIPIPS3: newData,
+                              });
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.uLimit}
+                            onChange={(e) => {
+                              const newData = [...gridDatas.trendingOIPIPS3];
+                              newData[index].uLimit =
+                                e.target.value;
+                              setGridDatas({
+                                ...gridDatas,
+                                trendingOIPIPS3: newData,
+                              });
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
                             value={item.unreactedTCA}
                             onChange={(e) => {
                               const newData = [...gridDatas.trendingOIPIPS3];
@@ -19783,10 +19922,10 @@ export default function APQR() {
                         </td>
                         <td>
                           <input
-                            value={item.purityForInformation}
+                            value={item.chromatographic}
                             onChange={(e) => {
                               const newData = [...gridDatas.trendingOIPIPS3];
-                              newData[index].purityForInformation = e.target.value;
+                              newData[index].chromatographic = e.target.value;
                               setGridDatas({
                                 ...gridDatas,
                                 trendingOIPIPS3: newData,
@@ -19796,10 +19935,10 @@ export default function APQR() {
                         </td>
                         <td>
                           <input
-                            value={item.pH6}
+                            value={item.composite.chromatographicPurity}
                             onChange={(e) => {
                               const newData = [...gridDatas.trendingOIPIPS3];
-                              newData[index].pH6 = e.target.value;
+                              newData[index].composite.chromatographicPurity = e.target.value;
                               setGridDatas({
                                 ...gridDatas,
                                 trendingOIPIPS3: newData,
@@ -19809,157 +19948,10 @@ export default function APQR() {
                         </td>
                         <td>
                           <input
-                            value={item.lLimit}
+                            value={item.composite.limit}
                             onChange={(e) => {
                               const newData = [...gridDatas.trendingOIPIPS3];
-                              newData[index].lLimit = e.target.value;
-                              setGridDatas({
-                                ...gridDatas,
-                                trendingOIPIPS3: newData,
-                              });
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.uLimit}
-                            onChange={(e) => {
-                              const newData = [...gridDatas.trendingOIPIPS3];
-                              newData[index].uLimit = e.target.value;
-                              setGridDatas({
-                                ...gridDatas,
-                                trendingOIPIPS3: newData,
-                              });
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.pH65}
-                            onChange={(e) => {
-                              const newData = [...gridDatas.trendingOIPIPS3];
-                              newData[index].pH65 = e.target.value;
-                              setGridDatas({
-                                ...gridDatas,
-                                trendingOIPIPS3: newData,
-                              });
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.lLimit}
-                            onChange={(e) => {
-                              const newData = [...gridDatas.trendingOIPIPS3];
-                              newData[index].lLimit = e.target.value;
-                              setGridDatas({
-                                ...gridDatas,
-                                trendingOIPIPS3: newData,
-                              });
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.uLimit}
-                            onChange={(e) => {
-                              const newData = [...gridDatas.trendingOIPIPS3];
-                              newData[index].uLimit = e.target.value;
-                              setGridDatas({
-                                ...gridDatas,
-                                trendingOIPIPS3: newData,
-                              });
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.waterContent}
-                            onChange={(e) => {
-                              const newData = [...gridDatas.trendingOIPIPS3];
-                              newData[index].waterContent = e.target.value;
-                              setGridDatas({
-                                ...gridDatas,
-                                trendingOIPIPS3: newData,
-                              });
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.wLimit}
-                            onChange={(e) => {
-                              const newData = [...gridDatas.trendingOIPIPS3];
-                              newData[index].wLimit = e.target.value;
-                              setGridDatas({
-                                ...gridDatas,
-                                trendingOIPIPS3: newData,
-                              });
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.composite.waterContentNmt}
-                            onChange={(e) => {
-                              const newData = [...gridDatas.trendingOIPIPS3];
-                              newData[index].composite.waterContentNmt = e.target.value;
-                              setGridDatas({
-                                ...gridDatas,
-                                trendingOIPIPS3: newData,
-                              });
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.composite.chromatographicPurity.limit}
-                            onChange={(e) => {
-                              const newData = [...gridDatas.trendingOIPIPS3];
-                              newData[index].composite.chromatographicPurity.limit = e.target.value;
-                              setGridDatas({
-                                ...gridDatas,
-                                trendingOIPIPS3: newData,
-                              });
-                            }}
-                          />
-                        </td>{" "}
-                        <td>
-                          <input
-                            value={
-                              item.composite.chromatographicPurity.tCAStage
-                            }
-                            onChange={(e) => {
-                              const newData = [...gridDatas.trendingOIPIPS3];
-                              newData[index].composite.chromatographicPurity.tCAStage = e.target.value;
-                              setGridDatas({
-                                ...gridDatas,
-                                trendingOIPIPS3: newData,
-                              });
-                            }}
-                          />
-                        </td>{" "}
-                        <td>
-                          <input
-                            value={item.composite.chromatographicPurity.tLimit}
-                            onChange={(e) => {
-                              const newData = [...gridDatas.trendingOIPIPS3];
-                              newData[index].composite.chromatographicPurity.tLimit = e.target.value;
-                              setGridDatas({
-                                ...gridDatas,
-                                trendingOIPIPS3: newData,
-                              });
-                            }}
-                          />
-                        </td>{" "}
-                        <td>
-                          <input
-                            value={
-                              item.composite.chromatographicPurity.dryingHours
-                            }
-                            onChange={(e) => {
-                              const newData = [...gridDatas.trendingOIPIPS3];
-                              newData[index].composite.chromatographicPurity.dryingHours = e.target.value;
+                              newData[index].composite.limit = e.target.value;
                               setGridDatas({
                                 ...gridDatas,
                                 trendingOIPIPS3: newData,
@@ -19995,40 +19987,45 @@ export default function APQR() {
                 </div>
               </div>
               <table>
-                <thead>
+              <thead>
                   <tr>
                     <th rowSpan={3}>S. No.</th>
                     <th rowSpan={3}>Batch No.</th>
-                    <th rowSpan={3}>Unreacted Diolone Acetate NMT 0.5 %</th>
-                    <th rowSpan={3}>Limit</th>
-                    <th rowSpan={3}>
-                      Chromatographic Purity (for information)
-                    </th>
-                    <th rowSpan={3}>Unreacted TCA Step – I B NMT 0.5 % </th>
-                    <th rowSpan={3}>Purity (for information)</th>
-                    <th rowSpan={3}>pH 6.0 – 6.5</th>
-                    <th rowSpan={3}>L Limit</th>
-                    <th rowSpan={3}>U Limit</th>
-                    <th rowSpan={3}>pH 6.0 – 6.5</th>
-                    <th rowSpan={3}>L Limit</th>
-                    <th rowSpan={3}>U Limit</th>
                     <th rowSpan={3}>Water content NMT 1.0 % w/w</th>
                     <th rowSpan={3}>Limit</th>
-                    <th rowSpan={1} colSpan={5}>
+                    <th rowSpan={1} colSpan={15}>
                       Composite{" "}
                     </th>
                   </tr>
+
                   <tr>
                     <th colSpan={1} rowSpan={2}>
                       Water content NMT 1.0 % w/w
                     </th>
-                    <th rowspan={1} colSpan={4}>
-                      Chromatographic purity in area % by HPLC
+                    <th colSpan={1} rowSpan={2}>
+                      Limit
+                    </th>
+                    <th colSpan={1} rowSpan={2}>
+                      Loss on drying NMT 1.0 % w/w
+                    </th>
+                    <th colSpan={1} rowSpan={2}>
+                      Limit
+                    </th>
+                    <th rowspan={1} colSpan={11}>
+                      Related Substances by HPLC
                     </th>
                   </tr>
                   <tr>
+                    {" "}
+                    <th>Impurity K NMT 0.25%</th>
                     <th>Limit</th>
-                    <th>TCA stage – I NLT 93.0 % </th>
+                    <th>Impurity H NMT 0.15%</th>
+                    <th>Impurity D NMT 0.15%</th>
+                    <th>Limit</th>
+                    <th>Impurity I NMT 0.15%</th>
+                    <th>Unknown Impurity NMT 0.15%</th>
+                    <th>Limit</th>
+                    <th>Total Impurities NMT 0.50%</th>
                     <th>Limit</th>
                     <th>Drying Hours</th>
                   </tr>
@@ -20053,10 +20050,10 @@ export default function APQR() {
                         </td>
                         <td>
                           <input
-                            value={item.unreactedDiolone}
+                            value={item.waterContent}
                             onChange={(e) => {
                               const newData = [...gridDatas.trendingOIPIPS4];
-                              newData[index].unreactedDiolone = e.target.value;
+                              newData[index].waterContent = e.target.value;
                               setGridDatas({
                                 ...gridDatas,
                                 trendingOIPIPS4: newData,
@@ -20079,10 +20076,11 @@ export default function APQR() {
                         </td>
                         <td>
                           <input
-                            value={item.chromatographicPurity}
+                            value={item.composite.waterContentNMT}
                             onChange={(e) => {
                               const newData = [...gridDatas.trendingOIPIPS4];
-                              newData[index].chromatographicPurity = e.target.value;
+                              newData[index].composite.waterContentNMT =
+                                e.target.value;
                               setGridDatas({
                                 ...gridDatas,
                                 trendingOIPIPS4: newData,
@@ -20092,10 +20090,10 @@ export default function APQR() {
                         </td>
                         <td>
                           <input
-                            value={item.unreactedTCA}
+                            value={item.composite.limit}
                             onChange={(e) => {
                               const newData = [...gridDatas.trendingOIPIPS4];
-                              newData[index].unreactedTCA = e.target.value;
+                              newData[index].composite.limit = e.target.value;
                               setGridDatas({
                                 ...gridDatas,
                                 trendingOIPIPS4: newData,
@@ -20105,10 +20103,11 @@ export default function APQR() {
                         </td>
                         <td>
                           <input
-                            value={item.purityForInformation}
+                            value={item.composite.lossOnDrying}
                             onChange={(e) => {
                               const newData = [...gridDatas.trendingOIPIPS4];
-                              newData[index].purityForInformation = e.target.value;
+                              newData[index].composite.lossOnDrying =
+                                e.target.value;
                               setGridDatas({
                                 ...gridDatas,
                                 trendingOIPIPS4: newData,
@@ -20118,10 +20117,10 @@ export default function APQR() {
                         </td>
                         <td>
                           <input
-                            value={item.pH6}
+                            value={item.composite.limitLoss}
                             onChange={(e) => {
                               const newData = [...gridDatas.trendingOIPIPS4];
-                              newData[index].pH6 = e.target.value;
+                              newData[index].composite.limitLoss = e.target.value;
                               setGridDatas({
                                 ...gridDatas,
                                 trendingOIPIPS4: newData,
@@ -20131,10 +20130,10 @@ export default function APQR() {
                         </td>
                         <td>
                           <input
-                            value={item.lLimit}
+                            value={item.composite.relatedSubstanceByHPLC.impurityKNMT}
                             onChange={(e) => {
                               const newData = [...gridDatas.trendingOIPIPS4];
-                              newData[index].lLimit = e.target.value;
+                              newData[index].composite.relatedSubstanceByHPLC.impurityKNMT = e.target.value;
                               setGridDatas({
                                 ...gridDatas,
                                 trendingOIPIPS4: newData,
@@ -20144,10 +20143,10 @@ export default function APQR() {
                         </td>
                         <td>
                           <input
-                            value={item.uLimit}
+                            value={item.composite.relatedSubstanceByHPLC.limitNMT}
                             onChange={(e) => {
                               const newData = [...gridDatas.trendingOIPIPS4];
-                              newData[index].uLimit = e.target.value;
+                              newData[index].composite.relatedSubstanceByHPLC.limitNMT = e.target.value;
                               setGridDatas({
                                 ...gridDatas,
                                 trendingOIPIPS4: newData,
@@ -20157,10 +20156,10 @@ export default function APQR() {
                         </td>
                         <td>
                           <input
-                            value={item.pH65}
+                            value={item.composite.relatedSubstanceByHPLC.impurityHNMT}
                             onChange={(e) => {
                               const newData = [...gridDatas.trendingOIPIPS4];
-                              newData[index].pH65 = e.target.value;
+                              newData[index].composite.relatedSubstanceByHPLC.impurityHNMT = e.target.value;
                               setGridDatas({
                                 ...gridDatas,
                                 trendingOIPIPS4: newData,
@@ -20170,10 +20169,10 @@ export default function APQR() {
                         </td>
                         <td>
                           <input
-                            value={item.lLimit}
+                            value={item.composite.relatedSubstanceByHPLC.impurityDNMT}
                             onChange={(e) => {
                               const newData = [...gridDatas.trendingOIPIPS4];
-                              newData[index].lLimit = e.target.value;
+                              newData[index].composite.relatedSubstanceByHPLC.impurityDNMT = e.target.value;
                               setGridDatas({
                                 ...gridDatas,
                                 trendingOIPIPS4: newData,
@@ -20183,10 +20182,10 @@ export default function APQR() {
                         </td>
                         <td>
                           <input
-                            value={item.uLimit}
+                            value={item.composite.relatedSubstanceByHPLC.limitDNMT}
                             onChange={(e) => {
                               const newData = [...gridDatas.trendingOIPIPS4];
-                              newData[index].uLimit = e.target.value;
+                              newData[index].composite.relatedSubstanceByHPLC.limitDNMT = e.target.value;
                               setGridDatas({
                                 ...gridDatas,
                                 trendingOIPIPS4: newData,
@@ -20196,10 +20195,10 @@ export default function APQR() {
                         </td>
                         <td>
                           <input
-                            value={item.waterContent}
+                            value={item.composite.relatedSubstanceByHPLC.impurityINMT}
                             onChange={(e) => {
                               const newData = [...gridDatas.trendingOIPIPS4];
-                              newData[index].waterContent = e.target.value;
+                              newData[index].composite.relatedSubstanceByHPLC.impurityINMT = e.target.value;
                               setGridDatas({
                                 ...gridDatas,
                                 trendingOIPIPS4: newData,
@@ -20209,10 +20208,10 @@ export default function APQR() {
                         </td>
                         <td>
                           <input
-                            value={item.wLimit}
+                            value={item.composite.relatedSubstanceByHPLC.unknownImpurity}
                             onChange={(e) => {
                               const newData = [...gridDatas.trendingOIPIPS4];
-                              newData[index].wLimit = e.target.value;
+                              newData[index].composite.relatedSubstanceByHPLC.unknownImpurity = e.target.value;
                               setGridDatas({
                                 ...gridDatas,
                                 trendingOIPIPS4: newData,
@@ -20222,10 +20221,11 @@ export default function APQR() {
                         </td>
                         <td>
                           <input
-                            value={item.composite.waterContentNmt}
+                            value={item.composite.relatedSubstanceByHPLC.limitUnknown}
                             onChange={(e) => {
                               const newData = [...gridDatas.trendingOIPIPS4];
-                              newData[index].composite.waterContentNmt = e.target.value;
+                              newData[index].composite.relatedSubstanceByHPLC.limitUnknown =
+                                e.target.value;
                               setGridDatas({
                                 ...gridDatas,
                                 trendingOIPIPS4: newData,
@@ -20235,10 +20235,13 @@ export default function APQR() {
                         </td>
                         <td>
                           <input
-                            value={item.composite.chromatographicPurity.limit}
+                            value={item.composite.relatedSubstanceByHPLC.totalimpuriritie}
                             onChange={(e) => {
                               const newData = [...gridDatas.trendingOIPIPS4];
-                              newData[index].composite.chromatographicPurity.limit = e.target.value;
+                              newData[
+                                index
+                              ].composite.relatedSubstanceByHPLC.totalimpuriritie =
+                                e.target.value;
                               setGridDatas({
                                 ...gridDatas,
                                 trendingOIPIPS4: newData,
@@ -20249,11 +20252,14 @@ export default function APQR() {
                         <td>
                           <input
                             value={
-                              item.composite.chromatographicPurity.tCAStage
+                              item.composite.relatedSubstanceByHPLC.limitTotal
                             }
                             onChange={(e) => {
                               const newData = [...gridDatas.trendingOIPIPS4];
-                              newData[index].composite.chromatographicPurity.tCAStage = e.target.value;
+                              newData[
+                                index
+                              ].composite.relatedSubstanceByHPLC.limitTotal =
+                                e.target.value;
                               setGridDatas({
                                 ...gridDatas,
                                 trendingOIPIPS4: newData,
@@ -20263,10 +20269,13 @@ export default function APQR() {
                         </td>{" "}
                         <td>
                           <input
-                            value={item.composite.chromatographicPurity.tLimit}
+                            value={item.composite.relatedSubstanceByHPLC.dryingHours}
                             onChange={(e) => {
                               const newData = [...gridDatas.trendingOIPIPS4];
-                              newData[index].composite.chromatographicPurity.tLimit = e.target.value;
+                              newData[
+                                index
+                              ].composite.relatedSubstanceByHPLC.dryingHours =
+                                e.target.value;
                               setGridDatas({
                                 ...gridDatas,
                                 trendingOIPIPS4: newData,
@@ -20274,21 +20283,24 @@ export default function APQR() {
                             }}
                           />
                         </td>{" "}
-                        <td>
+                        {/* <td>
                           <input
                             value={
                               item.composite.chromatographicPurity.dryingHours
                             }
                             onChange={(e) => {
                               const newData = [...gridDatas.trendingOIPIPS4];
-                              newData[index].composite.chromatographicPurity.dryingHours = e.target.value;
+                              newData[
+                                index
+                              ].composite.chromatographicPurity.dryingHours =
+                                e.target.value;
                               setGridDatas({
                                 ...gridDatas,
                                 trendingOIPIPS4: newData,
                               });
                             }}
                           />
-                        </td>
+                        </td> */}
                       </tr>
                     );
                   })}
@@ -20359,259 +20371,274 @@ export default function APQR() {
                   {gridDatas?.trendingOIPIPS5?.map((item, index) => {
                     return (
                       <tr key={index}>
-                      <td>{index + 1}</td>
-                      <td>
-                        <input
-                          value={item.batchNo}
-                          onChange={(e) => {
-                            const newData = [...gridDatas.trendingOIPIPS5];
-                            newData[index].batchNo = e.target.value;
-                            setGridDatas({
-                              ...gridDatas,
-                              trendingOIPIPS5: newData,
-                            });
-                          }}
-                        />
-                      </td>
-                      <td>
-                        <input
-                          value={item.unreactedDiolone}
-                          onChange={(e) => {
-                            const newData = [...gridDatas.trendingOIPIPS5];
-                            newData[index].unreactedDiolone = e.target.value;
-                            setGridDatas({
-                              ...gridDatas,
-                              trendingOIPIPS5: newData,
-                            });
-                          }}
-                        />
-                      </td>
-                      <td>
-                        <input
-                          value={item.limit}
-                          onChange={(e) => {
-                            const newData = [...gridDatas.trendingOIPIPS5];
-                            newData[index].limit = e.target.value;
-                            setGridDatas({
-                              ...gridDatas,
-                              trendingOIPIPS5: newData,
-                            });
-                          }}
-                        />
-                      </td>
-                      <td>
-                        <input
-                          value={item.chromatographicPurity}
-                          onChange={(e) => {
-                            const newData = [...gridDatas.trendingOIPIPS5];
-                            newData[index].chromatographicPurity = e.target.value;
-                            setGridDatas({
-                              ...gridDatas,
-                              trendingOIPIPS5: newData,
-                            });
-                          }}
-                        />
-                      </td>
-                      <td>
-                        <input
-                          value={item.unreactedTCA}
-                          onChange={(e) => {
-                            const newData = [...gridDatas.trendingOIPIPS5];
-                            newData[index].unreactedTCA = e.target.value;
-                            setGridDatas({
-                              ...gridDatas,
-                              trendingOIPIPS5: newData,
-                            });
-                          }}
-                        />
-                      </td>
-                      <td>
-                        <input
-                          value={item.purityForInformation}
-                          onChange={(e) => {
-                            const newData = [...gridDatas.trendingOIPIPS5];
-                            newData[index].purityForInformation = e.target.value;
-                            setGridDatas({
-                              ...gridDatas,
-                              trendingOIPIPS5: newData,
-                            });
-                          }}
-                        />
-                      </td>
-                      <td>
-                        <input
-                          value={item.pH6}
-                          onChange={(e) => {
-                            const newData = [...gridDatas.trendingOIPIPS5];
-                            newData[index].pH6 = e.target.value;
-                            setGridDatas({
-                              ...gridDatas,
-                              trendingOIPIPS5: newData,
-                            });
-                          }}
-                        />
-                      </td>
-                      <td>
-                        <input
-                          value={item.lLimit}
-                          onChange={(e) => {
-                            const newData = [...gridDatas.trendingOIPIPS5];
-                            newData[index].lLimit = e.target.value;
-                            setGridDatas({
-                              ...gridDatas,
-                              trendingOIPIPS5: newData,
-                            });
-                          }}
-                        />
-                      </td>
-                      <td>
-                        <input
-                          value={item.uLimit}
-                          onChange={(e) => {
-                            const newData = [...gridDatas.trendingOIPIPS5];
-                            newData[index].uLimit = e.target.value;
-                            setGridDatas({
-                              ...gridDatas,
-                              trendingOIPIPS5: newData,
-                            });
-                          }}
-                        />
-                      </td>
-                      <td>
-                        <input
-                          value={item.pH65}
-                          onChange={(e) => {
-                            const newData = [...gridDatas.trendingOIPIPS5];
-                            newData[index].pH65 = e.target.value;
-                            setGridDatas({
-                              ...gridDatas,
-                              trendingOIPIPS5: newData,
-                            });
-                          }}
-                        />
-                      </td>
-                      <td>
-                        <input
-                          value={item.lLimit}
-                          onChange={(e) => {
-                            const newData = [...gridDatas.trendingOIPIPS5];
-                            newData[index].lLimit = e.target.value;
-                            setGridDatas({
-                              ...gridDatas,
-                              trendingOIPIPS5: newData,
-                            });
-                          }}
-                        />
-                      </td>
-                      <td>
-                        <input
-                          value={item.uLimit}
-                          onChange={(e) => {
-                            const newData = [...gridDatas.trendingOIPIPS5];
-                            newData[index].uLimit = e.target.value;
-                            setGridDatas({
-                              ...gridDatas,
-                              trendingOIPIPS5: newData,
-                            });
-                          }}
-                        />
-                      </td>
-                      <td>
-                        <input
-                          value={item.waterContent}
-                          onChange={(e) => {
-                            const newData = [...gridDatas.trendingOIPIPS5];
-                            newData[index].waterContent = e.target.value;
-                            setGridDatas({
-                              ...gridDatas,
-                              trendingOIPIPS5: newData,
-                            });
-                          }}
-                        />
-                      </td>
-                      <td>
-                        <input
-                          value={item.wLimit}
-                          onChange={(e) => {
-                            const newData = [...gridDatas.trendingOIPIPS5];
-                            newData[index].wLimit = e.target.value;
-                            setGridDatas({
-                              ...gridDatas,
-                              trendingOIPIPS5: newData,
-                            });
-                          }}
-                        />
-                      </td>
-                      <td>
-                        <input
-                          value={item.composite.waterContentNmt}
-                          onChange={(e) => {
-                            const newData = [...gridDatas.trendingOIPIPS5];
-                            newData[index].composite.waterContentNmt = e.target.value;
-                            setGridDatas({
-                              ...gridDatas,
-                              trendingOIPIPS5: newData,
-                            });
-                          }}
-                        />
-                      </td>
-                      <td>
-                        <input
-                          value={item.composite.chromatographicPurity.limit}
-                          onChange={(e) => {
-                            const newData = [...gridDatas.trendingOIPIPS5];
-                            newData[index].composite.chromatographicPurity.limit = e.target.value;
-                            setGridDatas({
-                              ...gridDatas,
-                              trendingOIPIPS5: newData,
-                            });
-                          }}
-                        />
-                      </td>{" "}
-                      <td>
-                        <input
-                          value={
-                            item.composite.chromatographicPurity.tCAStage
-                          }
-                          onChange={(e) => {
-                            const newData = [...gridDatas.trendingOIPIPS5];
-                            newData[index].composite.chromatographicPurity.tCAStage = e.target.value;
-                            setGridDatas({
-                              ...gridDatas,
-                              trendingOIPIPS5: newData,
-                            });
-                          }}
-                        />
-                      </td>{" "}
-                      <td>
-                        <input
-                          value={item.composite.chromatographicPurity.tLimit}
-                          onChange={(e) => {
-                            const newData = [...gridDatas.trendingOIPIPS5];
-                            newData[index].composite.chromatographicPurity.tLimit = e.target.value;
-                            setGridDatas({
-                              ...gridDatas,
-                              trendingOIPIPS5: newData,
-                            });
-                          }}
-                        />
-                      </td>{" "}
-                      <td>
-                        <input
-                          value={
-                            item.composite.chromatographicPurity.dryingHours
-                          }
-                          onChange={(e) => {
-                            const newData = [...gridDatas.trendingOIPIPS5];
-                            newData[index].composite.chromatographicPurity.dryingHours = e.target.value;
-                            setGridDatas({
-                              ...gridDatas,
-                              trendingOIPIPS5: newData,
-                            });
-                          }}
-                        />
-                      </td>
-                    </tr>
+                        <td>{index + 1}</td>
+                        <td>
+                          <input
+                            value={item.batchNo}
+                            onChange={(e) => {
+                              const newData = [...gridDatas.trendingOIPIPS5];
+                              newData[index].batchNo = e.target.value;
+                              setGridDatas({
+                                ...gridDatas,
+                                trendingOIPIPS5: newData,
+                              });
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.unreactedDiolone}
+                            onChange={(e) => {
+                              const newData = [...gridDatas.trendingOIPIPS5];
+                              newData[index].unreactedDiolone = e.target.value;
+                              setGridDatas({
+                                ...gridDatas,
+                                trendingOIPIPS5: newData,
+                              });
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.limit}
+                            onChange={(e) => {
+                              const newData = [...gridDatas.trendingOIPIPS5];
+                              newData[index].limit = e.target.value;
+                              setGridDatas({
+                                ...gridDatas,
+                                trendingOIPIPS5: newData,
+                              });
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.chromatographicPurity}
+                            onChange={(e) => {
+                              const newData = [...gridDatas.trendingOIPIPS5];
+                              newData[index].chromatographicPurity =
+                                e.target.value;
+                              setGridDatas({
+                                ...gridDatas,
+                                trendingOIPIPS5: newData,
+                              });
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.unreactedTCA}
+                            onChange={(e) => {
+                              const newData = [...gridDatas.trendingOIPIPS5];
+                              newData[index].unreactedTCA = e.target.value;
+                              setGridDatas({
+                                ...gridDatas,
+                                trendingOIPIPS5: newData,
+                              });
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.purityForInformation}
+                            onChange={(e) => {
+                              const newData = [...gridDatas.trendingOIPIPS5];
+                              newData[index].purityForInformation =
+                                e.target.value;
+                              setGridDatas({
+                                ...gridDatas,
+                                trendingOIPIPS5: newData,
+                              });
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.pH6}
+                            onChange={(e) => {
+                              const newData = [...gridDatas.trendingOIPIPS5];
+                              newData[index].pH6 = e.target.value;
+                              setGridDatas({
+                                ...gridDatas,
+                                trendingOIPIPS5: newData,
+                              });
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.lLimit}
+                            onChange={(e) => {
+                              const newData = [...gridDatas.trendingOIPIPS5];
+                              newData[index].lLimit = e.target.value;
+                              setGridDatas({
+                                ...gridDatas,
+                                trendingOIPIPS5: newData,
+                              });
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.uLimit}
+                            onChange={(e) => {
+                              const newData = [...gridDatas.trendingOIPIPS5];
+                              newData[index].uLimit = e.target.value;
+                              setGridDatas({
+                                ...gridDatas,
+                                trendingOIPIPS5: newData,
+                              });
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.pH65}
+                            onChange={(e) => {
+                              const newData = [...gridDatas.trendingOIPIPS5];
+                              newData[index].pH65 = e.target.value;
+                              setGridDatas({
+                                ...gridDatas,
+                                trendingOIPIPS5: newData,
+                              });
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.lLimit}
+                            onChange={(e) => {
+                              const newData = [...gridDatas.trendingOIPIPS5];
+                              newData[index].lLimit = e.target.value;
+                              setGridDatas({
+                                ...gridDatas,
+                                trendingOIPIPS5: newData,
+                              });
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.uLimit}
+                            onChange={(e) => {
+                              const newData = [...gridDatas.trendingOIPIPS5];
+                              newData[index].uLimit = e.target.value;
+                              setGridDatas({
+                                ...gridDatas,
+                                trendingOIPIPS5: newData,
+                              });
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.waterContent}
+                            onChange={(e) => {
+                              const newData = [...gridDatas.trendingOIPIPS5];
+                              newData[index].waterContent = e.target.value;
+                              setGridDatas({
+                                ...gridDatas,
+                                trendingOIPIPS5: newData,
+                              });
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.wLimit}
+                            onChange={(e) => {
+                              const newData = [...gridDatas.trendingOIPIPS5];
+                              newData[index].wLimit = e.target.value;
+                              setGridDatas({
+                                ...gridDatas,
+                                trendingOIPIPS5: newData,
+                              });
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.composite.waterContentNmt}
+                            onChange={(e) => {
+                              const newData = [...gridDatas.trendingOIPIPS5];
+                              newData[index].composite.waterContentNmt =
+                                e.target.value;
+                              setGridDatas({
+                                ...gridDatas,
+                                trendingOIPIPS5: newData,
+                              });
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.composite.chromatographicPurity.limit}
+                            onChange={(e) => {
+                              const newData = [...gridDatas.trendingOIPIPS5];
+                              newData[
+                                index
+                              ].composite.chromatographicPurity.limit =
+                                e.target.value;
+                              setGridDatas({
+                                ...gridDatas,
+                                trendingOIPIPS5: newData,
+                              });
+                            }}
+                          />
+                        </td>{" "}
+                        <td>
+                          <input
+                            value={
+                              item.composite.chromatographicPurity.tCAStage
+                            }
+                            onChange={(e) => {
+                              const newData = [...gridDatas.trendingOIPIPS5];
+                              newData[
+                                index
+                              ].composite.chromatographicPurity.tCAStage =
+                                e.target.value;
+                              setGridDatas({
+                                ...gridDatas,
+                                trendingOIPIPS5: newData,
+                              });
+                            }}
+                          />
+                        </td>{" "}
+                        <td>
+                          <input
+                            value={item.composite.chromatographicPurity.tLimit}
+                            onChange={(e) => {
+                              const newData = [...gridDatas.trendingOIPIPS5];
+                              newData[
+                                index
+                              ].composite.chromatographicPurity.tLimit =
+                                e.target.value;
+                              setGridDatas({
+                                ...gridDatas,
+                                trendingOIPIPS5: newData,
+                              });
+                            }}
+                          />
+                        </td>{" "}
+                        <td>
+                          <input
+                            value={
+                              item.composite.chromatographicPurity.dryingHours
+                            }
+                            onChange={(e) => {
+                              const newData = [...gridDatas.trendingOIPIPS5];
+                              newData[
+                                index
+                              ].composite.chromatographicPurity.dryingHours =
+                                e.target.value;
+                              setGridDatas({
+                                ...gridDatas,
+                                trendingOIPIPS5: newData,
+                              });
+                            }}
+                          />
+                        </td>
+                      </tr>
                     );
                   })}
                 </tbody>
