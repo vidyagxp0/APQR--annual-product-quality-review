@@ -18608,18 +18608,13 @@ export default function APQR() {
                     <th>SI. No.</th>
                     <th>Batch No.</th>
                     <th>
-                      Critical Parameter: 01 Nitrogen gas purging should be
-                      carried out in advance in Acetonide formation reaction
-                      (part I)
+                    Critical Parameter: 01 Nitrogen gas purging should be carried out in advance in Acetonide formation reaction (part I) 
                     </th>
                     <th>
-                      Critical Parameter: 02 In Bromination reaction (part II),
-                      slow agitation is required during the reaction.
+                    Critical Parameter: 02 In Bromination reaction (part II), slow agitation is required during the reaction. 
                     </th>
                     <th>
-                      Critical Parameter: 03 Epoxydation reaction (part III)
-                      required Argon gas bubbling to remove oxygen content from
-                      the reaction mass.{" "}
+                    Critical Parameter: 03 Epoxydation reaction (part III) required Argon gas bubbling to remove oxygen content from the reaction mass. 
                     </th>
                   </tr>
                 </thead>
@@ -18881,13 +18876,10 @@ export default function APQR() {
                     <th rowSpan={2}>S. No.</th>
                     <th rowSpan={2}>Batch No.</th>
                     <th rowSpan={2}>
-                      Critical Parameter: 01 Nitrogen gas purging should be
-                      carried out in advance in Acetonide formation reaction
-                      (part I)
+                    Critical Parameter: 01 addition of Sodium Hydroxide and Methanol Solution in reaction mass, reaction mass and NaOH / Methanol solution both should be oxygen free by Argon bubbling. 
                     </th>
                     <th colSpan={4} rowSpan={1}>
-                      Critical Parameter: 02 In Bromination reaction (part II),
-                      slow agitation is required during the reaction.
+                    Critical Parameter: 02 : Adjust pH between 5.0-6.0 by adding adequate quantity of Glacial acetic acid.
                     </th>
                     {/* <th >Critical Parameter: 03 Epoxydation reaction (part III) required Argon gas bubbling to remove oxygen content from the reaction mass. </th> */}
                   </tr>
