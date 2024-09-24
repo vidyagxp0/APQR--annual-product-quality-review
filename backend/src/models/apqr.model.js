@@ -1,5 +1,7 @@
 import { DataTypes, STRING } from "sequelize";
 import { sequelize } from "../config/db.js";
+import { Department } from "./department.model.js";
+import { Division } from "./division.model.js";
 // import gridRef from "./gridRef.model.js"; // Ensure gridRef is imported before use
 
 export const APQR = sequelize.define("ALL_APQR", {
@@ -8,7 +10,7 @@ export const APQR = sequelize.define("ALL_APQR", {
     primaryKey: true,
     autoIncrement: true,
   },
-  initiateDate:{
+  initiateDate: {
     type: DataTypes.DATE,
     allowNull: true,
   },
@@ -77,9 +79,48 @@ export const APQR = sequelize.define("ALL_APQR", {
   tinyData: {
     type: DataTypes.JSON,
     allowNull: true,
-  }
-
-  ,
+  },
+  status: {
+    type: DataTypes.STRING,
+  },
+  stage: {
+    type: DataTypes.INTEGER,
+  },
+  reviewers: {
+    type: DataTypes.JSON,
+  },
+  approvers: {
+    type: DataTypes.JSON,
+  },
+  due_date: {
+    type: DataTypes.DATE,
+  },
+  department_id: {
+    type: DataTypes.INTEGER,
+    allowNull: false,
+    references: {
+      model: Department,
+      key: "department_id",
+    },
+  },
+  description: {
+    type: DataTypes.STRING,
+  },
+  division_id: {
+    type: DataTypes.INTEGER,
+    allowNull: false,
+    references: {
+      model: Division,
+      key: "division_id",
+    },
+  },
+  initiatorComment: {
+    type: DataTypes.STRING,
+  },
+  isActive: {
+    type: DataTypes.BOOLEAN,
+    defaultValue: true,
+  },
   createdAt: DataTypes.DATE,
   updatedAt: DataTypes.DATE,
 });

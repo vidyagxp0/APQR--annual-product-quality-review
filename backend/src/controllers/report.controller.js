@@ -15,6 +15,30 @@ function htmlToPlainText(html) {
   });
 }
 
+const removeHtmlTags = (str) => {
+  if (!str) return str;
+
+  let cleanedStr = str.replace(/<[^>]+>/g, " ");
+  cleanedStr = cleanedStr.replace(/^"(.*)"$/, "$1");
+
+  return cleanedStr;
+};
+
+const cleanAuditTrailData = (auditTrail) => {
+  return auditTrail.map((entry) => {
+    // Clean previous_value and new_value
+    const cleanPreviousValue = removeHtmlTags(entry.previous_value);
+    const cleanNewValue = removeHtmlTags(entry.new_value);
+
+    // Return a new object with cleaned values
+    return {
+      ...entry,
+      previous_value: cleanPreviousValue,
+      new_value: cleanNewValue,
+    };
+  });
+};
+
 const setapqrdata = (aPQRDataOBJ) => {
   const { aPQRData, gridDatas } = aPQRDataOBJ;
   let { tinyData } = aPQRData;
@@ -46,7 +70,8 @@ const setapqrdata = (aPQRDataOBJ) => {
   pqrData.processFlow = aPQRData?.processFlow ?? "";
   pqrData.totalBatchesManu = aPQRData?.totalBatchesManufactured ?? "";
   pqrData.totalBatchesApproved = aPQRData?.totalBatchesApprovedReleased ?? "";
-  pqrData.totalNoValidationprocessedBatches = aPQRData?.totalProcessValidationBatches ?? "";
+  pqrData.totalNoValidationprocessedBatches =
+    aPQRData?.totalProcessValidationBatches ?? "";
   pqrData.totalNoReprocessedBatches = aPQRData?.totalReprocessedBatches ?? "";
 
   //Grids
@@ -231,12 +256,15 @@ export const chatPdf = async (req, res) => {
   const apqrId = req.params.id;
   let aPQRData;
   try {
-    const aPQRDataRes = await fetch(`http://localhost:4000/get-apqr/${apqrId}`, {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
+    const aPQRDataRes = await fetch(
+      `http://localhost:4000/get-apqr/${apqrId}`,
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
 
     aPQRData = await aPQRDataRes.json();
 
@@ -319,12 +347,15 @@ export const generatePdfbyId = async (req, res) => {
   const apqrId = req.params.id;
   let aPQRData;
   try {
-    const aPQRDataRes = await fetch(`http://localhost:4000/get-apqr/${apqrId}`, {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
+    const aPQRDataRes = await fetch(
+      `http://localhost:4000/get-apqr/${apqrId}`,
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
 
     aPQRData = await aPQRDataRes.json();
 
@@ -389,7 +420,10 @@ export const generatePdfbyId = async (req, res) => {
       },
     });
 
-    res.setHeader("Content-Disposition", "attachment; filename=APQR_Report.pdf");
+    res.setHeader(
+      "Content-Disposition",
+      "attachment; filename=APQR_Report.pdf"
+    );
     res.setHeader("Content-Type", "application/pdf");
     res.send(pdfBuffer);
   } catch (error) {
@@ -407,12 +441,15 @@ export const viewReportByID = async (req, res) => {
 
   let aPQRData;
   try {
-    const aPQRDataRes = await fetch(`http://localhost:4000/get-apqr/${apqrId}`, {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
+    const aPQRDataRes = await fetch(
+      `http://localhost:4000/get-apqr/${apqrId}`,
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
 
     aPQRData = await aPQRDataRes.json();
 
@@ -433,5 +470,115 @@ export const viewReportByID = async (req, res) => {
   } catch (error) {
     console.error("Error viewing report:", error);
     res.status(500).send("Error viewing report");
+  }
+};
+
+export const generateAuditPdfbyId = async (req, res) => {
+  const apqrId = req.params.id;
+  let browser;
+  let aPQRData;
+
+  try {
+    const aPQRAuditRes = await fetch(
+      `http://localhost:4000/get-apqr-audit-trail/${apqrId}`,
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
+    const aPQRDataRes = await fetch(
+      `http://localhost:4000/get-apqr/${apqrId}`,
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
+
+    aPQRData = await aPQRDataRes.json();
+    setapqrdata(aPQRData);
+
+    const base64Logo = await getBase64Image("public/connexoLogo.jpg");
+    const base64Logo2 = await getBase64Image("public/symbiotecLogo.png");
+    const auditData = await aPQRAuditRes.json();
+    const auditTrail = auditData.auditTrail;
+
+    if (!auditTrail || !auditTrail.length) {
+      return res
+        .status(404)
+        .json({ error: true, message: "No audit trail data found" });
+    }
+
+    const cleanedData = cleanAuditTrailData(auditTrail); // Clean HTML tags
+
+    // Render audit report content using EJS
+    const htmlContent = await new Promise((resolve, reject) => {
+      req.app.render(
+        "auditReport",
+        { auditTrail, cleanedData },
+        (err, html) => {
+          if (err) reject(err);
+          resolve(html);
+        }
+      );
+    });
+
+    const headerHtml = await new Promise((resolve, reject) => {
+      req.app.render(
+        "header",
+        { base64Image: base64Logo, base64Logo2: base64Logo2, product: pqrData },
+        (err, html) => {
+          if (err) return reject(err);
+          resolve(html);
+        }
+      );
+    });
+
+    const footerHtml = await new Promise((resolve, reject) => {
+      req.app.render("footer", { product: pqrData }, (err, html) => {
+        if (err) return reject(err);
+        resolve(html);
+      });
+    });
+
+    browser = await puppeteer.launch({
+      headless: true,
+      args: ["--no-sandbox", "--disable-setuid-sandbox"],
+    });
+    const page = await browser.newPage();
+    await page.setContent(htmlContent, { waitUntil: "networkidle0" });
+
+    const pdfBuffer = await page.pdf({
+      format: "a3",
+      printBackground: true,
+      displayHeaderFooter: true,
+      headerTemplate: headerHtml,
+      footerTemplate: footerHtml,
+      margin: {
+        top: "160px",
+        right: "50px",
+        bottom: "50px",
+        left: "50px",
+      },
+    });
+
+    res.setHeader(
+      "Content-Disposition",
+      "attachment; filename=APQR_Report.pdf"
+    );
+    res.setHeader("Content-Type", "application/pdf");
+    res.send(pdfBuffer);
+  } catch (error) {
+    console.error("Error generating PDF:", error);
+    return res
+      .status(500)
+      .json({ error: true, message: "Error generating PDF", error });
+  } finally {
+    if (browser) {
+      await browser.close();
+    }
   }
 };

@@ -4,13 +4,35 @@ import { sequelize } from "../config/db.js";
 import { getImageUrl } from "../middleware/authentication.js";
 import { FormAuditTrail } from "../models/formAuditTrail.js";
 import { User } from "../models/user.model.js";
+import { Division } from "../models/division.model.js";
+import { Department } from "../models/department.model.js";
+import bcrypt from "bcrypt";
 
 export const createApqr = async (req, res) => {
   const t = await sequelize.transaction();
   try {
-    const { userId, comments, declaration } = req.body;
+    const {
+      userId,
+      comments,
+      reviewers,
+      approvers,
+      division_id,
+      department_id,
+      due_date,
+      description,
+    } = req.body;
+
     const newAPQR = await APQR.create(
       {
+        reviewers: reviewers || [],
+        approvers: approvers || [],
+        description: description || "description",
+        division_id: division_id || 2,
+        department_id: department_id || 1,
+        due_date: due_date ? new Date("2022-01-01") : null,
+        stage: 1,
+        initiatorComment: comments || "initiatorComment",
+        status: "Under Initiation",
         pqrNo: req.body.pqrNo,
         productName: req.body.productName,
         productCodes: req.body.productCodes || [],
@@ -253,8 +275,8 @@ export const createApqr = async (req, res) => {
         new_value: newAPQR.pqrId,
         previous_status: "Not Applicable",
         new_status: "Under Initiation",
-        declaration: declaration || "dec",
-        comments: comments || "com",
+        field_name: "Not Applicable",
+        comments: comments, //for e-signAuthentication
         action: "APQR Created",
       },
       { transaction: t }
@@ -485,8 +507,8 @@ export const updateAPQRById = async (req, res) => {
               new_value: JSON.stringify(newTinyData[tinyField]),
               previous_status: "Not Applicable",
               new_status: "Under Initiation",
-              declaration: `Changed ${tinyField}` || "dec-0",
-              comments: req.body.comments || `${tinyField} updated` || "comm-0",
+              field_name: `${tinyField}`,
+              comments: req.body.comments,
               action: "Updated",
             });
           }
@@ -508,8 +530,8 @@ export const updateAPQRById = async (req, res) => {
             new_value: new Date(newValue).toISOString(),
             previous_status: "Not Applicable",
             new_status: "Under Initiation",
-            declaration: `Changed ${field}`,
-            comments: req.body.comments || `${field} updated`,
+            field_name: `${field}`,
+            comments: req.body.comments,
             action: "Updated",
           });
         }
@@ -527,8 +549,8 @@ export const updateAPQRById = async (req, res) => {
             new_value: JSON.stringify(newProductCodes),
             previous_status: "Not Applicable",
             new_status: "Under Initiation",
-            declaration: `Changed ${field}`,
-            comments: req.body.comments || `${field} updated`,
+            field_name: `${field}`,
+            comments: req.body.comments,
             action: "Updated",
           });
         }
@@ -540,8 +562,8 @@ export const updateAPQRById = async (req, res) => {
           new_value: JSON.stringify(newValue),
           previous_status: "Not Applicable",
           new_status: "Under Initiation",
-          declaration: `Changed ${field}` || "dec0",
-          comments: req.body.comments || `${field} updated` || "comm0",
+          field_name: `${field}`,
+          comments: req.body.comments,
           action: "Updated",
         });
       }
@@ -639,37 +661,41 @@ export const updateAPQRById = async (req, res) => {
     ];
 
     for (let i = 0; i < grids.length; i++) {
-      if (req.body.gridDatas[grids[i]]) {
-        const newGridData = req.body.gridDatas[grids[i]];
+      const gridKey = grids[i];
+
+      if (req.body.gridDatas[gridKey]) {
+        const newGridData = req.body.gridDatas[gridKey];
 
         const existingGridRef = await gridRef.findOne({
           where: {
             pqrId: apqrId,
-            primaryKey: grids[i],
+            primaryKey: gridKey,
           },
           transaction: t,
         });
 
         if (existingGridRef) {
-          const oldValue = existingGridRef.data;
-          const oldGridDataString = JSON.stringify(oldValue);
-          const newGridDataString = JSON.stringify(newGridData);
+          // const oldValue = existingGridRef.data;
+          // const oldGridDataString = JSON.stringify(oldValue);
+          // const newGridDataString = JSON.stringify(newGridData);
+          const oldGridData = existingGridRef.data;
 
-          // Check if data changed and log it in audit trail
-          if (newGridDataString !== oldGridDataString) {
+          if (JSON.stringify(newGridData) !== JSON.stringify(oldGridData)) {
+            // Check if data changed and log it in audit trail
+            // if (newGridDataString !== oldGridDataString) {
             auditTrailEntries.push({
               pqrId: apqrId,
               changed_by: req.body.userId || 1,
-              previous_value: oldGridDataString,
-              new_value: newGridDataString,
+              previous_value: JSON.stringify(oldGridData),
+              new_value: JSON.stringify(newGridData),
               previous_status: "Not Applicable",
               new_status: "Under Initiation",
-              declaration: `Changed ${grids[i]} grid data`,
-              comments: req.body.comments || `Grid ${grids[i]} updated`,
+              field_name: gridKey,
+              comments: req.body.comments,
               action: "Updated",
             });
             await existingGridRef.update(
-              { data: req.body.gridDatas[grids[i]] },
+              { data: newGridData },
               { transaction: t }
             );
           }
@@ -689,8 +715,8 @@ export const updateAPQRById = async (req, res) => {
             new_value: newGridData,
             previous_status: "Not Applicable",
             new_status: "Under Initiation",
-            declaration: `Created ${grids[i]} grid data`,
-            comments: req.body.comments || `Grid ${grids[i]} created`,
+            field_name: `${grids[i]}`,
+            comments: req.body.comments,
             action: "Created",
           });
         }
@@ -746,6 +772,586 @@ export const getAPQRAuditTrail = async (req, res) => {
     return res.status(500).json({
       error: true,
       message: `Error retrieving audit trail: ${error.message}`,
+    });
+  }
+};
+
+export const getDivision = async (req, res) => {
+  try {
+    const data = await Division.findAll({
+      attributes: ["division_id", "name", "isActive"],
+      include: [
+        {
+          model: Department,
+          attributes: ["department_id", "name", "isActive"],
+        },
+      ],
+    });
+
+    return res.status(200).json({
+      error: false,
+      data,
+    });
+  } catch (error) {
+    console.error("Error creating APQR:", error);
+    return res.status(500).json({ error: error.message });
+  }
+};
+
+export const eSignature = async (req, res) => {
+  const transaction = await sequelize.transaction();
+
+  try {
+    const { email, password } = req.body;
+
+    const user = await User.findOne({
+      where: { user_id: req.user.userId, isActive: true },
+      transaction,
+    });
+
+    if (!user) {
+      await transaction.rollback();
+      return res.status(401).json({ error: true, message: "user not found" });
+    }
+
+    if (user.email !== email) {
+      await transaction.rollback();
+      return res
+        .status(401)
+        .json({ error: true, message: "unauthorized email" });
+    }
+
+    const verifyEmail = await User.findOne({
+      where: { email: email, isActive: true },
+      transaction,
+    });
+
+    if (!verifyEmail) {
+      await transaction.rollback();
+      return res.status(401).json({ error: true, message: "Invalid email" });
+    }
+
+    const isPasswordValid = await bcrypt.compare(password, user.password);
+    if (!isPasswordValid) {
+      await transaction.rollback();
+      return res
+        .status(401)
+        .json({ error: true, message: "Invalid password." });
+    }
+    await transaction.commit();
+    return res
+      .status(200)
+      .json({ error: false, message: "E-signature verified" });
+  } catch (error) {
+    await transaction.rollback();
+    console.error("Error e-signature verification:", error);
+    return res.status(500).json({ error: error.message });
+  }
+};
+
+export const submitToHODReview = async (req, res) => {
+  const transaction = await sequelize.transaction();
+
+  try {
+    const { apqrId, initiatorComment, comments } = req.body;
+
+    if (!apqrId) {
+      return res
+        .status(400)
+        .json({ error: true, message: "Please provide a APQR ID." });
+    }
+    const apqrData = await APQR.findOne({
+      where: { pqrId: apqrId, isActive: true },
+      transaction,
+    });
+
+    if (!apqrData) {
+      await transaction.rollback();
+      return res.status(404).json({ error: true, message: "APQR not found." });
+    }
+
+    if (apqrData.stage !== 1) {
+      await transaction.rollback();
+      return res.status(400).json({
+        error: true,
+        message: "Process is not in a valid stage to be sent for HOD review.",
+      });
+    }
+
+    await apqrData.update(
+      {
+        status: "Under HOD Review",
+        stage: 2,
+        initiatorComment: initiatorComment,
+      },
+      { transaction }
+    );
+
+    await FormAuditTrail.create(
+      {
+        pqrId: apqrId,
+        changed_by: req.user.userId,
+        previous_value: "Not Applicable",
+        new_value: "Not Applicable",
+        previous_status: "Under Initiation",
+        new_status: "Under HOD Review",
+        field_name: "Not Applicable",
+        comments: comments,
+        action: "Send for HOD Review",
+      },
+      { transaction }
+    );
+
+    await transaction.commit();
+
+    res.status(200).json({
+      error: false,
+      message: "APQR successfully sent for HOD review",
+    });
+  } catch (error) {
+    if (!transaction.finished) {
+      await transaction.rollback();
+    }
+    return res.status(500).json({
+      error: true,
+      message: `Error during sending process for review: ${error.message}`,
+    });
+  }
+};
+
+export const ReviewToOpen = async (req, res) => {
+  const transaction = await sequelize.transaction();
+
+  try {
+    const { apqrId, comments } = req.body;
+
+    if (!apqrId) {
+      return res
+        .status(400)
+        .json({ error: true, message: "Please provide a APQR ID." });
+    }
+    const apqrData = await APQR.findOne({
+      where: { pqrId: apqrId, isActive: true },
+      transaction,
+    });
+
+    if (!apqrData) {
+      await transaction.rollback();
+      return res.status(404).json({ error: true, message: "APQR not found." });
+    }
+
+    // Define stage and status mappings
+    const stageMapping = {
+      2: { newStatus: "Under Initiation", newStage: 1 },
+      3: { newStatus: "Under HOD Review", newStage: 2 },
+      4: { newStatus: "Under QA Review", newStage: 3 },
+      5: { newStatus: "Under CFT Review", newStage: 4 },
+      6: { newStatus: "Under Initiator Update Review", newStage: 5 },
+    };
+
+    const currentStage = apqrData.stage;
+    const currentStatus = apqrData.status;
+    if (!stageMapping[currentStage]) {
+      await transaction.rollback();
+      return res.status(400).json({
+        error: true,
+        message: "Process is not in a valid stage to be sent for review.",
+      });
+    }
+
+    // Update APQR stage and status
+    const { newStatus, newStage } = stageMapping[currentStage];
+    const updatedApqr = await apqrData.update(
+      {
+        status: newStatus,
+        stage: newStage,
+        initiatorComment: null,
+      },
+      { transaction }
+    );
+
+    await FormAuditTrail.create(
+      {
+        pqrId: apqrId,
+        changed_by: req.user.userId,
+        previous_value: currentStage,
+        new_value: newStage,
+        previous_status: currentStatus,
+        new_status: newStatus,
+        field_name: "Not Applicable",
+        comments: comments,
+        action: `Stage transition from ${currentStatus} to ${newStatus}`,
+      },
+      { transaction }
+    );
+
+    await transaction.commit();
+
+    res.status(200).json({
+      error: false,
+      message: `APQR Stage transition successfully opened from ${currentStatus} to ${newStatus}`,
+      data: updatedApqr,
+    });
+  } catch (error) {
+    if (!transaction.finished) {
+      await transaction.rollback();
+    }
+    return res.status(500).json({
+      error: true,
+      message: `Error during sending review to initiation: ${error.message}`,
+    });
+  }
+};
+
+export const submitToQAReview = async (req, res) => {
+  const transaction = await sequelize.transaction();
+
+  try {
+    const { apqrId, initiatorComment, comments } = req.body;
+
+    if (!apqrId) {
+      return res
+        .status(400)
+        .json({ error: true, message: "Please provide a APQR ID." });
+    }
+    const apqrData = await APQR.findOne({
+      where: { pqrId: apqrId, isActive: true },
+      transaction,
+    });
+
+    if (!apqrData) {
+      await transaction.rollback();
+      return res.status(404).json({ error: true, message: "APQR not found." });
+    }
+
+    if (apqrData.stage !== 2) {
+      await transaction.rollback();
+      return res.status(400).json({
+        error: true,
+        message: "Process is not in a valid stage to be sent for QA review.",
+      });
+    }
+
+    await apqrData.update(
+      {
+        status: "Under QA Review",
+        stage: 3,
+        initiatorComment: initiatorComment,
+      },
+      { transaction }
+    );
+
+    await FormAuditTrail.create(
+      {
+        pqrId: apqrId,
+        changed_by: req.user.userId,
+        previous_value: "Not Applicable",
+        new_value: "Not Applicable",
+        previous_status: "Under HOD Review",
+        new_status: "Under QA Review",
+        field_name: "Not Applicable",
+        comments: comments,
+        action: "Send for QA Review",
+      },
+      { transaction }
+    );
+
+    await transaction.commit();
+
+    res.status(200).json({
+      error: false,
+      message: "APQR successfully sent for QA review",
+    });
+  } catch (error) {
+    if (!transaction.finished) {
+      await transaction.rollback();
+    }
+    return res.status(500).json({
+      error: true,
+      message: `Error during sending process for QA review: ${error.message}`,
+    });
+  }
+};
+
+export const submitToCFTReview = async (req, res) => {
+  const transaction = await sequelize.transaction();
+
+  try {
+    const { apqrId, initiatorComment, comments } = req.body;
+
+    if (!apqrId) {
+      return res
+        .status(400)
+        .json({ error: true, message: "Please provide a APQR ID." });
+    }
+    const apqrData = await APQR.findOne({
+      where: { pqrId: apqrId, isActive: true },
+      transaction,
+    });
+
+    if (!apqrData) {
+      await transaction.rollback();
+      return res.status(404).json({ error: true, message: "APQR not found." });
+    }
+
+    if (apqrData.stage !== 3) {
+      await transaction.rollback();
+      return res.status(400).json({
+        error: true,
+        message: "Process is not in a valid stage to be sent for CFT review.",
+      });
+    }
+
+    await apqrData.update(
+      {
+        status: "Under CFT Review",
+        stage: 4,
+        initiatorComment: initiatorComment,
+      },
+      { transaction }
+    );
+
+    await FormAuditTrail.create(
+      {
+        pqrId: apqrId,
+        changed_by: req.user.userId,
+        previous_value: "Not Applicable",
+        new_value: "Not Applicable",
+        previous_status: "Under QA Review",
+        new_status: "Under CFT Review",
+        field_name: "Not Applicable",
+        comments: comments,
+        action: "Send for CFT Review",
+      },
+      { transaction }
+    );
+
+    await transaction.commit();
+
+    res.status(200).json({
+      error: false,
+      message: "APQR successfully sent for CFT review",
+    });
+  } catch (error) {
+    if (!transaction.finished) {
+      await transaction.rollback();
+    }
+    return res.status(500).json({
+      error: true,
+      message: `Error during sending process for CFT review: ${error.message}`,
+    });
+  }
+};
+
+export const submitToInitiatorUpdateReview = async (req, res) => {
+  const transaction = await sequelize.transaction();
+
+  try {
+    const { apqrId, initiatorComment, comments } = req.body;
+
+    if (!apqrId) {
+      return res
+        .status(400)
+        .json({ error: true, message: "Please provide a APQR ID." });
+    }
+    const apqrData = await APQR.findOne({
+      where: { pqrId: apqrId, isActive: true },
+      transaction,
+    });
+
+    if (!apqrData) {
+      await transaction.rollback();
+      return res.status(404).json({ error: true, message: "APQR not found." });
+    }
+
+    if (apqrData.stage !== 4) {
+      await transaction.rollback();
+      return res.status(400).json({
+        error: true,
+        message:
+          "Process is not in a valid stage to be sent for Initiator Update review.",
+      });
+    }
+
+    await apqrData.update(
+      {
+        status: "Under Initiator Update Review",
+        stage: 5,
+        initiatorComment: initiatorComment,
+      },
+      { transaction }
+    );
+
+    await FormAuditTrail.create(
+      {
+        pqrId: apqrId,
+        changed_by: req.user.userId,
+        previous_value: "Not Applicable",
+        new_value: "Not Applicable",
+        previous_status: "Under CFT Review",
+        new_status: "Under Initiator Update Review",
+        field_name: "Not Applicable",
+        comments: comments,
+        action: "Send for Initiator Update Review",
+      },
+      { transaction }
+    );
+
+    await transaction.commit();
+
+    res.status(200).json({
+      error: false,
+      message: "APQR successfully sent for Initiator Update review",
+    });
+  } catch (error) {
+    if (!transaction.finished) {
+      await transaction.rollback();
+    }
+    return res.status(500).json({
+      error: true,
+      message: `Error during sending process for Initiator Update review: ${error.message}`,
+    });
+  }
+};
+
+export const submitToQA_HODReview = async (req, res) => {
+  const transaction = await sequelize.transaction();
+
+  try {
+    const { apqrId, initiatorComment, comments } = req.body;
+
+    if (!apqrId) {
+      return res
+        .status(400)
+        .json({ error: true, message: "Please provide a APQR ID." });
+    }
+    const apqrData = await APQR.findOne({
+      where: { pqrId: apqrId, isActive: true },
+      transaction,
+    });
+
+    if (!apqrData) {
+      await transaction.rollback();
+      return res.status(404).json({ error: true, message: "APQR not found." });
+    }
+
+    if (apqrData.stage !== 5) {
+      await transaction.rollback();
+      return res.status(400).json({
+        error: true,
+        message:
+          "Process is not in a valid stage to be sent for QA/HOD review.",
+      });
+    }
+
+    await apqrData.update(
+      {
+        status: "Under QA/HOD Review",
+        stage: 6,
+        initiatorComment: initiatorComment,
+      },
+      { transaction }
+    );
+
+    await FormAuditTrail.create(
+      {
+        pqrId: apqrId,
+        changed_by: req.user.userId,
+        previous_value: "Not Applicable",
+        new_value: "Not Applicable",
+        previous_status: "Under Initiator Updat Review",
+        new_status: "Under QA/HOD Review",
+        field_name: "Not Applicable",
+        comments: comments,
+        action: "Send for QA/HOD Review",
+      },
+      { transaction }
+    );
+
+    await transaction.commit();
+
+    res.status(200).json({
+      error: false,
+      message: "APQR successfully sent for QA/HOD review",
+    });
+  } catch (error) {
+    if (!transaction.finished) {
+      await transaction.rollback();
+    }
+    return res.status(500).json({
+      error: true,
+      message: `Error during sending process for QA/HOD review: ${error.message}`,
+    });
+  }
+};
+
+export const submitToClosedReview = async (req, res) => {
+  const transaction = await sequelize.transaction();
+
+  try {
+    const { apqrId, initiatorComment, comments } = req.body;
+
+    if (!apqrId) {
+      return res
+        .status(400)
+        .json({ error: true, message: "Please provide a APQR ID." });
+    }
+    const apqrData = await APQR.findOne({
+      where: { pqrId: apqrId, isActive: true },
+      transaction,
+    });
+
+    if (!apqrData) {
+      await transaction.rollback();
+      return res.status(404).json({ error: true, message: "APQR not found." });
+    }
+
+    if (apqrData.stage !== 6) {
+      await transaction.rollback();
+      return res.status(400).json({
+        error: true,
+        message:
+          "Process is not in a valid stage to be sent for closed review.",
+      });
+    }
+
+    await apqrData.update(
+      {
+        status: "Review Closed",
+        stage: 7,
+        initiatorComment: initiatorComment,
+      },
+      { transaction }
+    );
+
+    await FormAuditTrail.create(
+      {
+        pqrId: apqrId,
+        changed_by: req.user.userId,
+        previous_value: "Not Applicable",
+        new_value: "Not Applicable",
+        previous_status: "Under QA/HOD Review",
+        new_status: "Closed",
+        field_name: "Not Applicable",
+        comments: comments,
+        action: "Review Closed",
+      },
+      { transaction }
+    );
+
+    await transaction.commit();
+
+    res.status(200).json({
+      error: false,
+      message: "APQR successfully closed",
+    });
+  } catch (error) {
+    if (!transaction.finished) {
+      await transaction.rollback();
+    }
+    return res.status(500).json({
+      error: true,
+      message: `Error during sending process for closed review: ${error.message}`,
     });
   }
 };

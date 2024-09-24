@@ -33,6 +33,10 @@ export const FormAuditTrail = sequelize.define("FormAuditTrail", {
     type: DataTypes.STRING,
     allowNull: true,
   },
+  field_name: {
+    type: DataTypes.STRING,
+    allowNull: true,
+  },
   previous_status: {
     type: DataTypes.STRING,
     allowNull: false,
@@ -41,13 +45,9 @@ export const FormAuditTrail = sequelize.define("FormAuditTrail", {
     type: DataTypes.STRING,
     allowNull: false,
   },
-  declaration: {
-    type: DataTypes.STRING,
-    allowNull: false,
-  },
   comments: {
     type: DataTypes.STRING,
-    allowNull: false,
+    allowNull: true,
   },
   action: {
     type: DataTypes.STRING,
