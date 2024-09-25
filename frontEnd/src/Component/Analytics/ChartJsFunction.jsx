@@ -1431,6 +1431,287 @@ export const TOIPIP_S05G5PlotLines = [
   },
 ];
 
+export const FPATUSPlotLines1 = [
+  {
+    value: 130,
+    color: "red",
+    width: 2,
+    dashStyle: "Line",
+    label: {
+      text: "Upper Limit",
+      style: { color: "black", fontWeight: "bold" },
+    },
+  },
+  {
+    value: 118,
+    color: "green",
+    width: 2,
+    dashStyle: "Line",
+    label: {
+      text: "Lower Limit",
+      style: { color: "black", fontWeight: "bold" },
+    },
+  },
+];
+export const FPATUSPlotLines2 = [
+  // {
+  //   value: 2.00,
+  //   color: "red",
+  //   width: 2,
+  //   dashStyle: "Line",
+  //   label: {
+  //     text: "Upper Limit",
+  //     style: { color: "black", fontWeight: "bold" },
+  //   },
+  // },
+  {
+    value: 1.40,
+    color: "green",
+    width: 2,
+    dashStyle: "Line",
+    label: {
+      text: "Lower Limit",
+      style: { color: "black", fontWeight: "bold" },
+    },
+  },
+];
+
+export const FPATUSPlotLines3 = [
+  // {
+  //   value: 0.80,
+  //   color: "red",
+  //   width: 2,
+  //   dashStyle: "Line",
+  //   label: {
+  //     text: "Upper Limit",
+  //     style: { color: "black", fontWeight: "bold" },
+  //   },
+  // },
+  {
+    value: 10,
+    color: "green",
+    width: 2,
+    dashStyle: "Line",
+    label: {
+      text: "Lower Limit",
+      style: { color: "black", fontWeight: "bold" },
+    },
+  },
+];
+
+export const FPATUSPlotLines4 = [
+  // {
+  //   value: 104,
+  //   color: "red",
+  //   width: 2,
+  //   dashStyle: "Line",
+  //   label: {
+  //     text: "Upper Limit",
+  //     style: { color: "black", fontWeight: "bold" },
+  //   },
+  // },
+  {
+    value: 50,
+    color: "green",
+    width: 2,
+    dashStyle: "Line",
+    label: {
+      text: "Lower Limit",
+      style: { color: "black", fontWeight: "bold" },
+    },
+  },
+];
+
+export const FPATUSPlotLines5 = [
+  {
+    value: 102,
+    color: "red",
+    width: 2,
+    dashStyle: "Line",
+    label: {
+      text: "Upper Limit",
+      style: { color: "black", fontWeight: "bold" },
+    },
+  },
+  {
+    value: 97,
+    color: "green",
+    width: 2,
+    dashStyle: "Line",
+    label: {
+      text: "Lower Limit",
+      style: { color: "black", fontWeight: "bold" },
+    },
+  },
+];
+
+export const FPATUSPlotLines6 = [
+  // {
+  //   value: 3000,
+  //   color: "red",
+  //   width: 2,
+  //   dashStyle: "Line",
+  //   label: {
+  //     text: "Upper Limit",
+  //     style: { color: "black", fontWeight: "bold" },
+  //   },
+  // },
+  {
+    value: 2000,
+    color: "green",
+    width: 2,
+    dashStyle: "Line",
+    label: {
+      text: "Lower Limit",
+      style: { color: "black", fontWeight: "bold" },
+    },
+  },
+];
+
+
+
+
+
+export const FPATPhEurlotLines1 = [
+  {
+    value: 117,
+    color: "red",
+    width: 2,
+    dashStyle: "Line",
+    label: {
+      text: "Upper Limit",
+      style: { color: "black", fontWeight: "bold" },
+    },
+  },
+  {
+    value: 109,
+    color: "green",
+    width: 2,
+    dashStyle: "Line",
+    label: {
+      text: "Lower Limit",
+      style: { color: "black", fontWeight: "bold" },
+    },
+  },
+];
+export const FPATPhEurlotLines2 = [
+  // {
+  //   value: 117,
+  //   color: "red",
+  //   width: 2,
+  //   dashStyle: "Line",
+  //   label: {
+  //     text: "Upper Limit",
+  //     style: { color: "black", fontWeight: "bold" },
+  //   },
+  // },
+  {
+    value: 2.00,
+    color: "green",
+    width: 2,
+    dashStyle: "Line",
+    label: {
+      text: "Lower Limit",
+      style: { color: "black", fontWeight: "bold" },
+    },
+  },
+];
+
+export const FPATPhEurlotLines3 = [
+  // {
+  //   value: 117,
+  //   color: "red",
+  //   width: 2,
+  //   dashStyle: "Line",
+  //   label: {
+  //     text: "Upper Limit",
+  //     style: { color: "black", fontWeight: "bold" },
+  //   },
+  // },
+  {
+    value: 0.15,
+    color: "green",
+    width: 2,
+    dashStyle: "Line",
+    label: {
+      text: "Lower Limit",
+      style: { color: "black", fontWeight: "bold" },
+    },
+  },
+];
+
+export const FPATPhEurlotLines4 = [
+  // {
+  //   value: 117,
+  //   color: "red",
+  //   width: 2,
+  //   dashStyle: "Line",
+  //   label: {
+  //     text: "Upper Limit",
+  //     style: { color: "black", fontWeight: "bold" },
+  //   },
+  // },
+  {
+    value: 0.50,
+    color: "green",
+    width: 2,
+    dashStyle: "Line",
+    label: {
+      text: "Lower Limit",
+      style: { color: "black", fontWeight: "bold" },
+    },
+  },
+];
+
+export const FPATPhEurlotLines5 = [
+  {
+    value: 102,
+    color: "red",
+    width: 2,
+    dashStyle: "Line",
+    label: {
+      text: "Upper Limit",
+      style: { color: "black", fontWeight: "bold" },
+    },
+  },
+  {
+    value: 97,
+    color: "green",
+    width: 2,
+    dashStyle: "Line",
+    label: {
+      text: "Lower Limit",
+      style: { color: "black", fontWeight: "bold" },
+    },
+  },
+];
+
+export const FPATPhEurlotLines6 = [
+  // {
+  //   value: 117,
+  //   color: "red",
+  //   width: 2,
+  //   dashStyle: "Line",
+  //   label: {
+  //     text: "Upper Limit",
+  //     style: { color: "black", fontWeight: "bold" },
+  //   },
+  // },
+  {
+    value: 2000,
+    color: "green",
+    width: 2,
+    dashStyle: "Line",
+    label: {
+      text: "Lower Limit",
+      style: { color: "black", fontWeight: "bold" },
+    },
+  },
+];
+
+
+
+
 
 
 
