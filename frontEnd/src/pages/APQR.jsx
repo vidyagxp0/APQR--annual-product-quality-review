@@ -13710,9 +13710,9 @@ export default function APQR() {
                           <input
                             value={item.limit}
                             onChange={(e) => {
-                              const newData = [...trendingOIPIPS1];
+                              const newData = [...trendingOIPIPS3];
                               newData[index].limit = e.target.value;
-                              setTrendingOIPIPS1(newData);
+                              setTrendingOIPIPS3(newData);
                             }}
                           />
                         </td>
@@ -13720,9 +13720,9 @@ export default function APQR() {
                           <input
                             value={item.chromatographicPurity}
                             onChange={(e) => {
-                              const newData = [...trendingOIPIPS1];
+                              const newData = [...trendingOIPIPS3];
                               newData[index].chromatographicPurity = e.target.value;
-                              setTrendingOIPIPS1(newData);
+                              setTrendingOIPIPS3(newData);
                             }}
                           />
                         </td>
@@ -13790,9 +13790,9 @@ export default function APQR() {
                           <input
                             value={item.composite.limit}
                             onChange={(e) => {
-                              const newData = [...trendingOIPIPS2];
-                              newData[index].composite.unreactedTca = e.target.value;
-                              setTrendingOIPIPS2(newData);
+                              const newData = [...trendingOIPIPS3];
+                              newData[index].composite.limit = e.target.value;
+                              setTrendingOIPIPS3(newData);
                             }}
                           />
                         </td>{" "}
@@ -13893,9 +13893,9 @@ export default function APQR() {
                           <input
                             value={item.limit}
                             onChange={(e) => {
-                              const newData = [...trendingOIPIPS1];
+                              const newData = [...trendingOIPIPS4];
                               newData[index].limit = e.target.value;
-                              setTrendingOIPIPS1(newData);
+                              setTrendingOIPIPS4(newData);
                             }}
                           />
                         </td>
@@ -13943,9 +13943,10 @@ export default function APQR() {
                           <input
                             value={item.composite.relatedSubstanceByHPLC.impurityKNMT}
                             onChange={(e) => {
-                              const newData = [...trendingOIPIPS1];
-                              newData[index].impurityKNMT = e.target.value;
-                              setTrendingOIPIPS3(newData);
+                              const newData = [...trendingOIPIPS4];
+                              newData[index].composite.relatedSubstanceByHPLC.impurityKNMT =
+                                e.target.value;
+                              setTrendingOIPIPS4(newData);
                             }}
                           />
                         </td>
@@ -13953,9 +13954,10 @@ export default function APQR() {
                           <input
                             value={item.composite.relatedSubstanceByHPLC.limitNMT}
                             onChange={(e) => {
-                              const newData = [...trendingOIPIPS1];
-                              newData[index].limitNMT = e.target.value;
-                              setTrendingOIPIPS3(newData);
+                              const newData = [...trendingOIPIPS4];
+                              newData[index].composite.relatedSubstanceByHPLC.limitNMT =
+                                e.target.value;
+                              setTrendingOIPIPS4(newData);
                             }}
                           />
                         </td>{" "}
@@ -14040,10 +14042,10 @@ export default function APQR() {
                           <input
                             value={item.composite.relatedSubstanceByHPLC.limitTotal}
                             onChange={(e) => {
-                              const newData = [...trendingOIPIPS1];
+                              const newData = [...trendingOIPIPS4];
                               newData[index].composite.relatedSubstanceByHPLC.limitTotal =
                                 e.target.value;
-                              setTrendingOIPIPS1(newData);
+                              setTrendingOIPIPS4(newData);
                             }}
                           />
                         </td>{" "}
@@ -14051,10 +14053,10 @@ export default function APQR() {
                           <input
                             value={item.composite.relatedSubstanceByHPLC.dryingHours}
                             onChange={(e) => {
-                              const newData = [...trendingOIPIPS1];
+                              const newData = [...trendingOIPIPS4];
                               newData[index].composite.relatedSubstanceByHPLC.dryingHours =
                                 e.target.value;
-                              setTrendingOIPIPS1(newData);
+                              setTrendingOIPIPS4(newData);
                             }}
                           />
                         </td>
@@ -14142,9 +14144,9 @@ export default function APQR() {
                           <input
                             value={item.limit}
                             onChange={(e) => {
-                              const newData = [...trendingOIPIPS4];
+                              const newData = [...trendingOIPIPS5];
                               newData[index].limit = e.target.value;
-                              setTrendingOIPIPS4(newData);
+                              setTrendingOIPIPS5(newData);
                             }}
                           />
                         </td>
@@ -14294,31 +14296,18 @@ export default function APQR() {
               </div>
               <table>
                 <thead>
-                  <tr>
-                    <th rowSpan={3}>S. No.</th>
-                    <th rowSpan={3}>Batch No.</th>
-                    <th rowSpan={3}>Unreacted Diolone Acetate NMT 0.5 %</th>
-                    <th rowSpan={3}>Limit</th>
-                    <th rowSpan={3}>Chromatographic Purity (for information)</th>
-                    <th rowSpan={3}>Unreacted TCA Step – I B NMT 0.5 % </th>
-                    <th rowSpan={3}>Purity (for information)</th>
-                    <th rowSpan={3}>pH 6.0 – 6.5</th>
-                    <th rowSpan={3}>L Limit</th>
-                    <th rowSpan={3}>U Limit</th>
-                    <th rowSpan={3}>pH 6.0 – 6.5</th>
-                    <th rowSpan={3}>L Limit</th>
-                    <th rowSpan={3}>U Limit</th>
-                    <th rowSpan={3}>Water content NMT 1.0 % w/w</th>
-                    <th rowSpan={3}>Limit</th>
-                    <th rowSpan={1} colSpan={5}>
-                      Composite{" "}
-                    </th>
-                  </tr>
-                  <tr>
-                    <th colSpan={1} rowSpan={2}>
-                      Loss on drying NMT 1.0 % w/w
-                    </th>
-                    <th colSpan={10}>Chromatographic purity by HPLC as per USP</th>
+          <tr>                    <th rowSpan="2">S. No.</th>
+                    <th rowSpan="2">Batch No.</th>
+                    <th rowSpan="2">Specific Rotation b/w +118° and +130° </th>
+                    <th rowSpan="2">L Limit</th>
+                    <th rowSpan="2">U Limit</th>
+                    <th rowSpan="2">Loss on Drying NMT 1.5 % w/w</th>
+                    <th colSpan="11">Chromatographic purity by HPLC as per USP</th>
+                    <th rowSpan="2">Assay (By HPLC) b/w 97.0 % and 102.0 % w/w </th>
+                    <th rowSpan="2">L Limit</th>
+                    <th rowSpan="2">U Limit</th>
+                    <th colSpan="4">Residual solvent By GC</th>
+                    <th colSpan="4">Particle Size</th>
                   </tr>
                   <tr>
                     <th>Limit</th>
@@ -14326,12 +14315,23 @@ export default function APQR() {
                     <th>Limit</th>
                     <th>Impurity H NMT 0.10%</th>
                     <th>Impurity D NMT 0.10%</th>
+                    <th>Limit</th>
                     <th>Impurity I NMT 0.10%</th>
                     <th>Unspecified Impurities NMT 0.10%</th>
                     <th>Limit</th>
                     <th>Total Impurities NMT 0.5%</th>
                     <th>Limit</th>
-                  </tr>
+
+                    <th>Methanol NMT 1500 ppm</th>
+                    <th>Acetone NMT 2000 ppm</th>
+                    <th>Methylene chloride NMT 400 ppm</th>
+                    <th>Limit</th>
+
+                    <th>{"90%  < 10 μm"}</th>
+                    <th>Limit</th>
+                    <th>{"99.5% < 20 μm"}</th>
+                    <th>Limit</th>
+                  s</tr>
                 </thead>
                 <tbody>
                   {yieldTOS1.map((item, index) => {
