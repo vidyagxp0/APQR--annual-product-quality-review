@@ -201,13 +201,14 @@ export default function APQR() {
   // useEffect(() => {}, [reviewODSTR]);
   const sanitizeKey = (key) => {
     return key
-      .replace(/\s+/g, "")
-      .replace(/[\n\r]+/g, "")
+      .replace(/\s+/g, "") // Remove multiple spaces
+      .replace(/[\n\r]+/g, "") // Remove new lines and carriage returns
       .replace(/\s+/g, "") // Remove spaces
       .replace(/[()]/g, "") // Remove brackets
       .replace(/\./g, "") // Remove dots
       .replace(/%/g, "Percent") // Replace % with Percent
-      .replace(/[-–]/g, ""); // Remove hyphens and en dashes;
+      .replace(/[-–]/g, "") // Remove hyphens and en dashes;
+      .replace(/[():º°]/g, ""); // Remove brackets, colons, degrees, and special characters
   };
 
   console.log(sanitizeKey("Mfg. Month"));
@@ -262,27 +263,28 @@ export default function APQR() {
     ActualInputinKg5400078000Kg: "actualInput",
     ActualOutputinKgExpectedOutputRange5400078000Kg: "actualOutput",
     ActualInputinKg5000057000Kg: "actualInput",
-    //     SNo
+        
+    // SNo
     // BatchNo
-    // CriticalParameter:01NitrogengaspurgingshouldbecarriedoutinadvanceinAcetonideformationreactionpartI
-    // CriticalParameter:02InBrominationreactionpartII,slowagitationisrequiredduringthereaction
-    // CriticalParameter:03EpoxydationreactionpartIIIrequiredArgongasbubblingtoremoveoxygencontentfromthereactionmass
-    // CriticalParameter:01DuringhandlingofHydrofluoricAcidusenecessaryprotectiveacidproofmask,dressandshoes
-    // CriticalParameter:02AdditionofthematerialshouldbedoneportionwiseduringreactionStdQtyinkg5000057000
-    // CriticalParameter:03Duringadditionofmaterial,exothermicityappears,socontrolthetemperature40°Cto30°CActualTemperatureºC40°Cto30°C
+    // CriticalParameter01NitrogengaspurgingshouldbecarriedoutinadvanceinAcetonideformationreactionpartI
+    // CriticalParameter02InBrominationreactionpartII,slowagitationisrequiredduringthereaction
+    // CriticalParameter03EpoxydationreactionpartIIIrequiredArgongasbubblingtoremoveoxygencontentfromthereactionmass
+    // CriticalParameter01DuringhandlingofHydrofluoricAcidusenecessaryprotectiveacidproofmask,dressandshoes
+    // CriticalParameter02AdditionofthematerialshouldbedoneportionwiseduringreactionStdQtyinkg5000057000
+    // CriticalParameter03Duringadditionofmaterial,exothermicityappears,socontrolthetemperature40Cto30CActualTemperatureC40Cto30C
     // LowerLimit
     // UpperLimit
-    // CriticalParameter:04Temperatureshouldbewithinspecifiedrangeof20°Cto25°CfortimelycompletionofreactionandcontrolledimpuritylevelActualTemperatureºC20°Cto25°C
-    // CriticalParameter:01additionofSodiumHydroxideandMethanolSolutioninreactionmass,reactionmassandNaOH/MethanolsolutionbothshouldbeoxygenfreebyArgonbubbling
-    // CriticalParameter:02:AdjustpHbetween5060byaddingadequatequantityofGlacialaceticacid
+    // CriticalParameter04Temperatureshouldbewithinspecifiedrangeof20Cto25CfortimelycompletionofreactionandcontrolledimpuritylevelActualTemperatureC20Cto25C
+    // CriticalParameter01additionofSodiumHydroxideandMethanolSolutioninreactionmass,reactionmassandNaOH/MethanolsolutionbothshouldbeoxygenfreebyArgonbubbling
+    // CriticalParameter02AdjustpHbetween5060byaddingadequatequantityofGlacialaceticacid
     // ActualQtofGlacialAceticacid
     // ActualpHbetween5060
     // LowerLimit
     // UpperLimit
-    // CriticalParameter:01Thereactionmassshouldberefluxedfor35hourattemperaturebetween55to60°C
+    // CriticalParameter01Thereactionmassshouldberefluxedfor35hourattemperaturebetween55to60C
     // ActualTimeInhrs
-    // ActualTemperature°C55°Cto60°C
-    // CriticalParameter:02Crystallizationoffinishedproductshouldbeat0°Cto5°CActualTemperature°C0°Cto5°C
+    // ActualTemperatureC55Cto60C
+    // CriticalParameter02Crystallizationoffinishedproductshouldbeat0Cto5CActualTemperatureC0Cto5C
   };
 
   const setimportedData = (data, gridNo) => {
