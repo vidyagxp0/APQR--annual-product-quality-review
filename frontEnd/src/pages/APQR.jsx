@@ -93,8 +93,8 @@ export default function APQR() {
   const [trendingOIPIPS3, setTrendingOIPIPS3] = useState([]);
   const [trendingOIPIPS4, setTrendingOIPIPS4] = useState([]);
   const [trendingOIPIPS5, setTrendingOIPIPS5] = useState([]);
-  const [finishedPATUSP,setFinishedPATUSP]=useState([]);
-  const [finishedPHEUR,setFinishedPHEUR]=useState([]);
+  const [finishedPATUSP, setFinishedPATUSP] = useState([]);
+  const [finishedPHEUR, setFinishedPHEUR] = useState([]);
   const [tiny1, setTiny1] = useState("");
   const [tiny2, setTiny2] = useState("");
   const [tiny3, setTiny3] = useState("");
@@ -265,7 +265,7 @@ export default function APQR() {
     ActualInputinKg5400078000Kg: "actualInput",
     ActualOutputinKgExpectedOutputRange5400078000Kg: "actualOutput",
     ActualInputinKg5000057000Kg: "actualInput",
-        
+
     // SNo
     // BatchNo
     // CriticalParameter01NitrogengaspurgingshouldbecarriedoutinadvanceinAcetonideformationreactionpartI
@@ -712,7 +712,10 @@ export default function APQR() {
 
   const APQRData = async (data) => {
     try {
-      const response = await axios.post("http://localhost:4000/create-apqr", data);
+      const response = await axios.post(
+        "http://localhost:4000/create-apqr",
+        data
+      );
       // console.log("Response:", response.data);
     } catch (error) {
       console.error("Error posting APQR data:", error);
@@ -893,22 +896,22 @@ export default function APQR() {
       previewMC: previewMC,
       previewLabI: previewLabI,
       currentLabI: currentLabI,
-      yieldTOS1:yieldTOS1,
-      yieldTOS2:yieldTOS2,
-      yieldTOS3:yieldTOS3,
-      yieldTOS4:yieldTOS4,
-      yieldTOS5:yieldTOS5,
-      trendingOCPPS1:trendingOCPPS1,
-      trendingOCPPS2:trendingOCPPS2,
-      trendingOCPPS3:trendingOCPPS3,
-      trendingOCPPS4:trendingOCPPS4,
-      trendingOIPIPS1:trendingOIPIPS1,
-      trendingOIPIPS2:trendingOIPIPS2,
-      trendingOIPIPS3:trendingOIPIPS3,
-      trendingOIPIPS4:trendingOIPIPS4,
-      trendingOIPIPS5:trendingOIPIPS5,
-      finishedPHEUR:finishedPHEUR,
-      finishedPATUSP:finishedPATUSP,
+      yieldTOS1: yieldTOS1,
+      yieldTOS2: yieldTOS2,
+      yieldTOS3: yieldTOS3,
+      yieldTOS4: yieldTOS4,
+      yieldTOS5: yieldTOS5,
+      trendingOCPPS1: trendingOCPPS1,
+      trendingOCPPS2: trendingOCPPS2,
+      trendingOCPPS3: trendingOCPPS3,
+      trendingOCPPS4: trendingOCPPS4,
+      trendingOIPIPS1: trendingOIPIPS1,
+      trendingOIPIPS2: trendingOIPIPS2,
+      trendingOIPIPS3: trendingOIPIPS3,
+      trendingOIPIPS4: trendingOIPIPS4,
+      trendingOIPIPS5: trendingOIPIPS5,
+      finishedPHEUR: finishedPHEUR,
+      finishedPATUSP: finishedPATUSP,
     });
   }, [
     yieldTOS1,
@@ -916,8 +919,17 @@ export default function APQR() {
     yieldTOS3,
     yieldTOS4,
     yieldTOS5,
-    trendingOIPIPS1,trendingOIPIPS2,trendingOIPIPS3,trendingOIPIPS4,trendingOIPIPS5,
-    trendingOCPPS1,trendingOCPPS2,trendingOCPPS3,trendingOCPPS4,finishedPHEUR,finishedPATUSP,
+    trendingOIPIPS1,
+    trendingOIPIPS2,
+    trendingOIPIPS3,
+    trendingOIPIPS4,
+    trendingOIPIPS5,
+    trendingOCPPS1,
+    trendingOCPPS2,
+    trendingOCPPS3,
+    trendingOCPPS4,
+    finishedPHEUR,
+    finishedPATUSP,
     productCodes,
     manufacturingStage,
     manufacturingSAPS,
@@ -1090,7 +1102,7 @@ export default function APQR() {
     currentLabI,
     previewLabI,
   ]);
-console.log(pQRData,"grid")
+  console.log(pQRData, "grid");
   useEffect(() => {}, [tiny1]);
   const addManufacturingStageRow = () => {
     const newRow = {
@@ -2286,9 +2298,7 @@ console.log(pQRData,"grid")
       },
     };
 
-    setFinishedPATUSP(
-      [...finishedPATUSP, newRow],
-    );
+    setFinishedPATUSP([...finishedPATUSP, newRow]);
   };
 
   const addFinishedPHEURRow = () => {
@@ -2308,28 +2318,25 @@ console.log(pQRData,"grid")
         totalImpurities: "",
         totalImpuritiesLimit: "",
       },
-      waterKF: "", 
+      waterKF: "",
       waterKFLimit: "",
       assay: "",
       assayLimit: "",
       residualSolventByCG: {
-        methyleneChloride: "", 
-        methanol: "", 
+        methyleneChloride: "",
+        methanol: "",
         acetone: "",
         residualSolventLimit: "",
       },
       particleSizeMalvern: {
-        particleSize90: "", 
+        particleSize90: "",
         particleSize90Limit: "",
         particleSize995: "",
-        particleSize995Limit: ""
-      }, 
+        particleSize995Limit: "",
+      },
     };
-  
-    setFinishedPHEUR(
-     
-   [...finishedPHEUR, newRow],
-    );
+
+    setFinishedPHEUR([...finishedPHEUR, newRow]);
   };
   const addUnitOperation3Row = () => {
     const newRow = {
@@ -2447,7 +2454,8 @@ console.log(pQRData,"grid")
 
   // Speech-to-Text functionality
   const handleSpeechToText = (updater) => {
-    const recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
+    const recognition = new (window.SpeechRecognition ||
+      window.webkitSpeechRecognition)();
     recognition.lang = "en-US"; // Set language
     recognition.onresult = (event) => {
       const speechToText = event.results[0][0].transcript;
@@ -2466,49 +2474,94 @@ console.log(pQRData,"grid")
       </div>
       <div className="pqrform">
         <div className="form-tabs">
-          <div className={`${tab === "GI" ? "active" : ""}`} onClick={() => setTab("GI")}>
+          <div
+            className={`${tab === "GI" ? "active" : ""}`}
+            onClick={() => setTab("GI")}
+          >
             General Information
           </div>
-          <div className={`${tab === "WR" ? "active" : ""}`} onClick={() => setTab("WR")}>
+          <div
+            className={`${tab === "WR" ? "active" : ""}`}
+            onClick={() => setTab("WR")}
+          >
             Warehouse Review
           </div>
-          <div className={`${tab === "MR" ? "active" : ""}`} onClick={() => setTab("MR")}>
+          <div
+            className={`${tab === "MR" ? "active" : ""}`}
+            onClick={() => setTab("MR")}
+          >
             Manufacturing Review
           </div>
-          <div className={`${tab === "LR" ? "active" : ""}`} onClick={() => setTab("LR")}>
+          <div
+            className={`${tab === "LR" ? "active" : ""}`}
+            onClick={() => setTab("LR")}
+          >
             Laboratory Review
           </div>
-          <div className={`${tab === "EAMR" ? "active" : ""}`} onClick={() => setTab("EAMR")}>
+          <div
+            className={`${tab === "EAMR" ? "active" : ""}`}
+            onClick={() => setTab("EAMR")}
+          >
             Engineering And Maintenance Review
           </div>
-          <div className={`${tab === "QSR" ? "active" : ""}`} onClick={() => setTab("QSR")}>
+          <div
+            className={`${tab === "QSR" ? "active" : ""}`}
+            onClick={() => setTab("QSR")}
+          >
             Quality System Review
           </div>
-          <div className={`${tab === "RR" ? "active" : ""}`} onClick={() => setTab("RR")}>
+          <div
+            className={`${tab === "RR" ? "active" : ""}`}
+            onClick={() => setTab("RR")}
+          >
             Regulatory Review
           </div>
-          <div className={`${tab === "R" ? "active" : ""}`} onClick={() => setTab("R")}>
+          <div
+            className={`${tab === "R" ? "active" : ""}`}
+            onClick={() => setTab("R")}
+          >
             Recommendations{" "}
           </div>
-          <div className={`${tab === "CAPA" ? "active" : ""}`} onClick={() => setTab("CAPA")}>
+          <div
+            className={`${tab === "CAPA" ? "active" : ""}`}
+            onClick={() => setTab("CAPA")}
+          >
             CAPA
           </div>
-          <div className={`${tab === "DEAC" ? "active" : ""}`} onClick={() => setTab("DEAC")}>
+          <div
+            className={`${tab === "DEAC" ? "active" : ""}`}
+            onClick={() => setTab("DEAC")}
+          >
             Discussion, Evaluation And Conclusion
           </div>
-          <div className={`${tab === "LOA" ? "active" : ""}`} onClick={() => setTab("LOA")}>
+          <div
+            className={`${tab === "LOA" ? "active" : ""}`}
+            onClick={() => setTab("LOA")}
+          >
             List Of Annexures/Attachments
           </div>
-          <div className={`${tab === "YTOS" ? "active" : ""}`} onClick={() => setTab("YTOS")}>
+          <div
+            className={`${tab === "YTOS" ? "active" : ""}`}
+            onClick={() => setTab("YTOS")}
+          >
             Yield Trend Of Stage
           </div>
-          <div className={`${tab === "TOCPP" ? "active" : ""}`} onClick={() => setTab("TOCPP")}>
+          <div
+            className={`${tab === "TOCPP" ? "active" : ""}`}
+            onClick={() => setTab("TOCPP")}
+          >
             Trending of Critical Process Parameter
           </div>
-          <div className={`${tab === "TOIIP" ? "active" : ""}`} onClick={() => setTab("TOIIP")}>
+          <div
+            className={`${tab === "TOIIP" ? "active" : ""}`}
+            onClick={() => setTab("TOIIP")}
+          >
             Trending of In-process & Intermediate Parameter
           </div>
-          <div className={`${tab === "FPAT" ? "active" : ""}`} onClick={() => setTab("FPAT")}>
+          <div
+            className={`${tab === "FPAT" ? "active" : ""}`}
+            onClick={() => setTab("FPAT")}
+          >
             Finished Product Analytical Trend
           </div>
         </div>
@@ -2558,7 +2611,11 @@ console.log(pQRData,"grid")
                   style={{ paddingRight: "60px" }}
                 />
                 <button
-                  onClick={() => handleSpeechToText((text) => setPQRData({ productName: text }))}
+                  onClick={() =>
+                    handleSpeechToText((text) =>
+                      setPQRData({ productName: text })
+                    )
+                  }
                   className="rounded-full border p-2 mr-3 bg-slate-100 hover:bg-slate-200"
                   style={{
                     position: "absolute",
@@ -2585,11 +2642,15 @@ console.log(pQRData,"grid")
             </div>
             {productCodes?.map((productCode, index) => (
               <div key={index} className="group-input">
-                <label>Product Code {productCodes.length > 1 ? index + 1 : ""}</label>
+                <label>
+                  Product Code {productCodes.length > 1 ? index + 1 : ""}
+                </label>
                 <div className="flex gap-4">
                   <input
                     value={productCode}
-                    onChange={(e) => handleProductCodeChange(index, e.target.value)}
+                    onChange={(e) =>
+                      handleProductCodeChange(index, e.target.value)
+                    }
                   />
                   {index === productCodes.length - 1 && (
                     <button
@@ -2622,7 +2683,11 @@ console.log(pQRData,"grid")
                   style={{ paddingRight: "60px" }} // Add padding to accommodate buttons
                 />
                 <button
-                  onClick={() => handleSpeechToText((text) => setPQRData({ genericName: text }))}
+                  onClick={() =>
+                    handleSpeechToText((text) =>
+                      setPQRData({ genericName: text })
+                    )
+                  }
                   className="rounded-full border p-2 mr-3 bg-slate-100 hover:bg-slate-200"
                   style={{
                     position: "absolute",
@@ -2694,7 +2759,9 @@ console.log(pQRData,"grid")
                   style={{ paddingRight: "60px" }} // Add padding to make space for the buttons
                 />
                 <button
-                  onClick={() => handleSpeechToText((text) => setPQRData({ mfgLicNo: text }))}
+                  onClick={() =>
+                    handleSpeechToText((text) => setPQRData({ mfgLicNo: text }))
+                  }
                   className="rounded-full border p-2 mr-3 bg-slate-100 hover:bg-slate-200"
                   style={{
                     position: "absolute",
@@ -2725,7 +2792,9 @@ console.log(pQRData,"grid")
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addManufacturingStageRow} />
-                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
+                  <div className="addrowinstruction  pl-2">
+                    Add Rows by clicking on (+) icon
+                  </div>
                 </div>
                 <div className="flex gap-4 ">
                   <ExcelExportImport
@@ -2786,14 +2855,20 @@ console.log(pQRData,"grid")
             </table>
             <div>
               <h4 className="gridName mt-4">Summary</h4>
-              <TinyEditor editorContent={tiny1} setEditorContent={setTinyContent} tinyNo={1} />
+              <TinyEditor
+                editorContent={tiny1}
+                setEditorContent={setTinyContent}
+                tinyNo={1}
+              />
             </div>
 
             <div className="py-4">
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addManufacturingSAPSRow} />
-                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
+                  <div className="addrowinstruction  pl-2">
+                    Add Rows by clicking on (+) icon
+                  </div>
                 </div>
                 <div className="flex gap-4 ">
                   <ExcelExportImport
@@ -2866,14 +2941,20 @@ console.log(pQRData,"grid")
             </div>
 
             <h4 className="gridName">Summary of Manufacturing Site Address</h4>
-            <TinyEditor editorContent={tiny2} setEditorContent={setTinyContent} tinyNo={2} />
+            <TinyEditor
+              editorContent={tiny2}
+              setEditorContent={setTinyContent}
+              tinyNo={2}
+            />
           </div>
         ) : null}
         {tab === "WR" ? (
           <>
             <div className="p-4">
               <div className="sub-head">
-                <p className="">Review of Rejected Raw Materials and Packaging Materials</p>
+                <p className="">
+                  Review of Rejected Raw Materials and Packaging Materials
+                </p>
               </div>
               <div className="pb-4">
                 <h4 className="gridName">Raw Materials Rejection Summary</h4>
@@ -2881,7 +2962,9 @@ console.log(pQRData,"grid")
                 <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                   <div className="flex items-center">
                     <MdNoteAdd onClick={addRawMRSRow} />
-                    <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
+                    <div className="addrowinstruction  pl-2">
+                      Add Rows by clicking on (+) icon
+                    </div>
                   </div>
                   <div className="flex gap-4 ">
                     <ExcelExportImport
@@ -2943,7 +3026,8 @@ console.log(pQRData,"grid")
                               value={item.reasonOfRejection}
                               onChange={(e) => {
                                 const newData = [...rawMRS];
-                                newData[index].reasonOfRejection = e.target.value;
+                                newData[index].reasonOfRejection =
+                                  e.target.value;
                                 setRawMRS(newData);
                               }}
                             />
@@ -2965,17 +3049,26 @@ console.log(pQRData,"grid")
                 </table>
                 <div>
                   <h4 className="gridName mt-5">Summary</h4>
-                  <TinyEditor editorContent={tiny3} setEditorContent={setTinyContent} tinyNo={3} />
+                  <TinyEditor
+                    editorContent={tiny3}
+                    setEditorContent={setTinyContent}
+                    tinyNo={3}
+                  />
                 </div>
               </div>
 
               <div className="pb-4">
-                <h4 className="gridName"> Packing Materials Rejection Summary</h4>
+                <h4 className="gridName">
+                  {" "}
+                  Packing Materials Rejection Summary
+                </h4>
 
                 <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                   <div className="flex items-center">
                     <MdNoteAdd onClick={addPackingMRSRow} />
-                    <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
+                    <div className="addrowinstruction  pl-2">
+                      Add Rows by clicking on (+) icon
+                    </div>
                   </div>
                   <div className="flex gap-4 ">
                     <ExcelExportImport
@@ -3036,7 +3129,8 @@ console.log(pQRData,"grid")
                               value={item.reasonForRepacking}
                               onChange={(e) => {
                                 const newData = [...packingMRS];
-                                newData[index].reasonForRepacking = e.target.value;
+                                newData[index].reasonForRepacking =
+                                  e.target.value;
                                 setPackingMRS(newData);
                               }}
                             />
@@ -3058,9 +3152,14 @@ console.log(pQRData,"grid")
                 </table>
 
                 <h5 className="gridName pt-4">
-                  Summary of Review of Rejected Raw Materials and Packaging Materials
+                  Summary of Review of Rejected Raw Materials and Packaging
+                  Materials
                 </h5>
-                <TinyEditor editorContent={tiny4} setEditorContent={setTinyContent} tinyNo={4} />
+                <TinyEditor
+                  editorContent={tiny4}
+                  setEditorContent={setTinyContent}
+                  tinyNo={4}
+                />
               </div>
               <div className="sub-head">
                 Review of Expired Raw Materials and Packaging Materials
@@ -3071,7 +3170,9 @@ console.log(pQRData,"grid")
                 <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                   <div className="flex items-center">
                     <MdNoteAdd onClick={addExpiredRMDRow} />
-                    <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
+                    <div className="addrowinstruction  pl-2">
+                      Add Rows by clicking on (+) icon
+                    </div>
                   </div>
                   <div className="flex gap-4 ">
                     <ExcelExportImport
@@ -3143,17 +3244,25 @@ console.log(pQRData,"grid")
                 </table>
                 <div>
                   <h4 className="gridName">Summary</h4>
-                  <TinyEditor editorContent={tiny5} setEditorContent={setTinyContent} tinyNo={5} />
+                  <TinyEditor
+                    editorContent={tiny5}
+                    setEditorContent={setTinyContent}
+                    tinyNo={5}
+                  />
                 </div>
               </div>
 
               <div className="">
-                <h4 className="gridName">Expired Packaging Materials Details</h4>
+                <h4 className="gridName">
+                  Expired Packaging Materials Details
+                </h4>
 
                 <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                   <div className="flex items-center">
                     <MdNoteAdd onClick={addExpiredPMDRow} />
-                    <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
+                    <div className="addrowinstruction  pl-2">
+                      Add Rows by clicking on (+) icon
+                    </div>
                   </div>
                   <div className="flex gap-4 ">
                     <ExcelExportImport
@@ -3225,9 +3334,14 @@ console.log(pQRData,"grid")
                 </table>
 
                 <h4 className="gridName pt-4">
-                  Summary of Review of Expired Raw Materials and Packaging Materials
+                  Summary of Review of Expired Raw Materials and Packaging
+                  Materials
                 </h4>
-                <TinyEditor editorContent={tiny6} setEditorContent={setTinyContent} tinyNo={6} />
+                <TinyEditor
+                  editorContent={tiny6}
+                  setEditorContent={setTinyContent}
+                  tinyNo={6}
+                />
               </div>
 
               <div className="sub-head">Review of Approved Supplier List</div>
@@ -3235,7 +3349,9 @@ console.log(pQRData,"grid")
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addreviewOfASLRow} />
-                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
+                  <div className="addrowinstruction  pl-2">
+                    Add Rows by clicking on (+) icon
+                  </div>
                 </div>
                 <div className="flex gap-4 ">
                   <ExcelExportImport
@@ -3306,8 +3422,14 @@ console.log(pQRData,"grid")
                     })}
                   </tbody>
                 </table>
-                <h4 className="gridName pt-4">Summary of Review of Approved Supplier List</h4>
-                <TinyEditor editorContent={tiny7} setEditorContent={setTinyContent} tinyNo={7} />
+                <h4 className="gridName pt-4">
+                  Summary of Review of Approved Supplier List
+                </h4>
+                <TinyEditor
+                  editorContent={tiny7}
+                  setEditorContent={setTinyContent}
+                  tinyNo={7}
+                />
               </div>
               <div className="sub-head">
                 Vendor Qualification Details of Raw Material Excipients
@@ -3316,7 +3438,9 @@ console.log(pQRData,"grid")
                 <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                   <div className="flex items-center">
                     <MdNoteAdd onClick={addvendorQDORMERow} />
-                    <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
+                    <div className="addrowinstruction  pl-2">
+                      Add Rows by clicking on (+) icon
+                    </div>
                   </div>
                   <div className="flex gap-4 ">
                     <ExcelExportImport
@@ -3363,7 +3487,8 @@ console.log(pQRData,"grid")
                               value={item.manufacturerName}
                               onChange={(e) => {
                                 const newData = [...vendorQDORME];
-                                newData[index].manufacturerName = e.target.value;
+                                newData[index].manufacturerName =
+                                  e.target.value;
                                 setVendorQDORME(newData);
                               }}
                             />
@@ -3373,7 +3498,8 @@ console.log(pQRData,"grid")
                               value={item.qualificationStatus}
                               onChange={(e) => {
                                 const newData = [...vendorQDORME];
-                                newData[index].qualificationStatus = e.target.value;
+                                newData[index].qualificationStatus =
+                                  e.target.value;
                                 setVendorQDORME(newData);
                               }}
                             />
@@ -3394,9 +3520,14 @@ console.log(pQRData,"grid")
                   </tbody>
                 </table>
                 <h4 className="gridName pt-4">
-                  Summary of Vendor Qualification Details of Raw Material Excipients
+                  Summary of Vendor Qualification Details of Raw Material
+                  Excipients
                 </h4>
-                <TinyEditor editorContent={tiny8} setEditorContent={setTinyContent} tinyNo={8} />
+                <TinyEditor
+                  editorContent={tiny8}
+                  setEditorContent={setTinyContent}
+                  tinyNo={8}
+                />
               </div>
               <div className="sub-head">
                 Vendor Qualification Details of Primary Packing Materials
@@ -3405,7 +3536,9 @@ console.log(pQRData,"grid")
                 <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                   <div className="flex items-center">
                     <MdNoteAdd onClick={addvendorQDOPPMRow} />
-                    <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
+                    <div className="addrowinstruction  pl-2">
+                      Add Rows by clicking on (+) icon
+                    </div>
                   </div>
                   <div className="flex gap-4 ">
                     <ExcelExportImport
@@ -3453,7 +3586,8 @@ console.log(pQRData,"grid")
                               value={item.manufacturerName}
                               onChange={(e) => {
                                 const newData = [...vendorQDOPPM];
-                                newData[index].manufacturerName = e.target.value;
+                                newData[index].manufacturerName =
+                                  e.target.value;
                                 setVendorQDOPPM(newData);
                               }}
                             />
@@ -3463,7 +3597,8 @@ console.log(pQRData,"grid")
                               value={item.qualificationStatus}
                               onChange={(e) => {
                                 const newData = [...vendorQDOPPM];
-                                newData[index].qualificationStatus = e.target.value;
+                                newData[index].qualificationStatus =
+                                  e.target.value;
                                 setVendorQDOPPM(newData);
                               }}
                             />
@@ -3474,17 +3609,26 @@ console.log(pQRData,"grid")
                   </tbody>
                 </table>
                 <h4 className="gridName pt-4">
-                  Summary of Vendor Qualification Details of Primary Packing Materials
+                  Summary of Vendor Qualification Details of Primary Packing
+                  Materials
                 </h4>
-                <TinyEditor editorContent={tiny9} setEditorContent={setTinyContent} tinyNo={9} />
+                <TinyEditor
+                  editorContent={tiny9}
+                  setEditorContent={setTinyContent}
+                  tinyNo={9}
+                />
               </div>
 
-              <div className="sub-head">Vendor Qualification Details of Process Gases</div>
+              <div className="sub-head">
+                Vendor Qualification Details of Process Gases
+              </div>
               <div>
                 <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                   <div className="flex items-center">
                     <MdNoteAdd onClick={addvendorQDPOGRow} />
-                    <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
+                    <div className="addrowinstruction  pl-2">
+                      Add Rows by clicking on (+) icon
+                    </div>
                   </div>
                   <div className="flex gap-4 ">
                     <ExcelExportImport
@@ -3532,7 +3676,8 @@ console.log(pQRData,"grid")
                               value={item.manufacturerName}
                               onChange={(e) => {
                                 const newData = [...vendorQDPOG];
-                                newData[index].manufacturerName = e.target.value;
+                                newData[index].manufacturerName =
+                                  e.target.value;
                                 setVendorQDPOG(newData);
                               }}
                             />
@@ -3542,7 +3687,8 @@ console.log(pQRData,"grid")
                               value={item.qualificationStatus}
                               onChange={(e) => {
                                 const newData = [...vendorQDPOG];
-                                newData[index].qualificationStatus = e.target.value;
+                                newData[index].qualificationStatus =
+                                  e.target.value;
                                 setVendorQDPOG(newData);
                               }}
                             />
@@ -3555,7 +3701,11 @@ console.log(pQRData,"grid")
                 <h4 className="gridName pt-4">
                   Summary of Vendor Qualification Details of Process Gases
                 </h4>
-                <TinyEditor editorContent={tiny10} setEditorContent={setTinyContent} tinyNo={10} />
+                <TinyEditor
+                  editorContent={tiny10}
+                  setEditorContent={setTinyContent}
+                  tinyNo={10}
+                />
               </div>
             </div>
           </>
@@ -3574,7 +3724,9 @@ console.log(pQRData,"grid")
                 />
                 <button
                   onClick={() =>
-                    handleSpeechToText((text) => setPQRData({ productDescription: text }))
+                    handleSpeechToText((text) =>
+                      setPQRData({ productDescription: text })
+                    )
                   }
                   className="rounded-full border mr-3 p-2 bg-slate-100 hover:bg-slate-200"
                   style={{
@@ -3610,7 +3762,11 @@ console.log(pQRData,"grid")
                   style={{ paddingRight: "60px" }} // Add padding to make space for the buttons
                 />
                 <button
-                  onClick={() => handleSpeechToText((text) => setPQRData({ processFlow: text }))}
+                  onClick={() =>
+                    handleSpeechToText((text) =>
+                      setPQRData({ processFlow: text })
+                    )
+                  }
                   className="rounded-full border p-2 mr-3 bg-slate-100 hover:bg-slate-200"
                   style={{
                     position: "absolute",
@@ -3640,7 +3796,10 @@ console.log(pQRData,"grid")
 
             <div className="dual-group-input">
               <div className="group-input" style={{ position: "relative" }}>
-                <label>Total No. of batches manufactured during the current review period</label>
+                <label>
+                  Total No. of batches manufactured during the current review
+                  period
+                </label>
                 <input
                   type="number"
                   value={pQRData.totalBatchesManufactured}
@@ -3651,7 +3810,9 @@ console.log(pQRData,"grid")
                 />
                 <button
                   onClick={() =>
-                    handleSpeechToText((text) => setPQRData({ totalBatchesManufactured: text }))
+                    handleSpeechToText((text) =>
+                      setPQRData({ totalBatchesManufactured: text })
+                    )
                   }
                   className="rounded-full border mr-3 p-2 bg-slate-100 hover:bg-slate-200"
                   style={{
@@ -3664,7 +3825,9 @@ console.log(pQRData,"grid")
                   <FaMicrophone />
                 </button>
                 <button
-                  onClick={() => handleTextToSpeech(pQRData.totalBatchesManufactured)}
+                  onClick={() =>
+                    handleTextToSpeech(pQRData.totalBatchesManufactured)
+                  }
                   className="rounded-full border p-2 bg-slate-100 hover:bg-slate-200"
                   style={{
                     position: "absolute",
@@ -3690,7 +3853,9 @@ console.log(pQRData,"grid")
                 />
                 <button
                   onClick={() =>
-                    handleSpeechToText((text) => setPQRData({ totalBatchesApprovedReleased: text }))
+                    handleSpeechToText((text) =>
+                      setPQRData({ totalBatchesApprovedReleased: text })
+                    )
                   }
                   className="rounded-full border p-2 mr-3 bg-slate-100 hover:bg-slate-200"
                   style={{
@@ -3703,7 +3868,9 @@ console.log(pQRData,"grid")
                   <FaMicrophone />
                 </button>
                 <button
-                  onClick={() => handleTextToSpeech(pQRData.totalBatchesApprovedReleased)}
+                  onClick={() =>
+                    handleTextToSpeech(pQRData.totalBatchesApprovedReleased)
+                  }
                   className="rounded-full border p-2 bg-slate-100 hover:bg-slate-200"
                   style={{
                     position: "absolute",
@@ -3744,7 +3911,9 @@ console.log(pQRData,"grid")
                   <FaMicrophone />
                 </button>
                 <button
-                  onClick={() => handleTextToSpeech(pQRData.totalProcessValidationBatches)}
+                  onClick={() =>
+                    handleTextToSpeech(pQRData.totalProcessValidationBatches)
+                  }
                   className="rounded-full border p-2 bg-slate-100 hover:bg-slate-200"
                   style={{
                     position: "absolute",
@@ -3768,7 +3937,9 @@ console.log(pQRData,"grid")
                 />
                 <button
                   onClick={() =>
-                    handleSpeechToText((text) => setPQRData({ totalReprocessedBatches: text }))
+                    handleSpeechToText((text) =>
+                      setPQRData({ totalReprocessedBatches: text })
+                    )
                   }
                   className="rounded-full border p-2 mr-3 bg-slate-100 hover:bg-slate-200"
                   style={{
@@ -3781,7 +3952,9 @@ console.log(pQRData,"grid")
                   <FaMicrophone />
                 </button>
                 <button
-                  onClick={() => handleTextToSpeech(pQRData.totalReprocessedBatches)}
+                  onClick={() =>
+                    handleTextToSpeech(pQRData.totalReprocessedBatches)
+                  }
                   className="rounded-full border p-2 bg-slate-100 hover:bg-slate-200"
                   style={{
                     position: "absolute",
@@ -3796,16 +3969,28 @@ console.log(pQRData,"grid")
 
               <div className="group-input">
                 <label>Process Validation Batches Details</label>
-                <TinyEditor editorContent={tiny11} setEditorContent={setTinyContent} tinyNo={11} />
+                <TinyEditor
+                  editorContent={tiny11}
+                  setEditorContent={setTinyContent}
+                  tinyNo={11}
+                />
               </div>
 
               <div className="group-input">
                 <label>Reprocessing Details</label>
-                <TinyEditor editorContent={tiny12} setEditorContent={setTinyContent} tinyNo={12} />
+                <TinyEditor
+                  editorContent={tiny12}
+                  setEditorContent={setTinyContent}
+                  tinyNo={12}
+                />
               </div>
               <div className="group-input">
                 <label>Microbial Excursion Details</label>
-                <TinyEditor editorContent={tiny13} setEditorContent={setTinyContent} tinyNo={13} />
+                <TinyEditor
+                  editorContent={tiny13}
+                  setEditorContent={setTinyContent}
+                  tinyNo={13}
+                />
               </div>
             </div>
             <div className="gridName">Code to code transfer details</div>
@@ -3813,7 +3998,9 @@ console.log(pQRData,"grid")
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addcodeTCTDRow} />
-                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
+                  <div className="addrowinstruction  pl-2">
+                    Add Rows by clicking on (+) icon
+                  </div>
                 </div>
                 <div className="flex gap-4 ">
                   <ExcelExportImport
@@ -3916,27 +4103,46 @@ console.log(pQRData,"grid")
                   })}
                 </tbody>
               </table>
-              <h4 className="gridName pt-4">Summary of Code to Code Transfer Details</h4>
-              <TinyEditor editorContent={tiny14} setEditorContent={setTinyContent} tinyNo={14} />
+              <h4 className="gridName pt-4">
+                Summary of Code to Code Transfer Details
+              </h4>
+              <TinyEditor
+                editorContent={tiny14}
+                setEditorContent={setTinyContent}
+                tinyNo={14}
+              />
             </div>
             <div className="sub-head">
               {" "}
-              Review of Manufacturing Process, Packing Process and relevant Validation Status
+              Review of Manufacturing Process, Packing Process and relevant
+              Validation Status
             </div>
-            <TinyEditor editorContent={tiny15} setEditorContent={setTinyContent} tinyNo={15} />
+            <TinyEditor
+              editorContent={tiny15}
+              setEditorContent={setTinyContent}
+              tinyNo={15}
+            />
 
             <div className="sub-head">
-              Review of Reprocessing/Repacking/Reworking along with CAPA and Effectiveness Check
-              Verification (if any)
+              Review of Reprocessing/Repacking/Reworking along with CAPA and
+              Effectiveness Check Verification (if any)
             </div>
             <div className="dual-group-input">
               <div className="group-input">
                 <label>Batch reprocessing/reworking process Details</label>
-                <TinyEditor editorContent={tiny16} setEditorContent={setTinyContent} tinyNo={16} />
+                <TinyEditor
+                  editorContent={tiny16}
+                  setEditorContent={setTinyContent}
+                  tinyNo={16}
+                />
               </div>
               <div className="group-input">
                 <label>Batch Repacking Details </label>
-                <TinyEditor editorContent={tiny17} setEditorContent={setTinyContent} tinyNo={17} />
+                <TinyEditor
+                  editorContent={tiny17}
+                  setEditorContent={setTinyContent}
+                  tinyNo={17}
+                />
               </div>
             </div>
 
@@ -3948,7 +4154,9 @@ console.log(pQRData,"grid")
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addreviewORCECRow} />
-                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
+                  <div className="addrowinstruction  pl-2">
+                    Add Rows by clicking on (+) icon
+                  </div>
                 </div>
                 <div className="flex gap-4 ">
                   .
@@ -3981,7 +4189,8 @@ console.log(pQRData,"grid")
                             value={item.packingBatchNumber}
                             onChange={(e) => {
                               const newData = [...reviewORCEC];
-                              newData[index].packingBatchNumber = e.target.value;
+                              newData[index].packingBatchNumber =
+                                e.target.value;
                               setReviewORCEC(newData);
                             }}
                           />
@@ -3991,7 +4200,8 @@ console.log(pQRData,"grid")
                             value={item.manufacturingBatchNumber}
                             onChange={(e) => {
                               const newData = [...reviewORCEC];
-                              newData[index].manufacturingBatchNumber = e.target.value;
+                              newData[index].manufacturingBatchNumber =
+                                e.target.value;
                               setReviewORCEC(newData);
                             }}
                           />
@@ -4001,7 +4211,8 @@ console.log(pQRData,"grid")
                             value={item.repackingIssuedNumber}
                             onChange={(e) => {
                               const newData = [...reviewORCEC];
-                              newData[index].repackingIssuedNumber = e.target.value;
+                              newData[index].repackingIssuedNumber =
+                                e.target.value;
                               setReviewORCEC(newData);
                             }}
                           />
@@ -4031,7 +4242,8 @@ console.log(pQRData,"grid")
                             value={item.reasonForRepacking}
                             onChange={(e) => {
                               const newData = [...reviewORCEC];
-                              newData[index].reasonForRepacking = e.target.value;
+                              newData[index].reasonForRepacking =
+                                e.target.value;
                               setReviewORCEC(newData);
                             }}
                           />
@@ -4044,7 +4256,11 @@ console.log(pQRData,"grid")
             </div>
             <div>
               <h4 className="gridName mt-5">Summary</h4>
-              <TinyEditor editorContent={tiny18} setEditorContent={setTinyContent} tinyNo={18} />
+              <TinyEditor
+                editorContent={tiny18}
+                setEditorContent={setTinyContent}
+                tinyNo={18}
+              />
             </div>
 
             <h4 className="gridName">CAPA Details</h4>
@@ -4052,7 +4268,9 @@ console.log(pQRData,"grid")
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addCapaDetailsRow} />
-                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
+                  <div className="addrowinstruction  pl-2">
+                    Add Rows by clicking on (+) icon
+                  </div>
                 </div>
                 <div className="flex gap-4 ">
                   <ExcelExportImport
@@ -4103,7 +4321,8 @@ console.log(pQRData,"grid")
                             value={item.descriptionOfIssue}
                             onChange={(e) => {
                               const newData = [...capaDetails];
-                              newData[index].descriptionOfIssue = e.target.value;
+                              newData[index].descriptionOfIssue =
+                                e.target.value;
                               setCapaDetails(newData);
                             }}
                           />
@@ -4157,7 +4376,11 @@ console.log(pQRData,"grid")
             </div>
             <div>
               <h4 className="gridName mt-5">Summary</h4>
-              <TinyEditor editorContent={tiny19} setEditorContent={setTinyContent} tinyNo={19} />
+              <TinyEditor
+                editorContent={tiny19}
+                setEditorContent={setTinyContent}
+                tinyNo={19}
+              />
             </div>
 
             <h4 className="gridName">Deviation Details</h4>
@@ -4165,7 +4388,9 @@ console.log(pQRData,"grid")
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={deviationDetailsRow} />
-                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
+                  <div className="addrowinstruction  pl-2">
+                    Add Rows by clicking on (+) icon
+                  </div>
                 </div>
                 <div className="flex gap-4 ">
                   <ExcelExportImport
@@ -4209,7 +4434,8 @@ console.log(pQRData,"grid")
                             value={item.deviationRelatedTo}
                             onChange={(e) => {
                               const newData = [...deviationDetails];
-                              newData[index].deviationRelatedTo = e.target.value;
+                              newData[index].deviationRelatedTo =
+                                e.target.value;
                               setDeviationDetails(newData);
                             }}
                           />
@@ -4239,7 +4465,8 @@ console.log(pQRData,"grid")
                             value={item.deviationObservedOn}
                             onChange={(e) => {
                               const newData = [...deviationDetails];
-                              newData[index].deviationObservedOn = e.target.value;
+                              newData[index].deviationObservedOn =
+                                e.target.value;
                               setDeviationDetails(newData);
                             }}
                           />
@@ -4249,7 +4476,8 @@ console.log(pQRData,"grid")
                             value={item.deviationObservedBy}
                             onChange={(e) => {
                               const newData = [...deviationDetails];
-                              newData[index].deviationObservedBy = e.target.value;
+                              newData[index].deviationObservedBy =
+                                e.target.value;
                               setDeviationDetails(newData);
                             }}
                           />
@@ -4259,7 +4487,8 @@ console.log(pQRData,"grid")
                             value={item.classificationOfDeviation}
                             onChange={(e) => {
                               const newData = [...deviationDetails];
-                              newData[index].classificationOfDeviation = e.target.value;
+                              newData[index].classificationOfDeviation =
+                                e.target.value;
                               setDeviationDetails(newData);
                             }}
                           />
@@ -4303,23 +4532,33 @@ console.log(pQRData,"grid")
             </div>
             <div>
               <h4 className="gridName mt-5">Summary</h4>
-              <TinyEditor editorContent={tiny20} setEditorContent={setTinyContent} tinyNo={20} />
+              <TinyEditor
+                editorContent={tiny20}
+                setEditorContent={setTinyContent}
+                tinyNo={20}
+              />
             </div>
 
             <div className="sub-head">
-              Review of all Batch Failures/Rejections along with CAPA and Effectiveness Check
-              Verification (if any):
+              Review of all Batch Failures/Rejections along with CAPA and
+              Effectiveness Check Verification (if any):
             </div>
 
             <h4 className="gridName">Batch Failures/Rejections Details </h4>
-            <TinyEditor editorContent={tiny21} setEditorContent={setTinyContent} tinyNo={21} />
+            <TinyEditor
+              editorContent={tiny21}
+              setEditorContent={setTinyContent}
+              tinyNo={21}
+            />
 
             <h4 className="gridName">OOS Details</h4>
             <div>
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={oosDetailsRow} />
-                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
+                  <div className="addrowinstruction  pl-2">
+                    Add Rows by clicking on (+) icon
+                  </div>
                 </div>
                 <div className="flex gap-4 ">
                   <ExcelExportImport
@@ -4379,7 +4618,8 @@ console.log(pQRData,"grid")
                             value={item.specificationLimit}
                             onChange={(e) => {
                               const newData = [...oosDetails];
-                              newData[index].specificationLimit = e.target.value;
+                              newData[index].specificationLimit =
+                                e.target.value;
                               setOosDetails(newData);
                             }}
                           />
@@ -4389,7 +4629,8 @@ console.log(pQRData,"grid")
                             value={item.detailsOfObviousError}
                             onChange={(e) => {
                               const newData = [...oosDetails];
-                              newData[index].detailsOfObviousError = e.target.value;
+                              newData[index].detailsOfObviousError =
+                                e.target.value;
                               setOosDetails(newData);
                             }}
                           />
@@ -4413,7 +4654,11 @@ console.log(pQRData,"grid")
             </div>
             <div>
               <h4 className="gridName mt-5">Summary</h4>
-              <TinyEditor editorContent={tiny22} setEditorContent={setTinyContent} tinyNo={22} />
+              <TinyEditor
+                editorContent={tiny22}
+                setEditorContent={setTinyContent}
+                tinyNo={22}
+              />
             </div>
 
             <h4 className="gridName">OOT Results</h4>
@@ -4421,7 +4666,9 @@ console.log(pQRData,"grid")
               <div className="AddRows d-flex w-full justify-between items-center text-3xl mb-5">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={ootResultsRow} />
-                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
+                  <div className="addrowinstruction  pl-2">
+                    Add Rows by clicking on (+) icon
+                  </div>
                 </div>
                 <div className="flex gap-4 ">
                   <ExcelExportImport
@@ -4482,7 +4729,8 @@ console.log(pQRData,"grid")
                             value={item.initialIntervalDetails}
                             onChange={(e) => {
                               const newData = [...ootResults];
-                              newData[index].initialIntervalDetails = e.target.value;
+                              newData[index].initialIntervalDetails =
+                                e.target.value;
                               setOotResults(newData);
                             }}
                           />
@@ -4492,7 +4740,8 @@ console.log(pQRData,"grid")
                             value={item.previousIntervalDetails}
                             onChange={(e) => {
                               const newData = [...ootResults];
-                              newData[index].previousIntervalDetails = e.target.value;
+                              newData[index].previousIntervalDetails =
+                                e.target.value;
                               setOotResults(newData);
                             }}
                           />
@@ -4525,14 +4774,20 @@ console.log(pQRData,"grid")
             </div>
             <div>
               <h4 className="gridName mt-5">Summary</h4>
-              <TinyEditor editorContent={tiny23} setEditorContent={setTinyContent} tinyNo={23} />
+              <TinyEditor
+                editorContent={tiny23}
+                setEditorContent={setTinyContent}
+                tinyNo={23}
+              />
             </div>
             <h4 className="gridName">OOA Results</h4>
             <div>
               <div className="AddRows d-flex w-full justify-between items-center text-3xl mb-5">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={ooaResultsRow} />
-                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
+                  <div className="addrowinstruction  pl-2">
+                    Add Rows by clicking on (+) icon
+                  </div>
                 </div>
                 <div className="flex gap-4 ">
                   <ExcelExportImport
@@ -4594,7 +4849,8 @@ console.log(pQRData,"grid")
                             value={item.initialIntervalDetails}
                             onChange={(e) => {
                               const newData = [...ooaResults];
-                              newData[index].initialIntervalDetails = e.target.value;
+                              newData[index].initialIntervalDetails =
+                                e.target.value;
                               setOoaResults(newData);
                             }}
                           />
@@ -4604,7 +4860,8 @@ console.log(pQRData,"grid")
                             value={item.previousIntervalDetails}
                             onChange={(e) => {
                               const newData = [...ooaResults];
-                              newData[index].previousIntervalDetails = e.target.value;
+                              newData[index].previousIntervalDetails =
+                                e.target.value;
                               setOoaResults(newData);
                             }}
                           />
@@ -4637,14 +4894,20 @@ console.log(pQRData,"grid")
             </div>
             <div>
               <h4 className="gridName mt-5">Summary</h4>
-              <TinyEditor editorContent={tiny24} setEditorContent={setTinyContent} tinyNo={24} />
+              <TinyEditor
+                editorContent={tiny24}
+                setEditorContent={setTinyContent}
+                tinyNo={24}
+              />
             </div>
             <h4 className="gridName">OOL Results</h4>
             <div>
               <div className="AddRows d-flex w-full justify-between items-center text-3xl mb-5">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={oolResultsRow} />
-                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
+                  <div className="addrowinstruction  pl-2">
+                    Add Rows by clicking on (+) icon
+                  </div>
                 </div>
                 <div className="flex gap-4 ">
                   <ExcelExportImport
@@ -4705,7 +4968,8 @@ console.log(pQRData,"grid")
                             value={item.initialIntervalDetails}
                             onChange={(e) => {
                               const newData = [...oolResults];
-                              newData[index].initialIntervalDetails = e.target.value;
+                              newData[index].initialIntervalDetails =
+                                e.target.value;
                               setOolResults(newData);
                             }}
                           />
@@ -4715,7 +4979,8 @@ console.log(pQRData,"grid")
                             value={item.previousIntervalDetails}
                             onChange={(e) => {
                               const newData = [...oolResults];
-                              newData[index].previousIntervalDetails = e.target.value;
+                              newData[index].previousIntervalDetails =
+                                e.target.value;
                               setOolResults(newData);
                             }}
                           />
@@ -4748,18 +5013,28 @@ console.log(pQRData,"grid")
             </div>
             <div>
               <h4 className="gridName mt-5">Summary</h4>
-              <TinyEditor editorContent={tiny25} setEditorContent={setTinyContent} tinyNo={25} />
+              <TinyEditor
+                editorContent={tiny25}
+                setEditorContent={setTinyContent}
+                tinyNo={25}
+              />
             </div>
 
-            <div className="sub-head">Review of Product Quality (Critical Process Parameters)</div>
+            <div className="sub-head">
+              Review of Product Quality (Critical Process Parameters)
+            </div>
 
             <h3 className="gridName">Unit Operation 1</h3>
-            <h4 className="gridName">Buffer formulation summary details provided below</h4>
+            <h4 className="gridName">
+              Buffer formulation summary details provided below
+            </h4>
             <div>
               <div className="AddRows d-flex w-full justify-between items-center text-3xl mb-5">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addBufferFSDPVRow} />
-                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
+                  <div className="addrowinstruction  pl-2">
+                    Add Rows by clicking on (+) icon
+                  </div>
                 </div>
                 <div className="flex gap-4 ">
                   <ExcelExportImport
@@ -4794,7 +5069,8 @@ console.log(pQRData,"grid")
                             value={item.criticalProcessParameter}
                             onChange={(e) => {
                               const newData = [...bufferFSDPV];
-                              newData[index].criticalProcessParameter = e.target.value;
+                              newData[index].criticalProcessParameter =
+                                e.target.value;
                               setBufferFSDPV(newData);
                             }}
                           />
@@ -4814,7 +5090,8 @@ console.log(pQRData,"grid")
                             value={item.acceptanceCriteria}
                             onChange={(e) => {
                               const newData = [...bufferFSDPV];
-                              newData[index].acceptanceCriteria = e.target.value;
+                              newData[index].acceptanceCriteria =
+                                e.target.value;
                               setBufferFSDPV(newData);
                             }}
                           />
@@ -4844,7 +5121,8 @@ console.log(pQRData,"grid")
                             value={item.compliesNotComplies}
                             onChange={(e) => {
                               const newData = [...bufferFSDPV];
-                              newData[index].compliesNotComplies = e.target.value;
+                              newData[index].compliesNotComplies =
+                                e.target.value;
                               setBufferFSDPV(newData);
                             }}
                           />
@@ -4861,7 +5139,9 @@ console.log(pQRData,"grid")
             <div className="AddRows d-flex w-full justify-between items-center text-3xl mb-5">
               <div className="flex items-center">
                 <MdNoteAdd onClick={addmanufacturingSDRow} />
-                <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
+                <div className="addrowinstruction  pl-2">
+                  Add Rows by clicking on (+) icon
+                </div>
               </div>
               <div className="flex gap-4 ">
                 <ExcelExportImport
@@ -4896,7 +5176,8 @@ console.log(pQRData,"grid")
                           value={item.criticalProcessParameter}
                           onChange={(e) => {
                             const newData = [...manufacturingSD];
-                            newData[index].criticalProcessParameter = e.target.value;
+                            newData[index].criticalProcessParameter =
+                              e.target.value;
                             setManufacturingSD(newData);
                           }}
                         />
@@ -4961,7 +5242,9 @@ console.log(pQRData,"grid")
             <div className="AddRows d-flex w-full justify-between items-center text-3xl mb-5">
               <div className="flex items-center">
                 <MdNoteAdd onClick={addUnitOperation3Row} />
-                <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
+                <div className="addrowinstruction  pl-2">
+                  Add Rows by clicking on (+) icon
+                </div>
               </div>
               <div className="flex gap-4 ">
                 <ExcelExportImport
@@ -4996,7 +5279,8 @@ console.log(pQRData,"grid")
                           value={item.criticalProcessParameter}
                           onChange={(e) => {
                             const newData = [...unitOperation3];
-                            newData[index].criticalProcessParameter = e.target.value;
+                            newData[index].criticalProcessParameter =
+                              e.target.value;
                             setUnitOperation3(newData);
                           }}
                         />
@@ -5061,7 +5345,9 @@ console.log(pQRData,"grid")
             <div className="AddRows d-flex w-full justify-between items-center text-3xl mb-5">
               <div className="flex items-center">
                 <MdNoteAdd onClick={addUnitOperation4Row} />
-                <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
+                <div className="addrowinstruction  pl-2">
+                  Add Rows by clicking on (+) icon
+                </div>
               </div>
               <div className="flex gap-4 ">
                 <ExcelExportImport
@@ -5096,7 +5382,8 @@ console.log(pQRData,"grid")
                           value={item.criticalProcessParameter}
                           onChange={(e) => {
                             const newData = [...unitOperation4];
-                            newData[index].criticalProcessParameter = e.target.value;
+                            newData[index].criticalProcessParameter =
+                              e.target.value;
                             setUnitOperation4(newData);
                           }}
                         />
@@ -5161,7 +5448,9 @@ console.log(pQRData,"grid")
             <div className="AddRows d-flex w-full justify-between items-center text-3xl mb-5">
               <div className="flex items-center">
                 <MdNoteAdd onClick={addUnitOperation5Row} />
-                <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
+                <div className="addrowinstruction  pl-2">
+                  Add Rows by clicking on (+) icon
+                </div>
               </div>
               <div className="flex gap-4 ">
                 <ExcelExportImport
@@ -5196,7 +5485,8 @@ console.log(pQRData,"grid")
                           value={item.criticalProcessParameter}
                           onChange={(e) => {
                             const newData = [...unitOperation5];
-                            newData[index].criticalProcessParameter = e.target.value;
+                            newData[index].criticalProcessParameter =
+                              e.target.value;
                             setUnitOperation5(newData);
                           }}
                         />
@@ -5261,7 +5551,9 @@ console.log(pQRData,"grid")
             <div className="AddRows d-flex w-full justify-between items-center text-3xl mb-5">
               <div className="flex items-center">
                 <MdNoteAdd onClick={addUnitOperation6Row} />
-                <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
+                <div className="addrowinstruction  pl-2">
+                  Add Rows by clicking on (+) icon
+                </div>
               </div>
               <div className="flex gap-4 ">
                 <ExcelExportImport
@@ -5296,7 +5588,8 @@ console.log(pQRData,"grid")
                           value={item.criticalProcessParameter}
                           onChange={(e) => {
                             const newData = [...unitOperation6];
-                            newData[index].criticalProcessParameter = e.target.value;
+                            newData[index].criticalProcessParameter =
+                              e.target.value;
                             setUnitOperation6(newData);
                           }}
                         />
@@ -5361,7 +5654,9 @@ console.log(pQRData,"grid")
             <div className="AddRows d-flex w-full justify-between items-center text-3xl mb-5">
               <div className="flex items-center">
                 <MdNoteAdd onClick={addUnitOperation7Row} />
-                <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
+                <div className="addrowinstruction  pl-2">
+                  Add Rows by clicking on (+) icon
+                </div>
               </div>
               <div className="flex gap-4 ">
                 <ExcelExportImport
@@ -5396,7 +5691,8 @@ console.log(pQRData,"grid")
                           value={item.criticalProcessParameter}
                           onChange={(e) => {
                             const newData = [...unitOperation7];
-                            newData[index].criticalProcessParameter = e.target.value;
+                            newData[index].criticalProcessParameter =
+                              e.target.value;
                             setUnitOperation7(newData);
                           }}
                         />
@@ -5461,7 +5757,9 @@ console.log(pQRData,"grid")
             <div className="AddRows d-flex w-full justify-between items-center text-3xl mb-5">
               <div className="flex items-center">
                 <MdNoteAdd onClick={addUnitOperation8Row} />
-                <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
+                <div className="addrowinstruction  pl-2">
+                  Add Rows by clicking on (+) icon
+                </div>
               </div>
               <div className="flex gap-4 ">
                 <ExcelExportImport
@@ -5496,7 +5794,8 @@ console.log(pQRData,"grid")
                           value={item.criticalProcessParameter}
                           onChange={(e) => {
                             const newData = [...unitOperation8];
-                            newData[index].criticalProcessParameter = e.target.value;
+                            newData[index].criticalProcessParameter =
+                              e.target.value;
                             setUnitOperation8(newData);
                           }}
                         />
@@ -5561,7 +5860,9 @@ console.log(pQRData,"grid")
             <div className="AddRows d-flex w-full justify-between items-center text-3xl mb-5">
               <div className="flex items-center">
                 <MdNoteAdd onClick={addUnitOperation9Row} />
-                <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
+                <div className="addrowinstruction  pl-2">
+                  Add Rows by clicking on (+) icon
+                </div>
               </div>
               <div className="flex gap-4 ">
                 <ExcelExportImport
@@ -5596,7 +5897,8 @@ console.log(pQRData,"grid")
                           value={item.criticalProcessParameter}
                           onChange={(e) => {
                             const newData = [...unitOperation9];
-                            newData[index].criticalProcessParameter = e.target.value;
+                            newData[index].criticalProcessParameter =
+                              e.target.value;
                             setUnitOperation9(newData);
                           }}
                         />
@@ -5661,7 +5963,9 @@ console.log(pQRData,"grid")
             <div className="AddRows d-flex w-full justify-between items-center text-3xl mb-5">
               <div className="flex items-center">
                 <MdNoteAdd onClick={addUnitOperation10Row} />
-                <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
+                <div className="addrowinstruction  pl-2">
+                  Add Rows by clicking on (+) icon
+                </div>
               </div>
               <div className="flex gap-4 ">
                 <ExcelExportImport
@@ -5696,7 +6000,8 @@ console.log(pQRData,"grid")
                           value={item.criticalProcessParameter}
                           onChange={(e) => {
                             const newData = [...unitOperation10];
-                            newData[index].criticalProcessParameter = e.target.value;
+                            newData[index].criticalProcessParameter =
+                              e.target.value;
                             setUnitOperation10(newData);
                           }}
                         />
@@ -5757,21 +6062,32 @@ console.log(pQRData,"grid")
               </tbody>
             </table>
 
-            <div className="sub-head">Critical Process Parameters Review Summary</div>
+            <div className="sub-head">
+              Critical Process Parameters Review Summary
+            </div>
             <div className="group-input">
-              <TinyEditor editorContent={tiny26} setEditorContent={setTinyContent} tinyNo={26} />
+              <TinyEditor
+                editorContent={tiny26}
+                setEditorContent={setTinyContent}
+                tinyNo={26}
+              />
             </div>
           </div>
         ) : null}
         {tab === "LR" ? (
           <div className="p-4">
-            <div className="sub-head"> Review of Drug Substance Test Results</div>
+            <div className="sub-head">
+              {" "}
+              Review of Drug Substance Test Results
+            </div>
             <h1 className="gridName">pH Of Paracetamol Test Results</h1>
             <div>
               <div className="AddRows d-flex w-full justify-between items-center text-3xl mb-5">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addReviewODSTRRow} />
-                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
+                  <div className="addrowinstruction  pl-2">
+                    Add Rows by clicking on (+) icon
+                  </div>
                 </div>
                 <div className="flex gap-4 ">
                   <ExcelExportImport
@@ -5880,7 +6196,8 @@ console.log(pQRData,"grid")
                             value={item.compliesNotComplies}
                             onChange={(e) => {
                               const newData = [...reviewODSTR];
-                              newData[index].compliesNotComplies = e.target.value;
+                              newData[index].compliesNotComplies =
+                                e.target.value;
                               setReviewOSTR(newData);
                             }}
                           />
@@ -5891,12 +6208,16 @@ console.log(pQRData,"grid")
                 </tbody>
               </table>
             </div>
-            <h1 className="gridName  pt-8">Assay Of Paracetamol Test Results</h1>
+            <h1 className="gridName  pt-8">
+              Assay Of Paracetamol Test Results
+            </h1>
             <div>
               <div className="AddRows d-flex w-full justify-between items-center text-3xl mb-5">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addReviewODSTRRow2} />
-                  <div className="addrowinstruction pl-2">Add Rows by clicking on (+) icon</div>
+                  <div className="addrowinstruction pl-2">
+                    Add Rows by clicking on (+) icon
+                  </div>
                 </div>
                 <div className="flex gap-4 ">
                   <ExcelExportImport
@@ -6005,7 +6326,8 @@ console.log(pQRData,"grid")
                             value={item.compliesNotComplies}
                             onChange={(e) => {
                               const newData = [...reviewODSTR2];
-                              newData[index].compliesNotComplies = e.target.value;
+                              newData[index].compliesNotComplies =
+                                e.target.value;
                               setReviewOSTR2(newData);
                             }}
                           />
@@ -6016,12 +6338,16 @@ console.log(pQRData,"grid")
                 </tbody>
               </table>
             </div>{" "}
-            <h1 className="gridName pt-8">Impurity Of Paracetamol Test Result</h1>
+            <h1 className="gridName pt-8">
+              Impurity Of Paracetamol Test Result
+            </h1>
             <div>
               <div className="AddRows d-flex w-full justify-between items-center text-3xl mb-5">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addReviewODSTRRow3} />
-                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
+                  <div className="addrowinstruction  pl-2">
+                    Add Rows by clicking on (+) icon
+                  </div>
                 </div>
                 <div className="flex gap-4 ">
                   <ExcelExportImport
@@ -6130,7 +6456,8 @@ console.log(pQRData,"grid")
                             value={item.compliesNotComplies}
                             onChange={(e) => {
                               const newData = [...reviewODSTR3];
-                              newData[index].compliesNotComplies = e.target.value;
+                              newData[index].compliesNotComplies =
+                                e.target.value;
                               setReviewOSTR3(newData);
                             }}
                           />
@@ -6141,12 +6468,16 @@ console.log(pQRData,"grid")
                 </tbody>
               </table>
             </div>{" "}
-            <h1 className="gridName pt-8">Dissolution Of Paracetamol Test Result</h1>
+            <h1 className="gridName pt-8">
+              Dissolution Of Paracetamol Test Result
+            </h1>
             <div>
               <div className="AddRows d-flex w-full justify-between items-center text-3xl mb-5">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addReviewODSTRRow4} />
-                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
+                  <div className="addrowinstruction  pl-2">
+                    Add Rows by clicking on (+) icon
+                  </div>
                 </div>
                 <div className="flex gap-4 ">
                   <ExcelExportImport
@@ -6254,7 +6585,8 @@ console.log(pQRData,"grid")
                             value={item.compliesNotComplies}
                             onChange={(e) => {
                               const newData = [...reviewODSTR4];
-                              newData[index].compliesNotComplies = e.target.value;
+                              newData[index].compliesNotComplies =
+                                e.target.value;
                               setReviewOSTR4(newData);
                             }}
                           />
@@ -6265,12 +6597,16 @@ console.log(pQRData,"grid")
                 </tbody>
               </table>
             </div>{" "}
-            <h1 className="gridName pt-8">Disintegration Of Paracetamol Test Result</h1>
+            <h1 className="gridName pt-8">
+              Disintegration Of Paracetamol Test Result
+            </h1>
             <div>
               <div className="AddRows d-flex w-full justify-between items-center text-3xl mb-5">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addReviewODSTRRow5} />
-                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
+                  <div className="addrowinstruction  pl-2">
+                    Add Rows by clicking on (+) icon
+                  </div>
                 </div>
                 <div className="flex gap-4 ">
                   <ExcelExportImport
@@ -6379,7 +6715,8 @@ console.log(pQRData,"grid")
                             value={item.compliesNotComplies}
                             onChange={(e) => {
                               const newData = [...reviewODSTR5];
-                              newData[index].compliesNotComplies = e.target.value;
+                              newData[index].compliesNotComplies =
+                                e.target.value;
                               setReviewOSTR5(newData);
                             }}
                           />
@@ -6395,7 +6732,9 @@ console.log(pQRData,"grid")
               <div className="AddRows d-flex w-full justify-between items-center text-3xl mb-5">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addReviewODSTRRow6} />
-                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
+                  <div className="addrowinstruction  pl-2">
+                    Add Rows by clicking on (+) icon
+                  </div>
                 </div>
                 <div className="flex gap-4 ">
                   <ExcelExportImport
@@ -6504,7 +6843,8 @@ console.log(pQRData,"grid")
                             value={item.compliesNotComplies}
                             onChange={(e) => {
                               const newData = [...reviewODSTR6];
-                              newData[index].compliesNotComplies = e.target.value;
+                              newData[index].compliesNotComplies =
+                                e.target.value;
                               setReviewOSTR6(newData);
                             }}
                           />
@@ -6520,7 +6860,9 @@ console.log(pQRData,"grid")
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addReviewODSTRRow7} />
-                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
+                  <div className="addrowinstruction  pl-2">
+                    Add Rows by clicking on (+) icon
+                  </div>
                 </div>
                 <div className="flex gap-4 ">
                   <ExcelExportImport
@@ -6629,7 +6971,8 @@ console.log(pQRData,"grid")
                             value={item.compliesNotComplies}
                             onChange={(e) => {
                               const newData = [...reviewODSTR7];
-                              newData[index].compliesNotComplies = e.target.value;
+                              newData[index].compliesNotComplies =
+                                e.target.value;
                               setReviewOSTR7(newData);
                             }}
                           />
@@ -6640,12 +6983,16 @@ console.log(pQRData,"grid")
                 </tbody>
               </table>
             </div>{" "}
-            <h1 className="gridName pt-8">Impurity Of Terbinafine Test Result</h1>
+            <h1 className="gridName pt-8">
+              Impurity Of Terbinafine Test Result
+            </h1>
             <div>
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addReviewODSTRRow8} />
-                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
+                  <div className="addrowinstruction  pl-2">
+                    Add Rows by clicking on (+) icon
+                  </div>
                 </div>
                 <div className="flex gap-4 ">
                   <ExcelExportImport
@@ -6754,7 +7101,8 @@ console.log(pQRData,"grid")
                             value={item.compliesNotComplies}
                             onChange={(e) => {
                               const newData = [...reviewODSTR8];
-                              newData[index].compliesNotComplies = e.target.value;
+                              newData[index].compliesNotComplies =
+                                e.target.value;
                               setReviewOSTR8(newData);
                             }}
                           />
@@ -6765,12 +7113,16 @@ console.log(pQRData,"grid")
                 </tbody>
               </table>
             </div>{" "}
-            <h1 className="gridName pt-8">Dissolution Of Terbinafine Test Result</h1>
+            <h1 className="gridName pt-8">
+              Dissolution Of Terbinafine Test Result
+            </h1>
             <div>
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addReviewODSTRRow9} />
-                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
+                  <div className="addrowinstruction  pl-2">
+                    Add Rows by clicking on (+) icon
+                  </div>
                 </div>
                 <div className="flex gap-4 ">
                   <ExcelExportImport
@@ -6879,7 +7231,8 @@ console.log(pQRData,"grid")
                             value={item.compliesNotComplies}
                             onChange={(e) => {
                               const newData = [...reviewODSTR9];
-                              newData[index].compliesNotComplies = e.target.value;
+                              newData[index].compliesNotComplies =
+                                e.target.value;
                               setReviewOSTR9(newData);
                             }}
                           />
@@ -6890,12 +7243,16 @@ console.log(pQRData,"grid")
                 </tbody>
               </table>
             </div>{" "}
-            <h1 className="gridName pt-8">Disinteration Of Terbinafine Test Result</h1>
+            <h1 className="gridName pt-8">
+              Disinteration Of Terbinafine Test Result
+            </h1>
             <div>
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addReviewODSTRRow10} />
-                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
+                  <div className="addrowinstruction  pl-2">
+                    Add Rows by clicking on (+) icon
+                  </div>
                 </div>
                 <div className="flex gap-4 ">
                   <ExcelExportImport
@@ -7004,7 +7361,8 @@ console.log(pQRData,"grid")
                             value={item.compliesNotComplies}
                             onChange={(e) => {
                               const newData = [...reviewODSTR10];
-                              newData[index].compliesNotComplies = e.target.value;
+                              newData[index].compliesNotComplies =
+                                e.target.value;
                               setReviewOSTR10(newData);
                             }}
                           />
@@ -7020,7 +7378,9 @@ console.log(pQRData,"grid")
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addReviewODSTRRow11} />
-                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
+                  <div className="addrowinstruction  pl-2">
+                    Add Rows by clicking on (+) icon
+                  </div>
                 </div>
                 <div className="flex gap-4 ">
                   <ExcelExportImport
@@ -7129,7 +7489,8 @@ console.log(pQRData,"grid")
                             value={item.compliesNotComplies}
                             onChange={(e) => {
                               const newData = [...reviewODSTR11];
-                              newData[index].compliesNotComplies = e.target.value;
+                              newData[index].compliesNotComplies =
+                                e.target.value;
                               setReviewOSTR11(newData);
                             }}
                           />
@@ -7145,7 +7506,9 @@ console.log(pQRData,"grid")
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addReviewODSTRRow12} />
-                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
+                  <div className="addrowinstruction  pl-2">
+                    Add Rows by clicking on (+) icon
+                  </div>
                 </div>
                 <div className="flex gap-4 ">
                   <ExcelExportImport
@@ -7254,7 +7617,8 @@ console.log(pQRData,"grid")
                             value={item.compliesNotComplies}
                             onChange={(e) => {
                               const newData = [...reviewODSTR12];
-                              newData[index].compliesNotComplies = e.target.value;
+                              newData[index].compliesNotComplies =
+                                e.target.value;
                               setReviewOSTR12(newData);
                             }}
                           />
@@ -7265,12 +7629,16 @@ console.log(pQRData,"grid")
                 </tbody>
               </table>
             </div>
-            <h1 className="gridName pt-8">Impurity Of Pentoprazole Test Result</h1>
+            <h1 className="gridName pt-8">
+              Impurity Of Pentoprazole Test Result
+            </h1>
             <div>
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addReviewODSTRRow13} />
-                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
+                  <div className="addrowinstruction  pl-2">
+                    Add Rows by clicking on (+) icon
+                  </div>
                 </div>
                 <div className="flex gap-4">
                   <ExcelExportImport
@@ -7378,7 +7746,8 @@ console.log(pQRData,"grid")
                             value={item.compliesNotComplies}
                             onChange={(e) => {
                               const newData = [...reviewODSTR13];
-                              newData[index].compliesNotComplies = e.target.value;
+                              newData[index].compliesNotComplies =
+                                e.target.value;
                               setReviewOSTR13(newData);
                             }}
                           />
@@ -7389,12 +7758,16 @@ console.log(pQRData,"grid")
                 </tbody>
               </table>
             </div>
-            <h1 className="gridName pt-8">Dissolution Of Pentoprazole Test Result</h1>
+            <h1 className="gridName pt-8">
+              Dissolution Of Pentoprazole Test Result
+            </h1>
             <div>
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addReviewODSTRRow14} />
-                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
+                  <div className="addrowinstruction  pl-2">
+                    Add Rows by clicking on (+) icon
+                  </div>
                 </div>
                 <div className="flex gap-4 ">
                   <ExcelExportImport
@@ -7503,7 +7876,8 @@ console.log(pQRData,"grid")
                             value={item.compliesNotComplies}
                             onChange={(e) => {
                               const newData = [...reviewODSTR14];
-                              newData[index].compliesNotComplies = e.target.value;
+                              newData[index].compliesNotComplies =
+                                e.target.value;
                               setReviewOSTR14(newData);
                             }}
                           />
@@ -7514,12 +7888,16 @@ console.log(pQRData,"grid")
                 </tbody>
               </table>
             </div>
-            <h1 className="gridName pt-8">Disinteration Of Pentoprazole Test Result</h1>
+            <h1 className="gridName pt-8">
+              Disinteration Of Pentoprazole Test Result
+            </h1>
             <div>
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addReviewODSTRRow15} />
-                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
+                  <div className="addrowinstruction  pl-2">
+                    Add Rows by clicking on (+) icon
+                  </div>
                 </div>
                 <div className="flex gap-4 ">
                   <ExcelExportImport
@@ -7628,7 +8006,8 @@ console.log(pQRData,"grid")
                             value={item.compliesNotComplies}
                             onChange={(e) => {
                               const newData = [...reviewODSTR15];
-                              newData[index].compliesNotComplies = e.target.value;
+                              newData[index].compliesNotComplies =
+                                e.target.value;
                               setReviewOSTR15(newData);
                             }}
                           />
@@ -7641,14 +8020,22 @@ console.log(pQRData,"grid")
             </div>
             <div>
               <h4 className="gridName mt-5">Summary</h4>
-              <TinyEditor editorContent={tiny27} setEditorContent={setTinyContent} tinyNo={27} />
+              <TinyEditor
+                editorContent={tiny27}
+                setEditorContent={setTinyContent}
+                tinyNo={27}
+              />
             </div>
-            <div className="sub-head">Review of Raw Material Excipient Test Results</div>
+            <div className="sub-head">
+              Review of Raw Material Excipient Test Results
+            </div>
             <div>
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addReviewORMETRRow} />
-                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
+                  <div className="addrowinstruction  pl-2">
+                    Add Rows by clicking on (+) icon
+                  </div>
                 </div>
                 <div className="flex gap-4 ">
                   <ExcelExportImport
@@ -7705,7 +8092,8 @@ console.log(pQRData,"grid")
                             value={item.specificationLimit}
                             onChange={(e) => {
                               const newData = [...reviewORMETR];
-                              newData[index].specificationLimit = e.target.value;
+                              newData[index].specificationLimit =
+                                e.target.value;
                               setReviewORMETR(newData);
                             }}
                           />
@@ -7715,7 +8103,8 @@ console.log(pQRData,"grid")
                             value={item.obtainedValue.minimum}
                             onChange={(e) => {
                               const newData = [...reviewORMETR];
-                              newData[index].obtainedValue.minimum = e.target.value;
+                              newData[index].obtainedValue.minimum =
+                                e.target.value;
                               setReviewORMETR(newData);
                             }}
                           />
@@ -7725,7 +8114,8 @@ console.log(pQRData,"grid")
                             value={item.obtainedValue.maximum}
                             onChange={(e) => {
                               const newData = [...reviewORMETR];
-                              newData[index].obtainedValue.maximum = e.target.value;
+                              newData[index].obtainedValue.maximum =
+                                e.target.value;
                               setReviewORMETR(newData);
                             }}
                           />
@@ -7735,7 +8125,8 @@ console.log(pQRData,"grid")
                             value={item.compliesNotComplies}
                             onChange={(e) => {
                               const newData = [...reviewORMETR];
-                              newData[index].compliesNotComplies = e.target.value;
+                              newData[index].compliesNotComplies =
+                                e.target.value;
                               setReviewORMETR(newData);
                             }}
                           />
@@ -7748,14 +8139,22 @@ console.log(pQRData,"grid")
             </div>
             <div>
               <h4 className="gridName mt-5">Summary</h4>
-              <TinyEditor editorContent={tiny28} setEditorContent={setTinyContent} tinyNo={28} />
+              <TinyEditor
+                editorContent={tiny28}
+                setEditorContent={setTinyContent}
+                tinyNo={28}
+              />
             </div>
-            <div className="sub-head">Review of Packing Material Test Results</div>
+            <div className="sub-head">
+              Review of Packing Material Test Results
+            </div>
             <div>
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addreviewOPMTRRow} />
-                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
+                  <div className="addrowinstruction  pl-2">
+                    Add Rows by clicking on (+) icon
+                  </div>
                 </div>
                 <div className="flex gap-4 ">
                   <ExcelExportImport
@@ -7812,7 +8211,8 @@ console.log(pQRData,"grid")
                             value={item.specificationLimit}
                             onChange={(e) => {
                               const newData = [...reviewOPMTR];
-                              newData[index].specificationLimit = e.target.value;
+                              newData[index].specificationLimit =
+                                e.target.value;
                               setReviewOPMTR(newData);
                             }}
                           />
@@ -7822,7 +8222,8 @@ console.log(pQRData,"grid")
                             value={item.obtainedValue.minimum}
                             onChange={(e) => {
                               const newData = [...reviewOPMTR];
-                              newData[index].obtainedValue.minimum = e.target.value;
+                              newData[index].obtainedValue.minimum =
+                                e.target.value;
                               setReviewOPMTR(newData);
                             }}
                           />
@@ -7832,7 +8233,8 @@ console.log(pQRData,"grid")
                             value={item.obtainedValue.maximum}
                             onChange={(e) => {
                               const newData = [...reviewOPMTR];
-                              newData[index].obtainedValue.maximum = e.target.value;
+                              newData[index].obtainedValue.maximum =
+                                e.target.value;
                               setReviewOPMTR(newData);
                             }}
                           />
@@ -7842,7 +8244,8 @@ console.log(pQRData,"grid")
                             value={item.compliesNotComplies}
                             onChange={(e) => {
                               const newData = [...reviewOPMTR];
-                              newData[index].compliesNotComplies = e.target.value;
+                              newData[index].compliesNotComplies =
+                                e.target.value;
                               setReviewOPMTR(newData);
                             }}
                           />
@@ -7855,15 +8258,23 @@ console.log(pQRData,"grid")
             </div>
             <div>
               <h4 className="gridName mt-5">Summary</h4>
-              <TinyEditor editorContent={tiny29} setEditorContent={setTinyContent} tinyNo={29} />
+              <TinyEditor
+                editorContent={tiny29}
+                setEditorContent={setTinyContent}
+                tinyNo={29}
+              />
             </div>
-            <div className="sub-head">Review of Drug Product – In process Test Results</div>
+            <div className="sub-head">
+              Review of Drug Product – In process Test Results
+            </div>
             <h4 className="gridName pt-2">Dilution Buffer 1 - Test Results</h4>
             <div>
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addReviewODPRow} />
-                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
+                  <div className="addrowinstruction  pl-2">
+                    Add Rows by clicking on (+) icon
+                  </div>
                 </div>
                 <div className="flex gap-4 ">
                   <ExcelExportImport
@@ -7920,7 +8331,8 @@ console.log(pQRData,"grid")
                             value={item.specificationLimit}
                             onChange={(e) => {
                               const newData = [...reviewODP];
-                              newData[index].specificationLimit = e.target.value;
+                              newData[index].specificationLimit =
+                                e.target.value;
                               setReviewODP(newData);
                             }}
                           />
@@ -7930,7 +8342,8 @@ console.log(pQRData,"grid")
                             value={item.obtainedValue.minimum}
                             onChange={(e) => {
                               const newData = [...reviewODP];
-                              newData[index].obtainedValue.minimum = e.target.value;
+                              newData[index].obtainedValue.minimum =
+                                e.target.value;
                               setReviewODP(newData);
                             }}
                           />
@@ -7940,7 +8353,8 @@ console.log(pQRData,"grid")
                             value={item.obtainedValue.maximum}
                             onChange={(e) => {
                               const newData = [...reviewODP];
-                              newData[index].obtainedValue.maximum = e.target.value;
+                              newData[index].obtainedValue.maximum =
+                                e.target.value;
                               setReviewODP(newData);
                             }}
                           />
@@ -7950,7 +8364,8 @@ console.log(pQRData,"grid")
                             value={item.compliesNotComplies}
                             onChange={(e) => {
                               const newData = [...reviewODP];
-                              newData[index].compliesNotComplies = e.target.value;
+                              newData[index].compliesNotComplies =
+                                e.target.value;
                               setReviewODP(newData);
                             }}
                           />
@@ -7966,7 +8381,9 @@ console.log(pQRData,"grid")
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addReviewODPRow2} />
-                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
+                  <div className="addrowinstruction  pl-2">
+                    Add Rows by clicking on (+) icon
+                  </div>
                 </div>
                 <div className="flex gap-4 ">
                   <ExcelExportImport
@@ -8023,7 +8440,8 @@ console.log(pQRData,"grid")
                             value={item.specificationLimit}
                             onChange={(e) => {
                               const newData = [...reviewODP2];
-                              newData[index].specificationLimit = e.target.value;
+                              newData[index].specificationLimit =
+                                e.target.value;
                               setReviewODP2(newData);
                             }}
                           />
@@ -8033,7 +8451,8 @@ console.log(pQRData,"grid")
                             value={item.obtainedValue.minimum}
                             onChange={(e) => {
                               const newData = [...reviewODP2];
-                              newData[index].obtainedValue.minimum = e.target.value;
+                              newData[index].obtainedValue.minimum =
+                                e.target.value;
                               setReviewODP2(newData);
                             }}
                           />
@@ -8043,7 +8462,8 @@ console.log(pQRData,"grid")
                             value={item.obtainedValue.maximum}
                             onChange={(e) => {
                               const newData = [...reviewODP2];
-                              newData[index].obtainedValue.maximum = e.target.value;
+                              newData[index].obtainedValue.maximum =
+                                e.target.value;
                               setReviewODP2(newData);
                             }}
                           />
@@ -8053,7 +8473,8 @@ console.log(pQRData,"grid")
                             value={item.compliesNotComplies}
                             onChange={(e) => {
                               const newData = [...reviewODP2];
-                              newData[index].compliesNotComplies = e.target.value;
+                              newData[index].compliesNotComplies =
+                                e.target.value;
                               setReviewODP2(newData);
                             }}
                           />
@@ -8069,7 +8490,9 @@ console.log(pQRData,"grid")
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addReviewODPRow3} />
-                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
+                  <div className="addrowinstruction  pl-2">
+                    Add Rows by clicking on (+) icon
+                  </div>
                 </div>
                 <div className="flex gap-4 ">
                   <ExcelExportImport
@@ -8126,7 +8549,8 @@ console.log(pQRData,"grid")
                             value={item.specificationLimit}
                             onChange={(e) => {
                               const newData = [...reviewODP3];
-                              newData[index].specificationLimit = e.target.value;
+                              newData[index].specificationLimit =
+                                e.target.value;
                               setReviewODP3(newData);
                             }}
                           />
@@ -8136,7 +8560,8 @@ console.log(pQRData,"grid")
                             value={item.obtainedValue.minimum}
                             onChange={(e) => {
                               const newData = [...reviewODP3];
-                              newData[index].obtainedValue.minimum = e.target.value;
+                              newData[index].obtainedValue.minimum =
+                                e.target.value;
                               setReviewODP3(newData);
                             }}
                           />
@@ -8146,7 +8571,8 @@ console.log(pQRData,"grid")
                             value={item.obtainedValue.maximum}
                             onChange={(e) => {
                               const newData = [...reviewODP3];
-                              newData[index].obtainedValue.maximum = e.target.value;
+                              newData[index].obtainedValue.maximum =
+                                e.target.value;
                               setReviewODP3(newData);
                             }}
                           />
@@ -8156,7 +8582,8 @@ console.log(pQRData,"grid")
                             value={item.compliesNotComplies}
                             onChange={(e) => {
                               const newData = [...reviewODP3];
-                              newData[index].compliesNotComplies = e.target.value;
+                              newData[index].compliesNotComplies =
+                                e.target.value;
                               setReviewODP3(newData);
                             }}
                           />
@@ -8172,7 +8599,9 @@ console.log(pQRData,"grid")
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addReviewODPRow4} />
-                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
+                  <div className="addrowinstruction  pl-2">
+                    Add Rows by clicking on (+) icon
+                  </div>
                 </div>
                 <div className="flex gap-4 ">
                   <ExcelExportImport
@@ -8229,7 +8658,8 @@ console.log(pQRData,"grid")
                             value={item.specificationLimit}
                             onChange={(e) => {
                               const newData = [...reviewODP4];
-                              newData[index].specificationLimit = e.target.value;
+                              newData[index].specificationLimit =
+                                e.target.value;
                               setReviewODP4(newData);
                             }}
                           />
@@ -8239,7 +8669,8 @@ console.log(pQRData,"grid")
                             value={item.obtainedValue.minimum}
                             onChange={(e) => {
                               const newData = [...reviewODP4];
-                              newData[index].obtainedValue.minimum = e.target.value;
+                              newData[index].obtainedValue.minimum =
+                                e.target.value;
                               setReviewODP4(newData);
                             }}
                           />
@@ -8249,7 +8680,8 @@ console.log(pQRData,"grid")
                             value={item.obtainedValue.maximum}
                             onChange={(e) => {
                               const newData = [...reviewODP4];
-                              newData[index].obtainedValue.maximum = e.target.value;
+                              newData[index].obtainedValue.maximum =
+                                e.target.value;
                               setReviewODP4(newData);
                             }}
                           />
@@ -8259,7 +8691,8 @@ console.log(pQRData,"grid")
                             value={item.compliesNotComplies}
                             onChange={(e) => {
                               const newData = [...reviewODP4];
-                              newData[index].compliesNotComplies = e.target.value;
+                              newData[index].compliesNotComplies =
+                                e.target.value;
                               setReviewODP4(newData);
                             }}
                           />
@@ -8275,7 +8708,9 @@ console.log(pQRData,"grid")
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addReviewODPRow5} />
-                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
+                  <div className="addrowinstruction  pl-2">
+                    Add Rows by clicking on (+) icon
+                  </div>
                 </div>
                 <div className="flex gap-4 ">
                   <ExcelExportImport
@@ -8332,7 +8767,8 @@ console.log(pQRData,"grid")
                             value={item.specificationLimit}
                             onChange={(e) => {
                               const newData = [...reviewODP5];
-                              newData[index].specificationLimit = e.target.value;
+                              newData[index].specificationLimit =
+                                e.target.value;
                               setReviewODP5(newData);
                             }}
                           />
@@ -8342,7 +8778,8 @@ console.log(pQRData,"grid")
                             value={item.obtainedValue.minimum}
                             onChange={(e) => {
                               const newData = [...reviewODP5];
-                              newData[index].obtainedValue.minimum = e.target.value;
+                              newData[index].obtainedValue.minimum =
+                                e.target.value;
                               setReviewODP5(newData);
                             }}
                           />
@@ -8352,7 +8789,8 @@ console.log(pQRData,"grid")
                             value={item.obtainedValue.maximum}
                             onChange={(e) => {
                               const newData = [...reviewODP5];
-                              newData[index].obtainedValue.maximum = e.target.value;
+                              newData[index].obtainedValue.maximum =
+                                e.target.value;
                               setReviewODP5(newData);
                             }}
                           />
@@ -8362,7 +8800,8 @@ console.log(pQRData,"grid")
                             value={item.compliesNotComplies}
                             onChange={(e) => {
                               const newData = [...reviewODP5];
-                              newData[index].compliesNotComplies = e.target.value;
+                              newData[index].compliesNotComplies =
+                                e.target.value;
                               setReviewODP5(newData);
                             }}
                           />
@@ -8378,7 +8817,9 @@ console.log(pQRData,"grid")
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addReviewODPRow6} />
-                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
+                  <div className="addrowinstruction  pl-2">
+                    Add Rows by clicking on (+) icon
+                  </div>
                 </div>
                 <div className="flex gap-4 ">
                   <ExcelExportImport
@@ -8435,7 +8876,8 @@ console.log(pQRData,"grid")
                             value={item.specificationLimit}
                             onChange={(e) => {
                               const newData = [...reviewODP6];
-                              newData[index].specificationLimit = e.target.value;
+                              newData[index].specificationLimit =
+                                e.target.value;
                               setReviewODP6(newData);
                             }}
                           />
@@ -8445,7 +8887,8 @@ console.log(pQRData,"grid")
                             value={item.obtainedValue.minimum}
                             onChange={(e) => {
                               const newData = [...reviewODP6];
-                              newData[index].obtainedValue.minimum = e.target.value;
+                              newData[index].obtainedValue.minimum =
+                                e.target.value;
                               setReviewODP6(newData);
                             }}
                           />
@@ -8455,7 +8898,8 @@ console.log(pQRData,"grid")
                             value={item.obtainedValue.maximum}
                             onChange={(e) => {
                               const newData = [...reviewODP6];
-                              newData[index].obtainedValue.maximum = e.target.value;
+                              newData[index].obtainedValue.maximum =
+                                e.target.value;
                               setReviewODP6(newData);
                             }}
                           />
@@ -8465,7 +8909,8 @@ console.log(pQRData,"grid")
                             value={item.compliesNotComplies}
                             onChange={(e) => {
                               const newData = [...reviewODP6];
-                              newData[index].compliesNotComplies = e.target.value;
+                              newData[index].compliesNotComplies =
+                                e.target.value;
                               setReviewODP6(newData);
                             }}
                           />
@@ -8481,7 +8926,9 @@ console.log(pQRData,"grid")
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addReviewODPRow7} />
-                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
+                  <div className="addrowinstruction  pl-2">
+                    Add Rows by clicking on (+) icon
+                  </div>
                 </div>
                 <div className="flex gap-4 ">
                   <ExcelExportImport
@@ -8538,7 +8985,8 @@ console.log(pQRData,"grid")
                             value={item.specificationLimit}
                             onChange={(e) => {
                               const newData = [...reviewODP7];
-                              newData[index].specificationLimit = e.target.value;
+                              newData[index].specificationLimit =
+                                e.target.value;
                               setReviewODP7(newData);
                             }}
                           />
@@ -8548,7 +8996,8 @@ console.log(pQRData,"grid")
                             value={item.obtainedValue.minimum}
                             onChange={(e) => {
                               const newData = [...reviewODP7];
-                              newData[index].obtainedValue.minimum = e.target.value;
+                              newData[index].obtainedValue.minimum =
+                                e.target.value;
                               setReviewODP7(newData);
                             }}
                           />
@@ -8558,7 +9007,8 @@ console.log(pQRData,"grid")
                             value={item.obtainedValue.maximum}
                             onChange={(e) => {
                               const newData = [...reviewODP7];
-                              newData[index].obtainedValue.maximum = e.target.value;
+                              newData[index].obtainedValue.maximum =
+                                e.target.value;
                               setReviewODP7(newData);
                             }}
                           />
@@ -8568,7 +9018,8 @@ console.log(pQRData,"grid")
                             value={item.compliesNotComplies}
                             onChange={(e) => {
                               const newData = [...reviewODP10];
-                              newData[index].compliesNotComplies = e.target.value;
+                              newData[index].compliesNotComplies =
+                                e.target.value;
                               setReviewODP10(newData);
                             }}
                           />
@@ -8584,7 +9035,9 @@ console.log(pQRData,"grid")
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addReviewODPRow8} />
-                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
+                  <div className="addrowinstruction  pl-2">
+                    Add Rows by clicking on (+) icon
+                  </div>
                 </div>
                 <div className="flex gap-4 ">
                   <ExcelExportImport
@@ -8641,7 +9094,8 @@ console.log(pQRData,"grid")
                             value={item.specificationLimit}
                             onChange={(e) => {
                               const newData = [...reviewODP8];
-                              newData[index].specificationLimit = e.target.value;
+                              newData[index].specificationLimit =
+                                e.target.value;
                               setReviewODP8(newData);
                             }}
                           />
@@ -8651,7 +9105,8 @@ console.log(pQRData,"grid")
                             value={item.obtainedValue.minimum}
                             onChange={(e) => {
                               const newData = [...reviewODP8];
-                              newData[index].obtainedValue.minimum = e.target.value;
+                              newData[index].obtainedValue.minimum =
+                                e.target.value;
                               setReviewODP8(newData);
                             }}
                           />
@@ -8661,7 +9116,8 @@ console.log(pQRData,"grid")
                             value={item.obtainedValue.maximum}
                             onChange={(e) => {
                               const newData = [...reviewODP8];
-                              newData[index].obtainedValue.maximum = e.target.value;
+                              newData[index].obtainedValue.maximum =
+                                e.target.value;
                               setReviewODP8(newData);
                             }}
                           />
@@ -8671,7 +9127,8 @@ console.log(pQRData,"grid")
                             value={item.compliesNotComplies}
                             onChange={(e) => {
                               const newData = [...reviewODP8];
-                              newData[index].compliesNotComplies = e.target.value;
+                              newData[index].compliesNotComplies =
+                                e.target.value;
                               setReviewODP8(newData);
                             }}
                           />
@@ -8687,7 +9144,9 @@ console.log(pQRData,"grid")
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addReviewODPRow9} />
-                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
+                  <div className="addrowinstruction  pl-2">
+                    Add Rows by clicking on (+) icon
+                  </div>
                 </div>
                 <div className="flex gap-4 ">
                   <ExcelExportImport
@@ -8744,7 +9203,8 @@ console.log(pQRData,"grid")
                             value={item.specificationLimit}
                             onChange={(e) => {
                               const newData = [...reviewODP9];
-                              newData[index].specificationLimit = e.target.value;
+                              newData[index].specificationLimit =
+                                e.target.value;
                               setReviewODP9(newData);
                             }}
                           />
@@ -8754,7 +9214,8 @@ console.log(pQRData,"grid")
                             value={item.obtainedValue.minimum}
                             onChange={(e) => {
                               const newData = [...reviewODP9];
-                              newData[index].obtainedValue.minimum = e.target.value;
+                              newData[index].obtainedValue.minimum =
+                                e.target.value;
                               setReviewODP9(newData);
                             }}
                           />
@@ -8764,7 +9225,8 @@ console.log(pQRData,"grid")
                             value={item.obtainedValue.maximum}
                             onChange={(e) => {
                               const newData = [...reviewODP9];
-                              newData[index].obtainedValue.maximum = e.target.value;
+                              newData[index].obtainedValue.maximum =
+                                e.target.value;
                               setReviewODP9(newData);
                             }}
                           />
@@ -8774,7 +9236,8 @@ console.log(pQRData,"grid")
                             value={item.compliesNotComplies}
                             onChange={(e) => {
                               const newData = [...reviewODP9];
-                              newData[index].compliesNotComplies = e.target.value;
+                              newData[index].compliesNotComplies =
+                                e.target.value;
                               setReviewODP9(newData);
                             }}
                           />
@@ -8790,7 +9253,9 @@ console.log(pQRData,"grid")
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addReviewODPRow10} />
-                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
+                  <div className="addrowinstruction  pl-2">
+                    Add Rows by clicking on (+) icon
+                  </div>
                 </div>
                 <div className="flex gap-4 ">
                   <ExcelExportImport
@@ -8847,7 +9312,8 @@ console.log(pQRData,"grid")
                             value={item.specificationLimit}
                             onChange={(e) => {
                               const newData = [...reviewODP10];
-                              newData[index].specificationLimit = e.target.value;
+                              newData[index].specificationLimit =
+                                e.target.value;
                               setReviewODP10(newData);
                             }}
                           />
@@ -8857,7 +9323,8 @@ console.log(pQRData,"grid")
                             value={item.obtainedValue.minimum}
                             onChange={(e) => {
                               const newData = [...reviewODP10];
-                              newData[index].obtainedValue.minimum = e.target.value;
+                              newData[index].obtainedValue.minimum =
+                                e.target.value;
                               setReviewODP10(newData);
                             }}
                           />
@@ -8867,7 +9334,8 @@ console.log(pQRData,"grid")
                             value={item.obtainedValue.maximum}
                             onChange={(e) => {
                               const newData = [...reviewODP10];
-                              newData[index].obtainedValue.maximum = e.target.value;
+                              newData[index].obtainedValue.maximum =
+                                e.target.value;
                               setReviewODP10(newData);
                             }}
                           />
@@ -8877,7 +9345,8 @@ console.log(pQRData,"grid")
                             value={item.compliesNotComplies}
                             onChange={(e) => {
                               const newData = [...reviewODP10];
-                              newData[index].compliesNotComplies = e.target.value;
+                              newData[index].compliesNotComplies =
+                                e.target.value;
                               setReviewODP10(newData);
                             }}
                           />
@@ -8890,14 +9359,22 @@ console.log(pQRData,"grid")
             </div>
             <div>
               <h4 className="gridName mt-5">Summary</h4>
-              <TinyEditor editorContent={tiny30} setEditorContent={setTinyContent} tinyNo={30} />
+              <TinyEditor
+                editorContent={tiny30}
+                setEditorContent={setTinyContent}
+                tinyNo={30}
+              />
             </div>
-            <div className="sub-head">Review of Drug Product –Finished Product Test Results</div>
+            <div className="sub-head">
+              Review of Drug Product –Finished Product Test Results
+            </div>
             <div>
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addReviewODPFPTRRow} />
-                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
+                  <div className="addrowinstruction  pl-2">
+                    Add Rows by clicking on (+) icon
+                  </div>
                 </div>
                 <div className="flex gap-4 ">
                   <ExcelExportImport
@@ -8943,7 +9420,8 @@ console.log(pQRData,"grid")
                             value={item.specificationLimit}
                             onChange={(e) => {
                               const newData = [...reviewODPFPTR];
-                              newData[index].specificationLimit = e.target.value;
+                              newData[index].specificationLimit =
+                                e.target.value;
                               setReviewODPFPTR(newData);
                             }}
                           />
@@ -8953,7 +9431,8 @@ console.log(pQRData,"grid")
                             value={item.obtainedValue.minimum}
                             onChange={(e) => {
                               const newData = [...reviewODPFPTR];
-                              newData[index].obtainedValue.minimum = e.target.value;
+                              newData[index].obtainedValue.minimum =
+                                e.target.value;
                               setReviewODPFPTR(newData);
                             }}
                           />
@@ -8963,7 +9442,8 @@ console.log(pQRData,"grid")
                             value={item.obtainedValue.maximum}
                             onChange={(e) => {
                               const newData = [...reviewODPFPTR];
-                              newData[index].obtainedValue.maximum = e.target.value;
+                              newData[index].obtainedValue.maximum =
+                                e.target.value;
                               setReviewODPFPTR(newData);
                             }}
                           />
@@ -8973,7 +9453,8 @@ console.log(pQRData,"grid")
                             value={item.compliesNotComplies}
                             onChange={(e) => {
                               const newData = [...reviewODPFPTR];
-                              newData[index].compliesNotComplies = e.target.value;
+                              newData[index].compliesNotComplies =
+                                e.target.value;
                               setReviewODPFPTR(newData);
                             }}
                           />
@@ -8986,14 +9467,20 @@ console.log(pQRData,"grid")
             </div>
             <div>
               <h4 className="gridName mt-5">Summary</h4>
-              <TinyEditor editorContent={tiny31} setEditorContent={setTinyContent} tinyNo={31} />
+              <TinyEditor
+                editorContent={tiny31}
+                setEditorContent={setTinyContent}
+                tinyNo={31}
+              />
             </div>
             <div className="sub-head">Summary of Ongoing Stability Studies</div>
             <div>
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addSummaryOOSSRow} />
-                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
+                  <div className="addrowinstruction  pl-2">
+                    Add Rows by clicking on (+) icon
+                  </div>
                 </div>
                 <div className="flex gap-4 ">
                   <ExcelExportImport
@@ -9064,7 +9551,8 @@ console.log(pQRData,"grid")
                             value={item.stabilityProtocolNo}
                             onChange={(e) => {
                               const newData = [...summaryOOSS];
-                              newData[index].stabilityProtocolNo = e.target.value;
+                              newData[index].stabilityProtocolNo =
+                                e.target.value;
                               setSummaryOOSS(newData);
                             }}
                           />
@@ -9076,7 +9564,11 @@ console.log(pQRData,"grid")
               </table>
               <div>
                 <h4 className="gridName mt-5">Summary</h4>
-                <TinyEditor editorContent={tiny32} setEditorContent={setTinyContent} tinyNo={32} />
+                <TinyEditor
+                  editorContent={tiny32}
+                  setEditorContent={setTinyContent}
+                  tinyNo={32}
+                />
               </div>
 
               <h4 className="gridName pt-4">Stability Study Related OOS/OOT</h4>
@@ -9084,7 +9576,9 @@ console.log(pQRData,"grid")
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addStabilitySRRow} />
-                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
+                  <div className="addrowinstruction  pl-2">
+                    Add Rows by clicking on (+) icon
+                  </div>
                 </div>
                 <div className="flex gap-4 ">
                   <ExcelExportImport
@@ -9123,7 +9617,8 @@ console.log(pQRData,"grid")
                             value={item.testingIntervalMonths}
                             onChange={(e) => {
                               const newData = [...stabilitySR];
-                              newData[index].testingIntervalMonths = e.target.value;
+                              newData[index].testingIntervalMonths =
+                                e.target.value;
                               setStabilitySR(newData);
                             }}
                           />
@@ -9145,14 +9640,22 @@ console.log(pQRData,"grid")
               </table>
 
               <h4 className="gridName">Summary</h4>
-              <TinyEditor editorContent={tiny33} setEditorContent={setTinyContent} tinyNo={33} />
+              <TinyEditor
+                editorContent={tiny33}
+                setEditorContent={setTinyContent}
+                tinyNo={33}
+              />
 
-              <div className="sub-head">Review of Visual Inspection – Reserve Samples</div>
+              <div className="sub-head">
+                Review of Visual Inspection – Reserve Samples
+              </div>
               <div>
                 <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                   <div className="flex items-center">
                     <MdNoteAdd onClick={addreviewOVIRSRow} />
-                    <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
+                    <div className="addrowinstruction  pl-2">
+                      Add Rows by clicking on (+) icon
+                    </div>
                   </div>
                   <div className="flex gap-4 ">
                     <ExcelExportImport
@@ -9260,41 +9763,80 @@ console.log(pQRData,"grid")
                 </table>
               </div>
               <h4 className="gridName mt-4">Summary</h4>
-              <TinyEditor editorContent={tiny34} setEditorContent={setTinyContent} tinyNo={34} />
-
-              <h4 className="gridName pt-4">Review of Analytical Method Validations</h4>
-              <TinyEditor editorContent={tiny35} setEditorContent={setTinyContent} tinyNo={35} />
-
-              <h4 className="gridName pt-4">Review of Contract Testing Laboratories</h4>
-              <TinyEditor editorContent={tiny36} setEditorContent={setTinyContent} tinyNo={36} />
+              <TinyEditor
+                editorContent={tiny34}
+                setEditorContent={setTinyContent}
+                tinyNo={34}
+              />
 
               <h4 className="gridName pt-4">
-                Review of Environmental Monitoring Trend and water trends Reports
+                Review of Analytical Method Validations
               </h4>
-              <TinyEditor editorContent={tiny37} setEditorContent={setTinyContent} tinyNo={37} />
+              <TinyEditor
+                editorContent={tiny35}
+                setEditorContent={setTinyContent}
+                tinyNo={35}
+              />
+
+              <h4 className="gridName pt-4">
+                Review of Contract Testing Laboratories
+              </h4>
+              <TinyEditor
+                editorContent={tiny36}
+                setEditorContent={setTinyContent}
+                tinyNo={36}
+              />
+
+              <h4 className="gridName pt-4">
+                Review of Environmental Monitoring Trend and water trends
+                Reports
+              </h4>
+              <TinyEditor
+                editorContent={tiny37}
+                setEditorContent={setTinyContent}
+                tinyNo={37}
+              />
 
               <h4 className="gridName pt-4">Laboratory Review Summary</h4>
-              <TinyEditor editorContent={tiny38} setEditorContent={setTinyContent} tinyNo={38} />
+              <TinyEditor
+                editorContent={tiny38}
+                setEditorContent={setTinyContent}
+                tinyNo={38}
+              />
             </div>
           </div>
         ) : null}
         {tab === "EAMR" ? (
           <div>
             <h4 className="gridName">Preventive Maintenance Details</h4>
-            <TinyEditor editorContent={tiny39} setEditorContent={setTinyContent} tinyNo={39} />
+            <TinyEditor
+              editorContent={tiny39}
+              setEditorContent={setTinyContent}
+              tinyNo={39}
+            />
 
             <h4 className="gridName pt-4"> Qualification details</h4>
-            <TinyEditor editorContent={tiny40} setEditorContent={setTinyContent} tinyNo={40} />
+            <TinyEditor
+              editorContent={tiny40}
+              setEditorContent={setTinyContent}
+              tinyNo={40}
+            />
 
             <h4 className="gridName pt-4"> Calibration Details</h4>
-            <TinyEditor editorContent={tiny41} setEditorContent={setTinyContent} tinyNo={41} />
+            <TinyEditor
+              editorContent={tiny41}
+              setEditorContent={setTinyContent}
+              tinyNo={41}
+            />
 
             <div className="sub-head">HVAC Qualification Status</div>
             <div>
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addHVACQStatusRow} />
-                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
+                  <div className="addrowinstruction  pl-2">
+                    Add Rows by clicking on (+) icon
+                  </div>
                 </div>
                 <div className="flex gap-4 ">
                   <ExcelExportImport
@@ -9357,15 +9899,23 @@ console.log(pQRData,"grid")
             </div>
             <div>
               <h4 className="gridName mt-5">Summary</h4>
-              <TinyEditor editorContent={tiny42} setEditorContent={setTinyContent} tinyNo={42} />
+              <TinyEditor
+                editorContent={tiny42}
+                setEditorContent={setTinyContent}
+                tinyNo={42}
+              />
             </div>
 
-            <h4 className="gridName pt-4">Sanitization and Sterilization Details of Utilities</h4>
+            <h4 className="gridName pt-4">
+              Sanitization and Sterilization Details of Utilities
+            </h4>
             <div>
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addSanitizationASDOURow} />
-                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
+                  <div className="addrowinstruction  pl-2">
+                    Add Rows by clicking on (+) icon
+                  </div>
                 </div>
                 <div className="flex gap-4 ">
                   <ExcelExportImport
@@ -9426,7 +9976,11 @@ console.log(pQRData,"grid")
               </table>
             </div>
             <h4 className="gridName pt-4">Summary</h4>
-            <TinyEditor editorContent={tiny43} setEditorContent={setTinyContent} tinyNo={43} />
+            <TinyEditor
+              editorContent={tiny43}
+              setEditorContent={setTinyContent}
+              tinyNo={43}
+            />
 
             <h4 className="gridName pt-4">Compressed Gases</h4>
             <div>
@@ -9434,8 +9988,9 @@ console.log(pQRData,"grid")
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addCompressedGasesRow} />
                   <div className="addrowinstruction  pl-2">
-                    Compressed gases testing performed as per the scheduled frequency and results
-                    were found to be satisfactory, system is in qualified state
+                    Compressed gases testing performed as per the scheduled
+                    frequency and results were found to be satisfactory, system
+                    is in qualified state
                   </div>
                 </div>
                 <div className="flex gap-4 ">
@@ -9507,7 +10062,11 @@ console.log(pQRData,"grid")
               </table>
             </div>
             <h4 className="gridName pt-4">Engineering Summary</h4>
-            <TinyEditor editorContent={tiny44} setEditorContent={setTinyContent} tinyNo={44} />
+            <TinyEditor
+              editorContent={tiny44}
+              setEditorContent={setTinyContent}
+              tinyNo={44}
+            />
           </div>
         ) : null}
         {tab === "QSR" ? (
@@ -9519,7 +10078,9 @@ console.log(pQRData,"grid")
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addReviewOfCPD} />
-                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
+                  <div className="addrowinstruction  pl-2">
+                    Add Rows by clicking on (+) icon
+                  </div>
                 </div>
               </div>
               <table>
@@ -9639,12 +10200,16 @@ console.log(pQRData,"grid")
               </table>
             </div>
 
-            <div className="gridName pt-4">Previous Review Period Deviations</div>
+            <div className="gridName pt-4">
+              Previous Review Period Deviations
+            </div>
             <div>
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addPreviewRPD} />
-                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
+                  <div className="addrowinstruction  pl-2">
+                    Add Rows by clicking on (+) icon
+                  </div>
                 </div>
               </div>
               <table>
@@ -9764,7 +10329,11 @@ console.log(pQRData,"grid")
               </table>
             </div>
             <h4 className="gridName pt-4">Deviation Summary</h4>
-            <TinyEditor editorContent={tiny45} setEditorContent={setTinyContent} tinyNo={45} />
+            <TinyEditor
+              editorContent={tiny45}
+              setEditorContent={setTinyContent}
+              tinyNo={45}
+            />
 
             <div className="sub-head"> Review of OOS (Microbiological)</div>
 
@@ -9774,7 +10343,9 @@ console.log(pQRData,"grid")
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addCurrentOOS} />
-                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
+                  <div className="addrowinstruction  pl-2">
+                    Add Rows by clicking on (+) icon
+                  </div>
                 </div>
               </div>
               <table>
@@ -9900,7 +10471,9 @@ console.log(pQRData,"grid")
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addPreviewOOS} />
-                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
+                  <div className="addrowinstruction  pl-2">
+                    Add Rows by clicking on (+) icon
+                  </div>
                 </div>
               </div>
               <table>
@@ -10022,7 +10595,11 @@ console.log(pQRData,"grid")
               </table>
             </div>
             <h4 className="gridName pt-4">OOS Summary</h4>
-            <TinyEditor editorContent={tiny46} setEditorContent={setTinyContent} tinyNo={46} />
+            <TinyEditor
+              editorContent={tiny46}
+              setEditorContent={setTinyContent}
+              tinyNo={46}
+            />
 
             <div className="sub-head"> Review of OOAC (Microbiological)</div>
 
@@ -10032,7 +10609,9 @@ console.log(pQRData,"grid")
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addCurrentOOAC} />
-                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
+                  <div className="addrowinstruction  pl-2">
+                    Add Rows by clicking on (+) icon
+                  </div>
                 </div>
               </div>
               <table>
@@ -10158,7 +10737,9 @@ console.log(pQRData,"grid")
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addPreviewOOAC} />
-                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
+                  <div className="addrowinstruction  pl-2">
+                    Add Rows by clicking on (+) icon
+                  </div>
                 </div>
               </div>
               <table>
@@ -10280,7 +10861,11 @@ console.log(pQRData,"grid")
               </table>
             </div>
             <h4 className="gridName pt-4">OOAC Summary</h4>
-            <TinyEditor editorContent={tiny47} setEditorContent={setTinyContent} tinyNo={47} />
+            <TinyEditor
+              editorContent={tiny47}
+              setEditorContent={setTinyContent}
+              tinyNo={47}
+            />
 
             <div className="sub-head"> Review of OOAL(Microbiological)</div>
 
@@ -10290,7 +10875,9 @@ console.log(pQRData,"grid")
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addCurrentOOAL} />
-                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
+                  <div className="addrowinstruction  pl-2">
+                    Add Rows by clicking on (+) icon
+                  </div>
                 </div>
               </div>
               <table>
@@ -10416,7 +11003,9 @@ console.log(pQRData,"grid")
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addPreviewOOAL} />
-                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
+                  <div className="addrowinstruction  pl-2">
+                    Add Rows by clicking on (+) icon
+                  </div>
                 </div>
               </div>
               <table>
@@ -10538,7 +11127,11 @@ console.log(pQRData,"grid")
               </table>
             </div>
             <h4 className="gridName pt-4">OOAL Summary</h4>
-            <TinyEditor editorContent={tiny48} setEditorContent={setTinyContent} tinyNo={48} />
+            <TinyEditor
+              editorContent={tiny48}
+              setEditorContent={setTinyContent}
+              tinyNo={48}
+            />
 
             <div className="sub-head">Review of OOS (Analytical)</div>
 
@@ -10548,7 +11141,9 @@ console.log(pQRData,"grid")
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addCurrentOOSA} />
-                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
+                  <div className="addrowinstruction  pl-2">
+                    Add Rows by clicking on (+) icon
+                  </div>
                 </div>
               </div>
               <table>
@@ -10674,7 +11269,9 @@ console.log(pQRData,"grid")
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addPreviewOOSA} />
-                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
+                  <div className="addrowinstruction  pl-2">
+                    Add Rows by clicking on (+) icon
+                  </div>
                 </div>
               </div>
               <table>
@@ -10796,7 +11393,11 @@ console.log(pQRData,"grid")
               </table>
             </div>
             <h4 className="gridName pt-4">OOSA Summary</h4>
-            <TinyEditor editorContent={tiny49} setEditorContent={setTinyContent} tinyNo={49} />
+            <TinyEditor
+              editorContent={tiny49}
+              setEditorContent={setTinyContent}
+              tinyNo={49}
+            />
 
             <div className="sub-head">Review of OOT (Analytical)</div>
 
@@ -10805,7 +11406,9 @@ console.log(pQRData,"grid")
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addCurrentOOT} />
-                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
+                  <div className="addrowinstruction  pl-2">
+                    Add Rows by clicking on (+) icon
+                  </div>
                 </div>
               </div>
               <table>
@@ -10931,7 +11534,9 @@ console.log(pQRData,"grid")
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addPreviewOOT} />
-                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
+                  <div className="addrowinstruction  pl-2">
+                    Add Rows by clicking on (+) icon
+                  </div>
                 </div>
               </div>
               <table>
@@ -11054,17 +11659,25 @@ console.log(pQRData,"grid")
             </div>
 
             <h4 className="gridName pt-4">OOT Summary</h4>
-            <TinyEditor editorContent={tiny50} setEditorContent={setTinyContent} tinyNo={50} />
+            <TinyEditor
+              editorContent={tiny50}
+              setEditorContent={setTinyContent}
+              tinyNo={50}
+            />
 
             <div className="sub-head">Review of Change Controls</div>
 
-            <div className="gridName pt-4">Current Review Period Change Controls</div>
+            <div className="gridName pt-4">
+              Current Review Period Change Controls
+            </div>
 
             <div>
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addCurrentCC} />
-                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
+                  <div className="addrowinstruction  pl-2">
+                    Add Rows by clicking on (+) icon
+                  </div>
                 </div>
               </div>
               <table>
@@ -11184,13 +11797,17 @@ console.log(pQRData,"grid")
               </table>
             </div>
 
-            <div className="gridName pt-4">Previous Review Period Change Controls</div>
+            <div className="gridName pt-4">
+              Previous Review Period Change Controls
+            </div>
 
             <div>
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addPreviewCC} />
-                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
+                  <div className="addrowinstruction  pl-2">
+                    Add Rows by clicking on (+) icon
+                  </div>
                 </div>
               </div>
               <table>
@@ -11313,7 +11930,11 @@ console.log(pQRData,"grid")
             </div>
 
             <h4 className="gridName pt-4">Change Control Summary</h4>
-            <TinyEditor editorContent={tiny51} setEditorContent={setTinyContent} tinyNo={51} />
+            <TinyEditor
+              editorContent={tiny51}
+              setEditorContent={setTinyContent}
+              tinyNo={51}
+            />
 
             <div className="sub-head">Review of Lab Incident</div>
 
@@ -11322,7 +11943,9 @@ console.log(pQRData,"grid")
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addCurrentLabI} />
-                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
+                  <div className="addrowinstruction  pl-2">
+                    Add Rows by clicking on (+) icon
+                  </div>
                 </div>
               </div>
               <table>
@@ -11448,7 +12071,9 @@ console.log(pQRData,"grid")
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addPreviewLabI} />
-                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
+                  <div className="addrowinstruction  pl-2">
+                    Add Rows by clicking on (+) icon
+                  </div>
                 </div>
               </div>
               <table>
@@ -11571,16 +12196,24 @@ console.log(pQRData,"grid")
             </div>
 
             <h4 className="gridName pt-4">Lab Incident Summary</h4>
-            <TinyEditor editorContent={tiny52} setEditorContent={setTinyContent} tinyNo={52} />
+            <TinyEditor
+              editorContent={tiny52}
+              setEditorContent={setTinyContent}
+              tinyNo={52}
+            />
 
             <div className="sub-head">Review of Market Complaints</div>
 
-            <div className="gridName pt-4">Current Review Period Complaints</div>
+            <div className="gridName pt-4">
+              Current Review Period Complaints
+            </div>
             <div>
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addCurrentMC} />
-                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
+                  <div className="addrowinstruction  pl-2">
+                    Add Rows by clicking on (+) icon
+                  </div>
                 </div>
               </div>
               <table>
@@ -11700,13 +12333,17 @@ console.log(pQRData,"grid")
               </table>
             </div>
 
-            <div className="gridName pt-4">Previous Review Period Complaints</div>
+            <div className="gridName pt-4">
+              Previous Review Period Complaints
+            </div>
 
             <div>
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addPreviewMC} />
-                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
+                  <div className="addrowinstruction  pl-2">
+                    Add Rows by clicking on (+) icon
+                  </div>
                 </div>
               </div>
               <table>
@@ -11829,15 +12466,24 @@ console.log(pQRData,"grid")
             </div>
 
             <h4 className="gridName pt-4">Market Complaints Summary</h4>
-            <TinyEditor editorContent={tiny53} setEditorContent={setTinyContent} tinyNo={53} />
+            <TinyEditor
+              editorContent={tiny53}
+              setEditorContent={setTinyContent}
+              tinyNo={53}
+            />
 
             <div className="sub-head">Quality Related Notification</div>
-            <div className="gridName pt-4"> Current Review Period Quality Related Notification</div>
+            <div className="gridName pt-4">
+              {" "}
+              Current Review Period Quality Related Notification
+            </div>
             <div>
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addCurrentRPQRNRow} />
-                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
+                  <div className="addrowinstruction  pl-2">
+                    Add Rows by clicking on (+) icon
+                  </div>
                 </div>
                 <div className="flex gap-4 ">
                   <ExcelExportImport
@@ -11890,7 +12536,8 @@ console.log(pQRData,"grid")
                             value={item.qualityRelatedNotification.no}
                             onChange={(e) => {
                               const newData = [...currentRPQRN];
-                              newData[index].qualityRelatedNotification.no = e.target.value;
+                              newData[index].qualityRelatedNotification.no =
+                                e.target.value;
                               setCurrentRPQRN(newData);
                             }}
                           />
@@ -11901,7 +12548,9 @@ console.log(pQRData,"grid")
                             value={item.qualityRelatedNotification.description}
                             onChange={(e) => {
                               const newData = [...currentRPQRN];
-                              newData[index].qualityRelatedNotification.description =
+                              newData[
+                                index
+                              ].qualityRelatedNotification.description =
                                 e.target.value;
                               setCurrentRPQRN(newData);
                             }}
@@ -11913,7 +12562,8 @@ console.log(pQRData,"grid")
                             value={item.qualityRelatedNotification.impact}
                             onChange={(e) => {
                               const newData = [...currentRPQRN];
-                              newData[index].qualityRelatedNotification.impact = e.target.value;
+                              newData[index].qualityRelatedNotification.impact =
+                                e.target.value;
                               setCurrentRPQRN(newData);
                             }}
                           />
@@ -11924,7 +12574,8 @@ console.log(pQRData,"grid")
                             value={item.qualityRelatedNotification.status}
                             onChange={(e) => {
                               const newData = [...currentRPQRN];
-                              newData[index].qualityRelatedNotification.status = e.target.value;
+                              newData[index].qualityRelatedNotification.status =
+                                e.target.value;
                               setCurrentRPQRN(newData);
                             }}
                           />
@@ -11934,7 +12585,8 @@ console.log(pQRData,"grid")
                             value={item.cAPA.descriptionNo}
                             onChange={(e) => {
                               const newData = [...currentRPQRN];
-                              newData[index].cAPA.descriptionNo = e.target.value;
+                              newData[index].cAPA.descriptionNo =
+                                e.target.value;
                               setCurrentRPQRN(newData);
                             }}
                           />
@@ -11966,23 +12618,61 @@ console.log(pQRData,"grid")
                 </tbody>
               </table>
             </div>
-            <h4 className="gridName pt-4">previous Review Period Quality Related Notification</h4>
-            <TinyEditor editorContent={tiny54} setEditorContent={setTinyContent} tinyNo={54} />
+            <h4 className="gridName pt-4">
+              previous Review Period Quality Related Notification
+            </h4>
+            <TinyEditor
+              editorContent={tiny54}
+              setEditorContent={setTinyContent}
+              tinyNo={54}
+            />
 
             <h4 className="gridName pt-4">Review of Product Recalls</h4>
-            <TinyEditor editorContent={tiny55} setEditorContent={setTinyContent} tinyNo={55} />
+            <TinyEditor
+              editorContent={tiny55}
+              setEditorContent={setTinyContent}
+              tinyNo={55}
+            />
             <h4 className="gridName pt-4">Review of Returned Products</h4>
-            <TinyEditor editorContent={tiny56} setEditorContent={setTinyContent} tinyNo={56} />
+            <TinyEditor
+              editorContent={tiny56}
+              setEditorContent={setTinyContent}
+              tinyNo={56}
+            />
             <h4 className="gridName pt-4">Review of Salvaged Drugs</h4>
-            <TinyEditor editorContent={tiny57} setEditorContent={setTinyContent} tinyNo={57} />
-            <h4 className="gridName pt-4">Review of previous PQR recommendations</h4>
-            <TinyEditor editorContent={tiny58} setEditorContent={setTinyContent} tinyNo={58} />
+            <TinyEditor
+              editorContent={tiny57}
+              setEditorContent={setTinyContent}
+              tinyNo={57}
+            />
+            <h4 className="gridName pt-4">
+              Review of previous PQR recommendations
+            </h4>
+            <TinyEditor
+              editorContent={tiny58}
+              setEditorContent={setTinyContent}
+              tinyNo={58}
+            />
             <h4 className="gridName pt-4">Review of Quality Agreements</h4>
-            <TinyEditor editorContent={tiny59} setEditorContent={setTinyContent} tinyNo={59} />
-            <h4 className="gridName pt-4">Review of Manufacturing Authorizations</h4>
-            <TinyEditor editorContent={tiny60} setEditorContent={setTinyContent} tinyNo={60} />
+            <TinyEditor
+              editorContent={tiny59}
+              setEditorContent={setTinyContent}
+              tinyNo={59}
+            />
+            <h4 className="gridName pt-4">
+              Review of Manufacturing Authorizations
+            </h4>
+            <TinyEditor
+              editorContent={tiny60}
+              setEditorContent={setTinyContent}
+              tinyNo={60}
+            />
             <h4 className="gridName pt-4">Review of Open Validations</h4>
-            <TinyEditor editorContent={tiny61} setEditorContent={setTinyContent} tinyNo={61} />
+            <TinyEditor
+              editorContent={tiny61}
+              setEditorContent={setTinyContent}
+              tinyNo={61}
+            />
           </div>
         ) : null}
         {tab === "RR" ? (
@@ -11992,7 +12682,9 @@ console.log(pQRData,"grid")
               <div className="AddRows d-flex w-full justify-between items-center text-3xl ">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addDossierRow} />
-                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
+                  <div className="addrowinstruction  pl-2">
+                    Add Rows by clicking on (+) icon
+                  </div>
                 </div>
                 <div className="flex gap-4 ">
                   <ExcelExportImport
@@ -12066,7 +12758,11 @@ console.log(pQRData,"grid")
 
               <div>
                 <h4 className="gridName mt-5">Summary</h4>
-                <TinyEditor editorContent={tiny62} setEditorContent={setTinyContent} tinyNo={62} />
+                <TinyEditor
+                  editorContent={tiny62}
+                  setEditorContent={setTinyContent}
+                  tinyNo={62}
+                />
               </div>
 
               <div className="gridName">New marketing authorisation</div>
@@ -12074,7 +12770,9 @@ console.log(pQRData,"grid")
                 <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                   <div className="flex items-center">
                     <MdNoteAdd onClick={addDossierRowNma} />
-                    <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
+                    <div className="addrowinstruction  pl-2">
+                      Add Rows by clicking on (+) icon
+                    </div>
                   </div>
                   <div className="flex gap-4 ">
                     <ExcelExportImport
@@ -12116,7 +12814,8 @@ console.log(pQRData,"grid")
                               value={item.descriptionOfPacking}
                               onChange={(e) => {
                                 const newData = [...dossierRRNma];
-                                newData[index].descriptionOfPacking = e.target.value;
+                                newData[index].descriptionOfPacking =
+                                  e.target.value;
                                 setDossierRRNma(newData);
                               }}
                             />
@@ -12126,7 +12825,8 @@ console.log(pQRData,"grid")
                               value={item.dateOfApplication}
                               onChange={(e) => {
                                 const newData = [...dossierRRNma];
-                                newData[index].dateOfApplication = e.target.value;
+                                newData[index].dateOfApplication =
+                                  e.target.value;
                                 setDossierRRNma(newData);
                               }}
                             />
@@ -12136,7 +12836,8 @@ console.log(pQRData,"grid")
                               value={item.statusOfApplication}
                               onChange={(e) => {
                                 const newData = [...dossierRRNma];
-                                newData[index].statusOfApplication = e.target.value;
+                                newData[index].statusOfApplication =
+                                  e.target.value;
                                 setDossierRRNma(newData);
                               }}
                             />
@@ -12146,7 +12847,8 @@ console.log(pQRData,"grid")
                               value={item.dateOfAuthorization}
                               onChange={(e) => {
                                 const newData = [...dossierRRNma];
-                                newData[index].dateOfAuthorization = e.target.value;
+                                newData[index].dateOfAuthorization =
+                                  e.target.value;
                                 setDossierRRNma(newData);
                               }}
                             />
@@ -12182,7 +12884,11 @@ console.log(pQRData,"grid")
           <>
             <div>
               <h4 className="gridName">Recommendations Summary</h4>
-              <TinyEditor editorContent={tiny64} setEditorContent={setTinyContent} tinyNo={64} />
+              <TinyEditor
+                editorContent={tiny64}
+                setEditorContent={setTinyContent}
+                tinyNo={64}
+              />
             </div>
           </>
         ) : null}
@@ -12202,7 +12908,9 @@ console.log(pQRData,"grid")
               </span>
             </div> */}
             <div className="flex items-center justify-center h-screen">
-              <div className="text-3xl font-bold text-gray-600">No Data To Show Here.....</div>
+              <div className="text-3xl font-bold text-gray-600">
+                No Data To Show Here.....
+              </div>
             </div>
           </>
         ) : null}
@@ -12210,7 +12918,11 @@ console.log(pQRData,"grid")
           <>
             <div>
               <h4 className="gridName">Discussion Evaluation and Conclusion</h4>
-              <TinyEditor editorContent={tiny65} setEditorContent={setTinyContent} tinyNo={65} />
+              <TinyEditor
+                editorContent={tiny65}
+                setEditorContent={setTinyContent}
+                tinyNo={65}
+              />
             </div>
           </>
         ) : null}
@@ -12219,83 +12931,163 @@ console.log(pQRData,"grid")
             <div className="container">
               <div>
                 <h4 className="gridName">Annexure 1</h4>
-                <TinyEditor editorContent={tiny66} setEditorContent={setTinyContent} tinyNo={66} />
+                <TinyEditor
+                  editorContent={tiny66}
+                  setEditorContent={setTinyContent}
+                  tinyNo={66}
+                />
               </div>
               <div>
                 <h4 className="gridName">Annexure 2</h4>
-                <TinyEditor editorContent={tiny67} setEditorContent={setTinyContent} tinyNo={67} />
+                <TinyEditor
+                  editorContent={tiny67}
+                  setEditorContent={setTinyContent}
+                  tinyNo={67}
+                />
               </div>
               <div>
                 <h4 className="gridName">Annexure 3</h4>
-                <TinyEditor editorContent={tiny68} setEditorContent={setTinyContent} tinyNo={68} />
+                <TinyEditor
+                  editorContent={tiny68}
+                  setEditorContent={setTinyContent}
+                  tinyNo={68}
+                />
               </div>
               <div>
                 <h4 className="gridName">Annexure 4</h4>
-                <TinyEditor editorContent={tiny69} setEditorContent={setTinyContent} tinyNo={69} />
+                <TinyEditor
+                  editorContent={tiny69}
+                  setEditorContent={setTinyContent}
+                  tinyNo={69}
+                />
               </div>
               <div>
                 <h4 className="gridName">Annexure 5</h4>
-                <TinyEditor editorContent={tiny70} setEditorContent={setTinyContent} tinyNo={70} />
+                <TinyEditor
+                  editorContent={tiny70}
+                  setEditorContent={setTinyContent}
+                  tinyNo={70}
+                />
               </div>
               <div>
                 <h4 className="gridName">Annexure 6</h4>
-                <TinyEditor editorContent={tiny71} setEditorContent={setTinyContent} tinyNo={71} />
+                <TinyEditor
+                  editorContent={tiny71}
+                  setEditorContent={setTinyContent}
+                  tinyNo={71}
+                />
               </div>
               <div>
                 <h4 className="gridName">Annexure 7</h4>
-                <TinyEditor editorContent={tiny72} setEditorContent={setTinyContent} tinyNo={72} />
+                <TinyEditor
+                  editorContent={tiny72}
+                  setEditorContent={setTinyContent}
+                  tinyNo={72}
+                />
               </div>
               <div>
                 <h4 className="gridName">Annexure 8</h4>
-                <TinyEditor editorContent={tiny73} setEditorContent={setTinyContent} tinyNo={73} />
+                <TinyEditor
+                  editorContent={tiny73}
+                  setEditorContent={setTinyContent}
+                  tinyNo={73}
+                />
               </div>
               <div>
                 <h4 className="gridName">Annexure 9</h4>
-                <TinyEditor editorContent={tiny74} setEditorContent={setTinyContent} tinyNo={74} />
+                <TinyEditor
+                  editorContent={tiny74}
+                  setEditorContent={setTinyContent}
+                  tinyNo={74}
+                />
               </div>
               <div>
                 <h4 className="gridName">Annexure 10</h4>
-                <TinyEditor editorContent={tiny75} setEditorContent={setTinyContent} tinyNo={75} />
+                <TinyEditor
+                  editorContent={tiny75}
+                  setEditorContent={setTinyContent}
+                  tinyNo={75}
+                />
               </div>
               <div>
                 <h4 className="gridName">Annexure 11</h4>
-                <TinyEditor editorContent={tiny76} setEditorContent={setTinyContent} tinyNo={76} />
+                <TinyEditor
+                  editorContent={tiny76}
+                  setEditorContent={setTinyContent}
+                  tinyNo={76}
+                />
               </div>
               <div>
                 <h4 className="gridName">Annexure 12</h4>
-                <TinyEditor editorContent={tiny77} setEditorContent={setTinyContent} tinyNo={77} />
+                <TinyEditor
+                  editorContent={tiny77}
+                  setEditorContent={setTinyContent}
+                  tinyNo={77}
+                />
               </div>
               <div>
                 <h4 className="gridName">Annexure 13</h4>
-                <TinyEditor editorContent={tiny78} setEditorContent={setTinyContent} tinyNo={78} />
+                <TinyEditor
+                  editorContent={tiny78}
+                  setEditorContent={setTinyContent}
+                  tinyNo={78}
+                />
               </div>
               <div>
                 <h4 className="gridName">Annexure 14</h4>
-                <TinyEditor editorContent={tiny79} setEditorContent={setTinyContent} tinyNo={79} />
+                <TinyEditor
+                  editorContent={tiny79}
+                  setEditorContent={setTinyContent}
+                  tinyNo={79}
+                />
               </div>
               <div>
                 <h4 className="gridName">Annexure 15</h4>
-                <TinyEditor editorContent={tiny80} setEditorContent={setTinyContent} tinyNo={80} />
+                <TinyEditor
+                  editorContent={tiny80}
+                  setEditorContent={setTinyContent}
+                  tinyNo={80}
+                />
               </div>
               <div>
                 <h4 className="gridName">Annexure 16</h4>
-                <TinyEditor editorContent={tiny81} setEditorContent={setTinyContent} tinyNo={81} />
+                <TinyEditor
+                  editorContent={tiny81}
+                  setEditorContent={setTinyContent}
+                  tinyNo={81}
+                />
               </div>
               <div>
                 <h4 className="gridName">Annexure 17</h4>
-                <TinyEditor editorContent={tiny82} setEditorContent={setTinyContent} tinyNo={82} />
+                <TinyEditor
+                  editorContent={tiny82}
+                  setEditorContent={setTinyContent}
+                  tinyNo={82}
+                />
               </div>
               <div>
                 <h4 className="gridName">Annexure 18</h4>
-                <TinyEditor editorContent={tiny83} setEditorContent={setTinyContent} tinyNo={83} />
+                <TinyEditor
+                  editorContent={tiny83}
+                  setEditorContent={setTinyContent}
+                  tinyNo={83}
+                />
               </div>
               <div>
                 <h4 className="gridName">Annexure 19</h4>
-                <TinyEditor editorContent={tiny84} setEditorContent={setTinyContent} tinyNo={84} />
+                <TinyEditor
+                  editorContent={tiny84}
+                  setEditorContent={setTinyContent}
+                  tinyNo={84}
+                />
               </div>
               <div>
                 <h4 className="gridName">Annexure 20</h4>
-                <TinyEditor editorContent={tiny85} setEditorContent={setTinyContent} tinyNo={85} />
+                <TinyEditor
+                  editorContent={tiny85}
+                  setEditorContent={setTinyContent}
+                  tinyNo={85}
+                />
               </div>
             </div>
           </>
@@ -12307,7 +13099,9 @@ console.log(pQRData,"grid")
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addYieldTOS1Row} />
-                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
+                  <div className="addrowinstruction  pl-2">
+                    Add Rows by clicking on (+) icon
+                  </div>
                 </div>
                 <div className="flex gap-4 ">
                   <ExcelExportImport
@@ -12327,7 +13121,9 @@ console.log(pQRData,"grid")
                     <th>Batch No.</th>
                     <th>Mfg. Month</th>
                     <th>Actual Input in (50.000 Kg)</th>
-                    <th>Actual Output in Expected Output Range (50.000 – 57.000Kg)</th>
+                    <th>
+                      Actual Output in Expected Output Range (50.000 – 57.000Kg)
+                    </th>
                     <th>L Limit</th>
                     <th>U Limit</th>
                     <th>Yield %</th>
@@ -12363,6 +13159,7 @@ console.log(pQRData,"grid")
                         <td>
                           <input
                             value={item.actualInput}
+                            type="number"
                             onChange={(e) => {
                               const newData = [...yieldTOS1];
                               newData[index].actualInput = e.target.value;
@@ -12374,6 +13171,7 @@ console.log(pQRData,"grid")
                         <td>
                           <input
                             value={item.actualOutput}
+                            type="number"
                             onChange={(e) => {
                               const newData = [...yieldTOS1];
                               newData[index].actualOutput = e.target.value;
@@ -12385,6 +13183,7 @@ console.log(pQRData,"grid")
                         <td>
                           <input
                             value={item.lLimit}
+                            type="number"
                             onChange={(e) => {
                               const newData = [...yieldTOS1];
                               newData[index].lLimit = e.target.value;
@@ -12395,6 +13194,7 @@ console.log(pQRData,"grid")
                         <td>
                           <input
                             value={item.uLimit}
+                            type="number"
                             onChange={(e) => {
                               const newData = [...yieldTOS1];
                               newData[index].uLimit = e.target.value;
@@ -12405,6 +13205,7 @@ console.log(pQRData,"grid")
                         <td>
                           <input
                             value={item.yield}
+                            type="number"
                             onChange={(e) => {
                               const newData = [...yieldTOS1];
                               newData[index].yield = e.target.value;
@@ -12424,7 +13225,9 @@ console.log(pQRData,"grid")
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addYieldTOS2Row} />
-                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
+                  <div className="addrowinstruction  pl-2">
+                    Add Rows by clicking on (+) icon
+                  </div>
                 </div>
                 <div className="flex gap-4 ">
                   <ExcelExportImport
@@ -12444,7 +13247,10 @@ console.log(pQRData,"grid")
                     <th>Batch No.</th>
                     <th>Mfg. Month</th>
                     <th>Actual Input in (50.000 -57000)Kg</th>
-                    <th>Actual Output in Kg Expected Output Range (54.000 – 78.000 Kg)</th>
+                    <th>
+                      Actual Output in Kg Expected Output Range (54.000 – 78.000
+                      Kg)
+                    </th>
                     <th>L Limit</th>
                     <th>U Limit</th>
                     <th>Yield %</th>
@@ -12480,6 +13286,7 @@ console.log(pQRData,"grid")
                         <td>
                           <input
                             value={item.actualInput}
+                            type="number"
                             onChange={(e) => {
                               const newData = [...yieldTOS2];
                               newData[index].actualInput = e.target.value;
@@ -12491,6 +13298,7 @@ console.log(pQRData,"grid")
                         <td>
                           <input
                             value={item.actualOutput}
+                            type="number"
                             onChange={(e) => {
                               const newData = [...yieldTOS2];
                               newData[index].actualOutput = e.target.value;
@@ -12502,6 +13310,7 @@ console.log(pQRData,"grid")
                         <td>
                           <input
                             value={item.lLimit}
+                            type="number"
                             onChange={(e) => {
                               const newData = [...yieldTOS2];
                               newData[index].lLimit = e.target.value;
@@ -12512,6 +13321,7 @@ console.log(pQRData,"grid")
                         <td>
                           <input
                             value={item.uLimit}
+                            type="number"
                             onChange={(e) => {
                               const newData = [...yieldTOS2];
                               newData[index].uLimit = e.target.value;
@@ -12522,6 +13332,7 @@ console.log(pQRData,"grid")
                         <td>
                           <input
                             value={item.yield}
+                            type="number"
                             onChange={(e) => {
                               const newData = [...yieldTOS2];
                               newData[index].yield = e.target.value;
@@ -12541,7 +13352,9 @@ console.log(pQRData,"grid")
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addYieldTOS3Row} />
-                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
+                  <div className="addrowinstruction  pl-2">
+                    Add Rows by clicking on (+) icon
+                  </div>
                 </div>
                 <div className="flex gap-4 ">
                   <ExcelExportImport
@@ -12561,7 +13374,10 @@ console.log(pQRData,"grid")
                     <th>Batch No.</th>
                     <th>Mfg. Month</th>
                     <th>Actual Input in (54.000 – 78.000 Kg)</th>
-                    <th>Actual Output in Kg Expected output range (37.500 – 50.000Kg)</th>
+                    <th>
+                      Actual Output in Kg Expected output range (37.500 –
+                      50.000Kg)
+                    </th>
                     <th>L Limit</th>
                     <th>U Limit</th>
                     <th>Yield %</th>
@@ -12597,6 +13413,7 @@ console.log(pQRData,"grid")
                         <td>
                           <input
                             value={item.actualInput}
+                            type="number"
                             onChange={(e) => {
                               const newData = [...yieldTOS3];
                               newData[index].actualInput = e.target.value;
@@ -12608,6 +13425,7 @@ console.log(pQRData,"grid")
                         <td>
                           <input
                             value={item.actualOutput}
+                            type="number"
                             onChange={(e) => {
                               const newData = [...yieldTOS3];
                               newData[index].actualOutput = e.target.value;
@@ -12619,6 +13437,7 @@ console.log(pQRData,"grid")
                         <td>
                           <input
                             value={item.lLimit}
+                            type="number"
                             onChange={(e) => {
                               const newData = [...yieldTOS3];
                               newData[index].lLimit = e.target.value;
@@ -12629,6 +13448,7 @@ console.log(pQRData,"grid")
                         <td>
                           <input
                             value={item.uLimit}
+                            type="number"
                             onChange={(e) => {
                               const newData = [...yieldTOS3];
                               newData[index].uLimit = e.target.value;
@@ -12639,6 +13459,7 @@ console.log(pQRData,"grid")
                         <td>
                           <input
                             value={item.yield}
+                            type="number"
                             onChange={(e) => {
                               const newData = [...yieldTOS3];
                               newData[index].yield = e.target.value;
@@ -12658,7 +13479,9 @@ console.log(pQRData,"grid")
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addYieldTOS4Row} />
-                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
+                  <div className="addrowinstruction  pl-2">
+                    Add Rows by clicking on (+) icon
+                  </div>
                 </div>
                 <div className="flex gap-4 ">
                   <ExcelExportImport
@@ -12678,7 +13501,10 @@ console.log(pQRData,"grid")
                     <th>Batch No.</th>
                     <th>Mfg. Month</th>
                     <th>Input (In Kg) (37.500 kg – 50.000 kg)</th>
-                    <th>Actual Output in Kg Expected output range (34.000 – 40.000Kg)</th>
+                    <th>
+                      Actual Output in Kg Expected output range (34.000 –
+                      40.000Kg)
+                    </th>
                     <th>L Limit</th>
                     <th>U Limit</th>
                     <th>Yield %</th>
@@ -12714,6 +13540,7 @@ console.log(pQRData,"grid")
                         <td>
                           <input
                             value={item.actualInput}
+                            type="number"
                             onChange={(e) => {
                               const newData = [...yieldTOS4];
                               newData[index].actualInput = e.target.value;
@@ -12725,6 +13552,7 @@ console.log(pQRData,"grid")
                         <td>
                           <input
                             value={item.actualOutput}
+                            type="number"
                             onChange={(e) => {
                               const newData = [...yieldTOS4];
                               newData[index].actualOutput = e.target.value;
@@ -12736,6 +13564,7 @@ console.log(pQRData,"grid")
                         <td>
                           <input
                             value={item.lLimit}
+                            type="number"
                             onChange={(e) => {
                               const newData = [...yieldTOS4];
                               newData[index].lLimit = e.target.value;
@@ -12746,6 +13575,7 @@ console.log(pQRData,"grid")
                         <td>
                           <input
                             value={item.uLimit}
+                            type="number"
                             onChange={(e) => {
                               const newData = [...yieldTOS4];
                               newData[index].uLimit = e.target.value;
@@ -12756,6 +13586,7 @@ console.log(pQRData,"grid")
                         <td>
                           <input
                             value={item.yield}
+                            type="number"
                             onChange={(e) => {
                               const newData = [...yieldTOS4];
                               newData[index].yield = e.target.value;
@@ -12775,7 +13606,9 @@ console.log(pQRData,"grid")
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addYieldTOS5Row} />
-                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
+                  <div className="addrowinstruction  pl-2">
+                    Add Rows by clicking on (+) icon
+                  </div>
                 </div>
                 <div className="flex gap-4 ">
                   <ExcelExportImport
@@ -12795,7 +13628,10 @@ console.log(pQRData,"grid")
                     <th>Batch No.</th>
                     <th>Mfg. Month</th>
                     <th>Input (In Kg) (34.000 – 40.000 Kg)</th>
-                    <th>Actual Output in Kg Expected output range (33.000– 38.000Kg)</th>
+                    <th>
+                      Actual Output in Kg Expected output range (33.000–
+                      38.000Kg)
+                    </th>
                     <th>L Limit</th>
                     <th>U Limit</th>
                     <th>Yield %</th>
@@ -12831,6 +13667,7 @@ console.log(pQRData,"grid")
                         <td>
                           <input
                             value={item.actualInput}
+                            type="number"
                             onChange={(e) => {
                               const newData = [...yieldTOS5];
                               newData[index].actualInput = e.target.value;
@@ -12842,6 +13679,7 @@ console.log(pQRData,"grid")
                         <td>
                           <input
                             value={item.actualOutput}
+                            type="number"
                             onChange={(e) => {
                               const newData = [...yieldTOS5];
                               newData[index].actualOutput = e.target.value;
@@ -12853,6 +13691,7 @@ console.log(pQRData,"grid")
                         <td>
                           <input
                             value={item.lLimit}
+                            type="number"
                             onChange={(e) => {
                               const newData = [...yieldTOS5];
                               newData[index].lLimit = e.target.value;
@@ -12863,6 +13702,7 @@ console.log(pQRData,"grid")
                         <td>
                           <input
                             value={item.uLimit}
+                            type="number"
                             onChange={(e) => {
                               const newData = [...yieldTOS5];
                               newData[index].uLimit = e.target.value;
@@ -12873,6 +13713,7 @@ console.log(pQRData,"grid")
                         <td>
                           <input
                             value={item.yield}
+                            type="number"
                             onChange={(e) => {
                               const newData = [...yieldTOS5];
                               newData[index].yield = e.target.value;
@@ -12890,12 +13731,16 @@ console.log(pQRData,"grid")
         ) : null}
         {tab === "TOCPP" ? (
           <>
-            <div className="gridName pt-4">Trending of Critical Process Parameter: Stage - I</div>
+            <div className="gridName pt-4">
+              Trending of Critical Process Parameter: Stage - I
+            </div>
             <div>
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addTrendingOCPPS1Row} />
-                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
+                  <div className="addrowinstruction  pl-2">
+                    Add Rows by clicking on (+) icon
+                  </div>
                 </div>
                 <div className="flex gap-4 ">
                   <ExcelExportImport
@@ -12914,16 +13759,18 @@ console.log(pQRData,"grid")
                     <th>S. No.</th>
                     <th>Batch No.</th>
                     <th>
-                      Critical Parameter: 01 Nitrogen gas purging should be carried out in advance
-                      in Acetonide formation reaction (part I)
+                      Critical Parameter: 01 Nitrogen gas purging should be
+                      carried out in advance in Acetonide formation reaction
+                      (part I)
                     </th>
                     <th>
-                      Critical Parameter: 02 In Bromination reaction (part II), slow agitation is
-                      required during the reaction.
+                      Critical Parameter: 02 In Bromination reaction (part II),
+                      slow agitation is required during the reaction.
                     </th>
                     <th>
-                      Critical Parameter: 03 Epoxydation reaction (part III) required Argon gas
-                      bubbling to remove oxygen content from the reaction mass.{" "}
+                      Critical Parameter: 03 Epoxydation reaction (part III)
+                      required Argon gas bubbling to remove oxygen content from
+                      the reaction mass.{" "}
                     </th>
                   </tr>
                 </thead>
@@ -12948,7 +13795,8 @@ console.log(pQRData,"grid")
                             value={item.criticalParameter1}
                             onChange={(e) => {
                               const newData = [...trendingOCPPS1];
-                              newData[index].criticalParameter1 = e.target.value;
+                              newData[index].criticalParameter1 =
+                                e.target.value;
                               setTrendingOCPPS1(newData);
                             }}
                           />
@@ -12959,7 +13807,8 @@ console.log(pQRData,"grid")
                             value={item.criticalParameter2}
                             onChange={(e) => {
                               const newData = [...trendingOCPPS1];
-                              newData[index].criticalParameter2 = e.target.value;
+                              newData[index].criticalParameter2 =
+                                e.target.value;
                               setTrendingOCPPS1(newData);
                             }}
                           />
@@ -12970,7 +13819,8 @@ console.log(pQRData,"grid")
                             value={item.criticalParameter3}
                             onChange={(e) => {
                               const newData = [...trendingOCPPS1];
-                              newData[index].criticalParameter3 = e.target.value;
+                              newData[index].criticalParameter3 =
+                                e.target.value;
                               setTrendingOCPPS1(newData);
                             }}
                           />
@@ -12982,12 +13832,16 @@ console.log(pQRData,"grid")
               </table>
             </div>
 
-            <div className="gridName pt-4">Trending of Critical Process Parameter: Stage - II</div>
+            <div className="gridName pt-4">
+              Trending of Critical Process Parameter: Stage - II
+            </div>
             <div>
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addTrendingOCPPS2Row} />
-                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
+                  <div className="addrowinstruction  pl-2">
+                    Add Rows by clicking on (+) icon
+                  </div>
                 </div>
                 <div className="flex gap-4 ">
                   <ExcelExportImport
@@ -13006,28 +13860,31 @@ console.log(pQRData,"grid")
                     <th>S. No.</th>
                     <th>Batch No.</th>
                     <th>
-                      Critical Parameter: 01 Nitrogen gas purging should be carried out in advance
-                      in Acetonide formation reaction (part I) Critical Parameter: 01 During
-                      handling of Hydrofluoric Acid use necessary protective acid proof mask, dress
-                      and shoes.
+                      Critical Parameter: 01 Nitrogen gas purging should be
+                      carried out in advance in Acetonide formation reaction
+                      (part I) Critical Parameter: 01 During handling of
+                      Hydrofluoric Acid use necessary protective acid proof
+                      mask, dress and shoes.
                     </th>
                     <th>
-                      Critical Parameter: 02 In Bromination reaction (part II), slow agitation is
-                      required during the reaction. Critical Parameter: 02 Addition of the material
-                      should be done portion wise during reaction. Std. Qty. in kg. ( 50.000 –
+                      Critical Parameter: 02 In Bromination reaction (part II),
+                      slow agitation is required during the reaction. Critical
+                      Parameter: 02 Addition of the material should be done
+                      portion wise during reaction. Std. Qty. in kg. ( 50.000 –
                       57.000)
                     </th>
 
                     <th>
-                      Critical Parameter: 03 During addition of material, exothermicity appears, so
-                      control the temperature (-40°C) to (-30°C). Actual Temperature ºC (-40°C) to
-                      (-30°C){" "}
+                      Critical Parameter: 03 During addition of material,
+                      exothermicity appears, so control the temperature (-40°C)
+                      to (-30°C). Actual Temperature ºC (-40°C) to (-30°C){" "}
                     </th>
                     <th>Lower Limit</th>
                     <th>Upper Limit</th>
                     <th>
-                      Critical Parameter: 04 Temperature should be within specified range of (-20°C)
-                      to (-25°C) for timely completion of reaction and controlled impurity level.
+                      Critical Parameter: 04 Temperature should be within
+                      specified range of (-20°C) to (-25°C) for timely
+                      completion of reaction and controlled impurity level.
                       Actual Temperature ºC (-20°C) to (-25°C)
                     </th>
                   </tr>
@@ -13053,7 +13910,8 @@ console.log(pQRData,"grid")
                             value={item.criticalParameter1}
                             onChange={(e) => {
                               const newData = [...trendingOCPPS2];
-                              newData[index].criticalParameter1 = e.target.value;
+                              newData[index].criticalParameter1 =
+                                e.target.value;
                               setTrendingOCPPS2(newData);
                             }}
                           />
@@ -13062,9 +13920,11 @@ console.log(pQRData,"grid")
                         <td>
                           <input
                             value={item.criticalParameter2}
+                            type="number"
                             onChange={(e) => {
                               const newData = [...trendingOCPPS2];
-                              newData[index].criticalParameter2 = e.target.value;
+                              newData[index].criticalParameter2 =
+                                e.target.value;
                               setTrendingOCPPS2(newData);
                             }}
                           />
@@ -13073,9 +13933,11 @@ console.log(pQRData,"grid")
                         <td>
                           <input
                             value={item.criticalParameter3}
+                            type="number"
                             onChange={(e) => {
                               const newData = [...trendingOCPPS2];
-                              newData[index].criticalParameter3 = e.target.value;
+                              newData[index].criticalParameter3 =
+                                e.target.value;
                               setTrendingOCPPS2(newData);
                             }}
                           />
@@ -13083,6 +13945,7 @@ console.log(pQRData,"grid")
                         <td>
                           <input
                             value={item.lowerLimit}
+                            type="number"
                             onChange={(e) => {
                               const newData = [...trendingOCPPS2];
                               newData[index].lowerLimit = e.target.value;
@@ -13093,6 +13956,7 @@ console.log(pQRData,"grid")
                         <td>
                           <input
                             value={item.upperLimit}
+                            type="number"
                             onChange={(e) => {
                               const newData = [...trendingOCPPS2];
                               newData[index].upperLimit = e.target.value;
@@ -13103,9 +13967,11 @@ console.log(pQRData,"grid")
                         <td>
                           <input
                             value={item.criticalParameter4}
+                            type="number"
                             onChange={(e) => {
                               const newData = [...trendingOCPPS2];
-                              newData[index].criticalParameter4 = e.target.value;
+                              newData[index].criticalParameter4 =
+                                e.target.value;
                               setTrendingOCPPS2(newData);
                             }}
                           />
@@ -13117,12 +13983,16 @@ console.log(pQRData,"grid")
               </table>
             </div>
 
-            <div className="gridName pt-4">Trending of Critical Process Parameter: Stage - III</div>
+            <div className="gridName pt-4">
+              Trending of Critical Process Parameter: Stage - III
+            </div>
             <div>
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addTrendingOCPPS3Row} />
-                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
+                  <div className="addrowinstruction  pl-2">
+                    Add Rows by clicking on (+) icon
+                  </div>
                 </div>
                 <div className="flex gap-4 ">
                   <ExcelExportImport
@@ -13141,12 +14011,13 @@ console.log(pQRData,"grid")
                     <th rowSpan={2}>S. No.</th>
                     <th rowSpan={2}>Batch No.</th>
                     <th rowSpan={2}>
-                      Critical Parameter: 01 Nitrogen gas purging should be carried out in advance
-                      in Acetonide formation reaction (part I)
+                      Critical Parameter: 01 Nitrogen gas purging should be
+                      carried out in advance in Acetonide formation reaction
+                      (part I)
                     </th>
                     <th colSpan={4} rowSpan={1}>
-                      Critical Parameter: 02 In Bromination reaction (part II), slow agitation is
-                      required during the reaction.
+                      Critical Parameter: 02 In Bromination reaction (part II),
+                      slow agitation is required during the reaction.
                     </th>
                     {/* <th >Critical Parameter: 03 Epoxydation reaction (part III) required Argon gas bubbling to remove oxygen content from the reaction mass. </th> */}
                   </tr>
@@ -13178,7 +14049,8 @@ console.log(pQRData,"grid")
                             value={item.criticalParameter1}
                             onChange={(e) => {
                               const newData = [...trendingOCPPS3];
-                              newData[index].criticalParameter1 = e.target.value;
+                              newData[index].criticalParameter1 =
+                                e.target.value;
                               setTrendingOCPPS3(newData);
                             }}
                           />
@@ -13187,9 +14059,11 @@ console.log(pQRData,"grid")
                         <td>
                           <input
                             value={item.criticalParameter2.actualQuantity}
+                            type="number"
                             onChange={(e) => {
                               const newData = [...trendingOCPPS3];
-                              newData[index].criticalParameter2.actualQuantity = e.target.value;
+                              newData[index].criticalParameter2.actualQuantity =
+                                e.target.value;
                               setTrendingOCPPS3(newData);
                             }}
                           />
@@ -13198,9 +14072,11 @@ console.log(pQRData,"grid")
                         <td>
                           <input
                             value={item.criticalParameter2.actualpH}
+                            type="number"
                             onChange={(e) => {
                               const newData = [...trendingOCPPS3];
-                              newData[index].criticalParameter2.actualpH = e.target.value;
+                              newData[index].criticalParameter2.actualpH =
+                                e.target.value;
                               setTrendingOCPPS3(newData);
                             }}
                           />
@@ -13208,9 +14084,11 @@ console.log(pQRData,"grid")
                         <td>
                           <input
                             value={item.criticalParameter2.lowerLimit}
+                            type="number"
                             onChange={(e) => {
                               const newData = [...trendingOCPPS3];
-                              newData[index].criticalParameter2.lowerLimit = e.target.value;
+                              newData[index].criticalParameter2.lowerLimit =
+                                e.target.value;
                               setTrendingOCPPS3(newData);
                             }}
                           />
@@ -13218,9 +14096,11 @@ console.log(pQRData,"grid")
                         <td>
                           <input
                             value={item.criticalParameter2.upperLimit}
+                            type="number"
                             onChange={(e) => {
                               const newData = [...trendingOCPPS3];
-                              newData[index].criticalParameter2.upperLimit = e.target.value;
+                              newData[index].criticalParameter2.upperLimit =
+                                e.target.value;
                               setTrendingOCPPS3(newData);
                             }}
                           />
@@ -13232,12 +14112,16 @@ console.log(pQRData,"grid")
               </table>
             </div>
 
-            <div className="gridName pt-4">Trending of Critical Process Parameter: Stage - IV</div>
+            <div className="gridName pt-4">
+              Trending of Critical Process Parameter: Stage - IV
+            </div>
             <div>
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addTrendingOCPPS4Row} />
-                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
+                  <div className="addrowinstruction  pl-2">
+                    Add Rows by clicking on (+) icon
+                  </div>
                 </div>
                 <div className="flex gap-4 ">
                   <ExcelExportImport
@@ -13256,12 +14140,13 @@ console.log(pQRData,"grid")
                     <th rowSpan={2}>S. No.</th>
                     <th rowSpan={2}>Batch No.</th>
                     <th rowSpan={1} colSpan={4}>
-                      Critical Parameter: 01 The reaction mass should be refluxed for 3-5 hour at
-                      temperature between 55 to 60° C.
+                      Critical Parameter: 01 The reaction mass should be
+                      refluxed for 3-5 hour at temperature between 55 to 60° C.
                     </th>
                     <th rowSpan={2}>
-                      Critical Parameter: 02 Crystallization of finished product should be at 0°C to
-                      5°C. Actual Temperature °C (0°C to 5°C)
+                      Critical Parameter: 02 Crystallization of finished product
+                      should be at 0°C to 5°C. Actual Temperature °C (0°C to
+                      5°C)
                     </th>
                     <th rowSpan={2}>Lower Limit </th>
                     <th rowSpan={2}>Upper Limit</th>
@@ -13294,7 +14179,8 @@ console.log(pQRData,"grid")
                             value={item.criticalParameter1.actualTime}
                             onChange={(e) => {
                               const newData = [...trendingOCPPS4];
-                              newData[index].criticalParameter1.actualTime = e.target.value;
+                              newData[index].criticalParameter1.actualTime =
+                                e.target.value;
                               setTrendingOCPPS4(newData);
                             }}
                           />
@@ -13302,9 +14188,13 @@ console.log(pQRData,"grid")
                         <td>
                           <input
                             value={item.criticalParameter1.actualTemprature}
+                            type="number"
                             onChange={(e) => {
                               const newData = [...trendingOCPPS4];
-                              newData[index].criticalParameter1.actualTemprature = e.target.value;
+                              newData[
+                                index
+                              ].criticalParameter1.actualTemprature =
+                                e.target.value;
                               setTrendingOCPPS4(newData);
                             }}
                           />
@@ -13312,9 +14202,11 @@ console.log(pQRData,"grid")
                         <td>
                           <input
                             value={item.criticalParameter1.lowerLimit}
+                            type="number"
                             onChange={(e) => {
                               const newData = [...trendingOCPPS4];
-                              newData[index].criticalParameter1.lowerLimit = e.target.value;
+                              newData[index].criticalParameter1.lowerLimit =
+                                e.target.value;
                               setTrendingOCPPS4(newData);
                             }}
                           />
@@ -13322,9 +14214,11 @@ console.log(pQRData,"grid")
                         <td>
                           <input
                             value={item.criticalParameter1.upperLimit}
+                            type="number"
                             onChange={(e) => {
                               const newData = [...trendingOCPPS4];
-                              newData[index].criticalParameter1.upperLimit = e.target.value;
+                              newData[index].criticalParameter1.upperLimit =
+                                e.target.value;
                               setTrendingOCPPS4(newData);
                             }}
                           />
@@ -13332,9 +14226,11 @@ console.log(pQRData,"grid")
                         <td>
                           <input
                             value={item.criticalParameter2}
+                            type="number"
                             onChange={(e) => {
                               const newData = [...trendingOCPPS4];
-                              newData[index].criticalParameter2 = e.target.value;
+                              newData[index].criticalParameter2 =
+                                e.target.value;
                               setTrendingOCPPS4(newData);
                             }}
                           />
@@ -13343,6 +14239,7 @@ console.log(pQRData,"grid")
                         <td>
                           <input
                             value={item.lowerLimit}
+                            type="number"
                             onChange={(e) => {
                               const newData = [...trendingOCPPS4];
                               newData[index].lowerLimit = e.target.value;
@@ -13353,6 +14250,7 @@ console.log(pQRData,"grid")
                         <td>
                           <input
                             value={item.upperLimit}
+                            type="number"
                             onChange={(e) => {
                               const newData = [...trendingOCPPS4];
                               newData[index].upperLimit = e.target.value;
@@ -13371,13 +14269,16 @@ console.log(pQRData,"grid")
         {tab === "TOIIP" ? (
           <>
             <div className="gridName pt-4">
-              Trending of In-process & Intermediate Parameter of U3TCAg - Stage-I{" "}
+              Trending of In-process & Intermediate Parameter of U3TCAg -
+              Stage-I{" "}
             </div>
             <div>
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addTrendingOIPIPS1Row} />
-                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
+                  <div className="addrowinstruction  pl-2">
+                    Add Rows by clicking on (+) icon
+                  </div>
                 </div>
                 <div className="flex gap-4 ">
                   <ExcelExportImport
@@ -13397,7 +14298,9 @@ console.log(pQRData,"grid")
                     <th rowSpan={3}>Batch No.</th>
                     <th rowSpan={3}>Unreacted Diolone Acetate NMT 0.5 %</th>
                     <th rowSpan={3}>Limit</th>
-                    <th rowSpan={3}>Chromatographic Purity (for information)</th>
+                    <th rowSpan={3}>
+                      Chromatographic Purity (for information)
+                    </th>
                     <th rowSpan={3}>Unreacted TCA Step – I B NMT 0.5 % </th>
                     <th rowSpan={3}>Purity (for information)</th>
                     <th rowSpan={3}>pH 6.0 – 6.5</th>
@@ -13445,6 +14348,7 @@ console.log(pQRData,"grid")
                         <td>
                           <input
                             value={item.unreactedDiolone}
+                            type="number"
                             onChange={(e) => {
                               const newData = [...trendingOIPIPS1];
                               newData[index].unreactedDiolone = e.target.value;
@@ -13455,6 +14359,7 @@ console.log(pQRData,"grid")
                         <td>
                           <input
                             value={item.limit}
+                            type="number"
                             onChange={(e) => {
                               const newData = [...trendingOIPIPS1];
                               newData[index].limit = e.target.value;
@@ -13465,9 +14370,11 @@ console.log(pQRData,"grid")
                         <td>
                           <input
                             value={item.chromatographicPurity}
+                            type="number"
                             onChange={(e) => {
                               const newData = [...trendingOIPIPS1];
-                              newData[index].chromatographicPurity = e.target.value;
+                              newData[index].chromatographicPurity =
+                                e.target.value;
                               setTrendingOIPIPS1(newData);
                             }}
                           />
@@ -13475,6 +14382,7 @@ console.log(pQRData,"grid")
                         <td>
                           <input
                             value={item.unreactedTCA}
+                            type="number"
                             onChange={(e) => {
                               const newData = [...trendingOIPIPS1];
                               newData[index].unreactedTCA = e.target.value;
@@ -13485,9 +14393,11 @@ console.log(pQRData,"grid")
                         <td>
                           <input
                             value={item.purityForInformation}
+                            type="number"
                             onChange={(e) => {
                               const newData = [...trendingOIPIPS1];
-                              newData[index].purityForInformation = e.target.value;
+                              newData[index].purityForInformation =
+                                e.target.value;
                               setTrendingOIPIPS1(newData);
                             }}
                           />
@@ -13495,6 +14405,7 @@ console.log(pQRData,"grid")
                         <td>
                           <input
                             value={item.pH6}
+                            type="number"
                             onChange={(e) => {
                               const newData = [...trendingOIPIPS1];
                               newData[index].pH6 = e.target.value;
@@ -13505,6 +14416,7 @@ console.log(pQRData,"grid")
                         <td>
                           <input
                             value={item.lLimit}
+                            type="number"
                             onChange={(e) => {
                               const newData = [...trendingOIPIPS1];
                               newData[index].lLimit = e.target.value;
@@ -13515,6 +14427,7 @@ console.log(pQRData,"grid")
                         <td>
                           <input
                             value={item.uLimit}
+                            type="number"
                             onChange={(e) => {
                               const newData = [...trendingOIPIPS1];
                               newData[index].uLimit = e.target.value;
@@ -13525,6 +14438,7 @@ console.log(pQRData,"grid")
                         <td>
                           <input
                             value={item.pH65}
+                            type="number"
                             onChange={(e) => {
                               const newData = [...trendingOIPIPS1];
                               newData[index].pH65 = e.target.value;
@@ -13535,6 +14449,7 @@ console.log(pQRData,"grid")
                         <td>
                           <input
                             value={item.lLimit}
+                            type="number"
                             onChange={(e) => {
                               const newData = [...trendingOIPIPS1];
                               newData[index].lLimit = e.target.value;
@@ -13545,6 +14460,7 @@ console.log(pQRData,"grid")
                         <td>
                           <input
                             value={item.uLimit}
+                            type="number"
                             onChange={(e) => {
                               const newData = [...trendingOIPIPS1];
                               newData[index].uLimit = e.target.value;
@@ -13555,6 +14471,7 @@ console.log(pQRData,"grid")
                         <td>
                           <input
                             value={item.waterContent}
+                            type="number"
                             onChange={(e) => {
                               const newData = [...trendingOIPIPS1];
                               newData[index].waterContent = e.target.value;
@@ -13565,6 +14482,7 @@ console.log(pQRData,"grid")
                         <td>
                           <input
                             value={item.wLimit}
+                            type="number"
                             onChange={(e) => {
                               const newData = [...trendingOIPIPS1];
                               newData[index].wLimit = e.target.value;
@@ -13575,9 +14493,11 @@ console.log(pQRData,"grid")
                         <td>
                           <input
                             value={item.composite.waterContentNmt}
+                            type="number"
                             onChange={(e) => {
                               const newData = [...trendingOIPIPS1];
-                              newData[index].composite.waterContentNmt = e.target.value;
+                              newData[index].composite.waterContentNmt =
+                                e.target.value;
                               setTrendingOIPIPS1(newData);
                             }}
                           />
@@ -13585,19 +14505,28 @@ console.log(pQRData,"grid")
                         <td>
                           <input
                             value={item.composite.chromatographicPurity.limit}
+                            type="number"
                             onChange={(e) => {
                               const newData = [...trendingOIPIPS1];
-                              newData[index].composite.chromatographicPurity.limit = e.target.value;
+                              newData[
+                                index
+                              ].composite.chromatographicPurity.limit =
+                                e.target.value;
                               setTrendingOIPIPS1(newData);
                             }}
                           />
                         </td>{" "}
                         <td>
                           <input
-                            value={item.composite.chromatographicPurity.tCAStage}
+                            value={
+                              item.composite.chromatographicPurity.tCAStage
+                            }
+                            type="number"
                             onChange={(e) => {
                               const newData = [...trendingOIPIPS1];
-                              newData[index].composite.chromatographicPurity.tCAStage =
+                              newData[
+                                index
+                              ].composite.chromatographicPurity.tCAStage =
                                 e.target.value;
                               setTrendingOIPIPS1(newData);
                             }}
@@ -13606,9 +14535,12 @@ console.log(pQRData,"grid")
                         <td>
                           <input
                             value={item.composite.chromatographicPurity.tLimit}
+                            type="number"
                             onChange={(e) => {
                               const newData = [...trendingOIPIPS1];
-                              newData[index].composite.chromatographicPurity.tLimit =
+                              newData[
+                                index
+                              ].composite.chromatographicPurity.tLimit =
                                 e.target.value;
                               setTrendingOIPIPS1(newData);
                             }}
@@ -13616,10 +14548,15 @@ console.log(pQRData,"grid")
                         </td>{" "}
                         <td>
                           <input
-                            value={item.composite.chromatographicPurity.dryingHours}
+                            value={
+                              item.composite.chromatographicPurity.dryingHours
+                            }
+                            type="number"
                             onChange={(e) => {
                               const newData = [...trendingOIPIPS1];
-                              newData[index].composite.chromatographicPurity.dryingHours =
+                              newData[
+                                index
+                              ].composite.chromatographicPurity.dryingHours =
                                 e.target.value;
                               setTrendingOIPIPS1(newData);
                             }}
@@ -13633,13 +14570,16 @@ console.log(pQRData,"grid")
             </div>
 
             <div className="gridName pt-4">
-              Trending of In-process & Intermediate Parameter of U3TCAg - Stage-II{" "}
+              Trending of In-process & Intermediate Parameter of U3TCAg -
+              Stage-II{" "}
             </div>
             <div>
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addTrendingOIPIPS2Row} />
-                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
+                  <div className="addrowinstruction  pl-2">
+                    Add Rows by clicking on (+) icon
+                  </div>
                 </div>
                 <div className="flex gap-4 ">
                   <ExcelExportImport
@@ -13657,9 +14597,13 @@ console.log(pQRData,"grid")
                   <tr>
                     <th rowSpan={3}>S. No.</th>
                     <th rowSpan={3}>Batch No.</th>
-                    <th rowSpan={3}>Unreacted TCA Stage – I by HPLC NMT 0.5 %</th>
+                    <th rowSpan={3}>
+                      Unreacted TCA Stage – I by HPLC NMT 0.5 %
+                    </th>
                     <th rowSpan={3}>Limit</th>
-                    <th rowSpan={3}>Unreacted Triamcinolone acetate by HPLC NMT 2.5 %</th>
+                    <th rowSpan={3}>
+                      Unreacted Triamcinolone acetate by HPLC NMT 2.5 %
+                    </th>
                     <th rowSpan={3}>Limit</th>
                     <th rowSpan={3}>Purity (for information)</th>
                     <th rowSpan={3}>pH 6.0 – 7.0</th>
@@ -13709,6 +14653,7 @@ console.log(pQRData,"grid")
                         <td>
                           <input
                             value={item.limit}
+                            type="number"
                             onChange={(e) => {
                               const newData = [...trendingOIPIPS2];
                               newData[index].limit = e.target.value;
@@ -13719,9 +14664,11 @@ console.log(pQRData,"grid")
                         <td>
                           <input
                             value={item.unreactedTriamcilone}
+                            type="number"
                             onChange={(e) => {
                               const newData = [...trendingOIPIPS2];
-                              newData[index].unreactedTriamcilone = e.target.value;
+                              newData[index].unreactedTriamcilone =
+                                e.target.value;
                               setTrendingOIPIPS2(newData);
                             }}
                           />
@@ -13729,6 +14676,7 @@ console.log(pQRData,"grid")
                         <td>
                           <input
                             value={item.limit2}
+                            type="number"
                             onChange={(e) => {
                               const newData = [...trendingOIPIPS2];
                               newData[index].limit2 = e.target.value;
@@ -13739,9 +14687,11 @@ console.log(pQRData,"grid")
                         <td>
                           <input
                             value={item.purityForInformation}
+                            type="number"
                             onChange={(e) => {
                               const newData = [...trendingOIPIPS2];
-                              newData[index].purityForInformation = e.target.value;
+                              newData[index].purityForInformation =
+                                e.target.value;
                               setTrendingOIPIPS2(newData);
                             }}
                           />
@@ -13749,6 +14699,7 @@ console.log(pQRData,"grid")
                         <td>
                           <input
                             value={item.pH6}
+                            type="number"
                             onChange={(e) => {
                               const newData = [...trendingOIPIPS2];
                               newData[index].pH6 = e.target.value;
@@ -13759,6 +14710,7 @@ console.log(pQRData,"grid")
                         <td>
                           <input
                             value={item.lLimit}
+                            type="number"
                             onChange={(e) => {
                               const newData = [...trendingOIPIPS2];
                               newData[index].lLimit = e.target.value;
@@ -13769,6 +14721,7 @@ console.log(pQRData,"grid")
                         <td>
                           <input
                             value={item.uLimit}
+                            type="number"
                             onChange={(e) => {
                               const newData = [...trendingOIPIPS2];
                               newData[index].uLimit = e.target.value;
@@ -13779,6 +14732,7 @@ console.log(pQRData,"grid")
                         <td>
                           <input
                             value={item.pH67}
+                            type="number"
                             onChange={(e) => {
                               const newData = [...trendingOIPIPS2];
                               newData[index].pH67 = e.target.value;
@@ -13789,6 +14743,7 @@ console.log(pQRData,"grid")
                         <td>
                           <input
                             value={item.lLimit2}
+                            type="number"
                             onChange={(e) => {
                               const newData = [...trendingOIPIPS2];
                               newData[index].lLimit2 = e.target.value;
@@ -13799,6 +14754,7 @@ console.log(pQRData,"grid")
                         <td>
                           <input
                             value={item.uLimit2}
+                            type="number"
                             onChange={(e) => {
                               const newData = [...trendingOIPIPS2];
                               newData[index].uLimit2 = e.target.value;
@@ -13809,9 +14765,11 @@ console.log(pQRData,"grid")
                         <td>
                           <input
                             value={item.composite.purityByHPLC}
+                            type="number"
                             onChange={(e) => {
                               const newData = [...trendingOIPIPS2];
-                              newData[index].composite.purityByHPLC = e.target.value;
+                              newData[index].composite.purityByHPLC =
+                                e.target.value;
                               setTrendingOIPIPS2(newData);
                             }}
                           />
@@ -13819,6 +14777,7 @@ console.log(pQRData,"grid")
                         <td>
                           <input
                             value={item.composite.limit1}
+                            type="number"
                             onChange={(e) => {
                               const newData = [...trendingOIPIPS2];
                               newData[index].composite.limit1 = e.target.value;
@@ -13829,9 +14788,11 @@ console.log(pQRData,"grid")
                         <td>
                           <input
                             value={item.composite.unreactedTca}
+                            type="number"
                             onChange={(e) => {
                               const newData = [...trendingOIPIPS2];
-                              newData[index].composite.unreactedTca = e.target.value;
+                              newData[index].composite.unreactedTca =
+                                e.target.value;
                               setTrendingOIPIPS2(newData);
                             }}
                           />
@@ -13839,6 +14800,7 @@ console.log(pQRData,"grid")
                         <td>
                           <input
                             value={item.composite.limit2}
+                            type="number"
                             onChange={(e) => {
                               const newData = [...trendingOIPIPS2];
                               newData[index].composite.limit2 = e.target.value;
@@ -13854,13 +14816,16 @@ console.log(pQRData,"grid")
             </div>
 
             <div className="gridName pt-4">
-              Trending of In-process & Intermediate Parameter of U3TCAg - Stage-III{" "}
+              Trending of In-process & Intermediate Parameter of U3TCAg -
+              Stage-III{" "}
             </div>
             <div>
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addTrendingOIPIPS3Row} />
-                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
+                  <div className="addrowinstruction  pl-2">
+                    Add Rows by clicking on (+) icon
+                  </div>
                 </div>
                 <div className="flex gap-4 ">
                   <ExcelExportImport
@@ -13881,7 +14846,9 @@ console.log(pQRData,"grid")
                     <th rowSpan={3}>pH 7.75 – 8.0</th>
                     <th rowSpan={3}>L Limit</th>
                     <th rowSpan={3}>U Limit</th>
-                    <th rowSpan={3}>Unreacted TCA Stage – II by HPLC NMT 0.5 %</th>
+                    <th rowSpan={3}>
+                      Unreacted TCA Stage – II by HPLC NMT 0.5 %
+                    </th>
                     <th rowSpan={3}>pH 5.0 – 6.0</th>
                     <th rowSpan={3}>L Limit</th>
                     <th rowSpan={3}>U Limit</th>
@@ -13892,7 +14859,9 @@ console.log(pQRData,"grid")
                   </tr>
 
                   <tr>
-                    <th>Chromatographic purity in area % by HPLC Purity NLT 98.0 %</th>
+                    <th>
+                      Chromatographic purity in area % by HPLC Purity NLT 98.0 %
+                    </th>
                     <th>Limit</th>
                   </tr>
                 </thead>
@@ -13926,7 +14895,8 @@ console.log(pQRData,"grid")
                             value={item.chromatographicPurity}
                             onChange={(e) => {
                               const newData = [...trendingOIPIPS3];
-                              newData[index].chromatographicPurity = e.target.value;
+                              newData[index].chromatographicPurity =
+                                e.target.value;
                               setTrendingOIPIPS3(newData);
                             }}
                           />
@@ -13986,7 +14956,8 @@ console.log(pQRData,"grid")
                             value={item.composite.chromatographicPurity}
                             onChange={(e) => {
                               const newData = [...trendingOIPIPS3];
-                              newData[index].composite.chromatographicPurity = e.target.value;
+                              newData[index].composite.chromatographicPurity =
+                                e.target.value;
                               setTrendingOIPIPS3(newData);
                             }}
                           />
@@ -14009,13 +14980,16 @@ console.log(pQRData,"grid")
             </div>
 
             <div className="gridName pt-4">
-              Trending of In-process & Intermediate Parameter of U3TCAg - Stage-IV{" "}
+              Trending of In-process & Intermediate Parameter of U3TCAg -
+              Stage-IV{" "}
             </div>
             <div>
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addTrendingOIPIPS4Row} />
-                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
+                  <div className="addrowinstruction  pl-2">
+                    Add Rows by clicking on (+) icon
+                  </div>
                 </div>
                 <div className="flex gap-4 ">
                   <ExcelExportImport
@@ -14090,6 +15064,7 @@ console.log(pQRData,"grid")
                         <td>
                           <input
                             value={item.waterContent}
+                            type="number"
                             onChange={(e) => {
                               const newData = [...trendingOIPIPS4];
                               newData[index].waterContent = e.target.value;
@@ -14100,6 +15075,7 @@ console.log(pQRData,"grid")
                         <td>
                           <input
                             value={item.limit}
+                            type="number"
                             onChange={(e) => {
                               const newData = [...trendingOIPIPS4];
                               newData[index].limit = e.target.value;
@@ -14110,9 +15086,11 @@ console.log(pQRData,"grid")
                         <td>
                           <input
                             value={item.composite.waterContentNMT}
+                            type="number"
                             onChange={(e) => {
                               const newData = [...trendingOIPIPS4];
-                              newData[index].composite.waterContentNMT = e.target.value;
+                              newData[index].composite.waterContentNMT =
+                                e.target.value;
                               setTrendingOIPIPS4(newData);
                             }}
                           />
@@ -14120,6 +15098,7 @@ console.log(pQRData,"grid")
                         <td>
                           <input
                             value={item.composite.limit}
+                            type="number"
                             onChange={(e) => {
                               const newData = [...trendingOIPIPS4];
                               newData[index].composite.limit = e.target.value;
@@ -14130,9 +15109,11 @@ console.log(pQRData,"grid")
                         <td>
                           <input
                             value={item.composite.lossOnDrying}
+                            type="number"
                             onChange={(e) => {
                               const newData = [...trendingOIPIPS4];
-                              newData[index].composite.lossOnDrying = e.target.value;
+                              newData[index].composite.lossOnDrying =
+                                e.target.value;
                               setTrendingOIPIPS4(newData);
                             }}
                           />
@@ -14140,19 +15121,10 @@ console.log(pQRData,"grid")
                         <td>
                           <input
                             value={item.composite.limitLoss}
+                            type="number"
                             onChange={(e) => {
                               const newData = [...trendingOIPIPS4];
-                              newData[index].composite.limitLoss = e.target.value;
-                              setTrendingOIPIPS4(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.composite.relatedSubstanceByHPLC.impurityKNMT}
-                            onChange={(e) => {
-                              const newData = [...trendingOIPIPS4];
-                              newData[index].composite.relatedSubstanceByHPLC.impurityKNMT =
+                              newData[index].composite.limitLoss =
                                 e.target.value;
                               setTrendingOIPIPS4(newData);
                             }}
@@ -14160,10 +15132,31 @@ console.log(pQRData,"grid")
                         </td>
                         <td>
                           <input
-                            value={item.composite.relatedSubstanceByHPLC.limitNMT}
+                            value={
+                              item.composite.relatedSubstanceByHPLC.impurityKNMT
+                            }
+                            type="number"
                             onChange={(e) => {
                               const newData = [...trendingOIPIPS4];
-                              newData[index].composite.relatedSubstanceByHPLC.limitNMT =
+                              newData[
+                                index
+                              ].composite.relatedSubstanceByHPLC.impurityKNMT =
+                                e.target.value;
+                              setTrendingOIPIPS4(newData);
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={
+                              item.composite.relatedSubstanceByHPLC.limitNMT
+                            }
+                            type="number"
+                            onChange={(e) => {
+                              const newData = [...trendingOIPIPS4];
+                              newData[
+                                index
+                              ].composite.relatedSubstanceByHPLC.limitNMT =
                                 e.target.value;
                               setTrendingOIPIPS4(newData);
                             }}
@@ -14171,10 +15164,14 @@ console.log(pQRData,"grid")
                         </td>{" "}
                         <td>
                           <input
-                            value={item.composite.relatedSubstanceByHPLC.impurityHNMT}
+                            value={
+                              item.composite.relatedSubstanceByHPLC.impurityHNMT
+                            }
                             onChange={(e) => {
                               const newData = [...trendingOIPIPS4];
-                              newData[index].composite.relatedSubstanceByHPLC.impurityHNMT =
+                              newData[
+                                index
+                              ].composite.relatedSubstanceByHPLC.impurityHNMT =
                                 e.target.value;
                               setTrendingOIPIPS4(newData);
                             }}
@@ -14182,10 +15179,14 @@ console.log(pQRData,"grid")
                         </td>{" "}
                         <td>
                           <input
-                            value={item.composite.relatedSubstanceByHPLC.impurityDNMT}
+                            value={
+                              item.composite.relatedSubstanceByHPLC.impurityDNMT
+                            }
                             onChange={(e) => {
                               const newData = [...trendingOIPIPS4];
-                              newData[index].composite.relatedSubstanceByHPLC.impurityDNMT =
+                              newData[
+                                index
+                              ].composite.relatedSubstanceByHPLC.impurityDNMT =
                                 e.target.value;
                               setTrendingOIPIPS4(newData);
                             }}
@@ -14193,10 +15194,15 @@ console.log(pQRData,"grid")
                         </td>{" "}
                         <td>
                           <input
-                            value={item.composite.relatedSubstanceByHPLC.limitDNMT}
+                            value={
+                              item.composite.relatedSubstanceByHPLC.limitDNMT
+                            }
+                            type="number"
                             onChange={(e) => {
                               const newData = [...trendingOIPIPS4];
-                              newData[index].composite.relatedSubstanceByHPLC.limitDNMT =
+                              newData[
+                                index
+                              ].composite.relatedSubstanceByHPLC.limitDNMT =
                                 e.target.value;
                               setTrendingOIPIPS4(newData);
                             }}
@@ -14204,10 +15210,14 @@ console.log(pQRData,"grid")
                         </td>
                         <td>
                           <input
-                            value={item.composite.relatedSubstanceByHPLC.impurityINMT}
+                            value={
+                              item.composite.relatedSubstanceByHPLC.impurityINMT
+                            }
                             onChange={(e) => {
                               const newData = [...trendingOIPIPS4];
-                              newData[index].composite.relatedSubstanceByHPLC.impurityINMT =
+                              newData[
+                                index
+                              ].composite.relatedSubstanceByHPLC.impurityINMT =
                                 e.target.value;
                               setTrendingOIPIPS4(newData);
                             }}
@@ -14215,10 +15225,16 @@ console.log(pQRData,"grid")
                         </td>
                         <td>
                           <input
-                            value={item.composite.relatedSubstanceByHPLC.unknownImpurity}
+                            value={
+                              item.composite.relatedSubstanceByHPLC
+                                .unknownImpurity
+                            }
+                            type="number"
                             onChange={(e) => {
                               const newData = [...trendingOIPIPS4];
-                              newData[index].composite.relatedSubstanceByHPLC.unknownImpurity =
+                              newData[
+                                index
+                              ].composite.relatedSubstanceByHPLC.unknownImpurity =
                                 e.target.value;
                               setTrendingOIPIPS4(newData);
                             }}
@@ -14226,10 +15242,15 @@ console.log(pQRData,"grid")
                         </td>
                         <td>
                           <input
-                            value={item.composite.relatedSubstanceByHPLC.limitUnknown}
+                            value={
+                              item.composite.relatedSubstanceByHPLC.limitUnknown
+                            }
+                            type="number"
                             onChange={(e) => {
                               const newData = [...trendingOIPIPS4];
-                              newData[index].composite.relatedSubstanceByHPLC.limitUnknown =
+                              newData[
+                                index
+                              ].composite.relatedSubstanceByHPLC.limitUnknown =
                                 e.target.value;
                               setTrendingOIPIPS4(newData);
                             }}
@@ -14237,10 +15258,16 @@ console.log(pQRData,"grid")
                         </td>
                         <td>
                           <input
-                            value={item.composite.relatedSubstanceByHPLC.totalimpuriritie}
+                            value={
+                              item.composite.relatedSubstanceByHPLC
+                                .totalimpuriritie
+                            }
+                            type="number"
                             onChange={(e) => {
                               const newData = [...trendingOIPIPS4];
-                              newData[index].composite.relatedSubstanceByHPLC.totalimpuriritie =
+                              newData[
+                                index
+                              ].composite.relatedSubstanceByHPLC.totalimpuriritie =
                                 e.target.value;
                               setTrendingOIPIPS4(newData);
                             }}
@@ -14248,10 +15275,15 @@ console.log(pQRData,"grid")
                         </td>{" "}
                         <td>
                           <input
-                            value={item.composite.relatedSubstanceByHPLC.limitTotal}
+                            value={
+                              item.composite.relatedSubstanceByHPLC.limitTotal
+                            }
+                            type="number"
                             onChange={(e) => {
                               const newData = [...trendingOIPIPS4];
-                              newData[index].composite.relatedSubstanceByHPLC.limitTotal =
+                              newData[
+                                index
+                              ].composite.relatedSubstanceByHPLC.limitTotal =
                                 e.target.value;
                               setTrendingOIPIPS4(newData);
                             }}
@@ -14259,10 +15291,15 @@ console.log(pQRData,"grid")
                         </td>{" "}
                         <td>
                           <input
-                            value={item.composite.relatedSubstanceByHPLC.dryingHours}
+                            value={
+                              item.composite.relatedSubstanceByHPLC.dryingHours
+                            }
+                            type="number"
                             onChange={(e) => {
                               const newData = [...trendingOIPIPS4];
-                              newData[index].composite.relatedSubstanceByHPLC.dryingHours =
+                              newData[
+                                index
+                              ].composite.relatedSubstanceByHPLC.dryingHours =
                                 e.target.value;
                               setTrendingOIPIPS4(newData);
                             }}
@@ -14276,13 +15313,16 @@ console.log(pQRData,"grid")
             </div>
 
             <div className="gridName pt-4">
-              Trending of In-process & Intermediate Parameter of U3TCAg - Stage-V
+              Trending of In-process & Intermediate Parameter of U3TCAg -
+              Stage-V
             </div>
             <div>
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addTrendingOIPIPS5Row} />
-                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
+                  <div className="addrowinstruction  pl-2">
+                    Add Rows by clicking on (+) icon
+                  </div>
                 </div>
                 <div className="flex gap-4 ">
                   <ExcelExportImport
@@ -14311,7 +15351,9 @@ console.log(pQRData,"grid")
                     <th colSpan={1} rowSpan={2}>
                       Loss on drying NMT 1.0 % w/w
                     </th>
-                    <th colSpan={10}>Chromatographic purity by HPLC as per USP</th>
+                    <th colSpan={10}>
+                      Chromatographic purity by HPLC as per USP
+                    </th>
                   </tr>
                   <tr>
                     <th>Limit</th>
@@ -14344,6 +15386,7 @@ console.log(pQRData,"grid")
                         <td>
                           <input
                             value={item.lossOfDrying}
+                            type="number"
                             onChange={(e) => {
                               const newData = [...trendingOIPIPS5];
                               newData[index].lossOfDrying = e.target.value;
@@ -14354,6 +15397,7 @@ console.log(pQRData,"grid")
                         <td>
                           <input
                             value={item.limit}
+                            type="number"
                             onChange={(e) => {
                               const newData = [...trendingOIPIPS5];
                               newData[index].limit = e.target.value;
@@ -14364,9 +15408,11 @@ console.log(pQRData,"grid")
                         <td>
                           <input
                             value={item.composite.lossOfDrying}
+                            type="number"
                             onChange={(e) => {
                               const newData = [...trendingOIPIPS5];
-                              newData[index].composite.lossOfDrying = e.target.value;
+                              newData[index].composite.lossOfDrying =
+                                e.target.value;
                               setTrendingOIPIPS5(newData);
                             }}
                           />
@@ -14374,19 +15420,12 @@ console.log(pQRData,"grid")
                         <td>
                           <input
                             value={item.composite.chromatographicPurity.limit}
+                            type="number"
                             onChange={(e) => {
                               const newData = [...trendingOIPIPS5];
-                              newData[index].composite.chromatographicPurity.limit = e.target.value;
-                              setTrendingOIPIPS5(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.composite.chromatographicPurity.impurityKNMT}
-                            onChange={(e) => {
-                              const newData = [...trendingOIPIPS5];
-                              newData[index].composite.chromatographicPurity.impurityKNMT =
+                              newData[
+                                index
+                              ].composite.chromatographicPurity.limit =
                                 e.target.value;
                               setTrendingOIPIPS5(newData);
                             }}
@@ -14394,10 +15433,15 @@ console.log(pQRData,"grid")
                         </td>
                         <td>
                           <input
-                            value={item.composite.chromatographicPurity.limitKNMT}
+                            value={
+                              item.composite.chromatographicPurity.impurityKNMT
+                            }
+                            type="number"
                             onChange={(e) => {
                               const newData = [...trendingOIPIPS5];
-                              newData[index].composite.chromatographicPurity.limitKNMT =
+                              newData[
+                                index
+                              ].composite.chromatographicPurity.impurityKNMT =
                                 e.target.value;
                               setTrendingOIPIPS5(newData);
                             }}
@@ -14405,10 +15449,15 @@ console.log(pQRData,"grid")
                         </td>
                         <td>
                           <input
-                            value={item.composite.chromatographicPurity.impurityOfHNMT}
+                            value={
+                              item.composite.chromatographicPurity.limitKNMT
+                            }
+                            type="number"
                             onChange={(e) => {
                               const newData = [...trendingOIPIPS5];
-                              newData[index].composite.chromatographicPurity.impurityOfHNMT =
+                              newData[
+                                index
+                              ].composite.chromatographicPurity.limitKNMT =
                                 e.target.value;
                               setTrendingOIPIPS5(newData);
                             }}
@@ -14416,10 +15465,30 @@ console.log(pQRData,"grid")
                         </td>
                         <td>
                           <input
-                            value={item.composite.chromatographicPurity.impurityDNMT}
+                            value={
+                              item.composite.chromatographicPurity
+                                .impurityOfHNMT
+                            }
                             onChange={(e) => {
                               const newData = [...trendingOIPIPS5];
-                              newData[index].composite.chromatographicPurity.impurityDNMT =
+                              newData[
+                                index
+                              ].composite.chromatographicPurity.impurityOfHNMT =
+                                e.target.value;
+                              setTrendingOIPIPS5(newData);
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={
+                              item.composite.chromatographicPurity.impurityDNMT
+                            }
+                            onChange={(e) => {
+                              const newData = [...trendingOIPIPS5];
+                              newData[
+                                index
+                              ].composite.chromatographicPurity.impurityDNMT =
                                 e.target.value;
                               setTrendingOIPIPS5(newData);
                             }}
@@ -14427,10 +15496,14 @@ console.log(pQRData,"grid")
                         </td>{" "}
                         <td>
                           <input
-                            value={item.composite.chromatographicPurity.impurityINMT}
+                            value={
+                              item.composite.chromatographicPurity.impurityINMT
+                            }
                             onChange={(e) => {
                               const newData = [...trendingOIPIPS5];
-                              newData[index].composite.chromatographicPurity.impurityINMT =
+                              newData[
+                                index
+                              ].composite.chromatographicPurity.impurityINMT =
                                 e.target.value;
                               setTrendingOIPIPS5(newData);
                             }}
@@ -14438,10 +15511,15 @@ console.log(pQRData,"grid")
                         </td>{" "}
                         <td>
                           <input
-                            value={item.composite.chromatographicPurity.impurityNMT}
+                            value={
+                              item.composite.chromatographicPurity.impurityNMT
+                            }
+                            type="number"
                             onChange={(e) => {
                               const newData = [...trendingOIPIPS5];
-                              newData[index].composite.chromatographicPurity.impurityNMT =
+                              newData[
+                                index
+                              ].composite.chromatographicPurity.impurityNMT =
                                 e.target.value;
                               setTrendingOIPIPS5(newData);
                             }}
@@ -14449,10 +15527,15 @@ console.log(pQRData,"grid")
                         </td>{" "}
                         <td>
                           <input
-                            value={item.composite.chromatographicPurity.limitNMT}
+                            value={
+                              item.composite.chromatographicPurity.limitNMT
+                            }
+                            type="number"
                             onChange={(e) => {
                               const newData = [...trendingOIPIPS5];
-                              newData[index].composite.chromatographicPurity.limitNMT =
+                              newData[
+                                index
+                              ].composite.chromatographicPurity.limitNMT =
                                 e.target.value;
                               setTrendingOIPIPS5(newData);
                             }}
@@ -14460,10 +15543,16 @@ console.log(pQRData,"grid")
                         </td>
                         <td>
                           <input
-                            value={item.composite.chromatographicPurity.totalImpurityNMT}
+                            value={
+                              item.composite.chromatographicPurity
+                                .totalImpurityNMT
+                            }
+                            type="number"
                             onChange={(e) => {
                               const newData = [...trendingOIPIPS5];
-                              newData[index].composite.chromatographicPurity.totalImpurityNMT =
+                              newData[
+                                index
+                              ].composite.chromatographicPurity.totalImpurityNMT =
                                 e.target.value;
                               setTrendingOIPIPS5(newData);
                             }}
@@ -14471,10 +15560,15 @@ console.log(pQRData,"grid")
                         </td>
                         <td>
                           <input
-                            value={item.composite.chromatographicPurity.limitTNMT}
+                            value={
+                              item.composite.chromatographicPurity.limitTNMT
+                            }
+                            type="number"
                             onChange={(e) => {
                               const newData = [...trendingOIPIPS5];
-                              newData[index].composite.chromatographicPurity.limitTNMT =
+                              newData[
+                                index
+                              ].composite.chromatographicPurity.limitTNMT =
                                 e.target.value;
                               setTrendingOIPIPS5(newData);
                             }}
@@ -14490,12 +15584,16 @@ console.log(pQRData,"grid")
         ) : null}
         {tab === "FPAT" ? (
           <>
-            <div className="gridName pt-4">Finished Product Analytical Trend as per USP</div>
+            <div className="gridName pt-4">
+              Finished Product Analytical Trend as per USP
+            </div>
             <div>
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addFinishedPATUSPRow} />
-                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
+                  <div className="addrowinstruction  pl-2">
+                    Add Rows by clicking on (+) icon
+                  </div>
                 </div>
                 <div className="flex gap-4 ">
                   <ExcelExportImport
@@ -14518,8 +15616,12 @@ console.log(pQRData,"grid")
                     <th rowSpan="2">L Limit</th>
                     <th rowSpan="2">U Limit</th>
                     <th rowSpan="2">Loss on Drying NMT 1.5 % w/w</th>
-                    <th colSpan="11">Chromatographic purity by HPLC as per USP</th>
-                    <th rowSpan="2">Assay (By HPLC) b/w 97.0 % and 102.0 % w/w </th>
+                    <th colSpan="11">
+                      Chromatographic purity by HPLC as per USP
+                    </th>
+                    <th rowSpan="2">
+                      Assay (By HPLC) b/w 97.0 % and 102.0 % w/w{" "}
+                    </th>
                     <th rowSpan="2">L Limit</th>
                     <th rowSpan="2">U Limit</th>
                     <th colSpan="4">Residual solvent By GC</th>
@@ -14566,6 +15668,7 @@ console.log(pQRData,"grid")
                         <td>
                           <input
                             value={item.specificRotation}
+                            type="number"
                             onChange={(e) => {
                               const newData = [...finishedPATUSP];
                               newData[index].specificRotation = e.target.value;
@@ -14577,6 +15680,7 @@ console.log(pQRData,"grid")
                         <td>
                           <input
                             value={item.lLimit}
+                            type="number"
                             onChange={(e) => {
                               const newData = [...finishedPATUSP];
                               newData[index].lLimit = e.target.value;
@@ -14588,6 +15692,7 @@ console.log(pQRData,"grid")
                         <td>
                           <input
                             value={item.uLimit}
+                            type="number"
                             onChange={(e) => {
                               const newData = [...finishedPATUSP];
                               newData[index].uLimit = e.target.value;
@@ -14599,6 +15704,7 @@ console.log(pQRData,"grid")
                         <td>
                           <input
                             value={item.lossOnDrying}
+                            type="number"
                             onChange={(e) => {
                               const newData = [...finishedPATUSP];
                               newData[index].lossOnDrying = e.target.value;
@@ -14609,9 +15715,11 @@ console.log(pQRData,"grid")
                         <td>
                           <input
                             value={item.chromatographicPurity.limit}
+                            type="number"
                             onChange={(e) => {
                               const newData = [...finishedPATUSP];
-                              newData[index].chromatographicPurity.limit = e.target.value;
+                              newData[index].chromatographicPurity.limit =
+                                e.target.value;
                               setFinishedPATUSP(newData);
                             }}
                           />
@@ -14621,7 +15729,8 @@ console.log(pQRData,"grid")
                             value={item.chromatographicPurity.impurityK}
                             onChange={(e) => {
                               const newData = [...finishedPATUSP];
-                              newData[index].chromatographicPurity.impurityK = e.target.value;
+                              newData[index].chromatographicPurity.impurityK =
+                                e.target.value;
                               setFinishedPATUSP(newData);
                             }}
                           />
@@ -14629,9 +15738,13 @@ console.log(pQRData,"grid")
                         <td>
                           <input
                             value={item.chromatographicPurity.impurityKLimit}
+                            type="number"
                             onChange={(e) => {
                               const newData = [...finishedPATUSP];
-                              newData[index].chromatographicPurity.impurityKLimit = e.target.value;
+                              newData[
+                                index
+                              ].chromatographicPurity.impurityKLimit =
+                                e.target.value;
                               setFinishedPATUSP(newData);
                             }}
                           />
@@ -14641,7 +15754,8 @@ console.log(pQRData,"grid")
                             value={item.chromatographicPurity.impurityH}
                             onChange={(e) => {
                               const newData = [...finishedPATUSP];
-                              newData[index].chromatographicPurity.impurityH = e.target.value;
+                              newData[index].chromatographicPurity.impurityH =
+                                e.target.value;
                               setFinishedPATUSP(newData);
                             }}
                           />
@@ -14651,7 +15765,8 @@ console.log(pQRData,"grid")
                             value={item.chromatographicPurity.impurityD}
                             onChange={(e) => {
                               const newData = [...finishedPATUSP];
-                              newData[index].chromatographicPurity.impurityD = e.target.value;
+                              newData[index].chromatographicPurity.impurityD =
+                                e.target.value;
                               setFinishedPATUSP(newData);
                             }}
                           />
@@ -14659,9 +15774,13 @@ console.log(pQRData,"grid")
                         <td>
                           <input
                             value={item.chromatographicPurity.impurityDLimit}
+                            type="number"
                             onChange={(e) => {
                               const newData = [...finishedPATUSP];
-                              newData[index].chromatographicPurity.impurityDLimit = e.target.value;
+                              newData[
+                                index
+                              ].chromatographicPurity.impurityDLimit =
+                                e.target.value;
                               setFinishedPATUSP(newData);
                             }}
                           />
@@ -14671,27 +15790,41 @@ console.log(pQRData,"grid")
                             value={item.chromatographicPurity.impurityI}
                             onChange={(e) => {
                               const newData = [...finishedPATUSP];
-                              newData[index].chromatographicPurity.impurityI = e.target.value;
+                              newData[index].chromatographicPurity.impurityI =
+                                e.target.value;
                               setFinishedPATUSP(newData);
                             }}
                           />
                         </td>
                         <td>
                           <input
-                            value={item.chromatographicPurity.unspecifiedImpurities}
+                            value={
+                              item.chromatographicPurity.unspecifiedImpurities
+                            }
+                            type="number"
                             onChange={(e) => {
                               const newData = [...finishedPATUSP];
-                              newData[index].chromatographicPurity.unspecifiedImpurities = e.target.value;
+                              newData[
+                                index
+                              ].chromatographicPurity.unspecifiedImpurities =
+                                e.target.value;
                               setFinishedPATUSP(newData);
                             }}
                           />
                         </td>
                         <td>
                           <input
-                            value={item.chromatographicPurity.unspecifiedImpuritiesLimit}
+                            value={
+                              item.chromatographicPurity
+                                .unspecifiedImpuritiesLimit
+                            }
+                            type="number"
                             onChange={(e) => {
                               const newData = [...finishedPATUSP];
-                              newData[index].chromatographicPurity.unspecifiedImpuritiesLimit = e.target.value;
+                              newData[
+                                index
+                              ].chromatographicPurity.unspecifiedImpuritiesLimit =
+                                e.target.value;
                               setFinishedPATUSP(newData);
                             }}
                           />
@@ -14699,19 +15832,29 @@ console.log(pQRData,"grid")
                         <td>
                           <input
                             value={item.chromatographicPurity.totalImpurities}
+                            type="number"
                             onChange={(e) => {
                               const newData = [...finishedPATUSP];
-                              newData[index].chromatographicPurity.totalImpurities = e.target.value;
+                              newData[
+                                index
+                              ].chromatographicPurity.totalImpurities =
+                                e.target.value;
                               setFinishedPATUSP(newData);
                             }}
                           />
                         </td>
                         <td>
                           <input
-                            value={item.chromatographicPurity.totalImpuritiesLimit}
+                            value={
+                              item.chromatographicPurity.totalImpuritiesLimit
+                            }
+                            type="number"
                             onChange={(e) => {
                               const newData = [...finishedPATUSP];
-                              newData[index].chromatographicPurity.totalImpuritiesLimit = e.target.value;
+                              newData[
+                                index
+                              ].chromatographicPurity.totalImpuritiesLimit =
+                                e.target.value;
                               setFinishedPATUSP(newData);
                             }}
                           />
@@ -14719,6 +15862,7 @@ console.log(pQRData,"grid")
                         <td>
                           <input
                             value={item.assayByHPLC}
+                            type="number"
                             onChange={(e) => {
                               const newData = [...finishedPATUSP];
                               newData[index].assayByHPLC = e.target.value;
@@ -14729,6 +15873,7 @@ console.log(pQRData,"grid")
                         <td>
                           <input
                             value={item.assayLLimit}
+                            type="number"
                             onChange={(e) => {
                               const newData = [...finishedPATUSP];
                               newData[index].assayLLimit = e.target.value;
@@ -14739,6 +15884,7 @@ console.log(pQRData,"grid")
                         <td>
                           <input
                             value={item.assayULimit}
+                            type="number"
                             onChange={(e) => {
                               const newData = [...finishedPATUSP];
                               newData[index].assayULimit = e.target.value;
@@ -14751,7 +15897,8 @@ console.log(pQRData,"grid")
                             value={item.residualSolventByGC.methanol}
                             onChange={(e) => {
                               const newData = [...finishedPATUSP];
-                              newData[index].residualSolventByGC.methanol = e.target.value;
+                              newData[index].residualSolventByGC.methanol =
+                                e.target.value;
                               setFinishedPATUSP(newData);
                             }}
                           />
@@ -14759,9 +15906,11 @@ console.log(pQRData,"grid")
                         <td>
                           <input
                             value={item.residualSolventByGC.acetone}
+                            type="number"
                             onChange={(e) => {
                               const newData = [...finishedPATUSP];
-                              newData[index].residualSolventByGC.acetone = e.target.value;
+                              newData[index].residualSolventByGC.acetone =
+                                e.target.value;
                               setFinishedPATUSP(newData);
                             }}
                           />
@@ -14771,17 +15920,26 @@ console.log(pQRData,"grid")
                             value={item.residualSolventByGC.methyleneChloride}
                             onChange={(e) => {
                               const newData = [...finishedPATUSP];
-                              newData[index].residualSolventByGC.methyleneChloride = e.target.value;
+                              newData[
+                                index
+                              ].residualSolventByGC.methyleneChloride =
+                                e.target.value;
                               setFinishedPATUSP(newData);
                             }}
                           />
                         </td>
                         <td>
                           <input
-                            value={item.residualSolventByGC.residualSolventLimit}
+                            value={
+                              item.residualSolventByGC.residualSolventLimit
+                            }
+                            type="number"
                             onChange={(e) => {
                               const newData = [...finishedPATUSP];
-                              newData[index].residualSolventByGC.residualSolventLimit = e.target.value;
+                              newData[
+                                index
+                              ].residualSolventByGC.residualSolventLimit =
+                                e.target.value;
                               setFinishedPATUSP(newData);
                             }}
                           />
@@ -14789,9 +15947,11 @@ console.log(pQRData,"grid")
                         <td>
                           <input
                             value={item.particleSize.percent90LT10um}
+                            type="number"
                             onChange={(e) => {
                               const newData = [...finishedPATUSP];
-                              newData[index].particleSize.percent90LT10um = e.target.value;
+                              newData[index].particleSize.percent90LT10um =
+                                e.target.value;
                               setFinishedPATUSP(newData);
                             }}
                           />
@@ -14799,9 +15959,11 @@ console.log(pQRData,"grid")
                         <td>
                           <input
                             value={item.particleSize.percent90LT10umLimit}
+                            type="number"
                             onChange={(e) => {
                               const newData = [...finishedPATUSP];
-                              newData[index].particleSize.percent90LT10umLimit = e.target.value;
+                              newData[index].particleSize.percent90LT10umLimit =
+                                e.target.value;
                               setFinishedPATUSP(newData);
                             }}
                           />
@@ -14809,9 +15971,11 @@ console.log(pQRData,"grid")
                         <td>
                           <input
                             value={item.particleSize.percent995LT20um}
+                            type="number"
                             onChange={(e) => {
                               const newData = [...finishedPATUSP];
-                              newData[index].particleSize.percent995LT20um = e.target.value;
+                              newData[index].particleSize.percent995LT20um =
+                                e.target.value;
                               setFinishedPATUSP(newData);
                             }}
                           />
@@ -14819,9 +15983,13 @@ console.log(pQRData,"grid")
                         <td>
                           <input
                             value={item.particleSize.percent995LT20umLimit}
+                            type="number"
                             onChange={(e) => {
                               const newData = [...finishedPATUSP];
-                              newData[index].particleSize.percent995LT20umLimit = e.target.value;
+                              newData[
+                                index
+                              ].particleSize.percent995LT20umLimit =
+                                e.target.value;
                               setFinishedPATUSP(newData);
                             }}
                           />
@@ -14834,13 +16002,16 @@ console.log(pQRData,"grid")
             </div>
 
             <div className="gridName pt-4">
-              Finished Product Analytical Trend As per PhEur Specification (Micronised)
+              Finished Product Analytical Trend As per PhEur Specification
+              (Micronised)
             </div>
             <div>
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addFinishedPHEURRow} />
-                  <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
+                  <div className="addrowinstruction  pl-2">
+                    Add Rows by clicking on (+) icon
+                  </div>
                 </div>
                 <div className="flex gap-4 ">
                   <ExcelExportImport
@@ -14861,11 +16032,15 @@ console.log(pQRData,"grid")
                     <th rowSpan="2">Specific Rotation b/w +110° and +117° </th>
                     <th rowSpan="2">L Limit</th>
                     <th rowSpan="2">U Limit</th>
-                    <th colSpan="8">Related substence (by HPLC) as per PhEur 11.0</th>
+                    <th colSpan="8">
+                      Related substence (by HPLC) as per PhEur 11.0
+                    </th>
                     <th rowSpan="2">Water (By KF) NMT 2.0 % w/w</th>
                     <th rowSpan="2">Limit</th>
-                    <th rowSpan="2">Assay (By HPLC) b/w 97.5 % and 102.0 % w/w</th>
-                    <th rowSpan="2">Limit</th>                  
+                    <th rowSpan="2">
+                      Assay (By HPLC) b/w 97.5 % and 102.0 % w/w
+                    </th>
+                    <th rowSpan="2">Limit</th>
                     <th colSpan="4">Residual solvent By GC</th>
                     <th colSpan="4">Particle Size Malvern (By Dry Method)</th>
                   </tr>
@@ -14944,7 +16119,8 @@ console.log(pQRData,"grid")
                             value={item.relatedSubstanceHPLC.impurityB}
                             onChange={(e) => {
                               const newData = [...finishedPHEUR];
-                              newData[index].relatedSubstanceHPLC.impurityB = e.target.value;
+                              newData[index].relatedSubstanceHPLC.impurityB =
+                                e.target.value;
                               setFinishedPHEUR(newData);
                             }}
                           />
@@ -14954,7 +16130,10 @@ console.log(pQRData,"grid")
                             value={item.relatedSubstanceHPLC.impurityBLimit}
                             onChange={(e) => {
                               const newData = [...finishedPHEUR];
-                              newData[index].relatedSubstanceHPLC.impurityBLimit = e.target.value;
+                              newData[
+                                index
+                              ].relatedSubstanceHPLC.impurityBLimit =
+                                e.target.value;
                               setFinishedPHEUR(newData);
                             }}
                           />
@@ -14964,7 +16143,8 @@ console.log(pQRData,"grid")
                             value={item.relatedSubstanceHPLC.impurityC}
                             onChange={(e) => {
                               const newData = [...finishedPHEUR];
-                              newData[index].relatedSubstanceHPLC.impurityC = e.target.value;
+                              newData[index].relatedSubstanceHPLC.impurityC =
+                                e.target.value;
                               setFinishedPHEUR(newData);
                             }}
                           />
@@ -14974,27 +16154,41 @@ console.log(pQRData,"grid")
                             value={item.relatedSubstanceHPLC.impurityCLimit}
                             onChange={(e) => {
                               const newData = [...finishedPHEUR];
-                              newData[index].relatedSubstanceHPLC.impurityCLimit = e.target.value;
+                              newData[
+                                index
+                              ].relatedSubstanceHPLC.impurityCLimit =
+                                e.target.value;
                               setFinishedPHEUR(newData);
                             }}
                           />
                         </td>
                         <td>
                           <input
-                            value={item.relatedSubstanceHPLC.unspecifiedImpurities}
+                            value={
+                              item.relatedSubstanceHPLC.unspecifiedImpurities
+                            }
                             onChange={(e) => {
                               const newData = [...finishedPHEUR];
-                              newData[index].relatedSubstanceHPLC.unspecifiedImpurities = e.target.value;
+                              newData[
+                                index
+                              ].relatedSubstanceHPLC.unspecifiedImpurities =
+                                e.target.value;
                               setFinishedPHEUR(newData);
                             }}
                           />
                         </td>
                         <td>
                           <input
-                            value={item.relatedSubstanceHPLC.unspecifiedImpuritiesLimit}
+                            value={
+                              item.relatedSubstanceHPLC
+                                .unspecifiedImpuritiesLimit
+                            }
                             onChange={(e) => {
                               const newData = [...finishedPHEUR];
-                              newData[index].relatedSubstanceHPLC.unspecifiedImpuritiesLimit = e.target.value;
+                              newData[
+                                index
+                              ].relatedSubstanceHPLC.unspecifiedImpuritiesLimit =
+                                e.target.value;
                               setFinishedPHEUR(newData);
                             }}
                           />
@@ -15004,17 +16198,25 @@ console.log(pQRData,"grid")
                             value={item.relatedSubstanceHPLC.totalImpurities}
                             onChange={(e) => {
                               const newData = [...finishedPHEUR];
-                              newData[index].relatedSubstanceHPLC.totalImpurities = e.target.value;
+                              newData[
+                                index
+                              ].relatedSubstanceHPLC.totalImpurities =
+                                e.target.value;
                               setFinishedPHEUR(newData);
                             }}
                           />
                         </td>
                         <td>
                           <input
-                            value={item.relatedSubstanceHPLC.totalImpuritiesLimit}
+                            value={
+                              item.relatedSubstanceHPLC.totalImpuritiesLimit
+                            }
                             onChange={(e) => {
                               const newData = [...finishedPHEUR];
-                              newData[index].relatedSubstanceHPLC.totalImpuritiesLimit = e.target.value;
+                              newData[
+                                index
+                              ].relatedSubstanceHPLC.totalImpuritiesLimit =
+                                e.target.value;
                               setFinishedPHEUR(newData);
                             }}
                           />
@@ -15064,7 +16266,10 @@ console.log(pQRData,"grid")
                             value={item.residualSolventByCG.methyleneChloride}
                             onChange={(e) => {
                               const newData = [...finishedPHEUR];
-                              newData[index].residualSolventByCG.methyleneChloride = e.target.value;
+                              newData[
+                                index
+                              ].residualSolventByCG.methyleneChloride =
+                                e.target.value;
                               setFinishedPHEUR(newData);
                             }}
                           />
@@ -15074,7 +16279,8 @@ console.log(pQRData,"grid")
                             value={item.residualSolventByCG.methanol}
                             onChange={(e) => {
                               const newData = [...finishedPHEUR];
-                              newData[index].residualSolventByCG.methanol = e.target.value;
+                              newData[index].residualSolventByCG.methanol =
+                                e.target.value;
                               setFinishedPHEUR(newData);
                             }}
                           />
@@ -15084,17 +16290,23 @@ console.log(pQRData,"grid")
                             value={item.residualSolventByCG.acetone}
                             onChange={(e) => {
                               const newData = [...finishedPHEUR];
-                              newData[index].residualSolventByCG.acetone = e.target.value;
+                              newData[index].residualSolventByCG.acetone =
+                                e.target.value;
                               setFinishedPHEUR(newData);
                             }}
                           />
                         </td>
                         <td>
                           <input
-                            value={item.residualSolventByCG.residualSolventLimit}
+                            value={
+                              item.residualSolventByCG.residualSolventLimit
+                            }
                             onChange={(e) => {
                               const newData = [...finishedPHEUR];
-                              newData[index].residualSolventByCG.residualSolventLimit = e.target.value;
+                              newData[
+                                index
+                              ].residualSolventByCG.residualSolventLimit =
+                                e.target.value;
                               setFinishedPHEUR(newData);
                             }}
                           />
@@ -15104,7 +16316,10 @@ console.log(pQRData,"grid")
                             value={item.particleSizeMalvern.particleSize90}
                             onChange={(e) => {
                               const newData = [...finishedPHEUR];
-                              newData[index].particleSizeMalvern.particleSize90 = e.target.value;
+                              newData[
+                                index
+                              ].particleSizeMalvern.particleSize90 =
+                                e.target.value;
                               setFinishedPHEUR(newData);
                             }}
                           />
@@ -15114,7 +16329,10 @@ console.log(pQRData,"grid")
                             value={item.particleSizeMalvern.particleSize90Limit}
                             onChange={(e) => {
                               const newData = [...finishedPHEUR];
-                              newData[index].particleSizeMalvern.particleSize90Limit = e.target.value;
+                              newData[
+                                index
+                              ].particleSizeMalvern.particleSize90Limit =
+                                e.target.value;
                               setFinishedPHEUR(newData);
                             }}
                           />
@@ -15124,22 +16342,29 @@ console.log(pQRData,"grid")
                             value={item.particleSizeMalvern.particleSize995}
                             onChange={(e) => {
                               const newData = [...finishedPHEUR];
-                              newData[index].particleSizeMalvern.particleSize995 = e.target.value;
+                              newData[
+                                index
+                              ].particleSizeMalvern.particleSize995 =
+                                e.target.value;
                               setFinishedPHEUR(newData);
                             }}
                           />
                         </td>
                         <td>
                           <input
-                            value={item.particleSizeMalvern.particleSize995Limit}
+                            value={
+                              item.particleSizeMalvern.particleSize995Limit
+                            }
                             onChange={(e) => {
                               const newData = [...finishedPHEUR];
-                              newData[index].particleSizeMalvern.particleSize995Limit = e.target.value;
+                              newData[
+                                index
+                              ].particleSizeMalvern.particleSize995Limit =
+                                e.target.value;
                               setFinishedPHEUR(newData);
                             }}
                           />
                         </td>
-                    
                       </tr>
                     );
                   })}
