@@ -29,14 +29,32 @@ const HighchartsChart = ({
     setSelectedOption(event.target.value);
   };
   console.log(highchartData, "chart");
+  // const processData = () => {
+  //   return highchartData?.map((record) => ({
+  //     x: parseInt(record["Batch No."].split("_")[1]),
+  //     // x: parseInt(record["Batch No."]),
+  //     y: parseInt(record["Observed Value"]),
+  //   }));
+  // };
   const processData = () => {
-    return highchartData?.map((record) => ({
-      x: parseInt(record["Batch No."].split("_")[1]),
-      // x: parseInt(record["Batch No."]),
-      y: parseInt(record["Observed Value"]),
-    }));
+    return highchartData?.map((record) => {
+      const batchNo = record["Batch No."];
+  
+      // Extract the numeric part from the 'Batch No.'
+      const batchNumber = batchNo?.replace(/\D+/g, ''); // Get only numeric part
+  
+      if (batchNumber) {
+        return {
+          originalBatchNo: batchNo, // Keep the full batch number with alphabets
+          x: parseInt(batchNumber, 10), // Use the numeric part for the x-axis plotting
+          y: parseInt(record["Observed Value"], 10), // Ensure 'Observed Value' is an integer
+        };
+      }
+      return null;
+    }).filter(Boolean); // Filter out any null values
   };
-
+  
+  
   const data = processData() || [];
   const options = {
     chart: {
@@ -62,16 +80,16 @@ const HighchartsChart = ({
           fontWeight: "bold",
         },
       },
-      // categories: highchartData?.map((record) => `BatchNo ${record["Batch No."]}`),
-      categories: highchartData?.map((record) => ` ${record["Batch No."]}`),
+      categories: data?.map((point) => point.originalBatchNo), // Show the full batch no (with alphabets) on x-axis
       tickInterval: 1,
       step: 1, // Show every data point
       labels: {
         formatter: function () {
-          return this.value; // Customize label format if needed
+          return this.value; // Display the batch number with alphabets
         },
       },
     },
+    
     yAxis: {
       title: {
         text: yHeading,
