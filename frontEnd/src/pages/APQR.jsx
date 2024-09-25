@@ -262,6 +262,27 @@ export default function APQR() {
     ActualInputinKg5400078000Kg: "actualInput",
     ActualOutputinKgExpectedOutputRange5400078000Kg: "actualOutput",
     ActualInputinKg5000057000Kg: "actualInput",
+    //     SNo
+    // BatchNo
+    // CriticalParameter:01NitrogengaspurgingshouldbecarriedoutinadvanceinAcetonideformationreactionpartI
+    // CriticalParameter:02InBrominationreactionpartII,slowagitationisrequiredduringthereaction
+    // CriticalParameter:03EpoxydationreactionpartIIIrequiredArgongasbubblingtoremoveoxygencontentfromthereactionmass
+    // CriticalParameter:01DuringhandlingofHydrofluoricAcidusenecessaryprotectiveacidproofmask,dressandshoes
+    // CriticalParameter:02AdditionofthematerialshouldbedoneportionwiseduringreactionStdQtyinkg5000057000
+    // CriticalParameter:03Duringadditionofmaterial,exothermicityappears,socontrolthetemperature40°Cto30°CActualTemperatureºC40°Cto30°C
+    // LowerLimit
+    // UpperLimit
+    // CriticalParameter:04Temperatureshouldbewithinspecifiedrangeof20°Cto25°CfortimelycompletionofreactionandcontrolledimpuritylevelActualTemperatureºC20°Cto25°C
+    // CriticalParameter:01additionofSodiumHydroxideandMethanolSolutioninreactionmass,reactionmassandNaOH/MethanolsolutionbothshouldbeoxygenfreebyArgonbubbling
+    // CriticalParameter:02:AdjustpHbetween5060byaddingadequatequantityofGlacialaceticacid
+    // ActualQtofGlacialAceticacid
+    // ActualpHbetween5060
+    // LowerLimit
+    // UpperLimit
+    // CriticalParameter:01Thereactionmassshouldberefluxedfor35hourattemperaturebetween55to60°C
+    // ActualTimeInhrs
+    // ActualTemperature°C55°Cto60°C
+    // CriticalParameter:02Crystallizationoffinishedproductshouldbeat0°Cto5°CActualTemperature°C0°Cto5°C
   };
 
   const setimportedData = (data, gridNo) => {
@@ -340,6 +361,58 @@ export default function APQR() {
         setYieldTOS4([...yieldTOS4, ...processedData]);
         break;
       case 105:
+        console.log(processedData);
+        setYieldTOS5([...yieldTOS5, ...processedData]);
+        break;
+      case 106:
+        console.log(processedData);
+        setYieldTOS5([...yieldTOS5, ...processedData]);
+        break;
+      case 107:
+        console.log(processedData);
+        setYieldTOS5([...yieldTOS5, ...processedData]);
+        break;
+      case 108:
+        console.log(processedData);
+        setTrendingOCPPS1([...trendingOCPPS1, ...processedData]);
+        break;
+      case 109:
+        console.log(processedData);
+        setTrendingOCPPS2([...trendingOCPPS2, ...processedData]);
+        break;
+      case 110:
+        console.log(processedData);
+        setTrendingOCPPS3([...trendingOCPPS3, ...processedData]);
+        break;
+      case 111:
+        console.log(processedData);
+        setTrendingOCPPS4([...trendingOCPPS4, ...processedData]);
+        break;
+      case 112:
+        console.log(processedData);
+        setTrendingOIPIPS1([...trendingOIPIPS1, ...processedData]);
+        break;
+      case 113:
+        console.log(processedData);
+        setTrendingOIPIPS2([...trendingOIPIPS2, ...processedData]);
+        break;
+      case 114:
+        console.log(processedData);
+        setTrendingOIPIPS3([...trendingOIPIPS3, ...processedData]);
+        break;
+      case 115:
+        console.log(processedData);
+        setTrendingOIPIPS4([...trendingOIPIPS4, ...processedData]);
+        break;
+      case 116:
+        console.log(processedData);
+        setTrendingOIPIPS5([...trendingOIPIPS5, ...processedData]);
+        break;
+      case 117:
+        console.log(processedData);
+        setYieldTOS5([...yieldTOS5, ...processedData]);
+        break;
+      case 118:
         console.log(processedData);
         setYieldTOS5([...yieldTOS5, ...processedData]);
         break;
@@ -12736,9 +12809,12 @@ console.log(pQRData,"grid")
                 </div>
                 <div className="flex gap-4 ">
                   <ExcelExportImport
-                    data={currentRPQRN}
+                    data={trendingOCPPS1}
                     setimportedData={setimportedData}
-                    fileName="currentRPQRN.xlsx"
+                    fileName="trendingOCPPS1.xlsx"
+                    gridNo={108}
+                    sheetNumber={8}
+                    headerRowNumber={1}
                   />
                 </div>
               </div>
@@ -12825,9 +12901,12 @@ console.log(pQRData,"grid")
                 </div>
                 <div className="flex gap-4 ">
                   <ExcelExportImport
-                    data={currentRPQRN}
+                    data={trendingOCPPS2}
                     setimportedData={setimportedData}
-                    fileName="currentRPQRN.xlsx"
+                    fileName="trendingOCPPS2.xlsx"
+                    gridNo={109}
+                    sheetNumber={9}
+                    headerRowNumber={1}
                   />
                 </div>
               </div>
@@ -12957,9 +13036,12 @@ console.log(pQRData,"grid")
                 </div>
                 <div className="flex gap-4 ">
                   <ExcelExportImport
-                    data={currentRPQRN}
+                    data={trendingOCPPS3}
                     setimportedData={setimportedData}
-                    fileName="currentRPQRN.xlsx"
+                    fileName="trendingOCPPS3.xlsx"
+                    gridNo={110}
+                    sheetNumber={10}
+                    headerRowNumber={1}
                   />
                 </div>
               </div>
@@ -13069,9 +13151,12 @@ console.log(pQRData,"grid")
                 </div>
                 <div className="flex gap-4 ">
                   <ExcelExportImport
-                    data={currentRPQRN}
+                    data={trendingOCPPS4}
                     setimportedData={setimportedData}
-                    fileName="currentRPQRN.xlsx"
+                    fileName="trendingOCPPS4.xlsx"
+                    gridNo={111}
+                    sheetNumber={11}
+                    headerRowNumber={1}
                   />
                 </div>
               </div>
@@ -13206,9 +13291,12 @@ console.log(pQRData,"grid")
                 </div>
                 <div className="flex gap-4 ">
                   <ExcelExportImport
-                    data={currentRPQRN}
+                    data={trendingOIPIPS1}
                     setimportedData={setimportedData}
-                    fileName="currentRPQRN.xlsx"
+                    fileName="trendingOIPIPS1.xlsx"
+                    gridNo={112}
+                    sheetNumber={12}
+                    headerRowNumber={1}
                   />
                 </div>
               </div>
@@ -13465,9 +13553,12 @@ console.log(pQRData,"grid")
                 </div>
                 <div className="flex gap-4 ">
                   <ExcelExportImport
-                    data={currentRPQRN}
+                    data={trendingOIPIPS2}
                     setimportedData={setimportedData}
-                    fileName="currentRPQRN.xlsx"
+                    fileName="trendingOIPIPS2.xlsx"
+                    gridNo={113}
+                    sheetNumber={13}
+                    headerRowNumber={1}
                   />
                 </div>
               </div>
@@ -13683,9 +13774,12 @@ console.log(pQRData,"grid")
                 </div>
                 <div className="flex gap-4 ">
                   <ExcelExportImport
-                    data={currentRPQRN}
+                    data={trendingOIPIPS3}
                     setimportedData={setimportedData}
-                    fileName="currentRPQRN.xlsx"
+                    fileName="trendingOIPIPS3.xlsx"
+                    gridNo={114}
+                    sheetNumber={14}
+                    headerRowNumber={1}
                   />
                 </div>
               </div>
@@ -13731,9 +13825,9 @@ console.log(pQRData,"grid")
                           <input
                             value={item.limit}
                             onChange={(e) => {
-                              const newData = [...trendingOIPIPS1];
+                              const newData = [...trendingOIPIPS3];
                               newData[index].limit = e.target.value;
-                              setTrendingOIPIPS1(newData);
+                              setTrendingOIPIPS3(newData);
                             }}
                           />
                         </td>
@@ -13741,9 +13835,9 @@ console.log(pQRData,"grid")
                           <input
                             value={item.chromatographicPurity}
                             onChange={(e) => {
-                              const newData = [...trendingOIPIPS1];
+                              const newData = [...trendingOIPIPS3];
                               newData[index].chromatographicPurity = e.target.value;
-                              setTrendingOIPIPS1(newData);
+                              setTrendingOIPIPS3(newData);
                             }}
                           />
                         </td>
@@ -13811,9 +13905,9 @@ console.log(pQRData,"grid")
                           <input
                             value={item.composite.limit}
                             onChange={(e) => {
-                              const newData = [...trendingOIPIPS2];
-                              newData[index].composite.unreactedTca = e.target.value;
-                              setTrendingOIPIPS2(newData);
+                              const newData = [...trendingOIPIPS3];
+                              newData[index].composite.limit = e.target.value;
+                              setTrendingOIPIPS3(newData);
                             }}
                           />
                         </td>{" "}
@@ -13835,9 +13929,12 @@ console.log(pQRData,"grid")
                 </div>
                 <div className="flex gap-4 ">
                   <ExcelExportImport
-                    data={currentRPQRN}
+                    data={trendingOIPIPS4}
                     setimportedData={setimportedData}
-                    fileName="currentRPQRN.xlsx"
+                    fileName="trendingOIPIPS4.xlsx"
+                    gridNo={115}
+                    sheetNumber={15}
+                    headerRowNumber={1}
                   />
                 </div>
               </div>
@@ -13914,9 +14011,9 @@ console.log(pQRData,"grid")
                           <input
                             value={item.limit}
                             onChange={(e) => {
-                              const newData = [...trendingOIPIPS1];
+                              const newData = [...trendingOIPIPS4];
                               newData[index].limit = e.target.value;
-                              setTrendingOIPIPS1(newData);
+                              setTrendingOIPIPS4(newData);
                             }}
                           />
                         </td>
@@ -13964,9 +14061,10 @@ console.log(pQRData,"grid")
                           <input
                             value={item.composite.relatedSubstanceByHPLC.impurityKNMT}
                             onChange={(e) => {
-                              const newData = [...trendingOIPIPS1];
-                              newData[index].impurityKNMT = e.target.value;
-                              setTrendingOIPIPS3(newData);
+                              const newData = [...trendingOIPIPS4];
+                              newData[index].composite.relatedSubstanceByHPLC.impurityKNMT =
+                                e.target.value;
+                              setTrendingOIPIPS4(newData);
                             }}
                           />
                         </td>
@@ -13974,9 +14072,10 @@ console.log(pQRData,"grid")
                           <input
                             value={item.composite.relatedSubstanceByHPLC.limitNMT}
                             onChange={(e) => {
-                              const newData = [...trendingOIPIPS1];
-                              newData[index].limitNMT = e.target.value;
-                              setTrendingOIPIPS3(newData);
+                              const newData = [...trendingOIPIPS4];
+                              newData[index].composite.relatedSubstanceByHPLC.limitNMT =
+                                e.target.value;
+                              setTrendingOIPIPS4(newData);
                             }}
                           />
                         </td>{" "}
@@ -14061,10 +14160,10 @@ console.log(pQRData,"grid")
                           <input
                             value={item.composite.relatedSubstanceByHPLC.limitTotal}
                             onChange={(e) => {
-                              const newData = [...trendingOIPIPS1];
+                              const newData = [...trendingOIPIPS4];
                               newData[index].composite.relatedSubstanceByHPLC.limitTotal =
                                 e.target.value;
-                              setTrendingOIPIPS1(newData);
+                              setTrendingOIPIPS4(newData);
                             }}
                           />
                         </td>{" "}
@@ -14072,10 +14171,10 @@ console.log(pQRData,"grid")
                           <input
                             value={item.composite.relatedSubstanceByHPLC.dryingHours}
                             onChange={(e) => {
-                              const newData = [...trendingOIPIPS1];
+                              const newData = [...trendingOIPIPS4];
                               newData[index].composite.relatedSubstanceByHPLC.dryingHours =
                                 e.target.value;
-                              setTrendingOIPIPS1(newData);
+                              setTrendingOIPIPS4(newData);
                             }}
                           />
                         </td>
@@ -14087,7 +14186,7 @@ console.log(pQRData,"grid")
             </div>
 
             <div className="gridName pt-4">
-              Trending of In-process & Intermediate Parameter of U3TCAg - Stage-V{" "}
+              Trending of In-process & Intermediate Parameter of U3TCAg - Stage-V
             </div>
             <div>
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
@@ -14097,9 +14196,12 @@ console.log(pQRData,"grid")
                 </div>
                 <div className="flex gap-4 ">
                   <ExcelExportImport
-                    data={currentRPQRN}
+                    data={trendingOIPIPS5}
                     setimportedData={setimportedData}
-                    fileName="currentRPQRN.xlsx"
+                    fileName="trendingOIPIPS5.xlsx"
+                    gridNo={116}
+                    sheetNumber={16}
+                    headerRowNumber={1}
                   />
                 </div>
               </div>
@@ -14163,9 +14265,9 @@ console.log(pQRData,"grid")
                           <input
                             value={item.limit}
                             onChange={(e) => {
-                              const newData = [...trendingOIPIPS4];
+                              const newData = [...trendingOIPIPS5];
                               newData[index].limit = e.target.value;
-                              setTrendingOIPIPS4(newData);
+                              setTrendingOIPIPS5(newData);
                             }}
                           />
                         </td>
@@ -14307,39 +14409,31 @@ console.log(pQRData,"grid")
                 </div>
                 <div className="flex gap-4 ">
                   <ExcelExportImport
-                    data={currentRPQRN}
+                    data={yieldTOS5}
                     setimportedData={setimportedData}
-                    fileName="currentRPQRN.xlsx"
+                    fileName="yieldTOS5.xlsx"
+                    gridNo={117}
+                    sheetNumber={17}
+                    headerRowNumber={1}
                   />
                 </div>
               </div>
               <table>
                 <thead>
                   <tr>
-                    <th rowSpan={3}>S. No.</th>
-                    <th rowSpan={3}>Batch No.</th>
-                    <th rowSpan={3}>Unreacted Diolone Acetate NMT 0.5 %</th>
-                    <th rowSpan={3}>Limit</th>
-                    <th rowSpan={3}>Chromatographic Purity (for information)</th>
-                    <th rowSpan={3}>Unreacted TCA Step – I B NMT 0.5 % </th>
-                    <th rowSpan={3}>Purity (for information)</th>
-                    <th rowSpan={3}>pH 6.0 – 6.5</th>
-                    <th rowSpan={3}>L Limit</th>
-                    <th rowSpan={3}>U Limit</th>
-                    <th rowSpan={3}>pH 6.0 – 6.5</th>
-                    <th rowSpan={3}>L Limit</th>
-                    <th rowSpan={3}>U Limit</th>
-                    <th rowSpan={3}>Water content NMT 1.0 % w/w</th>
-                    <th rowSpan={3}>Limit</th>
-                    <th rowSpan={1} colSpan={5}>
-                      Composite{" "}
-                    </th>
-                  </tr>
-                  <tr>
-                    <th colSpan={1} rowSpan={2}>
-                      Loss on drying NMT 1.0 % w/w
-                    </th>
-                    <th colSpan={10}>Chromatographic purity by HPLC as per USP</th>
+                    {" "}
+                    <th rowSpan="2">S. No.</th>
+                    <th rowSpan="2">Batch No.</th>
+                    <th rowSpan="2">Specific Rotation b/w +118° and +130° </th>
+                    <th rowSpan="2">L Limit</th>
+                    <th rowSpan="2">U Limit</th>
+                    <th rowSpan="2">Loss on Drying NMT 1.5 % w/w</th>
+                    <th colSpan="11">Chromatographic purity by HPLC as per USP</th>
+                    <th rowSpan="2">Assay (By HPLC) b/w 97.0 % and 102.0 % w/w </th>
+                    <th rowSpan="2">L Limit</th>
+                    <th rowSpan="2">U Limit</th>
+                    <th colSpan="4">Residual solvent By GC</th>
+                    <th colSpan="4">Particle Size</th>
                   </tr>
                   <tr>
                     <th>Limit</th>
@@ -14347,11 +14441,20 @@ console.log(pQRData,"grid")
                     <th>Limit</th>
                     <th>Impurity H NMT 0.10%</th>
                     <th>Impurity D NMT 0.10%</th>
+                    <th>Limit</th>
                     <th>Impurity I NMT 0.10%</th>
                     <th>Unspecified Impurities NMT 0.10%</th>
                     <th>Limit</th>
                     <th>Total Impurities NMT 0.5%</th>
                     <th>Limit</th>
+                    <th>Methanol NMT 1500 ppm</th>
+                    <th>Acetone NMT 2000 ppm</th>
+                    <th>Methylene chloride NMT 400 ppm</th>
+                    <th>Limit</th>
+                    <th>{"90%  < 10 μm"}</th>
+                    <th>Limit</th>
+                    <th>{"99.5% < 20 μm"}</th>
+                    <th>Limit</th>s
                   </tr>
                 </thead>
                 <tbody>
@@ -14651,9 +14754,12 @@ console.log(pQRData,"grid")
                 </div>
                 <div className="flex gap-4 ">
                   <ExcelExportImport
-                    data={currentRPQRN}
+                    data={yieldTOS5}
                     setimportedData={setimportedData}
-                    fileName="currentRPQRN.xlsx"
+                    fileName="yieldTOS5.xlsx"
+                    gridNo={118}
+                    sheetNumber={18}
+                    headerRowNumber={1}
                   />
                 </div>
               </div>
