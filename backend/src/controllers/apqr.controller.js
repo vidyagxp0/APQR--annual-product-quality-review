@@ -283,14 +283,14 @@ export const createApqr = async (req, res) => {
     // Create audit trail
     const data = await FormAuditTrail.create(
       {
-        pqrId: newAPQR.pqrId,
-        changed_by: userId || 2,
+        pqrId: newAPQR.pqrId ,
+        changed_by: userId ,
         previous_value: null,
-        new_value: newAPQR.pqrId,
+        new_value: newAPQR.pqrId || "new",
         previous_status: "Not Applicable",
         new_status: "Under Initiation",
         field_name: "Not Applicable",
-        comments: comments, //for e-signAuthentication
+        comments: comments ||"comment", //for e-signAuthentication
         action: "APQR Created",
       },
       { transaction: t }
