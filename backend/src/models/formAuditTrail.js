@@ -19,7 +19,7 @@ export const FormAuditTrail = sequelize.define("FormAuditTrail", {
   },
   changed_by: {
     type: DataTypes.INTEGER,
-    allowNull: false,
+    allowNull: true,
     references: {
       model: User,
       key: "user_id",
@@ -39,11 +39,11 @@ export const FormAuditTrail = sequelize.define("FormAuditTrail", {
   },
   previous_status: {
     type: DataTypes.STRING,
-    allowNull: false,
+    allowNull: true,
   },
   new_status: {
     type: DataTypes.STRING,
-    allowNull: false,
+    allowNull: true,
   },
   comments: {
     type: DataTypes.STRING,
