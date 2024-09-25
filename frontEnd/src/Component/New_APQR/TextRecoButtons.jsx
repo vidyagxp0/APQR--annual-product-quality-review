@@ -1,7 +1,7 @@
 import React from "react";
 import { FaMicrophone } from "react-icons/fa";
 import { AiFillSound } from "react-icons/ai";
-
+//Voice Recognition Logic
 // TextRecognition Component (Speech-to-Text)
 const TextRecognition = ({ setPQRData, updateField }) => {
   const handleSpeechToText = (updater) => {

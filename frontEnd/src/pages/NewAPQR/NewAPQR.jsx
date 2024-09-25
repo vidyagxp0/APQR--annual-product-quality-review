@@ -8,8 +8,8 @@ import { useNavigate } from "react-router-dom";
 import ExcelExportImport from "../../Component/ImportExportExcel";
 
 import axios from "axios";
-import { FaMicrophone } from "react-icons/fa";
-import { AiFillSound } from "react-icons/ai";
+// import { FaMicrophone } from "react-icons/fa";
+// import { AiFillSound } from "react-icons/ai";
 import ActiveTab from "../../Component/New_APQR/ActiveTab";
 import {
   TextRecognition,
@@ -21,17 +21,43 @@ export default function NewAPQR() {
   const [tab, setTab] = useState("GI");
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [productCodes, setProductCodes] = useState([""]);
+
   const [manufacturingStage, setManufacturingStage] = useState([
     { productName: "", sFGCode: "", fGCode: "" },
   ]);
   const Stageheaders = ["Product Name", "SFG Code", "FG Code"];
   const Stagefields = ["productName", "sFGCode", "fGCode"];
+
   const [manufacturingSAPS, setManufacturingSAPS] = useState([
     { productName: "", batchCode: "", sFGCode: "", remarks: "" },
   ]);
   const SAPSheaders = ["Product Name", "Batch Code", "SFG Code", "Remarks"];
   const SAPSfields = ["productName", "batchCode", "sFGCode", "remarks"];
-  const [rawMRS, setRawMRS] = useState([]);
+
+  const [rawMRS, setRawMRS] = useState([
+    {
+      materialCode: "",
+      materialName: "",
+      ARNo: "",
+      reasonOfRejection: "",
+      description: "",
+    },
+  ]);
+  const rawMRSheaders = [
+    "SI. No.",
+    "Material Code",
+    "Material Name",
+    "Lot No./ A.R. No.",
+    "Reason for Rejection",
+    "Description",
+  ];
+  const rawMRSfields = [
+    "materialCode",
+    "materialName",
+    "ARNo",
+    "reasonOfRejection",
+    "description",
+  ];
   const [packingMRS, setPackingMRS] = useState([]);
   const [reviewOfASL, setReviewOfASL] = useState([]);
   const [expiredRMD, setExpiredRMD] = useState([]);
@@ -2464,7 +2490,7 @@ export default function NewAPQR() {
                   </div>
                 </div>
 
-                <table>
+                {/* <table>
                   <thead>
                     <tr>
                       <th>SI. No.</th>
@@ -2535,7 +2561,13 @@ export default function NewAPQR() {
                       );
                     })}
                   </tbody>
-                </table>
+                </table> */}
+                <CommonTable
+                  headers={rawMRSheaders}
+                  data={rawMRS}
+                  setData={setRawMRS}
+                  fields={rawMRSfields}
+                />
                 <div>
                   <h4 className="gridName mt-5">Summary</h4>
                   <TinyEditor

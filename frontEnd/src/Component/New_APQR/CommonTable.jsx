@@ -19,6 +19,8 @@ const CommonTable = ({ headers, data, setData, fields }) => {
       <tbody>
         {data.map((item, index) => (
           <tr key={index}>
+            {headers.includes("SI. No.") && <td>{index + 1}</td>}
+
             {fields.map((field, idx) => (
               <td key={idx}>
                 <input

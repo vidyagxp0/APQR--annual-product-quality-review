@@ -1,5 +1,5 @@
 import React from "react";
-
+//Active Tabs
 const ActiveTab = ({ label, value, activeTab, setTab }) => {
   return (
     <div
