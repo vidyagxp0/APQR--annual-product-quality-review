@@ -816,8 +816,29 @@ export default function APQR() {
       previewMC: previewMC,
       previewLabI: previewLabI,
       currentLabI: currentLabI,
+      yieldTOS1:yieldTOS1,
+      yieldTOS2:yieldTOS2,
+      yieldTOS3:yieldTOS3,
+      yieldTOS4:yieldTOS4,
+      yieldTOS5:yieldTOS5,
+      trendingOCPPS1:trendingOCPPS1,
+      trendingOCPPS2:trendingOCPPS2,
+      trendingOCPPS3:trendingOCPPS3,
+      trendingOCPPS4:trendingOCPPS4,
+      trendingOIPIPS1:trendingOIPIPS1,
+      trendingOIPIPS2:trendingOIPIPS2,
+      trendingOIPIPS3:trendingOIPIPS3,
+      trendingOIPIPS4:trendingOIPIPS4,
+      trendingOIPIPS5:trendingOIPIPS5,
     });
   }, [
+    yieldTOS1,
+    yieldTOS2,
+    yieldTOS3,
+    yieldTOS4,
+    yieldTOS5,
+    trendingOIPIPS1,trendingOIPIPS2,trendingOIPIPS3,trendingOIPIPS4,trendingOIPIPS5,
+    trendingOCPPS1,trendingOCPPS2,trendingOCPPS3,trendingOCPPS4,
     productCodes,
     manufacturingStage,
     manufacturingSAPS,
@@ -990,7 +1011,7 @@ export default function APQR() {
     currentLabI,
     previewLabI,
   ]);
-
+console.log(pQRData,"grid")
   useEffect(() => {}, [tiny1]);
   const addManufacturingStageRow = () => {
     const newRow = {
