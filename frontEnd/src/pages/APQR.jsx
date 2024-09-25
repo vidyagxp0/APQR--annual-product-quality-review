@@ -198,20 +198,23 @@ export default function APQR() {
   const [currentLabI, setCurrentLabI] = useState([]);
   const [previewLabI, setPreviewLabI] = useState([]);
 
-  useEffect(() => {}, [reviewODSTR]);
+  // useEffect(() => {}, [reviewODSTR]);
   const sanitizeKey = (key) => {
-    return key.replace(/\s+/g, "").replace(/[\n\r]+/g, "");
+    return key
+      .replace(/\s+/g, "")
+      .replace(/[\n\r]+/g, "")
+      .replace(/\s+/g, "") // Remove spaces
+      .replace(/[()]/g, "") // Remove brackets
+      .replace(/\./g, "") // Remove dots
+      .replace(/%/g, "Percent") // Replace % with Percent
+      .replace(/[-–]/g, ""); // Remove hyphens and en dashes;
   };
+
+  console.log(sanitizeKey("Mfg. Month"));
 
   const trimValue = (value) => {
     return typeof value === "string" ? value.trim() : value;
   };
-
-  const api_key =
-    "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";
-
-  const useDarkMode = window.matchMedia("(prefers-color-scheme: dark)").matches;
-  const isSmallScreen = window.matchMedia("(max-width: 1023.5px)").matches;
 
   const processData = (data, keyMapping) => {
     return data.map((item) => {
@@ -229,22 +232,36 @@ export default function APQR() {
     });
   };
 
-  // Define the key mapping
   const keyMapping = {
     ProductName: "productName",
     SFGCode: "sFGCode",
     FGCode: "fGCode",
     BatchNo: "batchNo",
     Testsparameter: "testsParameter",
-    // testsParameter: "Tests parameter",
     LSL: "LSL",
     USL: "USL",
     LCL: "LCL",
     UCL: "UCL",
     ObservedValue: "observedValue",
-    // observedValue: "Observed Value",
     CompliesDoesNotComplies: "compliesNotComplies",
-    // compliesNotComplies: "Complies/Does Not Complies",
+    // yield trend
+    SrNo: "srNo",
+    Mfgmonth: "mfgMonth",
+    MfgMonth: "mfgMonth",
+    ActualInputin50000KgKg: "actualInput",
+    ActualOutputinExpectedOutputRange5000057000Kg: "actualOutput",
+    LLimit: "lLimit",
+    ULimit: "uLimit",
+    YieldPercent: "yield",
+
+    ActualOutputinKgExpectedoutputrange3300038000Kg: "actualOutput",
+    InputInKg3400040000Kg: "actualInput",
+    ActualOutputinKgExpectedoutputrange3400040000Kg: "actualOutput",
+    InputInKg37500kg50000kg: "actualInput",
+    ActualOutputinKgExpectedoutputrange3750050000Kg: "actualOutput",
+    ActualInputinKg5400078000Kg: "actualInput",
+    ActualOutputinKgExpectedOutputRange5400078000Kg: "actualOutput",
+    ActualInputinKg5000057000Kg: "actualInput",
   };
 
   const setimportedData = (data, gridNo) => {
@@ -303,6 +320,28 @@ export default function APQR() {
         break;
       case 3:
         setManufacturingStage([...manufacturingStage, ...processedData]);
+        break;
+
+      //TCA APQR
+      case 101:
+        console.log(processedData);
+        setYieldTOS1([...yieldTOS1, ...processedData]);
+        break;
+      case 102:
+        console.log(processedData);
+        setYieldTOS2([...yieldTOS2, ...processedData]);
+        break;
+      case 103:
+        console.log(processedData);
+        setYieldTOS3([...yieldTOS3, ...processedData]);
+        break;
+      case 104:
+        console.log(processedData);
+        setYieldTOS4([...yieldTOS4, ...processedData]);
+        break;
+      case 105:
+        console.log(processedData);
+        setYieldTOS5([...yieldTOS5, ...processedData]);
         break;
     }
     // setManufacturingStage([...manufacturingStage, ...processedData]);
@@ -12088,9 +12127,12 @@ export default function APQR() {
                 </div>
                 <div className="flex gap-4 ">
                   <ExcelExportImport
-                    data={currentRPQRN}
+                    data={yieldTOS1}
                     setimportedData={setimportedData}
-                    fileName="currentRPQRN.xlsx"
+                    fileName="yieldTOS1.xlsx"
+                    gridNo={101}
+                    sheetNumber={1}
+                    headerRowNumber={1}
                   />
                 </div>
               </div>
@@ -12100,7 +12142,7 @@ export default function APQR() {
                     <th>SI. No.</th>
                     <th>Batch No.</th>
                     <th>Mfg. Month</th>
-                    <th>Actual Input in (50.000 Kg)Kg</th>
+                    <th>Actual Input in (50.000 Kg)</th>
                     <th>Actual Output in Expected Output Range (50.000 – 57.000Kg)</th>
                     <th>L Limit</th>
                     <th>U Limit</th>
@@ -12202,9 +12244,12 @@ export default function APQR() {
                 </div>
                 <div className="flex gap-4 ">
                   <ExcelExportImport
-                    data={currentRPQRN}
+                    data={yieldTOS2}
                     setimportedData={setimportedData}
-                    fileName="currentRPQRN.xlsx"
+                    fileName="yieldTOS2.xlsx"
+                    gridNo={102}
+                    sheetNumber={2}
+                    headerRowNumber={1}
                   />
                 </div>
               </div>
@@ -12214,8 +12259,8 @@ export default function APQR() {
                     <th>SI. No.</th>
                     <th>Batch No.</th>
                     <th>Mfg. Month</th>
-                    <th>Actual Input in (50.000 Kg)Kg</th>
-                    <th>Actual Output in Expected Output Range (50.000 – 57.000Kg)</th>
+                    <th>Actual Input in (50.000 -57000)Kg</th>
+                    <th>Actual Output in Kg Expected Output Range (54.000 – 78.000 Kg)</th>
                     <th>L Limit</th>
                     <th>U Limit</th>
                     <th>Yield %</th>
@@ -12316,9 +12361,12 @@ export default function APQR() {
                 </div>
                 <div className="flex gap-4 ">
                   <ExcelExportImport
-                    data={currentRPQRN}
+                    data={yieldTOS3}
                     setimportedData={setimportedData}
-                    fileName="currentRPQRN.xlsx"
+                    fileName="yieldTOS3.xlsx"
+                    gridNo={103}
+                    sheetNumber={3}
+                    headerRowNumber={1}
                   />
                 </div>
               </div>
@@ -12328,8 +12376,8 @@ export default function APQR() {
                     <th>SI. No.</th>
                     <th>Batch No.</th>
                     <th>Mfg. Month</th>
-                    <th>Actual Input in (50.000 Kg)Kg</th>
-                    <th>Actual Output in Expected Output Range (50.000 – 57.000Kg)</th>
+                    <th>Actual Input in (54.000 – 78.000 Kg)</th>
+                    <th>Actual Output in Kg Expected output range (37.500 – 50.000Kg)</th>
                     <th>L Limit</th>
                     <th>U Limit</th>
                     <th>Yield %</th>
@@ -12430,9 +12478,12 @@ export default function APQR() {
                 </div>
                 <div className="flex gap-4 ">
                   <ExcelExportImport
-                    data={currentRPQRN}
+                    data={yieldTOS4}
                     setimportedData={setimportedData}
-                    fileName="currentRPQRN.xlsx"
+                    fileName="yieldTOS4.xlsx"
+                    gridNo={104}
+                    sheetNumber={4}
+                    headerRowNumber={1}
                   />
                 </div>
               </div>
@@ -12442,8 +12493,8 @@ export default function APQR() {
                     <th>SI. No.</th>
                     <th>Batch No.</th>
                     <th>Mfg. Month</th>
-                    <th>Actual Input in (50.000 Kg)Kg</th>
-                    <th>Actual Output in Expected Output Range (50.000 – 57.000Kg)</th>
+                    <th>Input (In Kg) (37.500 kg – 50.000 kg)</th>
+                    <th>Actual Output in Kg Expected output range (34.000 – 40.000Kg)</th>
                     <th>L Limit</th>
                     <th>U Limit</th>
                     <th>Yield %</th>
@@ -12544,9 +12595,12 @@ export default function APQR() {
                 </div>
                 <div className="flex gap-4 ">
                   <ExcelExportImport
-                    data={currentRPQRN}
+                    data={yieldTOS5}
                     setimportedData={setimportedData}
-                    fileName="currentRPQRN.xlsx"
+                    fileName="yieldTOS5.xlsx"
+                    gridNo={105}
+                    sheetNumber={5}
+                    headerRowNumber={1}
                   />
                 </div>
               </div>
@@ -12556,8 +12610,8 @@ export default function APQR() {
                     <th>SI. No.</th>
                     <th>Batch No.</th>
                     <th>Mfg. Month</th>
-                    <th>Actual Input in (50.000 Kg)Kg</th>
-                    <th>Actual Output in Expected Output Range (50.000 – 57.000Kg)</th>
+                    <th>Input (In Kg) (34.000 – 40.000 Kg)</th>
+                    <th>Actual Output in Kg Expected output range (33.000– 38.000Kg)</th>
                     <th>L Limit</th>
                     <th>U Limit</th>
                     <th>Yield %</th>
@@ -13656,9 +13710,9 @@ export default function APQR() {
                           <input
                             value={item.limit}
                             onChange={(e) => {
-                              const newData = [...trendingOIPIPS1];
+                              const newData = [...trendingOIPIPS3];
                               newData[index].limit = e.target.value;
-                              setTrendingOIPIPS1(newData);
+                              setTrendingOIPIPS3(newData);
                             }}
                           />
                         </td>
@@ -13666,9 +13720,9 @@ export default function APQR() {
                           <input
                             value={item.chromatographicPurity}
                             onChange={(e) => {
-                              const newData = [...trendingOIPIPS1];
+                              const newData = [...trendingOIPIPS3];
                               newData[index].chromatographicPurity = e.target.value;
-                              setTrendingOIPIPS1(newData);
+                              setTrendingOIPIPS3(newData);
                             }}
                           />
                         </td>
@@ -13736,9 +13790,9 @@ export default function APQR() {
                           <input
                             value={item.composite.limit}
                             onChange={(e) => {
-                              const newData = [...trendingOIPIPS2];
-                              newData[index].composite.unreactedTca = e.target.value;
-                              setTrendingOIPIPS2(newData);
+                              const newData = [...trendingOIPIPS3];
+                              newData[index].composite.limit = e.target.value;
+                              setTrendingOIPIPS3(newData);
                             }}
                           />
                         </td>{" "}
@@ -13839,9 +13893,9 @@ export default function APQR() {
                           <input
                             value={item.limit}
                             onChange={(e) => {
-                              const newData = [...trendingOIPIPS1];
+                              const newData = [...trendingOIPIPS4];
                               newData[index].limit = e.target.value;
-                              setTrendingOIPIPS1(newData);
+                              setTrendingOIPIPS4(newData);
                             }}
                           />
                         </td>
@@ -13889,9 +13943,10 @@ export default function APQR() {
                           <input
                             value={item.composite.relatedSubstanceByHPLC.impurityKNMT}
                             onChange={(e) => {
-                              const newData = [...trendingOIPIPS1];
-                              newData[index].impurityKNMT = e.target.value;
-                              setTrendingOIPIPS3(newData);
+                              const newData = [...trendingOIPIPS4];
+                              newData[index].composite.relatedSubstanceByHPLC.impurityKNMT =
+                                e.target.value;
+                              setTrendingOIPIPS4(newData);
                             }}
                           />
                         </td>
@@ -13899,9 +13954,10 @@ export default function APQR() {
                           <input
                             value={item.composite.relatedSubstanceByHPLC.limitNMT}
                             onChange={(e) => {
-                              const newData = [...trendingOIPIPS1];
-                              newData[index].limitNMT = e.target.value;
-                              setTrendingOIPIPS3(newData);
+                              const newData = [...trendingOIPIPS4];
+                              newData[index].composite.relatedSubstanceByHPLC.limitNMT =
+                                e.target.value;
+                              setTrendingOIPIPS4(newData);
                             }}
                           />
                         </td>{" "}
@@ -13986,10 +14042,10 @@ export default function APQR() {
                           <input
                             value={item.composite.relatedSubstanceByHPLC.limitTotal}
                             onChange={(e) => {
-                              const newData = [...trendingOIPIPS1];
+                              const newData = [...trendingOIPIPS4];
                               newData[index].composite.relatedSubstanceByHPLC.limitTotal =
                                 e.target.value;
-                              setTrendingOIPIPS1(newData);
+                              setTrendingOIPIPS4(newData);
                             }}
                           />
                         </td>{" "}
@@ -13997,10 +14053,10 @@ export default function APQR() {
                           <input
                             value={item.composite.relatedSubstanceByHPLC.dryingHours}
                             onChange={(e) => {
-                              const newData = [...trendingOIPIPS1];
+                              const newData = [...trendingOIPIPS4];
                               newData[index].composite.relatedSubstanceByHPLC.dryingHours =
                                 e.target.value;
-                              setTrendingOIPIPS1(newData);
+                              setTrendingOIPIPS4(newData);
                             }}
                           />
                         </td>
@@ -14088,9 +14144,9 @@ export default function APQR() {
                           <input
                             value={item.limit}
                             onChange={(e) => {
-                              const newData = [...trendingOIPIPS4];
+                              const newData = [...trendingOIPIPS5];
                               newData[index].limit = e.target.value;
-                              setTrendingOIPIPS4(newData);
+                              setTrendingOIPIPS5(newData);
                             }}
                           />
                         </td>
@@ -14240,31 +14296,18 @@ export default function APQR() {
               </div>
               <table>
                 <thead>
-                  <tr>
-                    <th rowSpan={3}>S. No.</th>
-                    <th rowSpan={3}>Batch No.</th>
-                    <th rowSpan={3}>Unreacted Diolone Acetate NMT 0.5 %</th>
-                    <th rowSpan={3}>Limit</th>
-                    <th rowSpan={3}>Chromatographic Purity (for information)</th>
-                    <th rowSpan={3}>Unreacted TCA Step – I B NMT 0.5 % </th>
-                    <th rowSpan={3}>Purity (for information)</th>
-                    <th rowSpan={3}>pH 6.0 – 6.5</th>
-                    <th rowSpan={3}>L Limit</th>
-                    <th rowSpan={3}>U Limit</th>
-                    <th rowSpan={3}>pH 6.0 – 6.5</th>
-                    <th rowSpan={3}>L Limit</th>
-                    <th rowSpan={3}>U Limit</th>
-                    <th rowSpan={3}>Water content NMT 1.0 % w/w</th>
-                    <th rowSpan={3}>Limit</th>
-                    <th rowSpan={1} colSpan={5}>
-                      Composite{" "}
-                    </th>
-                  </tr>
-                  <tr>
-                    <th colSpan={1} rowSpan={2}>
-                      Loss on drying NMT 1.0 % w/w
-                    </th>
-                    <th colSpan={10}>Chromatographic purity by HPLC as per USP</th>
+          <tr>                    <th rowSpan="2">S. No.</th>
+                    <th rowSpan="2">Batch No.</th>
+                    <th rowSpan="2">Specific Rotation b/w +118° and +130° </th>
+                    <th rowSpan="2">L Limit</th>
+                    <th rowSpan="2">U Limit</th>
+                    <th rowSpan="2">Loss on Drying NMT 1.5 % w/w</th>
+                    <th colSpan="11">Chromatographic purity by HPLC as per USP</th>
+                    <th rowSpan="2">Assay (By HPLC) b/w 97.0 % and 102.0 % w/w </th>
+                    <th rowSpan="2">L Limit</th>
+                    <th rowSpan="2">U Limit</th>
+                    <th colSpan="4">Residual solvent By GC</th>
+                    <th colSpan="4">Particle Size</th>
                   </tr>
                   <tr>
                     <th>Limit</th>
@@ -14272,12 +14315,23 @@ export default function APQR() {
                     <th>Limit</th>
                     <th>Impurity H NMT 0.10%</th>
                     <th>Impurity D NMT 0.10%</th>
+                    <th>Limit</th>
                     <th>Impurity I NMT 0.10%</th>
                     <th>Unspecified Impurities NMT 0.10%</th>
                     <th>Limit</th>
                     <th>Total Impurities NMT 0.5%</th>
                     <th>Limit</th>
-                  </tr>
+
+                    <th>Methanol NMT 1500 ppm</th>
+                    <th>Acetone NMT 2000 ppm</th>
+                    <th>Methylene chloride NMT 400 ppm</th>
+                    <th>Limit</th>
+
+                    <th>{"90%  < 10 μm"}</th>
+                    <th>Limit</th>
+                    <th>{"99.5% < 20 μm"}</th>
+                    <th>Limit</th>
+                  s</tr>
                 </thead>
                 <tbody>
                   {yieldTOS1.map((item, index) => {
