@@ -19052,7 +19052,6 @@ export default function APQR() {
                           <input
                             value={item.criticalParameter2}
                             type="number"
-
                             onChange={(e) => {
                               const newData = [...gridDatas.trendingOCP2];
                               newData[index].criticalParameter2 =
@@ -19068,7 +19067,6 @@ export default function APQR() {
                           <input
                             value={item.criticalParameter3}
                             type="number"
-
                             onChange={(e) => {
                               const newData = [...gridDatas.trendingOCP2];
                               newData[index].criticalParameter3 =
@@ -19084,7 +19082,6 @@ export default function APQR() {
                           <input
                             value={item.lLimit}
                             type="number"
-
                             onChange={(e) => {
                               const newData = [...gridDatas.trendingOCP2];
                               newData[index].lLimit = e.target.value;
@@ -19099,7 +19096,6 @@ export default function APQR() {
                           <input
                             value={item.uLimit}
                             type="number"
-
                             onChange={(e) => {
                               const newData = [...gridDatas.trendingOCP2];
                               newData[index].uLimit = e.target.value;
@@ -19114,7 +19110,6 @@ export default function APQR() {
                           <input
                             value={item.criticalParameter4}
                             type="number"
-
                             onChange={(e) => {
                               const newData = [...gridDatas.trendingOCP2];
                               newData[index].criticalParameter4 =
@@ -19230,7 +19225,6 @@ export default function APQR() {
                           <input
                             value={item.criticalParameter2.actualQuantity}
                             type="number"
-
                             onChange={(e) => {
                               const newData = [...gridDatas.trendingOCP3];
                               newData[index].criticalParameter2.actualQuantity =
@@ -19247,7 +19241,6 @@ export default function APQR() {
                           <input
                             value={item.criticalParameter2.actualpH}
                             type="number"
-
                             onChange={(e) => {
                               const newData = [...gridDatas.trendingOCP3];
                               newData[index].criticalParameter2.actualpH =
@@ -19263,7 +19256,6 @@ export default function APQR() {
                           <input
                             value={item.lLimit}
                             type="number"
-
                             onChange={(e) => {
                               const newData = [...gridDatas.trendingOCP3];
                               newData[index].lLimit = e.target.value;
@@ -19278,7 +19270,6 @@ export default function APQR() {
                           <input
                             value={item.uLimit}
                             type="number"
-
                             onChange={(e) => {
                               const newData = [...gridDatas.trendingOCP3];
                               newData[index].uLimit = e.target.value;
@@ -19375,7 +19366,6 @@ export default function APQR() {
                           <input
                             value={item.criticalParameter1.actualTemprature}
                             type="number"
-
                             onChange={(e) => {
                               const newData = [...gridDatas.trendingOCP4];
                               newData[
@@ -19393,7 +19383,6 @@ export default function APQR() {
                           <input
                             value={item.criticalParameter1.lowerLimit}
                             type="number"
-
                             onChange={(e) => {
                               const newData = [...gridDatas.trendingOCP4];
                               newData[index].criticalParameter1.lowerLimit =
@@ -19409,7 +19398,6 @@ export default function APQR() {
                           <input
                             value={item.criticalParameter1.upperLimit}
                             type="number"
-
                             onChange={(e) => {
                               const newData = [...gridDatas.trendingOCP4];
                               newData[index].criticalParameter1.upperLimit =
@@ -19425,7 +19413,6 @@ export default function APQR() {
                           <input
                             value={item.criticalParameter2}
                             type="number"
-
                             onChange={(e) => {
                               const newData = [...gridDatas.trendingOCP4];
                               newData[index].criticalParameter2 =
@@ -19441,7 +19428,6 @@ export default function APQR() {
                           <input
                             value={item.lowerLimit}
                             type="number"
-
                             onChange={(e) => {
                               const newData = [...gridDatas.trendingOCP4];
                               newData[index].lowerLimit = e.target.value;
@@ -19456,7 +19442,6 @@ export default function APQR() {
                           <input
                             value={item.upperLimit}
                             type="number"
-
                             onChange={(e) => {
                               const newData = [...gridDatas.trendingOCP4];
                               newData[index].upperLimit = e.target.value;
@@ -19592,7 +19577,6 @@ export default function APQR() {
                           <input
                             value={item.unreactedDiolone}
                             type="number"
-
                             onChange={(e) => {
                               const newData = [...gridDatas.trendingOIPIPS1];
                               newData[index].unreactedDiolone = e.target.value;
@@ -19989,7 +19973,6 @@ export default function APQR() {
                         <td>
                           <input
                             value={item.limit}
-                            type="number"
                             type="number"
                             onChange={(e) => {
                               const newData = [...gridDatas.trendingOIPIPS2];
