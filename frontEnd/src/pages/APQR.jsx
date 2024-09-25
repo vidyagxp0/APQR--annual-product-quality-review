@@ -93,6 +93,8 @@ export default function APQR() {
   const [trendingOIPIPS3, setTrendingOIPIPS3] = useState([]);
   const [trendingOIPIPS4, setTrendingOIPIPS4] = useState([]);
   const [trendingOIPIPS5, setTrendingOIPIPS5] = useState([]);
+  const [finishedPATUSP,setFinishedPATUSP]=useState([]);
+  const [finishedPHEUR,setFinishedPHEUR]=useState([]);
   const [tiny1, setTiny1] = useState("");
   const [tiny2, setTiny2] = useState("");
   const [tiny3, setTiny3] = useState("");
@@ -905,6 +907,8 @@ export default function APQR() {
       trendingOIPIPS3:trendingOIPIPS3,
       trendingOIPIPS4:trendingOIPIPS4,
       trendingOIPIPS5:trendingOIPIPS5,
+      finishedPHEUR:finishedPHEUR,
+      finishedPATUSP:finishedPATUSP,
     });
   }, [
     yieldTOS1,
@@ -913,7 +917,7 @@ export default function APQR() {
     yieldTOS4,
     yieldTOS5,
     trendingOIPIPS1,trendingOIPIPS2,trendingOIPIPS3,trendingOIPIPS4,trendingOIPIPS5,
-    trendingOCPPS1,trendingOCPPS2,trendingOCPPS3,trendingOCPPS4,
+    trendingOCPPS1,trendingOCPPS2,trendingOCPPS3,trendingOCPPS4,finishedPHEUR,finishedPATUSP,
     productCodes,
     manufacturingStage,
     manufacturingSAPS,
@@ -2242,6 +2246,90 @@ console.log(pQRData,"grid")
       },
     };
     setTrendingOIPIPS5([...trendingOIPIPS5, newRow]);
+  };
+
+  const addFinishedPATUSPRow = () => {
+    const newRow = {
+      sNo: "",
+      batchNo: "",
+      specificRotation: "",
+      lLimit: "",
+      uLimit: "",
+      lossOnDrying: "",
+      chromatographicPurity: {
+        limit: "",
+        impurityK: "",
+        impurityKLimit: "",
+        impurityH: "",
+        impurityD: "",
+        impurityDLimit: "",
+        impurityI: "",
+        unspecifiedImpurities: "",
+        unspecifiedImpuritiesLimit: "",
+        totalImpurities: "",
+        totalImpuritiesLimit: "",
+      },
+      assayByHPLC: "",
+      assayLLimit: "",
+      assayULimit: "",
+      residualSolventByGC: {
+        methanol: "",
+        acetone: "",
+        methyleneChloride: "",
+        residualSolventLimit: "",
+      },
+      particleSize: {
+        percent90LT10um: "",
+        percent90LT10umLimit: "",
+        percent995LT20um: "",
+        percent995LT20umLimit: "",
+      },
+    };
+
+    setFinishedPATUSP(
+      [...finishedPATUSP, newRow],
+    );
+  };
+
+  const addFinishedPHEURRow = () => {
+    const newRow = {
+      sNo: "",
+      batchNo: "",
+      specificRotation: "",
+      lLimit: "",
+      uLimit: "",
+      relatedSubstanceHPLC: {
+        impurityB: "",
+        impurityBLimit: "",
+        impurityC: "",
+        impurityCLimit: "",
+        unspecifiedImpurities: "",
+        unspecifiedImpuritiesLimit: "",
+        totalImpurities: "",
+        totalImpuritiesLimit: "",
+      },
+      waterKF: "", 
+      waterKFLimit: "",
+      assay: "",
+      assayLimit: "",
+      residualSolventByCG: {
+        methyleneChloride: "", 
+        methanol: "", 
+        acetone: "",
+        residualSolventLimit: "",
+      },
+      particleSizeMalvern: {
+        particleSize90: "", 
+        particleSize90Limit: "",
+        particleSize995: "",
+        particleSize995Limit: ""
+      }, 
+    };
+  
+    setFinishedPHEUR(
+     
+   [...finishedPHEUR, newRow],
+    );
   };
   const addUnitOperation3Row = () => {
     const newRow = {
@@ -14406,7 +14494,7 @@ console.log(pQRData,"grid")
             <div>
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
-                  <MdNoteAdd onClick={addYieldTOS1Row} />
+                  <MdNoteAdd onClick={addFinishedPATUSPRow} />
                   <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
                 </div>
                 <div className="flex gap-4 ">
@@ -14456,11 +14544,11 @@ console.log(pQRData,"grid")
                     <th>{"90%  < 10 μm"}</th>
                     <th>Limit</th>
                     <th>{"99.5% < 20 μm"}</th>
-                    <th>Limit</th>s
+                    <th>Limit</th>
                   </tr>
                 </thead>
                 <tbody>
-                  {yieldTOS1.map((item, index) => {
+                  {finishedPATUSP.map((item, index) => {
                     return (
                       <tr key={index}>
                         <td>{index + 1}</td>
@@ -14469,41 +14557,19 @@ console.log(pQRData,"grid")
                           <input
                             value={item.batchNo}
                             onChange={(e) => {
-                              const newData = [...yieldTOS1];
+                              const newData = [...finishedPATUSP];
                               newData[index].batchNo = e.target.value;
-                              setYieldTOS1(newData);
+                              setFinishedPATUSP(newData);
                             }}
                           />
                         </td>
                         <td>
                           <input
-                            value={item.mfgMonth}
+                            value={item.specificRotation}
                             onChange={(e) => {
-                              const newData = [...yieldTOS1];
-                              newData[index].mfgMonth = e.target.value;
-                              setYieldTOS1(newData);
-                            }}
-                          />
-                        </td>
-
-                        <td>
-                          <input
-                            value={item.actualInput}
-                            onChange={(e) => {
-                              const newData = [...yieldTOS1];
-                              newData[index].actualInput = e.target.value;
-                              setYieldTOS1(newData);
-                            }}
-                          />
-                        </td>
-
-                        <td>
-                          <input
-                            value={item.actualOutput}
-                            onChange={(e) => {
-                              const newData = [...yieldTOS1];
-                              newData[index].actualOutput = e.target.value;
-                              setYieldTOS1(newData);
+                              const newData = [...finishedPATUSP];
+                              newData[index].specificRotation = e.target.value;
+                              setFinishedPATUSP(newData);
                             }}
                           />
                         </td>
@@ -14512,229 +14578,251 @@ console.log(pQRData,"grid")
                           <input
                             value={item.lLimit}
                             onChange={(e) => {
-                              const newData = [...yieldTOS1];
+                              const newData = [...finishedPATUSP];
                               newData[index].lLimit = e.target.value;
-                              setYieldTOS1(newData);
+                              setFinishedPATUSP(newData);
                             }}
                           />
                         </td>
+
                         <td>
                           <input
                             value={item.uLimit}
                             onChange={(e) => {
-                              const newData = [...yieldTOS1];
+                              const newData = [...finishedPATUSP];
                               newData[index].uLimit = e.target.value;
-                              setYieldTOS1(newData);
+                              setFinishedPATUSP(newData);
+                            }}
+                          />
+                        </td>
+
+                        <td>
+                          <input
+                            value={item.lossOnDrying}
+                            onChange={(e) => {
+                              const newData = [...finishedPATUSP];
+                              newData[index].lossOnDrying = e.target.value;
+                              setFinishedPATUSP(newData);
                             }}
                           />
                         </td>
                         <td>
                           <input
-                            value={item.yield}
+                            value={item.chromatographicPurity.limit}
                             onChange={(e) => {
-                              const newData = [...yieldTOS1];
-                              newData[index].yield = e.target.value;
-                              setYieldTOS1(newData);
+                              const newData = [...finishedPATUSP];
+                              newData[index].chromatographicPurity.limit = e.target.value;
+                              setFinishedPATUSP(newData);
                             }}
                           />
                         </td>
                         <td>
                           <input
-                            value={item.yield}
+                            value={item.chromatographicPurity.impurityK}
                             onChange={(e) => {
-                              const newData = [...yieldTOS1];
-                              newData[index].yield = e.target.value;
-                              setYieldTOS1(newData);
+                              const newData = [...finishedPATUSP];
+                              newData[index].chromatographicPurity.impurityK = e.target.value;
+                              setFinishedPATUSP(newData);
                             }}
                           />
                         </td>
                         <td>
                           <input
-                            value={item.yield}
+                            value={item.chromatographicPurity.impurityKLimit}
                             onChange={(e) => {
-                              const newData = [...yieldTOS1];
-                              newData[index].yield = e.target.value;
-                              setYieldTOS1(newData);
+                              const newData = [...finishedPATUSP];
+                              newData[index].chromatographicPurity.impurityKLimit = e.target.value;
+                              setFinishedPATUSP(newData);
                             }}
                           />
                         </td>
                         <td>
                           <input
-                            value={item.yield}
+                            value={item.chromatographicPurity.impurityH}
                             onChange={(e) => {
-                              const newData = [...yieldTOS1];
-                              newData[index].yield = e.target.value;
-                              setYieldTOS1(newData);
+                              const newData = [...finishedPATUSP];
+                              newData[index].chromatographicPurity.impurityH = e.target.value;
+                              setFinishedPATUSP(newData);
                             }}
                           />
                         </td>
                         <td>
                           <input
-                            value={item.yield}
+                            value={item.chromatographicPurity.impurityD}
                             onChange={(e) => {
-                              const newData = [...yieldTOS1];
-                              newData[index].yield = e.target.value;
-                              setYieldTOS1(newData);
+                              const newData = [...finishedPATUSP];
+                              newData[index].chromatographicPurity.impurityD = e.target.value;
+                              setFinishedPATUSP(newData);
                             }}
                           />
                         </td>
                         <td>
                           <input
-                            value={item.yield}
+                            value={item.chromatographicPurity.impurityDLimit}
                             onChange={(e) => {
-                              const newData = [...yieldTOS1];
-                              newData[index].yield = e.target.value;
-                              setYieldTOS1(newData);
+                              const newData = [...finishedPATUSP];
+                              newData[index].chromatographicPurity.impurityDLimit = e.target.value;
+                              setFinishedPATUSP(newData);
                             }}
                           />
                         </td>
                         <td>
                           <input
-                            value={item.yield}
+                            value={item.chromatographicPurity.impurityI}
                             onChange={(e) => {
-                              const newData = [...yieldTOS1];
-                              newData[index].yield = e.target.value;
-                              setYieldTOS1(newData);
+                              const newData = [...finishedPATUSP];
+                              newData[index].chromatographicPurity.impurityI = e.target.value;
+                              setFinishedPATUSP(newData);
                             }}
                           />
                         </td>
                         <td>
                           <input
-                            value={item.yield}
+                            value={item.chromatographicPurity.unspecifiedImpurities}
                             onChange={(e) => {
-                              const newData = [...yieldTOS1];
-                              newData[index].yield = e.target.value;
-                              setYieldTOS1(newData);
+                              const newData = [...finishedPATUSP];
+                              newData[index].chromatographicPurity.unspecifiedImpurities = e.target.value;
+                              setFinishedPATUSP(newData);
                             }}
                           />
                         </td>
                         <td>
                           <input
-                            value={item.yield}
+                            value={item.chromatographicPurity.unspecifiedImpuritiesLimit}
                             onChange={(e) => {
-                              const newData = [...yieldTOS1];
-                              newData[index].yield = e.target.value;
-                              setYieldTOS1(newData);
+                              const newData = [...finishedPATUSP];
+                              newData[index].chromatographicPurity.unspecifiedImpuritiesLimit = e.target.value;
+                              setFinishedPATUSP(newData);
                             }}
                           />
                         </td>
                         <td>
                           <input
-                            value={item.yield}
+                            value={item.chromatographicPurity.totalImpurities}
                             onChange={(e) => {
-                              const newData = [...yieldTOS1];
-                              newData[index].yield = e.target.value;
-                              setYieldTOS1(newData);
+                              const newData = [...finishedPATUSP];
+                              newData[index].chromatographicPurity.totalImpurities = e.target.value;
+                              setFinishedPATUSP(newData);
                             }}
                           />
                         </td>
                         <td>
                           <input
-                            value={item.yield}
+                            value={item.chromatographicPurity.totalImpuritiesLimit}
                             onChange={(e) => {
-                              const newData = [...yieldTOS1];
-                              newData[index].yield = e.target.value;
-                              setYieldTOS1(newData);
+                              const newData = [...finishedPATUSP];
+                              newData[index].chromatographicPurity.totalImpuritiesLimit = e.target.value;
+                              setFinishedPATUSP(newData);
                             }}
                           />
                         </td>
                         <td>
                           <input
-                            value={item.yield}
+                            value={item.assayByHPLC}
                             onChange={(e) => {
-                              const newData = [...yieldTOS1];
-                              newData[index].yield = e.target.value;
-                              setYieldTOS1(newData);
+                              const newData = [...finishedPATUSP];
+                              newData[index].assayByHPLC = e.target.value;
+                              setFinishedPATUSP(newData);
                             }}
                           />
                         </td>
                         <td>
                           <input
-                            value={item.yield}
+                            value={item.assayLLimit}
                             onChange={(e) => {
-                              const newData = [...yieldTOS1];
-                              newData[index].yield = e.target.value;
-                              setYieldTOS1(newData);
+                              const newData = [...finishedPATUSP];
+                              newData[index].assayLLimit = e.target.value;
+                              setFinishedPATUSP(newData);
                             }}
                           />
                         </td>
                         <td>
                           <input
-                            value={item.yield}
+                            value={item.assayULimit}
                             onChange={(e) => {
-                              const newData = [...yieldTOS1];
-                              newData[index].yield = e.target.value;
-                              setYieldTOS1(newData);
+                              const newData = [...finishedPATUSP];
+                              newData[index].assayULimit = e.target.value;
+                              setFinishedPATUSP(newData);
                             }}
                           />
                         </td>
                         <td>
                           <input
-                            value={item.yield}
+                            value={item.residualSolventByGC.methanol}
                             onChange={(e) => {
-                              const newData = [...yieldTOS1];
-                              newData[index].yield = e.target.value;
-                              setYieldTOS1(newData);
+                              const newData = [...finishedPATUSP];
+                              newData[index].residualSolventByGC.methanol = e.target.value;
+                              setFinishedPATUSP(newData);
                             }}
                           />
                         </td>
                         <td>
                           <input
-                            value={item.yield}
+                            value={item.residualSolventByGC.acetone}
                             onChange={(e) => {
-                              const newData = [...yieldTOS1];
-                              newData[index].yield = e.target.value;
-                              setYieldTOS1(newData);
+                              const newData = [...finishedPATUSP];
+                              newData[index].residualSolventByGC.acetone = e.target.value;
+                              setFinishedPATUSP(newData);
                             }}
                           />
                         </td>
                         <td>
                           <input
-                            value={item.yield}
+                            value={item.residualSolventByGC.methyleneChloride}
                             onChange={(e) => {
-                              const newData = [...yieldTOS1];
-                              newData[index].yield = e.target.value;
-                              setYieldTOS1(newData);
+                              const newData = [...finishedPATUSP];
+                              newData[index].residualSolventByGC.methyleneChloride = e.target.value;
+                              setFinishedPATUSP(newData);
                             }}
                           />
                         </td>
                         <td>
                           <input
-                            value={item.yield}
+                            value={item.residualSolventByGC.residualSolventLimit}
                             onChange={(e) => {
-                              const newData = [...yieldTOS1];
-                              newData[index].yield = e.target.value;
-                              setYieldTOS1(newData);
+                              const newData = [...finishedPATUSP];
+                              newData[index].residualSolventByGC.residualSolventLimit = e.target.value;
+                              setFinishedPATUSP(newData);
                             }}
                           />
                         </td>
                         <td>
                           <input
-                            value={item.yield}
+                            value={item.particleSize.percent90LT10um}
                             onChange={(e) => {
-                              const newData = [...yieldTOS1];
-                              newData[index].yield = e.target.value;
-                              setYieldTOS1(newData);
+                              const newData = [...finishedPATUSP];
+                              newData[index].particleSize.percent90LT10um = e.target.value;
+                              setFinishedPATUSP(newData);
                             }}
                           />
                         </td>
                         <td>
                           <input
-                            value={item.yield}
+                            value={item.particleSize.percent90LT10umLimit}
                             onChange={(e) => {
-                              const newData = [...yieldTOS1];
-                              newData[index].yield = e.target.value;
-                              setYieldTOS1(newData);
+                              const newData = [...finishedPATUSP];
+                              newData[index].particleSize.percent90LT10umLimit = e.target.value;
+                              setFinishedPATUSP(newData);
                             }}
                           />
                         </td>
                         <td>
                           <input
-                            value={item.yield}
+                            value={item.particleSize.percent995LT20um}
                             onChange={(e) => {
-                              const newData = [...yieldTOS1];
-                              newData[index].yield = e.target.value;
-                              setYieldTOS1(newData);
+                              const newData = [...finishedPATUSP];
+                              newData[index].particleSize.percent995LT20um = e.target.value;
+                              setFinishedPATUSP(newData);
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.particleSize.percent995LT20umLimit}
+                            onChange={(e) => {
+                              const newData = [...finishedPATUSP];
+                              newData[index].particleSize.percent995LT20umLimit = e.target.value;
+                              setFinishedPATUSP(newData);
                             }}
                           />
                         </td>
@@ -14751,7 +14839,7 @@ console.log(pQRData,"grid")
             <div>
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
-                  <MdNoteAdd onClick={addYieldTOS1Row} />
+                  <MdNoteAdd onClick={addFinishedPHEURRow} />
                   <div className="addrowinstruction  pl-2">Add Rows by clicking on (+) icon</div>
                 </div>
                 <div className="flex gap-4 ">
@@ -14777,8 +14865,7 @@ console.log(pQRData,"grid")
                     <th rowSpan="2">Water (By KF) NMT 2.0 % w/w</th>
                     <th rowSpan="2">Limit</th>
                     <th rowSpan="2">Assay (By HPLC) b/w 97.5 % and 102.0 % w/w</th>
-                    <th rowSpan="2">Limit</th>
-                    <th rowspan="2">Limit</th>
+                    <th rowSpan="2">Limit</th>                  
                     <th colSpan="4">Residual solvent By GC</th>
                     <th colSpan="4">Particle Size Malvern (By Dry Method)</th>
                   </tr>
@@ -14804,7 +14891,7 @@ console.log(pQRData,"grid")
                   </tr>
                 </thead>
                 <tbody>
-                  {yieldTOS1.map((item, index) => {
+                  {finishedPHEUR.map((item, index) => {
                     return (
                       <tr key={index}>
                         <td>{index + 1}</td>
@@ -14813,41 +14900,19 @@ console.log(pQRData,"grid")
                           <input
                             value={item.batchNo}
                             onChange={(e) => {
-                              const newData = [...yieldTOS1];
+                              const newData = [...finishedPHEUR];
                               newData[index].batchNo = e.target.value;
-                              setYieldTOS1(newData);
+                              setFinishedPHEUR(newData);
                             }}
                           />
                         </td>
                         <td>
                           <input
-                            value={item.mfgMonth}
+                            value={item.specificRotation}
                             onChange={(e) => {
-                              const newData = [...yieldTOS1];
-                              newData[index].mfgMonth = e.target.value;
-                              setYieldTOS1(newData);
-                            }}
-                          />
-                        </td>
-
-                        <td>
-                          <input
-                            value={item.actualInput}
-                            onChange={(e) => {
-                              const newData = [...yieldTOS1];
-                              newData[index].actualInput = e.target.value;
-                              setYieldTOS1(newData);
-                            }}
-                          />
-                        </td>
-
-                        <td>
-                          <input
-                            value={item.actualOutput}
-                            onChange={(e) => {
-                              const newData = [...yieldTOS1];
-                              newData[index].actualOutput = e.target.value;
-                              setYieldTOS1(newData);
+                              const newData = [...finishedPHEUR];
+                              newData[index].specificRotation = e.target.value;
+                              setFinishedPHEUR(newData);
                             }}
                           />
                         </td>
@@ -14856,212 +14921,225 @@ console.log(pQRData,"grid")
                           <input
                             value={item.lLimit}
                             onChange={(e) => {
-                              const newData = [...yieldTOS1];
+                              const newData = [...finishedPHEUR];
                               newData[index].lLimit = e.target.value;
-                              setYieldTOS1(newData);
+                              setFinishedPHEUR(newData);
                             }}
                           />
                         </td>
+
                         <td>
                           <input
                             value={item.uLimit}
                             onChange={(e) => {
-                              const newData = [...yieldTOS1];
+                              const newData = [...finishedPHEUR];
                               newData[index].uLimit = e.target.value;
-                              setYieldTOS1(newData);
+                              setFinishedPHEUR(newData);
+                            }}
+                          />
+                        </td>
+
+                        <td>
+                          <input
+                            value={item.relatedSubstanceHPLC.impurityB}
+                            onChange={(e) => {
+                              const newData = [...finishedPHEUR];
+                              newData[index].relatedSubstanceHPLC.impurityB = e.target.value;
+                              setFinishedPHEUR(newData);
                             }}
                           />
                         </td>
                         <td>
                           <input
-                            value={item.yield}
+                            value={item.relatedSubstanceHPLC.impurityBLimit}
                             onChange={(e) => {
-                              const newData = [...yieldTOS1];
-                              newData[index].yield = e.target.value;
-                              setYieldTOS1(newData);
+                              const newData = [...finishedPHEUR];
+                              newData[index].relatedSubstanceHPLC.impurityBLimit = e.target.value;
+                              setFinishedPHEUR(newData);
                             }}
                           />
                         </td>
                         <td>
                           <input
-                            value={item.yield}
+                            value={item.relatedSubstanceHPLC.impurityC}
                             onChange={(e) => {
-                              const newData = [...yieldTOS1];
-                              newData[index].yield = e.target.value;
-                              setYieldTOS1(newData);
+                              const newData = [...finishedPHEUR];
+                              newData[index].relatedSubstanceHPLC.impurityC = e.target.value;
+                              setFinishedPHEUR(newData);
                             }}
                           />
                         </td>
                         <td>
                           <input
-                            value={item.yield}
+                            value={item.relatedSubstanceHPLC.impurityCLimit}
                             onChange={(e) => {
-                              const newData = [...yieldTOS1];
-                              newData[index].yield = e.target.value;
-                              setYieldTOS1(newData);
+                              const newData = [...finishedPHEUR];
+                              newData[index].relatedSubstanceHPLC.impurityCLimit = e.target.value;
+                              setFinishedPHEUR(newData);
                             }}
                           />
                         </td>
                         <td>
                           <input
-                            value={item.yield}
+                            value={item.relatedSubstanceHPLC.unspecifiedImpurities}
                             onChange={(e) => {
-                              const newData = [...yieldTOS1];
-                              newData[index].yield = e.target.value;
-                              setYieldTOS1(newData);
+                              const newData = [...finishedPHEUR];
+                              newData[index].relatedSubstanceHPLC.unspecifiedImpurities = e.target.value;
+                              setFinishedPHEUR(newData);
                             }}
                           />
                         </td>
                         <td>
                           <input
-                            value={item.yield}
+                            value={item.relatedSubstanceHPLC.unspecifiedImpuritiesLimit}
                             onChange={(e) => {
-                              const newData = [...yieldTOS1];
-                              newData[index].yield = e.target.value;
-                              setYieldTOS1(newData);
+                              const newData = [...finishedPHEUR];
+                              newData[index].relatedSubstanceHPLC.unspecifiedImpuritiesLimit = e.target.value;
+                              setFinishedPHEUR(newData);
                             }}
                           />
                         </td>
                         <td>
                           <input
-                            value={item.yield}
+                            value={item.relatedSubstanceHPLC.totalImpurities}
                             onChange={(e) => {
-                              const newData = [...yieldTOS1];
-                              newData[index].yield = e.target.value;
-                              setYieldTOS1(newData);
+                              const newData = [...finishedPHEUR];
+                              newData[index].relatedSubstanceHPLC.totalImpurities = e.target.value;
+                              setFinishedPHEUR(newData);
                             }}
                           />
                         </td>
                         <td>
                           <input
-                            value={item.yield}
+                            value={item.relatedSubstanceHPLC.totalImpuritiesLimit}
                             onChange={(e) => {
-                              const newData = [...yieldTOS1];
-                              newData[index].yield = e.target.value;
-                              setYieldTOS1(newData);
+                              const newData = [...finishedPHEUR];
+                              newData[index].relatedSubstanceHPLC.totalImpuritiesLimit = e.target.value;
+                              setFinishedPHEUR(newData);
                             }}
                           />
                         </td>
                         <td>
                           <input
-                            value={item.yield}
+                            value={item.waterKF}
                             onChange={(e) => {
-                              const newData = [...yieldTOS1];
-                              newData[index].yield = e.target.value;
-                              setYieldTOS1(newData);
+                              const newData = [...finishedPHEUR];
+                              newData[index].waterKF = e.target.value;
+                              setFinishedPHEUR(newData);
                             }}
                           />
                         </td>
                         <td>
                           <input
-                            value={item.yield}
+                            value={item.waterKFLimit}
                             onChange={(e) => {
-                              const newData = [...yieldTOS1];
-                              newData[index].yield = e.target.value;
-                              setYieldTOS1(newData);
+                              const newData = [...finishedPHEUR];
+                              newData[index].waterKFLimit = e.target.value;
+                              setFinishedPHEUR(newData);
                             }}
                           />
                         </td>
                         <td>
                           <input
-                            value={item.yield}
+                            value={item.assay}
                             onChange={(e) => {
-                              const newData = [...yieldTOS1];
-                              newData[index].yield = e.target.value;
-                              setYieldTOS1(newData);
+                              const newData = [...finishedPHEUR];
+                              newData[index].assay = e.target.value;
+                              setFinishedPHEUR(newData);
                             }}
                           />
                         </td>
                         <td>
                           <input
-                            value={item.yield}
+                            value={item.assayLimit}
                             onChange={(e) => {
-                              const newData = [...yieldTOS1];
-                              newData[index].yield = e.target.value;
-                              setYieldTOS1(newData);
+                              const newData = [...finishedPHEUR];
+                              newData[index].assayLimit = e.target.value;
+                              setFinishedPHEUR(newData);
                             }}
                           />
                         </td>
                         <td>
                           <input
-                            value={item.yield}
+                            value={item.residualSolventByCG.methyleneChloride}
                             onChange={(e) => {
-                              const newData = [...yieldTOS1];
-                              newData[index].yield = e.target.value;
-                              setYieldTOS1(newData);
+                              const newData = [...finishedPHEUR];
+                              newData[index].residualSolventByCG.methyleneChloride = e.target.value;
+                              setFinishedPHEUR(newData);
                             }}
                           />
                         </td>
                         <td>
                           <input
-                            value={item.yield}
+                            value={item.residualSolventByCG.methanol}
                             onChange={(e) => {
-                              const newData = [...yieldTOS1];
-                              newData[index].yield = e.target.value;
-                              setYieldTOS1(newData);
+                              const newData = [...finishedPHEUR];
+                              newData[index].residualSolventByCG.methanol = e.target.value;
+                              setFinishedPHEUR(newData);
                             }}
                           />
                         </td>
                         <td>
                           <input
-                            value={item.yield}
+                            value={item.residualSolventByCG.acetone}
                             onChange={(e) => {
-                              const newData = [...yieldTOS1];
-                              newData[index].yield = e.target.value;
-                              setYieldTOS1(newData);
+                              const newData = [...finishedPHEUR];
+                              newData[index].residualSolventByCG.acetone = e.target.value;
+                              setFinishedPHEUR(newData);
                             }}
                           />
                         </td>
                         <td>
                           <input
-                            value={item.yield}
+                            value={item.residualSolventByCG.residualSolventLimit}
                             onChange={(e) => {
-                              const newData = [...yieldTOS1];
-                              newData[index].yield = e.target.value;
-                              setYieldTOS1(newData);
+                              const newData = [...finishedPHEUR];
+                              newData[index].residualSolventByCG.residualSolventLimit = e.target.value;
+                              setFinishedPHEUR(newData);
                             }}
                           />
                         </td>
                         <td>
                           <input
-                            value={item.yield}
+                            value={item.particleSizeMalvern.particleSize90}
                             onChange={(e) => {
-                              const newData = [...yieldTOS1];
-                              newData[index].yield = e.target.value;
-                              setYieldTOS1(newData);
+                              const newData = [...finishedPHEUR];
+                              newData[index].particleSizeMalvern.particleSize90 = e.target.value;
+                              setFinishedPHEUR(newData);
                             }}
                           />
                         </td>
                         <td>
                           <input
-                            value={item.yield}
+                            value={item.particleSizeMalvern.particleSize90Limit}
                             onChange={(e) => {
-                              const newData = [...yieldTOS1];
-                              newData[index].yield = e.target.value;
-                              setYieldTOS1(newData);
+                              const newData = [...finishedPHEUR];
+                              newData[index].particleSizeMalvern.particleSize90Limit = e.target.value;
+                              setFinishedPHEUR(newData);
                             }}
                           />
                         </td>
                         <td>
                           <input
-                            value={item.yield}
+                            value={item.particleSizeMalvern.particleSize995}
                             onChange={(e) => {
-                              const newData = [...yieldTOS1];
-                              newData[index].yield = e.target.value;
-                              setYieldTOS1(newData);
+                              const newData = [...finishedPHEUR];
+                              newData[index].particleSizeMalvern.particleSize995 = e.target.value;
+                              setFinishedPHEUR(newData);
                             }}
                           />
                         </td>
                         <td>
                           <input
-                            value={item.yield}
+                            value={item.particleSizeMalvern.particleSize995Limit}
                             onChange={(e) => {
-                              const newData = [...yieldTOS1];
-                              newData[index].yield = e.target.value;
-                              setYieldTOS1(newData);
+                              const newData = [...finishedPHEUR];
+                              newData[index].particleSizeMalvern.particleSize995Limit = e.target.value;
+                              setFinishedPHEUR(newData);
                             }}
                           />
                         </td>
+                    
                       </tr>
                     );
                   })}
