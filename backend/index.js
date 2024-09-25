@@ -4,6 +4,7 @@ import { fileURLToPath } from "url";
 import cors from "cors";
 import reportRouter from "./src/routes/report.route.js";
 import apqrRouter from "./src/routes/apqr.route.js";
+import adminRouter from "./src/routes/admin.route.js";
 import helmet from "helmet";
 import { connectToDB } from "./src/config/db.js";
 import config from "./src/config/config.json" assert { type: "json" };
@@ -46,6 +47,7 @@ app.use(express.static(path.join(__dirname, "public")));
 // Routes
 app.use("/", apqrRouter);
 app.use("/report", reportRouter);
+app.use("/admin", adminRouter);
 
 // Helper function to get base64 encoded image
 const getBase64Image = async (filePath) => {
@@ -58,11 +60,18 @@ const getBase64Image = async (filePath) => {
   }
 };
 
+// Example route to check uploaded file
+app.get('/images/:filename', (req, res) => {
+  const { filename } = req.params;
+  const filePath = path.join(__dirname, 'src/public/images', filename);
+  res.sendFile(filePath);
+});
+
 const PORT = config.development.PORT || 4000;
 app.listen(PORT, "0.0.0.0", async () => {
   try {
     await connectToDB();
-    console.log(`Server is running on http://localhost:${PORT}`);
+    console.log(`Server is running on ${config.development.URL}:${PORT}`);
   } catch (e) {
     console.log("Error in database connection", e);
   }
