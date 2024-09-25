@@ -566,6 +566,209 @@ export default function APQR() {
       "Observed Value": Number(item.actualOutput),
     };
   });
+   
+const trendingOCP2Data=gridDatas?.trendingOCP2.map((item)=>{
+  return {
+    "Batch No.": item.batchNo,
+      "Observed Value": Number(item.criticalParameter3),
+  }
+});
+
+const trendingOCP4Data1=gridDatas?.trendingOCP4.map((item)=>{
+  return {
+    "Batch No.": item.batchNo,
+    "Observed Value": Number(item.criticalParameter.actualTemprature),
+  }
+})
+
+const trendingOCP4Data2=gridDatas?.trendingOCP4.map((item)=>{
+  return {
+    "Batch No.": item.batchNo,
+    "Observed Value": Number(item.actualTemprature),
+  }
+})
+
+const finishedPATUSPData1=gridDatas?.finishedPATUSP.map((item)=>{
+  return {
+    "Batch No.": item.batchNo,
+    "Observed Value": Number(item.specificRotation),
+  }
+})
+
+const finishedPATUSPData2=gridDatas?.finishedPATUSP.map((item)=>{
+  return {
+    "Batch No.": item.batchNo,
+    "Observed Value": Number(item.lossOnDrying),
+  }
+})
+
+const finishedPATUSPData3=gridDatas?.finishedPATUSP.map((item)=>{
+  return {
+    "Batch No.": item.batchNo,
+    "Observed Value": Number(item.chromatographicPurity.unspecifiedImpurities),
+  }
+})
+
+const finishedPATUSPData4=gridDatas?.finishedPATUSP.map((item)=>{
+  return {
+    "Batch No.": item.batchNo,
+    "Observed Value": Number(item.chromatographicPurity.totalImpurities),
+  }
+})
+
+const finishedPATUSPData5=gridDatas?.finishedPATUSP.map((item)=>{
+  return {
+    "Batch No.": item.batchNo,
+    "Observed Value": Number(item.assayByHPLC),
+  }
+})
+
+const finishedPATUSPData6=gridDatas?.finishedPATUSP.map((item)=>{
+  return {
+    "Batch No.": item.batchNo,
+    "Observed Value": Number(item.residualSolventByGC.acetone),
+  }
+})
+
+const finishedPHEURData1=gridDatas?.finishedPHEUR.map((item)=>{
+  return {
+    "Batch No.": item.batchNo,
+    "Observed Value": Number(item.specificRotation),
+  }
+})
+
+const finishedPHEURData2=gridDatas?.finishedPHEUR.map((item)=>{
+  return {
+    "Batch No.": item.batchNo,
+    "Observed Value": Number(item.waterKF),
+  }
+})
+
+const finishedPHEURData3=gridDatas?.finishedPHEUR.map((item)=>{
+  return {
+    "Batch No.": item.batchNo,
+    "Observed Value": Number(item.relatedSubstanceHPLC.impurityC),
+  }
+})
+
+const finishedPHEURData4=gridDatas?.finishedPHEUR.map((item)=>{
+  return {
+    "Batch No.": item.batchNo,
+    "Observed Value": Number(item.relatedSubstanceHPLC.totalImpurities),
+  }
+})
+const finishedPHEURData5=gridDatas?.finishedPHEUR.map((item)=>{
+  return {
+    "Batch No.": item.batchNo,
+    "Observed Value": Number(item.assay),
+  }
+})
+const finishedPHEURData6=gridDatas?.finishedPHEUR.map((item)=>{
+  return {
+    "Batch No.": item.batchNo,
+    "Observed Value": Number(item.residualSolventByCG.acetone),
+  }
+})
+
+const trendingOIPIPS1Data1=gridDatas?.trendingOIPIPS1.map((item)=>{
+  return {
+    "Batch No.": item.batchNo,
+    "Observed Value": Number(item.composite.waterContentNmt),
+  }
+})
+
+const trendingOIPIPS1Data2=gridDatas?.trendingOIPIPS1.map((item)=>{
+  return {
+    "Batch No.": item.batchNo,
+    "Observed Value": Number(item.composite.chromatographicPurity.tCAStage),
+  }
+})
+
+const trendingOIPIPS2Data=gridDatas?.trendingOIPIPS2.map((item)=>{
+  return {
+    "Batch No.": item.batchNo,
+    "Observed Value": Number(item.composite.purityByHPLC),
+  }
+})
+
+const trendingOIPIPS3Data=gridDatas?.trendingOIPIPS3.map((item)=>{
+  return {
+    "Batch No.": item.batchNo,
+    "Observed Value": Number(item.composite.chromatographicPurity),
+  }
+})
+
+const trendingOIPIPS4Data1=gridDatas?.trendingOIPIPS4.map((item)=>{
+  return {
+    "Batch No.": item.batchNo,
+    "Observed Value": Number(item.waterContent),
+  }
+})
+
+const trendingOIPIPS4Data2=gridDatas?.trendingOIPIPS4.map((item)=>{
+  return {
+    "Batch No.": item.batchNo,
+    "Observed Value": Number(item.composite.lossOnDrying),
+  }
+})
+
+const trendingOIPIPS4Data3=gridDatas?.trendingOIPIPS4.map((item)=>{
+  return {
+    "Batch No.": item.batchNo,
+    "Observed Value": Number(item.composite.relatedSubstanceByHPLC.impurityKNMT),
+  }
+})
+
+const trendingOIPIPS4Data4=gridDatas?.trendingOIPIPS4.map((item)=>{
+  return {
+    "Batch No.": item.batchNo,
+    "Observed Value": Number(item.composite.relatedSubstanceByHPLC.impurityDNMT),
+  }
+})
+
+const trendingOIPIPS4Data5=gridDatas?.trendingOIPIPS4.map((item)=>{
+  return {
+    "Batch No.": item.batchNo,
+    "Observed Value": Number(item.composite.relatedSubstanceByHPLC.unknownImpurity),
+  }
+})
+
+const trendingOIPIPS4Data6=gridDatas?.trendingOIPIPS4.map((item)=>{
+  return {
+    "Batch No.": item.batchNo,
+    "Observed Value": Number(item.composite.relatedSubstanceByHPLC.totalimpuriritie),
+  }
+})
+
+const trendingOIPIPS5Data1=gridDatas?.trendingOIPIPS5.map((item)=>{
+  return {
+    "Batch No.": item.batchNo,
+    "Observed Value": Number(item.composite.lossOfDrying),
+  }
+})
+
+const trendingOIPIPS5Data2=gridDatas?.trendingOIPIPS5.map((item)=>{
+  return {
+    "Batch No.": item.batchNo,
+    "Observed Value": Number(item.composite.chromatographicPurity.impurityKNMT),
+  }
+})
+
+const trendingOIPIPS5Data3=gridDatas?.trendingOIPIPS5.map((item)=>{
+  return {
+    "Batch No.": item.batchNo,
+    "Observed Value": Number(item.composite.chromatographicPurity.impurityNMT),
+  }
+})
+
+const trendingOIPIPS5Data4=gridDatas?.trendingOIPIPS5.map((item)=>{
+  return {
+    "Batch No.": item.batchNo,
+    "Observed Value": Number(item.composite.chromatographicPurity.totalImpurityNMT),
+  }
+})
+
+
   const paracetamolpHData = gridDatas?.reviewODSTR?.map((item) => {
     return {
       "Batch No.": item.batchNo,
@@ -19155,7 +19358,7 @@ export default function APQR() {
                 plotLines={TrendOfCriticalprocessS2PlotLines}
                 // zones={paracetamolpHZones}
                 // annotations={paracetamolAnnotations}
-                highchartData={yieldTrendS1Data}
+                highchartData={trendingOCP2Data}
               />
             </div>
 
@@ -19487,7 +19690,7 @@ export default function APQR() {
                   plotLines={TrendOfCriticalprocessS01PlotLines}
                   // zones={paracetamolpHZones}
                   // annotations={paracetamolAnnotations}
-                  highchartData={yieldTrendS1Data}
+                  highchartData={trendingOCP4Data1}
                 />
               </div>
               <div className="">
@@ -19503,7 +19706,7 @@ export default function APQR() {
                   plotLines={TrendOfCriticalprocessS02PlotLines}
                   // zones={paracetamolpHZones}
                   // annotations={paracetamolAnnotations}
-                  highchartData={yieldTrendS1Data}
+                  highchartData={trendingOCP4Data2}
                 />
               </div>
             </div>
@@ -19879,7 +20082,7 @@ export default function APQR() {
                   plotLines={TOIPIP_S01G1PlotLines}
                   // zones={paracetamolpHZones}
                   // annotations={paracetamolAnnotations}
-                  highchartData={yieldTrendS1Data}
+                  highchartData={trendingOIPIPS1Data1}
                 />
               </div>
               <div className="w-1/2">
@@ -19895,7 +20098,7 @@ export default function APQR() {
                   plotLines={TOIPIP_S01G2PlotLines}
                   // zones={paracetamolpHZones}
                   // annotations={paracetamolAnnotations}
-                  highchartData={yieldTrendS1Data}
+                  highchartData={trendingOIPIPS1Data2}
                 />
               </div>
             </div>
@@ -20841,7 +21044,7 @@ export default function APQR() {
                   plotLines={TOIPIP_S04G1PlotLines}
                   // zones={paracetamolpHZones}
                   // annotations={paracetamolAnnotations}
-                  highchartData={yieldTrendS1Data}
+                  highchartData={trendingOIPIPS4Data1}
                 />
               </div>
               <div className="w-1/2">
@@ -20857,7 +21060,7 @@ export default function APQR() {
                   plotLines={TOIPIP_S04G2PlotLines}
                   // zones={paracetamolpHZones}
                   // annotations={paracetamolAnnotations}
-                  highchartData={yieldTrendS1Data}
+                  highchartData={trendingOIPIPS4Data2}
                 />
               </div>
               <div className="w-1/2">
@@ -20873,7 +21076,7 @@ export default function APQR() {
                   plotLines={TOIPIP_S04G3PlotLines}
                   // zones={paracetamolpHZones}
                   // annotations={paracetamolAnnotations}
-                  highchartData={yieldTrendS1Data}
+                  highchartData={trendingOIPIPS4Data3}
                 />
               </div>
               <div className="w-1/2">
@@ -20889,7 +21092,7 @@ export default function APQR() {
                   plotLines={TOIPIP_S04G4PlotLines}
                   // zones={paracetamolpHZones}
                   // annotations={paracetamolAnnotations}
-                  highchartData={yieldTrendS1Data}
+                  highchartData={trendingOIPIPS4Data4}
                 />
               </div>
               <div className="w-1/2">
@@ -20905,7 +21108,7 @@ export default function APQR() {
                   plotLines={TOIPIP_S04G5PlotLines}
                   // zones={paracetamolpHZones}
                   // annotations={paracetamolAnnotations}
-                  highchartData={yieldTrendS1Data}
+                  highchartData={trendingOIPIPS4Data5}
                 />
               </div>
               <div className="w-1/2">
@@ -20921,7 +21124,7 @@ export default function APQR() {
                   plotLines={TOIPIP_S04G6PlotLines}
                   // zones={paracetamolpHZones}
                   // annotations={paracetamolAnnotations}
-                  highchartData={yieldTrendS1Data}
+                  highchartData={trendingOIPIPS4Data6}
                 />
               </div>
             </div>
@@ -21250,7 +21453,7 @@ export default function APQR() {
                   plotLines={TOIPIP_S05G1PlotLines}
                   // zones={paracetamolpHZones}
                   // annotations={paracetamolAnnotations}
-                  highchartData={yieldTrendS1Data}
+                  highchartData={trendingOIPIPS5Data1}
                 />
               </div>
               <div classname="w-1/2">
@@ -21266,7 +21469,7 @@ export default function APQR() {
                   plotLines={TOIPIP_S05G2PlotLines}
                   // zones={paracetamolpHZones}
                   // annotations={paracetamolAnnotations}
-                  highchartData={yieldTrendS1Data}
+                  highchartData={trendingOIPIPS5Data2}
                 />
               </div>
               <div classname="w-1/2">
@@ -21282,7 +21485,7 @@ export default function APQR() {
                   plotLines={TOIPIP_S05G3PlotLines}
                   // zones={paracetamolpHZones}
                   // annotations={paracetamolAnnotations}
-                  highchartData={yieldTrendS1Data}
+                  highchartData={trendingOIPIPS5Data3}
                 />
               </div>
               <div classname="w-1/2">
@@ -21298,10 +21501,10 @@ export default function APQR() {
                   plotLines={TOIPIP_S05G4PlotLines}
                   // zones={paracetamolpHZones}
                   // annotations={paracetamolAnnotations}
-                  highchartData={yieldTrendS1Data}
+                  highchartData={trendingOIPIPS5Data4}
                 />
               </div>
-              <div classname="w-1/2">
+              {/* <div classname="w-1/2">
                 <HighchartsLine
                   heading={
                     "The Graphical Presentation of  Related Substances by HPLC As per USP Test - Total Impurities Intermediate Stage-V"
@@ -21316,7 +21519,7 @@ export default function APQR() {
                   // annotations={paracetamolAnnotations}
                   highchartData={yieldTrendS1Data}
                 />
-              </div>
+              </div> */}
             </div>
           </>
         ) : null}
@@ -21833,7 +22036,7 @@ export default function APQR() {
                   plotLines={FPATUSPlotLines1}
                   // zones={paracetamolpHZones}
                   // annotations={paracetamolAnnotations}
-                  highchartData={yieldTrendS1Data}
+                  highchartData={finishedPATUSPData1}
                 />
               </div>
               <div className="w-1/2">
@@ -21849,7 +22052,7 @@ export default function APQR() {
                   plotLines={FPATUSPlotLines2}
                   // zones={paracetamolpHZones}
                   // annotations={paracetamolAnnotations}
-                  highchartData={yieldTrendS1Data}
+                  highchartData={finishedPATUSPData2}
                 />
               </div>
               <div className="w-1/2">
@@ -21865,7 +22068,7 @@ export default function APQR() {
                   plotLines={FPATUSPlotLines3}
                   // zones={paracetamolpHZones}
                   // annotations={paracetamolAnnotations}
-                  highchartData={yieldTrendS1Data}
+                  highchartData={finishedPATUSPData3}
                 />
               </div>
               <div className="w-1/2">
@@ -21881,7 +22084,7 @@ export default function APQR() {
                   plotLines={FPATUSPlotLines4}
                   // zones={paracetamolpHZones}
                   // annotations={paracetamolAnnotations}
-                  highchartData={yieldTrendS1Data}
+                  highchartData={finishedPATUSPData4}
                 />
               </div>
               <div className="w-1/2">
@@ -21897,7 +22100,7 @@ export default function APQR() {
                   plotLines={FPATUSPlotLines5}
                   // zones={paracetamolpHZones}
                   // annotations={paracetamolAnnotations}
-                  highchartData={yieldTrendS1Data}
+                  highchartData={finishedPATUSPData5}
                 />
               </div>
               <div className="w-1/2">
@@ -21913,7 +22116,7 @@ export default function APQR() {
                   plotLines={FPATUSPlotLines6}
                   // zones={paracetamolpHZones}
                   // annotations={paracetamolAnnotations}
-                  highchartData={yieldTrendS1Data}
+                  highchartData={finishedPATUSPData6}
                 />
               </div>
             </div> 
@@ -22427,7 +22630,7 @@ export default function APQR() {
                   plotLines={FPATPhEurlotLines1}
                   // zones={paracetamolpHZones}
                   // annotations={paracetamolAnnotations}
-                  highchartData={yieldTrendS1Data}
+                  highchartData={finishedPHEURData1}
                 />
               </div>
               <div className="w-1/2">
@@ -22443,7 +22646,7 @@ export default function APQR() {
                   plotLines={FPATPhEurlotLines2}
                   // zones={paracetamolpHZones}
                   // annotations={paracetamolAnnotations}
-                  highchartData={yieldTrendS1Data}
+                  highchartData={finishedPHEURData2}
                 />
               </div>
               <div className="w-1/2">
@@ -22459,7 +22662,7 @@ export default function APQR() {
                   plotLines={FPATPhEurlotLines3}
                   // zones={paracetamolpHZones}
                   // annotations={paracetamolAnnotations}
-                  highchartData={yieldTrendS1Data}
+                  highchartData={finishedPHEURData3}
                 />
               </div>
               <div className="w-1/2">
@@ -22475,7 +22678,7 @@ export default function APQR() {
                   plotLines={FPATPhEurlotLines4}
                   // zones={paracetamolpHZones}
                   // annotations={paracetamolAnnotations}
-                  highchartData={yieldTrendS1Data}
+                  highchartData={finishedPHEURData4}
                 />
               </div>
               <div className="w-1/2">
@@ -22491,7 +22694,7 @@ export default function APQR() {
                   plotLines={FPATPhEurlotLines5}
                   // zones={paracetamolpHZones}
                   // annotations={paracetamolAnnotations}
-                  highchartData={yieldTrendS1Data}
+                  highchartData={finishedPHEURData5}
                 />
               </div>
               <div className="w-1/2">
@@ -22507,7 +22710,7 @@ export default function APQR() {
                   plotLines={FPATPhEurlotLines6}
                   // zones={paracetamolpHZones}
                   // annotations={paracetamolAnnotations}
-                  highchartData={yieldTrendS1Data}
+                  highchartData={finishedPHEURData6}
                 />
               </div>
             </div>
