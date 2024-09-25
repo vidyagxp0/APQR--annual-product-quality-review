@@ -23,14 +23,12 @@ const HighchartsChart = ({
   zones,
   highchartData,
 }) => {
-
-
   const [selectedOption, setSelectedOption] = useState("hourly");
 
   const handleOptionChange = (event) => {
     setSelectedOption(event.target.value);
   };
-console.log(highchartData,"chart")
+  console.log(highchartData, "chart");
   const processData = () => {
     return highchartData?.map((record) => ({
       x: parseInt(record["Batch No."].split("_")[1]),
@@ -167,10 +165,8 @@ console.log(highchartData,"chart")
   };
 
   return (
-    <div
-      className=" bg-white shadow-lg p-4 overflow-auto divWithScrollbar"
-    >
-      <div className="graph-2 " style={{ display: "flex", justifyContent: "space-between" }}>
+    <div className=" bg-white shadow-lg p-4 overflow-auto divWithScrollbar">
+      <div className="graph-2 " style={{ display: "", justifyContent: "space-between" }}>
         <div className="chart-analytics chart-container ">
           <HighchartsReact highcharts={Highcharts} options={options} />
         </div>
