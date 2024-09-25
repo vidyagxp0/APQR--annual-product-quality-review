@@ -523,7 +523,31 @@ export default function APQR() {
   const pentoprazoleImpurityData = getGraphData(gridDatas.reviewODSTR13);
   const pentoprazoleDissolutionData = getGraphData(gridDatas.reviewODSTR14);
   const pentoprazoleDisIntegrationData = getGraphData(gridDatas.reviewODSTR15);
-  const yieldTrendS1Data = trend1.map((item) => {
+  const yieldTrendS1Data = gridDatas?.yieldTOS1?.map((item) => {
+    return {
+      "Batch No.": item.batchNo,
+      "Observed Value": Number(item.actualOutput),
+    };
+  });
+  const yieldTrendS2Data = gridDatas?.yieldTOS2?.map((item) => {
+    return {
+      "Batch No.": item.batchNo,
+      "Observed Value": Number(item.actualOutput),
+    };
+  });
+  const yieldTrendS3Data = gridDatas?.yieldTOS3?.map((item) => {
+    return {
+      "Batch No.": item.batchNo,
+      "Observed Value": Number(item.actualOutput),
+    };
+  });
+  const yieldTrendS4Data = gridDatas?.yieldTOS4?.map((item) => {
+    return {
+      "Batch No.": item.batchNo,
+      "Observed Value": Number(item.actualOutput),
+    };
+  });
+  const yieldTrendS5Data = gridDatas?.yieldTOS5?.map((item) => {
     return {
       "Batch No.": item.batchNo,
       "Observed Value": Number(item.actualOutput),
@@ -578,7 +602,7 @@ export default function APQR() {
     return { "Batch No.": item.batchNo, "Observed Value": item.observedValue };
   });
 
-  // useEffect(() => {
+
   //   setTinyData({
   //     tiny1: tiny1,
   //     tiny2: tiny2,
@@ -886,6 +910,20 @@ export default function APQR() {
         reviewODSTR13: apiData.reviewODSTR13?.data || [],
         reviewODSTR14: apiData.reviewODSTR14?.data || [],
         reviewODSTR15: apiData.reviewODSTR15?.data || [],
+        yieldTOS1: apiData.yieldTOS1?.data ||[],
+        yieldTOS2: apiData.yieldTOS2?.data ||[],
+        yieldTOS3:apiData.yieldTOS3?.data || [],
+        yieldTOS4: apiData.yieldTOS4?.data ||[],
+        yieldTOS5: apiData.yieldTOS5?.data ||[],
+        trendingOCP1:apiData.trendingOCP1?.data || [],
+        trendingOCP2: apiData.trendingOCP2?.data ||[],
+        trendingOCP3: apiData.trendingOCP3?.data ||[],
+        trendingOCP4: apiData.trendingOCP4?.data ||[],
+        trendingOIPIPS1:apiData.trendingOIPIPS1?.data || [],
+        trendingOIPIPS2: apiData.trendingOIPIPS2?.data ||[],
+        trendingOIPIPS3: apiData.trendingOIPIPS3?.data ||[],
+        trendingOIPIPS4: apiData.trendingOIPIPS4?.data ||[],
+        trendingOIPIPS5:apiData.trendingOIPIPS5?.data || [],
         // Map all other grids here
       });
       setIsLoading(false);
@@ -18320,7 +18358,7 @@ export default function APQR() {
                 plotLines={YieldTrendS2PlotLines}
                 // zones={paracetamolpHZones}
                 // annotations={paracetamolAnnotations}
-                highchartData={yieldTrendS1Data}
+                highchartData={yieldTrendS2Data}
               />
             </div>
 
@@ -18475,7 +18513,7 @@ export default function APQR() {
                 plotLines={YieldTrendS3PlotLines}
                 // zones={paracetamolpHZones}
                 // annotations={paracetamolAnnotations}
-                highchartData={yieldTrendS1Data}
+                highchartData={yieldTrendS3Data}
               />
             </div>
 
@@ -18630,7 +18668,7 @@ export default function APQR() {
                 plotLines={YieldTrendS4PlotLines}
                 // zones={paracetamolpHZones}
                 // annotations={paracetamolAnnotations}
-                highchartData={yieldTrendS1Data}
+                highchartData={yieldTrendS4Data}
               />
             </div>
 
@@ -18785,7 +18823,7 @@ export default function APQR() {
                 plotLines={YieldTrendS5PlotLines}
                 // zones={paracetamolpHZones}
                 // annotations={paracetamolAnnotations}
-                highchartData={yieldTrendS1Data}
+                highchartData={yieldTrendS5Data}
               />
             </div>
           </>
