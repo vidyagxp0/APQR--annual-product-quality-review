@@ -40,6 +40,18 @@ import {
   TOIPIP_S05G3PlotLines,
   TOIPIP_S05G4PlotLines,
   TOIPIP_S05G5PlotLines,
+  FPATUSPlotLines1,
+  FPATUSPlotLines2,
+  FPATUSPlotLines3,
+  FPATUSPlotLines4,
+  FPATUSPlotLines5,
+  FPATUSPlotLines6,
+  FPATPhEurlotLines1,
+  FPATPhEurlotLines2,
+  FPATPhEurlotLines3,
+  FPATPhEurlotLines4,
+  FPATPhEurlotLines5,
+  FPATPhEurlotLines6,
   paracetamolAnnotations,
   paracetamolAssayZones,
   paracetamolDisinterationZones,
@@ -21807,6 +21819,105 @@ export default function APQR() {
                 </tbody>
               </table>
             </div>
+             <div className="w-full shadow-lg flex-wrap mb-3 flex items-center justify-evenly mt-3  ">
+              <div className="w-1/2">
+                <HighchartsLine
+                  heading={
+                    "21 The Graphical Presentation of Specific Rotation Finished Product as per USP (Micronised)"
+                  }
+                  xHeading={"Batch No."}
+                  yHeading={"OutPut Range in Kg "}
+                  yMax={134}
+                  yMin={116}
+                  yTickInterval={2}
+                  plotLines={FPATUSPlotLines1}
+                  // zones={paracetamolpHZones}
+                  // annotations={paracetamolAnnotations}
+                  highchartData={yieldTrendS1Data}
+                />
+              </div>
+              <div className="w-1/2">
+                <HighchartsLine
+                  heading={
+                    "22 The Graphical Presentation of Loss on Drying Finished Product as per USP (Micronised)"
+                  }
+                  xHeading={"Batch No."}
+                  yHeading={"OutPut Range in Kg "}
+                  yMax={2.00}
+                  yMin={0.00}
+                  yTickInterval={0.20}
+                  plotLines={FPATUSPlotLines2}
+                  // zones={paracetamolpHZones}
+                  // annotations={paracetamolAnnotations}
+                  highchartData={yieldTrendS1Data}
+                />
+              </div>
+              <div className="w-1/2">
+                <HighchartsLine
+                  heading={
+                    "The Graphical Presentation of Chromatographic Purity by HPLC Unspecified Impurities Finished Product as per USP Micronised"
+                  }
+                  xHeading={"Batch No."}
+                  yHeading={"OutPut Range in Kg "}
+                  yMax={0.14}
+                  yMin={0.00}
+                  yTickInterval={0.02}
+                  plotLines={FPATUSPlotLines3}
+                  // zones={paracetamolpHZones}
+                  // annotations={paracetamolAnnotations}
+                  highchartData={yieldTrendS1Data}
+                />
+              </div>
+              <div className="w-1/2">
+                <HighchartsLine
+                  heading={
+                    "The Graphical Presentation of Chromatographic Purity by HPLC Test - Total Impurities Finished Product as per USP Micronised"
+                  }
+                  xHeading={"Batch No."}
+                  yHeading={"OutPut Range in Kg "}
+                  yMax={0.80}
+                  yMin={0.00}
+                  yTickInterval={0.10}
+                  plotLines={FPATUSPlotLines4}
+                  // zones={paracetamolpHZones}
+                  // annotations={paracetamolAnnotations}
+                  highchartData={yieldTrendS1Data}
+                />
+              </div>
+              <div className="w-1/2">
+                <HighchartsLine
+                  heading={
+                    "25 The Graphical Presentation of Assay Finished Product as per USP (Micronised)"
+                  }
+                  xHeading={"Batch No."}
+                  yHeading={"OutPut Range in Kg "}
+                  yMax={104}
+                  yMin={95}
+                  yTickInterval={1}
+                  plotLines={FPATUSPlotLines5}
+                  // zones={paracetamolpHZones}
+                  // annotations={paracetamolAnnotations}
+                  highchartData={yieldTrendS1Data}
+                />
+              </div>
+              <div className="w-1/2">
+                <HighchartsLine
+                  heading={
+                    "The Graphical Presentation of Residual Solvents by GC Test - Acetone Finished Product as per USP Micronised"
+                  }
+                  xHeading={"Batch No."}
+                  yHeading={"OutPut Range in Kg "}
+                  yMax={3000}
+                  yMin={0}
+                  yTickInterval={500}
+                  plotLines={FPATUSPlotLines6}
+                  // zones={paracetamolpHZones}
+                  // annotations={paracetamolAnnotations}
+                  highchartData={yieldTrendS1Data}
+                />
+              </div>
+            </div> 
+            
 
             <div className="gridName pt-4">
               Finished Product Analytical Trend As per PhEur Specification
@@ -22301,6 +22412,104 @@ export default function APQR() {
                   })}
                 </tbody>
               </table>
+            </div>
+            <div className="w-full shadow-lg flex-wrap mb-3 flex items-center justify-evenly mt-3  ">
+              <div className="w-1/2">
+                <HighchartsLine
+                  heading={
+                    "27 The Graphical Presentation of Specific Optical Rotation Finished Product as per PhEur (Micronised) "
+                  }
+                  xHeading={"Batch No."}
+                  yHeading={"OutPut Range in Kg "}
+                  yMax={119}
+                  yMin={105}
+                  yTickInterval={2}
+                  plotLines={FPATPhEurlotLines1}
+                  // zones={paracetamolpHZones}
+                  // annotations={paracetamolAnnotations}
+                  highchartData={yieldTrendS1Data}
+                />
+              </div>
+              <div className="w-1/2">
+                <HighchartsLine
+                  heading={
+                    "28 The Graphical Presentation of Water Content Finished Product as per PhEur (Micronised)"
+                  }
+                  xHeading={"Batch No."}
+                  yHeading={"OutPut Range in Kg "}
+                  yMax={0.25}
+                  yMin={0.00}
+                  yTickInterval={0.05}
+                  plotLines={FPATPhEurlotLines2}
+                  // zones={paracetamolpHZones}
+                  // annotations={paracetamolAnnotations}
+                  highchartData={yieldTrendS1Data}
+                />
+              </div>
+              <div className="w-1/2">
+                <HighchartsLine
+                  heading={
+                    "29 The Graphical Presentation of Impurity C Finished Product as per PhEur (Micronised)"
+                  }
+                  xHeading={"Batch No."}
+                  yHeading={"OutPut Range in Kg "}
+                  yMax={105}
+                  yMin={95}
+                  yTickInterval={1}
+                  plotLines={FPATPhEurlotLines3}
+                  // zones={paracetamolpHZones}
+                  // annotations={paracetamolAnnotations}
+                  highchartData={yieldTrendS1Data}
+                />
+              </div>
+              <div className="w-1/2">
+                <HighchartsLine
+                  heading={
+                    "The Graphical Presentation of Total impurities Finished Product as per PhEur (Micronised) "
+                  }
+                  xHeading={"Batch No."}
+                  yHeading={"OutPut Range in Kg "}
+                  yMax={3}
+                  yMin={0}
+                  yTickInterval={0.50}
+                  plotLines={FPATPhEurlotLines4}
+                  // zones={paracetamolpHZones}
+                  // annotations={paracetamolAnnotations}
+                  highchartData={yieldTrendS1Data}
+                />
+              </div>
+              <div className="w-1/2">
+                <HighchartsLine
+                  heading={
+                    "The Graphical Presentation of Assay Finished Product as per PhEur (Micronised)"
+                  }
+                  xHeading={"Batch No."}
+                  yHeading={"OutPut Range in Kg "}
+                  yMax={0.80}
+                  yMin={0}
+                  yTickInterval={0.1}
+                  plotLines={FPATPhEurlotLines5}
+                  // zones={paracetamolpHZones}
+                  // annotations={paracetamolAnnotations}
+                  highchartData={yieldTrendS1Data}
+                />
+              </div>
+              <div className="w-1/2">
+                <HighchartsLine
+                  heading={
+                    "The Graphical Presentation of Residual Solvents by GC Test - Acetone Finished Product as per PhEur Micronised"
+                  }
+                  xHeading={"Batch No."}
+                  yHeading={"OutPut Range in Kg "}
+                  yMax={3000}
+                  yMin={0}
+                  yTickInterval={500}
+                  plotLines={FPATPhEurlotLines6}
+                  // zones={paracetamolpHZones}
+                  // annotations={paracetamolAnnotations}
+                  highchartData={yieldTrendS1Data}
+                />
+              </div>
             </div>
           </>
         ) : null}
