@@ -463,8 +463,9 @@ export default function APQR() {
     trendingOIPIPS3: [],
     trendingOIPIPS4: [],
     trendingOIPIPS5: [],
-    FPAT1: [],
-    FPAT2: [],
+    finishedPATUSP: [],
+    finishedPHEUR: [],
+  
   });
 
   const [pQRData, setPQRData] = useReducer(
@@ -923,6 +924,8 @@ export default function APQR() {
         trendingOIPIPS3: apiData.trendingOIPIPS3?.data || [],
         trendingOIPIPS4: apiData.trendingOIPIPS4?.data || [],
         trendingOIPIPS5: apiData.trendingOIPIPS5?.data || [],
+        finishedPATUSP: apiData.finishedPATUSP?.data ||[],
+        finishedPHEUR: apiData.finishedPHEUR?.data ||[],
         // Map all other grids here
       });
       setIsLoading(false);
@@ -2691,7 +2694,7 @@ export default function APQR() {
 
     setGridDatas({
       ...gridDatas,
-      FPAT1: [...gridDatas.FPAT1, newRow],
+      finishedPATUSP: [...gridDatas.finishedPATUSP, newRow],
     });
   };
 
@@ -2732,7 +2735,7 @@ export default function APQR() {
 
     setGridDatas({
       ...gridDatas,
-      FPAT2: [...gridDatas.FPAT2, newRow],
+      finishedPHEUR: [...gridDatas.finishedPHEUR, newRow],
     });
   };
 
@@ -19973,7 +19976,6 @@ export default function APQR() {
                         <td>
                           <input
                             value={item.limit}
-                            type="number"
                             onChange={(e) => {
                               const newData = [...gridDatas.trendingOIPIPS2];
                               newData[index].limit = e.target.value;
@@ -21321,7 +21323,7 @@ export default function APQR() {
                 </div>
                 <div className="flex gap-4 ">
                   <ExcelExportImport
-                    data={gridDatas.FPAT1}
+                    data={gridDatas.finishedPATUSP}
                     setimportedData={setimportedData}
                     fileName="currentRPQRN.xlsx"
                   />
@@ -21370,7 +21372,7 @@ export default function APQR() {
                   </tr>
                 </thead>
                 <tbody>
-                  {gridDatas?.FPAT1?.map((item, index) => {
+                  {gridDatas?.finishedPATUSP?.map((item, index) => {
                     return (
                       <tr key={index}>
                         <td>{index + 1}</td>
@@ -21379,11 +21381,11 @@ export default function APQR() {
                           <input
                             value={item.batchNo}
                             onChange={(e) => {
-                              const newData = [...gridDatas.FPAT1];
+                              const newData = [...gridDatas.finishedPATUSP];
                               newData[index].batchNo = e.target.value;
                               setGridDatas({
                                 ...gridDatas,
-                                FPAT1: newData,
+                                finishedPATUSP: newData,
                               });
                             }}
                           />
@@ -21394,11 +21396,11 @@ export default function APQR() {
                             value={item.specificRotation}
                             type="number"
                             onChange={(e) => {
-                              const newData = [...gridDatas.FPAT1];
+                              const newData = [...gridDatas.finishedPATUSP];
                               newData[index].specificRotation = e.target.value;
                               setGridDatas({
                                 ...gridDatas,
-                                FPAT1: newData,
+                                finishedPATUSP: newData,
                               });
                             }}
                           />
@@ -21409,11 +21411,11 @@ export default function APQR() {
                             value={item.lLimit}
                             type="number"
                             onChange={(e) => {
-                              const newData = [...gridDatas.FPAT1];
+                              const newData = [...gridDatas.finishedPATUSP];
                               newData[index].lLimit = e.target.value;
                               setGridDatas({
                                 ...gridDatas,
-                                FPAT1: newData,
+                                finishedPATUSP: newData,
                               });
                             }}
                           />
@@ -21424,11 +21426,11 @@ export default function APQR() {
                             value={item.uLimit}
                             type="number"
                             onChange={(e) => {
-                              const newData = [...gridDatas.FPAT1];
+                              const newData = [...gridDatas.finishedPATUSP];
                               newData[index].uLimit = e.target.value;
                               setGridDatas({
                                 ...gridDatas,
-                                FPAT1: newData,
+                                finishedPATUSP: newData,
                               });
                             }}
                           />
@@ -21439,11 +21441,11 @@ export default function APQR() {
                             value={item.lossOnDrying}
                             type="number"
                             onChange={(e) => {
-                              const newData = [...gridDatas.FPAT1];
+                              const newData = [...gridDatas.finishedPATUSP];
                               newData[index].lossOnDrying = e.target.value;
                               setGridDatas({
                                 ...gridDatas,
-                                FPAT1: newData,
+                                finishedPATUSP: newData,
                               });
                             }}
                           />
@@ -21454,12 +21456,12 @@ export default function APQR() {
                             value={item.chromatographicPurity.limit}
                             type="number"
                             onChange={(e) => {
-                              const newData = [...gridDatas.FPAT1];
+                              const newData = [...gridDatas.finishedPATUSP];
                               newData[index].chromatographicPurity.limit =
                                 e.target.value;
                               setGridDatas({
                                 ...gridDatas,
-                                FPAT1: newData,
+                                finishedPATUSP: newData,
                               });
                             }}
                           />
@@ -21468,12 +21470,12 @@ export default function APQR() {
                           <input
                             value={item.chromatographicPurity.impurityK}
                             onChange={(e) => {
-                              const newData = [...gridDatas.FPAT1];
+                              const newData = [...gridDatas.finishedPATUSP];
                               newData[index].chromatographicPurity.impurityK =
                                 e.target.value;
                               setGridDatas({
                                 ...gridDatas,
-                                FPAT1: newData,
+                                finishedPATUSP: newData,
                               });
                             }}
                           />
@@ -21483,14 +21485,14 @@ export default function APQR() {
                             value={item.chromatographicPurity.impurityKLimit}
                             type="number"
                             onChange={(e) => {
-                              const newData = [...gridDatas.FPAT1];
+                              const newData = [...gridDatas.finishedPATUSP];
                               newData[
                                 index
                               ].chromatographicPurity.impurityKLimit =
                                 e.target.value;
                               setGridDatas({
                                 ...gridDatas,
-                                FPAT1: newData,
+                                finishedPATUSP: newData,
                               });
                             }}
                           />
@@ -21499,12 +21501,12 @@ export default function APQR() {
                           <input
                             value={item.chromatographicPurity.impurityH}
                             onChange={(e) => {
-                              const newData = [...gridDatas.FPAT1];
+                              const newData = [...gridDatas.finishedPATUSP];
                               newData[index].chromatographicPurity.impurityH =
                                 e.target.value;
                               setGridDatas({
                                 ...gridDatas,
-                                FPAT1: newData,
+                                finishedPATUSP: newData,
                               });
                             }}
                           />
@@ -21513,12 +21515,12 @@ export default function APQR() {
                           <input
                             value={item.chromatographicPurity.impurityD}
                             onChange={(e) => {
-                              const newData = [...gridDatas.FPAT1];
+                              const newData = [...gridDatas.finishedPATUSP];
                               newData[index].chromatographicPurity.impurityD =
                                 e.target.value;
                               setGridDatas({
                                 ...gridDatas,
-                                FPAT1: newData,
+                                finishedPATUSP: newData,
                               });
                             }}
                           />
@@ -21528,14 +21530,14 @@ export default function APQR() {
                             value={item.chromatographicPurity.impurityDLimit}
                             type="number"
                             onChange={(e) => {
-                              const newData = [...gridDatas.FPAT1];
+                              const newData = [...gridDatas.finishedPATUSP];
                               newData[
                                 index
                               ].chromatographicPurity.impurityDLimit =
                                 e.target.value;
                               setGridDatas({
                                 ...gridDatas,
-                                FPAT1: newData,
+                                finishedPATUSP: newData,
                               });
                             }}
                           />
@@ -21544,12 +21546,12 @@ export default function APQR() {
                           <input
                             value={item.chromatographicPurity.impurityI}
                             onChange={(e) => {
-                              const newData = [...gridDatas.FPAT1];
+                              const newData = [...gridDatas.finishedPATUSP];
                               newData[index].chromatographicPurity.impurityI =
                                 e.target.value;
                               setGridDatas({
                                 ...gridDatas,
-                                FPAT1: newData,
+                                finishedPATUSP: newData,
                               });
                             }}
                           />
@@ -21560,14 +21562,14 @@ export default function APQR() {
                               item.chromatographicPurity.unspecifiedImpurities
                             }
                             onChange={(e) => {
-                              const newData = [...gridDatas.FPAT1];
+                              const newData = [...gridDatas.finishedPATUSP];
                               newData[
                                 index
                               ].chromatographicPurity.unspecifiedImpurities =
                                 e.target.value;
                               setGridDatas({
                                 ...gridDatas,
-                                FPAT1: newData,
+                                finishedPATUSP: newData,
                               });
                             }}
                           />
@@ -21580,14 +21582,14 @@ export default function APQR() {
                             }
                             type="number"
                             onChange={(e) => {
-                              const newData = [...gridDatas.FPAT1];
+                              const newData = [...gridDatas.finishedPATUSP];
                               newData[
                                 index
                               ].chromatographicPurity.unspecifiedImpuritiesLimit =
                                 e.target.value;
                               setGridDatas({
                                 ...gridDatas,
-                                FPAT1: newData,
+                                finishedPATUSP: newData,
                               });
                             }}
                           />
@@ -21597,14 +21599,14 @@ export default function APQR() {
                             value={item.chromatographicPurity.totalImpurities}
                             type="number"
                             onChange={(e) => {
-                              const newData = [...gridDatas.FPAT1];
+                              const newData = [...gridDatas.finishedPATUSP];
                               newData[
                                 index
                               ].chromatographicPurity.totalImpurities =
                                 e.target.value;
                               setGridDatas({
                                 ...gridDatas,
-                                FPAT1: newData,
+                                finishedPATUSP: newData,
                               });
                             }}
                           />
@@ -21616,14 +21618,14 @@ export default function APQR() {
                             }
                             type="number"
                             onChange={(e) => {
-                              const newData = [...gridDatas.FPAT1];
+                              const newData = [...gridDatas.finishedPATUSP];
                               newData[
                                 index
                               ].chromatographicPurity.totalImpuritiesLimit =
                                 e.target.value;
                               setGridDatas({
                                 ...gridDatas,
-                                FPAT1: newData,
+                                finishedPATUSP: newData,
                               });
                             }}
                           />
@@ -21634,11 +21636,11 @@ export default function APQR() {
                             value={item.assayByHPLC}
                             type="number"
                             onChange={(e) => {
-                              const newData = [...gridDatas.FPAT1];
+                              const newData = [...gridDatas.finishedPATUSP];
                               newData[index].assayByHPLC = e.target.value;
                               setGridDatas({
                                 ...gridDatas,
-                                FPAT1: newData,
+                                finishedPATUSP: newData,
                               });
                             }}
                           />
@@ -21648,11 +21650,11 @@ export default function APQR() {
                             value={item.assayLLimit}
                             type="number"
                             onChange={(e) => {
-                              const newData = [...gridDatas.FPAT1];
+                              const newData = [...gridDatas.finishedPATUSP];
                               newData[index].assayLLimit = e.target.value;
                               setGridDatas({
                                 ...gridDatas,
-                                FPAT1: newData,
+                                finishedPATUSP: newData,
                               });
                             }}
                           />
@@ -21662,11 +21664,11 @@ export default function APQR() {
                             value={item.assayULimit}
                             type="number"
                             onChange={(e) => {
-                              const newData = [...gridDatas.FPAT1];
+                              const newData = [...gridDatas.finishedPATUSP];
                               newData[index].assayULimit = e.target.value;
                               setGridDatas({
                                 ...gridDatas,
-                                FPAT1: newData,
+                                finishedPATUSP: newData,
                               });
                             }}
                           />
@@ -21676,12 +21678,12 @@ export default function APQR() {
                           <input
                             value={item.residualSolventByGC.methanol}
                             onChange={(e) => {
-                              const newData = [...gridDatas.FPAT1];
+                              const newData = [...gridDatas.finishedPATUSP];
                               newData[index].residualSolventByGC.methanol =
                                 e.target.value;
                               setGridDatas({
                                 ...gridDatas,
-                                FPAT1: newData,
+                                finishedPATUSP: newData,
                               });
                             }}
                           />
@@ -21691,12 +21693,12 @@ export default function APQR() {
                             value={item.residualSolventByGC.acetone}
                             type="number"
                             onChange={(e) => {
-                              const newData = [...gridDatas.FPAT1];
+                              const newData = [...gridDatas.finishedPATUSP];
                               newData[index].residualSolventByGC.acetone =
                                 e.target.value;
                               setGridDatas({
                                 ...gridDatas,
-                                FPAT1: newData,
+                                finishedPATUSP: newData,
                               });
                             }}
                           />
@@ -21705,14 +21707,14 @@ export default function APQR() {
                           <input
                             value={item.residualSolventByGC.methyleneChloride}
                             onChange={(e) => {
-                              const newData = [...gridDatas.FPAT1];
+                              const newData = [...gridDatas.finishedPATUSP];
                               newData[
                                 index
                               ].residualSolventByGC.methyleneChloride =
                                 e.target.value;
                               setGridDatas({
                                 ...gridDatas,
-                                FPAT1: newData,
+                                finishedPATUSP: newData,
                               });
                             }}
                           />
@@ -21724,14 +21726,14 @@ export default function APQR() {
                             }
                             type="number"
                             onChange={(e) => {
-                              const newData = [...gridDatas.FPAT1];
+                              const newData = [...gridDatas.finishedPATUSP];
                               newData[
                                 index
                               ].residualSolventByGC.residualSolventLimit =
                                 e.target.value;
                               setGridDatas({
                                 ...gridDatas,
-                                FPAT1: newData,
+                                finishedPATUSP: newData,
                               });
                             }}
                           />
@@ -21742,12 +21744,12 @@ export default function APQR() {
                             value={item.particleSize.percent90LT10um}
                             type="number"
                             onChange={(e) => {
-                              const newData = [...gridDatas.FPAT1];
+                              const newData = [...gridDatas.finishedPATUSP];
                               newData[index].particleSize.percent90LT10um =
                                 e.target.value;
                               setGridDatas({
                                 ...gridDatas,
-                                FPAT1: newData,
+                                finishedPATUSP: newData,
                               });
                             }}
                           />
@@ -21757,12 +21759,12 @@ export default function APQR() {
                             value={item.particleSize.percent90LT10umLimit}
                             type="number"
                             onChange={(e) => {
-                              const newData = [...gridDatas.FPAT1];
+                              const newData = [...gridDatas.finishedPATUSP];
                               newData[index].particleSize.percent90LT10umLimit =
                                 e.target.value;
                               setGridDatas({
                                 ...gridDatas,
-                                FPAT1: newData,
+                                finishedPATUSP: newData,
                               });
                             }}
                           />
@@ -21772,12 +21774,12 @@ export default function APQR() {
                             value={item.particleSize.percent995LT20um}
                             type="number"
                             onChange={(e) => {
-                              const newData = [...gridDatas.FPAT1];
+                              const newData = [...gridDatas.finishedPATUSP];
                               newData[index].particleSize.percent995LT20um =
                                 e.target.value;
                               setGridDatas({
                                 ...gridDatas,
-                                FPAT1: newData,
+                                finishedPATUSP: newData,
                               });
                             }}
                           />
@@ -21787,14 +21789,14 @@ export default function APQR() {
                             value={item.particleSize.percent995LT20umLimit}
                             type="number"
                             onChange={(e) => {
-                              const newData = [...gridDatas.FPAT1];
+                              const newData = [...gridDatas.finishedPATUSP];
                               newData[
                                 index
                               ].particleSize.percent995LT20umLimit =
                                 e.target.value;
                               setGridDatas({
                                 ...gridDatas,
-                                FPAT1: newData,
+                                finishedPATUSP: newData,
                               });
                             }}
                           />
@@ -21820,7 +21822,7 @@ export default function APQR() {
                 </div>
                 <div className="flex gap-4 ">
                   <ExcelExportImport
-                    data={gridDatas.FPAT2}
+                    data={gridDatas.finishedPHEUR}
                     setimportedData={setimportedData}
                     fileName="currentRPQRN.xlsx"
                   />
@@ -21868,7 +21870,7 @@ export default function APQR() {
                   </tr>
                 </thead>
                 <tbody>
-                  {gridDatas?.FPAT2?.map((item, index) => {
+                  {gridDatas?.finishedPHEUR?.map((item, index) => {
                     return (
                       <tr key={index}>
                         <td>{index + 1}</td>
@@ -21878,11 +21880,11 @@ export default function APQR() {
                           <input
                             value={item.batchNo}
                             onChange={(e) => {
-                              const newData = [...gridDatas.FPAT2];
+                              const newData = [...gridDatas.finishedPHEUR];
                               newData[index].batchNo = e.target.value;
                               setGridDatas({
                                 ...gridDatas,
-                                FPAT2: newData,
+                                finishedPHEUR: newData,
                               });
                             }}
                           />
@@ -21894,11 +21896,11 @@ export default function APQR() {
                             value={item.specificRotation}
                             type="number"
                             onChange={(e) => {
-                              const newData = [...gridDatas.FPAT2];
+                              const newData = [...gridDatas.finishedPHEUR];
                               newData[index].specificRotation = e.target.value;
                               setGridDatas({
                                 ...gridDatas,
-                                FPAT2: newData,
+                                finishedPHEUR: newData,
                               });
                             }}
                           />
@@ -21910,11 +21912,11 @@ export default function APQR() {
                             value={item.lLimit}
                             type="number"
                             onChange={(e) => {
-                              const newData = [...gridDatas.FPAT2];
+                              const newData = [...gridDatas.finishedPHEUR];
                               newData[index].lLimit = e.target.value;
                               setGridDatas({
                                 ...gridDatas,
-                                FPAT2: newData,
+                                finishedPHEUR: newData,
                               });
                             }}
                           />
@@ -21926,11 +21928,11 @@ export default function APQR() {
                             value={item.uLimit}
                             type="number"
                             onChange={(e) => {
-                              const newData = [...gridDatas.FPAT2];
+                              const newData = [...gridDatas.finishedPHEUR];
                               newData[index].uLimit = e.target.value;
                               setGridDatas({
                                 ...gridDatas,
-                                FPAT2: newData,
+                                finishedPHEUR: newData,
                               });
                             }}
                           />
@@ -21941,12 +21943,12 @@ export default function APQR() {
                           <input
                             value={item.relatedSubstanceHPLC.impurityB}
                             onChange={(e) => {
-                              const newData = [...gridDatas.FPAT2];
+                              const newData = [...gridDatas.finishedPHEUR];
                               newData[index].relatedSubstanceHPLC.impurityB =
                                 e.target.value;
                               setGridDatas({
                                 ...gridDatas,
-                                FPAT2: newData,
+                                finishedPHEUR: newData,
                               });
                             }}
                           />
@@ -21958,14 +21960,14 @@ export default function APQR() {
                             value={item.relatedSubstanceHPLC.impurityBLimit}
                             type="number"
                             onChange={(e) => {
-                              const newData = [...gridDatas.FPAT2];
+                              const newData = [...gridDatas.finishedPHEUR];
                               newData[
                                 index
                               ].relatedSubstanceHPLC.impurityBLimit =
                                 e.target.value;
                               setGridDatas({
                                 ...gridDatas,
-                                FPAT2: newData,
+                                finishedPHEUR: newData,
                               });
                             }}
                           />
@@ -21977,12 +21979,12 @@ export default function APQR() {
                             value={item.relatedSubstanceHPLC.impurityC}
                             type="number"
                             onChange={(e) => {
-                              const newData = [...gridDatas.FPAT2];
+                              const newData = [...gridDatas.finishedPHEUR];
                               newData[index].relatedSubstanceHPLC.impurityC =
                                 e.target.value;
                               setGridDatas({
                                 ...gridDatas,
-                                FPAT2: newData,
+                                finishedPHEUR: newData,
                               });
                             }}
                           />
@@ -21994,14 +21996,14 @@ export default function APQR() {
                             value={item.relatedSubstanceHPLC.impurityCLimit}
                             type="number"
                             onChange={(e) => {
-                              const newData = [...gridDatas.FPAT2];
+                              const newData = [...gridDatas.finishedPHEUR];
                               newData[
                                 index
                               ].relatedSubstanceHPLC.impurityCLimit =
                                 e.target.value;
                               setGridDatas({
                                 ...gridDatas,
-                                FPAT2: newData,
+                                finishedPHEUR: newData,
                               });
                             }}
                           />
@@ -22012,14 +22014,14 @@ export default function APQR() {
                               item.relatedSubstanceHPLC.unspecifiedImpurities
                             }
                             onChange={(e) => {
-                              const newData = [...gridDatas.FPAT2];
+                              const newData = [...gridDatas.finishedPHEUR];
                               newData[
                                 index
                               ].relatedSubstanceHPLC.unspecifiedImpurities =
                                 e.target.value;
                               setGridDatas({
                                 ...gridDatas,
-                                FPAT2: newData,
+                                finishedPHEUR: newData,
                               });
                             }}
                           />
@@ -22032,14 +22034,14 @@ export default function APQR() {
                             }
                             type="number"
                             onChange={(e) => {
-                              const newData = [...gridDatas.FPAT2];
+                              const newData = [...gridDatas.finishedPHEUR];
                               newData[
                                 index
                               ].relatedSubstanceHPLC.unspecifiedImpuritiesLimit =
                                 e.target.value;
                               setGridDatas({
                                 ...gridDatas,
-                                FPAT2: newData,
+                                finishedPHEUR: newData,
                               });
                             }}
                           />
@@ -22049,14 +22051,14 @@ export default function APQR() {
                             value={item.relatedSubstanceHPLC.totalImpurities}
                             type="number"
                             onChange={(e) => {
-                              const newData = [...gridDatas.FPAT2];
+                              const newData = [...gridDatas.finishedPHEUR];
                               newData[
                                 index
                               ].relatedSubstanceHPLC.totalImpurities =
                                 e.target.value;
                               setGridDatas({
                                 ...gridDatas,
-                                FPAT2: newData,
+                                finishedPHEUR: newData,
                               });
                             }}
                           />
@@ -22068,14 +22070,14 @@ export default function APQR() {
                             }
                             type="number"
                             onChange={(e) => {
-                              const newData = [...gridDatas.FPAT2];
+                              const newData = [...gridDatas.finishedPHEUR];
                               newData[
                                 index
                               ].relatedSubstanceHPLC.totalImpuritiesLimit =
                                 e.target.value;
                               setGridDatas({
                                 ...gridDatas,
-                                FPAT2: newData,
+                                finishedPHEUR: newData,
                               });
                             }}
                           />
@@ -22087,11 +22089,11 @@ export default function APQR() {
                             value={item.waterKF}
                             type="number"
                             onChange={(e) => {
-                              const newData = [...gridDatas.FPAT2];
+                              const newData = [...gridDatas.finishedPHEUR];
                               newData[index].waterKF = e.target.value;
                               setGridDatas({
                                 ...gridDatas,
-                                FPAT2: newData,
+                                finishedPHEUR: newData,
                               });
                             }}
                           />
@@ -22103,11 +22105,11 @@ export default function APQR() {
                             value={item.waterKFLimit}
                             type="number"
                             onChange={(e) => {
-                              const newData = [...gridDatas.FPAT2];
+                              const newData = [...gridDatas.finishedPHEUR];
                               newData[index].waterKFLimit = e.target.value;
                               setGridDatas({
                                 ...gridDatas,
-                                FPAT2: newData,
+                                finishedPHEUR: newData,
                               });
                             }}
                           />
@@ -22119,11 +22121,11 @@ export default function APQR() {
                             value={item.assay}
                             type="number"
                             onChange={(e) => {
-                              const newData = [...gridDatas.FPAT2];
+                              const newData = [...gridDatas.finishedPHEUR];
                               newData[index].assay = e.target.value;
                               setGridDatas({
                                 ...gridDatas,
-                                FPAT2: newData,
+                                finishedPHEUR: newData,
                               });
                             }}
                           />
@@ -22135,11 +22137,11 @@ export default function APQR() {
                             value={item.assayLimit}
                             type="number"
                             onChange={(e) => {
-                              const newData = [...gridDatas.FPAT2];
+                              const newData = [...gridDatas.finishedPHEUR];
                               newData[index].assayLimit = e.target.value;
                               setGridDatas({
                                 ...gridDatas,
-                                FPAT2: newData,
+                                finishedPHEUR: newData,
                               });
                             }}
                           />
@@ -22150,14 +22152,14 @@ export default function APQR() {
                           <input
                             value={item.residualSolventByCG.methyleneChloride}
                             onChange={(e) => {
-                              const newData = [...gridDatas.FPAT2];
+                              const newData = [...gridDatas.finishedPHEUR];
                               newData[
                                 index
                               ].residualSolventByCG.methyleneChloride =
                                 e.target.value;
                               setGridDatas({
                                 ...gridDatas,
-                                FPAT2: newData,
+                                finishedPHEUR: newData,
                               });
                             }}
                           />
@@ -22168,12 +22170,12 @@ export default function APQR() {
                           <input
                             value={item.residualSolventByCG.methanol}
                             onChange={(e) => {
-                              const newData = [...gridDatas.FPAT2];
+                              const newData = [...gridDatas.finishedPHEUR];
                               newData[index].residualSolventByCG.methanol =
                                 e.target.value;
                               setGridDatas({
                                 ...gridDatas,
-                                FPAT2: newData,
+                                finishedPHEUR: newData,
                               });
                             }}
                           />
@@ -22185,12 +22187,12 @@ export default function APQR() {
                             value={item.residualSolventByCG.acetone}
                             type="number"
                             onChange={(e) => {
-                              const newData = [...gridDatas.FPAT2];
+                              const newData = [...gridDatas.finishedPHEUR];
                               newData[index].residualSolventByCG.acetone =
                                 e.target.value;
                               setGridDatas({
                                 ...gridDatas,
-                                FPAT2: newData,
+                                finishedPHEUR: newData,
                               });
                             }}
                           />
@@ -22204,14 +22206,14 @@ export default function APQR() {
                             }
                             type="number"
                             onChange={(e) => {
-                              const newData = [...gridDatas.FPAT2];
+                              const newData = [...gridDatas.finishedPHEUR];
                               newData[
                                 index
                               ].residualSolventByCG.residualSolventLimit =
                                 e.target.value;
                               setGridDatas({
                                 ...gridDatas,
-                                FPAT2: newData,
+                                finishedPHEUR: newData,
                               });
                             }}
                           />
@@ -22223,14 +22225,14 @@ export default function APQR() {
                             value={item.particleSizeMalvern.particleSize90}
                             type="number"
                             onChange={(e) => {
-                              const newData = [...gridDatas.FPAT2];
+                              const newData = [...gridDatas.finishedPHEUR];
                               newData[
                                 index
                               ].particleSizeMalvern.particleSize90 =
                                 e.target.value;
                               setGridDatas({
                                 ...gridDatas,
-                                FPAT2: newData,
+                                finishedPHEUR: newData,
                               });
                             }}
                           />
@@ -22242,14 +22244,14 @@ export default function APQR() {
                             value={item.particleSizeMalvern.particleSize90Limit}
                             type="number"
                             onChange={(e) => {
-                              const newData = [...gridDatas.FPAT2];
+                              const newData = [...gridDatas.finishedPHEUR];
                               newData[
                                 index
                               ].particleSizeMalvern.particleSize90Limit =
                                 e.target.value;
                               setGridDatas({
                                 ...gridDatas,
-                                FPAT2: newData,
+                                finishedPHEUR: newData,
                               });
                             }}
                           />
@@ -22261,14 +22263,14 @@ export default function APQR() {
                             value={item.particleSizeMalvern.particleSize995}
                             type="number"
                             onChange={(e) => {
-                              const newData = [...gridDatas.FPAT2];
+                              const newData = [...gridDatas.finishedPHEUR];
                               newData[
                                 index
                               ].particleSizeMalvern.particleSize995 =
                                 e.target.value;
                               setGridDatas({
                                 ...gridDatas,
-                                FPAT2: newData,
+                                finishedPHEUR: newData,
                               });
                             }}
                           />
@@ -22282,14 +22284,14 @@ export default function APQR() {
                             }
                             type="number"
                             onChange={(e) => {
-                              const newData = [...gridDatas.FPAT2];
+                              const newData = [...gridDatas.finishedPHEUR];
                               newData[
                                 index
                               ].particleSizeMalvern.particleSize995Limit =
                                 e.target.value;
                               setGridDatas({
                                 ...gridDatas,
-                                FPAT2: newData,
+                                finishedPHEUR: newData,
                               });
                             }}
                           />

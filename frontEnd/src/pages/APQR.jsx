@@ -8544,6 +8544,7 @@ export default function APQR() {
                             }}
                           />
                         </td>
+                      
                         <td>
                           <input
                             value={item.specificationLimit}
@@ -16084,6 +16085,7 @@ export default function APQR() {
                         <td>
                           <input
                             value={item.specificRotation}
+                            type="number"
                             onChange={(e) => {
                               const newData = [...finishedPHEUR];
                               newData[index].specificRotation = e.target.value;
@@ -16095,6 +16097,7 @@ export default function APQR() {
                         <td>
                           <input
                             value={item.lLimit}
+                            type="number"
                             onChange={(e) => {
                               const newData = [...finishedPHEUR];
                               newData[index].lLimit = e.target.value;
@@ -16106,6 +16109,7 @@ export default function APQR() {
                         <td>
                           <input
                             value={item.uLimit}
+                            type="number"
                             onChange={(e) => {
                               const newData = [...finishedPHEUR];
                               newData[index].uLimit = e.target.value;
@@ -16128,6 +16132,7 @@ export default function APQR() {
                         <td>
                           <input
                             value={item.relatedSubstanceHPLC.impurityBLimit}
+                            type="number"
                             onChange={(e) => {
                               const newData = [...finishedPHEUR];
                               newData[
@@ -16141,6 +16146,7 @@ export default function APQR() {
                         <td>
                           <input
                             value={item.relatedSubstanceHPLC.impurityC}
+                            type="number"
                             onChange={(e) => {
                               const newData = [...finishedPHEUR];
                               newData[index].relatedSubstanceHPLC.impurityC =
@@ -16152,6 +16158,7 @@ export default function APQR() {
                         <td>
                           <input
                             value={item.relatedSubstanceHPLC.impurityCLimit}
+                            type="number"
                             onChange={(e) => {
                               const newData = [...finishedPHEUR];
                               newData[
@@ -16183,6 +16190,7 @@ export default function APQR() {
                               item.relatedSubstanceHPLC
                                 .unspecifiedImpuritiesLimit
                             }
+                            type="number"
                             onChange={(e) => {
                               const newData = [...finishedPHEUR];
                               newData[
@@ -16196,6 +16204,7 @@ export default function APQR() {
                         <td>
                           <input
                             value={item.relatedSubstanceHPLC.totalImpurities}
+                            type="number"
                             onChange={(e) => {
                               const newData = [...finishedPHEUR];
                               newData[
@@ -16211,6 +16220,7 @@ export default function APQR() {
                             value={
                               item.relatedSubstanceHPLC.totalImpuritiesLimit
                             }
+                            type="number"
                             onChange={(e) => {
                               const newData = [...finishedPHEUR];
                               newData[
@@ -16224,6 +16234,7 @@ export default function APQR() {
                         <td>
                           <input
                             value={item.waterKF}
+                            type="number"
                             onChange={(e) => {
                               const newData = [...finishedPHEUR];
                               newData[index].waterKF = e.target.value;
@@ -16234,6 +16245,7 @@ export default function APQR() {
                         <td>
                           <input
                             value={item.waterKFLimit}
+                            type="number"
                             onChange={(e) => {
                               const newData = [...finishedPHEUR];
                               newData[index].waterKFLimit = e.target.value;
@@ -16244,6 +16256,7 @@ export default function APQR() {
                         <td>
                           <input
                             value={item.assay}
+                            type="number"
                             onChange={(e) => {
                               const newData = [...finishedPHEUR];
                               newData[index].assay = e.target.value;
@@ -16254,6 +16267,7 @@ export default function APQR() {
                         <td>
                           <input
                             value={item.assayLimit}
+                            type="number"
                             onChange={(e) => {
                               const newData = [...finishedPHEUR];
                               newData[index].assayLimit = e.target.value;
@@ -16264,6 +16278,7 @@ export default function APQR() {
                         <td>
                           <input
                             value={item.residualSolventByCG.methyleneChloride}
+                            type="number"
                             onChange={(e) => {
                               const newData = [...finishedPHEUR];
                               newData[
@@ -16288,6 +16303,7 @@ export default function APQR() {
                         <td>
                           <input
                             value={item.residualSolventByCG.acetone}
+                            type="number"
                             onChange={(e) => {
                               const newData = [...finishedPHEUR];
                               newData[index].residualSolventByCG.acetone =
@@ -16301,6 +16317,7 @@ export default function APQR() {
                             value={
                               item.residualSolventByCG.residualSolventLimit
                             }
+                            type="number"
                             onChange={(e) => {
                               const newData = [...finishedPHEUR];
                               newData[
@@ -16314,6 +16331,7 @@ export default function APQR() {
                         <td>
                           <input
                             value={item.particleSizeMalvern.particleSize90}
+                            type="number"
                             onChange={(e) => {
                               const newData = [...finishedPHEUR];
                               newData[
@@ -16327,6 +16345,7 @@ export default function APQR() {
                         <td>
                           <input
                             value={item.particleSizeMalvern.particleSize90Limit}
+                            type="number"
                             onChange={(e) => {
                               const newData = [...finishedPHEUR];
                               newData[
@@ -16340,6 +16359,7 @@ export default function APQR() {
                         <td>
                           <input
                             value={item.particleSizeMalvern.particleSize995}
+                            type="number"
                             onChange={(e) => {
                               const newData = [...finishedPHEUR];
                               newData[
@@ -16355,6 +16375,7 @@ export default function APQR() {
                             value={
                               item.particleSizeMalvern.particleSize995Limit
                             }
+                            type="number"
                             onChange={(e) => {
                               const newData = [...finishedPHEUR];
                               newData[
