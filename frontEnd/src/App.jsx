@@ -2,7 +2,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./App.css";
 import Login from "./pages/Login";
 import Dashboard from "./pages/Dashboard";
-import APQR from "./pages/APQR";
+// import APQR from "./pages/APQR";
 import Analytics from "./pages/Analytics";
 import Notification from "./pages/Notification";
 import AdminLogin from "./pages/Admin/AdminLogin";
@@ -15,6 +15,7 @@ import HighchartsLine from "./Component/Analytics/HighchartsLine";
 import AdvancedAnalytics from "./pages/AdvancedAnalytics";
 import Logs from "./pages/Logs";
 import ViewReport from "./pages/ViewReport";
+import NewAPQR from "./pages/NewAPQR/NewAPQR";
 
 function App() {
   return (
@@ -27,7 +28,8 @@ function App() {
         {/* User */}
         <Route path="/" element={<Login />} />
         <Route path="/dashboard" element={<Dashboard />} />
-        <Route path="/new-pqr" element={<APQR />} />
+        {/* <Route path="/new-pqr" element={<APQR />} /> */}
+        <Route path="/new-pqr" element={<NewAPQR />} />
         <Route path="/apqr-panel" element={<ApqrPanel />} />
         <Route path="/analytics" element={<AdvancedAnalytics />} />
         <Route path="/notification" element={<Notification />} />
