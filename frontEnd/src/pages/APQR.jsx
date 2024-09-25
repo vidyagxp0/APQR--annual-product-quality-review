@@ -1265,12 +1265,12 @@ export default function APQR() {
   const addCapaDetailsRow = () => {
     const newRow = {
       ARNo: "",
-      capaType: "",
-      descriptionOfIssue: "",
-      rootCause: "",
-      capaVerification: "",
-      fileAttachment: "",
-      remarks: "",
+      capaDateOfReporting: "",
+      capaNumber: "",
+      capaSourceAndNumber: "",
+      descriptionOfCapa: "",
+      closureStatus: "",
+      targetClosedOnDate: "",
     };
     setCapaDetails([...capaDetails, newRow]);
   };
@@ -1732,60 +1732,59 @@ export default function APQR() {
 
   const addReviewOfCPD = () => {
     const newRow = {
-      dateOfInitiation: "",
-      recordNo: "",
-      siteDivision: "",
-      department: "",
-      initiator: "",
-      shortDescription: "",
+      dateOfReporting: "",
+      deviationNo: "",
       batchNo: "",
-      dueDate: "",
-      currentStatus: "",
+      categoryOfDeviationMinorMajor: "",
+      descriptionOfDeviation: "",
+      currentStatusOfClosure: "",
+      targetClosedOnDate: "",
+      // dueDate: "",
+      // currentStatus: "",
     };
     setReviewOFCPD([...reviewOfCPD, newRow]);
   };
 
   const addPreviewRPD = () => {
     const newRow = {
-      dateOfInitiation: "",
-      recordNo: "",
-      siteDivision: "",
-      department: "",
-      initiator: "",
-      shortDescription: "",
+      dateOfReporting: "",
+      deviationNo: "",
       batchNo: "",
-      dueDate: "",
-      currentStatus: "",
+      categoryOfDeviationMinorMajor: "",
+      descriptionOfDeviation: "",
+      currentStatusOfClosure: "",
+      targetClosedOnDate: "",
+      // dueDate: "",
+      // currentStatus: "",
     };
     setPreviewRPD([...previewRPD, newRow]);
   };
 
   const addCurrentOOS = () => {
     const newRow = {
-      dateOfInitiation: "",
-      recordNo: "",
-      siteDivision: "",
-      department: "",
-      initiator: "",
-      shortDescription: "",
+      dateOfReporting: "",
+      oosNo: "",
+      productStage: "",
       batchNo: "",
-      dueDate: "",
-      currentStatus: "",
+      descriptionOfOos: "",
+      validInvalid: "",
+      currentStatusOfClosure: "",
+      targetClosedOnDate: "",
+      // currentStatus: "",
     };
     setCurrentOOS([...currentOOS, newRow]);
   };
 
   const addPreviewOOS = () => {
     const newRow = {
-      dateOfInitiation: "",
-      recordNo: "",
-      siteDivision: "",
-      department: "",
-      initiator: "",
-      shortDescription: "",
+      dateOfReporting: "",
+      oosNo: "",
+      productStage: "",
       batchNo: "",
-      dueDate: "",
-      currentStatus: "",
+      descriptionOfOos: "",
+      validInvalid: "",
+      currentStatusOfClosure: "",
+      targetClosedOnDate: "",
     };
     setPreviewOOS([...previewOOS, newRow]);
   };
@@ -1878,30 +1877,29 @@ export default function APQR() {
 
   const addCurrentOOT = () => {
     const newRow = {
-      dateOfInitiation: "",
-      recordNo: "",
-      siteDivision: "",
-      department: "",
-      initiator: "",
-      shortDescription: "",
+      dateOfReporting: "",
+      ootNo: "",
+      productStage: "",
       batchNo: "",
-      dueDate: "",
-      currentStatus: "",
+      descriptionOfOot: "",
+      validInvalid: "",
+      currentStatusOfClosure: "",
+      targetClosedOnDate: "",
+      // currentStatus: "",
     };
     setCurrentOOT([...currentOOT, newRow]);
   };
 
   const addPreviewOOT = () => {
     const newRow = {
-      dateOfInitiation: "",
-      recordNo: "",
-      siteDivision: "",
-      department: "",
-      initiator: "",
-      shortDescription: "",
+      dateOfReporting: "",
+      ootNo: "",
+      productStage: "",
       batchNo: "",
-      dueDate: "",
-      currentStatus: "",
+      descriptionOfOot: "",
+      validInvalid: "",
+      currentStatusOfClosure: "",
+      targetClosedOnDate: "",
     };
     setPreviewOOT([...previewOOT, newRow]);
   };
@@ -1909,14 +1907,11 @@ export default function APQR() {
   const addCurrentCC = () => {
     const newRow = {
       dateOfInitiation: "",
-      recordNo: "",
-      siteDivision: "",
-      department: "",
-      initiator: "",
-      shortDescription: "",
-      batchNo: "",
-      dueDate: "",
-      currentStatus: "",
+      changeNotificationNo: "",
+      descriptionOfChange: "",
+      categoryOfChangeMajorMinor: "",
+      currentStatusOfClosure: "",
+      targetClosedOnDate: "",
     };
     setCurrentCC([...currentCC, newRow]);
   };
@@ -1924,44 +1919,43 @@ export default function APQR() {
   const addPreviewCC = () => {
     const newRow = {
       dateOfInitiation: "",
-      recordNo: "",
-      siteDivision: "",
-      department: "",
-      initiator: "",
-      shortDescription: "",
-      batchNo: "",
-      dueDate: "",
-      currentStatus: "",
+      changeNotificationNo: "",
+      descriptionOfChange: "",
+      categoryOfChangeMajorMinor: "",
+      currentStatusOfClosure: "",
+      targetClosedOnDate: "",
     };
     setPreviewCC([...previewCC, newRow]);
   };
 
   const addCurrentMC = () => {
     const newRow = {
-      dateOfInitiation: "",
-      recordNo: "",
-      siteDivision: "",
-      department: "",
-      initiator: "",
-      shortDescription: "",
+      dateOfReceipt: "",
+      complaintNo: "",
+      customerName: "",
       batchNo: "",
-      dueDate: "",
-      currentStatus: "",
+      preStageCategoryMMC: "",
+      descriptionOfComplaint: "",
+      confirmNotConfirm: "",
+      postStageCategoryMMC: "",
+      currentStatusOfClosure: "",
+      closedOnDate: "",
     };
     setCurrentMC([...currentMC, newRow]);
   };
 
   const addPreviewMC = () => {
     const newRow = {
-      dateOfInitiation: "",
-      recordNo: "",
-      siteDivision: "",
-      department: "",
-      initiator: "",
-      shortDescription: "",
+      dateOfReceipt: "",
+      complaintNo: "",
+      customerName: "",
       batchNo: "",
-      dueDate: "",
-      currentStatus: "",
+      preStageCategoryMMC: "",
+      descriptionOfComplaint: "",
+      confirmNotConfirm: "",
+      postStageCategoryMMC: "",
+      currentStatusOfClosure: "",
+      closedOnDate: "",
     };
     setPreviewMC([...previewMC, newRow]);
   };
@@ -1969,14 +1963,14 @@ export default function APQR() {
   const addCurrentLabI = () => {
     const newRow = {
       dateOfInitiation: "",
-      recordNo: "",
-      siteDivision: "",
-      department: "",
-      initiator: "",
-      shortDescription: "",
+      labIncidentNo: "",
+      productStage: "",
       batchNo: "",
-      dueDate: "",
-      currentStatus: "",
+      descriptionOfLabIncident: "",
+      currentStatusOfIncident: "",
+      // batchNo: "",
+      // dueDate: "",
+      // currentStatus: "",
     };
     setCurrentLabI([...currentLabI, newRow]);
   };
@@ -1984,14 +1978,11 @@ export default function APQR() {
   const addPreviewLabI = () => {
     const newRow = {
       dateOfInitiation: "",
-      recordNo: "",
-      siteDivision: "",
-      department: "",
-      initiator: "",
-      shortDescription: "",
+      labIncidentNo: "",
+      productStage: "",
       batchNo: "",
-      dueDate: "",
-      currentStatus: "",
+      descriptionOfLabIncident: "",
+      currentStatusOfIncident: "",
     };
     setPreviewLabI([...previewLabI, newRow]);
   };
@@ -4284,12 +4275,12 @@ export default function APQR() {
                 <thead>
                   <tr>
                     <th>AR No.</th>
-                    <th>CAPA Type</th>
-                    <th>Description of Issue</th>
-                    <th>Root Cause</th>
-                    <th>CAPA Verification</th>
-                    <th>File Attachment</th>
-                    <th>Remarks</th>
+                    <th>CAPA Date of Reporting</th>
+                    <th>CAPA Number</th>
+                    <th>CAPA Source & Number</th>
+                    <th>Description of CAPA</th>
+                    <th>Closure Status</th>
+                    <th>Target/Closed on Date</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -4308,20 +4299,20 @@ export default function APQR() {
                         </td>
                         <td>
                           <input
-                            value={item.capaType}
+                            value={item.capaDateOfReporting}
                             onChange={(e) => {
                               const newData = [...capaDetails];
-                              newData[index].capaType = e.target.value;
+                              newData[index].capaDateOfReporting = e.target.value;
                               setCapaDetails(newData);
                             }}
                           />
                         </td>
                         <td>
                           <input
-                            value={item.descriptionOfIssue}
+                            value={item.capaNumber}
                             onChange={(e) => {
                               const newData = [...capaDetails];
-                              newData[index].descriptionOfIssue =
+                              newData[index].capaNumber =
                                 e.target.value;
                               setCapaDetails(newData);
                             }}
@@ -4329,20 +4320,20 @@ export default function APQR() {
                         </td>
                         <td>
                           <input
-                            value={item.rootCause}
+                            value={item.capaSourceAndNumber}
                             onChange={(e) => {
                               const newData = [...capaDetails];
-                              newData[index].rootCause = e.target.value;
+                              newData[index].capaSourceAndNumber = e.target.value;
                               setCapaDetails(newData);
                             }}
                           />
                         </td>
                         <td>
                           <input
-                            value={item.capaVerification}
+                            value={item.descriptionOfCapa}
                             onChange={(e) => {
                               const newData = [...capaDetails];
-                              newData[index].capaVerification = e.target.value;
+                              newData[index].descriptionOfCapa = e.target.value;
                               setCapaDetails(newData);
                             }}
                           />
@@ -4350,20 +4341,20 @@ export default function APQR() {
                         <td>
                           <input
                             type="file"
-                            value={item.chooseFile}
+                            value={item.closureStatus}
                             onChange={(e) => {
                               const newData = [...capaDetails];
-                              newData[index].chooseFile = e.target.value;
+                              newData[index].closureStatus = e.target.value;
                               setCapaDetails(newData);
                             }}
                           />
                         </td>
                         <td>
                           <input
-                            value={item.remarks}
+                            value={item.targetClosedOnDate}
                             onChange={(e) => {
                               const newData = [...capaDetails];
-                              newData[index].remarks = e.target.value;
+                              newData[index].targetClosedOnDate = e.target.value;
                               setCapaDetails(newData);
                             }}
                           />
@@ -10088,15 +10079,15 @@ export default function APQR() {
                 <thead>
                   <tr>
                     <th>S.No</th>
-                    <th>Date Of Initiation</th>
-                    <th>Record No</th>
-                    <th>Site/Division</th>
-                    <th>Department</th>
-                    <th>Initiator</th>
-                    <th>Short Description</th>
-                    <th>Batch No</th>
-                    <th>Due Date</th>
-                    <th>Current Status</th>
+                    <th>Date Of Reporting</th>
+                    <th>Deviation  No.</th>
+                    <th>Batch No.</th>
+                    <th>Category of Deviation Minor/major/critical</th>
+                    <th>Description of Deviation</th>
+                    <th>Current Status of Closure</th>
+                    <th>Target/Closed on Date</th>
+                    {/* <th>Due Date</th>
+                    <th>Current Status</th> */}
                   </tr>
                 </thead>
                 <tbody>
@@ -10106,60 +10097,20 @@ export default function APQR() {
                         <td>{index + 1}</td>
                         <td>
                           <input
-                            value={item.dateOfInitiation}
+                            value={item.dateOfReporting}
                             onChange={(e) => {
                               const newData = [...reviewOfCPD];
-                              newData[index].dateOfInitiation = e.target.value;
+                              newData[index].dateOfReporting = e.target.value;
                               setReviewOFCPD(newData);
                             }}
                           />
                         </td>
                         <td>
                           <input
-                            value={item.recordNo}
+                            value={item.deviationNo}
                             onChange={(e) => {
                               const newData = [...reviewOfCPD];
-                              newData[index].recordNo = e.target.value;
-                              setReviewOFCPD(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.siteDivision}
-                            onChange={(e) => {
-                              const newData = [...reviewOfCPD];
-                              newData[index].siteDivision = e.target.value;
-                              setReviewOFCPD(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.department}
-                            onChange={(e) => {
-                              const newData = [...reviewOfCPD];
-                              newData[index].department = e.target.value;
-                              setReviewOFCPD(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.initiator}
-                            onChange={(e) => {
-                              const newData = [...reviewOfCPD];
-                              newData[index].initiator = e.target.value;
-                              setReviewOFCPD(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.shortDescription}
-                            onChange={(e) => {
-                              const newData = [...reviewOfCPD];
-                              newData[index].shortDescription = e.target.value;
+                              newData[index].deviationNo = e.target.value;
                               setReviewOFCPD(newData);
                             }}
                           />
@@ -10176,6 +10127,46 @@ export default function APQR() {
                         </td>
                         <td>
                           <input
+                            value={item.categoryOfDeviationMinorMajor}
+                            onChange={(e) => {
+                              const newData = [...reviewOfCPD];
+                              newData[index].categoryOfDeviationMinorMajor = e.target.value;
+                              setReviewOFCPD(newData);
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.descriptionOfDeviation}
+                            onChange={(e) => {
+                              const newData = [...reviewOfCPD];
+                              newData[index].descriptionOfDeviation = e.target.value;
+                              setReviewOFCPD(newData);
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.currentStatusOfClosure}
+                            onChange={(e) => {
+                              const newData = [...reviewOfCPD];
+                              newData[index].currentStatusOfClosure = e.target.value;
+                              setReviewOFCPD(newData);
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.targetClosedOnDate}
+                            onChange={(e) => {
+                              const newData = [...reviewOfCPD];
+                              newData[index].targetClosedOnDate = e.target.value;
+                              setReviewOFCPD(newData);
+                            }}
+                          />
+                        </td>
+                         {/* <td>
+                          <input
                             value={item.dueDate}
                             onChange={(e) => {
                               const newData = [...reviewOfCPD];
@@ -10183,8 +10174,8 @@ export default function APQR() {
                               setReviewOFCPD(newData);
                             }}
                           />
-                        </td>
-                        <td>
+                        </td> */}
+                        {/*<td>
                           <input
                             value={item.currentStatus}
                             onChange={(e) => {
@@ -10193,7 +10184,7 @@ export default function APQR() {
                               setReviewOFCPD(newData);
                             }}
                           />
-                        </td>
+                        </td> */}
                       </tr>
                     );
                   })}
@@ -10216,16 +10207,16 @@ export default function APQR() {
               <table>
                 <thead>
                   <tr>
-                    <th>S.No</th>
-                    <th>Date Of Initiation</th>
-                    <th>Record No</th>
-                    <th>Site/Division</th>
-                    <th>Department</th>
-                    <th>Initiator</th>
-                    <th>Short Description</th>
-                    <th>Batch No</th>
-                    <th>Due Date</th>
-                    <th>Current Status</th>
+                  <th>S.No</th>
+                  <th>Date Of Reporting</th>
+                    <th>Deviation  No.</th>
+                    <th>Batch No.</th>
+                    <th>Category of Deviation Minor/major/critical</th>
+                    <th>Description of Deviation</th>
+                    <th>Current Status of Closure</th>
+                    <th>Target/Closed on Date</th>
+                    {/* <th>Due Date</th>
+                    <th>Current Status</th> */}
                   </tr>
                 </thead>
                 <tbody>
@@ -10235,60 +10226,20 @@ export default function APQR() {
                         <td>{index + 1}</td>
                         <td>
                           <input
-                            value={item.dateOfInitiation}
+                            value={item.dateOfReporting}
                             onChange={(e) => {
                               const newData = [...previewRPD];
-                              newData[index].dateOfInitiation = e.target.value;
+                              newData[index].dateOfReporting = e.target.value;
                               setPreviewRPD(newData);
                             }}
                           />
                         </td>
                         <td>
                           <input
-                            value={item.recordNo}
+                            value={item.deviationNo}
                             onChange={(e) => {
                               const newData = [...previewRPD];
-                              newData[index].recordNo = e.target.value;
-                              setPreviewRPD(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.siteDivision}
-                            onChange={(e) => {
-                              const newData = [...previewRPD];
-                              newData[index].siteDivision = e.target.value;
-                              setPreviewRPD(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.department}
-                            onChange={(e) => {
-                              const newData = [...previewRPD];
-                              newData[index].department = e.target.value;
-                              setPreviewRPD(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.initiator}
-                            onChange={(e) => {
-                              const newData = [...previewRPD];
-                              newData[index].initiator = e.target.value;
-                              setPreviewRPD(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.shortDescription}
-                            onChange={(e) => {
-                              const newData = [...previewRPD];
-                              newData[index].shortDescription = e.target.value;
+                              newData[index].deviationNo = e.target.value;
                               setPreviewRPD(newData);
                             }}
                           />
@@ -10305,6 +10256,46 @@ export default function APQR() {
                         </td>
                         <td>
                           <input
+                            value={item.categoryOfDeviationMinorMajor}
+                            onChange={(e) => {
+                              const newData = [...previewRPD];
+                              newData[index].categoryOfDeviationMinorMajor = e.target.value;
+                              setPreviewRPD(newData);
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.descriptionOfDeviation}
+                            onChange={(e) => {
+                              const newData = [...previewRPD];
+                              newData[index].descriptionOfDeviation = e.target.value;
+                              setPreviewRPD(newData);
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.currentStatusOfClosure}
+                            onChange={(e) => {
+                              const newData = [...previewRPD];
+                              newData[index].currentStatusOfClosure = e.target.value;
+                              setPreviewRPD(newData);
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.targetClosedOnDate}
+                            onChange={(e) => {
+                              const newData = [...previewRPD];
+                              newData[index].targetClosedOnDate = e.target.value;
+                              setPreviewRPD(newData);
+                            }}
+                          />
+                        </td>
+                         {/* <td>
+                          <input
                             value={item.dueDate}
                             onChange={(e) => {
                               const newData = [...previewRPD];
@@ -10312,8 +10303,8 @@ export default function APQR() {
                               setPreviewRPD(newData);
                             }}
                           />
-                        </td>
-                        <td>
+                        </td> */}
+                       {/* <td>
                           <input
                             value={item.currentStatus}
                             onChange={(e) => {
@@ -10322,7 +10313,7 @@ export default function APQR() {
                               setPreviewRPD(newData);
                             }}
                           />
-                        </td>
+                        </td> */}
                       </tr>
                     );
                   })}
@@ -10353,15 +10344,15 @@ export default function APQR() {
                 <thead>
                   <tr>
                     <th>S.No</th>
-                    <th>Date Of Initiation</th>
-                    <th>Record No</th>
-                    <th>Site/Division</th>
-                    <th>Department</th>
-                    <th>Initiator</th>
-                    <th>Short Description</th>
-                    <th>Batch No</th>
-                    <th>Due Date</th>
-                    <th>Current Status</th>
+                    <th>Date of reporting</th>
+                    <th>OOS No.</th>
+                    <th>Product stage </th>
+                    <th>Batch No.</th>
+                    <th>Description of OOS</th>
+                    <th>Valid / Invalid </th>
+                    <th>Current Status of Closure</th>
+                    <th>Target/Closed on Date</th>
+                    {/* <th>Current Status</th> */}
                   </tr>
                 </thead>
                 <tbody>
@@ -10371,60 +10362,30 @@ export default function APQR() {
                         <td>{index + 1}</td>
                         <td>
                           <input
-                            value={item.dateOfInitiation}
+                            value={item.dateOfReporting}
                             onChange={(e) => {
                               const newData = [...currentOOS];
-                              newData[index].dateOfInitiation = e.target.value;
+                              newData[index].dateOfReporting = e.target.value;
                               setCurrentOOS(newData);
                             }}
                           />
                         </td>
                         <td>
                           <input
-                            value={item.recordNo}
+                            value={item.oosNo}
                             onChange={(e) => {
                               const newData = [...currentOOS];
-                              newData[index].recordNo = e.target.value;
+                              newData[index].oosNo = e.target.value;
                               setCurrentOOS(newData);
                             }}
                           />
                         </td>
                         <td>
                           <input
-                            value={item.siteDivision}
+                            value={item.productStage}
                             onChange={(e) => {
                               const newData = [...currentOOS];
-                              newData[index].siteDivision = e.target.value;
-                              setCurrentOOS(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.department}
-                            onChange={(e) => {
-                              const newData = [...currentOOS];
-                              newData[index].department = e.target.value;
-                              setCurrentOOS(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.initiator}
-                            onChange={(e) => {
-                              const newData = [...currentOOS];
-                              newData[index].initiator = e.target.value;
-                              setCurrentOOS(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.shortDescription}
-                            onChange={(e) => {
-                              const newData = [...currentOOS];
-                              newData[index].shortDescription = e.target.value;
+                              newData[index].productStage = e.target.value;
                               setCurrentOOS(newData);
                             }}
                           />
@@ -10441,15 +10402,45 @@ export default function APQR() {
                         </td>
                         <td>
                           <input
-                            value={item.dueDate}
+                            value={item.descriptionOfOos}
                             onChange={(e) => {
                               const newData = [...currentOOS];
-                              newData[index].dueDate = e.target.value;
+                              newData[index].descriptionOfOos = e.target.value;
                               setCurrentOOS(newData);
                             }}
                           />
                         </td>
                         <td>
+                          <input
+                            value={item.validInvalid}
+                            onChange={(e) => {
+                              const newData = [...currentOOS];
+                              newData[index].validInvalid = e.target.value;
+                              setCurrentOOS(newData);
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.currentStatusOfClosure}
+                            onChange={(e) => {
+                              const newData = [...currentOOS];
+                              newData[index].currentStatusOfClosure = e.target.value;
+                              setCurrentOOS(newData);
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.targetClosedOnDate}
+                            onChange={(e) => {
+                              const newData = [...currentOOS];
+                              newData[index].targetClosedOnDate = e.target.value;
+                              setCurrentOOS(newData);
+                            }}
+                          />
+                        </td>
+                        {/* <td>
                           <input
                             value={item.currentStatus}
                             onChange={(e) => {
@@ -10458,7 +10449,7 @@ export default function APQR() {
                               setCurrentOOS(newData);
                             }}
                           />
-                        </td>
+                        </td> */}
                       </tr>
                     );
                   })}
@@ -10480,16 +10471,15 @@ export default function APQR() {
               <table>
                 <thead>
                   <tr>
-                    <th>S.No</th>
-                    <th>Date Of Initiation</th>
-                    <th>Record No</th>
-                    <th>Site/Division</th>
-                    <th>Department</th>
-                    <th>Initiator</th>
-                    <th>Short Description</th>
-                    <th>Batch No</th>
-                    <th>Due Date</th>
-                    <th>Current Status</th>
+                  <th>S.No</th>
+                    <th>Date of reporting</th>
+                    <th>OOS No.</th>
+                    <th>Product stage </th>
+                    <th>Batch No.</th>
+                    <th>Description of OOS</th>
+                    <th>Valid / Invalid </th>
+                    <th>Current Status of Closure</th>
+                    <th>Target/Closed on Date</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -10499,10 +10489,10 @@ export default function APQR() {
                         <td>{index + 1}</td>
                         <td>
                           <input
-                            value={item.dateOfInitiation}
+                            value={item.dateOfReporting}
                             onChange={(e) => {
                               const newData = [...previewOOS];
-                              newData[index].dateOfInitiation = e.target.value;
+                              newData[index].dateOfReporting = e.target.value;
                               setPreviewOOS(newData);
                             }}
                           />
@@ -10510,50 +10500,20 @@ export default function APQR() {
 
                         <td>
                           <input
-                            value={item.recordNo}
+                            value={item.oosNo}
                             onChange={(e) => {
                               const newData = [...previewOOS];
-                              newData[index].recordNo = e.target.value;
+                              newData[index].oosNo = e.target.value;
                               setPreviewOOS(newData);
                             }}
                           />
                         </td>
                         <td>
                           <input
-                            value={item.siteDivision}
+                            value={item.productStage}
                             onChange={(e) => {
                               const newData = [...previewOOS];
-                              newData[index].siteDivision = e.target.value;
-                              setPreviewOOS(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.department}
-                            onChange={(e) => {
-                              const newData = [...previewOOS];
-                              newData[index].department = e.target.value;
-                              setPreviewOOS(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.initiator}
-                            onChange={(e) => {
-                              const newData = [...previewOOS];
-                              newData[index].initiator = e.target.value;
-                              setPreviewOOS(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.shortDescription}
-                            onChange={(e) => {
-                              const newData = [...previewOOS];
-                              newData[index].shortDescription = e.target.value;
+                              newData[index].productStage = e.target.value;
                               setPreviewOOS(newData);
                             }}
                           />
@@ -10570,16 +10530,46 @@ export default function APQR() {
                         </td>
                         <td>
                           <input
-                            value={item.dueDate}
+                            value={item.descriptionOfOos}
                             onChange={(e) => {
                               const newData = [...previewOOS];
-                              newData[index].dueDate = e.target.value;
+                              newData[index].descriptionOfOos = e.target.value;
+                              setPreviewOOS(newData);
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.validInvalid}
+                            onChange={(e) => {
+                              const newData = [...previewOOS];
+                              newData[index].validInvalid = e.target.value;
+                              setPreviewOOS(newData);
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.currentStatusOfClosure}
+                            onChange={(e) => {
+                              const newData = [...previewOOS];
+                              newData[index].currentStatusOfClosure = e.target.value;
+                              setPreviewOOS(newData);
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.targetClosedOnDate}
+                            onChange={(e) => {
+                              const newData = [...previewOOS];
+                              newData[index].targetClosedOnDate = e.target.value;
                               setPreviewOOS(newData);
                             }}
                           />
                         </td>
 
-                        <td>
+                        {/* <td>
                           <input
                             value={item.currentStatus}
                             onChange={(e) => {
@@ -10588,7 +10578,7 @@ export default function APQR() {
                               setPreviewOOS(newData);
                             }}
                           />
-                        </td>
+                        </td> */}
                       </tr>
                     );
                   })}
@@ -11416,15 +11406,15 @@ export default function APQR() {
                 <thead>
                   <tr>
                     <th>S.No</th>
-                    <th>Date Of Initiation</th>
-                    <th>Record No</th>
-                    <th>Site/Division</th>
-                    <th>Department</th>
-                    <th>Initiator</th>
-                    <th>Short Description</th>
-                    <th>Batch No</th>
-                    <th>Due Date</th>
-                    <th>Current Status</th>
+                    <th>Date of reporting</th>
+                    <th>OOT No</th>
+                    <th>Product Stage</th>
+                    <th>Batch No.</th>
+                    <th>Description of OOT</th>
+                    <th>Valid / Invalid</th>
+                    <th>Current Status of Closure</th>
+                    <th>Target/Closed on Date</th>
+                    {/* <th>Current Status</th> */}
                   </tr>
                 </thead>
                 <tbody>
@@ -11434,60 +11424,30 @@ export default function APQR() {
                         <td>{index + 1}</td>
                         <td>
                           <input
-                            value={item.dateOfInitiation}
+                            value={item.dateOfReporting}
                             onChange={(e) => {
                               const newData = [...currentOOT];
-                              newData[index].dateOfInitiation = e.target.value;
+                              newData[index].dateOfReporting = e.target.value;
                               setCurrentOOT(newData);
                             }}
                           />
                         </td>
                         <td>
                           <input
-                            value={item.recordNo}
+                            value={item.ootNo}
                             onChange={(e) => {
                               const newData = [...currentOOT];
-                              newData[index].recordNo = e.target.value;
+                              newData[index].ootNo = e.target.value;
                               setCurrentOOT(newData);
                             }}
                           />
                         </td>
                         <td>
                           <input
-                            value={item.siteDivision}
+                            value={item.productStage}
                             onChange={(e) => {
                               const newData = [...currentOOT];
-                              newData[index].siteDivision = e.target.value;
-                              setCurrentOOT(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.department}
-                            onChange={(e) => {
-                              const newData = [...currentOOT];
-                              newData[index].department = e.target.value;
-                              setCurrentOOT(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.initiator}
-                            onChange={(e) => {
-                              const newData = [...currentOOT];
-                              newData[index].initiator = e.target.value;
-                              setCurrentOOT(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.shortDescription}
-                            onChange={(e) => {
-                              const newData = [...currentOOT];
-                              newData[index].shortDescription = e.target.value;
+                              newData[index].productStage = e.target.value;
                               setCurrentOOT(newData);
                             }}
                           />
@@ -11504,15 +11464,45 @@ export default function APQR() {
                         </td>
                         <td>
                           <input
-                            value={item.dueDate}
+                            value={item.descriptionOfOot}
                             onChange={(e) => {
                               const newData = [...currentOOT];
-                              newData[index].dueDate = e.target.value;
+                              newData[index].descriptionOfOot = e.target.value;
                               setCurrentOOT(newData);
                             }}
                           />
                         </td>
                         <td>
+                          <input
+                            value={item.validInvalid}
+                            onChange={(e) => {
+                              const newData = [...currentOOT];
+                              newData[index].validInvalid = e.target.value;
+                              setCurrentOOT(newData);
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.currentStatusOfClosure}
+                            onChange={(e) => {
+                              const newData = [...currentOOT];
+                              newData[index].currentStatusOfClosure = e.target.value;
+                              setCurrentOOT(newData);
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.targetClosedOnDate}
+                            onChange={(e) => {
+                              const newData = [...currentOOT];
+                              newData[index].targetClosedOnDate = e.target.value;
+                              setCurrentOOT(newData);
+                            }}
+                          />
+                        </td>
+                        {/* <td>
                           <input
                             value={item.currentStatus}
                             onChange={(e) => {
@@ -11521,7 +11511,7 @@ export default function APQR() {
                               setCurrentOOT(newData);
                             }}
                           />
-                        </td>
+                        </td> */}
                       </tr>
                     );
                   })}
@@ -11543,16 +11533,15 @@ export default function APQR() {
               <table>
                 <thead>
                   <tr>
-                    <th>S.No</th>
-                    <th>Date Of Initiation</th>
-                    <th>Record No</th>
-                    <th>Site/Division</th>
-                    <th>Department</th>
-                    <th>Initiator</th>
-                    <th>Short Description</th>
-                    <th>Batch No</th>
-                    <th>Due Date</th>
-                    <th>Current Status</th>
+                  <th>S.No</th>
+                    <th>Date of reporting</th>
+                    <th>OOT No</th>
+                    <th>Product Stage</th>
+                    <th>Batch No.</th>
+                    <th>Description of OOT</th>
+                    <th>Valid / Invalid</th>
+                    <th>Current Status of Closure</th>
+                    <th>Target/Closed on Date</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -11562,10 +11551,10 @@ export default function APQR() {
                         <td>{index + 1}</td>
                         <td>
                           <input
-                            value={item.dateOfInitiation}
+                            value={item.dateOfReporting}
                             onChange={(e) => {
                               const newData = [...previewOOT];
-                              newData[index].dateOfInitiation = e.target.value;
+                              newData[index].dateOfReporting = e.target.value;
                               setPreviewOOT(newData);
                             }}
                           />
@@ -11573,50 +11562,20 @@ export default function APQR() {
 
                         <td>
                           <input
-                            value={item.recordNo}
+                            value={item.ootNo}
                             onChange={(e) => {
                               const newData = [...previewOOT];
-                              newData[index].recordNo = e.target.value;
+                              newData[index].ootNo = e.target.value;
                               setPreviewOOT(newData);
                             }}
                           />
                         </td>
                         <td>
                           <input
-                            value={item.siteDivision}
+                            value={item.productStage}
                             onChange={(e) => {
                               const newData = [...previewOOT];
-                              newData[index].siteDivision = e.target.value;
-                              setPreviewOOT(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.department}
-                            onChange={(e) => {
-                              const newData = [...previewOOT];
-                              newData[index].department = e.target.value;
-                              setPreviewOOT(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.initiator}
-                            onChange={(e) => {
-                              const newData = [...previewOOT];
-                              newData[index].initiator = e.target.value;
-                              setPreviewOOT(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.shortDescription}
-                            onChange={(e) => {
-                              const newData = [...previewOOT];
-                              newData[index].shortDescription = e.target.value;
+                              newData[index].productStage = e.target.value;
                               setPreviewOOT(newData);
                             }}
                           />
@@ -11633,25 +11592,46 @@ export default function APQR() {
                         </td>
                         <td>
                           <input
-                            value={item.dueDate}
+                            value={item.descriptionOfOot}
                             onChange={(e) => {
                               const newData = [...previewOOT];
-                              newData[index].dueDate = e.target.value;
+                              newData[index].descriptionOfOot = e.target.value;
+                              setPreviewOOT(newData);
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.validInvalid}
+                            onChange={(e) => {
+                              const newData = [...previewOOT];
+                              newData[index].validInvalid = e.target.value;
+                              setPreviewOOT(newData);
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.currentStatusOfClosure}
+                            onChange={(e) => {
+                              const newData = [...previewOOT];
+                              newData[index].currentStatusOfClosure = e.target.value;
+                              setPreviewOOT(newData);
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.targetClosedOnDate}
+                            onChange={(e) => {
+                              const newData = [...previewOOT];
+                              newData[index].targetClosedOnDate = e.target.value;
                               setPreviewOOT(newData);
                             }}
                           />
                         </td>
 
-                        <td>
-                          <input
-                            value={item.currentStatus}
-                            onChange={(e) => {
-                              const newData = [...previewOOT];
-                              newData[index].currentStatus = e.target.value;
-                              setPreviewOOT(newData);
-                            }}
-                          />
-                        </td>
+                     
                       </tr>
                     );
                   })}
@@ -11686,14 +11666,14 @@ export default function APQR() {
                   <tr>
                     <th>S.No</th>
                     <th>Date Of Initiation</th>
-                    <th>Record No</th>
-                    <th>Site/Division</th>
-                    <th>Department</th>
-                    <th>Initiator</th>
-                    <th>Short Description</th>
-                    <th>Batch No</th>
+                    <th>Change notification No.</th>
+                    <th>Description of Change</th>
+                    <th>Category of Change  (Major/Minor)</th>
+                    <th>Current Status of Closure</th>
+                    <th>Target/Closed on Date</th>
+                    {/* <th>Batch No</th>
                     <th>Due Date</th>
-                    <th>Current Status</th>
+                    <th>Current Status</th> */}
                   </tr>
                 </thead>
                 <tbody>
@@ -11713,55 +11693,55 @@ export default function APQR() {
                         </td>
                         <td>
                           <input
-                            value={item.recordNo}
+                            value={item.changeNotificationNo}
                             onChange={(e) => {
                               const newData = [...currentCC];
-                              newData[index].recordNo = e.target.value;
+                              newData[index].changeNotificationNo = e.target.value;
                               setCurrentCC(newData);
                             }}
                           />
                         </td>
                         <td>
                           <input
-                            value={item.siteDivision}
+                            value={item.descriptionOfChange}
                             onChange={(e) => {
                               const newData = [...currentCC];
-                              newData[index].siteDivision = e.target.value;
+                              newData[index].descriptionOfChange = e.target.value;
                               setCurrentCC(newData);
                             }}
                           />
                         </td>
                         <td>
                           <input
-                            value={item.department}
+                            value={item.categoryOfChangeMajorMinor}
                             onChange={(e) => {
                               const newData = [...currentCC];
-                              newData[index].department = e.target.value;
+                              newData[index].categoryOfChangeMajorMinor = e.target.value;
                               setCurrentCC(newData);
                             }}
                           />
                         </td>
                         <td>
                           <input
-                            value={item.initiator}
+                            value={item.currentStatusOfClosure}
                             onChange={(e) => {
                               const newData = [...currentCC];
-                              newData[index].initiator = e.target.value;
+                              newData[index].currentStatusOfClosure = e.target.value;
                               setCurrentCC(newData);
                             }}
                           />
                         </td>
                         <td>
                           <input
-                            value={item.shortDescription}
+                            value={item.targetClosedOnDate}
                             onChange={(e) => {
                               const newData = [...currentCC];
-                              newData[index].shortDescription = e.target.value;
+                              newData[index].targetClosedOnDate = e.target.value;
                               setCurrentCC(newData);
                             }}
                           />
                         </td>
-                        <td>
+                        {/* <td>
                           <input
                             value={item.batchNo}
                             onChange={(e) => {
@@ -11780,8 +11760,8 @@ export default function APQR() {
                               setCurrentCC(newData);
                             }}
                           />
-                        </td>
-                        <td>
+                        </td> */}
+                        {/* <td>
                           <input
                             value={item.currentStatus}
                             onChange={(e) => {
@@ -11790,7 +11770,7 @@ export default function APQR() {
                               setCurrentCC(newData);
                             }}
                           />
-                        </td>
+                        </td> */}
                       </tr>
                     );
                   })}
@@ -11814,16 +11794,16 @@ export default function APQR() {
               <table>
                 <thead>
                   <tr>
-                    <th>S.No</th>
+                  <th>S.No</th>
                     <th>Date Of Initiation</th>
-                    <th>Record No</th>
-                    <th>Site/Division</th>
-                    <th>Department</th>
-                    <th>Initiator</th>
-                    <th>Short Description</th>
-                    <th>Batch No</th>
+                    <th>Change notification No.</th>
+                    <th>Description of Change</th>
+                    <th>Category of Change  (Major/Minor)</th>
+                    <th>Current Status of Closure</th>
+                    <th>Target/Closed on Date</th>
+                    {/* <th>Batch No</th>
                     <th>Due Date</th>
-                    <th>Current Status</th>
+                    <th>Current Status</th> */}
                   </tr>
                 </thead>
                 <tbody>
@@ -11844,55 +11824,55 @@ export default function APQR() {
 
                         <td>
                           <input
-                            value={item.recordNo}
+                            value={item.changeNotificationNo}
                             onChange={(e) => {
                               const newData = [...previewCC];
-                              newData[index].recordNo = e.target.value;
+                              newData[index].changeNotificationNo = e.target.value;
                               setPreviewCC(newData);
                             }}
                           />
                         </td>
                         <td>
                           <input
-                            value={item.siteDivision}
+                            value={item.descriptionOfChange}
                             onChange={(e) => {
                               const newData = [...previewCC];
-                              newData[index].siteDivision = e.target.value;
+                              newData[index].descriptionOfChange = e.target.value;
                               setPreviewCC(newData);
                             }}
                           />
                         </td>
                         <td>
                           <input
-                            value={item.department}
+                            value={item.categoryOfChangeMajorMinor}
                             onChange={(e) => {
                               const newData = [...previewCC];
-                              newData[index].department = e.target.value;
+                              newData[index].categoryOfChangeMajorMinor = e.target.value;
                               setPreviewCC(newData);
                             }}
                           />
                         </td>
                         <td>
                           <input
-                            value={item.initiator}
+                            value={item.currentStatusOfClosure}
                             onChange={(e) => {
                               const newData = [...previewCC];
-                              newData[index].initiator = e.target.value;
+                              newData[index].currentStatusOfClosure = e.target.value;
                               setPreviewCC(newData);
                             }}
                           />
                         </td>
                         <td>
                           <input
-                            value={item.shortDescription}
+                            value={item.targetClosedOnDate}
                             onChange={(e) => {
                               const newData = [...previewCC];
-                              newData[index].shortDescription = e.target.value;
+                              newData[index].targetClosedOnDate = e.target.value;
                               setPreviewCC(newData);
                             }}
                           />
                         </td>
-                        <td>
+                        {/* <td>
                           <input
                             value={item.batchNo}
                             onChange={(e) => {
@@ -11901,8 +11881,8 @@ export default function APQR() {
                               setPreviewCC(newData);
                             }}
                           />
-                        </td>
-                        <td>
+                        </td> */}
+                        {/* <td>
                           <input
                             value={item.dueDate}
                             onChange={(e) => {
@@ -11922,7 +11902,7 @@ export default function APQR() {
                               setPreviewCC(newData);
                             }}
                           />
-                        </td>
+                        </td> */}
                       </tr>
                     );
                   })}
@@ -11954,14 +11934,14 @@ export default function APQR() {
                   <tr>
                     <th>S.No</th>
                     <th>Date Of Initiation</th>
-                    <th>Record No</th>
-                    <th>Site/Division</th>
-                    <th>Department</th>
-                    <th>Initiator</th>
-                    <th>Short Description</th>
-                    <th>Batch No</th>
+                    <th>Lab Incident  No.</th>
+                    <th>Product Stage</th>
+                    <th>Batch No.</th>
+                    <th>Description of Lab Incident </th>
+                    <th>Current Status of Incident</th>
+                    {/* <th>Batch No</th>
                     <th>Due Date</th>
-                    <th>Current Status</th>
+                    <th>Current Status</th> */}
                   </tr>
                 </thead>
                 <tbody>
@@ -11981,50 +11961,20 @@ export default function APQR() {
                         </td>
                         <td>
                           <input
-                            value={item.recordNo}
+                            value={item.labIncidentNo}
                             onChange={(e) => {
                               const newData = [...currentLabI];
-                              newData[index].recordNo = e.target.value;
+                              newData[index].labIncidentNo = e.target.value;
                               setCurrentLabI(newData);
                             }}
                           />
                         </td>
                         <td>
                           <input
-                            value={item.siteDivision}
+                            value={item.productStage}
                             onChange={(e) => {
                               const newData = [...currentLabI];
-                              newData[index].siteDivision = e.target.value;
-                              setCurrentLabI(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.department}
-                            onChange={(e) => {
-                              const newData = [...currentLabI];
-                              newData[index].department = e.target.value;
-                              setCurrentLabI(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.initiator}
-                            onChange={(e) => {
-                              const newData = [...currentLabI];
-                              newData[index].initiator = e.target.value;
-                              setCurrentLabI(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.shortDescription}
-                            onChange={(e) => {
-                              const newData = [...currentLabI];
-                              newData[index].shortDescription = e.target.value;
+                              newData[index].productStage = e.target.value;
                               setCurrentLabI(newData);
                             }}
                           />
@@ -12040,6 +11990,36 @@ export default function APQR() {
                           />
                         </td>
                         <td>
+                          <input
+                            value={item.descriptionOfLabIncident}
+                            onChange={(e) => {
+                              const newData = [...currentLabI];
+                              newData[index].descriptionOfLabIncident = e.target.value;
+                              setCurrentLabI(newData);
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.currentStatusOfIncident}
+                            onChange={(e) => {
+                              const newData = [...currentLabI];
+                              newData[index].currentStatusOfIncident = e.target.value;
+                              setCurrentLabI(newData);
+                            }}
+                          />
+                        </td>
+                        {/* <td>
+                          <input
+                            value={item.batchNo}
+                            onChange={(e) => {
+                              const newData = [...currentLabI];
+                              newData[index].batchNo = e.target.value;
+                              setCurrentLabI(newData);
+                            }}
+                          />
+                        </td> */}
+                        {/* <td>
                           <input
                             value={item.dueDate}
                             onChange={(e) => {
@@ -12058,7 +12038,7 @@ export default function APQR() {
                               setCurrentLabI(newData);
                             }}
                           />
-                        </td>
+                        </td> */}
                       </tr>
                     );
                   })}
@@ -12080,16 +12060,13 @@ export default function APQR() {
               <table>
                 <thead>
                   <tr>
-                    <th>S.No</th>
+                  <th>S.No</th>
                     <th>Date Of Initiation</th>
-                    <th>Record No</th>
-                    <th>Site/Division</th>
-                    <th>Department</th>
-                    <th>Initiator</th>
-                    <th>Short Description</th>
-                    <th>Batch No</th>
-                    <th>Due Date</th>
-                    <th>Current Status</th>
+                    <th>Lab Incident  No.</th>
+                    <th>Product Stage</th>
+                    <th>Batch No.</th>
+                    <th>Description of Lab Incident </th>
+                    <th>Current Status of Incident</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -12110,50 +12087,20 @@ export default function APQR() {
 
                         <td>
                           <input
-                            value={item.recordNo}
+                            value={item.labIncidentNo}
                             onChange={(e) => {
                               const newData = [...previewLabI];
-                              newData[index].recordNo = e.target.value;
+                              newData[index].labIncidentNo = e.target.value;
                               setPreviewLabI(newData);
                             }}
                           />
                         </td>
                         <td>
                           <input
-                            value={item.siteDivision}
+                            value={item.productStage}
                             onChange={(e) => {
                               const newData = [...previewLabI];
-                              newData[index].siteDivision = e.target.value;
-                              setPreviewLabI(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.department}
-                            onChange={(e) => {
-                              const newData = [...previewLabI];
-                              newData[index].department = e.target.value;
-                              setPreviewLabI(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.initiator}
-                            onChange={(e) => {
-                              const newData = [...previewLabI];
-                              newData[index].initiator = e.target.value;
-                              setPreviewLabI(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.shortDescription}
-                            onChange={(e) => {
-                              const newData = [...previewLabI];
-                              newData[index].shortDescription = e.target.value;
+                              newData[index].productStage = e.target.value;
                               setPreviewLabI(newData);
                             }}
                           />
@@ -12169,6 +12116,36 @@ export default function APQR() {
                           />
                         </td>
                         <td>
+                          <input
+                            value={item.descriptionOfLabIncident}
+                            onChange={(e) => {
+                              const newData = [...previewLabI];
+                              newData[index].descriptionOfLabIncident = e.target.value;
+                              setPreviewLabI(newData);
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.currentStatusOfIncident}
+                            onChange={(e) => {
+                              const newData = [...previewLabI];
+                              newData[index].currentStatusOfIncident = e.target.value;
+                              setPreviewLabI(newData);
+                            }}
+                          />
+                        </td>
+                        {/* <td>
+                          <input
+                            value={item.batchNo}
+                            onChange={(e) => {
+                              const newData = [...previewLabI];
+                              newData[index].batchNo = e.target.value;
+                              setPreviewLabI(newData);
+                            }}
+                          />
+                        </td> */}
+                        {/* <td>
                           <input
                             value={item.dueDate}
                             onChange={(e) => {
@@ -12188,7 +12165,7 @@ export default function APQR() {
                               setPreviewLabI(newData);
                             }}
                           />
-                        </td>
+                        </td> */}
                       </tr>
                     );
                   })}
@@ -12221,15 +12198,16 @@ export default function APQR() {
                 <thead>
                   <tr>
                     <th>S.No</th>
-                    <th>Date Of Initiation</th>
-                    <th>Record No</th>
-                    <th>Site/Division</th>
-                    <th>Department</th>
-                    <th>Initiator</th>
-                    <th>Short Description</th>
-                    <th>Batch No</th>
-                    <th>Due Date</th>
-                    <th>Current Status</th>
+                    <th>Date of Receipt</th>
+                    <th>Complaint No.</th>
+                    <th>Customer Name</th>
+                    <th>Batch No.</th>
+                    <th>Pre-stage Category Minor/Major/Critical </th>
+                    <th>Description of Complaint</th>
+                    <th>Confirm/not Confirm</th>
+                    <th>Post-stage Category Minor/Major/Critical </th>
+                    <th>Current status of Closure</th>
+                    <th>Closed on Date</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -12239,60 +12217,30 @@ export default function APQR() {
                         <td>{index + 1}</td>
                         <td>
                           <input
-                            value={item.dateOfInitiation}
+                            value={item.dateOfReceipt}
                             onChange={(e) => {
                               const newData = [...currentMC];
-                              newData[index].dateOfInitiation = e.target.value;
+                              newData[index].dateOfReceipt = e.target.value;
                               setCurrentMC(newData);
                             }}
                           />
                         </td>
                         <td>
                           <input
-                            value={item.recordNo}
+                            value={item.complaintNo}
                             onChange={(e) => {
                               const newData = [...currentMC];
-                              newData[index].recordNo = e.target.value;
+                              newData[index].complaintNo = e.target.value;
                               setCurrentMC(newData);
                             }}
                           />
                         </td>
                         <td>
                           <input
-                            value={item.siteDivision}
+                            value={item.customerName}
                             onChange={(e) => {
                               const newData = [...currentMC];
-                              newData[index].siteDivision = e.target.value;
-                              setCurrentMC(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.department}
-                            onChange={(e) => {
-                              const newData = [...currentMC];
-                              newData[index].department = e.target.value;
-                              setCurrentMC(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.initiator}
-                            onChange={(e) => {
-                              const newData = [...currentMC];
-                              newData[index].initiator = e.target.value;
-                              setCurrentMC(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.shortDescription}
-                            onChange={(e) => {
-                              const newData = [...currentMC];
-                              newData[index].shortDescription = e.target.value;
+                              newData[index].customerName = e.target.value;
                               setCurrentMC(newData);
                             }}
                           />
@@ -12309,20 +12257,60 @@ export default function APQR() {
                         </td>
                         <td>
                           <input
-                            value={item.dueDate}
+                            value={item.preStageCategoryMMC}
                             onChange={(e) => {
                               const newData = [...currentMC];
-                              newData[index].dueDate = e.target.value;
+                              newData[index].preStageCategoryMMC = e.target.value;
                               setCurrentMC(newData);
                             }}
                           />
                         </td>
                         <td>
                           <input
-                            value={item.currentStatus}
+                            value={item.descriptionOfComplaint}
                             onChange={(e) => {
                               const newData = [...currentMC];
-                              newData[index].currentStatus = e.target.value;
+                              newData[index].descriptionOfComplaint = e.target.value;
+                              setCurrentMC(newData);
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.confirmNotConfirm}
+                            onChange={(e) => {
+                              const newData = [...currentMC];
+                              newData[index].confirmNotConfirm = e.target.value;
+                              setCurrentMC(newData);
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.postStageCategoryMMC}
+                            onChange={(e) => {
+                              const newData = [...currentMC];
+                              newData[index].postStageCategoryMMC = e.target.value;
+                              setCurrentMC(newData);
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.currentStatusOfClosure}
+                            onChange={(e) => {
+                              const newData = [...currentMC];
+                              newData[index].currentStatusOfClosure = e.target.value;
+                              setCurrentMC(newData);
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.closedOnDate}
+                            onChange={(e) => {
+                              const newData = [...currentMC];
+                              newData[index].closedOnDate = e.target.value;
                               setCurrentMC(newData);
                             }}
                           />
@@ -12350,16 +12338,17 @@ export default function APQR() {
               <table>
                 <thead>
                   <tr>
-                    <th>S.No</th>
-                    <th>Date Of Initiation</th>
-                    <th>Record No</th>
-                    <th>Site/Division</th>
-                    <th>Department</th>
-                    <th>Initiator</th>
-                    <th>Short Description</th>
-                    <th>Batch No</th>
-                    <th>Due Date</th>
-                    <th>Current Status</th>
+                  <th>S.No</th>
+                    <th>Date of Receipt</th>
+                    <th>Complaint No.</th>
+                    <th>Customer Name</th>
+                    <th>Batch No.</th>
+                    <th>Pre-stage Category Minor/Major/Critical </th>
+                    <th>Description of Complaint</th>
+                    <th>Confirm/not Confirm</th>
+                    <th>Post-stage Category Minor/Major/Critical </th>
+                    <th>Current status of Closure</th>
+                    <th>Closed on Date</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -12369,10 +12358,10 @@ export default function APQR() {
                         <td>{index + 1}</td>
                         <td>
                           <input
-                            value={item.dateOfInitiation}
+                            value={item.dateOfReceipt}
                             onChange={(e) => {
                               const newData = [...previewMC];
-                              newData[index].dateOfInitiation = e.target.value;
+                              newData[index].dateOfReceipt = e.target.value;
                               setPreviewMC(newData);
                             }}
                           />
@@ -12380,50 +12369,20 @@ export default function APQR() {
 
                         <td>
                           <input
-                            value={item.recordNo}
+                            value={item.complaintNo}
                             onChange={(e) => {
                               const newData = [...previewMC];
-                              newData[index].recordNo = e.target.value;
+                              newData[index].complaintNo = e.target.value;
                               setPreviewMC(newData);
                             }}
                           />
                         </td>
                         <td>
                           <input
-                            value={item.siteDivision}
+                            value={item.customerName}
                             onChange={(e) => {
                               const newData = [...previewMC];
-                              newData[index].siteDivision = e.target.value;
-                              setPreviewMC(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.department}
-                            onChange={(e) => {
-                              const newData = [...previewMC];
-                              newData[index].department = e.target.value;
-                              setPreviewMC(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.initiator}
-                            onChange={(e) => {
-                              const newData = [...previewMC];
-                              newData[index].initiator = e.target.value;
-                              setPreviewMC(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.shortDescription}
-                            onChange={(e) => {
-                              const newData = [...previewMC];
-                              newData[index].shortDescription = e.target.value;
+                              newData[index].customerName = e.target.value;
                               setPreviewMC(newData);
                             }}
                           />
@@ -12440,10 +12399,40 @@ export default function APQR() {
                         </td>
                         <td>
                           <input
-                            value={item.dueDate}
+                            value={item.preStageCategoryMMC}
                             onChange={(e) => {
                               const newData = [...previewMC];
-                              newData[index].dueDate = e.target.value;
+                              newData[index].preStageCategoryMMC = e.target.value;
+                              setPreviewMC(newData);
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.descriptionOfComplaint}
+                            onChange={(e) => {
+                              const newData = [...previewMC];
+                              newData[index].descriptionOfComplaint = e.target.value;
+                              setPreviewMC(newData);
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.confirmNotConfirm}
+                            onChange={(e) => {
+                              const newData = [...previewMC];
+                              newData[index].confirmNotConfirm = e.target.value;
+                              setPreviewMC(newData);
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.postStageCategoryMMC}
+                            onChange={(e) => {
+                              const newData = [...previewMC];
+                              newData[index].postStageCategoryMMC = e.target.value;
                               setPreviewMC(newData);
                             }}
                           />
@@ -12451,10 +12440,20 @@ export default function APQR() {
 
                         <td>
                           <input
-                            value={item.currentStatus}
+                            value={item.currentStatusOfClosure}
                             onChange={(e) => {
                               const newData = [...previewMC];
-                              newData[index].currentStatus = e.target.value;
+                              newData[index].currentStatusOfClosure = e.target.value;
+                              setPreviewMC(newData);
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.closedOnDate}
+                            onChange={(e) => {
+                              const newData = [...previewMC];
+                              newData[index].closedOnDate = e.target.value;
                               setPreviewMC(newData);
                             }}
                           />
