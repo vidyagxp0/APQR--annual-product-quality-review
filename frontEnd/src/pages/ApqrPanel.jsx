@@ -465,6 +465,8 @@ export default function APQR() {
     trendingOIPIPS5: [],
   });
 
+  console.log(gridDatas?.trendingOCP3,"*/*/*/*/*/*/*/")
+
   const [pQRData, setPQRData] = useReducer(
     (prev, next) => ({
       ...prev,
@@ -2409,6 +2411,10 @@ export default function APQR() {
       criticalParameter1: "",
       criticalParameter2: "",
       criticalParameter3: "",
+      actualpH: "",
+      lowerLimit: "",
+      upperLimit: "",
+      criticalParameter4: "",
     };
 
     setGridDatas({
@@ -2421,22 +2427,34 @@ export default function APQR() {
     const newRow = {
       batchNo: "",
       criticalParameter1: "",
-      criticalParameter2: "",
+      criticalParameter2: {
+        actualQuantity: "", 
+        actualpH: "",       
+      },
       criticalParameter3: "",
+      lowerLimit: "",
+      upperLimit: "",
+      criticalParameter4: "",
     };
-
+  
     setGridDatas({
       ...gridDatas,
       trendingOCP3: [...gridDatas.trendingOCP3, newRow],
     });
   };
-
+  
   const addTrendingOCPPS4Row = () => {
     const newRow = {
       batchNo: "",
-      criticalParameter1: "",
+      criticalParameter1: {
+        actualTime: "",
+        actualTemprature: "",
+        lowerLimit: "",
+        upperLimit: "",
+      },
       criticalParameter2: "",
-      criticalParameter3: "",
+      lowerLimit: "",
+      upperLimit: "",
     };
 
     setGridDatas({
@@ -2512,28 +2530,17 @@ export default function APQR() {
   const addTrendingOIPIPS3Row = () => {
     const newRow = {
       batchNo: "",
-      unreactedDiolone: "",
-      limit: "",
-      chromatographicPurity: "",
+      pH75: "",
+      lLimit: "",
+      uLimit: "",
       unreactedTCA: "",
-      purityForInformation: "",
-      pH6: "",
-      lLimit: "",
-      uLimit: "",
-      pH65: "",
-      lLimit: "",
-      uLimit: "",
-      waterContent: "",
-      wLimit: "",
-      composite: {
-        waterContentNmt: "",
-        chromatographicPurity: {
-          limit: "",
-          tCAStage: "",
-          tLimit: "",
-          dryingHours: "",
-        },
-      },
+      limit: "",
+      chromatographic: "",
+      pH5: "",
+      lLimit2: "",
+      uLimit2: "",
+
+      composite: { chromatographicPurity: "", limit: "" },
     };
     // setTrendingOIPIPS3([...trendingOIPIPS3, newRow]);
     setGridDatas({
@@ -19012,6 +19019,7 @@ export default function APQR() {
                 </thead>
                 <tbody>
                   {gridDatas?.trendingOCP3?.map((item, index) => {
+
                     return (
                       <tr key={index}>
                         <td>{index + 1}</td>
@@ -19060,13 +19068,12 @@ export default function APQR() {
                         </td>
 
                         <td>
-                          <input
-                            value={item.criticalParameter3.actualpH}
+                        <input
+                            value={item.criticalParameter2.actualpH}
                             onChange={(e) => {
-                              const newData = [
-                                ...gridDatas.criticalParameter3.actualpH,
-                              ];
-                              newData[index].lLimit = e.target.value;
+                              const newData = [...gridDatas.trendingOCP3];
+                              newData[index].criticalParameter2.actualpH =
+                                e.target.value;
                               setGridDatas({
                                 ...gridDatas,
                                 trendingOCP3: newData,
