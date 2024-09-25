@@ -14510,8 +14510,9 @@ console.log(pQRData,"grid")
               </div>
               <table>
                 <thead>
-               <tr>
-                   <th rowSpan="2">S. No.</th>
+                  <tr>
+                    {" "}
+                    <th rowSpan="2">S. No.</th>
                     <th rowSpan="2">Batch No.</th>
                     <th rowSpan="2">Specific Rotation b/w +118° and +130° </th>
                     <th rowSpan="2">L Limit</th>
