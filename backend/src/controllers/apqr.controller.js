@@ -230,6 +230,20 @@ export const createApqr = async (req, res) => {
       "previewOOSA",
       "currentLabI",
       "previewLabI",
+      "yieldTOS1",
+      "yieldTOS2",
+      "yieldTOS3",
+      "yieldTOS4",
+      "yieldTOS5",
+      "trendingOCPPS1",
+      "trendingOCPPS2",
+      "trendingOCPPS3",
+      "trendingOCPPS4",
+      "trendingOIPIPS1",
+      "trendingOIPIPS2",
+      "trendingOIPIPS3",
+      "trendingOIPIPS4",
+      "trendingOIPIPS5",
     ];
 
     const gridData = [];
@@ -412,6 +426,20 @@ export const getAPQRById = async (req, res) => {
       "previewOOSA",
       "currentLabI",
       "previewLabI",
+      "yieldTOS1",
+      "yieldTOS2",
+      "yieldTOS3",
+      "yieldTOS4",
+      "yieldTOS5",
+      "trendingOCPPS1", 
+      "trendingOCPPS2",
+      "trendingOCPPS3",
+      "trendingOCPPS4",
+      "trendingOIPIPS1",
+      "trendingOIPIPS2",
+      "trendingOIPIPS3",
+      "trendingOIPIPS4",
+      "trendingOIPIPS5",
     ];
 
     for (let i = 0; i < grids.length; i++) {
@@ -658,6 +686,20 @@ export const updateAPQRById = async (req, res) => {
       "previewOOSA",
       "currentLabI",
       "previewLabI",
+      "yieldTOS1",
+      "yieldTOS2",
+      "yieldTOS3",
+      "yieldTOS4",
+      "yieldTOS5",
+      "trendingOCPPS1",
+      "trendingOCPPS2",
+      "trendingOCPPS3",
+      "trendingOCPPS4",
+      "trendingOIPIPS1",
+      "trendingOIPIPS2",
+      "trendingOIPIPS3",
+      "trendingOIPIPS4",
+      "trendingOIPIPS5",
     ];
 
     for (let i = 0; i < grids.length; i++) {
