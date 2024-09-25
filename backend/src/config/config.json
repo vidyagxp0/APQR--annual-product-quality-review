@@ -3,7 +3,7 @@
     "PORT": 4000,
     "dbName": "apqr",
     "username": "root",
-    "password": "gaurav",
+    "password": "root",
     "dialect": "mysql",
     "host": "localhost",
     "JWT_ADMIN_SECRET": "GAURAV",

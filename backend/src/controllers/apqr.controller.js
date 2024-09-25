@@ -244,6 +244,8 @@ export const createApqr = async (req, res) => {
       "trendingOIPIPS3",
       "trendingOIPIPS4",
       "trendingOIPIPS5",
+      "finishedPATUSP",
+      "finishedPHEUR"
     ];
 
     const gridData = [];
@@ -440,6 +442,8 @@ export const getAPQRById = async (req, res) => {
       "trendingOIPIPS3",
       "trendingOIPIPS4",
       "trendingOIPIPS5",
+      "finishedPHEUR",
+      "finishedPATUSP"
     ];
 
     for (let i = 0; i < grids.length; i++) {
@@ -700,6 +704,8 @@ export const updateAPQRById = async (req, res) => {
       "trendingOIPIPS3",
       "trendingOIPIPS4",
       "trendingOIPIPS5",
+      "finishedPATUSP",
+      "finishedPHEUR"
     ];
 
     for (let i = 0; i < grids.length; i++) {
