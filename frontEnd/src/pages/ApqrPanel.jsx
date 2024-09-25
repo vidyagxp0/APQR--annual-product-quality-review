@@ -602,7 +602,6 @@ export default function APQR() {
     return { "Batch No.": item.batchNo, "Observed Value": item.observedValue };
   });
 
-
   //   setTinyData({
   //     tiny1: tiny1,
   //     tiny2: tiny2,
@@ -910,20 +909,20 @@ export default function APQR() {
         reviewODSTR13: apiData.reviewODSTR13?.data || [],
         reviewODSTR14: apiData.reviewODSTR14?.data || [],
         reviewODSTR15: apiData.reviewODSTR15?.data || [],
-        yieldTOS1: apiData.yieldTOS1?.data ||[],
-        yieldTOS2: apiData.yieldTOS2?.data ||[],
-        yieldTOS3:apiData.yieldTOS3?.data || [],
-        yieldTOS4: apiData.yieldTOS4?.data ||[],
-        yieldTOS5: apiData.yieldTOS5?.data ||[],
-        trendingOCP1:apiData.trendingOCP1?.data || [],
-        trendingOCP2: apiData.trendingOCP2?.data ||[],
-        trendingOCP3: apiData.trendingOCP3?.data ||[],
-        trendingOCP4: apiData.trendingOCP4?.data ||[],
-        trendingOIPIPS1:apiData.trendingOIPIPS1?.data || [],
-        trendingOIPIPS2: apiData.trendingOIPIPS2?.data ||[],
-        trendingOIPIPS3: apiData.trendingOIPIPS3?.data ||[],
-        trendingOIPIPS4: apiData.trendingOIPIPS4?.data ||[],
-        trendingOIPIPS5:apiData.trendingOIPIPS5?.data || [],
+        yieldTOS1: apiData.yieldTOS1?.data || [],
+        yieldTOS2: apiData.yieldTOS2?.data || [],
+        yieldTOS3: apiData.yieldTOS3?.data || [],
+        yieldTOS4: apiData.yieldTOS4?.data || [],
+        yieldTOS5: apiData.yieldTOS5?.data || [],
+        trendingOCP1: apiData.trendingOCP1?.data || [],
+        trendingOCP2: apiData.trendingOCP2?.data || [],
+        trendingOCP3: apiData.trendingOCP3?.data || [],
+        trendingOCP4: apiData.trendingOCP4?.data || [],
+        trendingOIPIPS1: apiData.trendingOIPIPS1?.data || [],
+        trendingOIPIPS2: apiData.trendingOIPIPS2?.data || [],
+        trendingOIPIPS3: apiData.trendingOIPIPS3?.data || [],
+        trendingOIPIPS4: apiData.trendingOIPIPS4?.data || [],
+        trendingOIPIPS5: apiData.trendingOIPIPS5?.data || [],
         // Map all other grids here
       });
       setIsLoading(false);
@@ -2713,33 +2712,29 @@ export default function APQR() {
         totalImpurities: "",
         totalImpuritiesLimit: "",
       },
-      waterKF: "", 
+      waterKF: "",
       waterKFLimit: "",
       assay: "",
       assayLimit: "",
       residualSolventByCG: {
-        methyleneChloride: "", 
-        methanol: "", 
+        methyleneChloride: "",
+        methanol: "",
         acetone: "",
         residualSolventLimit: "",
       },
       particleSizeMalvern: {
-        particleSize90: "", 
+        particleSize90: "",
         particleSize90Limit: "",
         particleSize995: "",
-        particleSize995Limit: ""
-      }, 
+        particleSize995Limit: "",
+      },
     };
-  
+
     setGridDatas({
       ...gridDatas,
       FPAT2: [...gridDatas.FPAT2, newRow],
     });
   };
-  
-
-
- 
 
   //  Speech functionality ----------------------------
 
@@ -18121,6 +18116,7 @@ export default function APQR() {
                         <td>
                           <input
                             value={item.actualInput}
+                            type="number"
                             onChange={(e) => {
                               const newData = [...gridDatas.yieldTOS1];
                               newData[index].actualInput = e.target.value;
@@ -18135,6 +18131,7 @@ export default function APQR() {
                         <td>
                           <input
                             value={item.actualOutput}
+                            type="number"
                             onChange={(e) => {
                               const newData = [...gridDatas.yieldTOS1];
                               newData[index].actualOutput = e.target.value;
@@ -18149,6 +18146,7 @@ export default function APQR() {
                         <td>
                           <input
                             value={item.lLimit}
+                            type="number"
                             onChange={(e) => {
                               const newData = [...gridDatas.yieldTOS1];
                               newData[index].lLimit = e.target.value;
@@ -18162,6 +18160,7 @@ export default function APQR() {
                         <td>
                           <input
                             value={item.uLimit}
+                            type="number"
                             onChange={(e) => {
                               const newData = [...gridDatas.yieldTOS1];
                               newData[index].uLimit = e.target.value;
@@ -18175,6 +18174,7 @@ export default function APQR() {
                         <td>
                           <input
                             value={item.yield}
+                            type="number"
                             onChange={(e) => {
                               const newData = [...gridDatas.yieldTOS1];
                               newData[index].yield = e.target.value;
@@ -18275,6 +18275,7 @@ export default function APQR() {
                         <td>
                           <input
                             value={item.actualInput}
+                            type="number"
                             onChange={(e) => {
                               const newData = [...gridDatas.yieldTOS2];
                               newData[index].actualInput = e.target.value;
@@ -18289,6 +18290,7 @@ export default function APQR() {
                         <td>
                           <input
                             value={item.actualOutput}
+                            type="number"
                             onChange={(e) => {
                               const newData = [...gridDatas.yieldTOS2];
                               newData[index].actualOutput = e.target.value;
@@ -18303,6 +18305,7 @@ export default function APQR() {
                         <td>
                           <input
                             value={item.lLimit}
+                            type="number"
                             onChange={(e) => {
                               const newData = [...gridDatas.yieldTOS2];
                               newData[index].lLimit = e.target.value;
@@ -18316,6 +18319,7 @@ export default function APQR() {
                         <td>
                           <input
                             value={item.uLimit}
+                            type="number"
                             onChange={(e) => {
                               const newData = [...gridDatas.yieldTOS2];
                               newData[index].uLimit = e.target.value;
@@ -18329,6 +18333,7 @@ export default function APQR() {
                         <td>
                           <input
                             value={item.yield}
+                            type="number"
                             onChange={(e) => {
                               const newData = [...gridDatas.yieldTOS2];
                               newData[index].yield = e.target.value;
@@ -18430,6 +18435,7 @@ export default function APQR() {
                         <td>
                           <input
                             value={item.actualInput}
+                            type="number"
                             onChange={(e) => {
                               const newData = [...gridDatas.yieldTOS3];
                               newData[index].actualInput = e.target.value;
@@ -18444,6 +18450,7 @@ export default function APQR() {
                         <td>
                           <input
                             value={item.actualOutput}
+                            type="number"
                             onChange={(e) => {
                               const newData = [...gridDatas.yieldTOS3];
                               newData[index].actualOutput = e.target.value;
@@ -18458,6 +18465,7 @@ export default function APQR() {
                         <td>
                           <input
                             value={item.lLimit}
+                            type="number"
                             onChange={(e) => {
                               const newData = [...gridDatas.yieldTOS3];
                               newData[index].lLimit = e.target.value;
@@ -18471,6 +18479,7 @@ export default function APQR() {
                         <td>
                           <input
                             value={item.uLimit}
+                            type="number"
                             onChange={(e) => {
                               const newData = [...gridDatas.yieldTOS3];
                               newData[index].uLimit = e.target.value;
@@ -18484,6 +18493,7 @@ export default function APQR() {
                         <td>
                           <input
                             value={item.yield}
+                            type="number"
                             onChange={(e) => {
                               const newData = [...gridDatas.yieldTOS3];
                               newData[index].yield = e.target.value;
@@ -18585,6 +18595,7 @@ export default function APQR() {
                         <td>
                           <input
                             value={item.actualInput}
+                            type="number"
                             onChange={(e) => {
                               const newData = [...gridDatas.yieldTOS4];
                               newData[index].actualInput = e.target.value;
@@ -18599,6 +18610,7 @@ export default function APQR() {
                         <td>
                           <input
                             value={item.actualOutput}
+                            type="number"
                             onChange={(e) => {
                               const newData = [...gridDatas.yieldTOS4];
                               newData[index].actualOutput = e.target.value;
@@ -18613,6 +18625,7 @@ export default function APQR() {
                         <td>
                           <input
                             value={item.lLimit}
+                            type="number"
                             onChange={(e) => {
                               const newData = [...gridDatas.yieldTOS4];
                               newData[index].lLimit = e.target.value;
@@ -18626,6 +18639,7 @@ export default function APQR() {
                         <td>
                           <input
                             value={item.uLimit}
+                            type="number"
                             onChange={(e) => {
                               const newData = [...gridDatas.yieldTOS4];
                               newData[index].uLimit = e.target.value;
@@ -18639,6 +18653,7 @@ export default function APQR() {
                         <td>
                           <input
                             value={item.yield}
+                            type="number"
                             onChange={(e) => {
                               const newData = [...gridDatas.yieldTOS4];
                               newData[index].yield = e.target.value;
@@ -18740,6 +18755,7 @@ export default function APQR() {
                         <td>
                           <input
                             value={item.actualInput}
+                            type="number"
                             onChange={(e) => {
                               const newData = [...gridDatas.yieldTOS5];
                               newData[index].actualInput = e.target.value;
@@ -18754,6 +18770,7 @@ export default function APQR() {
                         <td>
                           <input
                             value={item.actualOutput}
+                            type="number"
                             onChange={(e) => {
                               const newData = [...gridDatas.yieldTOS5];
                               newData[index].actualOutput = e.target.value;
@@ -18768,6 +18785,7 @@ export default function APQR() {
                         <td>
                           <input
                             value={item.lLimit}
+                            type="number"
                             onChange={(e) => {
                               const newData = [...gridDatas.yieldTOS5];
                               newData[index].lLimit = e.target.value;
@@ -18781,6 +18799,7 @@ export default function APQR() {
                         <td>
                           <input
                             value={item.uLimit}
+                            type="number"
                             onChange={(e) => {
                               const newData = [...gridDatas.yieldTOS5];
                               newData[index].uLimit = e.target.value;
@@ -18794,6 +18813,7 @@ export default function APQR() {
                         <td>
                           <input
                             value={item.yield}
+                            type="number"
                             onChange={(e) => {
                               const newData = [...gridDatas.yieldTOS5];
                               newData[index].yield = e.target.value;
@@ -19031,6 +19051,8 @@ export default function APQR() {
                         <td>
                           <input
                             value={item.criticalParameter2}
+                            type="number"
+
                             onChange={(e) => {
                               const newData = [...gridDatas.trendingOCP2];
                               newData[index].criticalParameter2 =
@@ -19045,6 +19067,8 @@ export default function APQR() {
                         <td>
                           <input
                             value={item.criticalParameter3}
+                            type="number"
+
                             onChange={(e) => {
                               const newData = [...gridDatas.trendingOCP2];
                               newData[index].criticalParameter3 =
@@ -19059,6 +19083,8 @@ export default function APQR() {
                         <td>
                           <input
                             value={item.lLimit}
+                            type="number"
+
                             onChange={(e) => {
                               const newData = [...gridDatas.trendingOCP2];
                               newData[index].lLimit = e.target.value;
@@ -19072,6 +19098,8 @@ export default function APQR() {
                         <td>
                           <input
                             value={item.uLimit}
+                            type="number"
+
                             onChange={(e) => {
                               const newData = [...gridDatas.trendingOCP2];
                               newData[index].uLimit = e.target.value;
@@ -19085,6 +19113,8 @@ export default function APQR() {
                         <td>
                           <input
                             value={item.criticalParameter4}
+                            type="number"
+
                             onChange={(e) => {
                               const newData = [...gridDatas.trendingOCP2];
                               newData[index].criticalParameter4 =
@@ -19199,6 +19229,8 @@ export default function APQR() {
                         <td>
                           <input
                             value={item.criticalParameter2.actualQuantity}
+                            type="number"
+
                             onChange={(e) => {
                               const newData = [...gridDatas.trendingOCP3];
                               newData[index].criticalParameter2.actualQuantity =
@@ -19214,6 +19246,8 @@ export default function APQR() {
                         <td>
                           <input
                             value={item.criticalParameter2.actualpH}
+                            type="number"
+
                             onChange={(e) => {
                               const newData = [...gridDatas.trendingOCP3];
                               newData[index].criticalParameter2.actualpH =
@@ -19228,6 +19262,8 @@ export default function APQR() {
                         <td>
                           <input
                             value={item.lLimit}
+                            type="number"
+
                             onChange={(e) => {
                               const newData = [...gridDatas.trendingOCP3];
                               newData[index].lLimit = e.target.value;
@@ -19241,6 +19277,8 @@ export default function APQR() {
                         <td>
                           <input
                             value={item.uLimit}
+                            type="number"
+
                             onChange={(e) => {
                               const newData = [...gridDatas.trendingOCP3];
                               newData[index].uLimit = e.target.value;
@@ -19336,6 +19374,8 @@ export default function APQR() {
                         <td>
                           <input
                             value={item.criticalParameter1.actualTemprature}
+                            type="number"
+
                             onChange={(e) => {
                               const newData = [...gridDatas.trendingOCP4];
                               newData[
@@ -19352,6 +19392,8 @@ export default function APQR() {
                         <td>
                           <input
                             value={item.criticalParameter1.lowerLimit}
+                            type="number"
+
                             onChange={(e) => {
                               const newData = [...gridDatas.trendingOCP4];
                               newData[index].criticalParameter1.lowerLimit =
@@ -19366,6 +19408,8 @@ export default function APQR() {
                         <td>
                           <input
                             value={item.criticalParameter1.upperLimit}
+                            type="number"
+
                             onChange={(e) => {
                               const newData = [...gridDatas.trendingOCP4];
                               newData[index].criticalParameter1.upperLimit =
@@ -19380,6 +19424,8 @@ export default function APQR() {
                         <td>
                           <input
                             value={item.criticalParameter2}
+                            type="number"
+
                             onChange={(e) => {
                               const newData = [...gridDatas.trendingOCP4];
                               newData[index].criticalParameter2 =
@@ -19394,6 +19440,8 @@ export default function APQR() {
                         <td>
                           <input
                             value={item.lowerLimit}
+                            type="number"
+
                             onChange={(e) => {
                               const newData = [...gridDatas.trendingOCP4];
                               newData[index].lowerLimit = e.target.value;
@@ -19407,6 +19455,8 @@ export default function APQR() {
                         <td>
                           <input
                             value={item.upperLimit}
+                            type="number"
+
                             onChange={(e) => {
                               const newData = [...gridDatas.trendingOCP4];
                               newData[index].upperLimit = e.target.value;
@@ -19541,6 +19591,8 @@ export default function APQR() {
                         <td>
                           <input
                             value={item.unreactedDiolone}
+                            type="number"
+
                             onChange={(e) => {
                               const newData = [...gridDatas.trendingOIPIPS1];
                               newData[index].unreactedDiolone = e.target.value;
@@ -19554,6 +19606,7 @@ export default function APQR() {
                         <td>
                           <input
                             value={item.limit}
+                            type="number"
                             onChange={(e) => {
                               const newData = [...gridDatas.trendingOIPIPS1];
                               newData[index].limit = e.target.value;
@@ -19567,6 +19620,7 @@ export default function APQR() {
                         <td>
                           <input
                             value={item.chromatographicPurity}
+                            type="number"
                             onChange={(e) => {
                               const newData = [...gridDatas.trendingOIPIPS1];
                               newData[index].chromatographicPurity =
@@ -19581,6 +19635,7 @@ export default function APQR() {
                         <td>
                           <input
                             value={item.unreactedTCA}
+                            type="number"
                             onChange={(e) => {
                               const newData = [...gridDatas.trendingOIPIPS1];
                               newData[index].unreactedTCA = e.target.value;
@@ -19594,6 +19649,7 @@ export default function APQR() {
                         <td>
                           <input
                             value={item.purityForInformation}
+                            type="number"
                             onChange={(e) => {
                               const newData = [...gridDatas.trendingOIPIPS1];
                               newData[index].purityForInformation =
@@ -19608,6 +19664,7 @@ export default function APQR() {
                         <td>
                           <input
                             value={item.pH6}
+                            type="number"
                             onChange={(e) => {
                               const newData = [...gridDatas.trendingOIPIPS1];
                               newData[index].pH6 = e.target.value;
@@ -19621,6 +19678,7 @@ export default function APQR() {
                         <td>
                           <input
                             value={item.lLimit}
+                            type="number"
                             onChange={(e) => {
                               const newData = [...gridDatas.trendingOIPIPS1];
                               newData[index].lLimit = e.target.value;
@@ -19634,6 +19692,7 @@ export default function APQR() {
                         <td>
                           <input
                             value={item.uLimit}
+                            type="number"
                             onChange={(e) => {
                               const newData = [...gridDatas.trendingOIPIPS1];
                               newData[index].uLimit = e.target.value;
@@ -19647,6 +19706,7 @@ export default function APQR() {
                         <td>
                           <input
                             value={item.pH65}
+                            type="number"
                             onChange={(e) => {
                               const newData = [...gridDatas.trendingOIPIPS1];
                               newData[index].pH65 = e.target.value;
@@ -19660,6 +19720,7 @@ export default function APQR() {
                         <td>
                           <input
                             value={item.lLimit}
+                            type="number"
                             onChange={(e) => {
                               const newData = [...gridDatas.trendingOIPIPS1];
                               newData[index].lLimit = e.target.value;
@@ -19673,6 +19734,7 @@ export default function APQR() {
                         <td>
                           <input
                             value={item.uLimit}
+                            type="number"
                             onChange={(e) => {
                               const newData = [...gridDatas.trendingOIPIPS1];
                               newData[index].uLimit = e.target.value;
@@ -19686,6 +19748,7 @@ export default function APQR() {
                         <td>
                           <input
                             value={item.waterContent}
+                            type="number"
                             onChange={(e) => {
                               const newData = [...gridDatas.trendingOIPIPS1];
                               newData[index].waterContent = e.target.value;
@@ -19699,6 +19762,7 @@ export default function APQR() {
                         <td>
                           <input
                             value={item.wLimit}
+                            type="number"
                             onChange={(e) => {
                               const newData = [...gridDatas.trendingOIPIPS1];
                               newData[index].wLimit = e.target.value;
@@ -19712,6 +19776,7 @@ export default function APQR() {
                         <td>
                           <input
                             value={item.composite.waterContentNmt}
+                            type="number"
                             onChange={(e) => {
                               const newData = [...gridDatas.trendingOIPIPS1];
                               newData[index].composite.waterContentNmt =
@@ -19726,6 +19791,7 @@ export default function APQR() {
                         <td>
                           <input
                             value={item.composite.chromatographicPurity.limit}
+                            type="number"
                             onChange={(e) => {
                               const newData = [...gridDatas.trendingOIPIPS1];
                               newData[
@@ -19744,6 +19810,7 @@ export default function APQR() {
                             value={
                               item.composite.chromatographicPurity.tCAStage
                             }
+                            type="number"
                             onChange={(e) => {
                               const newData = [...gridDatas.trendingOIPIPS1];
                               newData[
@@ -19760,6 +19827,7 @@ export default function APQR() {
                         <td>
                           <input
                             value={item.composite.chromatographicPurity.tLimit}
+                            type="number"
                             onChange={(e) => {
                               const newData = [...gridDatas.trendingOIPIPS1];
                               newData[
@@ -19778,6 +19846,7 @@ export default function APQR() {
                             value={
                               item.composite.chromatographicPurity.dryingHours
                             }
+                            type="number"
                             onChange={(e) => {
                               const newData = [...gridDatas.trendingOIPIPS1];
                               newData[
@@ -19906,6 +19975,7 @@ export default function APQR() {
                         <td>
                           <input
                             value={item.unreactedTCA}
+                            type="number"
                             onChange={(e) => {
                               const newData = [...gridDatas.trendingOIPIPS2];
                               newData[index].unreactedTCA = e.target.value;
@@ -19919,6 +19989,8 @@ export default function APQR() {
                         <td>
                           <input
                             value={item.limit}
+                            type="number"
+                            type="number"
                             onChange={(e) => {
                               const newData = [...gridDatas.trendingOIPIPS2];
                               newData[index].limit = e.target.value;
@@ -19932,6 +20004,7 @@ export default function APQR() {
                         <td>
                           <input
                             value={item.unreactedTriamcilone}
+                            type="number"
                             onChange={(e) => {
                               const newData = [...gridDatas.trendingOIPIPS2];
                               newData[index].unreactedTriamcilone =
@@ -19946,6 +20019,7 @@ export default function APQR() {
                         <td>
                           <input
                             value={item.limit2}
+                            type="number"
                             onChange={(e) => {
                               const newData = [...gridDatas.trendingOIPIPS2];
                               newData[index].limit2 = e.target.value;
@@ -19959,6 +20033,7 @@ export default function APQR() {
                         <td>
                           <input
                             value={item.purityForInformation}
+                            type="number"
                             onChange={(e) => {
                               const newData = [...gridDatas.trendingOIPIPS2];
                               newData[index].purityForInformation =
@@ -19973,6 +20048,7 @@ export default function APQR() {
                         <td>
                           <input
                             value={item.pH6}
+                            type="number"
                             onChange={(e) => {
                               const newData = [...gridDatas.trendingOIPIPS2];
                               newData[index].pH6 = e.target.value;
@@ -19986,6 +20062,7 @@ export default function APQR() {
                         <td>
                           <input
                             value={item.lLimit}
+                            type="number"
                             onChange={(e) => {
                               const newData = [...gridDatas.trendingOIPIPS2];
                               newData[index].lLimit = e.target.value;
@@ -19999,6 +20076,7 @@ export default function APQR() {
                         <td>
                           <input
                             value={item.uLimit}
+                            type="number"
                             onChange={(e) => {
                               const newData = [...gridDatas.trendingOIPIPS2];
                               newData[index].uLimit = e.target.value;
@@ -20012,6 +20090,7 @@ export default function APQR() {
                         <td>
                           <input
                             value={item.pH67}
+                            type="number"
                             onChange={(e) => {
                               const newData = [...gridDatas.trendingOIPIPS2];
                               newData[index].pH67 = e.target.value;
@@ -20025,6 +20104,7 @@ export default function APQR() {
                         <td>
                           <input
                             value={item.lLimit2}
+                            type="number"
                             onChange={(e) => {
                               const newData = [...gridDatas.trendingOIPIPS2];
                               newData[index].lLimit2 = e.target.value;
@@ -20038,6 +20118,7 @@ export default function APQR() {
                         <td>
                           <input
                             value={item.uLimit2}
+                            type="number"
                             onChange={(e) => {
                               const newData = [...gridDatas.trendingOIPIPS2];
                               newData[index].uLimit2 = e.target.value;
@@ -20051,6 +20132,7 @@ export default function APQR() {
                         <td>
                           <input
                             value={item.composite.purityByHPLC}
+                            type="number"
                             onChange={(e) => {
                               const newData = [...gridDatas.trendingOIPIPS2];
                               newData[index].composite.purityByHPLC =
@@ -20065,6 +20147,7 @@ export default function APQR() {
                         <td>
                           <input
                             value={item.composite.limit1}
+                            type="number"
                             onChange={(e) => {
                               const newData = [...gridDatas.trendingOIPIPS2];
                               newData[index].limit1 = e.target.value;
@@ -20078,6 +20161,7 @@ export default function APQR() {
                         <td>
                           <input
                             value={item.composite.unreactedTca}
+                            type="number"
                             onChange={(e) => {
                               const newData = [...gridDatas.trendingOIPIPS2];
                               newData[index].composite.unreactedTca =
@@ -20092,6 +20176,7 @@ export default function APQR() {
                         <td>
                           <input
                             value={item.composite.limit2}
+                            type="number"
                             onChange={(e) => {
                               const newData = [...gridDatas.trendingOIPIPS2];
                               newData[index].composite.limit2 = e.target.value;
@@ -20193,6 +20278,7 @@ export default function APQR() {
                         <td>
                           <input
                             value={item.limit}
+                            type="number"
                             onChange={(e) => {
                               const newData = [...gridDatas.trendingOIPIPS3];
                               newData[index].limit = e.target.value;
@@ -20206,6 +20292,7 @@ export default function APQR() {
                         <td>
                           <input
                             value={item.chromatographicPurity}
+                            type="number"
                             onChange={(e) => {
                               const newData = [...gridDatas.trendingOIPIPS3];
                               newData[index].chromatographicPurity =
@@ -20220,6 +20307,7 @@ export default function APQR() {
                         <td>
                           <input
                             value={item.pH75}
+                            type="number"
                             onChange={(e) => {
                               const newData = [...gridDatas.trendingOIPIPS3];
                               newData[index].pH75 = e.target.value;
@@ -20233,6 +20321,7 @@ export default function APQR() {
                         <td>
                           <input
                             value={item.lLimit}
+                            type="number"
                             onChange={(e) => {
                               const newData = [...gridDatas.trendingOIPIPS3];
                               newData[index].lLimit = e.target.value;
@@ -20246,6 +20335,7 @@ export default function APQR() {
                         <td>
                           <input
                             value={item.uLimit}
+                            type="number"
                             onChange={(e) => {
                               const newData = [...gridDatas.trendingOIPIPS3];
                               newData[index].uLimit = e.target.value;
@@ -20259,6 +20349,7 @@ export default function APQR() {
                         <td>
                           <input
                             value={item.unreactedTCA}
+                            type="number"
                             onChange={(e) => {
                               const newData = [...gridDatas.trendingOIPIPS3];
                               newData[index].unreactedTCA = e.target.value;
@@ -20272,6 +20363,7 @@ export default function APQR() {
                         <td>
                           <input
                             value={item.chromatographic}
+                            type="number"
                             onChange={(e) => {
                               const newData = [...gridDatas.trendingOIPIPS3];
                               newData[index].chromatographic = e.target.value;
@@ -20285,6 +20377,7 @@ export default function APQR() {
                         <td>
                           <input
                             value={item.composite.chromatographicPurity}
+                            type="number"
                             onChange={(e) => {
                               const newData = [...gridDatas.trendingOIPIPS3];
                               newData[index].composite.chromatographicPurity =
@@ -20299,6 +20392,7 @@ export default function APQR() {
                         <td>
                           <input
                             value={item.composite.limit}
+                            type="number"
                             onChange={(e) => {
                               const newData = [...gridDatas.trendingOIPIPS3];
                               newData[index].composite.limit = e.target.value;
@@ -20417,6 +20511,7 @@ export default function APQR() {
                         <td>
                           <input
                             value={item.waterContent}
+                            type="number"
                             onChange={(e) => {
                               const newData = [...gridDatas.trendingOIPIPS4];
                               newData[index].waterContent = e.target.value;
@@ -20430,6 +20525,7 @@ export default function APQR() {
                         <td>
                           <input
                             value={item.limit}
+                            type="number"
                             onChange={(e) => {
                               const newData = [...gridDatas.trendingOIPIPS4];
                               newData[index].limit = e.target.value;
@@ -20443,6 +20539,7 @@ export default function APQR() {
                         <td>
                           <input
                             value={item.composite.waterContentNMT}
+                            type="number"
                             onChange={(e) => {
                               const newData = [...gridDatas.trendingOIPIPS4];
                               newData[index].composite.waterContentNMT =
@@ -20457,6 +20554,7 @@ export default function APQR() {
                         <td>
                           <input
                             value={item.composite.limit}
+                            type="number"
                             onChange={(e) => {
                               const newData = [...gridDatas.trendingOIPIPS4];
                               newData[index].composite.limit = e.target.value;
@@ -20470,6 +20568,7 @@ export default function APQR() {
                         <td>
                           <input
                             value={item.composite.lossOnDrying}
+                            type="number"
                             onChange={(e) => {
                               const newData = [...gridDatas.trendingOIPIPS4];
                               newData[index].composite.lossOnDrying =
@@ -20484,6 +20583,7 @@ export default function APQR() {
                         <td>
                           <input
                             value={item.composite.limitLoss}
+                            type="number"
                             onChange={(e) => {
                               const newData = [...gridDatas.trendingOIPIPS4];
                               newData[index].composite.limitLoss =
@@ -20500,6 +20600,7 @@ export default function APQR() {
                             value={
                               item.composite.relatedSubstanceByHPLC.impurityKNMT
                             }
+                            type="number"
                             onChange={(e) => {
                               const newData = [...gridDatas.trendingOIPIPS4];
                               newData[
@@ -20518,6 +20619,7 @@ export default function APQR() {
                             value={
                               item.composite.relatedSubstanceByHPLC.limitNMT
                             }
+                            type="number"
                             onChange={(e) => {
                               const newData = [...gridDatas.trendingOIPIPS4];
                               newData[
@@ -20536,6 +20638,7 @@ export default function APQR() {
                             value={
                               item.composite.relatedSubstanceByHPLC.impurityHNMT
                             }
+                            type="number"
                             onChange={(e) => {
                               const newData = [...gridDatas.trendingOIPIPS4];
                               newData[
@@ -20554,6 +20657,7 @@ export default function APQR() {
                             value={
                               item.composite.relatedSubstanceByHPLC.impurityDNMT
                             }
+                            type="number"
                             onChange={(e) => {
                               const newData = [...gridDatas.trendingOIPIPS4];
                               newData[
@@ -20572,6 +20676,7 @@ export default function APQR() {
                             value={
                               item.composite.relatedSubstanceByHPLC.limitDNMT
                             }
+                            type="number"
                             onChange={(e) => {
                               const newData = [...gridDatas.trendingOIPIPS4];
                               newData[
@@ -20590,6 +20695,7 @@ export default function APQR() {
                             value={
                               item.composite.relatedSubstanceByHPLC.impurityINMT
                             }
+                            type="number"
                             onChange={(e) => {
                               const newData = [...gridDatas.trendingOIPIPS4];
                               newData[
@@ -20609,6 +20715,7 @@ export default function APQR() {
                               item.composite.relatedSubstanceByHPLC
                                 .unknownImpurity
                             }
+                            type="number"
                             onChange={(e) => {
                               const newData = [...gridDatas.trendingOIPIPS4];
                               newData[
@@ -20627,6 +20734,7 @@ export default function APQR() {
                             value={
                               item.composite.relatedSubstanceByHPLC.limitUnknown
                             }
+                            type="number"
                             onChange={(e) => {
                               const newData = [...gridDatas.trendingOIPIPS4];
                               newData[
@@ -20646,6 +20754,7 @@ export default function APQR() {
                               item.composite.relatedSubstanceByHPLC
                                 .totalimpuriritie
                             }
+                            type="number"
                             onChange={(e) => {
                               const newData = [...gridDatas.trendingOIPIPS4];
                               newData[
@@ -20664,6 +20773,7 @@ export default function APQR() {
                             value={
                               item.composite.relatedSubstanceByHPLC.limitTotal
                             }
+                            type="number"
                             onChange={(e) => {
                               const newData = [...gridDatas.trendingOIPIPS4];
                               newData[
@@ -20682,6 +20792,7 @@ export default function APQR() {
                             value={
                               item.composite.relatedSubstanceByHPLC.dryingHours
                             }
+                            type="number"
                             onChange={(e) => {
                               const newData = [...gridDatas.trendingOIPIPS4];
                               newData[
@@ -20892,6 +21003,7 @@ export default function APQR() {
                         <td>
                           <input
                             value={item.lossOfDrying}
+                            type="number"
                             onChange={(e) => {
                               const newData = [...gridDatas.trendingOIPIPS5];
                               newData[index].lossOfDrying = e.target.value;
@@ -20905,6 +21017,7 @@ export default function APQR() {
                         <td>
                           <input
                             value={item.limit}
+                            type="number"
                             onChange={(e) => {
                               const newData = [...gridDatas.trendingOIPIPS5];
                               newData[index].limit = e.target.value;
@@ -20918,6 +21031,7 @@ export default function APQR() {
                         <td>
                           <input
                             value={item.composite.lossOfDrying}
+                            type="number"
                             onChange={(e) => {
                               const newData = [...gridDatas.trendingOIPIPS5];
                               newData[index].composite.lossOfDrying =
@@ -20932,6 +21046,7 @@ export default function APQR() {
                         <td>
                           <input
                             value={item.composite.chromatographicPurity.limit}
+                            type="number"
                             onChange={(e) => {
                               const newData = [...gridDatas.trendingOIPIPS5];
                               newData[
@@ -20950,6 +21065,7 @@ export default function APQR() {
                             value={
                               item.composite.chromatographicPurity.impurityKNMT
                             }
+                            type="number"
                             onChange={(e) => {
                               const newData = [...gridDatas.trendingOIPIPS5];
                               newData[
@@ -20968,6 +21084,7 @@ export default function APQR() {
                             value={
                               item.composite.chromatographicPurity.limitKNMT
                             }
+                            type="number"
                             onChange={(e) => {
                               const newData = [...gridDatas.trendingOIPIPS5];
                               newData[
@@ -20987,6 +21104,7 @@ export default function APQR() {
                               item.composite.chromatographicPurity
                                 .impurityOfHNMT
                             }
+                            type="number"
                             onChange={(e) => {
                               const newData = [...gridDatas.trendingOIPIPS5];
                               newData[
@@ -21005,6 +21123,7 @@ export default function APQR() {
                             value={
                               item.composite.chromatographicPurity.impurityDNMT
                             }
+                            type="number"
                             onChange={(e) => {
                               const newData = [...gridDatas.trendingOIPIPS5];
                               newData[
@@ -21023,6 +21142,7 @@ export default function APQR() {
                             value={
                               item.composite.chromatographicPurity.impurityINMT
                             }
+                            type="number"
                             onChange={(e) => {
                               const newData = [...gridDatas.trendingOIPIPS5];
                               newData[
@@ -21041,6 +21161,7 @@ export default function APQR() {
                             value={
                               item.composite.chromatographicPurity.impurityNMT
                             }
+                            type="number"
                             onChange={(e) => {
                               const newData = [...gridDatas.trendingOIPIPS5];
                               newData[
@@ -21059,6 +21180,7 @@ export default function APQR() {
                             value={
                               item.composite.chromatographicPurity.limitNMT
                             }
+                            type="number"
                             onChange={(e) => {
                               const newData = [...gridDatas.trendingOIPIPS5];
                               newData[
@@ -21078,6 +21200,7 @@ export default function APQR() {
                               item.composite.chromatographicPurity
                                 .totalImpurityNMT
                             }
+                            type="number"
                             onChange={(e) => {
                               const newData = [...gridDatas.trendingOIPIPS5];
                               newData[
@@ -21096,6 +21219,7 @@ export default function APQR() {
                             value={
                               item.composite.chromatographicPurity.limitTNMT
                             }
+                            type="number"
                             onChange={(e) => {
                               const newData = [...gridDatas.trendingOIPIPS5];
                               newData[
@@ -21285,6 +21409,7 @@ export default function APQR() {
                         <td>
                           <input
                             value={item.specificRotation}
+                            type="number"
                             onChange={(e) => {
                               const newData = [...gridDatas.FPAT1];
                               newData[index].specificRotation = e.target.value;
@@ -21299,6 +21424,7 @@ export default function APQR() {
                         <td>
                           <input
                             value={item.lLimit}
+                            type="number"
                             onChange={(e) => {
                               const newData = [...gridDatas.FPAT1];
                               newData[index].lLimit = e.target.value;
@@ -21313,6 +21439,7 @@ export default function APQR() {
                         <td>
                           <input
                             value={item.uLimit}
+                            type="number"
                             onChange={(e) => {
                               const newData = [...gridDatas.FPAT1];
                               newData[index].uLimit = e.target.value;
@@ -21327,6 +21454,7 @@ export default function APQR() {
                         <td>
                           <input
                             value={item.lossOnDrying}
+                            type="number"
                             onChange={(e) => {
                               const newData = [...gridDatas.FPAT1];
                               newData[index].lossOnDrying = e.target.value;
@@ -21341,6 +21469,7 @@ export default function APQR() {
                         <td>
                           <input
                             value={item.chromatographicPurity.limit}
+                            type="number"
                             onChange={(e) => {
                               const newData = [...gridDatas.FPAT1];
                               newData[index].chromatographicPurity.limit =
@@ -21369,6 +21498,7 @@ export default function APQR() {
                         <td>
                           <input
                             value={item.chromatographicPurity.impurityKLimit}
+                            type="number"
                             onChange={(e) => {
                               const newData = [...gridDatas.FPAT1];
                               newData[
@@ -21413,6 +21543,7 @@ export default function APQR() {
                         <td>
                           <input
                             value={item.chromatographicPurity.impurityDLimit}
+                            type="number"
                             onChange={(e) => {
                               const newData = [...gridDatas.FPAT1];
                               newData[
@@ -21464,6 +21595,7 @@ export default function APQR() {
                               item.chromatographicPurity
                                 .unspecifiedImpuritiesLimit
                             }
+                            type="number"
                             onChange={(e) => {
                               const newData = [...gridDatas.FPAT1];
                               newData[
@@ -21480,6 +21612,7 @@ export default function APQR() {
                         <td>
                           <input
                             value={item.chromatographicPurity.totalImpurities}
+                            type="number"
                             onChange={(e) => {
                               const newData = [...gridDatas.FPAT1];
                               newData[
@@ -21498,6 +21631,7 @@ export default function APQR() {
                             value={
                               item.chromatographicPurity.totalImpuritiesLimit
                             }
+                            type="number"
                             onChange={(e) => {
                               const newData = [...gridDatas.FPAT1];
                               newData[
@@ -21515,6 +21649,7 @@ export default function APQR() {
                         <td>
                           <input
                             value={item.assayByHPLC}
+                            type="number"
                             onChange={(e) => {
                               const newData = [...gridDatas.FPAT1];
                               newData[index].assayByHPLC = e.target.value;
@@ -21528,6 +21663,7 @@ export default function APQR() {
                         <td>
                           <input
                             value={item.assayLLimit}
+                            type="number"
                             onChange={(e) => {
                               const newData = [...gridDatas.FPAT1];
                               newData[index].assayLLimit = e.target.value;
@@ -21541,6 +21677,7 @@ export default function APQR() {
                         <td>
                           <input
                             value={item.assayULimit}
+                            type="number"
                             onChange={(e) => {
                               const newData = [...gridDatas.FPAT1];
                               newData[index].assayULimit = e.target.value;
@@ -21569,6 +21706,7 @@ export default function APQR() {
                         <td>
                           <input
                             value={item.residualSolventByGC.acetone}
+                            type="number"
                             onChange={(e) => {
                               const newData = [...gridDatas.FPAT1];
                               newData[index].residualSolventByGC.acetone =
@@ -21601,6 +21739,7 @@ export default function APQR() {
                             value={
                               item.residualSolventByGC.residualSolventLimit
                             }
+                            type="number"
                             onChange={(e) => {
                               const newData = [...gridDatas.FPAT1];
                               newData[
@@ -21618,6 +21757,7 @@ export default function APQR() {
                         <td>
                           <input
                             value={item.particleSize.percent90LT10um}
+                            type="number"
                             onChange={(e) => {
                               const newData = [...gridDatas.FPAT1];
                               newData[index].particleSize.percent90LT10um =
@@ -21632,6 +21772,7 @@ export default function APQR() {
                         <td>
                           <input
                             value={item.particleSize.percent90LT10umLimit}
+                            type="number"
                             onChange={(e) => {
                               const newData = [...gridDatas.FPAT1];
                               newData[index].particleSize.percent90LT10umLimit =
@@ -21646,6 +21787,7 @@ export default function APQR() {
                         <td>
                           <input
                             value={item.particleSize.percent995LT20um}
+                            type="number"
                             onChange={(e) => {
                               const newData = [...gridDatas.FPAT1];
                               newData[index].particleSize.percent995LT20um =
@@ -21660,6 +21802,7 @@ export default function APQR() {
                         <td>
                           <input
                             value={item.particleSize.percent995LT20umLimit}
+                            type="number"
                             onChange={(e) => {
                               const newData = [...gridDatas.FPAT1];
                               newData[
@@ -21681,7 +21824,8 @@ export default function APQR() {
             </div>
 
             <div className="gridName pt-4">
-            Finished Product Analytical Trend As per PhEur Specification (Micronised)
+              Finished Product Analytical Trend As per PhEur Specification
+              (Micronised)
             </div>
             <div>
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
@@ -21700,17 +21844,21 @@ export default function APQR() {
                 </div>
               </div>
               <table>
-              <thead>
+                <thead>
                   <tr>
                     <th rowSpan="2">S. No.</th>
                     <th rowSpan="2">Batch No.</th>
                     <th rowSpan="2">Specific Rotation b/w +110° and +117° </th>
                     <th rowSpan="2">L Limit</th>
                     <th rowSpan="2">U Limit</th>
-                    <th colSpan="8">Related substence (by HPLC) as per PhEur 11.0</th>
+                    <th colSpan="8">
+                      Related substence (by HPLC) as per PhEur 11.0
+                    </th>
                     <th rowSpan="2">Water (By KF) NMT 2.0 % w/w</th>
                     <th rowSpan="2">Limit</th>
-                    <th rowSpan="2">Assay (By HPLC) b/w 97.5 % and 102.0 % w/w</th>
+                    <th rowSpan="2">
+                      Assay (By HPLC) b/w 97.5 % and 102.0 % w/w
+                    </th>
                     <th rowSpan="2">Limit</th>
                     <th colSpan="4">Residual solvent By GC</th>
                     <th colSpan="4">Particle Size Malvern (By Dry Method)</th>
@@ -21740,362 +21888,430 @@ export default function APQR() {
                   {gridDatas?.FPAT2?.map((item, index) => {
                     return (
                       <tr key={index}>
-                      <td>{index + 1}</td>
-                    
-                      {/* Batch No */}
-                      <td>
-                        <input
-                          value={item.batchNo}
-                          onChange={(e) => {
-                            const newData = [...gridDatas.FPAT2];
-                            newData[index].batchNo = e.target.value;
-                            setGridDatas({
-                              ...gridDatas,
-                              FPAT2: newData,
-                            });
-                          }}
-                        />
-                      </td>
-                    
-                      {/* Specific Rotation */}
-                      <td>
-                        <input
-                          value={item.specificRotation}
-                          onChange={(e) => {
-                            const newData = [...gridDatas.FPAT2];
-                            newData[index].specificRotation = e.target.value;
-                            setGridDatas({
-                              ...gridDatas,
-                              FPAT2: newData,
-                            });
-                          }}
-                        />
-                      </td>
-                    
-                      {/* L Limit */}
-                      <td>
-                        <input
-                          value={item.lLimit}
-                          onChange={(e) => {
-                            const newData = [...gridDatas.FPAT2];
-                            newData[index].lLimit = e.target.value;
-                            setGridDatas({
-                              ...gridDatas,
-                              FPAT2: newData,
-                            });
-                          }}
-                        />
-                      </td>
-                    
-                      {/* U Limit */}
-                      <td>
-                        <input
-                          value={item.uLimit}
-                          onChange={(e) => {
-                            const newData = [...gridDatas.FPAT2];
-                            newData[index].uLimit = e.target.value;
-                            setGridDatas({
-                              ...gridDatas,
-                              FPAT2: newData,
-                            });
-                          }}
-                        />
-                      </td>
-                    
-                      {/* Related Substance HPLC: Impurity B */}
-                      <td>
-                        <input
-                          value={item.relatedSubstanceHPLC.impurityB}
-                          onChange={(e) => {
-                            const newData = [...gridDatas.FPAT2];
-                            newData[index].relatedSubstanceHPLC.impurityB = e.target.value;
-                            setGridDatas({
-                              ...gridDatas,
-                              FPAT2: newData,
-                            });
-                          }}
-                        />
-                      </td>
-                    
-                      {/* Related Substance HPLC: Impurity B Limit */}
-                      <td>
-                        <input
-                          value={item.relatedSubstanceHPLC.impurityBLimit}
-                          onChange={(e) => {
-                            const newData = [...gridDatas.FPAT2];
-                            newData[index].relatedSubstanceHPLC.impurityBLimit = e.target.value;
-                            setGridDatas({
-                              ...gridDatas,
-                              FPAT2: newData,
-                            });
-                          }}
-                        />
-                      </td>
-                    
-                      {/* Related Substance HPLC: Impurity C */}
-                      <td>
-                        <input
-                          value={item.relatedSubstanceHPLC.impurityC}
-                          onChange={(e) => {
-                            const newData = [...gridDatas.FPAT2];
-                            newData[index].relatedSubstanceHPLC.impurityC = e.target.value;
-                            setGridDatas({
-                              ...gridDatas,
-                              FPAT2: newData,
-                            });
-                          }}
-                        />
-                      </td>
-                    
-                      {/* Related Substance HPLC: Impurity C Limit */}
-                      <td>
-                        <input
-                          value={item.relatedSubstanceHPLC.impurityCLimit}
-                          onChange={(e) => {
-                            const newData = [...gridDatas.FPAT2];
-                            newData[index].relatedSubstanceHPLC.impurityCLimit = e.target.value;
-                            setGridDatas({
-                              ...gridDatas,
-                              FPAT2: newData,
-                            });
-                          }}
-                        />
-                      </td>
-                      <td>
-                        <input
-                          value={item.relatedSubstanceHPLC.unspecifiedImpurities}
-                          onChange={(e) => {
-                            const newData = [...gridDatas.FPAT2];
-                            newData[index].relatedSubstanceHPLC.unspecifiedImpurities = e.target.value;
-                            setGridDatas({
-                              ...gridDatas,
-                              FPAT2: newData,
-                            });
-                          }}
-                        />
-                      </td>
-                      <td>
-                        <input
-                          value={item.relatedSubstanceHPLC.unspecifiedImpuritiesLimit}
-                          onChange={(e) => {
-                            const newData = [...gridDatas.FPAT2];
-                            newData[index].relatedSubstanceHPLC.unspecifiedImpuritiesLimit = e.target.value;
-                            setGridDatas({
-                              ...gridDatas,
-                              FPAT2: newData,
-                            });
-                          }}
-                        />
-                      </td>
-                      <td>
-                        <input
-                          value={item.relatedSubstanceHPLC.totalImpurities}
-                          onChange={(e) => {
-                            const newData = [...gridDatas.FPAT2];
-                            newData[index].relatedSubstanceHPLC.totalImpurities = e.target.value;
-                            setGridDatas({
-                              ...gridDatas,
-                              FPAT2: newData,
-                            });
-                          }}
-                        />
-                      </td>
-                      <td>
-                        <input
-                          value={item.relatedSubstanceHPLC.totalImpuritiesLimit}
-                          onChange={(e) => {
-                            const newData = [...gridDatas.FPAT2];
-                            newData[index].relatedSubstanceHPLC.totalImpuritiesLimit = e.target.value;
-                            setGridDatas({
-                              ...gridDatas,
-                              FPAT2: newData,
-                            });
-                          }}
-                        />
-                      </td>
-                    
-                      {/* Water (By KF) */}
-                      <td>
-                        <input
-                          value={item.waterKF}
-                          onChange={(e) => {
-                            const newData = [...gridDatas.FPAT2];
-                            newData[index].waterKF = e.target.value;
-                            setGridDatas({
-                              ...gridDatas,
-                              FPAT2: newData,
-                            });
-                          }}
-                        />
-                      </td>
-                    
-                      {/* Water KF Limit */}
-                      <td>
-                        <input
-                          value={item.waterKFLimit}
-                          onChange={(e) => {
-                            const newData = [...gridDatas.FPAT2];
-                            newData[index].waterKFLimit = e.target.value;
-                            setGridDatas({
-                              ...gridDatas,
-                              FPAT2: newData,
-                            });
-                          }}
-                        />
-                      </td>
-                    
-                      {/* Assay (By HPLC) */}
-                      <td>
-                        <input
-                          value={item.assay}
-                          onChange={(e) => {
-                            const newData = [...gridDatas.FPAT2];
-                            newData[index].assay = e.target.value;
-                            setGridDatas({
-                              ...gridDatas,
-                              FPAT2: newData,
-                            });
-                          }}
-                        />
-                      </td>
-                    
-                      {/* Assay Limit */}
-                      <td>
-                        <input
-                          value={item.assayLimit}
-                          onChange={(e) => {
-                            const newData = [...gridDatas.FPAT2];
-                            newData[index].assayLimit = e.target.value;
-                            setGridDatas({
-                              ...gridDatas,
-                              FPAT2: newData,
-                            });
-                          }}
-                        />
-                      </td>
-                    
-                      {/* Residual Solvent By CG: Methylene Chloride */}
-                      <td>
-                        <input
-                          value={item.residualSolventByCG.methyleneChloride}
-                          onChange={(e) => {
-                            const newData = [...gridDatas.FPAT2];
-                            newData[index].residualSolventByCG.methyleneChloride = e.target.value;
-                            setGridDatas({
-                              ...gridDatas,
-                              FPAT2: newData,
-                            });
-                          }}
-                        />
-                      </td>
-                    
-                      {/* Residual Solvent By CG: Methanol */}
-                      <td>
-                        <input
-                          value={item.residualSolventByCG.methanol}
-                          onChange={(e) => {
-                            const newData = [...gridDatas.FPAT2];
-                            newData[index].residualSolventByCG.methanol = e.target.value;
-                            setGridDatas({
-                              ...gridDatas,
-                              FPAT2: newData,
-                            });
-                          }}
-                        />
-                      </td>
-                    
-                      {/* Residual Solvent By CG: Acetone */}
-                      <td>
-                        <input
-                          value={item.residualSolventByCG.acetone}
-                          onChange={(e) => {
-                            const newData = [...gridDatas.FPAT2];
-                            newData[index].residualSolventByCG.acetone = e.target.value;
-                            setGridDatas({
-                              ...gridDatas,
-                              FPAT2: newData,
-                            });
-                          }}
-                        />
-                      </td>
-                    
-                      {/* Residual Solvent Limit */}
-                      <td>
-                        <input
-                          value={item.residualSolventByCG.residualSolventLimit}
-                          onChange={(e) => {
-                            const newData = [...gridDatas.FPAT2];
-                            newData[index].residualSolventByCG.residualSolventLimit = e.target.value;
-                            setGridDatas({
-                              ...gridDatas,
-                              FPAT2: newData,
-                            });
-                          }}
-                        />
-                      </td>
-                    
-                      {/* Particle Size Malvern: 90% < 10 μm */}
-                      <td>
-                        <input
-                          value={item.particleSizeMalvern.particleSize90}
-                          onChange={(e) => {
-                            const newData = [...gridDatas.FPAT2];
-                            newData[index].particleSizeMalvern.particleSize90 = e.target.value;
-                            setGridDatas({
-                              ...gridDatas,
-                              FPAT2: newData,
-                            });
-                          }}
-                        />
-                      </td>
-                    
-                      {/* Particle Size Malvern: 90% Limit */}
-                      <td>
-                        <input
-                          value={item.particleSizeMalvern.particleSize90Limit}
-                          onChange={(e) => {
-                            const newData = [...gridDatas.FPAT2];
-                            newData[index].particleSizeMalvern.particleSize90Limit = e.target.value;
-                            setGridDatas({
-                              ...gridDatas,
-                              FPAT2: newData,
-                            });
-                          }}
-                        />
-                      </td>
-                    
-                      {/* Particle Size Malvern: 99.5% < 20 μm */}
-                      <td>
-                        <input
-                          value={item.particleSizeMalvern.particleSize995}
-                          onChange={(e) => {
-                            const newData = [...gridDatas.FPAT2];
-                            newData[index].particleSizeMalvern.particleSize995 = e.target.value;
-                            setGridDatas({
-                              ...gridDatas,
-                              FPAT2: newData,
-                            });
-                          }}
-                        />
-                      </td>
-                    
-                      {/* Particle Size Malvern: 99.5% Limit */}
-                      <td>
-                        <input
-                          value={item.particleSizeMalvern.particleSize995Limit}
-                          onChange={(e) => {
-                            const newData = [...gridDatas.FPAT2];
-                            newData[index].particleSizeMalvern.particleSize995Limit = e.target.value;
-                            setGridDatas({
-                              ...gridDatas,
-                              FPAT2: newData,
-                            });
-                          }}
-                        />
-                      </td>
-                      
-                    </tr>
-                    
+                        <td>{index + 1}</td>
+
+                        {/* Batch No */}
+                        <td>
+                          <input
+                            value={item.batchNo}
+                            onChange={(e) => {
+                              const newData = [...gridDatas.FPAT2];
+                              newData[index].batchNo = e.target.value;
+                              setGridDatas({
+                                ...gridDatas,
+                                FPAT2: newData,
+                              });
+                            }}
+                          />
+                        </td>
+
+                        {/* Specific Rotation */}
+                        <td>
+                          <input
+                            value={item.specificRotation}
+                            type="number"
+                            onChange={(e) => {
+                              const newData = [...gridDatas.FPAT2];
+                              newData[index].specificRotation = e.target.value;
+                              setGridDatas({
+                                ...gridDatas,
+                                FPAT2: newData,
+                              });
+                            }}
+                          />
+                        </td>
+
+                        {/* L Limit */}
+                        <td>
+                          <input
+                            value={item.lLimit}
+                            type="number"
+                            onChange={(e) => {
+                              const newData = [...gridDatas.FPAT2];
+                              newData[index].lLimit = e.target.value;
+                              setGridDatas({
+                                ...gridDatas,
+                                FPAT2: newData,
+                              });
+                            }}
+                          />
+                        </td>
+
+                        {/* U Limit */}
+                        <td>
+                          <input
+                            value={item.uLimit}
+                            type="number"
+                            onChange={(e) => {
+                              const newData = [...gridDatas.FPAT2];
+                              newData[index].uLimit = e.target.value;
+                              setGridDatas({
+                                ...gridDatas,
+                                FPAT2: newData,
+                              });
+                            }}
+                          />
+                        </td>
+
+                        {/* Related Substance HPLC: Impurity B */}
+                        <td>
+                          <input
+                            value={item.relatedSubstanceHPLC.impurityB}
+                            onChange={(e) => {
+                              const newData = [...gridDatas.FPAT2];
+                              newData[index].relatedSubstanceHPLC.impurityB =
+                                e.target.value;
+                              setGridDatas({
+                                ...gridDatas,
+                                FPAT2: newData,
+                              });
+                            }}
+                          />
+                        </td>
+
+                        {/* Related Substance HPLC: Impurity B Limit */}
+                        <td>
+                          <input
+                            value={item.relatedSubstanceHPLC.impurityBLimit}
+                            type="number"
+                            onChange={(e) => {
+                              const newData = [...gridDatas.FPAT2];
+                              newData[
+                                index
+                              ].relatedSubstanceHPLC.impurityBLimit =
+                                e.target.value;
+                              setGridDatas({
+                                ...gridDatas,
+                                FPAT2: newData,
+                              });
+                            }}
+                          />
+                        </td>
+
+                        {/* Related Substance HPLC: Impurity C */}
+                        <td>
+                          <input
+                            value={item.relatedSubstanceHPLC.impurityC}
+                            type="number"
+                            onChange={(e) => {
+                              const newData = [...gridDatas.FPAT2];
+                              newData[index].relatedSubstanceHPLC.impurityC =
+                                e.target.value;
+                              setGridDatas({
+                                ...gridDatas,
+                                FPAT2: newData,
+                              });
+                            }}
+                          />
+                        </td>
+
+                        {/* Related Substance HPLC: Impurity C Limit */}
+                        <td>
+                          <input
+                            value={item.relatedSubstanceHPLC.impurityCLimit}
+                            type="number"
+                            onChange={(e) => {
+                              const newData = [...gridDatas.FPAT2];
+                              newData[
+                                index
+                              ].relatedSubstanceHPLC.impurityCLimit =
+                                e.target.value;
+                              setGridDatas({
+                                ...gridDatas,
+                                FPAT2: newData,
+                              });
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={
+                              item.relatedSubstanceHPLC.unspecifiedImpurities
+                            }
+                            onChange={(e) => {
+                              const newData = [...gridDatas.FPAT2];
+                              newData[
+                                index
+                              ].relatedSubstanceHPLC.unspecifiedImpurities =
+                                e.target.value;
+                              setGridDatas({
+                                ...gridDatas,
+                                FPAT2: newData,
+                              });
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={
+                              item.relatedSubstanceHPLC
+                                .unspecifiedImpuritiesLimit
+                            }
+                            type="number"
+                            onChange={(e) => {
+                              const newData = [...gridDatas.FPAT2];
+                              newData[
+                                index
+                              ].relatedSubstanceHPLC.unspecifiedImpuritiesLimit =
+                                e.target.value;
+                              setGridDatas({
+                                ...gridDatas,
+                                FPAT2: newData,
+                              });
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.relatedSubstanceHPLC.totalImpurities}
+                            type="number"
+                            onChange={(e) => {
+                              const newData = [...gridDatas.FPAT2];
+                              newData[
+                                index
+                              ].relatedSubstanceHPLC.totalImpurities =
+                                e.target.value;
+                              setGridDatas({
+                                ...gridDatas,
+                                FPAT2: newData,
+                              });
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={
+                              item.relatedSubstanceHPLC.totalImpuritiesLimit
+                            }
+                            type="number"
+                            onChange={(e) => {
+                              const newData = [...gridDatas.FPAT2];
+                              newData[
+                                index
+                              ].relatedSubstanceHPLC.totalImpuritiesLimit =
+                                e.target.value;
+                              setGridDatas({
+                                ...gridDatas,
+                                FPAT2: newData,
+                              });
+                            }}
+                          />
+                        </td>
+
+                        {/* Water (By KF) */}
+                        <td>
+                          <input
+                            value={item.waterKF}
+                            type="number"
+                            onChange={(e) => {
+                              const newData = [...gridDatas.FPAT2];
+                              newData[index].waterKF = e.target.value;
+                              setGridDatas({
+                                ...gridDatas,
+                                FPAT2: newData,
+                              });
+                            }}
+                          />
+                        </td>
+
+                        {/* Water KF Limit */}
+                        <td>
+                          <input
+                            value={item.waterKFLimit}
+                            type="number"
+                            onChange={(e) => {
+                              const newData = [...gridDatas.FPAT2];
+                              newData[index].waterKFLimit = e.target.value;
+                              setGridDatas({
+                                ...gridDatas,
+                                FPAT2: newData,
+                              });
+                            }}
+                          />
+                        </td>
+
+                        {/* Assay (By HPLC) */}
+                        <td>
+                          <input
+                            value={item.assay}
+                            type="number"
+                            onChange={(e) => {
+                              const newData = [...gridDatas.FPAT2];
+                              newData[index].assay = e.target.value;
+                              setGridDatas({
+                                ...gridDatas,
+                                FPAT2: newData,
+                              });
+                            }}
+                          />
+                        </td>
+
+                        {/* Assay Limit */}
+                        <td>
+                          <input
+                            value={item.assayLimit}
+                            type="number"
+                            onChange={(e) => {
+                              const newData = [...gridDatas.FPAT2];
+                              newData[index].assayLimit = e.target.value;
+                              setGridDatas({
+                                ...gridDatas,
+                                FPAT2: newData,
+                              });
+                            }}
+                          />
+                        </td>
+
+                        {/* Residual Solvent By CG: Methylene Chloride */}
+                        <td>
+                          <input
+                            value={item.residualSolventByCG.methyleneChloride}
+                            onChange={(e) => {
+                              const newData = [...gridDatas.FPAT2];
+                              newData[
+                                index
+                              ].residualSolventByCG.methyleneChloride =
+                                e.target.value;
+                              setGridDatas({
+                                ...gridDatas,
+                                FPAT2: newData,
+                              });
+                            }}
+                          />
+                        </td>
+
+                        {/* Residual Solvent By CG: Methanol */}
+                        <td>
+                          <input
+                            value={item.residualSolventByCG.methanol}
+                            onChange={(e) => {
+                              const newData = [...gridDatas.FPAT2];
+                              newData[index].residualSolventByCG.methanol =
+                                e.target.value;
+                              setGridDatas({
+                                ...gridDatas,
+                                FPAT2: newData,
+                              });
+                            }}
+                          />
+                        </td>
+
+                        {/* Residual Solvent By CG: Acetone */}
+                        <td>
+                          <input
+                            value={item.residualSolventByCG.acetone}
+                            type="number"
+                            onChange={(e) => {
+                              const newData = [...gridDatas.FPAT2];
+                              newData[index].residualSolventByCG.acetone =
+                                e.target.value;
+                              setGridDatas({
+                                ...gridDatas,
+                                FPAT2: newData,
+                              });
+                            }}
+                          />
+                        </td>
+
+                        {/* Residual Solvent Limit */}
+                        <td>
+                          <input
+                            value={
+                              item.residualSolventByCG.residualSolventLimit
+                            }
+                            type="number"
+                            onChange={(e) => {
+                              const newData = [...gridDatas.FPAT2];
+                              newData[
+                                index
+                              ].residualSolventByCG.residualSolventLimit =
+                                e.target.value;
+                              setGridDatas({
+                                ...gridDatas,
+                                FPAT2: newData,
+                              });
+                            }}
+                          />
+                        </td>
+
+                        {/* Particle Size Malvern: 90% < 10 μm */}
+                        <td>
+                          <input
+                            value={item.particleSizeMalvern.particleSize90}
+                            type="number"
+                            onChange={(e) => {
+                              const newData = [...gridDatas.FPAT2];
+                              newData[
+                                index
+                              ].particleSizeMalvern.particleSize90 =
+                                e.target.value;
+                              setGridDatas({
+                                ...gridDatas,
+                                FPAT2: newData,
+                              });
+                            }}
+                          />
+                        </td>
+
+                        {/* Particle Size Malvern: 90% Limit */}
+                        <td>
+                          <input
+                            value={item.particleSizeMalvern.particleSize90Limit}
+                            type="number"
+                            onChange={(e) => {
+                              const newData = [...gridDatas.FPAT2];
+                              newData[
+                                index
+                              ].particleSizeMalvern.particleSize90Limit =
+                                e.target.value;
+                              setGridDatas({
+                                ...gridDatas,
+                                FPAT2: newData,
+                              });
+                            }}
+                          />
+                        </td>
+
+                        {/* Particle Size Malvern: 99.5% < 20 μm */}
+                        <td>
+                          <input
+                            value={item.particleSizeMalvern.particleSize995}
+                            type="number"
+                            onChange={(e) => {
+                              const newData = [...gridDatas.FPAT2];
+                              newData[
+                                index
+                              ].particleSizeMalvern.particleSize995 =
+                                e.target.value;
+                              setGridDatas({
+                                ...gridDatas,
+                                FPAT2: newData,
+                              });
+                            }}
+                          />
+                        </td>
+
+                        {/* Particle Size Malvern: 99.5% Limit */}
+                        <td>
+                          <input
+                            value={
+                              item.particleSizeMalvern.particleSize995Limit
+                            }
+                            type="number"
+                            onChange={(e) => {
+                              const newData = [...gridDatas.FPAT2];
+                              newData[
+                                index
+                              ].particleSizeMalvern.particleSize995Limit =
+                                e.target.value;
+                              setGridDatas({
+                                ...gridDatas,
+                                FPAT2: newData,
+                              });
+                            }}
+                          />
+                        </td>
+                      </tr>
                     );
                   })}
                 </tbody>
