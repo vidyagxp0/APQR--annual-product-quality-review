@@ -466,10 +466,10 @@ export default function APQR() {
     yieldTOS3: [],
     yieldTOS4: [],
     yieldTOS5: [],
-    trendingOCP1: [],
-    trendingOCP2: [],
-    trendingOCP3: [],
-    trendingOCP4: [],
+    trendingOCPPS1: [],
+    trendingOCPPS2: [],
+    trendingOCPPS3: [],
+    trendingOCPPS4: [],
     trendingOIPIPS1: [],
     trendingOIPIPS2: [],
     trendingOIPIPS3: [],
@@ -567,21 +567,21 @@ export default function APQR() {
     };
   });
    
-const trendingOCP2Data=gridDatas?.trendingOCP2.map((item)=>{
+const trendingOCPPS2Data=gridDatas?.trendingOCPPS2.map((item)=>{
   return {
     "Batch No.": item.batchNo,
       "Observed Value": Number(item.criticalParameter3),
   }
 });
 
-const trendingOCP4Data1=gridDatas?.trendingOCP4.map((item)=>{
+const trendingOCP4Data1=gridDatas?.trendingOCPPS4.map((item)=>{
   return {
     "Batch No.": item.batchNo,
-    "Observed Value": Number(item.criticalParameter.actualTemprature),
+    "Observed Value": Number(item.criticalParameter1.actualTemprature),
   }
 })
 
-const trendingOCP4Data2=gridDatas?.trendingOCP4.map((item)=>{
+const trendingOCP4Data2=gridDatas?.trendingOCPPS4.map((item)=>{
   return {
     "Batch No.": item.batchNo,
     "Observed Value": Number(item.actualTemprature),
@@ -1130,10 +1130,10 @@ const trendingOIPIPS5Data4=gridDatas?.trendingOIPIPS5.map((item)=>{
         yieldTOS3: apiData.yieldTOS3?.data || [],
         yieldTOS4: apiData.yieldTOS4?.data || [],
         yieldTOS5: apiData.yieldTOS5?.data || [],
-        trendingOCP1: apiData.trendingOCP1?.data || [],
-        trendingOCP2: apiData.trendingOCP2?.data || [],
-        trendingOCP3: apiData.trendingOCP3?.data || [],
-        trendingOCP4: apiData.trendingOCP4?.data || [],
+        trendingOCPPS1: apiData.trendingOCPPS1?.data || [],
+        trendingOCPPS2: apiData.trendingOCPPS2?.data || [],
+        trendingOCPPS3: apiData.trendingOCPPS3?.data || [],
+        trendingOCPPS4: apiData.trendingOCPPS4?.data || [],
         trendingOIPIPS1: apiData.trendingOIPIPS1?.data || [],
         trendingOIPIPS2: apiData.trendingOIPIPS2?.data || [],
         trendingOIPIPS3: apiData.trendingOIPIPS3?.data || [],
@@ -2662,7 +2662,7 @@ const trendingOIPIPS5Data4=gridDatas?.trendingOIPIPS5.map((item)=>{
 
     setGridDatas({
       ...gridDatas,
-      trendingOCP1: [...gridDatas.trendingOCP1, newRow],
+      trendingOCPPS1: [...gridDatas.trendingOCPPS1, newRow],
     });
   };
 
@@ -2680,7 +2680,7 @@ const trendingOIPIPS5Data4=gridDatas?.trendingOIPIPS5.map((item)=>{
 
     setGridDatas({
       ...gridDatas,
-      trendingOCP2: [...gridDatas.trendingOCP2, newRow],
+      trendingOCPPS2: [...gridDatas.trendingOCPPS2, newRow],
     });
   };
 
@@ -2700,7 +2700,7 @@ const trendingOIPIPS5Data4=gridDatas?.trendingOIPIPS5.map((item)=>{
 
     setGridDatas({
       ...gridDatas,
-      trendingOCP3: [...gridDatas.trendingOCP3, newRow],
+      trendingOCPPS3: [...gridDatas.trendingOCPPS3, newRow],
     });
   };
 
@@ -2720,7 +2720,7 @@ const trendingOIPIPS5Data4=gridDatas?.trendingOIPIPS5.map((item)=>{
 
     setGridDatas({
       ...gridDatas,
-      trendingOCP4: [...gridDatas.trendingOCP4, newRow],
+      trendingOCPPS4: [...gridDatas.trendingOCPPS4, newRow],
     });
   };
 
@@ -19109,7 +19109,7 @@ const trendingOIPIPS5Data4=gridDatas?.trendingOIPIPS5.map((item)=>{
                   </tr>
                 </thead>
                 <tbody>
-                  {gridDatas?.trendingOCP1?.map((item, index) => {
+                  {gridDatas?.trendingOCPPS1?.map((item, index) => {
                     return (
                       <tr key={index}>
                         <td>{index + 1}</td>
@@ -19118,11 +19118,11 @@ const trendingOIPIPS5Data4=gridDatas?.trendingOIPIPS5.map((item)=>{
                           <input
                             value={item.batchNo}
                             onChange={(e) => {
-                              const newData = [...gridDatas.trendingOCP1];
+                              const newData = [...gridDatas.trendingOCPPS1];
                               newData[index].batchNo = e.target.value;
                               setGridDatas({
                                 ...gridDatas,
-                                trendingOCP1: newData,
+                                trendingOCPPS1: newData,
                               });
                             }}
                           />
@@ -19131,12 +19131,12 @@ const trendingOIPIPS5Data4=gridDatas?.trendingOIPIPS5.map((item)=>{
                           <input
                             value={item.criticalParameter1}
                             onChange={(e) => {
-                              const newData = [...gridDatas.trendingOCP1];
+                              const newData = [...gridDatas.trendingOCPPS1];
                               newData[index].criticalParameter1 =
                                 e.target.value;
                               setGridDatas({
                                 ...gridDatas,
-                                trendingOCP1: newData,
+                                trendingOCPPS1: newData,
                               });
                             }}
                           />
@@ -19146,12 +19146,12 @@ const trendingOIPIPS5Data4=gridDatas?.trendingOIPIPS5.map((item)=>{
                           <input
                             value={item.criticalParameter2}
                             onChange={(e) => {
-                              const newData = [...gridDatas.trendingOCP1];
+                              const newData = [...gridDatas.trendingOCPPS1];
                               newData[index].criticalParameter2 =
                                 e.target.value;
                               setGridDatas({
                                 ...gridDatas,
-                                trendingOCP1: newData,
+                                trendingOCPPS1: newData,
                               });
                             }}
                           />
@@ -19161,12 +19161,12 @@ const trendingOIPIPS5Data4=gridDatas?.trendingOIPIPS5.map((item)=>{
                           <input
                             value={item.criticalParameter3}
                             onChange={(e) => {
-                              const newData = [...gridDatas.trendingOCP1];
+                              const newData = [...gridDatas.trendingOCPPS1];
                               newData[index].criticalParameter3 =
                                 e.target.value;
                               setGridDatas({
                                 ...gridDatas,
-                                trendingOCP1: newData,
+                                trendingOCPPS1: newData,
                               });
                             }}
                           />
@@ -19233,7 +19233,7 @@ const trendingOIPIPS5Data4=gridDatas?.trendingOIPIPS5.map((item)=>{
                   </tr>
                 </thead>
                 <tbody>
-                  {gridDatas?.trendingOCP2?.map((item, index) => {
+                  {gridDatas?.trendingOCPPS2?.map((item, index) => {
                     return (
                       <tr key={index}>
                         <td>{index + 1}</td>
@@ -19242,11 +19242,11 @@ const trendingOIPIPS5Data4=gridDatas?.trendingOIPIPS5.map((item)=>{
                           <input
                             value={item.batchNo}
                             onChange={(e) => {
-                              const newData = [...gridDatas.trendingOCP2];
+                              const newData = [...gridDatas.trendingOCPPS2];
                               newData[index].batchNo = e.target.value;
                               setGridDatas({
                                 ...gridDatas,
-                                trendingOCP2: newData,
+                                trendingOCPPS2: newData,
                               });
                             }}
                           />
@@ -19255,12 +19255,12 @@ const trendingOIPIPS5Data4=gridDatas?.trendingOIPIPS5.map((item)=>{
                           <input
                             value={item.criticalParameter1}
                             onChange={(e) => {
-                              const newData = [...gridDatas.trendingOCP2];
+                              const newData = [...gridDatas.trendingOCPPS2];
                               newData[index].criticalParameter1 =
                                 e.target.value;
                               setGridDatas({
                                 ...gridDatas,
-                                trendingOCP2: newData,
+                                trendingOCPPS2: newData,
                               });
                             }}
                           />
@@ -19271,12 +19271,12 @@ const trendingOIPIPS5Data4=gridDatas?.trendingOIPIPS5.map((item)=>{
                             value={item.criticalParameter2}
                             type="number"
                             onChange={(e) => {
-                              const newData = [...gridDatas.trendingOCP2];
+                              const newData = [...gridDatas.trendingOCPPS2];
                               newData[index].criticalParameter2 =
                                 e.target.value;
                               setGridDatas({
                                 ...gridDatas,
-                                trendingOCP2: newData,
+                                trendingOCPPS2: newData,
                               });
                             }}
                           />
@@ -19286,12 +19286,12 @@ const trendingOIPIPS5Data4=gridDatas?.trendingOIPIPS5.map((item)=>{
                             value={item.criticalParameter3}
                             type="number"
                             onChange={(e) => {
-                              const newData = [...gridDatas.trendingOCP2];
+                              const newData = [...gridDatas.trendingOCPPS2];
                               newData[index].criticalParameter3 =
                                 e.target.value;
                               setGridDatas({
                                 ...gridDatas,
-                                trendingOCP2: newData,
+                                trendingOCPPS2: newData,
                               });
                             }}
                           />
@@ -19301,11 +19301,11 @@ const trendingOIPIPS5Data4=gridDatas?.trendingOIPIPS5.map((item)=>{
                             value={item.lLimit}
                             type="number"
                             onChange={(e) => {
-                              const newData = [...gridDatas.trendingOCP2];
+                              const newData = [...gridDatas.trendingOCPPS2];
                               newData[index].lLimit = e.target.value;
                               setGridDatas({
                                 ...gridDatas,
-                                trendingOCP2: newData,
+                                trendingOCPPS2: newData,
                               });
                             }}
                           />
@@ -19315,11 +19315,11 @@ const trendingOIPIPS5Data4=gridDatas?.trendingOIPIPS5.map((item)=>{
                             value={item.uLimit}
                             type="number"
                             onChange={(e) => {
-                              const newData = [...gridDatas.trendingOCP2];
+                              const newData = [...gridDatas.trendingOCPPS2];
                               newData[index].uLimit = e.target.value;
                               setGridDatas({
                                 ...gridDatas,
-                                trendingOCP2: newData,
+                                trendingOCPPS2: newData,
                               });
                             }}
                           />
@@ -19329,12 +19329,12 @@ const trendingOIPIPS5Data4=gridDatas?.trendingOIPIPS5.map((item)=>{
                             value={item.criticalParameter4}
                             type="number"
                             onChange={(e) => {
-                              const newData = [...gridDatas.trendingOCP2];
+                              const newData = [...gridDatas.trendingOCPPS2];
                               newData[index].criticalParameter4 =
                                 e.target.value;
                               setGridDatas({
                                 ...gridDatas,
-                                trendingOCP2: newData,
+                                trendingOCPPS2: newData,
                               });
                             }}
                           />
@@ -19358,7 +19358,7 @@ const trendingOIPIPS5Data4=gridDatas?.trendingOIPIPS5.map((item)=>{
                 plotLines={TrendOfCriticalprocessS2PlotLines}
                 // zones={paracetamolpHZones}
                 // annotations={paracetamolAnnotations}
-                highchartData={trendingOCP2Data}
+                highchartData={trendingOCPPS2Data}
               />
             </div>
 
@@ -19406,7 +19406,7 @@ const trendingOIPIPS5Data4=gridDatas?.trendingOIPIPS5.map((item)=>{
                   </tr>
                 </thead>
                 <tbody>
-                  {gridDatas?.trendingOCP3?.map((item, index) => {
+                  {gridDatas?.trendingOCPPS3?.map((item, index) => {
                     return (
                       <tr key={index}>
                         <td>{index + 1}</td>
@@ -19415,11 +19415,11 @@ const trendingOIPIPS5Data4=gridDatas?.trendingOIPIPS5.map((item)=>{
                           <input
                             value={item.batchNo}
                             onChange={(e) => {
-                              const newData = [...gridDatas.trendingOCP3];
+                              const newData = [...gridDatas.trendingOCPPS3];
                               newData[index].batchNo = e.target.value;
                               setGridDatas({
                                 ...gridDatas,
-                                trendingOCP3: newData,
+                                trendingOCPPS3: newData,
                               });
                             }}
                           />
@@ -19428,12 +19428,12 @@ const trendingOIPIPS5Data4=gridDatas?.trendingOIPIPS5.map((item)=>{
                           <input
                             value={item.criticalParameter1}
                             onChange={(e) => {
-                              const newData = [...gridDatas.trendingOCP3];
+                              const newData = [...gridDatas.trendingOCPPS3];
                               newData[index].criticalParameter1 =
                                 e.target.value;
                               setGridDatas({
                                 ...gridDatas,
-                                trendingOCP3: newData,
+                                trendingOCPPS3: newData,
                               });
                             }}
                           />
@@ -19444,12 +19444,12 @@ const trendingOIPIPS5Data4=gridDatas?.trendingOIPIPS5.map((item)=>{
                             value={item.criticalParameter2.actualQuantity}
                             type="number"
                             onChange={(e) => {
-                              const newData = [...gridDatas.trendingOCP3];
+                              const newData = [...gridDatas.trendingOCPPS3];
                               newData[index].criticalParameter2.actualQuantity =
                                 e.target.value;
                               setGridDatas({
                                 ...gridDatas,
-                                trendingOCP3: newData,
+                                trendingOCPPS3: newData,
                               });
                             }}
                           />
@@ -19460,12 +19460,12 @@ const trendingOIPIPS5Data4=gridDatas?.trendingOIPIPS5.map((item)=>{
                             value={item.criticalParameter2.actualpH}
                             type="number"
                             onChange={(e) => {
-                              const newData = [...gridDatas.trendingOCP3];
+                              const newData = [...gridDatas.trendingOCPPS3];
                               newData[index].criticalParameter2.actualpH =
                                 e.target.value;
                               setGridDatas({
                                 ...gridDatas,
-                                trendingOCP3: newData,
+                                trendingOCPPS3: newData,
                               });
                             }}
                           />
@@ -19475,11 +19475,11 @@ const trendingOIPIPS5Data4=gridDatas?.trendingOIPIPS5.map((item)=>{
                             value={item.lLimit}
                             type="number"
                             onChange={(e) => {
-                              const newData = [...gridDatas.trendingOCP3];
+                              const newData = [...gridDatas.trendingOCPPS3];
                               newData[index].lLimit = e.target.value;
                               setGridDatas({
                                 ...gridDatas,
-                                trendingOCP3: newData,
+                                trendingOCPPS3: newData,
                               });
                             }}
                           />
@@ -19489,11 +19489,11 @@ const trendingOIPIPS5Data4=gridDatas?.trendingOIPIPS5.map((item)=>{
                             value={item.uLimit}
                             type="number"
                             onChange={(e) => {
-                              const newData = [...gridDatas.trendingOCP3];
+                              const newData = [...gridDatas.trendingOCPPS3];
                               newData[index].uLimit = e.target.value;
                               setGridDatas({
                                 ...gridDatas,
-                                trendingOCP3: newData,
+                                trendingOCPPS3: newData,
                               });
                             }}
                           />
@@ -19549,7 +19549,7 @@ const trendingOIPIPS5Data4=gridDatas?.trendingOIPIPS5.map((item)=>{
                   </tr>
                 </thead>
                 <tbody>
-                  {gridDatas?.trendingOCP4?.map((item, index) => {
+                  {gridDatas?.trendingOCPPS4?.map((item, index) => {
                     return (
                       <tr key={index}>
                         <td>{index + 1}</td>
@@ -19557,11 +19557,11 @@ const trendingOIPIPS5Data4=gridDatas?.trendingOIPIPS5.map((item)=>{
                           <input
                             value={item.batchNo}
                             onChange={(e) => {
-                              const newData = [...gridDatas.trendingOCP4];
+                              const newData = [...gridDatas.trendingOCPPS4];
                               newData[index].batchNo = e.target.value;
                               setGridDatas({
                                 ...gridDatas,
-                                trendingOCP4: newData,
+                                trendingOCPPS4: newData,
                               });
                             }}
                           />
@@ -19570,12 +19570,12 @@ const trendingOIPIPS5Data4=gridDatas?.trendingOIPIPS5.map((item)=>{
                           <input
                             value={item.criticalParameter1.actualTime}
                             onChange={(e) => {
-                              const newData = [...gridDatas.trendingOCP4];
+                              const newData = [...gridDatas.trendingOCPPS4];
                               newData[index].criticalParameter1.actualTime =
                                 e.target.value;
                               setGridDatas({
                                 ...gridDatas,
-                                trendingOCP4: newData,
+                                trendingOCPPS4: newData,
                               });
                             }}
                           />
@@ -19585,14 +19585,14 @@ const trendingOIPIPS5Data4=gridDatas?.trendingOIPIPS5.map((item)=>{
                             value={item.criticalParameter1.actualTemprature}
                             type="number"
                             onChange={(e) => {
-                              const newData = [...gridDatas.trendingOCP4];
+                              const newData = [...gridDatas.trendingOCPPS4];
                               newData[
                                 index
                               ].criticalParameter1.actualTemprature =
                                 e.target.value;
                               setGridDatas({
                                 ...gridDatas,
-                                trendingOCP4: newData,
+                                trendingOCPPS4: newData,
                               });
                             }}
                           />
@@ -19602,12 +19602,12 @@ const trendingOIPIPS5Data4=gridDatas?.trendingOIPIPS5.map((item)=>{
                             value={item.criticalParameter1.lowerLimit}
                             type="number"
                             onChange={(e) => {
-                              const newData = [...gridDatas.trendingOCP4];
+                              const newData = [...gridDatas.trendingOCPPS4];
                               newData[index].criticalParameter1.lowerLimit =
                                 e.target.value;
                               setGridDatas({
                                 ...gridDatas,
-                                trendingOCP4: newData,
+                                trendingOCPPS4: newData,
                               });
                             }}
                           />
@@ -19617,12 +19617,12 @@ const trendingOIPIPS5Data4=gridDatas?.trendingOIPIPS5.map((item)=>{
                             value={item.criticalParameter1.upperLimit}
                             type="number"
                             onChange={(e) => {
-                              const newData = [...gridDatas.trendingOCP4];
+                              const newData = [...gridDatas.trendingOCPPS4];
                               newData[index].criticalParameter1.upperLimit =
                                 e.target.value;
                               setGridDatas({
                                 ...gridDatas,
-                                trendingOCP4: newData,
+                                trendingOCPPS4: newData,
                               });
                             }}
                           />
@@ -19632,12 +19632,12 @@ const trendingOIPIPS5Data4=gridDatas?.trendingOIPIPS5.map((item)=>{
                             value={item.criticalParameter2}
                             type="number"
                             onChange={(e) => {
-                              const newData = [...gridDatas.trendingOCP4];
+                              const newData = [...gridDatas.trendingOCPPS4];
                               newData[index].criticalParameter2 =
                                 e.target.value;
                               setGridDatas({
                                 ...gridDatas,
-                                trendingOCP4: newData,
+                                trendingOCPPS4: newData,
                               });
                             }}
                           />
@@ -19647,11 +19647,11 @@ const trendingOIPIPS5Data4=gridDatas?.trendingOIPIPS5.map((item)=>{
                             value={item.lowerLimit}
                             type="number"
                             onChange={(e) => {
-                              const newData = [...gridDatas.trendingOCP4];
+                              const newData = [...gridDatas.trendingOCPPS4];
                               newData[index].lowerLimit = e.target.value;
                               setGridDatas({
                                 ...gridDatas,
-                                trendingOCP4: newData,
+                                trendingOCPPS4: newData,
                               });
                             }}
                           />
@@ -19661,11 +19661,11 @@ const trendingOIPIPS5Data4=gridDatas?.trendingOIPIPS5.map((item)=>{
                             value={item.upperLimit}
                             type="number"
                             onChange={(e) => {
-                              const newData = [...gridDatas.trendingOCP4];
+                              const newData = [...gridDatas.trendingOCPPS4];
                               newData[index].upperLimit = e.target.value;
                               setGridDatas({
                                 ...gridDatas,
-                                trendingOCP4: newData,
+                                trendingOCPPS4: newData,
                               });
                             }}
                           />
