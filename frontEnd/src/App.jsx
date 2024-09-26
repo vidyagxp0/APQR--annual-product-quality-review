@@ -14,6 +14,7 @@ import HighchartsLine from "./Component/Analytics/HighchartsLine";
 import AdvancedAnalytics from "./pages/AdvancedAnalytics";
 import Logs from "./pages/Logs";
 import ViewReport from "./pages/ViewReport";
+import Table from "./Component/Table/Table";
 
 function App() {
   return (
@@ -35,7 +36,7 @@ function App() {
 
         {/* test */}
         <Route path="/analytics2" element={<Analytics />} />
-        <Route path="/test" element={<TinyEditor />} />
+        <Route path="/test" element={<Table />} />
         <Route path="/test2" element={<ESignatureModal />} />
         <Route path="/highchart" element={<HighchartsLine />} />
 

@@ -64,6 +64,8 @@ import AnalyticsTable from "../Component/Table/AnalyticsTable";
 import axios from "axios";
 import { FaMicrophone } from "react-icons/fa6";
 import { AiFillSound } from "react-icons/ai";
+import ReusableTable from "../Component/Table/ReusableTable";
+import { headings, leftHeading, YeildData,rowNames } from "../Component/Table/TableFunction";
 export default function APQR() {
   const [tab, setTab] = useState("GI");
   const [isSaving, setIsSaving] = useState(false);
@@ -18407,6 +18409,14 @@ const trendingOIPIPS5Data4=gridDatas?.trendingOIPIPS5.map((item)=>{
                   })}
                 </tbody>
               </table>
+            </div>
+            <div>
+            <ReusableTable
+        rowNames={rowNames} 
+        headings={headings} 
+        data={YeildData} 
+        leftHeading={leftHeading} 
+      />
             </div>
             <div className="">
               <HighchartsLine
