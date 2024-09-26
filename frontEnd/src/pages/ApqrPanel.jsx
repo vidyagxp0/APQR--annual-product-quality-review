@@ -391,7 +391,8 @@ export default function APQR() {
     manufacturingSD2: [],
     bufferFSDPV: [],
     oosDetails: [],
-    capaDetails: [],
+    currentCapaDetails: [],
+    previousCapaDetails: [],
     deviationDetails: [],
     ootResults: [],
     oolResults: [],
@@ -479,6 +480,8 @@ export default function APQR() {
     finishedPHEUR: [],
   
   });
+  console.log(gridDatas.currentCapaDetails,"99999")
+  console.log(gridDatas.previousCapaDetails,"00000")
 
   const [pQRData, setPQRData] = useReducer(
     (prev, next) => ({
@@ -1056,7 +1059,8 @@ const trendingOIPIPS5Data4=gridDatas?.trendingOIPIPS5.map((item)=>{
         manufacturingSD2: apiData.manufacturingSD2?.data || [],
         bufferFSDPV: apiData.bufferFSDPV?.data || [],
         oosDetails: apiData.oosDetails?.data || [],
-        capaDetails: apiData.capaDetails?.data || [],
+        currentCapaDetails: apiData.currentCapaDetails?.data || [],
+        previousCapaDetails: apiData.previousCapaDetails?.data || [],
         deviationDetails: apiData.deviationDetails?.data || [],
         ootResults: apiData.ootResults?.data || [],
         oolResults: apiData.oolResults?.data || [],
@@ -1524,7 +1528,7 @@ const trendingOIPIPS5Data4=gridDatas?.trendingOIPIPS5.map((item)=>{
     });
   };
 
-  const capaDetailsRow = () => {
+  const currentCapaDetailsRow = () => {
     const newRow = {
       ARNo: "",
       capaType: "",
@@ -1536,9 +1540,26 @@ const trendingOIPIPS5Data4=gridDatas?.trendingOIPIPS5.map((item)=>{
     };
     setGridDatas({
       ...gridDatas,
-      capaDetails: [...gridDatas.capaDetails, newRow],
+      currentCapaDetails: [...gridDatas.currentCapaDetails, newRow],
     });
   };
+  const previousCapaDetailsRow = () => {
+    const newRow = {
+      ARNo: "",
+      capaType: "",
+      descriptionOfIssue: "",
+      rootCause: "",
+      capaVerification: "",
+      chooseFile: "",
+      remarks: "",
+    };
+    setGridDatas({
+      ...gridDatas,
+      previousCapaDetails: [...gridDatas.previousCapaDetails, newRow],
+    });
+  };
+
+
   const deviationDetailsRow = () => {
     const newRow = {
       ARNo: "",
@@ -4970,151 +4991,7 @@ const trendingOIPIPS5Data4=gridDatas?.trendingOIPIPS5.map((item)=>{
               />
             </div>
 
-            <h4 className="gridName">CAPA Details</h4>
-            <div>
-              {/* <div className="AddRows d-flex">
-                <MdNoteAdd onClick={addBufferFSDPVRow} />
-                <div className="addrowinstruction"></div>
-              </div> */}
-              <div className="AddRows d-flex w-full justify-between items-center text-3xl">
-                <div className="flex items-center">
-                  <MdNoteAdd onClick={capaDetailsRow} />
-                  <div className="addrowinstruction  pl-2">
-                    Add Rows by clicking on (+) icon
-                  </div>
-                </div>
-                <div className="flex gap-4 ">
-                  <ExcelExportImport
-                  // data={manufacturingStage}
-                  // setimportedData={setimportedData}
-                  // fileName="manufacturingStage.xlsx"
-                  // gridNo={1}
-                  />{" "}
-                </div>
-              </div>
-              <table className="mb-4">
-                <thead>
-                  <tr>
-                    <th>AR No.</th>
-                    <th>CAPA Type</th>
-                    <th>Description of Issue</th>
-                    <th>Root Cause</th>
-                    <th>CAPA Verification</th>
-                    <th>File Attachment</th>
-                    <th>Remarks</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {gridDatas?.capaDetails?.map((item, index) => {
-                    return (
-                      <tr key={index}>
-                        <td>
-                          <input
-                            value={item.ARNo}
-                            onChange={(e) => {
-                              const newData = [...gridDatas.capaDetails];
-                              newData[index].ARNo = e.target.value;
-                              setGridDatas({
-                                ...gridDatas,
-                                capaDetails: newData,
-                              });
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.capaType}
-                            onChange={(e) => {
-                              const newData = [...gridDatas.capaDetails];
-                              newData[index].capaType = e.target.value;
-                              setGridDatas({
-                                ...gridDatas,
-                                capaDetails: newData,
-                              });
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.descriptionOfIssue}
-                            onChange={(e) => {
-                              const newData = [...gridDatas.capaDetails];
-                              newData[index].descriptionOfIssue =
-                                e.target.value;
-                              setGridDatas({
-                                ...gridDatas,
-                                capaDetails: newData,
-                              });
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.rootCause}
-                            onChange={(e) => {
-                              const newData = [...gridDatas.capaDetails];
-                              newData[index].rootCause = e.target.value;
-                              setGridDatas({
-                                ...gridDatas,
-                                capaDetails: newData,
-                              });
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.capaVerification}
-                            onChange={(e) => {
-                              const newData = [...gridDatas.capaDetails];
-                              newData[index].capaVerification = e.target.value;
-                              setGridDatas({
-                                ...gridDatas,
-                                capaDetails: newData,
-                              });
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            type="file"
-                            value={item.chooseFile}
-                            onChange={(e) => {
-                              const newData = [...gridDatas.capaDetails];
-                              newData[index].chooseFile = e.target.value;
-                              setGridDatas({
-                                ...gridDatas,
-                                capaDetails: newData,
-                              });
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.remarks}
-                            onChange={(e) => {
-                              const newData = [...gridDatas.capaDetails];
-                              newData[index].remarks = e.target.value;
-                              setGridDatas({
-                                ...gridDatas,
-                                capaDetails: newData,
-                              });
-                            }}
-                          />
-                        </td>{" "}
-                      </tr>
-                    );
-                  })}
-                </tbody>
-              </table>
-            </div>
-            <div>
-              <h4 className="gridName mt-5">Summary</h4>
-              <TinyEditor
-                editorContent={tinyData.tiny19}
-                setEditorContent={(data) => setTinyContent(data, 19)}
-                tinyNo={19}
-              />
-            </div>
+           
 
             <h4 className="gridName">Deviation Details</h4>
             <div>
@@ -15367,160 +15244,284 @@ const trendingOIPIPS5Data4=gridDatas?.trendingOIPIPS5.map((item)=>{
               setEditorContent={(data) => setTinyContent(data, 46)}
               tinyNo={46}
             />
-            <div className="sub-head"> Review of OOAC (Microbiological)</div>
-            <div className="gridName">Current Review Period OOAC</div>
+
+            <div className="sub-head"> REVIEW OF CORRECTIVE AND PREVENTIVE ACTION (CAPA):</div>
+          <h4 className="gridName">Current review of Capa details</h4>
             <div>
+              {/* <div className="AddRows d-flex">
+                <MdNoteAdd onClick={addBufferFSDPVRow} />
+                <div className="addrowinstruction"></div>
+              </div> */}
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
-                  <MdNoteAdd onClick={addCurrentOOAC} />
+                  <MdNoteAdd onClick={currentCapaDetailsRow} />
                   <div className="addrowinstruction  pl-2">
                     Add Rows by clicking on (+) icon
                   </div>
                 </div>
+                <div className="flex gap-4 ">
+                  <ExcelExportImport
+                  // data={manufacturingStage}
+                  // setimportedData={setimportedData}
+                  // fileName="manufacturingStage.xlsx"
+                  // gridNo={1}
+                  />{" "}
+                </div>
               </div>
-              <table>
+              <table className="mb-4">
                 <thead>
                   <tr>
-                    <th>S.No</th>
-                    <th>Date Of Initiation</th>
-                    <th>Record No</th>
-                    <th>Site/Division</th>
-                    <th>Department</th>
-                    <th>Initiator</th>
-                    <th>Short Description</th>
-                    <th>Batch No</th>
-                    <th>Due Date</th>
-                    <th>Current Status</th>
+                    <th>AR No.</th>
+                    <th>CAPA Type</th>
+                    <th>Description of Issue</th>
+                    <th>Root Cause</th>
+                    <th>CAPA Verification</th>
+                    <th>File Attachment</th>
+                    <th>Remarks</th>
                   </tr>
                 </thead>
                 <tbody>
-                  {gridDatas?.currentOOAC?.map((item, index) => {
+                  {gridDatas?.currentCapaDetails?.map((item, index) => {
                     return (
                       <tr key={index}>
-                        <td>{index + 1}</td>
                         <td>
                           <input
-                            value={item.dateOfInitiation}
+                            value={item.ARNo}
                             onChange={(e) => {
-                              const newData = [...gridDatas.currentOOAC];
-                              newData[index].dateOfInitiation = e.target.value;
+                              const newData = [...gridDatas.currentCapaDetails];
+                              newData[index].ARNo = e.target.value;
                               setGridDatas({
                                 ...gridDatas,
-                                currentOOAC: newData,
+                                currentCapaDetails: newData,
                               });
                             }}
                           />
                         </td>
                         <td>
                           <input
-                            value={item.recordNo}
+                            value={item.capaType}
                             onChange={(e) => {
-                              const newData = [...gridDatas.currentOOAC];
-                              newData[index].recordNo = e.target.value;
+                              const newData = [...gridDatas.currentCapaDetails];
+                              newData[index].capaType = e.target.value;
                               setGridDatas({
                                 ...gridDatas,
-                                currentOOAC: newData,
+                                currentCapaDetails: newData,
                               });
                             }}
                           />
                         </td>
                         <td>
                           <input
-                            value={item.siteDivision}
+                            value={item.descriptionOfIssue}
                             onChange={(e) => {
-                              const newData = [...gridDatas.currentOOAC];
-                              newData[index].siteDivision = e.target.value;
+                              const newData = [...gridDatas.currentCapaDetails];
+                              newData[index].descriptionOfIssue =
+                                e.target.value;
                               setGridDatas({
                                 ...gridDatas,
-                                currentOOAC: newData,
+                                currentCapaDetails: newData,
                               });
                             }}
                           />
                         </td>
                         <td>
                           <input
-                            value={item.department}
+                            value={item.rootCause}
                             onChange={(e) => {
-                              const newData = [...gridDatas.currentOOAC];
-                              newData[index].department = e.target.value;
+                              const newData = [...gridDatas.currentCapaDetails];
+                              newData[index].rootCause = e.target.value;
                               setGridDatas({
                                 ...gridDatas,
-                                currentOOAC: newData,
+                                currentCapaDetails: newData,
                               });
                             }}
                           />
                         </td>
                         <td>
                           <input
-                            value={item.initiator}
+                            value={item.capaVerification}
                             onChange={(e) => {
-                              const newData = [...gridDatas.currentOOAC];
-                              newData[index].initiator = e.target.value;
+                              const newData = [...gridDatas.currentCapaDetails];
+                              newData[index].capaVerification = e.target.value;
                               setGridDatas({
                                 ...gridDatas,
-                                currentOOAC: newData,
+                                currentCapaDetails: newData,
                               });
                             }}
                           />
                         </td>
                         <td>
                           <input
-                            value={item.shortDescription}
+                            type="file"
+                            value={item.chooseFile}
                             onChange={(e) => {
-                              const newData = [...gridDatas.currentOOAC];
-                              newData[index].shortDescription = e.target.value;
+                              const newData = [...gridDatas.currentCapaDetails];
+                              newData[index].chooseFile = e.target.value;
                               setGridDatas({
                                 ...gridDatas,
-                                currentOOAC: newData,
+                                currentCapaDetails: newData,
                               });
                             }}
                           />
                         </td>
                         <td>
                           <input
-                            value={item.batchNo}
+                            value={item.remarks}
                             onChange={(e) => {
-                              const newData = [...gridDatas.currentOOAC];
-                              newData[index].batchNo = e.target.value;
+                              const newData = [...gridDatas.currentCapaDetails];
+                              newData[index].remarks = e.target.value;
                               setGridDatas({
                                 ...gridDatas,
-                                currentOOAC: newData,
+                                currentCapaDetails: newData,
                               });
                             }}
                           />
-                        </td>
-                        <td>
-                          <input
-                            value={item.dueDate}
-                            onChange={(e) => {
-                              const newData = [...gridDatas.currentOOAC];
-                              newData[index].dueDate = e.target.value;
-                              setGridDatas({
-                                ...gridDatas,
-                                currentOOAC: newData,
-                              });
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.currentStatus}
-                            onChange={(e) => {
-                              const newData = [...gridDatas.currentOOAC];
-                              newData[index].currentStatus = e.target.value;
-                              setGridDatas({
-                                ...gridDatas,
-                                currentOOAC: newData,
-                              });
-                            }}
-                          />
-                        </td>
+                        </td>{" "}
                       </tr>
                     );
                   })}
                 </tbody>
               </table>
             </div>
+            <h4 className="gridName">Previous review of Capa details</h4>
+            <div>
+              {/* <div className="AddRows d-flex">
+                <MdNoteAdd onClick={addBufferFSDPVRow} />
+                <div className="addrowinstruction"></div>
+              </div> */}
+              <div className="AddRows d-flex w-full justify-between items-center text-3xl">
+                <div className="flex items-center">
+                  <MdNoteAdd onClick={previousCapaDetailsRow} />
+                  <div className="addrowinstruction  pl-2">
+                    Add Rows by clicking on (+) icon
+                  </div>
+                </div>
+                <div className="flex gap-4 ">
+                  <ExcelExportImport
+                  // data={manufacturingStage}
+                  // setimportedData={setimportedData}
+                  // fileName="manufacturingStage.xlsx"
+                  // gridNo={1}
+                  />{" "}
+                </div>
+              </div>
+              <table className="mb-4">
+                <thead>
+                  <tr>
+                    <th>AR No.</th>
+                    <th>CAPA Type</th>
+                    <th>Description of Issue</th>
+                    <th>Root Cause</th>
+                    <th>CAPA Verification</th>
+                    <th>File Attachment</th>
+                    <th>Remarks</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {gridDatas?.previousCapaDetails?.map((item, index) => {
+                    return (
+                      <tr key={index}>
+                        <td>
+                          <input
+                            value={item.ARNo}
+                            onChange={(e) => {
+                              const newData = [...gridDatas.previousCapaDetails];
+                              newData[index].ARNo = e.target.value;
+                              setGridDatas({
+                                ...gridDatas,
+                                previousCapaDetails: newData,
+                              });
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.capaType}
+                            onChange={(e) => {
+                              const newData = [...gridDatas.previousCapaDetails];
+                              newData[index].capaType = e.target.value;
+                              setGridDatas({
+                                ...gridDatas,
+                                previousCapaDetails: newData,
+                              });
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.descriptionOfIssue}
+                            onChange={(e) => {
+                              const newData = [...gridDatas.previousCapaDetails];
+                              newData[index].descriptionOfIssue =
+                                e.target.value;
+                              setGridDatas({
+                                ...gridDatas,
+                                previousCapaDetails: newData,
+                              });
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.rootCause}
+                            onChange={(e) => {
+                              const newData = [...gridDatas.previousCapaDetails];
+                              newData[index].rootCause = e.target.value;
+                              setGridDatas({
+                                ...gridDatas,
+                                previousCapaDetails: newData,
+                              });
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.capaVerification}
+                            onChange={(e) => {
+                              const newData = [...gridDatas.previousCapaDetails];
+                              newData[index].capaVerification = e.target.value;
+                              setGridDatas({
+                                ...gridDatas,
+                                previousCapaDetails: newData,
+                              });
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            type="file"
+                            value={item.chooseFile}
+                            onChange={(e) => {
+                              const newData = [...gridDatas.previousCapaDetails];
+                              newData[index].chooseFile = e.target.value;
+                              setGridDatas({
+                                ...gridDatas,
+                                previousCapaDetails: newData,
+                              });
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.remarks}
+                            onChange={(e) => {
+                              const newData = [...gridDatas.previousCapaDetails];
+                              newData[index].remarks = e.target.value;
+                              setGridDatas({
+                                ...gridDatas,
+                                previousCapaDetails: newData,
+                              });
+                            }}
+                          />
+                        </td>{" "}
+                      </tr>
+                    );
+                  })}
+                </tbody>
+              </table>
+            </div>
+
+           
             <div className="gridName pt-4">Previous Review Period OOAC</div>
             <div>
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
