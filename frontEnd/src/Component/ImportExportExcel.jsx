@@ -1,19 +1,23 @@
 import React, { useRef } from "react";
 import { saveAs } from "file-saver";
 
-const ExcelExportImport = ({ data, fileName, setimportedData, setData, gridNo = 0 }) => {
+const ExcelExportImport = ({ data, fileName, setimportedData, gridNo = 0 }) => {
   // const [d]
   const fileInputRef = useRef();
 
   const exportToExcel = async () => {
     try {
       const xlsx = await import("xlsx");
+      console.log(data);
       const worksheet = xlsx.utils.json_to_sheet(data);
       const workbook = {
         Sheets: { data: worksheet },
         SheetNames: ["data"],
       };
-      const excelBuffer = xlsx.write(workbook, { bookType: "xlsx", type: "array" });
+      const excelBuffer = xlsx.write(workbook, {
+        bookType: "xlsx",
+        type: "array",
+      });
       saveAsExcel(excelBuffer, fileName);
     } catch (error) {
       console.error("Error exporting to Excel: ", error);
@@ -36,6 +40,7 @@ const ExcelExportImport = ({ data, fileName, setimportedData, setData, gridNo = 
       //   setData(jsonData);
       // console.log(jsonData);
       setimportedData(jsonData, gridNo);
+      // console.log(jsonData, gridNo);
     } catch (error) {
       console.error("Error importing from Excel: ", error);
     }

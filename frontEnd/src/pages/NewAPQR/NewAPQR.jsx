@@ -16,66 +16,91 @@ import {
   SpeechtoText,
 } from "../../Component/New_APQR/TextRecoButtons";
 import CommonTable from "../../Component/New_APQR/CommonTable";
+import {
+  Stageheaders,
+  Stagefields,
+  SAPSheaders,
+  SAPSfields,
+  expiredRMDheaders,
+  expiredRMDfields,
+  rawMRSfields,
+  rawMRSheaders,
+  packingMRSheaders,
+  packingMRSfields,
+  reviewOfASLheaders,
+  reviewOfASLfields,
+  expiredPMDheaders,
+  expiredPMDfields,
+  vendorQDORMEheaders,
+  vendorQDORMEfields,
+  vendorQDOPPMheaders,
+  vendorQDOPPMfields,
+  vendorQDPOGheaders,
+  vendorQDPOGfields,
+  codeTCTDheaders,
+  codeTCTDfields,
+  reviewORCECheaders,
+  reviewORCECfields,
+  capaDetailsheaders,
+  capaDetailsfields,
+  deviationDetailsheaders,
+  deviationDetailsfields,
+  oosDetailsheaders,
+  oosDetailsfields,
+  ootResultsheaders,
+  ootResultsfields,
+} from "./NewApqrFunctions";
+import GridContainer from "../../Component/New_APQR/GridContainer";
 
 export default function NewAPQR() {
   const [tab, setTab] = useState("GI");
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [productCodes, setProductCodes] = useState([""]);
 
-  const [manufacturingStage, setManufacturingStage] = useState([
-    { productName: "", sFGCode: "", fGCode: "" },
-  ]);
-  const Stageheaders = ["Product Name", "SFG Code", "FG Code"];
-  const Stagefields = ["productName", "sFGCode", "fGCode"];
+  const [manufacturingStage, setManufacturingStage] = useState([]);
 
-  const [manufacturingSAPS, setManufacturingSAPS] = useState([
-    { productName: "", batchCode: "", sFGCode: "", remarks: "" },
-  ]);
-  const SAPSheaders = ["Product Name", "Batch Code", "SFG Code", "Remarks"];
-  const SAPSfields = ["productName", "batchCode", "sFGCode", "remarks"];
+  const [manufacturingSAPS, setManufacturingSAPS] = useState([]);
 
-  const [rawMRS, setRawMRS] = useState([
-    {
-      materialCode: "",
-      materialName: "",
-      ARNo: "",
-      reasonOfRejection: "",
-      description: "",
-    },
-  ]);
-  const rawMRSheaders = [
-    "SI. No.",
-    "Material Code",
-    "Material Name",
-    "Lot No./ A.R. No.",
-    "Reason for Rejection",
-    "Description",
-  ];
-  const rawMRSfields = [
-    "materialCode",
-    "materialName",
-    "ARNo",
-    "reasonOfRejection",
-    "description",
-  ];
+  const [rawMRS, setRawMRS] = useState([]);
+
   const [packingMRS, setPackingMRS] = useState([]);
+
   const [reviewOfASL, setReviewOfASL] = useState([]);
+
   const [expiredRMD, setExpiredRMD] = useState([]);
+
   const [expiredPMD, setExpiredPMD] = useState([]);
+
   const [vendorQDORME, setVendorQDORME] = useState([]);
+
   const [vendorQDOPPM, setVendorQDOPPM] = useState([]);
+
   const [vendorQDPOG, setVendorQDPOG] = useState([]);
+
   const [codeTCTD, setCodeTCTD] = useState([]);
   const [reviewORCEC, setReviewORCEC] = useState([]);
   const [manufacturingSD, setManufacturingSD] = useState([]);
   const [bufferFSDPV, setBufferFSDPV] = useState([]);
+
   const [oosDetails, setOosDetails] = useState([]);
   const [capaDetails, setCapaDetails] = useState([]);
   const [deviationDetails, setDeviationDetails] = useState([]);
   const [ootResults, setOotResults] = useState([]);
   const [oolResults, setOolResults] = useState([]);
   const [ooaResults, setOoaResults] = useState([]);
-  const [reviewODSTR, setReviewOSTR] = useState([]);
+  const [reviewODSTR, setReviewOSTR] = useState([
+    {
+      batchNo: "",
+      testsParameter: "",
+      LSL: "",
+      USL: "",
+      LCL: "",
+      UCL: "",
+      observedValue: "",
+      compliesNotComplies: "",
+    },
+  ]);
+
   const [reviewODSTR2, setReviewOSTR2] = useState([]);
   const [reviewODSTR3, setReviewOSTR3] = useState([]);
   const [reviewODSTR4, setReviewOSTR4] = useState([]);
@@ -234,12 +259,6 @@ export default function NewAPQR() {
     return typeof value === "string" ? value.trim() : value;
   };
 
-  const api_key =
-    "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";
-
-  const useDarkMode = window.matchMedia("(prefers-color-scheme: dark)").matches;
-  const isSmallScreen = window.matchMedia("(max-width: 1023.5px)").matches;
-
   const processData = (data, keyMapping) => {
     return data.map((item) => {
       let processedItem = {};
@@ -277,7 +296,7 @@ export default function NewAPQR() {
   const setimportedData = (data, gridNo) => {
     // console.log(data);
     const processedData = processData(data, keyMapping);
-    // console.log(processedData);
+    console.log(processedData);
 
     switch (gridNo) {
       case 1:
@@ -983,152 +1002,16 @@ export default function NewAPQR() {
   ]);
 
   useEffect(() => {}, [tiny1]);
-  const addManufacturingStageRow = () => {
-    const newRow = {
-      productName: "",
-      sFGCode: "",
-      fGCode: "",
-    };
-    setManufacturingStage([...manufacturingStage, newRow]);
-  };
-
-  const addDossierRow = () => {
-    const newRow = {
-      agency: "",
-      notificationNo: "",
-      notificationtype: "",
-      description: "",
-    };
-    setDossierRR([...dossierRR, newRow]);
-  };
-
-  const addDossierRowNma = () => {
-    const newRow = {
-      countryName: "",
-      descriptionOfPacking: "",
-      dateOfApplication: "",
-      ststusOfApplication: "",
-      dateOfAuthorization: "",
-      remarks: "",
-    };
-    setDossierRRNma([...dossierRRNma, newRow]);
-  };
-
-  const addManufacturingSAPSRow = () => {
-    const newRow = {
-      productName: "",
-      batchCode: "",
-      sFGCode: "",
-      remarks: "",
-    };
-    setManufacturingSAPS([...manufacturingSAPS, newRow]);
-  };
-
-  const addRawMRSRow = () => {
-    const newRow = {
-      materialCode: "",
-      materialName: "",
-      ARNo: "",
-      reasonOfRejection: "",
-      description: "",
-    };
-    setRawMRS([...rawMRS, newRow]);
-  };
-
-  const addPackingMRSRow = () => {
-    const newRow = {
-      materialCode: "",
-      materialName: "",
-      ARNo: "",
-      reasonOfRejection: "",
-      description: "",
-    };
-    setPackingMRS([...packingMRS, newRow]);
-  };
-
-  const addExpiredRMDRow = () => {
-    const newRow = {
-      materialCode: "",
-      materialName: "",
-      ARNo: "",
-      expiryDate: "",
-    };
-    setExpiredRMD([...expiredRMD, newRow]);
-  };
-  const addExpiredPMDRow = () => {
-    const newRow = {
-      materialCode: "",
-      materialName: "",
-      ARNo: "",
-      expiryDate: "",
-    };
-    setExpiredPMD([...expiredPMD, newRow]);
-  };
-  const addreviewOfASLRow = () => {
-    const newRow = {
-      materialCode: "",
-      materialName: "",
-      manufacturer: "",
-      facility: "",
-    };
-    setReviewOfASL([...reviewOfASL, newRow]);
-  };
-
-  const addvendorQDORMERow = () => {
-    const newRow = {
-      materialName: "",
-      materialCode: "",
-      manufacturerName: "",
-      qualificationStatus: "",
-      remarks: "",
-    };
-    setVendorQDORME([...vendorQDORME, newRow]);
-  };
-
-  const addvendorQDOPPMRow = () => {
-    const newRow = {
-      materialName: "",
-      materialCode: "",
-      manufacturerName: "",
-      qualificationStatus: "",
-    };
-    setVendorQDOPPM([...vendorQDOPPM, newRow]);
-  };
-
-  const addvendorQDPOGRow = () => {
-    const newRow = {
-      gasName: "",
-      gasCode: "",
-      manufacturerName: "",
-      qualificationStatus: "",
-    };
-    setVendorQDPOG([...vendorQDPOG, newRow]);
-  };
-
-  const addcodeTCTDRow = () => {
-    const newRow = {
-      batchNo: "",
-      existingCode: "",
-      existingMarket: "",
-      proposedCode: "",
-      proposedMarket: "",
-      transferQuality: "",
-      refNo: "",
-    };
-    setCodeTCTD([...codeTCTD, newRow]);
-  };
-
-  const addreviewORCECRow = () => {
-    const newRow = {
-      packingBatchNumber: "",
-      manufacturingBatchNumber: "",
-      repackingIssuedNumber: "",
-      repackingFor: "",
-      qMS: "",
-      reasonForRepacking: "",
-    };
-    setReviewORCEC([...reviewORCEC, newRow]);
-  };
+  // const addManufacturingStageRow = () => {
+  //   const newRow = {
+  //     productName: "",
+  //     SFGCode: "",
+  //     fGCode: "",
+  //   };
+  //   console.log(newRow);
+  //   setManufacturingStage([...manufacturingStage, newRow]);
+  //   console.log(...manufacturingStage);
+  // };
 
   const addmanufacturingSDRow = () => {
     const newRow = {
@@ -1140,19 +1023,6 @@ export default function NewAPQR() {
     };
     setManufacturingSD([...manufacturingSD, newRow]);
   };
-
-  const addCapaDetailsRow = () => {
-    const newRow = {
-      ARNo: "",
-      capaType: "",
-      descriptionOfIssue: "",
-      rootCause: "",
-      capaVerification: "",
-      fileAttachment: "",
-      remarks: "",
-    };
-    setCapaDetails([...capaDetails, newRow]);
-  };
   const addBufferFSDPVRow = () => {
     const newRow = {
       criticalProcessParameter: "",
@@ -1162,46 +1032,6 @@ export default function NewAPQR() {
       compliesNotComplies: "",
     };
     setBufferFSDPV([...bufferFSDPV, newRow]);
-  };
-  const oosDetailsRow = () => {
-    const newRow = {
-      ARNo: "",
-      testNameOfOos: "",
-      resultsObtained: "",
-      specificationLimit: "",
-      detailsOfObviousError: "",
-      fileAttachment: "",
-    };
-    setOosDetails([...oosDetails, newRow]);
-  };
-
-  const deviationDetailsRow = () => {
-    const newRow = {
-      ARNo: "",
-      deviationRelatedTo: "",
-      description: "",
-      rootCause: "",
-      deviationObservedOn: "",
-      deviationObservedBy: "",
-      classificationOfDeviation: "",
-      fileAttachment: "",
-      remarks: "",
-      status: "",
-    };
-    setDeviationDetails([...deviationDetails, newRow]);
-  };
-
-  const ootResultsRow = () => {
-    const newRow = {
-      ARNo: "",
-      testNameOfOot: "",
-      resultsObtained: "",
-      initialIntervalDetails: "",
-      previousIntervalDetails: "",
-      diffrenceOfResult: "",
-      trendLimit: "",
-    };
-    setOotResults([...ootResults, newRow]);
   };
   const oolResultsRow = () => {
     const newRow = {
@@ -1224,20 +1054,6 @@ export default function NewAPQR() {
       chooseFile: "",
     };
     setOoaResults([...ooaResults, newRow]);
-  };
-
-  const addReviewODSTRRow = () => {
-    const newRow = {
-      batchNo: "",
-      testsParameter: "",
-      LSL: "",
-      USL: "",
-      LCL: "",
-      UCL: "",
-      observedValue: "",
-      compliesNotComplies: "",
-    };
-    setReviewOSTR([...reviewODSTR, newRow]);
   };
   const addReviewODSTRRow2 = () => {
     const newRow2 = {
@@ -2002,28 +1818,6 @@ export default function NewAPQR() {
     setProductCodes(newProductCodes);
   };
 
-  //  Speech functionality ----------------------------
-
-  // Text-to-Speech functionality
-  // const handleTextToSpeech = (text) => {
-  //   const voices = window.speechSynthesis.getVoices();
-  //   const speech = new SpeechSynthesisUtterance(text);
-  //   speech.voice = voices[0];
-  //   window.speechSynthesis.speak(speech);
-  // };
-
-  // // Speech-to-Text functionality
-  // const handleSpeechToText = (updater) => {
-  //   const recognition = new (window.SpeechRecognition ||
-  //     window.webkitSpeechRecognition)();
-  //   recognition.lang = "en-US"; // Set language
-  //   recognition.onresult = (event) => {
-  //     const speechToText = event.results[0][0].transcript;
-  //     updater(speechToText);
-  //   };
-  //   recognition.start();
-  // };
-
   return (
     <>
       <Header />
@@ -2034,12 +1828,6 @@ export default function NewAPQR() {
       </div>
       <div className="pqrform">
         <div className="form-tabs">
-          {/* <div
-            className={`${tab === "GI" ? "active" : ""}`}
-            onClick={() => setTab("GI")}
-          >
-            General Information
-          </div> */}
           <ActiveTab
             label="General Information"
             value="GI"
@@ -2107,7 +1895,6 @@ export default function NewAPQR() {
             setTab={setTab}
           />
         </div>
-
         {tab === "GI" ? (
           <div className="  p-4">
             <div className="dual-group-input ">
@@ -2133,16 +1920,7 @@ export default function NewAPQR() {
                   }}
                 />
               </div>
-              {/* <div className="group-input">
-                <label>PQR No</label>
-                <input
-                  value={pQRData.pqrNO}
-                  onChange={(e) => {
-                    setPQRData({ pqrNO: e.target.value });
-                  }}
-                  disabled
-                />
-              </div> */}
+
               <div className="group-input" style={{ position: "relative" }}>
                 <label>Product Name</label>
                 <input
@@ -2152,38 +1930,12 @@ export default function NewAPQR() {
                   }}
                   style={{ paddingRight: "60px" }}
                 />
-                {/* <button
-                  onClick={() =>
-                    handleSpeechToText((text) =>
-                      setPQRData({ productName: text })
-                    )
-                  }
-                  className="rounded-full border p-2 mr-3 bg-slate-100 hover:bg-slate-200"
-                  style={{
-                    position: "absolute",
-                    right: "35px",
-                    top: "68%",
-                    transform: "translateY(-50%)",
-                  }}
-                >
-                  <FaMicrophone />
-                </button> */}
+
                 <TextRecognition
                   setPQRData={setPQRData}
                   updateField="productName"
                 />
-                {/* <button
-                  onClick={() => handleTextToSpeech(pQRData.productName)}
-                  className="rounded-full border p-2 bg-slate-100 hover:bg-slate-200"
-                  style={{
-                    position: "absolute",
-                    right: "5px",
-                    top: "68%",
-                    transform: "translateY(-50%)",
-                  }}
-                >
-                  <AiFillSound />
-                </button> */}
+
                 <SpeechtoText pQRData={pQRData} updateField="productName" />
               </div>
             </div>
@@ -2227,7 +1979,7 @@ export default function NewAPQR() {
                   onChange={(e) => {
                     setPQRData({ genericName: e.target.value });
                   }}
-                  style={{ paddingRight: "60px" }} // Add padding to accommodate buttons
+                  style={{ paddingRight: "60px" }}
                 />
                 <TextRecognition
                   setPQRData={setPQRData}
@@ -2280,7 +2032,7 @@ export default function NewAPQR() {
                   onChange={(e) => {
                     setPQRData({ mfgLicNo: e.target.value });
                   }}
-                  style={{ paddingRight: "60px" }} // Add padding to make space for the buttons
+                  style={{ paddingRight: "60px" }}
                 />
                 <TextRecognition
                   setPQRData={setPQRData}
@@ -2291,8 +2043,8 @@ export default function NewAPQR() {
             </div>
 
             <div className="sub-head">Manufacturing Site Address</div>
-            <div className="flex">
-              <div className="AddRows d-flex w-full justify-between items-center text-3xl">
+            <div className="">
+              {/* <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addManufacturingStageRow} />
                   <div className="addrowinstruction  pl-2">
@@ -2307,61 +2059,25 @@ export default function NewAPQR() {
                     gridNo={1}
                   />
                 </div>
-              </div>
+              </div> */}
+              <GridContainer
+                data={manufacturingStage}
+                setData={setManufacturingStage}
+                // addRowData={{ productName: "", sFGCode: "", fGCode: "" }}
+                // addRowData={{}}
+                setimportedData={setimportedData}
+                fileName="manufacturingStage.xlsx"
+                gridNo={1}
+                headers={Stageheaders}
+                fields={Stagefields}
+              />
             </div>
-            {/* <table>
-              <thead>
-                <tr>
-                  <th>Product Name</th>
-                  <th>SFG Code</th>
-                  <th>FG Code </th>
-                </tr>
-              </thead>
-              <tbody>
-                {manufacturingStage?.map((item, index) => {
-                  return (
-                    <tr key={index}>
-                      <td>
-                        <input
-                          value={item.productName}
-                          onChange={(e) => {
-                            const newData = [...manufacturingStage];
-                            newData[index].productName = e.target.value;
-                            setManufacturingStage(newData);
-                          }}
-                        />
-                      </td>
-                      <td>
-                        <input
-                          value={item.sFGCode}
-                          onChange={(e) => {
-                            const newData = [...manufacturingStage];
-                            newData[index].sFGCode = e.target.value;
-                            setManufacturingStage(newData);
-                          }}
-                        />
-                      </td>
-                      <td>
-                        <input
-                          value={item.fGCode}
-                          onChange={(e) => {
-                            const newData = [...manufacturingStage];
-                            newData[index].fGCode = e.target.value;
-                            setManufacturingStage(newData);
-                          }}
-                        />
-                      </td>
-                    </tr>
-                  );
-                })}
-              </tbody>
-            </table> */}
-            <CommonTable
+            {/* <CommonTable
               headers={Stageheaders}
               data={manufacturingStage}
               setData={setManufacturingStage}
               fields={Stagefields}
-            />
+            /> */}
             <div>
               <h4 className="gridName mt-4">Summary</h4>
               <TinyEditor
@@ -2372,85 +2088,12 @@ export default function NewAPQR() {
             </div>
 
             <div className="py-4">
-              <div className="AddRows d-flex w-full justify-between items-center text-3xl">
-                <div className="flex items-center">
-                  <MdNoteAdd onClick={addManufacturingSAPSRow} />
-                  <div className="addrowinstruction  pl-2">
-                    Add Rows by clicking on (+) icon
-                  </div>
-                </div>
-                <div className="flex gap-4 ">
-                  <ExcelExportImport
-                    data={manufacturingSAPS}
-                    setimportedData={setimportedData}
-                    fileName="manufacturingSAPS.xlsx"
-                  />
-                </div>
-              </div>
-              {/* <table>
-                <thead>
-                  <tr>
-                    <th>Product Name</th>
-                    <th>Batch Code</th>
-                    <th>SFG Code</th>
-                    // { <th></th> }
-                    <th>Remarks</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {manufacturingSAPS?.map((item, index) => {
-                    return (
-                      <tr key={index}>
-                        <td>
-                          <input
-                            value={item.productName}
-                            onChange={(e) => {
-                              const newData = [...manufacturingSAPS];
-                              newData[index].productName = e.target.value;
-                              setManufacturingSAPS(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.batchCode}
-                            onChange={(e) => {
-                              const newData = [...manufacturingSAPS];
-                              newData[index].batchCode = e.target.value;
-                              setManufacturingSAPS(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.sFGCode}
-                            onChange={(e) => {
-                              const newData = [...manufacturingSAPS];
-                              newData[index].sFGCode = e.target.value;
-                              setManufacturingSAPS(newData);
-                            }}
-                          />
-                        </td>
-
-                        <td>
-                          <input
-                            value={item.remarks}
-                            onChange={(e) => {
-                              const newData = [...manufacturingSAPS];
-                              newData[index].remarks = e.target.value;
-                              setManufacturingSAPS(newData);
-                            }}
-                          />
-                        </td>
-                      </tr>
-                    );
-                  })}
-                </tbody>
-              </table> */}
-              <CommonTable
-                headers={SAPSheaders}
+              <GridContainer
                 data={manufacturingSAPS}
                 setData={setManufacturingSAPS}
+                setimportedData={setimportedData}
+                fileName="manufacturingSAPS.xlsx"
+                headers={SAPSheaders}
                 fields={SAPSfields}
               />
             </div>
@@ -2473,101 +2116,15 @@ export default function NewAPQR() {
               </div>
               <div className="pb-4">
                 <h4 className="gridName">Raw Materials Rejection Summary</h4>
-
-                <div className="AddRows d-flex w-full justify-between items-center text-3xl">
-                  <div className="flex items-center">
-                    <MdNoteAdd onClick={addRawMRSRow} />
-                    <div className="addrowinstruction  pl-2">
-                      Add Rows by clicking on (+) icon
-                    </div>
-                  </div>
-                  <div className="flex gap-4 ">
-                    <ExcelExportImport
-                      data={rawMRS}
-                      setimportedData={setimportedData}
-                      fileName="rawMRS.xlsx"
-                    />
-                  </div>
-                </div>
-
-                {/* <table>
-                  <thead>
-                    <tr>
-                      <th>SI. No.</th>
-                      <th>Material Code</th>
-                      <th>Material Name</th>
-                      <th>Lot No./ A.R. No.</th>
-                      <th>Reason for Rejection</th>
-                      <th>Description</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {rawMRS?.map((item, index) => {
-                      return (
-                        <tr key={index}>
-                          <td>{index + 1}</td>
-                          <td>
-                            <input
-                              value={item.materialCode}
-                              onChange={(e) => {
-                                const newData = [...rawMRS];
-                                newData[index].materialCode = e.target.value;
-                                setRawMRS(newData);
-                              }}
-                            />
-                          </td>
-                          <td>
-                            <input
-                              value={item.materialName}
-                              onChange={(e) => {
-                                const newData = [...rawMRS];
-                                newData[index].materialName = e.target.value;
-                                setRawMRS(newData);
-                              }}
-                            />
-                          </td>
-                          <td>
-                            <input
-                              value={item.ARNo}
-                              onChange={(e) => {
-                                const newData = [...rawMRS];
-                                newData[index].ARNo = e.target.value;
-                                setRawMRS(newData);
-                              }}
-                            />
-                          </td>
-                          <td>
-                            <input
-                              value={item.reasonOfRejection}
-                              onChange={(e) => {
-                                const newData = [...rawMRS];
-                                newData[index].reasonOfRejection =
-                                  e.target.value;
-                                setRawMRS(newData);
-                              }}
-                            />
-                          </td>
-                          <td>
-                            <input
-                              value={item.description}
-                              onChange={(e) => {
-                                const newData = [...rawMRS];
-                                newData[index].description = e.target.value;
-                                setRawMRS(newData);
-                              }}
-                            />
-                          </td>
-                        </tr>
-                      );
-                    })}
-                  </tbody>
-                </table> */}
-                <CommonTable
-                  headers={rawMRSheaders}
+                <GridContainer
                   data={rawMRS}
                   setData={setRawMRS}
+                  setimportedData={setimportedData}
+                  fileName="manufacturingStage.xlsx"
+                  headers={rawMRSheaders}
                   fields={rawMRSfields}
                 />
+
                 <div>
                   <h4 className="gridName mt-5">Summary</h4>
                   <TinyEditor
@@ -2584,93 +2141,14 @@ export default function NewAPQR() {
                   Packing Materials Rejection Summary
                 </h4>
 
-                <div className="AddRows d-flex w-full justify-between items-center text-3xl">
-                  <div className="flex items-center">
-                    <MdNoteAdd onClick={addPackingMRSRow} />
-                    <div className="addrowinstruction  pl-2">
-                      Add Rows by clicking on (+) icon
-                    </div>
-                  </div>
-                  <div className="flex gap-4 ">
-                    <ExcelExportImport
-                      data={packingMRS}
-                      setimportedData={setimportedData}
-                      fileName="packingMRS.xlsx"
-                    />
-                  </div>
-                </div>
-                <table>
-                  <thead>
-                    <tr>
-                      <th>SI. No.</th>
-                      <th>Material Code</th>
-                      <th>Material Name</th>
-                      <th>Lot No./ A.R. No.</th>
-                      <th>Reason for Rejection</th>
-                      <th>Description</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {packingMRS?.map((item, index) => {
-                      return (
-                        <tr key={index}>
-                          <td>{index + 1}</td>
-                          <td>
-                            <input
-                              value={item.materialCode}
-                              onChange={(e) => {
-                                const newData = [...packingMRS];
-                                newData[index].materialCode = e.target.value;
-                                setPackingMRS(newData);
-                              }}
-                            />
-                          </td>
-                          <td>
-                            <input
-                              value={item.materialName}
-                              onChange={(e) => {
-                                const newData = [...packingMRS];
-                                newData[index].materialName = e.target.value;
-                                setPackingMRS(newData);
-                              }}
-                            />
-                          </td>
-                          <td>
-                            <input
-                              value={item.ARNo}
-                              onChange={(e) => {
-                                const newData = [...packingMRS];
-                                newData[index].ARNo = e.target.value;
-                                setPackingMRS(newData);
-                              }}
-                            />
-                          </td>
-                          <td>
-                            <input
-                              value={item.reasonForRepacking}
-                              onChange={(e) => {
-                                const newData = [...packingMRS];
-                                newData[index].reasonForRepacking =
-                                  e.target.value;
-                                setPackingMRS(newData);
-                              }}
-                            />
-                          </td>
-                          <td>
-                            <input
-                              value={item.description}
-                              onChange={(e) => {
-                                const newData = [...packingMRS];
-                                newData[index].description = e.target.value;
-                                setPackingMRS(newData);
-                              }}
-                            />
-                          </td>
-                        </tr>
-                      );
-                    })}
-                  </tbody>
-                </table>
+                <GridContainer
+                  data={packingMRS}
+                  setData={setPackingMRS}
+                  setimportedData={setimportedData}
+                  fileName="packingMRS.xlsx"
+                  headers={packingMRSheaders}
+                  fields={packingMRSfields}
+                />
 
                 <h5 className="gridName pt-4">
                   Summary of Review of Rejected Raw Materials and Packaging
@@ -2688,81 +2166,16 @@ export default function NewAPQR() {
               <div className="pb-4">
                 <h4 className="gridName">Expired Raw Materials Details</h4>
 
-                <div className="AddRows d-flex w-full justify-between items-center text-3xl">
-                  <div className="flex items-center">
-                    <MdNoteAdd onClick={addExpiredRMDRow} />
-                    <div className="addrowinstruction  pl-2">
-                      Add Rows by clicking on (+) icon
-                    </div>
-                  </div>
-                  <div className="flex gap-4 ">
-                    <ExcelExportImport
-                      data={expiredRMD}
-                      setimportedData={setimportedData}
-                      fileName="expiredRMD.xlsx"
-                    />
-                  </div>
-                </div>
-                <table>
-                  <thead>
-                    <tr>
-                      <th>SI. No.</th>
-                      <th>Material Code</th>
-                      <th>Material Name</th>
-                      <th>Lot No./ A.R. No.</th>
-                      <th>Expiry Date</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {expiredRMD?.map((item, index) => {
-                      return (
-                        <tr key={index}>
-                          <td>{index + 1}</td>
-                          <td>
-                            <input
-                              value={item.materialCode}
-                              onChange={(e) => {
-                                const newData = [...expiredRMD];
-                                newData[index].materialCode = e.target.value;
-                                setExpiredRMD(newData);
-                              }}
-                            />
-                          </td>
-                          <td>
-                            <input
-                              value={item.materialName}
-                              onChange={(e) => {
-                                const newData = [...expiredRMD];
-                                newData[index].materialName = e.target.value;
-                                setExpiredRMD(newData);
-                              }}
-                            />
-                          </td>
-                          <td>
-                            <input
-                              value={item.ARNo}
-                              onChange={(e) => {
-                                const newData = [...expiredRMD];
-                                newData[index].ARNo = e.target.value;
-                                setExpiredRMD(newData);
-                              }}
-                            />
-                          </td>
-                          <td>
-                            <input
-                              value={item.expiryDate}
-                              onChange={(e) => {
-                                const newData = [...expiredRMD];
-                                newData[index].expiryDate = e.target.value;
-                                setExpiredRMD(newData);
-                              }}
-                            />
-                          </td>
-                        </tr>
-                      );
-                    })}
-                  </tbody>
-                </table>
+                <GridContainer
+                  data={expiredRMD}
+                  setData={setExpiredRMD}
+                  setimportedData={setimportedData}
+                  fileName="expiredRMD.xlsx"
+                  gridNo={1}
+                  headers={expiredRMDheaders}
+                  fields={expiredRMDfields}
+                />
+
                 <div>
                   <h4 className="gridName">Summary</h4>
                   <TinyEditor
@@ -2778,81 +2191,14 @@ export default function NewAPQR() {
                   Expired Packaging Materials Details
                 </h4>
 
-                <div className="AddRows d-flex w-full justify-between items-center text-3xl">
-                  <div className="flex items-center">
-                    <MdNoteAdd onClick={addExpiredPMDRow} />
-                    <div className="addrowinstruction  pl-2">
-                      Add Rows by clicking on (+) icon
-                    </div>
-                  </div>
-                  <div className="flex gap-4 ">
-                    <ExcelExportImport
-                      data={expiredPMD}
-                      setimportedData={setimportedData}
-                      fileName="expiredPMD.xlsx"
-                    />
-                  </div>
-                </div>
-                <table>
-                  <thead>
-                    <tr>
-                      <th>SI. No.</th>
-                      <th>Material Code</th>
-                      <th>Material Name</th>
-                      <th>Lot No./ A.R. No.</th>
-                      <th>Expiry Date</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {expiredPMD?.map((item, index) => {
-                      return (
-                        <tr key={index}>
-                          <td>{index + 1}</td>
-                          <td>
-                            <input
-                              value={item.materialCode}
-                              onChange={(e) => {
-                                const newData = [...expiredPMD];
-                                newData[index].materialCode = e.target.value;
-                                setExpiredPMD(newData);
-                              }}
-                            />
-                          </td>
-                          <td>
-                            <input
-                              value={item.materialName}
-                              onChange={(e) => {
-                                const newData = [...expiredPMD];
-                                newData[index].materialName = e.target.value;
-                                setExpiredPMD(newData);
-                              }}
-                            />
-                          </td>
-                          <td>
-                            <input
-                              value={item.ARNo}
-                              onChange={(e) => {
-                                const newData = [...expiredPMD];
-                                newData[index].ARNo = e.target.value;
-                                setExpiredPMD(newData);
-                              }}
-                            />
-                          </td>
-                          <td>
-                            <input
-                              value={item.expiryDate}
-                              onChange={(e) => {
-                                const newData = [...expiredPMD];
-                                newData[index].expiryDate = e.target.value;
-                                setExpiredPMD(newData);
-                              }}
-                            />
-                          </td>
-                        </tr>
-                      );
-                    })}
-                  </tbody>
-                </table>
+                <GridContainer
+                  data={expiredPMD}
+                  setData={setExpiredPMD}
+                  setimportedData={setimportedData}
+                  fileName="expiredPMD.xlsx"
+                  headers={expiredRMDheaders}
+                  fields={expiredRMDfields}
+                />
 
                 <h4 className="gridName pt-4">
                   Summary of Review of Expired Raw Materials and Packaging
@@ -2867,82 +2213,16 @@ export default function NewAPQR() {
 
               <div className="sub-head">Review of Approved Supplier List</div>
 
-              <div className="AddRows d-flex w-full justify-between items-center text-3xl">
-                <div className="flex items-center">
-                  <MdNoteAdd onClick={addreviewOfASLRow} />
-                  <div className="addrowinstruction  pl-2">
-                    Add Rows by clicking on (+) icon
-                  </div>
-                </div>
-                <div className="flex gap-4 ">
-                  <ExcelExportImport
-                    data={reviewOfASL}
-                    setimportedData={setimportedData}
-                    fileName="reviewOfASL.xlsx"
-                  />
-                </div>
-              </div>
+              <GridContainer
+                data={reviewOfASL}
+                setData={setReviewOfASL}
+                setimportedData={setimportedData}
+                fileName="reviewOfASL.xlsx"
+                headers={reviewOfASLheaders}
+                fields={reviewOfASLfields}
+              />
+
               <div>
-                <table>
-                  <thead>
-                    <tr>
-                      <th>Sl. No.</th>
-                      <th>Material Code</th>
-                      <th>Material Name</th>
-                      <th>Manufacturer / Supplier / Vendor</th>
-                      <th>Facility</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {reviewOfASL?.map((item, index) => {
-                      return (
-                        <tr key={index}>
-                          <td>{index + 1}</td>
-                          <td>
-                            <input
-                              value={item.materialCode}
-                              onChange={(e) => {
-                                const newData = [...reviewOfASL];
-                                newData[index].materialCode = e.target.value;
-                                setReviewOfASL(newData);
-                              }}
-                            />
-                          </td>
-                          <td>
-                            <input
-                              value={item.materialName}
-                              onChange={(e) => {
-                                const newData = [...reviewOfASL];
-                                newData[index].materialName = e.target.value;
-                                setReviewOfASL(newData);
-                              }}
-                            />
-                          </td>
-                          <td>
-                            <input
-                              value={item.manufacturer}
-                              onChange={(e) => {
-                                const newData = [...reviewOfASL];
-                                newData[index].manufacturer = e.target.value;
-                                setReviewOfASL(newData);
-                              }}
-                            />
-                          </td>
-                          <td>
-                            <input
-                              value={item.facility}
-                              onChange={(e) => {
-                                const newData = [...reviewOfASL];
-                                newData[index].facility = e.target.value;
-                                setReviewOfASL(newData);
-                              }}
-                            />
-                          </td>
-                        </tr>
-                      );
-                    })}
-                  </tbody>
-                </table>
                 <h4 className="gridName pt-4">
                   Summary of Review of Approved Supplier List
                 </h4>
@@ -2956,90 +2236,15 @@ export default function NewAPQR() {
                 Vendor Qualification Details of Raw Material Excipients
               </div>
               <div>
-                <div className="AddRows d-flex w-full justify-between items-center text-3xl">
-                  <div className="flex items-center">
-                    <MdNoteAdd onClick={addvendorQDORMERow} />
-                    <div className="addrowinstruction  pl-2">
-                      Add Rows by clicking on (+) icon
-                    </div>
-                  </div>
-                  <div className="flex gap-4 ">
-                    <ExcelExportImport
-                      data={vendorQDORME}
-                      setimportedData={setimportedData}
-                      fileName="vendorQDORME.xlsx"
-                    />
-                  </div>
-                </div>
-                <table>
-                  <thead>
-                    <th>Material Name</th>
-                    <th>Material Code</th>
-                    <th>Manufacturer Name</th>
-                    <th>Qualification Status</th>
-                    <th>Remarks</th>
-                  </thead>
-                  <tbody>
-                    {vendorQDORME?.map((item, index) => {
-                      return (
-                        <tr key={index}>
-                          <td>
-                            <input
-                              value={item.materialName}
-                              onChange={(e) => {
-                                const newData = [...vendorQDORME];
-                                newData[index].materialName = e.target.value;
-                                setVendorQDORME(newData);
-                              }}
-                            />
-                          </td>
-                          <td>
-                            <input
-                              value={item.materialCode}
-                              onChange={(e) => {
-                                const newData = [...vendorQDORME];
-                                newData[index].materialCode = e.target.value;
-                                setVendorQDORME(newData);
-                              }}
-                            />
-                          </td>
-                          <td>
-                            <input
-                              value={item.manufacturerName}
-                              onChange={(e) => {
-                                const newData = [...vendorQDORME];
-                                newData[index].manufacturerName =
-                                  e.target.value;
-                                setVendorQDORME(newData);
-                              }}
-                            />
-                          </td>
-                          <td>
-                            <input
-                              value={item.qualificationStatus}
-                              onChange={(e) => {
-                                const newData = [...vendorQDORME];
-                                newData[index].qualificationStatus =
-                                  e.target.value;
-                                setVendorQDORME(newData);
-                              }}
-                            />
-                          </td>
-                          <td>
-                            <input
-                              value={item.remarks}
-                              onChange={(e) => {
-                                const newData = [...vendorQDORME];
-                                newData[index].remarks = e.target.value;
-                                setVendorQDORME(newData);
-                              }}
-                            />
-                          </td>
-                        </tr>
-                      );
-                    })}
-                  </tbody>
-                </table>
+                <GridContainer
+                  data={vendorQDORME}
+                  setData={setVendorQDORME}
+                  setimportedData={setimportedData}
+                  fileName="vendorQDORME.xlsx"
+                  headers={vendorQDORMEheaders}
+                  fields={vendorQDORMEfields}
+                />
+
                 <h4 className="gridName pt-4">
                   Summary of Vendor Qualification Details of Raw Material
                   Excipients
@@ -3054,81 +2259,15 @@ export default function NewAPQR() {
                 Vendor Qualification Details of Primary Packing Materials
               </div>
               <div>
-                <div className="AddRows d-flex w-full justify-between items-center text-3xl">
-                  <div className="flex items-center">
-                    <MdNoteAdd onClick={addvendorQDOPPMRow} />
-                    <div className="addrowinstruction  pl-2">
-                      Add Rows by clicking on (+) icon
-                    </div>
-                  </div>
-                  <div className="flex gap-4 ">
-                    <ExcelExportImport
-                      data={vendorQDOPPM}
-                      setimportedData={setimportedData}
-                      fileName="vendorQDOPPM.xlsx"
-                    />
-                  </div>
-                </div>
-                <table>
-                  <thead>
-                    <tr>
-                      <th>Material Name</th>
-                      <th>Material Code</th>
-                      <th>Manufacturer Name</th>
-                      <th>Qualification Status</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {vendorQDOPPM?.map((item, index) => {
-                      return (
-                        <tr key={index}>
-                          <td>
-                            <input
-                              value={item.materialName}
-                              onChange={(e) => {
-                                const newData = [...vendorQDOPPM];
-                                newData[index].materialName = e.target.value;
-                                setVendorQDOPPM(newData);
-                              }}
-                            />
-                          </td>
-                          <td>
-                            <input
-                              value={item.materialCode}
-                              onChange={(e) => {
-                                const newData = [...vendorQDOPPM];
-                                newData[index].materialCode = e.target.value;
-                                setVendorQDOPPM(newData);
-                              }}
-                            />
-                          </td>
-                          <td>
-                            <input
-                              value={item.manufacturerName}
-                              onChange={(e) => {
-                                const newData = [...vendorQDOPPM];
-                                newData[index].manufacturerName =
-                                  e.target.value;
-                                setVendorQDOPPM(newData);
-                              }}
-                            />
-                          </td>
-                          <td>
-                            <input
-                              value={item.qualificationStatus}
-                              onChange={(e) => {
-                                const newData = [...vendorQDOPPM];
-                                newData[index].qualificationStatus =
-                                  e.target.value;
-                                setVendorQDOPPM(newData);
-                              }}
-                            />
-                          </td>
-                        </tr>
-                      );
-                    })}
-                  </tbody>
-                </table>
+                <GridContainer
+                  data={vendorQDOPPM}
+                  setData={setVendorQDOPPM}
+                  setimportedData={setimportedData}
+                  fileName="vendorQDOPPM.xlsx"
+                  headers={vendorQDOPPMheaders}
+                  fields={vendorQDOPPMfields}
+                />
+
                 <h4 className="gridName pt-4">
                   Summary of Vendor Qualification Details of Primary Packing
                   Materials
@@ -3144,81 +2283,15 @@ export default function NewAPQR() {
                 Vendor Qualification Details of Process Gases
               </div>
               <div>
-                <div className="AddRows d-flex w-full justify-between items-center text-3xl">
-                  <div className="flex items-center">
-                    <MdNoteAdd onClick={addvendorQDPOGRow} />
-                    <div className="addrowinstruction  pl-2">
-                      Add Rows by clicking on (+) icon
-                    </div>
-                  </div>
-                  <div className="flex gap-4 ">
-                    <ExcelExportImport
-                      data={vendorQDPOG}
-                      setimportedData={setimportedData}
-                      fileName="vendorQDPOG.xlsx"
-                    />
-                  </div>
-                </div>
-                <table>
-                  <thead>
-                    <tr>
-                      <th>Gas Name</th>
-                      <th>Gas Code</th>
-                      <th>Manufacturer Name</th>
-                      <th> Qualification Status</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {vendorQDPOG?.map((item, index) => {
-                      return (
-                        <tr key={index}>
-                          <td>
-                            <input
-                              value={item.gasName}
-                              onChange={(e) => {
-                                const newData = [...vendorQDPOG];
-                                newData[index].gasName = e.target.value;
-                                setVendorQDPOG(newData);
-                              }}
-                            />
-                          </td>
-                          <td>
-                            <input
-                              value={item.gasCode}
-                              onChange={(e) => {
-                                const newData = [...vendorQDPOG];
-                                newData[index].gasCode = e.target.value;
-                                setVendorQDPOG(newData);
-                              }}
-                            />
-                          </td>
-                          <td>
-                            <input
-                              value={item.manufacturerName}
-                              onChange={(e) => {
-                                const newData = [...vendorQDPOG];
-                                newData[index].manufacturerName =
-                                  e.target.value;
-                                setVendorQDPOG(newData);
-                              }}
-                            />
-                          </td>
-                          <td>
-                            <input
-                              value={item.qualificationStatus}
-                              onChange={(e) => {
-                                const newData = [...vendorQDPOG];
-                                newData[index].qualificationStatus =
-                                  e.target.value;
-                                setVendorQDPOG(newData);
-                              }}
-                            />
-                          </td>
-                        </tr>
-                      );
-                    })}
-                  </tbody>
-                </table>
+                <GridContainer
+                  data={vendorQDPOG}
+                  setData={setVendorQDPOG}
+                  setimportedData={setimportedData}
+                  fileName="vendorQDPOG.xlsx"
+                  headers={vendorQDPOGheaders}
+                  fields={vendorQDPOGfields}
+                />
+
                 <h4 className="gridName pt-4">
                   Summary of Vendor Qualification Details of Process Gases
                 </h4>
@@ -3385,114 +2458,15 @@ export default function NewAPQR() {
             </div>
             <div className="gridName">Code to code transfer details</div>
             <div className="py-4">
-              <div className="AddRows d-flex w-full justify-between items-center text-3xl">
-                <div className="flex items-center">
-                  <MdNoteAdd onClick={addcodeTCTDRow} />
-                  <div className="addrowinstruction  pl-2">
-                    Add Rows by clicking on (+) icon
-                  </div>
-                </div>
-                <div className="flex gap-4 ">
-                  <ExcelExportImport
-                    data={codeTCTD}
-                    setimportedData={setimportedData}
-                    fileName="codeTCTD.xlsx"
-                  />
-                </div>
-              </div>
-              <table>
-                <thead>
-                  <tr>
-                    <th>SL. No.</th>
-                    <th>Batch Number</th>
-                    <th>Existing code</th>
-                    <th>Existing market</th>
-                    <th>Proposed code</th>
-                    <th>Proposed Market</th>
-                    <th>Transfer quantity</th>
-                    <th>Ref. No.</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {codeTCTD?.map((item, index) => {
-                    return (
-                      <tr key={index}>
-                        <td>{index + 1}</td>
-                        <td>
-                          <input
-                            value={item.batchNo}
-                            onChange={(e) => {
-                              const newData = [...codeTCTD];
-                              newData[index].batchNo = e.target.value;
-                              setCodeTCTD(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.existingCode}
-                            onChange={(e) => {
-                              const newData = [...codeTCTD];
-                              newData[index].existingCode = e.target.value;
-                              setCodeTCTD(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.existingMarket}
-                            onChange={(e) => {
-                              const newData = [...codeTCTD];
-                              newData[index].existingMarket = e.target.value;
-                              setCodeTCTD(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.proposedCode}
-                            onChange={(e) => {
-                              const newData = [...codeTCTD];
-                              newData[index].proposedCode = e.target.value;
-                              setCodeTCTD(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.proposedMarket}
-                            onChange={(e) => {
-                              const newData = [...codeTCTD];
-                              newData[index].proposedMarket = e.target.value;
-                              setCodeTCTD(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.transferQuality}
-                            onChange={(e) => {
-                              const newData = [...codeTCTD];
-                              newData[index].transferQuality = e.target.value;
-                              setCodeTCTD(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.refNo}
-                            onChange={(e) => {
-                              const newData = [...codeTCTD];
-                              newData[index].refNo = e.target.value;
-                              setCodeTCTD(newData);
-                            }}
-                          />
-                        </td>
-                      </tr>
-                    );
-                  })}
-                </tbody>
-              </table>
+              <GridContainer
+                data={codeTCTD}
+                setData={setCodeTCTD}
+                setimportedData={setimportedData}
+                fileName="codeTCTD.xlsx"
+                headers={codeTCTDheaders}
+                fields={codeTCTDfields}
+              />
+
               <h4 className="gridName pt-4">
                 Summary of Code to Code Transfer Details
               </h4>
@@ -3537,112 +2511,14 @@ export default function NewAPQR() {
             </div>
 
             <div className="py-4">
-              {/* <div className="AddRows d-flex">
-                <MdNoteAdd onClick={addreviewORCECRow} />
-                <div className="addrowinstruction"></div>
-              </div> */}
-              <div className="AddRows d-flex w-full justify-between items-center text-3xl">
-                <div className="flex items-center">
-                  <MdNoteAdd onClick={addreviewORCECRow} />
-                  <div className="addrowinstruction  pl-2">
-                    Add Rows by clicking on (+) icon
-                  </div>
-                </div>
-                <div className="flex gap-4 ">
-                  .
-                  <ExcelExportImport
-                    data={reviewORCEC}
-                    setimportedData={setimportedData}
-                    fileName="reviewORCEC.xlsx"
-                  />
-                </div>
-              </div>
-              <table>
-                <thead>
-                  <tr>
-                    <th>SL. No.</th>
-                    <th>Packing batch number</th>
-                    <th>Manufacturing batch number</th>
-                    <th>Repacking issued number</th>
-                    <th>Repacking for</th>
-                    <th>QMS</th>
-                    <th>Reason for repacking</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {reviewORCEC?.map((item, index) => {
-                    return (
-                      <tr key={index}>
-                        <td>{index + 1}</td>
-                        <td>
-                          <input
-                            value={item.packingBatchNumber}
-                            onChange={(e) => {
-                              const newData = [...reviewORCEC];
-                              newData[index].packingBatchNumber =
-                                e.target.value;
-                              setReviewORCEC(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.manufacturingBatchNumber}
-                            onChange={(e) => {
-                              const newData = [...reviewORCEC];
-                              newData[index].manufacturingBatchNumber =
-                                e.target.value;
-                              setReviewORCEC(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.repackingIssuedNumber}
-                            onChange={(e) => {
-                              const newData = [...reviewORCEC];
-                              newData[index].repackingIssuedNumber =
-                                e.target.value;
-                              setReviewORCEC(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.repackingFor}
-                            onChange={(e) => {
-                              const newData = [...reviewORCEC];
-                              newData[index].repackingFor = e.target.value;
-                              setReviewORCEC(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.qMS}
-                            onChange={(e) => {
-                              const newData = [...reviewORCEC];
-                              newData[index].qMS = e.target.value;
-                              setReviewORCEC(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.reasonForRepacking}
-                            onChange={(e) => {
-                              const newData = [...reviewORCEC];
-                              newData[index].reasonForRepacking =
-                                e.target.value;
-                              setReviewORCEC(newData);
-                            }}
-                          />
-                        </td>
-                      </tr>
-                    );
-                  })}
-                </tbody>
-              </table>
+              <GridContainer
+                data={reviewORCEC}
+                setData={setReviewORCEC}
+                setimportedData={setimportedData}
+                fileName="reviewORCEC.xlsx"
+                headers={reviewORCECheaders}
+                fields={reviewORCECfields}
+              />
             </div>
             <div>
               <h4 className="gridName mt-5">Summary</h4>
@@ -3655,114 +2531,14 @@ export default function NewAPQR() {
 
             <h4 className="gridName">CAPA Details</h4>
             <div>
-              <div className="AddRows d-flex w-full justify-between items-center text-3xl">
-                <div className="flex items-center">
-                  <MdNoteAdd onClick={addCapaDetailsRow} />
-                  <div className="addrowinstruction  pl-2">
-                    Add Rows by clicking on (+) icon
-                  </div>
-                </div>
-                <div className="flex gap-4 ">
-                  <ExcelExportImport
-                    data={capaDetails}
-                    setimportedData={setimportedData}
-                    fileName="capaDetails.xlsx"
-                  />
-                </div>
-              </div>
-              <table className="mb-4">
-                <thead>
-                  <tr>
-                    <th>AR No.</th>
-                    <th>CAPA Type</th>
-                    <th>Description of Issue</th>
-                    <th>Root Cause</th>
-                    <th>CAPA Verification</th>
-                    <th>File Attachment</th>
-                    <th>Remarks</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {capaDetails?.map((item, index) => {
-                    return (
-                      <tr key={index}>
-                        <td>
-                          <input
-                            value={item.ARNo}
-                            onChange={(e) => {
-                              const newData = [...capaDetails];
-                              newData[index].ARNo = e.target.value;
-                              setCapaDetails(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.capaType}
-                            onChange={(e) => {
-                              const newData = [...capaDetails];
-                              newData[index].capaType = e.target.value;
-                              setCapaDetails(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.descriptionOfIssue}
-                            onChange={(e) => {
-                              const newData = [...capaDetails];
-                              newData[index].descriptionOfIssue =
-                                e.target.value;
-                              setCapaDetails(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.rootCause}
-                            onChange={(e) => {
-                              const newData = [...capaDetails];
-                              newData[index].rootCause = e.target.value;
-                              setCapaDetails(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.capaVerification}
-                            onChange={(e) => {
-                              const newData = [...capaDetails];
-                              newData[index].capaVerification = e.target.value;
-                              setCapaDetails(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            type="file"
-                            value={item.chooseFile}
-                            onChange={(e) => {
-                              const newData = [...capaDetails];
-                              newData[index].chooseFile = e.target.value;
-                              setCapaDetails(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.remarks}
-                            onChange={(e) => {
-                              const newData = [...capaDetails];
-                              newData[index].remarks = e.target.value;
-                              setCapaDetails(newData);
-                            }}
-                          />
-                        </td>{" "}
-                      </tr>
-                    );
-                  })}
-                </tbody>
-              </table>
+              <GridContainer
+                data={capaDetails}
+                setData={setCapaDetails}
+                setimportedData={setimportedData}
+                fileName="capaDetails.xlsx"
+                headers={capaDetailsheaders}
+                fields={capaDetailsfields}
+              />
             </div>
             <div>
               <h4 className="gridName mt-5">Summary</h4>
@@ -3775,150 +2551,14 @@ export default function NewAPQR() {
 
             <h4 className="gridName">Deviation Details</h4>
             <div>
-              <div className="AddRows d-flex w-full justify-between items-center text-3xl">
-                <div className="flex items-center">
-                  <MdNoteAdd onClick={deviationDetailsRow} />
-                  <div className="addrowinstruction  pl-2">
-                    Add Rows by clicking on (+) icon
-                  </div>
-                </div>
-                <div className="flex gap-4 ">
-                  <ExcelExportImport
-                    data={deviationDetails}
-                    setimportedData={setimportedData}
-                    fileName="deviationDetails.xlsx"
-                  />
-                </div>
-              </div>
-              <table className="mb-4">
-                <thead>
-                  <tr>
-                    <th>AR No.</th>
-                    <th>Deviation Related To</th>
-                    <th>Description</th>
-                    <th>Root Cause</th>
-                    <th>Deviation Ovserved On</th>
-                    <th>Deviation Ovserved By</th>
-                    <th>Classification of Deviation</th>
-                    <th>file Attachment</th>
-                    <th>Remarks</th>
-                    <th>Status</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {deviationDetails?.map((item, index) => {
-                    return (
-                      <tr key={index}>
-                        <td>
-                          <input
-                            value={item.ARNo}
-                            onChange={(e) => {
-                              const newData = [...deviationDetails];
-                              newData[index].ARNo = e.target.value;
-                              setDeviationDetails(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.deviationRelatedTo}
-                            onChange={(e) => {
-                              const newData = [...deviationDetails];
-                              newData[index].deviationRelatedTo =
-                                e.target.value;
-                              setDeviationDetails(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.description}
-                            onChange={(e) => {
-                              const newData = [...deviationDetails];
-                              newData[index].description = e.target.value;
-                              setDeviationDetails(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.rootCause}
-                            onChange={(e) => {
-                              const newData = [...deviationDetails];
-                              newData[index].rootCause = e.target.value;
-                              setDeviationDetails(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.deviationObservedOn}
-                            onChange={(e) => {
-                              const newData = [...deviationDetails];
-                              newData[index].deviationObservedOn =
-                                e.target.value;
-                              setDeviationDetails(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.deviationObservedBy}
-                            onChange={(e) => {
-                              const newData = [...deviationDetails];
-                              newData[index].deviationObservedBy =
-                                e.target.value;
-                              setDeviationDetails(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.classificationOfDeviation}
-                            onChange={(e) => {
-                              const newData = [...deviationDetails];
-                              newData[index].classificationOfDeviation =
-                                e.target.value;
-                              setDeviationDetails(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            type="file"
-                            value={item.fileAttachment}
-                            onChange={(e) => {
-                              const newData = [...deviationDetails];
-                              newData[index].fileAttachment = e.target.value;
-                              setDeviationDetails(newData);
-                            }}
-                          />
-                        </td>{" "}
-                        <td>
-                          <input
-                            value={item.remarks}
-                            onChange={(e) => {
-                              const newData = [...deviationDetails];
-                              newData[index].remarks = e.target.value;
-                              setDeviationDetails(newData);
-                            }}
-                          />
-                        </td>{" "}
-                        <td>
-                          <input
-                            value={item.status}
-                            onChange={(e) => {
-                              const newData = [...deviationDetails];
-                              newData[index].status = e.target.value;
-                              setDeviationDetails(newData);
-                            }}
-                          />
-                        </td>
-                      </tr>
-                    );
-                  })}
-                </tbody>
-              </table>
+              <GridContainer
+                data={deviationDetails}
+                setData={setDeviationDetails}
+                setimportedData={setimportedData}
+                fileName="deviationDetails.xlsx"
+                headers={deviationDetailsheaders}
+                fields={deviationDetailsfields}
+              />
             </div>
             <div>
               <h4 className="gridName mt-5">Summary</h4>
@@ -3943,104 +2583,14 @@ export default function NewAPQR() {
 
             <h4 className="gridName">OOS Details</h4>
             <div>
-              <div className="AddRows d-flex w-full justify-between items-center text-3xl">
-                <div className="flex items-center">
-                  <MdNoteAdd onClick={oosDetailsRow} />
-                  <div className="addrowinstruction  pl-2">
-                    Add Rows by clicking on (+) icon
-                  </div>
-                </div>
-                <div className="flex gap-4 ">
-                  <ExcelExportImport
-                    data={oosDetails}
-                    setimportedData={setimportedData}
-                    fileName="oosDetails.xlsx"
-                  />
-                </div>
-              </div>
-              <table className="mb-4">
-                <thead>
-                  <tr>
-                    <th rowSpan={2}>AR No.</th>
-                    <th rowSpan={2}>Test Name Of OOS</th>
-                    <th rowSpan={2}>Results Obtained</th>
-                    <th>Specification Limit</th>
-                    <th rowSpan={2}>Details of Obvious error</th>
-                    <th>File Attachment</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {oosDetails?.map((item, index) => {
-                    return (
-                      <tr key={index}>
-                        <td>
-                          <input
-                            value={item.ARNo}
-                            onChange={(e) => {
-                              const newData = [...oosDetails];
-                              newData[index].ARNo = e.target.value;
-                              setOosDetails(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.testNameOfOos}
-                            onChange={(e) => {
-                              const newData = [...oosDetails];
-                              newData[index].testNameOfOos = e.target.value;
-                              setOosDetails(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.resultsObtained}
-                            onChange={(e) => {
-                              const newData = [...oosDetails];
-                              newData[index].resultsObtained = e.target.value;
-                              setOosDetails(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.specificationLimit}
-                            onChange={(e) => {
-                              const newData = [...oosDetails];
-                              newData[index].specificationLimit =
-                                e.target.value;
-                              setOosDetails(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.detailsOfObviousError}
-                            onChange={(e) => {
-                              const newData = [...oosDetails];
-                              newData[index].detailsOfObviousError =
-                                e.target.value;
-                              setOosDetails(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            type="file"
-                            value={item.fileAttachment}
-                            onChange={(e) => {
-                              const newData = [...oosDetails];
-                              newData[index].fileAttachment = e.target.value;
-                              setOosDetails(newData);
-                            }}
-                          />
-                        </td>
-                      </tr>
-                    );
-                  })}
-                </tbody>
-              </table>
+              <GridContainer
+                data={oosDetails}
+                setData={setOosDetails}
+                setimportedData={setimportedData}
+                fileName="oosDetails.xlsx"
+                headers={oosDetailsheaders}
+                fields={oosDetailsfields}
+              />
             </div>
             <div>
               <h4 className="gridName mt-5">Summary</h4>
@@ -4053,114 +2603,14 @@ export default function NewAPQR() {
 
             <h4 className="gridName">OOT Results</h4>
             <div>
-              <div className="AddRows d-flex w-full justify-between items-center text-3xl mb-5">
-                <div className="flex items-center">
-                  <MdNoteAdd onClick={ootResultsRow} />
-                  <div className="addrowinstruction  pl-2">
-                    Add Rows by clicking on (+) icon
-                  </div>
-                </div>
-                <div className="flex gap-4 ">
-                  <ExcelExportImport
-                    data={ootResults}
-                    setimportedData={setimportedData}
-                    fileName="ootResults.xlsx"
-                  />
-                </div>
-              </div>
-              <table className="mb-4">
-                <thead>
-                  <tr>
-                    <th>AR NO.</th>
-                    <th>Test name of OOT</th>
-                    <th>Result Obtained</th>
-                    <th>Initial Interval Details</th>
-                    <th>Previous Interval Details</th>
-                    <th>% Diffrence of Results</th>
-                    <th>Trend Limit</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {ootResults?.map((item, index) => {
-                    return (
-                      <tr key={index}>
-                        <td>
-                          <input
-                            value={item.ARNo}
-                            onChange={(e) => {
-                              const newData = [...ootResults];
-                              newData[index].ARNo = e.target.value;
-                              setOotResults(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.testNameOfOot}
-                            onChange={(e) => {
-                              const newData = [...ootResults];
-                              newData[index].testNameOfOot = e.target.value;
-                              setOotResults(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.resultsObtained}
-                            onChange={(e) => {
-                              const newData = [...ootResults];
-                              newData[index].resultsObtained = e.target.value;
-                              setOotResults(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.initialIntervalDetails}
-                            onChange={(e) => {
-                              const newData = [...ootResults];
-                              newData[index].initialIntervalDetails =
-                                e.target.value;
-                              setOotResults(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.previousIntervalDetails}
-                            onChange={(e) => {
-                              const newData = [...ootResults];
-                              newData[index].previousIntervalDetails =
-                                e.target.value;
-                              setOotResults(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.diffrenceOfResult}
-                            onChange={(e) => {
-                              const newData = [...ootResults];
-                              newData[index].diffrenceOfResult = e.target.value;
-                              setOotResults(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.trendLimit}
-                            onChange={(e) => {
-                              const newData = [...ootResults];
-                              newData[index].trendLimit = e.target.value;
-                              setOotResults(newData);
-                            }}
-                          />
-                        </td>
-                      </tr>
-                    );
-                  })}
-                </tbody>
-              </table>
+              <GridContainer
+                data={ootResults}
+                setData={setOotResults}
+                setimportedData={setimportedData}
+                fileName="ootResults.xlsx"
+                headers={ootResultsheaders}
+                fields={ootResultsfields}
+              />
             </div>
             <div>
               <h4 className="gridName mt-5">Summary</h4>
@@ -5488,7 +3938,7 @@ export default function NewAPQR() {
                   />
                 </div>
               </div>
-              <table>
+              {/* <table>
                 <thead>
                   <tr>
                     <th>Batch No</th>
@@ -5596,7 +4046,13 @@ export default function NewAPQR() {
                     );
                   })}
                 </tbody>
-              </table>
+              </table> */}
+              <CommonTable
+                headers={reviewODSTRheaders}
+                data={reviewODSTR}
+                setData={setReviewOSTR}
+                fields={reviewODSTRfields}
+              />
             </div>
             <h1 className="gridName  pt-8">
               Assay Of Paracetamol Test Results

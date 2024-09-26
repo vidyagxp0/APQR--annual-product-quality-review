@@ -1,4 +1,3 @@
-//Not use right now
 // import React, { useEffect, useReducer, useState } from "react";
 // import Header from "../Component/Header";
 // import { MdNoteAdd } from "react-icons/md";

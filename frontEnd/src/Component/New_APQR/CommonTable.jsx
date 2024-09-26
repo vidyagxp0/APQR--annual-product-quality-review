@@ -3,7 +3,13 @@ import React from "react";
 const CommonTable = ({ headers, data, setData, fields }) => {
   const handleInputChange = (e, index, field) => {
     const newData = [...data];
-    newData[index][field] = e.target.value;
+
+    if (field === "fileAttachment") {
+      newData[index][field] = e.target.files[0]; // Handle file input
+    } else {
+      newData[index][field] = e.target.value; // Handle other inputs
+    }
+
     setData(newData);
   };
 
@@ -17,20 +23,31 @@ const CommonTable = ({ headers, data, setData, fields }) => {
         </tr>
       </thead>
       <tbody>
-        {data.map((item, index) => (
-          <tr key={index}>
-            {headers.includes("SI. No.") && <td>{index + 1}</td>}
+        {data.length > 0 &&
+          data.map((item, index) => {
+            return (
+              <tr key={index}>
+                {headers.includes("SI. No.") && <td>{index + 1}.</td>}
 
-            {fields.map((field, idx) => (
-              <td key={idx}>
-                <input
-                  value={item[field]}
-                  onChange={(e) => handleInputChange(e, index, field)}
-                />
-              </td>
-            ))}
-          </tr>
-        ))}
+                {fields.map((field, idx) => (
+                  <td key={idx}>
+                    {field === "fileAttachment" ? (
+                      <input
+                        type="file"
+                        onChange={(e) => handleInputChange(e, index, field)}
+                      />
+                    ) : (
+                      <input
+                        type="text"
+                        value={item[field] || ""}
+                        onChange={(e) => handleInputChange(e, index, field)}
+                      />
+                    )}
+                  </td>
+                ))}
+              </tr>
+            );
+          })}
       </tbody>
     </table>
   );
