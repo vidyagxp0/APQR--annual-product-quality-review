@@ -1034,7 +1034,6 @@ const trendingOIPIPS5Data4=gridDatas?.trendingOIPIPS5.map((item)=>{
       const response = await axios.get(
         `http://localhost:4000/get-apqr/${editData.pqrId}`
       );
-      console.log(response.data, "data");
       setData(response.data);
       setTinyData(response.data.aPQRData.tinyData);
       const apiData = response.data.gridDatas;

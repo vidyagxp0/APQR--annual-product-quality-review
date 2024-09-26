@@ -26,13 +26,11 @@ const ViewReport = () => {
   };
 
   const initializeChatModal = async (data) => {
-    console.log("initializeChatModal");
     try {
       const addPdfUrl = "https://api.chatpdf.com/v1/sources/add-url";
 
       const res = await axios.post(addPdfUrl, data, chatPdfConfig);
 
-      console.log("res", res);
 
       setSrcId(res?.data?.sourceId);
     } catch (err) {
