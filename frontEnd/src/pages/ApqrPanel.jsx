@@ -20476,35 +20476,6 @@ const trendingOIPIPS5Data4=gridDatas?.trendingOIPIPS5.map((item)=>{
                         </td>
                         <td>
                           <input
-                            value={item.limit}
-                            type="number"
-                            onChange={(e) => {
-                              const newData = [...gridDatas.trendingOIPIPS3];
-                              newData[index].limit = e.target.value;
-                              setGridDatas({
-                                ...gridDatas,
-                                trendingOIPIPS3: newData,
-                              });
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.chromatographicPurity}
-                            type="number"
-                            onChange={(e) => {
-                              const newData = [...gridDatas.trendingOIPIPS3];
-                              newData[index].chromatographicPurity =
-                                e.target.value;
-                              setGridDatas({
-                                ...gridDatas,
-                                trendingOIPIPS3: newData,
-                              });
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
                             value={item.pH75}
                             type="number"
                             onChange={(e) => {
@@ -20523,7 +20494,8 @@ const trendingOIPIPS5Data4=gridDatas?.trendingOIPIPS5.map((item)=>{
                             type="number"
                             onChange={(e) => {
                               const newData = [...gridDatas.trendingOIPIPS3];
-                              newData[index].lLimit = e.target.value;
+                              newData[index].lLimit =
+                                e.target.value;
                               setGridDatas({
                                 ...gridDatas,
                                 trendingOIPIPS3: newData,
@@ -20561,11 +20533,39 @@ const trendingOIPIPS5Data4=gridDatas?.trendingOIPIPS5.map((item)=>{
                         </td>
                         <td>
                           <input
-                            value={item.chromatographic}
+                            value={item.ph50}
                             type="number"
                             onChange={(e) => {
                               const newData = [...gridDatas.trendingOIPIPS3];
-                              newData[index].chromatographic = e.target.value;
+                              newData[index].ph50 = e.target.value;
+                              setGridDatas({
+                                ...gridDatas,
+                                trendingOIPIPS3: newData,
+                              });
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.lLimit1}
+                            type="number"
+                            onChange={(e) => {
+                              const newData = [...gridDatas.trendingOIPIPS3];
+                              newData[index].lLimit1 = e.target.value;
+                              setGridDatas({
+                                ...gridDatas,
+                                trendingOIPIPS3: newData,
+                              });
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.uLimit2}
+                            type="number"
+                            onChange={(e) => {
+                              const newData = [...gridDatas.trendingOIPIPS3];
+                              newData[index].uLimit2 = e.target.value;
                               setGridDatas({
                                 ...gridDatas,
                                 trendingOIPIPS3: newData,

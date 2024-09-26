@@ -2185,10 +2185,8 @@ export default function APQR() {
       lLimit: "",
       uLimit: "",
       unreactedTCA: "",
-      limit: "",
-      chromatographic: "",
-      pH5: "",
-      lLimit2: "",
+      ph50: "",
+      lLimit1: "",
       uLimit2: "",
 
       composite: { chromatographicPurity: "", limit: "" },
@@ -13335,26 +13333,6 @@ export default function APQR() {
                         </td>
                         <td>
                           <input
-                            value={item.limit}
-                            onChange={(e) => {
-                              const newData = [...trendingOIPIPS3];
-                              newData[index].limit = e.target.value;
-                              setTrendingOIPIPS3(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.chromatographicPurity}
-                            onChange={(e) => {
-                              const newData = [...trendingOIPIPS3];
-                              newData[index].chromatographicPurity = e.target.value;
-                              setTrendingOIPIPS3(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
                             value={item.pH75}
                             onChange={(e) => {
                               const newData = [...trendingOIPIPS3];
@@ -13366,9 +13344,11 @@ export default function APQR() {
                         <td>
                           <input
                             value={item.lLimit}
+                            type="number"
                             onChange={(e) => {
                               const newData = [...trendingOIPIPS3];
-                              newData[index].lLimit = e.target.value;
+                              newData[index].lLimit =
+                                e.target.value;
                               setTrendingOIPIPS3(newData);
                             }}
                           />
@@ -13376,6 +13356,7 @@ export default function APQR() {
                         <td>
                           <input
                             value={item.uLimit}
+                            type="number"
                             onChange={(e) => {
                               const newData = [...trendingOIPIPS3];
                               newData[index].uLimit = e.target.value;
@@ -13386,6 +13367,7 @@ export default function APQR() {
                         <td>
                           <input
                             value={item.unreactedTCA}
+                            type="number"
                             onChange={(e) => {
                               const newData = [...trendingOIPIPS3];
                               newData[index].unreactedTCA = e.target.value;
@@ -13395,10 +13377,33 @@ export default function APQR() {
                         </td>
                         <td>
                           <input
-                            value={item.chromatographic}
+                            value={item.ph50}
+                            type="number"
                             onChange={(e) => {
                               const newData = [...trendingOIPIPS3];
-                              newData[index].chromatographic = e.target.value;
+                              newData[index].ph50 = e.target.value;
+                              setTrendingOIPIPS3(newData);
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.lLimit1}
+                            type="number"
+                            onChange={(e) => {
+                              const newData = [...trendingOIPIPS3];
+                              newData[index].lLimit1 = e.target.value;
+                              setTrendingOIPIPS3(newData);
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.uLimit2}
+                            type="number"
+                            onChange={(e) => {
+                              const newData = [...trendingOIPIPS3];
+                              newData[index].uLimit2 = e.target.value;
                               setTrendingOIPIPS3(newData);
                             }}
                           />
@@ -13406,6 +13411,7 @@ export default function APQR() {
                         <td>
                           <input
                             value={item.composite.chromatographicPurity}
+                            type="number"
                             onChange={(e) => {
                               const newData = [...trendingOIPIPS3];
                               newData[index].composite.chromatographicPurity = e.target.value;
@@ -13416,6 +13422,7 @@ export default function APQR() {
                         <td>
                           <input
                             value={item.composite.limit}
+                            type="number"
                             onChange={(e) => {
                               const newData = [...trendingOIPIPS3];
                               newData[index].composite.limit = e.target.value;
