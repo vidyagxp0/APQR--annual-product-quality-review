@@ -87,7 +87,8 @@ const setapqrdata = (aPQRDataOBJ) => {
   pqrData.vendorQDPOG = gridDatas?.vendorQDPOG?.data ?? [];
   pqrData.codeTCTD = gridDatas?.codeTCTD?.data ?? [];
   pqrData.reviewORCEC = gridDatas?.reviewORCEC?.data ?? [];
-  pqrData.capaDetails = gridDatas?.capaDetails?.data ?? [];
+  pqrData.currentCapaDetails = gridDatas?.currentCapaDetails?.data ?? [];
+  pqrData.previousCapaDetails = gridDatas?.previousCapaDetails?.data ?? [];
   pqrData.deviationDetails = gridDatas?.deviationDetails?.data ?? [];
   pqrData.oosDetails = gridDatas?.oosDetails?.data ?? [];
   pqrData.ootResults = gridDatas?.ootResults?.data ?? [];
@@ -173,6 +174,8 @@ const setapqrdata = (aPQRDataOBJ) => {
   pqrData.trendingOIPIPS3 = gridDatas?.trendingOIPIPS3?.data ?? [];
   pqrData.trendingOIPIPS4 = gridDatas?.trendingOIPIPS4?.data ?? [];
   pqrData.trendingOIPIPS5 = gridDatas?.trendingOIPIPS5?.data ?? [];
+  pqrData.finishedPATUSP = gridDatas?.finishedPATUSP?.data ?? [];
+  pqrData.finishedPHEUR = gridDatas?.finishedPHEUR?.data ?? [];
 
   //Tiny
   pqrData.msaSummary = tinyData?.tiny1 ?? "";
@@ -193,7 +196,7 @@ const setapqrdata = (aPQRDataOBJ) => {
   pqrData.brpDetails = tinyData?.tiny16 ?? "";
   pqrData.batchRepackingDetails = tinyData?.tiny17 ?? "";
   pqrData.reviewORCECSummary = tinyData?.tiny18 ?? "";
-  pqrData.capaDetailsSummary = tinyData?.tiny19 ?? "";
+  // pqrData.capaDetailsSummary = tinyData?.tiny19 ?? "";
   pqrData.deviationDetailsSummary = tinyData?.tiny20 ?? "";
   pqrData.batchFailuresRejectionsSummary = tinyData?.tiny21 ?? "";
   pqrData.oosDetailsSummary = tinyData?.tiny22 ?? "";

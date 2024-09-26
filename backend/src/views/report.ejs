@@ -79,7 +79,7 @@
     <h3>Manufacturing Site Address</h3>
     <table>
       <tr>
-        <th>Product Name	</th>
+        <th>Product Name</th>
         <th>SFGCode</th>
         <th>FG Code</th>
       </tr>
@@ -511,39 +511,61 @@
     </div>
 
 
-    <h3>Capa Details</h3>
+    <h3>Current review of Capa details</h3>
     <table>
       <thead>
         <tr style="text-transform: uppercase;">
           <th>AR No</th>
-          <th>CAPAType</th>
-          <th>Description of Issue</th>
-          <th>Root Cause</th>
-          <th>CAPA Verification</th>
-          <th>File Attachment</th>
-          <th>Remarks</th>
+          <th>CAPA Date of Reporting</th>
+          <th>CAPA Number</th>
+          <th>CAPA Source & Number</th>
+          <th>Description of CAPA</th>
+          <th>Closure Status</th>
+          <th>Target/Closed on Date</th>
         </tr>
       </thead>
       <tbody>
-        <% product.capaDetails.forEach((item,i) => { %>
+        <% product.currentCapaDetails.forEach((item,i) => { %>
         <tr>
           <td><%= item.ARNo %></td>
-          <td><%= item.capaType %></td>
-          <td><%= item.descriptionOfIssue %></td>
-          <td><%= item.rootCause %></td>
-          <td><%= item.capaVerification %></td>
-          <td><%= item.fileAttachment %></td>
-          <td><%= item.remarks %></td>
+          <td><%= item.capaDateOfReporting %></td>
+          <td><%= item.capaNumber %></td>
+          <td><%= item.capaSourceAndNumber %></td>
+          <td><%= item.descriptionOfCapa %></td>
+          <td><%= item.closureStatus %></td>
+          <td><%= item.targetClosedOnDate %></td>
         </tr>
         <% }); %>
       </tbody>
     </table>
 
-    <div class="summary">
-      <h3>Summary of CAPA Details :-</h3>
-      &nbsp &nbsp
-      <p><%= product.capaDetailsSummary %></p>
-    </div>
+    <h3>Previous review of Capa details</h3>
+    <table>
+      <thead>
+        <tr style="text-transform: uppercase;">
+          <th>AR No</th>
+          <th>CAPA Date of Reporting</th>
+          <th>CAPA Number</th>
+          <th>CAPA Source & Number</th>
+          <th>Description of CAPA</th>
+          <th>Closure Status</th>
+          <th>Target/Closed on Date</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% product.previousCapaDetails.forEach((item,i) => { %>
+        <tr>
+          <td><%= item.ARNo %></td>
+          <td><%= item.capaDateOfReporting %></td>
+          <td><%= item.capaNumber %></td>
+          <td><%= item.capaSourceAndNumber %></td>
+          <td><%= item.descriptionOfCapa %></td>
+          <td><%= item.closureStatus %></td>
+          <td><%= item.targetClosedOnDate %></td>
+        </tr>
+        <% }); %>
+      </tbody>
+    </table>
 
     <h3>Deviation Details</h3>
     <table>
@@ -3599,8 +3621,8 @@
         </tr>
   </thead>
   <tbody>
-    <% if (product.trendingOIPIPS1 && Array.isArray(product.trendingOIPIPS1)) { %>
-    <% product.trendingOIPIPS1.forEach((item,i) => { %>
+    <% if (product.trendingOIPIPS2 && Array.isArray(product.trendingOIPIPS2)) { %>
+    <% product.trendingOIPIPS2.forEach((item,i) => { %>
     <tr>
       <td><%= item.Sl_No || i+1 %></td>
       <td><%= item.batchNo %></td>
@@ -3629,6 +3651,350 @@
   </tbody>
 </table>
 
+<!--Trending of In-process & Intermediate Parameter of U3TCAg - Stage-III
+-->
+<h3>Trending of In-process & Intermediate Parameter of U3TCAg - Stage-III
+</h3>
+<table>
+  <thead>
+    <tr style="text-transform: uppercase;">
+      <th rowspan="3">Sl. No</th>  
+      <th rowspan="3">Batch No</th>
+      <th rowspan="3">pH 7.75 – 8.0</th>
+      <th rowspan="3">L Limit</th>
+      <th rowspan="3">U Limit</th>
+      <th rowspan="3">Unreacted TCA Stage – II by HPLC NMT 0.5 %</th>
+      <th rowspan="3">pH 5.0 – 6.0</th>
+      <th rowspan="3">L Limit</th>
+      <th rowspan="3">U Limit</th>     
+      <th class="text-center" rowspan="1" colspan="5">Composite</th>
+    </tr>
+    <tr>
+          <th>Chromatographic purity in area % by HPLC Purity NLT 98.0 %</th>
+          <th>Limit</th>
+        </tr>
+  </thead>
+  <!-- <tbody>
+    <% if (product.trendingOIPIPS3 && Array.isArray(product.trendingOIPIPS3)) { %>
+    <% product.trendingOIPIPS3.forEach((item,i) => { %>
+    <tr>
+      <td><%= item.Sl_No || i+1 %></td>
+      <td><%= item.batchNo %></td>
+      <td><%= item.limit %></td>
+      <td><%= item.limit %></td>
+      <td><%= item.unreactedTriamcilone %></td>
+      <td><%= item.limit2 %></td>
+      <td><%= item.purityForInformation %></td>
+      <td><%= item.pH6 %></td>
+      <td><%= item.lLimit %></td>
+      <td><%= item.uLimit %></td>
+      <td><%= item.pH67 %></td>
+      <td><%= item.lLimit2 %></td>
+          <td><%= item.uLimit2 %></td>
+          <td><%= item.composite.purityByHPLC %></td>          
+          <td><%= item.composite.limit1 %></td>          
+          <td><%= item.composite.unreactedTca %></td>          
+          <td><%= item.composite.limit2 %></td>          
+        </tr>
+    <% }); %>
+    <% } else { %>
+      <tr>
+        <td colspan="8">No data available</td>
+      </tr>
+    <% } %>
+  </tbody> -->
+</table>
+
+<!--Trending of In-process & Intermediate Parameter of U3TCAg - Stage-IV
+-->
+<h3>Trending of In-process & Intermediate Parameter of U3TCAg - Stage-IV
+</h3>
+<table>
+  <thead>
+    <tr style="text-transform: uppercase;">
+      <th rowspan="3">Sl. No</th>  
+      <th rowspan="3">Batch No</th>
+      <th rowspan="3">Water content NMT 1.0 % w/w</th>
+      <th rowspan="3">Limit</th>
+      <th rowspan="1" colspan="15">Composite</th>
+    </tr>
+    <tr>
+      <th colspan="1" rowspan="2">Water content NMT 1.0 % w/w</th>
+      <th colspan="1" rowspan="2">Limit</th>
+      <th colspan="1" rowspan="2">Loss on drying NMT 1.0 % w/w</th>
+      <th colspan="1" rowspan="2">Limit</th>
+      <th colspan="11" rowspan="1">Related Substances by HPLC</th>
+        </tr>
+        <tr>
+          <th>Impurity K NMT 0.25%</th>
+          <th>Limit</th>
+          <th>Impurity H NMT 0.15%</th>
+          <th>Impurity D NMT 0.15%</th>
+          <th>Limit</th>
+          <th>Impurity I NMT 0.15%</th>
+          <th>Unknown Impurity NMT 0.15%</th>
+          <th>Limit</th>
+          <th>Total Impurities NMT 0.50%</th>
+          <th>Limit</th>
+          <th>Drying Hours</th>
+        </tr>
+  </thead>
+  <tbody>
+    <% if (product.trendingOIPIPS4 && Array.isArray(product.trendingOIPIPS4)) { %>
+    <% product.trendingOIPIPS4.forEach((item,i) => { %>
+    <tr>
+      <td><%= item.Sl_No || i+1 %></td>
+      <td><%= item.batchNo %></td>
+      <td><%= item.waterContent %></td>
+      <td><%= item.limit %></td>
+      <td><%= item.composite.waterContentNMT %></td>
+      <td><%= item.composite.limit %></td>
+      <td><%= item.composite.lossOnDrying %></td>
+      <td><%= item.composite.limitLoss %></td>
+      <td><%= item.composite.relatedSubstanceByHPLC.impurityKNMT %></td>
+      <td><%= item.composite.relatedSubstanceByHPLC.limitNMT %></td>
+      <td><%= item.composite.relatedSubstanceByHPLC.impurityHNMT %></td>
+      <td><%= item.composite.relatedSubstanceByHPLC.impurityDNMT %></td>
+      <td><%= item.composite.relatedSubstanceByHPLC.limitDNMT %></td>
+      <td><%= item.composite.relatedSubstanceByHPLC.impurityINMT %></td>
+      <td><%= item.composite.relatedSubstanceByHPLC.unknownImpurity %></td>
+      <td><%= item.composite.relatedSubstanceByHPLC.limitUnknown %></td>
+      <td><%= item.composite.relatedSubstanceByHPLC.totalimpuriritie %></td>
+      <td><%= item.composite.relatedSubstanceByHPLC.limitTotal %></td>
+      <td><%= item.composite.relatedSubstanceByHPLC.dryingHours %></td>
+    </tr>
+    <% }); %>
+    <% } else { %>
+      <tr>
+        <td colspan="8">No data available</td>
+      </tr>
+    <% } %>
+  </tbody>
+</table>
+
+<!--Trending of In-process & Intermediate Parameter of U3TCAg - Stage-V
+-->
+<h3>Trending of In-process & Intermediate Parameter of U3TCAg - Stage-V
+</h3>
+<table>
+  <thead>
+    <tr style="text-transform: uppercase;">
+      <th rowspan="3">Sl. No</th>  
+      <th rowspan="3">Batch No</th>
+      <th rowspan="3">Water content NMT 1.0 % w/w</th>
+      <th rowspan="3">Limit</th>
+      <th rowspan="1" colspan="15">Composite</th>
+    </tr>
+    <tr>
+      <th colspan="1" rowspan="2">Loss on drying NMT 1.0 % w/w</th>
+      <th colspan="10">Chromatographic purity by HPLC as per USP</th>
+        </tr>
+        <tr>
+        <th>Limit</th>
+        <th>Impurity K NMT 0.25%</th>
+        <th>Limit</th>
+        <th>Impurity H NMT 0.10%</th>
+        <th>Impurity D NMT 0.10%</th>
+        <th>Impurity I NMT 0.10%</th>
+        <th>Unspecified Impurities NMT 0.10%</th>
+        <th>Limit</th>
+        <th>Total Impurities NMT 0.5%</th>
+        <th>Limit</th>  
+        </tr>
+  </thead>
+  <tbody>
+    <% if (product.trendingOIPIPS5 && Array.isArray(product.trendingOIPIPS5)) { %>
+    <% product.trendingOIPIPS5.forEach((item,i) => { %>
+    <tr>
+      <td><%= item.Sl_No || i+1 %></td>
+      <td><%= item.batchNo %></td>
+      <td><%= item.lossOfDrying %></td>
+      <td><%= item.limit %></td>
+      <td><%= item.composite.lossOfDrying %></td>
+      <td><%= item.composite.chromatographicPurity.limit %></td>
+      <td><%= item.composite.chromatographicPurity.impurityKNMT %></td>
+      <td><%= item.composite.chromatographicPurity.limitKNMT %></td>
+      <td><%= item.composite.chromatographicPurity.impurityOfHNMT %></td>
+      <td><%= item.composite.chromatographicPurity.impurityDNMT %></td>
+      <td><%= item.composite.chromatographicPurity.impurityINMT %></td>
+      <td><%= item.composite.chromatographicPurity.impurityNMT %></td>
+      <td><%= item.composite.chromatographicPurity.limitNMT %></td>
+      <td><%= item.composite.chromatographicPurity.totalImpurityNMT %></td>
+      <td><%= item.composite.chromatographicPurity.limitTNMT %></td>   
+    </tr>
+    <% }); %>
+    <% } else { %>
+      <tr>
+        <td colspan="8">No data available</td>
+      </tr>
+    <% } %>
+  </tbody>
+</table>
+
+<!-- Tab 15 -->
+<h1>Finished Product Analytical Trend</h1>
+
+<!--Finished Product Analytical Trend as per USP
+-->
+<h3>Finished Product Analytical Trend as per USP
+</h3>
+<table>
+  <thead>
+    <tr>
+      <th rowspan="2">S. No.</th>
+      <th rowspan="2">Batch No.</th>
+      <th rowspan="2">Specific Rotation b/w +118° and +130° </th>
+      <th rowspan="2">L Limit</th>
+      <th rowspan="2">U Limit</th>
+      <th rowspan="2">Loss on Drying NMT 1.5 % w/w</th>
+      <th colspan="11">Chromatographic purity by HPLC as per USP</th>
+      <th rowspan="2">Assay (By HPLC) b/w 97.0 % and 102.0 % w/w </th>
+      <th rowspan="2">L Limit</th>
+      <th rowspan="2">U Limit</th>
+      <th colspan="4">Residual solvent By GC</th>
+      <th colspan="4">Particle Size</th>
+    </tr>
+    <tr>
+      <th>Limit</th>
+        <th>Impurity K NMT 0.25%</th>
+        <th>Limit</th>
+        <th>Impurity H NMT 0.10%</th>
+        <th>Impurity D NMT 0.10%</th>
+        <th>Limit</th>
+        <th>Impurity I NMT 0.10%</th>
+        <th>Unspecified Impurities NMT 0.10%</th>
+        <th>Limit</th>
+        <th>Total Impurities NMT 0.5%</th>
+        <th>Limit</th>
+        <th>Methanol NMT 1500 ppm</th>
+        <th>Acetone NMT 2000 ppm</th>
+        <th>Methylene chloride NMT 400 ppm</th>
+        <th>Limit</th>
+        <th>90%  &lt; 10 μm</th>
+        <th>Limit</th>
+        <th>99.5% &lt; 20 μm</th>
+        <th>Limit</th>
+      </tr>
+      </thead>
+  <tbody>
+    <% if (product.finishedPATUSP && Array.isArray(product.finishedPATUSP)) { %>
+    <% product.finishedPATUSP.forEach((item,i) => { %>
+    <tr>
+      <td><%= item.Sl_No || i+1 %></td>
+      <td><%= item.batchNo %></td>
+      <td><%= item.specificRotation %></td>
+      <td><%= item.lLimit %></td>
+      <td><%= item.uLimit %></td>
+      <td><%= item.lossOnDrying %></td>
+      <td><%= item.chromatographicPurity.limit %></td>
+      <td><%= item.chromatographicPurity.impurityK %></td>
+      <td><%= item.chromatographicPurity.impurityKLimit %></td>
+      <td><%= item.chromatographicPurity.impurityH %></td>
+      <td><%= item.chromatographicPurity.impurityD %></td>
+      <td><%= item.chromatographicPurity.impurityDLimit %></td>
+      <td><%= item.chromatographicPurity.impurityI %></td>
+      <td><%= item.chromatographicPurity.unspecifiedImpurities %></td>
+      <td><%= item.chromatographicPurity.unspecifiedImpuritiesLimit %></td>
+      <td><%= item.chromatographicPurity.totalImpurities %></td>
+      <td><%= item.chromatographicPurity.totalImpuritiesLimit %></td>
+      <td><%= item.assayByHPLC %></td>
+      <td><%= item.assayLLimit %></td>
+      <td><%= item.assayULimit %></td>
+      <td><%= item.residualSolventByGC.methanol %></td>
+      <td><%= item.residualSolventByGC.acetone %></td>
+      <td><%= item.residualSolventByGC.methyleneChloride %></td>
+      <td><%= item.residualSolventByGC.residualSolventLimit %></td>
+      <td><%= item.particleSize.percent90LT10um %></td>
+      <td><%= item.particleSize.percent90LT10umLimit %></td>
+      <td><%= item.particleSize.percent995LT20um %></td>
+      <td><%= item.particleSize.percent995LT20umLimit %></td>
+    </tr>
+    <% }); %>
+    <% } else { %>
+      <tr>
+        <td colspan="8">No data available</td>
+      </tr>
+    <% } %>
+  </tbody>
+</table>
+
+<!--Finished Product Analytical Trend As per PhEur Specification (Micronised)
+-->
+<h3>Finished Product Analytical Trend As per PhEur Specification (Micronised)
+</h3>
+<table>
+  <thead>
+    <tr>
+      <th rowspan="2">S. No.</th>
+      <th rowspan="2">Batch No.</th>
+      <th rowspan="2">Specific Rotation b/w +110° and +117° </th>
+      <th rowspan="2">L Limit</th>
+      <th rowspan="2">U Limit</th>
+      <th colspan="8">Related substence (by HPLC) as per PhEur 11.0</th>
+      <th rowspan="2">Water (By KF) NMT 2.0 % w/w</th>
+      <th rowspan="2">Limit</th>
+      <th rowspan="2">Assay (By HPLC) b/w 97.5 % and 102.0 % w/w</th>
+      <th rowspan="2">Limit</th>
+      <th colspan="4">Residual solvent By GC</th>
+      <th colspan="4">Particle Size Malvern (By Dry Method)</th>
+    </tr>
+    <tr>
+      <th>Impurity B NMT 0.2%</th>
+        <th>Limit</th>
+        <th>Impurity C NMT 0.15%</th>
+        <th>Limit</th>
+        <th>Unspecified Impurities NMT 0.10%</th>
+        <th>Limit</th>
+        <th>Total Impurities NMT 0.5%</th>
+        <th>Limit</th>
+        <th>Methylene chloride NMT 400 ppm</th>
+        <th>Methanol NMT 1500 ppm</th>
+        <th>Acetone NMT 2000 ppm</th>
+        <th>Limit</th>
+        <th>90%  &lt; 10 μm</th>
+        <th>Limit</th>
+        <th>99.5% &lt; 20 μm</th>
+        <th>Limit</th>
+      </tr>
+    </thead>
+  <tbody>
+    <% if (product.finishedPHEUR && Array.isArray(product.finishedPHEUR)) { %>
+    <% product.finishedPHEUR.forEach((item,i) => { %>
+    <tr>
+      <td><%= item.Sl_No || i+1 %></td>
+      <td><%= item.batchNo %></td>
+      <td><%= item.specificRotation %></td>
+      <td><%= item.lLimit %></td>
+      <td><%= item.uLimit %></td>
+      <td><%= item.relatedSubstanceHPLC.impurityB %></td>
+      <td><%= item.relatedSubstanceHPLC.impurityBLimit %></td>
+      <td><%= item.relatedSubstanceHPLC.impurityC %></td>
+      <td><%= item.relatedSubstanceHPLC.impurityCLimit %></td>
+      <td><%= item.relatedSubstanceHPLC.unspecifiedImpurities %></td>
+      <td><%= item.relatedSubstanceHPLC.unspecifiedImpuritiesLimit %></td>
+      <td><%= item.relatedSubstanceHPLC.totalImpurities %></td>
+      <td><%= item.relatedSubstanceHPLC.totalImpuritiesLimit %></td>
+      <td><%= item.waterKF %></td>
+      <td><%= item.waterKFLimit %></td>
+      <td><%= item.assay %></td>
+      <td><%= item.assayLimit %></td>
+      <td><%= item.residualSolventByCG.methyleneChloride %></td>
+      <td><%= item.residualSolventByCG.methanol %></td>
+      <td><%= item.residualSolventByCG.acetone %></td>
+      <td><%= item.residualSolventByCG.residualSolventLimit %></td>
+      <td><%= item.particleSizeMalvern.particleSize90 %></td>
+      <td><%= item.particleSizeMalvern.particleSize90Limit %></td>
+      <td><%= item.particleSizeMalvern.particleSize995 %></td>
+      <td><%= item.particleSizeMalvern.particleSize995Limit %></td>     
+    </tr>
+    <% }); %>
+    <% } else { %>
+      <tr>
+        <td colspan="8">No data available</td>
+      </tr>
+    <% } %>
+  </tbody>
+</table>
 
   </body>
 </html>

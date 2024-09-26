@@ -160,7 +160,8 @@ export const createApqr = async (req, res) => {
       "manufacturingSD",
       "bufferFSDPV",
       "oosDetails",
-      "capaDetails",
+      "currentCapaDetails",
+      "previousCapaDetails",
       "deviationDetails",
       "ootResults",
       "oolResults",
@@ -245,7 +246,7 @@ export const createApqr = async (req, res) => {
       "trendingOIPIPS4",
       "trendingOIPIPS5",
       "finishedPATUSP",
-      "finishedPHEUR"
+      "finishedPHEUR",
     ];
 
     const gridData = [];
@@ -358,7 +359,8 @@ export const getAPQRById = async (req, res) => {
       "manufacturingSD",
       "bufferFSDPV",
       "oosDetails",
-      "capaDetails",
+      "currentCapaDetails",
+      "previousCapaDetails",
       "deviationDetails",
       "ootResults",
       "oolResults",
@@ -433,7 +435,7 @@ export const getAPQRById = async (req, res) => {
       "yieldTOS3",
       "yieldTOS4",
       "yieldTOS5",
-      "trendingOCPPS1", 
+      "trendingOCPPS1",
       "trendingOCPPS2",
       "trendingOCPPS3",
       "trendingOCPPS4",
@@ -443,7 +445,7 @@ export const getAPQRById = async (req, res) => {
       "trendingOIPIPS4",
       "trendingOIPIPS5",
       "finishedPHEUR",
-      "finishedPATUSP"
+      "finishedPATUSP",
     ];
 
     for (let i = 0; i < grids.length; i++) {
@@ -620,7 +622,8 @@ export const updateAPQRById = async (req, res) => {
       "manufacturingSD",
       "bufferFSDPV",
       "oosDetails",
-      "capaDetails",
+      "currentCapaDetails",
+      "previousCapaDetails",
       "deviationDetails",
       "ootResults",
       "oolResults",
@@ -705,7 +708,7 @@ export const updateAPQRById = async (req, res) => {
       "trendingOIPIPS4",
       "trendingOIPIPS5",
       "finishedPATUSP",
-      "finishedPHEUR"
+      "finishedPHEUR",
     ];
 
     for (let i = 0; i < grids.length; i++) {
