@@ -15365,8 +15365,7 @@ const trendingOIPIPS5Data4=gridDatas?.trendingOIPIPS5.map((item)=>{
                           />
                         </td>
                         <td>
-                          <input
-                            type="file"
+                        <input
                             value={item.targetClosedOnDate}
                             onChange={(e) => {
                               const newData = [...gridDatas.currentCapaDetails];
