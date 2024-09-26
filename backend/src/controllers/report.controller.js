@@ -159,6 +159,20 @@ const setapqrdata = (aPQRDataOBJ) => {
 
   pqrData.dossierRR = gridDatas?.dossierRR?.data ?? [];
   pqrData.dossierRRNma = gridDatas?.dossierRRNma?.data ?? [];
+  pqrData.yieldTOS1 = gridDatas?.yieldTOS1?.data ?? [];
+  pqrData.yieldTOS2 = gridDatas?.yieldTOS2?.data ?? [];
+  pqrData.yieldTOS3 = gridDatas?.yieldTOS3?.data ?? [];
+  pqrData.yieldTOS4 = gridDatas?.yieldTOS4?.data ?? [];
+  pqrData.yieldTOS5 = gridDatas?.yieldTOS5?.data ?? [];
+  pqrData.trendingOCPPS1 = gridDatas?.trendingOCPPS1?.data ?? [];
+  pqrData.trendingOCPPS2 = gridDatas?.trendingOCPPS2?.data ?? [];
+  pqrData.trendingOCPPS3 = gridDatas?.trendingOCPPS3?.data ?? [];
+  pqrData.trendingOCPPS4 = gridDatas?.trendingOCPPS4?.data ?? [];
+  pqrData.trendingOIPIPS1 = gridDatas?.trendingOIPIPS1?.data ?? [];
+  pqrData.trendingOIPIPS2 = gridDatas?.trendingOIPIPS2?.data ?? [];
+  pqrData.trendingOIPIPS3 = gridDatas?.trendingOIPIPS3?.data ?? [];
+  pqrData.trendingOIPIPS4 = gridDatas?.trendingOIPIPS4?.data ?? [];
+  pqrData.trendingOIPIPS5 = gridDatas?.trendingOIPIPS5?.data ?? [];
 
   //Tiny
   pqrData.msaSummary = tinyData?.tiny1 ?? "";
@@ -407,7 +421,7 @@ export const generatePdfbyId = async (req, res) => {
     await page.setContent(htmlContent, { waitUntil: "networkidle0" });
 
     const pdfBuffer = await page.pdf({
-      format: "A4",
+      format: "A2",
       printBackground: true,
       displayHeaderFooter: true,
       headerTemplate: headerHtml,
@@ -428,7 +442,7 @@ export const generatePdfbyId = async (req, res) => {
     res.send(pdfBuffer);
   } catch (error) {
     console.error("Error generating PDF:", error);
-    res.status(500).send("Error generating PDF", error);
+    return res.status(500).send("Error generating PDF", error);
   } finally {
     if (browser) {
       await browser.close();

@@ -3154,5 +3154,481 @@
   <p><%= product.annexure20 %></p>
 </div>
 
+
+<!-- Tab 12 -->
+<h1>Yield Trend Of Stage</h1>
+
+<!--Yield Trend Of Stage-1-->
+<h3>Yield Trend Of Stage-1</h3>
+<table>
+  <thead>
+    <tr style="text-transform: uppercase;">
+      <th>Sl. No</th>
+      <th>Batch No</th>
+      <th>Mfg. Month</th>
+      <th>Actual Input in (50.000 Kg)</th>
+      <th>Actual Output in Expected Output Range (50.000 – 57.000Kg)</th>
+      <th>L Limit</th>
+      <th>U Limit</th>
+      <th>Yield %</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% if (product.yieldTOS1 && Array.isArray(product.yieldTOS1)) { %>
+    <% product.yieldTOS1.forEach((item,i) => { %>
+    <tr>
+      <td><%= item.Sl_No || i+1 %></td>
+      <td><%= item.batchNo %></td>
+      <td><%= item.mfgMonth %></td>
+      <td><%= item.actualInput %></td>
+      <td><%= item.actualOutput %></td>
+      <td><%= item.lLimit %></td>
+      <td><%= item.uLimit %></td>
+      <td><%= item.yield %></td>
+    </tr>
+    <% }); %>
+     <% } else { %>
+      <tr>
+        <td colspan="8">No data available</td>
+      </tr>
+    <% } %>
+  </tbody>
+</table>
+
+<!--Yield Trend Of Stage-2-->
+<h3>Yield Trend Of Stage-2</h3>
+<table>
+  <thead>
+    <tr style="text-transform: uppercase;">
+      <th>Sl. No</th>
+      <th>Batch No</th>
+      <th>Mfg. Month</th>
+      <th>Actual Input in (50.000 - 57.000 Kg)Kg</th>
+      <th>Actual Output in Expected Output Range (54.000 – 78.000Kg)</th>
+      <th>L Limit</th>
+      <th>U Limit</th>
+      <th>Yield %</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% if (product.yieldTOS2 && Array.isArray(product.yieldTOS2)) { %>
+    <% product.yieldTOS2.forEach((item,i) => { %>
+    <tr>
+      <td><%= item.Sl_No || i+1 %></td>
+      <td><%= item.batchNo %></td>
+      <td><%= item.mfgMonth %></td>
+      <td><%= item.actualInput %></td>
+      <td><%= item.actualOutput %></td>
+      <td><%= item.lLimit %></td>
+      <td><%= item.uLimit %></td>
+      <td><%= item.yield %></td>
+    </tr>
+    <% }); %>
+    <% } else { %>
+      <tr>
+        <td colspan="8">No data available</td>
+      </tr>
+    <% } %>
+  </tbody>
+</table>
+
+<!--Yield Trend Of Stage-3-->
+<h3>Yield Trend Of Stage-3</h3>
+<table>
+  <thead>
+    <tr style="text-transform: uppercase;">
+      <th>Sl. No</th>
+      <th>Batch No</th>
+      <th>Mfg. Month</th>
+      <th>Actual Input in (54.000 - 78.000 Kg)Kg</th>
+      <th>Actual Output in Expected Output Range (37.500 – 50.000Kg)</th>
+      <th>L Limit</th>
+      <th>U Limit</th>
+      <th>Yield %</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% if (product.yieldTOS3 && Array.isArray(product.yieldTOS3)) { %>
+    <% product.yieldTOS3.forEach((item,i) => { %>
+    <tr>
+      <td><%= item.Sl_No || i+1 %></td>
+      <td><%= item.batchNo %></td>
+      <td><%= item.mfgMonth %></td>
+      <td><%= item.actualInput %></td>
+      <td><%= item.actualOutput %></td>
+      <td><%= item.lLimit %></td>
+      <td><%= item.uLimit %></td>
+      <td><%= item.yield %></td>
+    </tr>
+    <% }); %>
+    <% } else { %>
+      <tr>
+        <td colspan="8">No data available</td>
+      </tr>
+    <% } %>
+  </tbody>
+</table>
+
+<!--Yield Trend Of Stage-4-->
+<h3>Yield Trend Of Stage-4</h3>
+<table>
+  <thead>
+    <tr style="text-transform: uppercase;">
+      <th>Sl. No</th>
+      <th>Batch No</th>
+      <th>Mfg. Month</th>
+      <th>Actual Input in (37.500 - 50.000 Kg)Kg</th>
+      <th>Actual Output in Expected Output Range (34.000 – 40.000Kg)</th>
+      <th>L Limit</th>
+      <th>U Limit</th>
+      <th>Yield %</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% if (product.yieldTOS4 && Array.isArray(product.yieldTOS4)) { %>
+    <% product.yieldTOS4.forEach((item,i) => { %>
+    <tr>
+      <td><%= item.Sl_No || i+1 %></td>
+      <td><%= item.batchNo %></td>
+      <td><%= item.mfgMonth %></td>
+      <td><%= item.actualInput %></td>
+      <td><%= item.actualOutput %></td>
+      <td><%= item.lLimit %></td>
+      <td><%= item.uLimit %></td>
+      <td><%= item.yield %></td>
+    </tr>
+    <% }); %>
+    <% } else { %>
+      <tr>
+        <td colspan="8">No data available</td>
+      </tr>
+    <% } %>
+  </tbody>
+</table>
+
+<!--Yield Trend Of Stage-5-->
+<h3>Yield Trend Of Stage-5</h3>
+<table>
+  <thead>
+    <tr style="text-transform: uppercase;">
+      <th>Sl. No</th>
+      <th>Batch No</th>
+      <th>Mfg. Month</th>
+      <th>Actual Input in (34.000 40.000 Kg)Kg</th>
+      <th>Actual Output in Expected Output Range (33.000 – 38.000Kg)</th>
+      <th>L Limit</th>
+      <th>U Limit</th>
+      <th>Yield %</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% if (product.yieldTOS5 && Array.isArray(product.yieldTOS5)) { %>
+    <% product.yieldTOS5.forEach((item,i) => { %>
+    <tr>
+      <td><%= item.Sl_No || i+1 %></td>
+      <td><%= item.batchNo %></td>
+      <td><%= item.mfgMonth %></td>
+      <td><%= item.actualInput %></td>
+      <td><%= item.actualOutput %></td>
+      <td><%= item.lLimit %></td>
+      <td><%= item.uLimit %></td>
+      <td><%= item.yield %></td>
+    </tr>
+    <% }); %>
+    <% } else { %>
+      <tr>
+        <td colspan="8">No data available</td>
+      </tr>
+    <% } %>
+  </tbody>
+</table>
+
+<!-- Tab 13 -->
+<h1>Trending of Critical Process Parameter</h1>
+
+<!--Trending of Critical Process Parameter: Stage - I
+-->
+<h3>Trending of Critical Process Parameter: Stage - I
+</h3>
+<table>
+  <thead>
+    <tr style="text-transform: uppercase;">
+      <th>Sl. No</th>
+      <th>Batch No</th>
+      <th>Critical Parameter: 01 Nitrogen gas purging should be carried out in advance in Acetonide formation reaction (part I)</th>
+      <th>Critical Parameter: 02 In Bromination reaction (part II), slow agitation is required during the reaction.</th>
+      <th>Critical Parameter: 03 Epoxydation reaction (part III) required Argon gas bubbling to remove oxygen content from the reaction mass.</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% if (product.trendingOCPPS1 && Array.isArray(product.trendingOCPPS1)) { %>
+    <% product.trendingOCPPS1.forEach((item,i) => { %>
+    <tr>
+      <td><%= item.Sl_No || i+1 %></td>
+      <td><%= item.batchNo %></td>
+      <td><%= item.criticalParameter1 %></td>
+      <td><%= item.criticalParameter2 %></td>
+      <td><%= item.criticalParameter3 %></td>
+    </tr>
+    <% }); %>
+    <% } else { %>
+      <tr>
+        <td colspan="8">No data available</td>
+      </tr>
+    <% } %>
+  </tbody>
+</table>
+
+<!--Trending of Critical Process Parameter: Stage - II
+-->
+<h3>Trending of Critical Process Parameter: Stage - II
+</h3>
+<table>
+  <thead>
+    <tr style="text-transform: uppercase;">
+      <th>Sl. No</th>
+      <th>Batch No</th>
+      <th>Critical Parameter: 01 Nitrogen gas purging should be carried out in advance in Acetonide formation reaction (part I) Critical Parameter: 01 During handling of Hydrofluoric Acid use necessary protective acid proof mask, dress and shoes.</th>
+      <th>Critical Parameter: 02 In Bromination reaction (part II), slow agitation is required during the reaction. Critical Parameter: 02 Addition of the material should be done portion wise during reaction. Std. Qty. in kg. ( 50.000 – 57.000)</th>
+      <th>Critical Parameter: 03 During addition of material, exothermicity appears, so control the temperature (-40°C) to (-30°C). Actual Temperature ºC (-40°C) to (-30°C)</th>
+      <th>Lower Limit</th>
+      <th>Upper Limit</th>
+      <th>Critical Parameter: 04 Temperature should be within specified range of (-20°C) to (-25°C) for timely completion of reaction and controlled impurity level. Actual Temperature ºC (-20°C) to (-25°C)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% if (product.trendingOCPPS2 && Array.isArray(product.trendingOCPPS2)) { %>
+    <% product.trendingOCPPS2.forEach((item,i) => { %>
+    <tr>
+      <td><%= item.Sl_No || i+1 %></td>
+      <td><%= item.batchNo %></td>
+      <td><%= item.criticalParameter1 %></td>
+      <td><%= item.criticalParameter2 %></td>
+      <td><%= item.criticalParameter3 %></td>
+      <td><%= item.lowerLimit %></td>
+      <td><%= item.upperLimit %></td>
+      <td><%= item.criticalParameter4 %></td>
+    </tr>
+    <% }); %>
+    <% } else { %>
+      <tr>
+        <td colspan="8">No data available</td>
+      </tr>
+    <% } %>
+  </tbody>
+</table>
+
+<!--Trending of Critical Process Parameter: Stage - III
+-->
+<h3>Trending of Critical Process Parameter: Stage - III
+</h3>
+<table>
+  <thead>
+    <tr style="text-transform: uppercase;">
+      <th rowspan="2">Sl. No</th>
+      <th rowspan="2">Batch No</th>
+      <th rowspan="2">Critical Parameter: 01 addition of Sodium Hydroxide and Methanol Solution in reaction mass, reaction mass and NaOH / Methanol solution both should be oxygen free by Argon bubbling.</th>
+      <th colspan="4">Critical Parameter: 02 : Adjust pH between 5.0-6.0 by adding adequate quantity of Glacial acetic acid.</th>
+    </tr>
+    <tr>
+          <th>Actual Qt. of Glacial Acetic acid</th>
+          <th>Actual pH (between 5.0 - 6.0)</th>
+          <th>Lower Limit</th>
+          <th>Upper Limit</th>
+        </tr>
+  </thead>
+  <tbody>
+    <% if (product.trendingOCPPS3 && Array.isArray(product.trendingOCPPS3)) { %>
+    <% product.trendingOCPPS3.forEach((item,i) => { %>
+    <tr>
+      <td><%= item.Sl_No || i+1 %></td>
+      <td><%= item.batchNo %></td>
+      <td><%= item.criticalParameter1 %></td>
+      <td><%= item.criticalParameter2.actualpH %></td>
+      <td><%= item.criticalParameter2.lowerLimit %></td>
+      <td><%= item.criticalParameter2.upperLimit %></td>
+      <td><%= item.criticalParameter2.actualQuantity %></td>
+    </tr>
+    <% }); %>
+     <% } else { %>
+      <tr>
+        <td colspan="8">No data available</td>
+      </tr>
+    <% } %>
+  </tbody>
+</table>
+
+<!--Trending of Critical Process Parameter: Stage - IV
+-->
+<h3>Trending of Critical Process Parameter: Stage - IV
+</h3>
+<table>
+  <thead>
+    <tr style="text-transform: uppercase;">
+      <th rowspan="2">Sl. No</th>
+      <th rowspan="2">Batch No</th>
+      <th class="text-center" colspan="4">Critical Parameter: 01 The reaction mass should be refluxed for 3-5 hour at temperature between 55 to 60° C.</th>
+      <th rowspan="2">Critical Parameter: 02 Crystallization of finished product should be at 0°C to 5°C. Actual Temperature °C (0°C to 5°C)</th>
+      <th rowspan="2">Lower Limit</th>
+      <th rowspan="2">Upper Limit</th>
+    </tr>
+    <tr>
+          <th>Actual Time (In hrs.)</th>
+          <th>Actual Temperature °C (55°C to 60°C)</th>
+          <th>Lower Limit</th>
+          <th>Upper Limit</th>
+        </tr>
+  </thead>
+  <tbody>
+    <% if (product.trendingOCPPS4 && Array.isArray(product.trendingOCPPS4)) { %>
+    <% product.trendingOCPPS4.forEach((item,i) => { %>
+    <tr>
+      <td><%= item.Sl_No || i+1 %></td>
+      <td><%= item.batchNo %></td>
+      <td><%= item.criticalParameter1.actualTime %></td>
+      <td><%= item.criticalParameter1.actualTemprature %></td>
+      <td><%= item.criticalParameter1.lowerLimit %></td>
+      <td><%= item.criticalParameter1.upperLimit %></td>
+      <td><%= item.criticalParameter2 %></td>
+      <td><%= item.lowerLimit %></td>
+      <td><%= item.upperLimit %></td>
+    </tr>
+    <% }); %>
+     <% } else { %>
+      <tr>
+        <td colspan="8">No data available</td>
+      </tr>
+    <% } %>
+  </tbody>
+</table>
+
+<!-- Tab 14 -->
+<h1>Trending of In-process & Intermediate Parameter</h1>
+
+<!--Trending of In-process & Intermediate Parameter of U3TCAg - Stage-I
+-->
+<h3>Trending of In-process & Intermediate Parameter of U3TCAg - Stage-I
+</h3>
+<table>
+  <thead>
+    <tr style="text-transform: uppercase;">
+      <th rowspan="3">Sl. No</th>  
+      <th rowspan="3">Batch No</th>
+      <th rowspan="3">Unreacted Diolone Acetate NMT 0.5 %</th>
+      <th rowspan="3">Limit</th>
+      <th rowspan="3">Chromatographic Purity (for information)</th>
+      <th rowspan="3">Unreacted TCA Step – I B NMT 0.5 %</th>
+      <th rowspan="3">Purity (for information)</th>
+      <th rowspan="3">pH 6.0 – 6.5</th>
+      <th rowspan="3">L Limit</th>
+      <th rowspan="3">U Limit</th>
+      <th rowspan="3">Water content NMT 1.0 % w/w</th>
+      <th rowspan="3">Limit</th>
+      <th class="text-center" rowspan="1" colspan="5">Composite</th>
+    </tr>
+    <tr>
+          <th colspan="1" rowspan="2">Water content NMT 1.0 % w/w</th>
+          <th rowspan="1" colspan="4">Chromatographic purity in area % by HPLC</th>          
+        </tr>
+        <tr>
+          <th>Limit</th>
+          <th>TCA stage – I NLT 93.0 %</th>
+          <th>Limit</th>
+          <th>Drying Hours</th>
+        </tr>
+
+  </thead>
+  <tbody>
+    <% if (product.trendingOIPIPS1 && Array.isArray(product.trendingOIPIPS1)) { %>
+    <% product.trendingOIPIPS1.forEach((item,i) => { %>
+    <tr>
+      <td><%= item.Sl_No || i+1 %></td>
+      <td><%= item.batchNo %></td>
+      <td><%= item.unreactedDiolone %></td>
+      <td><%= item.limit %></td>
+      <td><%= item.chromatographicPurity %></td>
+      <td><%= item.unreactedTCA %></td>
+      <td><%= item.purityForInformation %></td>
+      <td><%= item.pH6 %></td>
+      <td><%= item.lLimit %></td>
+      <td><%= item.uLimit %></td>
+      <td><%= item.waterContent %></td>
+      <td><%= item.wLimit %></td>
+          <td><%= item.composite.waterContentNmt %></td>
+          <td><%= item.composite.chromatographicPurity.limit %></td>          
+          <td><%= item.composite.chromatographicPurity.tCAStage %></td>          
+          <td><%= item.composite.chromatographicPurity.tLimit %></td>          
+          <td><%= item.composite.chromatographicPurity.dryingHours %></td>          
+        </tr>
+    <% }); %>
+    <% } else { %>
+      <tr>
+        <td colspan="8">No data available</td>
+      </tr>
+    <% } %>
+  </tbody>
+</table>
+
+<!--Trending of In-process & Intermediate Parameter of U3TCAg - Stage-II
+-->
+<h3>Trending of In-process & Intermediate Parameter of U3TCAg - Stage-II
+</h3>
+<table>
+  <thead>
+    <tr style="text-transform: uppercase;">
+      <th rowspan="2">Sl. No</th>  
+      <th rowspan="2">Batch No</th>
+      <th rowspan="2">Unreacted TCA Stage – I by HPLC NMT 0.5 %</th>
+      <th rowspan="2">Limit</th>
+      <th rowspan="2">Unreacted Triamcinolone acetate by HPLC NMT 2.5 %</th>
+      <th rowspan="2">Limit</th>
+      <th rowspan="2">Purity (for information)</th>
+      <th rowspan="2">pH 6.0 – 7.0</th>
+      <th rowspan="2">L Limit</th>
+      <th rowspan="2">U Limit</th>
+      <th rowspan="2">pH 6.0 – 7.0 (After ANFD)</th>
+      <th rowspan="2">L Limit</th>
+      <th rowspan="2">U Limit</th>
+      <th class="text-center" rowspan="1" colspan="4">Composite</th>
+    </tr>
+    <tr>
+          <th colspan="1" rowspan="1">Purity by HPLC NLT 85.0 %</th>
+          <th colspan="1" rowspan="1">Limit</th>
+          <th rowspan="1" colspan="1">Unreacted TCA stage – I NMT 0.5 %</th>          
+          <th colspan="1" rowspan="1">Limit</th>
+        </tr>
+  </thead>
+  <tbody>
+    <% if (product.trendingOIPIPS1 && Array.isArray(product.trendingOIPIPS1)) { %>
+    <% product.trendingOIPIPS1.forEach((item,i) => { %>
+    <tr>
+      <td><%= item.Sl_No || i+1 %></td>
+      <td><%= item.batchNo %></td>
+      <td><%= item.unreactedTCA %></td>
+      <td><%= item.limit %></td>
+      <td><%= item.unreactedTriamcilone %></td>
+      <td><%= item.limit2 %></td>
+      <td><%= item.purityForInformation %></td>
+      <td><%= item.pH6 %></td>
+      <td><%= item.lLimit %></td>
+      <td><%= item.uLimit %></td>
+      <td><%= item.pH67 %></td>
+      <td><%= item.lLimit2 %></td>
+          <td><%= item.uLimit2 %></td>
+          <td><%= item.composite.purityByHPLC %></td>          
+          <td><%= item.composite.limit1 %></td>          
+          <td><%= item.composite.unreactedTca %></td>          
+          <td><%= item.composite.limit2 %></td>          
+        </tr>
+    <% }); %>
+    <% } else { %>
+      <tr>
+        <td colspan="8">No data available</td>
+      </tr>
+    <% } %>
+  </tbody>
+</table>
+
+
   </body>
 </html>
