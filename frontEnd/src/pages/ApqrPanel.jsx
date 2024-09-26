@@ -20406,7 +20406,7 @@ const trendingOIPIPS5Data4=gridDatas?.trendingOIPIPS5.map((item)=>{
                 plotLines={TOIPIP_S02PlotLines}
                 // zones={paracetamolpHZones}
                 // annotations={paracetamolAnnotations}
-                highchartData={yieldTrendS1Data}
+                highchartData={trendingOIPIPS2Data}
               />
             </div>
 
@@ -20622,7 +20622,7 @@ const trendingOIPIPS5Data4=gridDatas?.trendingOIPIPS5.map((item)=>{
                 plotLines={TOIPIP_S03PlotLines}
                 // zones={paracetamolpHZones}
                 // annotations={paracetamolAnnotations}
-                highchartData={yieldTrendS1Data}
+                highchartData={trendingOIPIPS3Data}
               />
             </div>
 
