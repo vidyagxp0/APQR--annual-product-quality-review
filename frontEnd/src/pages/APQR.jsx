@@ -4195,6 +4195,11 @@ export default function APQR() {
             <h4 className="gridName">Batch Failures/Rejections Details </h4>
             <TinyEditor editorContent={tiny21} setEditorContent={setTinyContent} tinyNo={21} />
 
+                  
+                  
+
+
+
             <h4 className="gridName">OOS Details</h4>
             <div>
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
@@ -10013,15 +10018,7 @@ export default function APQR() {
                 </tbody>
               </table>
             </div>
-            {/* <div>
-              <h4 className="gridName mt-5">Summary</h4>
-              <TinyEditor
-                editorContent={tiny19}
-                setEditorContent={setTinyContent}
-                tinyNo={19}
-              />
-            </div> */}
-
+           
             <h4 className="gridName pt-4">Previous review of Capa details</h4>
             <div>
               <div className="AddRows d-flex w-full justify-between items-center text-3xl">
@@ -10130,14 +10127,7 @@ export default function APQR() {
                 </tbody>
               </table>
             </div>
-            {/* <div>
-              <h4 className="gridName mt-5">Summary</h4>
-              <TinyEditor
-                editorContent={tiny86}
-                setEditorContent={setTinyContent}
-                tinyNo={86}
-              />
-            </div> */}
+            
 
             <div className="sub-head">Review of OOT (Analytical)</div>
 
