@@ -1531,12 +1531,12 @@ const trendingOIPIPS5Data4=gridDatas?.trendingOIPIPS5.map((item)=>{
   const currentCapaDetailsRow = () => {
     const newRow = {
       ARNo: "",
-      capaType: "",
-      descriptionOfIssue: "",
-      rootCause: "",
-      capaVerification: "",
-      chooseFile: "",
-      remarks: "",
+      capaDateOfReporting: "",
+      capaNumber: "",
+      capaSourceAndNumber: "",
+      descriptionOfCapa: "",
+      closureStatus: "",
+      targetClosedOnDate: "",
     };
     setGridDatas({
       ...gridDatas,
@@ -1546,12 +1546,12 @@ const trendingOIPIPS5Data4=gridDatas?.trendingOIPIPS5.map((item)=>{
   const previousCapaDetailsRow = () => {
     const newRow = {
       ARNo: "",
-      capaType: "",
-      descriptionOfIssue: "",
-      rootCause: "",
-      capaVerification: "",
-      chooseFile: "",
-      remarks: "",
+      capaDateOfReporting: "",
+      capaNumber: "",
+      capaSourceAndNumber: "",
+      descriptionOfCapa: "",
+      closureStatus: "",
+      targetClosedOnDate: "",
     };
     setGridDatas({
       ...gridDatas,
@@ -15284,7 +15284,7 @@ const trendingOIPIPS5Data4=gridDatas?.trendingOIPIPS5.map((item)=>{
                   {gridDatas?.currentCapaDetails?.map((item, index) => {
                     return (
                       <tr key={index}>
-                        <td>
+                          <td>
                           <input
                             value={item.ARNo}
                             onChange={(e) => {
@@ -15299,10 +15299,10 @@ const trendingOIPIPS5Data4=gridDatas?.trendingOIPIPS5.map((item)=>{
                         </td>
                         <td>
                           <input
-                            value={item.capaType}
+                            value={item.capaDateOfReporting}
                             onChange={(e) => {
                               const newData = [...gridDatas.currentCapaDetails];
-                              newData[index].capaType = e.target.value;
+                              newData[index].capaDateOfReporting = e.target.value;
                               setGridDatas({
                                 ...gridDatas,
                                 currentCapaDetails: newData,
@@ -15312,10 +15312,23 @@ const trendingOIPIPS5Data4=gridDatas?.trendingOIPIPS5.map((item)=>{
                         </td>
                         <td>
                           <input
-                            value={item.descriptionOfIssue}
+                            value={item.capaNumber}
                             onChange={(e) => {
                               const newData = [...gridDatas.currentCapaDetails];
-                              newData[index].descriptionOfIssue =
+                              newData[index].capaNumber = e.target.value;
+                              setGridDatas({
+                                ...gridDatas,
+                                currentCapaDetails: newData,
+                              });
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.capaSourceAndNumber}
+                            onChange={(e) => {
+                              const newData = [...gridDatas.currentCapaDetails];
+                              newData[index].capaSourceAndNumber =
                                 e.target.value;
                               setGridDatas({
                                 ...gridDatas,
@@ -15326,23 +15339,10 @@ const trendingOIPIPS5Data4=gridDatas?.trendingOIPIPS5.map((item)=>{
                         </td>
                         <td>
                           <input
-                            value={item.rootCause}
+                            value={item.descriptionOfCapa}
                             onChange={(e) => {
                               const newData = [...gridDatas.currentCapaDetails];
-                              newData[index].rootCause = e.target.value;
-                              setGridDatas({
-                                ...gridDatas,
-                                currentCapaDetails: newData,
-                              });
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.capaVerification}
-                            onChange={(e) => {
-                              const newData = [...gridDatas.currentCapaDetails];
-                              newData[index].capaVerification = e.target.value;
+                              newData[index].descriptionOfCapa = e.target.value;
                               setGridDatas({
                                 ...gridDatas,
                                 currentCapaDetails: newData,
@@ -15353,10 +15353,10 @@ const trendingOIPIPS5Data4=gridDatas?.trendingOIPIPS5.map((item)=>{
                         <td>
                           <input
                             type="file"
-                            value={item.chooseFile}
+                            value={item.closureStatus}
                             onChange={(e) => {
                               const newData = [...gridDatas.currentCapaDetails];
-                              newData[index].chooseFile = e.target.value;
+                              newData[index].closureStatus = e.target.value;
                               setGridDatas({
                                 ...gridDatas,
                                 currentCapaDetails: newData,
@@ -15366,17 +15366,19 @@ const trendingOIPIPS5Data4=gridDatas?.trendingOIPIPS5.map((item)=>{
                         </td>
                         <td>
                           <input
-                            value={item.remarks}
+                            type="file"
+                            value={item.targetClosedOnDate}
                             onChange={(e) => {
                               const newData = [...gridDatas.currentCapaDetails];
-                              newData[index].remarks = e.target.value;
+                              newData[index].targetClosedOnDate = e.target.value;
                               setGridDatas({
                                 ...gridDatas,
                                 currentCapaDetails: newData,
                               });
                             }}
                           />
-                        </td>{" "}
+                        </td>
+                       
                       </tr>
                     );
                   })}
@@ -15436,10 +15438,10 @@ const trendingOIPIPS5Data4=gridDatas?.trendingOIPIPS5.map((item)=>{
                         </td>
                         <td>
                           <input
-                            value={item.capaType}
+                            value={item.capaDateOfReporting}
                             onChange={(e) => {
                               const newData = [...gridDatas.previousCapaDetails];
-                              newData[index].capaType = e.target.value;
+                              newData[index].capaDateOfReporting = e.target.value;
                               setGridDatas({
                                 ...gridDatas,
                                 previousCapaDetails: newData,
@@ -15449,10 +15451,10 @@ const trendingOIPIPS5Data4=gridDatas?.trendingOIPIPS5.map((item)=>{
                         </td>
                         <td>
                           <input
-                            value={item.descriptionOfIssue}
+                            value={item.capaNumber}
                             onChange={(e) => {
                               const newData = [...gridDatas.previousCapaDetails];
-                              newData[index].descriptionOfIssue =
+                              newData[index].capaNumber =
                                 e.target.value;
                               setGridDatas({
                                 ...gridDatas,
@@ -15463,10 +15465,10 @@ const trendingOIPIPS5Data4=gridDatas?.trendingOIPIPS5.map((item)=>{
                         </td>
                         <td>
                           <input
-                            value={item.rootCause}
+                            value={item.capaSourceAndNumber}
                             onChange={(e) => {
                               const newData = [...gridDatas.previousCapaDetails];
-                              newData[index].rootCause = e.target.value;
+                              newData[index].capaSourceAndNumber = e.target.value;
                               setGridDatas({
                                 ...gridDatas,
                                 previousCapaDetails: newData,
@@ -15476,10 +15478,10 @@ const trendingOIPIPS5Data4=gridDatas?.trendingOIPIPS5.map((item)=>{
                         </td>
                         <td>
                           <input
-                            value={item.capaVerification}
+                            value={item.descriptionOfCapa}
                             onChange={(e) => {
                               const newData = [...gridDatas.previousCapaDetails];
-                              newData[index].capaVerification = e.target.value;
+                              newData[index].descriptionOfCapa = e.target.value;
                               setGridDatas({
                                 ...gridDatas,
                                 previousCapaDetails: newData,
@@ -15490,10 +15492,10 @@ const trendingOIPIPS5Data4=gridDatas?.trendingOIPIPS5.map((item)=>{
                         <td>
                           <input
                             type="file"
-                            value={item.chooseFile}
+                            value={item.closureStatus}
                             onChange={(e) => {
                               const newData = [...gridDatas.previousCapaDetails];
-                              newData[index].chooseFile = e.target.value;
+                              newData[index].closureStatus = e.target.value;
                               setGridDatas({
                                 ...gridDatas,
                                 previousCapaDetails: newData,
@@ -15503,10 +15505,10 @@ const trendingOIPIPS5Data4=gridDatas?.trendingOIPIPS5.map((item)=>{
                         </td>
                         <td>
                           <input
-                            value={item.remarks}
+                            value={item.targetClosedOnDate}
                             onChange={(e) => {
                               const newData = [...gridDatas.previousCapaDetails];
-                              newData[index].remarks = e.target.value;
+                              newData[index].targetClosedOnDate = e.target.value;
                               setGridDatas({
                                 ...gridDatas,
                                 previousCapaDetails: newData,
