@@ -270,3 +270,36 @@ export const ooaResultsfields = [
   "diffrenceOfResult",
   "trendLimit",
 ];
+
+export const oolResultsheaders = [
+  "AR No.",
+  "Test Name Of OOT",
+  "Result Obtained",
+  "Initial Interval Details",
+  "Previous Interval Details",
+  "% Diffrence of Results",
+  "Trend Limit",
+];
+export const oolResultsfields = [
+  "ARNo",
+  "testNameOfOot",
+  "resultsObtained",
+  "initialIntervalDetails",
+  "previousIntervalDetails",
+  "diffrenceOfResult",
+  "trendLimit",
+];
+export const bufferFSDPVheaders = [
+  "Critical Process Parameter",
+  "Codes",
+  "Acceptance Criteria",
+  "Results",
+  "Complies Not Complies",
+];
+export const bufferFSDPVfields = [
+  "criticalProcessParameter",
+  "codes",
+  "acceptanceCriteria",
+  "results:{ minimum: '', maximum: '' }",
+  "compliesNotComplies",
+];

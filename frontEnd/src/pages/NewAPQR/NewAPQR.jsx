@@ -49,6 +49,12 @@ import {
   oosDetailsfields,
   ootResultsheaders,
   ootResultsfields,
+  reviewODSTRheaders,
+  reviewODSTRfields,
+  ooaResultsheaders,
+  ooaResultsfields,
+  oolResultsheaders,
+  oolResultsfields,
 } from "./NewApqrFunctions";
 import GridContainer from "../../Component/New_APQR/GridContainer";
 
@@ -88,18 +94,7 @@ export default function NewAPQR() {
   const [ootResults, setOotResults] = useState([]);
   const [oolResults, setOolResults] = useState([]);
   const [ooaResults, setOoaResults] = useState([]);
-  const [reviewODSTR, setReviewOSTR] = useState([
-    {
-      batchNo: "",
-      testsParameter: "",
-      LSL: "",
-      USL: "",
-      LCL: "",
-      UCL: "",
-      observedValue: "",
-      compliesNotComplies: "",
-    },
-  ]);
+  const [reviewODSTR, setReviewOSTR] = useState([]);
 
   const [reviewODSTR2, setReviewOSTR2] = useState([]);
   const [reviewODSTR3, setReviewOSTR3] = useState([]);
@@ -1033,27 +1028,52 @@ export default function NewAPQR() {
     };
     setBufferFSDPV([...bufferFSDPV, newRow]);
   };
-  const oolResultsRow = () => {
+  // const oolResultsRow = () => {
+  //   const newRow = {
+  //     ARNo: "",
+  //     testNameOfOot: "",
+  //     resultsObtained: "",
+  //     initialIntervalDetails: "",
+  //     previousIntervalDetails: "",
+  //     diffrenceOfResult: "",
+  //     trendLimit: "",
+  //   };
+  //   setOolResults([...oolResults, newRow]);
+  // };
+  // const ooaResultsRow = () => {
+  //   const newRow = {
+  //     testNameOfAlert: "",
+  //     resultsObtained: "",
+  //     specificationLimit: "",
+  //     detailsOfObviousError: "",
+  //     chooseFile: "",
+  //   };
+  //   setOoaResults([...ooaResults, newRow]);
+  // };
+
+  const addDossierRowNma = () => {
     const newRow = {
-      ARNo: "",
-      testNameOfOot: "",
-      resultsObtained: "",
-      initialIntervalDetails: "",
-      previousIntervalDetails: "",
-      diffrenceOfResult: "",
-      trendLimit: "",
+      countryName: "",
+      descriptionOfPacking: "",
+      dateOfApplication: "",
+      ststusOfApplication: "",
+      dateOfAuthorization: "",
+      remarks: "",
     };
-    setOolResults([...oolResults, newRow]);
+    setDossierRRNma([...dossierRRNma, newRow]);
   };
-  const ooaResultsRow = () => {
+  const addReviewODSTRRow = () => {
     const newRow = {
-      testNameOfAlert: "",
-      resultsObtained: "",
-      specificationLimit: "",
-      detailsOfObviousError: "",
-      chooseFile: "",
+      batchNo: "",
+      testsParameter: "",
+      LSL: "",
+      USL: "",
+      LCL: "",
+      UCL: "",
+      observedValue: "",
+      compliesNotComplies: "",
     };
-    setOoaResults([...ooaResults, newRow]);
+    setReviewOSTR([...reviewODSTR, newRow]);
   };
   const addReviewODSTRRow2 = () => {
     const newRow2 = {
@@ -1068,6 +1088,7 @@ export default function NewAPQR() {
     };
     setReviewOSTR2([...reviewODSTR2, newRow2]);
   };
+
   const addReviewODSTRRow3 = () => {
     const newRow3 = {
       batchNo: "",
@@ -1080,6 +1101,15 @@ export default function NewAPQR() {
       compliesNotComplies: "",
     };
     setReviewOSTR3([...reviewODSTR3, newRow3]);
+  };
+  const addDossierRow = () => {
+    const newRow = {
+      agency: "",
+      notificationNo: "",
+      notificationtype: "",
+      description: "",
+    };
+    setDossierRR([...dossierRR, newRow]);
   };
   const addReviewODSTRRow4 = () => {
     const newRow4 = {
@@ -2622,115 +2652,14 @@ export default function NewAPQR() {
             </div>
             <h4 className="gridName">OOA Results</h4>
             <div>
-              <div className="AddRows d-flex w-full justify-between items-center text-3xl mb-5">
-                <div className="flex items-center">
-                  <MdNoteAdd onClick={ooaResultsRow} />
-                  <div className="addrowinstruction  pl-2">
-                    Add Rows by clicking on (+) icon
-                  </div>
-                </div>
-                <div className="flex gap-4 ">
-                  <ExcelExportImport
-                    data={ooaResults}
-                    setimportedData={setimportedData}
-                    fileName="ooaResults.xlsx"
-                  />
-                </div>
-              </div>
-              <table className="mb-4">
-                <thead>
-                  <tr>
-                    <th>AR NO.</th>
-                    <th>Test name of Alert</th>
-                    <th>Result Obtained</th>
-                    <th>Initial Interval Details</th>
-                    <th>Previous Interval Details</th>
-                    <th>% Diffrence of Results</th>
-                    <th>Trend Limit</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {ooaResults?.map((item, index) => {
-                    return (
-                      <tr key={index}>
-                        <td>
-                          <input
-                            value={item.ARNo}
-                            onChange={(e) => {
-                              const newData = [...ooaResults];
-                              newData[index].ARNo = e.target.value;
-                              setOoaResults(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.testNameOfAlert}
-                            onChange={(e) => {
-                              const newData = [...ooaResults];
-                              newData[index].testNameOfAlert = e.target.value;
-                              setOoaResults(newData);
-                            }}
-                          />
-                        </td>
-
-                        <td>
-                          <input
-                            value={item.resultsObtained}
-                            onChange={(e) => {
-                              const newData = [...ooaResults];
-                              newData[index].resultsObtained = e.target.value;
-                              setOoaResults(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.initialIntervalDetails}
-                            onChange={(e) => {
-                              const newData = [...ooaResults];
-                              newData[index].initialIntervalDetails =
-                                e.target.value;
-                              setOoaResults(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.previousIntervalDetails}
-                            onChange={(e) => {
-                              const newData = [...ooaResults];
-                              newData[index].previousIntervalDetails =
-                                e.target.value;
-                              setOoaResults(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.diffrenceOfResult}
-                            onChange={(e) => {
-                              const newData = [...ooaResults];
-                              newData[index].diffrenceOfResult = e.target.value;
-                              setOoaResults(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.trendLimit}
-                            onChange={(e) => {
-                              const newData = [...ooaResults];
-                              newData[index].trendLimit = e.target.value;
-                              setOoaResults(newData);
-                            }}
-                          />
-                        </td>
-                      </tr>
-                    );
-                  })}
-                </tbody>
-              </table>
+              <GridContainer
+                data={ooaResults}
+                setData={setOoaResults}
+                setimportedData={setimportedData}
+                fileName="ooaResults.xlsx"
+                headers={ooaResultsheaders}
+                fields={ooaResultsfields}
+              />
             </div>
             <div>
               <h4 className="gridName mt-5">Summary</h4>
@@ -2742,114 +2671,14 @@ export default function NewAPQR() {
             </div>
             <h4 className="gridName">OOL Results</h4>
             <div>
-              <div className="AddRows d-flex w-full justify-between items-center text-3xl mb-5">
-                <div className="flex items-center">
-                  <MdNoteAdd onClick={oolResultsRow} />
-                  <div className="addrowinstruction  pl-2">
-                    Add Rows by clicking on (+) icon
-                  </div>
-                </div>
-                <div className="flex gap-4 ">
-                  <ExcelExportImport
-                    data={oolResults}
-                    setimportedData={setimportedData}
-                    fileName="oolResults.xlsx"
-                  />
-                </div>
-              </div>
-              <table className="mb-4">
-                <thead>
-                  <tr>
-                    <th>AR NO.</th>
-                    <th>Test name of OOT</th>
-                    <th>Result Obtained</th>
-                    <th>Initial Interval Details</th>
-                    <th>Previous Interval Details</th>
-                    <th>% Diffrence of Results</th>
-                    <th>Trend Limit</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {oolResults?.map((item, index) => {
-                    return (
-                      <tr key={index}>
-                        <td>
-                          <input
-                            value={item.ARNo}
-                            onChange={(e) => {
-                              const newData = [...oolResults];
-                              newData[index].ARNo = e.target.value;
-                              setOolResults(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.testNameOfOot}
-                            onChange={(e) => {
-                              const newData = [...oolResults];
-                              newData[index].testNameOfOot = e.target.value;
-                              setOolResults(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.resultsObtained}
-                            onChange={(e) => {
-                              const newData = [...oolResults];
-                              newData[index].resultsObtained = e.target.value;
-                              setOolResults(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.initialIntervalDetails}
-                            onChange={(e) => {
-                              const newData = [...oolResults];
-                              newData[index].initialIntervalDetails =
-                                e.target.value;
-                              setOolResults(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.previousIntervalDetails}
-                            onChange={(e) => {
-                              const newData = [...oolResults];
-                              newData[index].previousIntervalDetails =
-                                e.target.value;
-                              setOolResults(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.diffrenceOfResult}
-                            onChange={(e) => {
-                              const newData = [...oolResults];
-                              newData[index].diffrenceOfResult = e.target.value;
-                              setOolResults(newData);
-                            }}
-                          />
-                        </td>{" "}
-                        <td>
-                          <input
-                            value={item.trendLimit}
-                            onChange={(e) => {
-                              const newData = [...oolResults];
-                              newData[index].trendLimit = e.target.value;
-                              setOolResults(newData);
-                            }}
-                          />
-                        </td>
-                      </tr>
-                    );
-                  })}
-                </tbody>
-              </table>
+              <GridContainer
+                data={oolResults}
+                setData={setOolResults}
+                setimportedData={setimportedData}
+                fileName="oolResults.xlsx"
+                headers={oolResultsheaders}
+                fields={oolResultsfields}
+              />
             </div>
             <div>
               <h4 className="gridName mt-5">Summary</h4>
@@ -2869,6 +2698,7 @@ export default function NewAPQR() {
               Buffer formulation summary details provided below
             </h4>
             <div>
+              //Not Completed
               <div className="AddRows d-flex w-full justify-between items-center text-3xl mb-5">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addBufferFSDPVRow} />
