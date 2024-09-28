@@ -81,7 +81,43 @@ import {
   reviewODSTR15headers,
   summaryOOSSheaders,
   summaryOOSSfields,
+  stabilitySRfields,
+  stabilitySRheaders,
+  hVACQStatusheaders,
+  hVACQStatusfields,
+  setSanitizationASDOUheaders,
+  setSanitizationASDOUfields,
+  compressedGasheaders,
+  compressedGasfields,
+  reviewOfCPDfields,
+  reviewOfCPDheaders,
+  previewRPDheaders,
+  previewRPDfields,
+  currentOOSheaders,
+  currentOOSfields,
+  previewOOSheaders,
+  previewOOSfields,
+  currentOOACheaders,
+  currentOOACfields,
+  previewOOACheaders,
+  previewOOACfields,
+  currentOOALheaders,
+  currentOOALfields,
+  previewOOALheaders,
+  previewOOALfields,
+  currentOOSAheaders,
+  currentOOSAfields,
+  previewOOSAheaders,
+  previewOOSAfields,
+  currentOOTheaders,
+  currentOOTfields,
+  previewOOTheaders,
+  previewOOTfields,
+
+
+
 } from "./NewApqrFunctions";
+
 import GridContainer from "../../Component/New_APQR/GridContainer";
 
 export default function NewAPQR() {
@@ -149,17 +185,7 @@ export default function NewAPQR() {
   const [reviewODP9, setReviewODP9] = useState([]);
   const [reviewODP10, setReviewODP10] = useState([]);
   const [reviewODPFPTR, setReviewODPFPTR] = useState([]);
-  const [summaryOOSS, setSummaryOOSS] = useState([
-    // {
-    //   SlNo:"",
-    //   BatchNo:"",
-    //   Type:"",
-    //   StorageCondition:"",
-    // TestingIntervalsMonthscompleted:"",
-    // StabilityProtocolNo:""
-    
-    // }
-  ]);
+  const [summaryOOSS, setSummaryOOSS] = useState([]);
   const [stabilitySR, setStabilitySR] = useState([]);
   const [reviewOVIRS, setReviewOVIRS] = useState([]);
   const [hVACQStatus, setHVACQStatus] = useState([]);
@@ -1033,16 +1059,8 @@ export default function NewAPQR() {
   ]);
 
   useEffect(() => { }, [tiny1]);
-  // const addManufacturingStageRow = () => {
-  //   const newRow = {
-  //     productName: "",
-  //     SFGCode: "",
-  //     fGCode: "",
-  //   };
-  //   console.log(newRow);
-  //   setManufacturingStage([...manufacturingStage, newRow]);
-  //   console.log(...manufacturingStage);
-  // };
+
+  
 
   const addmanufacturingSDRow = () => {
     const newRow = {
@@ -5734,21 +5752,8 @@ export default function NewAPQR() {
             </div>
             <div className="sub-head">Summary of Ongoing Stability Studies</div>
             <div>
-              {/* <div className="AddRows d-flex w-full justify-between items-center text-3xl">
-                <div className="flex items-center">
-                  <MdNoteAdd onClick={addSummaryOOSSRow} />
-                  <div className="addrowinstruction  pl-2">
-                    Add Rows by clicking on (+) icon
-                  </div>
-                </div>
-                <div className="flex gap-4 ">
-                  <ExcelExportImport
-                    data={summaryOOSS}
-                    setimportedData={setimportedData}
-                    fileName="summaryOOSS.xlsx"
-                  />
-                </div>
-              </div> */}
+             
+             
               <GridContainer
                 setimportedData={setimportedData}
                 fileName="summaryOOSS.xlsx"
@@ -5757,78 +5762,8 @@ export default function NewAPQR() {
                 headers={summaryOOSSheaders}
                 fields={summaryOOSSfields}
               />
-              {/* <table>
-                <thead>
-                  <tr>
-                    <th>Sl. No.</th>
-                    <th>Batch No.</th>
-                    <th>Type</th>
-                    <th>Storage Condition</th>
-                    <th>Testing Intervals Months completed</th>
-                    <th>Stability Protocol No.</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {summaryOOSS.map((item, index) => {
-                    return (
-                      <tr key={index}>
-                        <td>{index + 1}</td>
-                        <td>
-                          <input
-                            value={item.batchNo}
-                            onChange={(e) => {
-                              const newData = [...summaryOOSS];
-                              newData[index].batchNo = e.target.value;
-                              setSummaryOOSS(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.type}
-                            onChange={(e) => {
-                              const newData = [...summaryOOSS];
-                              newData[index].type = e.target.value;
-                              setSummaryOOSS(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.storageCondition}
-                            onChange={(e) => {
-                              const newData = [...summaryOOSS];
-                              newData[index].storageCondition = e.target.value;
-                              setSummaryOOSS(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.testingInterval}
-                            onChange={(e) => {
-                              const newData = [...summaryOOSS];
-                              newData[index].testingInterval = e.target.value;
-                              setSummaryOOSS(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.stabilityProtocolNo}
-                            onChange={(e) => {
-                              const newData = [...summaryOOSS];
-                              newData[index].stabilityProtocolNo =
-                                e.target.value;
-                              setSummaryOOSS(newData);
-                            }}
-                          />
-                        </td>
-                      </tr>
-                    );
-                  })}
-                </tbody>
-              </table> */}
+
+
               <div>
                 <h4 className="gridName mt-5">Summary</h4>
                 <TinyEditor
@@ -5840,71 +5775,17 @@ export default function NewAPQR() {
 
               <h4 className="gridName pt-4">Stability Study Related OOS/OOT</h4>
 
-              <div className="AddRows d-flex w-full justify-between items-center text-3xl">
-                <div className="flex items-center">
-                  <MdNoteAdd onClick={addStabilitySRRow} />
-                  <div className="addrowinstruction  pl-2">
-                    Add Rows by clicking on (+) icon
-                  </div>
-                </div>
-                <div className="flex gap-4 ">
-                  <ExcelExportImport
-                    data={stabilitySR}
-                    setimportedData={setimportedData}
-                    fileName="stabilitySR.xlsx"
-                  />
-                </div>
-              </div>
-              <table>
-                <thead>
-                  <tr>
-                    <th>Sl. No.</th>
-                    <th>Batch number</th>
-                    <th>Testing Intervals Months</th>
-                    <th>OOS Number</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {stabilitySR.map((item, index) => {
-                    return (
-                      <tr key={index}>
-                        <td>{index + 1}</td>
-                        <td>
-                          <input
-                            value={item.batchNo}
-                            onChange={(e) => {
-                              const newData = [...stabilitySR];
-                              newData[index].batchNo = e.target.value;
-                              setStabilitySR(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.testingIntervalMonths}
-                            onChange={(e) => {
-                              const newData = [...stabilitySR];
-                              newData[index].testingIntervalMonths =
-                                e.target.value;
-                              setStabilitySR(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.OOSNumber}
-                            onChange={(e) => {
-                              const newData = [...stabilitySR];
-                              newData[index].OOSNumber = e.target.value;
-                              setStabilitySR(newData);
-                            }}
-                          />
-                        </td>
-                      </tr>
-                    );
-                  })}
-                </tbody>
-              </table>
+
+              <GridContainer
+                setimportedData={setimportedData}
+                fileName="stabilitySR.xlsx"
+                setData={setStabilitySR}
+                data={stabilitySR}
+                headers={stabilitySRheaders}
+                fields={stabilitySRfields}
+              />
+          
+          
 
               <h4 className="gridName">Summary</h4>
               <TinyEditor
@@ -5932,6 +5813,9 @@ export default function NewAPQR() {
                     />
                   </div>
                 </div>
+           
+         
+           
                 <table>
                   <thead>
                     <th className="text-center" colSpan={9}>
@@ -6098,73 +5982,19 @@ export default function NewAPQR() {
 
             <div className="sub-head">HVAC Qualification Status</div>
             <div>
-              <div className="AddRows d-flex w-full justify-between items-center text-3xl">
-                <div className="flex items-center">
-                  <MdNoteAdd onClick={addHVACQStatusRow} />
-                  <div className="addrowinstruction  pl-2">
-                    Add Rows by clicking on (+) icon
-                  </div>
-                </div>
-                <div className="flex gap-4 ">
-                  <ExcelExportImport
-                    data={hVACQStatus}
-                    setimportedData={setimportedData}
-                    fileName="hVACQStatus.xlsx"
-                  />
-                </div>
-              </div>
+           
+           
+                <GridContainer
+                setimportedData={setimportedData}
+                fileName="hVACQStatus.xlsx"
+                setData={setHVACQStatus}
+                data={hVACQStatus}
+                headers={hVACQStatusheaders}
+                fields={hVACQStatusfields}
+              />
              
-             
-              <table>
-                <thead>
-                  <tr>
-                    <th>Sl. No.</th>
-                    <th>Test Description</th>
-                    <th>Frequency</th>
-                    <th>Status</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {hVACQStatus.map((item, index) => {
-                    return (
-                      <tr key={index}>
-                        <td>{index + 1}</td>
-
-                        <td>
-                          <input
-                            value={item.testDescription}
-                            onChange={(e) => {
-                              const newData = [...hVACQStatus];
-                              newData[index].testDescription = e.target.value;
-                              setHVACQStatus(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.frequency}
-                            onChange={(e) => {
-                              const newData = [...hVACQStatus];
-                              newData[index].frequency = e.target.value;
-                              setHVACQStatus(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.status}
-                            onChange={(e) => {
-                              const newData = [...hVACQStatus];
-                              newData[index].status = e.target.value;
-                              setHVACQStatus(newData);
-                            }}
-                          />
-                        </td>
-                      </tr>
-                    );
-                  })}
-                </tbody>
-              </table>
+           
+           
             </div>
             <div>
               <h4 className="gridName mt-5">Summary</h4>
@@ -6179,70 +6009,19 @@ export default function NewAPQR() {
               Sanitization and Sterilization Details of Utilities
             </h4>
             <div>
-              <div className="AddRows d-flex w-full justify-between items-center text-3xl">
-                <div className="flex items-center">
-                  <MdNoteAdd onClick={addSanitizationASDOURow} />
-                  <div className="addrowinstruction  pl-2">
-                    Add Rows by clicking on (+) icon
-                  </div>
-                </div>
-                <div className="flex gap-4 ">
-                  <ExcelExportImport
-                    data={sanitizationASDOU}
-                    setimportedData={setimportedData}
-                    fileName="sanitizationASDOU.xlsx"
-                  />
-                </div>
-              </div>
-              <table>
-                <thead>
-                  <tr>
-                    <th>Sl. No.</th>
-                    <th>Equipment Name</th>
-                    <th>Frequency</th>
-                    <th>Status</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {sanitizationASDOU.map((item, index) => {
-                    return (
-                      <tr key={index}>
-                        <td>{index + 1}</td>
-                        <td>
-                          <input
-                            value={item.equipmentName}
-                            onChange={(e) => {
-                              const newData = [...sanitizationASDOU];
-                              newData[index].equipmentName = e.target.value;
-                              setSanitizationASDOU(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.frequency}
-                            onChange={(e) => {
-                              const newData = [...sanitizationASDOU];
-                              newData[index].frequency = e.target.value;
-                              setSanitizationASDOU(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.status}
-                            onChange={(e) => {
-                              const newData = [...sanitizationASDOU];
-                              newData[index].status = e.target.value;
-                              setSanitizationASDOU(newData);
-                            }}
-                          />
-                        </td>
-                      </tr>
-                    );
-                  })}
-                </tbody>
-              </table>
+           
+           
+
+              <GridContainer
+                setimportedData={setimportedData}
+                fileName="sanitizationASDOU.xlsx"
+                setData={setSanitizationASDOU}
+                data={sanitizationASDOU}
+                headers={setSanitizationASDOUheaders}
+                fields={setSanitizationASDOUfields}
+              />
+            
+            
             </div>
             <h4 className="gridName pt-4">Summary</h4>
             <TinyEditor
@@ -6253,82 +6032,18 @@ export default function NewAPQR() {
 
             <h4 className="gridName pt-4">Compressed Gases</h4>
             <div>
-              <div className="AddRows d-flex w-full justify-between items-center text-3xl">
-                <div className="flex items-center">
-                  <MdNoteAdd onClick={addCompressedGasesRow} />
-                  <div className="addrowinstruction  pl-2">
-                    Compressed gases testing performed as per the scheduled
-                    frequency and results were found to be satisfactory, system
-                    is in qualified state
-                  </div>
-                </div>
-                <div className="flex gap-4 ">
-                  <ExcelExportImport
-                    data={compressedGas}
-                    setimportedData={setimportedData}
-                    fileName="compressedGas.xlsx"
-                  />
-                </div>
-              </div>
-              <table>
-                <thead>
-                  <tr>
-                    <th>Sl. No.</th>
-                    <th>Compressed Gas</th>
-                    <th>Test </th>
-                    <th>Frequency</th>
-                    <th>Status</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {compressedGas.map((item, index) => {
-                    return (
-                      <tr key={index}>
-                        <td>{index + 1}</td>
-                        <td>
-                          <input
-                            onChange={(e) => {
-                              const newData = [...compressedGas];
-                              newData[index].compressedGas = e.target.value;
-                              setCompressedGas(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.test}
-                            onChange={(e) => {
-                              const newData = [...compressedGas];
-                              newData[index].test = e.target.value;
-                              setCompressedGas(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.frequency}
-                            onChange={(e) => {
-                              const newData = [...compressedGas];
-                              newData[index].frequency = e.target.value;
-                              setCompressedGas(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.status}
-                            onChange={(e) => {
-                              const newData = [...compressedGas];
-                              newData[index].status = e.target.value;
-                              setCompressedGas(newData);
-                            }}
-                          />
-                        </td>
-                      </tr>
-                    );
-                  })}
-                </tbody>
-              </table>
+              
+              
+              <GridContainer
+                setimportedData={setimportedData}
+                fileName="compressedGas.xlsx"
+                setData={setCompressedGas}
+                data={compressedGas}
+                headers={compressedGasheaders}
+                fields={compressedGasfields}
+              />
+          
+          
             </div>
             <h4 className="gridName pt-4">Engineering Summary</h4>
             <TinyEditor
@@ -6344,258 +6059,35 @@ export default function NewAPQR() {
 
             <div className="gridName">Review of Current Period Deviations</div>
             <div>
-              <div className="AddRows d-flex w-full justify-between items-center text-3xl">
-                <div className="flex items-center">
-                  <MdNoteAdd onClick={addReviewOfCPD} />
-                  <div className="addrowinstruction  pl-2">
-                    Add Rows by clicking on (+) icon
-                  </div>
-                </div>
-              </div>
-              <table>
-                <thead>
-                  <tr>
-                    <th>S.No</th>
-                    <th>Date Of Initiation</th>
-                    <th>Record No</th>
-                    <th>Site/Division</th>
-                    <th>Department</th>
-                    <th>Initiator</th>
-                    <th>Short Description</th>
-                    <th>Batch No</th>
-                    <th>Due Date</th>
-                    <th>Current Status</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {reviewOfCPD?.map((item, index) => {
-                    return (
-                      <tr key={index}>
-                        <td>{index + 1}</td>
-                        <td>
-                          <input
-                            value={item.dateOfInitiation}
-                            onChange={(e) => {
-                              const newData = [...reviewOfCPD];
-                              newData[index].dateOfInitiation = e.target.value;
-                              setReviewOFCPD(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.recordNo}
-                            onChange={(e) => {
-                              const newData = [...reviewOfCPD];
-                              newData[index].recordNo = e.target.value;
-                              setReviewOFCPD(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.siteDivision}
-                            onChange={(e) => {
-                              const newData = [...reviewOfCPD];
-                              newData[index].siteDivision = e.target.value;
-                              setReviewOFCPD(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.department}
-                            onChange={(e) => {
-                              const newData = [...reviewOfCPD];
-                              newData[index].department = e.target.value;
-                              setReviewOFCPD(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.initiator}
-                            onChange={(e) => {
-                              const newData = [...reviewOfCPD];
-                              newData[index].initiator = e.target.value;
-                              setReviewOFCPD(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.shortDescription}
-                            onChange={(e) => {
-                              const newData = [...reviewOfCPD];
-                              newData[index].shortDescription = e.target.value;
-                              setReviewOFCPD(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.batchNo}
-                            onChange={(e) => {
-                              const newData = [...reviewOfCPD];
-                              newData[index].batchNo = e.target.value;
-                              setReviewOFCPD(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.dueDate}
-                            onChange={(e) => {
-                              const newData = [...reviewOfCPD];
-                              newData[index].dueDate = e.target.value;
-                              setReviewOFCPD(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.currentStatus}
-                            onChange={(e) => {
-                              const newData = [...reviewOfCPD];
-                              newData[index].currentStatus = e.target.value;
-                              setReviewOFCPD(newData);
-                            }}
-                          />
-                        </td>
-                      </tr>
-                    );
-                  })}
-                </tbody>
-              </table>
+        
+        
+              <GridContainer
+                
+                MdNoteAddfun ={addReviewOfCPD}
+                setData={setReviewOFCPD}
+                data={reviewOfCPD}
+                headers={reviewOfCPDheaders}
+                fields={reviewOfCPDfields}
+              />
+          
+          
             </div>
 
             <div className="gridName pt-4">
               Previous Review Period Deviations
             </div>
             <div>
-              <div className="AddRows d-flex w-full justify-between items-center text-3xl">
-                <div className="flex items-center">
-                  <MdNoteAdd onClick={addPreviewRPD} />
-                  <div className="addrowinstruction  pl-2">
-                    Add Rows by clicking on (+) icon
-                  </div>
-                </div>
-              </div>
-              <table>
-                <thead>
-                  <tr>
-                    <th>S.No</th>
-                    <th>Date Of Initiation</th>
-                    <th>Record No</th>
-                    <th>Site/Division</th>
-                    <th>Department</th>
-                    <th>Initiator</th>
-                    <th>Short Description</th>
-                    <th>Batch No</th>
-                    <th>Due Date</th>
-                    <th>Current Status</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {previewRPD.map((item, index) => {
-                    return (
-                      <tr key={index}>
-                        <td>{index + 1}</td>
-                        <td>
-                          <input
-                            value={item.dateOfInitiation}
-                            onChange={(e) => {
-                              const newData = [...previewRPD];
-                              newData[index].dateOfInitiation = e.target.value;
-                              setPreviewRPD(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.recordNo}
-                            onChange={(e) => {
-                              const newData = [...previewRPD];
-                              newData[index].recordNo = e.target.value;
-                              setPreviewRPD(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.siteDivision}
-                            onChange={(e) => {
-                              const newData = [...previewRPD];
-                              newData[index].siteDivision = e.target.value;
-                              setPreviewRPD(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.department}
-                            onChange={(e) => {
-                              const newData = [...previewRPD];
-                              newData[index].department = e.target.value;
-                              setPreviewRPD(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.initiator}
-                            onChange={(e) => {
-                              const newData = [...previewRPD];
-                              newData[index].initiator = e.target.value;
-                              setPreviewRPD(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.shortDescription}
-                            onChange={(e) => {
-                              const newData = [...previewRPD];
-                              newData[index].shortDescription = e.target.value;
-                              setPreviewRPD(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.batchNo}
-                            onChange={(e) => {
-                              const newData = [...previewRPD];
-                              newData[index].batchNo = e.target.value;
-                              setPreviewRPD(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.dueDate}
-                            onChange={(e) => {
-                              const newData = [...previewRPD];
-                              newData[index].dueDate = e.target.value;
-                              setPreviewRPD(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.currentStatus}
-                            onChange={(e) => {
-                              const newData = [...previewRPD];
-                              newData[index].currentStatus = e.target.value;
-                              setPreviewRPD(newData);
-                            }}
-                          />
-                        </td>
-                      </tr>
-                    );
-                  })}
-                </tbody>
-              </table>
+          
+          
+              <GridContainer
+                MdNoteAddfun ={addPreviewRPD}
+                setData={setPreviewRPD}
+                data={previewRPD}
+                headers={previewRPDheaders}
+                fields={previewRPDfields}
+              />
+             
+             
             </div>
             <h4 className="gridName pt-4">Deviation Summary</h4>
             <TinyEditor
@@ -6609,259 +6101,37 @@ export default function NewAPQR() {
             <div className="gridName">Current Review Period OOS</div>
 
             <div>
-              <div className="AddRows d-flex w-full justify-between items-center text-3xl">
-                <div className="flex items-center">
-                  <MdNoteAdd onClick={addCurrentOOS} />
-                  <div className="addrowinstruction  pl-2">
-                    Add Rows by clicking on (+) icon
-                  </div>
-                </div>
-              </div>
-              <table>
-                <thead>
-                  <tr>
-                    <th>S.No</th>
-                    <th>Date Of Initiation</th>
-                    <th>Record No</th>
-                    <th>Site/Division</th>
-                    <th>Department</th>
-                    <th>Initiator</th>
-                    <th>Short Description</th>
-                    <th>Batch No</th>
-                    <th>Due Date</th>
-                    <th>Current Status</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {currentOOS.map((item, index) => {
-                    return (
-                      <tr key={index}>
-                        <td>{index + 1}</td>
-                        <td>
-                          <input
-                            value={item.dateOfInitiation}
-                            onChange={(e) => {
-                              const newData = [...currentOOS];
-                              newData[index].dateOfInitiation = e.target.value;
-                              setCurrentOOS(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.recordNo}
-                            onChange={(e) => {
-                              const newData = [...currentOOS];
-                              newData[index].recordNo = e.target.value;
-                              setCurrentOOS(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.siteDivision}
-                            onChange={(e) => {
-                              const newData = [...currentOOS];
-                              newData[index].siteDivision = e.target.value;
-                              setCurrentOOS(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.department}
-                            onChange={(e) => {
-                              const newData = [...currentOOS];
-                              newData[index].department = e.target.value;
-                              setCurrentOOS(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.initiator}
-                            onChange={(e) => {
-                              const newData = [...currentOOS];
-                              newData[index].initiator = e.target.value;
-                              setCurrentOOS(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.shortDescription}
-                            onChange={(e) => {
-                              const newData = [...currentOOS];
-                              newData[index].shortDescription = e.target.value;
-                              setCurrentOOS(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.batchNo}
-                            onChange={(e) => {
-                              const newData = [...currentOOS];
-                              newData[index].batchNo = e.target.value;
-                              setCurrentOOS(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.dueDate}
-                            onChange={(e) => {
-                              const newData = [...currentOOS];
-                              newData[index].dueDate = e.target.value;
-                              setCurrentOOS(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.currentStatus}
-                            onChange={(e) => {
-                              const newData = [...currentOOS];
-                              newData[index].currentStatus = e.target.value;
-                              setCurrentOOS(newData);
-                            }}
-                          />
-                        </td>
-                      </tr>
-                    );
-                  })}
-                </tbody>
-              </table>
+           
+           
+                   
+              <GridContainer
+                MdNoteAddfun ={addCurrentOOS}
+                setData={setCurrentOOS}
+                data={currentOOS}
+                headers={currentOOSheaders}
+                fields={currentOOSfields}
+              />
+
+            
+            
             </div>
 
             <div className="gridName pt-4">Previous Review Period OOS</div>
 
             <div>
-              <div className="AddRows d-flex w-full justify-between items-center text-3xl">
-                <div className="flex items-center">
-                  <MdNoteAdd onClick={addPreviewOOS} />
-                  <div className="addrowinstruction  pl-2">
-                    Add Rows by clicking on (+) icon
-                  </div>
-                </div>
-              </div>
-              <table>
-                <thead>
-                  <tr>
-                    <th>S.No</th>
-                    <th>Date Of Initiation</th>
-                    <th>Record No</th>
-                    <th>Site/Division</th>
-                    <th>Department</th>
-                    <th>Initiator</th>
-                    <th>Short Description</th>
-                    <th>Batch No</th>
-                    <th>Due Date</th>
-                    <th>Current Status</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {previewOOS.map((item, index) => {
-                    return (
-                      <tr key={index}>
-                        <td>{index + 1}</td>
-                        <td>
-                          <input
-                            value={item.dateOfInitiation}
-                            onChange={(e) => {
-                              const newData = [...previewOOS];
-                              newData[index].dateOfInitiation = e.target.value;
-                              setPreviewOOS(newData);
-                            }}
-                          />
-                        </td>
+           
+           
 
-                        <td>
-                          <input
-                            value={item.recordNo}
-                            onChange={(e) => {
-                              const newData = [...previewOOS];
-                              newData[index].recordNo = e.target.value;
-                              setPreviewOOS(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.siteDivision}
-                            onChange={(e) => {
-                              const newData = [...previewOOS];
-                              newData[index].siteDivision = e.target.value;
-                              setPreviewOOS(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.department}
-                            onChange={(e) => {
-                              const newData = [...previewOOS];
-                              newData[index].department = e.target.value;
-                              setPreviewOOS(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.initiator}
-                            onChange={(e) => {
-                              const newData = [...previewOOS];
-                              newData[index].initiator = e.target.value;
-                              setPreviewOOS(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.shortDescription}
-                            onChange={(e) => {
-                              const newData = [...previewOOS];
-                              newData[index].shortDescription = e.target.value;
-                              setPreviewOOS(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.batchNo}
-                            onChange={(e) => {
-                              const newData = [...previewOOS];
-                              newData[index].batchNo = e.target.value;
-                              setPreviewOOS(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.dueDate}
-                            onChange={(e) => {
-                              const newData = [...previewOOS];
-                              newData[index].dueDate = e.target.value;
-                              setPreviewOOS(newData);
-                            }}
-                          />
-                        </td>
+              <GridContainer
+                MdNoteAddfun ={addPreviewOOS}
+                setData={setPreviewOOS}
+                data={previewOOS}
+                headers={previewOOSheaders}
+                fields={previewOOSfields}
+              />
 
-                        <td>
-                          <input
-                            value={item.currentStatus}
-                            onChange={(e) => {
-                              const newData = [...previewOOS];
-                              newData[index].currentStatus = e.target.value;
-                              setPreviewOOS(newData);
-                            }}
-                          />
-                        </td>
-                      </tr>
-                    );
-                  })}
-                </tbody>
-              </table>
+             
+             
             </div>
             <h4 className="gridName pt-4">OOS Summary</h4>
             <TinyEditor
@@ -6875,259 +6145,36 @@ export default function NewAPQR() {
             <div className="gridName">Current Review Period OOAC</div>
 
             <div>
-              <div className="AddRows d-flex w-full justify-between items-center text-3xl">
-                <div className="flex items-center">
-                  <MdNoteAdd onClick={addCurrentOOAC} />
-                  <div className="addrowinstruction  pl-2">
-                    Add Rows by clicking on (+) icon
-                  </div>
-                </div>
-              </div>
-              <table>
-                <thead>
-                  <tr>
-                    <th>S.No</th>
-                    <th>Date Of Initiation</th>
-                    <th>Record No</th>
-                    <th>Site/Division</th>
-                    <th>Department</th>
-                    <th>Initiator</th>
-                    <th>Short Description</th>
-                    <th>Batch No</th>
-                    <th>Due Date</th>
-                    <th>Current Status</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {currentOOAC.map((item, index) => {
-                    return (
-                      <tr key={index}>
-                        <td>{index + 1}</td>
-                        <td>
-                          <input
-                            value={item.dateOfInitiation}
-                            onChange={(e) => {
-                              const newData = [...currentOOAC];
-                              newData[index].dateOfInitiation = e.target.value;
-                              setCurrentOOAC(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.recordNo}
-                            onChange={(e) => {
-                              const newData = [...currentOOAC];
-                              newData[index].recordNo = e.target.value;
-                              setCurrentOOAC(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.siteDivision}
-                            onChange={(e) => {
-                              const newData = [...currentOOAC];
-                              newData[index].siteDivision = e.target.value;
-                              setCurrentOOAC(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.department}
-                            onChange={(e) => {
-                              const newData = [...currentOOAC];
-                              newData[index].department = e.target.value;
-                              setCurrentOOAC(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.initiator}
-                            onChange={(e) => {
-                              const newData = [...currentOOAC];
-                              newData[index].initiator = e.target.value;
-                              setCurrentOOAC(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.shortDescription}
-                            onChange={(e) => {
-                              const newData = [...currentOOAC];
-                              newData[index].shortDescription = e.target.value;
-                              setCurrentOOAC(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.batchNo}
-                            onChange={(e) => {
-                              const newData = [...currentOOAC];
-                              newData[index].batchNo = e.target.value;
-                              setCurrentOOAC(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.dueDate}
-                            onChange={(e) => {
-                              const newData = [...currentOOAC];
-                              newData[index].dueDate = e.target.value;
-                              setCurrentOOAC(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.currentStatus}
-                            onChange={(e) => {
-                              const newData = [...currentOOAC];
-                              newData[index].currentStatus = e.target.value;
-                              setCurrentOOAC(newData);
-                            }}
-                          />
-                        </td>
-                      </tr>
-                    );
-                  })}
-                </tbody>
-              </table>
+         
+         
+              <GridContainer
+                MdNoteAddfun ={addCurrentOOAC}
+                setData={setCurrentOOAC}
+                data={currentOOAC}
+                headers={currentOOACheaders}
+                fields={currentOOACfields}
+              />
+
+            
+            
             </div>
 
             <div className="gridName pt-4">Previous Review Period OOAC</div>
 
             <div>
-              <div className="AddRows d-flex w-full justify-between items-center text-3xl">
-                <div className="flex items-center">
-                  <MdNoteAdd onClick={addPreviewOOAC} />
-                  <div className="addrowinstruction  pl-2">
-                    Add Rows by clicking on (+) icon
-                  </div>
-                </div>
-              </div>
-              <table>
-                <thead>
-                  <tr>
-                    <th>S.No</th>
-                    <th>Date Of Initiation</th>
-                    <th>Record No</th>
-                    <th>Site/Division</th>
-                    <th>Department</th>
-                    <th>Initiator</th>
-                    <th>Short Description</th>
-                    <th>Batch No</th>
-                    <th>Due Date</th>
-                    <th>Current Status</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {previewOOAC.map((item, index) => {
-                    return (
-                      <tr key={index}>
-                        <td>{index + 1}</td>
-                        <td>
-                          <input
-                            value={item.dateOfInitiation}
-                            onChange={(e) => {
-                              const newData = [...previewOOAC];
-                              newData[index].dateOfInitiation = e.target.value;
-                              setPreviewOOAC(newData);
-                            }}
-                          />
-                        </td>
-
-                        <td>
-                          <input
-                            value={item.recordNo}
-                            onChange={(e) => {
-                              const newData = [...previewOOAC];
-                              newData[index].recordNo = e.target.value;
-                              setPreviewOOAC(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.siteDivision}
-                            onChange={(e) => {
-                              const newData = [...previewOOAC];
-                              newData[index].siteDivision = e.target.value;
-                              setPreviewOOAC(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.department}
-                            onChange={(e) => {
-                              const newData = [...previewOOAC];
-                              newData[index].department = e.target.value;
-                              setPreviewOOAC(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.initiator}
-                            onChange={(e) => {
-                              const newData = [...previewOOAC];
-                              newData[index].initiator = e.target.value;
-                              setPreviewOOAC(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.shortDescription}
-                            onChange={(e) => {
-                              const newData = [...previewOOAC];
-                              newData[index].shortDescription = e.target.value;
-                              setPreviewOOAC(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.batchNo}
-                            onChange={(e) => {
-                              const newData = [...previewOOAC];
-                              newData[index].batchNo = e.target.value;
-                              setPreviewOOAC(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.dueDate}
-                            onChange={(e) => {
-                              const newData = [...previewOOAC];
-                              newData[index].dueDate = e.target.value;
-                              setPreviewOOAC(newData);
-                            }}
-                          />
-                        </td>
-
-                        <td>
-                          <input
-                            value={item.currentStatus}
-                            onChange={(e) => {
-                              const newData = [...previewOOAC];
-                              newData[index].currentStatus = e.target.value;
-                              setPreviewOOAC(newData);
-                            }}
-                          />
-                        </td>
-                      </tr>
-                    );
-                  })}
-                </tbody>
-              </table>
+          
+          
+       
+       
+              <GridContainer
+                MdNoteAddfun ={addPreviewOOAC}
+                setData={setPreviewOOAC}
+                data={previewOOAC}
+                headers={previewOOACheaders}
+                fields={previewOOACfields}
+              />
+            
+            
             </div>
             <h4 className="gridName pt-4">OOAC Summary</h4>
             <TinyEditor
@@ -7141,259 +6188,34 @@ export default function NewAPQR() {
             <div className="gridName">Current Review Period OOAL</div>
 
             <div>
-              <div className="AddRows d-flex w-full justify-between items-center text-3xl">
-                <div className="flex items-center">
-                  <MdNoteAdd onClick={addCurrentOOAL} />
-                  <div className="addrowinstruction  pl-2">
-                    Add Rows by clicking on (+) icon
-                  </div>
-                </div>
-              </div>
-              <table>
-                <thead>
-                  <tr>
-                    <th>S.No</th>
-                    <th>Date Of Initiation</th>
-                    <th>Record No</th>
-                    <th>Site/Division</th>
-                    <th>Department</th>
-                    <th>Initiator</th>
-                    <th>Short Description</th>
-                    <th>Batch No</th>
-                    <th>Due Date</th>
-                    <th>Current Status</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {currentOOAL?.map((item, index) => {
-                    return (
-                      <tr key={index}>
-                        <td>{index + 1}</td>
-                        <td>
-                          <input
-                            value={item.dateOfInitiation}
-                            onChange={(e) => {
-                              const newData = [...currentOOAL];
-                              newData[index].dateOfInitiation = e.target.value;
-                              setCurrentOOAL(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.recordNo}
-                            onChange={(e) => {
-                              const newData = [...currentOOAL];
-                              newData[index].recordNo = e.target.value;
-                              setCurrentOOAL(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.siteDivision}
-                            onChange={(e) => {
-                              const newData = [...currentOOAL];
-                              newData[index].siteDivision = e.target.value;
-                              setCurrentOOAL(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.department}
-                            onChange={(e) => {
-                              const newData = [...currentOOAL];
-                              newData[index].department = e.target.value;
-                              setCurrentOOAL(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.initiator}
-                            onChange={(e) => {
-                              const newData = [...currentOOAL];
-                              newData[index].initiator = e.target.value;
-                              setCurrentOOAL(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.shortDescription}
-                            onChange={(e) => {
-                              const newData = [...currentOOAL];
-                              newData[index].shortDescription = e.target.value;
-                              setCurrentOOAL(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.batchNo}
-                            onChange={(e) => {
-                              const newData = [...currentOOAL];
-                              newData[index].batchNo = e.target.value;
-                              setCurrentOOAL(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.dueDate}
-                            onChange={(e) => {
-                              const newData = [...currentOOAL];
-                              newData[index].dueDate = e.target.value;
-                              setCurrentOOAL(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.currentStatus}
-                            onChange={(e) => {
-                              const newData = [...currentOOAL];
-                              newData[index].currentStatus = e.target.value;
-                              setCurrentOOAL(newData);
-                            }}
-                          />
-                        </td>
-                      </tr>
-                    );
-                  })}
-                </tbody>
-              </table>
+            
+            
+              <GridContainer
+                MdNoteAddfun ={addCurrentOOAL}
+                setData={setCurrentOOAL}
+                data={currentOOAL}
+                headers={currentOOALheaders}
+                fields={currentOOALfields}
+              />
+          
+          
             </div>
 
             <div className="gridName pt-4">Previous Review Period OOAL</div>
 
             <div>
-              <div className="AddRows d-flex w-full justify-between items-center text-3xl">
-                <div className="flex items-center">
-                  <MdNoteAdd onClick={addPreviewOOAL} />
-                  <div className="addrowinstruction  pl-2">
-                    Add Rows by clicking on (+) icon
-                  </div>
-                </div>
-              </div>
-              <table>
-                <thead>
-                  <tr>
-                    <th>S.No</th>
-                    <th>Date Of Initiation</th>
-                    <th>Record No</th>
-                    <th>Site/Division</th>
-                    <th>Department</th>
-                    <th>Initiator</th>
-                    <th>Short Description</th>
-                    <th>Batch No</th>
-                    <th>Due Date</th>
-                    <th>Current Status</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {previewOOAL?.map((item, index) => {
-                    return (
-                      <tr key={index}>
-                        <td>{index + 1}</td>
-                        <td>
-                          <input
-                            value={item.dateOfInitiation}
-                            onChange={(e) => {
-                              const newData = [...previewOOAL];
-                              newData[index].dateOfInitiation = e.target.value;
-                              setPreviewOOAL(newData);
-                            }}
-                          />
-                        </td>
-
-                        <td>
-                          <input
-                            value={item.recordNo}
-                            onChange={(e) => {
-                              const newData = [...previewOOAL];
-                              newData[index].recordNo = e.target.value;
-                              setPreviewOOAL(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.siteDivision}
-                            onChange={(e) => {
-                              const newData = [...previewOOAL];
-                              newData[index].siteDivision = e.target.value;
-                              setPreviewOOAL(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.department}
-                            onChange={(e) => {
-                              const newData = [...previewOOAL];
-                              newData[index].department = e.target.value;
-                              setPreviewOOAL(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.initiator}
-                            onChange={(e) => {
-                              const newData = [...previewOOAL];
-                              newData[index].initiator = e.target.value;
-                              setPreviewOOAL(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.shortDescription}
-                            onChange={(e) => {
-                              const newData = [...previewOOAL];
-                              newData[index].shortDescription = e.target.value;
-                              setPreviewOOAL(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.batchNo}
-                            onChange={(e) => {
-                              const newData = [...previewOOAL];
-                              newData[index].batchNo = e.target.value;
-                              setPreviewOOAL(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.dueDate}
-                            onChange={(e) => {
-                              const newData = [...previewOOAL];
-                              newData[index].dueDate = e.target.value;
-                              setPreviewOOAL(newData);
-                            }}
-                          />
-                        </td>
-
-                        <td>
-                          <input
-                            value={item.currentStatus}
-                            onChange={(e) => {
-                              const newData = [...previewOOAL];
-                              newData[index].currentStatus = e.target.value;
-                              setPreviewOOAL(newData);
-                            }}
-                          />
-                        </td>
-                      </tr>
-                    );
-                  })}
-                </tbody>
-              </table>
+        
+        
+              
+              <GridContainer
+                MdNoteAddfun ={addPreviewOOAL}
+                setData={setPreviewOOAL}
+                data={previewOOAL}
+                headers={previewOOALheaders}
+                fields={previewOOALfields}
+              />
+           
+           
             </div>
             <h4 className="gridName pt-4">OOAL Summary</h4>
             <TinyEditor
@@ -7407,259 +6229,36 @@ export default function NewAPQR() {
             <div className="gridName">Current review period OOS</div>
 
             <div>
-              <div className="AddRows d-flex w-full justify-between items-center text-3xl">
-                <div className="flex items-center">
-                  <MdNoteAdd onClick={addCurrentOOSA} />
-                  <div className="addrowinstruction  pl-2">
-                    Add Rows by clicking on (+) icon
-                  </div>
-                </div>
-              </div>
-              <table>
-                <thead>
-                  <tr>
-                    <th>S.No</th>
-                    <th>Date Of Initiation</th>
-                    <th>Record No</th>
-                    <th>Site/Division</th>
-                    <th>Department</th>
-                    <th>Initiator</th>
-                    <th>Short Description</th>
-                    <th>Batch No</th>
-                    <th>Due Date</th>
-                    <th>Current Status</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {currentOOSA?.map((item, index) => {
-                    return (
-                      <tr key={index}>
-                        <td>{index + 1}</td>
-                        <td>
-                          <input
-                            value={item.dateOfInitiation}
-                            onChange={(e) => {
-                              const newData = [...currentOOSA];
-                              newData[index].dateOfInitiation = e.target.value;
-                              setCurrentOOSA(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.recordNo}
-                            onChange={(e) => {
-                              const newData = [...currentOOSA];
-                              newData[index].recordNo = e.target.value;
-                              setCurrentOOSA(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.siteDivision}
-                            onChange={(e) => {
-                              const newData = [...currentOOSA];
-                              newData[index].siteDivision = e.target.value;
-                              setCurrentOOSA(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.department}
-                            onChange={(e) => {
-                              const newData = [...currentOOSA];
-                              newData[index].department = e.target.value;
-                              setCurrentOOSA(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.initiator}
-                            onChange={(e) => {
-                              const newData = [...currentOOSA];
-                              newData[index].initiator = e.target.value;
-                              setCurrentOOSA(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.shortDescription}
-                            onChange={(e) => {
-                              const newData = [...currentOOSA];
-                              newData[index].shortDescription = e.target.value;
-                              setCurrentOOSA(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.batchNo}
-                            onChange={(e) => {
-                              const newData = [...currentOOSA];
-                              newData[index].batchNo = e.target.value;
-                              setCurrentOOSA(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.dueDate}
-                            onChange={(e) => {
-                              const newData = [...currentOOSA];
-                              newData[index].dueDate = e.target.value;
-                              setCurrentOOSA(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.currentStatus}
-                            onChange={(e) => {
-                              const newData = [...currentOOSA];
-                              newData[index].currentStatus = e.target.value;
-                              setCurrentOOSA(newData);
-                            }}
-                          />
-                        </td>
-                      </tr>
-                    );
-                  })}
-                </tbody>
-              </table>
+           
+           
+            
+              <GridContainer
+                MdNoteAddfun ={addCurrentOOSA}
+                setData={setCurrentOOSA}
+                data={currentOOSA}
+                headers={currentOOSAheaders}
+                fields={currentOOSAfields}
+              />
+             
+             
             </div>
 
             <div className="gridName pt-4">Previous review period OOS</div>
 
             <div>
-              <div className="AddRows d-flex w-full justify-between items-center text-3xl">
-                <div className="flex items-center">
-                  <MdNoteAdd onClick={addPreviewOOSA} />
-                  <div className="addrowinstruction  pl-2">
-                    Add Rows by clicking on (+) icon
-                  </div>
-                </div>
-              </div>
-              <table>
-                <thead>
-                  <tr>
-                    <th>S.No</th>
-                    <th>Date Of Initiation</th>
-                    <th>Record No</th>
-                    <th>Site/Division</th>
-                    <th>Department</th>
-                    <th>Initiator</th>
-                    <th>Short Description</th>
-                    <th>Batch No</th>
-                    <th>Due Date</th>
-                    <th>Current Status</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {previewOOSA?.map((item, index) => {
-                    return (
-                      <tr key={index}>
-                        <td>{index + 1}</td>
-                        <td>
-                          <input
-                            value={item.dateOfInitiation}
-                            onChange={(e) => {
-                              const newData = [...previewOOSA];
-                              newData[index].dateOfInitiation = e.target.value;
-                              setPreviewOOSA(newData);
-                            }}
-                          />
-                        </td>
-
-                        <td>
-                          <input
-                            value={item.recordNo}
-                            onChange={(e) => {
-                              const newData = [...previewOOSA];
-                              newData[index].recordNo = e.target.value;
-                              setPreviewOOSA(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.siteDivision}
-                            onChange={(e) => {
-                              const newData = [...previewOOSA];
-                              newData[index].siteDivision = e.target.value;
-                              setPreviewOOSA(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.department}
-                            onChange={(e) => {
-                              const newData = [...previewOOSA];
-                              newData[index].department = e.target.value;
-                              setPreviewOOSA(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.initiator}
-                            onChange={(e) => {
-                              const newData = [...previewOOSA];
-                              newData[index].initiator = e.target.value;
-                              setPreviewOOSA(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.shortDescription}
-                            onChange={(e) => {
-                              const newData = [...previewOOSA];
-                              newData[index].shortDescription = e.target.value;
-                              setPreviewOOSA(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.batchNo}
-                            onChange={(e) => {
-                              const newData = [...previewOOSA];
-                              newData[index].batchNo = e.target.value;
-                              setPreviewOOSA(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.dueDate}
-                            onChange={(e) => {
-                              const newData = [...previewOOSA];
-                              newData[index].dueDate = e.target.value;
-                              setPreviewOOSA(newData);
-                            }}
-                          />
-                        </td>
-
-                        <td>
-                          <input
-                            value={item.currentStatus}
-                            onChange={(e) => {
-                              const newData = [...previewOOSA];
-                              newData[index].currentStatus = e.target.value;
-                              setPreviewOOSA(newData);
-                            }}
-                          />
-                        </td>
-                      </tr>
-                    );
-                  })}
-                </tbody>
-              </table>
+          
+          
+           
+           
+              <GridContainer
+                MdNoteAddfun ={addPreviewOOSA}
+                setData={setPreviewOOSA}
+                data={previewOOSA}
+                headers={previewOOSAheaders}
+                fields={previewOOSAfields}
+              />
+             
+             
             </div>
             <h4 className="gridName pt-4">OOSA Summary</h4>
             <TinyEditor
@@ -7672,15 +6271,24 @@ export default function NewAPQR() {
 
             <div className="gridName pt-4">Current Review Period OOT</div>
             <div>
-              <div className="AddRows d-flex w-full justify-between items-center text-3xl">
+              {/* <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addCurrentOOT} />
                   <div className="addrowinstruction  pl-2">
                     Add Rows by clicking on (+) icon
                   </div>
                 </div>
-              </div>
-              <table>
+              </div> */}
+             
+             
+              <GridContainer
+                MdNoteAddfun ={addCurrentOOT}
+                setData={setCurrentOOT}
+                data={currentOOT}
+                headers={currentOOTheaders}
+                fields={currentOOTfields}
+              />
+              {/* <table>
                 <thead>
                   <tr>
                     <th>S.No</th>
@@ -7794,21 +6402,29 @@ export default function NewAPQR() {
                     );
                   })}
                 </tbody>
-              </table>
+              </table> */}
             </div>
 
             <div className="gridName pt-4">Previous review period OOS</div>
 
             <div>
-              <div className="AddRows d-flex w-full justify-between items-center text-3xl">
+              {/* <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addPreviewOOT} />
                   <div className="addrowinstruction  pl-2">
                     Add Rows by clicking on (+) icon
                   </div>
                 </div>
-              </div>
-              <table>
+              </div> */}
+              <p>12</p>
+              <GridContainer
+                MdNoteAddfun ={addPreviewOOT}
+                setData={setPreviewOOT}
+                data={previewOOT}
+                headers={previewOOTheaders}
+                fields={previewOOTfields}
+              />
+              {/* <table>
                 <thead>
                   <tr>
                     <th>S.No</th>
@@ -7924,7 +6540,7 @@ export default function NewAPQR() {
                     );
                   })}
                 </tbody>
-              </table>
+              </table> */}
             </div>
 
             <h4 className="gridName pt-4">OOT Summary</h4>

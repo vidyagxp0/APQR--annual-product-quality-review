@@ -559,21 +559,351 @@ export const reviewODSTR15fields=[
   "LCL",
   "UCL",
   "observedValue",
-  "compliesNotComplies",
+  "complies/doesNotComplies",
 ]
-export const summaryOOSSfields=[
+
+export const summaryOOSSheaders = [ 
+      "SI. No.",
+      "BatchNo.",
+      "Type",
+      "StorageCondition",
+      "Testing Intervals Months completed",
+     " Stability Protocol No."
+]
+
+export const summaryOOSSfields = [
+
+  "batchNo",
+  "type",
+  "storageCondition",
+  "testingInterval",
+  "stabilityProtocolNo"
+]
+
+export const stabilitySRheaders=[
   "SI. No.",
-  "BatchNo",
-  "Type",
-  "StorageCondition",
-  "TestingIntervalsMonthscompleted",
-   "StabilityProtocolNo"
+  "Batch number",
+  "Testing Intervals Months",
+  "OOS Number"
 ]
-export const summaryOOSSheaders=[
+
+export const stabilitySRfields=[
+  "batchNo",
+  "testingIntervalMonths",
+  "OOSNumber"
+]
+export const hVACQStatusheaders=[
   "SI. No.",
-  "Batch No.",
-  "Type",
-  "Storage Condition",
-  "Testing Intervals Months completed",
-   "Stability Protocol No.",
+  "Test Description",
+  "Frequency",
+  "Status"
 ]
+export const hVACQStatusfields=[
+  "testDescription",
+  "frequency",
+  "status"
+]
+
+export const setSanitizationASDOUheaders=[
+  "SI. No.",
+  "Equipment Name",
+  "Frequency",
+  "Status"
+]
+export const setSanitizationASDOUfields=[
+  "equipmentName",
+  "frequency",
+  "status"
+]
+export const compressedGasheaders=[
+  "SI. No.",
+  "Compressed Gas",
+  "Test",
+  "Frequency",
+  "Status"
+]
+export const compressedGasfields=[
+  "compressedGas",
+  "test",
+  "frequency",
+  "status"
+]
+export const reviewOfCPDheaders=[
+  "SI. No.",
+  "Date Of Initiation",
+  "Record No",
+  "Site/Division",
+  "Departmen",
+  "Initiator",
+  "Short Description",
+  "Batch No",
+  "Due Date",
+  "Current Status"
+]
+export const reviewOfCPDfields=[
+  "dateOfInitiation",
+  "recordNo",
+  "siteDivision",
+  "department",
+  "initiator",
+  "shortDescription",
+  "batchNo",
+  "dueDate",
+  "currentStatus"
+]
+export const previewRPDheaders=[
+  "SI. No.",
+  "Date Of Initiation",
+  "Record No",
+  "Site/Division",
+  "Departmen",
+  "Initiator",
+  "Short Description",
+  "Batch No",
+  "Due Date",
+  "Current Status"
+]
+export const previewRPDfields=[
+  "dateOfInitiation",
+  "recordNo",
+  "siteDivision",
+  "department",
+  "initiator",
+  "shortDescription",
+  "batchNo",
+  "dueDate",
+  "currentStatus"
+]
+export  const currentOOSheaders=[
+  "SI. No.",
+  "Date Of Initiation",
+  "Record No",
+  "Site/Division",
+  "Departmen",
+  "Initiator",
+  "Short Description",
+  "Batch No",
+  "Due Date",
+  "Current Status"
+]
+export const currentOOSfields=[
+  "dateOfInitiation",
+  "recordNo",
+  "siteDivision",
+  "department",
+  "initiator",
+  "shortDescription",
+  "batchNo",
+  "dueDate",
+  "currentStatus"
+]
+export const  previewOOSheaders=[
+  "SI. No.",
+  "Date Of Initiation",
+  "Record No",
+  "Site/Division",
+  "Departmen",
+  "Initiator",
+  "Short Description",
+  "Batch No",
+  "Due Date",
+  "Current Status"
+]
+export const previewOOSfields=[
+  "dateOfInitiation",
+  "recordNo",
+  "siteDivision",
+  "department",
+  "initiator",
+  "shortDescription",
+  "batchNo",
+  "dueDate",
+  "currentStatus"
+]
+export const currentOOACheaders=[
+  "SI. No.",
+  "Date Of Initiation",
+  "Record No",
+  "Site/Division",
+  "Departmen",
+  "Initiator",
+  "Short Description",
+  "Batch No",
+  "Due Date",
+  "Current Status"
+]
+export  const currentOOACfields=[
+  "dateOfInitiation",
+  "recordNo",
+  "siteDivision",
+  "department",
+  "initiator",
+  "shortDescription",
+  "batchNo",
+  "dueDate",
+  "currentStatus"
+]
+
+export const previewOOACheaders=[
+  "SI. No.",
+  "Date Of Initiation",
+  "Record No",
+  "Site/Division",
+  "Departmen",
+  "Initiator",
+  "Short Description",
+  "Batch No",
+  "Due Date",
+  "Current Status"
+]
+export const previewOOACfields=[
+  "dateOfInitiation",
+  "recordNo",
+  "siteDivision",
+  "department",
+  "initiator",
+  "shortDescription",
+  "batchNo",
+  "dueDate",
+  "currentStatus"
+]
+
+export  const currentOOALheaders=[
+  "SI. No.",
+  "Date Of Initiation",
+  "Record No",
+  "Site/Division",
+  "Departmen",
+  "Initiator",
+  "Short Description",
+  "Batch No",
+  "Due Date",
+  "Current Status"
+]
+export const currentOOALfields=[
+  "dateOfInitiation",
+  "recordNo",
+  "siteDivision",
+  "department",
+  "initiator",
+  "shortDescription",
+  "batchNo",
+  "dueDate",
+  "currentStatus"
+]
+export const previewOOALheaders=[
+  "SI. No.",
+  "Date Of Initiation",
+  "Record No",
+  "Site/Division",
+  "Departmen",
+  "Initiator",
+  "Short Description",
+  "Batch No",
+  "Due Date",
+  "Current Status"
+]
+export const previewOOALfields=[
+  "dateOfInitiation",
+  "recordNo",
+  "siteDivision",
+  "department",
+  "initiator",
+  "shortDescription",
+  "batchNo",
+  "dueDate",
+  "currentStatus"
+]
+export const  currentOOSAheaders=[
+  "SI. No.",
+  "Date Of Initiation",
+  "Record No",
+  "Site/Division",
+  "Departmen",
+  "Initiator",
+  "Short Description",
+  "Batch No",
+  "Due Date",
+  "Current Status"
+]
+export  const currentOOSAfields=[
+  "dateOfInitiation",
+  "recordNo",
+  "siteDivision",
+  "department",
+  "initiator",
+  "shortDescription",
+  "batchNo",
+  "dueDate",
+  "currentStatus"
+]
+export const previewOOSAheaders=[
+  "SI. No.",
+  "Date Of Initiation",
+  "Record No",
+  "Site/Division",
+  "Departmen",
+  "Initiator",
+  "Short Description",
+  "Batch No",
+  "Due Date",
+  "Current Status"
+]
+export const previewOOSAfields=[
+  "dateOfInitiation",
+  "recordNo",
+  "siteDivision",
+  "department",
+  "initiator",
+  "shortDescription",
+  "batchNo",
+  "dueDate",
+  "currentStatus"
+]
+export const currentOOTheaders=[
+  "SI. No.",
+  "Date Of Initiation",
+  "Record No",
+  "Site/Division",
+  "Departmen",
+  "Initiator",
+  "Short Description",
+  "Batch No",
+  "Due Date",
+  "Current Status"
+]
+export const currentOOTfields=[
+  "dateOfInitiation",
+  "recordNo",
+  "siteDivision",
+  "department",
+  "initiator",
+  "shortDescription",
+  "batchNo",
+  "dueDate",
+  "currentStatus"
+]
+export const previewOOTheaders=[
+  "SI. No.",
+  "Date Of Initiation",
+  "Record No",
+  "Site/Division",
+  "Departmen",
+  "Initiator",
+  "Short Description",
+  "Batch No",
+  "Due Date",
+  "Current Status"
+]
+export const previewOOTfields=[
+  "dateOfInitiation",
+  "recordNo",
+  "siteDivision",
+  "department",
+  "initiator",
+  "shortDescription",
+  "batchNo",
+  "dueDate",
+  "currentStatus"
+]
+

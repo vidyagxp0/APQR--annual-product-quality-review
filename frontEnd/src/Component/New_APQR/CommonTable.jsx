@@ -1,6 +1,6 @@
 import React from "react";
 
-const CommonTable = ({ headers, data, setData, fields }) => {
+const CommonTable = ({ headers, data, setData, fields,colSpan }) => {
  
   
 
@@ -44,7 +44,7 @@ const CommonTable = ({ headers, data, setData, fields }) => {
           data.map((item, index) => {
             return (
               <tr key={index}>
-                {headers.includes("SI. No.") && <td>{index + 1}.</td>}
+                {headers.includes("SI. No." || "Batch Numbers") && <td>{index + 1}.</td>}
 
                 {fields.map((field, idx) => (
                   <td key={idx}>
