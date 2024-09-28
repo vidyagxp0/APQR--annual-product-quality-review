@@ -270,3 +270,310 @@ export const ooaResultsfields = [
   "diffrenceOfResult",
   "trendLimit",
 ];
+
+export const reviewODSTR2headers = [
+  "Batch No",
+  "Tests parameter",
+  "LSL",
+  "USL",
+  "LCL",
+  "UCL",
+  "Observed Value",
+  "Complies/Does Not complies",
+];
+export const reviewODSTR2fields = [
+  "batchNo",
+  "testsParameter",
+  "LSL",
+  "USL",
+  "LCL",
+  "UCL",
+  "observedValue",
+  "compliesNotComplies",
+];
+
+export const reviewODSTR3fields = [
+  "batchNo",
+  "testsParameter",
+  "LSL",
+  "USL",
+  "LCL",
+  "UCL",
+  "observedValue",
+  "compliesNotComplies",
+];
+
+export const reviewODSTR3headers = [
+  "Batch No",
+  "Tests parameter",
+  "LSL",
+  "USL",
+  "LCL",
+  "UCL",
+  "Observed Value",
+  "Complies/Does Not complies",
+];
+
+export const reviewODSTR4headers = [
+  "Batch No",
+  "Tests parameter",
+  "LSL",
+  "USL",
+  "LCL",
+  "UCL",
+  "Observed Value",
+  "Complies/Does Not complies",
+];
+export const reviewODSTR4fields = [
+  "batchNo",
+  "testsParameter",
+  "LSL",
+  "USL",
+  "LCL",
+  "UCL",
+  "observedValue",
+  "compliesNotComplies",
+];
+
+export const reviewODSTR5headers = [
+  "Batch No",
+  "Tests parameter",
+  "LSL",
+  "USL",
+  "LCL",
+  "UCL",
+  "Observed Value",
+  "Complies/Does Not complies",
+];
+export const reviewODSTR5fields = [
+  "batchNo",
+  "testsParameter",
+  "LSL",
+  "USL",
+  "LCL",
+  "UCL",
+  "observedValue",
+  "compliesNotComplies",
+];
+
+export const reviewODSTR6headers = [
+  "Batch No",
+  "Tests parameter",
+  "LSL",
+  "USL",
+  "LCL",
+  "UCL",
+  "Observed Value",
+  "Complies/Does Not complies",
+];
+export const reviewODSTR6fields = [
+  "batchNo",
+  "testsParameter",
+  "LSL",
+  "USL",
+  "LCL",
+  "UCL",
+  "observedValue",
+  "compliesNotComplies",
+];
+export const reviewODSTR7fields = [
+  "batchNo",
+  "testsParameter",
+  "LSL",
+  "USL",
+  "LCL",
+  "UCL",
+  "observedValue",
+  "compliesNotComplies",
+];
+export const reviewODSTR7headers = [
+  "Batch No",
+  "Tests parameter",
+  "LSL",
+  "USL",
+  "LCL",
+  "UCL",
+  "Observed Value",
+  "Complies/Does Not complies",
+];
+
+export const reviewODSTR8headers = [
+  "Batch No",
+  "Tests parameter",
+  "LSL",
+  "USL",
+  "LCL",
+  "UCL",
+  "Observed Value",
+  "Complies/Does Not complies",
+];
+export const reviewODSTR8fields = [
+  "batchNo",
+  "testsParameter",
+  "LSL",
+  "USL",
+  "LCL",
+  "UCL",
+  "observedValue",
+  "compliesNotComplies",
+];
+
+export const reviewODSTR9headers=[
+  "Batch No",
+  "Tests parameter",
+  "LSL",
+  "USL",
+  "LCL",
+  "UCL",
+  "Observed Value",
+  "Complies/Does Not complies",
+]
+export const reviewODSTR9fields=[
+  "batchNo",
+  "testsParameter",
+  "LSL",
+  "USL",
+  "LCL",
+  "UCL",
+  "observedValue",
+  "compliesNotComplies",
+]
+
+export const reviewODSTR10headers=[
+  "Batch No",
+  "Tests parameter",
+  "LSL",
+  "USL",
+  "LCL",
+  "UCL",
+  "Observed Value",
+  "Complies/Does Not complies",
+]
+export const reviewODSTR10fields=[
+  "batchNo",
+  "testsParameter",
+  "LSL",
+  "USL",
+  "LCL",
+  "UCL",
+  "observedValue",
+  "compliesNotComplies",
+]
+
+export const reviewODSTR11headers=[
+  "Batch No",
+  "Tests parameter",
+  "LSL",
+  "USL",
+  "LCL",
+  "UCL",
+  "Observed Value",
+  "Complies/Does Not complies",
+]
+export const reviewODSTR11fields=[
+  "batchNo",
+  "testsParameter",
+  "LSL",
+  "USL",
+  "LCL",
+  "UCL",
+  "observedValue",
+  "compliesNotComplies",
+]
+export const reviewODSTR12headers=[
+  "Batch No",
+  "Tests parameter",
+  "LSL",
+  "USL",
+  "LCL",
+  "UCL",
+  "Observed Value",
+  "Complies/Does Not complies",
+]
+export const reviewODSTR12fields=[
+  "batchNo",
+  "testsParameter",
+  "LSL",
+  "USL",
+  "LCL",
+  "UCL",
+  "observedValue",
+  "compliesNotComplies",
+]
+export const reviewODSTR13headers=[
+  "Batch No",
+  "Tests parameter",
+  "LSL",
+  "USL",
+  "LCL",
+  "UCL",
+  "Observed Value",
+  "Complies/Does Not complies",
+]
+export const reviewODSTR13fields=[
+  "batchNo",
+  "testsParameter",
+  "LSL",
+  "USL",
+  "LCL",
+  "UCL",
+  "observedValue",
+  "compliesNotComplies",
+]
+export const reviewODSTR14headers=[
+  "Batch No",
+  "Tests parameter",
+  "LSL",
+  "USL",
+  "LCL",
+  "UCL",
+  "Observed Value",
+  "Complies/Does Not complies",
+]
+export const reviewODSTR14fields=[
+  "batchNo",
+  "testsParameter",
+  "LSL",
+  "USL",
+  "LCL",
+  "UCL",
+  "observedValue",
+  "compliesNotComplies",
+]
+
+export const reviewODSTR15headers=[
+  "Batch No",
+  "Tests parameter",
+  "LSL",
+  "USL",
+  "LCL",
+  "UCL",
+  "Observed Value",
+  "Complies/Does Not complies",
+]
+export const reviewODSTR15fields=[
+  "batchNo",
+  "testsParameter",
+  "LSL",
+  "USL",
+  "LCL",
+  "UCL",
+  "observedValue",
+  "compliesNotComplies",
+]
+export const summaryOOSSfields=[
+  "SI. No.",
+  "BatchNo",
+  "Type",
+  "StorageCondition",
+  "TestingIntervalsMonthscompleted",
+   "StabilityProtocolNo"
+]
+export const summaryOOSSheaders=[
+  "SI. No.",
+  "Batch No.",
+  "Type",
+  "Storage Condition",
+  "Testing Intervals Months completed",
+   "Stability Protocol No.",
+]

@@ -49,6 +49,38 @@ import {
   oosDetailsfields,
   ootResultsheaders,
   ootResultsfields,
+  reviewODSTRheaders,
+  reviewODSTRfields,
+  reviewODSTR2fields,
+  reviewODSTR2headers,
+  reviewODSTR3fields,
+  reviewODSTR3headers,
+  reviewODSTR4headers,
+  reviewODSTR4fields,
+  reviewODSTR5headers,
+  reviewODSTR5fields,
+  reviewODSTR6headers,
+  reviewODSTR6fields,
+  reviewODSTR7fields,
+  reviewODSTR7headers,
+  reviewODSTR8headers,
+  reviewODSTR8fields,
+  reviewODSTR9headers,
+  reviewODSTR9fields,
+  reviewODSTR10headers,
+  reviewODSTR10fields,
+  reviewODSTR11fields,
+  reviewODSTR11headers,
+  reviewODSTR12fields,
+  reviewODSTR12headers,
+  reviewODSTR13fields,
+  reviewODSTR13headers,
+  reviewODSTR14fields,
+  reviewODSTR14headers,
+  reviewODSTR15fields,
+  reviewODSTR15headers,
+  summaryOOSSheaders,
+  summaryOOSSfields,
 } from "./NewApqrFunctions";
 import GridContainer from "../../Component/New_APQR/GridContainer";
 
@@ -88,18 +120,7 @@ export default function NewAPQR() {
   const [ootResults, setOotResults] = useState([]);
   const [oolResults, setOolResults] = useState([]);
   const [ooaResults, setOoaResults] = useState([]);
-  const [reviewODSTR, setReviewOSTR] = useState([
-    {
-      batchNo: "",
-      testsParameter: "",
-      LSL: "",
-      USL: "",
-      LCL: "",
-      UCL: "",
-      observedValue: "",
-      compliesNotComplies: "",
-    },
-  ]);
+  const [reviewODSTR, setReviewOSTR] = useState([]);
 
   const [reviewODSTR2, setReviewOSTR2] = useState([]);
   const [reviewODSTR3, setReviewOSTR3] = useState([]);
@@ -128,7 +149,17 @@ export default function NewAPQR() {
   const [reviewODP9, setReviewODP9] = useState([]);
   const [reviewODP10, setReviewODP10] = useState([]);
   const [reviewODPFPTR, setReviewODPFPTR] = useState([]);
-  const [summaryOOSS, setSummaryOOSS] = useState([]);
+  const [summaryOOSS, setSummaryOOSS] = useState([
+    // {
+    //   SlNo:"",
+    //   BatchNo:"",
+    //   Type:"",
+    //   StorageCondition:"",
+    // TestingIntervalsMonthscompleted:"",
+    // StabilityProtocolNo:""
+    
+    // }
+  ]);
   const [stabilitySR, setStabilitySR] = useState([]);
   const [reviewOVIRS, setReviewOVIRS] = useState([]);
   const [hVACQStatus, setHVACQStatus] = useState([]);
@@ -250,7 +281,7 @@ export default function NewAPQR() {
   const [currentLabI, setCurrentLabI] = useState([]);
   const [previewLabI, setPreviewLabI] = useState([]);
 
-  useEffect(() => {}, [reviewODSTR]);
+  useEffect(() => { }, [reviewODSTR]);
   const sanitizeKey = (key) => {
     return key.replace(/\s+/g, "").replace(/[\n\r]+/g, "");
   };
@@ -1001,7 +1032,7 @@ export default function NewAPQR() {
     previewLabI,
   ]);
 
-  useEffect(() => {}, [tiny1]);
+  useEffect(() => { }, [tiny1]);
   // const addManufacturingStageRow = () => {
   //   const newRow = {
   //     productName: "",
@@ -1054,6 +1085,19 @@ export default function NewAPQR() {
       chooseFile: "",
     };
     setOoaResults([...ooaResults, newRow]);
+  };
+  const addReviewODSTRRow = () => {
+    const newRow = {
+      batchNo: "",
+      testsParameter: "",
+      LSL: "",
+      USL: "",
+      LCL: "",
+      UCL: "",
+      observedValue: "",
+      compliesNotComplies: "",
+    };
+    setReviewOSTR([...reviewODSTR, newRow]);
   };
   const addReviewODSTRRow2 = () => {
     const newRow2 = {
@@ -1801,6 +1845,36 @@ export default function NewAPQR() {
     };
     setUnitOperation10([...unitOperation10, newRow]);
   };
+  const addreviewOfASLRow = () => {
+    const newRow = {
+      materialCode: "",
+      materialName: "",
+      manufacturer: "",
+      facility: "",
+    };
+    setReviewOfASL([...reviewOfASL, newRow]);
+  };
+
+  const addDossierRow = () => {
+    const newRow = {
+      agency: "",
+      notificationNo: "",
+      notificationtype: "",
+      description: "",
+    };
+    setDossierRR([...dossierRR, newRow]);
+  };
+  const addDossierRowNma = () => {
+    const newRow = {
+      countryName: "",
+      descriptionOfPacking: "",
+      dateOfApplication: "",
+      ststusOfApplication: "",
+      dateOfAuthorization: "",
+      remarks: "",
+    };
+    setDossierRRNma([...dossierRRNma, newRow]);
+  };
 
   const handleProductCodeChange = (index, value) => {
     const newProductCodes = [...productCodes];
@@ -2063,8 +2137,7 @@ export default function NewAPQR() {
               <GridContainer
                 data={manufacturingStage}
                 setData={setManufacturingStage}
-                // addRowData={{ productName: "", sFGCode: "", fGCode: "" }}
-                // addRowData={{}}
+
                 setimportedData={setimportedData}
                 fileName="manufacturingStage.xlsx"
                 gridNo={1}
@@ -3922,1947 +3995,286 @@ export default function NewAPQR() {
             </div>
             <h1 className="gridName">pH Of Paracetamol Test Results</h1>
             <div>
-              <div className="AddRows d-flex w-full justify-between items-center text-3xl mb-5">
-                <div className="flex items-center">
-                  <MdNoteAdd onClick={addReviewODSTRRow} />
-                  <div className="addrowinstruction  pl-2">
-                    Add Rows by clicking on (+) icon
-                  </div>
-                </div>
-                <div className="flex gap-4 ">
-                  <ExcelExportImport
-                    data={reviewODSTR}
-                    setimportedData={setimportedData}
-                    fileName="reviewODSTR.xlsx"
-                    gridNo={22}
-                  />
-                </div>
-              </div>
-              {/* <table>
-                <thead>
-                  <tr>
-                    <th>Batch No</th>
-                    <th>Tests parameter</th>
-                    <th>LSL</th>
-                    <th>USL</th>
-                    <th>LCL</th>
-                    <th>UCL</th>
-                    <th>Observed Value</th>
-                    <th>Complies/Does Not complies</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {reviewODSTR?.map((item, index) => {
-                    return (
-                      <tr key={index}>
-                        <td>
-                          <input
-                            value={item.batchNo}
-                            onChange={(e) => {
-                              const newData = [...reviewODSTR];
-                              newData[index].batchNo = e.target.value;
-                              setReviewOSTR(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.testsParameter}
-                            onChange={(e) => {
-                              const newData = [...reviewODSTR];
-                              newData[index].testsParameter = e.target.value;
-                              setReviewOSTR(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            type="number"
-                            value={item.LSL}
-                            onChange={(e) => {
-                              const newData = [...reviewODSTR];
-                              newData[index].LSL = e.target.value;
-                              setReviewOSTR(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            type="number"
-                            value={item.USL}
-                            onChange={(e) => {
-                              const newData = [...reviewODSTR];
-                              newData[index].USL = e.target.value;
-                              setReviewOSTR(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            type="number"
-                            value={item.LCL}
-                            onChange={(e) => {
-                              const newData = [...reviewODSTR];
-                              newData[index].LCL = e.target.value;
-                              setReviewOSTR(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            type="number"
-                            value={item.UCL}
-                            onChange={(e) => {
-                              const newData = [...reviewODSTR];
-                              newData[index].UCL = e.target.value;
-                              setReviewOSTR(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            type="number"
-                            value={item.observedValue}
-                            onChange={(e) => {
-                              const newData = [...reviewODSTR];
-                              newData[index].observedValue = e.target.value;
-                              setReviewOSTR(newData);
-                            }}
-                          />
-                        </td>
 
-                        <td>
-                          <input
-                            value={item.compliesNotComplies}
-                            onChange={(e) => {
-                              const newData = [...reviewODSTR];
-                              newData[index].compliesNotComplies =
-                                e.target.value;
-                              setReviewOSTR(newData);
-                            }}
-                          />
-                        </td>
-                      </tr>
-                    );
-                  })}
-                </tbody>
-              </table> */}
-              <CommonTable
+
+
+              <GridContainer
+                setimportedData={setimportedData}
+                fileName="reviewODSTR.xlsx"
+                gridNo={22}
                 headers={reviewODSTRheaders}
                 data={reviewODSTR}
                 setData={setReviewOSTR}
                 fields={reviewODSTRfields}
               />
+
+
+
             </div>
             <h1 className="gridName  pt-8">
               Assay Of Paracetamol Test Results
             </h1>
             <div>
-              <div className="AddRows d-flex w-full justify-between items-center text-3xl mb-5">
-                <div className="flex items-center">
-                  <MdNoteAdd onClick={addReviewODSTRRow2} />
-                  <div className="addrowinstruction pl-2">
-                    Add Rows by clicking on (+) icon
-                  </div>
-                </div>
-                <div className="flex gap-4 ">
-                  <ExcelExportImport
-                    data={reviewODSTR2}
-                    setimportedData={setimportedData}
-                    fileName="reviewODSTR2.xlsx"
-                    gridNo={23}
-                  />
-                </div>
-              </div>
-              <table>
-                <thead>
-                  <tr>
-                    <th>Batch No</th>
-                    <th>Tests parameter</th>
-                    <th>LSL</th>
-                    <th>USL</th>
-                    <th>LCL</th>
-                    <th>UCL</th>
-                    <th>Observed Value</th>
-                    <th>Complies/Does Not complies</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {reviewODSTR2?.map((item, index) => {
-                    return (
-                      <tr key={index}>
-                        <td>
-                          <input
-                            value={item.batchNo}
-                            onChange={(e) => {
-                              const newData = [...reviewODSTR2];
-                              newData[index].batchNo = e.target.value;
-                              setReviewOSTR2(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.testsParameter}
-                            onChange={(e) => {
-                              const newData = [...reviewODSTR2];
-                              newData[index].testsParameter = e.target.value;
-                              setReviewOSTR2(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            type="number"
-                            value={item.LSL}
-                            onChange={(e) => {
-                              const newData = [...reviewODSTR2];
-                              newData[index].LSL = e.target.value;
-                              setReviewOSTR2(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            type="number"
-                            value={item.USL}
-                            onChange={(e) => {
-                              const newData = [...reviewODSTR2];
-                              newData[index].USL = e.target.value;
-                              setReviewOSTR2(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            type="number"
-                            value={item.LCL}
-                            onChange={(e) => {
-                              const newData = [...reviewODSTR2];
-                              newData[index].LCL = e.target.value;
-                              setReviewOSTR2(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            type="number"
-                            value={item.UCL}
-                            onChange={(e) => {
-                              const newData = [...reviewODSTR2];
-                              newData[index].UCL = e.target.value;
-                              setReviewOSTR2(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            type="number"
-                            value={item.observedValue}
-                            onChange={(e) => {
-                              const newData = [...reviewODSTR2];
-                              newData[index].observedValue = e.target.value;
-                              setReviewOSTR2(newData);
-                            }}
-                          />
-                        </td>
 
-                        <td>
-                          <input
-                            value={item.compliesNotComplies}
-                            onChange={(e) => {
-                              const newData = [...reviewODSTR2];
-                              newData[index].compliesNotComplies =
-                                e.target.value;
-                              setReviewOSTR2(newData);
-                            }}
-                          />
-                        </td>
-                      </tr>
-                    );
-                  })}
-                </tbody>
-              </table>
+
+              <GridContainer
+                setimportedData={setimportedData}
+                fileName="reviewODSTR2.xlsx"
+                gridNo={23}
+                headers={reviewODSTR2headers}
+                data={reviewODSTR2}
+                setData={setReviewOSTR2}
+                fields={reviewODSTR2fields}
+              />
+
+
+
+
+
+
+
             </div>{" "}
             <h1 className="gridName pt-8">
               Impurity Of Paracetamol Test Result
             </h1>
             <div>
-              <div className="AddRows d-flex w-full justify-between items-center text-3xl mb-5">
-                <div className="flex items-center">
-                  <MdNoteAdd onClick={addReviewODSTRRow3} />
-                  <div className="addrowinstruction  pl-2">
-                    Add Rows by clicking on (+) icon
-                  </div>
-                </div>
-                <div className="flex gap-4 ">
-                  <ExcelExportImport
-                    data={reviewODSTR3}
-                    setimportedData={setimportedData}
-                    fileName="reviewODSTR3.xlsx"
-                    gridNo={24}
-                  />
-                </div>
-              </div>
-              <table>
-                <thead>
-                  <tr>
-                    <th>Batch No</th>
-                    <th>Tests parameter</th>
-                    <th>LSL</th>
-                    <th>USL</th>
-                    <th>LCL</th>
-                    <th>UCL</th>
-                    <th>Observed Value</th>
-                    <th>Complies/Does Not complies</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {reviewODSTR3?.map((item, index) => {
-                    return (
-                      <tr key={index}>
-                        <td>
-                          <input
-                            value={item.batchNo}
-                            onChange={(e) => {
-                              const newData = [...reviewODSTR3];
-                              newData[index].batchNo = e.target.value;
-                              setReviewOSTR3(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.testsParameter}
-                            onChange={(e) => {
-                              const newData = [...reviewODSTR3];
-                              newData[index].testsParameter = e.target.value;
-                              setReviewOSTR3(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            type="number"
-                            value={item.LSL}
-                            onChange={(e) => {
-                              const newData = [...reviewODSTR3];
-                              newData[index].LSL = e.target.value;
-                              setReviewOSTR3(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            type="number"
-                            value={item.USL}
-                            onChange={(e) => {
-                              const newData = [...reviewODSTR3];
-                              newData[index].USL = e.target.value;
-                              setReviewOSTR3(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            type="number"
-                            value={item.LCL}
-                            onChange={(e) => {
-                              const newData = [...reviewODSTR3];
-                              newData[index].LCL = e.target.value;
-                              setReviewOSTR3(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            type="number"
-                            value={item.UCL}
-                            onChange={(e) => {
-                              const newData = [...reviewODSTR3];
-                              newData[index].UCL = e.target.value;
-                              setReviewOSTR3(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            type="number"
-                            value={item.observedValue}
-                            onChange={(e) => {
-                              const newData = [...reviewODSTR3];
-                              newData[index].observedValue = e.target.value;
-                              setReviewOSTR3(newData);
-                            }}
-                          />
-                        </td>
 
-                        <td>
-                          <input
-                            value={item.compliesNotComplies}
-                            onChange={(e) => {
-                              const newData = [...reviewODSTR3];
-                              newData[index].compliesNotComplies =
-                                e.target.value;
-                              setReviewOSTR3(newData);
-                            }}
-                          />
-                        </td>
-                      </tr>
-                    );
-                  })}
-                </tbody>
-              </table>
+              <GridContainer
+                setimportedData={setimportedData}
+                fileName="reviewODSTR3.xlsx"
+                gridNo={24}
+
+                headers={reviewODSTR3headers}
+                data={reviewODSTR3}
+                setData={setReviewOSTR3}
+                fields={reviewODSTR3fields}
+              />
+
+
+
+
+
+
+
             </div>{" "}
             <h1 className="gridName pt-8">
               Dissolution Of Paracetamol Test Result
             </h1>
             <div>
-              <div className="AddRows d-flex w-full justify-between items-center text-3xl mb-5">
-                <div className="flex items-center">
-                  <MdNoteAdd onClick={addReviewODSTRRow4} />
-                  <div className="addrowinstruction  pl-2">
-                    Add Rows by clicking on (+) icon
-                  </div>
-                </div>
-                <div className="flex gap-4 ">
-                  <ExcelExportImport
-                    data={reviewODSTR4}
-                    setimportedData={setimportedData}
-                    fileName="reviewODSTR4.xlsx"
-                    gridNo={25}
-                  />
-                </div>
-              </div>
-              <table>
-                <thead>
-                  <tr>
-                    <th>Batch No</th>
-                    <th>Tests parameter</th>
-                    <th>LSL</th>
-                    <th>USL</th>
-                    <th>LCL</th>
-                    <th>UCL</th>
-                    <th>Observed Value</th>
-                    <th>Complies/Does Not complies</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {reviewODSTR4?.map((item, index) => {
-                    return (
-                      <tr key={index}>
-                        <td>
-                          <input
-                            value={item.batchNo}
-                            onChange={(e) => {
-                              const newData = [...reviewODSTR4];
-                              newData[index].batchNo = e.target.value;
-                              setReviewOSTR4(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.testsParameter}
-                            onChange={(e) => {
-                              const newData = [...reviewODSTR4];
-                              newData[index].testsParameter = e.target.value;
-                              setReviewOSTR4(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            type="number"
-                            value={item.LSL}
-                            onChange={(e) => {
-                              const newData = [...reviewODSTR4];
-                              newData[index].LSL = e.target.value;
-                              setReviewOSTR4(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            type="number"
-                            value={item.USL}
-                            onChange={(e) => {
-                              const newData = [...reviewODSTR4];
-                              newData[index].USL = e.target.value;
-                              setReviewOSTR4(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            type="number"
-                            value={item.LCL}
-                            onChange={(e) => {
-                              const newData = [...reviewODSTR4];
-                              newData[index].LCL = e.target.value;
-                              setReviewOSTR4(newData);
-                            }}
-                          />
-                        </td>{" "}
-                        <td>
-                          <input
-                            type="number"
-                            value={item.UCL}
-                            onChange={(e) => {
-                              const newData = [...reviewODSTR4];
-                              newData[index].UCL = e.target.value;
-                              setReviewOSTR4(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            type="number"
-                            value={item.observedValue}
-                            onChange={(e) => {
-                              const newData = [...reviewODSTR4];
-                              newData[index].observedValue = e.target.value;
-                              setReviewOSTR4(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.compliesNotComplies}
-                            onChange={(e) => {
-                              const newData = [...reviewODSTR4];
-                              newData[index].compliesNotComplies =
-                                e.target.value;
-                              setReviewOSTR4(newData);
-                            }}
-                          />
-                        </td>
-                      </tr>
-                    );
-                  })}
-                </tbody>
-              </table>
+
+              <GridContainer
+                setimportedData={setimportedData}
+                fileName="reviewODSTR4.xlsx"
+                gridNo={25}
+
+                headers={reviewODSTR4headers}
+                data={reviewODSTR4}
+                setData={setReviewOSTR4}
+                fields={reviewODSTR4fields}
+              />
+
+
+
             </div>{" "}
             <h1 className="gridName pt-8">
               Disintegration Of Paracetamol Test Result
             </h1>
             <div>
-              <div className="AddRows d-flex w-full justify-between items-center text-3xl mb-5">
-                <div className="flex items-center">
-                  <MdNoteAdd onClick={addReviewODSTRRow5} />
-                  <div className="addrowinstruction  pl-2">
-                    Add Rows by clicking on (+) icon
-                  </div>
-                </div>
-                <div className="flex gap-4 ">
-                  <ExcelExportImport
-                    data={reviewODSTR5}
-                    setimportedData={setimportedData}
-                    fileName="reviewODSTR5.xlsx"
-                    gridNo={26}
-                  />
-                </div>
-              </div>
-              <table>
-                <thead>
-                  <tr>
-                    <th>Batch No</th>
-                    <th>Tests parameter</th>
-                    <th>LSL</th>
-                    <th>USL</th>
-                    <th>LCL</th>
-                    <th>UCL</th>
-                    <th>Observed Value</th>
-                    <th>Complies/Does Not complies</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {reviewODSTR5?.map((item, index) => {
-                    return (
-                      <tr key={index}>
-                        <td>
-                          <input
-                            value={item.batchNo}
-                            onChange={(e) => {
-                              const newData = [...reviewODSTR5];
-                              newData[index].batchNo = e.target.value;
-                              setReviewOSTR5(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.testsParameter}
-                            onChange={(e) => {
-                              const newData = [...reviewODSTR5];
-                              newData[index].testsParameter = e.target.value;
-                              setReviewOSTR5(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            type="number"
-                            value={item.LSL}
-                            onChange={(e) => {
-                              const newData = [...reviewODSTR5];
-                              newData[index].LSL = e.target.value;
-                              setReviewOSTR5(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            type="number"
-                            value={item.USL}
-                            onChange={(e) => {
-                              const newData = [...reviewODSTR5];
-                              newData[index].USL = e.target.value;
-                              setReviewOSTR5(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            type="number"
-                            value={item.LCL}
-                            onChange={(e) => {
-                              const newData = [...reviewODSTR5];
-                              newData[index].LCL = e.target.value;
-                              setReviewOSTR5(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            type="number"
-                            value={item.UCL}
-                            onChange={(e) => {
-                              const newData = [...reviewODSTR5];
-                              newData[index].UCL = e.target.value;
-                              setReviewOSTR5(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            type="number"
-                            value={item.observedValue}
-                            onChange={(e) => {
-                              const newData = [...reviewODSTR5];
-                              newData[index].observedValue = e.target.value;
-                              setReviewOSTR5(newData);
-                            }}
-                          />
-                        </td>
 
-                        <td>
-                          <input
-                            value={item.compliesNotComplies}
-                            onChange={(e) => {
-                              const newData = [...reviewODSTR5];
-                              newData[index].compliesNotComplies =
-                                e.target.value;
-                              setReviewOSTR5(newData);
-                            }}
-                          />
-                        </td>
-                      </tr>
-                    );
-                  })}
-                </tbody>
-              </table>
+              <GridContainer
+                setimportedData={setimportedData}
+                fileName="reviewODSTR5.xlsx"
+                gridNo={26}
+                headers={reviewODSTR5headers}
+                data={reviewODSTR5}
+                setData={setReviewOSTR5}
+                fields={reviewODSTR5fields}
+              />
+
+
+
+
             </div>{" "}
             <h1 className="gridName pt-8">pH Of Terbinafine Test Result</h1>
             <div>
-              <div className="AddRows d-flex w-full justify-between items-center text-3xl mb-5">
-                <div className="flex items-center">
-                  <MdNoteAdd onClick={addReviewODSTRRow6} />
-                  <div className="addrowinstruction  pl-2">
-                    Add Rows by clicking on (+) icon
-                  </div>
-                </div>
-                <div className="flex gap-4 ">
-                  <ExcelExportImport
-                    data={reviewODSTR6}
-                    setimportedData={setimportedData}
-                    fileName="reviewODSTR6.xlsx"
-                    gridNo={27}
-                  />
-                </div>
-              </div>
-              <table>
-                <thead>
-                  <tr>
-                    <th>Batch No</th>
-                    <th>Tests parameter</th>
-                    <th>LSL</th>
-                    <th>USL</th>
-                    <th>LCL</th>
-                    <th>UCL</th>
-                    <th>Observed Value</th>
-                    <th>Complies/Does Not complies</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {reviewODSTR6?.map((item, index) => {
-                    return (
-                      <tr key={index}>
-                        <td>
-                          <input
-                            value={item.batchNo}
-                            onChange={(e) => {
-                              const newData = [...reviewODSTR6];
-                              newData[index].batchNo = e.target.value;
-                              setReviewOSTR6(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.testsParameter}
-                            onChange={(e) => {
-                              const newData = [...reviewODSTR6];
-                              newData[index].testsParameter = e.target.value;
-                              setReviewOSTR6(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            type="number"
-                            value={item.LSL}
-                            onChange={(e) => {
-                              const newData = [...reviewODSTR6];
-                              newData[index].LSL = e.target.value;
-                              setReviewOSTR6(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            type="number"
-                            value={item.USL}
-                            onChange={(e) => {
-                              const newData = [...reviewODSTR6];
-                              newData[index].USL = e.target.value;
-                              setReviewOSTR6(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            type="number"
-                            value={item.LCL}
-                            onChange={(e) => {
-                              const newData = [...reviewODSTR6];
-                              newData[index].LCL = e.target.value;
-                              setReviewOSTR6(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            type="number"
-                            value={item.UCL}
-                            onChange={(e) => {
-                              const newData = [...reviewODSTR6];
-                              newData[index].UCL = e.target.value;
-                              setReviewOSTR6(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            type="number"
-                            value={item.observedValue}
-                            onChange={(e) => {
-                              const newData = [...reviewODSTR6];
-                              newData[index].observedValue = e.target.value;
-                              setReviewOSTR6(newData);
-                            }}
-                          />
-                        </td>
 
-                        <td>
-                          <input
-                            value={item.compliesNotComplies}
-                            onChange={(e) => {
-                              const newData = [...reviewODSTR6];
-                              newData[index].compliesNotComplies =
-                                e.target.value;
-                              setReviewOSTR6(newData);
-                            }}
-                          />
-                        </td>
-                      </tr>
-                    );
-                  })}
-                </tbody>
-              </table>
+
+
+              <GridContainer
+                setimportedData={setimportedData}
+                fileName="reviewODSTR6.xlsx"
+                gridNo={27}
+                headers={reviewODSTR6headers}
+                data={reviewODSTR6}
+                setData={setReviewOSTR6}
+                fields={reviewODSTR6fields}
+              />
+
+
+
+
             </div>{" "}
             <h1 className="gridName pt-8">Assay Of Terbinafine Test Result</h1>
             <div>
-              <div className="AddRows d-flex w-full justify-between items-center text-3xl">
-                <div className="flex items-center">
-                  <MdNoteAdd onClick={addReviewODSTRRow7} />
-                  <div className="addrowinstruction  pl-2">
-                    Add Rows by clicking on (+) icon
-                  </div>
-                </div>
-                <div className="flex gap-4 ">
-                  <ExcelExportImport
-                    data={reviewODSTR7}
-                    setimportedData={setimportedData}
-                    fileName="reviewODSTR7.xlsx"
-                    gridNo={28}
-                  />
-                </div>
-              </div>
-              <table>
-                <thead>
-                  <tr>
-                    <th>Batch No</th>
-                    <th>Tests parameter</th>
-                    <th>LSL</th>
-                    <th>USL</th>
-                    <th>LCL</th>
-                    <th>UCL</th>
-                    <th>Observed Value</th>
-                    <th>Complies/Does Not complies</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {reviewODSTR7?.map((item, index) => {
-                    return (
-                      <tr key={index}>
-                        <td>
-                          <input
-                            value={item.batchNo}
-                            onChange={(e) => {
-                              const newData = [...reviewODSTR7];
-                              newData[index].batchNo = e.target.value;
-                              setReviewOSTR7(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.testsParameter}
-                            onChange={(e) => {
-                              const newData = [...reviewODSTR7];
-                              newData[index].testsParameter = e.target.value;
-                              setReviewOSTR7(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            type="number"
-                            value={item.LSL}
-                            onChange={(e) => {
-                              const newData = [...reviewODSTR7];
-                              newData[index].LSL = e.target.value;
-                              setReviewOSTR7(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            type="number"
-                            value={item.USL}
-                            onChange={(e) => {
-                              const newData = [...reviewODSTR7];
-                              newData[index].USL = e.target.value;
-                              setReviewOSTR7(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            type="number"
-                            value={item.LCL}
-                            onChange={(e) => {
-                              const newData = [...reviewODSTR7];
-                              newData[index].LCL = e.target.value;
-                              setReviewOSTR7(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            type="number"
-                            value={item.UCL}
-                            onChange={(e) => {
-                              const newData = [...reviewODSTR7];
-                              newData[index].UCL = e.target.value;
-                              setReviewOSTR7(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            type="number"
-                            value={item.observedValue}
-                            onChange={(e) => {
-                              const newData = [...reviewODSTR7];
-                              newData[index].observedValue = e.target.value;
-                              setReviewOSTR7(newData);
-                            }}
-                          />
-                        </td>
 
-                        <td>
-                          <input
-                            value={item.compliesNotComplies}
-                            onChange={(e) => {
-                              const newData = [...reviewODSTR7];
-                              newData[index].compliesNotComplies =
-                                e.target.value;
-                              setReviewOSTR7(newData);
-                            }}
-                          />
-                        </td>
-                      </tr>
-                    );
-                  })}
-                </tbody>
-              </table>
+              <GridContainer
+                setimportedData={setimportedData}
+                fileName="reviewODSTR6.xlsx"
+                gridNo={27}
+                headers={reviewODSTR7headers}
+                data={reviewODSTR7}
+                setData={setReviewOSTR7}
+                fields={reviewODSTR7fields}
+              />
+
+
             </div>{" "}
             <h1 className="gridName pt-8">
               Impurity Of Terbinafine Test Result
             </h1>
             <div>
-              <div className="AddRows d-flex w-full justify-between items-center text-3xl">
-                <div className="flex items-center">
-                  <MdNoteAdd onClick={addReviewODSTRRow8} />
-                  <div className="addrowinstruction  pl-2">
-                    Add Rows by clicking on (+) icon
-                  </div>
-                </div>
-                <div className="flex gap-4 ">
-                  <ExcelExportImport
-                    data={reviewODSTR8}
-                    setimportedData={setimportedData}
-                    fileName="reviewODSTR8.xlsx"
-                    gridNo={29}
-                  />
-                </div>
-              </div>
-              <table>
-                <thead>
-                  <tr>
-                    <th>Batch No</th>
-                    <th>Tests parameter</th>
-                    <th>LSL</th>
-                    <th>USL</th>
-                    <th>LCL</th>
-                    <th>UCL</th>
-                    <th>Observed Value</th>
-                    <th>Complies/Does Not complies</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {reviewODSTR8?.map((item, index) => {
-                    return (
-                      <tr key={index}>
-                        <td>
-                          <input
-                            value={item.batchNo}
-                            onChange={(e) => {
-                              const newData = [...reviewODSTR8];
-                              newData[index].batchNo = e.target.value;
-                              setReviewOSTR8(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.testsParameter}
-                            onChange={(e) => {
-                              const newData = [...reviewODSTR8];
-                              newData[index].testsParameter = e.target.value;
-                              setReviewOSTR8(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            type="number"
-                            value={item.LSL}
-                            onChange={(e) => {
-                              const newData = [...reviewODSTR8];
-                              newData[index].LSL = e.target.value;
-                              setReviewOSTR8(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            type="number"
-                            value={item.USL}
-                            onChange={(e) => {
-                              const newData = [...reviewODSTR8];
-                              newData[index].USL = e.target.value;
-                              setReviewOSTR8(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            type="number"
-                            value={item.LCL}
-                            onChange={(e) => {
-                              const newData = [...reviewODSTR8];
-                              newData[index].LCL = e.target.value;
-                              setReviewOSTR8(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            type="number"
-                            value={item.UCL}
-                            onChange={(e) => {
-                              const newData = [...reviewODSTR8];
-                              newData[index].UCL = e.target.value;
-                              setReviewOSTR8(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            type="number"
-                            value={item.observedValue}
-                            onChange={(e) => {
-                              const newData = [...reviewODSTR8];
-                              newData[index].observedValue = e.target.value;
-                              setReviewOSTR8(newData);
-                            }}
-                          />
-                        </td>
 
-                        <td>
-                          <input
-                            value={item.compliesNotComplies}
-                            onChange={(e) => {
-                              const newData = [...reviewODSTR8];
-                              newData[index].compliesNotComplies =
-                                e.target.value;
-                              setReviewOSTR8(newData);
-                            }}
-                          />
-                        </td>
-                      </tr>
-                    );
-                  })}
-                </tbody>
-              </table>
+
+              <GridContainer
+                setimportedData={setimportedData}
+                fileName="reviewODSTR8.xlsx"
+                gridNo={29}
+                headers={reviewODSTR8headers}
+                data={reviewODSTR8}
+                setData={setReviewOSTR8}
+                fields={reviewODSTR8fields}
+              />
+
+
+
+
+
+
             </div>{" "}
             <h1 className="gridName pt-8">
               Dissolution Of Terbinafine Test Result
             </h1>
             <div>
-              <div className="AddRows d-flex w-full justify-between items-center text-3xl">
-                <div className="flex items-center">
-                  <MdNoteAdd onClick={addReviewODSTRRow9} />
-                  <div className="addrowinstruction  pl-2">
-                    Add Rows by clicking on (+) icon
-                  </div>
-                </div>
-                <div className="flex gap-4 ">
-                  <ExcelExportImport
-                    data={reviewODSTR9}
-                    setimportedData={setimportedData}
-                    fileName="reviewODSTR9.xlsx"
-                    gridNo={30}
-                  />
-                </div>
-              </div>
-              <table>
-                <thead>
-                  <tr>
-                    <th>Batch No</th>
-                    <th>Tests parameter</th>
-                    <th>LSL</th>
-                    <th>USL</th>
-                    <th>LCL</th>
-                    <th>UCL</th>
-                    <th>Observed Value</th>
-                    <th>Complies/Does Not complies</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {reviewODSTR9?.map((item, index) => {
-                    return (
-                      <tr key={index}>
-                        <td>
-                          <input
-                            value={item.batchNo}
-                            onChange={(e) => {
-                              const newData = [...reviewODSTR9];
-                              newData[index].batchNo = e.target.value;
-                              setReviewOSTR9(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.testsParameter}
-                            onChange={(e) => {
-                              const newData = [...reviewODSTR9];
-                              newData[index].testsParameter = e.target.value;
-                              setReviewOSTR9(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            type="number"
-                            value={item.LSL}
-                            onChange={(e) => {
-                              const newData = [...reviewODSTR9];
-                              newData[index].LSL = e.target.value;
-                              setReviewOSTR9(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            type="number"
-                            value={item.USL}
-                            onChange={(e) => {
-                              const newData = [...reviewODSTR9];
-                              newData[index].USL = e.target.value;
-                              setReviewOSTR9(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            type="number"
-                            value={item.LCL}
-                            onChange={(e) => {
-                              const newData = [...reviewODSTR9];
-                              newData[index].LCL = e.target.value;
-                              setReviewOSTR9(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            type="number"
-                            value={item.UCL}
-                            onChange={(e) => {
-                              const newData = [...reviewODSTR9];
-                              newData[index].UCL = e.target.value;
-                              setReviewOSTR9(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            type="number"
-                            value={item.observedValue}
-                            onChange={(e) => {
-                              const newData = [...reviewODSTR9];
-                              newData[index].observedValue = e.target.value;
-                              setReviewOSTR9(newData);
-                            }}
-                          />
-                        </td>
 
-                        <td>
-                          <input
-                            value={item.compliesNotComplies}
-                            onChange={(e) => {
-                              const newData = [...reviewODSTR9];
-                              newData[index].compliesNotComplies =
-                                e.target.value;
-                              setReviewOSTR9(newData);
-                            }}
-                          />
-                        </td>
-                      </tr>
-                    );
-                  })}
-                </tbody>
-              </table>
+
+              <GridContainer
+                setimportedData={setimportedData}
+                fileName="reviewODSTR9.xlsx"
+                gridNo={30}
+                headers={reviewODSTR9headers}
+                data={reviewODSTR9}
+                setData={setReviewOSTR9}
+                fields={reviewODSTR9fields}
+              />
+
+
+
             </div>{" "}
             <h1 className="gridName pt-8">
               Disinteration Of Terbinafine Test Result
             </h1>
             <div>
-              <div className="AddRows d-flex w-full justify-between items-center text-3xl">
-                <div className="flex items-center">
-                  <MdNoteAdd onClick={addReviewODSTRRow10} />
-                  <div className="addrowinstruction  pl-2">
-                    Add Rows by clicking on (+) icon
-                  </div>
-                </div>
-                <div className="flex gap-4 ">
-                  <ExcelExportImport
-                    data={reviewODSTR10}
-                    setimportedData={setimportedData}
-                    fileName="reviewODSTR10.xlsx"
-                    gridNo={31}
-                  />
-                </div>
-              </div>
-              <table>
-                <thead>
-                  <tr>
-                    <th>Batch No</th>
-                    <th>Tests parameter</th>
-                    <th>LSL</th>
-                    <th>USL</th>
-                    <th>LCL</th>
-                    <th>UCL</th>
-                    <th>Observed Value</th>
-                    <th>Complies/Does Not complies</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {reviewODSTR10?.map((item, index) => {
-                    return (
-                      <tr key={index}>
-                        <td>
-                          <input
-                            value={item.batchNo}
-                            onChange={(e) => {
-                              const newData = [...reviewODSTR10];
-                              newData[index].batchNo = e.target.value;
-                              setReviewOSTR10(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.testsParameter}
-                            onChange={(e) => {
-                              const newData = [...reviewODSTR10];
-                              newData[index].testsParameter = e.target.value;
-                              setReviewOSTR10(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            type="number"
-                            value={item.LSL}
-                            onChange={(e) => {
-                              const newData = [...reviewODSTR10];
-                              newData[index].LSL = e.target.value;
-                              setReviewOSTR10(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            type="number"
-                            value={item.USL}
-                            onChange={(e) => {
-                              const newData = [...reviewODSTR10];
-                              newData[index].USL = e.target.value;
-                              setReviewOSTR10(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            type="number"
-                            value={item.LCL}
-                            onChange={(e) => {
-                              const newData = [...reviewODSTR10];
-                              newData[index].LCL = e.target.value;
-                              setReviewOSTR10(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            type="number"
-                            value={item.UCL}
-                            onChange={(e) => {
-                              const newData = [...reviewODSTR10];
-                              newData[index].UCL = e.target.value;
-                              setReviewOSTR10(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            type="number"
-                            value={item.observedValue}
-                            onChange={(e) => {
-                              const newData = [...reviewODSTR10];
-                              newData[index].observedValue = e.target.value;
-                              setReviewOSTR10(newData);
-                            }}
-                          />
-                        </td>
 
-                        <td>
-                          <input
-                            value={item.compliesNotComplies}
-                            onChange={(e) => {
-                              const newData = [...reviewODSTR10];
-                              newData[index].compliesNotComplies =
-                                e.target.value;
-                              setReviewOSTR10(newData);
-                            }}
-                          />
-                        </td>
-                      </tr>
-                    );
-                  })}
-                </tbody>
-              </table>
+
+
+              <GridContainer
+                setimportedData={setimportedData}
+                fileName="reviewODSTR10.xlsx"
+                gridNo={31}
+                headers={reviewODSTR10headers}
+                data={reviewODSTR10}
+                setData={setReviewOSTR10}
+                fields={reviewODSTR10fields}
+              />
+
             </div>
             <h1 className="gridName pt-8">pH Of Pentoprazole Test Result</h1>
             <div>
-              <div className="AddRows d-flex w-full justify-between items-center text-3xl">
-                <div className="flex items-center">
-                  <MdNoteAdd onClick={addReviewODSTRRow11} />
-                  <div className="addrowinstruction  pl-2">
-                    Add Rows by clicking on (+) icon
-                  </div>
-                </div>
-                <div className="flex gap-4 ">
-                  <ExcelExportImport
-                    data={reviewODSTR11}
-                    setimportedData={setimportedData}
-                    fileName="reviewODSTR11.xlsx"
-                    gridNo={32}
-                  />
-                </div>
-              </div>
-              <table>
-                <thead>
-                  <tr>
-                    <th>Batch No</th>
-                    <th>Tests parameter</th>
-                    <th>LSL</th>
-                    <th>USL</th>
-                    <th>LCL</th>
-                    <th>UCL</th>
-                    <th>Observed Value</th>
-                    <th>Complies/Does Not complies</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {reviewODSTR11?.map((item, index) => {
-                    return (
-                      <tr key={index}>
-                        <td>
-                          <input
-                            value={item.batchNo}
-                            onChange={(e) => {
-                              const newData = [...reviewODSTR11];
-                              newData[index].batchNo = e.target.value;
-                              setReviewOSTR11(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.testsParameter}
-                            onChange={(e) => {
-                              const newData = [...reviewODSTR11];
-                              newData[index].testsParameter = e.target.value;
-                              setReviewOSTR11(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            type="number"
-                            value={item.LSL}
-                            onChange={(e) => {
-                              const newData = [...reviewODSTR11];
-                              newData[index].LSL = e.target.value;
-                              setReviewOSTR11(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            type="number"
-                            value={item.USL}
-                            onChange={(e) => {
-                              const newData = [...reviewODSTR11];
-                              newData[index].USL = e.target.value;
-                              setReviewOSTR11(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            type="number"
-                            value={item.LCL}
-                            onChange={(e) => {
-                              const newData = [...reviewODSTR11];
-                              newData[index].LCL = e.target.value;
-                              setReviewOSTR11(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            type="number"
-                            value={item.UCL}
-                            onChange={(e) => {
-                              const newData = [...reviewODSTR11];
-                              newData[index].UCL = e.target.value;
-                              setReviewOSTR11(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            type="number"
-                            value={item.observedValue}
-                            onChange={(e) => {
-                              const newData = [...reviewODSTR11];
-                              newData[index].observedValue = e.target.value;
-                              setReviewOSTR11(newData);
-                            }}
-                          />
-                        </td>
 
-                        <td>
-                          <input
-                            value={item.compliesNotComplies}
-                            onChange={(e) => {
-                              const newData = [...reviewODSTR11];
-                              newData[index].compliesNotComplies =
-                                e.target.value;
-                              setReviewOSTR11(newData);
-                            }}
-                          />
-                        </td>
-                      </tr>
-                    );
-                  })}
-                </tbody>
-              </table>
+
+
+              <GridContainer
+                setimportedData={setimportedData}
+                fileName="reviewODSTR11.xlsx"
+                gridNo={32}
+                headers={reviewODSTR11headers}
+                data={reviewODSTR11}
+                setData={setReviewOSTR11}
+                fields={reviewODSTR11fields}
+              />
+
             </div>
             <h1 className="gridName pt-8">Assay Of Pentoprazole Test Result</h1>
             <div>
-              <div className="AddRows d-flex w-full justify-between items-center text-3xl">
-                <div className="flex items-center">
-                  <MdNoteAdd onClick={addReviewODSTRRow12} />
-                  <div className="addrowinstruction  pl-2">
-                    Add Rows by clicking on (+) icon
-                  </div>
-                </div>
-                <div className="flex gap-4 ">
-                  <ExcelExportImport
-                    data={reviewODSTR12}
-                    setimportedData={setimportedData}
-                    fileName="reviewODSTR12.xlsx"
-                    gridNo={33}
-                  />
-                </div>
-              </div>
-              <table>
-                <thead>
-                  <tr>
-                    <th>Batch No</th>
-                    <th>Tests parameter</th>
-                    <th>LSL</th>
-                    <th>USL</th>
-                    <th>LCL</th>
-                    <th>UCL</th>
-                    <th>Observed Value</th>
-                    <th>Complies/Does Not complies</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {reviewODSTR12?.map((item, index) => {
-                    return (
-                      <tr key={index}>
-                        <td>
-                          <input
-                            value={item.batchNo}
-                            onChange={(e) => {
-                              const newData = [...reviewODSTR12];
-                              newData[index].batchNo = e.target.value;
-                              setReviewOSTR12(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.testsParameter}
-                            onChange={(e) => {
-                              const newData = [...reviewODSTR12];
-                              newData[index].testsParameter = e.target.value;
-                              setReviewOSTR12(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            type="number"
-                            value={item.LSL}
-                            onChange={(e) => {
-                              const newData = [...reviewODSTR12];
-                              newData[index].LSL = e.target.value;
-                              setReviewOSTR12(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            type="number"
-                            value={item.USL}
-                            onChange={(e) => {
-                              const newData = [...reviewODSTR12];
-                              newData[index].USL = e.target.value;
-                              setReviewOSTR12(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            type="number"
-                            value={item.LCL}
-                            onChange={(e) => {
-                              const newData = [...reviewODSTR12];
-                              newData[index].LCL = e.target.value;
-                              setReviewOSTR12(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            type="number"
-                            value={item.UCL}
-                            onChange={(e) => {
-                              const newData = [...reviewODSTR12];
-                              newData[index].UCL = e.target.value;
-                              setReviewOSTR12(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            type="number"
-                            value={item.observedValue}
-                            onChange={(e) => {
-                              const newData = [...reviewODSTR12];
-                              newData[index].observedValue = e.target.value;
-                              setReviewOSTR12(newData);
-                            }}
-                          />
-                        </td>
 
-                        <td>
-                          <input
-                            value={item.compliesNotComplies}
-                            onChange={(e) => {
-                              const newData = [...reviewODSTR12];
-                              newData[index].compliesNotComplies =
-                                e.target.value;
-                              setReviewOSTR12(newData);
-                            }}
-                          />
-                        </td>
-                      </tr>
-                    );
-                  })}
-                </tbody>
-              </table>
+
+              <GridContainer
+                setimportedData={setimportedData}
+                fileName="reviewODSTR12.xlsx"
+                gridNo={33}
+                headers={reviewODSTR12headers}
+                data={reviewODSTR12}
+                setData={setReviewOSTR12}
+                fields={reviewODSTR12fields}
+              />
+
             </div>
             <h1 className="gridName pt-8">
               Impurity Of Pentoprazole Test Result
             </h1>
             <div>
-              <div className="AddRows d-flex w-full justify-between items-center text-3xl">
-                <div className="flex items-center">
-                  <MdNoteAdd onClick={addReviewODSTRRow13} />
-                  <div className="addrowinstruction  pl-2">
-                    Add Rows by clicking on (+) icon
-                  </div>
-                </div>
-                <div className="flex gap-4">
-                  <ExcelExportImport
-                    data={reviewODSTR13}
-                    setimportedData={setimportedData}
-                    fileName="reviewODSTR13.xlsx"
-                    gridNo={34}
-                  />
-                </div>
-              </div>
-              <table>
-                <thead>
-                  <tr>
-                    <th>Batch No</th>
-                    <th>Tests parameter</th>
-                    <th>LSL</th>
-                    <th>USL</th>
-                    <th>LCL</th>
-                    <th>UCL</th>
-                    <th>Observed Value</th>
-                    <th>Complies/Does Not complies</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {reviewODSTR13?.map((item, index) => {
-                    return (
-                      <tr key={index}>
-                        <td>
-                          <input
-                            value={item.batchNo}
-                            onChange={(e) => {
-                              const newData = [...reviewODSTR13];
-                              newData[index].batchNo = e.target.value;
-                              setReviewOSTR13(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.testsParameter}
-                            onChange={(e) => {
-                              const newData = [...reviewODSTR13];
-                              newData[index].testsParameter = e.target.value;
-                              setReviewOSTR13(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            type="number"
-                            value={item.LSL}
-                            onChange={(e) => {
-                              const newData = [...reviewODSTR13];
-                              newData[index].LSL = e.target.value;
-                              setReviewOSTR13(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            type="number"
-                            value={item.USL}
-                            onChange={(e) => {
-                              const newData = [...reviewODSTR13];
-                              newData[index].USL = e.target.value;
-                              setReviewOSTR13(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.LCL}
-                            onChange={(e) => {
-                              const newData = [...reviewODSTR13];
-                              newData[index].LCL = e.target.value;
-                              setReviewOSTR13(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            type="number"
-                            value={item.UCL}
-                            onChange={(e) => {
-                              const newData = [...reviewODSTR13];
-                              newData[index].UCL = e.target.value;
-                              setReviewOSTR13(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            type="number"
-                            value={item.observedValue}
-                            onChange={(e) => {
-                              const newData = [...reviewODSTR13];
-                              newData[index].observedValue = e.target.value;
-                              setReviewOSTR13(newData);
-                            }}
-                          />
-                        </td>
 
-                        <td>
-                          <input
-                            value={item.compliesNotComplies}
-                            onChange={(e) => {
-                              const newData = [...reviewODSTR13];
-                              newData[index].compliesNotComplies =
-                                e.target.value;
-                              setReviewOSTR13(newData);
-                            }}
-                          />
-                        </td>
-                      </tr>
-                    );
-                  })}
-                </tbody>
-              </table>
+
+
+              <GridContainer
+                setimportedData={setimportedData}
+                fileName="reviewODSTR13.xlsx"
+                gridNo={34}
+                headers={reviewODSTR13headers}
+                data={reviewODSTR13}
+                setData={setReviewOSTR13}
+                fields={reviewODSTR13fields}
+              />
+
+
             </div>
             <h1 className="gridName pt-8">
               Dissolution Of Pentoprazole Test Result
             </h1>
             <div>
-              <div className="AddRows d-flex w-full justify-between items-center text-3xl">
-                <div className="flex items-center">
-                  <MdNoteAdd onClick={addReviewODSTRRow14} />
-                  <div className="addrowinstruction  pl-2">
-                    Add Rows by clicking on (+) icon
-                  </div>
-                </div>
-                <div className="flex gap-4 ">
-                  <ExcelExportImport
-                    data={reviewODSTR14}
-                    setimportedData={setimportedData}
-                    fileName="reviewODSTR14.xlsx"
-                    gridNo={35}
-                  />
-                </div>
-              </div>
-              <table>
-                <thead>
-                  <tr>
-                    <th>Batch No</th>
-                    <th>Tests parameter</th>
-                    <th>LSL</th>
-                    <th>USL</th>
-                    <th>LCL</th>
-                    <th>UCL</th>
-                    <th>Observed Value</th>
-                    <th>Complies/Does Not complies</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {reviewODSTR14?.map((item, index) => {
-                    return (
-                      <tr key={index}>
-                        <td>
-                          <input
-                            value={item.batchNo}
-                            onChange={(e) => {
-                              const newData = [...reviewODSTR14];
-                              newData[index].batchNo = e.target.value;
-                              setReviewOSTR14(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.testsParameter}
-                            onChange={(e) => {
-                              const newData = [...reviewODSTR14];
-                              newData[index].testsParameter = e.target.value;
-                              setReviewOSTR14(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            type="number"
-                            value={item.LSL}
-                            onChange={(e) => {
-                              const newData = [...reviewODSTR14];
-                              newData[index].LSL = e.target.value;
-                              setReviewOSTR14(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            type="number"
-                            value={item.USL}
-                            onChange={(e) => {
-                              const newData = [...reviewODSTR14];
-                              newData[index].USL = e.target.value;
-                              setReviewOSTR14(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            type="number"
-                            value={item.LCL}
-                            onChange={(e) => {
-                              const newData = [...reviewODSTR14];
-                              newData[index].LCL = e.target.value;
-                              setReviewOSTR14(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            type="number"
-                            value={item.UCL}
-                            onChange={(e) => {
-                              const newData = [...reviewODSTR14];
-                              newData[index].UCL = e.target.value;
-                              setReviewOSTR14(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            type="number"
-                            value={item.observedValue}
-                            onChange={(e) => {
-                              const newData = [...reviewODSTR14];
-                              newData[index].observedValue = e.target.value;
-                              setReviewOSTR14(newData);
-                            }}
-                          />
-                        </td>
 
-                        <td>
-                          <input
-                            value={item.compliesNotComplies}
-                            onChange={(e) => {
-                              const newData = [...reviewODSTR14];
-                              newData[index].compliesNotComplies =
-                                e.target.value;
-                              setReviewOSTR14(newData);
-                            }}
-                          />
-                        </td>
-                      </tr>
-                    );
-                  })}
-                </tbody>
-              </table>
+
+              <GridContainer
+                setimportedData={setimportedData}
+                fileName="reviewODSTR14.xlsx"
+                gridNo={35}
+                headers={reviewODSTR14headers}
+                data={reviewODSTR14}
+                setData={setReviewOSTR14}
+                fields={reviewODSTR14fields}
+              />
+
+
+
             </div>
             <h1 className="gridName pt-8">
               Disinteration Of Pentoprazole Test Result
             </h1>
             <div>
-              <div className="AddRows d-flex w-full justify-between items-center text-3xl">
-                <div className="flex items-center">
-                  <MdNoteAdd onClick={addReviewODSTRRow15} />
-                  <div className="addrowinstruction  pl-2">
-                    Add Rows by clicking on (+) icon
-                  </div>
-                </div>
-                <div className="flex gap-4 ">
-                  <ExcelExportImport
-                    data={reviewODSTR15}
-                    setimportedData={setimportedData}
-                    fileName="reviewODSTR15.xlsx"
-                    gridNo={36}
-                  />
-                </div>
-              </div>
-              <table>
-                <thead>
-                  <tr>
-                    <th>Batch No</th>
-                    <th>Tests parameter</th>
-                    <th>LSL</th>
-                    <th>USL</th>
-                    <th>LCL</th>
-                    <th>UCL</th>
-                    <th>Observed Value</th>
-                    <th>Complies/Does Not complies</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {reviewODSTR15?.map((item, index) => {
-                    return (
-                      <tr key={index}>
-                        <td>
-                          <input
-                            value={item.batchNo}
-                            onChange={(e) => {
-                              const newData = [...reviewODSTR15];
-                              newData[index].batchNo = e.target.value;
-                              setReviewOSTR15(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.testsParameter}
-                            onChange={(e) => {
-                              const newData = [...reviewODSTR15];
-                              newData[index].testsParameter = e.target.value;
-                              setReviewOSTR15(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            type="number"
-                            value={item.LSL}
-                            onChange={(e) => {
-                              const newData = [...reviewODSTR15];
-                              newData[index].LSL = e.target.value;
-                              setReviewOSTR15(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            type="number"
-                            value={item.USL}
-                            onChange={(e) => {
-                              const newData = [...reviewODSTR15];
-                              newData[index].USL = e.target.value;
-                              setReviewOSTR15(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            type="number"
-                            value={item.LCL}
-                            onChange={(e) => {
-                              const newData = [...reviewODSTR15];
-                              newData[index].LCL = e.target.value;
-                              setReviewOSTR15(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            type="number"
-                            value={item.UCL}
-                            onChange={(e) => {
-                              const newData = [...reviewODSTR15];
-                              newData[index].UCL = e.target.value;
-                              setReviewOSTR15(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            type="number"
-                            value={item.observedValue}
-                            onChange={(e) => {
-                              const newData = [...reviewODSTR15];
-                              newData[index].observedValue = e.target.value;
-                              setReviewOSTR15(newData);
-                            }}
-                          />
-                        </td>
 
-                        <td>
-                          <input
-                            value={item.compliesNotComplies}
-                            onChange={(e) => {
-                              const newData = [...reviewODSTR15];
-                              newData[index].compliesNotComplies =
-                                e.target.value;
-                              setReviewOSTR15(newData);
-                            }}
-                          />
-                        </td>
-                      </tr>
-                    );
-                  })}
-                </tbody>
-              </table>
+
+              <GridContainer
+                setimportedData={setimportedData}
+                fileName="reviewODSTR15.xlsx"
+                gridNo={36}
+                headers={reviewODSTR15headers}
+                data={reviewODSTR15}
+                setData={setReviewOSTR15}
+                fields={reviewODSTR15fields}
+              />
+
+
+
             </div>
             <div>
               <h4 className="gridName mt-5">Summary</h4>
@@ -5891,6 +4303,7 @@ export default function NewAPQR() {
                   />
                 </div>
               </div>
+              
               <table>
                 <thead>
                   <tr>
@@ -7321,7 +5734,7 @@ export default function NewAPQR() {
             </div>
             <div className="sub-head">Summary of Ongoing Stability Studies</div>
             <div>
-              <div className="AddRows d-flex w-full justify-between items-center text-3xl">
+              {/* <div className="AddRows d-flex w-full justify-between items-center text-3xl">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addSummaryOOSSRow} />
                   <div className="addrowinstruction  pl-2">
@@ -7335,8 +5748,16 @@ export default function NewAPQR() {
                     fileName="summaryOOSS.xlsx"
                   />
                 </div>
-              </div>
-              <table>
+              </div> */}
+              <GridContainer
+                setimportedData={setimportedData}
+                fileName="summaryOOSS.xlsx"
+                setData={setSummaryOOSS}
+                data={summaryOOSS}
+                headers={summaryOOSSheaders}
+                fields={summaryOOSSfields}
+              />
+              {/* <table>
                 <thead>
                   <tr>
                     <th>Sl. No.</th>
@@ -7407,7 +5828,7 @@ export default function NewAPQR() {
                     );
                   })}
                 </tbody>
-              </table>
+              </table> */}
               <div>
                 <h4 className="gridName mt-5">Summary</h4>
                 <TinyEditor
@@ -7692,6 +6113,8 @@ export default function NewAPQR() {
                   />
                 </div>
               </div>
+             
+             
               <table>
                 <thead>
                   <tr>
@@ -10740,19 +9163,8 @@ export default function NewAPQR() {
         ) : null}
         {tab === "CAPA" ? (
           <>
-            {/* <div className="flex items-center justify-center">
-              <div className="relative w-16 h-16">
-                <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
-                  <div className="w-16 h-16 border-t-4 border-b-4 border-blue-500 rounded-full animate-spin">
-                    <span></span>
-                    <br />
-                  </div>
-                </div>
-              </div>
-              <span className="text-[28px] pl-5 text-blue-500 font-semibold">
-                Work In Progress. .........
-              </span>
-            </div> */}
+
+
             <div className="flex items-center justify-center h-screen">
               <div className="text-3xl font-bold text-gray-600">
                 No Data To Show Here.....
@@ -10941,57 +9353,15 @@ export default function NewAPQR() {
       </div>
       <div className="flex justify-end gap-10 pr-10">
         <div className="fixed top-1/2 left-0 z-10 flex flex-col">
-          {/* <button
-            className="
-                px-4
-                py-2
-                bg-teal-600
-                text-white
-                font-semibold
-                rounded-lg
-                shadow-md
-                hover:bg-teal-700
-                focus:outline-none
-                focus:ring-2
-                focus:ring-offset-2
-                focus:ring-teal-500
-                // mb-10
-              "
-            onClick={() => {
-              dispatch(addForm(pQRData));
-              navigate("/dashboard");
-            }}
-          >
-            Save
-          </button> */}
+
+
         </div>
 
         <div className="fixed top-3/4 right-0 z-10 flex flex-col">
           {/* Launch QMS Button */}
           <div>
-            {/* <button
-              onClick={() => setIsModalOpen(true)}
-              className="
-            px-4
-            py-2
-            bg-teal-600
-            text-white
-            font-semibold
-            rounded-l-full
-            shadow-md
-            hover:bg-teal-700
-            focus:outline-none
-            focus:ring-2
-            focus:ring-offset-2
-            focus:ring-teal-500
-            mb-5
-            flex items-center justify-center
-          "
-            >
-              Launch QMS
-            </button> */}
-
-            {/* Modal */}
+           
+           
             {isModalOpen && (
               <>
                 <div className="fixed inset-0 flex items-center justify-end z-50">
@@ -11089,8 +9459,6 @@ export default function NewAPQR() {
             ) : null}
             {loading ? "Saving..." : "Save"}
           </button>
-
-          {/* Exit Button */}
           <button
             className="
           px-4
