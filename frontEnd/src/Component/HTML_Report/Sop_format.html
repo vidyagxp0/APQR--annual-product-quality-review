@@ -51,6 +51,7 @@
     }
     .table-tab{
     border-collapse: collapse !important;
+    padding: 10px;
 }
 
 
@@ -722,12 +723,12 @@ The results of this review are to be evaluated and an assessment is to be made o
     <table class="table-tab">
       <tr class="bg">
         <th>S.No.</th>
-        <th>Markets where Product filed</th>
-        <th>DMF / CEP / ASMF No.</th>
+        <th>Markets Where <br> Product filed</th>
+        <th>DMF/ CEP / ASMF No.</th>
         <th>Type of filing</th>
-        <th>Current Status of the Filing</th>
+        <th>Current Status <br> of the Filing</th>
         <th>Closure Status</th>
-        <th>Target/Closed on Date</th>
+        <th>Target/Closed <br> on Date</th>
       </tr>
       <% product.reviewOfRegulatory.map((obj)=> { %>
         <!-- <tr>
@@ -790,7 +791,7 @@ The results of this review are to be evaluated and an assessment is to be made o
         <th>Batch No.</th>
         <th>Mfg. Month</th>
         <th>Actual Input (in Kg)</th>
-        <th>Actual Output (in Kg)Expected Output range. (in Kg) </th>
+        <th>Actual Output (in Kg)Expected <br/> Output range.(in Kg) </th>
         <th>Yield %</th>
       </tr>
 
@@ -850,7 +851,7 @@ The results of this review are to be evaluated and an assessment is to be made o
         <th>Batch No.</th>
         <th>Mfg. Month</th>
         <th>Actual Input(In Kg)</th>
-        <th>Actual Output (In Kg)Expected Output range(in Kg)</th>
+        <th>Actual Output (In Kg)Expected <br/> Output range(in Kg)</th>
         <th>Sampled Qty. </th>
         <th>Tail End Qty. used for blending</th>
         <th>Date of transfer to BSR</th>
@@ -1547,7 +1548,7 @@ The results of this review are to be evaluated and an assessment is to be made o
           <th>Complaint No.</th>
           <th>Customer Name</th>
           <th>Batch No.</th>
-          <th>Pre-stage Category Minor/Major/Critical</th>
+          <th>Pre-stage Category <br> Minor/Major/Critical</th>
           <th>Description of Complaint</th>
         </tr>
         <% product.yieldTrendForSterile.map((obj)=> { %>
