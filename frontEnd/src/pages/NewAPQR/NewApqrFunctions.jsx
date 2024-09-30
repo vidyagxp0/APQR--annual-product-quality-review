@@ -907,3 +907,172 @@ export const previewOOTfields=[
   "currentStatus"
 ]
 
+export const currentCCheaders=[
+  "SI. No.",
+  "Date Of Initiation",
+  "Record No",
+  "Site/Division",
+  "Departmen",
+  "Initiator",
+  "Short Description",
+  "Batch No",
+  "Due Date",
+  "Current Status"
+]
+export const currretCCfields=[
+  "dateOfInitiation",
+  "recordNo",
+  "siteDivision",
+  "department",
+  "initiator",
+  "shortDescription",
+  "batchNo",
+  "dueDate",
+  "currentStatus"
+]
+export const previewCCheaders=[
+  "SI. No.",
+  "Date Of Initiation",
+  "Record No",
+  "Site/Division",
+  "Departmen",
+  "Initiator",
+  "Short Description",
+  "Batch No",
+  "Due Date",
+  "Current Status"
+]
+export const previewCCfields=[
+  "dateOfInitiation",
+  "recordNo",
+  "siteDivision",
+  "department",
+  "initiator",
+  "shortDescription",
+  "batchNo",
+  "dueDate",
+  "currentStatus"
+]
+export const currentLabIheaders=[
+  "SI. No.",
+  "Date Of Initiation",
+  "Record No",
+  "Site/Division",
+  "Departmen",
+  "Initiator",
+  "Short Description",
+  "Batch No",
+  "Due Date",
+  "Current Status"
+]
+export const currentLabIfields=[
+  "dateOfInitiation",
+  "recordNo",
+  "siteDivision",
+  "department",
+  "initiator",
+  "shortDescription",
+  "batchNo",
+  "dueDate",
+  "currentStatus"
+]
+export const previewLabIheaders=[
+  "SI. No.",
+  "Date Of Initiation",
+  "Record No",
+  "Site/Division",
+  "Departmen",
+  "Initiator",
+  "Short Description",
+  "Batch No",
+  "Due Date",
+  "Current Status"
+]
+export const previewLabIfields=[
+  "dateOfInitiation",
+  "recordNo",
+  "siteDivision",
+  "department",
+  "initiator",
+  "shortDescription",
+  "batchNo",
+  "dueDate",
+  "currentStatus"
+]
+export const currentMCheaders=[
+  "SI. No.",
+  "Date Of Initiation",
+  "Record No",
+  "Site/Division",
+  "Departmen",
+  "Initiator",
+  "Short Description",
+  "Batch No",
+  "Due Date",
+  "Current Status"
+]
+export const currentMCfields=[
+  "dateOfInitiation",
+  "recordNo",
+  "siteDivision",
+  "department",
+  "initiator",
+  "shortDescription",
+  "batchNo",
+  "dueDate",
+  "currentStatus"
+]
+export const previewMCheaders=[
+  "SI. No.",
+  "Date Of Initiation",
+  "Record No",
+  "Site/Division",
+  "Departmen",
+  "Initiator",
+  "Short Description",
+  "Batch No",
+  "Due Date",
+  "Current Status"
+]
+
+export const previewMCfields=[
+  "dateOfInitiation",
+  "recordNo",
+  "siteDivision",
+  "department",
+  "initiator",
+  "shortDescription",
+  "batchNo",
+  "dueDate",
+  "currentStatus"
+]
+export const dossierRRheaders=[
+  "SI. No.",
+  "Agency",
+  "Notification No",
+  "Notification Type",
+  "Description"
+]
+export const dossierRRfields=[
+  "agency",
+  "notificationNo",
+  "notificationType",
+  "description"
+]
+export const dossierRRNmaheaders=[
+  "SI. No.",
+  "Country Name",
+  "Description Of Packing",
+  "Date of Application",
+  "Status of Application",
+  "Date of Authorization",
+  "Remarks"
+]
+export const dossierRRNmafields=[
+  "countryName",
+  "descriptionOfPacking",
+  "dateOfApplication",
+  "statusOfApplication",
+  "dateOfAuthorization",
+  "remarks"
+]

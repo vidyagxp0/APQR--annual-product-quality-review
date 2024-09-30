@@ -3,19 +3,16 @@ import Header from "../../Component/Header";
 import { MdNoteAdd } from "react-icons/md";
 import TinyEditor from "../../Component/TinyEditor";
 import { useDispatch } from "react-redux";
-// import { addForm } from "../../redux/formSlice";
 import { useNavigate } from "react-router-dom";
 import ExcelExportImport from "../../Component/ImportExportExcel";
 
 import axios from "axios";
-// import { FaMicrophone } from "react-icons/fa";
-// import { AiFillSound } from "react-icons/ai";
 import ActiveTab from "../../Component/New_APQR/ActiveTab";
 import {
   TextRecognition,
   SpeechtoText,
 } from "../../Component/New_APQR/TextRecoButtons";
-import CommonTable from "../../Component/New_APQR/CommonTable";
+
 import {
   Stageheaders,
   Stagefields,
@@ -113,8 +110,22 @@ import {
   currentOOTfields,
   previewOOTheaders,
   previewOOTfields,
-
-
+  currentCCheaders,
+  currretCCfields,
+  previewCCheaders,
+  previewCCfields,
+  currentLabIheaders,
+  currentLabIfields,
+  previewLabIheaders,
+  previewLabIfields,
+  currentMCheaders,
+  currentMCfields,
+  previewMCheaders,
+  previewMCfields,
+  dossierRRheaders,
+  dossierRRfields,
+  dossierRRNmaheaders,
+  dossierRRNmafields,
 
 } from "./NewApqrFunctions";
 
@@ -2136,22 +2147,8 @@ export default function NewAPQR() {
 
             <div className="sub-head">Manufacturing Site Address</div>
             <div className="">
-              {/* <div className="AddRows d-flex w-full justify-between items-center text-3xl">
-                <div className="flex items-center">
-                  <MdNoteAdd onClick={addManufacturingStageRow} />
-                  <div className="addrowinstruction  pl-2">
-                    Add Rows by clicking on (+) icon
-                  </div>
-                </div>
-                <div className="flex gap-4 ">
-                  <ExcelExportImport
-                    data={manufacturingStage}
-                    setimportedData={setimportedData}
-                    fileName="manufacturingStage.xlsx"
-                    gridNo={1}
-                  />
-                </div>
-              </div> */}
+            
+            
               <GridContainer
                 data={manufacturingStage}
                 setData={setManufacturingStage}
@@ -2163,12 +2160,8 @@ export default function NewAPQR() {
                 fields={Stagefields}
               />
             </div>
-            {/* <CommonTable
-              headers={Stageheaders}
-              data={manufacturingStage}
-              setData={setManufacturingStage}
-              fields={Stagefields}
-            /> */}
+         
+         
             <div>
               <h4 className="gridName mt-4">Summary</h4>
               <TinyEditor
@@ -2176,6 +2169,9 @@ export default function NewAPQR() {
                 setEditorContent={setTinyContent}
                 tinyNo={1}
               />
+         
+      
+      
             </div>
 
             <div className="py-4">
@@ -6271,14 +6267,8 @@ export default function NewAPQR() {
 
             <div className="gridName pt-4">Current Review Period OOT</div>
             <div>
-              {/* <div className="AddRows d-flex w-full justify-between items-center text-3xl">
-                <div className="flex items-center">
-                  <MdNoteAdd onClick={addCurrentOOT} />
-                  <div className="addrowinstruction  pl-2">
-                    Add Rows by clicking on (+) icon
-                  </div>
-                </div>
-              </div> */}
+           
+           
              
              
               <GridContainer
@@ -6288,135 +6278,15 @@ export default function NewAPQR() {
                 headers={currentOOTheaders}
                 fields={currentOOTfields}
               />
-              {/* <table>
-                <thead>
-                  <tr>
-                    <th>S.No</th>
-                    <th>Date Of Initiation</th>
-                    <th>Record No</th>
-                    <th>Site/Division</th>
-                    <th>Department</th>
-                    <th>Initiator</th>
-                    <th>Short Description</th>
-                    <th>Batch No</th>
-                    <th>Due Date</th>
-                    <th>Current Status</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {currentOOT?.map((item, index) => {
-                    return (
-                      <tr key={index}>
-                        <td>{index + 1}</td>
-                        <td>
-                          <input
-                            value={item.dateOfInitiation}
-                            onChange={(e) => {
-                              const newData = [...currentOOT];
-                              newData[index].dateOfInitiation = e.target.value;
-                              setCurrentOOT(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.recordNo}
-                            onChange={(e) => {
-                              const newData = [...currentOOT];
-                              newData[index].recordNo = e.target.value;
-                              setCurrentOOT(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.siteDivision}
-                            onChange={(e) => {
-                              const newData = [...currentOOT];
-                              newData[index].siteDivision = e.target.value;
-                              setCurrentOOT(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.department}
-                            onChange={(e) => {
-                              const newData = [...currentOOT];
-                              newData[index].department = e.target.value;
-                              setCurrentOOT(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.initiator}
-                            onChange={(e) => {
-                              const newData = [...currentOOT];
-                              newData[index].initiator = e.target.value;
-                              setCurrentOOT(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.shortDescription}
-                            onChange={(e) => {
-                              const newData = [...currentOOT];
-                              newData[index].shortDescription = e.target.value;
-                              setCurrentOOT(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.batchNo}
-                            onChange={(e) => {
-                              const newData = [...currentOOT];
-                              newData[index].batchNo = e.target.value;
-                              setCurrentOOT(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.dueDate}
-                            onChange={(e) => {
-                              const newData = [...currentOOT];
-                              newData[index].dueDate = e.target.value;
-                              setCurrentOOT(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.currentStatus}
-                            onChange={(e) => {
-                              const newData = [...currentOOT];
-                              newData[index].currentStatus = e.target.value;
-                              setCurrentOOT(newData);
-                            }}
-                          />
-                        </td>
-                      </tr>
-                    );
-                  })}
-                </tbody>
-              </table> */}
+
+
             </div>
 
             <div className="gridName pt-4">Previous review period OOS</div>
 
             <div>
-              {/* <div className="AddRows d-flex w-full justify-between items-center text-3xl">
-                <div className="flex items-center">
-                  <MdNoteAdd onClick={addPreviewOOT} />
-                  <div className="addrowinstruction  pl-2">
-                    Add Rows by clicking on (+) icon
-                  </div>
-                </div>
-              </div> */}
-              <p>12</p>
+        
+        
               <GridContainer
                 MdNoteAddfun ={addPreviewOOT}
                 setData={setPreviewOOT}
@@ -6424,123 +6294,8 @@ export default function NewAPQR() {
                 headers={previewOOTheaders}
                 fields={previewOOTfields}
               />
-              {/* <table>
-                <thead>
-                  <tr>
-                    <th>S.No</th>
-                    <th>Date Of Initiation</th>
-                    <th>Record No</th>
-                    <th>Site/Division</th>
-                    <th>Department</th>
-                    <th>Initiator</th>
-                    <th>Short Description</th>
-                    <th>Batch No</th>
-                    <th>Due Date</th>
-                    <th>Current Status</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {previewOOT?.map((item, index) => {
-                    return (
-                      <tr key={index}>
-                        <td>{index + 1}</td>
-                        <td>
-                          <input
-                            value={item.dateOfInitiation}
-                            onChange={(e) => {
-                              const newData = [...previewOOT];
-                              newData[index].dateOfInitiation = e.target.value;
-                              setPreviewOOT(newData);
-                            }}
-                          />
-                        </td>
-
-                        <td>
-                          <input
-                            value={item.recordNo}
-                            onChange={(e) => {
-                              const newData = [...previewOOT];
-                              newData[index].recordNo = e.target.value;
-                              setPreviewOOT(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.siteDivision}
-                            onChange={(e) => {
-                              const newData = [...previewOOT];
-                              newData[index].siteDivision = e.target.value;
-                              setPreviewOOT(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.department}
-                            onChange={(e) => {
-                              const newData = [...previewOOT];
-                              newData[index].department = e.target.value;
-                              setPreviewOOT(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.initiator}
-                            onChange={(e) => {
-                              const newData = [...previewOOT];
-                              newData[index].initiator = e.target.value;
-                              setPreviewOOT(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.shortDescription}
-                            onChange={(e) => {
-                              const newData = [...previewOOT];
-                              newData[index].shortDescription = e.target.value;
-                              setPreviewOOT(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.batchNo}
-                            onChange={(e) => {
-                              const newData = [...previewOOT];
-                              newData[index].batchNo = e.target.value;
-                              setPreviewOOT(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.dueDate}
-                            onChange={(e) => {
-                              const newData = [...previewOOT];
-                              newData[index].dueDate = e.target.value;
-                              setPreviewOOT(newData);
-                            }}
-                          />
-                        </td>
-
-                        <td>
-                          <input
-                            value={item.currentStatus}
-                            onChange={(e) => {
-                              const newData = [...previewOOT];
-                              newData[index].currentStatus = e.target.value;
-                              setPreviewOOT(newData);
-                            }}
-                          />
-                        </td>
-                      </tr>
-                    );
-                  })}
-                </tbody>
-              </table> */}
+          
+          
             </div>
 
             <h4 className="gridName pt-4">OOT Summary</h4>
@@ -6557,129 +6312,17 @@ export default function NewAPQR() {
             </div>
 
             <div>
-              <div className="AddRows d-flex w-full justify-between items-center text-3xl">
-                <div className="flex items-center">
-                  <MdNoteAdd onClick={addCurrentCC} />
-                  <div className="addrowinstruction  pl-2">
-                    Add Rows by clicking on (+) icon
-                  </div>
-                </div>
-              </div>
-              <table>
-                <thead>
-                  <tr>
-                    <th>S.No</th>
-                    <th>Date Of Initiation</th>
-                    <th>Record No</th>
-                    <th>Site/Division</th>
-                    <th>Department</th>
-                    <th>Initiator</th>
-                    <th>Short Description</th>
-                    <th>Batch No</th>
-                    <th>Due Date</th>
-                    <th>Current Status</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {currentCC?.map((item, index) => {
-                    return (
-                      <tr key={index}>
-                        <td>{index + 1}</td>
-                        <td>
-                          <input
-                            value={item.dateOfInitiation}
-                            onChange={(e) => {
-                              const newData = [...currentCC];
-                              newData[index].dateOfInitiation = e.target.value;
-                              setCurrentCC(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.recordNo}
-                            onChange={(e) => {
-                              const newData = [...currentCC];
-                              newData[index].recordNo = e.target.value;
-                              setCurrentCC(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.siteDivision}
-                            onChange={(e) => {
-                              const newData = [...currentCC];
-                              newData[index].siteDivision = e.target.value;
-                              setCurrentCC(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.department}
-                            onChange={(e) => {
-                              const newData = [...currentCC];
-                              newData[index].department = e.target.value;
-                              setCurrentCC(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.initiator}
-                            onChange={(e) => {
-                              const newData = [...currentCC];
-                              newData[index].initiator = e.target.value;
-                              setCurrentCC(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.shortDescription}
-                            onChange={(e) => {
-                              const newData = [...currentCC];
-                              newData[index].shortDescription = e.target.value;
-                              setCurrentCC(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.batchNo}
-                            onChange={(e) => {
-                              const newData = [...currentCC];
-                              newData[index].batchNo = e.target.value;
-                              setCurrentCC(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.dueDate}
-                            onChange={(e) => {
-                              const newData = [...currentCC];
-                              newData[index].dueDate = e.target.value;
-                              setCurrentCC(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.currentStatus}
-                            onChange={(e) => {
-                              const newData = [...currentCC];
-                              newData[index].currentStatus = e.target.value;
-                              setCurrentCC(newData);
-                            }}
-                          />
-                        </td>
-                      </tr>
-                    );
-                  })}
-                </tbody>
-              </table>
+          
+          
+              <GridContainer
+                MdNoteAddfun ={addCurrentCC}
+                setData={setCurrentCC}
+                data={currentCC}
+                headers={currentCCheaders}
+                fields={currretCCfields}
+              />
+           
+           
             </div>
 
             <div className="gridName pt-4">
@@ -6687,131 +6330,17 @@ export default function NewAPQR() {
             </div>
 
             <div>
-              <div className="AddRows d-flex w-full justify-between items-center text-3xl">
-                <div className="flex items-center">
-                  <MdNoteAdd onClick={addPreviewCC} />
-                  <div className="addrowinstruction  pl-2">
-                    Add Rows by clicking on (+) icon
-                  </div>
-                </div>
-              </div>
-              <table>
-                <thead>
-                  <tr>
-                    <th>S.No</th>
-                    <th>Date Of Initiation</th>
-                    <th>Record No</th>
-                    <th>Site/Division</th>
-                    <th>Department</th>
-                    <th>Initiator</th>
-                    <th>Short Description</th>
-                    <th>Batch No</th>
-                    <th>Due Date</th>
-                    <th>Current Status</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {previewCC?.map((item, index) => {
-                    return (
-                      <tr key={index}>
-                        <td>{index + 1}</td>
-                        <td>
-                          <input
-                            value={item.dateOfInitiation}
-                            onChange={(e) => {
-                              const newData = [...previewCC];
-                              newData[index].dateOfInitiation = e.target.value;
-                              setPreviewCC(newData);
-                            }}
-                          />
-                        </td>
-
-                        <td>
-                          <input
-                            value={item.recordNo}
-                            onChange={(e) => {
-                              const newData = [...previewCC];
-                              newData[index].recordNo = e.target.value;
-                              setPreviewCC(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.siteDivision}
-                            onChange={(e) => {
-                              const newData = [...previewCC];
-                              newData[index].siteDivision = e.target.value;
-                              setPreviewCC(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.department}
-                            onChange={(e) => {
-                              const newData = [...previewCC];
-                              newData[index].department = e.target.value;
-                              setPreviewCC(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.initiator}
-                            onChange={(e) => {
-                              const newData = [...previewCC];
-                              newData[index].initiator = e.target.value;
-                              setPreviewCC(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.shortDescription}
-                            onChange={(e) => {
-                              const newData = [...previewCC];
-                              newData[index].shortDescription = e.target.value;
-                              setPreviewCC(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.batchNo}
-                            onChange={(e) => {
-                              const newData = [...previewCC];
-                              newData[index].batchNo = e.target.value;
-                              setPreviewCC(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.dueDate}
-                            onChange={(e) => {
-                              const newData = [...previewCC];
-                              newData[index].dueDate = e.target.value;
-                              setPreviewCC(newData);
-                            }}
-                          />
-                        </td>
-
-                        <td>
-                          <input
-                            value={item.currentStatus}
-                            onChange={(e) => {
-                              const newData = [...previewCC];
-                              newData[index].currentStatus = e.target.value;
-                              setPreviewCC(newData);
-                            }}
-                          />
-                        </td>
-                      </tr>
-                    );
-                  })}
-                </tbody>
-              </table>
+            
+            
+              <GridContainer
+                MdNoteAddfun ={addPreviewCC}
+                setData={setPreviewCC}
+                data={previewCC}
+                headers={previewCCheaders}
+                fields={previewCCfields}
+              />
+         
+         
             </div>
 
             <h4 className="gridName pt-4">Change Control Summary</h4>
@@ -6825,259 +6354,31 @@ export default function NewAPQR() {
 
             <div className="gridName pt-4">Current Review Lab Incident</div>
             <div>
-              <div className="AddRows d-flex w-full justify-between items-center text-3xl">
-                <div className="flex items-center">
-                  <MdNoteAdd onClick={addCurrentLabI} />
-                  <div className="addrowinstruction  pl-2">
-                    Add Rows by clicking on (+) icon
-                  </div>
-                </div>
-              </div>
-              <table>
-                <thead>
-                  <tr>
-                    <th>S.No</th>
-                    <th>Date Of Initiation</th>
-                    <th>Record No</th>
-                    <th>Site/Division</th>
-                    <th>Department</th>
-                    <th>Initiator</th>
-                    <th>Short Description</th>
-                    <th>Batch No</th>
-                    <th>Due Date</th>
-                    <th>Current Status</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {currentLabI?.map((item, index) => {
-                    return (
-                      <tr key={index}>
-                        <td>{index + 1}</td>
-                        <td>
-                          <input
-                            value={item.dateOfInitiation}
-                            onChange={(e) => {
-                              const newData = [...currentLabI];
-                              newData[index].dateOfInitiation = e.target.value;
-                              setCurrentLabI(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.recordNo}
-                            onChange={(e) => {
-                              const newData = [...currentLabI];
-                              newData[index].recordNo = e.target.value;
-                              setCurrentLabI(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.siteDivision}
-                            onChange={(e) => {
-                              const newData = [...currentLabI];
-                              newData[index].siteDivision = e.target.value;
-                              setCurrentLabI(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.department}
-                            onChange={(e) => {
-                              const newData = [...currentLabI];
-                              newData[index].department = e.target.value;
-                              setCurrentLabI(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.initiator}
-                            onChange={(e) => {
-                              const newData = [...currentLabI];
-                              newData[index].initiator = e.target.value;
-                              setCurrentLabI(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.shortDescription}
-                            onChange={(e) => {
-                              const newData = [...currentLabI];
-                              newData[index].shortDescription = e.target.value;
-                              setCurrentLabI(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.batchNo}
-                            onChange={(e) => {
-                              const newData = [...currentLabI];
-                              newData[index].batchNo = e.target.value;
-                              setCurrentLabI(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.dueDate}
-                            onChange={(e) => {
-                              const newData = [...currentLabI];
-                              newData[index].dueDate = e.target.value;
-                              setCurrentLabI(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.currentStatus}
-                            onChange={(e) => {
-                              const newData = [...currentLabI];
-                              newData[index].currentStatus = e.target.value;
-                              setCurrentLabI(newData);
-                            }}
-                          />
-                        </td>
-                      </tr>
-                    );
-                  })}
-                </tbody>
-              </table>
+
+
+              <GridContainer
+                MdNoteAddfun ={addCurrentLabI}
+                setData={setCurrentLabI}
+                data={currentLabI}
+                headers={currentLabIheaders}
+                fields={currentLabIfields}
+              />
+            
+            
             </div>
 
             <div className="gridName pt-4">Previous Review Lab Incident</div>
 
             <div>
-              <div className="AddRows d-flex w-full justify-between items-center text-3xl">
-                <div className="flex items-center">
-                  <MdNoteAdd onClick={addPreviewLabI} />
-                  <div className="addrowinstruction  pl-2">
-                    Add Rows by clicking on (+) icon
-                  </div>
-                </div>
-              </div>
-              <table>
-                <thead>
-                  <tr>
-                    <th>S.No</th>
-                    <th>Date Of Initiation</th>
-                    <th>Record No</th>
-                    <th>Site/Division</th>
-                    <th>Department</th>
-                    <th>Initiator</th>
-                    <th>Short Description</th>
-                    <th>Batch No</th>
-                    <th>Due Date</th>
-                    <th>Current Status</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {previewLabI?.map((item, index) => {
-                    return (
-                      <tr key={index}>
-                        <td>{index + 1}</td>
-                        <td>
-                          <input
-                            value={item.dateOfInitiation}
-                            onChange={(e) => {
-                              const newData = [...previewLabI];
-                              newData[index].dateOfInitiation = e.target.value;
-                              setPreviewLabI(newData);
-                            }}
-                          />
-                        </td>
-
-                        <td>
-                          <input
-                            value={item.recordNo}
-                            onChange={(e) => {
-                              const newData = [...previewLabI];
-                              newData[index].recordNo = e.target.value;
-                              setPreviewLabI(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.siteDivision}
-                            onChange={(e) => {
-                              const newData = [...previewLabI];
-                              newData[index].siteDivision = e.target.value;
-                              setPreviewLabI(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.department}
-                            onChange={(e) => {
-                              const newData = [...previewLabI];
-                              newData[index].department = e.target.value;
-                              setPreviewLabI(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.initiator}
-                            onChange={(e) => {
-                              const newData = [...previewLabI];
-                              newData[index].initiator = e.target.value;
-                              setPreviewLabI(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.shortDescription}
-                            onChange={(e) => {
-                              const newData = [...previewLabI];
-                              newData[index].shortDescription = e.target.value;
-                              setPreviewLabI(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.batchNo}
-                            onChange={(e) => {
-                              const newData = [...previewLabI];
-                              newData[index].batchNo = e.target.value;
-                              setPreviewLabI(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.dueDate}
-                            onChange={(e) => {
-                              const newData = [...previewLabI];
-                              newData[index].dueDate = e.target.value;
-                              setPreviewLabI(newData);
-                            }}
-                          />
-                        </td>
-
-                        <td>
-                          <input
-                            value={item.currentStatus}
-                            onChange={(e) => {
-                              const newData = [...previewLabI];
-                              newData[index].currentStatus = e.target.value;
-                              setPreviewLabI(newData);
-                            }}
-                          />
-                        </td>
-                      </tr>
-                    );
-                  })}
-                </tbody>
-              </table>
+         
+         
+              <GridContainer
+                MdNoteAddfun ={addPreviewLabI}
+                setData={setPreviewLabI}
+                data={previewLabI}
+                headers={previewLabIheaders}
+                fields={previewLabIfields}
+             />
             </div>
 
             <h4 className="gridName pt-4">Lab Incident Summary</h4>
@@ -7093,129 +6394,17 @@ export default function NewAPQR() {
               Current Review Period Complaints
             </div>
             <div>
-              <div className="AddRows d-flex w-full justify-between items-center text-3xl">
-                <div className="flex items-center">
-                  <MdNoteAdd onClick={addCurrentMC} />
-                  <div className="addrowinstruction  pl-2">
-                    Add Rows by clicking on (+) icon
-                  </div>
-                </div>
-              </div>
-              <table>
-                <thead>
-                  <tr>
-                    <th>S.No</th>
-                    <th>Date Of Initiation</th>
-                    <th>Record No</th>
-                    <th>Site/Division</th>
-                    <th>Department</th>
-                    <th>Initiator</th>
-                    <th>Short Description</th>
-                    <th>Batch No</th>
-                    <th>Due Date</th>
-                    <th>Current Status</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {currentMC?.map((item, index) => {
-                    return (
-                      <tr key={index}>
-                        <td>{index + 1}</td>
-                        <td>
-                          <input
-                            value={item.dateOfInitiation}
-                            onChange={(e) => {
-                              const newData = [...currentMC];
-                              newData[index].dateOfInitiation = e.target.value;
-                              setCurrentMC(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.recordNo}
-                            onChange={(e) => {
-                              const newData = [...currentMC];
-                              newData[index].recordNo = e.target.value;
-                              setCurrentMC(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.siteDivision}
-                            onChange={(e) => {
-                              const newData = [...currentMC];
-                              newData[index].siteDivision = e.target.value;
-                              setCurrentMC(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.department}
-                            onChange={(e) => {
-                              const newData = [...currentMC];
-                              newData[index].department = e.target.value;
-                              setCurrentMC(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.initiator}
-                            onChange={(e) => {
-                              const newData = [...currentMC];
-                              newData[index].initiator = e.target.value;
-                              setCurrentMC(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.shortDescription}
-                            onChange={(e) => {
-                              const newData = [...currentMC];
-                              newData[index].shortDescription = e.target.value;
-                              setCurrentMC(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.batchNo}
-                            onChange={(e) => {
-                              const newData = [...currentMC];
-                              newData[index].batchNo = e.target.value;
-                              setCurrentMC(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.dueDate}
-                            onChange={(e) => {
-                              const newData = [...currentMC];
-                              newData[index].dueDate = e.target.value;
-                              setCurrentMC(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.currentStatus}
-                            onChange={(e) => {
-                              const newData = [...currentMC];
-                              newData[index].currentStatus = e.target.value;
-                              setCurrentMC(newData);
-                            }}
-                          />
-                        </td>
-                      </tr>
-                    );
-                  })}
-                </tbody>
-              </table>
+             
+             
+              <GridContainer
+                MdNoteAddfun ={addCurrentMC}
+                setData={setCurrentMC}
+                data={currentMC}
+                headers={currentMCheaders}
+                fields={currentMCfields}
+              />
+           
+           
             </div>
 
             <div className="gridName pt-4">
@@ -7223,131 +6412,19 @@ export default function NewAPQR() {
             </div>
 
             <div>
-              <div className="AddRows d-flex w-full justify-between items-center text-3xl">
-                <div className="flex items-center">
-                  <MdNoteAdd onClick={addPreviewMC} />
-                  <div className="addrowinstruction  pl-2">
-                    Add Rows by clicking on (+) icon
-                  </div>
-                </div>
-              </div>
-              <table>
-                <thead>
-                  <tr>
-                    <th>S.No</th>
-                    <th>Date Of Initiation</th>
-                    <th>Record No</th>
-                    <th>Site/Division</th>
-                    <th>Department</th>
-                    <th>Initiator</th>
-                    <th>Short Description</th>
-                    <th>Batch No</th>
-                    <th>Due Date</th>
-                    <th>Current Status</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {previewMC.map((item, index) => {
-                    return (
-                      <tr key={index}>
-                        <td>{index + 1}</td>
-                        <td>
-                          <input
-                            value={item.dateOfInitiation}
-                            onChange={(e) => {
-                              const newData = [...previewMC];
-                              newData[index].dateOfInitiation = e.target.value;
-                              setPreviewMC(newData);
-                            }}
-                          />
-                        </td>
+            
+            
+          
+          
+               <GridContainer
+                MdNoteAddfun ={addPreviewMC}
+                setData={setPreviewMC}
+                data={previewMC}
+                headers={previewMCheaders}
+                fields={previewMCfields}
+              />
 
-                        <td>
-                          <input
-                            value={item.recordNo}
-                            onChange={(e) => {
-                              const newData = [...previewMC];
-                              newData[index].recordNo = e.target.value;
-                              setPreviewMC(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.siteDivision}
-                            onChange={(e) => {
-                              const newData = [...previewMC];
-                              newData[index].siteDivision = e.target.value;
-                              setPreviewMC(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.department}
-                            onChange={(e) => {
-                              const newData = [...previewMC];
-                              newData[index].department = e.target.value;
-                              setPreviewMC(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.initiator}
-                            onChange={(e) => {
-                              const newData = [...previewMC];
-                              newData[index].initiator = e.target.value;
-                              setPreviewMC(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.shortDescription}
-                            onChange={(e) => {
-                              const newData = [...previewMC];
-                              newData[index].shortDescription = e.target.value;
-                              setPreviewMC(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.batchNo}
-                            onChange={(e) => {
-                              const newData = [...previewMC];
-                              newData[index].batchNo = e.target.value;
-                              setPreviewMC(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.dueDate}
-                            onChange={(e) => {
-                              const newData = [...previewMC];
-                              newData[index].dueDate = e.target.value;
-                              setPreviewMC(newData);
-                            }}
-                          />
-                        </td>
 
-                        <td>
-                          <input
-                            value={item.currentStatus}
-                            onChange={(e) => {
-                              const newData = [...previewMC];
-                              newData[index].currentStatus = e.target.value;
-                              setPreviewMC(newData);
-                            }}
-                          />
-                        </td>
-                      </tr>
-                    );
-                  })}
-                </tbody>
-              </table>
             </div>
 
             <h4 className="gridName pt-4">Market Complaints Summary</h4>
@@ -7564,82 +6641,17 @@ export default function NewAPQR() {
           <>
             <div className="gridName">Dossier variation details</div>
             <div className="py-4">
-              <div className="AddRows d-flex w-full justify-between items-center text-3xl ">
-                <div className="flex items-center">
-                  <MdNoteAdd onClick={addDossierRow} />
-                  <div className="addrowinstruction  pl-2">
-                    Add Rows by clicking on (+) icon
-                  </div>
-                </div>
-                <div className="flex gap-4 ">
-                  <ExcelExportImport
-                    data={dossierRR}
-                    setimportedData={setimportedData}
-                    fileName="dossierRR.xlsx"
-                  />
-                </div>
-              </div>
-              <table>
-                <thead>
-                  <tr>
-                    <th>SL. No.</th>
-                    <th>Agency</th>
-                    <th>Notification No</th>
-                    <th>Notification Type</th>
-                    <th>Description</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {dossierRR.map((item, index) => {
-                    return (
-                      <tr key={index}>
-                        <td>{index + 1}</td>
-
-                        <td>
-                          <input
-                            value={item.agency}
-                            onChange={(e) => {
-                              const newData = [...dossierRR];
-                              newData[index].agency = e.target.value;
-                              setDossierRR(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.notificationNo}
-                            onChange={(e) => {
-                              const newData = [...dossierRR];
-                              newData[index].notificationNo = e.target.value;
-                              setDossierRR(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.notificationType}
-                            onChange={(e) => {
-                              const newData = [...dossierRR];
-                              newData[index].notificationType = e.target.value;
-                              setDossierRR(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.description}
-                            onChange={(e) => {
-                              const newData = [...dossierRR];
-                              newData[index].description = e.target.value;
-                              setDossierRR(newData);
-                            }}
-                          />
-                        </td>
-                      </tr>
-                    );
-                  })}
-                </tbody>
-              </table>
+             
+             
+              <GridContainer
+                MdNoteAddfun ={addDossierRow}
+                setData={setDossierRR}
+                data={dossierRR}
+                headers={dossierRRheaders}
+                fields={dossierRRfields}
+              />
+             
+             
 
               <div>
                 <h4 className="gridName mt-5">Summary</h4>
@@ -7652,107 +6664,18 @@ export default function NewAPQR() {
 
               <div className="gridName">New marketing authorisation</div>
               <div className="py-4">
-                <div className="AddRows d-flex w-full justify-between items-center text-3xl">
-                  <div className="flex items-center">
-                    <MdNoteAdd onClick={addDossierRowNma} />
-                    <div className="addrowinstruction  pl-2">
-                      Add Rows by clicking on (+) icon
-                    </div>
-                  </div>
-                  <div className="flex gap-4 ">
-                    <ExcelExportImport
-                      data={dossierRRNma}
-                      setimportedData={setimportedData}
-                      fileName="dossierRRNma.xlsx"
-                    />
-                  </div>
-                </div>
-                <table>
-                  <thead>
-                    <tr>
-                      <th>SL. No.</th>
-                      <th>Country Name</th>
-                      <th>Description Of Packing</th>
-                      <th>Date of Application</th>
-                      <th>Status of Application</th>
-                      <th>Date of Authorization</th>
-                      <th>Remarks</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {dossierRRNma.map((item, index) => {
-                      return (
-                        <tr key={index}>
-                          <td>{index + 1}</td>
-                          <td>
-                            <input
-                              value={item.countryName}
-                              onChange={(e) => {
-                                const newData = [...dossierRRNma];
-                                newData[index].countryName = e.target.value;
-                                setDossierRRNma(newData);
-                              }}
-                            />
-                          </td>
-                          <td>
-                            <input
-                              value={item.descriptionOfPacking}
-                              onChange={(e) => {
-                                const newData = [...dossierRRNma];
-                                newData[index].descriptionOfPacking =
-                                  e.target.value;
-                                setDossierRRNma(newData);
-                              }}
-                            />
-                          </td>
-                          <td>
-                            <input
-                              value={item.dateOfApplication}
-                              onChange={(e) => {
-                                const newData = [...dossierRRNma];
-                                newData[index].dateOfApplication =
-                                  e.target.value;
-                                setDossierRRNma(newData);
-                              }}
-                            />
-                          </td>
-                          <td>
-                            <input
-                              value={item.statusOfApplication}
-                              onChange={(e) => {
-                                const newData = [...dossierRRNma];
-                                newData[index].statusOfApplication =
-                                  e.target.value;
-                                setDossierRRNma(newData);
-                              }}
-                            />
-                          </td>
-                          <td>
-                            <input
-                              value={item.dateOfAuthorization}
-                              onChange={(e) => {
-                                const newData = [...dossierRRNma];
-                                newData[index].dateOfAuthorization =
-                                  e.target.value;
-                                setDossierRRNma(newData);
-                              }}
-                            />
-                          </td>{" "}
-                          <td>
-                            <input
-                              value={item.remarks}
-                              onChange={(e) => {
-                                const newData = [...dossierRRNma];
-                                newData[index].remarks = e.target.value;
-                                setDossierRRNma(newData);
-                              }}
-                            />
-                          </td>
-                        </tr>
-                      );
-                    })}
-                  </tbody>
-                </table>
+              
+             
+             
+                <GridContainer
+                MdNoteAddfun ={addDossierRowNma}
+                setData={setDossierRRNma}
+                data={dossierRRNma}
+                headers={dossierRRNmaheaders}
+                fields={dossierRRNmafields}
+              />
+               
+               
                 <div>
                   <h4 className="gridName mt-5">Summary</h4>
                   <TinyEditor
