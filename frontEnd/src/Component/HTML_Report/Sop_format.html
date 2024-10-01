@@ -1,0 +1,2243 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Product Quality Review Report</title>
+  <style>
+     body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      line-height: 1.6;
+      background-color: white;
+    }
+    .main-container{
+        width: 60%;
+        margin: 0 auto;
+    }
+
+    .highlight {
+      background-color: yellow;
+    }
+
+    .header {
+      font-family: monospace;
+    }
+
+    .summary {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .summary h3 {
+      margin: 0;
+    }
+
+    .table-container {
+      margin: 10px;
+      /* border: 1px solid black;*/
+
+    }
+
+    table {
+      border: 1px solid black;
+      width: 100%;
+      margin-bottom: 20px;
+
+    }
+    .table-tab{
+    border-collapse: collapse !important;
+    padding: 5px;
+}
+
+
+.bg{
+  background-color: #dadada;
+}
+
+    .table-tab th {
+      /* background-color: #f2f2f2; */
+      /* Light background for header */
+      text-align: center;
+      font-size: 14px;
+    }
+    .tbody{
+      text-align: center;
+      word-break: break-all;
+      padding-inline: 5px;
+    }
+
+    .title {
+      font-size: 24px;
+      font-weight: bold;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    table.taa .text-left {
+  text-align: left;
+  padding-left: 15px;
+  font-size: 13px;
+}
+.trr th{
+  background-color: #dadada;
+}
+    .container {
+      max-width: 100%;
+      margin: 20px auto;
+      padding: 10px;
+      border-style: double;
+      border-width: 4px;
+      border-color: black;
+      background-color: #fff;
+    }
+
+    .title {
+      font-weight: bold;
+      text-align: center;
+      font-size: 22px;
+      padding: 10px 0;
+      line-height: 1.4;
+    }
+
+    @media (min-width: 768px) {
+      .title {
+        font-size: 26px;
+      }
+    }
+
+    .info-grid p {
+  margin: 0;
+  padding: 0; 
+}
+
+.info-grid {
+  font-weight: 600;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  column-gap: 100px;
+  row-gap: 5px; 
+  width: 100%;
+  margin-top: 30px; 
+  align-items: center;
+}
+
+
+    @media (min-width: 768px) {
+      .info-grid {
+        width: 66.66%;
+        margin: 0 auto;
+      }
+    }
+
+    .text-right {
+      text-align: right;
+      font-size: 14px;
+    }
+
+    .text-center {
+      text-align: center;
+      font-size: 14px;
+    }
+
+    .logo-container {
+      margin-top: 50px;
+      display: flex;
+      justify-content: center;
+    }
+
+    .logo {
+      height: 100px;
+      object-fit: cover;
+    }
+
+    /* @media (min-width: 768px) {
+      .logo {
+        height: 90px;
+      }
+    } */
+
+    .footer {
+      text-align: center;
+      font-weight: 600;
+      margin-top: 50px;
+      line-height: 1.75;
+      margin-bottom: 15px;
+    }
+
+    .table-container {
+        max-width: 100%;
+        margin: 0 auto;
+      }
+      table {
+        width: full;
+        border: 1px solid black;
+      }
+
+      @media (max-width: 768px) {
+        th,
+        td {
+          font-size: 0.875rem;
+          padding: 4px;
+        }
+        .setpadding {
+          padding-inline: 20px;
+        }
+        .table-container {
+          width: 90%;
+        }
+      }
+
+      @media (max-width: 480px) {
+        th,
+        td {
+          font-size: 0.75rem;
+          margin: 0 auto;
+          padding: 2px;
+        }
+      }
+      th,
+      td {
+        border: 1px solid black;
+        padding: 3px 0px 3px 0px;
+        font-size: 14px;
+      }
+      td {
+        text-align: center;
+      }
+
+      .text-left {
+        text-align: left;
+      }
+
+      th.name-right {
+        text-align: center;
+        padding-left: 100px;
+      }
+      td {
+        text-align: center;
+      }
+      .setpadding {
+        padding-inline: 70px;
+      }
+
+      .setpadding1 {
+        padding-inline: 55px;
+      }
+      .setpadding2 {
+        padding-inline: 45px;
+      }
+
+  .point-heading {
+  font-weight: bold;
+  padding: 4px 7px;
+  font-size: 16px;
+  background-color: #dadada;
+  margin-bottom: 10px;
+}
+
+.objective {
+  font-size: 14px;
+  line-height: 1.5;
+  margin-left: 46px;
+  text-align: justify;
+}
+
+.objective-list {
+  padding-left: 20px;
+  margin-top: 10px;
+}
+
+.objective-list li {
+  margin-bottom: 8px;
+  margin-left: 62px;
+  font-size: 14px;
+  text-align: justify;
+}
+
+.objective-list li:last-child {
+  margin-bottom: 0; /* Remove margin from the last item */
+}
+.objective-number{
+  margin-right: 10px;
+}
+.margin{
+        margin-bottom: 10px;
+      }
+
+      /* Styling for the last table */
+.table-last {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px 0;
+}
+
+.table-last th,
+.table-last td {
+  border: 1px solid black;
+  padding: 3px 8px;
+  text-align: left;
+}
+
+
+.table-last td:first-child {
+  width: 10px;
+  text-align: center;
+  font-weight: 700;
+}
+
+.table-last td:nth-child(2),
+.table-last th {
+  text-align: left;
+  width: 100px;
+  font-size: 12px;
+  
+}
+
+.table-last td:nth-child(3) {
+  width: 10px;
+  text-align: center;
+  font-weight: 700;
+}
+
+.table-last th:nth-child(4) {
+  width: 10px;
+  text-align: center;
+}
+
+/* Responsive adjustments */
+ @media (max-width: 768px) {
+  .table-last td,
+  .table-last th {
+    padding: 6px 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .table-last td,
+  .table-last th {
+    padding: 4px 8px;
+    font-size: 0.875rem;
+  }
+} 
+
+
+  </style>
+</head>
+    <div class="main-container">
+      <object data="header.html" type="text/html" width="100%" height="235"></object>
+      <div class="container">
+      <h1 class="title">
+        ANNUAL PRODUCT QUALITY REVIEW <br />
+        OF <br />
+        PRODUCT NAME <br />
+        PRODUCT CODE <br />
+        YEAR – ----
+      </h1>
+
+      <div class="info-grid">
+        <p class="text-right">APQR DOCUMENT NO.</p>
+        <p class="text-center">:</p>
+        <p>------</p>
+      </div>
+
+      <div class="info-grid">
+        <p class="text-left" style="font-size: 14px; margin-left: 3px;">PAGES</p>
+        <p class="text-center">:</p>
+        <div style="display: flex; align-items: center;">
+        <p>------ </p>
+    <p style="font-size: 12px;">(Including this page)</p></div>
+      </div>
+
+      <div class="logo-container">
+        <img class="logo" src="Symbiotic_logo.png" alt="Symbiotic Logo" />
+      </div>
+      <div class="footer">
+        SYMBIOTEC PHARMALAB PVT. LIMITED <br />
+        385/2, PIGDAMBER, RAU, INDORE
+      </div>
+    </div>
+    <div class="table-container">
+   <table>
+        <thead>
+          <tr>
+            <th colspan="2" class="name-right">Name</th>
+            <th>Designation</th>
+            <th>Signature</th>
+            <th>Date</th>
+          </tr>
+          <tr>
+            <th class="text-center" style="font-weight: 400; width: 100px;">Prepared by</th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+          </tr>
+          <tr>
+            <th rowspan="4" style="font-weight: 400;">Reviewed By</th>
+            <td>Lorem ipsum</td>
+            <td>Lorem ipsum</td>
+            <td>hrhdgfhdbd</td>
+            <td>28-09-2024</td>
+          </tr>
+          <tr>
+            <td>hfhdgdhdd</td>
+            <td>hdgdhfdhd</td>
+            <td>hrhdgfhdbd</td>
+            <td>28-09-2024</td>
+          </tr>
+          <tr>
+            <td>hfhdgdhdd</td>
+            <td>hdgdhfdhd</td>
+            <td>hrhdgfhdbd</td>
+            <td>28-09-2024</td>
+          </tr>
+          <tr>
+            <td>hfhdgdhdd</td>
+            <td>hdgdhfdhd</td>
+            <td>hrhdgfhdbd</td>
+            <td>28-09-2024</td>
+          </tr>
+          <tr>
+            <th class="text-center" style="font-weight: 400;">Approved by </th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+          </tr>
+        </thead>
+      </table>
+
+      <table class="taa">
+        <thead>
+          <tr class="tcontent">
+            <th colspan="3" style="background-color: #dadada;">Table of Contents</th>
+          </tr>
+          <tr class="trr">
+            <th style="width: 80px;">Section</th>
+            <th>Title</th>
+            <th style="width: 80px;">Page No.</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="section">1.</td>
+            <td class="text-left">Objective</td>
+            <td></td>
+          </tr>
+          <tr>
+            <td class="section">2.</td>
+            <td class="text-left">Scope</td>
+            <td></td>
+          </tr>
+          <tr>
+            <td class="section">3.</td>
+            <td class="text-left">Process Flow Diagram & Brief process</td>
+            <td></td>
+          </tr>
+          <tr>
+            <td class="section">4.</td>
+            <td class="text-left">Product Information</td>
+            <td></td>
+          </tr>
+          <tr>
+            <td class="section">5.</td>
+            <td class="text-left">Review of Regulatory Filings</td>
+            <td></td>
+          </tr>
+          <tr>
+            <td class="section">6.</td>
+            <td class="text-left">Reference to BMR, batch-wise and stage-wise yields data of the isolated intermediate and finished product</td>
+            <td></td>
+          </tr>
+          <tr>
+            <td class="section">7.</td>
+            <td class="text-left">Review of change control implemented</td>
+            <td></td>
+          </tr>
+          <tr>
+            <td class="section">8.</td>
+            <td class="text-left">Review of stability studies</td>
+            <td></td>
+          </tr>
+          <tr>
+            <td class="section">9.</td>
+            <td class="text-left">Review of validation/revalidation & cleaning validation</td>
+            <td></td>
+          </tr>
+          <tr>
+            <td class="section">10.</td>
+            <td class="text-left">Review of out of specification (OOS)</td>
+            <td></td>
+          </tr>
+          <tr>
+            <td class="section">11.</td>
+            <td class="text-left">Review of out of trend (OOT)</td>
+            <td></td>
+          </tr>
+          <tr>
+            <td class="section">12.</td>
+            <td class="text-left">Review of lab incident</td>
+            <td></td>
+          </tr>
+          <tr>
+            <td class="section">13.</td>
+            <td class="text-left">Review of reprocess batches</td>
+            <td></td>
+          </tr>
+          <tr>
+            <td class="section">14.</td>
+            <td class="text-left">Review of deviations</td>
+            <td></td>
+          </tr>
+          <tr>
+            <td class="section">15.</td>
+            <td class="text-left">Review of corrective and preventive action (CAPA)</td>
+            <td></td>
+          </tr>
+          <tr>
+            <td class="section">16.</td>
+            <td class="text-left">Review of rejected batches</td>
+            <td></td>
+          </tr>
+          <tr>
+            <td class="section">17.</td>
+            <td class="text-left">Review of market/customer complaints</td>
+            <td></td>
+          </tr>
+          <tr>
+            <td class="section">18.</td>
+            <td class="text-left">Review of batches returned & recalled</td>
+            <td></td>
+          </tr>
+          <tr>
+            <td class="section">19.</td>
+            <td class="text-left">Review of retain sample (Not applicable for Sterile APIs)</td>
+            <td></td>
+          </tr>
+          <tr>
+            <td class="section">20.</td>
+            <td class="text-left">Review of qualification status of critical equipment, utilities and review of preventive maintenance/calibration status</td>
+            <td></td>
+          </tr>
+          <tr>
+            <td class="section">21.</td>
+            <td class="text-left">Review of annual trend of water, pure steam & environmental monitoring</td>
+            <td></td>
+          </tr>
+          <tr>
+            <td class="section">22.</td>
+            <td class="text-left">Review of change in vendor for key starting material and primary packing material</td>
+            <td></td>
+          </tr>
+          <tr>
+            <td class="section">23.</td>
+            <td class="text-left">Review of Key Starting Material Trend Data</td>
+            <td></td>
+          </tr>
+          <tr>
+            <td class="section">24.</td>
+            <td class="text-left">Review of critical process parameter</td>
+            <td></td>
+          </tr>
+          <tr>
+            <td class="section">25.</td>
+            <td class="text-left">Review of analytical trend of in-process & intermediate data</td>
+            <td></td>
+          </tr>
+          <tr>
+            <td class="section">26.</td>
+            <td class="text-left">Review of finished product analytical trend</td>
+            <td></td>
+          </tr>
+          <tr>
+            <td class="section">27.</td>
+            <td class="text-left">Review of previous APQR</td>
+            <td></td>
+          </tr>
+          <tr>
+            <td class="section">28.</td>
+            <td class="text-left">Summary report on annual product quality review</td>
+            <td></td>
+          </tr>
+          <tr>
+            <td class="section">29.</td>
+            <td class="text-left">Conclusion and Recommendation</td>
+            <td></td>
+          </tr>
+          <tr>
+            <td class="section">30.</td>
+            <td class="text-left">Abbreviations</td>
+            <td></td>
+          </tr>
+          <tr>
+            <td class="section">31.</td>
+            <td class="text-left">List of Annexure</td>
+            <td></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+
+    <h3 class="point-heading"><span class="objective-number">1.0</span> OBJECTIVE:</h3>
+
+<p class="objective">
+  The objective of the Quality review of product is the formal verification of the consistency of the process. It is aimed at:
+  <ul class="objective-list">
+    <li>Detecting any untoward trend pattern or bias and addressing them on scientific and logical basis to maintain the pre-specified identity, quality, purity of the API’s.</li>
+    <li>To assure that the product review provides adequate and reproducible assurance that the specific process consistently performs to produce product meeting its pre-determined specification and quality characteristics.</li>
+    <li>The attributes of the APIs are under predetermined limits as stipulated in the VMP, Process and Product are in “validated state”.</li>
+  </ul>
+</p>
+
+
+    <h3 class="point-heading"><span class="objective-number">2.0</span> SCOPE:</h3>
+    <p class="objective">
+      This product review encompasses the entire synthesis, purification of product manufactured at Rau site of Symbiotec Pharmalab Pvt. Ltd. Indore.<br> <br>
+      The product quality review is a formal, official and mandatory process of reviewing the API product to have a panoramic view of the performance of all the manufacturing, controlling and monitoring procedures employed to manufacturing the product at Symbiotec Pharmalab Pvt. Ltd. Rau, Indore site.<br> <br>
+The results of this review are to be evaluated and an assessment is to be made of whether any corrective action or any revalidation should be undertaken. The corrective actions are documented and the agreed corrective actions, completion timelines are described as well.
+    </p>
+    <h3 class="point-heading"><span class="objective-number">3.0</span> PROCESS FLOW DIAGRAM & BRIEF PROCESS:</h3>
+    <h3 class="point-heading"><span class="objective-number">4.0</span> PRODUCT INFORMATION: </h3>
+    <p class="objective">
+      Symbiotec has started the manufacturing of Product name and code in since the year –XXX…….is starting material to
+      produce……... The critical In-Process control and critical API test results are well studied and are mentioned in
+      the
+      respective BMR and are monitored for every batch.
+    </p>
+
+    <table class="table-last" >
+      <tbody>
+        <tr>
+          <td>&#8226;</td>
+          <td>Product Under Review</td>
+          <td>:</td>
+          <th>
+            <%= product.productUnderReview %>
+          </th>
+        </tr>
+        <tr>
+          <td>&#8226;</td>
+          <td>Product Code</td>
+          <td>:</td>
+          <th>
+            <%= product.productCodes %>
+          </th>
+        </tr>
+        <tr>
+          <td>&#8226;</td>
+          <td>Batch Size</td>
+          <td>:</td>
+        <th>
+            <%= product.batchSizes %>
+          </th>
+        </tr>
+        <tr>
+          <td>&#8226;</td>
+          <td>Shelf life/Retest Date</td>
+          <td>:</td>
+         <th>
+            <%= product.shelfLifeRetestDate %>
+          </th>
+        </tr>
+        <tr>
+          <td>&#8226;</td>
+          <td>Review Period</td>
+          <td>:</td>
+         <th>
+            <%= product.reviewPeriod %>
+          </th>
+        </tr>
+        <tr>
+          <td>&#8226;</td>
+          <td>Mfg. License Number (As per DCGI)</td>
+          <td>:</td>
+           <th>
+            <%= product.mfgLicNo %>
+          </th>
+        </tr>
+        <tr>
+          <td>&#8226;</td>
+          <td>Total Number of Batches Manufactured</td>
+          <td>:</td>
+            <th>
+            <%= product.totalNoOfBatchesManufactured %>
+          </th>
+        </tr>
+        <tr>
+          <td>&#8226;</td>
+          <td>Total Quantity Manufactured</td>
+          <td>:</td>
+           <th>
+            <%= product.totalQtyManufactured %>
+          </th>
+        </tr>
+        <tr>
+          <td>&#8226;</td>
+          <td>Total Number of Batches Micronised (if applicable)</td>
+          <td>:</td>
+        <th>
+            <%= product.totalNoOfBatchesMicronised %>
+          </th>
+        </tr>
+        <tr>
+          <td>&#8226;</td>
+          <td>Total Quantity Micronised (if applicable)</td>
+          <td>:</td>
+          <th>
+            <%= product.totalQuantityMicronised %>
+          </th>
+        </tr>
+        <tr>
+          <td>&#8226;</td>
+          <td>Total Number of Batches Milled (if applicable)</td>
+          <td>:</td>
+           <th>
+            <%= product.totalNoOfBatchesMilled %>
+          </th>
+        </tr>
+        <tr>
+          <td>&#8226;</td>
+          <td>Total Quantity Milled (if applicable)</td>
+          <td>:</td>
+           <th>
+            <%= product.totalQuantityMilled %>
+          </th>
+        </tr>
+        <tr>
+          <td>&#8226;</td>
+          <td>Total Number of Gamma Sterilised Batches (if applicable)</td>
+          <td>:</td>
+           <th>
+            <%= product.totalNoOfGammaSterilised %>
+          </th>
+        </tr>
+        <tr>
+          <td>&#8226;</td>
+          <td> Total Quantity Transfer to BSR</td>
+          <td>:</td>
+          <th>
+            <%= product.totalQuantityTransferToBSR %>
+          </th>
+        </tr>
+        <tr>
+          <td>&#8226;</td>
+          <td>Starting Material, Source </td>
+          <td>:</td>
+          <th>
+            <%= product.startingMaterialSrc %>
+          </th>
+        </tr>
+        <tr>
+          <td>&#8226;</td>
+          <td>Current BMR Ref. No.</td>
+          <td>:</td>
+         <th>
+            <%= product.currentBMRrefNo %>
+          </th>
+        </tr>
+        <tr>
+          <td>&#8226;</td>
+          <td>In – Process Specification Ref. No.</td>
+          <td>:</td>
+           <th>
+            <%= product.inProcessSpecificationRefno %>
+          </th>
+        </tr>
+        <tr>
+          <td>&#8226;</td>
+          <td>Finish Product Specification Ref. No.</td>
+          <td>:</td>
+         <th>
+            <%= product.finishedProductSpecificationRefno %>
+          </th>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3 class="point-heading"><span class="objective-number">5.0</span> REVIEW OF REGULATORY FILINGS:</h3>
+    <table class="table-tab">
+      <tr class="bg">
+        <th>S.No.</th>
+        <th class="markets-column">Markets Where<br>Product filed</th>
+        <th>DMF/CEP/ASMF No.</th>
+        <th>Type of filing</th>
+        <th>Current Status <br> of the Filing</th>
+        <th>Closure Status</th>
+        <th>Target/Closed <br> on Date</th>
+      </tr>
+      <tbody class="tbody" >
+        <!-- page no. logic -->
+        <% 
+        // Dynamically set rowsPerPage based on data length or another condition
+        let totalRows = product.reviewOfRegulatory.length;
+        let rowsPerPage = totalRows > 40 ? 20 : 15; // Example of dynamic rows per page based on total data length
+        let currentPage = 1; 
+        let rowCount = 0;
+      %>
+      <% product.reviewOfRegulatory.forEach((obj, i) => { %>
+        <% if (rowCount % rowsPerPage === 0 && rowCount !== 0) { %>
+          <!-- Insert a page break dynamically -->
+          <tr>
+            <td colspan="7" class="page-break" style="text-align: center;">
+              Page <%= currentPage %>
+            </td>
+          </tr>
+          <% currentPage++; %> <!-- Increase page number dynamically -->
+        <% } %>
+
+        <!-- <% if (product.reviewOfRegulatory && Array.isArray(product.reviewOfRegulatory)) { %>
+          <% product.reviewOfRegulatory.forEach((obj,i)=> { %> -->
+            <tr>
+              <td>
+                <%= i+1 %>
+              </td>
+              <td>
+                <%= obj.marketsWhereProductFiled %>
+              </td>
+              <td>
+                <%= obj.dCAN %>
+              </td>
+              <td>
+                <%= obj.typeOfFiling %>
+              </td>
+              <td>
+                <%= obj.currentStatusOfTheFiling %>
+              </td>
+              <td>
+                <%= obj.closureStatus %>
+              </td>
+              <td>
+                <%= obj.targetClosedOnDate %>
+              </td>
+            </tr>
+            <% }); %>
+              <% } else { %>
+                <tr>
+                  <td colspan="8">No data available</td>
+                </tr>
+                <% } %>
+
+                <!-- page no logic -->
+
+                <% rowCount++; %> <!-- Increase row count -->
+    <% }); %>
+
+    <!-- Add final page number dynamically -->
+    <tr>
+      <td colspan="7" style="text-align: center;">
+        Page <%= currentPage %>
+      </td>
+    </tr>
+      </tbody>
+    </table>
+
+    <h3 class="point-heading"><span class="objective-number">6.0</span> REFERENCE TO BMR, BATCH WISE AND STAGE WISE YIELDS DATA OF THE ISOLATED INTERMEDIATE AND FINISHED PRODUCT:
+    </h3>
+
+    <h4>6.1 Reference to BMR</h4><!-- &nbsp &nbsp -->
+    <table class="table-tab">
+      <thead>
+      <tr class="bg">
+        <th>S.No.</th>
+        <th>Document Name</th>
+        <th>Document No.</th>
+        <th>Effective Date</th>
+        <th>Batches Manufactured </th>
+      </tr>
+      </thead>
+      <tbody class="tbody">
+        <% if (product.refrenceToBMR && Array.isArray(product.refrenceToBMR)) { %>
+          <% product.refrenceToBMR.forEach((obj,i)=> { %>
+            <tr>
+              <td>
+                <%= i+1 %>
+              </td>
+              <td>
+                <%= obj.documentName %>
+              </td>
+              <td>
+                <%= obj.documentNo %>
+              </td>
+              <td>
+                <%= obj.effectiveDate %>
+              </td>
+              <td>
+                <%= obj.batchesManufactured %>
+              </td>
+
+            </tr>
+            <% }); %>
+              <% } else { %>
+                <tr>
+                  <td colspan="8">No data available</td>
+                </tr>
+                <% } %>
+      </tbody>
+    </table>
+
+
+    <h3 class="point-heading"> 6.2 Batch Wise Yields Data of the Isolated Intermediate (all Stage) and Finished Product</h3>
+    <!-- &nbsp &nbsp -->
+    <h3>Yield Trend of Stage…</h3>
+    <table  class="table-tab">
+<thead>
+      <tr class="bg">
+        <th>S.No.</th>
+        <th>Batch No.</th>
+        <th>Mfg. Month</th>
+        <th>Actual Input (in Kg)</th>
+        <th>Actual Output (in Kg)Expected <br/> Output range.(in Kg) </th>
+        <th>Yield %</th>
+      </tr>
+</thead>
+      <tbody class="tbody">
+        <% if (product.yieldTrendOfStage && Array.isArray(product.yieldTrendOfStage)) { %>
+          <% product.yieldTrendOfStage.forEach((obj,i)=> { %>
+            <tr>
+              <td>
+                <%= i+1 %>
+              </td>
+              <td>
+                <%= obj.batchNo %>
+              </td>
+              <td>
+                <%= obj.mfgMonth %>
+              </td>
+              <td>
+                <%= obj.actualInput %>
+              </td>
+              <td>
+                <%= obj.actualOutput %>
+              </td>
+              <td>
+                <%= obj.yeild %>
+              </td>
+            </tr>
+            <% }); %>
+              <% } else { %>
+                <tr>
+                  <td colspan="8">No data available</td>
+                </tr>
+                <% } %>
+      </tbody>
+    </table>
+
+    <h3>Yield Data of Finished Product</h3>
+    <table  class="table-tab">
+      <thead>
+      <tr class="bg">
+        <th>S.No.</th>
+        <th>Batch No.</th>
+        <th>Mfg. Month</th>
+        <th>Actual Input <br> (in Kg)</th>
+        <th>Actual Output <br> (in Kg) </th>
+        <th>Quantity Sampled <br> (in Kg)</th>
+        <th>Date of transfer to <br> BSR</th>
+      </tr>
+
+</thead>
+      <tbody class="tbody">
+        <% if (product.yieldDataOfFinishedProduct && Array.isArray(product.yieldDataOfFinishedProduct)) { %>
+          <% product.yieldDataOfFinishedProduct.forEach((obj,i)=> { %>
+            <tr>
+              <td>
+                <%= i+1 %>
+              </td>
+              <td>
+                <%= obj.batchNo %>
+              </td>
+              <td>
+                <%= obj.mfgMonth %>
+              </td>
+              <td>
+                <%= obj.actualInput %>
+              </td>
+              <td>
+                <%= obj.actualOutput %>
+              </td>
+              <td>
+                <%= obj.quantitySampled %>
+              </td>
+              <td>
+                <%= obj.dateOfTransferToB %>
+              </td>
+            </tr>
+            <% }); %>
+              <% } else { %>
+                <tr>
+                  <td colspan="8">No data available</td>
+                </tr>
+                <% } %>
+              </tbody>
+    </table>
+
+    <h3>Yield Trend for Sterile API’s</h3>
+    <table  class="table-tab">
+      <thead>
+      <tr class="bg">
+        <th>S.No.</th>
+        <th>Batch No.</th>
+        <th>Mfg. Month</th>
+        <th>Actual Input(In Kg)</th>
+        <th>Actual Output (In Kg)Expected <br/> Output range(in Kg)</th>
+        <th>Sampled Qty. </th>
+        <th>Tail End Qty. used for blending</th>
+        <th>Date of transfer to BSR</th>
+      </tr>
+      </thead>
+
+       <tbody class="tbody">
+        <% if (product.yieldTrendForSterile && Array.isArray(product.yieldTrendForSterile)) { %>
+          <% product.yieldTrendForSterile.forEach((obj,i)=> { %>
+            <tr>
+              <td>
+                <%= i+1 %>
+              </td>
+              <td>
+                <%= obj.batchNo %>
+              </td>
+              <td>
+                <%= obj.mfgMonth %>
+              </td>
+              <td>
+                <%= obj.actualInput %>
+              </td>
+              <td>
+                <%= obj.actualOutput %>
+              </td>
+              <td>
+                <%= obj.sampledQuantity %>
+              </td>
+              <td>
+                <%= obj.tailEndQtyUsedForBlending %>
+              </td>
+              <td>
+                <%= obj.dateOfTransferToB %>
+              </td>
+            </tr>
+            <% }); %>
+              <% } else { %>
+                <tr>
+                  <td colspan="8">No data available</td>
+                </tr>
+                <% } %>
+              </tbody>
+    </table>
+
+
+    <!-- REVIEW OF CHANGE CONTROL IMPLEMENTED -->
+    <h3 class="point-heading"><span class="objective-number">7.0</span> REVIEW OF CHANGE CONTROL IMPLEMENTED</h3>
+    <h4> 7.1 Change in Facility / Equipment: </h4>
+
+    <h4> Permanent Change</h4>
+    <table  class="table-tab">
+      <thead>
+      <tr class="bg">
+        <th>S.No.</th>
+        <th>Date  of <br> Initiation</th>
+        <th>Change <br> notification  No.</th>
+        <th>Description <br> of  Change</th>
+        <th>Category of Change <br> (Major/Minor)</th>
+        <th>Current Status <br> of  Closure</th>
+        <th>Target/Closed <br> on  Date</th>
+      </tr>
+
+</thead>
+        <tbody class="tbody">
+        <% if (product.changeInFacilityPermanent && Array.isArray(product.changeInFacilityPermanent)) { %>
+          <% product.changeInFacilityPermanent.forEach((obj,i)=> { %>
+            <tr>
+              <td>
+                <%= i+1 %>
+              </td>
+              <td>
+                <%= obj.dateOfInitiation %>
+              </td>
+              <td>
+                <%= obj.changeNotificationNo %>
+              </td>
+              <td>
+                <%= obj.descriptionOfChange %>
+              </td>
+              <td>
+                <%= obj.categoryOfChange %>
+              </td>
+              <td>
+                <%= obj.currentStatusOfClosure %>
+              </td>
+              <td>
+                <%= obj.targetClosedOnDate %>
+              </td>
+            </tr>
+            <% }); %>
+              <% } else { %>
+                <tr>
+                  <td colspan="8">No data available</td>
+                </tr>
+                <% } %>
+      </tbody>
+    </table>
+
+
+    <h4>Temporary Change</h4>
+    <table  class="table-tab">
+      <thead>
+      <tr class="bg">
+        <th>S.No.</th>
+        <th>Date  of <br> Initiation</th>
+        <th>Change <br> notification No.</th>
+        <th>Description <br> of  Change</th>
+        <th>Category of Change <br> (Major/Minor)</th>
+        <th>Current Status <br>of  Closure</th>
+        <th>Target/Closed <br> on Date</th>
+      </tr>
+
+</thead>
+     <tbody class="tbody">
+        <% if (product.changeInFacilityTemporary && Array.isArray(product.changeInFacilityTemporary)) { %>
+          <% product.changeInFacilityTemporary.forEach((obj,i)=> { %>
+            <tr>
+              <td>
+                <%= i+1 %>
+              </td>
+              <td>
+                <%= obj.dateOfInitiation %>
+              </td>
+              <td>
+                <%= obj.changeNotificationNo %>
+              </td>
+              <td>
+                <%= obj.descriptionOfChange %>
+              </td>
+              <td>
+                <%= obj.categoryOfChange %>
+              </td>
+              <td>
+                <%= obj.currentStatusOfClosure %>
+              </td>
+              <td>
+                <%= obj.targetClosedOnDate %>
+              </td>
+            </tr>
+            <% }); %>
+              <% } else { %>
+                <tr>
+                  <td colspan="8">No data available</td>
+                </tr>
+                <% } %>
+      </tbody>
+    </table>
+
+
+    <h3>7.2 Changes made in the manufacturing process</h3>
+    <h4>Permanent Change</h4>
+    <table  class="table-tab">
+      <thead>
+      <tr class="bg">
+        <th>S.No.</th>
+        <th>Date <br> of  Initiation</th>
+        <th>Change <br> notification  No.</th>
+        <th>Description <br> of  Change</th>
+        <th>Category of Change <br> (Major/Minor)</th>
+        <th>Current Status <br> of Closure</th>
+        <th>Target/Closed <br> on  Date</th>
+      </tr>
+</thead>
+
+       <tbody class="tbody">
+        <% if (product.changesMadeInMPPermanent && Array.isArray(product.changesMadeInMPPermanent)) { %>
+          <% product.changesMadeInMPPermanent.forEach((obj,i)=> { %>
+            <tr>
+              <td>
+                <%= i+1 %>
+              </td>
+              <td>
+                <%= obj.dateOfInitiation %>
+              </td>
+              <td>
+                <%= obj.changeNotificationNo %>
+              </td>
+              <td>
+                <%= obj.descriptionOfChange %>
+              </td>
+              <td>
+                <%= obj.categoryOfChange %>
+              </td>
+              <td>
+                <%= obj.currentStatusOfClosure %>
+              </td>
+              <td>
+                <%= obj.targetClosedOnDate %>
+              </td>
+            </tr>
+            <% }); %>
+              <% } else { %>
+                <tr>
+                  <td colspan="8">No data available</td>
+                </tr>
+                <% } %>
+      </tbody>
+    </table>
+
+    <h4>Temporary Change</h4>
+    <table  class="table-tab">
+      <thead>
+      <tr class="bg">
+        <th>S.No.</th>
+        <th>Date <br> of  Initiation</th>
+        <th>Change <br> notification  No.</th>
+        <th>Description <br> of  Change</th>
+        <th>Category of Change <br> (Major/Minor)</th>
+        <th>Current Status <br> of Closure</th>
+        <th>Target/Closed <br> on  Date</th>
+      </tr>
+      </thead>
+
+       <tbody class="tbody">
+        <% if (product.changesMadeInMPTemporary && Array.isArray(product.changesMadeInMPTemporary)) { %>
+          <% product.changesMadeInMPTemporary.forEach((obj,i)=> { %>
+            <tr>
+              <td>
+                <%= i+1 %>
+              </td>
+              <td>
+                <%= obj.dateOfInitiation %>
+              </td>
+              <td>
+                <%= obj.changeNotificationNo %>
+              </td>
+              <td>
+                <%= obj.descriptionOfChange %>
+              </td>
+              <td>
+                <%= obj.categoryOfChange %>
+              </td>
+              <td>
+                <%= obj.currentStatusOfClosure %>
+              </td>
+              <td>
+                <%= obj.targetClosedOnDate %>
+              </td>
+            </tr>
+            <% }); %>
+              <% } else { %>
+                <tr>
+                  <td colspan="8">No data available</td>
+                </tr>
+                <% } %>
+      </tbody>
+    </table>
+
+    <h3>7.3 Changes made in the specification and method of analysis of KSM, intermediates or Finished products</h3>
+    <h4>Permanent Change</h4>
+    <table  class="table-tab">
+      <thead
+      <tr class="bg">
+        <th>S.No.</th>
+        <th>Date <br> of  Initiation</th>
+        <th>Change <br> notification No.</th>
+        <th>Description <br> of  Change</th>
+        <th>Category  of <br> Change (Major/Minor)</th>
+        <th>Current Status <br> of  Closure</th>
+        <th>Target/Closed <br> on Date</th>
+      </tr>
+    </thead>
+
+      <tbody class="tbody">
+        <% if (product.changesMadeInKSMPermanent && Array.isArray(product.changesMadeInKSMPermanent)) { %>
+          <% product.changesMadeInKSMPermanent.forEach((obj,i)=> { %>
+            <tr>
+              <td>
+                <%= i+1 %>
+              </td>
+              <td>
+                <%= obj.dateOfInitiation %>
+              </td>
+              <td>
+                <%= obj.changeNotificationNo %>
+              </td>
+              <td>
+                <%= obj.descriptionOfChange %>
+              </td>
+              <td>
+                <%= obj.categoryOfChange %>
+              </td>
+              <td>
+                <%= obj.currentStatusOfClosure %>
+              </td>
+              <td>
+                <%= obj.targetClosedOnDate %>
+              </td>
+            </tr>
+            <% }); %>
+              <% } else { %>
+                <tr>
+                  <td colspan="8">No data available</td>
+                </tr>
+                <% } %>
+      </tbody>
+    </table>
+
+    <h4>Temporary Change</h4>
+    <table  class="table-tab">
+      <thead>
+      <tr class="bg">
+        <th>S.No.</th>
+        <th>Date <br> of  Initiation</th>
+        <th>Change <br> notification  No.</th>
+        <th>Description <br> of  Change</th>
+        <th>Category of Change <br> (Major/Minor)</th>
+        <th>Current Status <br> of  Closure</th>
+        <th>Target/Closed <br> on Date</th>
+      </tr>
+
+</thead>
+ <tbody class="tbody">
+        <% if (product.changesMadeInKSMTemporary && Array.isArray(product.changesMadeInKSMTemporary)) { %>
+          <% product.changesMadeInKSMTemporary.forEach((obj,i)=> { %>
+            <tr>
+              <td>
+                <%= i+1 %>
+              </td>
+              <td>
+                <%= obj.dateOfInitiation %>
+              </td>
+              <td>
+                <%= obj.changeNotificationNo %>
+              </td>
+              <td>
+                <%= obj.descriptionOfChange %>
+              </td>
+              <td>
+                <%= obj.categoryOfChange %>
+              </td>
+              <td>
+                <%= obj.currentStatusOfClosure %>
+              </td>
+              <td>
+                <%= obj.targetClosedOnDate %>
+              </td>
+            </tr>
+            <% }); %>
+              <% } else { %>
+                <tr>
+                  <td colspan="8">No data available</td>
+                </tr>
+                <% } %>
+      </tbody>
+    </table>
+
+    <h3>7.4 Any change in Packaging & labeling requirements of product</h3>
+    <h4>Permanent Change</h4>
+    <table  class="table-tab">
+      <thead>
+      <tr class="bg">
+        <th>S.No.</th>
+        <th>Date <br> of Initiation</th>
+        <th>Change <br> notification  No.</th>
+        <th>Description <br> of  Change</th>
+        <th>Category of Change <br> (Major/Minor)</th>
+        <th>Current Status <br> of  Closure</th>
+        <th>Target/Closed <br> on  Date</th>
+      </tr>
+</thead>
+ <tbody class="tbody">
+        <% if (product.anyChangeInPackingPermanent && Array.isArray(product.anyChangeInPackingPermanent)) { %>
+          <% product.anyChangeInPackingPermanent.forEach((obj,i)=> { %>
+            <tr>
+              <td>
+                <%= i+1 %>
+              </td>
+              <td>
+                <%= obj.dateOfInitiation %>
+              </td>
+              <td>
+                <%= obj.changeNotificationNo %>
+              </td>
+              <td>
+                <%= obj.descriptionOfChange %>
+              </td>
+              <td>
+                <%= obj.categoryOfChange %>
+              </td>
+              <td>
+                <%= obj.currentStatusOfClosure %>
+              </td>
+              <td>
+                <%= obj.targetClosedOnDate %>
+              </td>
+            </tr>
+            <% }); %>
+              <% } else { %>
+                <tr>
+                  <td colspan="8">No data available</td>
+                </tr>
+                <% } %>
+      </tbody>
+    </table>
+
+    <h4>Temporary Change</h4>
+    <table  class="table-tab">
+      <thead>
+      <tr class="bg">
+        <th>S.No.</th>
+        <th>Date <br> of  Initiation</th>
+        <th>Change  <br> notification  No.</th>
+        <th>Description <br> of  Change</th>
+        <th>Category of Change <br> (Major/Minor)</th>
+        <th>Current Status <br> of  Closure</th>
+        <th>Target/Closed <br> on  Date</th>
+      </tr>
+
+      </thead>
+      <tbody class="tbody">
+        <% if (product.anyChangeInPackingTemporary && Array.isArray(product.anyChangeInPackingTemporary)) { %>
+          <% product.anyChangeInPackingTemporary.forEach((obj,i)=> { %>
+            <tr>
+              <td>
+                <%= i+1 %>
+              </td>
+              <td>
+                <%= obj.dateOfInitiation %>
+              </td>
+              <td>
+                <%= obj.changeNotificationNo %>
+              </td>
+              <td>
+                <%= obj.descriptionOfChange %>
+              </td>
+              <td>
+                <%= obj.categoryOfChange %>
+              </td>
+              <td>
+                <%= obj.currentStatusOfClosure %>
+              </td>
+              <td>
+                <%= obj.targetClosedOnDate %>
+              </td>
+            </tr>
+            <% }); %>
+              <% } else { %>
+                <tr>
+                  <td colspan="8">No data available</td>
+                </tr>
+                <% } %>
+      </tbody>
+    </table>
+
+    <h3>7.5 General Changes Related to others if any</h3>
+    <h4>Permanent Change</h4>
+    <table  class="table-tab">
+      <thead>
+      <tr class="bg">
+        <th>S.No.</th>
+        <th>Date <br> of  Initiation</th>
+        <th>Change <br> notification  No.</th>
+        <th>Description <br> of  Change</th>
+        <th>Category of Change <br> (Major/Minor)</th>
+        <th>Current Status <br> of  Closure</th>
+        <th>Target/Closed <br> on  Date</th>
+      </tr>
+
+</thead>
+       <tbody class="tbody">
+        <% if (product.generalChangesPermanent && Array.isArray(product.generalChangesPermanent)) { %>
+          <% product.generalChangesPermanent.forEach((obj,i)=> { %>
+            <tr>
+              <td>
+                <%= i+1 %>
+              </td>
+              <td>
+                <%= obj.dateOfInitiation %>
+              </td>
+              <td>
+                <%= obj.changeNotificationNo %>
+              </td>
+              <td>
+                <%= obj.descriptionOfChange %>
+              </td>
+              <td>
+                <%= obj.categoryOfChange %>
+              </td>
+              <td>
+                <%= obj.currentStatusOfClosure %>
+              </td>
+              <td>
+                <%= obj.targetClosedOnDate %>
+              </td>
+            </tr>
+            <% }); %>
+              <% } else { %>
+                <tr>
+                  <td colspan="8">No data available</td>
+                </tr>
+                <% } %>
+      </tbody>
+    </table>
+
+    <h4>Temporary Change</h4>
+    <table  class="table-tab">
+      <thead>
+      <tr class="bg">
+        <th>S.No.</th>
+        <th>Date <br> of  Initiation</th>
+        <th>Change <br> notification  No.</th>
+        <th>Description <br> of  Change</th>
+        <th>Category of Change <br> (Major/Minor)</th>
+        <th>Current Status <br> of  Closure</th>
+        <th>Target/Closed <br> on  Date</th>
+      </tr>
+
+      </thead>
+       <tbody class="tbody">
+        <% if (product.generalChangesTemporary && Array.isArray(product.generalChangesTemporary)) { %>
+          <% product.generalChangesTemporary.forEach((obj,i)=> { %>
+            <tr>
+              <td>
+                <%= i+1 %>
+              </td>
+              <td>
+                <%= obj.dateOfInitiation %>
+              </td>
+              <td>
+                <%= obj.changeNotificationNo %>
+              </td>
+              <td>
+                <%= obj.descriptionOfChange %>
+              </td>
+              <td>
+                <%= obj.categoryOfChange %>
+              </td>
+              <td>
+                <%= obj.currentStatusOfClosure %>
+              </td>
+              <td>
+                <%= obj.targetClosedOnDate %>
+              </td>
+            </tr>
+            <% }); %>
+              <% } else { %>
+                <tr>
+                  <td colspan="8">No data available</td>
+                </tr>
+                <% } %>
+      </tbody>
+    </table>
+
+    <h3 class="point-heading"><span class="objective-number">8.0</span> REVIEW OF STABILITY STUDIES: </h3>
+    <h4>Permanent Change </h4>
+    <table  class="table-tab">
+      <tr class="bg">
+        <th rowspan="2">S.No</th>
+        <th rowspan="2">Batch <br>  No</th>
+        <th rowspan="1">Accelerated Data <br> (Months)</th>
+        <th rowspan="1">Long Term Data <br> (Months)</th>
+        <th rowspan="2">Reason <br> for  study</th>
+      </tr>
+
+
+      <% product.yieldTrendForSterile.map((obj)=> { %>
+        <!-- <tr>
+        <td>
+          <%= obj.productName %>
+        </td>
+        <td>
+          <%= obj.batchCode %>
+        </td>
+        <td>
+          <%= obj.sFGCode %>
+        </td>
+        <td>
+          <%= obj.remarks %>
+        </td>
+      </tr> -->
+        <% }); %>
+    </table>
+
+    <h3 class="point-heading"><span class="objective-number">9.0</span> REVIEW OF VALIDATION / REVALIDATION & CLEANING VALIDATION</h3>
+    <h4>9.1 Process Validation</h4>
+    <table  class="table-tab">
+      <tr class="bg">
+        <th>S.No.</th>
+        <th>Validation <br> Report No</th>
+        <th>Date <br> of  Approval</th>
+        <th>Validation <br> Batch No. (s)</th>
+        <th>Reason <br> for Validation</th>
+        <th>Current status <br> of  Validation</th>
+      </tr>
+
+
+      <% product.yieldTrendForSterile.map((obj)=> { %>
+        <!-- <tr>
+        <td>
+          <%= obj.productName %>
+        </td>
+        <td>
+          <%= obj.batchCode %>
+        </td>
+        <td>
+          <%= obj.sFGCode %>
+        </td>
+        <td>
+          <%= obj.remarks %>
+        </td>
+      </tr> -->
+        <% }); %>
+    </table>
+
+    <h4>9.2 Cleaning Validation</h4>
+    <table  class="table-tab">
+      <tr class="bg">
+        <th>S.No.</th>
+        <th>Cleaning Validation <br> Document No.</th>
+        <th>Date <br> of  Approval</th>
+        <th>Validation <br> Batch No. (s)</th>
+      </tr>
+
+
+      <% product.yieldTrendForSterile.map((obj)=> { %>
+        <!-- <tr>
+        <td>
+          <%= obj.productName %>
+        </td>
+        <td>
+          <%= obj.batchCode %>
+        </td>
+        <td>
+          <%= obj.sFGCode %>
+        </td>
+        <td>
+          <%= obj.remarks %>
+        </td>
+      </tr> -->
+        <% }); %>
+    </table>
+
+    <h3 class="point-heading"><span class="objective-number">10.0</span> REVIEW OF OUT OF SPECIFICATION (OOS):</h3>
+    <table  class="table-tab">
+      <tr class="bg">
+        <th>S No</th>
+        <th>Date <br> Of Reporting</th>
+        <th>OOS No.</th>
+        <th>Product <br> Stage </th>
+        <th>Batch No.</th>
+        <th>Description <br> Of OOS</th>
+        <th>Valid / <br> Invalid</th>
+        <th>Current Status <br> Of  Closure</th>
+        <th>Target/Closed <br> On Date</th>
+      </tr>
+
+
+      <% product.yieldTrendForSterile.map((obj)=> { %>
+        <!-- <tr>
+        <td>
+          <%= obj.productName %>
+        </td>
+        <td>
+          <%= obj.batchCode %>
+        </td>
+        <td>
+          <%= obj.sFGCode %>
+        </td>
+        <td>
+          <%= obj.remarks %>
+        </td>
+      </tr> -->
+        <% }); %>
+    </table>
+
+    <h3 class="point-heading"><span class="objective-number">11.0</span> REVIEW OF OUT OF TREND (OOT):</h3>
+    <table  class="table-tab">
+      <tr class="bg">
+        <th>S No</th>
+        <th>Date <br> Of  Reporting</th>
+        <th>OOT No.</th>
+        <th>Product <br> Stage </th>
+        <th>Batch No.</th>
+        <th>Description <br> Of  OOT</th>
+        <th>Valid / <br> Invalid</th>
+        <th>Current Status <br> Of  Closure</th>
+        <th>Target/Closed <br> On Date</th>
+      </tr>
+
+
+      <% product.yieldTrendForSterile.map((obj)=> { %>
+        <!-- <tr>
+        <td>
+          <%= obj.productName %>
+        </td>
+        <td>
+          <%= obj.batchCode %>
+        </td>
+        <td>
+          <%= obj.sFGCode %>
+        </td>
+        <td>
+          <%= obj.remarks %>
+        </td>
+      </tr> -->
+        <% }); %>
+    </table>
+
+    <h3 class="point-heading"><span class="objective-number">12.0</span> REVIEW OF LAB INCIDENT:</h3>
+    <table  class="table-tab">
+      <tr class="bg">
+        <th>S No</th>
+        <th>Date <br> Of  Reporting</th>
+        <th>Lab Incident <br> No.</th>
+        <th>Product <br> Stage </th>
+        <th>Batch No.</th>
+        <th>Description <br> of  Lab Incident </th>
+        <th>Current Status <br> Of  Incident</th>
+      </tr>
+
+
+      <% product.yieldTrendForSterile.map((obj)=> { %>
+        <!-- <tr>
+        <td>
+          <%= obj.productName %>
+        </td>
+        <td>
+          <%= obj.batchCode %>
+        </td>
+        <td>
+          <%= obj.sFGCode %>
+        </td>
+        <td>
+          <%= obj.remarks %>
+        </td>
+      </tr> -->
+        <% }); %>
+    </table>
+
+    <h3 class="point-heading"><span class="objective-number">13.0</span> REVIEW OF REPROCESS BATCHES: </h3>
+    <table  class="table-tab">
+      <tr class="bg">
+        <th>S No</th>
+        <th>Product <br> Stage</th>
+        <th>Reprocessed <br> Batch No.</th>
+        <th>Reason for <br> Reprocessing</th>
+        <th>Quantity produce. <br> by Reprocess (in Kg)</th>
+      </tr>
+
+
+      <% product.yieldTrendForSterile.map((obj)=> { %>
+        <!-- <tr>
+        <td>
+          <%= obj.productName %>
+        </td>
+        <td>
+          <%= obj.batchCode %>
+        </td>
+        <td>
+          <%= obj.sFGCode %>
+        </td>
+        <td>
+          <%= obj.remarks %>
+        </td>
+      </tr> -->
+        <% }); %>
+    </table>
+
+    <h3 class="point-heading"><span class="objective-number">14.0</span> REVIEW OF DEVIATIONS: </h3>
+    <h4>14.1 Product Deviations: </h4>
+    <table  class="table-tab">
+      <tr class="bg">
+        <th>S.No.</th>
+        <th>Date of Reporting</th>
+        <th>Deviation No.</th>
+        <th>Batch No.</th>
+        <th>Category of Deviation Minor/major/critical</th>
+        <th>Description of Deviation</th>
+        <th>Current Status of Closure</th>
+        <th>Target/Closed on Date</th>
+      </tr>
+
+
+      <% product.yieldTrendForSterile.map((obj)=> { %>
+        <!-- <tr>
+        <td>
+          <%= obj.productName %>
+        </td>
+        <td>
+          <%= obj.batchCode %>
+        </td>
+        <td>
+          <%= obj.sFGCode %>
+        </td>
+        <td>
+          <%= obj.remarks %>
+        </td>
+      </tr> -->
+        <% }); %>
+    </table>
+
+    <h4>
+
+
+      <h4>14.2 General Deviations (Product specific): </h4>
+      <table  class="table-tab">
+        <tr class="bg">
+          <th>S.No.</th>
+          <th>Date of Reporting</th>
+          <th>Deviation No.</th>
+          <th>Batch No.</th>
+          <th>Category of Deviation Minor/major/critical</th>
+          <th>Description  of Deviation</th>
+          <th>Current Status  of Closure</th>
+          <th>Target/Closed  on Date</th>
+        </tr>
+
+
+        <% product.yieldTrendForSterile.map((obj)=> { %>
+          <!-- <tr>
+        <td>
+          <%= obj.productName %>
+        </td>
+        <td>
+          <%= obj.batchCode %>
+        </td>
+        <td>
+          <%= obj.sFGCode %>
+        </td>
+        <td>
+          <%= obj.remarks %>
+        </td>
+      </tr> -->
+          <% }); %>
+      </table>
+
+      <h3 class="point-heading"><span class="objective-number">15.0</span> REVIEW OF CORRECTIVE AND PREVENTIVE ACTION (CAPA):</h3>
+      <table  class="table-tab">
+        <tr class="bg">
+          <th>S.No.</th>
+          <th>Date of Reporting</th>
+          <th>CAPA Number</th>
+          <th>CAPA Source &amp; Number</th>
+          <th>Description of CAPA</th>
+          <th>Closure Status</th>
+          <th>Target/Closed on Date</th>
+        </tr>
+
+
+        <% product.yieldTrendForSterile.map((obj)=> { %>
+          <!-- <tr>
+        <td>
+          <%= obj.productName %>
+        </td>
+        <td>
+          <%= obj.batchCode %>
+        </td>
+        <td>
+          <%= obj.sFGCode %>
+        </td>
+        <td>
+          <%= obj.remarks %>
+        </td>
+      </tr> -->
+          <% }); %>
+      </table>
+
+      <h3 class="point-heading"><span class="objective-number">16.0</span> REVIEW OF REJECTED BATCHES:</h3>
+      <table  class="table-tab">
+        <tr class="bg">
+          <th>S.No.</th>
+          <th>Date <br> of Rejection</th>
+          <th>Batch No.</th>
+          <th>Reason <br> for Rejection</th>
+          <th>Remark</th>
+        </tr>
+
+
+        <% product.yieldTrendForSterile.map((obj)=> { %>
+          <!-- <tr>
+        <td>
+          <%= obj.productName %>
+        </td>
+        <td>
+          <%= obj.batchCode %>
+        </td>
+        <td>
+          <%= obj.sFGCode %>
+        </td>
+        <td>
+          <%= obj.remarks %>
+        </td>
+      </tr> -->
+          <% }); %>
+      </table>
+
+      <h3 class="point-heading"><span class="objective-number">17.0</span> REVIEW OF MARKET/CUSTOMER COMPLAINTS: </h3>
+      <table  class="table-tab">
+        <tr class="bg">
+          <th>S.No.</th>
+          <th>Date <br> of Receipt</th>
+          <th>Complaint <br> No.</th>
+          <th>Customer <br> Name</th>
+          <th>Batch <br> No.</th>
+          <th>Pre-stage Category <br> Minor/Major/Critical</th>
+          <th>Description <br> of Complaint</th>
+        </tr>
+        <% product.yieldTrendForSterile.map((obj)=> { %>
+          <!-- <tr>
+        <td>
+          <%= obj.productName %>
+        </td>
+        <td>
+          <%= obj.batchCode %>
+        </td>
+        <td>
+          <%= obj.sFGCode %>
+        </td>
+        <td>
+          <%= obj.remarks %>
+        </td>
+      </tr> -->
+          <% }); %>
+      </table>
+      <table  class="table-tab">
+        <tr class="bg">
+            <th>S.No.</th>
+            <th>Confirm/not <br> Confirm</th>
+            <th>Post-stage Category  <br>Minor/Major/Critical</th>
+            <th>Current status <br> of Closure</th>
+            <th>Closed <br> on Date</th></tr>
+      </table>
+
+      <h3 class="point-heading"><span class="objective-number">18.0</span> REVIEW OF BATCHES RETURNED & RECALLED:</h3>
+      <h4>18.1 Return Goods: </h4>
+      <table  class="table-tab">
+        <tr class="bg">
+          <th>S.No.</th>
+          <th>Date <br> of Receipt</th>
+          <th>Batch <br> No.</th>
+          <th>Return <br> Goods No.</th>
+          <th>Reason <br> of Return</th>
+          <th>Observation</th>
+          <th>Current <br> Status</th>
+        </tr>
+
+
+        <% product.yieldTrendForSterile.map((obj)=> { %>
+          <!-- <tr>
+        <td>
+          <%= obj.productName %>
+        </td>
+        <td>
+          <%= obj.batchCode %>
+        </td>
+        <td>
+          <%= obj.sFGCode %>
+        </td>
+        <td>
+          <%= obj.remarks %>
+        </td>
+      </tr> -->
+          <% }); %>
+      </table>
+
+      <h4>18.2 Recall of Batches:</h4>
+      <table  class="table-tab">
+        <tr class="bg">
+          <th>S.No.</th>
+          <th>Date <br> of initiation</th>
+          <th>Report <br> No.</th>
+          <th>Batch <br> No.</th>
+          <th>Reason <br> for Recall</th>
+          <th>Current status <br> of closure</th>
+        </tr>
+
+
+        <% product.yieldTrendForSterile.map((obj)=> { %>
+          <!-- <tr>
+        <td>
+          <%= obj.productName %>
+        </td>
+        <td>
+          <%= obj.batchCode %>
+        </td>
+        <td>
+          <%= obj.sFGCode %>
+        </td>
+        <td>
+          <%= obj.remarks %>
+        </td>
+      </tr> -->
+          <% }); %>
+      </table>
+
+      <h3 class="point-heading"><span class="objective-number">19.0</span> REVIEW OF RETAIN SAMPLE (Not applicable for sterile APIs):</h3>
+      <table  class="table-tab">
+        <tr class="bg">
+          <th>S.No.</th>
+          <th>Batch <br> No.</th>
+          <th>Date of <br> Manufacturing</th>
+          <th>Date of <br> Observation</th>
+          <th>Appearance</th>
+        </tr>
+
+
+        <% product.yieldTrendForSterile.map((obj)=> { %>
+          <!-- <tr>
+        <td>
+          <%= obj.productName %>
+        </td>
+        <td>
+          <%= obj.batchCode %>
+        </td>
+        <td>
+          <%= obj.sFGCode %>
+        </td>
+        <td>
+          <%= obj.remarks %>
+        </td>
+      </tr> -->
+          <% }); %>
+      </table>
+
+      <h3 class="point-heading"><span class="objective-number">20.0</span> REVIEW OF QUALIFICATION STATUS OF CRITICAL EQUIPMENT, UTILITIES AND REVIEW OF PREVENTIVE
+        MAINTENANCE/CALIBRATION STATUS:</h3>
+      <h4>A. Qualification/Validation status:</h4>
+      <h4>Critical equipment: Area</h4>
+      <table  class="table-tab">
+        <tr class="bg">
+          <th>S.No.</th>
+          <th>Name <br> of Equipment</th>
+          <th>Equipment <br> ID</th>
+          <th>Validation <br> report No.</th>
+          <th>Requalification <br> due on</th>
+        </tr>
+
+
+        <% product.yieldTrendForSterile.map((obj)=> { %>
+          <!-- <tr>
+        <td>
+          <%= obj.productName %>
+        </td>
+        <td>
+          <%= obj.batchCode %>
+        </td>
+        <td>
+          <%= obj.sFGCode %>
+        </td>
+        <td>
+          <%= obj.remarks %>
+        </td>
+      </tr> -->
+          <% }); %>
+      </table>
+
+      <h4>Utilities:</h4>
+      <table  class="table-tab">
+        <tr class="bg">
+          <th>S.No.</th>
+          <th>Name <br> of Equipment</th>
+          <th>Equipment <br> ID</th>
+          <th>Validation <br> report No.</th>
+          <th>Requalification <br> due on</th>
+        </tr>
+
+
+        <% product.yieldTrendForSterile.map((obj)=> { %>
+          <!-- <tr>
+        <td>
+          <%= obj.productName %>
+        </td>
+        <td>
+          <%= obj.batchCode %>
+        </td>
+        <td>
+          <%= obj.sFGCode %>
+        </td>
+        <td>
+          <%= obj.remarks %>
+        </td>
+      </tr> -->
+          <% }); %>
+      </table>
+
+      <h3>B. Review of calibration and preventive maintenance of the Instruments and equipment’s used in the
+        manufacturing
+        and packaging operation</h3>
+
+      <h3 class="point-heading">21.0 REVIEW OF ANNUAL TREND OF WATER, PURE STEAM & ENVIRONMENTAL MONITORING:</h3>
+
+      <h3 class="point-heading">22.0 REVIEW OF CHANGE IN VENDOR FOR KEY STARTING MATERIAL AND PRIMARY PACKING MATERIAL:</h3>
+      <h4>Key Starting Material</h4>
+      <table  class="table-tab">
+        <tr class="bg">
+          <th>S.No.</th>
+          <th>Material <br> Name</th>
+          <th>Vendor <br> Name</th>
+          <th>Date of <br> Last Approval</th>
+        </tr>
+
+
+        <% product.yieldTrendForSterile.map((obj)=> { %>
+          <!-- <tr>
+        <td>
+          <%= obj.productName %>
+        </td>
+        <td>
+          <%= obj.batchCode %>
+        </td>
+        <td>
+          <%= obj.sFGCode %>
+        </td>
+        <td>
+          <%= obj.remarks %>
+        </td>
+      </tr> -->
+          <% }); %>
+      </table>
+
+      <h4>Primary Packing Material:</h4>
+      <table  class="table-tab">
+        <tr class="bg">
+          <th>S.No.</th>
+          <th>Material <br> Name</th>
+          <th>Vendor <br> Name</th>
+          <th>Date of <br> Last Approval</th>
+        </tr>
+
+
+        <% product.yieldTrendForSterile.map((obj)=> { %>
+          <!-- <tr>
+        <td>
+          <%= obj.productName %>
+        </td>
+        <td>
+          <%= obj.batchCode %>
+        </td>
+        <td>
+          <%= obj.sFGCode %>
+        </td>
+        <td>
+          <%= obj.remarks %>
+        </td>
+      </tr> -->
+          <% }); %>
+      </table>
+
+      <h3 class="point-heading"><span class="objective-number">23.0</span> REVIEW OF KEY STARTING MATERIAL TREND DATA:</h3>
+
+      <h3 class="point-heading"><span class="objective-number">24.0</span> REVIEW OF CRITICAL PROCESS PARAMETER</h3>
+      <h4>24.1 Critical Process Parameter- Stage Wise</h4>
+      <h4>24.2 Trending of Critical Process Parameter: stage wise</h4>
+
+
+      <h3 class="point-heading"><span class="objective-number">25.0</span> REVIEW OF ANALYTICAL TREND OF IN-PROCESS & INTERMEDIATE DATA</h3>
+      <h4>25.1 Specification Details:</h4>
+      <table  class="table-tab">
+        <tr class="bg">
+          <th>S.No.</th>
+          <th>Document <br> Name</th>
+          <th>Document <br> No.</th>
+          <th>Effective <br> date</th>
+          <th>Specification</th>
+        </tr>
+
+
+        <% product.yieldTrendForSterile.map((obj)=> { %>
+          <!-- <tr>
+        <td>
+          <%= obj.productName %>
+        </td>
+        <td>
+          <%= obj.batchCode %>
+        </td>
+        <td>
+          <%= obj.sFGCode %>
+        </td>
+        <td>
+          <%= obj.remarks %>
+        </td>
+      </tr> -->
+          <% }); %>
+      </table>
+
+      <h4>25.2 Review of In-process Analytical Trend Data:</h4>
+      <h4>25.3 Review of Intermediate Analytical Trend Data:</h4>
+
+      <h3 class="point-heading"><span class="objective-number">26.0</span> REVIEW OF FINISHED PRODUCT ANALYTICALTREND:</h3>
+      <h4>26.1 Specification Details:</h4>
+      <table  class="table-tab">
+        <tr class="bg">
+          <th>S.No.</th>
+          <th>Document <br> Name</th>
+          <th>Document <br> No.</th>
+          <th>Effective <br> date</th>
+          <th>Specification</th>
+        </tr>
+      </table>
+
+      <h4>26.2 Review of Finished Product Analytical Trend as per EP/USP..…………….</h4>
+
+      <h3 class="point-heading"><span class="objective-number">27.0</span> REVIEW OF PREVIOUS APQR:</h3>
+      <table  class="table-tab">
+        <tr class="bg">
+          <th>S.No.</th>
+          <th>Open points/corrective <br> action /recommendation</th>
+          <th>Implementation <br> Status</th>
+        </tr>
+
+
+        <% product.yieldTrendForSterile.map((obj)=> { %>
+          <!-- <tr>
+          <td>
+            <%= obj.productName %>
+        </td>
+        <td>
+          <%= obj.batchCode %>
+        </td>
+        <td>
+          <%= obj.sFGCode %>
+        </td>
+        <td>
+          <%= obj.remarks %>
+        </td>
+      </tr> -->
+          <% }); %>
+      </table>
+
+      <h3 class="point-heading"><span class="objective-number">28.0</span> SUMMARY REPORT ON ANNUAL PRODUCT QUALITY REVIEW:</h3>
+
+      <h3 class="point-heading"><span class="objective-number">29.0</span> CONCLUSION AND RECOMMENDATION:</h3>
+      <h4>Below open point / corrective action pending for implementation in the year -.</h4>
+      <table  class="table-tab">
+        <tr class="bg">
+          <th>S.No.</th>
+          <th>Open points/corrective <br> action /recommendation</th>
+          <th>Responsibility</th>
+          <th>Target <br> date</th>
+        </tr>
+
+
+        <% product.yieldTrendForSterile.map((obj)=> { %>
+          <!-- <tr>
+          <td>
+            <%= obj.productName %>
+        </td>
+        <td>
+          <%= obj.batchCode %>
+        </td>
+        <td>
+          <%= obj.sFGCode %>
+        </td>
+        <td>
+          <%= obj.remarks %>
+        </td>
+      </tr> -->
+          <% }); %>
+      </table>
+
+      <h3 class="point-heading"><span class="objective-number">30.0</span> ABBREVIATIONS: </h3>
+      <h3 class="point-heading"><span class="objective-number">31.0</span> LIST OF ANNEXURE: </h3>
+    </div>
+</body>
+
+</html>

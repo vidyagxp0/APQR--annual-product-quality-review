@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Table Example</title>
+    <style>
+      .table-container {
+        max-width: 800px;
+        margin: 0 auto;
+      }
+      table {
+        width: 100%;
+        margin-top: 48px;
+        border: 1px solid black;
+      }
+
+      @media (max-width: 768px) {
+        th,
+        td {
+          font-size: 0.875rem;
+          padding: 4px;
+        }
+        .setpadding {
+          padding-inline: 20px;
+        }
+        .table-container {
+          width: 90%;
+        }
+      }
+
+      @media (max-width: 480px) {
+        th,
+        td {
+          font-size: 0.75rem;
+          margin: 0 auto;
+          padding: 2px;
+        }
+      }
+      th,
+      td {
+        border: 1px solid black;
+        padding: 4px 0px 4px 0px;
+      }
+      td {
+        text-align: center;
+      }
+
+      .text-left {
+        text-align: left;
+      }
+
+      th.name-right {
+        text-align: center;
+        padding-left: 120px;
+      }
+      td {
+        text-align: center;
+      }
+      .setpadding {
+        padding-inline: 70px;
+      }
+
+      .setpadding1 {
+        padding-inline: 55px;
+      }
+      .setpadding2 {
+        padding-inline: 45px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="table-container">
+      <table>
+        <thead>
+          <tr>
+            <th colspan="2" class="name-right">Name</th>
+            <th>Designation</th>
+            <th>Signature</th>
+            <th>Date</th>
+          </tr>
+          <tr>
+            <td>Prepared by</td>
+            <td class="setpadding"></td>
+            <td class="setpadding1"></td>
+            <td class="setpadding2"></td>
+            <td>28-09-2024</td>
+          </tr>
+          <tr>
+            <td rowspan="4">Reviewed by</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>28-09-2024</td>
+          </tr>
+          <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>28-09-2024</td>
+          </tr>
+          <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>28-09-2024</td>
+          </tr>
+          <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>28-09-2024</td>
+          </tr>
+          <tr>
+            <td>Approved by</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>28-09-2024</td>
+          </tr>
+        </thead>
+      </table>
+    </div>
+  </body>
+</html>

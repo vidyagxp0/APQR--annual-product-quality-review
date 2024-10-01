@@ -68,7 +68,7 @@ const CommonTable = ({ headers, data, setData, fields,colSpan }) => {
                     (
                       <input
                         type="text"
-                        value={item[field] || ""}
+                        value={item[field]}
                         onChange={(e) => handleInputChange(e, index, field)}
                       />
                     )
