@@ -292,66 +292,63 @@ export const oolResultsfields = [
 
 
 
-// export const bufferFSDPVheaders = [
-//   { label: "Critical Process Parameters", rowSpan: 2 },
-//   { label: "Codes", rowSpan: 2 },
-//   { label: "Acceptance Criteria", rowSpan: 2 },
-//   { 
-//     label: "Results", 
-//     colSpan: 2, 
-//     children: [
-//       { label: "Minimum" },
-//       { label: "Maximum" }
-//     ]
-//   },
-//   { label: "Complies / Does not comply", rowSpan: 2 }
-// ];
-// export const bufferFSDPVfields = [ 
-//   "criticalProcessParameter",
-//   "codes",
-//   "acceptanceCriteria",
-  
-//     result={
-//       subFields: ["minimum", "maximum"]
-//     },
 
-//   "compliesNotComplies",
-// ];
-
-// Define table headers with properties for spanning rows and columns
 export const bufferFSDPVheaders = [
   { label: "Critical Process Parameters", rowSpan: 2 },
   { label: "Codes", rowSpan: 2 },
   { label: "Acceptance Criteria", rowSpan: 2 },
   { 
     label: "Results", 
-    colSpan: 2,  // This header spans two columns
+    colSpan: 2,  
     children: [
-      { label: "Minimum" }, // Child header for minimum results
-      { label: "Maximum" }  // Child header for maximum results
+      { label: "Minimum" }, 
+      { label: "Maximum" }
     ]
   },
   { label: "Complies / Does not comply", rowSpan: 2 }
 ];
 
-// Define fields to be used in the table, ensuring to structure `result` properly
-// export const bufferFSDPVfields = [ 
-//   { name: "criticalProcessParameter" },
-//   { name: "codes" },
-//   { name: "acceptanceCriteria" },
-//   { 
-//     name: "result", // Specify the name for results field
-//     subFields: ["minimum", "maximum"] // Define subfields for result
-//   },
-//   { name: "compliesNotComplies" },
-// ];  
+// export const bufferFSDPVfields = [
+//   {name:"criticalProcessParameter"},
+//   {name:"codes"},
+//   {name:"acceptanceCriteria"},
+//   {name: "results.minimum"},
+//   {name: "results.maximum"},
+//   {name:"compliesNotComplies"}, 
+// ]
 
 
-export const bufferFSDPVfields = [ 
-  { name: "criticalProcessParameter" },
-  { name: "codes" },
-  { name: "acceptanceCriteria" },
-  { name: "resultminimum" }, // Flat structure for minimum result
-  { name: "resultmaximum" }, // Flat structure for maximum result
-  { name: "compliesNotComplies" },
-];  
+
+
+
+export const bufferFSDPVfields = [
+    { name: "criticalProcessParameter" },
+    { name: "codes" },
+    { name: "acceptanceCriteria" },
+    { name: "resultminimum" }, // Minimum result field
+    { name: "resultmaximum" }, // Maximum result field
+    { name: "compliesNotComplies" },
+  ];
+
+  export const manufacturingSDheaders = [
+    {label: "Critical Process Parameters", rowSpan: 2},
+    {label: "Codes", rowSpan: 2},
+    {label: "Acceptance Criteria", rowSpan: 2},
+    { 
+      label: "Results", 
+      colSpan: 2,  
+      children: [
+        { label: "Minimum" }, 
+        { label: "Maximum" }
+      ]
+    },
+    {label: "Complies / Does not comply", rowSpan: 2}
+  ];
+  export const manufacturingSDfields = [
+    {name:"criticalProcessParameter"},
+    {name:"codes"},
+    {name:"acceptanceCriteria"},
+    {name: "resultminimum"},
+    {name: "resultmaximum"},
+    {name:"compliesNotComplies"},
+  ]

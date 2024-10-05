@@ -5272,10 +5272,10 @@ export default function APQR() {
 
                         <td>
                           <input
-                            value={item?.results?.minimum}
+                            value={item.resultminimum}
                             onChange={(e) => {
                               const newData = [...gridDatas.bufferFSDPV];
-                              newData[index].results.minimum = e.target.value;
+                              newData[index].resultminimum = e.target.value;
                               setGridDatas({
                                 ...gridDatas,
                                 bufferFSDPV: newData,
@@ -5285,10 +5285,10 @@ export default function APQR() {
                         </td>
                         <td>
                           <input
-                            value={item.results?.maximum}
+                            value={item.resultmaximum}
                             onChange={(e) => {
                               const newData = [...gridDatas.bufferFSDPV];
-                              newData[index].results.maximum = e.target.value;
+                              newData[index].resultmaximum = e.target.value;
                               setGridDatas({
                                 ...gridDatas,
                                 bufferFSDPV: newData,
@@ -5399,10 +5399,10 @@ export default function APQR() {
 
                       <td>
                         <input
-                          value={item.results.minimum}
+                          value={item.resultminimum}
                           onChange={(e) => {
                             const newData = [...gridDatas.manufacturingSD];
-                            newData[index].results.minimum = e.target.value;
+                            newData[index].resultminimum = e.target.value;
                             setGridDatas({
                               ...gridDatas,
                               manufacturingSD: newData,
@@ -5412,10 +5412,10 @@ export default function APQR() {
                       </td>
                       <td>
                         <input
-                          value={item.results.maximum}
+                          value={item.resultmaximum}
                           onChange={(e) => {
                             const newData = [...gridDatas.manufacturingSD];
-                            newData[index].results.maximum = e.target.value;
+                            newData[index].resultmaximum = e.target.value;
                             setGridDatas({
                               ...gridDatas,
                               manufacturingSD: newData,
