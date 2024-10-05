@@ -5272,7 +5272,7 @@ export default function APQR() {
 
                         <td>
                           <input
-                            value={item.results.minimum}
+                            value={item?.results?.minimum}
                             onChange={(e) => {
                               const newData = [...gridDatas.bufferFSDPV];
                               newData[index].results.minimum = e.target.value;
@@ -5285,7 +5285,7 @@ export default function APQR() {
                         </td>
                         <td>
                           <input
-                            value={item.results.maximum}
+                            value={item.results?.maximum}
                             onChange={(e) => {
                               const newData = [...gridDatas.bufferFSDPV];
                               newData[index].results.maximum = e.target.value;

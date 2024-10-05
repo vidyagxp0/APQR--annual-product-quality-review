@@ -5,6 +5,7 @@ import TinyEditor from "../../Component/TinyEditor";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import ExcelExportImport from "../../Component/ImportExportExcel";
+import ComplexCommonTable from "../../Component/New_APQR/ComplexCommonTable";
 
 import axios from "axios";
 import ActiveTab from "../../Component/New_APQR/ActiveTab";
@@ -52,6 +53,9 @@ import {
   ooaResultsfields,
   oolResultsheaders,
   oolResultsfields,
+  bufferFSDPVfields,
+  bufferFSDPVheaders,
+
 } from "./NewApqrFunctions";
 
 import GridContainer from "../../Component/New_APQR/GridContainer";
@@ -2731,7 +2735,15 @@ export default function NewAPQR() {
                   />
                 </div>
               </div>
-              <table>
+            <p>1</p>
+              <ComplexCommonTable
+              cdata={bufferFSDPV}
+              setCdata={setBufferFSDPV}
+              cheaders={bufferFSDPVheaders} 
+              cfields={bufferFSDPVfields}
+              />
+
+              {/* <table>
                 <thead>
                   <tr>
                     <th rowSpan={2}>Critical Process Parameters</th>
@@ -2818,7 +2830,7 @@ export default function NewAPQR() {
                     );
                   })}
                 </tbody>
-              </table>
+              </table> */}
             </div>
             <h3 className="gridName pt-4">Unit Operation 2</h3>
             <h4 className="gridName">Manufacturing summary details</h4>
