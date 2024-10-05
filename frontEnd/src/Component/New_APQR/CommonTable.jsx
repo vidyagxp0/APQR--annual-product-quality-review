@@ -5,9 +5,9 @@ const CommonTable = ({ headers, data, setData, fields }) => {
     const newData = [...data];
 
     if (field === "fileAttachment") {
-      newData[index][field] = e.target.files[0]; // Handle file input
+      newData[index][field] = e.target.files[0]; 
     } else {
-      newData[index][field] = e.target.value; // Handle other inputs
+      newData[index][field] = e.target.value;
     }
 
     setData(newData);
