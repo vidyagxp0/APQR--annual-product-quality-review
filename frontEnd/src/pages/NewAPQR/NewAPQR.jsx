@@ -1050,56 +1050,56 @@ export default function NewAPQR() {
   //   setOoaResults([...ooaResults, newRow]);
   // };
 
-  const addDossierRowNma = () => {
-    const newRow = {
-      countryName: "",
-      descriptionOfPacking: "",
-      dateOfApplication: "",
-      ststusOfApplication: "",
-      dateOfAuthorization: "",
-      remarks: "",
+  // const addDossierRowNma = () => {
+  //   const newRow = {
+  //     countryName: "",
+  //     descriptionOfPacking: "",
+  //     dateOfApplication: "",
+  //     ststusOfApplication: "",
+  //     dateOfAuthorization: "",
+  //     remarks: "",
+  //   };
+  //   setDossierRRNma([...dossierRRNma, newRow]);
+  // };
+  // const addReviewODSTRRow = () => {
+  //   const newRow = {
+  //     batchNo: "",
+  //     testsParameter: "",
+  //     LSL: "",
+  //     USL: "",
+  //     LCL: "",
+  //     UCL: "",
+  //     observedValue: "",
+  //     compliesNotComplies: "",
+  //   };
+  //   setReviewOSTR([...reviewODSTR, newRow]);
+  // };
+  // const addReviewODSTRRow = () => {
+  //   const newRow = {
+  //     batchNo: "",
+  //     testsParameter: "",
+  //     LSL: "",
+  //     USL: "",
+  //     LCL: "",
+  //     UCL: "",
+  //     observedValue: "",
+  //     compliesNotComplies: "",
+  //   };
+  //   setReviewOSTR([...reviewODSTR, newRow]);
+  // };
+  const addReviewODSTRRow2 = () => {
+    const newRow2 = {
+      batchNo: "",
+      testsParameter: "",
+      LSL: "",
+      USL: "",
+      LCL: "",
+      UCL: "",
+      observedValue: "",
+      compliesNotComplies: "",
     };
-    setDossierRRNma([...dossierRRNma, newRow]);
+    setReviewOSTR2([...reviewODSTR2, newRow2]);
   };
-  // const addReviewODSTRRow = () => {
-  //   const newRow = {
-  //     batchNo: "",
-  //     testsParameter: "",
-  //     LSL: "",
-  //     USL: "",
-  //     LCL: "",
-  //     UCL: "",
-  //     observedValue: "",
-  //     compliesNotComplies: "",
-  //   };
-  //   setReviewOSTR([...reviewODSTR, newRow]);
-  // };
-  // const addReviewODSTRRow = () => {
-  //   const newRow = {
-  //     batchNo: "",
-  //     testsParameter: "",
-  //     LSL: "",
-  //     USL: "",
-  //     LCL: "",
-  //     UCL: "",
-  //     observedValue: "",
-  //     compliesNotComplies: "",
-  //   };
-  //   setReviewOSTR([...reviewODSTR, newRow]);
-  // };
-  // const addReviewODSTRRow2 = () => {
-  //   const newRow2 = {
-  //     batchNo: "",
-  //     testsParameter: "",
-  //     LSL: "",
-  //     USL: "",
-  //     LCL: "",
-  //     UCL: "",
-  //     observedValue: "",
-  //     compliesNotComplies: "",
-  //   };
-  //   setReviewOSTR2([...reviewODSTR2, newRow2]);
-  // };
 
   // const addReviewODSTRRow3 = () => {
   //   const newRow3 = {
@@ -1843,15 +1843,15 @@ export default function NewAPQR() {
     };
     setUnitOperation10([...unitOperation10, newRow]);
   };
-  // const addreviewOfASLRow = () => {
-  //   const newRow = {
-  //     materialCode: "",
-  //     materialName: "",
-  //     manufacturer: "",
-  //     facility: "",
-  //   };
-  //   setReviewOfASL([...reviewOfASL, newRow]);
-  // };
+  const addreviewOfASLRow = () => {
+    const newRow = {
+      materialCode: "",
+      materialName: "",
+      manufacturer: "",
+      facility: "",
+    };
+    setReviewOfASL([...reviewOfASL, newRow]);
+  };
 
   // const addDossierRow = () => {
   //   const newRow = {
@@ -1862,17 +1862,17 @@ export default function NewAPQR() {
   //   };
   //   setDossierRR([...dossierRR, newRow]);
   // };
-  // const addDossierRowNma = () => {
-  //   const newRow = {
-  //     countryName: "",
-  //     descriptionOfPacking: "",
-  //     dateOfApplication: "",
-  //     ststusOfApplication: "",
-  //     dateOfAuthorization: "",
-  //     remarks: "",
-  //   };
-  //   setDossierRRNma([...dossierRRNma, newRow]);
-  // };
+  const addDossierRowNma = () => {
+    const newRow = {
+      countryName: "",
+      descriptionOfPacking: "",
+      dateOfApplication: "",
+      ststusOfApplication: "",
+      dateOfAuthorization: "",
+      remarks: "",
+    };
+    setDossierRRNma([...dossierRRNma, newRow]);
+  };
 
   const handleProductCodeChange = (index, value) => {
     const newProductCodes = [...productCodes];
