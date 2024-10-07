@@ -11637,7 +11637,7 @@ export default function APQR() {
               <table>
                 <thead>
                   <tr>
-                    <th rowSpan={2}>Sl. No</th>
+                    <th rowSpan={2}>Sl. No.</th>
                     <th rowSpan={2}>Material</th>
                     <th rowSpan={2}>Test parameter</th>
                     <th rowSpan={2}>Specification limit</th>
@@ -11696,10 +11696,10 @@ export default function APQR() {
                         </td>
                         <td>
                           <input
-                            value={item.obtainedValue.minimum}
+                            value={item.obtainedValueMinimum}
                             onChange={(e) => {
                               const newData = [...gridDatas.reviewORMETR];
-                              newData[index].obtainedValue.minimum =
+                              newData[index].obtainedValueMinimum =
                                 e.target.value;
                               setGridDatas({
                                 ...gridDatas,
@@ -11710,10 +11710,10 @@ export default function APQR() {
                         </td>
                         <td>
                           <input
-                            value={item.obtainedValue.maximum}
+                            value={item.obtainedValueMaximum}
                             onChange={(e) => {
                               const newData = [...gridDatas.reviewORMETR];
-                              newData[index].obtainedValue.maximum =
+                              newData[index].obtainedValueMaximum =
                                 e.target.value;
                               setGridDatas({
                                 ...gridDatas,

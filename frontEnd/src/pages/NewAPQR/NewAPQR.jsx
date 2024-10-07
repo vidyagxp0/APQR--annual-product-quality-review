@@ -49,6 +49,41 @@ import {
   ootResultsfields,
   reviewODSTRheaders,
   reviewODSTRfields,
+  reviewODSTR2headers,
+  reviewODSTR2fields,
+  reviewODSTR3headers,
+  reviewODSTR3fields,
+  reviewODSTR4headers,
+  reviewODSTR4fields,
+  reviewODSTR5headers,
+  reviewODSTR5fields,
+  reviewODSTR6headers,
+  reviewODSTR6fields,
+  reviewODSTR7headers,
+  reviewODSTR7fields,
+  reviewODSTR8headers,
+  reviewODSTR8fields,
+  reviewODSTR9headers,
+  reviewODSTR9fields,
+  reviewODSTR10headers,
+  reviewODSTR10fields,
+  reviewODSTR11headers,
+  reviewODSTR11fields,
+  reviewODSTR12headers,
+  reviewODSTR12fields,
+  reviewODSTR13headers,
+  reviewODSTR13fields,
+  reviewODSTR14headers,
+  reviewODSTR14fields,
+  reviewODSTR15headers,
+  reviewODSTR15fields,
+  summaryOOSSheaders,
+  summaryOOSSfields,
+  stabilitySRheaders,
+  stabilitySRfields,
+
+  reviewORMETRheaders,
+  reviewORMETRfields,
   ooaResultsheaders,
   ooaResultsfields,
   oolResultsheaders,
@@ -1050,69 +1085,16 @@ export default function NewAPQR() {
   //   setOoaResults([...ooaResults, newRow]);
   // };
 
-  const addDossierRowNma = () => {
-    const newRow = {
-      countryName: "",
-      descriptionOfPacking: "",
-      dateOfApplication: "",
-      ststusOfApplication: "",
-      dateOfAuthorization: "",
-      remarks: "",
-    };
-    setDossierRRNma([...dossierRRNma, newRow]);
-  };
-  // const addReviewODSTRRow = () => {
+  // const addDossierRowNma = () => {
   //   const newRow = {
-  //     batchNo: "",
-  //     testsParameter: "",
-  //     LSL: "",
-  //     USL: "",
-  //     LCL: "",
-  //     UCL: "",
-  //     observedValue: "",
-  //     compliesNotComplies: "",
+  //     countryName: "",
+  //     descriptionOfPacking: "",
+  //     dateOfApplication: "",
+  //     ststusOfApplication: "",
+  //     dateOfAuthorization: "",
+  //     remarks: "",
   //   };
-  //   setReviewOSTR([...reviewODSTR, newRow]);
-  // };
-  // const addReviewODSTRRow = () => {
-  //   const newRow = {
-  //     batchNo: "",
-  //     testsParameter: "",
-  //     LSL: "",
-  //     USL: "",
-  //     LCL: "",
-  //     UCL: "",
-  //     observedValue: "",
-  //     compliesNotComplies: "",
-  //   };
-  //   setReviewOSTR([...reviewODSTR, newRow]);
-  // };
-  // const addReviewODSTRRow2 = () => {
-  //   const newRow2 = {
-  //     batchNo: "",
-  //     testsParameter: "",
-  //     LSL: "",
-  //     USL: "",
-  //     LCL: "",
-  //     UCL: "",
-  //     observedValue: "",
-  //     compliesNotComplies: "",
-  //   };
-  //   setReviewOSTR2([...reviewODSTR2, newRow2]);
-  // };
-
-  // const addReviewODSTRRow3 = () => {
-  //   const newRow3 = {
-  //     batchNo: "",
-  //     testsParameter: "",
-  //     LSL: "",
-  //     USL: "",
-  //     LCL: "",
-  //     UCL: "",
-  //     observedValue: "",
-  //     compliesNotComplies: "",
-  //   };
-  //   setReviewOSTR3([...reviewODSTR3, newRow3]);
+  //   setDossierRRNma([...dossierRRNma, newRow]);
   // };
   const addDossierRow = () => {
     const newRow = {
@@ -1123,163 +1105,209 @@ export default function NewAPQR() {
     };
     setDossierRR([...dossierRR, newRow]);
   };
-  // const addReviewODSTRRow4 = () => {
-  //   const newRow4 = {
-  //     batchNo: "",
-  //     testsParameter: "",
-  //     LSL: "",
-  //     USL: "",
-  //     LCL: "",
-  //     UCL: "",
-  //     observedValue: "",
-  //     compliesNotComplies: "",
-  //   };
-  //   setReviewOSTR4([...reviewODSTR4, newRow4]);
-  // };
-  // const addReviewODSTRRow5 = () => {
-  //   const newRow5 = {
-  //     batchNo: "",
-  //     testsParameter: "",
-  //     LSL: "",
-  //     USL: "",
-  //     LCL: "",
-  //     UCL: "",
-  //     observedValue: "",
-  //     compliesNotComplies: "",
-  //   };
-  //   setReviewOSTR5([...reviewODSTR5, newRow5]);
-  // };
-  // const addReviewODSTRRow6 = () => {
-  //   const newRow6 = {
-  //     batchNo: "",
-  //     testsParameter: "",
-  //     LSL: "",
-  //     USL: "",
-  //     LCL: "",
-  //     UCL: "",
-  //     observedValue: "",
-  //     compliesNotComplies: "",
-  //   };
-  //   setReviewOSTR6([...reviewODSTR6, newRow6]);
-  // };
-  // const addReviewODSTRRow7 = () => {
-  //   const newRow7 = {
-  //     batchNo: "",
-  //     testsParameter: "",
-  //     LSL: "",
-  //     USL: "",
-  //     LCL: "",
-  //     UCL: "",
-  //     observedValue: "",
-  //     compliesNotComplies: "",
-  //   };
-  //   setReviewOSTR7([...reviewODSTR7, newRow7]);
-  // };
-  // const addReviewODSTRRow8 = () => {
-  //   const newRow8 = {
-  //     batchNo: "",
-  //     testsParameter: "",
-  //     LSL: "",
-  //     USL: "",
-  //     LCL: "",
-  //     UCL: "",
-  //     observedValue: "",
-  //     compliesNotComplies: "",
-  //   };
-  //   setReviewOSTR8([...reviewODSTR8, newRow8]);
-  // };
-  // const addReviewODSTRRow9 = () => {
-  //   const newRow9 = {
-  //     batchNo: "",
-  //     testsParameter: "",
-  //     LSL: "",
-  //     USL: "",
-  //     LCL: "",
-  //     UCL: "",
-  //     observedValue: "",
-  //     compliesNotComplies: "",
-  //   };
-  //   setReviewOSTR9([...reviewODSTR9, newRow9]);
-  // };
-  // const addReviewODSTRRow10 = () => {
-  //   const newRow10 = {
-  //     batchNo: "",
-  //     testsParameter: "",
-  //     LSL: "",
-  //     USL: "",
-  //     LCL: "",
-  //     UCL: "",
-  //     observedValue: "",
-  //     compliesNotComplies: "",
-  //   };
-  //   setReviewOSTR10([...reviewODSTR10, newRow10]);
-  // };
-  // const addReviewODSTRRow11 = () => {
-  //   const newRow10 = {
-  //     batchNo: "",
-  //     testsParameter: "",
-  //     LSL: "",
-  //     USL: "",
-  //     LCL: "",
-  //     UCL: "",
-  //     observedValue: "",
-  //     compliesNotComplies: "",
-  //   };
-  //   setReviewOSTR11([...reviewODSTR11, newRow10]);
-  // };
-  // const addReviewODSTRRow12 = () => {
-  //   const newRow10 = {
-  //     batchNo: "",
-  //     testsParameter: "",
-  //     LSL: "",
-  //     USL: "",
-  //     LCL: "",
-  //     UCL: "",
-  //     observedValue: "",
-  //     compliesNotComplies: "",
-  //   };
-  //   setReviewOSTR12([...reviewODSTR12, newRow10]);
-  // };
-  // const addReviewODSTRRow13 = () => {
-  //   const newRow10 = {
-  //     batchNo: "",
-  //     testsParameter: "",
-  //     LSL: "",
-  //     USL: "",
-  //     LCL: "",
-  //     UCL: "",
-  //     observedValue: "",
-  //     compliesNotComplies: "",
-  //   };
-  //   setReviewOSTR13([...reviewODSTR13, newRow10]);
-  // };
-  // const addReviewODSTRRow14 = () => {
-  //   const newRow10 = {
-  //     batchNo: "",
-  //     testsParameter: "",
-  //     LSL: "",
-  //     USL: "",
-  //     LCL: "",
-  //     UCL: "",
-  //     observedValue: "",
-  //     compliesNotComplies: "",
-  //   };
-  //   setReviewOSTR14([...reviewODSTR14, newRow10]);
-  // };
+  
+  const addReviewODSTRRow = () => {
+    const newRow = {
+      batchNo: "",
+      testsParameter: "",
+      LSL: "",
+      USL: "",
+      LCL: "",
+      UCL: "",
+      observedValue: "",
+      compliesNotComplies: "",
+    };
+    setReviewOSTR([...reviewODSTR, newRow]);
+  };
 
-  // const addReviewODSTRRow15 = () => {
-  //   const newRow10 = {
-  //     batchNo: "",
-  //     testsParameter: "",
-  //     LSL: "",
-  //     USL: "",
-  //     LCL: "",
-  //     UCL: "",
-  //     observedValue: "",
-  //     compliesNotComplies: "",
-  //   };
-  //   setReviewOSTR15([...reviewODSTR15, newRow10]);
-  // };
+
+  const addReviewODSTRRow2 = () => {
+   const newRow2 ={
+    batchNo: "",
+    testsParameter: "",
+    LSL: "",
+    USL: "",
+    LCL: "",
+    UCL: "",
+    observedValue: "",
+    compliesNotComplies: "",
+      complies: "",
+   } 
+   setReviewOSTR2([...reviewODSTR2,newRow2])
+  }
+  const addReviewODSTRRow3=()=>{
+    const newRow3={
+      batchNo: "",
+      testsParameter: "",
+      LSL: "",
+      USL: "",
+      LCL: "",
+      UCL: "",
+      observedValue: "",
+      compliesNotComplies: "",
+    }
+    setReviewOSTR2([...reviewODSTR3,newRow3])
+  }
+
+
+
+  const addReviewODSTRRow4 = () => {
+    const newRow4 = {
+      batchNo: "",
+      testsParameter: "",
+      LSL: "",
+      USL: "",
+      LCL: "",
+      UCL: "",
+      observedValue: "",
+      compliesNotComplies: "",
+    };
+    setReviewOSTR4([...reviewODSTR4, newRow4]);
+  };
+  const addReviewODSTRRow5 = () => {
+    const newRow5 = {
+      batchNo: "",
+      testsParameter: "",
+      LSL: "",
+      USL: "",
+      LCL: "",
+      UCL: "",
+      observedValue: "",
+      compliesNotComplies: "",
+    };
+    setReviewOSTR5([...reviewODSTR5, newRow5]);
+  };
+  const addReviewODSTRRow6 = () => {
+    const newRow6 = {
+      batchNo: "",
+      testsParameter: "",
+      LSL: "",
+      USL: "",
+      LCL: "",
+      UCL: "",
+      observedValue: "",
+      compliesNotComplies: "",
+    };
+    setReviewOSTR6([...reviewODSTR6, newRow6]);
+  };
+  const addReviewODSTRRow7 = () => {
+    const newRow7 = {
+      batchNo: "",
+      testsParameter: "",
+      LSL: "",
+      USL: "",
+      LCL: "",
+      UCL: "",
+      observedValue: "",
+      compliesNotComplies: "",
+    };
+    setReviewOSTR7([...reviewODSTR7, newRow7]);
+  };
+  const addReviewODSTRRow8 = () => {
+    const newRow8 = {
+      batchNo: "",
+      testsParameter: "",
+      LSL: "",
+      USL: "",
+      LCL: "",
+      UCL: "",
+      observedValue: "",
+      compliesNotComplies: "",
+    };
+    setReviewOSTR8([...reviewODSTR8, newRow8]);
+  };
+  const addReviewODSTRRow9 = () => {
+    const newRow9 = {
+      batchNo: "",
+      testsParameter: "",
+      LSL: "",
+      USL: "",
+      LCL: "",
+      UCL: "",
+      observedValue: "",
+      compliesNotComplies: "",
+    };
+    setReviewOSTR9([...reviewODSTR9, newRow9]);
+  };
+  const addReviewODSTRRow10 = () => {
+    const newRow10 = {
+      batchNo: "",
+      testsParameter: "",
+      LSL: "",
+      USL: "",
+      LCL: "",
+      UCL: "",
+      observedValue: "",
+      compliesNotComplies: "",
+    };
+    setReviewOSTR10([...reviewODSTR10, newRow10]);
+  };
+  const addReviewODSTRRow11 = () => {
+    const newRow10 = {
+      batchNo: "",
+      testsParameter: "",
+      LSL: "",
+      USL: "",
+      LCL: "",
+      UCL: "",
+      observedValue: "",
+      compliesNotComplies: "",
+    };
+    setReviewOSTR11([...reviewODSTR11, newRow10]);
+  };
+  const addReviewODSTRRow12 = () => {
+    const newRow10 = {
+      batchNo: "",
+      testsParameter: "",
+      LSL: "",
+      USL: "",
+      LCL: "",
+      UCL: "",
+      observedValue: "",
+      compliesNotComplies: "",
+    };
+    setReviewOSTR12([...reviewODSTR12, newRow10]);
+  };
+  const addReviewODSTRRow13 = () => {
+    const newRow10 = {
+      batchNo: "",
+      testsParameter: "",
+      LSL: "",
+      USL: "",
+      LCL: "",
+      UCL: "",
+      observedValue: "",
+      compliesNotComplies: "",
+    };
+    setReviewOSTR13([...reviewODSTR13, newRow10]);
+  };
+  const addReviewODSTRRow14 = () => {
+    const newRow10 = {
+      batchNo: "",
+      testsParameter: "",
+      LSL: "",
+      USL: "",
+      LCL: "",
+      UCL: "",
+      observedValue: "",
+      compliesNotComplies: "",
+    };
+    setReviewOSTR14([...reviewODSTR14, newRow10]);
+  };
+
+  const addReviewODSTRRow15 = () => {
+    const newRow10 = {
+      batchNo: "",
+      testsParameter: "",
+      LSL: "",
+      USL: "",
+      LCL: "",
+      UCL: "",
+      observedValue: "",
+      compliesNotComplies: "",
+    };
+    setReviewOSTR15([...reviewODSTR15, newRow10]);
+  };
 
   const addReviewORMETRRow = () => {
     const newRow = {
@@ -1415,16 +1443,16 @@ export default function NewAPQR() {
     setReviewODPFPTR([...reviewODPFPTR, newRow]);
   };
 
-  // const addSummaryOOSSRow = () => {
-  //   const newRow = {
-  //     batchNo: "",
-  //     type: "",
-  //     storageCondition: "",
-  //     testingInterval: "",
-  //     stabilityProtocolNo: "",
-  //   };
-  //   setSummaryOOSS([...summaryOOSS, newRow]);
-  // };
+  const addSummaryOOSSRow = () => {
+    const newRow = {
+      batchNo: "",
+      type: "",
+      storageCondition: "",
+      testingInterval: "",
+      stabilityProtocolNo: "",
+    };
+    setSummaryOOSS([...summaryOOSS, newRow]);
+  };
 
   // const addStabilitySRRow = () => {
   //   const newRow = {
@@ -1862,17 +1890,17 @@ export default function NewAPQR() {
   //   };
   //   setDossierRR([...dossierRR, newRow]);
   // };
-  // const addDossierRowNma = () => {
-  //   const newRow = {
-  //     countryName: "",
-  //     descriptionOfPacking: "",
-  //     dateOfApplication: "",
-  //     ststusOfApplication: "",
-  //     dateOfAuthorization: "",
-  //     remarks: "",
-  //   };
-  //   setDossierRRNma([...dossierRRNma, newRow]);
-  // };
+  const addDossierRowNma = () => {
+    const newRow = {
+      countryName: "",
+      descriptionOfPacking: "",
+      dateOfApplication: "",
+      ststusOfApplication: "",
+      dateOfAuthorization: "",
+      remarks: "",
+    };
+    setDossierRRNma([...dossierRRNma, newRow]);
+  };
 
   const handleProductCodeChange = (index, value) => {
     const newProductCodes = [...productCodes];
@@ -3807,6 +3835,7 @@ export default function NewAPQR() {
                 setimportedData={setimportedData}
                 fileName="reviewODSTR.xlsx"
                 gridNo={22}
+                addRowData={addReviewODSTRRow}
                 headers={reviewODSTRheaders}
                 data={reviewODSTR}
                 setData={setReviewOSTR}
@@ -3826,6 +3855,7 @@ export default function NewAPQR() {
                 setimportedData={setimportedData}
                 fileName="reviewODSTR2.xlsx"
                 gridNo={23}
+                addRowData={addReviewODSTRRow2}
                 headers={reviewODSTR2headers}
                 data={reviewODSTR2}
                 setData={setReviewOSTR2}
@@ -3848,7 +3878,7 @@ export default function NewAPQR() {
                 setimportedData={setimportedData}
                 fileName="reviewODSTR3.xlsx"
                 gridNo={24}
-
+                addRowData={addReviewODSTRRow3}
                 headers={reviewODSTR3headers}
                 data={reviewODSTR3}
                 setData={setReviewOSTR3}
@@ -3871,7 +3901,7 @@ export default function NewAPQR() {
                 setimportedData={setimportedData}
                 fileName="reviewODSTR4.xlsx"
                 gridNo={25}
-
+                addRowData={addReviewODSTRRow4}
                 headers={reviewODSTR4headers}
                 data={reviewODSTR4}
                 setData={setReviewOSTR4}
@@ -3890,6 +3920,8 @@ export default function NewAPQR() {
                 setimportedData={setimportedData}
                 fileName="reviewODSTR5.xlsx"
                 gridNo={26}
+                addRowData={addReviewODSTRRow5}
+
                 headers={reviewODSTR5headers}
                 data={reviewODSTR5}
                 setData={setReviewOSTR5}
@@ -3909,6 +3941,8 @@ export default function NewAPQR() {
                 setimportedData={setimportedData}
                 fileName="reviewODSTR6.xlsx"
                 gridNo={27}
+                addRowData={addReviewODSTRRow6}
+
                 headers={reviewODSTR6headers}
                 data={reviewODSTR6}
                 setData={setReviewOSTR6}
@@ -3926,6 +3960,8 @@ export default function NewAPQR() {
                 setimportedData={setimportedData}
                 fileName="reviewODSTR6.xlsx"
                 gridNo={27}
+                addRowData={addReviewODSTRRow7}
+
                 headers={reviewODSTR7headers}
                 data={reviewODSTR7}
                 setData={setReviewOSTR7}
@@ -3944,6 +3980,8 @@ export default function NewAPQR() {
                 setimportedData={setimportedData}
                 fileName="reviewODSTR8.xlsx"
                 gridNo={29}
+                addRowData={addReviewODSTRRow8}
+
                 headers={reviewODSTR8headers}
                 data={reviewODSTR8}
                 setData={setReviewOSTR8}
@@ -3966,6 +4004,8 @@ export default function NewAPQR() {
                 setimportedData={setimportedData}
                 fileName="reviewODSTR9.xlsx"
                 gridNo={30}
+                addRowData={addReviewODSTRRow9}
+
                 headers={reviewODSTR9headers}
                 data={reviewODSTR9}
                 setData={setReviewOSTR9}
@@ -3986,6 +4026,8 @@ export default function NewAPQR() {
                 setimportedData={setimportedData}
                 fileName="reviewODSTR10.xlsx"
                 gridNo={31}
+                addRowData={addReviewODSTRRow10}
+
                 headers={reviewODSTR10headers}
                 data={reviewODSTR10}
                 setData={setReviewOSTR10}
@@ -4002,6 +4044,8 @@ export default function NewAPQR() {
                 setimportedData={setimportedData}
                 fileName="reviewODSTR11.xlsx"
                 gridNo={32}
+                addRowData={addReviewODSTRRow11}
+
                 headers={reviewODSTR11headers}
                 data={reviewODSTR11}
                 setData={setReviewOSTR11}
@@ -4017,6 +4061,8 @@ export default function NewAPQR() {
                 setimportedData={setimportedData}
                 fileName="reviewODSTR12.xlsx"
                 gridNo={33}
+                addRowData={addReviewODSTRRow12}
+
                 headers={reviewODSTR12headers}
                 data={reviewODSTR12}
                 setData={setReviewOSTR12}
@@ -4035,6 +4081,8 @@ export default function NewAPQR() {
                 setimportedData={setimportedData}
                 fileName="reviewODSTR13.xlsx"
                 gridNo={34}
+                addRowData={addReviewODSTRRow13}
+
                 headers={reviewODSTR13headers}
                 data={reviewODSTR13}
                 setData={setReviewOSTR13}
@@ -4053,6 +4101,8 @@ export default function NewAPQR() {
                 setimportedData={setimportedData}
                 fileName="reviewODSTR14.xlsx"
                 gridNo={35}
+                addRowData={addReviewODSTRRow14}
+
                 headers={reviewODSTR14headers}
                 data={reviewODSTR14}
                 setData={setReviewOSTR14}
@@ -4072,6 +4122,8 @@ export default function NewAPQR() {
                 setimportedData={setimportedData}
                 fileName="reviewODSTR15.xlsx"
                 gridNo={36}
+                addRowData={addReviewODSTRRow15}
+
                 headers={reviewODSTR15headers}
                 data={reviewODSTR15}
                 setData={setReviewOSTR15}
@@ -4108,8 +4160,14 @@ export default function NewAPQR() {
                   />
                 </div>
               </div>
-              
-              <table>
+              <p>1</p>
+              <ComplexCommonTable
+              data={reviewORMETR}
+              setdata={setReviewORMETR}
+              headers={reviewORMETRheaders} 
+              fields={reviewORMETRfields}
+              />
+              {/* <table>
                 <thead>
                   <tr>
                     <th rowSpan={2}>Sl. No</th>
@@ -4199,7 +4257,7 @@ export default function NewAPQR() {
                     );
                   })}
                 </tbody>
-              </table>
+              </table> */}
             </div>
             <div>
               <h4 className="gridName mt-5">Summary</h4>
@@ -5545,6 +5603,7 @@ export default function NewAPQR() {
                 setimportedData={setimportedData}
                 fileName="summaryOOSS.xlsx"
                 setData={setSummaryOOSS}
+                
                 data={summaryOOSS}
                 headers={summaryOOSSheaders}
                 fields={summaryOOSSfields}

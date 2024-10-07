@@ -126,6 +126,319 @@ export const reviewODSTRfields = [
   "observedValue",
   "compliesNotComplies",
 ];
+
+ export const reviewODSTR2headers=[
+  "Batch No",
+  "Tests parameter",
+  "LSL",
+  "USL",
+  "LCL",
+  "UCL",
+  "Observed Value",
+  "Complies/Does Not complies",
+ ]
+ export const reviewODSTR2fields=[
+"batchNo",
+"testsParameter",
+"LSL",
+"USL",
+"LCL",
+"UCL",
+"observedValue",
+"compliesNotComplies",
+ ]
+ export const reviewODSTR3headers=[
+  "Batch No",
+  "Tests parameter",
+  "LSL",
+  "USL",
+  "LCL",
+  "UCL",
+  "Observed Value",
+  "Complies/Does Not complies",
+ ]
+ export const reviewODSTR3fields=[
+   "batchNo",
+   "testsParameter",
+   "LSL",
+   "USL",
+   "LCL",
+   "UCL",
+   "observedValue",
+   "compliesNotComplies",
+ ]
+ export const reviewODSTR4headers=[
+  "Batch No",
+  "Tests parameter",
+  "LSL",
+  "USL",
+  "LCL",
+  "UCL",
+  "Observed Value",
+  "Complies/Does Not complies",
+ ]
+ export const reviewODSTR4fields=[
+"batchNo",
+"testsParameter",
+"LSL",
+"USL",
+"LCL",
+"UCL",
+"observedValue",
+"compliesNotComplies",
+ ]
+ export const reviewODSTR5headers=[
+  "Batch No",
+  "Tests parameter",
+  "LSL",
+  "USL",
+  "LCL",
+  "UCL",
+  "Observed Value",
+  "Complies/Does Not complies",
+ ]
+ export const reviewODSTR5fields=[
+  "batchNo",
+  "testsParameter",
+  "LSL",
+  "USL",
+  "LCL",
+  "UCL",
+  "observedValue",
+  "compliesNotComplies",
+ ]
+ export const reviewODSTR6headers=[
+  "Batch No",
+  "Tests parameter",
+  "LSL",
+  "USL",
+  "LCL",
+  "UCL",
+  "Observed Value",
+  "Complies/Does Not complies",
+ ]
+ export const reviewODSTR6fields=[
+  "batchNo",
+  "testsParameter",
+  "LSL",
+  "USL",
+  "LCL",
+  "UCL",
+  "observedValue",
+  "compliesNotComplies",
+ ]
+ export const reviewODSTR7headers=[
+  "Batch No",
+  "Tests parameter",
+  "LSL",
+  "USL",
+  "LCL",
+  "UCL",
+  "Observed Value",
+  "Complies/Does Not complies",
+ ]
+ export const reviewODSTR7fields=[
+"batchNo",
+"testsParameter",
+"LSL",
+"USL",
+"LCL",
+"UCL",
+"observedValue",
+"compliesNotComplies",
+ ]
+ export const reviewODSTR8headers=[
+  "Batch No",
+  "Tests parameter",
+  "LSL",
+  "USL",
+  "LCL",
+  "UCL",
+  "Observed Value",
+  "Complies/Does Not complies",
+ ]
+ export const reviewODSTR8fields=[
+"batchNo",
+"testsParameter",
+"LSL",
+"USL",
+"LCL",
+"UCL",
+"observedValue",
+"compliesNotComplies",
+ ]
+ export const reviewODSTR9headers=[
+  "Batch No",
+  "Tests parameter",
+  "LSL",
+  "USL",
+  "LCL",
+  "UCL",
+  "Observed Value",
+  "Complies/Does Not complies",
+ ]
+ export const reviewODSTR9fields=[
+ "batchNo",
+ "testsParameter",
+ "LSL",
+ "USL",
+ "LCL",
+ "UCL",
+ "observedValue",
+ "compliesNotComplies",
+ ]
+ export const reviewODSTR10headers=[
+  "Batch No",
+  "Tests parameter",
+  "LSL",
+  "USL",
+  "LCL",
+  "UCL",
+  "Observed Value",
+  "Complies/Does Not complies",
+ ]
+ export const reviewODSTR10fields=[
+    "batchNo",
+    "testsParameter",
+    "LSL",
+    "USL",
+    "LCL",
+    "UCL",
+    "observedValue",
+    "compliesNotComplies",
+ ]
+ export const reviewODSTR11headers=[
+  "Batch No",
+  "Tests parameter",
+  "LSL",
+  "USL",
+  "LCL",
+  "UCL",
+  "Observed Value",
+  "Complies/Does Not complies",
+ ]
+ export const reviewODSTR11fields=[
+"batchNo",
+"testsParameter",
+"LSL",
+"USL",
+"LCL",
+"UCL",
+"observedValue",
+"compliesNotComplies",
+ ]
+ export const reviewODSTR12headers=[
+  "Batch No",
+  "Tests parameter",
+  "LSL",
+  "USL",
+  "LCL",
+  "UCL",
+  "Observed Value",
+  "Complies/Does Not complies",
+ ]
+ export const reviewODSTR12fields=[
+"batchNo",
+"testsParameter",
+"LSL",
+"USL",
+"LCL",
+"UCL",
+"observedValue",
+"compliesNotComplies",
+ ]
+ export const reviewODSTR13headers=[
+  "Batch No",
+  "Tests parameter",
+  "LSL",
+  "USL",
+  "LCL",
+  "UCL",
+  "Observed Value",
+  "Complies/Does Not complies",
+ ]
+ export const reviewODSTR13fields=[
+  "batchNo",
+  "testsParameter",
+  "LSL",
+  "USL",
+  "LCL",
+  "UCL",
+  "observedValue",
+  "compliesNotComplies",
+ ]
+ export const reviewODSTR14headers=[
+  "Batch No",
+  "Tests parameter",
+  "LSL",
+  "USL",
+  "LCL",
+  "UCL",
+  "Observed Value",
+  "Complies/Does Not complies",
+ ]
+ export const reviewODSTR14fields=[
+   "batchNo",
+   "testsParameter",
+   "LSL",
+   "USL",
+   "LCL",
+   "UCL",
+   "observedValue",
+   "compliesNotComplies",
+ ]
+ export const reviewODSTR15headers=[
+  "Batch No",
+  "Tests parameter",
+  "LSL",
+  "USL",
+  "LCL",
+  "UCL",
+  "Observed Value",
+  "Complies/Does Not complies",
+ ]
+ export const reviewODSTR15fields=[
+    "batchNo",
+    "testsParameter",
+    "LSL",
+    "USL",
+    "LCL",
+    "UCL",
+    "observedValue",
+    "compliesNotComplies",
+ ]
+export const summaryOOSSheaders=[
+  "SI. No.",
+  "Batch Number",
+  "Type",
+  "Storage Condition",
+  "Testing Intervals Months completed",
+  "Stability Protocol No.",
+
+]
+export const summaryOOSSfields=[
+  
+  "batchNo",
+  "type", 
+  "storageCondition",
+  "testingInterval",
+  "stabilityProtocolNo",
+]
+export const stabilitySRheaders=[
+  "SI. No.",
+  "Batch Number",
+
+  "Testing Intervals Months completed",
+  "OOS Number"
+ 
+]
+export const stabilitySRfields=[
+  "batchNo",
+  "testingInterval",
+  "oosNumber",
+]
+
+
 export const vendorQDPOGheaders = [
   "Gas Name",
   "Gas Code",
@@ -373,5 +686,29 @@ export const bufferFSDPVfields = [
     {name:"acceptanceCriteria"},
     {name: "resultminimum"},
     {name: "resultmaximum"},
+    {name:"compliesNotComplies"},
+  ]
+
+  export const reviewORMETRheaders=[
+    {label: "SI.No.", rowSpan: 2},
+    {label: " Material", rowSpan: 2},
+    {label: "Test parameter", rowSpan: 2},
+    {label: "Specification limit", rowSpan: 2},
+    {label: " Obtained value",
+      colSpan: 2,
+      children: [
+        {label: "Minimum"},
+        {label: "Maximum"}
+      ]
+     },
+     {label: "Complies / Does not complies", rowSpan: 2}
+  ]
+  export const reviewORMETRfields = [
+    {name:"SI.No."},
+    {name:"material"},
+    {name:"testParameter"},
+    {name:"specificationLimit"},
+    {name:"obtainedValueMinimum"},
+    {name:"obtainedValueMaximum"},
     {name:"compliesNotComplies"},
   ]
