@@ -352,3 +352,26 @@ export const bufferFSDPVfields = [
     {name: "resultmaximum"},
     {name:"compliesNotComplies"},
   ]
+
+  export const unitOperation3headers=[
+  {label: "Critical Process Parameters", rowSpan: 2},
+  {label: "Codes", rowSpan: 2},
+  {label: "Acceptance Criteria", rowSpan: 2},
+  { 
+    label: "Results", 
+    colSpan: 2,  
+    children: [
+      { label: "Minimum" }, 
+      { label: "Maximum" }
+    ]
+  },
+  {label: "Complies / Does not comply", rowSpan: 2}
+  ];
+  export const unitOperation3fields = [
+    {name:"criticalProcessParameter"},
+    {name:"codes"},
+    {name:"acceptanceCriteria"},
+    {name: "resultminimum"},
+    {name: "resultmaximum"},
+    {name:"compliesNotComplies"},
+  ]

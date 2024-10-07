@@ -56,7 +56,10 @@ import {
   bufferFSDPVfields,
   bufferFSDPVheaders,
   manufacturingSDheaders,
-  manufacturingSDfields
+  manufacturingSDfields,
+  unitOperation3headers,
+  unitOperation3fields,
+
 
 } from "./NewApqrFunctions";
 
@@ -2852,7 +2855,7 @@ export default function NewAPQR() {
                 />
               </div>
             </div>
-       <p>2</p>
+     
             <ComplexCommonTable
               data={manufacturingSD}
               setdata={setManufacturingSD}
@@ -2962,7 +2965,14 @@ export default function NewAPQR() {
                 />
               </div>
             </div>
-            <table>
+            <p>3</p>
+            <ComplexCommonTable
+              data={unitOperation3}
+              setdata={setUnitOperation3}
+              headers={unitOperation3headers} 
+              fields={unitOperation3fields}
+              />
+            {/* <table>
               <thead>
                 <tr>
                   <th rowSpan={2}>Critical Process Parameters</th>
@@ -3047,7 +3057,7 @@ export default function NewAPQR() {
                   );
                 })}
               </tbody>
-            </table>
+            </table> */}
 
             <h3 className="gridName pt-4">Unit Operation 4</h3>
             <div className="AddRows d-flex w-full justify-between items-center text-3xl mb-5">
