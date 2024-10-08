@@ -89,11 +89,7 @@ const ComplexCommonTable = ({ data, setdata, headers, fields }) => {
       <table className="min-w-full border-collapse border border-gray-300">
         <thead>
           <tr>
-            {showIndex && (
-              <th className="border centerText border-gray-300 p-2" rowSpan={2}>
-                SI. No.
-              </th>
-            )}
+        
             {headers.map((header, index) => (
               <th
                 key={index}
@@ -123,14 +119,19 @@ const ComplexCommonTable = ({ data, setdata, headers, fields }) => {
               {showIndex && <td className="border border-gray-300 p-2">{index + 1}.</td>}
               
               {fields.map((field, fieldIndex) => (
+           
+           
                 <td key={fieldIndex} className="border border-gray-300 p-2">
                   <input
                     type="text"
                     value={item[field.name]} // Access field value directly
                     onChange={(e) => handleInputChange(e, index, field.name)} // Handle changes for main field
                     className="w-full p-1"
-                  />
+                    />
+                    
                 </td>
+                  
+       
               ))}
             </tr>
           ))}

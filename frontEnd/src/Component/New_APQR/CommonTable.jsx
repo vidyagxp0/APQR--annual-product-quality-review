@@ -72,7 +72,7 @@ const CommonTable = ({ headers, data, setData, fields }) => {
   };
 
   const isSpecialField = (field) =>
-    ["LSL", "USL", "LCL", "UCL",].includes(field);
+    ["LSL", "USL", "LCL", "UCL","observedValue",].includes(field);
 
   return (
     <table>

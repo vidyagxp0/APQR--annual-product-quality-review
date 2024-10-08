@@ -434,8 +434,8 @@ export const stabilitySRheaders=[
 ]
 export const stabilitySRfields=[
   "batchNo",
-  "testingInterval",
-  "oosNumber",
+  "testingIntervalMonths",
+  "OOSNumber",
 ]
 
 
@@ -451,6 +451,440 @@ export const vendorQDPOGfields = [
   "manufacturerName",
   "qualificationStatus",
 ];
+
+export const compressedGasheaders=[
+  "SI. No.",
+  "Compressed Gas",
+  "Test",
+  "Frequency",
+  "Status"
+]
+export const compressedGasfields=[
+    "compressedGas",
+    "test",
+    "frequency",
+    "status"
+]
+
+export const reviewOfCPDheaders=[
+   "SI. No.",
+   "Date of Initiation",
+   "Record No",
+   "Site/Division",
+   "Department",
+   "Initiator",
+   "Short Description",
+   "Batch No",
+   "Due Date",
+   "Current Status",
+]
+export const reviewOfCPDfields=[
+   "dateOfInitiation",
+   "recordNo",
+   "siteDivision",
+   "department",
+   "initiator",
+   "shortDescription",
+   "batchNo",
+   "dueDate",
+   "currentStatus",
+]
+
+export const previewRPDheaders=[
+  "SI. No.",
+  "Date of Initiation",
+  "Record No",
+  "Site/Division",
+  "Department",
+  "Initiator",
+  "Short Description",
+  "Batch No",
+  "Due Date",
+  "Current Status",
+]
+export const previewRPDfields=[
+  "dateOfInitiation",
+  "recordNo",
+  "siteDivision",
+  "department",
+  "initiator",
+  "shortDescription",
+  "batchNo",
+  "dueDate",
+  "currentStatus",
+]
+
+export const currentOOSheaders=[
+  "SI. No.",
+  "Date of Initiation",
+  "Record No",
+  "Site/Division",
+  "Department",
+  "Initiator",
+  "Short Description",
+  "Batch No",
+  "Due Date",
+  "Current Status",
+]
+export const currentOOSfields=[
+  "dateOfInitiation",
+  "recordNo",
+  "siteDivision",
+  "department",
+  "initiator",
+  "shortDescription",
+  "batchNo",
+  "dueDate",
+  "currentStatus",
+]
+
+export const previewOOSheaders=[
+  "SI. No.",
+  "Date Of Initiation",
+  "Record No",
+  "Site/Division",
+  "Department",
+  "Initiator",
+  "Batch No",
+  "Due Date",
+  "Current Status",
+
+]
+export const previewOOSfields=[
+  "dateOfInitiation",
+  "recordNo",
+  "siteDivision",
+  "department",
+  "initiator",
+  "batchNo",
+  "dueDate",
+  "currentStatus",
+]
+export const currentOOACheaders=[
+  "SI. No.",
+  "Date of Initiation",
+  "Record No",
+  "Site/Division",
+  "Department",
+  "Initiator",
+  "Short Description",
+  "Batch No",
+  "Due Date",
+  "Current Status",
+]
+export const currentOOACfields=[
+  "dateOfInitiation",
+  "recordNo",
+  "siteDivision",
+  "department",
+  "initiator",
+  "shortDescription",
+  "batchNo",
+  "dueDate",
+  "currentStatus",
+]
+export const previewOOACheaders=[
+  "SI. No.",
+  "Date of Initiation",
+  "Record No",
+  "Site/Division",
+  "Department",
+  "Initiator",
+  "Short Description",
+  "Batch No",
+  "Due Date",
+  "Current Status",
+]
+export const previewOOACfields=[
+  "dateOfInitiation",
+  "recordNo",
+  "siteDivision",
+  "department",
+  "initiator",
+  "shortDescription",
+  "batchNo",
+  "dueDate",
+  "currentStatus",
+]
+export const currentOOALheaders=[
+  "SI. No.",
+  "Date of Initiation",
+  "Record No",
+  "Site/Division",
+  "Department",
+  "Initiator",
+  "Short Description",
+  "Batch No",
+  "Due Date",
+  "Current Status",
+]
+export const currentOOALfields=[
+  "dateOfInitiation",
+  "recordNo",
+  "siteDivision",
+  "department",
+  "initiator",
+  "shortDescription",
+  "batchNo",
+  "dueDate",
+  "currentStatus",
+]
+export const previewOOALheaders=[
+  "SI. No.",
+  "Date of Initiation",
+  "Record No",
+  "Site/Division",
+  "Department",
+  "Initiator",
+  "Short Description",
+  "Batch No",
+  "Due Date",
+  "Current Status",
+]
+export const previewOOALfields=[
+  "dateOfInitiation",
+  "recordNo",
+  "siteDivision",
+  "department",
+  "initiator",
+  "shortDescription",
+  "batchNo",
+  "dueDate",
+  "currentStatus",
+]
+export const currentOOSAheaders=[
+  "SI. No.",
+  "Date of Initiation",
+  "Record No",
+  "Site/Division",
+  "Department",
+  "Initiator",
+  "Short Description",
+  "Batch No",
+  "Due Date",
+  "Current Status",
+]
+export const currentOOSAfields=[
+  "dateOfInitiation",
+  "recordNo",
+  "siteDivision",
+  "department",
+  "initiator",
+  "shortDescription",
+  "batchNo",
+  "dueDate",
+  "currentStatus",
+]
+export const previewOOSAheaders=[
+  "SI. No.",
+  "Date of Initiation",
+  "Record No",
+  "Site/Division",
+  "Department",
+  "Initiator",
+  "Short Description",
+  "Batch No",
+  "Due Date",
+  "Current Status",
+]
+export const previewOOSAfields=[
+  "dateOfInitiation",
+  "recordNo",
+  "siteDivision",
+  "department",
+  "initiator",
+  "shortDescription",
+  "batchNo",
+  "dueDate",
+  "currentStatus",
+]
+export const currentOOTheaders=[
+  "SI. No.",
+  "Date of Initiation",
+  "Record No",
+  "Site/Division",
+  "Department",
+  "Initiator",
+  "Short Description",
+  "Batch No",
+  "Due Date",
+  "Current Status",
+]
+export const currentOOTfields=[
+  "dateOfInitiation",
+  "recordNo",
+  "siteDivision",
+  "department",
+  "initiator",
+  "shortDescription",
+  "batchNo",
+  "dueDate",
+  "currentStatus",
+]
+export const currentCCheaders=[
+  "SI. No.",
+  "Date of Initiation",
+  "Record No",
+  "Site/Division",
+  "Department",
+  "Initiator",
+  "Short Description",
+  "Batch No",
+  "Due Date",
+  "Current Status",
+]
+export const currentCCfields=[
+  "dateOfInitiation",
+  "recordNo",
+  "siteDivision",
+  "department",
+  "initiator",
+  "shortDescription",
+  "batchNo",
+  "dueDate",
+  "currentStatus",
+]
+export const previewCCheaders=[
+  "SI. No.",
+  "Date of Initiation",
+  "Record No",
+  "Site/Division",
+  "Department",
+  "Initiator",
+  "Short Description",
+  "Batch No",
+  "Due Date",
+  "Current Status",
+]
+export const previewCCfields=[
+  "dateOfInitiation",
+  "recordNo",
+  "siteDivision",
+  "department",
+  "initiator",
+  "shortDescription",
+  "batchNo",
+  "dueDate",
+  "currentStatus",
+]
+ 
+export const currentLabIheaders=[
+  "SI. No.",
+  "Date of Initiation",
+  "Record No",
+  "Site/Division",
+  "Department",
+  "Initiator",
+  "Short Description",
+  "Batch No",
+  "Due Date",
+  "Current Status",
+]
+export const currentLabIfields=[
+  "dateOfInitiation",
+  "recordNo",
+  "siteDivision",
+  "department",
+  "initiator",
+  "shortDescription",
+  "batchNo",
+  "dueDate",
+  "currentStatus",
+]
+export const previewLabIheaders=[
+  "SI. No.",
+  "Date of Initiation",
+  "Record No",
+  "Site/Division",
+  "Department",
+  "Initiator",
+  "Short Description",
+  "Batch No",
+  "Due Date",
+  "Current Status",
+]
+export const previewLabIfields=[
+  "dateOfInitiation",
+  "recordNo",
+  "siteDivision",
+  "department",
+  "initiator",
+  "shortDescription",
+  "batchNo",
+  "dueDate",
+  "currentStatus",
+]
+export const currentMCheaders=[
+  "SI. No.",
+  "Date of Initiation",
+  "Record No",
+  "Site/Division",
+  "Department",
+  "Initiator",
+  "Short Description",
+  "Batch No",
+  "Due Date",
+  "Current Status",
+]
+export const currentMCfields=[
+  "dateOfInitiation",
+  "recordNo",
+  "siteDivision",
+  "department",
+  "initiator",
+  "shortDescription",
+  "batchNo",
+  "dueDate",
+  "currentStatus",
+]
+export const previewMCheaders=[
+  "SI. No.",
+  "Date of Initiation",
+  "Record No",
+  "Site/Division",
+  "Department",
+  "Initiator",
+  "Short Description",
+  "Batch No",
+  "Due Date",
+  "Current Status",
+]
+export const previewMCfields=[
+  "dateOfInitiation",
+  "recordNo",
+  "siteDivision",
+  "department",
+  "initiator",
+  "shortDescription",
+  "batchNo",
+  "dueDate",
+  "currentStatus",
+]
+
+export const sanitizationASDOUheaders=[
+  "SI. No.",
+  "Equipment Name",
+  "Frequency",
+  "Status"
+]
+export const sanitizationASDOUfields=[
+    "equipmentName",
+    "frequency",
+    "status"
+]
+
+
+export const hVACQStatusheaders=[
+  "SI. No.",
+  "Test Description",
+  "Frequency",
+  "Status"
+]
+export const hVACQStatusfields=[
+    "testDescription",
+    "frequency",
+    "status"
+]
 
 export const codeTCTDheaders = [
   "SI. No.",
@@ -531,6 +965,59 @@ export const deviationDetailsfields = [
   "remarks",
   "status",
 ];
+export const dossierRRheaders=[
+  "SI. No.",
+  "Agency",
+  "Notification Type",
+  "Description"
+]
+export const dossierRRfields=[
+  "agency",
+  "notificationType",
+  "description"
+]
+export const dossierRRNmaheaders=[
+  "SI. No.",
+  "Country Name",
+  "Description Of Packing",
+  "Date of Application",
+  "Status of Application",
+  "Date of Authorization",
+  "Remarks"
+]
+export const dossierRRNmafields=[
+  "countryName",
+  "descriptionOfPacking",
+  "dateOfApplication",
+  "statusOfApplication",
+  "dateOfAuthorization",
+  "remarks"
+]
+export const previewOOTheaders=[
+  "SI. No.",
+  "Date Of Initiation",
+  "Record No",
+  "Site/Division",
+  "Department",
+  "Initiator",
+  "Short Description",
+  "Batch No",
+  "Due Date",
+  "Current Status",
+]
+export const previewOOTfields=[
+  "dateOfInitiation",
+  "recordNo",
+  "siteDivision",
+  "department",
+  "initiator",
+  "shortDescription",
+  "batchNo",
+  "dueDate",
+  "currentStatus",
+]
+
+
 
 export const oosDetailsheaders = [
   "AR No.",
@@ -621,14 +1108,6 @@ export const bufferFSDPVheaders = [
   { label: "Complies / Does not comply", rowSpan: 2 }
 ];
 
-// export const bufferFSDPVfields = [
-//   {name:"criticalProcessParameter"},
-//   {name:"codes"},
-//   {name:"acceptanceCriteria"},
-//   {name: "results.minimum"},
-//   {name: "results.maximum"},
-//   {name:"compliesNotComplies"}, 
-// ]
 
 
 
@@ -704,11 +1183,288 @@ export const bufferFSDPVfields = [
      {label: "Complies / Does not complies", rowSpan: 2}
   ]
   export const reviewORMETRfields = [
-    {name:"SI.No."},
+
     {name:"material"},
-    {name:"testParameter"},
+    {name:"testsParameter"},
     {name:"specificationLimit"},
     {name:"obtainedValueMinimum"},
     {name:"obtainedValueMaximum"},
     {name:"compliesNotComplies"},
   ]
+
+  export const reviewOPMTRheaders=[
+    {label: "SI.No.", rowSpan: 2},
+    {label: "Primary Packing Material", rowSpan: 2},
+    {label: "Test parameter", rowSpan: 2},
+    {label: "Specification limit", rowSpan: 2},
+    {label: " Obtained value",
+      colSpan: 2,
+      children: [
+        {label: "Minimum"},
+        {label: "Maximum"}
+      ]
+     },
+     {label: "Complies / Does not complies", rowSpan: 2}
+  ]
+  export  const reviewOPMTRfields = [
+
+    {name:"material"},
+    {name:"testsParameter"},
+    {name:"specificationLimit"},
+    {name:"obtainedValueMinimum"},
+    {name:"obtainedValueMaximum"},
+    {name:"compliesNotComplies"},
+  ]
+
+  export const reviewODPheaders=[
+    {label: "SI.No.", rowSpan: 2},
+    {label: "Test parameter", rowSpan: 2},
+    {label: "Stage", rowSpan: 2},
+    {label: "Specification limit", rowSpan: 2},
+    {label: " Obtained value",
+      colSpan: 2,
+      children: [
+        {label: "Minimum"},
+        {label: "Maximum"}
+      ]
+     },
+     {label: "Complies / Does not complies", rowSpan: 2}
+  ]
+  export const reviewODPfields = [
+
+    {name:"testsParameter"},
+    {name:"stage"},
+    {name:"specificationLimit"},
+    {name:"obtainedValueMinimum"},
+    {name:"obtainedValueMaximum"},
+    {name:"compliesNotComplies"},
+  ]
+
+  export const reviewODP2headers=[
+    {label: "SI.No.", rowSpan: 2},
+    {label: "Test parameter", rowSpan: 2},
+    {label: "Stage", rowSpan: 2},
+    {label: "Specification limit", rowSpan: 2},
+    {label: " Obtained value",
+      colSpan: 2,
+      children: [
+        {label: "Minimum"},
+        {label: "Maximum"}
+      ]
+     },
+     {label: "Complies / Does not complies", rowSpan: 2}
+  ]
+  export const reviewODP2fields = [
+    {name:"testsParameter"},
+    {name:"stage"},
+    {name:"specificationLimit"},
+    {name:"obtainedValueMinimum"},
+    {name:"obtainedValueMaximum"},
+    {name:"compliesNotComplies"},
+  ]
+
+  export const reviewODP3headers=[
+    {label: "SI.No.", rowSpan: 2},
+    {label: "Test parameter", rowSpan: 2},
+    {label: "Stage", rowSpan: 2},
+    {label: "Specification limit", rowSpan: 2},
+    {label: " Obtained value",
+      colSpan: 2,
+      children: [
+        {label: "Minimum"},
+        {label: "Maximum"}
+      ]
+     },
+     {label: "Complies / Does not complies", rowSpan: 2}
+  ]
+
+  export const reviewODP3fields = [
+    {name:"testsParameter"},
+    {name:"specificationLimit"},
+    {name:"stage"},
+    {name:"obtainedValueMinimum"},
+    {name:"obtainedValueMaximum"},
+    {name:"compliesNotComplies"},
+  ]
+export const reviewODP4headers=[
+  {label: "SI.No.", rowSpan: 2},
+  {label: "Test parameter", rowSpan: 2},
+  {label: "Stage", rowSpan: 2},
+  {label: "Specification limit", rowSpan: 2},
+  {label: " Obtained value",
+    colSpan: 2,
+    children: [
+      {label: "Minimum"},
+      {label: "Maximum"}
+    ]
+   },
+   {label: "Complies / Does not complies", rowSpan: 2}
+]
+export const reviewODP4fields = [
+
+  {name:"testsParameter"},
+  {name:"stage"},
+  {name:"specificationLimit"},
+  {name:"obtainedValueMinimum"},
+  {name:"obtainedValueMaximum"},
+  {name:"compliesNotComplies"},
+]
+export const reviewODP5headers=[
+  {label: "SI.No.", rowSpan: 2},
+  {label: "Test parameter", rowSpan: 2},
+  {label: "Stage", rowSpan: 2},
+  {label: "Specification limit", rowSpan: 2},
+  {label: " Obtained value",
+    colSpan: 2,
+    children: [
+      {label: "Minimum"},
+      {label: "Maximum"}
+    ]
+   },
+   {label: "Complies / Does not complies", rowSpan: 2}
+]
+export const reviewODP5fields = [
+
+  {name:"testsParameter"},
+  {name:"stage"},
+  {name:"specificationLimit"},
+  {name:"obtainedValueMinimum"},
+  {name:"obtainedValueMaximum"},
+  {name:"compliesNotComplies"},
+]
+export const reviewODP6headers=[
+  {label: "SI.No.", rowSpan: 2},
+  {label: "Test parameter", rowSpan: 2},
+  {label: "Stage", rowSpan: 2},
+  {label: "Specification limit", rowSpan: 2},
+  {label: " Obtained value",
+    colSpan: 2,
+    children: [
+      {label: "Minimum"},
+      {label: "Maximum"}
+    ]
+   },
+   {label: "Complies / Does not complies", rowSpan: 2}
+]
+export const reviewODP6fields = [
+
+  {name:"testsParameter"},
+  {name:"stage"},
+  {name:"specificationLimit"},
+  {name:"obtainedValueMinimum"},
+  {name:"obtainedValueMaximum"},
+  {name:"compliesNotComplies"},
+]
+export const reviewODP7headers=[
+  {label: "SI.No.", rowSpan: 2},
+  {label: "Test parameter", rowSpan: 2},
+  {label: "Stage", rowSpan: 2},
+  {label: "Specification limit", rowSpan: 2},
+  {label: " Obtained value",
+    colSpan: 2,
+    children: [
+      {label: "Minimum"},
+      {label: "Maximum"}
+    ]
+   },
+   {label: "Complies / Does not complies", rowSpan: 2}
+]
+export  const reviewODP7fields = [
+
+  {name:"testsParameter"},
+  {name:"stage"},
+  {name:"specificationLimit"},
+  {name:"obtainedValueMinimum"},
+  {name:"obtainedValueMaximum"},
+  {name:"compliesNotComplies"},
+]
+export const reviewODP8headers=[
+  {label: "SI.No.", rowSpan: 2},
+  {label: "Test parameter", rowSpan: 2},
+  {label: "Stage", rowSpan: 2},
+  {label: "Specification limit", rowSpan: 2},
+  {label: " Obtained value",
+    colSpan: 2,
+    children: [
+      {label: "Minimum"},
+      {label: "Maximum"}
+    ]
+   },
+   {label: "Complies / Does not complies", rowSpan: 2}
+]
+export const reviewODP8fields=[
+  {name:"testsParameter"},
+  {name:"stage"},
+  {name:"specificationLimit"},
+  {name:"obtainedValueMinimum"},
+  {name:"obtainedValueMaximum"},
+  {name:"compliesNotComplies"},
+]
+
+export const reviewODP9headers=[
+  {label: "SI.No.", rowSpan: 2},
+  {label: "Test parameter", rowSpan: 2},
+  {label: "Stage", rowSpan: 2},
+  {label: "Specification limit", rowSpan: 2},
+  {label: " Obtained value",
+    colSpan: 2,
+    children: [
+      {label: "Minimum"},
+      {label: "Maximum"}
+    ]
+   },
+   {label: "Complies / Does not complies", rowSpan: 2}
+]
+export const reviewODP9fields=[
+  {name:"testsParameter"},
+  {name:"stage"},
+  {name:"specificationLimit"},
+  {name:"obtainedValueMinimum"},
+  {name:"obtainedValueMaximum"},
+  {name:"compliesNotComplies"},
+]
+export const reviewODP10headers=[
+  {label: "SI.No.", rowSpan: 2},
+  {label: "Test parameter", rowSpan: 2},
+  {label: "Stage", rowSpan: 2},
+  {label: "Specification limit", rowSpan: 2},
+  {label: " Obtained value",
+    colSpan: 2,
+    children: [
+      {label: "Minimum"},
+      {label: "Maximum"}
+    ]
+   },
+   {label: "Complies / Does not complies", rowSpan: 2}
+]
+export const reviewODP10fields=[
+  {name:"testsParameter"},
+  {name:"stage"},
+  {name:"specificationLimit"},
+  {name:"obtainedValueMinimum"},
+  {name:"obtainedValueMaximum"},
+  {name:"compliesNotComplies"},
+]
+export const reviewODPFPTRheaders=[
+  {label: "SI.No.", rowSpan: 2},
+  {label: "Test parameter", rowSpan: 2},
+  {label: "Stage", rowSpan: 2},
+  {label: "Specification limit", rowSpan: 2},
+  {label: " Obtained value",
+    colSpan: 2,
+    children: [
+      {label: "Minimum"},
+      {label: "Maximum"}
+    ]
+   },
+   {label: "Complies / Does not complies", rowSpan: 2}
+]
+
+export const reviewODPFPTRfields=[
+  {name:"testsParameter"},
+  {name:"stage"},
+  {name:"specificationLimit"},
+  {name:"obtainedValueMinimum"},
+  {name:"obtainedValueMaximum"},
+  {name:"compliesNotComplies"},
+]

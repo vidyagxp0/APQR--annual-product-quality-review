@@ -81,7 +81,79 @@ import {
   summaryOOSSfields,
   stabilitySRheaders,
   stabilitySRfields,
+  reviewOPMTRheaders,
+  reviewOPMTRfields,
+  reviewODPheaders,
+  reviewODPfields,
+  reviewODP2headers,
+  reviewODP2fields,
+  reviewODP3headers,
+  reviewODP3fields,
+  reviewODP4headers,
+  reviewODP4fields,
+  reviewODP5headers,
+  reviewODP5fields,
+  reviewODP6headers,
+  reviewODP6fields,
+  reviewODP7headers,
+  reviewODP7fields,
+  reviewODP8headers,
+  reviewODP8fields,
+  reviewODP9headers,
+  reviewODP9fields,
+  reviewODP10headers,
+  reviewODP10fields, 
+  reviewOfCPDheaders,
+  reviewOfCPDfields,
+  previewRPDheaders,
+  previewRPDfields,
+  currentOOSheaders,
+  currentOOSfields,
+  hVACQStatusheaders,
+  hVACQStatusfields,
+  sanitizationASDOUheaders,
+  sanitizationASDOUfields,
+  previewOOSheaders,
+  previewOOSfields,
+  currentOOACheaders,
+  currentOOACfields,
+  previewOOACheaders,
+  previewOOACfields,
+  currentOOALheaders,
+  currentOOALfields,
+  previewOOALheaders,
+  previewOOALfields,
+  currentOOSAheaders,
+  currentOOSAfields,
+  previewOOSAheaders,
+  previewOOSAfields,
+  dossierRRheaders,
+  dossierRRfields,
+  dossierRRNmaheaders,
+  dossierRRNmafields,
+  previewOOTheaders,
+  previewOOTfields,
+  currentOOTheaders,
+  currentOOTfields,
+  currentCCheaders,
+  currentCCfields,
+  previewCCheaders,
+  previewCCfields, 
+  currentLabIheaders,
+  currentLabIfields, 
+  previewLabIheaders,
+  previewLabIfields,
+  currentMCheaders,
+  currentMCfields,
+  previewMCheaders,
+  previewMCfields,
 
+
+
+  reviewODPFPTRheaders,
+  reviewODPFPTRfields,
+  compressedGasheaders,
+  compressedGasfields,
   reviewORMETRheaders,
   reviewORMETRfields,
   ooaResultsheaders,
@@ -4160,7 +4232,7 @@ export default function NewAPQR() {
                   />
                 </div>
               </div>
-              <p>1</p>
+       
               <ComplexCommonTable
               data={reviewORMETR}
               setdata={setReviewORMETR}
@@ -4286,7 +4358,15 @@ export default function NewAPQR() {
                   />
                 </div>
               </div>
-              <table>
+       
+       
+              <ComplexCommonTable
+              data={reviewOPMTR}
+              setdata={setReviewOPMTR}
+              headers={reviewOPMTRheaders} 
+              fields={reviewOPMTRfields}
+              />
+              {/* <table>
                 <thead>
                   <tr>
                     <th rowSpan={2}>Sl. No</th>
@@ -4376,7 +4456,7 @@ export default function NewAPQR() {
                     );
                   })}
                 </tbody>
-              </table>
+              </table> */}
             </div>
             <div>
               <h4 className="gridName mt-5">Summary</h4>
@@ -4406,7 +4486,15 @@ export default function NewAPQR() {
                   />
                 </div>
               </div>
-              <table>
+      
+      
+              <ComplexCommonTable
+              data={reviewODP}
+              setdata={setReviewODP}
+              headers={reviewODPheaders} 
+              fields={reviewODPfields}
+              />
+              {/* <table>
                 <thead>
                   <tr>
                     <th rowSpan={2}>Sl. No</th>
@@ -4496,7 +4584,7 @@ export default function NewAPQR() {
                     );
                   })}
                 </tbody>
-              </table>
+              </table> */}
             </div>
             <h4 className="gridName pt-8 ">Dilution Buffer 2 - Test Results</h4>
             <div>
@@ -4515,7 +4603,14 @@ export default function NewAPQR() {
                   />
                 </div>
               </div>
-              <table>
+              
+              <ComplexCommonTable
+              data={reviewODP2}
+              setdata={setReviewODP2}
+              headers={reviewODP2headers} 
+              fields={reviewODP2fields}
+              />
+              {/* <table>
                 <thead>
                   <tr>
                     <th rowSpan={2}>Sl. No</th>
@@ -4605,7 +4700,7 @@ export default function NewAPQR() {
                     );
                   })}
                 </tbody>
-              </table>
+              </table> */}
             </div>{" "}
             <h4 className="gridName pt-8">Dilution Buffer 3 - Test Results</h4>
             <div>
@@ -4624,7 +4719,14 @@ export default function NewAPQR() {
                   />
                 </div>
               </div>
-              <table>
+            <p>5</p>
+              <ComplexCommonTable
+              data={reviewODP3}
+              setdata={setReviewODP10}
+              headers={reviewODP3headers} 
+              fields={reviewODP3fields}
+              /> 
+           {/* <table>
                 <thead>
                   <tr>
                     <th rowSpan={2}>Sl. No</th>
@@ -4714,7 +4816,7 @@ export default function NewAPQR() {
                     );
                   })}
                 </tbody>
-              </table>
+              </table> */}
             </div>{" "}
             <h4 className="gridName pt-8">Dilution Buffer 4 - Test Results</h4>
             <div>
@@ -4733,7 +4835,14 @@ export default function NewAPQR() {
                   />
                 </div>
               </div>
-              <table>
+          
+              <ComplexCommonTable
+              data={reviewODP4}
+              setdata={setReviewODP4}
+              headers={reviewODP4headers} 
+              fields={reviewODP4fields}
+              />
+              {/* <table>
                 <thead>
                   <tr>
                     <th rowSpan={2}>Sl. No</th>
@@ -4823,7 +4932,7 @@ export default function NewAPQR() {
                     );
                   })}
                 </tbody>
-              </table>
+              </table> */}
             </div>{" "}
             <h4 className="gridName pt-8">Dilution Buffer 5 - Test Results</h4>
             <div>
@@ -4842,7 +4951,14 @@ export default function NewAPQR() {
                   />
                 </div>
               </div>
-              <table>
+              
+              <ComplexCommonTable
+              data={reviewODP5}
+              setdata={setReviewODP5}
+              headers={reviewODP5headers} 
+              fields={reviewODP5fields}
+              />
+              {/* <table>
                 <thead>
                   <tr>
                     <th rowSpan={2}>Sl. No</th>
@@ -4932,7 +5048,7 @@ export default function NewAPQR() {
                     );
                   })}
                 </tbody>
-              </table>
+              </table> */}
             </div>{" "}
             <h4 className="gridName pt-8">Dilution Buffer 6 - Test Results</h4>
             <div>
@@ -4951,7 +5067,14 @@ export default function NewAPQR() {
                   />
                 </div>
               </div>
-              <table>
+          
+              <ComplexCommonTable
+              data={reviewODP6}
+              setdata={setReviewODP6}
+              headers={reviewODP6headers} 
+              fields={reviewODP6fields}
+              />
+              {/* <table>
                 <thead>
                   <tr>
                     <th rowSpan={2}>Sl. No</th>
@@ -5041,7 +5164,7 @@ export default function NewAPQR() {
                     );
                   })}
                 </tbody>
-              </table>
+              </table> */}
             </div>{" "}
             <h4 className="gridName pt-8">Dilution Buffer 7 - Test Results</h4>
             <div>
@@ -5060,7 +5183,14 @@ export default function NewAPQR() {
                   />
                 </div>
               </div>
-              <table>
+              
+              <ComplexCommonTable
+              data={reviewODP7}
+              setdata={setReviewODP7}
+              headers={reviewODP7headers} 
+              fields={reviewODP7fields}
+              />
+              {/* <table>
                 <thead>
                   <tr>
                     <th rowSpan={2}>Sl. No</th>
@@ -5150,7 +5280,7 @@ export default function NewAPQR() {
                     );
                   })}
                 </tbody>
-              </table>
+              </table> */}
             </div>{" "}
             <h4 className="gridName pt-8">Dilution Buffer 8 - Test Results</h4>
             <div>
@@ -5169,7 +5299,14 @@ export default function NewAPQR() {
                   />
                 </div>
               </div>
-              <table>
+                 
+              <ComplexCommonTable
+              data={reviewODP8}
+              setdata={setReviewODP8}
+              headers={reviewODP8headers} 
+              fields={reviewODP8fields}
+              />
+              {/* <table>
                 <thead>
                   <tr>
                     <th rowSpan={2}>Sl. No</th>
@@ -5259,7 +5396,7 @@ export default function NewAPQR() {
                     );
                   })}
                 </tbody>
-              </table>
+              </table> */}
             </div>{" "}
             <h4 className="gridName pt-8">Dilution Buffer 9 - Test Results</h4>
             <div>
@@ -5278,7 +5415,14 @@ export default function NewAPQR() {
                   />
                 </div>
               </div>
-              <table>
+              
+              <ComplexCommonTable
+              data={reviewODP9}
+              setdata={setReviewODP9}
+              headers={reviewODP9headers} 
+              fields={reviewODP9fields}
+              />
+              {/* <table>
                 <thead>
                   <tr>
                     <th rowSpan={2}>Sl. No</th>
@@ -5368,7 +5512,7 @@ export default function NewAPQR() {
                     );
                   })}
                 </tbody>
-              </table>
+              </table> */}
             </div>
             <h4 className="gridName pt-8">Dilution Buffer 10 - Test Results</h4>
             <div>
@@ -5387,7 +5531,14 @@ export default function NewAPQR() {
                   />
                 </div>
               </div>
-              <table>
+              
+              <ComplexCommonTable
+              data={reviewODP10}
+              setdata={setReviewODP10}
+              headers={reviewODP10headers} 
+              fields={reviewODP10fields}
+              />
+              {/* <table>
                 <thead>
                   <tr>
                     <th rowSpan={2}>Sl. No</th>
@@ -5477,7 +5628,7 @@ export default function NewAPQR() {
                     );
                   })}
                 </tbody>
-              </table>
+              </table> */}
             </div>
             <div>
               <h4 className="gridName mt-5">Summary</h4>
@@ -5506,7 +5657,14 @@ export default function NewAPQR() {
                   />
                 </div>
               </div>
-              <table>
+              <p>13</p>
+              <ComplexCommonTable
+              data={reviewODPFPTR}
+              setdata={setReviewODPFPTR}
+              headers={reviewODPFPTRheaders} 
+              fields={reviewODPFPTRfields}
+              />
+              {/* <table>
                 <thead>
                   <tr>
                     <th rowSpan={2}>Sl. No</th>
@@ -5585,7 +5743,7 @@ export default function NewAPQR() {
                     );
                   })}
                 </tbody>
-              </table>
+              </table> */}
             </div>
             <div>
               <h4 className="gridName mt-5">Summary</h4>
@@ -5863,8 +6021,8 @@ export default function NewAPQR() {
                 fileName="sanitizationASDOU.xlsx"
                 setData={setSanitizationASDOU}
                 data={sanitizationASDOU}
-                headers={setSanitizationASDOUheaders}
-                fields={setSanitizationASDOUfields}
+                headers={sanitizationASDOUheaders}
+                fields={sanitizationASDOUfields}
               />
             
             
@@ -5967,7 +6125,7 @@ export default function NewAPQR() {
             <div>
            
            
-
+          
               <GridContainer
                 MdNoteAddfun ={addPreviewOOS}
                 setData={setPreviewOOS}
@@ -6169,7 +6327,7 @@ export default function NewAPQR() {
                 setData={setCurrentCC}
                 data={currentCC}
                 headers={currentCCheaders}
-                fields={currretCCfields}
+                fields={currentCCfields}
               />
            
            
