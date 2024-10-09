@@ -147,6 +147,23 @@ import {
   currentMCfields,
   previewMCheaders,
   previewMCfields,
+  currentRPQRNheaders,
+  currentRPQRNfields,
+  unitOperation4headers,
+  unitOperation4fields,
+  unitOperation5headers,
+  unitOperation5fields,
+  unitOperation6headers,
+  unitOperation6fields,
+  unitOperation7headers,
+  unitOperation7fields,
+  unitOperation8headers,
+  unitOperation8fields,
+  unitOperation9headers,
+  unitOperation9fields,
+  unitOperation10headers,
+  unitOperation10fields,
+
 
 
 
@@ -2824,7 +2841,7 @@ export default function NewAPQR() {
               Buffer formulation summary details provided below
             </h4>
             <div>
-              //Not Completed
+              
               <div className="AddRows d-flex w-full justify-between items-center text-3xl mb-5">
                 <div className="flex items-center">
                   <MdNoteAdd onClick={addBufferFSDPVRow} />
@@ -2848,94 +2865,8 @@ export default function NewAPQR() {
               fields={bufferFSDPVfields}
               />
 
-              {/* <table>
-                <thead>
-                  <tr>
-                    <th rowSpan={2}>Critical Process Parameters</th>
-                    <th rowSpan={2}>Codes</th>
-                    <th rowSpan={2}>Acceptance criteria</th>
-                    <th className="centerText" colSpan={2}>
-                      Results
-                    </th>
-                    <th rowSpan={2}>Complies / Does not complies</th>
-                  </tr>
-                  <tr>
-                    <th>Minimum</th>
-                    <th>Maximum</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {bufferFSDPV?.map((item, index) => {
-                    return (
-                      <tr key={index}>
-                        <td>
-                          <input
-                            value={item.criticalProcessParameter}
-                            onChange={(e) => {
-                              const newData = [...bufferFSDPV];
-                              newData[index].criticalProcessParameter =
-                                e.target.value;
-                              setBufferFSDPV(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.codes}
-                            onChange={(e) => {
-                              const newData = [...bufferFSDPV];
-                              newData[index].codes = e.target.value;
-                              setBufferFSDPV(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.acceptanceCriteria}
-                            onChange={(e) => {
-                              const newData = [...bufferFSDPV];
-                              newData[index].acceptanceCriteria =
-                                e.target.value;
-                              setBufferFSDPV(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.results.minimum}
-                            onChange={(e) => {
-                              const newData = [...bufferFSDPV];
-                              newData[index].results.minimum = e.target.value;
-                              setBufferFSDPV(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.results.maximum}
-                            onChange={(e) => {
-                              const newData = [...bufferFSDPV];
-                              newData[index].results.maximum = e.target.value;
-                              setBufferFSDPV(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.compliesNotComplies}
-                            onChange={(e) => {
-                              const newData = [...bufferFSDPV];
-                              newData[index].compliesNotComplies =
-                                e.target.value;
-                              setBufferFSDPV(newData);
-                            }}
-                          />
-                        </td>
-                      </tr>
-                    );
-                  })}
-                </tbody>
-              </table> */}
+             
+             
             </div>
             <h3 className="gridName pt-4">Unit Operation 2</h3>
             <h4 className="gridName">Manufacturing summary details</h4>
@@ -2955,100 +2886,15 @@ export default function NewAPQR() {
                 />
               </div>
             </div>
-     
+        
             <ComplexCommonTable
               data={manufacturingSD}
               setdata={setManufacturingSD}
               headers={manufacturingSDheaders} 
               fields={manufacturingSDfields}
               />
-            {/* <table>
-              <thead>
-                <tr>
-                  <th rowSpan={2}>Critical Process Parameters</th>
-                  <th rowSpan={2}>Codes</th>
-                  <th rowSpan={2}>Acceptance criteria</th>
-                  <th className="centerText" colSpan={2}>
-                    Results
-                  </th>
-                  <th rowSpan={2}>Complies / Does not complies</th>
-                </tr>
-                <tr>
-                  <th>Minimum</th>
-                  <th>Maximum</th>
-                </tr>
-              </thead>
-              <tbody>
-                {manufacturingSD?.map((item, index) => {
-                  return (
-                    <tr key={index}>
-                      <td>
-                        <input
-                          value={item.criticalProcessParameter}
-                          onChange={(e) => {
-                            const newData = [...manufacturingSD];
-                            newData[index].criticalProcessParameter =
-                              e.target.value;
-                            setManufacturingSD(newData);
-                          }}
-                        />
-                      </td>
-                      <td>
-                        <input
-                          value={item.codes}
-                          onChange={(e) => {
-                            const newData = [...manufacturingSD];
-                            newData[index].codes = e.target.value;
-                            setManufacturingSD(newData);
-                          }}
-                        />
-                      </td>
-                      <td>
-                        <input
-                          value={item.acceptanceCriteria}
-                          onChange={(e) => {
-                            const newData = [...manufacturingSD];
-                            newData[index].acceptanceCriteria = e.target.value;
-                            setManufacturingSD(newData);
-                          }}
-                        />
-                      </td>
-                      <td>
-                        <input
-                          value={item.results.minimum}
-                          onChange={(e) => {
-                            const newData = [...manufacturingSD];
-                            newData[index].results.minimum = e.target.value;
-                            setManufacturingSD(newData);
-                          }}
-                        />
-                      </td>
-                      <td>
-                        <input
-                          value={item.results.maximum}
-                          onChange={(e) => {
-                            const newData = [...manufacturingSD];
-                            newData[index].results.maximum = e.target.value;
-                            setManufacturingSD(newData);
-                          }}
-                        />
-                      </td>
-                      <td>
-                        <input
-                          value={item.compliesNotComplies}
-                          onChange={(e) => {
-                            const newData = [...manufacturingSD];
-                            newData[index].compliesNotComplies = e.target.value;
-                            setManufacturingSD(newData);
-                          }}
-                        />
-                      </td>
-                    </tr>
-                  );
-                })}
-              </tbody>
-            </table> */}
-
+         
+         
             <h3 className="gridName pt-4">Unit Operation 3</h3>
             <div className="AddRows d-flex w-full justify-between items-center text-3xl mb-5">
               <div className="flex items-center">
@@ -3065,99 +2911,15 @@ export default function NewAPQR() {
                 />
               </div>
             </div>
-            <p>3</p>
+       
+       
             <ComplexCommonTable
               data={unitOperation3}
               setdata={setUnitOperation3}
               headers={unitOperation3headers} 
               fields={unitOperation3fields}
               />
-            {/* <table>
-              <thead>
-                <tr>
-                  <th rowSpan={2}>Critical Process Parameters</th>
-                  <th rowSpan={2}>Codes</th>
-                  <th rowSpan={2}>Acceptance criteria</th>
-                  <th className="centerText" colSpan={2}>
-                    Results
-                  </th>
-                  <th rowSpan={2}>Complies / Does not complies</th>
-                </tr>
-                <tr>
-                  <th>Minimum</th>
-                  <th>Maximum</th>
-                </tr>
-              </thead>
-              <tbody>
-                {unitOperation3?.map((item, index) => {
-                  return (
-                    <tr key={index}>
-                      <td>
-                        <input
-                          value={item.criticalProcessParameter}
-                          onChange={(e) => {
-                            const newData = [...unitOperation3];
-                            newData[index].criticalProcessParameter =
-                              e.target.value;
-                            setUnitOperation3(newData);
-                          }}
-                        />
-                      </td>
-                      <td>
-                        <input
-                          value={item.codes}
-                          onChange={(e) => {
-                            const newData = [...unitOperation3];
-                            newData[index].codes = e.target.value;
-                            setUnitOperation3(newData);
-                          }}
-                        />
-                      </td>
-                      <td>
-                        <input
-                          value={item.acceptanceCriteria}
-                          onChange={(e) => {
-                            const newData = [...unitOperation3];
-                            newData[index].acceptanceCriteria = e.target.value;
-                            setUnitOperation3(newData);
-                          }}
-                        />
-                      </td>
-                      <td>
-                        <input
-                          value={item.results.minimum}
-                          onChange={(e) => {
-                            const newData = [...unitOperation3];
-                            newData[index].results.minimum = e.target.value;
-                            setUnitOperation3(newData);
-                          }}
-                        />
-                      </td>
-                      <td>
-                        <input
-                          value={item.results.maximum}
-                          onChange={(e) => {
-                            const newData = [...unitOperation3];
-                            newData[index].results.maximum = e.target.value;
-                            setUnitOperation3(newData);
-                          }}
-                        />
-                      </td>
-                      <td>
-                        <input
-                          value={item.compliesNotComplies}
-                          onChange={(e) => {
-                            const newData = [...unitOperation3];
-                            newData[index].compliesNotComplies = e.target.value;
-                            setUnitOperation3(newData);
-                          }}
-                        />
-                      </td>
-                    </tr>
-                  );
-                })}
-              </tbody>
-            </table> */}
+       
 
             <h3 className="gridName pt-4">Unit Operation 4</h3>
             <div className="AddRows d-flex w-full justify-between items-center text-3xl mb-5">
@@ -3175,92 +2937,15 @@ export default function NewAPQR() {
                 />
               </div>
             </div>
-            <table>
-              <thead>
-                <tr>
-                  <th rowSpan={2}>Critical Process Parameters</th>
-                  <th rowSpan={2}>Codes</th>
-                  <th rowSpan={2}>Acceptance criteria</th>
-                  <th className="centerText" colSpan={2}>
-                    Results
-                  </th>
-                  <th rowSpan={2}>Complies / Does not complies</th>
-                </tr>
-                <tr>
-                  <th>Minimum</th>
-                  <th>Maximum</th>
-                </tr>
-              </thead>
-              <tbody>
-                {unitOperation4?.map((item, index) => {
-                  return (
-                    <tr key={index}>
-                      <td>
-                        <input
-                          value={item.criticalProcessParameter}
-                          onChange={(e) => {
-                            const newData = [...unitOperation4];
-                            newData[index].criticalProcessParameter =
-                              e.target.value;
-                            setUnitOperation4(newData);
-                          }}
-                        />
-                      </td>
-                      <td>
-                        <input
-                          value={item.codes}
-                          onChange={(e) => {
-                            const newData = [...unitOperation4];
-                            newData[index].codes = e.target.value;
-                            setUnitOperation4(newData);
-                          }}
-                        />
-                      </td>
-                      <td>
-                        <input
-                          value={item.acceptanceCriteria}
-                          onChange={(e) => {
-                            const newData = [...unitOperation4];
-                            newData[index].acceptanceCriteria = e.target.value;
-                            setUnitOperation4(newData);
-                          }}
-                        />
-                      </td>
-                      <td>
-                        <input
-                          value={item.results.minimum}
-                          onChange={(e) => {
-                            const newData = [...unitOperation4];
-                            newData[index].results.minimum = e.target.value;
-                            setUnitOperation4(newData);
-                          }}
-                        />
-                      </td>
-                      <td>
-                        <input
-                          value={item.results.maximum}
-                          onChange={(e) => {
-                            const newData = [...unitOperation4];
-                            newData[index].results.maximum = e.target.value;
-                            setUnitOperation4(newData);
-                          }}
-                        />
-                      </td>
-                      <td>
-                        <input
-                          value={item.compliesNotComplies}
-                          onChange={(e) => {
-                            const newData = [...unitOperation4];
-                            newData[index].compliesNotComplies = e.target.value;
-                            setUnitOperation4(newData);
-                          }}
-                        />
-                      </td>
-                    </tr>
-                  );
-                })}
-              </tbody>
-            </table>
+        
+        
+            <ComplexCommonTable
+              data={unitOperation4}
+              setdata={setUnitOperation4}
+              headers={unitOperation4headers} 
+              fields={unitOperation4fields}
+              />
+         
 
             <h3 className="gridName pt-4">Unit Operation 5</h3>
             <div className="AddRows d-flex w-full justify-between items-center text-3xl mb-5">
@@ -3278,93 +2963,14 @@ export default function NewAPQR() {
                 />
               </div>
             </div>
-            <table>
-              <thead>
-                <tr>
-                  <th rowSpan={2}>Critical Process Parameters</th>
-                  <th rowSpan={2}>Codes</th>
-                  <th rowSpan={2}>Acceptance criteria</th>
-                  <th className="centerText" colSpan={2}>
-                    Results
-                  </th>
-                  <th rowSpan={2}>Complies / Does not complies</th>
-                </tr>
-                <tr>
-                  <th>Minimum</th>
-                  <th>Maximum</th>
-                </tr>
-              </thead>
-              <tbody>
-                {unitOperation5?.map((item, index) => {
-                  return (
-                    <tr key={index}>
-                      <td>
-                        <input
-                          value={item.criticalProcessParameter}
-                          onChange={(e) => {
-                            const newData = [...unitOperation5];
-                            newData[index].criticalProcessParameter =
-                              e.target.value;
-                            setUnitOperation5(newData);
-                          }}
-                        />
-                      </td>
-                      <td>
-                        <input
-                          value={item.codes}
-                          onChange={(e) => {
-                            const newData = [...unitOperation5];
-                            newData[index].codes = e.target.value;
-                            setUnitOperation5(newData);
-                          }}
-                        />
-                      </td>
-                      <td>
-                        <input
-                          value={item.acceptanceCriteria}
-                          onChange={(e) => {
-                            const newData = [...unitOperation5];
-                            newData[index].acceptanceCriteria = e.target.value;
-                            setUnitOperation5(newData);
-                          }}
-                        />
-                      </td>
-                      <td>
-                        <input
-                          value={item.results.minimum}
-                          onChange={(e) => {
-                            const newData = [...unitOperation5];
-                            newData[index].results.minimum = e.target.value;
-                            setUnitOperation5(newData);
-                          }}
-                        />
-                      </td>
-                      <td>
-                        <input
-                          value={item.results.maximum}
-                          onChange={(e) => {
-                            const newData = [...unitOperation5];
-                            newData[index].results.maximum = e.target.value;
-                            setUnitOperation5(newData);
-                          }}
-                        />
-                      </td>
-                      <td>
-                        <input
-                          value={item.compliesNotComplies}
-                          onChange={(e) => {
-                            const newData = [...unitOperation5];
-                            newData[index].compliesNotComplies = e.target.value;
-                            setUnitOperation5(newData);
-                          }}
-                        />
-                      </td>
-                    </tr>
-                  );
-                })}
-              </tbody>
-            </table>
-
+          
+            <ComplexCommonTable
+              data={unitOperation5}
+              setdata={setUnitOperation5}
+              headers={unitOperation5headers} 
+              fields={unitOperation5fields}
+              />
+         
             <h3 className="gridName pt-4">Unit Operation 6</h3>
             <div className="AddRows d-flex w-full justify-between items-center text-3xl mb-5">
               <div className="flex items-center">
@@ -3381,92 +2987,14 @@ export default function NewAPQR() {
                 />
               </div>
             </div>
-            <table>
-              <thead>
-                <tr>
-                  <th rowSpan={2}>Critical Process Parameters</th>
-                  <th rowSpan={2}>Codes</th>
-                  <th rowSpan={2}>Acceptance criteria</th>
-                  <th className="centerText" colSpan={2}>
-                    Results
-                  </th>
-                  <th rowSpan={2}>Complies / Does not complies</th>
-                </tr>
-                <tr>
-                  <th>Minimum</th>
-                  <th>Maximum</th>
-                </tr>
-              </thead>
-              <tbody>
-                {unitOperation6?.map((item, index) => {
-                  return (
-                    <tr key={index}>
-                      <td>
-                        <input
-                          value={item.criticalProcessParameter}
-                          onChange={(e) => {
-                            const newData = [...unitOperation6];
-                            newData[index].criticalProcessParameter =
-                              e.target.value;
-                            setUnitOperation6(newData);
-                          }}
-                        />
-                      </td>
-                      <td>
-                        <input
-                          value={item.codes}
-                          onChange={(e) => {
-                            const newData = [...unitOperation6];
-                            newData[index].codes = e.target.value;
-                            setUnitOperation6(newData);
-                          }}
-                        />
-                      </td>
-                      <td>
-                        <input
-                          value={item.acceptanceCriteria}
-                          onChange={(e) => {
-                            const newData = [...unitOperation6];
-                            newData[index].acceptanceCriteria = e.target.value;
-                            setUnitOperation6(newData);
-                          }}
-                        />
-                      </td>
-                      <td>
-                        <input
-                          value={item.results.minimum}
-                          onChange={(e) => {
-                            const newData = [...unitOperation6];
-                            newData[index].results.minimum = e.target.value;
-                            setUnitOperation6(newData);
-                          }}
-                        />
-                      </td>
-                      <td>
-                        <input
-                          value={item.results.maximum}
-                          onChange={(e) => {
-                            const newData = [...unitOperation6];
-                            newData[index].results.maximum = e.target.value;
-                            setUnitOperation6(newData);
-                          }}
-                        />
-                      </td>
-                      <td>
-                        <input
-                          value={item.compliesNotComplies}
-                          onChange={(e) => {
-                            const newData = [...unitOperation6];
-                            newData[index].compliesNotComplies = e.target.value;
-                            setUnitOperation6(newData);
-                          }}
-                        />
-                      </td>
-                    </tr>
-                  );
-                })}
-              </tbody>
-            </table>
+            
+            <ComplexCommonTable
+              data={unitOperation6}
+              setdata={setUnitOperation6}
+              headers={unitOperation6headers} 
+              fields={unitOperation6fields}
+              />
+          
 
             <h3 className="gridName pt-4">Unit Operation 7</h3>
             <div className="AddRows d-flex w-full justify-between items-center text-3xl mb-5">
@@ -3484,92 +3012,14 @@ export default function NewAPQR() {
                 />
               </div>
             </div>
-            <table>
-              <thead>
-                <tr>
-                  <th rowSpan={2}>Critical Process Parameters</th>
-                  <th rowSpan={2}>Codes</th>
-                  <th rowSpan={2}>Acceptance criteria</th>
-                  <th className="centerText" colSpan={2}>
-                    Results
-                  </th>
-                  <th rowSpan={2}>Complies / Does not complies</th>
-                </tr>
-                <tr>
-                  <th>Minimum</th>
-                  <th>Maximum</th>
-                </tr>
-              </thead>
-              <tbody>
-                {unitOperation7?.map((item, index) => {
-                  return (
-                    <tr key={index}>
-                      <td>
-                        <input
-                          value={item.criticalProcessParameter}
-                          onChange={(e) => {
-                            const newData = [...unitOperation7];
-                            newData[index].criticalProcessParameter =
-                              e.target.value;
-                            setUnitOperation7(newData);
-                          }}
-                        />
-                      </td>
-                      <td>
-                        <input
-                          value={item.codes}
-                          onChange={(e) => {
-                            const newData = [...unitOperation7];
-                            newData[index].codes = e.target.value;
-                            setUnitOperation7(newData);
-                          }}
-                        />
-                      </td>
-                      <td>
-                        <input
-                          value={item.acceptanceCriteria}
-                          onChange={(e) => {
-                            const newData = [...unitOperation7];
-                            newData[index].acceptanceCriteria = e.target.value;
-                            setUnitOperation7(newData);
-                          }}
-                        />
-                      </td>
-                      <td>
-                        <input
-                          value={item.results.minimum}
-                          onChange={(e) => {
-                            const newData = [...unitOperation7];
-                            newData[index].results.minimum = e.target.value;
-                            setUnitOperation7(newData);
-                          }}
-                        />
-                      </td>
-                      <td>
-                        <input
-                          value={item.results.maximum}
-                          onChange={(e) => {
-                            const newData = [...unitOperation7];
-                            newData[index].results.maximum = e.target.value;
-                            setUnitOperation7(newData);
-                          }}
-                        />
-                      </td>
-                      <td>
-                        <input
-                          value={item.compliesNotComplies}
-                          onChange={(e) => {
-                            const newData = [...unitOperation7];
-                            newData[index].compliesNotComplies = e.target.value;
-                            setUnitOperation7(newData);
-                          }}
-                        />
-                      </td>
-                    </tr>
-                  );
-                })}
-              </tbody>
-            </table>
+        
+            <ComplexCommonTable
+              data={unitOperation7}
+              setdata={setUnitOperation7}
+              headers={unitOperation7headers} 
+              fields={unitOperation7fields}
+              />
+           
 
             <h3 className="gridName pt-4">Unit Operation 8</h3>
             <div className="AddRows d-flex w-full justify-between items-center text-3xl mb-5">
@@ -3587,92 +3037,14 @@ export default function NewAPQR() {
                 />
               </div>
             </div>
-            <table>
-              <thead>
-                <tr>
-                  <th rowSpan={2}>Critical Process Parameters</th>
-                  <th rowSpan={2}>Codes</th>
-                  <th rowSpan={2}>Acceptance criteria</th>
-                  <th className="centerText" colSpan={2}>
-                    Results
-                  </th>
-                  <th rowSpan={2}>Complies / Does not complies</th>
-                </tr>
-                <tr>
-                  <th>Minimum</th>
-                  <th>Maximum</th>
-                </tr>
-              </thead>
-              <tbody>
-                {unitOperation8?.map((item, index) => {
-                  return (
-                    <tr key={index}>
-                      <td>
-                        <input
-                          value={item.criticalProcessParameter}
-                          onChange={(e) => {
-                            const newData = [...unitOperation8];
-                            newData[index].criticalProcessParameter =
-                              e.target.value;
-                            setUnitOperation8(newData);
-                          }}
-                        />
-                      </td>
-                      <td>
-                        <input
-                          value={item.codes}
-                          onChange={(e) => {
-                            const newData = [...unitOperation8];
-                            newData[index].codes = e.target.value;
-                            setUnitOperation8(newData);
-                          }}
-                        />
-                      </td>
-                      <td>
-                        <input
-                          value={item.acceptanceCriteria}
-                          onChange={(e) => {
-                            const newData = [...unitOperation8];
-                            newData[index].acceptanceCriteria = e.target.value;
-                            setUnitOperation8(newData);
-                          }}
-                        />
-                      </td>
-                      <td>
-                        <input
-                          value={item.results.minimum}
-                          onChange={(e) => {
-                            const newData = [...unitOperation8];
-                            newData[index].results.minimum = e.target.value;
-                            setUnitOperation8(newData);
-                          }}
-                        />
-                      </td>
-                      <td>
-                        <input
-                          value={item.results.maximum}
-                          onChange={(e) => {
-                            const newData = [...unitOperation8];
-                            newData[index].results.maximum = e.target.value;
-                            setUnitOperation8(newData);
-                          }}
-                        />
-                      </td>
-                      <td>
-                        <input
-                          value={item.compliesNotComplies}
-                          onChange={(e) => {
-                            const newData = [...unitOperation8];
-                            newData[index].compliesNotComplies = e.target.value;
-                            setUnitOperation8(newData);
-                          }}
-                        />
-                      </td>
-                    </tr>
-                  );
-                })}
-              </tbody>
-            </table>
+          
+            <ComplexCommonTable
+              data={unitOperation8}
+              setdata={setUnitOperation8}
+              headers={unitOperation8headers} 
+              fields={unitOperation8fields}
+              />
+          
 
             <h3 className="gridName pt-4">Unit Operation 9</h3>
             <div className="AddRows d-flex w-full justify-between items-center text-3xl mb-5">
@@ -3690,92 +3062,14 @@ export default function NewAPQR() {
                 />
               </div>
             </div>
-            <table>
-              <thead>
-                <tr>
-                  <th rowSpan={2}>Critical Process Parameters</th>
-                  <th rowSpan={2}>Codes</th>
-                  <th rowSpan={2}>Acceptance criteria</th>
-                  <th className="centerText" colSpan={2}>
-                    Results
-                  </th>
-                  <th rowSpan={2}>Complies / Does not complies</th>
-                </tr>
-                <tr>
-                  <th>Minimum</th>
-                  <th>Maximum</th>
-                </tr>
-              </thead>
-              <tbody>
-                {unitOperation9?.map((item, index) => {
-                  return (
-                    <tr key={index}>
-                      <td>
-                        <input
-                          value={item.criticalProcessParameter}
-                          onChange={(e) => {
-                            const newData = [...unitOperation9];
-                            newData[index].criticalProcessParameter =
-                              e.target.value;
-                            setUnitOperation9(newData);
-                          }}
-                        />
-                      </td>
-                      <td>
-                        <input
-                          value={item.codes}
-                          onChange={(e) => {
-                            const newData = [...unitOperation9];
-                            newData[index].codes = e.target.value;
-                            setUnitOperation9(newData);
-                          }}
-                        />
-                      </td>
-                      <td>
-                        <input
-                          value={item.acceptanceCriteria}
-                          onChange={(e) => {
-                            const newData = [...unitOperation9];
-                            newData[index].acceptanceCriteria = e.target.value;
-                            setUnitOperation9(newData);
-                          }}
-                        />
-                      </td>
-                      <td>
-                        <input
-                          value={item.results.minimum}
-                          onChange={(e) => {
-                            const newData = [...unitOperation9];
-                            newData[index].results.minimum = e.target.value;
-                            setUnitOperation9(newData);
-                          }}
-                        />
-                      </td>
-                      <td>
-                        <input
-                          value={item.results.maximum}
-                          onChange={(e) => {
-                            const newData = [...unitOperation9];
-                            newData[index].results.maximum = e.target.value;
-                            setUnitOperation9(newData);
-                          }}
-                        />
-                      </td>
-                      <td>
-                        <input
-                          value={item.compliesNotComplies}
-                          onChange={(e) => {
-                            const newData = [...unitOperation9];
-                            newData[index].compliesNotComplies = e.target.value;
-                            setUnitOperation9(newData);
-                          }}
-                        />
-                      </td>
-                    </tr>
-                  );
-                })}
-              </tbody>
-            </table>
+           
+            <ComplexCommonTable
+              data={unitOperation9}
+              setdata={setUnitOperation9}
+              headers={unitOperation9headers} 
+              fields={unitOperation9fields}
+              />
+
 
             <h3 className="gridName pt-4">Unit Operation 10</h3>
             <div className="AddRows d-flex w-full justify-between items-center text-3xl mb-5">
@@ -3793,93 +3087,14 @@ export default function NewAPQR() {
                 />
               </div>
             </div>
-            <table>
-              <thead>
-                <tr>
-                  <th rowSpan={2}>Critical Process Parameters</th>
-                  <th rowSpan={2}>Codes</th>
-                  <th rowSpan={2}>Acceptance criteria</th>
-                  <th className="centerText" colSpan={2}>
-                    Results
-                  </th>
-                  <th rowSpan={2}>Complies / Does not complies</th>
-                </tr>
-                <tr>
-                  <th>Minimum</th>
-                  <th>Maximum</th>
-                </tr>
-              </thead>
-              <tbody>
-                {unitOperation10?.map((item, index) => {
-                  return (
-                    <tr key={index}>
-                      <td>
-                        <input
-                          value={item.criticalProcessParameter}
-                          onChange={(e) => {
-                            const newData = [...unitOperation10];
-                            newData[index].criticalProcessParameter =
-                              e.target.value;
-                            setUnitOperation10(newData);
-                          }}
-                        />
-                      </td>
-                      <td>
-                        <input
-                          value={item.codes}
-                          onChange={(e) => {
-                            const newData = [...unitOperation10];
-                            newData[index].codes = e.target.value;
-                            setUnitOperation10(newData);
-                          }}
-                        />
-                      </td>
-                      <td>
-                        <input
-                          value={item.acceptanceCriteria}
-                          onChange={(e) => {
-                            const newData = [...unitOperation10];
-                            newData[index].acceptanceCriteria = e.target.value;
-                            setUnitOperation10(newData);
-                          }}
-                        />
-                      </td>
-                      <td>
-                        <input
-                          value={item.results.minimum}
-                          onChange={(e) => {
-                            const newData = [...unitOperation10];
-                            newData[index].results.minimum = e.target.value;
-                            setUnitOperation10(newData);
-                          }}
-                        />
-                      </td>
-                      <td>
-                        <input
-                          value={item.results.maximum}
-                          onChange={(e) => {
-                            const newData = [...unitOperation10];
-                            newData[index].results.maximum = e.target.value;
-                            setUnitOperation10(newData);
-                          }}
-                        />
-                      </td>
-                      <td>
-                        <input
-                          value={item.compliesNotComplies}
-                          onChange={(e) => {
-                            const newData = [...unitOperation10];
-                            newData[index].compliesNotComplies = e.target.value;
-                            setUnitOperation10(newData);
-                          }}
-                        />
-                      </td>
-                    </tr>
-                  );
-                })}
-              </tbody>
-            </table>
-
+          
+            <ComplexCommonTable
+              data={unitOperation10}
+              setdata={setUnitOperation10}
+              headers={unitOperation10headers} 
+              fields={unitOperation10fields}
+              />
+           
             <div className="sub-head">
               Critical Process Parameters Review Summary
             </div>
@@ -4239,97 +3454,8 @@ export default function NewAPQR() {
               headers={reviewORMETRheaders} 
               fields={reviewORMETRfields}
               />
-              {/* <table>
-                <thead>
-                  <tr>
-                    <th rowSpan={2}>Sl. No</th>
-                    <th rowSpan={2}>Primary Packing Material</th>
-                    <th rowSpan={2}>Test parameter</th>
-                    <th rowSpan={2}>Specification limit</th>
-                    <th className="centerText" colSpan={2}>
-                      Obtained value
-                    </th>
-                    <th rowSpan={2}>Complies/ Does Not complies</th>
-                  </tr>
-                  <tr>
-                    <th>Minimum</th>
-                    <th>Maximum</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {reviewORMETR?.map((item, index) => {
-                    return (
-                      <tr key={index}>
-                        <td>{index + 1}</td>
-                        <td>
-                          <input
-                            value={item.material}
-                            onChange={(e) => {
-                              const newData = [...reviewORMETR];
-                              newData[index].material = e.target.value;
-                              setReviewORMETR(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.testsParameter}
-                            onChange={(e) => {
-                              const newData = [...reviewORMETR];
-                              newData[index].testsParameter = e.target.value;
-                              setReviewORMETR(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.specificationLimit}
-                            onChange={(e) => {
-                              const newData = [...reviewORMETR];
-                              newData[index].specificationLimit =
-                                e.target.value;
-                              setReviewORMETR(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.obtainedValue.minimum}
-                            onChange={(e) => {
-                              const newData = [...reviewORMETR];
-                              newData[index].obtainedValue.minimum =
-                                e.target.value;
-                              setReviewORMETR(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.obtainedValue.maximum}
-                            onChange={(e) => {
-                              const newData = [...reviewORMETR];
-                              newData[index].obtainedValue.maximum =
-                                e.target.value;
-                              setReviewORMETR(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.compliesNotComplies}
-                            onChange={(e) => {
-                              const newData = [...reviewORMETR];
-                              newData[index].compliesNotComplies =
-                                e.target.value;
-                              setReviewORMETR(newData);
-                            }}
-                          />
-                        </td>
-                      </tr>
-                    );
-                  })}
-                </tbody>
-              </table> */}
+             
+             
             </div>
             <div>
               <h4 className="gridName mt-5">Summary</h4>
@@ -4366,97 +3492,8 @@ export default function NewAPQR() {
               headers={reviewOPMTRheaders} 
               fields={reviewOPMTRfields}
               />
-              {/* <table>
-                <thead>
-                  <tr>
-                    <th rowSpan={2}>Sl. No</th>
-                    <th rowSpan={2}>Primary Packing Material</th>
-                    <th rowSpan={2}>Test parameter</th>
-                    <th rowSpan={2}>Specification limit</th>
-                    <th className="centerText" colSpan={2}>
-                      Obtained value
-                    </th>
-                    <th rowSpan={2}>Complies/ Does Not complies</th>
-                  </tr>
-                  <tr>
-                    <th>Minimum</th>
-                    <th>Maximum</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {reviewOPMTR?.map((item, index) => {
-                    return (
-                      <tr key={index}>
-                        <td>{index + 1}</td>
-                        <td>
-                          <input
-                            value={item.material}
-                            onChange={(e) => {
-                              const newData = [...reviewOPMTR];
-                              newData[index].material = e.target.value;
-                              setReviewOPMTR(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.testsParameter}
-                            onChange={(e) => {
-                              const newData = [...reviewOPMTR];
-                              newData[index].testsParameter = e.target.value;
-                              setReviewOPMTR(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.specificationLimit}
-                            onChange={(e) => {
-                              const newData = [...reviewOPMTR];
-                              newData[index].specificationLimit =
-                                e.target.value;
-                              setReviewOPMTR(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.obtainedValue.minimum}
-                            onChange={(e) => {
-                              const newData = [...reviewOPMTR];
-                              newData[index].obtainedValue.minimum =
-                                e.target.value;
-                              setReviewOPMTR(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.obtainedValue.maximum}
-                            onChange={(e) => {
-                              const newData = [...reviewOPMTR];
-                              newData[index].obtainedValue.maximum =
-                                e.target.value;
-                              setReviewOPMTR(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.compliesNotComplies}
-                            onChange={(e) => {
-                              const newData = [...reviewOPMTR];
-                              newData[index].compliesNotComplies =
-                                e.target.value;
-                              setReviewOPMTR(newData);
-                            }}
-                          />
-                        </td>
-                      </tr>
-                    );
-                  })}
-                </tbody>
-              </table> */}
+             
+             
             </div>
             <div>
               <h4 className="gridName mt-5">Summary</h4>
@@ -4494,97 +3531,8 @@ export default function NewAPQR() {
               headers={reviewODPheaders} 
               fields={reviewODPfields}
               />
-              {/* <table>
-                <thead>
-                  <tr>
-                    <th rowSpan={2}>Sl. No</th>
-                    <th rowSpan={2}>Tests parameter</th>
-                    <th rowSpan={2}>Stage</th>
-                    <th rowSpan={2}>Specification limit</th>
-                    <th className="centerText" colSpan={2}>
-                      Obtained value
-                    </th>
-                    <th rowSpan={2}>Complies/ Does Not complies</th>
-                  </tr>
-                  <tr>
-                    <th>Minimum</th>
-                    <th>Maximum</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {reviewODP?.map((item, index) => {
-                    return (
-                      <tr key={index}>
-                        <td>{index + 1}</td>
-                        <td>
-                          <input
-                            value={item.testsParameter}
-                            onChange={(e) => {
-                              const newData = [...reviewODP];
-                              newData[index].testsParameter = e.target.value;
-                              setReviewODP(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.stage}
-                            onChange={(e) => {
-                              const newData = [...reviewODP];
-                              newData[index].stage = e.target.value;
-                              setReviewODP(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.specificationLimit}
-                            onChange={(e) => {
-                              const newData = [...reviewODP];
-                              newData[index].specificationLimit =
-                                e.target.value;
-                              setReviewODP(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.obtainedValue.minimum}
-                            onChange={(e) => {
-                              const newData = [...reviewODP];
-                              newData[index].obtainedValue.minimum =
-                                e.target.value;
-                              setReviewODP(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.obtainedValue.maximum}
-                            onChange={(e) => {
-                              const newData = [...reviewODP];
-                              newData[index].obtainedValue.maximum =
-                                e.target.value;
-                              setReviewODP(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.compliesNotComplies}
-                            onChange={(e) => {
-                              const newData = [...reviewODP];
-                              newData[index].compliesNotComplies =
-                                e.target.value;
-                              setReviewODP(newData);
-                            }}
-                          />
-                        </td>
-                      </tr>
-                    );
-                  })}
-                </tbody>
-              </table> */}
+              
+              
             </div>
             <h4 className="gridName pt-8 ">Dilution Buffer 2 - Test Results</h4>
             <div>
@@ -4610,97 +3558,8 @@ export default function NewAPQR() {
               headers={reviewODP2headers} 
               fields={reviewODP2fields}
               />
-              {/* <table>
-                <thead>
-                  <tr>
-                    <th rowSpan={2}>Sl. No</th>
-                    <th rowSpan={2}>Tests parameter</th>
-                    <th rowSpan={2}>Stage</th>
-                    <th rowSpan={2}>Specification limit</th>
-                    <th className="centerText" colSpan={2}>
-                      Obtained value
-                    </th>
-                    <th rowSpan={2}>Complies/ Does Not complies</th>
-                  </tr>
-                  <tr>
-                    <th>Minimum</th>
-                    <th>Maximum</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {reviewODP2?.map((item, index) => {
-                    return (
-                      <tr key={index}>
-                        <td>{index + 1}</td>
-                        <td>
-                          <input
-                            value={item.testsParameter}
-                            onChange={(e) => {
-                              const newData = [...reviewODP2];
-                              newData[index].testsParameter = e.target.value;
-                              setReviewODP2(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.stage}
-                            onChange={(e) => {
-                              const newData = [...reviewODP2];
-                              newData[index].stage = e.target.value;
-                              setReviewODP2(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.specificationLimit}
-                            onChange={(e) => {
-                              const newData = [...reviewODP2];
-                              newData[index].specificationLimit =
-                                e.target.value;
-                              setReviewODP2(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.obtainedValue.minimum}
-                            onChange={(e) => {
-                              const newData = [...reviewODP2];
-                              newData[index].obtainedValue.minimum =
-                                e.target.value;
-                              setReviewODP2(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.obtainedValue.maximum}
-                            onChange={(e) => {
-                              const newData = [...reviewODP2];
-                              newData[index].obtainedValue.maximum =
-                                e.target.value;
-                              setReviewODP2(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.compliesNotComplies}
-                            onChange={(e) => {
-                              const newData = [...reviewODP2];
-                              newData[index].compliesNotComplies =
-                                e.target.value;
-                              setReviewODP2(newData);
-                            }}
-                          />
-                        </td>
-                      </tr>
-                    );
-                  })}
-                </tbody>
-              </table> */}
+              
+              
             </div>{" "}
             <h4 className="gridName pt-8">Dilution Buffer 3 - Test Results</h4>
             <div>
@@ -4719,104 +3578,16 @@ export default function NewAPQR() {
                   />
                 </div>
               </div>
-            <p>5</p>
+          
+          
               <ComplexCommonTable
               data={reviewODP3}
-              setdata={setReviewODP10}
+              setdata={setReviewODP3}
               headers={reviewODP3headers} 
               fields={reviewODP3fields}
               /> 
-           {/* <table>
-                <thead>
-                  <tr>
-                    <th rowSpan={2}>Sl. No</th>
-                    <th rowSpan={2}>Tests parameter</th>
-                    <th rowSpan={2}>Stage</th>
-                    <th rowSpan={2}>Specification limit</th>
-                    <th className="centerText" colSpan={2}>
-                      Obtained value
-                    </th>
-                    <th rowSpan={2}>Complies/ Does Not complies</th>
-                  </tr>
-                  <tr>
-                    <th>Minimum</th>
-                    <th>Maximum</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {reviewODP3?.map((item, index) => {
-                    return (
-                      <tr key={index}>
-                        <td>{index + 1}</td>
-                        <td>
-                          <input
-                            value={item.testsParameter}
-                            onChange={(e) => {
-                              const newData = [...reviewODP3];
-                              newData[index].testsParameter = e.target.value;
-                              setReviewODP10(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.stage}
-                            onChange={(e) => {
-                              const newData = [...reviewODP3];
-                              newData[index].stage = e.target.value;
-                              setReviewODP3(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.specificationLimit}
-                            onChange={(e) => {
-                              const newData = [...reviewODP3];
-                              newData[index].specificationLimit =
-                                e.target.value;
-                              setReviewODP3(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.obtainedValue.minimum}
-                            onChange={(e) => {
-                              const newData = [...reviewODP3];
-                              newData[index].obtainedValue.minimum =
-                                e.target.value;
-                              setReviewODP3(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.obtainedValue.maximum}
-                            onChange={(e) => {
-                              const newData = [...reviewODP3];
-                              newData[index].obtainedValue.maximum =
-                                e.target.value;
-                              setReviewODP3(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.compliesNotComplies}
-                            onChange={(e) => {
-                              const newData = [...reviewODP3];
-                              newData[index].compliesNotComplies =
-                                e.target.value;
-                              setReviewODP3(newData);
-                            }}
-                          />
-                        </td>
-                      </tr>
-                    );
-                  })}
-                </tbody>
-              </table> */}
+          
+          
             </div>{" "}
             <h4 className="gridName pt-8">Dilution Buffer 4 - Test Results</h4>
             <div>
@@ -4842,97 +3613,8 @@ export default function NewAPQR() {
               headers={reviewODP4headers} 
               fields={reviewODP4fields}
               />
-              {/* <table>
-                <thead>
-                  <tr>
-                    <th rowSpan={2}>Sl. No</th>
-                    <th rowSpan={2}>Tests parameter</th>
-                    <th rowSpan={2}>Stage</th>
-                    <th rowSpan={2}>Specification limit</th>
-                    <th className="centerText" colSpan={2}>
-                      Obtained value
-                    </th>
-                    <th rowSpan={2}>Complies/ Does Not complies</th>
-                  </tr>
-                  <tr>
-                    <th>Minimum</th>
-                    <th>Maximum</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {reviewODP4?.map((item, index) => {
-                    return (
-                      <tr key={index}>
-                        <td>{index + 1}</td>
-                        <td>
-                          <input
-                            value={item.testsParameter}
-                            onChange={(e) => {
-                              const newData = [...reviewODP4];
-                              newData[index].testsParameter = e.target.value;
-                              setReviewODP4(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.stage}
-                            onChange={(e) => {
-                              const newData = [...reviewODP4];
-                              newData[index].stage = e.target.value;
-                              setReviewODP4(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.specificationLimit}
-                            onChange={(e) => {
-                              const newData = [...reviewODP4];
-                              newData[index].specificationLimit =
-                                e.target.value;
-                              setReviewODP4(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.obtainedValue.minimum}
-                            onChange={(e) => {
-                              const newData = [...reviewODP4];
-                              newData[index].obtainedValue.minimum =
-                                e.target.value;
-                              setReviewODP4(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.obtainedValue.maximum}
-                            onChange={(e) => {
-                              const newData = [...reviewODP4];
-                              newData[index].obtainedValue.maximum =
-                                e.target.value;
-                              setReviewODP4(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.compliesNotComplies}
-                            onChange={(e) => {
-                              const newData = [...reviewODP4];
-                              newData[index].compliesNotComplies =
-                                e.target.value;
-                              setReviewODP4(newData);
-                            }}
-                          />
-                        </td>
-                      </tr>
-                    );
-                  })}
-                </tbody>
-              </table> */}
+             
+             
             </div>{" "}
             <h4 className="gridName pt-8">Dilution Buffer 5 - Test Results</h4>
             <div>
@@ -4958,97 +3640,9 @@ export default function NewAPQR() {
               headers={reviewODP5headers} 
               fields={reviewODP5fields}
               />
-              {/* <table>
-                <thead>
-                  <tr>
-                    <th rowSpan={2}>Sl. No</th>
-                    <th rowSpan={2}>Tests parameter</th>
-                    <th rowSpan={2}>Stage</th>
-                    <th rowSpan={2}>Specification limit</th>
-                    <th className="centerText" colSpan={2}>
-                      Obtained value
-                    </th>
-                    <th rowSpan={2}>Complies/ Does Not complies</th>
-                  </tr>
-                  <tr>
-                    <th>Minimum</th>
-                    <th>Maximum</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {reviewODP5?.map((item, index) => {
-                    return (
-                      <tr key={index}>
-                        <td>{index + 1}</td>
-                        <td>
-                          <input
-                            value={item.testsParameter}
-                            onChange={(e) => {
-                              const newData = [...reviewODP5];
-                              newData[index].testsParameter = e.target.value;
-                              setReviewODP5(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.stage}
-                            onChange={(e) => {
-                              const newData = [...reviewODP5];
-                              newData[index].stage = e.target.value;
-                              setReviewODP5(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.specificationLimit}
-                            onChange={(e) => {
-                              const newData = [...reviewODP5];
-                              newData[index].specificationLimit =
-                                e.target.value;
-                              setReviewODP5(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.obtainedValue.minimum}
-                            onChange={(e) => {
-                              const newData = [...reviewODP5];
-                              newData[index].obtainedValue.minimum =
-                                e.target.value;
-                              setReviewODP5(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.obtainedValue.maximum}
-                            onChange={(e) => {
-                              const newData = [...reviewODP5];
-                              newData[index].obtainedValue.maximum =
-                                e.target.value;
-                              setReviewODP5(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.compliesNotComplies}
-                            onChange={(e) => {
-                              const newData = [...reviewODP5];
-                              newData[index].compliesNotComplies =
-                                e.target.value;
-                              setReviewODP5(newData);
-                            }}
-                          />
-                        </td>
-                      </tr>
-                    );
-                  })}
-                </tbody>
-              </table> */}
+             
+              
+              
             </div>{" "}
             <h4 className="gridName pt-8">Dilution Buffer 6 - Test Results</h4>
             <div>
@@ -5074,97 +3668,8 @@ export default function NewAPQR() {
               headers={reviewODP6headers} 
               fields={reviewODP6fields}
               />
-              {/* <table>
-                <thead>
-                  <tr>
-                    <th rowSpan={2}>Sl. No</th>
-                    <th rowSpan={2}>Tests parameter</th>
-                    <th rowSpan={2}>Stage</th>
-                    <th rowSpan={2}>Specification limit</th>
-                    <th className="centerText" colSpan={2}>
-                      Obtained value
-                    </th>
-                    <th rowSpan={2}>Complies/ Does Not complies</th>
-                  </tr>
-                  <tr>
-                    <th>Minimum</th>
-                    <th>Maximum</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {reviewODP6.map((item, index) => {
-                    return (
-                      <tr key={index}>
-                        <td>{index + 1}</td>
-                        <td>
-                          <input
-                            value={item.testsParameter}
-                            onChange={(e) => {
-                              const newData = [...reviewODP6];
-                              newData[index].testsParameter = e.target.value;
-                              setReviewODP6(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.stage}
-                            onChange={(e) => {
-                              const newData = [...reviewODP6];
-                              newData[index].stage = e.target.value;
-                              setReviewODP6(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.specificationLimit}
-                            onChange={(e) => {
-                              const newData = [...reviewODP6];
-                              newData[index].specificationLimit =
-                                e.target.value;
-                              setReviewODP6(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.obtainedValue.minimum}
-                            onChange={(e) => {
-                              const newData = [...reviewODP6];
-                              newData[index].obtainedValue.minimum =
-                                e.target.value;
-                              setReviewODP6(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.obtainedValue.maximum}
-                            onChange={(e) => {
-                              const newData = [...reviewODP6];
-                              newData[index].obtainedValue.maximum =
-                                e.target.value;
-                              setReviewODP6(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.compliesNotComplies}
-                            onChange={(e) => {
-                              const newData = [...reviewODP6];
-                              newData[index].compliesNotComplies =
-                                e.target.value;
-                              setReviewODP6(newData);
-                            }}
-                          />
-                        </td>
-                      </tr>
-                    );
-                  })}
-                </tbody>
-              </table> */}
+              
+              
             </div>{" "}
             <h4 className="gridName pt-8">Dilution Buffer 7 - Test Results</h4>
             <div>
@@ -5190,97 +3695,8 @@ export default function NewAPQR() {
               headers={reviewODP7headers} 
               fields={reviewODP7fields}
               />
-              {/* <table>
-                <thead>
-                  <tr>
-                    <th rowSpan={2}>Sl. No</th>
-                    <th rowSpan={2}>Tests parameter</th>
-                    <th rowSpan={2}>Stage</th>
-                    <th rowSpan={2}>Specification limit</th>
-                    <th className="centerText" colSpan={2}>
-                      Obtained value
-                    </th>
-                    <th rowSpan={2}>Complies/ Does Not complies</th>
-                  </tr>
-                  <tr>
-                    <th>Minimum</th>
-                    <th>Maximum</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {reviewODP7.map((item, index) => {
-                    return (
-                      <tr key={index}>
-                        <td>{index + 1}</td>
-                        <td>
-                          <input
-                            value={item.testsParameter}
-                            onChange={(e) => {
-                              const newData = [...reviewODP7];
-                              newData[index].testsParameter = e.target.value;
-                              setReviewODP7(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.stage}
-                            onChange={(e) => {
-                              const newData = [...reviewODP7];
-                              newData[index].stage = e.target.value;
-                              setReviewODP7(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.specificationLimit}
-                            onChange={(e) => {
-                              const newData = [...reviewODP7];
-                              newData[index].specificationLimit =
-                                e.target.value;
-                              setReviewODP7(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.obtainedValue.minimum}
-                            onChange={(e) => {
-                              const newData = [...reviewODP7];
-                              newData[index].obtainedValue.minimum =
-                                e.target.value;
-                              setReviewODP7(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.obtainedValue.maximum}
-                            onChange={(e) => {
-                              const newData = [...reviewODP7];
-                              newData[index].obtainedValue.maximum =
-                                e.target.value;
-                              setReviewODP7(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.compliesNotComplies}
-                            onChange={(e) => {
-                              const newData = [...reviewODP10];
-                              newData[index].compliesNotComplies =
-                                e.target.value;
-                              setReviewODP10(newData);
-                            }}
-                          />
-                        </td>
-                      </tr>
-                    );
-                  })}
-                </tbody>
-              </table> */}
+              
+              
             </div>{" "}
             <h4 className="gridName pt-8">Dilution Buffer 8 - Test Results</h4>
             <div>
@@ -5306,97 +3722,8 @@ export default function NewAPQR() {
               headers={reviewODP8headers} 
               fields={reviewODP8fields}
               />
-              {/* <table>
-                <thead>
-                  <tr>
-                    <th rowSpan={2}>Sl. No</th>
-                    <th rowSpan={2}>Tests parameter</th>
-                    <th rowSpan={2}>Stage</th>
-                    <th rowSpan={2}>Specification limit</th>
-                    <th className="centerText" colSpan={2}>
-                      Obtained value
-                    </th>
-                    <th rowSpan={2}>Complies/ Does Not complies</th>
-                  </tr>
-                  <tr>
-                    <th>Minimum</th>
-                    <th>Maximum</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {reviewODP8.map((item, index) => {
-                    return (
-                      <tr key={index}>
-                        <td>{index + 1}</td>
-                        <td>
-                          <input
-                            value={item.testsParameter}
-                            onChange={(e) => {
-                              const newData = [...reviewODP8];
-                              newData[index].testsParameter = e.target.value;
-                              setReviewODP8(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.stage}
-                            onChange={(e) => {
-                              const newData = [...reviewODP8];
-                              newData[index].stage = e.target.value;
-                              setReviewODP8(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.specificationLimit}
-                            onChange={(e) => {
-                              const newData = [...reviewODP8];
-                              newData[index].specificationLimit =
-                                e.target.value;
-                              setReviewODP8(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.obtainedValue.minimum}
-                            onChange={(e) => {
-                              const newData = [...reviewODP8];
-                              newData[index].obtainedValue.minimum =
-                                e.target.value;
-                              setReviewODP8(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.obtainedValue.maximum}
-                            onChange={(e) => {
-                              const newData = [...reviewODP8];
-                              newData[index].obtainedValue.maximum =
-                                e.target.value;
-                              setReviewODP8(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.compliesNotComplies}
-                            onChange={(e) => {
-                              const newData = [...reviewODP8];
-                              newData[index].compliesNotComplies =
-                                e.target.value;
-                              setReviewODP8(newData);
-                            }}
-                          />
-                        </td>
-                      </tr>
-                    );
-                  })}
-                </tbody>
-              </table> */}
+             
+             
             </div>{" "}
             <h4 className="gridName pt-8">Dilution Buffer 9 - Test Results</h4>
             <div>
@@ -5422,97 +3749,8 @@ export default function NewAPQR() {
               headers={reviewODP9headers} 
               fields={reviewODP9fields}
               />
-              {/* <table>
-                <thead>
-                  <tr>
-                    <th rowSpan={2}>Sl. No</th>
-                    <th rowSpan={2}>Tests parameter</th>
-                    <th rowSpan={2}>Stage</th>
-                    <th rowSpan={2}>Specification limit</th>
-                    <th className="centerText" colSpan={2}>
-                      Obtained value
-                    </th>
-                    <th rowSpan={2}>Complies/ Does Not complies</th>
-                  </tr>
-                  <tr>
-                    <th>Minimum</th>
-                    <th>Maximum</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {reviewODP9.map((item, index) => {
-                    return (
-                      <tr key={index}>
-                        <td>{index + 1}</td>
-                        <td>
-                          <input
-                            value={item.testsParameter}
-                            onChange={(e) => {
-                              const newData = [...reviewODP9];
-                              newData[index].testsParameter = e.target.value;
-                              setReviewODP9(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.stage}
-                            onChange={(e) => {
-                              const newData = [...reviewODP9];
-                              newData[index].stage = e.target.value;
-                              setReviewODP9(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.specificationLimit}
-                            onChange={(e) => {
-                              const newData = [...reviewODP9];
-                              newData[index].specificationLimit =
-                                e.target.value;
-                              setReviewODP9(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.obtainedValue.minimum}
-                            onChange={(e) => {
-                              const newData = [...reviewODP9];
-                              newData[index].obtainedValue.minimum =
-                                e.target.value;
-                              setReviewODP9(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.obtainedValue.maximum}
-                            onChange={(e) => {
-                              const newData = [...reviewODP9];
-                              newData[index].obtainedValue.maximum =
-                                e.target.value;
-                              setReviewODP9(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.compliesNotComplies}
-                            onChange={(e) => {
-                              const newData = [...reviewODP9];
-                              newData[index].compliesNotComplies =
-                                e.target.value;
-                              setReviewODP9(newData);
-                            }}
-                          />
-                        </td>
-                      </tr>
-                    );
-                  })}
-                </tbody>
-              </table> */}
+             
+             
             </div>
             <h4 className="gridName pt-8">Dilution Buffer 10 - Test Results</h4>
             <div>
@@ -5538,97 +3776,8 @@ export default function NewAPQR() {
               headers={reviewODP10headers} 
               fields={reviewODP10fields}
               />
-              {/* <table>
-                <thead>
-                  <tr>
-                    <th rowSpan={2}>Sl. No</th>
-                    <th rowSpan={2}>Tests parameter</th>
-                    <th rowSpan={2}>Stage</th>
-                    <th rowSpan={2}>Specification limit</th>
-                    <th className="centerText" colSpan={2}>
-                      Obtained value
-                    </th>
-                    <th rowSpan={2}>Complies/ Does Not complies</th>
-                  </tr>
-                  <tr>
-                    <th>Minimum</th>
-                    <th>Maximum</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {reviewODP10.map((item, index) => {
-                    return (
-                      <tr key={index}>
-                        <td>{index + 1}</td>
-                        <td>
-                          <input
-                            value={item.testsParameter}
-                            onChange={(e) => {
-                              const newData = [...reviewODP10];
-                              newData[index].testsParameter = e.target.value;
-                              setReviewODP10(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.stage}
-                            onChange={(e) => {
-                              const newData = [...reviewODP10];
-                              newData[index].stage = e.target.value;
-                              setReviewODP10(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.specificationLimit}
-                            onChange={(e) => {
-                              const newData = [...reviewODP10];
-                              newData[index].specificationLimit =
-                                e.target.value;
-                              setReviewODP10(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.obtainedValue.minimum}
-                            onChange={(e) => {
-                              const newData = [...reviewODP10];
-                              newData[index].obtainedValue.minimum =
-                                e.target.value;
-                              setReviewODP10(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.obtainedValue.maximum}
-                            onChange={(e) => {
-                              const newData = [...reviewODP10];
-                              newData[index].obtainedValue.maximum =
-                                e.target.value;
-                              setReviewODP10(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.compliesNotComplies}
-                            onChange={(e) => {
-                              const newData = [...reviewODP10];
-                              newData[index].compliesNotComplies =
-                                e.target.value;
-                              setReviewODP10(newData);
-                            }}
-                          />
-                        </td>
-                      </tr>
-                    );
-                  })}
-                </tbody>
-              </table> */}
+             
+             
             </div>
             <div>
               <h4 className="gridName mt-5">Summary</h4>
@@ -5664,86 +3813,8 @@ export default function NewAPQR() {
               headers={reviewODPFPTRheaders} 
               fields={reviewODPFPTRfields}
               />
-              {/* <table>
-                <thead>
-                  <tr>
-                    <th rowSpan={2}>Sl. No</th>
-                    <th rowSpan={2}>Tests parameter</th>
-                    <th rowSpan={2}>Specification limit</th>
-                    <th className="centerText" colSpan={2}>
-                      Obtained value
-                    </th>
-                    <th rowSpan={2}>Complies/ Does Not complies</th>
-                  </tr>
-                  <tr>
-                    <th>Minimum</th>
-                    <th>Maximum</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {reviewODPFPTR.map((item, index) => {
-                    return (
-                      <tr key={index}>
-                        <td>{index + 1}</td>
-                        <td>
-                          <input
-                            value={item.testsParameter}
-                            onChange={(e) => {
-                              const newData = [...reviewODPFPTR];
-                              newData[index].testsParameter = e.target.value;
-                              setReviewODPFPTR(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.specificationLimit}
-                            onChange={(e) => {
-                              const newData = [...reviewODPFPTR];
-                              newData[index].specificationLimit =
-                                e.target.value;
-                              setReviewODPFPTR(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.obtainedValue.minimum}
-                            onChange={(e) => {
-                              const newData = [...reviewODPFPTR];
-                              newData[index].obtainedValue.minimum =
-                                e.target.value;
-                              setReviewODPFPTR(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.obtainedValue.maximum}
-                            onChange={(e) => {
-                              const newData = [...reviewODPFPTR];
-                              newData[index].obtainedValue.maximum =
-                                e.target.value;
-                              setReviewODPFPTR(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value={item.compliesNotComplies}
-                            onChange={(e) => {
-                              const newData = [...reviewODPFPTR];
-                              newData[index].compliesNotComplies =
-                                e.target.value;
-                              setReviewODPFPTR(newData);
-                            }}
-                          />
-                        </td>
-                      </tr>
-                    );
-                  })}
-                </tbody>
-              </table> */}
+             
+             
             </div>
             <div>
               <h4 className="gridName mt-5">Summary</h4>
@@ -6463,7 +4534,16 @@ export default function NewAPQR() {
                   />
                 </div>
               </div>
-              <table>
+         
+              
+              <ComplexCommonTable
+              data={currentRPQRN}
+              setdata={setCurrentRPQRN}
+              headers={currentRPQRNheaders} 
+              fields={currentRPQRNfields}
+              /> 
+
+              {/* <table>
                 <thead>
                   <tr>
                     <th rowSpan={2}>SI. No.</th>
@@ -6586,7 +4666,7 @@ export default function NewAPQR() {
                     );
                   })}
                 </tbody>
-              </table>
+              </table> */}
             </div>
             <h4 className="gridName pt-4">
               previous Review Period Quality Related Notification

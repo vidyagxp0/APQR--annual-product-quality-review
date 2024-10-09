@@ -1063,7 +1063,8 @@ export const ooaResultsheaders = [
   "Trend Limit",
 ];
 export const ooaResultsfields = [
-  "testNameOfOoa",
+  "ARNo",
+  "testNameOfAlert",
   "resultsObtained",
   "initialIntervalDetails",
   "previousIntervalDetails",
@@ -1073,7 +1074,7 @@ export const ooaResultsfields = [
 
 export const oolResultsheaders = [
   "AR No.",
-  "Test Name Of OOT",
+  "Test Name Of Alert",
   "Result Obtained",
   "Initial Interval Details",
   "Previous Interval Details",
@@ -1082,7 +1083,7 @@ export const oolResultsheaders = [
 ];
 export const oolResultsfields = [
   "ARNo",
-  "testNameOfOot",
+  "testNameOfAlert",
   "resultsObtained",
   "initialIntervalDetails",
   "previousIntervalDetails",
@@ -1167,6 +1168,168 @@ export const bufferFSDPVfields = [
     {name: "resultmaximum"},
     {name:"compliesNotComplies"},
   ]
+
+
+ export const unitOperation4headers=[
+  {label: "Critical Process Parameters", rowSpan: 2},
+  {label: "Codes", rowSpan: 2},
+  {label: "Acceptance Criteria", rowSpan: 2},
+  { 
+    label: "Results", 
+    colSpan: 2,  
+    children: [
+      { label: "Minimum" }, 
+      { label: "Maximum" }
+    ]
+  },
+  {label: "Complies / Does not comply", rowSpan: 2}
+  ];
+  export const unitOperation4fields = [
+    {name:"criticalProcessParameter"},
+    {name:"codes"},
+    {name:"acceptanceCriteria"},
+    {name: "resultminimum"},
+    {name: "resultmaximum"},
+    {name:"compliesNotComplies"},
+ ]
+
+ export const unitOperation5headers=[
+  {label: "Critical Process Parameters", rowSpan: 2},
+  {label: "Codes", rowSpan: 2},
+  {label: "Acceptance Criteria", rowSpan: 2},
+  { 
+    label: "Results", 
+    colSpan: 2,  
+    children: [
+      { label: "Minimum" }, 
+      { label: "Maximum" }
+    ]
+  },
+  {label: "Complies / Does not comply", rowSpan: 2}
+  ];
+  export const unitOperation5fields = [
+    {name:"criticalProcessParameter"},
+    {name:"codes"},
+    {name:"acceptanceCriteria"},
+    {name: "resultminimum"},
+    {name: "resultmaximum"},
+    {name:"compliesNotComplies"},
+ ]
+
+export const unitOperation6headers=[
+  {label: "Critical Process Parameters", rowSpan: 2},
+  {label: "Codes", rowSpan: 2},
+  {label: "Acceptance Criteria", rowSpan: 2},
+  { 
+    label: "Results", 
+    colSpan: 2,  
+    children: [
+      { label: "Minimum" }, 
+      { label: "Maximum" }
+    ]
+  },
+  {label: "Complies / Does not comply", rowSpan: 2}
+  ];
+  export const unitOperation6fields = [
+    {name:"criticalProcessParameter"},
+    {name:"codes"},
+    {name:"acceptanceCriteria"},
+    {name: "resultminimum"},
+    {name: "resultmaximum"},
+    {name:"compliesNotComplies"},
+]
+
+export const unitOperation7headers=[
+  {label: "Critical Process Parameters", rowSpan: 2},
+  {label: "Codes", rowSpan: 2},
+  {label: "Acceptance Criteria", rowSpan: 2},
+  { 
+    label: "Results", 
+    colSpan: 2,  
+    children: [
+      { label: "Minimum" }, 
+      { label: "Maximum" }
+    ]
+  },
+  {label: "Complies / Does not comply", rowSpan: 2}
+  ];
+  export const unitOperation7fields = [
+    {name:"criticalProcessParameter"},
+    {name:"codes"},
+    {name:"acceptanceCriteria"},
+    {name: "resultminimum"},
+    {name: "resultmaximum"},
+    {name:"compliesNotComplies"},
+]
+
+export  const unitOperation8headers=[
+  {label: "Critical Process Parameters", rowSpan: 2},
+  {label: "Codes", rowSpan: 2},
+  {label: "Acceptance Criteria", rowSpan: 2},
+  { 
+    label: "Results", 
+    colSpan: 2,  
+    children: [
+      { label: "Minimum" }, 
+      { label: "Maximum" }
+    ]
+  },
+  {label: "Complies / Does not comply", rowSpan: 2}
+  ];
+  export const unitOperation8fields = [
+    {name:"criticalProcessParameter"},
+    {name:"codes"},
+    {name:"acceptanceCriteria"},
+    {name: "resultminimum"},
+    {name: "resultmaximum"},
+    {name:"compliesNotComplies"},
+]
+
+
+export const unitOperation9headers=[
+  {label: "Critical Process Parameters", rowSpan: 2},
+  {label: "Codes", rowSpan: 2},
+  {label: "Acceptance Criteria", rowSpan: 2},
+  { 
+    label: "Results", 
+    colSpan: 2,  
+    children: [
+      { label: "Minimum" }, 
+      { label: "Maximum" }
+    ]
+  },
+  {label: "Complies / Does not comply", rowSpan: 2}
+  ];
+  export const unitOperation9fields = [
+    {name:"criticalProcessParameter"},
+    {name:"codes"},
+    {name:"acceptanceCriteria"},
+    {name: "resultminimum"},
+    {name: "resultmaximum"},
+    {name:"compliesNotComplies"},
+]
+export const unitOperation10headers=[
+  {label: "Critical Process Parameters", rowSpan: 2},
+  {label: "Codes", rowSpan: 2},
+  {label: "Acceptance Criteria", rowSpan: 2},
+  { 
+    label: "Results", 
+    colSpan: 2,  
+    children: [
+      { label: "Minimum" }, 
+      { label: "Maximum" }
+    ]
+  },
+  {label: "Complies / Does not comply", rowSpan: 2}
+  ];
+  export const unitOperation10fields = [
+    {name:"criticalProcessParameter"},
+    {name:"codes"},
+    {name:"acceptanceCriteria"},
+    {name: "resultminimum"},
+    {name: "resultmaximum"},
+    {name:"compliesNotComplies"},
+]
 
   export const reviewORMETRheaders=[
     {label: "SI.No.", rowSpan: 2},
@@ -1467,4 +1630,39 @@ export const reviewODPFPTRfields=[
   {name:"obtainedValueMinimum"},
   {name:"obtainedValueMaximum"},
   {name:"compliesNotComplies"},
+]
+
+export const currentRPQRNheaders=[
+  {label: "SI.No.", rowSpan: 2},
+  {label: "Batch No.", rowSpan: 2},
+
+  {label: " Quality Releted Notification",
+    colSpan: 4,
+    children: [
+      {label: "No."},
+      {label: "Description"},
+      {label :"Impact"},
+      {label :"Status"},
+    ]
+   },
+   {
+    label:"CAPA",
+    colSpan:3,
+    children:[
+      {label:"Description No."},
+      {label :"Status"},
+      {label:"EC"}
+    ]
+   }
+ 
+]
+export const currentRPQRNfields=[
+  {name:"batchNo"},
+  {name:"qualityReletedNotificationNo"},
+  {name:"qualityReletedNotificationDescription"},
+  {name:"qualityReletedNotificationImpact"},
+  {name:"qualityReletedNotificationStatus"},
+  {name:"capaDescriptionNo"},
+  {name:"capaStatus"},
+  {name:"capaEC"},
 ]
