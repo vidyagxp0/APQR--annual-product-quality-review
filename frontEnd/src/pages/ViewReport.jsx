@@ -16,7 +16,7 @@ const ViewReport = () => {
   // }, [pqrId || filename]);
   const url = new URL(window.location.href);
   const pqrIdValue = url.searchParams.get("pqrId") || 1;
-  const pdfUrl = `http://localhost:4000/pdfs/APQR_Report_${pqrIdValue}.pdf`;
+  const pdfUrl = `https://apqr2-api.mydemosoftware.com/pdfs/APQR_Report_${pqrIdValue}.pdf`;
   // APQR_Report_13.pdf;
   const chatPdfConfig = {
     headers: {
@@ -108,7 +108,11 @@ const ViewReport = () => {
         <div className="absolute bottom-5 right-5 w-[450px] bg-white border border-gray-300 rounded-lg shadow-lg z-50 transition-all duration-300 transform translate-y-0">
           <div className="bg-blue-500 text-white flex justify-between items-center p-2 rounded-t-lg">
             <span>Chat with PDF</span>
-            <FaTimes size={20} className="cursor-pointer" onClick={() => setIsChatOpen(false)} />
+            <FaTimes
+              size={20}
+              className="cursor-pointer"
+              onClick={() => setIsChatOpen(false)}
+            />
           </div>
           <div className="h-[500px] overflow-y-auto p-3">
             {messages.map((message, index) => (

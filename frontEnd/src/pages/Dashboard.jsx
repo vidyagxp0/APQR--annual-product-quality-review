@@ -18,7 +18,9 @@ export default function Dashboard() {
     const fetchData = async () => {
       setTableDataLoading(true);
       try {
-        const response = await axios.get("http://localhost:4000/get-all-apqr");
+        const response = await axios.get(
+          "https://apqr2-api.mydemosoftware.com/get-all-apqr"
+        );
         setData(response.data);
         // console.log(response.data[0]);
       } catch (error) {
@@ -34,7 +36,9 @@ export default function Dashboard() {
   const downloadPDF = async (pqrId) => {
     setLoading((prevLoading) => ({ ...prevLoading, [pqrId]: true }));
     try {
-      const response = await fetch(`http://localhost:4000/report/generate-report/${pqrId}`);
+      const response = await fetch(
+        `https://apqr2-api.mydemosoftware.com/report/generate-report/${pqrId}`
+      );
 
       const blob = await response.blob();
       const url = window.URL.createObjectURL(new Blob([blob]));
@@ -53,7 +57,9 @@ export default function Dashboard() {
   const openChatPdf = async (pqrId) => {
     setviewLoading((prevLoading) => ({ ...prevLoading, [pqrId]: true }));
     try {
-      const response = await fetch(`http://localhost:4000/report/chat-pdf/${pqrId}`);
+      const response = await fetch(
+        `https://apqr2-api.mydemosoftware.com/report/chat-pdf/${pqrId}`
+      );
       const { filename } = await response.json();
       // const filename=data.filename
 
@@ -88,6 +94,7 @@ export default function Dashboard() {
               <th className="px-4 py-2 border-r-2">Reports</th>
             </tr>
           </thead>
+
           <tbody className="w-full">
             {tableDataLoading ? (
               <tr>
@@ -117,7 +124,9 @@ export default function Dashboard() {
                   </td>
                   <td className="px-4 py-2 border-r-2">{item.productName}</td>
                   <td className="px-4 py-2 border-r-2">{item.genericName}</td>
-                  <td className="px-4 py-2 border-r-2">{item.productDescription}</td>
+                  <td className="px-4 py-2 border-r-2">
+                    {item.productDescription}
+                  </td>
                   <td className="px-4 py-2 border-r-2">{item.initiator}</td>
                   <td className="px-4 py-2 border-r-2">
                     {new Intl.DateTimeFormat("en-GB", {

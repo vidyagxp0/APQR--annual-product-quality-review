@@ -46,7 +46,8 @@ const setapqrdata = (aPQRDataOBJ) => {
   pqrData.processFlow = aPQRData?.processFlow ?? "";
   pqrData.totalBatchesManu = aPQRData?.totalBatchesManufactured ?? "";
   pqrData.totalBatchesApproved = aPQRData?.totalBatchesApprovedReleased ?? "";
-  pqrData.totalNoValidationprocessedBatches = aPQRData?.totalProcessValidationBatches ?? "";
+  pqrData.totalNoValidationprocessedBatches =
+    aPQRData?.totalProcessValidationBatches ?? "";
   pqrData.totalNoReprocessedBatches = aPQRData?.totalReprocessedBatches ?? "";
 
   //Grids
@@ -231,12 +232,15 @@ export const chatPdf = async (req, res) => {
   const apqrId = req.params.id;
   let aPQRData;
   try {
-    const aPQRDataRes = await fetch(`http://localhost:4000/get-apqr/${apqrId}`, {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
+    const aPQRDataRes = await fetch(
+      `https://apqr2-api.mydemosoftware.com/get-apqr/${apqrId}`,
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
 
     aPQRData = await aPQRDataRes.json();
 
@@ -319,12 +323,15 @@ export const generatePdfbyId = async (req, res) => {
   const apqrId = req.params.id;
   let aPQRData;
   try {
-    const aPQRDataRes = await fetch(`http://localhost:4000/get-apqr/${apqrId}`, {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
+    const aPQRDataRes = await fetch(
+      `https://apqr2-api.mydemosoftware.com/get-apqr/${apqrId}`,
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
 
     aPQRData = await aPQRDataRes.json();
 
@@ -389,7 +396,10 @@ export const generatePdfbyId = async (req, res) => {
       },
     });
 
-    res.setHeader("Content-Disposition", "attachment; filename=APQR_Report.pdf");
+    res.setHeader(
+      "Content-Disposition",
+      "attachment; filename=APQR_Report.pdf"
+    );
     res.setHeader("Content-Type", "application/pdf");
     res.send(pdfBuffer);
   } catch (error) {
@@ -407,12 +417,15 @@ export const viewReportByID = async (req, res) => {
 
   let aPQRData;
   try {
-    const aPQRDataRes = await fetch(`http://localhost:4000/get-apqr/${apqrId}`, {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
+    const aPQRDataRes = await fetch(
+      `https://apqr2-api.mydemosoftware.com/get-apqr/${apqrId}`,
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
 
     aPQRData = await aPQRDataRes.json();
 

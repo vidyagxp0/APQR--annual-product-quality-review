@@ -9,7 +9,11 @@ export default function Login() {
 
   const handleLogin = (event) => {
     event.preventDefault();
-    if ((username === "admin" && password === "admin") || (username === "g" && password === "g")) {
+    if (
+      (username === "admin" && password === "admin") ||
+      (username === "g" && password === "g") ||
+      (username === "admin@connexo.com" && password === "Amit@121")
+    ) {
       navigate("/dashboard");
     } else {
       setError(true);
@@ -19,13 +23,21 @@ export default function Login() {
   return (
     <div
       className="min-h-screen flex items-center justify-center"
-      style={{ backgroundImage: "linear-gradient(to top, #c1dfc4 0%, #deecdd 100%)" }}
+      style={{
+        backgroundImage: "linear-gradient(to top, #c1dfc4 0%, #deecdd 100%)",
+      }}
     >
       <div className="flex w-full max-w-4xl bg-white rounded-lg shadow-lg overflow-hidden">
         <div className="w-1/2 bg-green-100 p-8 flex items-center justify-center">
           <div className="text-center">
-            <img src="/logo11.png" alt="Login Illustration" className="mb-4 mx-auto" />
-            <h1 className="text-2xl font-bold text-gray-700 mb-4">Annual Product Quality Review</h1>
+            <img
+              src="/logo11.png"
+              alt="Login Illustration"
+              className="mb-4 mx-auto"
+            />
+            <h1 className="text-2xl font-bold text-gray-700 mb-4">
+              Annual Product Quality Review
+            </h1>
           </div>
         </div>
 
@@ -37,7 +49,9 @@ export default function Login() {
           </h2>
           <form onSubmit={handleLogin}>
             <div className="mb-8 mt-12">
-              <label className="block text-gray-900 text-left font-bold">Username or email</label>
+              <label className="block text-gray-900 text-left font-bold">
+                Username or email
+              </label>
               <input
                 value={username}
                 onChange={(event) => setUsername(event.target.value)}
@@ -47,7 +61,9 @@ export default function Login() {
               />
             </div>
             <div className="mb-4 mt-10">
-              <label className="block text-gray-900 text-left font-bold">Password</label>
+              <label className="block text-gray-900 text-left font-bold">
+                Password
+              </label>
               <input
                 value={password}
                 onChange={(event) => setPassword(event.target.value)}
@@ -56,7 +72,11 @@ export default function Login() {
                 className="w-full px-4 py-2 mt-2 border-2 border-gray-400 rounded-lg focus:outline-none focus:ring-1 focus:ring-green-600"
               />
             </div>
-            {error && <p className="text-red-500 text-center">Invalid username or password</p>}
+            {error && (
+              <p className="text-red-500 text-center">
+                Invalid username or password
+              </p>
+            )}
             <button
               type="submit"
               className="w-full bg-green-600 text-white font-bold py-2 px-4 rounded-lg mt-16 hover:bg-green-700"

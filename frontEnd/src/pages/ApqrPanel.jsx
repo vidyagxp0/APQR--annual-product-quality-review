@@ -732,7 +732,7 @@ export default function APQR() {
       };
 
       const response = await axios.put(
-        `http://localhost:4000/update-apqr/${editData.pqrId}`,
+        `https://apqr2-api.mydemosoftware.com/update-apqr/${editData.pqrId}`,
         payload
       );
       navigate("/dashboard");
@@ -744,11 +744,13 @@ export default function APQR() {
   };
   const fetchData = async () => {
     try {
-      const response = await axios.get(`http://localhost:4000/get-apqr/${editData.pqrId}`);
+      const response = await axios.get(
+        `https://apqr2-api.mydemosoftware.com/get-apqr/${editData.pqrId}`
+      );
       console.log(response.data, "data");
-      setData(response.data);
-      setTinyData(response.data.aPQRData.tinyData);
-      const apiData = response.data.gridDatas;
+      setData(JSON.parse(response.data));
+      setTinyData(JSON.parse(response.data.aPQRData.tinyData));
+      const apiData = JSON.parse(response.data.gridDatas);
 
       // Map each grid from API response to corresponding state
       setGridDatas({
@@ -841,6 +843,7 @@ export default function APQR() {
       setIsLoading(false);
     } catch (error) {
       console.error("Error fetching data:", error);
+      setIsLoading(false);
     }
   };
 
@@ -2273,7 +2276,7 @@ export default function APQR() {
   const handleTextToSpeech = (text) => {
     const speech = new SpeechSynthesisUtterance(text);
     window.speechSynthesis.speak(speech);
-  };     
+  };
 
   // Speech-to-Text functionality
   const handleSpeechToText = (updater) => {
@@ -2684,8 +2687,8 @@ export default function APQR() {
                 <div>
                   <h4 className="gridName mt-4">Summary</h4>
                   <TinyEditor
-                    editorContent={tinyData.tiny1} 
-                    setEditorContent={(data) => setTinyContent(data, 1)} 
+                    editorContent={tinyData.tiny1}
+                    setEditorContent={(data) => setTinyContent(data, 1)}
                     tinyNo={1}
                   />
                 </div>
@@ -3644,10 +3647,10 @@ export default function APQR() {
                                 const newData = [...gridDatas.vendorQDPOG];
                                 newData[index].manufacturerName =
                                   e.target.value;
-                                  setGridDatas({
-                                    ...gridDatas,
-                                    vendorQDPOG: newData,
-                                  });
+                                setGridDatas({
+                                  ...gridDatas,
+                                  vendorQDPOG: newData,
+                                });
                               }}
                             />
                           </td>
@@ -4852,8 +4855,7 @@ export default function APQR() {
                             value={item.diffrenceOfResult}
                             onChange={(e) => {
                               const newData = [...gridDatas.ootResults];
-                              newData[index].diffrenceOfResult =
-                                e.target.value;
+                              newData[index].diffrenceOfResult = e.target.value;
                               setGridDatas({
                                 ...gridDatas,
                                 ootResults: newData,
@@ -14542,7 +14544,7 @@ export default function APQR() {
                         </td>
 
                         <td>
-                          <input         
+                          <input
                             value={item.recordNo}
                             onChange={(e) => {
                               const newData = [...gridDatas.previewOOS];

@@ -1,7 +1,7 @@
 {
   "development": {
-    "PORT": 4000,
-    "dbName": "apqr",
+    "PORT": 6000,
+    "dbName": "apqrold",
     "username": "root",
     "password": "root",
     "dialect": "mysql",
